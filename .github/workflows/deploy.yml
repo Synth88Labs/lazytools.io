@@ -1,13 +1,23 @@
-# Deploys the static build to Namecheap shared hosting via FTPS.
-# Secrets FTP_SERVER / FTP_USERNAME / FTP_PASSWORD must be configured
-# in repo Settings → Secrets and variables → Actions.
-# Triggered manually or by pushing a version tag (per ROADMAP.md, first run ~July 25, 2026).
+# Deploys the static build to Namecheap shared hosting via explicit FTPS (port 21).
+# Secrets FTP_SERVER / FTP_USERNAME / FTP_PASSWORD are configured in
+# repo Settings → Secrets and variables → Actions.
+#
+# The FTP account is domain-scoped (CLAUDE_ACC@lazytools.io), so its root IS the
+# lazytools.io docroot — hence server-dir "./".
+# security: loose because shared-hosting FTPS certs are issued for the server
+# hostname, not ftp.<domain> (traffic is still TLS-encrypted).
+#
+# NOTE: tag-triggered deploys get enabled once the pipeline has a clean dry run
+# and launch week arrives (see ROADMAP.md).
 name: Deploy to Namecheap
 
-# NOTE: tag-triggered deploys get enabled in launch week (see ROADMAP.md),
-# once FTP secrets are configured and the pipeline has a successful dry run.
 on:
   workflow_dispatch:
+    inputs:
+      dry-run:
+        description: 'List changes without uploading anything'
+        type: boolean
+        default: false
 
 jobs:
   deploy:
@@ -20,6 +30,7 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - run: npm test
       - run: npm run build
       - name: Deploy dist/ via FTPS
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
@@ -28,5 +39,8 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps
+          port: 21
+          security: loose
           local-dir: dist/
-          server-dir: public_html/
+          server-dir: ./
+          dry-run: ${{ inputs.dry-run == true }}
