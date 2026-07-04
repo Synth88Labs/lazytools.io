@@ -3,3 +3,6 @@ dist/
 .astro/
 .DS_Store
 *.log
+
+# server-side credentials — created on the host, never committed
+api/config.php
