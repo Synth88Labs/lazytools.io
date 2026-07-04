@@ -35,7 +35,7 @@ faqs:
     a: "Yes. The scale was called centigrade ('hundred steps') from 1743 until 1948, when it was officially renamed Celsius after Anders Celsius, partly to avoid confusion with the French angle unit 'grade'."
   - q: "What are the hottest and coldest temperatures ever recorded?"
     a: "Hottest reliably recorded air temperature: 56.7 °C (134 °F) at Furnace Creek, Death Valley, on July 10, 1913. Coldest: −89.2 °C (−128.6 °F) at Vostok Station, Antarctica, on July 21, 1983."
-draft: true
+draft: false
 ---
 
 **To convert Celsius to Fahrenheit, multiply by 9/5 (1.8) and add 32: °F = °C × 1.8 + 32.** So 20 °C

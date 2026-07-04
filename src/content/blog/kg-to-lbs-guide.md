@@ -35,7 +35,7 @@ faqs:
     a: "Before 1959, the US, UK and Commonwealth countries each kept slightly different pound standards. The International Yard and Pound Agreement ended the drift by defining one avoirdupois pound as exactly 0.45359237 kg — a legal definition, not a measurement, which is why it has no uncertainty."
   - q: "Which countries still use pounds?"
     a: "The United States uses pounds as its primary everyday weight unit. The UK uses a mix (stones and pounds for body weight, metric for trade). Liberia and Myanmar retain partial imperial usage. Virtually all science, medicine and international trade — everywhere — runs on kilograms."
-draft: true
+draft: false
 ---
 
 **To convert kilograms to pounds, multiply by 2.2046 — one kilogram is exactly 2.2046226218 pounds.**

@@ -10,10 +10,9 @@ export default defineConfig({
   integrations: [
     preact(),
     sitemap({
-      // Keep placeholder/coming-soon and stub pages out of the sitemap
+      // Keep placeholder/coming-soon stub pages out of the sitemap
       filter: (page) =>
         !page.includes('/coming-soon') &&
-        !page.includes('/blog/') &&
         !['/dev/', '/file/', '/text/', '/generate/', '/time/', '/color/', '/security/', '/image/', '/pdf/', '/audio/', '/video/'].some(
           (stub) => page === `https://lazytools.io${stub}`
         ),

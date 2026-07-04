@@ -34,6 +34,27 @@ const POSTS = [
     fact: 'X% of Y = Y% of X — always',
     icon: '％',
   },
+  {
+    slug: 'emi-explained',
+    kicker: 'LOAN MATH EXPLAINED',
+    lines: ['How EMI is', 'calculated: the exact', 'formula banks use'],
+    fact: 'EMI = P·r·(1+r)ⁿ ÷ ((1+r)ⁿ−1)',
+    icon: '🏦',
+  },
+  {
+    slug: 'cups-to-ml-grams-baking',
+    kicker: 'BAKING CONVERSIONS',
+    lines: ['Cups to mL & grams:', 'the recipe conversion', 'guide that works'],
+    fact: '1 US cup = 236.59 mL',
+    icon: '🧁',
+  },
+  {
+    slug: 'running-distances-miles',
+    kicker: 'RUNNING DISTANCES',
+    lines: ['5K, 10K, half & full', 'marathon in miles', '(+ pace charts)'],
+    fact: 'marathon = 42.195 km = 26.219 mi',
+    icon: '🏃',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

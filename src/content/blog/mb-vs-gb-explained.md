@@ -35,7 +35,7 @@ faqs:
     a: "Use GB (decimal) for storage sizes, bandwidth and general communication — it's the SI standard. Use GiB (binary) when the underlying quantity really is a power of two: RAM, OS-reported sizes, cloud-instance memory."
   - q: "Why is RAM sold in powers of two but drives aren't?"
     a: "Memory chips are addressed by binary address lines, so capacities naturally come out as powers of two (8, 16, 32 GiB). Disk platters and NAND flash have no such constraint, so drive makers use round decimal numbers — which also read larger on the box."
-draft: true
+draft: false
 ---
 
 **Your drive isn't missing space — it's being measured with two different rulers.** Storage makers

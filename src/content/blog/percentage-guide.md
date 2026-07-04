@@ -29,7 +29,7 @@ faqs:
     a: "Points compare raw percentages by subtraction; percent change is relative. An interest rate going from 4% to 6% rose 2 percentage points, but that is a 50% relative increase. News headlines regularly blur the two."
   - q: "Do two successive discounts add up?"
     a: "No — they multiply on shrinking bases. 30% off then an extra 20% off keeps 0.70 × 0.80 = 0.56 of the price: a 44% total discount, not 50%."
-draft: true
+draft: false
 ---
 
 **Every percentage problem you'll ever meet is one of exactly three forms: find the part (15% of 80 = 12),
