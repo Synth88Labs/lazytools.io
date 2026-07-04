@@ -109,3 +109,90 @@ body {
 .prose-lazy code {
   @apply rounded bg-slate-100 px-1.5 py-0.5 text-sm font-mono text-slate-800;
 }
+.prose-lazy h2 {
+  @apply border-b border-slate-200 pb-2;
+}
+.prose-lazy blockquote {
+  @apply my-5 border-l-4 border-brand-300 bg-slate-50 px-4 py-3 italic text-slate-600;
+}
+
+/* ---- Rich tables in posts & tool pages ---- */
+.prose-lazy table {
+  @apply my-6 block w-full overflow-x-auto text-sm;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+.prose-lazy thead th {
+  @apply border-b-2 border-brand-800 bg-brand-800 px-4 py-2.5 text-left font-semibold text-white;
+}
+.prose-lazy thead th:first-child {
+  border-top-left-radius: 0.6rem;
+}
+.prose-lazy thead th:last-child {
+  border-top-right-radius: 0.6rem;
+}
+.prose-lazy tbody td {
+  @apply border-b border-slate-200 px-4 py-2.5 align-top text-slate-700;
+}
+.prose-lazy tbody tr:nth-child(even) td {
+  @apply bg-slate-50;
+}
+.prose-lazy tbody tr:hover td {
+  @apply bg-brand-50/70;
+}
+.prose-lazy tbody td:first-child {
+  @apply font-medium text-slate-900;
+}
+
+/* ---- Key takeaways card (use <aside class="key-takeaways"> in markdown) ---- */
+.key-takeaways {
+  @apply my-7 rounded-2xl border-2 border-brand-200 bg-gradient-to-br from-brand-50 to-white p-6 shadow-sm;
+}
+.key-takeaways .kt-title {
+  @apply mb-3 flex items-center gap-2 text-xs font-extrabold uppercase tracking-widest text-brand-800;
+}
+.key-takeaways ul {
+  @apply m-0 list-none space-y-2.5 p-0;
+}
+.key-takeaways li {
+  @apply relative pl-7 leading-relaxed text-slate-700;
+}
+.key-takeaways li::before {
+  content: '✓';
+  @apply absolute left-0 top-0 font-bold text-mint-600;
+}
+.key-takeaways strong {
+  @apply font-semibold text-slate-900;
+}
+
+/* ---- Callouts / focus points (<div class="callout">, variants: tip, warn, cite) ---- */
+.callout {
+  @apply my-6 rounded-xl border-l-4 border-brand-500 bg-brand-50/70 px-5 py-4;
+}
+.callout > p {
+  @apply my-0 leading-relaxed;
+}
+.callout.tip {
+  @apply border-mint-600 bg-mint-500/10;
+}
+.callout.warn {
+  @apply border-amber-500 bg-amber-50;
+}
+.callout.cite {
+  @apply border-slate-400 bg-slate-50;
+}
+.callout .co-label {
+  @apply mb-1 block text-xs font-extrabold uppercase tracking-widest;
+}
+.callout .co-label {
+  color: var(--color-brand-800);
+}
+.callout.tip .co-label {
+  color: var(--color-mint-700);
+}
+.callout.warn .co-label {
+  @apply text-amber-700;
+}
+.callout.cite .co-label {
+  @apply text-slate-600;
+}
