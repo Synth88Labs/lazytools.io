@@ -65,6 +65,11 @@ gives exact numbers in your browser.
 The conversion behind the table: **1 km = 0.621371 miles** (1 mile = 1.609344 km exactly, from the
 1959 international yard definition). Quick estimate: multiply kilometers by 0.6 and nudge up.
 
+<figure>
+<img src="/blog/infographic-race-distances.svg" alt="Infographic: race distances drawn to scale — the 5K bar is 3.11 miles, 10K is 6.21, half marathon 13.11, and the marathon bar spans 26.22 miles" width="1200" height="620" loading="lazy" />
+<figcaption>To scale: a 5K fits into a marathon eight and a half times.</figcaption>
+</figure>
+
 ## Why a marathon is 26.2 miles: blame the royal box
 
 The original Olympic marathons honored Pheidippides' legendary run from Marathon to Athens — roughly

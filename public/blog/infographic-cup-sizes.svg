@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="The world's cup sizes compared: Japanese cup 200 mL, US cup 236.59 mL, metric cup 250 mL — and the flour scooping variance">
+  <defs>
+    <linearGradient id="liq" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3fa9fd"/>
+      <stop offset="1" stop-color="#1465cf"/>
+    </linearGradient>
+    <style>
+      .h { font: 800 30px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .name { font: 700 24px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .ml { font: 800 30px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #166fde; }
+      .sub { font: 500 18px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+      .cup { fill: none; stroke: #94a3b8; stroke-width: 6; }
+    </style>
+  </defs>
+
+  <text x="600" y="46" text-anchor="middle" class="h">"One cup" is not one thing — three standards, up to 20% apart</text>
+
+  <!-- baseline y=480; 1 mL = 1.35 px of height; cup width 180 -->
+  <!-- Japan 200 mL → h270 -->
+  <g>
+    <rect x="180" y="210" width="180" height="270" rx="14" class="cup"/>
+    <rect x="192" y="222" width="156" height="252" rx="8" fill="url(#liq)" opacity="0.9"/>
+    <text x="270" y="530" text-anchor="middle" class="name">Japanese cup</text>
+    <text x="270" y="566" text-anchor="middle" class="ml">200 mL</text>
+    <text x="270" y="594" text-anchor="middle" class="sub">also rice-cooker gō ≈ 180 mL</text>
+  </g>
+
+  <!-- US 236.59 mL → h319 -->
+  <g>
+    <rect x="510" y="161" width="180" height="319" rx="14" class="cup"/>
+    <rect x="522" y="173" width="156" height="301" rx="8" fill="url(#liq)" opacity="0.9"/>
+    <text x="600" y="530" text-anchor="middle" class="name">US cup</text>
+    <text x="600" y="566" text-anchor="middle" class="ml">236.59 mL</text>
+    <text x="600" y="594" text-anchor="middle" class="sub">American recipes · labels round to 240</text>
+  </g>
+
+  <!-- Metric 250 mL → h337 -->
+  <g>
+    <rect x="840" y="143" width="180" height="337" rx="14" class="cup"/>
+    <rect x="852" y="155" width="156" height="319" rx="8" fill="url(#liq)" opacity="0.9"/>
+    <text x="930" y="530" text-anchor="middle" class="name">Metric cup</text>
+    <text x="930" y="566" text-anchor="middle" class="ml">250 mL</text>
+    <text x="930" y="594" text-anchor="middle" class="sub">Australia · NZ · Canada · India</text>
+  </g>
+
+  <!-- handles -->
+  <path d="M 360 260 q 50 15 0 90" class="cup"/>
+  <path d="M 690 215 q 50 15 0 90" class="cup"/>
+  <path d="M 1020 195 q 50 15 0 90" class="cup"/>
+
+  <!-- dashed comparison line at US level -->
+  <line x1="150" y1="161" x2="1050" y2="161" stroke="#f59e0b" stroke-width="2.5" stroke-dasharray="8 6"/>
+  <text x="120" y="167" text-anchor="end" font-family="'Plus Jakarta Sans','Segoe UI',Arial,sans-serif" font-size="17" font-weight="600" fill="#b45309">US level</text>
+</svg>

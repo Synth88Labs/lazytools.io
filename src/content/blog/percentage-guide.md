@@ -66,6 +66,11 @@ Form 3 is the one people forget exists — and it's the one behind every "origin
 "pre-tax amount" question (more below). The [percentage calculator](/calc/percentage-calculator/)
 handles form 1 directly; the same page's FAQ covers the other two.
 
+<figure>
+<img src="/blog/infographic-percentage-forms.svg" alt="Infographic: the three forms of every percentage problem — find the part (15% of 80 = 12), find the percent (12 ÷ 80 × 100 = 15%), find the whole (12 ÷ 0.15 = 80) — plus the swap trick X% of Y = Y% of X" width="1200" height="620" loading="lazy" />
+<figcaption>Spot the form, pick the rearrangement — and remember the swap when the numbers are awkward.</figcaption>
+</figure>
+
 ## The mental math toolkit
 
 **The 10% anchor.** Ten percent is a decimal shift: 10% of 347 = 34.7. Everything scales from there —

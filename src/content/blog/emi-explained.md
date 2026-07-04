@@ -80,6 +80,11 @@ proportions reverse:
 This is also why selling a house after 5 years often surprises owners: the loan balance has barely
 moved compared to what's been paid.
 
+<figure>
+<img src="/blog/infographic-emi-split.svg" alt="Infographic: interest vs principal split of each EMI over a 20-year loan at 9% — month 1 is 83% interest, year 10 is 63%, the final year is 95% principal" width="1200" height="640" loading="lazy" />
+<figcaption>The same fixed EMI, but its composition flips over the life of the loan.</figcaption>
+</figure>
+
 <div class="callout cite">
 <p><span class="co-label">📌 Citable fact</span> On a 20-year loan at 9% (reducing balance), the first monthly payment is roughly 83% interest, and total interest (≈1.16× principal) exceeds the amount borrowed. Both follow directly from EMI = P·r·(1+r)ⁿ ÷ ((1+r)ⁿ−1).</p>
 </div>

@@ -66,6 +66,11 @@ The dangerous pair is US 236.59 vs metric 250 — close enough to seem interchan
 (5.7%) to change a batter across several cups. When a recipe's origin is unclear, assume US if it's
 from a US site; [convert exactly](/units/cups-to-ml/) rather than eyeballing.
 
+<figure>
+<img src="/blog/infographic-cup-sizes.svg" alt="Infographic: three measuring cups drawn to scale — Japanese cup 200 mL, US cup 236.59 mL, metric cup 250 mL — with the US fill level marked across all three" width="1200" height="640" loading="lazy" />
+<figcaption>Three "cups," drawn to scale — the 50 mL spread between Japan and the metric world is a fifth of the smallest cup.</figcaption>
+</figure>
+
 ## Cups to grams: the density problem
 
 A cup is a *volume*; a gram is a *weight* — so "1 cup in grams" depends entirely on what's in the cup.
