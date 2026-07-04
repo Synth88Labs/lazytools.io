@@ -1,4 +1,5 @@
 ---
+import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import PrivacyStrip from '../../components/PrivacyStrip.astro';
@@ -44,6 +45,12 @@ interface Props {
 }
 
 const { type } = Astro.props;
+
+// ---------- related blog posts (registry-driven: post frontmatter lists tool URLs) ----------
+const allBlogPosts = await getCollection('blog');
+function postsForToolUrls(urls: string[]) {
+  return allBlogPosts.filter((p) => p.data.tools.some((t: string) => urls.includes(t)));
+}
 
 // ---------- shared lookups (avoid non-serializable props from getStaticPaths) ----------
 const quantity: Quantity | undefined =
@@ -134,13 +141,16 @@ const pairData = (() => {
     faqSchema(faqs),
   ];
 
-  return { from, to, q, meta, linear, exampleValue, exampleResult, values, related, reverseSlug, reverseExists, faqs, unitsDto };
+  const blogPosts = postsForToolUrls([`/units/${pair.slug}/`, `/units/${reverseSlug}/`]);
+
+  return { from, to, q, meta, linear, exampleValue, exampleResult, values, related, reverseSlug, reverseExists, faqs, unitsDto, blogPosts };
 })();
 
 // ---------- quantity hub content pieces ----------
 const hubData = (() => {
   if (!(type === 'quantity' && quantity)) return null;
   const pairs = allPairs().filter((p) => p.quantity.id === quantity.id);
+  const blogPosts = postsForToolUrls(pairs.map((p) => `/units/${p.slug}/`));
   const unitsDto = quantity.units.map((u) => ({
     id: u.id,
     name: u.name,
@@ -161,7 +171,7 @@ const hubData = (() => {
       })),
     }),
   ];
-  return { pairs, unitsDto };
+  return { pairs, unitsDto, blogPosts };
 })();
 ---
 
@@ -280,6 +290,25 @@ const hubData = (() => {
             </li>
           </ul>
         </section>
+
+        {pairData.blogPosts.length > 0 && (
+          <section class="mt-10">
+            <h2 class="text-2xl font-bold text-slate-900">From the blog</h2>
+            <ul class="mt-4 space-y-3">
+              {pairData.blogPosts.map((post) => (
+                <li>
+                  <a
+                    href={`/blog/${post.id}/`}
+                    class="block rounded-xl border border-slate-200 p-4 transition hover:border-brand-400 hover:shadow-sm"
+                  >
+                    <p class="font-semibold text-slate-900">{post.data.title}</p>
+                    <p class="mt-1 text-sm text-slate-600">{post.data.description}</p>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
       </article>
     )
   }
@@ -323,6 +352,25 @@ const hubData = (() => {
             ))}
           </ul>
         </section>
+
+        {hubData.blogPosts.length > 0 && (
+          <section class="mt-10">
+            <h2 class="text-2xl font-bold text-slate-900">From the blog</h2>
+            <ul class="mt-4 space-y-3">
+              {hubData.blogPosts.map((post) => (
+                <li>
+                  <a
+                    href={`/blog/${post.id}/`}
+                    class="block rounded-xl border border-slate-200 p-4 transition hover:border-brand-400 hover:shadow-sm"
+                  >
+                    <p class="font-semibold text-slate-900">{post.data.title}</p>
+                    <p class="mt-1 text-sm text-slate-600">{post.data.description}</p>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
 
         <section class="mt-10">
           <h2 class="text-2xl font-bold text-slate-900">All {quantity.name.toLowerCase()} units</h2>
