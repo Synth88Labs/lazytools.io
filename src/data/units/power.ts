@@ -1,4 +1,4 @@
-import type { Quantity } from './types';
+import type { Quantity } from './types.ts';
 
 export const power: Quantity = {
   id: 'power',
@@ -30,7 +30,7 @@ export const power: Quantity = {
       definition: 'Metric horsepower (PS, from German "Pferdestärke") is exactly 735.49875 watts — about 1.4% smaller than mechanical hp. European and Japanese car specs commonly use PS.',
     },
     {
-      id: 'btuh', name: 'BTU per hour', plural: 'BTU per hour', symbol: 'BTU/h', slug: 'btu-per-hour', factor: 0.29307107, system: 'us',
+      id: 'btuh', name: 'BTU per hour', plural: 'BTU per hour', symbol: 'BTU/h', slug: 'btu-per-hour', factor: 1055.05585262 / 3600, system: 'us',
       definition: 'BTU per hour (BTU/h) is the US rating unit for heating and cooling equipment, about 0.293 watts. A 12,000 BTU/h air conditioner equals 3.52 kW of cooling.',
     },
   ],

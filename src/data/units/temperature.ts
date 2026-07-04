@@ -1,4 +1,4 @@
-import type { Quantity } from './types';
+import type { Quantity } from './types.ts';
 
 // Base unit: Celsius. baseValue = value * factor + offset
 export const temperature: Quantity = {

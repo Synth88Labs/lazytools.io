@@ -1,15 +1,15 @@
-import type { Quantity, Unit, PairMeta } from './types';
-import { length } from './length';
-import { weight } from './weight';
-import { temperature } from './temperature';
-import { area } from './area';
-import { volume } from './volume';
-import { speed } from './speed';
-import { time } from './time';
-import { dataStorage } from './data-storage';
-import { pressure } from './pressure';
-import { energy } from './energy';
-import { power } from './power';
+import type { Quantity, Unit, PairMeta } from './types.ts';
+import { length } from './length.ts';
+import { weight } from './weight.ts';
+import { temperature } from './temperature.ts';
+import { area } from './area.ts';
+import { volume } from './volume.ts';
+import { speed } from './speed.ts';
+import { time } from './time.ts';
+import { dataStorage } from './data-storage.ts';
+import { pressure } from './pressure.ts';
+import { energy } from './energy.ts';
+import { power } from './power.ts';
 
 export type { Quantity, Unit, PairMeta };
 

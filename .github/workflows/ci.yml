@@ -16,6 +16,8 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - name: Factors audit (NIST/BIPM fixtures)
+        run: npm test
       - run: npm run build
       - name: Check page count
         run: |

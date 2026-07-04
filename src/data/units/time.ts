@@ -1,4 +1,4 @@
-import type { Quantity } from './types';
+import type { Quantity } from './types.ts';
 
 export const time: Quantity = {
   id: 'time',
