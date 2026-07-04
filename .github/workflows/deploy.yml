@@ -31,6 +31,8 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm test
+      - name: Refresh tool ratings from production (fail-safe)
+        run: node scripts/fetch-ratings.mjs
       - run: npm run build
       - name: Deploy dist/ via FTPS
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5

@@ -6,6 +6,9 @@
  *
  * Privacy contract (see /privacy/): stores ONLY the tool slug, the star value
  * and a timestamp. No IP address, no cookies, no user agent, no identifiers.
+ *
+ * Storage: SQLite file in api/data/ (blocked from the web by .htaccess) —
+ * zero-configuration on shared hosting, auto-creates on first rating.
  */
 
 declare(strict_types=1);
@@ -36,16 +39,21 @@ if (!is_array($allowlist) || !in_array($tool, $allowlist, true) || $stars < 1 ||
     exit;
 }
 
-$config = require __DIR__ . '/config.php'; // gitignored; see config.sample.php
-
 try {
-    $pdo = new PDO(
-        "mysql:host={$config['db_host']};dbname={$config['db_name']};charset=utf8mb4",
-        $config['db_user'],
-        $config['db_pass'],
-        [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
-    );
-    $stmt = $pdo->prepare('INSERT INTO ratings (tool, stars, created_at) VALUES (?, ?, NOW())');
+    $dataDir = __DIR__ . '/data';
+    if (!is_dir($dataDir)) {
+        mkdir($dataDir, 0755, true);
+    }
+    $pdo = new PDO('sqlite:' . $dataDir . '/ratings.db');
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $pdo->exec('CREATE TABLE IF NOT EXISTS ratings (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        tool TEXT NOT NULL,
+        stars INTEGER NOT NULL,
+        created_at TEXT NOT NULL
+    )');
+    $pdo->exec('CREATE INDEX IF NOT EXISTS idx_tool ON ratings(tool)');
+    $stmt = $pdo->prepare("INSERT INTO ratings (tool, stars, created_at) VALUES (?, ?, datetime('now'))");
     $stmt->execute([$tool, $stars]);
     echo json_encode(['ok' => true]);
 } catch (Throwable $e) {

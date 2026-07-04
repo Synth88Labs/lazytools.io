@@ -15,16 +15,17 @@ const MIN_RATINGS = 25;
 
 header('Content-Type: application/json; charset=utf-8');
 header('Cache-Control: public, max-age=3600');
+header('Access-Control-Allow-Origin: https://lazytools.io');
 
-$config = require __DIR__ . '/config.php';
+$dbFile = __DIR__ . '/data/ratings.db';
+if (!is_readable($dbFile)) {
+    echo '{}';
+    exit;
+}
 
 try {
-    $pdo = new PDO(
-        "mysql:host={$config['db_host']};dbname={$config['db_name']};charset=utf8mb4",
-        $config['db_user'],
-        $config['db_pass'],
-        [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
-    );
+    $pdo = new PDO('sqlite:' . $dbFile);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $rows = $pdo->query(
         'SELECT tool, COUNT(*) AS count, ROUND(AVG(stars), 2) AS avg
          FROM ratings GROUP BY tool HAVING COUNT(*) >= ' . MIN_RATINGS

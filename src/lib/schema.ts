@@ -43,8 +43,25 @@ export function breadcrumbSchema(items: { name: string; url: string }[]): JsonLd
   };
 }
 
-export function webApplicationSchema(opts: { name: string; url: string; description: string }): JsonLd {
+export function webApplicationSchema(opts: {
+  name: string;
+  url: string;
+  description: string;
+  /** only passed once a tool crosses the 25-rating display threshold */
+  rating?: { avg: number; count: number };
+}): JsonLd {
   return {
+    ...(opts.rating
+      ? {
+          aggregateRating: {
+            '@type': 'AggregateRating',
+            ratingValue: opts.rating.avg,
+            ratingCount: opts.rating.count,
+            bestRating: 5,
+            worstRating: 1,
+          },
+        }
+      : {}),
     '@context': 'https://schema.org',
     '@type': 'WebApplication',
     name: opts.name,

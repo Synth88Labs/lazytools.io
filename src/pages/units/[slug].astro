@@ -5,6 +5,8 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import PrivacyStrip from '../../components/PrivacyStrip.astro';
 import FaqSection from '../../components/FaqSection.astro';
 import UnitConverter from '../../components/UnitConverter.tsx';
+import RatingWidget from '../../components/RatingWidget.tsx';
+import { ratingFor } from '../../lib/ratings';
 import {
   QUANTITIES,
   allPairs,
@@ -137,6 +139,7 @@ const pairData = (() => {
       name: `${titleNoun(from)} to ${titleNoun(to)} Converter`,
       url: `/units/${pair.slug}/`,
       description: pageDescription,
+      rating: ratingFor(`units/${pair.slug}`),
     }),
     faqSchema(faqs),
   ];
@@ -205,6 +208,15 @@ const hubData = (() => {
 
         <div class="mt-4">
           <PrivacyStrip />
+        </div>
+
+        <div class="mt-3">
+          <RatingWidget
+            client:idle
+            toolSlug={`units/${pair!.slug}`}
+            avg={ratingFor(`units/${pair!.slug}`)?.avg}
+            count={ratingFor(`units/${pair!.slug}`)?.count}
+          />
         </div>
 
         <section class="prose-lazy mt-6">
@@ -335,6 +347,15 @@ const hubData = (() => {
 
         <div class="mt-4">
           <PrivacyStrip />
+        </div>
+
+        <div class="mt-3">
+          <RatingWidget
+            client:idle
+            toolSlug={`units/${quantity.slug}`}
+            avg={ratingFor(`units/${quantity.slug}`)?.avg}
+            count={ratingFor(`units/${quantity.slug}`)?.count}
+          />
         </div>
 
         <section class="mt-10">

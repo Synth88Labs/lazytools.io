@@ -5,8 +5,10 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import PrivacyStrip from '../../components/PrivacyStrip.astro';
 import FaqSection from '../../components/FaqSection.astro';
 import CalcWidget from '../../components/CalcWidget.tsx';
+import RatingWidget from '../../components/RatingWidget.tsx';
 import { CALCULATORS, type CalcDef } from '../../data/calc/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
+import { ratingFor } from '../../lib/ratings';
 
 export function getStaticPaths() {
   return CALCULATORS.map((c) => ({ params: { slug: c.slug }, props: { slug: c.slug } }));
@@ -38,7 +40,12 @@ const blogPosts = allBlogPosts.filter((p) => p.data.tools.includes(`/calc/${calc
 
 const schema = [
   breadcrumbSchema(crumbs),
-  webApplicationSchema({ name: calc.name, url: `/calc/${calc.slug}/`, description: calc.description }),
+  webApplicationSchema({
+    name: calc.name,
+    url: `/calc/${calc.slug}/`,
+    description: calc.description,
+    rating: ratingFor(`calc/${calc.slug}`),
+  }),
   faqSchema(faqs),
 ];
 ---
@@ -62,6 +69,15 @@ const schema = [
 
     <div class="mt-4">
       <PrivacyStrip />
+    </div>
+
+    <div class="mt-3">
+      <RatingWidget
+        client:idle
+        toolSlug={`calc/${calc.slug}`}
+        avg={ratingFor(`calc/${calc.slug}`)?.avg}
+        count={ratingFor(`calc/${calc.slug}`)?.count}
+      />
     </div>
 
     <section class="prose-lazy mt-6">
