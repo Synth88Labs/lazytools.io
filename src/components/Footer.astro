@@ -6,7 +6,7 @@ const year = new Date().getFullYear();
 ---
 
 <footer class="mt-16 border-t border-slate-200 bg-slate-50">
-  <div class="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:grid-cols-2 lg:grid-cols-4">
+  <div class="mx-auto grid max-w-5xl gap-8 px-4 py-10 sm:grid-cols-2 lg:grid-cols-4">
     <div>
       <p class="flex items-center gap-2 text-lg font-extrabold text-slate-900">
         <img src="/logo.svg" alt="" width="24" height="24" class="h-6 w-6" />
@@ -50,8 +50,8 @@ const year = new Date().getFullYear();
     </div>
   </div>
   <div class="border-t border-slate-200">
-    <p class="mx-auto max-w-6xl px-4 py-4 text-xs text-slate-500">
-      © {year} {SITE.name} · {SITE.domain} · Free, privacy-first browser tools ·
+    <p class="mx-auto max-w-5xl px-4 py-4 text-xs text-slate-500">
+      © {year} {SITE.domain} · Free, privacy-first browser tools ·
       A <a href={SITE.parent.url} rel="noopener" class="font-medium underline underline-offset-2 hover:text-brand-700">{SITE.parent.name}</a> project ·
       <a href={SITE.github} rel="noopener" class="font-medium underline underline-offset-2 hover:text-brand-700">Open source on GitHub</a>
     </p>
