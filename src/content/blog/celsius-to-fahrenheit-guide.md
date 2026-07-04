@@ -107,6 +107,11 @@ Belize, the Cayman Islands, Palau, Micronesia and (partially) Liberia**.
 Everything interpolates from these: 15 °C is "between light-jacket and room temp" (59 °F); 25 °C is
 "between room temp and hot" (77 °F).
 
+<figure>
+<img src="/blog/infographic-thermometer.svg" alt="Dual-scale thermometer infographic: −40°C/−40°F crossover, −18°C/0°F freezer, 0°C/32°F freezing, 20°C/68°F room temperature, 37°C/98.6°F body temperature, 100°C/212°F boiling — with the formula °F = °C × 9/5 + 32" width="1000" height="980" loading="lazy" />
+<figcaption>The six anchor temperatures on one thermometer — memorize these and you can place any reading without converting.</figcaption>
+</figure>
+
 ## The double-plus-30 mental trick (and exactly when it fails)
 
 For weather-range temperatures:

@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="Balance scale showing 1 kilogram equals 2.2046 pounds, with the double-plus-ten-percent mental trick">
+  <defs>
+    <linearGradient id="blue" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3fa9fd"/>
+      <stop offset="1" stop-color="#1465cf"/>
+    </linearGradient>
+    <linearGradient id="mint" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2fc98e"/>
+      <stop offset="1" stop-color="#059669"/>
+    </linearGradient>
+    <style>
+      .h { font: 800 30px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .big { font: 800 34px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #ffffff; }
+      .med { font: 700 24px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #ffffff; }
+      .lbl { font: 700 24px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .sub { font: 500 18px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+      .step { font: 700 22px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #153056; }
+      .arrow { stroke: #94a3b8; stroke-width: 3; fill: none; marker-end: url(#ah); }
+    </style>
+    <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+
+  <text x="600" y="46" text-anchor="middle" class="h">One kilogram balances 2.2046 pounds — always</text>
+
+  <!-- balance stand -->
+  <rect x="585" y="120" width="30" height="240" rx="8" fill="#475569"/>
+  <path d="M 520 380 L 680 380 L 640 356 L 560 356 Z" fill="#475569"/>
+  <!-- beam -->
+  <rect x="260" y="112" width="680" height="18" rx="9" fill="#64748b"/>
+  <circle cx="600" cy="121" r="16" fill="#334155"/>
+  <!-- left pan (kg) -->
+  <line x1="320" y1="130" x2="290" y2="205" stroke="#94a3b8" stroke-width="4"/>
+  <line x1="320" y1="130" x2="350" y2="205" stroke="#94a3b8" stroke-width="4"/>
+  <path d="M 250 205 Q 320 260 390 205 Z" fill="#94a3b8"/>
+  <rect x="270" y="140" width="100" height="74" rx="10" fill="url(#blue)"/>
+  <text x="320" y="172" text-anchor="middle" class="big">1</text>
+  <text x="320" y="202" text-anchor="middle" class="med">kg</text>
+  <!-- right pan (lbs) -->
+  <line x1="880" y1="130" x2="850" y2="205" stroke="#94a3b8" stroke-width="4"/>
+  <line x1="880" y1="130" x2="910" y2="205" stroke="#94a3b8" stroke-width="4"/>
+  <path d="M 810 205 Q 880 260 950 205 Z" fill="#94a3b8"/>
+  <rect x="812" y="152" width="62" height="62" rx="10" fill="url(#mint)"/>
+  <text x="843" y="192" text-anchor="middle" class="med">1 lb</text>
+  <rect x="882" y="152" width="62" height="62" rx="10" fill="url(#mint)"/>
+  <text x="913" y="192" text-anchor="middle" class="med">1 lb</text>
+  <rect x="847" y="120" width="62" height="26" rx="8" fill="#7ef0c0"/>
+  <text x="878" y="139" text-anchor="middle" font-family="'Plus Jakarta Sans','Segoe UI',Arial,sans-serif" font-size="16" font-weight="700" fill="#065f46">+0.2 lb</text>
+
+  <text x="320" y="300" text-anchor="middle" class="lbl">kilogram</text>
+  <text x="320" y="326" text-anchor="middle" class="sub">defined via the Planck constant (2019)</text>
+  <text x="880" y="300" text-anchor="middle" class="lbl">2.2046226218 pounds</text>
+  <text x="880" y="326" text-anchor="middle" class="sub">1 lb = 0.45359237 kg exactly (1959)</text>
+
+  <!-- mental math trick strip -->
+  <rect x="80" y="400" width="1040" height="180" rx="20" fill="#eef9ff" stroke="#bce7ff" stroke-width="2"/>
+  <text x="600" y="442" text-anchor="middle" class="step">The 2-second mental trick: double it, then add 10%</text>
+
+  <rect x="140" y="470" width="180" height="76" rx="14" fill="url(#blue)"/>
+  <text x="230" y="504" text-anchor="middle" class="big">70 kg</text>
+  <text x="230" y="532" text-anchor="middle" font-family="'Plus Jakarta Sans','Segoe UI',Arial,sans-serif" font-size="17" fill="#d9f1ff">your value</text>
+
+  <path class="arrow" d="M 330 508 L 400 508"/>
+  <text x="365" y="494" text-anchor="middle" class="sub">× 2</text>
+
+  <rect x="410" y="470" width="180" height="76" rx="14" fill="#185ab4"/>
+  <text x="500" y="504" text-anchor="middle" class="big">140</text>
+  <text x="500" y="532" text-anchor="middle" font-family="'Plus Jakarta Sans','Segoe UI',Arial,sans-serif" font-size="17" fill="#d9f1ff">doubled</text>
+
+  <path class="arrow" d="M 600 508 L 670 508"/>
+  <text x="635" y="494" text-anchor="middle" class="sub">+ 10%</text>
+
+  <rect x="680" y="470" width="200" height="76" rx="14" fill="url(#mint)"/>
+  <text x="780" y="504" text-anchor="middle" class="big">154 lbs</text>
+  <text x="780" y="532" text-anchor="middle" font-family="'Plus Jakarta Sans','Segoe UI',Arial,sans-serif" font-size="17" fill="#d1fae5">140 + 14</text>
+
+  <path class="arrow" d="M 890 508 L 940 508"/>
+  <rect x="950" y="470" width="180" height="76" rx="14" fill="#ffffff" stroke="#10b981" stroke-width="3"/>
+  <text x="1040" y="504" text-anchor="middle" font-family="'Plus Jakarta Sans','Segoe UI',Arial,sans-serif" font-size="26" font-weight="800" fill="#065f46">154.32</text>
+  <text x="1040" y="532" text-anchor="middle" font-family="'Plus Jakarta Sans','Segoe UI',Arial,sans-serif" font-size="17" fill="#64748b">exact answer</text>
+
+  <text x="600" y="618" text-anchor="middle" class="sub">accuracy of the trick: within 0.2% — fine for luggage and gym math, never for medication</text>
+</svg>

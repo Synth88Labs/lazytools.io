@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 980" role="img" aria-label="Dual-scale thermometer showing Celsius and Fahrenheit anchor temperatures">
+  <defs>
+    <linearGradient id="mercury" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#dc2626"/>
+      <stop offset="1" stop-color="#f87171"/>
+    </linearGradient>
+    <linearGradient id="tube" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#e2e8f0"/>
+      <stop offset="0.5" stop-color="#f8fafc"/>
+      <stop offset="1" stop-color="#cbd5e1"/>
+    </linearGradient>
+    <style>
+      .h { font: 800 30px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .sc { font: 700 22px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; }
+      .c { fill: #166fde; }
+      .f { fill: #b45309; }
+      .lbl { font: 600 21px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .sub { font: 500 17px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+      .tick { stroke: #94a3b8; stroke-width: 2; }
+      .lead { stroke: #cbd5e1; stroke-width: 2; stroke-dasharray: 5 5; }
+    </style>
+  </defs>
+
+  <text x="500" y="48" text-anchor="middle" class="h">The temperatures that matter, on one thermometer</text>
+  <text x="410" y="86" text-anchor="end" class="sc c">°C · Celsius</text>
+  <text x="590" y="86" text-anchor="start" class="sc f">°F · Fahrenheit</text>
+
+  <!-- tube -->
+  <rect x="478" y="110" width="44" height="750" rx="22" fill="url(#tube)" stroke="#94a3b8" stroke-width="2"/>
+  <!-- mercury: from bulb up to 37°C mark (y=440) -->
+  <rect x="489" y="440" width="22" height="430" rx="11" fill="url(#mercury)"/>
+  <!-- bulb -->
+  <circle cx="500" cy="888" r="48" fill="url(#mercury)" stroke="#b91c1c" stroke-width="3"/>
+  <circle cx="484" cy="872" r="12" fill="#fca5a5" opacity="0.8"/>
+
+  <!-- anchors: y(c) = 850 - 5*(c+45) -->
+  <!-- 100°C boil: y=125 -->
+  <line x1="522" y1="125" x2="640" y2="125" class="lead"/>
+  <line x1="460" y1="125" x2="478" y2="125" class="tick"/>
+  <text x="450" y="132" text-anchor="end" class="sc c">100°</text>
+  <text x="650" y="118" class="sc f">212°</text>
+  <text x="650" y="142" class="sub">water boils (sea level)</text>
+
+  <!-- 37°C body: y=440 -->
+  <line x1="522" y1="440" x2="640" y2="440" class="lead"/>
+  <line x1="460" y1="440" x2="478" y2="440" class="tick"/>
+  <text x="450" y="447" text-anchor="end" class="sc c">37°</text>
+  <text x="650" y="433" class="sc f">98.6°</text>
+  <text x="650" y="457" class="sub">body temperature · fever at 38° / 100.4°</text>
+
+  <!-- 20°C room: y=525 -->
+  <line x1="522" y1="525" x2="640" y2="525" class="lead"/>
+  <line x1="460" y1="525" x2="478" y2="525" class="tick"/>
+  <text x="450" y="532" text-anchor="end" class="sc c">20°</text>
+  <text x="650" y="518" class="sc f">68°</text>
+  <text x="650" y="542" class="sub">room temperature</text>
+
+  <!-- 0°C freeze: y=625 -->
+  <line x1="522" y1="625" x2="640" y2="625" class="lead"/>
+  <line x1="460" y1="625" x2="478" y2="625" class="tick"/>
+  <text x="450" y="632" text-anchor="end" class="sc c">0°</text>
+  <text x="650" y="618" class="sc f">32°</text>
+  <text x="650" y="642" class="sub">water freezes</text>
+
+  <!-- -18°C freezer: y=715 -->
+  <line x1="522" y1="715" x2="640" y2="715" class="lead"/>
+  <line x1="460" y1="715" x2="478" y2="715" class="tick"/>
+  <text x="450" y="722" text-anchor="end" class="sc c">−18°</text>
+  <text x="650" y="708" class="sc f">0°</text>
+  <text x="650" y="732" class="sub">your freezer · zero Fahrenheit</text>
+
+  <!-- -40 crossover: y=825 -->
+  <line x1="522" y1="825" x2="640" y2="825" class="lead"/>
+  <line x1="460" y1="825" x2="478" y2="825" class="tick"/>
+  <text x="450" y="832" text-anchor="end" class="sc c">−40°</text>
+  <text x="650" y="818" class="sc f">−40°</text>
+  <text x="650" y="842" class="sub">the crossover — both scales agree</text>
+
+  <!-- formula footer -->
+  <rect x="180" y="920" width="640" height="46" rx="12" fill="#153056"/>
+  <text x="500" y="951" text-anchor="middle" font-family="Consolas, Menlo, monospace" font-size="24" font-weight="600" fill="#7ef0c0">°F = °C × 9/5 + 32</text>
+</svg>

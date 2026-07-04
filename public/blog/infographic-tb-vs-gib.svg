@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" role="img" aria-label="The same one-terabyte drive measured with the decimal ruler reads 1 TB, and with the binary ruler reads 931 GiB">
+  <defs>
+    <linearGradient id="drive" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3fa9fd"/>
+      <stop offset="1" stop-color="#1465cf"/>
+    </linearGradient>
+    <style>
+      .h { font: 800 30px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .big { font: 800 32px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #ffffff; }
+      .lbl { font: 700 22px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .sub { font: 500 18px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+      .mono { font: 600 20px Consolas, Menlo, monospace; }
+      .tick { stroke: #94a3b8; stroke-width: 2; }
+    </style>
+  </defs>
+
+  <text x="600" y="46" text-anchor="middle" class="h">One drive, two rulers: why "1 TB" shows as "931 GB"</text>
+
+  <!-- the drive: full width bar representing 10^12 bytes -->
+  <rect x="100" y="90" width="1000" height="90" rx="16" fill="url(#drive)"/>
+  <text x="600" y="128" text-anchor="middle" class="big">1,000,000,000,000 bytes</text>
+  <text x="600" y="160" text-anchor="middle" font-family="'Plus Jakarta Sans','Segoe UI',Arial,sans-serif" font-size="19" fill="#d9f1ff">the actual capacity — identical in both measurements</text>
+
+  <!-- decimal ruler -->
+  <text x="100" y="235" class="lbl" fill="#166fde">Decimal ruler (drive box, macOS, SI)</text>
+  <line x1="100" y1="260" x2="1100" y2="260" class="tick"/>
+  <line x1="100" y1="250" x2="100" y2="270" class="tick"/>
+  <line x1="350" y1="250" x2="350" y2="270" class="tick"/>
+  <line x1="600" y1="250" x2="600" y2="270" class="tick"/>
+  <line x1="850" y1="250" x2="850" y2="270" class="tick"/>
+  <line x1="1100" y1="250" x2="1100" y2="270" class="tick"/>
+  <text x="100" y="298" text-anchor="middle" class="sub">0</text>
+  <text x="350" y="298" text-anchor="middle" class="sub">250 GB</text>
+  <text x="600" y="298" text-anchor="middle" class="sub">500 GB</text>
+  <text x="850" y="298" text-anchor="middle" class="sub">750 GB</text>
+  <text x="1100" y="298" text-anchor="middle" class="mono" fill="#166fde">= 1 TB ✓</text>
+
+  <!-- binary ruler: 1 GiB is 7.4% longer, so 1000 GiB-ruler only reaches 931 -->
+  <text x="100" y="360" class="lbl" fill="#b45309">Binary ruler (Windows display)</text>
+  <line x1="100" y1="385" x2="1100" y2="385" class="tick"/>
+  <line x1="100" y1="375" x2="100" y2="395" class="tick"/>
+  <line x1="368.6" y1="375" x2="368.6" y2="395" class="tick"/>
+  <line x1="637.2" y1="375" x2="637.2" y2="395" class="tick"/>
+  <line x1="905.9" y1="375" x2="905.9" y2="395" class="tick"/>
+  <line x1="1100" y1="375" x2="1100" y2="395" class="tick" stroke="#b45309" stroke-width="3"/>
+  <text x="100" y="423" text-anchor="middle" class="sub">0</text>
+  <text x="368" y="423" text-anchor="middle" class="sub">250 GiB</text>
+  <text x="637" y="423" text-anchor="middle" class="sub">500 GiB</text>
+  <text x="906" y="423" text-anchor="middle" class="sub">750 GiB</text>
+  <text x="1100" y="423" text-anchor="middle" class="mono" fill="#b45309">= 931 GiB</text>
+
+  <!-- explanation footer -->
+  <rect x="100" y="460" width="1000" height="70" rx="14" fill="#153056"/>
+  <text x="600" y="490" text-anchor="middle" font-family="Consolas, Menlo, monospace" font-size="21" font-weight="600" fill="#7ef0c0">1 GiB = 1,073,741,824 bytes  ·  7.4% bigger than 1 GB = 1,000,000,000 bytes</text>
+  <text x="600" y="518" text-anchor="middle" font-family="'Plus Jakarta Sans','Segoe UI',Arial,sans-serif" font-size="17" fill="#bce7ff">bigger unit → smaller number · nothing is missing</text>
+</svg>

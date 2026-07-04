@@ -112,6 +112,11 @@ It works because 2 × 1.1 = 2.2, within 0.21% of the true 2.2046. Accuracy acros
 Going the other way, **halve the pounds and subtract 10% of the half**: 180 lbs → 90 − 9 = 81 kg
 (exact: 81.65 kg).
 
+<figure>
+<img src="/blog/infographic-kg-lbs-balance.svg" alt="Balance scale infographic: 1 kilogram balancing 2.2046 pounds, and the mental trick shown step by step — 70 kg doubled is 140, plus 10% is 154 lbs, versus the exact 154.32" width="1200" height="640" loading="lazy" />
+<figcaption>1 kg always balances 2.2046 lb — and the double-plus-10% trick lands within 0.2% of exact.</figcaption>
+</figure>
+
 ## Kg to lbs chart: everyday weights
 
 | Kg | Lbs | Context |

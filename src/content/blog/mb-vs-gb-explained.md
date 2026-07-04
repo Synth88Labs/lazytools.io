@@ -111,6 +111,11 @@ both "standard."
 
 ## "Missing" space by drive size
 
+<figure>
+<img src="/blog/infographic-tb-vs-gib.svg" alt="Infographic: the same 1,000,000,000,000-byte drive measured with the decimal ruler reads exactly 1 TB, while the binary ruler (Windows) reads 931 GiB, because 1 GiB is 7.4% bigger than 1 GB" width="1200" height="560" loading="lazy" />
+<figcaption>Same drive, same bytes — the ruler changes, not the capacity.</figcaption>
+</figure>
+
 The percentage is fixed, so the apparent loss scales with capacity:
 
 | Advertised (decimal) | What Windows shows | Apparent "loss" |
