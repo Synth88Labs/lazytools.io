@@ -1,0 +1,35 @@
+export const SITE = {
+  name: 'LazyTools',
+  domain: 'lazytools.io',
+  url: 'https://lazytools.io',
+  tagline: 'Free online tools that never upload your data',
+  description:
+    'LazyTools is a collection of free, privacy-first online tools. Everything runs locally in your browser — your files and data are never uploaded to any server.',
+  github: 'https://github.com/Synth88Labs/lazytools.io',
+  parent: { name: 'Synth88 Labs Inc.', url: 'https://synth88.com' },
+  email: 'synth88labs@gmail.com',
+} as const;
+
+export interface CategoryDef {
+  slug: string;
+  name: string;
+  icon: string;
+  description: string;
+  status: 'live' | 'coming-soon';
+}
+
+/** The approved 12-category plan (docs/category-research.md). */
+export const CATEGORIES: CategoryDef[] = [
+  { slug: 'units', name: 'Unit Converters', icon: '📐', description: 'Convert length, weight, temperature, volume and more — instantly.', status: 'live' },
+  { slug: 'calc', name: 'Calculators', icon: '🧮', description: 'Percentage, finance, health and everyday calculators.', status: 'coming-soon' },
+  { slug: 'dev', name: 'Developer Tools', icon: '👨‍💻', description: 'Formatters, encoders, hashes and other dev utilities.', status: 'coming-soon' },
+  { slug: 'file', name: 'File Converters', icon: '🔄', description: 'CSV, JSON, XML, YAML and Excel conversion.', status: 'coming-soon' },
+  { slug: 'text', name: 'Text Tools', icon: '✍️', description: 'Counters, case converters, sorting and clean-up.', status: 'coming-soon' },
+  { slug: 'generate', name: 'Generators', icon: '✨', description: 'QR codes, passwords, UUIDs and more.', status: 'coming-soon' },
+  { slug: 'time', name: 'Date & Time', icon: '📅', description: 'Timestamps, date math and timezone tools.', status: 'coming-soon' },
+  { slug: 'color', name: 'Color Tools', icon: '🎨', description: 'Color conversion, contrast and palettes.', status: 'coming-soon' },
+  { slug: 'security', name: 'Privacy & Security', icon: '🔐', description: 'Metadata cleaners, encryption and password tools.', status: 'coming-soon' },
+  { slug: 'image', name: 'Image Tools', icon: '🖼️', description: 'Compress, convert and resize images locally.', status: 'coming-soon' },
+  { slug: 'pdf', name: 'PDF Tools', icon: '📄', description: 'Merge, split and compress PDFs in your browser.', status: 'coming-soon' },
+  { slug: 'video', name: 'Audio & Video', icon: '🎬', description: 'Trim, convert and compress media privately.', status: 'coming-soon' },
+];

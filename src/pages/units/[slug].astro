@@ -1,0 +1,353 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PrivacyStrip from '../../components/PrivacyStrip.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import UnitConverter from '../../components/UnitConverter.tsx';
+import {
+  QUANTITIES,
+  allPairs,
+  convert,
+  factorBetween,
+  isLinearPair,
+  formatNumber,
+  formulaText,
+  reverseFormulaText,
+  factSentence,
+  tableValues,
+  relatedPairs,
+  pairSlug,
+  titleNoun,
+  proseNoun,
+  type Pair,
+  type Quantity,
+} from '../../data/units';
+import { breadcrumbSchema, webApplicationSchema, faqSchema, collectionPageSchema } from '../../lib/schema';
+
+export function getStaticPaths() {
+  const paths = [];
+  // Quantity hub pages: /units/weight/
+  for (const q of QUANTITIES) {
+    paths.push({ params: { slug: q.slug }, props: { type: 'quantity', quantitySlug: q.slug } });
+  }
+  // Pair pages: /units/kg-to-lbs/
+  for (const p of allPairs()) {
+    paths.push({ params: { slug: p.slug }, props: { type: 'pair', pairSlug: p.slug } });
+  }
+  return paths;
+}
+
+interface Props {
+  type: 'quantity' | 'pair';
+  quantitySlug?: string;
+  pairSlug?: string;
+}
+
+const { type } = Astro.props;
+
+// ---------- shared lookups (avoid non-serializable props from getStaticPaths) ----------
+const quantity: Quantity | undefined =
+  type === 'quantity' ? QUANTITIES.find((q) => q.slug === Astro.props.quantitySlug) : undefined;
+const pair: Pair | undefined = type === 'pair' ? allPairs().find((p) => p.slug === Astro.props.pairSlug) : undefined;
+
+// ---------- pair page data ----------
+let pageTitle = '';
+let pageDescription = '';
+let schema: Record<string, unknown>[] = [];
+let crumbs: { name: string; url: string }[] = [];
+
+if (type === 'pair' && pair) {
+  const { from, to, quantity: q } = pair;
+  const oneAsTo = convert(1, from, to);
+  pageTitle = `${titleNoun(from)} to ${titleNoun(to)} Converter (${from.symbol} to ${to.symbol}) — Free & Private | LazyTools`;
+  pageDescription = `Convert ${from.plural} to ${to.plural} instantly. 1 ${from.symbol} = ${formatNumber(oneAsTo, 6)} ${to.symbol}. Formula, conversion table and examples — runs 100% in your browser, nothing uploaded.`;
+  crumbs = [
+    { name: 'Home', url: '/' },
+    { name: 'Unit Converters', url: '/units/' },
+    { name: q.name, url: `/units/${q.slug}/` },
+    { name: `${from.symbol} to ${to.symbol}`, url: `/units/${pair.slug}/` },
+  ];
+}
+
+if (type === 'quantity' && quantity) {
+  pageTitle = `${quantity.name} Converter — Free & Private | LazyTools`;
+  pageDescription = `${quantity.description.split('.')[0]}. Instant, accurate and 100% in your browser — nothing is uploaded.`;
+  crumbs = [
+    { name: 'Home', url: '/' },
+    { name: 'Unit Converters', url: '/units/' },
+    { name: quantity.name, url: `/units/${quantity.slug}/` },
+  ];
+}
+
+// ---------- pair page content pieces ----------
+const pairData = (() => {
+  if (!(type === 'pair' && pair)) return null;
+  const { from, to, quantity: q, meta } = pair;
+  const linear = isLinearPair(from, to);
+  const exampleValue = meta?.exampleValue ?? 10;
+  const exampleResult = convert(exampleValue, from, to);
+  const values = tableValues(pair);
+  const related = relatedPairs(pair, 10);
+  const reverseSlug = pairSlug(to, from);
+  const reverseExists = allPairs().some((p) => p.slug === reverseSlug);
+
+  const faqs: { q: string; a: string }[] = [
+    {
+      q: `How many ${to.plural} are in 1 ${from.offset !== undefined ? from.symbol : from.name.toLowerCase()}?`,
+      a: factSentence(pair),
+    },
+    {
+      q: `What is the formula to convert ${from.plural} to ${to.plural}?`,
+      a: formulaText(pair),
+    },
+    ...(linear
+      ? [
+          {
+            q: `How do I convert ${from.symbol} to ${to.symbol} without a calculator?`,
+            a: `Multiply by ${formatNumber(factorBetween(from, to), 3)} for a close estimate. Exact factor: 1 ${from.symbol} = ${formatNumber(factorBetween(from, to), 10)} ${to.symbol}.`,
+          },
+        ]
+      : []),
+    {
+      q: `Is this ${from.symbol}-to-${to.symbol} converter accurate and private?`,
+      a: `Yes. It uses the exact internationally defined conversion factors and computes results locally in your browser — your input is never sent to a server, and the page keeps working offline.`,
+    },
+    ...(meta?.faqs ?? []),
+  ];
+
+  const unitsDto = q.units.map((u) => ({
+    id: u.id,
+    name: u.name,
+    plural: u.plural,
+    symbol: u.symbol,
+    factor: u.factor,
+    offset: u.offset,
+  }));
+
+  schema = [
+    breadcrumbSchema(crumbs),
+    webApplicationSchema({
+      name: `${titleNoun(from)} to ${titleNoun(to)} Converter`,
+      url: `/units/${pair.slug}/`,
+      description: pageDescription,
+    }),
+    faqSchema(faqs),
+  ];
+
+  return { from, to, q, meta, linear, exampleValue, exampleResult, values, related, reverseSlug, reverseExists, faqs, unitsDto };
+})();
+
+// ---------- quantity hub content pieces ----------
+const hubData = (() => {
+  if (!(type === 'quantity' && quantity)) return null;
+  const pairs = allPairs().filter((p) => p.quantity.id === quantity.id);
+  const unitsDto = quantity.units.map((u) => ({
+    id: u.id,
+    name: u.name,
+    plural: u.plural,
+    symbol: u.symbol,
+    factor: u.factor,
+    offset: u.offset,
+  }));
+  schema = [
+    breadcrumbSchema(crumbs),
+    collectionPageSchema({
+      name: `${quantity.name} Converters`,
+      url: `/units/${quantity.slug}/`,
+      description: quantity.description,
+      items: pairs.map((p) => ({
+        name: `${titleNoun(p.from)} to ${titleNoun(p.to)}`,
+        url: `/units/${p.slug}/`,
+      })),
+    }),
+  ];
+  return { pairs, unitsDto };
+})();
+---
+
+<Base title={pageTitle} description={pageDescription} schema={schema}>
+  {
+    pairData && (
+      <article class="mx-auto max-w-4xl px-4 py-6">
+        <Breadcrumbs items={crumbs} />
+
+        <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+          {titleNoun(pairData.from)} to {titleNoun(pairData.to)} Converter
+          <span class="mt-1 block text-lg font-semibold text-slate-500">
+            {pairData.from.symbol} → {pairData.to.symbol}
+          </span>
+        </h1>
+
+        <p class="mt-3 text-lg leading-relaxed text-slate-700">
+          <strong class="font-semibold text-slate-900">{factSentence(pair!)}</strong>{' '}
+          Type a value below — the conversion happens instantly, entirely on your device.
+        </p>
+
+        <div class="mt-6">
+          <UnitConverter
+            client:load
+            units={pairData.unitsDto}
+            initialFromId={pairData.from.id}
+            initialToId={pairData.to.id}
+            initialValue={pairData.meta?.exampleValue ?? 1}
+          />
+        </div>
+
+        <div class="mt-4">
+          <PrivacyStrip />
+        </div>
+
+        <section class="prose-lazy mt-6">
+          <h2>How to convert {pairData.from.plural} to {pairData.to.plural}</h2>
+          <p>{formulaText(pair!)}</p>
+          <p>
+            <strong>Example:</strong> {formatNumber(pairData.exampleValue)} {pairData.from.symbol} ={' '}
+            {formatNumber(pairData.exampleResult, 6)} {pairData.to.symbol}.
+          </p>
+          <p>
+            To convert the other way: {reverseFormulaText(pair!)}
+            {pairData.reverseExists && (
+              <>
+                {' '}— or use the dedicated{' '}
+                <a href={`/units/${pairData.reverseSlug}/`}>
+                  {pairData.to.symbol} to {pairData.from.symbol} converter
+                </a>
+                .
+              </>
+            )}
+          </p>
+          {pairData.meta?.note && <p>{pairData.meta.note}</p>}
+        </section>
+
+        <section class="mt-10">
+          <h2 class="text-2xl font-bold text-slate-900">
+            {titleNoun(pairData.from)} to {titleNoun(pairData.to)} conversion table
+          </h2>
+          <div class="mt-4 overflow-x-auto rounded-xl border border-slate-200">
+            <table class="w-full text-left text-sm">
+              <thead class="bg-slate-50 text-slate-600">
+                <tr>
+                  <th scope="col" class="px-4 py-2.5 font-semibold">
+                    {titleNoun(pairData.from)} ({pairData.from.symbol})
+                  </th>
+                  <th scope="col" class="px-4 py-2.5 font-semibold">
+                    {titleNoun(pairData.to)} ({pairData.to.symbol})
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100">
+                {pairData.values.map((v) => (
+                  <tr class="hover:bg-slate-50">
+                    <td class="px-4 py-2 font-medium text-slate-800">{formatNumber(v)}</td>
+                    <td class="px-4 py-2 text-slate-700">{formatNumber(convert(v, pairData.from, pairData.to), 8)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="prose-lazy mt-10">
+          <h2>About the units</h2>
+          <h3>What is {proseNoun(pairData.from)}?</h3>
+          <p>{pairData.from.definition}</p>
+          <h3>What is {proseNoun(pairData.to)}?</h3>
+          <p>{pairData.to.definition}</p>
+        </section>
+
+        <FaqSection faqs={pairData.faqs} />
+
+        <section class="mt-10">
+          <h2 class="text-2xl font-bold text-slate-900">Related conversions</h2>
+          <ul class="mt-4 grid gap-2 sm:grid-cols-2">
+            {pairData.related.map((r) => (
+              <li>
+                <a
+                  href={`/units/${r.slug}/`}
+                  class="block rounded-lg border border-slate-200 px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:border-brand-400 hover:text-brand-700"
+                >
+                  {titleNoun(r.from)} to {titleNoun(r.to)} ({r.from.symbol} → {r.to.symbol})
+                </a>
+              </li>
+            ))}
+            <li>
+              <a
+                href={`/units/${pairData.q.slug}/`}
+                class="block rounded-lg border border-brand-200 bg-brand-50 px-4 py-2.5 text-sm font-semibold text-brand-700 transition hover:border-brand-400"
+              >
+                All {pairData.q.name.toLowerCase()} converters →
+              </a>
+            </li>
+          </ul>
+        </section>
+      </article>
+    )
+  }
+
+  {
+    hubData && quantity && (
+      <article class="mx-auto max-w-4xl px-4 py-6">
+        <Breadcrumbs items={crumbs} />
+
+        <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+          {quantity.icon} {quantity.name} Converter
+        </h1>
+        <p class="mt-3 text-lg leading-relaxed text-slate-700">{quantity.description}</p>
+
+        <div class="mt-6">
+          <UnitConverter
+            client:load
+            units={hubData.unitsDto}
+            initialFromId={quantity.units[0]!.id}
+            initialToId={quantity.units[1]!.id}
+            initialValue={1}
+          />
+        </div>
+
+        <div class="mt-4">
+          <PrivacyStrip />
+        </div>
+
+        <section class="mt-10">
+          <h2 class="text-2xl font-bold text-slate-900">Popular {quantity.name.toLowerCase()} conversions</h2>
+          <ul class="mt-4 grid gap-2 sm:grid-cols-2">
+            {hubData.pairs.map((p) => (
+              <li>
+                <a
+                  href={`/units/${p.slug}/`}
+                  class="block rounded-lg border border-slate-200 px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:border-brand-400 hover:text-brand-700"
+                >
+                  {titleNoun(p.from)} to {titleNoun(p.to)} ({p.from.symbol} → {p.to.symbol})
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section class="mt-10">
+          <h2 class="text-2xl font-bold text-slate-900">All {quantity.name.toLowerCase()} units</h2>
+          <div class="mt-4 overflow-x-auto rounded-xl border border-slate-200">
+            <table class="w-full text-left text-sm">
+              <thead class="bg-slate-50 text-slate-600">
+                <tr>
+                  <th scope="col" class="px-4 py-2.5 font-semibold">Unit</th>
+                  <th scope="col" class="px-4 py-2.5 font-semibold">Symbol</th>
+                  <th scope="col" class="px-4 py-2.5 font-semibold">Definition</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100">
+                {quantity.units.map((u) => (
+                  <tr class="hover:bg-slate-50 align-top">
+                    <td class="px-4 py-2 font-medium whitespace-nowrap text-slate-800">{u.name}</td>
+                    <td class="px-4 py-2 whitespace-nowrap text-slate-700">{u.symbol}</td>
+                    <td class="px-4 py-2 text-slate-600">{u.definition}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </article>
+    )
+  }
+</Base>

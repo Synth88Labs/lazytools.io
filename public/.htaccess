@@ -1,0 +1,51 @@
+# LazyTools — Apache/LiteSpeed config for Namecheap shared hosting
+
+# ---- HTTPS + canonical host ----
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+RewriteRule ^(.*)$ https://%1%{REQUEST_URI} [L,R=301]
+
+# ---- Custom error page ----
+ErrorDocument 404 /404.html
+
+# ---- /sitemap.xml serves the generated sitemap index ----
+RewriteRule ^sitemap\.xml$ /sitemap-index.xml [L]
+
+# ---- MIME types ----
+AddType application/wasm .wasm
+AddType application/manifest+json .webmanifest
+
+# ---- Compression ----
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/javascript application/json application/manifest+json image/svg+xml
+</IfModule>
+
+# ---- Caching ----
+<IfModule mod_headers.c>
+  # Hashed build assets: cache forever
+  <FilesMatch "\.(js|css|woff2|wasm)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.(png|jpg|jpeg|webp|avif|svg|ico)$">
+    Header set Cache-Control "public, max-age=604800"
+  </FilesMatch>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "public, max-age=3600"
+  </FilesMatch>
+
+  # ---- Security headers ----
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+</IfModule>
+
+# NOTE: COOP/COEP headers (required for SharedArrayBuffer / ffmpeg.wasm threads)
+# will be scoped to /video/ and /audio/ routes when those tools ship, to avoid
+# breaking third-party scripts site-wide:
+# <If "%{REQUEST_URI} =~ m#^/(video|audio)/#">
+#   Header set Cross-Origin-Opener-Policy "same-origin"
+#   Header set Cross-Origin-Embedder-Policy "require-corp"
+# </If>

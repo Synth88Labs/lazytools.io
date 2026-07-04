@@ -1,0 +1,83 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { CATEGORIES } from '../../lib/site';
+import { QUANTITIES, allPairs, titleNoun } from '../../data/units';
+import { breadcrumbSchema, collectionPageSchema } from '../../lib/schema';
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'All Tools', url: '/tools/' },
+];
+
+const pairs = allPairs();
+const soon = CATEGORIES.filter((c) => c.status === 'coming-soon');
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  collectionPageSchema({
+    name: 'All LazyTools',
+    url: '/tools/',
+    description: 'Directory of every free, privacy-first tool on LazyTools.',
+    items: [
+      ...QUANTITIES.map((q) => ({ name: `${q.name} Converter`, url: `/units/${q.slug}/` })),
+      ...pairs.map((p) => ({ name: `${titleNoun(p.from)} to ${titleNoun(p.to)} Converter`, url: `/units/${p.slug}/` })),
+    ],
+  }),
+];
+---
+
+<Base
+  title="All Tools — Complete Directory | LazyTools"
+  description={`Every free, privacy-first tool on LazyTools in one place: ${QUANTITIES.length} unit converter categories with ${pairs.length}+ conversions. All tools run 100% in your browser.`}
+  schema={schema}
+>
+  <div class="mx-auto max-w-5xl px-4 py-6">
+    <Breadcrumbs items={crumbs} />
+    <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">All tools</h1>
+    <p class="mt-3 max-w-3xl text-lg text-slate-700">
+      The complete directory. Every tool is free, requires no sign-up, and processes your data locally in your
+      browser.
+    </p>
+
+    <section class="mt-8">
+      <h2 class="text-2xl font-bold text-slate-900">📐 Unit Converters</h2>
+      {QUANTITIES.map((q) => (
+        <div class="mt-6">
+          <h3 class="font-semibold text-slate-900">
+            <a href={`/units/${q.slug}/`} class="hover:text-brand-700 hover:underline">
+              {q.icon} {q.name}
+            </a>
+          </h3>
+          <ul class="mt-2 flex flex-wrap gap-2">
+            {pairs
+              .filter((p) => p.quantity.id === q.id)
+              .map((p) => (
+                <li>
+                  <a
+                    href={`/units/${p.slug}/`}
+                    class="inline-block rounded-full border border-slate-200 px-3 py-1 text-sm text-slate-600 transition hover:border-brand-400 hover:text-brand-700"
+                  >
+                    {p.from.symbol} → {p.to.symbol}
+                  </a>
+                </li>
+              ))}
+          </ul>
+        </div>
+      ))}
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-bold text-slate-900">Coming soon</h2>
+      <ul class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {soon.map((c) => (
+          <li class="rounded-xl border border-slate-200 p-4 opacity-70">
+            <span class="text-xl grayscale" aria-hidden="true">{c.icon}</span>
+            <p class="mt-1 font-semibold text-slate-700">{c.name}</p>
+            <p class="text-sm text-slate-500">{c.description}</p>
+          </li>
+        ))}
+      </ul>
+    </section>
+  </div>
+</Base>

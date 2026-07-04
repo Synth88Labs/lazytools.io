@@ -1,0 +1,94 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PrivacyStrip from '../../components/PrivacyStrip.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { QUANTITIES, allPairs, popularPairsGlobal, titleNoun } from '../../data/units';
+import { breadcrumbSchema, collectionPageSchema, faqSchema } from '../../lib/schema';
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Unit Converters', url: '/units/' },
+];
+
+const popular = popularPairsGlobal(12);
+const totalPairs = allPairs().length;
+
+const faqs = [
+  {
+    q: 'Are these unit converters accurate?',
+    a: 'Yes. Every conversion uses the exact, internationally agreed definition of each unit (for example, 1 inch = 25.4 mm exactly and 1 lb = 0.45359237 kg exactly). Results are computed to your chosen precision with no rounding surprises.',
+  },
+  {
+    q: 'Is anything I type sent to a server?',
+    a: 'No. All conversions run as JavaScript in your browser. LazyTools has no conversion server — the pages even work offline once loaded.',
+  },
+  {
+    q: 'Why use this instead of asking an AI chatbot?',
+    a: 'Speed and reliability: the converter gives an exact, deterministic answer instantly, shows the formula, and never miscalculates. Language models can make arithmetic mistakes and are slower for a simple conversion.',
+  },
+];
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  collectionPageSchema({
+    name: 'Unit & Measurement Converters',
+    url: '/units/',
+    description: `Free online unit converters for ${QUANTITIES.length} measurement categories — length, weight, temperature, volume, area, speed and more.`,
+    items: QUANTITIES.map((q) => ({ name: `${q.name} Converter`, url: `/units/${q.slug}/` })),
+  }),
+  faqSchema(faqs),
+];
+---
+
+<Base
+  title="Unit Converters — Free, Instant & Private | LazyTools"
+  description={`Free online unit converters: length, weight, temperature, volume, area, speed, pressure and more. ${totalPairs}+ conversions with exact factors, formulas and tables — 100% in your browser.`}
+  schema={schema}
+>
+  <div class="mx-auto max-w-5xl px-4 py-6">
+    <Breadcrumbs items={crumbs} />
+
+    <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Unit & Measurement Converters</h1>
+    <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
+      Convert between metric, imperial and US units instantly. Every converter uses the exact internationally
+      defined factors, shows you the formula, and runs entirely in your browser — nothing is uploaded, ever.
+    </p>
+
+    <div class="mt-5">
+      <PrivacyStrip />
+    </div>
+
+    <h2 class="mt-10 text-2xl font-bold text-slate-900">Browse by measurement</h2>
+    <ul class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {QUANTITIES.map((q) => (
+        <li>
+          <a
+            href={`/units/${q.slug}/`}
+            class="flex h-full flex-col rounded-xl border border-slate-200 p-4 transition hover:border-brand-400 hover:shadow-sm"
+          >
+            <span class="text-2xl" aria-hidden="true">{q.icon}</span>
+            <span class="mt-2 font-semibold text-slate-900">{q.name}</span>
+            <span class="mt-1 text-sm text-slate-600">{q.units.length} units · {allPairs().filter((p) => p.quantity.id === q.id).length} popular conversions</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <h2 class="mt-10 text-2xl font-bold text-slate-900">Most-used conversions</h2>
+    <ul class="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+      {popular.map((p) => (
+        <li>
+          <a
+            href={`/units/${p.slug}/`}
+            class="block rounded-lg border border-slate-200 px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:border-brand-400 hover:text-brand-700"
+          >
+            {titleNoun(p.from)} → {titleNoun(p.to)}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <FaqSection faqs={faqs} />
+  </div>
+</Base>

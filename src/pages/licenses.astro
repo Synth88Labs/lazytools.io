@@ -1,0 +1,29 @@
+---
+import ContentPage from '../layouts/ContentPage.astro';
+---
+
+<ContentPage
+  title="Open-Source Licenses & Attributions | LazyTools"
+  description="LazyTools is built on open-source software. Attributions and licenses for the libraries that power the site and its tools."
+  heading="Open-source licenses"
+>
+  <p>
+    LazyTools is built on excellent open-source software. This page lists the projects that power the site and
+    its tools, with their licenses. It grows as new tools ship.
+  </p>
+
+  <h2>Site framework</h2>
+  <ul>
+    <li><a href="https://astro.build">Astro</a> — MIT License</li>
+    <li><a href="https://preactjs.com">Preact</a> — MIT License</li>
+    <li><a href="https://tailwindcss.com">Tailwind CSS</a> — MIT License</li>
+  </ul>
+
+  <h2>Tool engines</h2>
+  <p>
+    Unit conversion logic is implemented in-house using internationally published unit definitions (BIPM SI
+    brochure; NIST Handbook 44; national standards for imperial/US customary units). Future tool categories will
+    list their WebAssembly and JavaScript library attributions here (e.g. pdf-lib, ffmpeg.wasm and image codecs,
+    with their respective MIT/LGPL licenses and source links).
+  </p>
+</ContentPage>

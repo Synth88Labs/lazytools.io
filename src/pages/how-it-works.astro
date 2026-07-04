@@ -1,0 +1,50 @@
+---
+import ContentPage from '../layouts/ContentPage.astro';
+---
+
+<ContentPage
+  title="How LazyTools Keeps Your Data Private — Technical Explanation | LazyTools"
+  description="LazyTools processes everything in your browser with JavaScript and WebAssembly. No uploads, no processing servers. Here's exactly how that works — and how to verify it yourself."
+  heading="How it works: privacy by architecture"
+>
+  <p>
+    <strong>The short version: LazyTools has no processing servers. Your data cannot be uploaded, because there is
+    nowhere to upload it to.</strong>
+  </p>
+
+  <h2>What happens when you use a tool</h2>
+  <ol>
+    <li>Your browser downloads the page — HTML, styles and a small piece of JavaScript. This is the only network traffic involved.</li>
+    <li>When you type a value or pick a file, the tool's code runs <em>on your device</em>, using your browser's built-in JavaScript engine (and WebAssembly for heavier tools like image or PDF processing).</li>
+    <li>The result is computed locally and shown to you. Nothing you entered ever leaves your machine.</li>
+  </ol>
+
+  <h2>How to verify this yourself</h2>
+  <ul>
+    <li><strong>Watch the network tab.</strong> Open your browser's developer tools (F12 → Network), then use any tool. You will see no requests carrying your data — the page loads once, and that's it.</li>
+    <li><strong>Go offline.</strong> Load a tool, then switch off Wi-Fi or enable airplane mode. The tool keeps working, because nothing it does requires a server.</li>
+  </ul>
+
+  <h2>How that differs from most "free online tools"</h2>
+  <p>
+    Most tool websites work by uploading your file to their servers, processing it there, and letting you download
+    the result. Their privacy protection is a <em>policy</em> ("we delete files after one hour"). LazyTools'
+    privacy protection is an <em>architecture</em>: the processing code comes to your data, instead of your data
+    going to the code. A policy requires trust; an architecture can be verified.
+  </p>
+
+  <h2>What we still measure (and what we don't)</h2>
+  <p>
+    We use privacy-respecting, cookieless analytics to count page visits — so we know which tools are useful. We
+    never see what you type into a tool, what files you process, or any content you work with. See the
+    <a href="/privacy/">privacy policy</a> for the complete picture.
+  </p>
+
+  <h2>Technical stack, briefly</h2>
+  <p>
+    The site is static HTML generated ahead of time. Interactive tools are small
+    <a href="https://preactjs.com/">Preact</a> components; heavier future tools (images, PDF, media) will use
+    WebAssembly builds of proven open-source libraries running in your browser. Source attributions are listed on
+    the <a href="/licenses/">licenses page</a>.
+  </p>
+</ContentPage>

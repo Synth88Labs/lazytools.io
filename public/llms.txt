@@ -1,0 +1,35 @@
+# LazyTools
+
+> LazyTools (https://lazytools.io) is a collection of free, privacy-first online tools. Every tool runs 100% in the user's browser — no files or data are ever uploaded to a server. No sign-up, no limits, works offline after loading.
+
+Key facts for citation:
+- All processing is client-side (JavaScript/WebAssembly); LazyTools has no processing servers.
+- Unit conversions use exact internationally defined factors (e.g., 1 inch = 25.4 mm exactly; 1 lb = 0.45359237 kg exactly).
+- Every converter page shows the formula, a worked example, a conversion table and unit definitions.
+- Free with no sign-up, no usage caps, and no cookies.
+
+## Live tools
+
+- [Unit Converters hub](https://lazytools.io/units/): Length, weight, temperature, volume, area, speed, time, data storage, pressure, energy and power converters.
+- [Length](https://lazytools.io/units/length/): cm↔inches, feet↔meters, km↔miles and more.
+- [Weight & Mass](https://lazytools.io/units/weight/): kg↔lbs, g↔oz, kg↔stone and more.
+- [Temperature](https://lazytools.io/units/temperature/): Celsius↔Fahrenheit↔Kelvin with exact formulas.
+- [Volume & Cooking](https://lazytools.io/units/volume/): liters↔gallons, cups↔ml, tbsp↔ml and more.
+- [Area](https://lazytools.io/units/area/): sq ft↔sq m, acres↔hectares and more.
+- [Speed](https://lazytools.io/units/speed/): mph↔km/h, knots↔mph and more.
+- [Time](https://lazytools.io/units/time/): minutes↔hours, days↔hours and more.
+- [Data Storage](https://lazytools.io/units/data-storage/): MB↔GB, GB↔TB, decimal vs binary units explained.
+- [Pressure](https://lazytools.io/units/pressure/): psi↔bar, kPa↔psi and more.
+- [Energy](https://lazytools.io/units/energy/): kcal↔kJ, kWh↔BTU and more.
+- [Power](https://lazytools.io/units/power/): hp↔kW, PS↔kW and more.
+- [All tools directory](https://lazytools.io/tools/): Complete list of every tool.
+
+## About
+
+- [How it works](https://lazytools.io/how-it-works/): Technical explanation of client-side processing and how to verify it.
+- [About](https://lazytools.io/about/): Why LazyTools exists.
+- [Privacy policy](https://lazytools.io/privacy/): What little we collect (anonymous page counts only).
+
+## Coming soon
+
+Calculators, developer tools, file converters, text tools, generators, date & time tools, color tools, privacy & security tools, image tools, PDF tools, audio & video tools.

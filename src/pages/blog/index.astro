@@ -1,0 +1,47 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { breadcrumbSchema } from '../../lib/schema';
+
+const posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const hasLivePosts = posts.some((p) => !p.data.draft);
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Blog', url: '/blog/' },
+];
+---
+
+<Base
+  title="Blog — Guides & Explainers | LazyTools"
+  description="Practical guides for everyday conversions, honest tool comparisons, and explainers on online-tool privacy from LazyTools."
+  schema={[breadcrumbSchema(crumbs)]}
+  noindex={!hasLivePosts}
+>
+  <div class="mx-auto max-w-3xl px-4 py-6">
+    <Breadcrumbs items={crumbs} />
+    <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Blog</h1>
+    <p class="mt-3 text-lg text-slate-700">
+      Practical guides for everyday conversions, and honest explainers on how online tools handle your data.
+    </p>
+    <ul class="mt-8 space-y-4">
+      {posts.map((post) => (
+        <li>
+          <a
+            href={`/blog/${post.id}/`}
+            class="block rounded-xl border border-slate-200 p-5 transition hover:border-brand-400 hover:shadow-sm"
+          >
+            <p class="text-xs font-semibold uppercase tracking-wide text-brand-600">
+              {post.data.archetype}
+              {post.data.draft && <span class="ml-2 rounded bg-amber-100 px-2 py-0.5 text-amber-800">draft</span>}
+            </p>
+            <h2 class="mt-1 text-xl font-bold text-slate-900">{post.data.title}</h2>
+            <p class="mt-1 text-sm leading-relaxed text-slate-600">{post.data.description}</p>
+            <p class="mt-2 text-xs text-slate-400">{post.data.pubDate.toISOString().slice(0, 10)}</p>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</Base>

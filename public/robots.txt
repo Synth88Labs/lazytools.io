@@ -1,0 +1,33 @@
+# LazyTools — free, privacy-first browser tools
+# All crawlers welcome, including AI assistants.
+
+User-agent: *
+Allow: /
+
+# AI crawlers — explicitly welcome
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+Sitemap: https://lazytools.io/sitemap-index.xml
+Sitemap: https://lazytools.io/sitemap.xml

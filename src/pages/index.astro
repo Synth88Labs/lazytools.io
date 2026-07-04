@@ -1,0 +1,113 @@
+---
+import Base from '../layouts/Base.astro';
+import { CATEGORIES, SITE } from '../lib/site';
+import { popularPairsGlobal, titleNoun } from '../data/units';
+
+const popular = popularPairsGlobal(9);
+const live = CATEGORIES.filter((c) => c.status === 'live');
+const soon = CATEGORIES.filter((c) => c.status === 'coming-soon');
+---
+
+<Base
+  title="LazyTools — Free Online Tools That Never Upload Your Data"
+  description="Free, privacy-first online tools: unit converters, calculators, file tools and more. Everything runs locally in your browser — your data never leaves your device. No sign-up, no limits."
+>
+  <!-- Hero -->
+  <section class="bg-gradient-to-b from-brand-50 to-white">
+    <div class="mx-auto max-w-5xl px-4 py-14 text-center sm:py-20">
+      <h1 class="mx-auto max-w-3xl text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
+        Free online tools that <span class="text-brand-600">never upload</span> your data
+      </h1>
+      <p class="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-slate-600">
+        Every LazyTools utility runs entirely in your browser. No uploads, no accounts, no tracking your
+        content — open a tool and it even works offline. Private by architecture, not by promise.
+      </p>
+      <div class="mt-7 flex flex-wrap items-center justify-center gap-3">
+        <a
+          href="/units/"
+          class="rounded-xl bg-brand-600 px-6 py-3 font-semibold text-white shadow-sm transition hover:bg-brand-700"
+        >
+          Try the unit converters
+        </a>
+        <a
+          href="/how-it-works/"
+          class="rounded-xl border border-slate-300 bg-white px-6 py-3 font-semibold text-slate-700 transition hover:border-brand-400 hover:text-brand-700"
+        >
+          How privacy works here
+        </a>
+      </div>
+      <ul class="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm font-medium text-slate-500">
+        <li>🔒 100% in-browser processing</li>
+        <li>🚫 No sign-up, no file limits</li>
+        <li>📴 Works offline</li>
+        <li>🆓 Free forever</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Categories -->
+  <section class="mx-auto max-w-5xl px-4 py-12">
+    <h2 class="text-2xl font-bold text-slate-900">Tool categories</h2>
+    <ul class="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {live.map((c) => (
+        <li>
+          <a
+            href={`/${c.slug}/`}
+            class="flex h-full flex-col rounded-xl border-2 border-brand-200 bg-brand-50/50 p-4 transition hover:border-brand-400 hover:shadow-sm"
+          >
+            <span class="text-2xl" aria-hidden="true">{c.icon}</span>
+            <span class="mt-2 font-semibold text-slate-900">{c.name}</span>
+            <span class="mt-1 text-sm text-slate-600">{c.description}</span>
+            <span class="mt-2 text-xs font-semibold uppercase tracking-wide text-brand-600">Live now →</span>
+          </a>
+        </li>
+      ))}
+      {soon.map((c) => (
+        <li>
+          <div class="flex h-full flex-col rounded-xl border border-slate-200 p-4 opacity-70">
+            <span class="text-2xl grayscale" aria-hidden="true">{c.icon}</span>
+            <span class="mt-2 font-semibold text-slate-700">{c.name}</span>
+            <span class="mt-1 text-sm text-slate-500">{c.description}</span>
+            <span class="mt-2 text-xs font-semibold uppercase tracking-wide text-slate-400">Coming soon</span>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <!-- Popular tools -->
+  <section class="mx-auto max-w-5xl px-4 py-6">
+    <h2 class="text-2xl font-bold text-slate-900">Popular right now</h2>
+    <ul class="mt-5 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+      {popular.map((p) => (
+        <li>
+          <a
+            href={`/units/${p.slug}/`}
+            class="block rounded-lg border border-slate-200 px-4 py-3 text-sm font-medium text-slate-700 transition hover:border-brand-400 hover:text-brand-700"
+          >
+            {p.quantity.icon} {titleNoun(p.from)} → {titleNoun(p.to)}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <!-- Privacy pitch -->
+  <section class="mx-auto max-w-5xl px-4 py-12">
+    <div class="rounded-2xl bg-slate-900 px-6 py-10 text-center sm:px-12">
+      <h2 class="text-2xl font-bold text-white">Why "runs in your browser" matters</h2>
+      <p class="mx-auto mt-3 max-w-2xl leading-relaxed text-slate-300">
+        Most "free online tools" upload your files to their servers, process them there, and promise to delete
+        them later. {SITE.name} is built differently: the processing code downloads to <em>your</em> device and
+        runs there. There is no server to upload to — you can verify it yourself in your browser's network tab,
+        or by switching off your internet connection mid-use.
+      </p>
+      <a
+        href="/how-it-works/"
+        class="mt-6 inline-block rounded-xl bg-white px-6 py-3 font-semibold text-slate-900 transition hover:bg-slate-100"
+      >
+        See the technical details
+      </a>
+    </div>
+  </section>
+</Base>

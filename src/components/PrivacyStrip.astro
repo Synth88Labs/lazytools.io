@@ -1,0 +1,19 @@
+---
+import { SITE } from '../lib/site';
+---
+
+<aside class="flex items-start gap-3 rounded-xl border border-mint-600/25 bg-mint-500/5 p-4 text-sm">
+  <span class="text-lg" aria-hidden="true">🔒</span>
+  <div class="text-slate-700">
+    <p>
+      <strong class="font-semibold text-slate-900">Private by design:</strong>
+      this tool runs entirely in your browser. Your input is never sent to a server, stored, or logged —
+      it works even with your internet disconnected.
+      <a href="/how-it-works/" class="font-medium text-mint-700 underline underline-offset-2 hover:text-mint-600">See how that works</a>
+    </p>
+    <p class="mt-1.5 text-xs text-slate-500">
+      This tool is <a href={SITE.github} rel="noopener" class="font-medium text-slate-600 underline underline-offset-2 hover:text-brand-700">open source (MIT)</a> —
+      inspect the code or reuse it in your own site. A <a href={SITE.parent.url} rel="noopener" class="font-medium text-slate-600 underline underline-offset-2 hover:text-brand-700">Synth88 Labs</a> project.
+    </p>
+  </div>
+</aside>

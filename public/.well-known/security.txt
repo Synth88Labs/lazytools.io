@@ -1,0 +1,5 @@
+Contact: mailto:synth88labs@gmail.com
+Expires: 2027-07-04T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://lazytools.io/.well-known/security.txt
+Policy: https://lazytools.io/privacy/

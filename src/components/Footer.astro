@@ -1,0 +1,58 @@
+---
+import { CATEGORIES, SITE } from '../lib/site';
+const live = CATEGORIES.filter((c) => c.status === 'live');
+const soon = CATEGORIES.filter((c) => c.status === 'coming-soon').slice(0, 6);
+const year = new Date().getFullYear();
+---
+
+<footer class="mt-16 border-t border-slate-200 bg-slate-50">
+  <div class="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:grid-cols-2 lg:grid-cols-4">
+    <div>
+      <p class="flex items-center gap-2 text-lg font-extrabold text-slate-900">
+        <img src="/logo.svg" alt="" width="24" height="24" class="h-6 w-6" />
+        Lazy<span class="text-brand-600">Tools</span>
+      </p>
+      <p class="mt-2 text-sm leading-relaxed text-slate-600">
+        {SITE.tagline}. Every tool processes your data locally — nothing ever leaves your device.
+      </p>
+    </div>
+    <div>
+      <p class="text-sm font-semibold text-slate-900">Tools</p>
+      <ul class="mt-3 space-y-2 text-sm text-slate-600">
+        {live.map((c) => (
+          <li><a href={`/${c.slug}/`} class="hover:text-brand-700">{c.name}</a></li>
+        ))}
+        <li><a href="/tools/" class="hover:text-brand-700">All tools</a></li>
+        {soon.map((c) => (
+          <li><span class="text-slate-400">{c.name} <span class="text-xs">(soon)</span></span></li>
+        ))}
+      </ul>
+    </div>
+    <div>
+      <p class="text-sm font-semibold text-slate-900">Company</p>
+      <ul class="mt-3 space-y-2 text-sm text-slate-600">
+        <li><a href="/about/" class="hover:text-brand-700">About</a></li>
+        <li><a href="/how-it-works/" class="hover:text-brand-700">How it works</a></li>
+        <li><a href="/contact/" class="hover:text-brand-700">Contact</a></li>
+        <li><a href={SITE.github} rel="noopener" class="hover:text-brand-700">GitHub — we're open source</a></li>
+        <li><a href="/licenses/" class="hover:text-brand-700">Open-source licenses</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="text-sm font-semibold text-slate-900">Legal</p>
+      <ul class="mt-3 space-y-2 text-sm text-slate-600">
+        <li><a href="/privacy/" class="hover:text-brand-700">Privacy policy</a></li>
+        <li><a href="/terms/" class="hover:text-brand-700">Terms of service</a></li>
+        <li><a href="/cookies/" class="hover:text-brand-700">Cookie statement</a></li>
+        <li><a href="/disclaimer/" class="hover:text-brand-700">Disclaimer</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-slate-200">
+    <p class="mx-auto max-w-6xl px-4 py-4 text-xs text-slate-500">
+      © {year} {SITE.name} · {SITE.domain} · Free, privacy-first browser tools ·
+      A <a href={SITE.parent.url} rel="noopener" class="font-medium underline underline-offset-2 hover:text-brand-700">{SITE.parent.name}</a> project ·
+      <a href={SITE.github} rel="noopener" class="font-medium underline underline-offset-2 hover:text-brand-700">Open source on GitHub</a>
+    </p>
+  </div>
+</footer>
