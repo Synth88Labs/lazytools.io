@@ -9,6 +9,7 @@
 import { copyFile, mkdir, writeFile } from 'node:fs/promises';
 import { QUANTITIES, allPairs } from '../src/data/units/index.ts';
 import { CALCULATORS } from '../src/data/calc/index.ts';
+import { SIZE_TOOLS } from '../src/data/size/index.ts';
 
 await copyFile(new URL('../dist/sitemap-index.xml', import.meta.url), new URL('../dist/sitemap.xml', import.meta.url));
 console.log('postbuild: dist/sitemap.xml created (copy of sitemap-index.xml)');
@@ -17,6 +18,7 @@ const slugs = [
   ...allPairs().map((p) => `units/${p.slug}`),
   ...QUANTITIES.map((q) => `units/${q.slug}`),
   ...CALCULATORS.map((c) => `calc/${c.slug}`),
+  ...SIZE_TOOLS.map((t) => `size/${t.slug}`),
 ].sort();
 await writeFile(new URL('../api/tools-allowlist.json', import.meta.url), JSON.stringify(slugs, null, 2) + '\n');
 console.log(`postbuild: api/tools-allowlist.json regenerated (${slugs.length} tools)`);

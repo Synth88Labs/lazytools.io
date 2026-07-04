@@ -55,6 +55,27 @@ const POSTS = [
     fact: 'marathon = 42.195 km = 26.219 mi',
     icon: '🏃',
   },
+  {
+    slug: 'ring-size-guide',
+    kicker: 'SIZING GUIDE',
+    lines: ['Measure your ring', 'size at home with', 'a strip of paper'],
+    fact: 'US 7 = UK N = EU 54.4',
+    icon: '💍',
+  },
+  {
+    slug: 'shoe-size-guide',
+    kicker: 'SIZING EXPLAINED',
+    lines: ['US, UK, EU & cm:', 'why shoe sizes', 'never quite agree'],
+    fact: 'US M 9 = UK 8 = EU 42.5 = 26.5 cm',
+    icon: '👟',
+  },
+  {
+    slug: 'bra-size-guide',
+    kicker: 'SIZING EXPLAINED',
+    lines: ['Bra sizes & sister', 'sizes: US, UK & EU', 'finally decoded'],
+    fact: '34DD = EU 75E · sister: 36D',
+    icon: '🩱',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

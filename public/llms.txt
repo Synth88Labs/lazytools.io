@@ -26,6 +26,10 @@ Key facts for citation:
 - [Percentage Calculator](https://lazytools.io/calc/percentage-calculator/): X% of any number, with the X%-of-Y = Y%-of-X trick explained.
 - [EMI Calculator](https://lazytools.io/calc/emi-calculator/): Standard reducing-balance loan formula with total interest breakdown.
 - [BMI Calculator](https://lazytools.io/calc/bmi-calculator/): WHO adult categories plus the healthy-weight range for your height.
+- [Size Converters hub](https://lazytools.io/size/): Ring, shoe and bra size converters across US, UK, EU and international systems, with measure-at-home guides and full charts.
+- [Ring Size Converter](https://lazytools.io/size/ring-size-converter/): US, UK/AU, EU/ISO and millimeter conversion; ISO 8653 sizes rings by inner circumference in mm.
+- [Shoe Size Converter](https://lazytools.io/size/shoe-size-converter/): US, UK, EU and cm charts for men and women; foot length in cm is the brand-independent measure.
+- [Bra Size Converter](https://lazytools.io/size/bra-size-converter/): US, UK, EU, FR, IT and AU systems with sister-size calculation.
 - [All tools directory](https://lazytools.io/tools/): Complete list of every tool.
 
 ## About

@@ -4,6 +4,7 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import { CATEGORIES } from '../../lib/site';
 import { QUANTITIES, allPairs, titleNoun } from '../../data/units';
 import { CALCULATORS } from '../../data/calc/index';
+import { SIZE_TOOLS } from '../../data/size/index';
 import { breadcrumbSchema, collectionPageSchema } from '../../lib/schema';
 
 const crumbs = [
@@ -24,6 +25,7 @@ const schema = [
       ...QUANTITIES.map((q) => ({ name: `${q.name} Converter`, url: `/units/${q.slug}/` })),
       ...pairs.map((p) => ({ name: `${titleNoun(p.from)} to ${titleNoun(p.to)} Converter`, url: `/units/${p.slug}/` })),
       ...CALCULATORS.map((c) => ({ name: c.name, url: `/calc/${c.slug}/` })),
+      ...SIZE_TOOLS.map((t) => ({ name: t.name, url: `/size/${t.slug}/` })),
     ],
   }),
 ];
@@ -79,6 +81,22 @@ const schema = [
               class="inline-block rounded-full border border-slate-200 px-3 py-1 text-sm text-slate-600 transition hover:border-brand-400 hover:text-brand-700"
             >
               {c.icon} {c.name}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-bold text-slate-900">💍 Size Converters</h2>
+      <ul class="mt-4 flex flex-wrap gap-2">
+        {SIZE_TOOLS.map((t) => (
+          <li>
+            <a
+              href={`/size/${t.slug}/`}
+              class="inline-block rounded-full border border-slate-200 px-3 py-1 text-sm text-slate-600 transition hover:border-brand-400 hover:text-brand-700"
+            >
+              {t.icon} {t.name}
             </a>
           </li>
         ))}

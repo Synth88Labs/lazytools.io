@@ -4,6 +4,7 @@
  */
 import { QUANTITIES, allPairs, titleNoun } from '../data/units';
 import { CALCULATORS } from '../data/calc/index';
+import { SIZE_TOOLS } from '../data/size/index';
 
 export interface SearchUnit {
   id: string;
@@ -132,7 +133,15 @@ export function buildSearchPages(): SearchPage[] {
       keywords: [...c.keywords, 'calculator', 'calculate', c.name.toLowerCase()],
     });
   }
+  for (const t of SIZE_TOOLS) {
+    pages.push({
+      title: t.name,
+      url: `/size/${t.slug}/`,
+      keywords: [...t.keywords, 'size', 'converter', t.name.toLowerCase()],
+    });
+  }
   pages.push(
+    { title: 'All Size Converters', url: '/size/', keywords: ['size', 'sizes', 'sizing', 'ring', 'shoe', 'bra', 'clothing'] },
     { title: 'All Calculators', url: '/calc/', keywords: ['calculator', 'calculators', 'calculate', 'math'] },
     { title: 'All Tools Directory', url: '/tools/', keywords: ['all tools', 'directory', 'list', 'tools'] },
     { title: 'Unit Converters', url: '/units/', keywords: ['unit', 'units', 'measurement', 'converter', 'convert'] },

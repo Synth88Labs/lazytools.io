@@ -1,0 +1,195 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PrivacyStrip from '../../components/PrivacyStrip.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import RatingWidget from '../../components/RatingWidget.tsx';
+import RingSizeTool from '../../components/size/RingSizeTool.tsx';
+import ShoeSizeTool from '../../components/size/ShoeSizeTool.tsx';
+import BraSizeTool from '../../components/size/BraSizeTool.tsx';
+import { SIZE_TOOLS, type SizeToolDef } from '../../data/size/index';
+import { RING_ROWS } from '../../data/size/ring';
+import { SHOE_MEN, SHOE_WOMEN } from '../../data/size/shoe';
+import { BANDS, CUPS } from '../../data/size/bra';
+import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
+import { ratingFor } from '../../lib/ratings';
+
+export function getStaticPaths() {
+  return SIZE_TOOLS.map((t) => ({ params: { slug: t.slug }, props: { slug: t.slug } }));
+}
+
+const { slug } = Astro.props;
+const tool: SizeToolDef = SIZE_TOOLS.find((t) => t.slug === slug)!;
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Size Converters', url: '/size/' },
+  { name: tool.name, url: `/size/${tool.slug}/` },
+];
+
+const faqs = [
+  ...tool.faqs,
+  {
+    q: `Is this ${tool.name.toLowerCase()} private?`,
+    a: 'Yes — it runs entirely in your browser. Sizes and body measurements are never sent to a server, logged or stored, and the page works offline.',
+  },
+];
+
+const related = SIZE_TOOLS.filter((t) => t.slug !== tool.slug);
+const allBlogPosts = await getCollection('blog');
+const blogPosts = allBlogPosts.filter((p) => p.data.tools.includes(`/size/${tool.slug}/`));
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  webApplicationSchema({
+    name: tool.name,
+    url: `/size/${tool.slug}/`,
+    description: tool.description,
+    rating: ratingFor(`size/${tool.slug}`),
+  }),
+  faqSchema(faqs),
+];
+---
+
+<Base title={`${tool.name} — Free & Private | LazyTools`} description={tool.description} schema={schema}>
+  <article class="mx-auto max-w-5xl px-4 py-6">
+    <Breadcrumbs items={crumbs} />
+
+    <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+      {tool.icon} {tool.name}
+    </h1>
+
+    <p class="mt-3 text-lg leading-relaxed text-slate-700">
+      <strong class="font-semibold text-slate-900">{tool.lead}</strong>{' '}
+      Convert below — everything happens on your device.
+    </p>
+
+    <div class="mt-6">
+      {slug === 'ring-size-converter' && <RingSizeTool client:load />}
+      {slug === 'shoe-size-converter' && <ShoeSizeTool client:load />}
+      {slug === 'bra-size-converter' && <BraSizeTool client:load />}
+    </div>
+
+    <div class="mt-4">
+      <PrivacyStrip />
+    </div>
+
+    <div class="mt-3">
+      <RatingWidget
+        client:idle
+        toolSlug={`size/${tool.slug}`}
+        avg={ratingFor(`size/${tool.slug}`)?.avg}
+        count={ratingFor(`size/${tool.slug}`)?.count}
+      />
+    </div>
+
+    <section class="prose-lazy mt-6">
+      <h2>How to measure</h2>
+      <ol>
+        {tool.measureSteps.map((s) => <li>{s}</li>)}
+      </ol>
+      <p>{tool.note}</p>
+    </section>
+
+    <section class="prose-lazy mt-8">
+      {slug === 'ring-size-converter' && (
+        <>
+          <h2>Full international ring size chart</h2>
+          <table>
+            <thead>
+              <tr><th>US / CA</th><th>UK / AU</th><th>EU / ISO</th><th>Diameter (mm)</th><th>Circumference (mm)</th></tr>
+            </thead>
+            <tbody>
+              {RING_ROWS.map((r) => (
+                <tr><td>{r.us}</td><td>{r.uk}</td><td>{r.circumference}</td><td>{r.diameter}</td><td>{r.circumference}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </>
+      )}
+      {slug === 'shoe-size-converter' && (
+        <>
+          <h2>Men's shoe size chart</h2>
+          <table>
+            <thead><tr><th>US</th><th>UK</th><th>EU</th><th>Foot length (cm)</th></tr></thead>
+            <tbody>
+              {SHOE_MEN.map((r) => (
+                <tr><td>{r.us}</td><td>{r.uk}</td><td>{r.eu}</td><td>{r.cm}</td></tr>
+              ))}
+            </tbody>
+          </table>
+          <h2>Women's shoe size chart</h2>
+          <table>
+            <thead><tr><th>US</th><th>UK</th><th>EU</th><th>Foot length (cm)</th></tr></thead>
+            <tbody>
+              {SHOE_WOMEN.map((r) => (
+                <tr><td>{r.us}</td><td>{r.uk}</td><td>{r.eu}</td><td>{r.cm}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </>
+      )}
+      {slug === 'bra-size-converter' && (
+        <>
+          <h2>Band size conversion chart</h2>
+          <table>
+            <thead><tr><th>US / UK</th><th>EU / DE</th><th>FR / ES</th><th>IT</th><th>AU</th></tr></thead>
+            <tbody>
+              {BANDS.map((b) => (
+                <tr><td>{b.us}</td><td>{b.eu}</td><td>{b.fr}</td><td>{b.it}</td><td>{b.au}</td></tr>
+              ))}
+            </tbody>
+          </table>
+          <h2>Cup ladder comparison</h2>
+          <table>
+            <thead><tr><th>Cup step</th><th>US</th><th>UK</th><th>EU</th></tr></thead>
+            <tbody>
+              {CUPS.us.map((_, i) => (
+                <tr><td>{i + 1}</td><td>{CUPS.us[i]}</td><td>{CUPS.uk[i]}</td><td>{CUPS.eu[i]}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </>
+      )}
+    </section>
+
+    <FaqSection faqs={faqs} />
+
+    <section class="mt-10">
+      <h2 class="text-2xl font-bold text-slate-900">Related size converters</h2>
+      <ul class="mt-4 grid gap-2 sm:grid-cols-2">
+        {related.map((r) => (
+          <li>
+            <a href={`/size/${r.slug}/`} class="block rounded-lg border border-slate-200 px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:border-brand-400 hover:text-brand-700">
+              {r.icon} {r.name}
+            </a>
+          </li>
+        ))}
+        <li>
+          <a href="/size/" class="block rounded-lg border border-brand-200 bg-brand-50 px-4 py-2.5 text-sm font-semibold text-brand-800 transition hover:border-brand-400">
+            All size converters →
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    {
+      blogPosts.length > 0 && (
+        <section class="mt-10">
+          <h2 class="text-2xl font-bold text-slate-900">From the blog</h2>
+          <ul class="mt-4 space-y-3">
+            {blogPosts.map((post) => (
+              <li>
+                <a href={`/blog/${post.id}/`} class="block rounded-xl border border-slate-200 p-4 transition hover:border-brand-400 hover:shadow-sm">
+                  <p class="font-semibold text-slate-900">{post.data.title}</p>
+                  <p class="mt-1 text-sm text-slate-600">{post.data.description}</p>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+  </article>
+</Base>

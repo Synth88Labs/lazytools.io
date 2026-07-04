@@ -1,0 +1,72 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PrivacyStrip from '../../components/PrivacyStrip.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { SIZE_TOOLS } from '../../data/size/index';
+import { breadcrumbSchema, collectionPageSchema, faqSchema } from '../../lib/schema';
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Size Converters', url: '/size/' },
+];
+
+const faqs = [
+  {
+    q: 'Why do clothing and jewelry sizes differ between countries?',
+    a: 'Each region built its scale on different historical units — EU shoe sizes count Paris points, UK sizes count barleycorns, ring sizes range from US numbers to UK letters to ISO millimeters. The converters map between them using the standard published charts.',
+  },
+  {
+    q: 'Are my measurements uploaded anywhere?',
+    a: 'No. Body measurements are exactly the kind of personal data that shouldn’t touch a server — these tools run entirely in your browser, transmit nothing, and work offline.',
+  },
+  {
+    q: 'How accurate are converted sizes?',
+    a: 'Ring conversions are exact (all systems measure the same circumference). Shoe and bra conversions follow the standard charts, but manufacturers vary — the measurement-based inputs (foot length in cm, finger circumference in mm) are the most reliable route.',
+  },
+];
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  collectionPageSchema({
+    name: 'Size Converters',
+    url: '/size/',
+    description: 'Ring, shoe and bra size converters across US, UK, EU and more — with measure-at-home guides. Private, in-browser.',
+    items: SIZE_TOOLS.map((t) => ({ name: t.name, url: `/size/${t.slug}/` })),
+  }),
+  faqSchema(faqs),
+];
+---
+
+<Base
+  title="Size Converters — Ring, Shoe & Bra Sizes | LazyTools"
+  description="Convert ring, shoe and bra sizes between US, UK, EU and international systems — with measure-at-home guides and full charts. 100% in your browser."
+  schema={schema}
+>
+  <div class="mx-auto max-w-5xl px-4 py-6">
+    <Breadcrumbs items={crumbs} />
+    <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Size Converters</h1>
+    <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
+      International sizing, translated — rings, shoes and bras across US, UK, EU and more, plus
+      measure-at-home guides. Body measurements are personal data: here they never leave your browser.
+    </p>
+
+    <div class="mt-5">
+      <PrivacyStrip />
+    </div>
+
+    <ul class="mt-8 grid gap-3 sm:grid-cols-3">
+      {SIZE_TOOLS.map((t) => (
+        <li>
+          <a href={`/size/${t.slug}/`} class="flex h-full flex-col rounded-xl border border-slate-200 p-4 transition hover:border-brand-400 hover:shadow-sm">
+            <span class="text-2xl" aria-hidden="true">{t.icon}</span>
+            <span class="mt-2 font-semibold text-slate-900">{t.name}</span>
+            <span class="mt-1 text-sm text-slate-600">{t.lead.split('—')[0]}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <FaqSection faqs={faqs} />
+  </div>
+</Base>
