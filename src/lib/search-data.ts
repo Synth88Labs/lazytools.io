@@ -3,6 +3,7 @@
  * bundled into the SearchBox island. Everything runs client-side.
  */
 import { QUANTITIES, allPairs, titleNoun } from '../data/units';
+import { CALCULATORS } from '../data/calc/index';
 
 export interface SearchUnit {
   id: string;
@@ -124,7 +125,15 @@ export function buildSearchPages(): SearchPage[] {
       keywords: [q.name.toLowerCase(), 'unit', 'converter', 'convert', ...q.units.map((u) => u.plural.toLowerCase())],
     });
   }
+  for (const c of CALCULATORS) {
+    pages.push({
+      title: c.name,
+      url: `/calc/${c.slug}/`,
+      keywords: [...c.keywords, 'calculator', 'calculate', c.name.toLowerCase()],
+    });
+  }
   pages.push(
+    { title: 'All Calculators', url: '/calc/', keywords: ['calculator', 'calculators', 'calculate', 'math'] },
     { title: 'All Tools Directory', url: '/tools/', keywords: ['all tools', 'directory', 'list', 'tools'] },
     { title: 'Unit Converters', url: '/units/', keywords: ['unit', 'units', 'measurement', 'converter', 'convert'] },
     { title: 'How LazyTools Protects Your Privacy', url: '/how-it-works/', keywords: ['privacy', 'how it works', 'offline', 'browser', 'upload', 'safe', 'secure'] },

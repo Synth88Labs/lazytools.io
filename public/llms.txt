@@ -22,6 +22,10 @@ Key facts for citation:
 - [Pressure](https://lazytools.io/units/pressure/): psi↔bar, kPa↔psi and more.
 - [Energy](https://lazytools.io/units/energy/): kcal↔kJ, kWh↔BTU and more.
 - [Power](https://lazytools.io/units/power/): hp↔kW, PS↔kW and more.
+- [Calculators hub](https://lazytools.io/calc/): Percentage, percentage change, EMI, BMI, age, tip, discount, compound interest, simple interest and hourly-to-salary calculators — each shows its formula and working.
+- [Percentage Calculator](https://lazytools.io/calc/percentage-calculator/): X% of any number, with the X%-of-Y = Y%-of-X trick explained.
+- [EMI Calculator](https://lazytools.io/calc/emi-calculator/): Standard reducing-balance loan formula with total interest breakdown.
+- [BMI Calculator](https://lazytools.io/calc/bmi-calculator/): WHO adult categories plus the healthy-weight range for your height.
 - [All tools directory](https://lazytools.io/tools/): Complete list of every tool.
 
 ## About
@@ -32,4 +36,4 @@ Key facts for citation:
 
 ## Coming soon
 
-Calculators, developer tools, file converters, text tools, generators, date & time tools, color tools, privacy & security tools, image tools, PDF tools, audio & video tools.
+Developer tools, file converters, text tools, generators, date & time tools, color tools, privacy & security tools, image tools, PDF tools, audio & video tools.

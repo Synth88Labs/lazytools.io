@@ -5,6 +5,18 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import FaqSection from '../../components/FaqSection.astro';
 import { breadcrumbSchema, faqSchema } from '../../lib/schema';
 import { SITE } from '../../lib/site';
+import { allPairs, titleNoun } from '../../data/units';
+
+/** Human label for a tool CTA, e.g. "Kilograms → Pounds converter" */
+function toolLabel(url: string): string {
+  const slug = url.split('/').filter(Boolean).pop() ?? '';
+  const pair = allPairs().find((p) => p.slug === slug);
+  if (pair) return `${titleNoun(pair.from)} → ${titleNoun(pair.to)} converter`;
+  return slug
+    .split('-')
+    .map((w) => (w.length <= 3 ? w.toUpperCase() : w.charAt(0).toUpperCase() + w.slice(1)))
+    .join(' ');
+}
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -118,7 +130,7 @@ if (post.data.faqs.length > 0) schema.push(faqSchema(post.data.faqs));
               href={t}
               class="inline-block rounded-lg bg-brand-700 px-4 py-2 text-sm font-semibold text-white transition hover:bg-brand-800"
             >
-              Open the converter →
+              {toolLabel(t)} →
             </a>
           </li>
         ))}

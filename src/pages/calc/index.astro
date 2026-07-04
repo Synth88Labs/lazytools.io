@@ -1,0 +1,77 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PrivacyStrip from '../../components/PrivacyStrip.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { CALCULATORS } from '../../data/calc/index';
+import { breadcrumbSchema, collectionPageSchema, faqSchema } from '../../lib/schema';
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Calculators', url: '/calc/' },
+];
+
+const faqs = [
+  {
+    q: 'Are these calculators accurate?',
+    a: 'Yes — each uses the standard published formula (EMI amortization, WHO BMI ranges, compound interest), states it on the page, and shows the arithmetic under every result so you can verify it.',
+  },
+  {
+    q: 'Is my financial or health data uploaded anywhere?',
+    a: 'No. Every calculator runs as JavaScript in your browser. Loan amounts, body measurements and birthdates never leave your device — the pages even work offline.',
+  },
+  {
+    q: 'Why use these instead of asking an AI chatbot?',
+    a: 'Deterministic math: a calculator applies the exact formula every time and shows its working. Language models can make arithmetic slips, and typing your salary or health details into a chatbot shares them with a server — these tools don’t.',
+  },
+];
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  collectionPageSchema({
+    name: 'Free Online Calculators',
+    url: '/calc/',
+    description: 'Free, privacy-first calculators: percentage, EMI, BMI, age, tip, discount, interest and salary — all running in your browser.',
+    items: CALCULATORS.map((c) => ({ name: c.name, url: `/calc/${c.slug}/` })),
+  }),
+  faqSchema(faqs),
+];
+---
+
+<Base
+  title="Calculators — Free, Instant & Private | LazyTools"
+  description={`${CALCULATORS.length} free online calculators: percentage, EMI, BMI, age, tip, discount, compound interest and salary. Formulas shown, results instant, 100% in your browser.`}
+  schema={schema}
+>
+  <div class="mx-auto max-w-5xl px-4 py-6">
+    <Breadcrumbs items={crumbs} />
+
+    <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Calculators</h1>
+    <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
+      Everyday math with the formula shown and the working visible — percentages, loans, health, dates and
+      pay. Your numbers are processed entirely in your browser; financial and health inputs never touch a
+      server.
+    </p>
+
+    <div class="mt-5">
+      <PrivacyStrip />
+    </div>
+
+    <ul class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {CALCULATORS.map((c) => (
+        <li>
+          <a
+            href={`/calc/${c.slug}/`}
+            class="flex h-full flex-col rounded-xl border border-slate-200 p-4 transition hover:border-brand-400 hover:shadow-sm"
+          >
+            <span class="text-2xl" aria-hidden="true">{c.icon}</span>
+            <span class="mt-2 font-semibold text-slate-900">{c.name}</span>
+            <span class="mt-1 text-sm text-slate-600">{c.lead.split('—')[0]}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <FaqSection faqs={faqs} />
+  </div>
+</Base>

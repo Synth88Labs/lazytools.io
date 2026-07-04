@@ -14,7 +14,7 @@ export default defineConfig({
       filter: (page) =>
         !page.includes('/coming-soon') &&
         !page.includes('/blog/') &&
-        !['/calc/', '/dev/', '/file/', '/text/', '/generate/', '/time/', '/color/', '/security/', '/image/', '/pdf/', '/audio/', '/video/'].some(
+        !['/dev/', '/file/', '/text/', '/generate/', '/time/', '/color/', '/security/', '/image/', '/pdf/', '/audio/', '/video/'].some(
           (stub) => page === `https://lazytools.io${stub}`
         ),
     }),

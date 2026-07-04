@@ -27,6 +27,13 @@ const POSTS = [
     fact: '1 GB = 1,000 MB · 1 GiB = 1,024 MiB',
     icon: '💾',
   },
+  {
+    slug: 'percentage-guide',
+    kicker: 'EVERYDAY MATH GUIDE',
+    lines: ['How to calculate', 'percentages: all 3', 'forms & fast tricks'],
+    fact: 'X% of Y = Y% of X — always',
+    icon: '％',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
