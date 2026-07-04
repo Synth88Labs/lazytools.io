@@ -4,10 +4,10 @@
 # Triggered manually or by pushing a version tag (per ROADMAP.md, first run ~July 25, 2026).
 name: Deploy to Namecheap
 
+# NOTE: tag-triggered deploys get enabled in launch week (see ROADMAP.md),
+# once FTP secrets are configured and the pipeline has a successful dry run.
 on:
   workflow_dispatch:
-  push:
-    tags: ['v*']
 
 jobs:
   deploy:
