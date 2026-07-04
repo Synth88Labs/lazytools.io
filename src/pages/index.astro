@@ -25,7 +25,7 @@ const soon = CATEGORIES.filter((c) => c.status === 'coming-soon');
       <div class="mt-7 flex flex-wrap items-center justify-center gap-3">
         <a
           href="/units/"
-          class="rounded-xl bg-brand-600 px-6 py-3 font-semibold text-white shadow-sm transition hover:bg-brand-700"
+          class="rounded-xl bg-brand-700 px-6 py-3 font-semibold text-white shadow-sm transition hover:bg-brand-800"
         >
           Try the unit converters
         </a>
@@ -58,7 +58,7 @@ const soon = CATEGORIES.filter((c) => c.status === 'coming-soon');
             <span class="text-2xl" aria-hidden="true">{c.icon}</span>
             <span class="mt-2 font-semibold text-slate-900">{c.name}</span>
             <span class="mt-1 text-sm text-slate-600">{c.description}</span>
-            <span class="mt-2 text-xs font-semibold uppercase tracking-wide text-brand-600">Live now →</span>
+            <span class="mt-2 text-xs font-semibold uppercase tracking-wide text-brand-700">Live now →</span>
           </a>
         </li>
       ))}
@@ -68,7 +68,7 @@ const soon = CATEGORIES.filter((c) => c.status === 'coming-soon');
             <span class="text-2xl grayscale" aria-hidden="true">{c.icon}</span>
             <span class="mt-2 font-semibold text-slate-700">{c.name}</span>
             <span class="mt-1 text-sm text-slate-500">{c.description}</span>
-            <span class="mt-2 text-xs font-semibold uppercase tracking-wide text-slate-400">Coming soon</span>
+            <span class="mt-2 text-xs font-semibold uppercase tracking-wide text-slate-500">Coming soon</span>
           </div>
         </li>
       ))}

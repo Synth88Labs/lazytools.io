@@ -10,7 +10,7 @@ const year = new Date().getFullYear();
     <div>
       <p class="flex items-center gap-2 text-lg font-extrabold text-slate-900">
         <img src="/logo.svg" alt="" width="24" height="24" class="h-6 w-6" />
-        Lazy<span class="text-brand-600">Tools</span>
+        Lazy<span class="text-brand-700">Tools</span>
       </p>
       <p class="mt-2 text-sm leading-relaxed text-slate-600">
         {SITE.tagline}. Every tool processes your data locally — nothing ever leaves your device.
@@ -24,7 +24,7 @@ const year = new Date().getFullYear();
         ))}
         <li><a href="/tools/" class="hover:text-brand-700">All tools</a></li>
         {soon.map((c) => (
-          <li><span class="text-slate-400">{c.name} <span class="text-xs">(soon)</span></span></li>
+          <li><span class="text-slate-500">{c.name} <span class="text-xs">(soon)</span></span></li>
         ))}
       </ul>
     </div>

@@ -32,13 +32,13 @@ const crumbs = [
             href={`/blog/${post.id}/`}
             class="block rounded-xl border border-slate-200 p-5 transition hover:border-brand-400 hover:shadow-sm"
           >
-            <p class="text-xs font-semibold uppercase tracking-wide text-brand-600">
+            <p class="text-xs font-semibold uppercase tracking-wide text-brand-700">
               {post.data.archetype}
               {post.data.draft && <span class="ml-2 rounded bg-amber-100 px-2 py-0.5 text-amber-800">draft</span>}
             </p>
             <h2 class="mt-1 text-xl font-bold text-slate-900">{post.data.title}</h2>
             <p class="mt-1 text-sm leading-relaxed text-slate-600">{post.data.description}</p>
-            <p class="mt-2 text-xs text-slate-400">{post.data.pubDate.toISOString().slice(0, 10)}</p>
+            <p class="mt-2 text-xs text-slate-500">{post.data.pubDate.toISOString().slice(0, 10)}</p>
           </a>
         </li>
       ))}

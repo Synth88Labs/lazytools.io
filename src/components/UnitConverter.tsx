@@ -256,7 +256,7 @@ export default function UnitConverter({ units, initialFromId, initialToId, initi
           <button
             type="button"
             onClick={copyResult}
-            class="rounded-lg bg-brand-600 px-3 py-1.5 font-medium text-white transition hover:bg-brand-700"
+            class="rounded-lg bg-brand-700 px-3 py-1.5 font-medium text-white transition hover:bg-brand-800"
           >
             {copied ? '✓ Copied' : 'Copy result'}
           </button>
