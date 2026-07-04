@@ -1,0 +1,86 @@
+/**
+ * Branded 1200×630 feature images for blog posts (also used as og:image).
+ * One entry per post; rerun after adding posts: node scripts/generate-blog-images.mjs
+ */
+import { mkdir, writeFile } from 'node:fs/promises';
+import sharp from 'sharp';
+
+const POSTS = [
+  {
+    slug: 'kg-to-lbs-guide',
+    kicker: 'WEIGHT CONVERSION GUIDE',
+    lines: ['Kg to Lbs:', 'formula, charts &', 'the 2-second trick'],
+    fact: '1 kg = 2.2046226218 lb',
+    icon: '⚖️',
+  },
+  {
+    slug: 'celsius-to-fahrenheit-guide',
+    kicker: 'TEMPERATURE GUIDE',
+    lines: ['Celsius to Fahrenheit', 'made simple:', 'formula & anchors'],
+    fact: '°F = °C × 9/5 + 32',
+    icon: '🌡️',
+  },
+  {
+    slug: 'mb-vs-gb-explained',
+    kicker: 'DATA STORAGE EXPLAINED',
+    lines: ['MB vs GB: why your', '1 TB drive shows', 'only 931 GB'],
+    fact: '1 GB = 1,000 MB · 1 GiB = 1,024 MiB',
+    icon: '💾',
+  },
+];
+
+const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+function heroSvg({ kicker, lines, fact, icon }) {
+  const titleSpans = lines
+    .map((l, i) => `<tspan x="72" dy="${i === 0 ? 0 : 74}">${esc(l)}</tspan>`)
+    .join('');
+  kicker = esc(kicker);
+  fact = esc(fact);
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#153056"/>
+      <stop offset="0.55" stop-color="#185ab4"/>
+      <stop offset="1" stop-color="#1d87f1"/>
+    </linearGradient>
+    <linearGradient id="mint" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2fc98e"/>
+      <stop offset="1" stop-color="#059669"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.14"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <ellipse cx="980" cy="80" rx="620" ry="360" fill="url(#glow)"/>
+  <!-- hex accents -->
+  <g opacity="0.10" fill="none" stroke="#ffffff" stroke-width="10">
+    <polygon points="1050,120 1130,166 1130,258 1050,304 970,258 970,166"/>
+    <polygon points="1120,330 1185,368 1185,442 1120,480 1055,442 1055,368"/>
+  </g>
+  <text x="1005" y="215" font-size="120" text-anchor="middle" font-family="Segoe UI Emoji, Apple Color Emoji, sans-serif">${icon}</text>
+  <text x="72" y="120" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="700" letter-spacing="4" fill="#8ed9ff">${kicker}</text>
+  <text x="72" y="220" font-family="Segoe UI, Arial, sans-serif" font-size="62" font-weight="800" fill="#ffffff">${titleSpans}</text>
+  <!-- citable fact chip -->
+  <rect x="72" y="440" rx="16" width="${Math.min(1050, 40 + fact.length * 17)}" height="64" fill="#0c3f85"/>
+  <text x="100" y="482" font-family="Consolas, Menlo, monospace" font-size="30" font-weight="600" fill="#7ef0c0">${fact}</text>
+  <!-- brand footer -->
+  <g transform="translate(72 556)">
+    <polygon points="18,0 33,9 33,27 18,36 3,27 3,9" fill="#ffffff"/>
+    <circle cx="18" cy="14" r="5.5" fill="url(#mint)"/>
+    <path d="M 15 17 L 21 17 L 23 26 Q 18 28 13 26 Z" fill="url(#mint)"/>
+    <text x="46" y="26" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="700" fill="#ffffff">lazytools.io</text>
+    <text x="212" y="26" font-family="Segoe UI, Arial, sans-serif" font-size="22" fill="#bce7ff">· free, private, in-browser tools</text>
+  </g>
+</svg>`;
+}
+
+const outDir = new URL('../public/blog/', import.meta.url);
+await mkdir(outDir, { recursive: true });
+for (const post of POSTS) {
+  const png = await sharp(Buffer.from(heroSvg(post)), { density: 150 }).resize(1200, 630).png().toBuffer();
+  await writeFile(new URL(`${post.slug}.png`, outDir), png);
+  console.log(`generated public/blog/${post.slug}.png`);
+}

@@ -30,15 +30,27 @@ const crumbs = [
         <li>
           <a
             href={`/blog/${post.id}/`}
-            class="block h-full rounded-xl border border-slate-200 p-5 transition hover:border-brand-400 hover:shadow-sm"
+            class="block h-full overflow-hidden rounded-xl border border-slate-200 transition hover:border-brand-400 hover:shadow-sm"
           >
-            <p class="text-xs font-semibold uppercase tracking-wide text-brand-700">
-              {post.data.archetype}
-              {post.data.draft && <span class="ml-2 rounded bg-amber-100 px-2 py-0.5 text-amber-800">draft</span>}
-            </p>
-            <h2 class="mt-1 text-xl font-bold text-slate-900">{post.data.title}</h2>
-            <p class="mt-1 text-sm leading-relaxed text-slate-600">{post.data.description}</p>
-            <p class="mt-2 text-xs text-slate-500">{post.data.pubDate.toISOString().slice(0, 10)}</p>
+            {post.data.heroImage && (
+              <img
+                src={post.data.heroImage}
+                alt=""
+                width="1200"
+                height="630"
+                loading="lazy"
+                class="aspect-[1200/630] w-full object-cover"
+              />
+            )}
+            <div class="p-5">
+              <p class="text-xs font-semibold uppercase tracking-wide text-brand-700">
+                {post.data.archetype}
+                {post.data.draft && <span class="ml-2 rounded bg-amber-100 px-2 py-0.5 text-amber-800">draft</span>}
+              </p>
+              <h2 class="mt-1 text-xl font-bold text-slate-900">{post.data.title}</h2>
+              <p class="mt-1 text-sm leading-relaxed text-slate-600">{post.data.description}</p>
+              <p class="mt-2 text-xs text-slate-500">{post.data.pubDate.toISOString().slice(0, 10)}</p>
+            </div>
           </a>
         </li>
       ))}

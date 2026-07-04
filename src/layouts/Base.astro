@@ -11,10 +11,13 @@ interface Props {
   /** Additional JSON-LD blocks for this page */
   schema?: Record<string, unknown>[];
   noindex?: boolean;
+  /** Path to a social share image (1200×630), e.g. /blog/kg-to-lbs-guide.png */
+  image?: string;
 }
 
-const { title, description, schema = [], noindex = false } = Astro.props;
+const { title, description, schema = [], noindex = false, image } = Astro.props;
 const canonical = new URL(Astro.url.pathname, SITE.url).href;
+const imageUrl = image ? new URL(image, SITE.url).href : undefined;
 const allSchema = [organizationSchema(), websiteSchema(), ...schema];
 ---
 
@@ -38,7 +41,11 @@ const allSchema = [organizationSchema(), websiteSchema(), ...schema];
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta name="twitter:card" content="summary" />
+    {imageUrl && <meta property="og:image" content={imageUrl} />}
+    {imageUrl && <meta property="og:image:width" content="1200" />}
+    {imageUrl && <meta property="og:image:height" content="630" />}
+    <meta name="twitter:card" content={imageUrl ? 'summary_large_image' : 'summary'} />
+    {imageUrl && <meta name="twitter:image" content={imageUrl} />}
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     {allSchema.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
