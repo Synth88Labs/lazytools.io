@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-label="Comparison of upload-based PDF tools, where a contract travels to an unknown server and is retained under an unread privacy policy, versus browser-based processing where the file is parsed and pages copied structurally inside your device; the four local operations are merge, split, rotate and images to PDF.">
+  <defs>
+    <style>
+      .h { font: 800 30px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .lab { font: 700 19px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .sub { font: 500 15px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+      .card-t { font: 800 20px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; }
+      .item { font: 600 16px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .op { font: 700 17px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #153056; }
+    </style>
+  </defs>
+
+  <text x="600" y="44" text-anchor="middle" class="h">Your contract, two very different journeys</text>
+
+  <!-- upload path -->
+  <g transform="translate(75 85)">
+    <rect x="0" y="0" width="500" height="240" rx="16" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+    <text x="250" y="38" text-anchor="middle" class="card-t" fill="#991b1b">"Free online PDF tool" (upload)</text>
+    <text x="40" y="80" class="item">📄 → 🌐 your contract travels to an unknown server</text>
+    <text x="40" y="114" class="item">🗄️ processed &amp; possibly retained — you can't verify</text>
+    <text x="40" y="148" class="item">📜 governed by a privacy policy nobody read</text>
+    <text x="40" y="182" class="item">📶 requires internet — the tell-tale sign</text>
+    <rect x="38" y="200" width="230" height="26" rx="13" fill="#dc2626"/>
+    <text x="153" y="218" text-anchor="middle" font-family="'Plus Jakarta Sans','Segoe UI',Arial,sans-serif" font-size="14" font-weight="800" fill="#ffffff">IDs · leases · tax forms · records</text>
+  </g>
+
+  <!-- local path -->
+  <g transform="translate(625 85)">
+    <rect x="0" y="0" width="500" height="240" rx="16" fill="#f0fdf4" stroke="#059669" stroke-width="3"/>
+    <text x="250" y="38" text-anchor="middle" class="card-t" fill="#065f46">Browser-based (LazyTools)</text>
+    <text x="40" y="80" class="item">📄 → 🧠 parsed in your browser's memory</text>
+    <text x="40" y="114" class="item">🧩 pages copied structurally — lossless by design</text>
+    <text x="40" y="148" class="item">⬇ result downloads; no copy exists anywhere else</text>
+    <text x="40" y="182" class="item">✈️ works with the internet disconnected</text>
+    <rect x="38" y="200" width="230" height="26" rx="13" fill="#059669"/>
+    <text x="153" y="218" text-anchor="middle" font-family="'Plus Jakarta Sans','Segoe UI',Arial,sans-serif" font-size="14" font-weight="800" fill="#ffffff">offline test = the proof</text>
+  </g>
+
+  <!-- four ops -->
+  <text x="600" y="380" text-anchor="middle" class="lab">Four fixes, all structural — text stays selectable, nothing re-rendered</text>
+  <g transform="translate(90 400)">
+    <rect x="0" y="0" width="240" height="110" rx="14" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/>
+    <text x="120" y="40" text-anchor="middle" class="op">🧷 Merge</text>
+    <text x="120" y="72" text-anchor="middle" class="sub">files → one PDF,</text>
+    <text x="120" y="92" text-anchor="middle" class="sub">your order</text>
+  </g>
+  <g transform="translate(350 400)">
+    <rect x="0" y="0" width="240" height="110" rx="14" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/>
+    <text x="120" y="40" text-anchor="middle" class="op">✂ Split</text>
+    <text x="120" y="72" text-anchor="middle" class="sub">extract "5-12" or</text>
+    <text x="120" y="92" text-anchor="middle" class="sub">"1, 4, 7" to a new file</text>
+  </g>
+  <g transform="translate(610 400)">
+    <rect x="0" y="0" width="240" height="110" rx="14" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/>
+    <text x="120" y="40" text-anchor="middle" class="op">🔄 Rotate</text>
+    <text x="120" y="72" text-anchor="middle" class="sub">stored attribute —</text>
+    <text x="120" y="92" text-anchor="middle" class="sub">instant &amp; reversible</text>
+  </g>
+  <g transform="translate(870 400)">
+    <rect x="0" y="0" width="240" height="110" rx="14" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/>
+    <text x="120" y="40" text-anchor="middle" class="op">🖼️ Images → PDF</text>
+    <text x="120" y="72" text-anchor="middle" class="sub">JPEG bytes embedded,</text>
+    <text x="120" y="92" text-anchor="middle" class="sub">zero re-compression</text>
+  </g>
+
+  <rect x="280" y="548" width="640" height="46" rx="12" fill="#153056"/>
+  <text x="600" y="578" text-anchor="middle" font-family="Consolas, Menlo, monospace" font-size="19" font-weight="600" fill="#7ef0c0">if a PDF tool needs your upload, ask why</text>
+</svg>

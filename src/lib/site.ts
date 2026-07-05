@@ -29,8 +29,8 @@ export const CATEGORIES: CategoryDef[] = [
   { slug: 'generate', name: 'Generators', icon: '✨', description: 'QR codes, passwords, UUIDs and more.', status: 'live' },
   { slug: 'time', name: 'Date & Time', icon: '📅', description: 'Timestamps, date math and timezone tools.', status: 'live' },
   { slug: 'color', name: 'Color Tools', icon: '🎨', description: 'Color conversion, contrast and palettes.', status: 'live' },
-  { slug: 'security', name: 'Privacy & Security', icon: '🔐', description: 'Metadata cleaners, encryption and password tools.', status: 'coming-soon' },
-  { slug: 'image', name: 'Image Tools', icon: '🖼️', description: 'Compress, convert and resize images locally.', status: 'coming-soon' },
-  { slug: 'pdf', name: 'PDF Tools', icon: '📄', description: 'Merge, split and compress PDFs in your browser.', status: 'coming-soon' },
-  { slug: 'video', name: 'Audio & Video', icon: '🎬', description: 'Trim, convert and compress media privately.', status: 'coming-soon' },
+  { slug: 'security', name: 'Privacy & Security', icon: '🔐', description: 'Metadata cleaners, encryption and password tools.', status: 'live' },
+  { slug: 'image', name: 'Image Tools', icon: '🖼️', description: 'Compress, convert and resize images locally.', status: 'live' },
+  { slug: 'pdf', name: 'PDF Tools', icon: '📄', description: 'Merge, split and rotate PDFs in your browser.', status: 'live' },
+  { slug: 'video', name: 'Audio & Video', icon: '🎬', description: 'Trim, convert and adjust audio privately.', status: 'live' },
 ];

@@ -1,0 +1,73 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PrivacyStrip from '../../components/PrivacyStrip.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { IMAGE_TOOLS } from '../../data/image/index';
+import { breadcrumbSchema, collectionPageSchema, faqSchema } from '../../lib/schema';
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Image Tools', url: '/image/' },
+];
+
+const faqs = [
+  {
+    q: 'How can image tools work without uploading the image?',
+    a: 'Browsers ship full image codecs: the canvas API decodes, resamples and re-encodes JPEG, PNG and WebP natively on your device. "Upload to compress" services exist because ad-funded sites want your traffic, not because servers are required.',
+  },
+  {
+    q: 'Is there a file size limit?',
+    a: 'Only your device\'s memory — there\'s no artificial cap, no queue and no watermark. Typical phone photos (3–15 MB) process instantly.',
+  },
+  {
+    q: 'Do these tools keep my photo\'s metadata?',
+    a: 'Re-encoding through the canvas produces a pixels-only file, so EXIF and GPS metadata are dropped by every tool here. To see what was in the file first, use the image metadata remover in Privacy & Security.',
+  },
+];
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  collectionPageSchema({
+    name: 'Free Image Tools',
+    url: '/image/',
+    description: 'Compress, convert, resize and Base64-encode images — JPEG, PNG and WebP, processed locally in your browser with no upload.',
+    items: IMAGE_TOOLS.map((t) => ({ name: t.name, url: `/image/${t.slug}/` })),
+  }),
+  faqSchema(faqs),
+];
+---
+
+<Base
+  title="Image Tools — Compress, Convert, Resize | LazyTools"
+  description={`${IMAGE_TOOLS.length} free image tools: compressor with live quality preview, PNG/JPEG/WebP converter, pixel-exact resizer, Base64 encoder. Photos never leave your browser.`}
+  schema={schema}
+>
+  <div class="mx-auto max-w-5xl px-4 py-6">
+    <Breadcrumbs items={crumbs} />
+
+    <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Image Tools</h1>
+    <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
+      Compress, convert and resize with the browser's own image codecs — no upload queue, no
+      watermark, no size cap. Your photos are processed in memory on your device and nowhere else.
+    </p>
+
+    <div class="mt-5">
+      <PrivacyStrip />
+    </div>
+
+    <ul class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {IMAGE_TOOLS.map((t) => (
+        <li>
+          <a href={`/image/${t.slug}/`} class="flex h-full flex-col rounded-xl border border-slate-200 p-4 transition hover:border-brand-400 hover:shadow-sm">
+            <span class="text-2xl" aria-hidden="true">{t.icon}</span>
+            <span class="mt-2 font-semibold text-slate-900">{t.name}</span>
+            <span class="mt-1 text-sm text-slate-600">{t.lead.split('—')[0]}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <FaqSection faqs={faqs} />
+  </div>
+</Base>

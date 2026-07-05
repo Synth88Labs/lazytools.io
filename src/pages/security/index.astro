@@ -1,0 +1,74 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PrivacyStrip from '../../components/PrivacyStrip.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { SECURITY_TOOLS } from '../../data/security/index';
+import { breadcrumbSchema, collectionPageSchema, faqSchema } from '../../lib/schema';
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Privacy & Security', url: '/security/' },
+];
+
+const faqs = [
+  {
+    q: 'Why must security tools especially run client-side?',
+    a: 'Because their inputs are the crown jewels: passwords, private photos, files worth encrypting. A "free online encryptor" that uploads your file has defeated its own purpose before it starts. Every tool here runs in your browser — verify by disconnecting from the internet.',
+  },
+  {
+    q: 'Is browser cryptography real cryptography?',
+    a: 'Yes — the Web Crypto API exposes the browser\'s native, audited implementations of AES-GCM, SHA-2 and PBKDF2, the same primitives TLS uses. It is not a JavaScript re-implementation; the browser calls the operating system\'s crypto libraries.',
+  },
+  {
+    q: 'Can LazyTools recover an encrypted file or see my password?',
+    a: 'No — there is no server component, no account, and no telemetry on inputs. That cuts both ways: a forgotten encryption password means the data is unrecoverable by anyone, including us.',
+  },
+];
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  collectionPageSchema({
+    name: 'Free Privacy & Security Tools',
+    url: '/security/',
+    description: 'Image metadata remover, AES-256 file encryption, password strength checker and file hash verifier — all running locally in your browser.',
+    items: SECURITY_TOOLS.map((t) => ({ name: t.name, url: `/security/${t.slug}/` })),
+  }),
+  faqSchema(faqs),
+];
+---
+
+<Base
+  title="Privacy & Security Tools — EXIF, Encryption, Hashes | LazyTools"
+  description={`${SECURITY_TOOLS.length} free privacy tools: strip photo EXIF/GPS metadata, encrypt files with AES-256, check password strength, verify download checksums. Nothing ever leaves your browser.`}
+  schema={schema}
+>
+  <div class="mx-auto max-w-5xl px-4 py-6">
+    <Breadcrumbs items={crumbs} />
+
+    <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Privacy & Security Tools</h1>
+    <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
+      Strip location data from photos, encrypt files with a password, test password strength and
+      verify downloads — with the browser's own cryptography, on your device. These are the tools
+      where "no upload" isn't a feature; it's the entire point.
+    </p>
+
+    <div class="mt-5">
+      <PrivacyStrip />
+    </div>
+
+    <ul class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {SECURITY_TOOLS.map((t) => (
+        <li>
+          <a href={`/security/${t.slug}/`} class="flex h-full flex-col rounded-xl border border-slate-200 p-4 transition hover:border-brand-400 hover:shadow-sm">
+            <span class="text-2xl" aria-hidden="true">{t.icon}</span>
+            <span class="mt-2 font-semibold text-slate-900">{t.name}</span>
+            <span class="mt-1 text-sm text-slate-600">{t.lead.split('—')[0]}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <FaqSection faqs={faqs} />
+  </div>
+</Base>

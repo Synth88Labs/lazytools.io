@@ -1,0 +1,74 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PrivacyStrip from '../../components/PrivacyStrip.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { AUDIO_TOOLS } from '../../data/video/index';
+import { breadcrumbSchema, collectionPageSchema, faqSchema } from '../../lib/schema';
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Audio & Video', url: '/video/' },
+];
+
+const faqs = [
+  {
+    q: 'How do audio tools work without a server?',
+    a: 'Browsers include the Web Audio API: native decoders for MP3, WAV, OGG, M4A and FLAC plus an offline renderer for processing. Trimming, speed and gain changes run as sample math on your device — recordings never leave your browser.',
+  },
+  {
+    q: 'Why do all the tools output WAV?',
+    a: 'Browsers can decode compressed audio but don\'t reliably encode it. WAV is uncompressed, lossless and universally supported — and converting it to MP3 later in any converter or editor costs exactly the same quality as encoding directly would have.',
+  },
+  {
+    q: 'Where are the video tools?',
+    a: 'Video re-encoding needs full codec suites that browsers don\'t expose for writing, so honest client-side video tools require heavyweight WebAssembly builds. We\'re evaluating that for a future release rather than shipping a fake "uploader" version. The audio side is fully live.',
+  },
+];
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  collectionPageSchema({
+    name: 'Free Audio Tools',
+    url: '/video/',
+    description: 'Trim audio, change speed, adjust volume with clipping protection and convert to WAV — processed locally in your browser, no upload.',
+    items: AUDIO_TOOLS.map((t) => ({ name: t.name, url: `/video/${t.slug}/` })),
+  }),
+  faqSchema(faqs),
+];
+---
+
+<Base
+  title="Audio Tools — Trim, Speed, Volume, WAV | LazyTools"
+  description={`${AUDIO_TOOLS.length} free audio tools: sample-accurate trimmer, speed changer (0.5–3×), volume booster with clipping check, WAV converter. Recordings never leave your browser.`}
+  schema={schema}
+>
+  <div class="mx-auto max-w-5xl px-4 py-6">
+    <Breadcrumbs items={crumbs} />
+
+    <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Audio & Video Tools</h1>
+    <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
+      Trim, speed up, boost and convert audio with the browser's own audio engine. Voice memos and
+      meeting recordings are audio <em>of people</em> — the reason these tools process everything
+      on your device and work with the internet disconnected.
+    </p>
+
+    <div class="mt-5">
+      <PrivacyStrip />
+    </div>
+
+    <ul class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {AUDIO_TOOLS.map((t) => (
+        <li>
+          <a href={`/video/${t.slug}/`} class="flex h-full flex-col rounded-xl border border-slate-200 p-4 transition hover:border-brand-400 hover:shadow-sm">
+            <span class="text-2xl" aria-hidden="true">{t.icon}</span>
+            <span class="mt-2 font-semibold text-slate-900">{t.name}</span>
+            <span class="mt-1 text-sm text-slate-600">{t.lead.split('—')[0]}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <FaqSection faqs={faqs} />
+  </div>
+</Base>

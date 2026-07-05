@@ -167,6 +167,34 @@ const POSTS = [
     fact: '3 bytes → 4 chars (+33%)',
     icon: '🔡',
   },
+  {
+    slug: 'exif-metadata-guide',
+    kicker: 'PHOTO PRIVACY',
+    lines: ['What your photos', 'reveal: EXIF, GPS &', 'how to strip them'],
+    fact: 'phone GPS ≈ 5 m accuracy',
+    icon: '🧹',
+  },
+  {
+    slug: 'image-formats-guide',
+    kicker: 'IMAGE FORMATS',
+    lines: ['JPEG vs PNG vs', 'WebP: which format', 'for which job'],
+    fact: 'resize + q80 ≈ 90% smaller',
+    icon: '🖼️',
+  },
+  {
+    slug: 'merge-pdf-guide',
+    kicker: 'PDF WORKFLOWS',
+    lines: ['Merge & split PDFs', 'without uploading', 'them anywhere'],
+    fact: 'structural copy = zero quality loss',
+    icon: '📄',
+  },
+  {
+    slug: 'wav-vs-mp3-guide',
+    kicker: 'AUDIO FORMATS',
+    lines: ['WAV vs MP3:', 'lossless, lossy & the', 'one-way conversion'],
+    fact: 'WAV ≈ 10 MB/min · MP3 ≈ 1 MB/min',
+    icon: '🎚️',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

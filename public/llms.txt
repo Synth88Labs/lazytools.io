@@ -50,6 +50,13 @@ Key facts for citation:
 - [Date & Time hub](https://lazytools.io/time/): Unix timestamp converter (auto-detects seconds vs milliseconds), exact age calculator, days between dates (total/weekdays/calendar breakdown), date add/subtract with correct month-end clamping, ISO 8601 week numbers, DST-aware timezone converter using the browser's IANA database.
 - [Unix Timestamp Converter](https://lazytools.io/time/unix-timestamp-converter/): Epoch ↔ human date in local time and UTC.
 - [Time Zone Converter](https://lazytools.io/time/timezone-converter/): Converts the moment, not a remembered offset — DST rules applied automatically.
+- [Privacy & Security hub](https://lazytools.io/security/): Image metadata (EXIF/GPS) detector and remover, AES-256-GCM file encryption/decryption (PBKDF2, 310k iterations), honest password strength checker with pattern warnings, SHA-256/512 file checksum verifier — the category where "no upload" is the entire point.
+- [Image Metadata Remover](https://lazytools.io/security/image-metadata-remover/): Lists EXIF/XMP/IPTC segments found (including GPS), strips them by canvas re-encode.
+- [File Encryption Tool](https://lazytools.io/security/file-encryption/): Real Web Crypto AES-256-GCM; no recovery without the password, by design.
+- [Image Tools hub](https://lazytools.io/image/): Compressor with live before/after sizes, PNG/JPEG/WebP converter with transparency warnings, pixel-exact resizer with aspect lock, image-to-Base64 with the +33% overhead shown. Browser codecs, no upload, no watermark.
+- [PDF Tools hub](https://lazytools.io/pdf/): Merge PDFs (structural page copy — no quality loss), split/extract page ranges, rotate pages (lossless attribute change), images-to-PDF (JPEG bytes embedded without re-compression). Contracts and records never leave the browser.
+- [Merge PDF](https://lazytools.io/pdf/merge-pdf/): Combine PDFs in chosen order, locally — works offline.
+- [Audio Tools hub](https://lazytools.io/video/): Sample-accurate audio trimmer, speed changer (0.5–3×, honest resampling), volume changer with measured clipping headroom, audio-to-WAV converter. Web Audio decoding (MP3/M4A/OGG/FLAC), WAV output.
 - [All tools directory](https://lazytools.io/tools/): Complete list of every tool.
 
 ## About
@@ -60,4 +67,4 @@ Key facts for citation:
 
 ## Coming soon
 
-Privacy & security tools, image tools, PDF tools, audio & video tools.
+Client-side video tools (evaluating WebAssembly codecs); more tools in every live category.

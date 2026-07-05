@@ -11,6 +11,10 @@ import { FILE_TOOLS } from '../../data/file/index';
 import { DEV_TOOLS } from '../../data/dev/index';
 import { GEN_TOOLS } from '../../data/generate/index';
 import { TIME_TOOLS } from '../../data/time/index';
+import { SECURITY_TOOLS } from '../../data/security/index';
+import { IMAGE_TOOLS } from '../../data/image/index';
+import { PDF_TOOLS } from '../../data/pdf/index';
+import { AUDIO_TOOLS } from '../../data/video/index';
 import { breadcrumbSchema, collectionPageSchema } from '../../lib/schema';
 
 const crumbs = [
@@ -38,6 +42,10 @@ const schema = [
       ...DEV_TOOLS.map((t) => ({ name: t.name, url: `/dev/${t.slug}/` })),
       ...GEN_TOOLS.map((t) => ({ name: t.name, url: `/generate/${t.slug}/` })),
       ...TIME_TOOLS.map((t) => ({ name: t.name, url: `/time/${t.slug}/` })),
+      ...SECURITY_TOOLS.map((t) => ({ name: t.name, url: `/security/${t.slug}/` })),
+      ...IMAGE_TOOLS.map((t) => ({ name: t.name, url: `/image/${t.slug}/` })),
+      ...PDF_TOOLS.map((t) => ({ name: t.name, url: `/pdf/${t.slug}/` })),
+      ...AUDIO_TOOLS.map((t) => ({ name: t.name, url: `/video/${t.slug}/` })),
     ],
   }),
 ];
@@ -194,16 +202,70 @@ const schema = [
     </section>
 
     <section class="mt-12">
-      <h2 class="text-2xl font-bold text-slate-900">Coming soon</h2>
-      <ul class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        {soon.map((c) => (
-          <li class="rounded-xl border border-slate-200 p-4 opacity-70">
-            <span class="text-xl grayscale" aria-hidden="true">{c.icon}</span>
-            <p class="mt-1 font-semibold text-slate-700">{c.name}</p>
-            <p class="text-sm text-slate-500">{c.description}</p>
+      <h2 class="text-2xl font-bold text-slate-900">🔐 Privacy & Security</h2>
+      <ul class="mt-4 flex flex-wrap gap-2">
+        {SECURITY_TOOLS.map((t) => (
+          <li>
+            <a href={`/security/${t.slug}/`} class="inline-block rounded-full border border-slate-200 px-3 py-1 text-sm text-slate-600 transition hover:border-brand-400 hover:text-brand-700">
+              {t.icon} {t.name}
+            </a>
           </li>
         ))}
       </ul>
     </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-bold text-slate-900">🖼️ Image Tools</h2>
+      <ul class="mt-4 flex flex-wrap gap-2">
+        {IMAGE_TOOLS.map((t) => (
+          <li>
+            <a href={`/image/${t.slug}/`} class="inline-block rounded-full border border-slate-200 px-3 py-1 text-sm text-slate-600 transition hover:border-brand-400 hover:text-brand-700">
+              {t.icon} {t.name}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-bold text-slate-900">📄 PDF Tools</h2>
+      <ul class="mt-4 flex flex-wrap gap-2">
+        {PDF_TOOLS.map((t) => (
+          <li>
+            <a href={`/pdf/${t.slug}/`} class="inline-block rounded-full border border-slate-200 px-3 py-1 text-sm text-slate-600 transition hover:border-brand-400 hover:text-brand-700">
+              {t.icon} {t.name}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-bold text-slate-900">🎬 Audio & Video</h2>
+      <ul class="mt-4 flex flex-wrap gap-2">
+        {AUDIO_TOOLS.map((t) => (
+          <li>
+            <a href={`/video/${t.slug}/`} class="inline-block rounded-full border border-slate-200 px-3 py-1 text-sm text-slate-600 transition hover:border-brand-400 hover:text-brand-700">
+              {t.icon} {t.name}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    {soon.length > 0 && (
+      <section class="mt-12">
+        <h2 class="text-2xl font-bold text-slate-900">Coming soon</h2>
+        <ul class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {soon.map((c) => (
+            <li class="rounded-xl border border-slate-200 p-4 opacity-70">
+              <span class="text-xl grayscale" aria-hidden="true">{c.icon}</span>
+              <p class="mt-1 font-semibold text-slate-700">{c.name}</p>
+              <p class="text-sm text-slate-500">{c.description}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
   </div>
 </Base>

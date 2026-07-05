@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-label="One minute of stereo audio: WAV stores every sample at about 10 MB, 192 kbps MP3 keeps about 1.4 MB after psychoacoustic discards. Converting WAV to MP3 loses detail permanently; converting MP3 back to WAV grows the file but recovers nothing.">
+  <defs>
+    <style>
+      .h { font: 800 30px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .lab { font: 700 19px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .sub { font: 500 16px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+      .fmt { font: 800 24px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; }
+      .size { font: 800 22px Consolas, Menlo, monospace; }
+      .arrow { font: 700 17px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; }
+    </style>
+  </defs>
+
+  <text x="600" y="44" text-anchor="middle" class="h">One minute of stereo audio, two formats</text>
+
+  <!-- WAV bar -->
+  <g transform="translate(0 100)">
+    <text x="180" y="30" text-anchor="end" class="fmt" fill="#153056">WAV</text>
+    <text x="180" y="54" text-anchor="end" class="sub">every sample, bit-exact</text>
+    <rect x="200" y="0" width="840" height="56" rx="12" fill="#1d87f1"/>
+    <text x="620" y="36" text-anchor="middle" class="size" fill="#ffffff">≈ 10 MB / minute — lossless master</text>
+  </g>
+
+  <!-- MP3 bar -->
+  <g transform="translate(0 210)">
+    <text x="180" y="30" text-anchor="end" class="fmt" fill="#065f46">MP3 192k</text>
+    <text x="180" y="54" text-anchor="end" class="sub">psychoacoustic discards</text>
+    <rect x="200" y="0" width="118" height="56" rx="12" fill="#059669"/>
+    <text x="340" y="36" class="size" fill="#065f46">≈ 1.4 MB — the delivery copy (~86% smaller)</text>
+  </g>
+
+  <!-- one-way arrows -->
+  <g transform="translate(150 330)">
+    <rect x="0" y="0" width="430" height="130" rx="16" fill="#fefce8" stroke="#b45309" stroke-width="2"/>
+    <text x="215" y="40" text-anchor="middle" class="arrow" fill="#92400e">WAV → MP3</text>
+    <text x="215" y="72" text-anchor="middle" class="sub">discards detail <tspan font-weight="700">permanently</tspan></text>
+    <text x="215" y="100" text-anchor="middle" class="sub">(mostly imperceptible at 256–320 kbps)</text>
+  </g>
+  <g transform="translate(620 330)">
+    <rect x="0" y="0" width="430" height="130" rx="16" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+    <text x="215" y="40" text-anchor="middle" class="arrow" fill="#991b1b">MP3 → WAV</text>
+    <text x="215" y="72" text-anchor="middle" class="sub">file grows 7× — <tspan font-weight="700">quality unchanged</tspan></text>
+    <text x="215" y="100" text-anchor="middle" class="sub">useful for editing &amp; compatibility, never restoration</text>
+  </g>
+
+  <rect x="215" y="510" width="770" height="52" rx="12" fill="#153056"/>
+  <text x="600" y="544" text-anchor="middle" font-family="Consolas, Menlo, monospace" font-size="19" font-weight="600" fill="#7ef0c0">lossy loss happens once and only ever forward — keep originals</text>
+</svg>

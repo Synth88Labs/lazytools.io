@@ -16,6 +16,10 @@ import { FILE_TOOLS } from '../src/data/file/index.ts';
 import { DEV_TOOLS } from '../src/data/dev/index.ts';
 import { GEN_TOOLS } from '../src/data/generate/index.ts';
 import { TIME_TOOLS } from '../src/data/time/index.ts';
+import { SECURITY_TOOLS } from '../src/data/security/index.ts';
+import { IMAGE_TOOLS } from '../src/data/image/index.ts';
+import { PDF_TOOLS } from '../src/data/pdf/index.ts';
+import { AUDIO_TOOLS } from '../src/data/video/index.ts';
 
 await copyFile(new URL('../dist/sitemap-index.xml', import.meta.url), new URL('../dist/sitemap.xml', import.meta.url));
 console.log('postbuild: dist/sitemap.xml created (copy of sitemap-index.xml)');
@@ -31,6 +35,10 @@ const slugs = [
   ...DEV_TOOLS.map((t) => `dev/${t.slug}`),
   ...GEN_TOOLS.map((t) => `generate/${t.slug}`),
   ...TIME_TOOLS.map((t) => `time/${t.slug}`),
+  ...SECURITY_TOOLS.map((t) => `security/${t.slug}`),
+  ...IMAGE_TOOLS.map((t) => `image/${t.slug}`),
+  ...PDF_TOOLS.map((t) => `pdf/${t.slug}`),
+  ...AUDIO_TOOLS.map((t) => `video/${t.slug}`),
 ].sort();
 await writeFile(new URL('../api/tools-allowlist.json', import.meta.url), JSON.stringify(slugs, null, 2) + '\n');
 console.log(`postbuild: api/tools-allowlist.json regenerated (${slugs.length} tools)`);

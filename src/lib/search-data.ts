@@ -11,6 +11,10 @@ import { FILE_TOOLS } from '../data/file/index';
 import { DEV_TOOLS } from '../data/dev/index';
 import { GEN_TOOLS } from '../data/generate/index';
 import { TIME_TOOLS } from '../data/time/index';
+import { SECURITY_TOOLS } from '../data/security/index';
+import { IMAGE_TOOLS } from '../data/image/index';
+import { PDF_TOOLS } from '../data/pdf/index';
+import { AUDIO_TOOLS } from '../data/video/index';
 
 export interface SearchUnit {
   id: string;
@@ -164,7 +168,23 @@ export function buildSearchPages(): SearchPage[] {
   for (const t of TIME_TOOLS) {
     pages.push({ title: t.name, url: `/time/${t.slug}/`, keywords: [...t.keywords, 'date', 'time', t.name.toLowerCase()] });
   }
+  for (const t of SECURITY_TOOLS) {
+    pages.push({ title: t.name, url: `/security/${t.slug}/`, keywords: [...t.keywords, 'privacy', 'security', t.name.toLowerCase()] });
+  }
+  for (const t of IMAGE_TOOLS) {
+    pages.push({ title: t.name, url: `/image/${t.slug}/`, keywords: [...t.keywords, 'image', 'photo', t.name.toLowerCase()] });
+  }
+  for (const t of PDF_TOOLS) {
+    pages.push({ title: t.name, url: `/pdf/${t.slug}/`, keywords: [...t.keywords, 'pdf', t.name.toLowerCase()] });
+  }
+  for (const t of AUDIO_TOOLS) {
+    pages.push({ title: t.name, url: `/video/${t.slug}/`, keywords: [...t.keywords, 'audio', 'sound', t.name.toLowerCase()] });
+  }
   pages.push(
+    { title: 'All Privacy & Security Tools', url: '/security/', keywords: ['privacy', 'security', 'exif', 'encrypt', 'metadata', 'checksum'] },
+    { title: 'All Image Tools', url: '/image/', keywords: ['image tools', 'compress image', 'resize', 'convert image', 'photo'] },
+    { title: 'All PDF Tools', url: '/pdf/', keywords: ['pdf tools', 'merge pdf', 'split pdf', 'rotate pdf'] },
+    { title: 'All Audio Tools', url: '/video/', keywords: ['audio tools', 'trim audio', 'mp3', 'wav', 'volume'] },
     { title: 'All Developer Tools', url: '/dev/', keywords: ['developer tools', 'dev', 'encode', 'decode', 'hash', 'regex'] },
     { title: 'All Generators', url: '/generate/', keywords: ['generators', 'generate', 'password', 'uuid', 'qr code', 'random'] },
     { title: 'All Date & Time Tools', url: '/time/', keywords: ['date', 'time', 'timestamp', 'timezone', 'age', 'calendar'] },

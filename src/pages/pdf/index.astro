@@ -1,0 +1,74 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PrivacyStrip from '../../components/PrivacyStrip.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { PDF_TOOLS } from '../../data/pdf/index';
+import { breadcrumbSchema, collectionPageSchema, faqSchema } from '../../lib/schema';
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'PDF Tools', url: '/pdf/' },
+];
+
+const faqs = [
+  {
+    q: 'Why does local processing matter most for PDFs?',
+    a: 'Because of what PDFs are: contracts, IDs, tax forms, medical records, signed agreements. Free "upload your PDF" sites receive exactly the documents people should share least. These tools parse and rebuild PDFs in your browser\'s memory — disconnect from the internet and they work identically.',
+  },
+  {
+    q: 'Do these tools reduce PDF quality?',
+    a: 'No — merging, splitting and rotating are structural operations that copy or annotate page objects without re-rendering them. Text stays selectable, vectors stay sharp, images keep their original compression.',
+  },
+  {
+    q: 'Can I work with password-protected PDFs?',
+    a: 'Not directly — encrypted PDFs can\'t be parsed without their password. Open the file in your PDF viewer with the password, save an unprotected copy, then use the tools.',
+  },
+];
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  collectionPageSchema({
+    name: 'Free PDF Tools',
+    url: '/pdf/',
+    description: 'Merge, split, rotate PDFs and convert images to PDF — processed locally in your browser, so documents are never uploaded.',
+    items: PDF_TOOLS.map((t) => ({ name: t.name, url: `/pdf/${t.slug}/` })),
+  }),
+  faqSchema(faqs),
+];
+---
+
+<Base
+  title="PDF Tools — Merge, Split, Rotate Without Uploading | LazyTools"
+  description={`${PDF_TOOLS.length} free PDF tools: merge files, extract page ranges, rotate pages, convert images to PDF. Contracts and records are processed in your browser — never uploaded.`}
+  schema={schema}
+>
+  <div class="mx-auto max-w-5xl px-4 py-6">
+    <Breadcrumbs items={crumbs} />
+
+    <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">PDF Tools</h1>
+    <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
+      Merge, split, rotate and build PDFs — in your browser's memory, not on someone's server. The
+      documents people run through PDF tools are contracts, IDs and records; here they never leave
+      your device, and every operation is structural, so quality is untouched.
+    </p>
+
+    <div class="mt-5">
+      <PrivacyStrip />
+    </div>
+
+    <ul class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {PDF_TOOLS.map((t) => (
+        <li>
+          <a href={`/pdf/${t.slug}/`} class="flex h-full flex-col rounded-xl border border-slate-200 p-4 transition hover:border-brand-400 hover:shadow-sm">
+            <span class="text-2xl" aria-hidden="true">{t.icon}</span>
+            <span class="mt-2 font-semibold text-slate-900">{t.name}</span>
+            <span class="mt-1 text-sm text-slate-600">{t.lead.split('—')[0]}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <FaqSection faqs={faqs} />
+  </div>
+</Base>
