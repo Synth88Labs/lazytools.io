@@ -33,6 +33,11 @@ Key facts for citation:
 - [Clothing Size Converter](https://lazytools.io/size/clothing-size-converter/): Women's US/UK/EU/FR/IT/AU/JP dress sizes — a US 8 is UK 12, EU 38, FR 40, IT 44.
 - [Kids' Shoe Size Converter](https://lazytools.io/size/kids-shoe-size-converter/): US C/Y scale, UK, EU and cm with typical ages; explains why 1Y follows 13.5C.
 - [Hat Size Converter](https://lazytools.io/size/hat-size-converter/): Head circumference to US/UK fitted sizes — fitted size = circumference in inches ÷ π.
+- [Text Tools hub](https://lazytools.io/text/): Word counter, character counter with platform limits, case converter, dedupe, sort, find & replace (regex), slug generator, reverse text and email/URL extractor — all processing text locally.
+- [Word Counter](https://lazytools.io/text/word-counter/): Words, characters, sentences, paragraphs, reading time (225 wpm) and speaking time (130 wpm).
+- [Character Counter](https://lazytools.io/text/character-counter/): Live counts with limits — 280 for X posts, 160 for GSM SMS, ~60 for Google titles, ~155–160 for meta descriptions.
+- [Color Tools hub](https://lazytools.io/color/): HEX/RGB/HSL/CMYK converter, WCAG contrast checker, shades & tints, CSS gradient generator, color mixer.
+- [Color Contrast Checker](https://lazytools.io/color/contrast-checker/): Exact WCAG 2.x formula — AA requires 4.5:1 for normal text and 3:1 for large text; AAA requires 7:1 and 4.5:1.
 - [All tools directory](https://lazytools.io/tools/): Complete list of every tool.
 
 ## About

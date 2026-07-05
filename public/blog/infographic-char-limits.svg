@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-label="Platform character limits drawn to scale: Google title about 60, YouTube title 100, meta description about 158, one SMS 160, X post 280 — with Instagram's 2200-character caption shown separately">
+  <defs>
+    <linearGradient id="bar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#3fa9fd"/>
+      <stop offset="1" stop-color="#1465cf"/>
+    </linearGradient>
+    <linearGradient id="ig" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2fc98e"/>
+      <stop offset="1" stop-color="#059669"/>
+    </linearGradient>
+    <style>
+      .h { font: 800 30px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .lab { font: 700 21px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .val { font: 800 21px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #166fde; }
+      .sub { font: 500 17px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+    </style>
+  </defs>
+
+  <text x="600" y="46" text-anchor="middle" class="h">How much room you actually have, to scale</text>
+
+  <!-- scale: 280 chars = 760px → 2.714 px/char ; bars start x=310 -->
+  <text x="290" y="120" text-anchor="end" class="lab">Google title</text>
+  <rect x="310" y="98" width="163" height="34" rx="8" fill="url(#bar)"/>
+  <text x="485" y="123" class="val">~60</text>
+  <text x="580" y="123" class="sub">truncated by pixel width, not a hard cap</text>
+
+  <text x="290" y="190" text-anchor="end" class="lab">YouTube title</text>
+  <rect x="310" y="168" width="271" height="34" rx="8" fill="url(#bar)"/>
+  <text x="593" y="193" class="val">100</text>
+
+  <text x="290" y="260" text-anchor="end" class="lab">Meta description</text>
+  <rect x="310" y="238" width="429" height="34" rx="8" fill="url(#bar)"/>
+  <text x="751" y="263" class="val">~158</text>
+  <text x="830" y="263" class="sub">Google trims visually ~155–160</text>
+
+  <text x="290" y="330" text-anchor="end" class="lab">SMS (single, GSM)</text>
+  <rect x="310" y="308" width="434" height="34" rx="8" fill="url(#bar)"/>
+  <text x="756" y="333" class="val">160</text>
+  <text x="830" y="333" class="sub">drops to 70 with any emoji</text>
+
+  <text x="290" y="400" text-anchor="end" class="lab">X / Twitter post</text>
+  <rect x="310" y="378" width="760" height="34" rx="8" fill="url(#bar)"/>
+  <text x="1080" y="403" class="val">280</text>
+
+  <!-- Instagram separate scale -->
+  <text x="290" y="478" text-anchor="end" class="lab">Instagram caption</text>
+  <rect x="310" y="456" width="760" height="34" rx="8" fill="url(#ig)"/>
+  <text x="690" y="481" text-anchor="middle" font-family="'Plus Jakarta Sans','Segoe UI',Arial,sans-serif" font-size="20" font-weight="800" fill="#ffffff">2,200 — nearly 8× an X post (own scale)</text>
+  <text x="310" y="516" class="sub">only ~125 characters show before "… more" in the feed</text>
+
+  <rect x="200" y="548" width="800" height="50" rx="12" fill="#153056"/>
+  <text x="600" y="581" text-anchor="middle" font-family="Consolas, Menlo, monospace" font-size="21" font-weight="600" fill="#7ef0c0">on X: every URL counts as 23 · most emoji count as 2</text>
+</svg>

@@ -5,6 +5,8 @@
 import { QUANTITIES, allPairs, titleNoun } from '../data/units';
 import { CALCULATORS } from '../data/calc/index';
 import { SIZE_TOOLS } from '../data/size/index';
+import { TEXT_TOOLS } from '../data/text/index';
+import { COLOR_TOOLS } from '../data/color/index';
 
 export interface SearchUnit {
   id: string;
@@ -140,7 +142,15 @@ export function buildSearchPages(): SearchPage[] {
       keywords: [...t.keywords, 'size', 'converter', t.name.toLowerCase()],
     });
   }
+  for (const t of TEXT_TOOLS) {
+    pages.push({ title: t.name, url: `/text/${t.slug}/`, keywords: [...t.keywords, 'text', t.name.toLowerCase()] });
+  }
+  for (const t of COLOR_TOOLS) {
+    pages.push({ title: t.name, url: `/color/${t.slug}/`, keywords: [...t.keywords, 'color', t.name.toLowerCase()] });
+  }
   pages.push(
+    { title: 'All Text Tools', url: '/text/', keywords: ['text tools', 'text', 'words', 'characters', 'lines'] },
+    { title: 'All Color Tools', url: '/color/', keywords: ['color tools', 'color', 'hex', 'rgb', 'contrast'] },
     { title: 'All Size Converters', url: '/size/', keywords: ['size', 'sizes', 'sizing', 'ring', 'shoe', 'bra', 'clothing'] },
     { title: 'All Calculators', url: '/calc/', keywords: ['calculator', 'calculators', 'calculate', 'math'] },
     { title: 'All Tools Directory', url: '/tools/', keywords: ['all tools', 'directory', 'list', 'tools'] },

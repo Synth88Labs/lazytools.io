@@ -1,0 +1,74 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PrivacyStrip from '../../components/PrivacyStrip.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { TEXT_TOOLS } from '../../data/text/index';
+import { breadcrumbSchema, collectionPageSchema, faqSchema } from '../../lib/schema';
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Text Tools', url: '/text/' },
+];
+
+const faqs = [
+  {
+    q: 'Is the text I paste into these tools private?',
+    a: 'Yes — every tool processes text locally in your browser. Nothing is transmitted, logged or stored, and the tools work offline. That matters when the text is a contact list, a draft or anything confidential.',
+  },
+  {
+    q: 'Is there a limit on how much text I can process?',
+    a: 'No hard limit — because processing is local, tens of thousands of lines transform instantly without upload caps or timeouts.',
+  },
+  {
+    q: 'Why use these instead of a word processor?',
+    a: 'Speed and specificity: no document to create, results on every keystroke, and operations word processors lack — natural sorting, deduplication, slug generation, regex replace — each one click deep.',
+  },
+];
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  collectionPageSchema({
+    name: 'Free Online Text Tools',
+    url: '/text/',
+    description: 'Word counter, case converter, dedupe, sort, find & replace and more — all processing text privately in your browser.',
+    items: TEXT_TOOLS.map((t) => ({ name: t.name, url: `/text/${t.slug}/` })),
+  }),
+  faqSchema(faqs),
+];
+---
+
+<Base
+  title="Text Tools — Free, Instant & Private | LazyTools"
+  description={`${TEXT_TOOLS.length} free text tools: word counter, case converter, remove duplicates, sort lines, find & replace, slug generator and more. Your text never leaves the browser.`}
+  schema={schema}
+>
+  <div class="mx-auto max-w-5xl px-4 py-6">
+    <Breadcrumbs items={crumbs} />
+
+    <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Text Tools</h1>
+    <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
+      Count, clean, convert and reorganize text — instantly, with results on every keystroke. Drafts,
+      lists and contact data are exactly the things that shouldn't touch a server: these tools never
+      transmit a character.
+    </p>
+
+    <div class="mt-5">
+      <PrivacyStrip />
+    </div>
+
+    <ul class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {TEXT_TOOLS.map((t) => (
+        <li>
+          <a href={`/text/${t.slug}/`} class="flex h-full flex-col rounded-xl border border-slate-200 p-4 transition hover:border-brand-400 hover:shadow-sm">
+            <span class="text-2xl" aria-hidden="true">{t.icon}</span>
+            <span class="mt-2 font-semibold text-slate-900">{t.name}</span>
+            <span class="mt-1 text-sm text-slate-600">{t.lead.split('—')[0]}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <FaqSection faqs={faqs} />
+  </div>
+</Base>

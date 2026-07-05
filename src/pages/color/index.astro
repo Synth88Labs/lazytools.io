@@ -1,0 +1,73 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PrivacyStrip from '../../components/PrivacyStrip.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { COLOR_TOOLS } from '../../data/color/index';
+import { breadcrumbSchema, collectionPageSchema, faqSchema } from '../../lib/schema';
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Color Tools', url: '/color/' },
+];
+
+const faqs = [
+  {
+    q: 'Which color format should I use in CSS?',
+    a: 'HEX for tokens and copy-paste portability, HSL when you need to derive variants (darker hover states by lowering L), RGB when you need alpha as rgba(). All three describe the same sRGB colors — the converter moves between them losslessly.',
+  },
+  {
+    q: 'What contrast do accessibility rules require?',
+    a: 'WCAG AA — the level referenced by the EU Accessibility Act and most regulations — requires 4.5:1 for normal text and 3:1 for large text and UI components. The contrast checker computes the official formula and shows pass/fail per level.',
+  },
+  {
+    q: 'Do these tools upload anything?',
+    a: 'No — parsing, conversion and contrast math all run in your browser and work offline.',
+  },
+];
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  collectionPageSchema({
+    name: 'Free Online Color Tools',
+    url: '/color/',
+    description: 'Color converter, WCAG contrast checker, shades generator, CSS gradients and color mixer — all in-browser.',
+    items: COLOR_TOOLS.map((t) => ({ name: t.name, url: `/color/${t.slug}/` })),
+  }),
+  faqSchema(faqs),
+];
+---
+
+<Base
+  title="Color Tools — Converter, Contrast Checker & More | LazyTools"
+  description={`${COLOR_TOOLS.length} free color tools: HEX/RGB/HSL converter, WCAG contrast checker, shades & tints, CSS gradient generator, color mixer. 100% in your browser.`}
+  schema={schema}
+>
+  <div class="mx-auto max-w-5xl px-4 py-6">
+    <Breadcrumbs items={crumbs} />
+
+    <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Color Tools</h1>
+    <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
+      Convert between formats, check WCAG contrast, build ramps and gradients — with exact formulas and
+      copy-ready CSS. Everything computes in your browser, instantly.
+    </p>
+
+    <div class="mt-5">
+      <PrivacyStrip />
+    </div>
+
+    <ul class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {COLOR_TOOLS.map((t) => (
+        <li>
+          <a href={`/color/${t.slug}/`} class="flex h-full flex-col rounded-xl border border-slate-200 p-4 transition hover:border-brand-400 hover:shadow-sm">
+            <span class="text-2xl" aria-hidden="true">{t.icon}</span>
+            <span class="mt-2 font-semibold text-slate-900">{t.name}</span>
+            <span class="mt-1 text-sm text-slate-600">{t.lead.split('—')[0]}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <FaqSection faqs={faqs} />
+  </div>
+</Base>

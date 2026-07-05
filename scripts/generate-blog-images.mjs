@@ -97,6 +97,20 @@ const POSTS = [
     fact: 'fitted size = inches ÷ π · 57 cm = 7⅛',
     icon: '🎩',
   },
+  {
+    slug: 'character-limits-guide',
+    kicker: 'WRITING FOR PLATFORMS',
+    lines: ['Character limits', 'cheat sheet: X, SMS,', 'Google & Instagram'],
+    fact: 'X: 280 · SMS: 160 · meta: ~158',
+    icon: '🔡',
+  },
+  {
+    slug: 'wcag-contrast-guide',
+    kicker: 'ACCESSIBILITY EXPLAINED',
+    lines: ['The 4.5:1 rule:', 'WCAG color contrast', 'without the jargon'],
+    fact: 'AA: 4.5:1 text · 3:1 large & UI',
+    icon: '♿',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
