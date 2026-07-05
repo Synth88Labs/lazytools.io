@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-label="Anatomy of a CSV row converting to JSON: the header row becomes keys, a quoted field containing a comma stays one value, and typed values like true stay booleans">
+  <defs>
+    <style>
+      .h { font: 800 30px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .code { font: 600 21px Consolas, Menlo, monospace; fill: #334155; }
+      .codeh { font: 700 21px Consolas, Menlo, monospace; fill: #166fde; }
+      .codeq { font: 700 21px Consolas, Menlo, monospace; fill: #b45309; }
+      .lab { font: 700 18px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .sub { font: 500 16px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+      .lead { stroke: #94a3b8; stroke-width: 2.5; stroke-dasharray: 5 5; fill: none; }
+    </style>
+  </defs>
+
+  <text x="600" y="46" text-anchor="middle" class="h">How one CSV row becomes JSON</text>
+
+  <!-- CSV panel -->
+  <rect x="80" y="90" width="1040" height="120" rx="16" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/>
+  <text x="110" y="125" class="lab">CSV in:</text>
+  <text x="110" y="160" class="codeh">name,role,active</text>
+  <text x="110" y="192" class="code"><tspan class="codeq">"Doe, Jane"</tspan>,Engineer,<tspan fill="#059669" font-weight="700">true</tspan></text>
+
+  <!-- annotations -->
+  <path class="lead" d="M 240 210 L 200 280"/>
+  <rect x="90" y="285" width="330" height="76" rx="12" fill="#fffbeb" stroke="#fcd34d" stroke-width="2"/>
+  <text x="255" y="315" text-anchor="middle" class="lab" fill="#92400e">quoted field</text>
+  <text x="255" y="342" text-anchor="middle" class="sub">the comma inside quotes is data,</text>
+  <text x="255" y="360" text-anchor="middle" class="sub" font-style="italic">not a separator (RFC 4180)</text>
+
+  <path class="lead" d="M 200 128 L 520 285"/>
+  <rect x="440" y="285" width="300" height="76" rx="12" fill="#eef9ff" stroke="#8ed9ff" stroke-width="2"/>
+  <text x="590" y="315" text-anchor="middle" class="lab" fill="#153056">header row</text>
+  <text x="590" y="345" text-anchor="middle" class="sub">first line becomes the JSON keys</text>
+
+  <path class="lead" d="M 465 195 L 890 285"/>
+  <rect x="760" y="285" width="330" height="76" rx="12" fill="#ecfdf5" stroke="#6ee7b7" stroke-width="2"/>
+  <text x="925" y="315" text-anchor="middle" class="lab" fill="#065f46">typed values</text>
+  <text x="925" y="345" text-anchor="middle" class="sub">true/false and numbers stay typed, not "true"</text>
+
+  <!-- JSON panel -->
+  <rect x="80" y="400" width="1040" height="130" rx="16" fill="#153056"/>
+  <text x="110" y="435" class="lab" fill="#8ed9ff">JSON out:</text>
+  <text x="110" y="470" font-family="Consolas, Menlo, monospace" font-size="21" font-weight="600" fill="#7ef0c0">[ { "name": "Doe, Jane", "role": "Engineer", "active": true } ]</text>
+  <text x="110" y="505" font-family="'Plus Jakarta Sans','Segoe UI',Arial,sans-serif" font-size="16" fill="#bce7ff">one object per row · keys from headers · quotes handled · types preserved</text>
+
+  <text x="600" y="575" text-anchor="middle" class="sub">the classic failure — everything in one column — means the delimiter is wrong: European Excel exports use semicolons</text>
+</svg>

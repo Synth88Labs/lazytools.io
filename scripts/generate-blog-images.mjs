@@ -132,6 +132,20 @@ const POSTS = [
     fact: '#1d87f1 = rgb(29,135,241)',
     icon: '🎨',
   },
+  {
+    slug: 'csv-to-json-guide',
+    kicker: 'DATA CONVERSION GUIDE',
+    lines: ['CSV to JSON without', 'the traps: quotes,', 'commas & semicolons'],
+    fact: '"Doe, Jane" = one field, not two',
+    icon: '📊',
+  },
+  {
+    slug: 'json-yaml-xml-guide',
+    kicker: 'DATA FORMATS COMPARED',
+    lines: ['JSON vs YAML vs XML:', 'which format for', 'which job'],
+    fact: 'APIs: JSON · configs: YAML · legacy: XML',
+    icon: '🗂️',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

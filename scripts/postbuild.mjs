@@ -12,6 +12,7 @@ import { CALCULATORS } from '../src/data/calc/index.ts';
 import { SIZE_TOOLS } from '../src/data/size/index.ts';
 import { TEXT_TOOLS } from '../src/data/text/index.ts';
 import { COLOR_TOOLS } from '../src/data/color/index.ts';
+import { FILE_TOOLS } from '../src/data/file/index.ts';
 
 await copyFile(new URL('../dist/sitemap-index.xml', import.meta.url), new URL('../dist/sitemap.xml', import.meta.url));
 console.log('postbuild: dist/sitemap.xml created (copy of sitemap-index.xml)');
@@ -23,6 +24,7 @@ const slugs = [
   ...SIZE_TOOLS.map((t) => `size/${t.slug}`),
   ...TEXT_TOOLS.map((t) => `text/${t.slug}`),
   ...COLOR_TOOLS.map((t) => `color/${t.slug}`),
+  ...FILE_TOOLS.map((t) => `file/${t.slug}`),
 ].sort();
 await writeFile(new URL('../api/tools-allowlist.json', import.meta.url), JSON.stringify(slugs, null, 2) + '\n');
 console.log(`postbuild: api/tools-allowlist.json regenerated (${slugs.length} tools)`);

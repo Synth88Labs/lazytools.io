@@ -13,7 +13,7 @@ export default defineConfig({
       // Keep placeholder/coming-soon stub pages out of the sitemap
       filter: (page) =>
         !page.includes('/coming-soon') &&
-        !['/dev/', '/file/', '/generate/', '/time/', '/security/', '/image/', '/pdf/', '/audio/', '/video/'].some(
+        !['/dev/', '/generate/', '/time/', '/security/', '/image/', '/pdf/', '/audio/', '/video/'].some(
           (stub) => page === `https://lazytools.io${stub}`
         ),
     }),

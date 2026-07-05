@@ -1,0 +1,74 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PrivacyStrip from '../../components/PrivacyStrip.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { FILE_TOOLS } from '../../data/file/index';
+import { breadcrumbSchema, collectionPageSchema, faqSchema } from '../../lib/schema';
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'File Converters', url: '/file/' },
+];
+
+const faqs = [
+  {
+    q: 'Are my files uploaded to convert them?',
+    a: 'No — the "Open file" button reads the file into your browser\'s memory only. Parsing and conversion run locally, nothing is transmitted, and the tools work offline. Business data, configs and exports stay on your machine.',
+  },
+  {
+    q: 'Is there a file-size limit or paid tier?',
+    a: 'Neither. Because conversion is local there are no upload caps — multi-megabyte exports convert instantly, free. (Several competitor tools cap free conversions at 1 MB per day.)',
+  },
+  {
+    q: 'How accurate are the conversions?',
+    a: 'CSV parsing follows RFC 4180 conventions (quoted fields, escaped quotes); YAML uses js-yaml, the standard library; XML uses the browser\'s native parser; Markdown uses marked with GitHub-flavored extensions. Errors are reported with line locations rather than silently producing wrong output.',
+  },
+];
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  collectionPageSchema({
+    name: 'Free File & Data Converters',
+    url: '/file/',
+    description: 'CSV, JSON, YAML, XML and Markdown converters plus a JSON formatter — open files, download results, no uploads, no size limits.',
+    items: FILE_TOOLS.map((t) => ({ name: t.name, url: `/file/${t.slug}/` })),
+  }),
+  faqSchema(faqs),
+];
+---
+
+<Base
+  title="File & Data Converters — CSV, JSON, YAML, XML | LazyTools"
+  description={`${FILE_TOOLS.length} free data converters: CSV↔JSON, JSON↔YAML, XML↔JSON, Markdown, JSON formatter. Open files and download results — nothing is uploaded, no size limits.`}
+  schema={schema}
+>
+  <div class="mx-auto max-w-5xl px-4 py-6">
+    <Breadcrumbs items={crumbs} />
+
+    <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">File & Data Converters</h1>
+    <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
+      Convert between CSV, JSON, YAML, XML and Markdown — open a file, convert, download the result.
+      Exports and configs are business data: here they never touch a server, and there are no size
+      limits or paid tiers.
+    </p>
+
+    <div class="mt-5">
+      <PrivacyStrip />
+    </div>
+
+    <ul class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {FILE_TOOLS.map((t) => (
+        <li>
+          <a href={`/file/${t.slug}/`} class="flex h-full flex-col rounded-xl border border-slate-200 p-4 transition hover:border-brand-400 hover:shadow-sm">
+            <span class="text-2xl" aria-hidden="true">{t.icon}</span>
+            <span class="mt-2 font-semibold text-slate-900">{t.name}</span>
+            <span class="mt-1 text-sm text-slate-600">{t.lead.split('—')[0]}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <FaqSection faqs={faqs} />
+  </div>
+</Base>

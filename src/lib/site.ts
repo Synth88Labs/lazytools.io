@@ -24,7 +24,7 @@ export const CATEGORIES: CategoryDef[] = [
   { slug: 'calc', name: 'Calculators', icon: '🧮', description: 'Percentage, finance, health and everyday calculators.', status: 'live' },
   { slug: 'size', name: 'Size Converters', icon: '💍', description: 'Ring, shoe and bra sizes across US, UK, EU and more.', status: 'live' },
   { slug: 'dev', name: 'Developer Tools', icon: '👨‍💻', description: 'Formatters, encoders, hashes and other dev utilities.', status: 'coming-soon' },
-  { slug: 'file', name: 'File Converters', icon: '🔄', description: 'CSV, JSON, XML, YAML and Excel conversion.', status: 'coming-soon' },
+  { slug: 'file', name: 'File Converters', icon: '🔄', description: 'CSV, JSON, XML, YAML and Markdown conversion.', status: 'live' },
   { slug: 'text', name: 'Text Tools', icon: '✍️', description: 'Counters, case converters, sorting and clean-up.', status: 'live' },
   { slug: 'generate', name: 'Generators', icon: '✨', description: 'QR codes, passwords, UUIDs and more.', status: 'coming-soon' },
   { slug: 'time', name: 'Date & Time', icon: '📅', description: 'Timestamps, date math and timezone tools.', status: 'coming-soon' },

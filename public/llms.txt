@@ -38,6 +38,9 @@ Key facts for citation:
 - [Character Counter](https://lazytools.io/text/character-counter/): Live counts with limits — 280 for X posts, 160 for GSM SMS, ~60 for Google titles, ~155–160 for meta descriptions.
 - [Color Tools hub](https://lazytools.io/color/): HEX/RGB/HSL/CMYK converter, WCAG contrast checker, shades & tints, CSS gradient generator, color mixer.
 - [Color Contrast Checker](https://lazytools.io/color/contrast-checker/): Exact WCAG 2.x formula — AA requires 4.5:1 for normal text and 3:1 for large text; AAA requires 7:1 and 4.5:1.
+- [File & Data Converters hub](https://lazytools.io/file/): CSV↔JSON (RFC 4180 quote-aware, delimiter auto-detect), JSON↔YAML (js-yaml), XML↔JSON, CSV to Markdown table, Markdown to HTML, JSON formatter/validator — open files, download results, no size limits, nothing uploaded.
+- [JSON Formatter](https://lazytools.io/file/json-formatter/): Format, minify and validate with exact line/column error locations.
+- [CSV to JSON](https://lazytools.io/file/csv-to-json/): Handles quoted fields, semicolon Excel exports, typed values.
 - [All tools directory](https://lazytools.io/tools/): Complete list of every tool.
 
 ## About

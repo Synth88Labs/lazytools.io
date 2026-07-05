@@ -7,6 +7,7 @@ import { CALCULATORS } from '../data/calc/index';
 import { SIZE_TOOLS } from '../data/size/index';
 import { TEXT_TOOLS } from '../data/text/index';
 import { COLOR_TOOLS } from '../data/color/index';
+import { FILE_TOOLS } from '../data/file/index';
 
 export interface SearchUnit {
   id: string;
@@ -148,7 +149,11 @@ export function buildSearchPages(): SearchPage[] {
   for (const t of COLOR_TOOLS) {
     pages.push({ title: t.name, url: `/color/${t.slug}/`, keywords: [...t.keywords, 'color', t.name.toLowerCase()] });
   }
+  for (const t of FILE_TOOLS) {
+    pages.push({ title: t.name, url: `/file/${t.slug}/`, keywords: [...t.keywords, 'converter', t.name.toLowerCase()] });
+  }
   pages.push(
+    { title: 'All File Converters', url: '/file/', keywords: ['file converter', 'csv', 'json', 'yaml', 'xml', 'data converter'] },
     { title: 'All Text Tools', url: '/text/', keywords: ['text tools', 'text', 'words', 'characters', 'lines'] },
     { title: 'All Color Tools', url: '/color/', keywords: ['color tools', 'color', 'hex', 'rgb', 'contrast'] },
     { title: 'All Size Converters', url: '/size/', keywords: ['size', 'sizes', 'sizing', 'ring', 'shoe', 'bra', 'clothing'] },

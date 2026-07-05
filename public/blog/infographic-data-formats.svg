@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-label="The same data written in JSON, YAML and XML side by side — JSON for APIs, YAML for human-edited configs, XML for legacy and document systems">
+  <defs>
+    <style>
+      .h { font: 800 30px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .panelh { font: 800 20px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #ffffff; }
+      .code { font: 600 17px Consolas, Menlo, monospace; fill: #334155; }
+      .use { font: 700 17px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #166fde; }
+      .sub { font: 500 15px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+    </style>
+  </defs>
+
+  <text x="600" y="46" text-anchor="middle" class="h">The same data, three dialects</text>
+
+  <!-- JSON panel -->
+  <g transform="translate(70 80)">
+    <rect x="0" y="0" width="330" height="380" rx="16" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/>
+    <rect x="0" y="0" width="330" height="46" rx="16" fill="#1d87f1"/>
+    <rect x="0" y="26" width="330" height="20" fill="#1d87f1"/>
+    <text x="165" y="31" text-anchor="middle" class="panelh">JSON</text>
+    <text x="24" y="86" class="code">{</text>
+    <text x="24" y="114" class="code">  "service": "api",</text>
+    <text x="24" y="142" class="code">  "replicas": 3,</text>
+    <text x="24" y="170" class="code">  "env": [</text>
+    <text x="24" y="198" class="code">    "prod",</text>
+    <text x="24" y="226" class="code">    "staging"</text>
+    <text x="24" y="254" class="code">  ]</text>
+    <text x="24" y="282" class="code">}</text>
+    <text x="165" y="330" text-anchor="middle" class="use">APIs · machine exchange</text>
+    <text x="165" y="356" text-anchor="middle" class="sub">strict syntax · no comments · every parser speaks it</text>
+  </g>
+
+  <!-- YAML panel -->
+  <g transform="translate(435 80)">
+    <rect x="0" y="0" width="330" height="380" rx="16" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/>
+    <rect x="0" y="0" width="330" height="46" rx="16" fill="#059669"/>
+    <rect x="0" y="26" width="330" height="20" fill="#059669"/>
+    <text x="165" y="31" text-anchor="middle" class="panelh">YAML</text>
+    <text x="24" y="92" class="code"># humans edit this</text>
+    <text x="24" y="122" class="code">service: api</text>
+    <text x="24" y="152" class="code">replicas: 3</text>
+    <text x="24" y="182" class="code">env:</text>
+    <text x="24" y="212" class="code">  - prod</text>
+    <text x="24" y="242" class="code">  - staging</text>
+    <text x="165" y="330" text-anchor="middle" class="use">configs · CI · Kubernetes</text>
+    <text x="165" y="356" text-anchor="middle" class="sub">comments allowed · indentation is structure</text>
+  </g>
+
+  <!-- XML panel -->
+  <g transform="translate(800 80)">
+    <rect x="0" y="0" width="330" height="380" rx="16" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/>
+    <rect x="0" y="0" width="330" height="46" rx="16" fill="#b45309"/>
+    <rect x="0" y="26" width="330" height="20" fill="#b45309"/>
+    <text x="165" y="31" text-anchor="middle" class="panelh">XML</text>
+    <text x="24" y="90" class="code">&lt;deployment&gt;</text>
+    <text x="24" y="118" class="code">  &lt;service&gt;api&lt;/service&gt;</text>
+    <text x="24" y="146" class="code">  &lt;replicas&gt;3&lt;/replicas&gt;</text>
+    <text x="24" y="174" class="code">  &lt;env&gt;prod&lt;/env&gt;</text>
+    <text x="24" y="202" class="code">  &lt;env&gt;staging&lt;/env&gt;</text>
+    <text x="24" y="230" class="code">&lt;/deployment&gt;</text>
+    <text x="165" y="330" text-anchor="middle" class="use">legacy · documents · SOAP/RSS</text>
+    <text x="165" y="356" text-anchor="middle" class="sub">attributes &amp; namespaces · verbose but rigorous</text>
+  </g>
+
+  <rect x="180" y="500" width="840" height="52" rx="12" fill="#153056"/>
+  <text x="600" y="534" text-anchor="middle" font-family="Consolas, Menlo, monospace" font-size="21" font-weight="600" fill="#7ef0c0">every JSON document is valid YAML — the reverse loses comments &amp; anchors</text>
+  <text x="600" y="590" text-anchor="middle" class="sub">rule of thumb: APIs speak JSON, humans edit YAML, legacy systems demand XML — converters bridge all three</text>
+</svg>
