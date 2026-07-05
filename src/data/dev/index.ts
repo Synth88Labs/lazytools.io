@@ -1,0 +1,225 @@
+/** Developer-tools registry. */
+
+export interface DevToolOption {
+  id: string;
+  label: string;
+  type: 'select' | 'checkbox' | 'text';
+  options?: { value: string; label: string }[];
+  defaultValue?: string;
+  placeholder?: string;
+}
+
+export interface DevToolDef {
+  slug: string;
+  name: string;
+  icon: string;
+  description: string;
+  lead: string;
+  /** 'transform' uses DevTransformTool; 'hash' uses HashTool */
+  widget: 'transform' | 'hash';
+  computeId?: string;
+  options?: DevToolOption[];
+  sample?: string;
+  how: string;
+  note?: string;
+  faqs: { q: string; a: string }[];
+  keywords: string[];
+}
+
+export const DEV_TOOLS: DevToolDef[] = [
+  {
+    slug: 'base64-encode-decode',
+    name: 'Base64 Encoder / Decoder',
+    icon: '🅱️',
+    description:
+      'Encode text to Base64 or decode Base64 to text — UTF-8-safe, with URL-safe variant. Runs in your browser; tokens and payloads never leave your machine.',
+    lead: 'Base64 turns any bytes into 64 safe characters — encode or decode instantly, with correct UTF-8 handling and the URL-safe variant.',
+    widget: 'transform',
+    computeId: 'base64',
+    options: [
+      {
+        id: 'mode', label: 'Mode', type: 'select', defaultValue: 'encode',
+        options: [
+          { value: 'encode', label: 'Encode (text → Base64)' },
+          { value: 'decode', label: 'Decode (Base64 → text)' },
+        ],
+      },
+      { id: 'urlSafe', label: 'URL-safe alphabet (- and _ instead of + and /)', type: 'checkbox' },
+    ],
+    sample: 'Hello, LazyTools! 🔒',
+    how: 'Encoding converts the text to UTF-8 bytes first, then maps every 3 bytes to 4 characters from the 64-character alphabet (A–Z, a–z, 0–9, +, /), padding with =. That UTF-8 step matters: the browser’s raw btoa() corrupts anything beyond Latin-1 — emoji, accents, most languages. Decoding accepts both standard and URL-safe alphabets and tolerates missing padding.',
+    note: 'Base64 is encoding, not encryption — anyone can decode it. Its job is transport: making binary or special-character data safe for JSON, URLs, headers and email. The output is ~33% larger than the input, which is the price of the safety. The URL-safe variant (RFC 4648 §5) is what JWTs and URL parameters use.',
+    faqs: [
+      { q: 'Is Base64 encryption?', a: 'No — it is a reversible transport encoding with zero secrecy. Anyone can decode it instantly. If you need confidentiality, encrypt first; Base64 is only for making bytes safe to transmit.' },
+      { q: 'Why does Base64 output end with = signs?', a: 'Padding: input not divisible by 3 bytes leaves a partial final group, padded with one or two =. The URL-safe convention drops the padding, which decoders (including this one) reconstruct.' },
+      { q: 'Why did my emoji break in other Base64 tools?', a: 'They used btoa() directly, which only handles Latin-1. Correct encoding converts to UTF-8 bytes first — this tool does, so emoji and non-Latin scripts round-trip cleanly.' },
+      { q: 'What is the URL-safe variant?', a: 'The same encoding with + → - and / → _ (and padding dropped), so the result survives inside URLs and filenames. JWTs use it for all three segments.' },
+      { q: 'How much bigger does Base64 make my data?', a: 'Exactly 4/3 of the byte length (~33% overhead), plus padding. The tool reports the ratio live.' },
+    ],
+    keywords: ['base64 encode', 'base64 decode', 'base64 converter', 'url safe base64', 'base64 utf-8'],
+  },
+  {
+    slug: 'url-encode-decode',
+    name: 'URL Encoder / Decoder',
+    icon: '🔗',
+    description:
+      'Percent-encode text for URLs or decode %XX sequences back — with the encodeURI vs encodeURIComponent distinction handled. In-browser.',
+    lead: 'Spaces become %20, & becomes %26 — encode text safely into URLs, or decode percent-encoding back to readable text.',
+    widget: 'transform',
+    computeId: 'urlCodec',
+    options: [
+      {
+        id: 'mode', label: 'Mode', type: 'select', defaultValue: 'encode',
+        options: [
+          { value: 'encode', label: 'Encode' },
+          { value: 'decode', label: 'Decode' },
+        ],
+      },
+      { id: 'component', label: 'Component mode (also encode / ? & = — for query values)', type: 'checkbox', defaultValue: 'true' },
+    ],
+    sample: 'price=100&currency=€ (50% off!)',
+    how: 'Percent-encoding replaces unsafe bytes with %XX hex escapes per RFC 3986. The crucial choice is scope: component mode (encodeURIComponent) escapes everything including /, ?, & and = — right for a single query-string value; whole-URI mode (encodeURI) preserves those structural characters — right for encoding a complete URL. Decoding also converts + to space, the historical form-encoding convention.',
+    note: 'The classic bug this tool prevents: putting an unencoded & inside a query value ("Tom & Jerry") and silently truncating the parameter at the ampersand. Encode values in component mode before assembling the URL, not after.',
+    faqs: [
+      { q: 'What is the difference between encodeURI and encodeURIComponent?', a: 'Scope. encodeURIComponent escapes everything unsafe including /?&=# — use it on individual values. encodeURI leaves URL structure intact — use it only on a complete URL. Wrong choice in either direction is the top URL-encoding bug.' },
+      { q: 'Why does a space become %20 sometimes and + other times?', a: 'Two conventions: %20 is the RFC 3986 standard everywhere in URLs; + means space only in the query string under the older form-encoding rules. This decoder accepts both.' },
+      { q: 'Do I need to encode Unicode like é or 中?', a: 'Yes for maximum compatibility — they become their UTF-8 bytes percent-encoded (é → %C3%A9). Browsers often display the decoded form, but the wire format is encoded.' },
+      { q: 'Why did decoding fail with "malformed"?', a: 'A % not followed by two hex digits — usually a raw % sign in text that was never meant as encoding. Encode the raw text first, or fix the stray %.' },
+      { q: 'Is my URL data kept private?', a: 'Yes — URLs often contain tokens and IDs, and this tool never transmits them; everything runs locally.' },
+    ],
+    keywords: ['url encode', 'url decode', 'percent encoding', 'encodeuricomponent', 'query string encoding'],
+  },
+  {
+    slug: 'html-entities-encode-decode',
+    name: 'HTML Entities Encoder / Decoder',
+    icon: '📜',
+    description:
+      'Escape text for safe HTML display (& < > " \') or decode entities like &amp; back to characters. In-browser.',
+    lead: 'Turn < into &lt; so it displays instead of rendering — or decode &amp;-style entities back to plain text.',
+    widget: 'transform',
+    computeId: 'htmlEntities',
+    options: [
+      {
+        id: 'mode', label: 'Mode', type: 'select', defaultValue: 'encode',
+        options: [
+          { value: 'encode', label: 'Encode (escape for HTML)' },
+          { value: 'decode', label: 'Decode (entities → text)' },
+        ],
+      },
+    ],
+    sample: 'if (a < b && b > c) { alert("done"); }',
+    how: 'Encoding escapes the five characters with special meaning in HTML — & < > " \' — into their entities, making arbitrary text safe to display inside markup. Decoding uses the browser’s own HTML parser, so it understands every named entity (&nbsp;, &mdash;, &hellip;…) and numeric form (&#8212;), not just the common five.',
+    note: 'This escaping is the last-line defense pattern against HTML injection when displaying user text — though in real applications, use your framework’s templating (which escapes by default) rather than manual encoding. For showing code snippets in a blog or CMS, encode-then-paste is exactly the right manual workflow.',
+    faqs: [
+      { q: 'Which characters must be escaped in HTML?', a: 'The essential five: & (first!), <, >, and in attributes also " and \'. Everything else can appear literally in UTF-8 documents.' },
+      { q: 'Why must & be escaped first?', a: 'Because entities themselves contain & — escaping < after & would double-escape into &amp;lt;. This tool applies the correct order automatically.' },
+      { q: 'What is the difference between &amp;#8212; and &amp;mdash;?', a: 'The same em-dash: one numeric reference, one named entity. Decoding handles both, plus every other named entity the HTML spec defines.' },
+      { q: 'Is encoding enough to prevent XSS?', a: 'For text content and quoted attributes, escaping these five characters neutralizes injection. But context matters (URLs, CSS, script blocks have different rules) — in applications, rely on framework auto-escaping and use this tool for manual/editorial tasks.' },
+      { q: 'Is my content uploaded?', a: 'No — both directions run in your browser.' },
+    ],
+    keywords: ['html encode', 'html entities', 'escape html', 'html decode', 'ampersand lt gt'],
+  },
+  {
+    slug: 'hash-generator',
+    name: 'SHA Hash Generator',
+    icon: '#️⃣',
+    description:
+      'Compute SHA-1, SHA-256, SHA-384 and SHA-512 hashes of any text using the browser’s native Web Crypto — nothing leaves your machine.',
+    lead: 'One input, four hashes — SHA-1, SHA-256, SHA-384 and SHA-512, computed by your browser’s built-in crypto engine.',
+    widget: 'hash',
+    sample: 'The quick brown fox jumps over the lazy dog',
+    how: 'Hashes are computed with the Web Crypto API (crypto.subtle.digest) — the same audited implementation your browser uses for TLS, not a JavaScript reimplementation. The text is UTF-8 encoded, digested, and shown as lowercase hex. A hash is one-way: identical input always gives the identical digest, but the digest cannot be reversed to the input.',
+    note: 'MD5 is deliberately absent: Web Crypto does not implement it because it has been cryptographically broken for two decades. If you need to match a legacy MD5 checksum, treat it only as an integrity spot-check, never as security. For verifying downloads, compare the published SHA-256 against the file’s hash character-for-character (the first and last 8 are usually enough to eyeball).',
+    faqs: [
+      { q: 'Which SHA should I use?', a: 'SHA-256 is the modern default — checksums, signatures, content addressing. SHA-512 offers a larger digest (and is faster on some 64-bit systems). SHA-1 survives only for legacy comparisons: collisions have been demonstrated, so avoid it for anything security-relevant.' },
+      { q: 'Why is MD5 not offered?', a: 'The browser’s Web Crypto API deliberately excludes it — MD5 collisions are practical to generate, so shipping it invites misuse. SHA-256 replaces it everywhere that matters.' },
+      { q: 'Can a hash be decrypted?', a: 'No — hashing is one-way by construction. "Cracking" a hash means guessing inputs until one matches, which is why short passwords hash-crack quickly but long ones don\'t.' },
+      { q: 'Is this suitable for hashing passwords?', a: 'No — password storage needs slow, salted algorithms (bcrypt, scrypt, Argon2). Plain SHA is for integrity and identification, not credential storage.' },
+      { q: 'Does my text leave the browser?', a: 'No — hashing is local via crypto.subtle. That matters when the input is an API secret or private text.' },
+    ],
+    keywords: ['sha256 generator', 'hash generator online', 'sha1 hash', 'sha512', 'checksum text', 'web crypto hash'],
+  },
+  {
+    slug: 'jwt-decoder',
+    name: 'JWT Decoder',
+    icon: '🎫',
+    description:
+      'Decode JWT header and payload locally, with expiry check — the signature is never verified and the token never leaves your browser.',
+    lead: 'Paste a JWT and read its header and payload instantly — with the expiry (exp) checked — all locally, which is the only safe way to inspect tokens.',
+    widget: 'transform',
+    computeId: 'jwt',
+    sample:
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c',
+    how: 'A JWT is three Base64URL segments separated by dots: header (algorithm), payload (claims) and signature. The first two are just encoded JSON — decoding them requires no key, which this tool does locally, pretty-printing both and evaluating the exp claim against the current time. The signature is NOT verified: that requires the signing secret or public key and belongs on your server, not in a web page.',
+    note: 'The privacy point is not optional here: a JWT often IS a live credential. Pasting one into a random website’s "JWT decoder" hands your session to that server. This decoder runs entirely in your browser — verify with the network tab, or go offline first.',
+    faqs: [
+      { q: 'Does decoding a JWT require the secret?', a: 'No — header and payload are Base64URL-encoded JSON, readable by anyone. The secret is only needed to VERIFY the signature (i.e., prove the token wasn\'t tampered with), which this tool intentionally does not do.' },
+      { q: 'Why does it say "signature NOT verified"?', a: 'Honesty: without your signing key, no client-side tool can check authenticity. Decoding shows what the token claims; verification (server-side, with the key) proves the claims are genuine.' },
+      { q: 'What are iat, exp and sub?', a: 'Registered claims: iat = issued-at, exp = expiry, sub = subject (user id) — all Unix timestamps where relevant. The tool converts exp to a date and flags expired tokens.' },
+      { q: 'Is it safe to paste a production token here?', a: 'Here, yes — nothing is transmitted (the page works offline). As a rule though, treat live tokens like passwords: prefer expired or test tokens when debugging, wherever the tool runs.' },
+      { q: 'Why does my token fail to decode?', a: 'Check for the three-part dot structure and complete copying — truncated middles are the usual culprit. Opaque (non-JWT) session tokens also exist and won\'t decode.' },
+    ],
+    keywords: ['jwt decoder', 'decode jwt online', 'jwt payload', 'jwt exp check', 'json web token'],
+  },
+  {
+    slug: 'regex-tester',
+    name: 'Regex Tester',
+    icon: '🧩',
+    description:
+      'Test JavaScript regular expressions live: matches with positions and capture groups, flags support, clear error messages. In-browser.',
+    lead: 'Type a pattern, paste test text, see every match with its position and capture groups — updated on every keystroke.',
+    widget: 'transform',
+    computeId: 'regex',
+    options: [
+      { id: 'pattern', label: 'Pattern', type: 'text', placeholder: '\\b\\w+@\\w+\\.\\w+\\b', defaultValue: '\\b(\\w+)@(\\w+\\.\\w+)\\b' },
+      { id: 'flags', label: 'Flags', type: 'text', placeholder: 'gi', defaultValue: 'gi' },
+    ],
+    sample: 'Contact ana@example.com or SALES@corp.example.org for details.',
+    how: 'The pattern runs as a real JavaScript RegExp against your text, listing each match with its index and any capture groups — the exact behavior your JS code will see, because it is the same engine. Flags work as in code: g (all matches — applied automatically), i (case-insensitive), m (multiline ^ $), s (dot matches newline), u (unicode).',
+    note: 'Testing here mirrors JavaScript exactly, which is both the feature and the caveat: JS regex differs from PCRE/Python in places (lookbehind support, named groups syntax, no possessive quantifiers). For patterns destined for another language, verify in that ecosystem too.',
+    faqs: [
+      { q: 'Which regex flavor is this?', a: 'JavaScript (ECMAScript) — the same engine as your browser and Node code. Most syntax is shared with PCRE/Python, but edge features differ; test in the target language for anything exotic.' },
+      { q: 'What do the flags mean?', a: 'g = all matches, i = ignore case, m = ^ and $ match per line, s = . matches newlines, u = full Unicode. This tester always applies g so you see every match.' },
+      { q: 'How do capture groups show up?', a: 'Parentheses create groups, listed per match in order — the sample splits emails into user and domain. Use (?:…) for grouping without capturing.' },
+      { q: 'Why does my pattern error?', a: 'Unbalanced parentheses/brackets or a dangling quantifier, usually. The error message is the engine\'s own. Escape literal special characters with a backslash.' },
+      { q: 'Is my test data private?', a: 'Yes — matching runs locally. Paste logs and real data freely; nothing is transmitted.' },
+    ],
+    keywords: ['regex tester', 'regular expression tester', 'javascript regex', 'regex capture groups', 'test regex online'],
+  },
+  {
+    slug: 'number-base-converter',
+    name: 'Number Base Converter',
+    icon: '🔟',
+    description:
+      'Convert numbers between binary, octal, decimal and hex — arbitrary precision (BigInt), so 64-bit values don’t silently corrupt. In-browser.',
+    lead: '255 = 0xff = 0o377 = 0b11111111 — convert any number between bases 2, 8, 10 and 16, at any size, exactly.',
+    widget: 'transform',
+    computeId: 'numberBase',
+    options: [
+      {
+        id: 'from', label: 'Input base', type: 'select', defaultValue: '10',
+        options: [
+          { value: '2', label: 'Binary (base 2)' },
+          { value: '8', label: 'Octal (base 8)' },
+          { value: '10', label: 'Decimal (base 10)' },
+          { value: '16', label: 'Hex (base 16)' },
+        ],
+      },
+    ],
+    sample: '3735928559',
+    how: 'The input parses digit-by-digit into a BigInt — JavaScript’s arbitrary-precision integer — then re-renders in all four bases. BigInt is the point: ordinary JS numbers lose precision past 2⁵³, so a 64-bit value like a database ID or bitmask converts wrongly in naive tools. Prefixes (0x, 0b, 0o), spaces and _ separators in the input are accepted and ignored.',
+    note: 'The sample decodes to a classic: 3735928559 = 0xDEADBEEF. Everyday uses: reading hex color/memory values, building permission bitmasks, converting Unix file modes (octal), and checking what a flag register means in binary.',
+    faqs: [
+      { q: 'Why do other converters corrupt large numbers?', a: 'They use floating-point numbers, exact only to 2⁵³ (about 9×10¹⁵). Beyond that, trailing digits silently change. This tool uses BigInt — exact at any length.' },
+      { q: 'What are the 0x, 0o and 0b prefixes?', a: 'Standard literal markers: 0x = hex, 0o = octal, 0b = binary — the same notation JS, Python and C-family languages use. The converter accepts and outputs them.' },
+      { q: 'How do I read a binary number quickly?', a: 'Group bits in fours from the right — each group is exactly one hex digit (1101 = D). That is why programmers think in hex: it is compressed binary.' },
+      { q: 'Does it handle negative numbers?', a: 'It converts magnitudes; interpretation of negatives (two\'s complement width) depends on your context — an 8-bit -1 and a 64-bit -1 differ. Convert the unsigned pattern and apply your width\'s convention.' },
+      { q: 'Octal still exists?', a: 'Unix file permissions keep it alive: chmod 755 is octal for rwxr-xr-x. Otherwise you\'ll mostly meet hex and binary.' },
+    ],
+    keywords: ['binary to decimal', 'hex converter', 'number base converter', 'decimal to binary', 'hex to decimal', '0xdeadbeef'],
+  },
+];
+
+export function getDevTool(slug: string): DevToolDef | undefined {
+  return DEV_TOOLS.find((t) => t.slug === slug);
+}

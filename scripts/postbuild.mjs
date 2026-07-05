@@ -13,6 +13,9 @@ import { SIZE_TOOLS } from '../src/data/size/index.ts';
 import { TEXT_TOOLS } from '../src/data/text/index.ts';
 import { COLOR_TOOLS } from '../src/data/color/index.ts';
 import { FILE_TOOLS } from '../src/data/file/index.ts';
+import { DEV_TOOLS } from '../src/data/dev/index.ts';
+import { GEN_TOOLS } from '../src/data/generate/index.ts';
+import { TIME_TOOLS } from '../src/data/time/index.ts';
 
 await copyFile(new URL('../dist/sitemap-index.xml', import.meta.url), new URL('../dist/sitemap.xml', import.meta.url));
 console.log('postbuild: dist/sitemap.xml created (copy of sitemap-index.xml)');
@@ -25,6 +28,9 @@ const slugs = [
   ...TEXT_TOOLS.map((t) => `text/${t.slug}`),
   ...COLOR_TOOLS.map((t) => `color/${t.slug}`),
   ...FILE_TOOLS.map((t) => `file/${t.slug}`),
+  ...DEV_TOOLS.map((t) => `dev/${t.slug}`),
+  ...GEN_TOOLS.map((t) => `generate/${t.slug}`),
+  ...TIME_TOOLS.map((t) => `time/${t.slug}`),
 ].sort();
 await writeFile(new URL('../api/tools-allowlist.json', import.meta.url), JSON.stringify(slugs, null, 2) + '\n');
 console.log(`postbuild: api/tools-allowlist.json regenerated (${slugs.length} tools)`);

@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="How Base64 works: the word Man, three 8-bit bytes, is regrouped into four 6-bit groups that become the characters TWFu; below, the three-way distinction between encoding (reversible by anyone, for compatibility), encryption (reversible with a key, for confidentiality) and hashing (irreversible, for integrity)">
+  <defs>
+    <style>
+      .h { font: 800 30px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .lab { font: 700 19px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .sub { font: 500 16px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+      .bits { font: 600 17px Consolas, Menlo, monospace; fill: #ffffff; }
+      .ch { font: 800 24px Consolas, Menlo, monospace; fill: #153056; }
+      .card-t { font: 800 20px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; }
+      .card-s { font: 500 15px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #475569; }
+    </style>
+  </defs>
+
+  <text x="600" y="44" text-anchor="middle" class="h">Base64: 3 bytes in, 4 characters out</text>
+
+  <!-- input bytes: "Man" = 3 bytes of 8 bits; three boxes 232px wide -->
+  <text x="140" y="95" class="lab">"Man" as bytes (8 bits each):</text>
+  <g transform="translate(140 108)">
+    <rect x="0" y="0" width="300" height="40" rx="8" fill="#1d87f1"/>
+    <text x="150" y="27" text-anchor="middle" class="bits">01001101</text>
+    <rect x="310" y="0" width="300" height="40" rx="8" fill="#1d87f1"/>
+    <text x="460" y="27" text-anchor="middle" class="bits">01100001</text>
+    <rect x="620" y="0" width="300" height="40" rx="8" fill="#1d87f1"/>
+    <text x="770" y="27" text-anchor="middle" class="bits">01101110</text>
+  </g>
+
+  <text x="600" y="185" text-anchor="middle" class="sub">↓ same 24 bits, regrouped 6 at a time ↓</text>
+
+  <!-- regrouped: four boxes of 6 bits -->
+  <g transform="translate(140 200)">
+    <rect x="0" y="0" width="222" height="40" rx="8" fill="#059669"/>
+    <text x="111" y="27" text-anchor="middle" class="bits">010011</text>
+    <rect x="232" y="0" width="222" height="40" rx="8" fill="#059669"/>
+    <text x="343" y="27" text-anchor="middle" class="bits">010110</text>
+    <rect x="464" y="0" width="222" height="40" rx="8" fill="#059669"/>
+    <text x="575" y="27" text-anchor="middle" class="bits">000101</text>
+    <rect x="696" y="0" width="224" height="40" rx="8" fill="#059669"/>
+    <text x="808" y="27" text-anchor="middle" class="bits">101110</text>
+  </g>
+
+  <!-- output chars -->
+  <g transform="translate(140 258)">
+    <text x="111" y="30" text-anchor="middle" class="ch">T</text>
+    <text x="343" y="30" text-anchor="middle" class="ch">W</text>
+    <text x="575" y="30" text-anchor="middle" class="ch">F</text>
+    <text x="808" y="30" text-anchor="middle" class="ch">u</text>
+  </g>
+  <text x="600" y="325" text-anchor="middle" class="sub">64 symbols × 6 bits each → output is 4/3 the size (+33%) · leftover bytes padded with =</text>
+
+  <!-- three-way comparison cards -->
+  <g transform="translate(75 370)">
+    <rect x="0" y="0" width="330" height="180" rx="16" fill="#eef9ff" stroke="#1d87f1" stroke-width="2"/>
+    <text x="165" y="40" text-anchor="middle" class="card-t" fill="#153056">ENCODING</text>
+    <text x="165" y="70" text-anchor="middle" class="card-s">Base64 · URL-encoding</text>
+    <text x="165" y="103" text-anchor="middle" class="card-s">reversible by <tspan font-weight="700">anyone</tspan></text>
+    <text x="165" y="130" text-anchor="middle" class="card-s">no key · no secrecy</text>
+    <text x="165" y="160" text-anchor="middle" class="card-t" fill="#1d87f1" font-size="17">→ compatibility</text>
+  </g>
+  <g transform="translate(435 370)">
+    <rect x="0" y="0" width="330" height="180" rx="16" fill="#f0fdf4" stroke="#059669" stroke-width="2"/>
+    <text x="165" y="40" text-anchor="middle" class="card-t" fill="#065f46">ENCRYPTION</text>
+    <text x="165" y="70" text-anchor="middle" class="card-s">AES-GCM · TLS</text>
+    <text x="165" y="103" text-anchor="middle" class="card-s">reversible <tspan font-weight="700">with the key</tspan></text>
+    <text x="165" y="130" text-anchor="middle" class="card-s">keeps content secret</text>
+    <text x="165" y="160" text-anchor="middle" class="card-t" fill="#059669" font-size="17">→ confidentiality</text>
+  </g>
+  <g transform="translate(795 370)">
+    <rect x="0" y="0" width="330" height="180" rx="16" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+    <text x="165" y="40" text-anchor="middle" class="card-t" fill="#991b1b">HASHING</text>
+    <text x="165" y="70" text-anchor="middle" class="card-s">SHA-256 · SHA-512</text>
+    <text x="165" y="103" text-anchor="middle" class="card-s"><tspan font-weight="700">irreversible</tspan> by design</text>
+    <text x="165" y="130" text-anchor="middle" class="card-s">fixed-size fingerprint</text>
+    <text x="165" y="160" text-anchor="middle" class="card-t" fill="#dc2626" font-size="17">→ integrity</text>
+  </g>
+
+  <rect x="230" y="576" width="740" height="48" rx="12" fill="#153056"/>
+  <text x="600" y="607" text-anchor="middle" font-family="Consolas, Menlo, monospace" font-size="19" font-weight="600" fill="#7ef0c0">"Base64-protected" = plaintext with extra steps</text>
+</svg>

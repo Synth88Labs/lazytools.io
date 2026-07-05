@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-label="Unix time as a number line from the 1970 epoch through 1 billion seconds in 2001 and about 1.78 billion now in 2026, to the signed 32-bit maximum 2,147,483,647 on 19 January 2038; plus the rule that 10 digits are seconds and 13 digits are milliseconds">
+  <defs>
+    <style>
+      .h { font: 800 30px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .lab { font: 700 19px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .sub { font: 500 16px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+      .num { font: 700 18px Consolas, Menlo, monospace; fill: #153056; }
+      .big { font: 800 20px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; }
+    </style>
+    <linearGradient id="tl" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#7ec8ff"/>
+      <stop offset="0.8" stop-color="#1d87f1"/>
+      <stop offset="1" stop-color="#dc2626"/>
+    </linearGradient>
+  </defs>
+
+  <text x="600" y="46" text-anchor="middle" class="h">Unix time: one number line from 1970 to the 32-bit cliff</text>
+  <text x="600" y="78" text-anchor="middle" class="sub">seconds since 00:00:00 UTC, 1 January 1970 — no timezone, no leap seconds</text>
+
+  <!-- timeline: 0 → 2.147B mapped to x 110 → 1090; x = 110 + (v/2.147e9)*980 -->
+  <rect x="110" y="150" width="980" height="26" rx="13" fill="url(#tl)"/>
+
+  <!-- epoch 0 -->
+  <line x1="110" y1="130" x2="110" y2="200" stroke="#153056" stroke-width="4"/>
+  <text x="110" y="120" text-anchor="middle" class="big" fill="#153056">0</text>
+  <text x="110" y="226" text-anchor="middle" class="lab">1 Jan 1970</text>
+  <text x="110" y="250" text-anchor="middle" class="sub">the epoch</text>
+
+  <!-- 1e9 → x = 110 + 456 = 566 -->
+  <line x1="566" y1="130" x2="566" y2="200" stroke="#1d87f1" stroke-width="4"/>
+  <text x="566" y="120" text-anchor="middle" class="num">1,000,000,000</text>
+  <text x="566" y="226" text-anchor="middle" class="lab">9 Sep 2001</text>
+
+  <!-- now 1.78e9 → x = 110 + 813 = 923 -->
+  <line x1="923" y1="130" x2="923" y2="200" stroke="#059669" stroke-width="4"/>
+  <text x="923" y="120" text-anchor="middle" class="num">≈1,780,000,000</text>
+  <text x="923" y="226" text-anchor="middle" class="lab">now (2026)</text>
+
+  <!-- 2038 max → x = 1090 -->
+  <line x1="1090" y1="130" x2="1090" y2="200" stroke="#dc2626" stroke-width="4"/>
+  <text x="1080" y="120" text-anchor="middle" class="num">2,147,483,647</text>
+  <text x="1090" y="226" text-anchor="middle" class="lab">19 Jan 2038</text>
+  <text x="1090" y="250" text-anchor="middle" class="sub">signed 32-bit max</text>
+
+  <!-- digit rule cards -->
+  <g transform="translate(120 310)">
+    <rect x="0" y="0" width="460" height="150" rx="16" fill="#eef9ff" stroke="#94a3b8" stroke-width="2"/>
+    <text x="30" y="42" class="big" fill="#153056">10 digits → seconds</text>
+    <text x="30" y="80" class="num">1783238400</text>
+    <text x="30" y="112" class="sub">shells, databases, most APIs — date +%s</text>
+  </g>
+  <g transform="translate(620 310)">
+    <rect x="0" y="0" width="460" height="150" rx="16" fill="#eef9ff" stroke="#94a3b8" stroke-width="2"/>
+    <text x="30" y="42" class="big" fill="#153056">13 digits → milliseconds</text>
+    <text x="30" y="80" class="num">1783238400000</text>
+    <text x="30" y="112" class="sub">JavaScript — Date.now(), new Date(n)</text>
+  </g>
+
+  <rect x="180" y="510" width="840" height="52" rx="12" fill="#153056"/>
+  <text x="600" y="544" text-anchor="middle" font-family="Consolas, Menlo, monospace" font-size="19" font-weight="600" fill="#7ef0c0">renders as 1970? → you passed seconds where milliseconds were expected</text>
+</svg>

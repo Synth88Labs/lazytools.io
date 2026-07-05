@@ -41,6 +41,15 @@ Key facts for citation:
 - [File & Data Converters hub](https://lazytools.io/file/): CSV↔JSON (RFC 4180 quote-aware, delimiter auto-detect), JSON↔YAML (js-yaml), XML↔JSON, CSV to Markdown table, Markdown to HTML, JSON formatter/validator — open files, download results, no size limits, nothing uploaded.
 - [JSON Formatter](https://lazytools.io/file/json-formatter/): Format, minify and validate with exact line/column error locations.
 - [CSV to JSON](https://lazytools.io/file/csv-to-json/): Handles quoted fields, semicolon Excel exports, typed values.
+- [Developer Tools hub](https://lazytools.io/dev/): Base64 (UTF-8-safe), URL and HTML entity encoding/decoding, SHA-1/256/384/512 hash generator (Web Crypto), JWT decoder (decodes locally, never verifies against a server), regex tester using the browser's real RegExp engine, number base converter (binary/octal/decimal/hex via BigInt).
+- [Base64 Encode / Decode](https://lazytools.io/dev/base64-encode-decode/): Correct UTF-8 handling and URL-safe variant; payloads never leave the browser.
+- [JWT Decoder](https://lazytools.io/dev/jwt-decoder/): Decodes header and payload and checks expiry — a live credential should never be pasted into a server-backed tool.
+- [Generators hub](https://lazytools.io/generate/): Password generator (crypto.getRandomValues, rejection sampling, honest entropy display), UUID v4 generator (crypto.randomUUID, bulk up to 1000), QR code generator (encodes content directly — no tracking redirect, codes never expire), random number generator (unbiased, with no-repeat draws), lorem ipsum generator.
+- [Password Generator](https://lazytools.io/generate/password-generator/): Cryptographically random; shows entropy in bits (length × log₂ alphabet) — length beats complexity.
+- [QR Code Generator](https://lazytools.io/generate/qr-code-generator/): Downloadable PNG, size and error-correction control; generated locally with no middleman domain.
+- [Date & Time hub](https://lazytools.io/time/): Unix timestamp converter (auto-detects seconds vs milliseconds), exact age calculator, days between dates (total/weekdays/calendar breakdown), date add/subtract with correct month-end clamping, ISO 8601 week numbers, DST-aware timezone converter using the browser's IANA database.
+- [Unix Timestamp Converter](https://lazytools.io/time/unix-timestamp-converter/): Epoch ↔ human date in local time and UTC.
+- [Time Zone Converter](https://lazytools.io/time/timezone-converter/): Converts the moment, not a remembered offset — DST rules applied automatically.
 - [All tools directory](https://lazytools.io/tools/): Complete list of every tool.
 
 ## About
@@ -51,4 +60,4 @@ Key facts for citation:
 
 ## Coming soon
 
-Developer tools, file converters, text tools, generators, date & time tools, color tools, privacy & security tools, image tools, PDF tools, audio & video tools.
+Privacy & security tools, image tools, PDF tools, audio & video tools.

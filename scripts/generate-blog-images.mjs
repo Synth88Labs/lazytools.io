@@ -146,6 +146,27 @@ const POSTS = [
     fact: 'APIs: JSON · configs: YAML · legacy: XML',
     icon: '🗂️',
   },
+  {
+    slug: 'password-entropy-guide',
+    kicker: 'PASSWORD SECURITY',
+    lines: ['How strong is a', 'password? Entropy,', 'explained honestly'],
+    fact: 'entropy = length × log₂(alphabet)',
+    icon: '🔑',
+  },
+  {
+    slug: 'unix-timestamps-guide',
+    kicker: 'TIME EXPLAINED',
+    lines: ['Unix timestamps:', 'seconds, milliseconds', '& the year 2038'],
+    fact: '10 digits = s · 13 digits = ms',
+    icon: '⏱️',
+  },
+  {
+    slug: 'base64-explained-guide',
+    kicker: 'ENCODING EXPLAINED',
+    lines: ['Base64 is not', 'encryption — what it', 'actually does'],
+    fact: '3 bytes → 4 chars (+33%)',
+    icon: '🔡',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

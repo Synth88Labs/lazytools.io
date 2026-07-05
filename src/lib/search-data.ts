@@ -8,6 +8,9 @@ import { SIZE_TOOLS } from '../data/size/index';
 import { TEXT_TOOLS } from '../data/text/index';
 import { COLOR_TOOLS } from '../data/color/index';
 import { FILE_TOOLS } from '../data/file/index';
+import { DEV_TOOLS } from '../data/dev/index';
+import { GEN_TOOLS } from '../data/generate/index';
+import { TIME_TOOLS } from '../data/time/index';
 
 export interface SearchUnit {
   id: string;
@@ -152,7 +155,19 @@ export function buildSearchPages(): SearchPage[] {
   for (const t of FILE_TOOLS) {
     pages.push({ title: t.name, url: `/file/${t.slug}/`, keywords: [...t.keywords, 'converter', t.name.toLowerCase()] });
   }
+  for (const t of DEV_TOOLS) {
+    pages.push({ title: t.name, url: `/dev/${t.slug}/`, keywords: [...t.keywords, 'developer', t.name.toLowerCase()] });
+  }
+  for (const t of GEN_TOOLS) {
+    pages.push({ title: t.name, url: `/generate/${t.slug}/`, keywords: [...t.keywords, 'generator', t.name.toLowerCase()] });
+  }
+  for (const t of TIME_TOOLS) {
+    pages.push({ title: t.name, url: `/time/${t.slug}/`, keywords: [...t.keywords, 'date', 'time', t.name.toLowerCase()] });
+  }
   pages.push(
+    { title: 'All Developer Tools', url: '/dev/', keywords: ['developer tools', 'dev', 'encode', 'decode', 'hash', 'regex'] },
+    { title: 'All Generators', url: '/generate/', keywords: ['generators', 'generate', 'password', 'uuid', 'qr code', 'random'] },
+    { title: 'All Date & Time Tools', url: '/time/', keywords: ['date', 'time', 'timestamp', 'timezone', 'age', 'calendar'] },
     { title: 'All File Converters', url: '/file/', keywords: ['file converter', 'csv', 'json', 'yaml', 'xml', 'data converter'] },
     { title: 'All Text Tools', url: '/text/', keywords: ['text tools', 'text', 'words', 'characters', 'lines'] },
     { title: 'All Color Tools', url: '/color/', keywords: ['color tools', 'color', 'hex', 'rgb', 'contrast'] },

@@ -1,0 +1,74 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PrivacyStrip from '../../components/PrivacyStrip.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { GEN_TOOLS } from '../../data/generate/index';
+import { breadcrumbSchema, collectionPageSchema, faqSchema } from '../../lib/schema';
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Generators', url: '/generate/' },
+];
+
+const faqs = [
+  {
+    q: 'Why does it matter that generators run client-side?',
+    a: 'Because generated output is often a secret from the moment it exists: a password, an API identifier, a QR code pointing at a private link. A server-backed generator has seen every one it ever produced. These run on your device — the output exists only in your browser\'s memory until you copy it.',
+  },
+  {
+    q: 'Is the randomness actually secure?',
+    a: 'The password, UUID and random-number tools use crypto.getRandomValues and crypto.randomUUID — the browser\'s cryptographically secure random source, the same one TLS uses — with rejection sampling to avoid modulo bias. None of them touch Math.random().',
+  },
+  {
+    q: 'Do the QR codes expire?',
+    a: 'No. Many "free" QR services encode a redirect through their own domain so they can track scans — and the code dies if their service does. Ours encodes your content directly, so the code works forever and nobody counts the scans.',
+  },
+];
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  collectionPageSchema({
+    name: 'Free Generators',
+    url: '/generate/',
+    description: 'Password, UUID, QR code, random number and lorem ipsum generators — cryptographically random where it matters, all running locally in your browser.',
+    items: GEN_TOOLS.map((t) => ({ name: t.name, url: `/generate/${t.slug}/` })),
+  }),
+  faqSchema(faqs),
+];
+---
+
+<Base
+  title="Generators — Passwords, UUIDs, QR Codes | LazyTools"
+  description={`${GEN_TOOLS.length} free generators: strong passwords, UUID v4, QR codes without tracking redirects, unbiased random numbers, lorem ipsum. Everything generated on your device.`}
+  schema={schema}
+>
+  <div class="mx-auto max-w-5xl px-4 py-6">
+    <Breadcrumbs items={crumbs} />
+
+    <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Generators</h1>
+    <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
+      Passwords, UUIDs, QR codes, random numbers and placeholder text — generated with the
+      browser's cryptographic randomness where it matters, on your device. A password a server
+      generated is a password a server has seen; here, nothing leaves your browser.
+    </p>
+
+    <div class="mt-5">
+      <PrivacyStrip />
+    </div>
+
+    <ul class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {GEN_TOOLS.map((t) => (
+        <li>
+          <a href={`/generate/${t.slug}/`} class="flex h-full flex-col rounded-xl border border-slate-200 p-4 transition hover:border-brand-400 hover:shadow-sm">
+            <span class="text-2xl" aria-hidden="true">{t.icon}</span>
+            <span class="mt-2 font-semibold text-slate-900">{t.name}</span>
+            <span class="mt-1 text-sm text-slate-600">{t.lead.split('—')[0]}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <FaqSection faqs={faqs} />
+  </div>
+</Base>

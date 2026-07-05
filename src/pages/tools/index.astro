@@ -8,6 +8,9 @@ import { SIZE_TOOLS } from '../../data/size/index';
 import { TEXT_TOOLS } from '../../data/text/index';
 import { COLOR_TOOLS } from '../../data/color/index';
 import { FILE_TOOLS } from '../../data/file/index';
+import { DEV_TOOLS } from '../../data/dev/index';
+import { GEN_TOOLS } from '../../data/generate/index';
+import { TIME_TOOLS } from '../../data/time/index';
 import { breadcrumbSchema, collectionPageSchema } from '../../lib/schema';
 
 const crumbs = [
@@ -32,6 +35,9 @@ const schema = [
       ...TEXT_TOOLS.map((t) => ({ name: t.name, url: `/text/${t.slug}/` })),
       ...COLOR_TOOLS.map((t) => ({ name: t.name, url: `/color/${t.slug}/` })),
       ...FILE_TOOLS.map((t) => ({ name: t.name, url: `/file/${t.slug}/` })),
+      ...DEV_TOOLS.map((t) => ({ name: t.name, url: `/dev/${t.slug}/` })),
+      ...GEN_TOOLS.map((t) => ({ name: t.name, url: `/generate/${t.slug}/` })),
+      ...TIME_TOOLS.map((t) => ({ name: t.name, url: `/time/${t.slug}/` })),
     ],
   }),
 ];
@@ -141,6 +147,45 @@ const schema = [
         {FILE_TOOLS.map((t) => (
           <li>
             <a href={`/file/${t.slug}/`} class="inline-block rounded-full border border-slate-200 px-3 py-1 text-sm text-slate-600 transition hover:border-brand-400 hover:text-brand-700">
+              {t.icon} {t.name}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-bold text-slate-900">👨‍💻 Developer Tools</h2>
+      <ul class="mt-4 flex flex-wrap gap-2">
+        {DEV_TOOLS.map((t) => (
+          <li>
+            <a href={`/dev/${t.slug}/`} class="inline-block rounded-full border border-slate-200 px-3 py-1 text-sm text-slate-600 transition hover:border-brand-400 hover:text-brand-700">
+              {t.icon} {t.name}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-bold text-slate-900">✨ Generators</h2>
+      <ul class="mt-4 flex flex-wrap gap-2">
+        {GEN_TOOLS.map((t) => (
+          <li>
+            <a href={`/generate/${t.slug}/`} class="inline-block rounded-full border border-slate-200 px-3 py-1 text-sm text-slate-600 transition hover:border-brand-400 hover:text-brand-700">
+              {t.icon} {t.name}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-bold text-slate-900">📅 Date & Time Tools</h2>
+      <ul class="mt-4 flex flex-wrap gap-2">
+        {TIME_TOOLS.map((t) => (
+          <li>
+            <a href={`/time/${t.slug}/`} class="inline-block rounded-full border border-slate-200 px-3 py-1 text-sm text-slate-600 transition hover:border-brand-400 hover:text-brand-700">
               {t.icon} {t.name}
             </a>
           </li>
