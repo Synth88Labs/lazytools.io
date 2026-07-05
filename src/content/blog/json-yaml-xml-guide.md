@@ -55,6 +55,9 @@ when converting.
 <figcaption>One config, three dialects — pick by who reads it most: machines, humans, or 2004.</figcaption>
 </figure>
 
+The formats' own specifications live at [json.org](https://www.json.org/),
+[yaml.org](https://yaml.org/spec/) and the [W3C XML recommendation](https://www.w3.org/TR/xml/):
+
 | | JSON | YAML | XML |
 |---|---|---|---|
 | Born | 2001 (Crockford) | 2001 | 1998 (W3C) |

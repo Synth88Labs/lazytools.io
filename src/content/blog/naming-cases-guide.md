@@ -71,8 +71,9 @@ These aren't arbitrary tastes — each convention solves a local problem:
 
 - **JavaScript/Java (camelCase):** inherited from Smalltalk-era style; the lowercase start visually
   separates variables from PascalCase classes at a glance.
-- **Python (snake_case):** PEP 8 chose underscores for readability — `user_login_count` parses faster
-  for humans than `userLoginCount`, and Python's culture prizes readability above brevity.
+- **Python (snake_case):** [PEP 8](https://peps.python.org/pep-0008/), Python's official style guide,
+  chose underscores for readability — `user_login_count` parses faster for humans than
+  `userLoginCount`, and Python's culture prizes readability above brevity.
 - **CSS/HTML (kebab-case):** HTML is case-insensitive, so `fontSize` and `fontsize` collide — hyphens
   sidestep the problem entirely, which is why CSS properties (`font-size`) and ARIA attributes
   (`aria-label`) are hyphenated.
@@ -80,9 +81,10 @@ These aren't arbitrary tastes — each convention solves a local problem:
   distinctions; underscores survive.
 - **Constants (CONSTANT_CASE):** the all-caps shout is a warning label — "this value never changes."
 
-The one **hard rule with SEO consequences** sits in URLs: Google's documentation has long recommended
-hyphens over underscores in URLs because hyphens are treated as word separators while underscores can
-join words. `/my-blue-widget/` reads as three words; `/my_blue_widget/` may read as one. That's why the
+The one **hard rule with SEO consequences** sits in URLs:
+[Google's URL-structure documentation](https://developers.google.com/search/docs/crawling-indexing/url-structure)
+recommends hyphens over underscores because hyphens are treated as word separators while underscores
+can join words. `/my-blue-widget/` reads as three words; `/my_blue_widget/` may read as one. That's why the
 [slug generator](/text/slug-generator/) defaults to hyphens.
 
 ## Converting between cases (without retyping)

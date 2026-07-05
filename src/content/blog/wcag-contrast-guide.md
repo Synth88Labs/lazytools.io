@@ -132,4 +132,5 @@ abandoning your brand.
 
 *Related tools: [shades & tints generator](/color/color-shades-generator/) ·
 [color converter](/color/color-converter/) · [HEX to RGB](/color/hex-to-rgb/). Formula and thresholds
-are from WCAG 2.1 (W3C Recommendation) — the checker implements them exactly.*
+are from [WCAG 2.1 (W3C Recommendation)](https://www.w3.org/TR/WCAG21/) — the checker implements
+them exactly.*

@@ -87,7 +87,8 @@ melting-ice temperature. From 1889 to 2019 it was literally a physical object �
 cylinder "Le Grand K" in a vault near Paris — the last SI unit defined by an artifact. Copies drifted
 from the original by tens of micrograms over a century, so on **May 20, 2019** the kilogram was
 redefined by fixing the Planck constant (h = 6.62607015 × 10⁻³⁴ J·s), making it derivable from the laws
-of physics anywhere in the universe.
+of physics anywhere in the universe (the definitions live in the
+[BIPM SI Brochure](https://www.bipm.org/en/publications/si-brochure), the SI's authoritative text).
 
 <div class="callout cite">
 <p><span class="co-label">📌 Citable fact</span> Since 1959, 1 avoirdupois pound = 0.45359237 kg exactly; since 2019, the kilogram itself is defined via the Planck constant rather than a physical object. Both definitions are exact — the kg↔lb conversion carries zero measurement uncertainty.</p>

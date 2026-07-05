@@ -164,9 +164,10 @@ you subtract two temperatures).
 | 40.0 | 104.0 | medical attention |
 | 35.0 and below | 95.0 and below | hypothermia — emergency |
 
-The famous 98.6 °F "normal" traces to Carl Wunderlich's 1868 survey of 25,000 patients. A 2020 Stanford
-study found the modern average is closer to **36.6 °C / 97.9 °F** — humans have cooled slightly over
-150 years (likely reduced chronic inflammation). Practical upshot: a reading below 98.6 isn't "low";
+The famous 98.6 °F "normal" traces to Carl Wunderlich's 1868 survey of 25,000 patients. A
+[2020 Stanford study published in eLife](https://elifesciences.org/articles/49555) found the modern
+average is closer to **36.6 °C / 97.9 °F** — humans have cooled slightly over 150 years (likely
+reduced chronic inflammation). Practical upshot: a reading below 98.6 isn't "low";
 the line that matters is 38.0 °C / 100.4 °F. Also note thermometer sites differ: ear and rectal read
 ~0.3–0.6 °C higher than oral; forehead strips read lower.
 

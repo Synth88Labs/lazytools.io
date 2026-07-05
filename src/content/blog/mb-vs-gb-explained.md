@@ -89,7 +89,8 @@ The decimal ladder, with what each magnitude actually holds:
 | quettabyte (QB) | 10³⁰ | the current largest named unit |
 
 The binary ladder mirrors it with 1,024 steps: KiB, MiB, GiB, TiB, PiB (pebibyte), EiB (exbibyte), ZiB,
-YiB. The -bi- names ("kibibyte") come from **IEC 60027-2 (1998)**, later folded into ISO/IEC 80000-13 —
+YiB. The -bi- names ("kibibyte") come from **IEC 60027-2 (1998)**, later folded into ISO/IEC 80000-13
+([NIST's binary-prefix reference](https://physics.nist.gov/cuu/Units/binary.html) documents them) —
 created specifically to end the two-meanings-of-kilobyte ambiguity.
 
 ## Where did 1,024 come from?

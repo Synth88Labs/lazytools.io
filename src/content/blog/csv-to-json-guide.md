@@ -50,8 +50,9 @@ with delimiter auto-detect and typed output, entirely in your browser.
 
 ## How the conversion actually works
 
-CSV looks trivial — values separated by commas — but real CSV follows the **RFC 4180** conventions,
-and naive `split(",")` code breaks on the first quoted field:
+CSV looks trivial — values separated by commas — but real CSV follows the
+[**RFC 4180**](https://www.rfc-editor.org/rfc/rfc4180) conventions, and naive `split(",")` code
+breaks on the first quoted field:
 
 <figure>
 <img src="/blog/infographic-csv-anatomy.svg" alt="Infographic: a CSV row converting to JSON — the header row name,role,active becomes the JSON keys; the quoted field 'Doe, Jane' stays one value because the comma inside quotes is data per RFC 4180; and the value true stays a boolean rather than the string 'true'" width="1200" height="620" loading="lazy" />

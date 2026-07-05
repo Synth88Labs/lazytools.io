@@ -76,7 +76,8 @@ if (post.data.faqs.length > 0) schema.push(faqSchema(post.data.faqs));
       <p class="text-xs font-semibold uppercase tracking-wide text-brand-700">{post.data.archetype}</p>
       <h1 class="mt-1 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">{post.data.title}</h1>
       <p class="mt-3 text-sm text-slate-500">
-        Published {dateFmt(post.data.pubDate)}
+        By <a href="/about/" class="font-medium text-slate-700 underline decoration-slate-300 underline-offset-2 hover:text-brand-700">the LazyTools team</a>
+        · Published {dateFmt(post.data.pubDate)}
         {post.data.updatedDate && <> · Updated {dateFmt(post.data.updatedDate)}</>}
         · {readingMinutes} min read
         {post.data.draft && (
