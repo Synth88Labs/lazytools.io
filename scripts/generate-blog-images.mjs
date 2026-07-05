@@ -76,6 +76,27 @@ const POSTS = [
     fact: '34DD = EU 75E · sister: 36D',
     icon: '🩱',
   },
+  {
+    slug: 'clothing-size-guide',
+    kicker: 'SIZING EXPLAINED',
+    lines: ['Dress sizes: US, UK,', 'EU, IT & why vanity', 'sizing broke them'],
+    fact: 'US 8 = UK 12 = EU 38 = IT 44',
+    icon: '👗',
+  },
+  {
+    slug: 'kids-shoe-size-guide',
+    kicker: 'PARENTS GUIDE',
+    lines: ['Kids shoe sizes by', 'age — and the 13C', 'to 1Y mystery'],
+    fact: '1Y is BIGGER than 13.5C',
+    icon: '👶',
+  },
+  {
+    slug: 'hat-size-guide',
+    kicker: 'SIZING EXPLAINED',
+    lines: ['Hat sizes decoded:', 'your head diameter,', 'in eighths of an inch'],
+    fact: 'fitted size = inches ÷ π · 57 cm = 7⅛',
+    icon: '🎩',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

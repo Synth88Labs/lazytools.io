@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-label="Hat sizing explained: measure head circumference above the ears, divide inches by pi to get the fitted size — 57 cm equals 22.4 inches equals size 7 1/8, a medium">
+  <defs>
+    <linearGradient id="hat" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3fa9fd"/>
+      <stop offset="1" stop-color="#1465cf"/>
+    </linearGradient>
+    <style>
+      .h { font: 800 30px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .lab { font: 700 21px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .sub { font: 500 17px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+      .chip { font: 800 24px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #ffffff; }
+      .sys { font: 700 15px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #d9f1ff; letter-spacing: 1px; }
+    </style>
+  </defs>
+
+  <text x="600" y="46" text-anchor="middle" class="h">A hat size is your head's diameter — in eighths of an inch</text>
+
+  <!-- head with tape line -->
+  <g transform="translate(150 90)">
+    <!-- head -->
+    <ellipse cx="130" cy="150" rx="105" ry="125" fill="#fde8d7"/>
+    <!-- hair hint -->
+    <path d="M 25 130 Q 40 10 130 22 Q 220 10 235 130 Q 220 70 130 64 Q 40 70 25 130 Z" fill="#8b5e3c"/>
+    <!-- ear -->
+    <ellipse cx="32" cy="170" rx="14" ry="24" fill="#f6cba7"/>
+    <ellipse cx="228" cy="170" rx="14" ry="24" fill="#f6cba7"/>
+    <!-- eyes/smile -->
+    <circle cx="95" cy="165" r="7" fill="#153056"/>
+    <circle cx="165" cy="165" r="7" fill="#153056"/>
+    <path d="M 100 215 Q 130 235 160 215" fill="none" stroke="#153056" stroke-width="6" stroke-linecap="round"/>
+    <!-- measuring tape band above ears -->
+    <path d="M 22 132 Q 130 96 238 132" fill="none" stroke="#059669" stroke-width="14" stroke-linecap="round"/>
+    <path d="M 22 132 Q 130 96 238 132" fill="none" stroke="#7ef0c0" stroke-width="4" stroke-dasharray="2 10"/>
+    <text x="130" y="310" text-anchor="middle" class="lab">measure here: mid-forehead,</text>
+    <text x="130" y="336" text-anchor="middle" class="lab">above the ears, widest back point</text>
+  </g>
+
+  <!-- the math -->
+  <g transform="translate(520 130)">
+    <rect x="0" y="0" width="560" height="200" rx="20" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/>
+    <text x="280" y="48" text-anchor="middle" class="lab">the fitted-size formula</text>
+    <text x="280" y="105" text-anchor="middle" font-family="Consolas, Menlo, monospace" font-size="30" font-weight="700" fill="#166fde">22.4 in ÷ π = 7.125</text>
+    <text x="280" y="150" text-anchor="middle" class="sub">circumference in inches ÷ 3.1416 = fitted size (in eighths)</text>
+    <text x="280" y="180" text-anchor="middle" class="sub">57 cm = 22.4 in → size 7⅛</text>
+  </g>
+
+  <!-- result chips -->
+  <g transform="translate(520 370)">
+    <rect x="0" y="0" width="130" height="66" rx="14" fill="url(#hat)"/>
+    <text x="65" y="26" text-anchor="middle" class="sys">HEAD</text>
+    <text x="65" y="52" text-anchor="middle" class="chip">57 cm</text>
+    <rect x="144" y="0" width="130" height="66" rx="14" fill="#185ab4"/>
+    <text x="209" y="26" text-anchor="middle" class="sys">US FITTED</text>
+    <text x="209" y="52" text-anchor="middle" class="chip">7⅛</text>
+    <rect x="288" y="0" width="130" height="66" rx="14" fill="#0d9488"/>
+    <text x="353" y="26" text-anchor="middle" class="sys">UK FITTED</text>
+    <text x="353" y="52" text-anchor="middle" class="chip">7</text>
+    <rect x="432" y="0" width="130" height="66" rx="14" fill="#059669"/>
+    <text x="497" y="26" text-anchor="middle" class="sys">LETTER</text>
+    <text x="497" y="52" text-anchor="middle" class="chip">M</text>
+  </g>
+
+  <!-- footer -->
+  <rect x="180" y="500" width="840" height="52" rx="12" fill="#153056"/>
+  <text x="600" y="534" text-anchor="middle" font-family="Consolas, Menlo, monospace" font-size="21" font-weight="600" fill="#7ef0c0">UK fitted = US − ⅛ · between sizes? choose the larger — hats shrink, heads don't</text>
+</svg>

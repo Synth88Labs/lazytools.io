@@ -8,10 +8,16 @@ import RatingWidget from '../../components/RatingWidget.tsx';
 import RingSizeTool from '../../components/size/RingSizeTool.tsx';
 import ShoeSizeTool from '../../components/size/ShoeSizeTool.tsx';
 import BraSizeTool from '../../components/size/BraSizeTool.tsx';
+import DressSizeTool from '../../components/size/DressSizeTool.tsx';
+import KidsShoeSizeTool from '../../components/size/KidsShoeSizeTool.tsx';
+import HatSizeTool from '../../components/size/HatSizeTool.tsx';
 import { SIZE_TOOLS, type SizeToolDef } from '../../data/size/index';
 import { RING_ROWS } from '../../data/size/ring';
 import { SHOE_MEN, SHOE_WOMEN } from '../../data/size/shoe';
 import { BANDS, CUPS } from '../../data/size/bra';
+import { DRESS_ROWS } from '../../data/size/dress';
+import { KIDS_SHOE_ROWS } from '../../data/size/kids-shoe';
+import { HAT_ROWS } from '../../data/size/hat';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
 
@@ -69,6 +75,9 @@ const schema = [
       {slug === 'ring-size-converter' && <RingSizeTool client:load />}
       {slug === 'shoe-size-converter' && <ShoeSizeTool client:load />}
       {slug === 'bra-size-converter' && <BraSizeTool client:load />}
+      {slug === 'clothing-size-converter' && <DressSizeTool client:load />}
+      {slug === 'kids-shoe-size-converter' && <KidsShoeSizeTool client:load />}
+      {slug === 'hat-size-converter' && <HatSizeTool client:load />}
     </div>
 
     <div class="mt-4">
@@ -125,6 +134,45 @@ const schema = [
             <tbody>
               {SHOE_WOMEN.map((r) => (
                 <tr><td>{r.us}</td><td>{r.uk}</td><td>{r.eu}</td><td>{r.cm}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </>
+      )}
+      {slug === 'clothing-size-converter' && (
+        <>
+          <h2>Women's clothing size chart</h2>
+          <table>
+            <thead><tr><th>US</th><th>UK / AU</th><th>EU / DE</th><th>FR / ES</th><th>IT</th><th>JP</th><th>Letter</th></tr></thead>
+            <tbody>
+              {DRESS_ROWS.map((r) => (
+                <tr><td>{r.us}</td><td>{r.uk}</td><td>{r.eu}</td><td>{r.fr}</td><td>{r.it}</td><td>{r.jp}</td><td>{r.letter}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </>
+      )}
+      {slug === 'kids-shoe-size-converter' && (
+        <>
+          <h2>Kids' shoe size chart (US · UK · EU · cm · age)</h2>
+          <table>
+            <thead><tr><th>US</th><th>UK</th><th>EU</th><th>Foot (cm)</th><th>Typical age</th><th>Group</th></tr></thead>
+            <tbody>
+              {KIDS_SHOE_ROWS.map((r) => (
+                <tr><td>{r.us}</td><td>{r.uk}</td><td>{r.eu}</td><td>{r.cm}</td><td>{r.age}</td><td>{r.group}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </>
+      )}
+      {slug === 'hat-size-converter' && (
+        <>
+          <h2>Hat size chart</h2>
+          <table>
+            <thead><tr><th>Head (cm)</th><th>Head (in)</th><th>US fitted</th><th>UK fitted</th><th>Letter</th></tr></thead>
+            <tbody>
+              {HAT_ROWS.map((r) => (
+                <tr><td>{r.cm}</td><td>{r.inches}</td><td>{r.us}</td><td>{r.uk}</td><td>{r.letter}</td></tr>
               ))}
             </tbody>
           </table>

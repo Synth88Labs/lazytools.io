@@ -121,6 +121,114 @@ export const SIZE_TOOLS: SizeToolDef[] = [
   },
 ];
 
+SIZE_TOOLS.push(
+  {
+    slug: 'clothing-size-converter',
+    name: 'Clothing Size Converter (Women)',
+    icon: '👗',
+    description:
+      "Convert women's clothing and dress sizes between US, UK, EU, FR, IT, AU and JP — with letter sizes. Standard chart plus vanity-sizing guidance; runs in your browser.",
+    lead: 'A US 8 dress is a UK 12, an EU 38, a FR 40, an IT 44 and a JP 13 — six labels for one garment.',
+    measureSteps: [
+      'Know one size in any system — US, UK, EU, FR, IT, AU or JP — and select it in the converter.',
+      'For fitted garments, check the brand’s own measurements chart too: bust, waist and hip in cm beat any size number.',
+      'Between sizes or shopping a slim-cut label? Size up — returns cost more than room.',
+      'Letter sizes (S/M/L) are the loosest mapping of all: verify against the numeric size when it matters.',
+    ],
+    note:
+      'The conversions follow fixed offsets — UK = US + 4, EU = US + 30, FR = US + 32, IT = US + 36, JP = US + 5 — but "vanity sizing" has shifted real garments over the decades: a 1970s US 12 is close to a modern US 6. Brands also deliberately cut generous or slim. The chart gets you to the right rack; the garment measurements confirm the fit.',
+    faqs: [
+      {
+        q: 'What is a US size 8 in European sizes?',
+        a: 'EU/DE 38, FR/ES 40 and IT 44 — European countries use different scales, which trips up shoppers who expect one "EU size". In the UK and Australia it is a 12, in Japan a 13.',
+      },
+      {
+        q: 'Why do France, Italy and Germany all differ?',
+        a: 'Each national system evolved from different base measurements: Italian numbers run ~6 above French, which run ~2 above German/EU. The converter maps all three from any starting point.',
+      },
+      {
+        q: 'What is vanity sizing?',
+        a: 'The decades-long drift of size labels downward: as average bodies grew, brands relabeled larger garments with smaller numbers to flatter shoppers. A modern US 8 fits a body that would have worn a US 12–14 in the 1970s — and it is why two same-size garments from different brands fit differently.',
+      },
+      {
+        q: 'Is an S/M/L size reliable across brands?',
+        a: 'Least reliable of all: "M" commonly spans US 8–10 at one brand and US 6–8 at another. Use the numeric size where available, and garment measurements for anything fitted.',
+      },
+    ],
+    keywords: ['clothing size converter', 'dress size conversion', 'us to eu dress size', 'us to uk size', 'international clothing sizes', 'women size chart'],
+  },
+  {
+    slug: 'kids-shoe-size-converter',
+    name: "Kids' Shoe Size Converter",
+    icon: '👶',
+    description:
+      "Convert children's shoe sizes between US (C/Y), UK, EU and foot length in cm — with typical ages from baby to big kid. Measure-and-fit guidance included.",
+    lead: "Kids' US sizes run 0C–13.5C then restart at 1Y–7Y — a US 10C is a UK 9, an EU 27, and fits a ~16.5 cm foot (age 3.5–4.5, typically).",
+    measureSteps: [
+      'Stand the child on paper against a wall (heel touching), mark the longest toe, and measure in cm — afternoon is best, feet swell during the day.',
+      'Measure both feet and use the larger; add about 0.8 cm (a thumb’s width) of growing room.',
+      'Enter the centimeters in the converter — it finds the nearest size with the typical age as a cross-check.',
+      'Re-measure every 2–3 months under age 4, every 4–6 months after: small feet can grow half a size per season.',
+    ],
+    note:
+      'The "C" (child) scale runs to 13.5C, then the "Y" (youth) scale restarts at 1Y — so a 1Y is BIGGER than a 13C, the single most confusing thing about US kids\' sizing. UK kids\' sizes run one below US; EU sizes just keep counting up the adult scale. Ages on any chart are population averages: two healthy four-year-olds can be three sizes apart, which is why the centimeter measurement always wins.',
+    faqs: [
+      {
+        q: "Why do US kids' sizes go 13C and then 1Y?",
+        a: 'The child scale (C) ends at 13.5C and the youth scale (Y) restarts at 1 — a leftover from the old barleycorn system. 1Y is one step LARGER than 13.5C, not smaller. Youth sizes continue to 7Y, which overlaps adult women\'s ~8.5.',
+      },
+      {
+        q: 'What size shoe for a 2-year-old?',
+        a: 'Typically US 6C–8C (EU 22–25, foot 13–14.6 cm) — but the range is wide. Measure the foot in cm and add 0.8 cm of room rather than buying by age.',
+      },
+      {
+        q: 'How much growing room should kids\' shoes have?',
+        a: 'About 0.8 cm (a thumb\'s width) beyond the longest toe — enough for months of growth without being sloppy. More than ~1.5 cm causes tripping and poor gait.',
+      },
+      {
+        q: 'Do youth sizes convert to women\'s sizes?',
+        a: 'Yes — women\'s US size ≈ youth size + 1.5. A 5Y is roughly a women\'s 6.5, which is why big-kid sneakers are a known budget trick for smaller women\'s feet.',
+      },
+    ],
+    keywords: ['kids shoe size converter', 'children shoe size chart', 'toddler shoe size by age', 'youth shoe sizes', 'kids shoe size cm', '1y vs 13c'],
+  },
+  {
+    slug: 'hat-size-converter',
+    name: 'Hat Size Converter',
+    icon: '🎩',
+    description:
+      'Convert hat sizes between head circumference (cm/inches), US and UK fitted sizes and S–XXL letters. Fitted size ≈ head circumference in inches ÷ π.',
+    lead: 'A 57 cm head wears a US 7⅛ fitted hat (UK 7) — a size M — because fitted sizes are simply the head’s diameter in inches.',
+    measureSteps: [
+      'Wrap a soft tape (or string, then a ruler) around the head where a hat sits: mid-forehead, above the ears, around the widest back point.',
+      'Keep it comfortably snug — one finger should slip beneath the tape.',
+      'Read the circumference in cm or inches and enter it — the converter returns fitted and letter sizes.',
+      'Between sizes? Choose the larger: hats shrink slightly with wear and weather; heads don’t.',
+    ],
+    note:
+      'The old-school "fitted" number is elegant: it\'s the head circumference in inches divided by π — effectively the diameter of your head — quoted in eighths. That\'s why a 22" head (56 cm) wears a size 7 (22 ÷ 3.1416 ≈ 7.0). UK fitted sizes run exactly ⅛ smaller than US for the same head, an artifact of different measuring conventions between hatmakers.',
+    faqs: [
+      {
+        q: 'How do I measure my head for a hat?',
+        a: 'Tape around mid-forehead, above the ears and the widest point at the back, comfortably snug. Average adult heads run 54–58 cm (21¼–22¾ in); read the fitted size straight from the converter.',
+      },
+      {
+        q: 'What do fitted hat sizes like 7¼ mean?',
+        a: 'Head circumference in inches divided by π — the diameter, in eighths of an inch. 7¼ ≈ 22.8 in ≈ 58 cm circumference. Baseball fitted caps (New Era 59FIFTY) use exactly this scale.',
+      },
+      {
+        q: 'What hat size is a size M?',
+        a: 'Commonly 56–57 cm (US fitted 7–7⅛). Letters vary slightly by maker: S ≈ 54–55, M ≈ 56–57, L ≈ 58–59, XL ≈ 60–61 cm.',
+      },
+      {
+        q: 'Are UK and US hat sizes the same?',
+        a: 'Nearly — UK fitted sizes run ⅛ smaller than US for the same head (US 7⅛ = UK 7). Continental sizing skips the arithmetic and just uses centimeters.',
+      },
+    ],
+    keywords: ['hat size converter', 'hat size chart', 'measure head for hat', 'fitted hat sizes', '7 1/4 hat size in cm', 'us to uk hat size'],
+  }
+);
+
 export function getSizeTool(slug: string): SizeToolDef | undefined {
   return SIZE_TOOLS.find((t) => t.slug === slug);
 }

@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-label="One dress, six labels: US 8 equals UK 12, EU 38, FR 40, IT 44 and JP 13 — plus the vanity sizing drift since the 1970s">
+  <defs>
+    <linearGradient id="dress" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3fa9fd"/>
+      <stop offset="1" stop-color="#1465cf"/>
+    </linearGradient>
+    <style>
+      .h { font: 800 30px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .tag { font: 800 24px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #ffffff; }
+      .sys { font: 700 16px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #d9f1ff; letter-spacing: 1px; }
+      .sub { font: 500 18px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+      .lead { stroke: #cbd5e1; stroke-width: 2; stroke-dasharray: 5 5; }
+    </style>
+  </defs>
+
+  <text x="600" y="46" text-anchor="middle" class="h">One garment, six labels</text>
+
+  <!-- dress silhouette center-left -->
+  <g transform="translate(230 90)">
+    <path d="M 90 0 L 130 0 L 138 34 Q 160 50 152 86 L 196 300 Q 110 336 24 300 L 68 86 Q 60 50 82 34 Z" fill="url(#dress)"/>
+    <circle cx="110" cy="-10" r="4" fill="#94a3b8"/>
+    <!-- hanger hook -->
+    <path d="M 110 -34 q 14 -2 12 12" fill="none" stroke="#94a3b8" stroke-width="4" stroke-linecap="round"/>
+    <line x1="30" y1="-22" x2="190" y2="-22" stroke="#94a3b8" stroke-width="4" stroke-linecap="round"/>
+    <line x1="30" y1="-22" x2="110" y2="-34" stroke="#94a3b8" stroke-width="4" stroke-linecap="round"/>
+    <line x1="190" y1="-22" x2="110" y2="-34" stroke="#94a3b8" stroke-width="4" stroke-linecap="round"/>
+  </g>
+
+  <!-- label chips right, connected -->
+  <g>
+    <line x1="470" y1="180" x2="620" y2="130" class="lead"/>
+    <rect x="620" y="102" width="160" height="56" rx="14" fill="#1d87f1"/>
+    <text x="700" y="126" text-anchor="middle" class="sys">US</text>
+    <text x="700" y="150" text-anchor="middle" class="tag">8</text>
+
+    <line x1="480" y1="230" x2="810" y2="130" class="lead"/>
+    <rect x="810" y="102" width="160" height="56" rx="14" fill="#185ab4"/>
+    <text x="890" y="126" text-anchor="middle" class="sys">UK / AU</text>
+    <text x="890" y="150" text-anchor="middle" class="tag">12</text>
+
+    <line x1="485" y1="280" x2="620" y2="220" class="lead"/>
+    <rect x="620" y="192" width="160" height="56" rx="14" fill="#059669"/>
+    <text x="700" y="216" text-anchor="middle" class="sys">EU / DE</text>
+    <text x="700" y="240" text-anchor="middle" class="tag">38</text>
+
+    <line x1="485" y1="320" x2="810" y2="220" class="lead"/>
+    <rect x="810" y="192" width="160" height="56" rx="14" fill="#0d9488"/>
+    <text x="890" y="216" text-anchor="middle" class="sys">FR / ES</text>
+    <text x="890" y="240" text-anchor="middle" class="tag">40</text>
+
+    <line x1="480" y1="360" x2="620" y2="310" class="lead"/>
+    <rect x="620" y="282" width="160" height="56" rx="14" fill="#b45309"/>
+    <text x="700" y="306" text-anchor="middle" class="sys">IT</text>
+    <text x="700" y="330" text-anchor="middle" class="tag">44</text>
+
+    <line x1="470" y1="390" x2="810" y2="310" class="lead"/>
+    <rect x="810" y="282" width="160" height="56" rx="14" fill="#7c3aed"/>
+    <text x="890" y="306" text-anchor="middle" class="sys">JP</text>
+    <text x="890" y="330" text-anchor="middle" class="tag">13</text>
+  </g>
+
+  <text x="795" y="392" text-anchor="middle" class="sub">fixed offsets: UK = US + 4 · EU = US + 30 · FR = US + 32 · IT = US + 36 · JP = US + 5</text>
+
+  <!-- vanity sizing strip -->
+  <rect x="120" y="440" width="960" height="86" rx="16" fill="#fffbeb" stroke="#fcd34d" stroke-width="2"/>
+  <text x="600" y="476" text-anchor="middle" font-family="'Plus Jakarta Sans','Segoe UI',Arial,sans-serif" font-size="21" font-weight="800" fill="#92400e">Vanity sizing: the same body wore a US 12 in 1975 and wears a US 6–8 today</text>
+  <text x="600" y="506" text-anchor="middle" font-family="'Plus Jakarta Sans','Segoe UI',Arial,sans-serif" font-size="17" fill="#a16207">labels drifted down as bodies grew — garment measurements in cm are the only stable truth</text>
+
+  <rect x="240" y="552" width="720" height="48" rx="12" fill="#153056"/>
+  <text x="600" y="584" text-anchor="middle" font-family="Consolas, Menlo, monospace" font-size="21" font-weight="600" fill="#7ef0c0">US 8 = UK 12 = EU 38 = FR 40 = IT 44 = JP 13 = "M"</text>
+</svg>

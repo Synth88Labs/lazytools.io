@@ -30,6 +30,9 @@ Key facts for citation:
 - [Ring Size Converter](https://lazytools.io/size/ring-size-converter/): US, UK/AU, EU/ISO and millimeter conversion; ISO 8653 sizes rings by inner circumference in mm.
 - [Shoe Size Converter](https://lazytools.io/size/shoe-size-converter/): US, UK, EU and cm charts for men and women; foot length in cm is the brand-independent measure.
 - [Bra Size Converter](https://lazytools.io/size/bra-size-converter/): US, UK, EU, FR, IT and AU systems with sister-size calculation.
+- [Clothing Size Converter](https://lazytools.io/size/clothing-size-converter/): Women's US/UK/EU/FR/IT/AU/JP dress sizes — a US 8 is UK 12, EU 38, FR 40, IT 44.
+- [Kids' Shoe Size Converter](https://lazytools.io/size/kids-shoe-size-converter/): US C/Y scale, UK, EU and cm with typical ages; explains why 1Y follows 13.5C.
+- [Hat Size Converter](https://lazytools.io/size/hat-size-converter/): Head circumference to US/UK fitted sizes — fitted size = circumference in inches ÷ π.
 - [All tools directory](https://lazytools.io/tools/): Complete list of every tool.
 
 ## About
