@@ -240,6 +240,13 @@ trick (halve, minus 10%) covers estimates.
 | Small weights | [Ounces to grams](/units/oz-to-g/) |
 | Reverse | [Lbs to kg](/units/lbs-to-kg/) |
 
+## Quick summary
+
+Multiply kilograms by **2.2046** to get pounds (double it and add 10% in your head); multiply pounds
+by **0.4536** to go back. The factor is a legal definition from 1959, so it never changes — and for
+anything medical, use the exact number, never the shortcut. For any value, precision or the reverse
+direction, the [kg to lbs converter](/units/kg-to-lbs/) does it instantly.
+
 *Every factor on this page follows the exact 1959 definition and is verified by an
 [automated audit against NIST/BIPM fixtures](https://github.com/Synth88Labs/lazytools.io) on every
 build of lazytools.io.*

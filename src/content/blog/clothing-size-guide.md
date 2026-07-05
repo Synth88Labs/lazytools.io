@@ -106,5 +106,12 @@ binding standard — the old US standard was withdrawn in 1983 and never replace
 3. **Buying vintage by label** — a 1980s 10 is not a 2020s 10; measure the garment.
 4. **Assuming AU = US** — Australia follows UK numbering (US + 4).
 
+## Quick summary
+
+The offsets are fixed — UK = US + 4, EU = US + 30, FR = US + 32, IT = US + 36 — so one known size
+unlocks every system in the [clothing size converter](/size/clothing-size-converter/). But vanity
+sizing means labels drift between brands and decades: use the number to find the rack, and the
+brand's centimeter measurements to decide the buy.
+
 *Related tools: [shoe sizes](/size/shoe-size-converter/) · [bra sizes](/size/bra-size-converter/) ·
 [hat sizes](/size/hat-size-converter/) — and [cm to inches](/units/cm-to-inches/) for the tape-measure math.*

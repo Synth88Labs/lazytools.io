@@ -130,6 +130,23 @@ percentages" — make any batch size trivial). A 20-dollar kitchen scale removes
 cup-conversion errors this article exists to fix. Until then, the
 [converters](/units/cups-to-ml/) keep the math exact even when the cups aren't.
 
+## Common baking conversion mistakes
+
+1. **Using a metric 250 mL cup for a US recipe** — 5.7% extra per cup compounds across a batter.
+2. **Scooping flour from the bag** — packs up to 150 g into a "120 g" cup; fluff, spoon, level, or weigh.
+3. **Assuming all tablespoons match** — Australian tablespoons are 20 mL, not 15.
+4. **Converting solids to grams by volume alone** — a cup of honey (340 g) is nearly triple a cup of
+   cocoa (85 g); density decides, use the ingredient table.
+5. **Rounding leaveners like liquids** — baking soda tolerates far less error than milk; measure it
+   precisely even when everything else is approximated.
+
+## Quick summary
+
+A US cup is 236.59 mL; metric cups are 250 mL and Japanese cups 200 mL — check the recipe's origin
+before measuring, and convert liquids exactly with the [cups to mL converter](/units/cups-to-ml/).
+For solids, volume needs density: use the grams table above, or better, a kitchen scale — weight is
+the only measurement that doesn't care how you scooped.
+
 *All volume conversions use exact US customary definitions (1 US cup = 236.588 mL, derived from the
 231-cubic-inch gallon) — verified in [our public test suite](https://github.com/Synth88Labs/lazytools.io).
 Related: [mL to cups](/units/ml-to-cups/) · [fluid ounces to mL](/units/fl-oz-to-ml/) ·

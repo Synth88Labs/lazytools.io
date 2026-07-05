@@ -126,6 +126,13 @@ a keystroke. (Physiology footnote: a 1% incline is commonly used to approximate 
 4. **Trusting GPS over certified courses.** Race courses are measured along the shortest possible path;
    you inevitably run slightly farther, so your watch reading past the official distance is normal.
 
+## Quick summary
+
+5K = 3.11 miles, 10K = 6.21, half marathon = 13.11, marathon = 26.22 (42.195 km — a distance we owe
+to the 1908 royal box, not round numbers). Convert distances with ×0.621, but flip for pace: min/mile
+= min/km × 1.609. For treadmills, dashboards and any odd distance, the
+[km to miles converter](/units/km-to-miles/) has the exact figure.
+
 *Distance conversions use the exact 1959 definition (1 mile = 1.609344 km), verified in
 [our public test suite](https://github.com/Synth88Labs/lazytools.io). Related tools:
 [miles to km](/units/miles-to-km/) · [km to miles](/units/km-to-miles/) ·

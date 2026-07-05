@@ -130,5 +130,12 @@ nothing.
 5. **Ignoring style variation** — like shoe lasts, cuts differ; the converted size is the start point,
    not a guarantee.
 
+## Quick summary
+
+Bands convert exactly (US 34 = EU 75 = FR 90); cups convert by counting ladder steps, never matching
+letters, because the systems fork after D. If a bra almost fits, sister-size it: band down + cup up
+when the band rides up, the reverse when it digs in. The
+[bra size converter](/size/bra-size-converter/) does both — entirely in your browser.
+
 *Related: the [ring](/size/ring-size-converter/) and [shoe](/size/shoe-size-converter/) size
 converters, and [cm to inches](/units/cm-to-inches/) for the raw measurement math.*

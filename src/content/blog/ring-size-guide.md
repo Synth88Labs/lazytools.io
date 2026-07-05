@@ -112,6 +112,13 @@ The [full chart with half sizes](/size/ring-size-converter/) covers US 3–13.
 4. **Forgetting band width** — wide bands (6 mm+) need ~half a size up.
 5. **Assuming both hands match** — they don't; measure the hand that will wear it.
 
+## Quick summary
+
+Wrap paper around the finger, measure the overlap in millimeters — that circumference is your EU size,
+and the [converter](/size/ring-size-converter/) maps it to US and UK instantly (54 mm ≈ US 7 ≈ UK N).
+Measure at day's end, account for the knuckle and band width, and when in doubt between two sizes,
+take the larger.
+
 *Conversions use the standard jewelers' chart on the ISO 8653 circumference scale. Sizes and
 measurements you enter never leave your browser — try the
 [ring size converter](/size/ring-size-converter/), and see the

@@ -107,6 +107,13 @@ reason hatters say size up and pad with sizing tape rather than buy tight.
 4. **Buying tight "to break in"** — felt shrinks further; headache guaranteed.
 5. **Ignoring hair changes** — thick hairstyles or a big cut change effective size by ~1 cm.
 
+## Quick summary
+
+Measure around your head where a hat sits, then divide the inches by π — that's your fitted size
+(57 cm = 22.4" = 7⅛ = M). UK sizes run ⅛ below US, letter sizes vary by maker, and between sizes you
+always go up. The [hat size converter](/size/hat-size-converter/) turns any measurement into every
+system instantly.
+
 *Related: [ring](/size/ring-size-converter/) · [clothing](/size/clothing-size-converter/) ·
 [shoe](/size/shoe-size-converter/) size converters — and [cm to inches](/units/cm-to-inches/) for the
 raw tape math.*

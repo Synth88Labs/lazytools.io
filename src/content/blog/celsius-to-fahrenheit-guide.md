@@ -234,6 +234,13 @@ Converters: [Celsius to Kelvin](/units/celsius-to-kelvin/) ·
 | 25 | 77 | | 230 | 446 |
 | 30 | 86 | | 250 | 482 |
 
+## Quick summary
+
+Multiply Celsius by 1.8 and add 32 to get Fahrenheit; subtract 32 first, then multiply by 5/9, to go
+back. Memorize the six anchors (0/32, 20/68, 37/98.6, 100/212, −18/0, −40/−40) and the double-plus-30
+trick covers everyday weather — but never ovens or medicine, where the
+[converter](/units/celsius-to-fahrenheit/) gives the exact figure.
+
 *All conversions use the exact defining formulas, verified against fixed reference points (0/32,
 100/212, −40/−40) in [our public test suite](https://github.com/Synth88Labs/lazytools.io). Reverse
 tool: [Fahrenheit to Celsius](/units/fahrenheit-to-celsius/).*

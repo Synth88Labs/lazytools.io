@@ -123,6 +123,13 @@ own cm-based chart when it exists, and treat converted sizes as the starting gue
    two shifted scales.
 5. **Ignoring width** — length-perfect shoes that pinch are a width problem, not a size problem.
 
+## Quick summary
+
+Convert with the chart (US M 9 = UK 8 = EU 42.5), but trust your foot length in centimeters over any
+size number — measure both feet standing, late in the day, and add half a centimeter for running
+shoes. Brands deviate by up to half a size around every chart, so the
+[shoe size converter](/size/shoe-size-converter/)'s cm mode is the reliable route.
+
 *Charts follow the standard published conversion; your measurements never leave your browser. Related:
 the [ring size converter](/size/ring-size-converter/) and [bra size converter](/size/bra-size-converter/),
 and for the cm↔inch math itself, [cm to inches](/units/cm-to-inches/).*

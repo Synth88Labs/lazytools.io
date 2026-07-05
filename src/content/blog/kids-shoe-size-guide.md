@@ -114,5 +114,12 @@ sneaker model* in big-kid sizing at a substantially lower price: **women's size 
 4. **"Room to grow" oversizing** — more than ~1.5 cm extra causes tripping.
 5. **Hand-me-downs judged by label** — worn shoes mold to the first wearer; check length *and* wear.
 
+## Quick summary
+
+Kids' US sizes climb 2C–13.5C and then restart at 1Y, which is one step *bigger* — the restart, not
+the sizes, is what confuses everyone. Skip age-based buying entirely: measure the foot in centimeters,
+add 0.8 cm of growing room, and let the
+[kids' shoe size converter](/size/kids-shoe-size-converter/) find the size in every system.
+
 *Related: the adult [shoe size converter](/size/shoe-size-converter/) ·
 [clothing sizes](/size/clothing-size-converter/) · [cm to inches](/units/cm-to-inches/).*

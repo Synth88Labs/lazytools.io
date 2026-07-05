@@ -139,5 +139,25 @@ formula (money growing instead of shrinking), and the
 compounding looks like. Comparing the two side by side is the fastest way to internalize why the bank
 always seems to win: it borrows simple from you and lends compound to you.
 
+## Common EMI mistakes
+
+1. **Comparing a flat rate to a reducing rate directly** — 10% flat costs nearly as much as 18%
+   reducing; always compare APRs.
+2. **Choosing tenure by EMI affordability alone** — the monthly figure hides total interest; check
+   both columns of the tenure table above.
+3. **Reducing the EMI after prepaying instead of the tenure** — it feels better monthly but gives
+   most of the interest savings back.
+4. **Ignoring processing fees and insurance add-ons** — a 1% fee on day one is roughly equivalent to
+   a 0.2%-higher rate on a 20-year loan; ask for the all-in APR.
+5. **Assuming the EMI is the loan's cost** — the cost is total interest (EMI × months − principal),
+   which the calculator reports directly.
+
+## Quick summary
+
+Your EMI comes from one formula — P·r·(1+r)ⁿ ÷ ((1+r)ⁿ−1) — and everything counterintuitive about
+loans follows from it: early payments are mostly interest, long tenures multiply total cost, and
+early prepayments (taken as shorter tenure) save the most. Quote any loan in reducing-balance terms,
+and run your own numbers in the [EMI calculator](/calc/emi-calculator/) before signing anything.
+
 *The [EMI calculator](/calc/emi-calculator/) runs the exact reducing-balance formula in your browser —
 loan amounts are sensitive data, and here they never leave your device.*

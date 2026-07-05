@@ -222,6 +222,13 @@ labels match; the [GiB to GB converter](/units/gib-to-gb/) exists for exactly th
 5. **Extrapolating download time from plan speed.** Subtract ~10% protocol overhead, and remember
    local Wi-Fi is often the bottleneck, not the plan.
 
+## Quick summary
+
+1 GB = 1,000 MB by the decimal standard drives are sold in; Windows counts in 1,024-step binary units
+with the same labels, which is the whole "1 TB shows 931 GB" mystery — nothing is missing. Divide
+Mbps by 8 for real download speed in MB/s, and remember RAM labels mean binary while SSD labels mean
+decimal. Exact numbers for any pair: [MB to GB](/units/mb-to-gb/) and [GB to GiB](/units/gb-to-gib/).
+
 *All conversions use exact definitions — SI decimal prefixes and IEC/ISO 80000-13 binary prefixes —
 verified by [our public test suite](https://github.com/Synth88Labs/lazytools.io). Related tools:
 [MB to KB](/units/mb-to-kb/) · [TB to GB](/units/tb-to-gb/) · [bytes to MB](/units/bytes-to-mb/) ·

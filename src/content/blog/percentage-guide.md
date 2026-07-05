@@ -154,6 +154,14 @@ insist on knowing which one is meant.
 5. **Averaging percentages with different bases** — 50% of 10 students plus 10% of 1,000 students is
    not "30% average"; weight by the base sizes.
 
+## Quick summary
+
+Every percentage problem is one of three rearrangements of *part = whole × percent ÷ 100* — find the
+part, the percent, or the whole. Anchor mental math on 10%, use the swap (X% of Y = Y% of X) for
+awkward numbers, divide (never "add back") for reverse percentages, and remember stacked discounts
+multiply. When the numbers matter, the [percentage calculator](/calc/percentage-calculator/) shows the
+working.
+
 *All four calculators in this guide — [percentage](/calc/percentage-calculator/),
 [percentage change](/calc/percentage-change-calculator/), [discount](/calc/discount-calculator/) and
 [tip](/calc/tip-calculator/) — run entirely in your browser and show the arithmetic under every result.
