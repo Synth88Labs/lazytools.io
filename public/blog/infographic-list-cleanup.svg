@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-label="The list-cleanup pipeline: a messy list goes through join broken lines, remove duplicates, and natural sort to become a clean list — 9 messy lines in, 5 clean lines out">
+  <defs>
+    <linearGradient id="step" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3fa9fd"/>
+      <stop offset="1" stop-color="#1465cf"/>
+    </linearGradient>
+    <style>
+      .h { font: 800 30px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .mono { font: 600 17px Consolas, Menlo, monospace; fill: #475569; }
+      .monobad { font: 600 17px Consolas, Menlo, monospace; fill: #b45309; }
+      .steplab { font: 800 18px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #ffffff; }
+      .sub { font: 500 16px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+      .arrow { stroke: #94a3b8; stroke-width: 4; fill: none; marker-end: url(#ah2); }
+    </style>
+    <marker id="ah2" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+
+  <text x="600" y="46" text-anchor="middle" class="h">The list-cleanup pipeline</text>
+
+  <!-- before panel -->
+  <rect x="70" y="90" width="320" height="290" rx="16" fill="#fffbeb" stroke="#fcd34d" stroke-width="2"/>
+  <text x="230" y="122" text-anchor="middle" font-family="'Plus Jakarta Sans','Segoe UI',Arial,sans-serif" font-size="18" font-weight="800" fill="#92400e">BEFORE — pasted mess</text>
+  <text x="95" y="155" class="monobad">item 10</text>
+  <text x="95" y="182" class="monobad">apple  </text>
+  <text x="95" y="209" class="monobad">Banana</text>
+  <text x="95" y="236" class="monobad">apple</text>
+  <text x="95" y="263" class="monobad">item 2</text>
+  <text x="95" y="290" class="monobad">banana</text>
+  <text x="95" y="317" class="monobad">(blank line)</text>
+  <text x="95" y="344" class="monobad">item 10</text>
+  <text x="230" y="372" text-anchor="middle" class="sub">9 lines · duplicates · stray spaces</text>
+
+  <!-- steps -->
+  <g>
+    <path class="arrow" d="M 400 180 L 460 180"/>
+    <rect x="470" y="120" width="260" height="52" rx="12" fill="url(#step)"/>
+    <text x="600" y="153" text-anchor="middle" class="steplab">1 · remove empty lines</text>
+
+    <rect x="470" y="200" width="260" height="52" rx="12" fill="url(#step)"/>
+    <text x="600" y="233" text-anchor="middle" class="steplab">2 · remove duplicates</text>
+    <text x="600" y="272" text-anchor="middle" class="sub">ignore case + trim spaces ON</text>
+
+    <rect x="470" y="290" width="260" height="52" rx="12" fill="url(#step)"/>
+    <text x="600" y="323" text-anchor="middle" class="steplab">3 · natural sort A→Z</text>
+    <text x="600" y="362" text-anchor="middle" class="sub">"item 2" before "item 10"</text>
+    <path class="arrow" d="M 740 230 L 800 230"/>
+  </g>
+
+  <!-- after panel -->
+  <rect x="810" y="90" width="320" height="290" rx="16" fill="#ecfdf5" stroke="#6ee7b7" stroke-width="2"/>
+  <text x="970" y="122" text-anchor="middle" font-family="'Plus Jakarta Sans','Segoe UI',Arial,sans-serif" font-size="18" font-weight="800" fill="#065f46">AFTER — clean list</text>
+  <text x="835" y="160" class="mono" fill="#047857">apple</text>
+  <text x="835" y="192" class="mono" fill="#047857">Banana</text>
+  <text x="835" y="224" class="mono" fill="#047857">item 2</text>
+  <text x="835" y="256" class="mono" fill="#047857">item 10</text>
+  <text x="970" y="372" text-anchor="middle" class="sub">4 lines · unique · human-ordered</text>
+
+  <!-- tools strip -->
+  <rect x="120" y="430" width="960" height="90" rx="16" fill="#eef9ff" stroke="#bce7ff" stroke-width="2"/>
+  <text x="600" y="466" text-anchor="middle" font-family="'Plus Jakarta Sans','Segoe UI',Arial,sans-serif" font-size="19" font-weight="800" fill="#153056">One tool per step — each takes one click</text>
+  <text x="600" y="498" text-anchor="middle" class="sub">remove-line-breaks · remove-duplicate-lines · sort-lines (+ find &amp; replace for anything patterned)</text>
+
+  <rect x="240" y="548" width="720" height="48" rx="12" fill="#153056"/>
+  <text x="600" y="580" text-anchor="middle" font-family="Consolas, Menlo, monospace" font-size="20" font-weight="600" fill="#7ef0c0">everything runs locally — lists with emails never touch a server</text>
+</svg>

@@ -111,6 +111,27 @@ const POSTS = [
     fact: 'AA: 4.5:1 text · 3:1 large & UI',
     icon: '♿',
   },
+  {
+    slug: 'naming-cases-guide',
+    kicker: 'DEVELOPER CONVENTIONS',
+    lines: ['camelCase, snake_case', 'or kebab-case? Which', 'case goes where'],
+    fact: 'JS: camelCase · Python: snake_case · URLs: kebab-case',
+    icon: 'Aa',
+  },
+  {
+    slug: 'clean-up-lists-guide',
+    kicker: 'TEXT CLEANUP WORKFLOW',
+    lines: ['Messy list? Dedupe,', 'sort & fix broken', 'text in 4 steps'],
+    fact: 'dedupe → sort → clean → replace',
+    icon: '🧹',
+  },
+  {
+    slug: 'css-color-formats-guide',
+    kicker: 'CSS COLORS EXPLAINED',
+    lines: ['HEX, RGB & HSL:', 'same color, three', 'dialects decoded'],
+    fact: '#1d87f1 = rgb(29,135,241)',
+    icon: '🎨',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

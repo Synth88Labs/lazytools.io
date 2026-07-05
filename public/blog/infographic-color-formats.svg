@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-label="The same blue color written four ways: HEX #1d87f1, RGB 29 135 241, HSL 210 88% 53%, CMYK 88 44 0 5 — with the hex-pair to decimal mapping 1d equals 29, 87 equals 135, f1 equals 241">
+  <defs>
+    <linearGradient id="sw" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3fa9fd"/>
+      <stop offset="1" stop-color="#1d87f1"/>
+    </linearGradient>
+    <style>
+      .h { font: 800 30px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .fmt { font: 700 26px Consolas, Menlo, monospace; }
+      .tag { font: 800 15px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #ffffff; letter-spacing: 2px; }
+      .use { font: 600 17px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+      .lead { stroke: #cbd5e1; stroke-width: 2.5; stroke-dasharray: 5 5; fill: none; }
+      .map { font: 700 20px Consolas, Menlo, monospace; fill: #153056; }
+    </style>
+  </defs>
+
+  <text x="600" y="46" text-anchor="middle" class="h">One color, four notations</text>
+
+  <!-- central swatch -->
+  <rect x="80" y="150" width="230" height="230" rx="28" fill="url(#sw)" stroke="#166fde" stroke-width="3"/>
+  <text x="195" y="420" text-anchor="middle" class="use">the same pixels every time</text>
+
+  <!-- format rows -->
+  <g>
+    <path class="lead" d="M 310 190 L 400 165"/>
+    <rect x="410" y="140" width="120" height="36" rx="9" fill="#1d87f1"/>
+    <text x="470" y="164" text-anchor="middle" class="tag">HEX</text>
+    <text x="550" y="168" class="fmt" fill="#166fde">#1d87f1</text>
+    <text x="820" y="167" class="use">tokens, brand guides, copy-paste</text>
+  </g>
+  <g>
+    <path class="lead" d="M 310 240 L 400 250"/>
+    <rect x="410" y="228" width="120" height="36" rx="9" fill="#059669"/>
+    <text x="470" y="252" text-anchor="middle" class="tag">RGB</text>
+    <text x="550" y="256" class="fmt" fill="#047857">rgb(29, 135, 241)</text>
+    <text x="880" y="255" class="use">alpha via rgba()</text>
+  </g>
+  <g>
+    <path class="lead" d="M 310 300 L 400 335"/>
+    <rect x="410" y="316" width="120" height="36" rx="9" fill="#7c3aed"/>
+    <text x="470" y="340" text-anchor="middle" class="tag">HSL</text>
+    <text x="550" y="344" class="fmt" fill="#7c3aed">hsl(210, 88%, 53%)</text>
+    <text x="900" y="343" class="use">tweak L to darken</text>
+  </g>
+  <g>
+    <path class="lead" d="M 310 350 L 400 420"/>
+    <rect x="410" y="404" width="120" height="36" rx="9" fill="#475569"/>
+    <text x="470" y="428" text-anchor="middle" class="tag">CMYK</text>
+    <text x="550" y="432" class="fmt" fill="#475569">88%, 44%, 0%, 5%</text>
+    <text x="880" y="431" class="use">print approximation</text>
+  </g>
+
+  <!-- hex↔rgb mapping strip -->
+  <rect x="120" y="480" width="960" height="70" rx="16" fill="#eef9ff" stroke="#bce7ff" stroke-width="2"/>
+  <text x="600" y="510" text-anchor="middle" font-family="'Plus Jakarta Sans','Segoe UI',Arial,sans-serif" font-size="18" font-weight="800" fill="#153056">HEX is RGB in base-16 — each pair is one channel</text>
+  <text x="600" y="538" text-anchor="middle" class="map">1d → 29 red   ·   87 → 135 green   ·   f1 → 241 blue</text>
+
+  <rect x="290" y="566" width="620" height="42" rx="12" fill="#153056"/>
+  <text x="600" y="594" text-anchor="middle" font-family="Consolas, Menlo, monospace" font-size="19" font-weight="600" fill="#7ef0c0">same color model — three dialects + one print translation</text>
+</svg>
