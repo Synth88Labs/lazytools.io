@@ -62,6 +62,11 @@ one that measures the actual foot.
 <p><span class="co-label">📌 Citable fact</span> One UK/US shoe size step is a barleycorn (1/3 inch ≈ 8.47 mm); one EU size step is a Paris point (2/3 cm ≈ 6.67 mm). The two step sizes differ by 27%, which is why US/UK-to-EU conversions drift and no chart maps perfectly.</p>
 </div>
 
+<figure>
+<img src="/blog/infographic-shoe-systems.svg" alt="Infographic: one UK/US shoe size step is a barleycorn of 8.47 mm while one EU step is a Paris point of 6.67 mm — 27% smaller — with the anchor US men's 9 = UK 8 = EU 42.5 = 26.5 cm" width="1200" height="640" loading="lazy" />
+<figcaption>Two incompatible step sizes explain every messy conversion chart — the centimeter measurement sidesteps both.</figcaption>
+</figure>
+
 ## The charts
 
 **Men:**

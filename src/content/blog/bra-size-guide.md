@@ -93,6 +93,11 @@ down and one letter up (or the reverse) and the volume stays constant:
 
 **32DDD ↔ 34DD ↔ 36D** — same cups, different band lengths.
 
+<figure>
+<img src="/blog/infographic-sister-sizes.svg" alt="Infographic: sister sizes 32DDD, 34DD and 36D shown with identical cup volumes on shorter, medium and longer bands — band rides up means go band down cup up; band digs in means band up cup down" width="1200" height="640" loading="lazy" />
+<figcaption>Identical cups, three labels — the letter changes because it's measured relative to the band.</figcaption>
+</figure>
+
 When to use which:
 
 - **Band rides up / feels loose, cup fine** → sister size *down*: 36C → 34D

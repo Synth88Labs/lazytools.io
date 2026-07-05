@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="Why shoe sizes disagree: UK and US sizes step in barleycorns of 8.47 mm while EU sizes step in Paris points of 6.67 mm; anchor point US men's 9 equals UK 8, EU 42.5, 26.5 cm">
+  <defs>
+    <linearGradient id="blue" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#3fa9fd"/>
+      <stop offset="1" stop-color="#1465cf"/>
+    </linearGradient>
+    <linearGradient id="mint" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2fc98e"/>
+      <stop offset="1" stop-color="#059669"/>
+    </linearGradient>
+    <style>
+      .h { font: 800 30px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .lab { font: 700 22px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .sub { font: 500 18px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+      .inbar { font: 700 20px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #ffffff; }
+      .chip { font: 800 22px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #ffffff; }
+    </style>
+  </defs>
+
+  <text x="600" y="46" text-anchor="middle" class="h">Why shoe sizes never quite agree: two different step sizes</text>
+
+  <!-- step size comparison: barleycorn 8.47mm vs paris point 6.67mm ; scale ×55 -->
+  <text x="140" y="120" class="lab">One UK / US size step</text>
+  <rect x="140" y="136" width="466" height="52" rx="10" fill="url(#blue)"/>
+  <text x="373" y="170" text-anchor="middle" class="inbar">1 barleycorn = ⅓ inch = 8.47 mm</text>
+
+  <text x="140" y="240" class="lab">One EU size step</text>
+  <rect x="140" y="256" width="367" height="52" rx="10" fill="url(#mint)"/>
+  <text x="323" y="290" text-anchor="middle" class="inbar">1 Paris point = ⅔ cm = 6.67 mm</text>
+
+  <text x="680" y="290" class="sub">← 27% smaller steps — the scales drift apart</text>
+
+  <!-- anchor row -->
+  <text x="600" y="380" text-anchor="middle" class="lab">The anchor worth memorizing (men's):</text>
+  <g>
+    <rect x="180" y="404" width="190" height="64" rx="14" fill="url(#blue)"/>
+    <text x="275" y="444" text-anchor="middle" class="chip">US 9</text>
+    <rect x="394" y="404" width="190" height="64" rx="14" fill="#185ab4"/>
+    <text x="489" y="444" text-anchor="middle" class="chip">UK 8</text>
+    <rect x="608" y="404" width="190" height="64" rx="14" fill="url(#mint)"/>
+    <text x="703" y="444" text-anchor="middle" class="chip">EU 42.5</text>
+    <rect x="822" y="404" width="190" height="64" rx="14" fill="#153056"/>
+    <text x="917" y="444" text-anchor="middle" class="chip">26.5 cm</text>
+  </g>
+  <text x="600" y="502" text-anchor="middle" class="sub">= the same foot · brands still vary by up to half a size around these numbers</text>
+
+  <!-- footer -->
+  <rect x="180" y="540" width="840" height="52" rx="12" fill="#153056"/>
+  <text x="600" y="574" text-anchor="middle" font-family="Consolas, Menlo, monospace" font-size="22" font-weight="600" fill="#7ef0c0">foot length in cm is the only brand-proof measurement</text>
+</svg>

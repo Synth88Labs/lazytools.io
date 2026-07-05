@@ -65,6 +65,11 @@ That's why a single paper-strip measurement resolves everything — the
 
 ## Measuring at home: the paper strip method
 
+<figure>
+<img src="/blog/infographic-ring-measure.svg" alt="Infographic: measuring ring size in three steps — wrap a paper strip around the finger base, measure to the overlap mark in millimeters (54 mm), read the result in every system: US 7, UK N, EU/ISO 54.4" width="1200" height="640" loading="lazy" />
+<figcaption>One strip of paper resolves every sizing system — the millimeter reading is your EU size directly.</figcaption>
+</figure>
+
 1. Cut a strip of paper ~5 mm wide (string works but stretches — paper is more accurate).
 2. Wrap it around the **base** of the finger, snug but not tight, and mark exactly where it overlaps.
 3. Measure from end to mark in millimeters. **That's your EU size.**

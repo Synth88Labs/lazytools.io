@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="Measuring ring size with a paper strip in three steps: wrap around the finger, measure the strip in millimeters, read the size — 54 mm equals US 7, UK N, EU 54.4">
+  <defs>
+    <linearGradient id="skin" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fde8d7"/>
+      <stop offset="1" stop-color="#f6cba7"/>
+    </linearGradient>
+    <linearGradient id="strip" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#3fa9fd"/>
+      <stop offset="1" stop-color="#1465cf"/>
+    </linearGradient>
+    <style>
+      .h { font: 800 30px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .step { font: 800 20px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #ffffff; }
+      .cap { font: 700 21px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .sub { font: 500 17px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+      .chip { font: 800 24px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #ffffff; }
+      .tick { stroke: #475569; stroke-width: 2; }
+    </style>
+  </defs>
+
+  <text x="600" y="46" text-anchor="middle" class="h">Your ring size is just a length — measure it with paper</text>
+
+  <!-- STEP 1: finger with strip -->
+  <circle cx="220" cy="105" r="18" fill="#1d87f1"/><text x="220" y="112" text-anchor="middle" class="step">1</text>
+  <!-- finger -->
+  <rect x="150" y="150" width="140" height="230" rx="62" fill="url(#skin)" stroke="#eab308" stroke-opacity="0.25" stroke-width="2"/>
+  <!-- nail hint -->
+  <ellipse cx="220" cy="180" rx="34" ry="24" fill="#fff" opacity="0.55"/>
+  <!-- paper strip wrapped -->
+  <rect x="132" y="285" width="176" height="30" rx="6" fill="url(#strip)"/>
+  <rect x="132" y="285" width="176" height="30" rx="6" fill="#ffffff" opacity="0.15"/>
+  <text x="220" y="418" text-anchor="middle" class="cap">Wrap a paper strip snugly</text>
+  <text x="220" y="444" text-anchor="middle" class="sub">at the base of the finger · mark the overlap</text>
+
+  <!-- STEP 2: ruler -->
+  <circle cx="600" cy="105" r="18" fill="#1d87f1"/><text x="600" y="112" text-anchor="middle" class="step">2</text>
+  <!-- unrolled strip -->
+  <rect x="450" y="230" width="300" height="30" rx="6" fill="url(#strip)"/>
+  <!-- mark -->
+  <line x1="720" y1="222" x2="720" y2="268" stroke="#dc2626" stroke-width="4"/>
+  <!-- ruler -->
+  <rect x="450" y="280" width="330" height="52" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+  <line x1="450" y1="280" x2="450" y2="332" class="tick"/>
+  <line x1="500" y1="280" x2="500" y2="302" class="tick"/>
+  <line x1="550" y1="280" x2="550" y2="308" class="tick"/>
+  <line x1="600" y1="280" x2="600" y2="302" class="tick"/>
+  <line x1="650" y1="280" x2="650" y2="308" class="tick"/>
+  <line x1="700" y1="280" x2="700" y2="302" class="tick"/>
+  <line x1="720" y1="280" x2="720" y2="316" stroke="#dc2626" stroke-width="3"/>
+  <text x="455" y="352" class="sub">0</text>
+  <text x="545" y="352" class="sub">20</text>
+  <text x="645" y="352" class="sub">40</text>
+  <text x="726" y="352" font-family="'Plus Jakarta Sans','Segoe UI',Arial,sans-serif" font-size="18" font-weight="800" fill="#dc2626">54 mm</text>
+  <text x="600" y="418" text-anchor="middle" class="cap">Measure to the mark in mm</text>
+  <text x="600" y="444" text-anchor="middle" class="sub">that number IS your EU/ISO size (ISO 8653)</text>
+
+  <!-- STEP 3: result chips -->
+  <circle cx="990" cy="105" r="18" fill="#1d87f1"/><text x="990" y="112" text-anchor="middle" class="step">3</text>
+  <rect x="880" y="170" width="220" height="58" rx="14" fill="url(#strip)"/>
+  <text x="990" y="207" text-anchor="middle" class="chip">US 7</text>
+  <rect x="880" y="244" width="220" height="58" rx="14" fill="#185ab4"/>
+  <text x="990" y="281" text-anchor="middle" class="chip">UK / AU N</text>
+  <rect x="880" y="318" width="220" height="58" rx="14" fill="#059669"/>
+  <text x="990" y="355" text-anchor="middle" class="chip">EU / ISO 54.4</text>
+  <text x="990" y="418" text-anchor="middle" class="cap">Read every system</text>
+  <text x="990" y="444" text-anchor="middle" class="sub">one measurement → all standards</text>
+
+  <!-- footer -->
+  <rect x="180" y="490" width="840" height="52" rx="12" fill="#153056"/>
+  <text x="600" y="524" text-anchor="middle" font-family="Consolas, Menlo, monospace" font-size="22" font-weight="600" fill="#7ef0c0">half a US size = one UK letter = ~1.28 mm of circumference</text>
+  <text x="600" y="590" text-anchor="middle" class="sub">Measure at the end of the day · between sizes? choose the larger · wide bands (&gt;6 mm): size up</text>
+</svg>
