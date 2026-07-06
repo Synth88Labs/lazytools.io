@@ -6,7 +6,7 @@ export interface PdfToolDef {
   icon: string;
   description: string;
   lead: string;
-  widget: 'merge' | 'split' | 'images-to-pdf' | 'rotate';
+  widget: 'merge' | 'split' | 'images-to-pdf' | 'rotate' | 'unlock' | 'protect';
   how: string;
   note?: string;
   faqs: { q: string; a: string }[];
@@ -89,5 +89,43 @@ export const PDF_TOOLS: PdfToolDef[] = [
       { q: 'Is the PDF uploaded to rotate it?', a: 'No — the file is modified in browser memory and downloaded. Nothing is transmitted at any point.' },
     ],
     keywords: ['rotate pdf', 'rotate pdf pages and save', 'fix sideways pdf', 'rotate pdf online free', 'pdf rotation tool'],
+  },
+  {
+    slug: 'unlock-pdf',
+    name: 'Unlock PDF (Remove Password)',
+    icon: '🔓',
+    description:
+      'Remove a password from a PDF you have the right to open — qpdf compiled to WebAssembly, so neither the document nor its password ever leaves your browser.',
+    lead: 'Enter the password once, download a copy that never asks again — decrypted on your device, because a PDF and its password are the last things to send to a server.',
+    widget: 'unlock',
+    how: 'The tool runs qpdf — the standard open-source PDF transformation engine — compiled to WebAssembly in your browser. Given the correct password, it decrypts the document and writes an unencrypted copy; content is preserved exactly, since decryption is a structural operation, not a re-render. It also clears owner-password restrictions (the kind that block printing or copying on files that open without any password).',
+    note: 'The privacy contrast is the whole story here: the well-known upload-based unlockers require you to send them a confidential document AND its password together — the two things that should never travel as a pair. Here both stay in browser memory. Legal note: unlock only documents you have the right to open — your own files, or ones whose password was legitimately shared with you.',
+    faqs: [
+      { q: 'Can this crack a PDF whose password I don\'t know?', a: 'No — and that\'s by design. Removing encryption requires the correct password; without it, AES-encrypted PDFs are computationally infeasible to open. This tool is for legitimately removing a password you know from a file you have rights to.' },
+      { q: 'My PDF opens fine but won\'t let me print or copy — can this fix it?', a: 'Yes. Those are owner-password restrictions: the file is encrypted but opens with an empty user password. Load it, leave the password field blank, and the unlocked copy has the restrictions cleared.' },
+      { q: 'Does unlocking change the document\'s content or quality?', a: 'No — decryption is structural. Text, images, form fields and signatures\' visual content are preserved byte-comparable; only the encryption wrapper is removed. (A digital signature\'s validity indicator may change, since the file bytes necessarily differ.)' },
+      { q: 'Is it safe to type the password here?', a: 'The decryption runs in your browser via qpdf compiled to WebAssembly — document and password stay in local memory, nothing is transmitted, and it works offline. That is precisely the property upload-based unlock sites cannot offer.' },
+      { q: 'Is removing a PDF password legal?', a: 'Removing protection from documents you own or are authorized to open (a bank statement with a known password, your own archived files) is ordinary use. Circumventing protection on documents you have no rights to is not — this tool requires the password, so it can\'t do that anyway.' },
+    ],
+    keywords: ['unlock pdf', 'remove pdf password', 'decrypt pdf', 'pdf password remover', 'remove pdf restrictions', 'unlock pdf without uploading'],
+  },
+  {
+    slug: 'protect-pdf',
+    name: 'Password Protect PDF',
+    icon: '🔐',
+    description:
+      'Add AES-256 password protection to a PDF in your browser — qpdf WebAssembly encryption with optional separate owner password. No upload.',
+    lead: 'Encrypt a PDF with AES-256 before it travels — set the password on your device, so the protected file is the only thing that ever leaves it.',
+    widget: 'protect',
+    how: 'Encryption runs qpdf compiled to WebAssembly, applying the PDF standard\'s strongest mode: AES-256 (PDF 2.0 / ISO 32000-2). The user password is required to open the document; the optional owner password separately controls permissions like printing and copying (defaulting to the user password if left blank). Every PDF reader supports opening these files — encryption is part of the PDF standard, not a proprietary wrapper.',
+    note: 'Two honest caveats. First, protection is only as strong as the password — a short guessable one falls to offline guessing regardless of AES-256; generate a long one. Second, owner-password permissions (no-print, no-copy) are honored by well-behaved readers but are not cryptographic guarantees; the open password is the real protection. For non-PDF files, the file encryption tool does the same job generically.',
+    faqs: [
+      { q: 'How strong is the encryption?', a: 'AES-256 per the PDF 2.0 standard (ISO 32000-2) — the strongest mode PDF defines, and what qpdf applies here. The practical weak point is never the cipher but the password: use a generated 14+ character one.' },
+      { q: 'What\'s the difference between the user and owner password?', a: 'The user password is needed to open the document at all. The owner password controls permissions (printing, copying, editing) and can remove protection later. If you set only one, it serves both roles.' },
+      { q: 'Will the protected PDF open in any reader?', a: 'Yes — password protection is part of the PDF standard, so Acrobat, browsers, Preview and mobile readers all prompt for the password and open it normally.' },
+      { q: 'Can I recover the file if I forget the password?', a: 'No — AES-256 has no back door, and this tool keeps no copy of anything. Store the password in a password manager at the moment you set it.' },
+      { q: 'Is my document uploaded during encryption?', a: 'No — qpdf runs as WebAssembly in your browser; the file and password stay in local memory. Verify by disconnecting from the internet: encryption works identically.' },
+    ],
+    keywords: ['password protect pdf', 'encrypt pdf', 'add password to pdf', 'secure pdf online free', 'pdf encryption aes 256', 'protect pdf without uploading'],
   },
 ];

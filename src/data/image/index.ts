@@ -6,7 +6,7 @@ export interface ImageToolDef {
   icon: string;
   description: string;
   lead: string;
-  widget: 'compress' | 'convert' | 'resize' | 'base64';
+  widget: 'compress' | 'convert' | 'resize' | 'base64' | 'heic';
   how: string;
   note?: string;
   faqs: { q: string; a: string }[];
@@ -14,6 +14,25 @@ export interface ImageToolDef {
 }
 
 export const IMAGE_TOOLS: ImageToolDef[] = [
+  {
+    slug: 'heic-to-jpg',
+    name: 'HEIC to JPG Converter',
+    icon: '📲',
+    description:
+      'Convert iPhone HEIC/HEIF photos to JPG or PNG in your browser — libheif compiled to WebAssembly, no upload, works offline after loading.',
+    lead: 'iPhone photo won\'t open? Convert HEIC to universally supported JPG (or PNG) right here — decoded on your device, never uploaded.',
+    widget: 'heic',
+    how: 'iPhones save photos in HEIC (High Efficiency Image Container, using HEVC compression) — roughly half the size of an equivalent JPEG, but almost nothing outside the Apple ecosystem opens it, and no browser renders it natively. This tool ships libheif — the reference open-source HEIF decoder — compiled to WebAssembly: the decoder downloads to your browser on first use (~1 MB), decodes the photo locally, and re-encodes it as JPG or PNG. The photo itself never travels anywhere.',
+    note: 'The upstream fix is worth knowing: iOS Settings → Camera → Formats → "Most Compatible" makes the iPhone shoot JPEG directly, and sharing via Mail or AirDrop often converts automatically. This tool is for the files that already exist as HEIC — email attachments, cloud downloads, WhatsApp "document" sends — and for people who keep HEIC\'s space savings but occasionally need a JPG.',
+    faqs: [
+      { q: 'Why won\'t my iPhone photo open on Windows or Android?', a: 'Since iOS 11 (2017), iPhones default to HEIC — a container using HEVC compression that stores photos at roughly half JPEG size. Windows needs paid codec extensions, many Android apps and older software can\'t read it, and no web browser displays it natively. Converting to JPG makes it open everywhere.' },
+      { q: 'Does converting HEIC to JPG lose quality?', a: 'Marginally — both formats are lossy, so re-encoding costs a little, controlled by the quality slider (85+ is visually transparent). Choose PNG for a lossless re-encode of the decoded image at the cost of a much larger file.' },
+      { q: 'Is my photo uploaded to convert it?', a: 'No — the libheif decoder runs as WebAssembly inside your browser. The ~1 MB decoder downloads once on first use; your photo never leaves your device, and conversion works offline afterwards.' },
+      { q: 'Can I stop my iPhone creating HEIC files?', a: 'Yes: Settings → Camera → Formats → Most Compatible switches capture to JPEG. The trade-off is roughly double the storage per photo — which is why Apple defaults to HEIC.' },
+      { q: 'What about Live Photos and bursts?', a: 'The still frame converts normally — that\'s what a HEIC file presents as its primary image. The motion part of a Live Photo is a separate video file that stays on your phone.' },
+    ],
+    keywords: ['heic to jpg', 'convert heic to jpeg', 'open heic file', 'heic converter online', 'iphone photo to jpg', 'heic to png'],
+  },
   {
     slug: 'image-compressor',
     name: 'Image Compressor',

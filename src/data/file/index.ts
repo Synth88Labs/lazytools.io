@@ -15,14 +15,16 @@ export interface FileToolDef {
   icon: string;
   description: string;
   lead: string;
-  computeId: string;
+  /** custom widget instead of the generic text-convert UI */
+  widget?: 'einvoice';
+  computeId?: string;
   options?: FileToolOption[];
   /** sample input preloaded so the tool demonstrates itself */
-  sample: string;
+  sample?: string;
   /** accept attribute for the "open file" button */
-  accept: string;
+  accept?: string;
   /** download filename for the output */
-  downloadName: string;
+  downloadName?: string;
   how: string;
   note?: string;
   faqs: { q: string; a: string }[];
@@ -285,6 +287,26 @@ export const FILE_TOOLS: FileToolDef[] = [
       { q: 'Is my content uploaded?', a: 'No — parsing is local; drafts stay on your machine.' },
     ],
     keywords: ['markdown to html', 'convert md to html online', 'github markdown converter', 'markdown parser', 'md file to html'],
+  },
+  {
+    slug: 'e-invoice-viewer',
+    name: 'E-Invoice Viewer (XRechnung / ZUGFeRD)',
+    icon: '🧾',
+    description:
+      'Open and read XRechnung, ZUGFeRD and Factur-X e-invoices — XML or hybrid PDF — as a clean human-readable summary. Parsed locally; invoice data never leaves your browser.',
+    lead: 'Received an XML invoice you can\'t read? See the seller, amounts, line items and payment details instantly — parsed on your device, because invoices are exactly the data not to upload.',
+    widget: 'einvoice',
+    how: 'European e-invoices come in two technical syntaxes — UBL and UN/CEFACT CII — both defined by the EN 16931 standard that Germany\'s XRechnung and the ZUGFeRD/Factur-X profiles implement. This viewer parses either XML directly, and for ZUGFeRD/Factur-X hybrid PDFs it extracts the machine-readable XML embedded inside the PDF and reads that. The output is what the XML actually says: invoice number, dates, parties, VAT breakdown, line items, totals and payment details — displayed, not interpreted.',
+    note: 'Why this exists: since January 2025, German B2B businesses must be able to receive e-invoices, with mandatory issuing phasing in through 2027–2028 — so freelancers and small businesses increasingly receive a machine-readable XML where they expect a document. Most "viewers" are lead-generation for ERP suites and want the invoice uploaded. An invoice names your clients, prices and bank details; reading it should happen on your machine.',
+    faqs: [
+      { q: 'What are XRechnung and ZUGFeRD?', a: 'Both implement the European e-invoice standard EN 16931. XRechnung is Germany\'s pure-XML profile (required for invoicing German public authorities); ZUGFeRD/Factur-X is a hybrid: a normal-looking PDF with the machine-readable XML embedded inside, readable by humans and software alike.' },
+      { q: 'Why did I receive an invoice as an XML file?', a: 'Germany\'s Growth Opportunities Act makes e-invoices the B2B default: since January 2025 businesses must be able to receive them, and issuing becomes mandatory in phases through 2027–2028. Similar mandates exist or are coming in other EU countries. The XML is the legally authoritative invoice — this viewer makes it readable.' },
+      { q: 'My ZUGFeRD PDF opens fine — why use a viewer?', a: 'The PDF layer is a courtesy image; the embedded XML is the authoritative data your accounting must process. The viewer shows what the XML actually says — worth checking, since in a conflict between the two, the XML governs.' },
+      { q: 'Which formats and syntaxes does it read?', a: 'XRechnung in both UBL and UN/CEFACT CII syntax, ZUGFeRD 2.x / Factur-X hybrid PDFs (the embedded XML is extracted automatically), and generally any EN 16931-shaped UBL or CII invoice, including Peppol BIS billing.' },
+      { q: 'Is my invoice uploaded to be parsed?', a: 'No — XML parsing and PDF attachment extraction run entirely in your browser; the tool works offline. Client names, amounts and IBANs never leave your device, which is the point.' },
+      { q: 'Does it validate the invoice against the standard?', a: 'No — it displays the content faithfully but does not run EN 16931/XRechnung schema validation rules. For formal compliance checks (e.g. before submitting to an authority), use an official validator; for "what does this invoice say", use this.' },
+    ],
+    keywords: ['xrechnung viewer', 'zugferd viewer', 'open xrechnung xml', 'factur-x viewer', 'e-invoice reader', 'read xml invoice', 'e-rechnung anzeigen'],
   },
 ];
 

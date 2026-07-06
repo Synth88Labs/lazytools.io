@@ -195,6 +195,27 @@ const POSTS = [
     fact: 'WAV ≈ 10 MB/min · MP3 ≈ 1 MB/min',
     icon: '🎚️',
   },
+  {
+    slug: 'heic-to-jpg-guide',
+    kicker: 'PHOTO FORMATS',
+    lines: ['Why iPhone photos', "won't open — HEIC", 'explained'],
+    fact: 'HEIC ≈ ½ the size of JPEG',
+    icon: '📲',
+  },
+  {
+    slug: 'pdf-password-guide',
+    kicker: 'PDF SECURITY',
+    lines: ['Password-protect (or', 'unlock) a PDF without', 'uploading it'],
+    fact: 'never send the file + password together',
+    icon: '🔐',
+  },
+  {
+    slug: 'e-invoice-guide',
+    kicker: 'E-INVOICING',
+    lines: ['Invoice as an XML', 'file? XRechnung &', 'ZUGFeRD explained'],
+    fact: 'EN 16931 · receive since Jan 2025',
+    icon: '🧾',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

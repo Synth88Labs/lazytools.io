@@ -6,6 +6,7 @@ import PrivacyStrip from '../../components/PrivacyStrip.astro';
 import FaqSection from '../../components/FaqSection.astro';
 import RatingWidget from '../../components/RatingWidget.tsx';
 import FileConvertTool from '../../components/file/FileConvertTool.tsx';
+import EInvoiceTool from '../../components/file/EInvoiceTool.tsx';
 import { FILE_TOOLS, type FileToolDef } from '../../data/file/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -52,14 +53,18 @@ const schema = [
     </p>
 
     <div class="mt-6">
-      <FileConvertTool
-        client:load
-        computeId={tool.computeId}
-        options={tool.options}
-        sample={tool.sample}
-        accept={tool.accept}
-        downloadName={tool.downloadName}
-      />
+      {tool.widget === 'einvoice' ? (
+        <EInvoiceTool client:load />
+      ) : (
+        <FileConvertTool
+          client:load
+          computeId={tool.computeId!}
+          options={tool.options}
+          sample={tool.sample!}
+          accept={tool.accept!}
+          downloadName={tool.downloadName!}
+        />
+      )}
     </div>
 
     <div class="mt-4">

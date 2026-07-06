@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="Three e-invoice formats: XRechnung is pure XML, ZUGFeRD and Factur-X are a PDF with XML embedded inside, all implementing the EN 16931 standard in either UBL or CII syntax. A timeline shows Germany's mandate: receiving required since January 2025 for all businesses, issuing from 2027 for firms over 800000 euro turnover, and all businesses by 2028.">
+  <defs>
+    <style>
+      .h { font: 800 29px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .lab { font: 700 19px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .sub { font: 500 15px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+      .card-t { font: 800 21px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; }
+      .mono { font: 600 13px Consolas, Menlo, monospace; fill: #475569; }
+      .date { font: 800 20px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #153056; }
+    </style>
+  </defs>
+
+  <text x="600" y="42" text-anchor="middle" class="h">A real e-invoice is structured data — not a PDF picture</text>
+
+  <!-- three formats -->
+  <g transform="translate(75 72)">
+    <rect x="0" y="0" width="330" height="180" rx="16" fill="#eef9ff" stroke="#1d87f1" stroke-width="2"/>
+    <text x="165" y="40" text-anchor="middle" class="card-t" fill="#153056">XRechnung</text>
+    <text x="165" y="70" text-anchor="middle" class="sub">pure XML — no visual layer</text>
+    <rect x="30" y="86" width="270" height="66" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="45" y="108" class="mono">&lt;Invoice&gt;</text>
+    <text x="45" y="126" class="mono">  &lt;ID&gt;RE-2026&lt;/ID&gt;</text>
+    <text x="45" y="144" class="mono">  &lt;Amount&gt;1071&lt;/Amount&gt;</text>
+  </g>
+  <g transform="translate(435 72)">
+    <rect x="0" y="0" width="330" height="180" rx="16" fill="#f0fdf4" stroke="#059669" stroke-width="2"/>
+    <text x="165" y="40" text-anchor="middle" class="card-t" fill="#065f46">ZUGFeRD / Factur-X</text>
+    <text x="165" y="70" text-anchor="middle" class="sub">hybrid: a PDF you can read…</text>
+    <rect x="55" y="84" width="220" height="70" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="165" y="110" text-anchor="middle" class="sub">📄 invoice.pdf</text>
+    <rect x="80" y="120" width="170" height="24" rx="6" fill="#dcfce7" stroke="#059669"/>
+    <text x="165" y="137" text-anchor="middle" class="mono" fill="#065f46">+ XML embedded inside</text>
+  </g>
+  <g transform="translate(795 72)">
+    <rect x="0" y="0" width="330" height="180" rx="16" fill="#fefce8" stroke="#b45309" stroke-width="2"/>
+    <text x="165" y="40" text-anchor="middle" class="card-t" fill="#92400e">One standard</text>
+    <text x="165" y="72" text-anchor="middle" class="lab" fill="#92400e">EN 16931</text>
+    <text x="165" y="102" text-anchor="middle" class="sub">two XML syntaxes:</text>
+    <text x="165" y="128" text-anchor="middle" class="mono">UBL  ·  UN/CEFACT CII</text>
+    <text x="165" y="156" text-anchor="middle" class="sub">a viewer reads either</text>
+  </g>
+
+  <!-- timeline -->
+  <text x="600" y="300" text-anchor="middle" class="lab">Germany's B2B mandate (Growth Opportunities Act)</text>
+  <line x1="140" y1="360" x2="1060" y2="360" stroke="#cbd5e1" stroke-width="4"/>
+
+  <g transform="translate(140 360)">
+    <circle cx="60" cy="0" r="12" fill="#059669"/>
+    <text x="60" y="-24" text-anchor="middle" class="date">Jan 2025</text>
+    <text x="60" y="34" text-anchor="middle" class="sub">must RECEIVE</text>
+    <text x="60" y="54" text-anchor="middle" class="sub" font-weight="700">all businesses</text>
+  </g>
+  <g transform="translate(140 360)">
+    <circle cx="430" cy="0" r="12" fill="#1d87f1"/>
+    <text x="430" y="-24" text-anchor="middle" class="date">Jan 2027</text>
+    <text x="430" y="34" text-anchor="middle" class="sub">must ISSUE</text>
+    <text x="430" y="54" text-anchor="middle" class="sub">turnover &gt; €800k</text>
+  </g>
+  <g transform="translate(140 360)">
+    <circle cx="800" cy="0" r="12" fill="#b45309"/>
+    <text x="800" y="-24" text-anchor="middle" class="date">Jan 2028</text>
+    <text x="800" y="34" text-anchor="middle" class="sub">must ISSUE</text>
+    <text x="800" y="54" text-anchor="middle" class="sub">all businesses</text>
+  </g>
+
+  <rect x="200" y="470" width="800" height="52" rx="12" fill="#153056"/>
+  <text x="600" y="503" text-anchor="middle" font-family="Consolas, Menlo, monospace" font-size="17" font-weight="600" fill="#7ef0c0">since Jan 2025 a supplier can send you an XML invoice you must read &amp; archive</text>
+
+  <text x="600" y="560" text-anchor="middle" class="sub">For ZUGFeRD, the embedded XML — not the PDF picture — is the authoritative invoice.</text>
+</svg>
