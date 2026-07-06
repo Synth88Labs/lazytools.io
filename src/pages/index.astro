@@ -3,14 +3,26 @@ import Base from '../layouts/Base.astro';
 import { CATEGORIES, SITE } from '../lib/site';
 import { popularPairsGlobal, titleNoun } from '../data/units';
 
-const popular = popularPairsGlobal(9);
+const popularPairs = popularPairsGlobal(4);
 const live = CATEGORIES.filter((c) => c.status === 'live');
 const soon = CATEGORIES.filter((c) => c.status === 'coming-soon');
+
+/** Flagship tools across categories — hand-picked, highest-intent entries. */
+const flagship = [
+  { icon: '🔑', name: 'Password Generator', url: '/generate/password-generator/' },
+  { icon: '🧷', name: 'Merge PDF Files', url: '/pdf/merge-pdf/' },
+  { icon: '🗜️', name: 'Image Compressor', url: '/image/image-compressor/' },
+  { icon: '🔢', name: 'Word Counter', url: '/text/word-counter/' },
+  { icon: '％', name: 'Percentage Calculator', url: '/calc/percentage-calculator/' },
+  { icon: '⏱️', name: 'Unix Timestamp Converter', url: '/time/unix-timestamp-converter/' },
+  { icon: '🧹', name: 'Image Metadata Remover', url: '/security/image-metadata-remover/' },
+  { icon: '📱', name: 'QR Code Generator', url: '/generate/qr-code-generator/' },
+];
 ---
 
 <Base
   title="LazyTools — Free Online Tools That Never Upload Your Data"
-  description="Free, privacy-first online tools: unit converters, calculators, file tools and more. Everything runs locally in your browser — your data never leaves your device. No sign-up, no limits."
+  description="200+ free, privacy-first online tools: unit converters, calculators, PDF and image tools, developer utilities, generators and more. Everything runs locally in your browser — your data never leaves your device. No sign-up, no limits."
 >
   <!-- Hero -->
   <section class="bg-gradient-to-b from-brand-50 to-white">
@@ -24,10 +36,10 @@ const soon = CATEGORIES.filter((c) => c.status === 'coming-soon');
       </p>
       <div class="mt-7 flex flex-wrap items-center justify-center gap-3">
         <a
-          href="/units/"
+          href="/tools/"
           class="rounded-xl bg-brand-700 px-6 py-3 font-semibold text-white shadow-sm transition hover:bg-brand-800"
         >
-          Try the unit converters
+          Browse 200+ free tools
         </a>
         <a
           href="/how-it-works/"
@@ -58,7 +70,6 @@ const soon = CATEGORIES.filter((c) => c.status === 'coming-soon');
             <span class="text-2xl" aria-hidden="true">{c.icon}</span>
             <span class="mt-2 font-semibold text-slate-900">{c.name}</span>
             <span class="mt-1 text-sm text-slate-600">{c.description}</span>
-            <span class="mt-2 text-xs font-semibold uppercase tracking-wide text-brand-700">Live now →</span>
           </a>
         </li>
       ))}
@@ -79,7 +90,17 @@ const soon = CATEGORIES.filter((c) => c.status === 'coming-soon');
   <section class="mx-auto max-w-5xl px-4 py-6">
     <h2 class="text-2xl font-bold text-slate-900">Popular right now</h2>
     <ul class="mt-5 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-      {popular.map((p) => (
+      {flagship.map((t) => (
+        <li>
+          <a
+            href={t.url}
+            class="block rounded-lg border border-slate-200 px-4 py-3 text-sm font-medium text-slate-700 transition hover:border-brand-400 hover:text-brand-700"
+          >
+            {t.icon} {t.name}
+          </a>
+        </li>
+      ))}
+      {popularPairs.map((p) => (
         <li>
           <a
             href={`/units/${p.slug}/`}
