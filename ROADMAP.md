@@ -1,38 +1,56 @@
 # LazyTools.io — Public Roadmap
 
-LazyTools launches publicly on **~July 25, 2026** (Namecheap hosting, lazytools.io). Until then we're
-building in the open — weekly progress releases every Friday.
+**Status (updated 6 Jul 2026):** LazyTools soft-launched on [lazytools.io](https://lazytools.io) on
+4 July 2026, and **all 13 tool categories are now live** — well ahead of the original three-week
+plan. We build in the open with weekly Friday releases; the official **v1.0.0 public launch** is
+targeted for **~25 July 2026** once the remaining launch-week items (search-console verification and
+the legal review) are cleared.
 
-## Week 1 — Polish & foundations (Jul 6 – Jul 12)
+## Shipped ✅
 
-- [ ] Unit converter QA pass: factors audit against NIST/BIPM definitions
-- [ ] Lighthouse ≥ 95 on all four categories (performance, a11y, best practices, SEO)
-- [ ] Anonymous ratings endpoint (single PHP file + MySQL, no IP/cookies stored)
-- [ ] Blog: first 3 posts finalized (kg→lbs, °C→°F, MB vs GB)
-- [ ] Release `v0.2.0` — "polish week"
+**Foundations** — Astro SSG + Preact islands, privacy-first client-side architecture, anonymous
+ratings (PHP + SQLite), smart header search, sitemap, auto-generated `llms.txt`, GitHub Actions →
+Namecheap FTPS deploy pipeline.
 
-## Week 2 — Second category & content engine (Jul 13 – Jul 19)
+**All 13 categories live** (~290 pages, 230+ tools):
 
-- [ ] Calculators pilot: 10 launch calculators (percentage, EMI, BMI, age, tip, discount…)
-- [ ] Timezone city-pair converter pages (IST↔EST and top 20 pairs)
-- [ ] Search: add calculators to the smart-search index
-- [ ] llms.txt + structured-data validation across all pages
-- [ ] Release `v0.3.0` — "calculators pilot"
+| Category | Highlights |
+|---|---|
+| Unit Converters | 100+ pairs across 11 quantities, exact NIST/BIPM factors |
+| Calculators | percentage, EMI, BMI, age, tip, discount, interest… |
+| Size Converters | ring, shoe, bra, clothing, hat, kids' shoe |
+| Text Tools | counters, case, sort, dedupe, find-and-replace, slugify |
+| Color Tools | HEX/RGB/HSL/CMYK, WCAG contrast, shades, gradient, mixer |
+| File & Data | CSV/JSON/XML/YAML, Markdown, JSON formatter, **e-invoice viewer** |
+| Developer Tools | Base64, URL/HTML entities, SHA hashes, JWT, regex, number base |
+| Generators | password, UUID, QR, random number, lorem ipsum |
+| Date & Time | timestamp, age, date-diff/add, ISO week, timezone converter, **19 timezone-pair pages**, **4-5-4 retail calendar** |
+| Privacy & Security | EXIF remover, AES-256 file encryption, password strength, file hash |
+| Image Tools | compressor, converter, resizer, Base64, **HEIC→JPG** (libheif wasm) |
+| PDF Tools | merge, split, rotate, images→PDF, **unlock/protect** (qpdf wasm) |
+| Audio | trimmer, speed, volume, WAV converter (Web Audio) |
 
-## Week 3 — Launch prep (Jul 20 – Jul 26)
+**Content & growth engine** — 26 SEO/GEO blog guides (hero + custom SVG infographic, schema,
+cited sources); a daily **market-research agent** that scans for browser-tool opportunities and
+files scored findings to `docs/research/`.
 
-- [ ] GitHub Actions → Namecheap FTPS deploy pipeline (dry-run + rollback plan)
-- [ ] DNS cutover + SSL (AutoSSL), .htaccess verification on LiteSpeed
-- [ ] Google Search Console + Bing Webmaster: verify, submit sitemap.xml
-- [ ] Final legal review pass (privacy, terms, disclaimer)
-- [ ] **Release `v1.0.0` — public launch on lazytools.io** 🚀
+## In progress — v1.0.0 launch week
+
+- [ ] Google Search Console + Bing Webmaster: verify + submit sitemap ([#11](https://github.com/Synth88Labs/lazytools.io/issues/11)) — *owner action*
+- [ ] Final legal review pass: governing law, analytics naming, clear [DRAFT] markers ([#12](https://github.com/Synth88Labs/lazytools.io/issues/12)) — *owner action*
+- [ ] `www.lazytools.io` SSL SAN coverage — handled by Namecheap AutoSSL
+- [ ] **Release `v1.0.0` — official public launch** 🚀
 
 ## Post-launch (Aug 2026 →)
 
-Weekly tranches of 50–150 new tool pages, tracked in Search Console; categories earn expansion when
-their pilot pages rank (details in [docs/category-research.md](docs/category-research.md)). Next up:
-developer tools, file converters, text utilities, generators, color tools, privacy/security tools —
-then WASM-heavy image, PDF, and audio/video tools.
+- **Depth over breadth:** expand each live category with long-tail tool/variant pages, tracked in
+  Search Console (impressions/position at day 14/30/60) before scaling.
+- **Research-driven backlog:** build the highest-scoring opportunities the daily market-research
+  agent surfaces (see [docs/research/INDEX.md](docs/research/INDEX.md)); already shipped from it —
+  HEIC converter, PDF unlock/protect, e-invoice viewer.
+- **Heavier tooling:** evaluate client-side video via ffmpeg.wasm (COOP/COEP routes) for the
+  Audio & Video category.
+- **Cadence:** weekly Friday releases; ~5,000 tool pages targeted within 12 months.
 
 ---
-*A [Synth88 Labs Inc.](https://synth88.com) project · MIT licensed · lazytools.io*
+*A [Synth88 Labs Inc.](https://synth88.com) project · MIT licensed · [lazytools.io](https://lazytools.io)*
