@@ -32,6 +32,7 @@ export const CATEGORIES: CategoryDef[] = [
   { slug: 'color', name: 'Color Tools', icon: '🎨', description: 'Color conversion, contrast and palettes.', status: 'live' },
   { slug: 'cipher', name: 'Codes & Ciphers', icon: '📡', description: 'Morse code, NATO alphabet, binary and classic ciphers.', status: 'live' },
   { slug: 'productivity', name: 'Productivity', icon: '🚀', description: 'Pomodoro, planners, trackers and decision tools — saved locally.', status: 'live' },
+  { slug: 'network', name: 'Network & IT', icon: '🌐', description: 'Subnet calculators, CIDR, chmod, cron and MAC tools.', status: 'live' },
   { slug: 'security', name: 'Privacy & Security', icon: '🔐', description: 'Metadata cleaners, encryption and password tools.', status: 'live' },
   { slug: 'image', name: 'Image Tools', icon: '🖼️', description: 'Compress, convert and resize images locally.', status: 'live' },
   { slug: 'pdf', name: 'PDF Tools', icon: '📄', description: 'Merge, split and rotate PDFs in your browser.', status: 'live' },

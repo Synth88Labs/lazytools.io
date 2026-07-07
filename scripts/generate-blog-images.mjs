@@ -258,6 +258,13 @@ const POSTS = [
     fact: '25 min focus · 5 min break · repeat',
     icon: '🍅',
   },
+  {
+    slug: 'ipv6-subnetting-guide',
+    kicker: 'NETWORK & IT',
+    lines: ['IPv6 crossed 50%:', 'subnetting for the', 'dual-stack era'],
+    fact: 'every LAN is a /64 — count subnets, not hosts',
+    icon: '🌐',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

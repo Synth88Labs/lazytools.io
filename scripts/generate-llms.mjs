@@ -20,6 +20,7 @@ import { AUDIO_TOOLS } from '../src/data/video/index.ts';
 import { CALENDAR_TOOLS } from '../src/data/calendar/index.ts';
 import { CIPHER_TOOLS } from '../src/data/cipher/index.ts';
 import { PRODUCTIVITY_TOOLS } from '../src/data/productivity/index.ts';
+import { NETWORK_TOOLS } from '../src/data/network/index.ts';
 import { allPairs as zonePairs } from '../src/data/time/zones.ts';
 
 const U = SITE.url;
@@ -43,6 +44,7 @@ const HUBS = {
   color: { tools: COLOR_TOOLS, blurb: 'HEX/RGB/HSL/CMYK conversion, WCAG contrast checker, shades and tints, gradient generator and color mixer.' },
   cipher: { tools: CIPHER_TOOLS, blurb: 'Morse code translator (with audio), NATO phonetic alphabet, binary text translator, and the Caesar, ROT13 and Vigenère ciphers — encode and decode, for learning and puzzles (not real security).' },
   productivity: { tools: PRODUCTIVITY_TOOLS, blurb: 'Pomodoro timer, countdown/stopwatch, meeting cost calculator, Eisenhower matrix and habit tracker — private by design: data is saved only in the browser (localStorage), never uploaded, with JSON export.' },
+  network: { tools: NETWORK_TOOLS, blurb: 'IPv4 and IPv6 subnet calculators, CIDR-to-range converter, IP format converter, IPv6 expand/compress (RFC 5952), chmod calculator, cron expression parser and MAC address formatter — exact bit math, computed locally so addressing plans never leave the browser.' },
   security: { tools: SECURITY_TOOLS, blurb: 'Image metadata (EXIF/GPS) remover, AES-256 file encryption, honest password-strength checker and file-hash verifier — the category where "no upload" is the whole point.' },
   image: { tools: IMAGE_TOOLS, blurb: 'Compressor, PNG/JPEG/WebP converter, HEIC-to-JPG (libheif wasm), resizer and image-to-Base64 — browser codecs, no upload, no watermark.' },
   pdf: { tools: PDF_TOOLS, blurb: 'Merge, split, rotate, images-to-PDF, and password unlock/protect (qpdf wasm) — contracts and records processed in the browser, never uploaded.' },

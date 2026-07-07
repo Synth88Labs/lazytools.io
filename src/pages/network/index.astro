@@ -1,0 +1,78 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PrivacyStrip from '../../components/PrivacyStrip.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { NETWORK_TOOLS } from '../../data/network/index';
+import { breadcrumbSchema, collectionPageSchema, faqSchema } from '../../lib/schema';
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Network & IT', url: '/network/' },
+];
+
+const faqs = [
+  {
+    q: 'Are the IPs and network plans I enter uploaded anywhere?',
+    a: 'No. Every calculation — subnet math, CIDR conversion, cron parsing — runs in your browser. Internal addressing plans, MAC addresses and cron schedules are exactly the kind of infrastructure detail you should not paste into tools that log requests, which is why these don\'t have a server side at all.',
+  },
+  {
+    q: 'Why use a subnet calculator instead of asking an AI chatbot?',
+    a: 'Subnet math is bit-exact, and language models routinely get subnet boundaries, usable-host counts and CIDR splits subtly wrong — errors you only discover when the firewall rule doesn\'t match. These calculators do the actual binary arithmetic, so the answer is exact every time.',
+  },
+  {
+    q: 'Do the tools cover IPv6?',
+    a: 'Yes — there\'s a dedicated IPv6 subnet calculator with exact 128-bit math and an expand/compress normalizer implementing RFC 5952. With IPv6 now carrying the majority of traffic to major services, dual-stack fluency is the point.',
+  },
+  {
+    q: 'Do they work offline?',
+    a: 'Yes — once loaded, every tool runs without a connection, so they work in the server room where the Wi-Fi doesn\'t.',
+  },
+];
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  collectionPageSchema({
+    name: 'Network & IT Tools',
+    url: '/network/',
+    description: 'Subnet calculators (IPv4 and IPv6), CIDR converters, chmod calculator, cron parser and MAC formatter — exact, private, in your browser.',
+    items: NETWORK_TOOLS.map((t) => ({ name: t.name, url: `/network/${t.slug}/` })),
+  }),
+  faqSchema(faqs),
+];
+---
+
+<Base
+  title="Network & IT Tools — Subnet Calculator, CIDR, Chmod, Cron | LazyTools"
+  description="Free network calculators that run in your browser: IPv4/IPv6 subnet calculators, CIDR to IP range, IP format converter, chmod calculator, cron expression parser, MAC formatter. Exact bit math, nothing uploaded."
+  schema={schema}
+>
+  <div class="mx-auto max-w-5xl px-4 py-6">
+    <Breadcrumbs items={crumbs} />
+
+    <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Network & IT Tools</h1>
+    <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
+      Subnetting, CIDR, permissions and scheduling — the daily calculators of network and system
+      administration, done with exact bit math in your browser. Your internal addressing plans, MAC
+      addresses and cron schedules never touch a server, and everything works offline.
+    </p>
+
+    <div class="mt-5">
+      <PrivacyStrip />
+    </div>
+
+    <ul class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {NETWORK_TOOLS.map((t) => (
+        <li>
+          <a href={`/network/${t.slug}/`} class="flex h-full flex-col rounded-xl border border-slate-200 p-4 transition hover:border-brand-400 hover:shadow-sm">
+            <span class="text-2xl" aria-hidden="true">{t.icon}</span>
+            <span class="mt-2 font-semibold text-slate-900">{t.name}</span>
+            <span class="mt-1 text-sm text-slate-600">{t.lead.split('—')[0]}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <FaqSection faqs={faqs} />
+  </div>
+</Base>
