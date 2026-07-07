@@ -251,6 +251,13 @@ const POSTS = [
     fact: 'your data stays in your browser',
     icon: '🚀',
   },
+  {
+    slug: 'pomodoro-technique-guide',
+    kicker: 'FOCUS TECHNIQUE',
+    lines: ['The Pomodoro', 'Technique: why 25-min', 'sprints beat marathons'],
+    fact: '25 min focus · 5 min break · repeat',
+    icon: '🍅',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

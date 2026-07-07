@@ -9,20 +9,20 @@ const soon = CATEGORIES.filter((c) => c.status === 'coming-soon');
 
 /** Flagship tools across categories — hand-picked, highest-intent entries. */
 const flagship = [
+  { icon: '🍅', name: 'Pomodoro Timer', url: '/productivity/pomodoro-timer/' },
   { icon: '🔑', name: 'Password Generator', url: '/generate/password-generator/' },
   { icon: '🧷', name: 'Merge PDF Files', url: '/pdf/merge-pdf/' },
   { icon: '🗜️', name: 'Image Compressor', url: '/image/image-compressor/' },
   { icon: '🔢', name: 'Word Counter', url: '/text/word-counter/' },
-  { icon: '％', name: 'Percentage Calculator', url: '/calc/percentage-calculator/' },
-  { icon: '⏱️', name: 'Unix Timestamp Converter', url: '/time/unix-timestamp-converter/' },
-  { icon: '🧹', name: 'Image Metadata Remover', url: '/security/image-metadata-remover/' },
   { icon: '📱', name: 'QR Code Generator', url: '/generate/qr-code-generator/' },
+  { icon: '🇳🇵', name: 'Nepali Date Converter', url: '/calendar/bikram-sambat-converter/' },
+  { icon: '％', name: 'Percentage Calculator', url: '/calc/percentage-calculator/' },
 ];
 ---
 
 <Base
   title="LazyTools — Free Online Tools That Never Upload Your Data"
-  description="200+ free, privacy-first online tools: unit converters, calculators, PDF and image tools, developer utilities, generators and more. Everything runs locally in your browser — your data never leaves your device. No sign-up, no limits."
+  description="260+ free, privacy-first online tools: unit converters, calculators, PDF and image tools, developer utilities, productivity timers and planners, generators and more. Everything runs locally in your browser — your data never leaves your device. No sign-up, no limits."
 >
   <!-- Hero -->
   <section class="bg-gradient-to-b from-brand-50 to-white">
@@ -39,7 +39,7 @@ const flagship = [
           href="/tools/"
           class="rounded-xl bg-brand-700 px-6 py-3 font-semibold text-white shadow-sm transition hover:bg-brand-800"
         >
-          Browse 200+ free tools
+          Browse 260+ free tools
         </a>
         <a
           href="/how-it-works/"

@@ -1,7 +1,7 @@
 # LazyTools.io — Public Roadmap
 
-**Status (updated 6 Jul 2026):** LazyTools soft-launched on [lazytools.io](https://lazytools.io) on
-4 July 2026, and **all 15 tool categories are now live** — well ahead of the original three-week
+**Status (updated 7 Jul 2026):** LazyTools soft-launched on [lazytools.io](https://lazytools.io) on
+4 July 2026, and **all 16 tool categories are now live** — well ahead of the original three-week
 plan. We build in the open with weekly Friday releases; the official **v1.0.0 public launch** is
 targeted for **~25 July 2026** once the remaining launch-week items (search-console verification and
 the legal review) are cleared.
@@ -12,7 +12,7 @@ the legal review) are cleared.
 ratings (PHP + SQLite), smart header search, sitemap, auto-generated `llms.txt`, GitHub Actions →
 Namecheap FTPS deploy pipeline.
 
-**All 15 categories live** (~305 pages, 245+ tools):
+**All 16 categories live** (~335 pages, 269+ tools):
 
 | Category | Highlights |
 |---|---|
@@ -31,8 +31,9 @@ Namecheap FTPS deploy pipeline.
 | Image Tools | compressor, converter, resizer, Base64, **HEIC→JPG** (libheif wasm) |
 | PDF Tools | merge, split, rotate, images→PDF, **unlock/protect** (qpdf wasm) |
 | Audio | trimmer, speed, volume, WAV converter (Web Audio) |
+| Productivity | **Pomodoro timer**, countdown/stopwatch, meeting-cost meter, Eisenhower matrix, habit tracker, Kanban, mind map, Gantt, decision matrix, RICE, SWOT, pros/cons, flowchart, whiteboard, time-blocking, OKR, checklist, retro board, eye-rest — all saved locally, JSON export |
 
-**Content & growth engine** — 26 SEO/GEO blog guides (hero + custom SVG infographic, schema,
+**Content & growth engine** — 28 SEO/GEO blog guides (hero + custom SVG infographic, schema,
 cited sources); a daily **market-research agent** that scans for browser-tool opportunities and
 files scored findings to `docs/research/`.
 
