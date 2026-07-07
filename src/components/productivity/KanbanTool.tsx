@@ -1,5 +1,5 @@
 import { useState } from 'preact/hooks';
-import { usePersistentState, exportJson, pickJson, uid } from '../../lib/persist';
+import { usePersistentState, exportJson, pickJson, uid, useFullscreen } from '../../lib/persist';
 
 interface Card { id: string; text: string; color: string; }
 interface Column { id: string; title: string; wip: number; cards: Card[] }
@@ -14,6 +14,7 @@ export default function KanbanTool() {
   const [cols, setCols] = usePersistentState<Column[]>('lt.kanban', INITIAL);
   const [drafts, setDrafts] = useState<Record<string, string>>({});
   const [drag, setDrag] = useState<{ card: string; from: string } | null>(null);
+  const fs = useFullscreen();
 
   const setDraft = (colId: string, v: string) => setDrafts((d) => ({ ...d, [colId]: v }));
   function addCard(colId: string) {
@@ -43,15 +44,16 @@ export default function KanbanTool() {
   const removeCol = (id: string) => setCols((cs) => cs.filter((c) => c.id !== id));
 
   return (
-    <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
+    <div ref={fs.ref} class={`rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6 ${fs.isFull ? 'flex h-screen flex-col overflow-hidden' : ''}`}>
       <div class="mb-3 flex flex-wrap gap-2">
         <button type="button" onClick={addCol} class="rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-600 transition hover:border-brand-400">＋ Column</button>
         <button type="button" onClick={() => exportJson('kanban', 'kanban-board.json', cols)} class="rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-600 transition hover:border-brand-400">⬇ Export JSON</button>
         <button type="button" onClick={() => pickJson().then((d) => Array.isArray(d) && setCols(d as Column[])).catch(() => {})} class="rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-600 transition hover:border-brand-400">⬆ Import</button>
         <button type="button" onClick={() => window.print()} class="rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-600 transition hover:border-brand-400">🖨 Print / Save as PDF</button>
+        <button type="button" onClick={fs.toggle} class="ml-auto rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-600 transition hover:border-brand-400">{fs.isFull ? '⤢ Exit full screen' : '⛶ Full screen'}</button>
       </div>
 
-      <div class="flex gap-3 overflow-x-auto pb-2">
+      <div class={`flex gap-3 overflow-x-auto pb-2 ${fs.isFull ? 'flex-1' : ''}`}>
         {cols.map((col) => {
           const over = col.wip > 0 && col.cards.length > col.wip;
           return (

@@ -3,7 +3,24 @@
  * (localStorage) plus JSON export/import so users own and can move their data.
  * Everything stays on the device — nothing is ever uploaded.
  */
-import { useEffect, useState } from 'preact/hooks';
+import { useEffect, useRef, useState } from 'preact/hooks';
+import type { RefObject } from 'preact';
+
+/** Fullscreen a container element. Returns a ref to attach, the current state, and a toggle. */
+export function useFullscreen<T extends HTMLElement = HTMLDivElement>(): { ref: RefObject<T>; isFull: boolean; toggle: () => void } {
+  const ref = useRef<T>(null);
+  const [isFull, setIsFull] = useState(false);
+  useEffect(() => {
+    const on = () => setIsFull(!!document.fullscreenElement && document.fullscreenElement === ref.current);
+    document.addEventListener('fullscreenchange', on);
+    return () => document.removeEventListener('fullscreenchange', on);
+  }, []);
+  const toggle = () => {
+    if (document.fullscreenElement) document.exitFullscreen?.();
+    else ref.current?.requestFullscreen?.().catch(() => {});
+  };
+  return { ref, isFull, toggle };
+}
 
 /** useState backed by localStorage under `key`. SSR-safe (falls back to `initial`). */
 export function usePersistentState<T>(key: string, initial: T): [T, (v: T | ((prev: T) => T)) => void] {

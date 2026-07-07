@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
-import { usePersistentState } from '../../lib/persist';
+import { usePersistentState, useFullscreen } from '../../lib/persist';
 
 function beep(freq = 700) {
   try {
@@ -14,10 +14,14 @@ function beep(freq = 700) {
 
 export default function CountdownTool() {
   const [mode, setMode] = useState<'countdown' | 'stopwatch' | 'interval'>('countdown');
+  const fs = useFullscreen();
   const tabCls = (a: boolean) => `flex-1 rounded-lg px-3 py-2 text-sm font-semibold transition ${a ? 'bg-brand-700 text-white' : 'bg-white text-slate-600 hover:text-brand-700'}`;
 
   return (
-    <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
+    <div ref={fs.ref} class={`rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6 ${fs.isFull ? 'flex h-screen flex-col justify-center overflow-auto' : ''}`}>
+      <div class="mb-2 flex justify-end">
+        <button type="button" onClick={fs.toggle} class="rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-600 transition hover:border-brand-400">{fs.isFull ? '⤢ Exit full screen' : '⛶ Full screen'}</button>
+      </div>
       <div class="flex gap-2 rounded-xl border border-slate-200 bg-white p-1.5">
         <button type="button" class={tabCls(mode === 'countdown')} onClick={() => setMode('countdown')}>⏳ Countdown</button>
         <button type="button" class={tabCls(mode === 'stopwatch')} onClick={() => setMode('stopwatch')}>⏱ Stopwatch</button>

@@ -6,7 +6,7 @@ export interface ProductivityToolDef {
   icon: string;
   description: string;
   lead: string;
-  widget: 'pomodoro' | 'countdown' | 'meeting-cost' | 'eisenhower' | 'habit' | 'kanban' | 'mindmap' | 'gantt';
+  widget: 'pomodoro' | 'countdown' | 'meeting-cost' | 'eisenhower' | 'habit' | 'kanban' | 'mindmap' | 'gantt' | 'decision-matrix' | 'rice' | 'swot' | 'pros-cons';
   how: string;
   note?: string;
   faqs: { q: string; a: string }[];
@@ -146,6 +146,82 @@ export const PRODUCTIVITY_TOOLS: ProductivityToolDef[] = [
       { q: 'Is anything uploaded?', a: 'No — the timeline is drawn and stored entirely on your device. Export JSON to back up or move devices.' },
     ],
     keywords: ['gantt chart maker', 'gantt chart online', 'project timeline', 'gantt chart free', 'project schedule chart', 'gantt chart generator'],
+  },
+  {
+    slug: 'decision-matrix',
+    name: 'Decision Matrix',
+    icon: '⚖️',
+    description:
+      'Compare options against weighted criteria to get an objective, ranked recommendation. Score, weight and rank in a table — saved locally, exportable to CSV.',
+    lead: 'Torn between options? Score each against the criteria that matter, weight those criteria, and let the numbers rank them for you.',
+    widget: 'decision-matrix',
+    how: 'A weighted decision matrix turns a fuzzy choice into a transparent calculation. List your options as rows and your criteria as columns, give each criterion a weight for how much it matters, then score every option 0–10 on each. The tool multiplies score by weight, sums across criteria, and ranks the options — highlighting the winner. Because the weights and scores are explicit, you can see exactly why one option came out ahead, and adjust if the result doesn\'t feel right.',
+    note: 'The real value isn\'t the final number — it\'s that the matrix forces you to name your criteria and how much each matters before you look at the options, which defuses the bias toward whatever you already favoured. If the "winner" surprises you, that\'s information: either a criterion is mis-weighted, or your gut was leaning on something you hadn\'t made explicit. Everything is computed and saved on your device.',
+    faqs: [
+      { q: 'What is a decision matrix?', a: 'A grid that scores several options against several weighted criteria to produce a ranked recommendation. It replaces "I just feel like option A" with a transparent, adjustable calculation you can defend or revise.' },
+      { q: 'How do weights work?', a: 'Each criterion gets a weight (here 1–10) for how much it matters. An option\'s score on that criterion is multiplied by the weight, so high-weight criteria dominate the total. Set the weights before scoring to avoid biasing them toward a favourite.' },
+      { q: 'What if the winner feels wrong?', a: 'That\'s a useful signal. Usually a criterion is weighted too high or too low, or your intuition is tracking a factor you haven\'t added as a column. Adjust the weights or add the missing criterion — the matrix is a thinking aid, not an oracle.' },
+      { q: 'Can I export the result?', a: 'Yes — as CSV (scores and totals) or JSON. The whole matrix is also auto-saved in your browser.' },
+      { q: 'Is my data uploaded?', a: 'No — the scoring and ranking happen entirely in your browser.' },
+    ],
+    keywords: ['decision matrix', 'weighted decision matrix', 'decision matrix template', 'pugh matrix', 'weighted scoring model', 'decision making tool'],
+  },
+  {
+    slug: 'rice-prioritization',
+    name: 'RICE Prioritization Calculator',
+    icon: '📈',
+    description:
+      'Score and rank features or ideas with the RICE framework — Reach × Impact × Confidence ÷ Effort. Sortable table, CSV export, saved locally.',
+    lead: 'Which feature first? Score each on Reach, Impact, Confidence and Effort, and RICE ranks them with one number.',
+    widget: 'rice',
+    how: 'RICE is a prioritisation framework from Intercom that scores each idea with a single number: Reach × Impact × Confidence ÷ Effort. Reach is how many people it affects in a period; Impact is how much it moves the needle per person (a scale like 3 = massive, 1 = medium, 0.5 = low); Confidence is how sure you are, as a percentage; and Effort is the work required. The three benefits sit on top and effort is the denominator, so high-value, low-effort ideas rise to the top. Enter your numbers and the table ranks everything automatically.',
+    note: 'RICE\'s honesty is in the Confidence factor — it makes you discount ideas built on guesswork, which is exactly where over-optimistic roadmaps go wrong. It works far beyond product features: prioritising experiments, marketing campaigns, process improvements, even which bugs to fix. Keep the Impact scale consistent across ideas or the scores stop being comparable. All computed on your device.',
+    faqs: [
+      { q: 'What does RICE stand for?', a: 'Reach, Impact, Confidence and Effort. The score is Reach × Impact × Confidence ÷ Effort — three benefits divided by the cost — giving one number to rank ideas by. It was created by Intercom for roadmap prioritisation.' },
+      { q: 'What scale should Impact use?', a: 'A small consistent scale, commonly 3 = massive, 2 = high, 1 = medium, 0.5 = low, 0.25 = minimal. The exact numbers matter less than using the same scale for every idea so the scores compare fairly.' },
+      { q: 'Why include Confidence?', a: 'To discount ideas built on optimism rather than evidence. A high-reach, high-impact idea you\'re only 50% sure about scores lower than a solid one — which stops guesswork dominating the roadmap.' },
+      { q: 'Is RICE only for product features?', a: 'No — it works for any set of options with measurable inputs: experiments, campaigns, process improvements, hiring, bug-fix order. Anywhere you need objective prioritisation.' },
+      { q: 'Is my data private?', a: 'Yes — scores are calculated and saved only in your browser; export CSV or JSON to keep a copy.' },
+    ],
+    keywords: ['rice prioritization', 'rice score calculator', 'rice framework', 'rice scoring model', 'feature prioritization', 'product prioritization'],
+  },
+  {
+    slug: 'swot-analysis',
+    name: 'SWOT Analysis Maker',
+    icon: '🧭',
+    description:
+      'Build a SWOT analysis — Strengths, Weaknesses, Opportunities, Threats — in a clean 2×2 grid. Saved locally, exportable, printable to PDF.',
+    lead: 'Map your Strengths, Weaknesses, Opportunities and Threats in one 2×2 — a fast, structured way to size up a decision, project or business.',
+    widget: 'swot',
+    how: 'SWOT sorts what you know into four boxes along two axes: internal vs external, and helpful vs harmful. Strengths and Weaknesses are internal (things you control); Opportunities and Threats are external (things in the environment). Add bullet points to each quadrant; the structure prompts you to look in all four directions rather than fixating on one. Export the analysis as JSON, or print it to paper or PDF.',
+    note: 'A SWOT is only as good as the honesty in the Weaknesses and Threats boxes — those are the ones teams instinctively keep short. The useful next step, once the grid is full, is to pair items across quadrants: how can a Strength seize an Opportunity, or defend against a Threat; which Weakness does a Threat make dangerous. The tool keeps everything on your device.',
+    faqs: [
+      { q: 'What is a SWOT analysis?', a: 'A framework that organises a situation into Strengths, Weaknesses, Opportunities and Threats. Strengths and Weaknesses are internal factors; Opportunities and Threats are external. It gives a quick, structured overview for planning and decisions.' },
+      { q: "What's the difference between the quadrants?", a: 'Two axes: internal vs external, and helpful vs harmful. Strengths = internal + helpful, Weaknesses = internal + harmful, Opportunities = external + helpful, Threats = external + harmful. Keeping the internal/external split straight is what makes a SWOT useful.' },
+      { q: 'What do I do after filling it in?', a: 'Pair items across quadrants: use a Strength to capture an Opportunity or blunt a Threat, and watch for a Weakness that a Threat could exploit. That cross-analysis turns a list into a strategy.' },
+      { q: 'Can I export or print it?', a: 'Yes — export as JSON, or use Print / Save as PDF for a shareable copy. It\'s also auto-saved in your browser.' },
+      { q: 'Is anything uploaded?', a: 'No — your analysis stays in your browser only.' },
+    ],
+    keywords: ['swot analysis', 'swot analysis template', 'swot maker', 'strengths weaknesses opportunities threats', 'swot matrix', 'swot analysis online'],
+  },
+  {
+    slug: 'pros-and-cons-list',
+    name: 'Pros and Cons List',
+    icon: '🤔',
+    description:
+      'Weigh a decision with a weighted pros and cons list — rate each point 1–5 and get a clear verdict. Saved in your browser, exportable.',
+    lead: 'Not all pros and cons are equal. Rate each point\'s importance 1–5 and get a weighted verdict, not just a longer list.',
+    widget: 'pros-cons',
+    how: 'A plain pros and cons list has a flaw: it treats a trivial point the same as a decisive one, so whichever column is longer "wins" even if it\'s full of minor items. This version fixes that by letting you weight each point from 1 (minor) to 5 (major). It sums the weights on each side and calls a verdict — pros win, cons win, or too close to call — with the margin. The result is a genuine nudge rather than a misleading tally.',
+    note: 'Use the verdict as a prompt, not a command: often the most valuable moment is realising you\'re disappointed by the answer, which tells you what you actually wanted. And be honest with the weights — inflating your preferred side\'s scores just launders a decision you\'d already made. Everything stays on your device.',
+    faqs: [
+      { q: 'Why weight a pros and cons list?', a: 'Because a raw count is misleading — five trivial pros shouldn\'t outweigh two decisive cons. Weighting each point 1–5 by importance and summing the weights gives a verdict that reflects what actually matters, not just which list is longer.' },
+      { q: 'How is the verdict decided?', a: 'It adds up the weights on each side. The heavier side wins; if they\'re equal it\'s "too close to call". The margin shows how decisive it is.' },
+      { q: 'Should I always follow the verdict?', a: 'No — treat it as a nudge. Its best use is often emotional: if the result disappoints you, you\'ve learned which way you were really leaning. Just don\'t game the weights to force a predetermined answer.' },
+      { q: 'Can I save or share it?', a: 'It\'s auto-saved in your browser, and you can export it as JSON to back up or share.' },
+      { q: 'Is my decision private?', a: 'Completely — nothing is uploaded; the list lives only in your browser.' },
+    ],
+    keywords: ['pros and cons list', 'weighted pros and cons', 'decision maker', 'pros cons calculator', 'decision helper', 'weigh options'],
   },
   {
     slug: 'habit-tracker',

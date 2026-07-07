@@ -1,5 +1,5 @@
 import { useRef } from 'preact/hooks';
-import { usePersistentState, exportJson, pickJson, uid, downloadBlob, downloadSvgAsPng, downloadSvgAsPdf, todayKey } from '../../lib/persist';
+import { usePersistentState, exportJson, pickJson, uid, downloadBlob, downloadSvgAsPng, downloadSvgAsPdf, todayKey, useFullscreen } from '../../lib/persist';
 
 interface Task { id: string; name: string; start: string; end: string; pct: number; milestone: boolean; after: string; }
 const DAY = 86_400_000;
@@ -22,6 +22,7 @@ const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', '
 export default function GanttTool() {
   const [tasks, setTasks] = usePersistentState<Task[]>('lt.gantt', INITIAL);
   const svgRef = useRef<SVGSVGElement>(null);
+  const fs = useFullscreen();
 
   const valid = tasks.filter((t) => Number.isFinite(toMs(t.start)) && Number.isFinite(toMs(t.end)));
   const starts = valid.map((t) => toMs(t.start));
@@ -59,7 +60,7 @@ export default function GanttTool() {
   const btn = 'rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-600 transition hover:border-brand-400';
 
   return (
-    <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
+    <div ref={fs.ref} class={`rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6 ${fs.isFull ? 'h-screen overflow-auto' : ''}`}>
       <div class="mb-3 flex flex-wrap gap-2">
         <button type="button" onClick={add} class="rounded-lg bg-brand-700 px-3 py-1.5 text-sm font-semibold text-white hover:bg-brand-800">＋ Task</button>
         <button type="button" onClick={() => svgRef.current && downloadSvgAsPng(svgRef.current, 'gantt.png')} class={btn}>🖼 PNG</button>
@@ -67,6 +68,7 @@ export default function GanttTool() {
         <button type="button" onClick={exportCsv} class={btn}>📊 CSV</button>
         <button type="button" onClick={() => exportJson('gantt', 'gantt.json', tasks)} class={btn}>⬇ JSON</button>
         <button type="button" onClick={() => pickJson().then((d) => Array.isArray(d) && setTasks(d as Task[])).catch(() => {})} class={btn}>⬆ Import</button>
+        <button type="button" onClick={fs.toggle} class={`${btn} ml-auto`}>{fs.isFull ? '⤢ Exit full screen' : '⛶ Full screen'}</button>
       </div>
 
       <div class="overflow-auto rounded-xl border border-slate-200 bg-white">

@@ -13,6 +13,10 @@ import HabitTrackerTool from '../../components/productivity/HabitTrackerTool.tsx
 import KanbanTool from '../../components/productivity/KanbanTool.tsx';
 import MindMapTool from '../../components/productivity/MindMapTool.tsx';
 import GanttTool from '../../components/productivity/GanttTool.tsx';
+import DecisionMatrixTool from '../../components/productivity/DecisionMatrixTool.tsx';
+import RiceTool from '../../components/productivity/RiceTool.tsx';
+import SwotTool from '../../components/productivity/SwotTool.tsx';
+import ProsConsTool from '../../components/productivity/ProsConsTool.tsx';
 import { PRODUCTIVITY_TOOLS, type ProductivityToolDef } from '../../data/productivity/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -67,6 +71,10 @@ const schema = [
       {tool.widget === 'kanban' && <KanbanTool client:load />}
       {tool.widget === 'mindmap' && <MindMapTool client:load />}
       {tool.widget === 'gantt' && <GanttTool client:load />}
+      {tool.widget === 'decision-matrix' && <DecisionMatrixTool client:load />}
+      {tool.widget === 'rice' && <RiceTool client:load />}
+      {tool.widget === 'swot' && <SwotTool client:load />}
+      {tool.widget === 'pros-cons' && <ProsConsTool client:load />}
     </div>
 
     <div class="mt-4">

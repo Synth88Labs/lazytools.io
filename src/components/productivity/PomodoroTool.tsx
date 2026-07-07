@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
-import { usePersistentState, todayKey } from '../../lib/persist';
+import { usePersistentState, todayKey, useFullscreen } from '../../lib/persist';
 
 type Phase = 'work' | 'short' | 'long';
 interface Settings { work: number; short: number; long: number; cycles: number; autostart: boolean; sound: boolean; }
@@ -29,6 +29,7 @@ export default function PomodoroTool() {
   const [remaining, setRemaining] = useState(settings.work * 60);
   const [running, setRunning] = useState(false);
   const [task, setTask] = useState('');
+  const fs = useFullscreen();
   const tick = useRef<number | null>(null);
 
   const phaseLen = (p: Phase) => (p === 'work' ? settings.work : p === 'short' ? settings.short : settings.long) * 60;
@@ -80,7 +81,10 @@ export default function PomodoroTool() {
   const pct = Math.max(0, Math.min(1, remaining / phaseLen(phase)));
 
   return (
-    <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
+    <div ref={fs.ref} class={`rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6 ${fs.isFull ? 'flex h-screen flex-col justify-center overflow-auto' : ''}`}>
+      <div class="mb-2 flex justify-end">
+        <button type="button" onClick={fs.toggle} class="rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-600 transition hover:border-brand-400">{fs.isFull ? '⤢ Exit full screen' : '⛶ Full screen'}</button>
+      </div>
       <div class={`flex flex-col items-center rounded-2xl border border-slate-200 bg-white p-6 ring-4 ${ring}`}>
         <p class={`text-sm font-bold uppercase tracking-widest ${phaseColor}`}>
           {phase === 'work' ? '🍅 Focus' : phase === 'short' ? '☕ Short break' : '🛋️ Long break'} · cycle {cycle}/{settings.cycles}
