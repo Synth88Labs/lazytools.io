@@ -12,7 +12,7 @@ the legal review) are cleared.
 ratings (PHP + SQLite), smart header search, sitemap, auto-generated `llms.txt`, GitHub Actions →
 Namecheap FTPS deploy pipeline.
 
-**All 17 categories live** (~352 pages, 282+ tools):
+**All 17 categories live** (~354 pages, 283+ tools):
 
 | Category | Highlights |
 |---|---|
@@ -29,12 +29,12 @@ Namecheap FTPS deploy pipeline.
 | Codes & Ciphers | Morse (with audio), NATO phonetic alphabet, binary translator, Caesar, ROT13, Vigenère |
 | Privacy & Security | EXIF remover, AES-256 file encryption, password strength, file hash |
 | Image Tools | compressor, converter, resizer, Base64, **HEIC→JPG** (libheif wasm) |
-| PDF Tools | merge, split, rotate, images→PDF, **unlock/protect** (qpdf wasm) |
+| PDF Tools | merge, split, rotate, images→PDF, **unlock/protect** (qpdf wasm), **accessibility checker** (EAA — tags/lang/title/alt-text, pdf.js, no upload) |
 | Audio | trimmer, speed, volume, WAV converter (Web Audio) |
 | Productivity | **Pomodoro timer**, countdown/stopwatch, meeting-cost meter, Eisenhower matrix, habit tracker, Kanban, mind map, Gantt, decision matrix, RICE, SWOT, pros/cons, flowchart, whiteboard, time-blocking, OKR, checklist, retro board, eye-rest — all saved locally, JSON export |
 | Network & IT | **IPv4 & IPv6 subnet calculators** (exact 128-bit math), CIDR⇄range, IP format converter, IPv6 expand/compress (RFC 5952), chmod calculator, cron parser with next-run times, MAC formatter (EUI-64, link-local) |
 
-**Content & growth engine** — 32 SEO/GEO blog guides (hero + custom SVG infographic, schema,
+**Content & growth engine** — 33 SEO/GEO blog guides (hero + custom SVG infographic, schema,
 cited sources); a daily **market-research agent** that scans for browser-tool opportunities and
 files scored findings to `docs/research/` — the Network & IT category and its IPv6 guide shipped
 directly from its 7 Jul scan (IPv6 crossed 50% of Google traffic in Mar 2026).

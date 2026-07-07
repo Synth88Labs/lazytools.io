@@ -286,6 +286,13 @@ const POSTS = [
     fact: 'from Jan 2027: penalties up to 100% of VAT',
     icon: '🇵🇱',
   },
+  {
+    slug: 'pdf-accessibility-guide',
+    kicker: 'PDF TOOLS',
+    lines: ['PDF accessibility after', 'the EAA: what screen', 'readers actually need'],
+    fact: 'tags · language · title · text layer · alt text',
+    icon: '♿',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

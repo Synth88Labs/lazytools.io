@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="What makes a PDF readable to a screen reader: tags give structure, a language declaration picks the voice, a title replaces the filename, a real text layer instead of a scan, alt text speaks for images, and headings plus bookmarks give navigation. Machine-checkable foundations can be verified automatically; judgment checks — logical reading order, meaningful alt text, correct table semantics — need a human. The European Accessibility Act applies since 28 June 2025 with transition periods to 2030.">
+  <defs>
+    <style>
+      .h { font: 800 30px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .lab { font: 700 19px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .sub { font: 500 15px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+      .big { font: 800 18px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; }
+      .item { font: 600 15px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #334155; }
+    </style>
+  </defs>
+
+  <text x="600" y="42" text-anchor="middle" class="h">♿ What a screen reader needs from a PDF</text>
+
+  <!-- six foundations -->
+  <g transform="translate(60 70)">
+    <rect x="0" y="0" width="345" height="92" rx="12" fill="#eef9ff" stroke="#1d87f1" stroke-width="2"/>
+    <text x="16" y="30" class="big" fill="#1e3a8a">🏷️ Tags</text>
+    <text x="16" y="54" class="item">the structure skeleton: headings, lists,</text>
+    <text x="16" y="74" class="item">tables, reading order — untagged = guessing</text>
+  </g>
+  <g transform="translate(427 70)">
+    <rect x="0" y="0" width="345" height="92" rx="12" fill="#f0fdf4" stroke="#059669" stroke-width="2"/>
+    <text x="16" y="30" class="big" fill="#065f46">🗣️ Language (/Lang)</text>
+    <text x="16" y="54" class="item">tells assistive tech which voice and</text>
+    <text x="16" y="74" class="item">pronunciation rules to use</text>
+  </g>
+  <g transform="translate(794 70)">
+    <rect x="0" y="0" width="345" height="92" rx="12" fill="#faf5ff" stroke="#7c3aed" stroke-width="2"/>
+    <text x="16" y="30" class="big" fill="#5b21b6">📛 Title</text>
+    <text x="16" y="54" class="item">announced instead of "final_v3_FINAL.pdf"</text>
+    <text x="16" y="74" class="item">(with DisplayDocTitle set)</text>
+  </g>
+  <g transform="translate(60 176)">
+    <rect x="0" y="0" width="345" height="92" rx="12" fill="#fefce8" stroke="#b45309" stroke-width="2"/>
+    <text x="16" y="30" class="big" fill="#854d0e">🔤 Real text, not a scan</text>
+    <text x="16" y="54" class="item">a scanned page is an image — silent</text>
+    <text x="16" y="74" class="item">until OCR adds a text layer</text>
+  </g>
+  <g transform="translate(427 176)">
+    <rect x="0" y="0" width="345" height="92" rx="12" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+    <text x="16" y="30" class="big" fill="#991b1b">🖼️ Alt text on figures</text>
+    <text x="16" y="54" class="item">every meaningful image needs a description</text>
+    <text x="16" y="74" class="item">— the most common failure in practice</text>
+  </g>
+  <g transform="translate(794 176)">
+    <rect x="0" y="0" width="345" height="92" rx="12" fill="#f0f9ff" stroke="#0284c7" stroke-width="2"/>
+    <text x="16" y="30" class="big" fill="#075985">🧭 Headings & bookmarks</text>
+    <text x="16" y="54" class="item">H1–H6 tags + an outline are how</text>
+    <text x="16" y="74" class="item">non-visual readers skim and navigate</text>
+  </g>
+
+  <!-- machine vs human -->
+  <text x="600" y="322" text-anchor="middle" class="lab">Two kinds of checks</text>
+  <g transform="translate(90 342)">
+    <rect x="0" y="0" width="490" height="160" rx="14" fill="#f0fdf4" stroke="#059669" stroke-width="2"/>
+    <text x="245" y="34" text-anchor="middle" class="big" fill="#065f46">🤖 Machine-checkable — automate these</text>
+    <text x="245" y="66" text-anchor="middle" class="item">tagged? language set? title present?</text>
+    <text x="245" y="90" text-anchor="middle" class="item">text layer or scan? alt text present? headings?</text>
+    <text x="245" y="130" text-anchor="middle" class="sub">a browser can verify all of this locally, in seconds</text>
+  </g>
+  <g transform="translate(620 342)">
+    <rect x="0" y="0" width="490" height="160" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+    <text x="245" y="34" text-anchor="middle" class="big" fill="#92400e">🧑 Judgment checks — need a human</text>
+    <text x="245" y="66" text-anchor="middle" class="item">is the reading order logical?</text>
+    <text x="245" y="90" text-anchor="middle" class="item">is the alt text meaningful? are tables semantically right?</text>
+    <text x="245" y="130" text-anchor="middle" class="sub">quick checks are triage — certification needs review</text>
+  </g>
+
+  <rect x="200" y="536" width="800" height="52" rx="12" fill="#153056"/>
+  <text x="600" y="558" text-anchor="middle" font-family="'Plus Jakarta Sans','Segoe UI',Arial,sans-serif" font-size="16" font-weight="700" fill="#ffffff">European Accessibility Act: applies since 28 June 2025</text>
+  <text x="600" y="580" text-anchor="middle" font-family="'Plus Jakarta Sans','Segoe UI',Arial,sans-serif" font-size="14" font-weight="600" fill="#7ef0c0">e-commerce · banking · e-books · transport — transition periods run to 2030</text>
+</svg>

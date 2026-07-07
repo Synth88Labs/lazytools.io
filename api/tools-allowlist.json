@@ -76,6 +76,7 @@
   "network/ipv6-subnet-calculator",
   "network/mac-address-formatter",
   "network/subnet-calculator",
+  "pdf/accessibility-checker",
   "pdf/jpg-to-pdf",
   "pdf/merge-pdf",
   "pdf/protect-pdf",

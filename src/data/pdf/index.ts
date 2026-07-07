@@ -6,7 +6,7 @@ export interface PdfToolDef {
   icon: string;
   description: string;
   lead: string;
-  widget: 'merge' | 'split' | 'images-to-pdf' | 'rotate' | 'unlock' | 'protect';
+  widget: 'merge' | 'split' | 'images-to-pdf' | 'rotate' | 'unlock' | 'protect' | 'accessibility';
   how: string;
   note?: string;
   faqs: { q: string; a: string }[];
@@ -127,5 +127,25 @@ export const PDF_TOOLS: PdfToolDef[] = [
       { q: 'Is my document uploaded during encryption?', a: 'No — qpdf runs as WebAssembly in your browser; the file and password stay in local memory. Verify by disconnecting from the internet: encryption works identically.' },
     ],
     keywords: ['password protect pdf', 'encrypt pdf', 'add password to pdf', 'secure pdf online free', 'pdf encryption aes 256', 'protect pdf without uploading'],
+  },
+  {
+    slug: 'accessibility-checker',
+    name: 'PDF Accessibility Checker',
+    icon: '♿',
+    description:
+      'Quick-check a PDF\'s accessibility foundations — tagging, language, title, text layer, image alt text, headings, bookmarks — in your browser. No upload, no install, works on any OS.',
+    lead: 'Is your PDF readable by a screen reader? Check the machine-verifiable foundations in seconds — locally, because the documents that need checking are reports, forms and contracts.',
+    widget: 'accessibility',
+    how: 'A PDF is accessible when assistive technology can actually read it, and most of the foundations are machine-checkable. This tool inspects the document with the pdf.js engine in your browser: is it a tagged PDF (the MarkInfo flag that gives screen readers structure)? Does the catalog declare a document language (/Lang) and does the metadata carry a real title (with the DisplayDocTitle preference so viewers announce it instead of the filename)? Is there an extractable text layer, or is it a scanned image that\'s silent without OCR? In the structure tree, are there proper heading tags (H1–H6), and do tagged figures carry alt text? Long documents are also checked for bookmarks. Each check reports pass, warn or fail with a plain-language explanation of what to fix — structure checks sample the first five pages to stay fast on large files.',
+    note: 'Why this exists now: the European Accessibility Act has applied since 28 June 2025, pulling e-commerce, banking, transport and e-book PDFs into scope (with transition periods running to 2030) — and the established checkers are hard to reach: PAC, the de-facto standard, is Windows-only; commercial checkers are desktop installs; and the web-based ones upload your document to analyse it. A browser-local checker fills the gap for the everyday question "is this PDF fundamentally accessible, and what\'s broken?" — while honest about scope: full PDF/UA conformance also needs human judgment (reading order, alt-text quality, table semantics), so treat this as triage, not certification.',
+    faqs: [
+      { q: 'What does this checker actually verify?', a: 'The machine-checkable foundations: tagged-PDF flag, document language, metadata title and DisplayDocTitle preference, extractable text layer (vs scanned images), heading tags, alt text on tagged figures, and bookmarks on long documents. Structure checks sample the first five pages.' },
+      { q: 'Is passing these checks the same as PDF/UA or WCAG conformance?', a: 'No — it\'s a necessary-but-not-sufficient triage. Full conformance (PDF/UA, the Matterhorn Protocol\'s 136 conditions, WCAG 2.1) also requires human judgment: is the reading order logical, is the alt text meaningful, are tables tagged correctly? Use PAC and manual review for certification-grade checks.' },
+      { q: 'Why does "tagged PDF" matter so much?', a: 'Tags are the accessibility skeleton: they tell a screen reader what\'s a heading, a paragraph, a list, a table, and in what order to read. An untagged PDF forces assistive tech to guess from raw layout — which is why "is it tagged?" is the first and most important check.' },
+      { q: 'My PDF is a scan — what should I do?', a: 'A scanned PDF is an image: there\'s no text for a screen reader to speak. It needs OCR (optical character recognition) to add a real text layer, and then tagging. The checker detects this case and flags it explicitly.' },
+      { q: 'Does the European Accessibility Act apply to my PDFs?', a: 'The EAA (in force since 28 June 2025) covers products and services like e-commerce, banking, e-books and transport — documents that are part of those services, such as invoices, statements and manuals, are pulled into scope, with some transition arrangements running to 2030. Public-sector documents were already covered by the Web Accessibility Directive.' },
+      { q: 'Is my document uploaded to be analysed?', a: 'No — pdf.js runs entirely in your browser and the page works offline. Accessibility checks are typically run on reports, statements and contracts; keeping them local is the point.' },
+    ],
+    keywords: ['pdf accessibility checker', 'check pdf accessibility', 'tagged pdf checker', 'pdf ua check', 'pdf accessibility test online', 'screen reader pdf check', 'eaa pdf accessibility', 'pdf alt text checker'],
   },
 ];

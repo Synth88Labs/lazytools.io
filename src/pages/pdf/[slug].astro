@@ -7,6 +7,7 @@ import FaqSection from '../../components/FaqSection.astro';
 import RatingWidget from '../../components/RatingWidget.tsx';
 import PdfTool from '../../components/pdf/PdfTool.tsx';
 import PdfPasswordTool from '../../components/pdf/PdfPasswordTool.tsx';
+import PdfAccessibilityTool from '../../components/pdf/PdfAccessibilityTool.tsx';
 import { PDF_TOOLS, type PdfToolDef } from '../../data/pdf/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -55,6 +56,8 @@ const schema = [
     <div class="mt-6">
       {tool.widget === 'unlock' || tool.widget === 'protect' ? (
         <PdfPasswordTool client:load mode={tool.widget} />
+      ) : tool.widget === 'accessibility' ? (
+        <PdfAccessibilityTool client:load />
       ) : (
         <PdfTool client:load mode={tool.widget} />
       )}
