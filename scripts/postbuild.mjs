@@ -5,8 +5,11 @@
  *    api/rate.php only accepts slugs that are real tool pages.
  * 3. Copy the ratings API into dist/ so it deploys with the site.
  *    (The SQLite DB itself is created server-side and never touched by deploys.)
+ * 4. Generate dist/llms.txt from the registry so it never drifts from the site.
  */
 import { copyFile, mkdir, writeFile } from 'node:fs/promises';
+import buildLlms from './generate-llms.mjs';
+import { allPairs as zonePairs } from '../src/data/time/zones.ts';
 import { QUANTITIES, allPairs } from '../src/data/units/index.ts';
 import { CALCULATORS } from '../src/data/calc/index.ts';
 import { SIZE_TOOLS } from '../src/data/size/index.ts';
@@ -39,6 +42,7 @@ const slugs = [
   ...IMAGE_TOOLS.map((t) => `image/${t.slug}`),
   ...PDF_TOOLS.map((t) => `pdf/${t.slug}`),
   ...AUDIO_TOOLS.map((t) => `video/${t.slug}`),
+  ...zonePairs().map((p) => `time/zones/${p.slug}`),
 ].sort();
 await writeFile(new URL('../api/tools-allowlist.json', import.meta.url), JSON.stringify(slugs, null, 2) + '\n');
 console.log(`postbuild: api/tools-allowlist.json regenerated (${slugs.length} tools)`);
@@ -48,3 +52,6 @@ for (const f of ['rate.php', 'stats.php', 'tools-allowlist.json', 'data/.htacces
   await copyFile(new URL(`../api/${f}`, import.meta.url), new URL(`../dist/api/${f}`, import.meta.url));
 }
 console.log('postbuild: ratings API copied into dist/api/');
+
+await writeFile(new URL('../dist/llms.txt', import.meta.url), buildLlms());
+console.log('postbuild: dist/llms.txt generated from registry');

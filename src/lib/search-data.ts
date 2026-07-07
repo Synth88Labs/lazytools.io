@@ -15,6 +15,7 @@ import { SECURITY_TOOLS } from '../data/security/index';
 import { IMAGE_TOOLS } from '../data/image/index';
 import { PDF_TOOLS } from '../data/pdf/index';
 import { AUDIO_TOOLS } from '../data/video/index';
+import { allPairs as zonePairs } from '../data/time/zones';
 
 export interface SearchUnit {
   id: string;
@@ -168,6 +169,14 @@ export function buildSearchPages(): SearchPage[] {
   for (const t of TIME_TOOLS) {
     pages.push({ title: t.name, url: `/time/${t.slug}/`, keywords: [...t.keywords, 'date', 'time', t.name.toLowerCase()] });
   }
+  for (const p of zonePairs()) {
+    const A = p.a.abbr.toUpperCase(), B = p.b.abbr.toUpperCase();
+    pages.push({
+      title: `${A} to ${B} Time Converter`,
+      url: `/time/zones/${p.slug}/`,
+      keywords: [`${p.a.abbr} to ${p.b.abbr}`, `${p.b.abbr} to ${p.a.abbr}`, `${p.a.abbr} ${p.b.abbr}`, 'timezone', 'time zone', 'time difference', p.a.cities.split(',')[0].toLowerCase().trim(), p.b.cities.split(',')[0].toLowerCase().trim()],
+    });
+  }
   for (const t of SECURITY_TOOLS) {
     pages.push({ title: t.name, url: `/security/${t.slug}/`, keywords: [...t.keywords, 'privacy', 'security', t.name.toLowerCase()] });
   }
@@ -188,6 +197,7 @@ export function buildSearchPages(): SearchPage[] {
     { title: 'All Developer Tools', url: '/dev/', keywords: ['developer tools', 'dev', 'encode', 'decode', 'hash', 'regex'] },
     { title: 'All Generators', url: '/generate/', keywords: ['generators', 'generate', 'password', 'uuid', 'qr code', 'random'] },
     { title: 'All Date & Time Tools', url: '/time/', keywords: ['date', 'time', 'timestamp', 'timezone', 'age', 'calendar'] },
+    { title: 'Time-Zone Pair Converters', url: '/time/zones/', keywords: ['timezone', 'time zone', 'converter', 'ist', 'est', 'pst', 'gmt', 'meeting planner'] },
     { title: 'All File Converters', url: '/file/', keywords: ['file converter', 'csv', 'json', 'yaml', 'xml', 'data converter'] },
     { title: 'All Text Tools', url: '/text/', keywords: ['text tools', 'text', 'words', 'characters', 'lines'] },
     { title: 'All Color Tools', url: '/color/', keywords: ['color tools', 'color', 'hex', 'rgb', 'contrast'] },

@@ -1,0 +1,75 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import PrivacyStrip from '../../../components/PrivacyStrip.astro';
+import FaqSection from '../../../components/FaqSection.astro';
+import { allPairs } from '../../../data/time/zones';
+import { breadcrumbSchema, collectionPageSchema, faqSchema } from '../../../lib/schema';
+
+const pairs = allPairs();
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Date & Time', url: '/time/' },
+  { name: 'Time Zones', url: '/time/zones/' },
+];
+
+const faqs = [
+  {
+    q: 'How are these time-zone converters different from a world clock?',
+    a: 'Each page is tuned to one high-traffic pair — like IST to EST — with a live clock for both zones, a 9-to-5 meeting-overlap table, and daylight-saving notes specific to those two regions. For an arbitrary pair, the any-zone converter lets you pick both sides.',
+  },
+  {
+    q: 'Do the converters handle daylight saving automatically?',
+    a: 'Yes — they read each zone\'s DST rules from your browser\'s built-in IANA timezone database, so the difference is correct year-round without you tracking who is on summer time.',
+  },
+  {
+    q: 'Is anything uploaded?',
+    a: 'No — every conversion uses your device\'s own clock and timezone data. Nothing is transmitted, and the pages work offline.',
+  },
+];
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  collectionPageSchema({
+    name: 'Time-Zone Pair Converters',
+    url: '/time/zones/',
+    description: 'Live converters for the most-searched time-zone pairs — IST to EST, PST to GMT and more — with meeting-overlap tables and DST notes.',
+    items: pairs.map((p) => ({ name: `${p.a.abbr.toUpperCase()} to ${p.b.abbr.toUpperCase()}`, url: `/time/zones/${p.slug}/` })),
+  }),
+  faqSchema(faqs),
+];
+---
+
+<Base
+  title="Time-Zone Converters — IST/EST/PST/GMT Pairs | LazyTools"
+  description={`${pairs.length} live time-zone pair converters (IST to EST, PST to GMT and more) with meeting-overlap tables and daylight-saving notes. Everything runs in your browser.`}
+  schema={schema}
+>
+  <div class="mx-auto max-w-5xl px-4 py-6">
+    <Breadcrumbs items={crumbs} />
+
+    <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Time-Zone Pair Converters</h1>
+    <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
+      Live clocks for the most-searched time-zone pairs, each with a meeting-hours overlap table and
+      daylight-saving notes — computed from your browser's own timezone data, never a server. Need a pair
+      that isn't here? Use the <a href="/time/timezone-converter/" class="font-medium text-brand-700 underline underline-offset-2">any-zone converter</a>.
+    </p>
+
+    <div class="mt-5">
+      <PrivacyStrip />
+    </div>
+
+    <ul class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {pairs.map((p) => (
+        <li>
+          <a href={`/time/zones/${p.slug}/`} class="flex h-full flex-col rounded-xl border border-slate-200 p-4 transition hover:border-brand-400 hover:shadow-sm">
+            <span class="font-semibold text-slate-900">{p.a.abbr.toUpperCase()} ↔ {p.b.abbr.toUpperCase()}</span>
+            <span class="mt-1 text-sm text-slate-600">{p.a.cities.split(',')[0]} ↔ {p.b.cities.split(',')[0]}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <FaqSection faqs={faqs} />
+  </div>
+</Base>

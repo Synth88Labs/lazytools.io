@@ -1,0 +1,152 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import PrivacyStrip from '../../../components/PrivacyStrip.astro';
+import FaqSection from '../../../components/FaqSection.astro';
+import RatingWidget from '../../../components/RatingWidget.tsx';
+import TimezonePairTool from '../../../components/time/TimezonePairTool.tsx';
+import { allPairs, observesDst, type PairDef } from '../../../data/time/zones';
+import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../../lib/schema';
+import { ratingFor } from '../../../lib/ratings';
+
+export function getStaticPaths() {
+  return allPairs().map((p) => ({ params: { pair: p.slug }, props: { pair: p } }));
+}
+
+const { pair } = Astro.props as { pair: PairDef };
+const { a, b } = pair;
+const year = new Date().getFullYear();
+const aDst = observesDst(a.iana, year);
+const bDst = observesDst(b.iana, year);
+
+const title = `${a.label.split(' (')[0]} to ${b.label.split(' (')[0]} Time Converter`;
+const aUp = a.abbr.toUpperCase();
+const bUp = b.abbr.toUpperCase();
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Date & Time', url: '/time/' },
+  { name: 'Time Zones', url: '/time/zones/' },
+  { name: `${aUp} ↔ ${bUp}`, url: `/time/zones/${pair.slug}/` },
+];
+
+const related = allPairs().filter((p) => p.slug !== pair.slug && (p.a.abbr === a.abbr || p.b.abbr === a.abbr || p.a.abbr === b.abbr || p.b.abbr === b.abbr)).slice(0, 6);
+
+const faqs = [
+  {
+    q: `What is the time difference between ${aUp} and ${bUp}?`,
+    a: `It changes across the year because ${aDst || bDst ? 'at least one of these zones observes daylight saving time' : 'of their fixed offsets'}. The live converter above shows the exact current difference and updates every second — always convert a specific date's time rather than a remembered number.`,
+  },
+  {
+    q: `When is the best time to schedule a meeting between ${a.label} and ${b.label}?`,
+    a: `The overlap table above highlights the hours that fall within 9am–5pm in both zones for today's offsets. Pick a slot from the green "both working" rows; if there's no overlap, one side takes an early-morning or late-evening call.`,
+  },
+  {
+    q: `Does this converter handle daylight saving time?`,
+    a: `Yes — it reads each zone's DST rules from your browser's built-in IANA timezone database, so the difference is correct whether or not either side is currently on summer time. ${aDst ? a.label + ' observes DST; ' : ''}${bDst ? b.label + ' observes DST.' : (!aDst && !bDst ? 'Neither of these zones changes its clocks.' : '')}`,
+  },
+  {
+    q: `Is my location or time data sent anywhere?`,
+    a: `No — the conversion uses your device's own clock and the timezone data already in your browser. Nothing is transmitted, and the page works offline after it loads.`,
+  },
+  {
+    q: `Why might ${bUp} show a different date than ${aUp}?`,
+    a: `When the offset is large enough, one zone can already be on the next calendar day (or still on the previous one) while the other hasn't rolled over. The live clocks above show each zone's weekday so you can see when they differ.`,
+  },
+];
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  webApplicationSchema({
+    name: title,
+    url: `/time/zones/${pair.slug}/`,
+    description: `Convert between ${a.label} and ${b.label} with a live clock, meeting-hours overlap table and DST notes. Runs in your browser.`,
+    rating: ratingFor(`time/zones/${pair.slug}`),
+  }),
+  faqSchema(faqs),
+];
+---
+
+<Base
+  title={`${title} — Live & Private | LazyTools`}
+  description={`${aUp} to ${bUp} time converter: live clocks for ${a.cities.split(',')[0]} and ${b.cities.split(',')[0]}, a 9-to-5 meeting overlap table and daylight-saving notes. All in your browser.`}
+  schema={schema}
+>
+  <article class="mx-auto max-w-5xl px-4 py-6">
+    <Breadcrumbs items={crumbs} />
+
+    <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+      🌍 {a.label.split(' (')[0]} to {b.label.split(' (')[0]} Time Converter
+    </h1>
+
+    <p class="mt-3 text-lg leading-relaxed text-slate-700">
+      <strong class="font-semibold text-slate-900">
+        Live {aUp} ↔ {bUp} clocks with a meeting-hours overlap table — daylight saving applied automatically, computed on your device.
+      </strong>
+    </p>
+
+    <div class="mt-6">
+      <TimezonePairTool client:load aAbbr={a.abbr} bAbbr={b.abbr} />
+    </div>
+
+    <div class="mt-4">
+      <PrivacyStrip />
+    </div>
+
+    <div class="mt-3">
+      <RatingWidget
+        client:idle
+        toolSlug={`time/zones/${pair.slug}`}
+        avg={ratingFor(`time/zones/${pair.slug}`)?.avg}
+        count={ratingFor(`time/zones/${pair.slug}`)?.count}
+      />
+    </div>
+
+    <section class="prose-lazy mt-6">
+      <h2>Converting between {a.label} and {b.label}</h2>
+      <p>
+        {a.label} covers {a.cities}; {b.label} covers {b.cities}. Because time-zone offsets shift with daylight
+        saving, the gap between them is not a single fixed number — {aDst && bDst
+          ? 'both zones change their clocks, on different dates, so the difference moves twice a year'
+          : aDst
+          ? `${a.label} changes its clocks while ${b.label} does not, so the difference moves twice a year`
+          : bDst
+          ? `${b.label} changes its clocks while ${a.label} does not, so the difference moves twice a year`
+          : 'neither zone changes its clocks, so the difference stays constant year-round'}. The converter above
+        reads today's real offsets from your browser's timezone data, so the live difference and the overlap
+        table are always correct for the current date.
+      </p>
+      <p>
+        To schedule across the two, use the green rows of the overlap table: they mark the hours that land inside
+        a 9am–5pm working day on both sides. When there's little or no overlap — common for zones more than about
+        ten hours apart — the practical fix is for one party to take the call early or late, or to alternate who
+        does so across recurring meetings.
+      </p>
+    </section>
+
+    <FaqSection faqs={faqs} />
+
+    <section class="mt-10">
+      <h2 class="text-2xl font-bold text-slate-900">Related time-zone converters</h2>
+      <ul class="mt-4 grid gap-2 sm:grid-cols-2">
+        {related.map((r) => (
+          <li>
+            <a href={`/time/zones/${r.slug}/`} class="block rounded-lg border border-slate-200 px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:border-brand-400 hover:text-brand-700">
+              {r.a.abbr.toUpperCase()} ↔ {r.b.abbr.toUpperCase()} — {r.a.cities.split(',')[0]} / {r.b.cities.split(',')[0]}
+            </a>
+          </li>
+        ))}
+        <li>
+          <a href="/time/zones/" class="block rounded-lg border border-brand-200 bg-brand-50 px-4 py-2.5 text-sm font-semibold text-brand-800 transition hover:border-brand-400">
+            All time-zone pairs →
+          </a>
+        </li>
+        <li>
+          <a href="/time/timezone-converter/" class="block rounded-lg border border-slate-200 px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:border-brand-400 hover:text-brand-700">
+            🌐 Any-zone converter (pick your own)
+          </a>
+        </li>
+      </ul>
+    </section>
+  </article>
+</Base>

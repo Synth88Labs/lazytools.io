@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
 import type { SearchPage, SearchQuantity, SearchUnit } from '../lib/search-data';
+import { ZONES, allPairs } from '../data/time/zones';
 
 interface Props {
   quantities: SearchQuantity[];
@@ -107,6 +108,60 @@ function smartParse(rawQuery: string, quantities: SearchQuantity[]): Result[] {
   return [];
 }
 
+/** "15% of 80", "15 percent of 80", "what is 20% of 250" → direct answer. */
+function smartParsePercent(rawQuery: string): Result[] {
+  const q = rawQuery.toLowerCase().replace(/\s+/g, ' ').trim();
+  // percent OF: X% of Y
+  let m = q.match(/(-?\d+(?:\.\d+)?)\s*(?:%|percent)\s*of\s*(-?\d+(?:\.\d+)?)/);
+  if (m) {
+    const pct = parseFloat(m[1]!), base = parseFloat(m[2]!);
+    const val = (pct / 100) * base;
+    return [{
+      title: `${fmt(pct)}% of ${fmt(base)} = ${fmt(val)}`,
+      detail: 'Open the percentage calculator',
+      url: '/calc/percentage-calculator/',
+      smart: true,
+    }];
+  }
+  // X is what percent of Y  /  X out of Y as a percent
+  m = q.match(/(-?\d+(?:\.\d+)?)\s*(?:out of|\/|is what (?:%|percent) of|as a (?:%|percent) of)\s*(-?\d+(?:\.\d+)?)/);
+  if (m) {
+    const x = parseFloat(m[1]!), y = parseFloat(m[2]!);
+    if (y !== 0) {
+      return [{
+        title: `${fmt(x)} is ${fmt((x / y) * 100)}% of ${fmt(y)}`,
+        detail: 'Open the percentage calculator',
+        url: '/calc/percentage-calculator/',
+        smart: true,
+      }];
+    }
+  }
+  return [];
+}
+
+/** current time-of-day label in an IANA zone. */
+function zoneTimeLabel(iana: string): string {
+  return new Intl.DateTimeFormat('en-US', { timeZone: iana, hour: 'numeric', minute: '2-digit', hour12: true }).format(new Date());
+}
+
+/** "ist to est", "convert pst to gmt", "ist est" → live time mapping + link to the pair page. */
+function smartParseTimezone(rawQuery: string): Result[] {
+  const tokens = rawQuery.toLowerCase().replace(/[^a-z ]/g, ' ').split(/\s+/).filter(Boolean);
+  const hits = tokens.map((t) => ZONES[t]).filter(Boolean);
+  // need two distinct known zone abbreviations
+  const seen = new Set<string>();
+  const distinct = hits.filter((z) => z && !seen.has(z.abbr) && seen.add(z.abbr));
+  if (distinct.length < 2) return [];
+  const a = distinct[0]!, b = distinct[1]!;
+  const pair = allPairs().find((p) => (p.a.abbr === a.abbr && p.b.abbr === b.abbr) || (p.a.abbr === b.abbr && p.b.abbr === a.abbr));
+  return [{
+    title: `${zoneTimeLabel(a.iana)} ${a.abbr.toUpperCase()} = ${zoneTimeLabel(b.iana)} ${b.abbr.toUpperCase()}`,
+    detail: pair ? `Open the ${a.abbr.toUpperCase()} ↔ ${b.abbr.toUpperCase()} converter` : 'Open the time-zone converter',
+    url: pair ? `/time/zones/${pair.slug}/` : '/time/timezone-converter/',
+    smart: true,
+  }];
+}
+
 function scorePages(query: string, pages: SearchPage[]): Result[] {
   const tokens = query.toLowerCase().split(/\s+/).filter((t) => t.length > 1);
   if (!tokens.length) return [];
@@ -138,7 +193,11 @@ export default function SearchBox({ quantities, pages }: Props) {
 
   const results = useMemo<Result[]>(() => {
     if (query.trim().length < 2) return [];
-    const smart = smartParse(query, quantities);
+    const smart = [
+      ...smartParsePercent(query),
+      ...smartParse(query, quantities),
+      ...smartParseTimezone(query),
+    ];
     const pageResults = scorePages(query, pages).filter((r) => !smart.some((s) => s.url.split('?')[0] === r.url));
     return [...smart, ...pageResults].slice(0, 7);
   }, [query, quantities, pages]);
