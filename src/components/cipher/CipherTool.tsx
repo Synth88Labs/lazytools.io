@@ -2,9 +2,12 @@ import { useState } from 'preact/hooks';
 import {
   textToMorse, morseToText, textToNato, natoToText,
   textToBinary, binaryToText, caesar, rot13, caesarBruteForce, vigenere,
+  atbash, rot47, a1z26Encode, a1z26Decode, baconEncode, baconDecode,
+  railFenceEncode, railFenceDecode, textToBraille, brailleToText,
 } from '../../lib/ciphers';
 
-type Mode = 'morse' | 'nato' | 'binary' | 'caesar' | 'rot13' | 'vigenere';
+type Mode = 'morse' | 'nato' | 'binary' | 'caesar' | 'rot13' | 'vigenere'
+  | 'atbash' | 'rot47' | 'a1z26' | 'bacon' | 'railfence' | 'braille';
 
 interface Props { mode: Mode; }
 
@@ -15,6 +18,12 @@ const SAMPLES: Record<Mode, string> = {
   caesar: 'Attack at dawn',
   rot13: 'Why did the chicken?',
   vigenere: 'Meet me at noon',
+  atbash: 'Hello World',
+  rot47: 'Hello World',
+  a1z26: 'Hello',
+  bacon: 'Secret',
+  railfence: 'We are discovered',
+  braille: 'Hello World',
 };
 
 const ENCODE_LABEL: Record<Mode, [string, string]> = {
@@ -24,13 +33,22 @@ const ENCODE_LABEL: Record<Mode, [string, string]> = {
   caesar: ['Encode', 'Decode'],
   rot13: ['Apply ROT13', 'Apply ROT13'],
   vigenere: ['Encode', 'Decode'],
+  atbash: ['Apply Atbash', 'Apply Atbash'],
+  rot47: ['Apply ROT47', 'Apply ROT47'],
+  a1z26: ['Text → Numbers', 'Numbers → Text'],
+  bacon: ['Text → Bacon', 'Bacon → Text'],
+  railfence: ['Encode', 'Decode'],
+  braille: ['Text → Braille', 'Braille → Text'],
 };
+
+const SELF_INVERSE: Mode[] = ['rot13', 'atbash', 'rot47'];
 
 export default function CipherTool({ mode }: Props) {
   const [input, setInput] = useState(SAMPLES[mode]);
   const [decode, setDecode] = useState(false);
   const [shift, setShift] = useState(3);
   const [key, setKey] = useState('LEMON');
+  const [rails, setRails] = useState(3);
   const [copied, setCopied] = useState(false);
   const [playing, setPlaying] = useState(false);
 
@@ -42,6 +60,12 @@ export default function CipherTool({ mode }: Props) {
       case 'caesar': return caesar(input, decode ? -shift : shift);
       case 'rot13': return rot13(input);
       case 'vigenere': return vigenere(input, key, decode);
+      case 'atbash': return atbash(input);
+      case 'rot47': return rot47(input);
+      case 'a1z26': return decode ? a1z26Decode(input) : a1z26Encode(input);
+      case 'bacon': return decode ? baconDecode(input) : baconEncode(input);
+      case 'railfence': return decode ? railFenceDecode(input, rails) : railFenceEncode(input, rails);
+      case 'braille': return decode ? brailleToText(input) : textToBraille(input);
     }
   }
   const output = compute();
@@ -78,7 +102,7 @@ export default function CipherTool({ mode }: Props) {
 
   const inputCls = 'w-full rounded-xl border border-slate-300 bg-white px-3 py-3 font-mono text-sm text-slate-900 focus:border-brand-500 focus:outline-none';
   const [encLabel, decLabel] = ENCODE_LABEL[mode];
-  const swappable = mode !== 'rot13';
+  const swappable = !SELF_INVERSE.includes(mode);
 
   return (
     <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
@@ -89,19 +113,22 @@ export default function CipherTool({ mode }: Props) {
         </div>
       )}
 
-      {(mode === 'caesar' || mode === 'vigenere') && (
+      {mode === 'caesar' && (
         <div class="mb-3">
-          {mode === 'caesar' ? (
-            <div>
-              <label for="cph-shift" class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Shift: {shift}</label>
-              <input id="cph-shift" type="range" min={1} max={25} value={shift} onInput={(e) => setShift(parseInt((e.target as HTMLInputElement).value, 10))} class="w-full max-w-md accent-brand-600" />
-            </div>
-          ) : (
-            <div>
-              <label for="cph-key" class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Keyword</label>
-              <input id="cph-key" type="text" value={key} onInput={(e) => setKey((e.target as HTMLInputElement).value)} placeholder="e.g. LEMON" class="w-full max-w-xs rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm font-medium text-slate-900 focus:border-brand-500 focus:outline-none" />
-            </div>
-          )}
+          <label for="cph-shift" class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Shift: {shift}</label>
+          <input id="cph-shift" type="range" min={1} max={25} value={shift} onInput={(e) => setShift(parseInt((e.target as HTMLInputElement).value, 10))} class="w-full max-w-md accent-brand-600" />
+        </div>
+      )}
+      {mode === 'vigenere' && (
+        <div class="mb-3">
+          <label for="cph-key" class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Keyword</label>
+          <input id="cph-key" type="text" value={key} onInput={(e) => setKey((e.target as HTMLInputElement).value)} placeholder="e.g. LEMON" class="w-full max-w-xs rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm font-medium text-slate-900 focus:border-brand-500 focus:outline-none" />
+        </div>
+      )}
+      {mode === 'railfence' && (
+        <div class="mb-3">
+          <label for="cph-rails" class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Rails: {rails}</label>
+          <input id="cph-rails" type="range" min={2} max={10} value={rails} onInput={(e) => setRails(parseInt((e.target as HTMLInputElement).value, 10))} class="w-full max-w-md accent-brand-600" />
         </div>
       )}
 

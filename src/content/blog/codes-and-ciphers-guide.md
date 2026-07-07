@@ -4,7 +4,7 @@ description: "Morse code, the NATO phonetic alphabet and binary are encodings an
 pubDate: 2026-07-06
 updatedDate: 2026-07-06
 archetype: explainer
-tools: ["/cipher/morse-code-translator/", "/cipher/caesar-cipher/", "/cipher/vigenere-cipher/", "/cipher/nato-phonetic-alphabet/"]
+tools: ["/cipher/morse-code-translator/", "/cipher/caesar-cipher/", "/cipher/vigenere-cipher/", "/cipher/nato-phonetic-alphabet/", "/cipher/a1z26-cipher/", "/cipher/atbash-cipher/", "/cipher/bacon-cipher/", "/cipher/rail-fence-cipher/", "/cipher/rot47/", "/cipher/braille-translator/", "/cipher/binary-text-translator/", "/cipher/rot13/"]
 keywords:
   - morse code
   - nato phonetic alphabet
@@ -91,6 +91,11 @@ solves a spoken-channel problem: letters like B, P, T and V sound alike over a c
 replacing each with a distinct word removes the ambiguity. (The odd spellings "Alfa" and "Juliett" are
 deliberate, so speakers of any language pronounce them right.)
 
+**[Braille](/cipher/braille-translator/)** encodes letters as patterns of raised dots in a six-dot cell,
+so text can be read by touch. Our translator produces Grade 1 (uncontracted) Unicode Braille with the
+standard capital and number indicators, and reads it back — an encoding for a different *sense*, not a
+different channel.
+
 ## The ciphers
 
 **[The Caesar cipher](/cipher/caesar-cipher/)** shifts every letter a fixed number of places — shift 3
@@ -107,6 +112,26 @@ years**, until Friedrich Kasiski published a method in 1863 (anticipated by Char
 the key length and unravel it. Still not secure today, but a beautiful lesson in how polyalphabetic
 ciphers work.
 
+A few more classic ciphers worth knowing — all substitution ciphers, all keyless or near-keyless:
+
+- **[Atbash](/cipher/atbash-cipher/)** simply reverses the alphabet (A↔Z, B↔Y). Ancient, Hebrew in
+  origin, and — like ROT13 — its own inverse.
+- **[A1Z26](/cipher/a1z26-cipher/)** numbers the alphabet (A=1 … Z=26), turning "HI" into "8-9". It's
+  the single most common code in escape rooms and geocaching, often as the first layer of a
+  multi-step puzzle.
+- **[Bacon's cipher](/cipher/bacon-cipher/)** encodes each letter as five symbols of two kinds
+  (AAAAA, AAAAB…). Its genius was *steganography*: the two symbols could be hidden as two fonts in an
+  innocent-looking text, concealing that a message existed at all.
+
+Then there's a different *family* entirely. Every cipher above is a **substitution** — it replaces
+letters. The **[rail fence cipher](/cipher/rail-fence-cipher/)** is a **transposition** cipher: it
+keeps the letters but scrambles their *order*, writing the text in a zigzag across a number of "rails"
+and reading each rail off in turn. The giveaway is that the ciphertext contains exactly the same
+letters as the plaintext — and with only a handful of rail counts, it's quickly cracked.
+
+Finally, **[ROT47](/cipher/rot47/)** extends the ROT13 idea across all printable ASCII, so digits and
+symbols get scrambled too — handy in programming circles where ROT13 would leave numbers readable.
+
 ## When to use which
 
 | You want to… | Use | Secret? |
@@ -114,8 +139,12 @@ ciphers work.
 | Send letters over radio/light/sound | Morse | No |
 | Spell a word clearly aloud | NATO alphabet | No |
 | See text as a computer stores it | Binary | No |
-| Learn ciphers / make a puzzle | Caesar, ROT13, Vigenère | Weakly |
-| Hide a spoiler in plain sight | ROT13 | No |
+| Read text by touch | Braille | No |
+| A puzzle / escape-room number code | A1Z26 | No |
+| Learn substitution ciphers | Caesar, Atbash, Vigenère | Weakly |
+| Learn transposition | Rail fence | Weakly |
+| Hide a spoiler in plain sight | ROT13, ROT47 | No |
+| Hide that a message even exists | Bacon's cipher | Weakly |
 | Actually protect a file or message | AES encryption | **Yes** |
 
 ## Common mistakes
