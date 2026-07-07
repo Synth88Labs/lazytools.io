@@ -63,5 +63,35 @@ export const energy: Quantity = {
       exampleValue: 1,
       note: '1 kWh equals 3,412.14 BTU. This conversion sizes heating and cooling: a 12,000 BTU/h air conditioner (one "ton" of cooling) consumes roughly 3.5 kWh per hour of runtime at typical efficiency.',
     },
+    'kj-to-kcal': {
+      slug: 'kj-to-kcal',
+      exampleValue: 2000,
+      note: 'Divide kilojoules by 4.184 for kilocalories: a 2,000 kJ snack is 478 kcal. Australians and New Zealanders read kJ on labels; converting to kcal makes them comparable with US Calorie counts.',
+    },
+    'calories-to-kcal': {
+      slug: 'calories-to-kcal',
+      exampleValue: 250000,
+      note: 'A food "Calorie" is 1,000 small (gram) calories — so 250,000 small calories is 250 kcal. This page converts the scientific small calorie; if you are reading a nutrition label, its Calories already ARE kilocalories.',
+    },
+    'kcal-to-calories': {
+      slug: 'kcal-to-calories',
+      exampleValue: 250,
+      note: 'Multiply kilocalories by 1,000 for small calories: 250 kcal is 250,000 cal. The distinction matters in chemistry coursework, where the small calorie (4.184 J) is the working unit.',
+    },
+    'btu-to-kwh': {
+      slug: 'btu-to-kwh',
+      exampleValue: 100000,
+      note: 'Divide BTU by 3,412 for kilowatt-hours: a 100,000 BTU furnace input is 29.3 kWh. This is the bridge between US gas-appliance ratings and the kWh used on energy bills.',
+    },
+    'joules-to-kj': {
+      slug: 'joules-to-kj',
+      exampleValue: 4184,
+      note: 'Divide joules by 1,000: 4,184 J is 4.184 kJ — the energy in one food kilocalorie. Physics answers come out in joules; nutrition and appliance specs read better in kilojoules.',
+    },
+    'kcal-to-kwh': {
+      slug: 'kcal-to-kwh',
+      exampleValue: 2000,
+      note: 'A 2,000 kcal daily diet is just 2.33 kWh — the human body runs all day on less energy than a space heater uses in two hours. One kcal is 0.001163 kWh.',
+    },
   },
 };

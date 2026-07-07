@@ -72,5 +72,53 @@ export const dataStorage: Quantity = {
       exampleValue: 500,
       note: '1 TB = 1,000 GB (decimal standard), so 500 GB is 0.5 TB. Cloud storage plans and drives are marketed in decimal units; Windows reports binary units, so a 2 TB drive shows as about 1.82 "TB" (really TiB).',
     },
+    'gb-to-mb': {
+      slug: 'gb-to-mb',
+      exampleValue: 1.5,
+      note: 'Multiply gigabytes by 1,000 (decimal standard): a 1.5 GB data plan is 1,500 MB. Handy for estimating what fits — at ~5 MB per photo, that plan uploads about 300 photos.',
+    },
+    'kb-to-mb': {
+      slug: 'kb-to-mb',
+      exampleValue: 2048,
+      note: 'Divide kilobytes by 1,000: 2,048 KB is 2.048 MB in the decimal standard (or exactly 2 MiB in binary). Email attachment limits and old file-size fields often still speak in KB.',
+    },
+    'mb-to-kb': {
+      slug: 'mb-to-kb',
+      exampleValue: 5,
+      note: 'Multiply megabytes by 1,000: a 5 MB file is 5,000 KB. Upload forms that cap files "in KB" make this conversion routine.',
+    },
+    'tb-to-gb': {
+      slug: 'tb-to-gb',
+      exampleValue: 2,
+      note: 'Multiply terabytes by 1,000: a 2 TB drive is 2,000 GB (decimal). Your operating system may show it as ~1,863 GiB — that gap is the decimal-vs-binary standards difference, not missing space.',
+    },
+    'bytes-to-mb': {
+      slug: 'bytes-to-mb',
+      exampleValue: 5242880,
+      note: 'Divide bytes by 1,000,000 for decimal megabytes: 5,242,880 bytes is 5.24 MB (or exactly 5 MiB binary). File properties dialogs report raw bytes; this converts them to the units people actually quote.',
+    },
+    'mb-to-bytes': {
+      slug: 'mb-to-bytes',
+      exampleValue: 25,
+      note: 'Multiply megabytes by 1,000,000: a 25 MB attachment limit is 25,000,000 bytes. APIs and config files (like upload limits) usually want the raw byte count.',
+    },
+    'gib-to-gb': {
+      slug: 'gib-to-gb',
+      exampleValue: 16,
+      note: 'One gibibyte is 1.0737 GB, so 16 GiB of RAM is 17.18 decimal GB. RAM is one of the few products still genuinely sized in binary units — a "16 GB" memory kit really is 16 GiB.',
+    },
+    'gb-to-gib': {
+      slug: 'gb-to-gib',
+      exampleValue: 1000,
+      note: 'One decimal gigabyte is 0.9313 GiB — so a "1 TB" (1,000 GB) drive shows as about 931 GiB in Windows. Nothing is missing; the drive maker and the OS are just using different standards.',
+      faqs: [
+        { q: 'Why does my 1 TB drive show only 931 GB?', a: 'The drive contains 1,000,000,000,000 bytes (1 TB decimal). Windows divides by 1,073,741,824 (binary GiB) and displays 931 — labelled "GB" but actually GiB. Both figures describe the same number of bytes.' },
+      ],
+    },
+    'bits-to-bytes': {
+      slug: 'bits-to-bytes',
+      exampleValue: 100000000,
+      note: 'Divide bits by 8: 100 million bits is 12.5 million bytes. This is why a 100 Mbps internet connection downloads at most 12.5 MB/s — network speeds are quoted in bits, file sizes in bytes.',
+    },
   },
 };

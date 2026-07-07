@@ -80,5 +80,55 @@ export const weight: Quantity = {
       exampleValue: 250,
       note: 'Grams-to-ounces appears constantly in cooking when converting between metric and US recipes. 250 g of an ingredient is 8.82 oz; a typical "1 cup of flour" is about 120 g or 4.23 oz.',
     },
+    'oz-to-g': {
+      slug: 'oz-to-g',
+      exampleValue: 4,
+      note: 'Ounces-to-grams converts US recipe weights to metric kitchen scales. One ounce is exactly 28.3495 g, so 4 oz — a standard stick of butter — is 113.4 g, and 8 oz is 226.8 g.',
+    },
+    'lbs-to-stone': {
+      slug: 'lbs-to-stone',
+      exampleValue: 154,
+      note: 'Pounds-to-stone converts US body weights to the stones-and-pounds format used in the UK and Ireland. One stone is exactly 14 lbs, so 154 lbs is 11 stone even, and 160 lbs is 11 st 6 lb.',
+    },
+    'stone-to-lbs': {
+      slug: 'stone-to-lbs',
+      exampleValue: 11,
+      note: 'Multiply stones by 14: 11 stone is 154 lbs. UK weights like "12 stone 6" convert as (12 × 14) + 6 = 174 lbs.',
+    },
+    'stone-to-kg': {
+      slug: 'stone-to-kg',
+      exampleValue: 10,
+      note: 'Stone-to-kilograms takes UK/Irish body weights to metric — for medical records, gyms and airlines. One stone is exactly 6.35029 kg, so 10 stone is 63.5 kg and "12 stone 8" is about 79.8 kg.',
+    },
+    'oz-to-lbs': {
+      slug: 'oz-to-lbs',
+      exampleValue: 12,
+      note: 'Sixteen ounces make a pound, so 12 oz is 0.75 lb. This conversion appears with shipping weights and food packaging, where labels mix the two units.',
+    },
+    'lbs-to-oz': {
+      slug: 'lbs-to-oz',
+      exampleValue: 7.5,
+      note: 'Multiply pounds by 16: 7.5 lbs is 120 oz. It also unpacks decimal pounds into the pounds-and-ounces format used for newborn weights — 7.5 lbs is 7 lb 8 oz.',
+    },
+    'g-to-kg': {
+      slug: 'g-to-kg',
+      exampleValue: 750,
+      note: 'Divide grams by 1,000: 750 g is 0.75 kg. Most useful for totting up recipe ingredients or parcel weights listed in grams against kilogram-based shipping tiers.',
+    },
+    'kg-to-g': {
+      slug: 'kg-to-g',
+      exampleValue: 1.5,
+      note: 'Multiply kilograms by 1,000: 1.5 kg is 1,500 g. Nutrition math often needs this — a 2 kg bag of rice is 2,000 g, or 25 servings of 80 g.',
+    },
+    'g-to-lbs': {
+      slug: 'g-to-lbs',
+      exampleValue: 500,
+      note: 'Grams-to-pounds bridges metric product weights and US units: 500 g is 1.102 lbs — which is why a "metric pound" of 500 g is slightly heavier than a real pound (453.6 g).',
+    },
+    'lbs-to-g': {
+      slug: 'lbs-to-g',
+      exampleValue: 1,
+      note: 'One pound is exactly 453.592 g. Handy for US recipes on metric scales: a pound of pasta is 454 g, and a quarter-pound burger patty is 113 g before cooking.',
+    },
   },
 };

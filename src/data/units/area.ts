@@ -73,5 +73,50 @@ export const area: Quantity = {
       exampleValue: 0.25,
       note: 'An acre is exactly 43,560 square feet. Residential lots are often fractions of an acre: a quarter-acre lot is 10,890 ft².',
     },
+    'square-meters-to-square-feet': {
+      slug: 'square-meters-to-square-feet',
+      exampleValue: 100,
+      note: 'Square-meters-to-square-feet makes metric property listings readable for US/Indian buyers: a 100 m² apartment is 1,076 ft². One square meter is 10.764 ft² — roughly, multiply by 10.75.',
+    },
+    'hectares-to-acres': {
+      slug: 'hectares-to-acres',
+      exampleValue: 50,
+      note: 'One hectare is 2.471 acres, so a 50 ha farm is 123.6 acres. Hectares dominate agricultural statistics worldwide while US/UK farmland is still traded in acres.',
+    },
+    'square-feet-to-acres': {
+      slug: 'square-feet-to-acres',
+      exampleValue: 20000,
+      note: 'Divide square feet by 43,560: a 20,000 ft² parcel is 0.459 acres. Useful for reading lot sizes in listings that quote square feet against zoning minimums stated in acres.',
+    },
+    'square-km-to-square-miles': {
+      slug: 'square-km-to-square-miles',
+      exampleValue: 100,
+      note: 'One square kilometer is 0.3861 square miles, so 100 km² is 38.6 mi². Geographic statistics use both — a quick sanity check: a square mile is about 2.6 km², not 1.6 (the linear factor squared, a classic error).',
+    },
+    'square-miles-to-square-km': {
+      slug: 'square-miles-to-square-km',
+      exampleValue: 10,
+      note: 'One square mile is 2.59 km² — the linear miles-to-km factor (1.609) squared. A 10 mi² county district is 25.9 km².',
+    },
+    'square-yards-to-square-meters': {
+      slug: 'square-yards-to-square-meters',
+      exampleValue: 100,
+      note: 'A square yard — known as a "gaj" in South Asian real estate — is exactly 0.8361 m², so a 100 gaj plot is 83.6 m². Carpet sold by the square yard converts the same way.',
+    },
+    'square-meters-to-square-yards': {
+      slug: 'square-meters-to-square-yards',
+      exampleValue: 100,
+      note: 'One square meter is 1.196 square yards, so 100 m² is 119.6 yd² (gaj). Property dealers in India and Pakistan quote plots in gaj while official records often use square meters.',
+    },
+    'square-feet-to-square-yards': {
+      slug: 'square-feet-to-square-yards',
+      exampleValue: 900,
+      note: 'Nine square feet make one square yard, so 900 ft² is exactly 100 yd². Flooring and carpet estimates commonly need this — measure rooms in feet, buy carpet in square yards.',
+    },
+    'square-yards-to-square-feet': {
+      slug: 'square-yards-to-square-feet',
+      exampleValue: 100,
+      note: 'Multiply square yards by 9: a 100 gaj (yd²) plot is 900 ft². The ×9 is exact, since a yard is exactly 3 feet.',
+    },
   },
 };

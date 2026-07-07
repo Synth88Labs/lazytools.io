@@ -78,5 +78,55 @@ export const time: Quantity = {
       exampleValue: 3,
       note: 'One day is 24 hours, so 3 days is 72 hours — the classic deadline arithmetic ("within 72 hours" = 3 days). A 30-day month is 720 hours.',
     },
+    'hours-to-days': {
+      slug: 'hours-to-days',
+      exampleValue: 100,
+      note: 'Divide hours by 24: 100 hours is 4.17 days. Common for battery-life claims and SLA math — a "72-hour response window" is 3 days, but 100 work-hours at 8 h/day is 12.5 working days, a different quantity worth keeping straight.',
+    },
+    'seconds-to-minutes': {
+      slug: 'seconds-to-minutes',
+      exampleValue: 300,
+      note: 'Divide seconds by 60: 300 s is 5 minutes. Video lengths, API timeouts and workout intervals are often specified in raw seconds — 90 s is 1.5 min, 3,600 s is exactly one hour.',
+    },
+    'minutes-to-seconds': {
+      slug: 'minutes-to-seconds',
+      exampleValue: 5,
+      note: 'Multiply minutes by 60: 5 minutes is 300 seconds. Programming and configuration files usually want seconds — a 15-minute cache TTL is 900 s.',
+    },
+    'days-to-weeks': {
+      slug: 'days-to-weeks',
+      exampleValue: 90,
+      note: 'Divide days by 7: 90 days is 12.86 weeks. Pregnancy math is the everyday case — the standard 280-day term is exactly 40 weeks — along with notice periods and return windows.',
+    },
+    'weeks-to-days': {
+      slug: 'weeks-to-days',
+      exampleValue: 12,
+      note: 'Multiply weeks by 7: a 12-week program is 84 days. Useful for turning "weeks pregnant" or training-plan weeks into calendar days you can count forward.',
+    },
+    'ms-to-seconds': {
+      slug: 'ms-to-seconds',
+      exampleValue: 2500,
+      note: 'Divide milliseconds by 1,000: 2,500 ms is 2.5 s. Web performance metrics live in milliseconds — Google’s "good" Largest Contentful Paint threshold of 2,500 ms is 2.5 seconds.',
+    },
+    'seconds-to-ms': {
+      slug: 'seconds-to-ms',
+      exampleValue: 1.5,
+      note: 'Multiply seconds by 1,000: 1.5 s is 1,500 ms. Animation durations, timeouts and audio offsets in code are usually written in milliseconds.',
+    },
+    'days-to-months': {
+      slug: 'days-to-months',
+      exampleValue: 90,
+      note: 'Using the average Gregorian month of 30.44 days, 90 days is 2.96 months — which is why "90 days" and "3 months" are treated as equivalent in contracts even though calendar quarters range from 90 to 92 days.',
+    },
+    'months-to-days': {
+      slug: 'months-to-days',
+      exampleValue: 6,
+      note: 'Six average months are 182.6 days. This uses the Gregorian average of 30.44 days per month; for exact date arithmetic between two calendar dates, a date calculator that respects real month lengths is the better tool.',
+    },
+    'days-to-years': {
+      slug: 'days-to-years',
+      exampleValue: 10000,
+      note: 'Divide days by 365.2425 (the Gregorian average): 10,000 days is 27.4 years. A fun milestone — your 10,000th day falls a few months after your 27th birthday.',
+    },
   },
 };

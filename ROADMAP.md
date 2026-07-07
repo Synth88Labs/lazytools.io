@@ -46,14 +46,21 @@ files scored findings to `docs/research/`.
 
 ## Post-launch (Aug 2026 →)
 
-- **Depth over breadth:** expand each live category with long-tail tool/variant pages, tracked in
-  Search Console (impressions/position at day 14/30/60) before scaling.
+- **Quality-gated growth, not page counts.** Every new page must pass a simple gate before it
+  ships: it answers a distinct user query no existing page answers, it contains real
+  differentiated content (a working tool, exact data, worked examples, editorial notes — not a
+  template with swapped variables), and it's human-reviewed. New pages land in small,
+  demand-verified tranches tracked in Search Console (impressions/position at day 14/30/60)
+  before the pattern is extended. Pages that don't earn engagement get improved or removed —
+  never left thin.
+- **Depth over breadth:** enrich the live pages first — per-pair editorial notes, use-case FAQs
+  and worked examples on converter pages — before adding new ones.
 - **Research-driven backlog:** build the highest-scoring opportunities the daily market-research
   agent surfaces (see [docs/research/INDEX.md](docs/research/INDEX.md)); already shipped from it —
   HEIC converter, PDF unlock/protect, e-invoice viewer.
 - **Heavier tooling:** evaluate client-side video via ffmpeg.wasm (COOP/COEP routes) for the
   Audio & Video category.
-- **Cadence:** weekly Friday releases; ~5,000 tool pages targeted within 12 months.
+- **Cadence:** weekly Friday releases.
 
 ---
 *A [Synth88 Labs Inc.](https://synth88.com) project · MIT licensed · [lazytools.io](https://lazytools.io)*

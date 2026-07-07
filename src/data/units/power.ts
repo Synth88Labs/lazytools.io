@@ -56,5 +56,30 @@ export const power: Quantity = {
       note: 'Kw-to-hp converts EV and European engine ratings to familiar horsepower: a 150 kW electric motor is 201.2 hp. 1 kW = 1.341 hp.',
       tableValues: [10, 50, 75, 100, 110, 150, 200, 250, 300, 500],
     },
+    'metric-hp-to-kw': {
+      slug: 'metric-hp-to-kw',
+      exampleValue: 100,
+      note: 'Metric horsepower (PS) to kilowatts is the European car-spec conversion: a 100 PS engine is 73.5 kW. One PS is exactly 735.49875 W — about 1.4% less than a mechanical hp, so PS figures look slightly more flattering.',
+    },
+    'kw-to-metric-hp': {
+      slug: 'kw-to-metric-hp',
+      exampleValue: 100,
+      note: 'Multiply kilowatts by 1.3596 for PS: a 100 kW motor is 136 PS. EU type-approval documents state kW; brochures in Germany and Japan usually translate to PS.',
+    },
+    'watts-to-kw': {
+      slug: 'watts-to-kw',
+      exampleValue: 1500,
+      note: 'Divide watts by 1,000: a 1,500 W space heater draws 1.5 kW. This is the step before electricity-cost math — 1.5 kW running for an hour uses 1.5 kWh.',
+    },
+    'btu-per-hour-to-kw': {
+      slug: 'btu-per-hour-to-kw',
+      exampleValue: 12000,
+      note: 'BTU/h-to-kilowatts sizes air conditioners across markets: a 12,000 BTU/h unit (one "ton" of cooling) is 3.52 kW of cooling capacity. Note this is cooling output, not electrical draw — the power consumed is smaller by the unit’s efficiency ratio.',
+    },
+    'kw-to-btu-per-hour': {
+      slug: 'kw-to-btu-per-hour',
+      exampleValue: 3.5,
+      note: 'One kilowatt is 3,412 BTU/h, so a 3.5 kW heater is about 11,940 BTU/h. Useful when comparing European heaters and heat pumps (rated in kW) with US equipment (rated in BTU/h).',
+    },
   },
 };

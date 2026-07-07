@@ -70,6 +70,7 @@ export const temperature: Quantity = {
       reverseFormulaText: 'K = °C + 273.15',
       exampleValue: 300,
       tableValues: [0, 100, 200, 273.15, 293.15, 300, 310.15, 373.15, 1000],
+      note: 'Kelvin-to-Celsius is a pure offset: subtract 273.15. The physics convention of "room temperature, 300 K" is 26.85 °C. Light-bulb color temperatures (2700 K warm white, 6500 K daylight) use the same kelvin scale, describing the glow color of an ideal radiator at that temperature.',
     },
     'fahrenheit-to-kelvin': {
       slug: 'fahrenheit-to-kelvin',
@@ -77,6 +78,7 @@ export const temperature: Quantity = {
       reverseFormulaText: '°F = (K − 273.15) × 9/5 + 32',
       exampleValue: 72,
       tableValues: [-40, 0, 32, 68, 72, 98.6, 212],
+      note: 'Fahrenheit-to-Kelvin is a two-step conversion: to Celsius first, then add 273.15. A 72 °F room is 295.37 K. It appears mostly in science homework and in converting US weather data for physical formulas, which require an absolute scale.',
     },
     'kelvin-to-fahrenheit': {
       slug: 'kelvin-to-fahrenheit',
@@ -84,6 +86,7 @@ export const temperature: Quantity = {
       reverseFormulaText: 'K = (°F − 32) × 5/9 + 273.15',
       exampleValue: 300,
       tableValues: [0, 255.37, 273.15, 293.15, 300, 310.15, 373.15],
+      note: 'Kelvin-to-Fahrenheit converts absolute-scale scientific values back to the everyday US scale: 300 K is 80.33 °F. Subtract 273.15 to get Celsius, then multiply by 9/5 and add 32.',
     },
   },
 };

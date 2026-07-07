@@ -92,5 +92,63 @@ export const length: Quantity = {
       exampleValue: 60,
       note: 'Miles-to-kilometers converts US/UK road distances and speed limits for the rest of the world. 60 miles is 96.56 km — which is why a 60 mph speed limit roughly equals 100 km/h.',
     },
+    'mm-to-inches': {
+      slug: 'mm-to-inches',
+      exampleValue: 10,
+      note: 'Millimeters-to-inches comes up with metric hardware, jewelry and rainfall. Since 1 inch is exactly 25.4 mm, divide millimeters by 25.4: a 10 mm bolt is 0.394 in, and a 13 mm wrench is nearly identical to a 1/2-inch one (12.7 mm) — close enough that the two are often confused.',
+    },
+    'inches-to-mm': {
+      slug: 'inches-to-mm',
+      exampleValue: 0.5,
+      note: 'Inches-to-millimeters matters for fasteners, plumbing and CAD work where US specs meet metric parts. Multiply inches by exactly 25.4: a 1/2-inch pipe fitting is 12.7 mm, and 3/8 in is 9.525 mm.',
+    },
+    'meters-to-feet': {
+      slug: 'meters-to-feet',
+      exampleValue: 3000,
+      note: 'Meters-to-feet converts elevations, building heights and dive depths. One meter is 3.2808 feet, so a 3,000 m mountain is 9,842.5 ft. Quick estimate: multiply meters by 3.3 (or by 3 and add 10%).',
+    },
+    'cm-to-feet': {
+      slug: 'cm-to-feet',
+      exampleValue: 180,
+      note: 'Centimeters-to-feet is almost always a height question. One foot is exactly 30.48 cm, so 180 cm is 5.906 ft — read on a tape measure as 5 feet 10.9 inches. For height, the feet-and-inches form matters more than the decimal.',
+      faqs: [
+        { q: 'What is 180 cm in feet and inches?', a: '180 cm is 5.906 feet, which is 5 feet 10.9 inches — usually stated as 5′ 11″.' },
+      ],
+    },
+    'feet-to-cm': {
+      slug: 'feet-to-cm',
+      exampleValue: 6,
+      note: 'Feet-to-centimeters converts US heights and room dimensions to metric. One foot is exactly 30.48 cm, so 6 ft is 182.88 cm. For feet-and-inches heights, convert the inches part separately: 5 ft 8 in = (5 × 30.48) + (8 × 2.54) = 172.72 cm.',
+    },
+    'inches-to-feet': {
+      slug: 'inches-to-feet',
+      exampleValue: 65,
+      note: 'Divide inches by 12 to get feet: 65 inches is 5.417 ft, i.e. 5 feet 5 inches. This conversion appears with US height listings and lumber lengths, where measurements often arrive in total inches.',
+    },
+    'feet-to-inches': {
+      slug: 'feet-to-inches',
+      exampleValue: 5.5,
+      note: 'Multiply feet by 12: 5.5 ft is 66 inches. Useful for turning decimal-feet measurements (common in surveying and real-estate listings) back into the feet-and-inches a tape measure shows.',
+    },
+    'yards-to-meters': {
+      slug: 'yards-to-meters',
+      exampleValue: 100,
+      note: 'A yard is exactly 0.9144 m — just 8.6% shorter than a meter. A 100-yard American-football field is 91.44 m, and fabric sold by the yard is a little less material than the same number of meters.',
+    },
+    'meters-to-yards': {
+      slug: 'meters-to-yards',
+      exampleValue: 100,
+      note: 'One meter is 1.0936 yards, so the 100 m Olympic sprint is 109.36 yd. Golfers use this constantly: a 150 m marker plays as 164 yd.',
+    },
+    'cm-to-meters': {
+      slug: 'cm-to-meters',
+      exampleValue: 175,
+      note: 'Divide centimeters by 100: 175 cm is 1.75 m. The main use is switching between the cm heights on medical forms and the meter heights used in BMI formulas — BMI needs meters, and using centimeters is the most common BMI calculation error.',
+    },
+    'meters-to-cm': {
+      slug: 'meters-to-cm',
+      exampleValue: 1.75,
+      note: 'Multiply meters by 100: 1.75 m is 175 cm. Furniture and appliance specs often mix the two — a 0.6 m counter depth is the familiar 60 cm.',
+    },
   },
 };

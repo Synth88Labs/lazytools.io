@@ -59,5 +59,35 @@ export const speed: Quantity = {
       exampleValue: 20,
       note: 'Knots-to-mph matters for sailing, aviation and hurricane reports. A 20-knot wind is 23 mph; hurricane force (64 kn) is 73.6 mph. One knot is 1.15078 mph.',
     },
+    'mph-to-knots': {
+      slug: 'mph-to-knots',
+      exampleValue: 25,
+      note: 'Mph-to-knots converts land speeds to the nautical unit used by boats and aircraft: 25 mph is 21.7 knots. One mph is 0.869 knots, so knots are always the smaller number.',
+    },
+    'knots-to-kmh': {
+      slug: 'knots-to-kmh',
+      exampleValue: 20,
+      note: 'One knot is exactly 1.852 km/h (one nautical mile per hour), so a 20-knot wind is 37 km/h. Weather services outside the US often publish marine winds in knots and land winds in km/h — this is the bridge between them.',
+    },
+    'kmh-to-knots': {
+      slug: 'kmh-to-knots',
+      exampleValue: 50,
+      note: 'Divide km/h by 1.852: a 50 km/h wind is 27 knots. Sailors use this to translate land forecasts to the knots their instruments show.',
+    },
+    'mps-to-kmh': {
+      slug: 'mps-to-kmh',
+      exampleValue: 10,
+      note: 'Meters-per-second to km/h is an exact ×3.6: a 10 m/s sprint is 36 km/h. Scientific wind reports use m/s while road signs use km/h — a 25 m/s storm gust is 90 km/h.',
+    },
+    'kmh-to-mps': {
+      slug: 'kmh-to-mps',
+      exampleValue: 100,
+      note: 'Divide km/h by 3.6 for m/s: 100 km/h is 27.78 m/s. Physics problems want m/s, so this is the first step in most kinematics homework involving vehicle speeds.',
+    },
+    'mps-to-mph': {
+      slug: 'mps-to-mph',
+      exampleValue: 10,
+      note: 'One meter per second is 2.237 mph, so 10 m/s is 22.4 mph. Elite sprinters average over 10 m/s in a 100 m race — faster than the speed limit in many residential zones.',
+    },
   },
 };

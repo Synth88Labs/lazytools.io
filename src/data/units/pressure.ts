@@ -69,5 +69,35 @@ export const pressure: Quantity = {
       note: 'Bar-to-psi converts European tire and equipment pressures to US units: 2.4 bar is 34.8 psi. A scuba tank rated 232 bar is 3,365 psi.',
       tableValues: [0.5, 1, 1.5, 2, 2.2, 2.4, 2.5, 3, 4, 5, 10, 50, 100, 200, 232, 300],
     },
+    'kpa-to-psi': {
+      slug: 'kpa-to-psi',
+      exampleValue: 220,
+      note: 'Kilopascals-to-psi converts the tire placards used in Canada, Australia and Japan to US units: 220 kPa is 31.9 psi. One kPa is 0.145 psi — a quick estimate is to divide kPa by 7.',
+    },
+    'psi-to-kpa': {
+      slug: 'psi-to-kpa',
+      exampleValue: 32,
+      note: 'Multiply psi by 6.895 for kilopascals: 32 psi is 220.6 kPa. Vehicle tire-pressure monitoring systems and metric workshop gauges often report kPa.',
+    },
+    'bar-to-kpa': {
+      slug: 'bar-to-kpa',
+      exampleValue: 2.2,
+      note: 'One bar is exactly 100 kPa — the cleanest conversion in pressure. A 2.2 bar tire spec is 220 kPa; just shift the decimal two places.',
+    },
+    'kpa-to-bar': {
+      slug: 'kpa-to-bar',
+      exampleValue: 240,
+      note: 'Divide kilopascals by 100 for bar: 240 kPa is 2.4 bar, exactly. Both are metric units — kPa appears on tire placards, bar on pumps and gauges in Europe.',
+    },
+    'atm-to-psi': {
+      slug: 'atm-to-psi',
+      exampleValue: 2,
+      note: 'One standard atmosphere is 14.696 psi, so 2 atm is 29.39 psi. Divers meet this constantly: pressure increases by roughly one atmosphere per 10 m of seawater, so at 10 m depth total pressure is already ~2 atm.',
+    },
+    'mmhg-to-kpa': {
+      slug: 'mmhg-to-kpa',
+      exampleValue: 120,
+      note: 'Millimeters-of-mercury-to-kilopascals is a medical conversion — a 120/80 mmHg blood pressure is 16.0/10.7 kPa, the format some European and scientific records use. One mmHg is 0.1333 kPa.',
+    },
   },
 };

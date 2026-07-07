@@ -97,5 +97,65 @@ export const volume: Quantity = {
       exampleValue: 3,
       note: 'One US tablespoon is 14.79 mL, usually rounded to 15 mL — which is exactly the metric tablespoon in most countries. Australian tablespoons are 20 mL, a notable recipe pitfall.',
     },
+    'gallons-to-liters': {
+      slug: 'gallons-to-liters',
+      exampleValue: 15,
+      note: 'Gallons-to-liters converts US fuel quantities and tank sizes to metric: a 15-gallon tank holds 56.78 L. One US gallon is exactly 3.785411784 L; the UK gallon is a different, larger unit (4.546 L).',
+    },
+    'fl-oz-to-ml': {
+      slug: 'fl-oz-to-ml',
+      exampleValue: 12,
+      note: 'Fluid-ounces-to-milliliters decodes US drink and cosmetic sizes: a 12 fl oz soda can is 354.9 mL, and the TSA carry-on liquid limit of 3.4 fl oz is the familiar 100 mL.',
+    },
+    'ml-to-cups': {
+      slug: 'ml-to-cups',
+      exampleValue: 250,
+      note: 'Milliliters-to-cups converts metric recipes for US measuring cups: 250 mL is 1.057 US cups — so treating a metric cup (250 mL) as a US cup (236.6 mL) overshoots by about 6%, enough to matter in baking.',
+    },
+    'ml-to-tbsp': {
+      slug: 'ml-to-tbsp',
+      exampleValue: 30,
+      note: 'Milliliters-to-tablespoons: 30 mL is 2.03 US tablespoons. The 15 mL ≈ 1 tbsp rule works for cooking, and medicine cups marked in mL map the same way — 30 mL of syrup is two tablespoons.',
+    },
+    'tsp-to-ml': {
+      slug: 'tsp-to-ml',
+      exampleValue: 2,
+      note: 'One US teaspoon is 4.93 mL — close enough to the 5 mL metric teaspoon that dosing spoons treat them as equal. 2 tsp is 9.86 mL. For medicines, use a proper measuring device rather than cutlery: household teaspoons vary from 3 to 7 mL.',
+    },
+    'cups-to-fl-oz': {
+      slug: 'cups-to-fl-oz',
+      exampleValue: 1.5,
+      note: 'A US cup is exactly 8 US fluid ounces, so 1.5 cups is 12 fl oz. This is definitional — no rounding — which is why American recipes switch freely between the two.',
+    },
+    'fl-oz-to-cups': {
+      slug: 'fl-oz-to-cups',
+      exampleValue: 16,
+      note: 'Divide fluid ounces by 8: 16 fl oz is 2 cups (one US pint). Drink bottles labeled in fl oz map neatly — a 32 fl oz sports bottle is 4 cups.',
+    },
+    'liters-to-ml': {
+      slug: 'liters-to-ml',
+      exampleValue: 1.5,
+      note: 'Multiply liters by 1,000: a 1.5 L bottle is 1,500 mL. Most useful for splitting bottles into servings — 1.5 L of soda is six 250 mL glasses.',
+    },
+    'ml-to-liters': {
+      slug: 'ml-to-liters',
+      exampleValue: 750,
+      note: 'Divide milliliters by 1,000: a standard 750 mL wine bottle is 0.75 L. Handy for comparing unit prices when shelf labels mix mL and L.',
+    },
+    'quarts-to-liters': {
+      slug: 'quarts-to-liters',
+      exampleValue: 5,
+      note: 'A US quart is 0.946 L — just under a liter. Engine oil is the classic case: a 5-quart oil change is 4.73 L, so five 1 L bottles leave a little spare.',
+    },
+    'liters-to-quarts': {
+      slug: 'liters-to-quarts',
+      exampleValue: 2,
+      note: 'One liter is 1.057 US quarts, so 2 L is 2.11 qt. Cookware sold in quarts runs slightly smaller than the same number in liters — a 6 qt slow cooker is 5.68 L.',
+    },
+    'cups-to-tbsp': {
+      slug: 'cups-to-tbsp',
+      exampleValue: 0.25,
+      note: 'A US cup is exactly 16 tablespoons, so a quarter cup is 4 tbsp and half a cup is 8 tbsp. This is the standard trick for scaling a recipe down when the smaller measuring cups are dirty.',
+    },
   },
 };
