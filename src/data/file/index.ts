@@ -306,7 +306,27 @@ export const FILE_TOOLS: FileToolDef[] = [
       { q: 'Is my invoice uploaded to be parsed?', a: 'No — XML parsing and PDF attachment extraction run entirely in your browser; the tool works offline. Client names, amounts and IBANs never leave your device, which is the point.' },
       { q: 'Does it validate the invoice against the standard?', a: 'No — it displays the content faithfully but does not run EN 16931/XRechnung schema validation rules. For formal compliance checks (e.g. before submitting to an authority), use an official validator; for "what does this invoice say", use this.' },
     ],
-    keywords: ['xrechnung viewer', 'zugferd viewer', 'open xrechnung xml', 'factur-x viewer', 'e-invoice reader', 'read xml invoice', 'e-rechnung anzeigen'],
+    keywords: ['xrechnung viewer', 'zugferd viewer', 'open xrechnung xml', 'e-invoice reader', 'read xml invoice', 'e-rechnung anzeigen'],
+  },
+  {
+    slug: 'facturx-viewer',
+    name: 'Factur-X Viewer (French E-Invoice)',
+    icon: '🇫🇷',
+    description:
+      'Open a Factur-X invoice — France\'s hybrid PDF e-invoice format — and read the embedded structured data: profile, parties, VAT, line items, totals. Parsed locally, nothing uploaded.',
+    lead: 'France\'s e-invoicing mandate starts 1 September 2026, and Factur-X is its flagship format: a normal-looking PDF with the legal invoice data embedded as XML inside. This viewer extracts and shows that data — including which Factur-X profile the invoice uses — without your invoice leaving the browser.',
+    widget: 'einvoice',
+    how: 'A Factur-X invoice (the French-German standard, identical to ZUGFeRD 2.x) is a PDF/A-3 file with a machine-readable XML invoice — UN/CEFACT Cross-Industry Invoice syntax — embedded as an attachment. The viewer extracts that XML from the PDF (or reads a bare XML directly), detects the Factur-X profile from its guideline URN, and displays the structured content: seller and buyer, SIREN/VAT identifiers, dates, line items, VAT breakdown by rate, totals and payment details. Profiles matter under the French reform: MINIMUM and BASIC WL carry only header data — the viewer flags this — while BASIC, EN 16931 and EXTENDED contain the full line-level detail.',
+    note: 'The timeline driving this: from 1 September 2026, every French company regardless of size must be able to receive electronic invoices, and large and mid-size companies (grandes entreprises, ETI) must issue them; SMEs and micro-enterprises follow on 1 September 2027. Invoices flow through certified platforms (plateformes agréées, formerly PDP), with Factur-X, UBL and CII as the core formats. If a supplier\'s invoice now arrives as a "PDF that my accounting software wants as XML", it is almost certainly Factur-X — and the XML inside, not the visual layer, is the authoritative document.',
+    faqs: [
+      { q: 'What is a Factur-X invoice?', a: 'A hybrid e-invoice standard developed jointly by France (FNFE-MPE) and Germany (where it is called ZUGFeRD): a human-readable PDF/A-3 with the structured invoice data embedded inside as UN/CEFACT CII XML. Humans read the PDF; software reads the XML; legally, the structured data is the invoice.' },
+      { q: 'When does e-invoicing become mandatory in France?', a: 'From 1 September 2026 all French companies must be able to receive e-invoices, and large and mid-size companies must issue them. Small and micro-enterprises must issue from 1 September 2027. The obligation covers domestic B2B transactions, with invoices exchanged via certified platforms.' },
+      { q: 'What are the Factur-X profiles?', a: 'Five levels of structured detail: MINIMUM and BASIC WL (header data only — flagged by this viewer, since they omit line items), BASIC (full invoice with lines), EN 16931 / Comfort (the full European semantic standard), and EXTENDED (additional French-German business fields). The profile is declared in the XML\'s guideline URN, which this viewer reads and displays.' },
+      { q: 'How is Factur-X different from a normal PDF invoice?', a: 'Visually, not at all — that is the design. The difference is the embedded XML attachment carrying every amount, date and party as structured data. A scanned or ordinary PDF has no such attachment; this viewer will tell you if the PDF you load is not actually a Factur-X hybrid.' },
+      { q: 'Is my invoice uploaded to be read?', a: 'No — the PDF attachment extraction and XML parsing run entirely in your browser and work offline. A Factur-X invoice names your suppliers, amounts and bank details (IBAN); that is exactly the data not to feed into a random online viewer that logs uploads.' },
+      { q: 'Does this validate compliance with the French mandate?', a: 'No — it faithfully displays what the invoice contains, including the declared profile, but does not run EN 16931 or Factur-X schematron validation. For formal conformance testing, use an official validator; for "what does this invoice actually say", use this.' },
+    ],
+    keywords: ['factur-x viewer', 'facture électronique 2026', 'ouvrir facture factur-x', 'factur x lecteur', 'french e-invoice', 'facture electronique format', 'factur-x profile', 'lire facture xml'],
   },
 ];
 

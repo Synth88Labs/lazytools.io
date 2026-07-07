@@ -265,6 +265,13 @@ const POSTS = [
     fact: 'every LAN is a /64 — count subnets, not hosts',
     icon: '🌐',
   },
+  {
+    slug: 'facturx-france-2026-guide',
+    kicker: 'E-INVOICING',
+    lines: ['Factur-X & France’s', '2026 mandate: read the', 'invoice inside the PDF'],
+    fact: 'receive obligation: all companies, 1 Sept 2026',
+    icon: '🇫🇷',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

@@ -5,7 +5,7 @@ One line per item ever surfaced. Format: `- [status] name — date first seen, l
 - [BUILT] HEIC to JPG/PNG converter — 2026-07-06, 21/25 — shipped /image/heic-to-jpg/ (heic-to/libheif wasm) + blog heic-to-jpg-guide
 - [BUILT] E-invoice viewer: XRechnung / ZUGFeRD / Factur-X — 2026-07-06, 20/25 — shipped /file/e-invoice-viewer/ (UBL+CII parser, PDF-embedded XML extraction) + blog e-invoice-guide
 - [BUILT] PDF unlock & protect (qpdf-wasm) — 2026-07-06, 20/25 — shipped /pdf/unlock-pdf/ + /pdf/protect-pdf/ (qpdf wasm) + blog pdf-password-guide
-- [opportunity] Factur-X / French e-invoice viewer depth (variant of BUILT e-invoice viewer) — 2026-07-07, 22/25 — France receive-mandate 1 Sept 2026; build before deadline
+- [BUILT] Factur-X / French e-invoice viewer depth (variant of BUILT e-invoice viewer) — 2026-07-07, 22/25 — shipped /file/facturx-viewer/ + profile detection in viewer + blog facturx-france-2026-guide (before 1 Sept 2026 mandate)
 - [BUILT] Networking & IT calculator cluster (subnet/CIDR v4+v6, IP converters, chmod, cron, MAC formatter) — 2026-07-07, 20/25 — shipped /network/ (8 tools, v0.5.0) + blog ipv6-subnetting-guide
 - [watchlist] WebCodecs video toolkit (trim/compress/convert) — 2026-07-06, 20/25 (competition-gap axis 2 blocks promotion; revisit for underserved long-tail intents)
 - [watchlist] JPEG XL / AVIF converter (modern-format image expansion) — 2026-07-06, 17/25 (Chrome 145 still flag-gated as of 2026-07-07; promote when default-on ships, expected H2 2026; consider pre-building 4–6 weeks ahead)

@@ -12,7 +12,7 @@ the legal review) are cleared.
 ratings (PHP + SQLite), smart header search, sitemap, auto-generated `llms.txt`, GitHub Actions →
 Namecheap FTPS deploy pipeline.
 
-**All 17 categories live** (~345 pages, 277+ tools):
+**All 17 categories live** (~346 pages, 278+ tools):
 
 | Category | Highlights |
 |---|---|
@@ -21,7 +21,7 @@ Namecheap FTPS deploy pipeline.
 | Size Converters | ring, shoe, bra, clothing, hat, kids' shoe |
 | Text Tools | counters, case, sort, dedupe, find-and-replace, slugify |
 | Color Tools | HEX/RGB/HSL/CMYK, WCAG contrast, shades, gradient, mixer |
-| File & Data | CSV/JSON/XML/YAML, Markdown, JSON formatter, **e-invoice viewer** |
+| File & Data | CSV/JSON/XML/YAML, Markdown, JSON formatter, **e-invoice viewer** + **Factur-X viewer** (French mandate, profile detection) |
 | Developer Tools | Base64, URL/HTML entities, SHA hashes, JWT, regex, number base |
 | Generators | password, UUID, QR, random number, lorem ipsum |
 | Date & Time | timestamp, age, date-diff/add, ISO week, timezone converter, **19 timezone-pair pages** |
@@ -34,7 +34,7 @@ Namecheap FTPS deploy pipeline.
 | Productivity | **Pomodoro timer**, countdown/stopwatch, meeting-cost meter, Eisenhower matrix, habit tracker, Kanban, mind map, Gantt, decision matrix, RICE, SWOT, pros/cons, flowchart, whiteboard, time-blocking, OKR, checklist, retro board, eye-rest — all saved locally, JSON export |
 | Network & IT | **IPv4 & IPv6 subnet calculators** (exact 128-bit math), CIDR⇄range, IP format converter, IPv6 expand/compress (RFC 5952), chmod calculator, cron parser with next-run times, MAC formatter (EUI-64, link-local) |
 
-**Content & growth engine** — 29 SEO/GEO blog guides (hero + custom SVG infographic, schema,
+**Content & growth engine** — 30 SEO/GEO blog guides (hero + custom SVG infographic, schema,
 cited sources); a daily **market-research agent** that scans for browser-tool opportunities and
 files scored findings to `docs/research/` — the Network & IT category and its IPv6 guide shipped
 directly from its 7 Jul scan (IPv6 crossed 50% of Google traffic in Mar 2026).

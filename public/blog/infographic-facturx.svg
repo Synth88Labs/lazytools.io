@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="Factur-X and France's e-invoicing mandate. A Factur-X file is one PDF with two layers: the human-readable PDF image and the embedded machine-readable XML, which is the legally authoritative invoice. Timeline: from 1 September 2026 all French companies must be able to receive e-invoices and large plus mid-size companies must issue them; from 1 September 2027 SMEs and micro-enterprises must issue too. Five profiles range from MINIMUM (header data only) to EXTENDED (full detail).">
+  <defs>
+    <style>
+      .h { font: 800 30px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .lab { font: 700 19px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .sub { font: 500 15px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+      .big { font: 800 20px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; }
+      .small { font: 600 13px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; }
+    </style>
+  </defs>
+
+  <text x="600" y="42" text-anchor="middle" class="h">🇫🇷 Factur-X: one file, two invoices</text>
+
+  <!-- anatomy -->
+  <g transform="translate(90 70)">
+    <rect x="0" y="0" width="300" height="170" rx="14" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/>
+    <rect x="18" y="18" width="160" height="12" rx="4" fill="#cbd5e1"/>
+    <rect x="18" y="40" width="264" height="8" rx="4" fill="#e2e8f0"/>
+    <rect x="18" y="56" width="264" height="8" rx="4" fill="#e2e8f0"/>
+    <rect x="18" y="72" width="200" height="8" rx="4" fill="#e2e8f0"/>
+    <rect x="18" y="96" width="264" height="26" rx="6" fill="#f1f5f9"/>
+    <text x="150" y="150" text-anchor="middle" class="sub">what you see: the PDF layer</text>
+  </g>
+  <text x="450" y="160" text-anchor="middle" font-size="34" fill="#64748b">+</text>
+  <g transform="translate(510 70)">
+    <rect x="0" y="0" width="300" height="170" rx="14" fill="#153056"/>
+    <text x="24" y="36" class="small" fill="#7ef0c0" font-family="Consolas,Menlo,monospace">&lt;rsm:CrossIndustryInvoice&gt;</text>
+    <text x="36" y="60" class="small" fill="#93c5fd" font-family="Consolas,Menlo,monospace">&lt;ram:ID&gt;FA-2026-041&lt;/ram:ID&gt;</text>
+    <text x="36" y="84" class="small" fill="#93c5fd" font-family="Consolas,Menlo,monospace">&lt;ram:GrandTotalAmount&gt;</text>
+    <text x="48" y="108" class="small" fill="#fbbf24" font-family="Consolas,Menlo,monospace">1 428.00 EUR</text>
+    <text x="150" y="150" text-anchor="middle" class="sub" fill="#94a3b8">what software reads: embedded XML</text>
+  </g>
+  <g transform="translate(860 70)">
+    <rect x="0" y="0" width="250" height="170" rx="14" fill="#f0fdf4" stroke="#059669" stroke-width="2"/>
+    <text x="125" y="60" text-anchor="middle" font-size="34">⚖️</text>
+    <text x="125" y="100" text-anchor="middle" class="big" fill="#065f46">The XML is the</text>
+    <text x="125" y="126" text-anchor="middle" class="big" fill="#065f46">legal invoice</text>
+    <text x="125" y="152" text-anchor="middle" class="sub">the PDF is a courtesy image</text>
+  </g>
+
+  <!-- timeline -->
+  <text x="600" y="300" text-anchor="middle" class="lab">The French mandate timeline (B2B domestic)</text>
+  <line x1="120" y1="368" x2="1080" y2="368" stroke="#cbd5e1" stroke-width="4"/>
+  <g transform="translate(280 368)">
+    <circle r="12" fill="#1d87f1"/>
+    <text x="0" y="-58" text-anchor="middle" class="big" fill="#0f172a">1 Sept 2026</text>
+    <text x="0" y="-34" text-anchor="middle" class="sub">ALL companies: must RECEIVE</text>
+    <text x="0" y="42" text-anchor="middle" class="sub">large &amp; mid-size (ETI): must ISSUE</text>
+  </g>
+  <g transform="translate(770 368)">
+    <circle r="12" fill="#7c3aed"/>
+    <text x="0" y="-58" text-anchor="middle" class="big" fill="#0f172a">1 Sept 2027</text>
+    <text x="0" y="-34" text-anchor="middle" class="sub">SMEs &amp; micro-enterprises:</text>
+    <text x="0" y="42" text-anchor="middle" class="sub">must ISSUE too</text>
+  </g>
+
+  <!-- profiles -->
+  <text x="600" y="472" text-anchor="middle" class="lab">Five profiles — how much structured data the XML carries</text>
+  <g transform="translate(75 492)">
+    <rect x="0" y="0" width="195" height="76" rx="12" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+    <text x="97" y="30" text-anchor="middle" class="big" fill="#991b1b">MINIMUM</text>
+    <text x="97" y="56" text-anchor="middle" class="sub">header only — no lines</text>
+  </g>
+  <g transform="translate(286 492)">
+    <rect x="0" y="0" width="195" height="76" rx="12" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+    <text x="97" y="30" text-anchor="middle" class="big" fill="#9a3412">BASIC WL</text>
+    <text x="97" y="56" text-anchor="middle" class="sub">totals, no line items</text>
+  </g>
+  <g transform="translate(497 492)">
+    <rect x="0" y="0" width="195" height="76" rx="12" fill="#eef9ff" stroke="#1d87f1" stroke-width="2"/>
+    <text x="97" y="30" text-anchor="middle" class="big" fill="#1e3a8a">BASIC</text>
+    <text x="97" y="56" text-anchor="middle" class="sub">full invoice with lines</text>
+  </g>
+  <g transform="translate(708 492)">
+    <rect x="0" y="0" width="195" height="76" rx="12" fill="#f0fdf4" stroke="#059669" stroke-width="2"/>
+    <text x="97" y="30" text-anchor="middle" class="big" fill="#065f46">EN 16931</text>
+    <text x="97" y="56" text-anchor="middle" class="sub">full EU semantic standard</text>
+  </g>
+  <g transform="translate(919 492)">
+    <rect x="0" y="0" width="195" height="76" rx="12" fill="#faf5ff" stroke="#7c3aed" stroke-width="2"/>
+    <text x="97" y="30" text-anchor="middle" class="big" fill="#5b21b6">EXTENDED</text>
+    <text x="97" y="56" text-anchor="middle" class="sub">extra FR-DE business fields</text>
+  </g>
+
+  <text x="600" y="614" text-anchor="middle" class="sub">Factur-X = ZUGFeRD 2.x — the same French-German standard under two names.</text>
+</svg>

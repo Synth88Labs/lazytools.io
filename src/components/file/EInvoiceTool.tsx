@@ -11,6 +11,9 @@ interface LineItem {
 }
 interface Parsed {
   syntax: 'UBL' | 'CII';
+  profile: string;
+  profileUrn: string;
+  profileWarning: string;
   invoiceNumber: string;
   issueDate: string;
   dueDate: string;
@@ -45,7 +48,33 @@ function ciiDate(s: string): string {
   return /^\d{8}$/.test(s) ? `${s.slice(0, 4)}-${s.slice(4, 6)}-${s.slice(6)}` : s;
 }
 
+/** Map a guideline URN (CII) or CustomizationID (UBL) to a friendly profile name + caveat. */
+function detectProfile(urn: string): { profile: string; warning: string } {
+  const u = urn.toLowerCase();
+  if (!u) return { profile: '', warning: '' };
+  if (u.includes('xrechnung') || u.includes('xeinkauf')) return { profile: 'XRechnung', warning: '' };
+  if (u.includes('peppol')) return { profile: 'Peppol BIS Billing 3.0', warning: '' };
+  if (u.includes('minimum'))
+    return {
+      profile: 'Factur-X / ZUGFeRD — MINIMUM',
+      warning:
+        'The MINIMUM profile carries only header data (parties, totals, VAT) — no line items. It is not a complete EN 16931 structured invoice; the full detail exists only in the human-readable PDF layer.',
+    };
+  if (u.includes('basicwl'))
+    return {
+      profile: 'Factur-X / ZUGFeRD — BASIC WL',
+      warning:
+        'The BASIC WL (without lines) profile omits line items by design — the structured data covers header and totals only; item detail exists only in the PDF layer.',
+    };
+  if (u.includes('extended')) return { profile: 'Factur-X / ZUGFeRD — EXTENDED', warning: '' };
+  if (u.includes('basic')) return { profile: 'Factur-X / ZUGFeRD — BASIC', warning: '' };
+  if (u.includes('en16931') || u.includes('en 16931')) return { profile: 'Factur-X / ZUGFeRD — EN 16931 (Comfort)', warning: '' };
+  return { profile: '', warning: '' };
+}
+
 function parseCii(root: Element): Parsed {
+  const profileUrn = txt(el(root, 'ExchangedDocumentContext', 'GuidelineSpecifiedDocumentContextParameter'), 'ID');
+  const { profile, warning } = detectProfile(profileUrn);
   const doc = el(root, 'ExchangedDocument');
   const trans = el(root, 'SupplyChainTradeTransaction');
   const agreement = el(trans, 'ApplicableHeaderTradeAgreement');
@@ -73,6 +102,9 @@ function parseCii(root: Element): Parsed {
 
   return {
     syntax: 'CII',
+    profile,
+    profileUrn,
+    profileWarning: warning,
     invoiceNumber: txt(doc, 'ID'),
     issueDate: ciiDate(txt(doc, 'IssueDateTime', 'DateTimeString')),
     dueDate,
@@ -92,6 +124,8 @@ function parseCii(root: Element): Parsed {
 }
 
 function parseUbl(root: Element): Parsed {
+  const profileUrn = txt(root, 'CustomizationID');
+  const { profile, warning } = detectProfile(profileUrn);
   const supplier = el(root, 'AccountingSupplierParty', 'Party');
   const customer = el(root, 'AccountingCustomerParty', 'Party');
   const partyName = (p: Element | null) => txt(p, 'PartyLegalEntity', 'RegistrationName') || txt(p, 'PartyName', 'Name');
@@ -111,6 +145,9 @@ function parseUbl(root: Element): Parsed {
 
   return {
     syntax: 'UBL',
+    profile,
+    profileUrn,
+    profileWarning: warning,
     invoiceNumber: txt(root, 'ID'),
     issueDate: txt(root, 'IssueDate'),
     dueDate: txt(root, 'DueDate'),
@@ -219,6 +256,14 @@ export default function EInvoiceTool() {
         <div class="mt-4 space-y-4" aria-live="polite">
           <div class="rounded-xl border border-brand-100 bg-white p-4">
             <p class="text-xs font-bold uppercase tracking-wide text-brand-700">Invoice {parsed.invoiceNumber || '(no number)'} · {parsed.syntax === 'CII' ? 'UN/CEFACT CII syntax (ZUGFeRD/XRechnung)' : 'UBL syntax (XRechnung/Peppol)'}</p>
+            {parsed.profile && (
+              <p class="mt-1 text-sm font-semibold text-slate-700" title={parsed.profileUrn}>
+                Profile: <span class="rounded bg-brand-50 px-1.5 py-0.5 text-brand-800">{parsed.profile}</span>
+              </p>
+            )}
+            {parsed.profileWarning && (
+              <p class="mt-2 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800">⚠ {parsed.profileWarning}</p>
+            )}
             <div class="mt-3 grid gap-x-8 sm:grid-cols-2">
               <div>
                 {row('Seller', parsed.seller)}

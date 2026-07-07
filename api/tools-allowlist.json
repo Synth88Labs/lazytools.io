@@ -46,6 +46,7 @@
   "file/csv-to-json",
   "file/csv-to-markdown-table",
   "file/e-invoice-viewer",
+  "file/facturx-viewer",
   "file/json-formatter",
   "file/json-to-csv",
   "file/json-to-xml",
