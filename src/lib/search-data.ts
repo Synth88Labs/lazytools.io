@@ -17,6 +17,7 @@ import { PDF_TOOLS } from '../data/pdf/index';
 import { AUDIO_TOOLS } from '../data/video/index';
 import { allPairs as zonePairs } from '../data/time/zones';
 import { CALENDAR_TOOLS } from '../data/calendar/index';
+import { CIPHER_TOOLS } from '../data/cipher/index';
 
 export interface SearchUnit {
   id: string;
@@ -181,6 +182,9 @@ export function buildSearchPages(): SearchPage[] {
   for (const t of CALENDAR_TOOLS) {
     pages.push({ title: t.name, url: `/calendar/${t.slug}/`, keywords: [...t.keywords, 'calendar', 'converter', t.name.toLowerCase()] });
   }
+  for (const t of CIPHER_TOOLS) {
+    pages.push({ title: t.name, url: `/cipher/${t.slug}/`, keywords: [...t.keywords, 'cipher', 'code', 'converter', t.name.toLowerCase()] });
+  }
   for (const t of SECURITY_TOOLS) {
     pages.push({ title: t.name, url: `/security/${t.slug}/`, keywords: [...t.keywords, 'privacy', 'security', t.name.toLowerCase()] });
   }
@@ -202,7 +206,8 @@ export function buildSearchPages(): SearchPage[] {
     { title: 'All Generators', url: '/generate/', keywords: ['generators', 'generate', 'password', 'uuid', 'qr code', 'random'] },
     { title: 'All Date & Time Tools', url: '/time/', keywords: ['date', 'time', 'timestamp', 'timezone', 'age', 'calendar'] },
     { title: 'Time-Zone Pair Converters', url: '/time/zones/', keywords: ['timezone', 'time zone', 'converter', 'ist', 'est', 'pst', 'gmt', 'meeting planner'] },
-    { title: 'All Calendar Tools', url: '/calendar/', keywords: ['calendar', 'calendars', 'converter', 'hijri', 'hebrew', 'persian', 'julian', 'date converter'] },
+    { title: 'All Calendar Tools', url: '/calendar/', keywords: ['calendar', 'calendars', 'converter', 'hijri', 'hebrew', 'persian', 'julian', 'nepali', 'bikram sambat', 'date converter'] },
+    { title: 'All Codes & Ciphers', url: '/cipher/', keywords: ['cipher', 'ciphers', 'code', 'codes', 'morse', 'nato', 'binary', 'caesar', 'encode', 'decode'] },
     { title: 'All File Converters', url: '/file/', keywords: ['file converter', 'csv', 'json', 'yaml', 'xml', 'data converter'] },
     { title: 'All Text Tools', url: '/text/', keywords: ['text tools', 'text', 'words', 'characters', 'lines'] },
     { title: 'All Color Tools', url: '/color/', keywords: ['color tools', 'color', 'hex', 'rgb', 'contrast'] },

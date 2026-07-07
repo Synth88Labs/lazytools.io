@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="Three kinds of codes: encodings such as Morse, binary and the NATO phonetic alphabet are reversible by anyone and used for communication; classic ciphers such as Caesar (25 keys, cracked in seconds), ROT13 (its own inverse) and Vigenere (a keyword cipher that resisted codebreakers for 300 years) scramble text with a key but are breakable; and encryption such as AES is unbreakable without the key. Only encryption protects real secrets.">
+  <defs>
+    <style>
+      .h { font: 800 30px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .ct { font: 800 21px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; }
+      .item { font: 600 16px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .sub { font: 500 14px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+      .tag { font: 800 15px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; }
+    </style>
+  </defs>
+
+  <text x="600" y="42" text-anchor="middle" class="h">"Code" means three different things</text>
+
+  <!-- Encodings -->
+  <g transform="translate(60 78)">
+    <rect x="0" y="0" width="345" height="470" rx="16" fill="#eef9ff" stroke="#1d87f1" stroke-width="2"/>
+    <text x="172" y="42" text-anchor="middle" class="ct" fill="#153056">ENCODINGS</text>
+    <text x="172" y="68" text-anchor="middle" class="sub">change the form, hide nothing</text>
+    <rect x="30" y="86" width="285" height="30" rx="15" fill="#dbeafe"/>
+    <text x="172" y="107" text-anchor="middle" class="tag" fill="#1e40af">reversible by ANYONE</text>
+
+    <g transform="translate(24 132)">
+      <text x="0" y="24" class="item">📡 Morse — ··· −−− ···</text>
+      <text x="0" y="46" class="sub">dots &amp; dashes, over radio/light/sound</text>
+      <text x="0" y="94" class="item">💻 Binary</text>
+      <text x="0" y="116" class="sub">"A" = 01000001 (how computers store text)</text>
+      <text x="0" y="164" class="item">🔤 NATO alphabet</text>
+      <text x="0" y="186" class="sub">Alfa Bravo Charlie — spell aloud clearly</text>
+    </g>
+    <rect x="30" y="392" width="285" height="52" rx="12" fill="#1d87f1"/>
+    <text x="172" y="416" text-anchor="middle" class="tag" fill="#ffffff">Purpose: COMMUNICATION</text>
+    <text x="172" y="434" text-anchor="middle" class="sub" fill="#dbeafe">not secrecy</text>
+  </g>
+
+  <!-- Ciphers -->
+  <g transform="translate(427 78)">
+    <rect x="0" y="0" width="345" height="470" rx="16" fill="#fefce8" stroke="#b45309" stroke-width="2"/>
+    <text x="172" y="42" text-anchor="middle" class="ct" fill="#92400e">CLASSIC CIPHERS</text>
+    <text x="172" y="68" text-anchor="middle" class="sub">scramble with a key</text>
+    <rect x="30" y="86" width="285" height="30" rx="15" fill="#fef9c3"/>
+    <text x="172" y="107" text-anchor="middle" class="tag" fill="#92400e">breakable by hand / computer</text>
+
+    <g transform="translate(24 132)">
+      <text x="0" y="24" class="item">🏛️ Caesar — shift N</text>
+      <text x="0" y="46" class="sub">only 25 keys → cracked in seconds</text>
+      <text x="0" y="94" class="item">🔁 ROT13 — shift 13</text>
+      <text x="0" y="116" class="sub">its own inverse; hides spoilers</text>
+      <text x="0" y="164" class="item">🗝️ Vigenère — keyword</text>
+      <text x="0" y="186" class="sub">resisted codebreakers ~300 years</text>
+    </g>
+    <rect x="30" y="392" width="285" height="52" rx="12" fill="#b45309"/>
+    <text x="172" y="416" text-anchor="middle" class="tag" fill="#ffffff">Purpose: LEARNING &amp; PUZZLES</text>
+    <text x="172" y="434" text-anchor="middle" class="sub" fill="#fde9c8">weak security</text>
+  </g>
+
+  <!-- Encryption -->
+  <g transform="translate(794 78)">
+    <rect x="0" y="0" width="346" height="470" rx="16" fill="#f0fdf4" stroke="#059669" stroke-width="3"/>
+    <text x="173" y="42" text-anchor="middle" class="ct" fill="#065f46">ENCRYPTION</text>
+    <text x="173" y="68" text-anchor="middle" class="sub">a cipher strong enough to resist attack</text>
+    <rect x="30" y="86" width="286" height="30" rx="15" fill="#dcfce7"/>
+    <text x="173" y="107" text-anchor="middle" class="tag" fill="#065f46">unbreakable without the key</text>
+
+    <g transform="translate(24 132)">
+      <text x="0" y="24" class="item">🔒 AES-256</text>
+      <text x="0" y="46" class="sub">the modern standard (TLS, disk, files)</text>
+      <text x="0" y="94" class="item">needs a real key</text>
+      <text x="0" y="116" class="sub">brute force is computationally infeasible</text>
+      <text x="0" y="164" class="item">✓ protects actual secrets</text>
+      <text x="0" y="186" class="sub">files, messages, credentials</text>
+    </g>
+    <rect x="30" y="392" width="286" height="52" rx="12" fill="#059669"/>
+    <text x="173" y="416" text-anchor="middle" class="tag" fill="#ffffff">Purpose: CONFIDENTIALITY</text>
+    <text x="173" y="434" text-anchor="middle" class="sub" fill="#dcfce7">the real thing</text>
+  </g>
+
+  <rect x="250" y="566" width="700" height="46" rx="12" fill="#153056"/>
+  <text x="600" y="595" text-anchor="middle" font-family="Consolas, Menlo, monospace" font-size="16" font-weight="600" fill="#7ef0c0">if you can read it back for free, it was never a secret</text>
+</svg>

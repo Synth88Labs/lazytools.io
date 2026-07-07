@@ -1,0 +1,74 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PrivacyStrip from '../../components/PrivacyStrip.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { CIPHER_TOOLS } from '../../data/cipher/index';
+import { breadcrumbSchema, collectionPageSchema, faqSchema } from '../../lib/schema';
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Codes & Ciphers', url: '/cipher/' },
+];
+
+const faqs = [
+  {
+    q: 'Are these codes and ciphers secure?',
+    a: 'No — Morse code, the NATO alphabet and binary are encodings (reversible by anyone), and the Caesar, ROT13 and Vigenère ciphers are classic teaching ciphers, all breakable by hand or in seconds by computer. They are for learning, puzzles and clear communication, not for protecting real secrets — for that, use the AES file encryption in Privacy & Security.',
+  },
+  {
+    q: 'What is the difference between a code, a cipher and an encoding?',
+    a: 'An encoding (Morse, binary, NATO) re-represents text in another form with no secrecy. A cipher (Caesar, Vigenère) scrambles text with a key to hide it. Modern encryption is a cipher strong enough that it cannot be broken without the key — unlike these historical ciphers.',
+  },
+  {
+    q: 'Do these tools work offline?',
+    a: 'Yes — every conversion here is simple lookup or arithmetic done in your browser, so nothing you type is uploaded and the tools keep working with no connection.',
+  },
+];
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  collectionPageSchema({
+    name: 'Codes & Ciphers',
+    url: '/cipher/',
+    description: 'Morse code, the NATO phonetic alphabet, binary, and the Caesar, ROT13 and Vigenère ciphers — encode, decode and learn, all in your browser.',
+    items: CIPHER_TOOLS.map((t) => ({ name: t.name, url: `/cipher/${t.slug}/` })),
+  }),
+  faqSchema(faqs),
+];
+---
+
+<Base
+  title="Codes & Ciphers — Morse, NATO, Binary, Caesar | LazyTools"
+  description={`${CIPHER_TOOLS.length} free code and cipher tools: Morse code translator with audio, NATO phonetic alphabet, binary translator, and the Caesar, ROT13 and Vigenère ciphers. All client-side.`}
+  schema={schema}
+>
+  <div class="mx-auto max-w-5xl px-4 py-6">
+    <Breadcrumbs items={crumbs} />
+
+    <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Codes & Ciphers</h1>
+    <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
+      Translate Morse code (with audio), spell with the NATO alphabet, convert text to binary, and
+      encode or decode the classic Caesar, ROT13 and Vigenère ciphers. Every one is a lookup or a bit
+      of arithmetic — done on your device, never uploaded.
+    </p>
+
+    <div class="mt-5">
+      <PrivacyStrip />
+    </div>
+
+    <ul class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {CIPHER_TOOLS.map((t) => (
+        <li>
+          <a href={`/cipher/${t.slug}/`} class="flex h-full flex-col rounded-xl border border-slate-200 p-4 transition hover:border-brand-400 hover:shadow-sm">
+            <span class="text-2xl" aria-hidden="true">{t.icon}</span>
+            <span class="mt-2 font-semibold text-slate-900">{t.name}</span>
+            <span class="mt-1 text-sm text-slate-600">{t.lead.split('—')[0]}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <FaqSection faqs={faqs} />
+  </div>
+</Base>

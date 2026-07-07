@@ -130,7 +130,10 @@ arrangements, and they're not interchangeable:
 
 All three yield 13-week quarters and 52/53-week years — they only differ in which weeks roll up into
 which month. The practical rule: **confirm which convention your organisation uses** before you
-reconcile a report, because a March figure under 4-5-4 covers different weeks than under 4-4-5.
+reconcile a report, because a March figure under 4-5-4 covers different weeks than under 4-4-5. The
+[retail calendar tool](/calendar/4-5-4-retail-calendar/) has a pattern switch, so you can lay out any
+fiscal year — or place any date — under 4-5-4, 4-4-5 or 5-4-4 and see exactly which weeks each month
+picks up.
 
 ## Finding any date's retail week
 

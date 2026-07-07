@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="Bikram Sambat, Nepal's calendar, is about 56 years and 8 months ahead of AD, so 2024 AD equals 2081 BS. The new year 1 Baishakh falls around 13-14 April. Its twelve months Baishakh through Chaitra have variable lengths of 29 to 32 days set astronomically, so conversion needs an official month-length table rather than a fixed formula.">
+  <defs>
+    <style>
+      .h { font: 800 30px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .lab { font: 700 19px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .sub { font: 500 15px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+      .big { font: 800 30px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; }
+      .mon { font: 600 14px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #334155; }
+    </style>
+  </defs>
+
+  <text x="600" y="42" text-anchor="middle" class="h">Bikram Sambat: Nepal's calendar, ~56 yrs 8 mths ahead of AD</text>
+
+  <!-- offset illustration -->
+  <g transform="translate(80 78)">
+    <rect x="0" y="0" width="480" height="110" rx="14" fill="#eef9ff" stroke="#1d87f1" stroke-width="2"/>
+    <text x="240" y="44" text-anchor="middle" class="big" fill="#153056">2024 AD = 2081 BS</text>
+    <text x="240" y="78" text-anchor="middle" class="sub">gap is 57 years after mid-April, 56 before it</text>
+    <text x="240" y="98" text-anchor="middle" class="sub">(the offset includes a partial year — never a flat +57)</text>
+  </g>
+  <g transform="translate(640 78)">
+    <rect x="0" y="0" width="480" height="110" rx="14" fill="#f0fdf4" stroke="#059669" stroke-width="2"/>
+    <text x="240" y="44" text-anchor="middle" class="big" fill="#065f46">🎉 1 Baishakh</text>
+    <text x="240" y="76" text-anchor="middle" class="sub">Nepali New Year — around 13–14 April</text>
+    <text x="240" y="96" text-anchor="middle" class="sub">1 Baishakh 2081 = 13 April 2024 (Saturday)</text>
+  </g>
+
+  <!-- 12 months, variable length -->
+  <text x="600" y="228" text-anchor="middle" class="lab">Twelve months of 29–32 days — length set by the sun, not a fixed rule</text>
+  <g transform="translate(80 246)">
+    <!-- 6 per row, 2 rows; width 1040, cell ~170 -->
+    <g>
+      <rect x="0" y="0" width="166" height="60" rx="10" fill="#ffffff" stroke="#cbd5e1"/><text x="83" y="30" text-anchor="middle" class="mon">1 Baishakh</text><text x="83" y="48" text-anchor="middle" class="sub">Apr–May</text>
+      <rect x="176" y="0" width="166" height="60" rx="10" fill="#ffffff" stroke="#cbd5e1"/><text x="259" y="30" text-anchor="middle" class="mon">2 Jestha</text><text x="259" y="48" text-anchor="middle" class="sub">May–Jun</text>
+      <rect x="352" y="0" width="166" height="60" rx="10" fill="#ffffff" stroke="#cbd5e1"/><text x="435" y="30" text-anchor="middle" class="mon">3 Ashadh</text><text x="435" y="48" text-anchor="middle" class="sub">Jun–Jul</text>
+      <rect x="528" y="0" width="166" height="60" rx="10" fill="#ffffff" stroke="#cbd5e1"/><text x="611" y="30" text-anchor="middle" class="mon">4 Shrawan</text><text x="611" y="48" text-anchor="middle" class="sub">Jul–Aug</text>
+      <rect x="704" y="0" width="166" height="60" rx="10" fill="#ffffff" stroke="#cbd5e1"/><text x="787" y="30" text-anchor="middle" class="mon">5 Bhadra</text><text x="787" y="48" text-anchor="middle" class="sub">Aug–Sep</text>
+      <rect x="880" y="0" width="166" height="60" rx="10" fill="#ffffff" stroke="#cbd5e1"/><text x="963" y="30" text-anchor="middle" class="mon">6 Ashwin</text><text x="963" y="48" text-anchor="middle" class="sub">Sep–Oct</text>
+    </g>
+    <g transform="translate(0 72)">
+      <rect x="0" y="0" width="166" height="60" rx="10" fill="#ffffff" stroke="#cbd5e1"/><text x="83" y="30" text-anchor="middle" class="mon">7 Kartik</text><text x="83" y="48" text-anchor="middle" class="sub">Oct–Nov</text>
+      <rect x="176" y="0" width="166" height="60" rx="10" fill="#ffffff" stroke="#cbd5e1"/><text x="259" y="30" text-anchor="middle" class="mon">8 Mangsir</text><text x="259" y="48" text-anchor="middle" class="sub">Nov–Dec</text>
+      <rect x="352" y="0" width="166" height="60" rx="10" fill="#ffffff" stroke="#cbd5e1"/><text x="435" y="30" text-anchor="middle" class="mon">9 Poush</text><text x="435" y="48" text-anchor="middle" class="sub">Dec–Jan</text>
+      <rect x="528" y="0" width="166" height="60" rx="10" fill="#ffffff" stroke="#cbd5e1"/><text x="611" y="30" text-anchor="middle" class="mon">10 Magh</text><text x="611" y="48" text-anchor="middle" class="sub">Jan–Feb</text>
+      <rect x="704" y="0" width="166" height="60" rx="10" fill="#ffffff" stroke="#cbd5e1"/><text x="787" y="30" text-anchor="middle" class="mon">11 Falgun</text><text x="787" y="48" text-anchor="middle" class="sub">Feb–Mar</text>
+      <rect x="880" y="0" width="166" height="60" rx="10" fill="#ffffff" stroke="#cbd5e1"/><text x="963" y="30" text-anchor="middle" class="mon">12 Chaitra</text><text x="963" y="48" text-anchor="middle" class="sub">Mar–Apr</text>
+    </g>
+  </g>
+
+  <rect x="180" y="500" width="840" height="52" rx="12" fill="#153056"/>
+  <text x="600" y="526" text-anchor="middle" font-family="'Plus Jakarta Sans','Segoe UI',Arial,sans-serif" font-size="16" font-weight="700" fill="#ffffff">No fixed month lengths → conversion needs an official almanac table,</text>
+  <text x="600" y="546" text-anchor="middle" font-family="Consolas, Menlo, monospace" font-size="15" font-weight="600" fill="#7ef0c0">not arithmetic (validated range ~BS 1975–2099)</text>
+
+  <text x="600" y="590" text-anchor="middle" class="sub">Nepal's fiscal year runs Shrawan → Ashadh; festivals like Dashain &amp; Tihar track BS, so their AD dates shift yearly.</text>
+</svg>

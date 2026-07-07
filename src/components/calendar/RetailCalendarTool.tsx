@@ -8,6 +8,8 @@ import {
   is53WeekYear,
   fmtUTCDate,
   fmtUTCShort,
+  RETAIL_PATTERNS,
+  type RetailPattern,
 } from '../../lib/retail454';
 
 const todayParts = () => {
@@ -18,6 +20,7 @@ const todayParts = () => {
 
 export default function RetailCalendarTool() {
   const [mode, setMode] = useState<'date' | 'year'>('date');
+  const [pattern, setPattern] = useState<RetailPattern>('4-5-4');
   const [dateStr, setDateStr] = useState(todayParts);
   const [fy, setFy] = useState(() => {
     // default the year view to the current retail year
@@ -27,9 +30,9 @@ export default function RetailCalendarTool() {
 
   const parts = dateStr.split('-').map(Number);
   const validDate = parts.length === 3 && parts.every((n) => Number.isFinite(n));
-  const pos = validDate ? toRetailPosition(parts[0]!, parts[1]! - 1, parts[2]!) : null;
+  const pos = validDate ? toRetailPosition(parts[0]!, parts[1]! - 1, parts[2]!, pattern) : null;
 
-  const months = retailMonths(fy);
+  const months = retailMonths(fy, pattern);
   const yStart = new Date(retailYearStart(fy));
   const yEnd = new Date(retailYearEnd(fy));
   const wks = weeksInRetailYear(fy);
@@ -52,6 +55,21 @@ export default function RetailCalendarTool() {
         <button type="button" class={tabCls(mode === 'date')} onClick={() => setMode('date')}>📅 Date → retail period</button>
         <button type="button" class={tabCls(mode === 'year')} onClick={() => setMode('year')}>🗓️ Full year calendar</button>
       </div>
+
+      <div class="mt-3 flex flex-wrap items-center gap-2">
+        <span class="text-xs font-semibold uppercase tracking-wide text-slate-500">Pattern:</span>
+        {RETAIL_PATTERNS.map((p) => (
+          <button
+            type="button"
+            onClick={() => setPattern(p.id)}
+            title={p.note}
+            class={`rounded-lg border px-3 py-1.5 text-sm font-semibold transition ${pattern === p.id ? 'border-brand-500 bg-brand-50 text-brand-800' : 'border-slate-300 bg-white text-slate-600 hover:border-brand-400'}`}
+          >
+            {p.label}
+          </button>
+        ))}
+      </div>
+      <p class="mt-1.5 text-xs text-slate-500">{RETAIL_PATTERNS.find((p) => p.id === pattern)!.note}. All three give 13-week quarters; they differ only in where each quarter's 5-week month sits.</p>
 
       {mode === 'date' && (
         <div class="mt-4">
@@ -125,7 +143,7 @@ export default function RetailCalendarTool() {
             </table>
           </div>
           <p class="mt-2 text-xs text-slate-500">
-            Pattern per quarter: 4-5-4 weeks{is53WeekYear(fy) ? ' — this 53-week year adds the extra week to January (Q4 becomes 4-5-5)' : ''}. The 5-week months are highlighted.
+            Pattern per quarter: {pattern} weeks{is53WeekYear(fy) ? ' — this 53-week year adds the extra week to January' : ''}. The 5-week months are highlighted.
           </p>
         </div>
       )}

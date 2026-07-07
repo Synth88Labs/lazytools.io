@@ -40,11 +40,21 @@ export function is53WeekYear(fy: number): boolean {
 
 export const RETAIL_MONTHS = ['February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December', 'January'];
 
-/** Weeks per retail month for a year: base 4-5-4 per quarter; the 53rd week (if any) lands in the last month. */
-export function monthWeekPattern(fy: number): number[] {
-  const pattern = [4, 5, 4, 4, 5, 4, 4, 5, 4, 4, 5, 4];
-  if (is53WeekYear(fy)) pattern[11] = 5;
-  return pattern;
+/** Which week of each 13-week quarter holds the 5-week month. */
+export type RetailPattern = '4-5-4' | '4-4-5' | '5-4-4';
+
+export const RETAIL_PATTERNS: { id: RetailPattern; label: string; quarter: [number, number, number]; note: string }[] = [
+  { id: '4-5-4', label: '4-5-4 (NRF default)', quarter: [4, 5, 4], note: '5-week month in the middle of each quarter' },
+  { id: '4-4-5', label: '4-4-5', quarter: [4, 4, 5], note: '5-week month at the end of each quarter' },
+  { id: '5-4-4', label: '5-4-4', quarter: [5, 4, 4], note: '5-week month at the start of each quarter' },
+];
+
+/** Weeks per retail month: the chosen pattern repeated over 4 quarters; the 53rd week (if any) lands in the last month. */
+export function monthWeekPattern(fy: number, pattern: RetailPattern = '4-5-4'): number[] {
+  const q = RETAIL_PATTERNS.find((p) => p.id === pattern)!.quarter;
+  const out = [...q, ...q, ...q, ...q];
+  if (is53WeekYear(fy)) out[11] += 1;
+  return out;
 }
 
 export interface RetailMonth {
@@ -58,8 +68,8 @@ export interface RetailMonth {
   startWeek: number;
 }
 
-export function retailMonths(fy: number): RetailMonth[] {
-  const pattern = monthWeekPattern(fy);
+export function retailMonths(fy: number, pat: RetailPattern = '4-5-4'): RetailMonth[] {
+  const pattern = monthWeekPattern(fy, pat);
   const start = retailYearStart(fy);
   const out: RetailMonth[] = [];
   let cursorWeek = 0;
@@ -97,8 +107,8 @@ export interface RetailPosition {
 
 const WEEKDAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
-/** Map a Gregorian date (local Y/M/D) to its 4-5-4 retail position. */
-export function toRetailPosition(year: number, month0: number, day: number): RetailPosition {
+/** Map a Gregorian date (local Y/M/D) to its retail position under the chosen pattern. */
+export function toRetailPosition(year: number, month0: number, day: number, pat: RetailPattern = '4-5-4'): RetailPosition {
   const d = Date.UTC(year, month0, day);
   // pick the fiscal year whose span contains d
   let fy = year;
@@ -108,7 +118,7 @@ export function toRetailPosition(year: number, month0: number, day: number): Ret
   const start = retailYearStart(fy);
   const weekOfYear = Math.floor((d - start) / (7 * DAY)) + 1;
 
-  const months = retailMonths(fy);
+  const months = retailMonths(fy, pat);
   const m = months.find((mo) => d >= mo.start.getTime() && d <= mo.end.getTime())!;
   const weekOfMonth = Math.floor((d - m.start.getTime()) / (7 * DAY)) + 1;
   const quarterStartWeek = (m.quarter - 1) * 13 + 1;

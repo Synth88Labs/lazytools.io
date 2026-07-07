@@ -230,6 +230,20 @@ const POSTS = [
     fact: 'lunar · solar · lunisolar',
     icon: '🗓️',
   },
+  {
+    slug: 'nepali-date-bs-ad-guide',
+    kicker: 'NEPALI CALENDAR',
+    lines: ['BS to AD: how the', 'Bikram Sambat', 'calendar works'],
+    fact: '2024 AD = 2081 BS · +56 yrs 8 mths',
+    icon: '🇳🇵',
+  },
+  {
+    slug: 'codes-and-ciphers-guide',
+    kicker: 'CODES & CIPHERS',
+    lines: ['Morse, NATO, binary', '& classic ciphers you', 'can actually read'],
+    fact: 'encoding ≠ cipher ≠ encryption',
+    icon: '📡',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

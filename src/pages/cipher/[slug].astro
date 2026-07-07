@@ -5,38 +5,35 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import PrivacyStrip from '../../components/PrivacyStrip.astro';
 import FaqSection from '../../components/FaqSection.astro';
 import RatingWidget from '../../components/RatingWidget.tsx';
-import CalendarConverterTool from '../../components/calendar/CalendarConverterTool.tsx';
-import RetailCalendarTool from '../../components/calendar/RetailCalendarTool.tsx';
-import LeapYearTool from '../../components/calendar/LeapYearTool.tsx';
-import BikramTool from '../../components/calendar/BikramTool.tsx';
-import { CALENDAR_TOOLS, type CalendarToolDef } from '../../data/calendar/index';
+import CipherTool from '../../components/cipher/CipherTool.tsx';
+import { CIPHER_TOOLS, type CipherToolDef } from '../../data/cipher/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
 
 export function getStaticPaths() {
-  return CALENDAR_TOOLS.map((t) => ({ params: { slug: t.slug }, props: { slug: t.slug } }));
+  return CIPHER_TOOLS.map((t) => ({ params: { slug: t.slug }, props: { slug: t.slug } }));
 }
 
 const { slug } = Astro.props;
-const tool: CalendarToolDef = CALENDAR_TOOLS.find((t) => t.slug === slug)!;
+const tool: CipherToolDef = CIPHER_TOOLS.find((t) => t.slug === slug)!;
 
 const crumbs = [
   { name: 'Home', url: '/' },
-  { name: 'Calendars', url: '/calendar/' },
-  { name: tool.name, url: `/calendar/${tool.slug}/` },
+  { name: 'Codes & Ciphers', url: '/cipher/' },
+  { name: tool.name, url: `/cipher/${tool.slug}/` },
 ];
 
-const related = CALENDAR_TOOLS.filter((t) => t.slug !== tool.slug).slice(0, 6);
+const related = CIPHER_TOOLS.filter((t) => t.slug !== tool.slug).slice(0, 6);
 const allBlogPosts = await getCollection('blog');
-const blogPosts = allBlogPosts.filter((p) => p.data.tools.includes(`/calendar/${tool.slug}/`));
+const blogPosts = allBlogPosts.filter((p) => p.data.tools.includes(`/cipher/${tool.slug}/`));
 
 const schema = [
   breadcrumbSchema(crumbs),
   webApplicationSchema({
     name: tool.name,
-    url: `/calendar/${tool.slug}/`,
+    url: `/cipher/${tool.slug}/`,
     description: tool.description,
-    rating: ratingFor(`calendar/${tool.slug}`),
+    rating: ratingFor(`cipher/${tool.slug}`),
   }),
   faqSchema(tool.faqs),
 ];
@@ -55,11 +52,7 @@ const schema = [
     </p>
 
     <div class="mt-6">
-      {tool.widget === 'multi' && <CalendarConverterTool client:load mode="multi" />}
-      {tool.widget === 'single' && <CalendarConverterTool client:load mode="single" system={tool.system} />}
-      {tool.widget === 'retail-454' && <RetailCalendarTool client:load />}
-      {tool.widget === 'leap-year' && <LeapYearTool client:load />}
-      {tool.widget === 'bikram' && <BikramTool client:load />}
+      <CipherTool client:load mode={tool.widget} />
     </div>
 
     <div class="mt-4">
@@ -69,9 +62,9 @@ const schema = [
     <div class="mt-3">
       <RatingWidget
         client:idle
-        toolSlug={`calendar/${tool.slug}`}
-        avg={ratingFor(`calendar/${tool.slug}`)?.avg}
-        count={ratingFor(`calendar/${tool.slug}`)?.count}
+        toolSlug={`cipher/${tool.slug}`}
+        avg={ratingFor(`cipher/${tool.slug}`)?.avg}
+        count={ratingFor(`cipher/${tool.slug}`)?.count}
       />
     </div>
 
@@ -84,18 +77,18 @@ const schema = [
     <FaqSection faqs={tool.faqs} />
 
     <section class="mt-10">
-      <h2 class="text-2xl font-bold text-slate-900">Related calendar tools</h2>
+      <h2 class="text-2xl font-bold text-slate-900">Related codes & ciphers</h2>
       <ul class="mt-4 grid gap-2 sm:grid-cols-2">
         {related.map((r) => (
           <li>
-            <a href={`/calendar/${r.slug}/`} class="block rounded-lg border border-slate-200 px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:border-brand-400 hover:text-brand-700">
+            <a href={`/cipher/${r.slug}/`} class="block rounded-lg border border-slate-200 px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:border-brand-400 hover:text-brand-700">
               {r.icon} {r.name}
             </a>
           </li>
         ))}
         <li>
-          <a href="/calendar/" class="block rounded-lg border border-brand-200 bg-brand-50 px-4 py-2.5 text-sm font-semibold text-brand-800 transition hover:border-brand-400">
-            All calendar tools →
+          <a href="/cipher/" class="block rounded-lg border border-brand-200 bg-brand-50 px-4 py-2.5 text-sm font-semibold text-brand-800 transition hover:border-brand-400">
+            All codes & ciphers →
           </a>
         </li>
       </ul>
