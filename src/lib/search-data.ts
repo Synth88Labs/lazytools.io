@@ -16,6 +16,7 @@ import { IMAGE_TOOLS } from '../data/image/index';
 import { PDF_TOOLS } from '../data/pdf/index';
 import { AUDIO_TOOLS } from '../data/video/index';
 import { allPairs as zonePairs } from '../data/time/zones';
+import { CALENDAR_TOOLS } from '../data/calendar/index';
 
 export interface SearchUnit {
   id: string;
@@ -177,6 +178,9 @@ export function buildSearchPages(): SearchPage[] {
       keywords: [`${p.a.abbr} to ${p.b.abbr}`, `${p.b.abbr} to ${p.a.abbr}`, `${p.a.abbr} ${p.b.abbr}`, 'timezone', 'time zone', 'time difference', p.a.cities.split(',')[0].toLowerCase().trim(), p.b.cities.split(',')[0].toLowerCase().trim()],
     });
   }
+  for (const t of CALENDAR_TOOLS) {
+    pages.push({ title: t.name, url: `/calendar/${t.slug}/`, keywords: [...t.keywords, 'calendar', 'converter', t.name.toLowerCase()] });
+  }
   for (const t of SECURITY_TOOLS) {
     pages.push({ title: t.name, url: `/security/${t.slug}/`, keywords: [...t.keywords, 'privacy', 'security', t.name.toLowerCase()] });
   }
@@ -198,6 +202,7 @@ export function buildSearchPages(): SearchPage[] {
     { title: 'All Generators', url: '/generate/', keywords: ['generators', 'generate', 'password', 'uuid', 'qr code', 'random'] },
     { title: 'All Date & Time Tools', url: '/time/', keywords: ['date', 'time', 'timestamp', 'timezone', 'age', 'calendar'] },
     { title: 'Time-Zone Pair Converters', url: '/time/zones/', keywords: ['timezone', 'time zone', 'converter', 'ist', 'est', 'pst', 'gmt', 'meeting planner'] },
+    { title: 'All Calendar Tools', url: '/calendar/', keywords: ['calendar', 'calendars', 'converter', 'hijri', 'hebrew', 'persian', 'julian', 'date converter'] },
     { title: 'All File Converters', url: '/file/', keywords: ['file converter', 'csv', 'json', 'yaml', 'xml', 'data converter'] },
     { title: 'All Text Tools', url: '/text/', keywords: ['text tools', 'text', 'words', 'characters', 'lines'] },
     { title: 'All Color Tools', url: '/color/', keywords: ['color tools', 'color', 'hex', 'rgb', 'contrast'] },

@@ -13,6 +13,9 @@ ErrorDocument 404 /404.html
 # ---- /sitemap.xml serves the generated sitemap index ----
 RewriteRule ^sitemap\.xml$ /sitemap-index.xml [L]
 
+# ---- Moved tools (301) ----
+RewriteRule ^time/4-5-4-retail-calendar/?$ /calendar/4-5-4-retail-calendar/ [L,R=301]
+
 # ---- MIME types ----
 AddType application/wasm .wasm
 AddType application/manifest+json .webmanifest

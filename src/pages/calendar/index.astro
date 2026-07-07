@@ -1,0 +1,74 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PrivacyStrip from '../../components/PrivacyStrip.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { CALENDAR_TOOLS } from '../../data/calendar/index';
+import { breadcrumbSchema, collectionPageSchema, faqSchema } from '../../lib/schema';
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Calendars', url: '/calendar/' },
+];
+
+const faqs = [
+  {
+    q: 'How can these calendar conversions be accurate without a server?',
+    a: 'Modern browsers ship the full ICU/CLDR calendar database — the same data operating systems use — covering the Islamic, Hebrew, Persian, Indian, Buddhist, Japanese, Chinese and other calendars. These tools read that data directly, so conversions are authoritative and run entirely on your device, even offline.',
+  },
+  {
+    q: 'Which calendar systems are covered?',
+    a: 'Gregorian, Islamic (Hijri, both Umm al-Qura and tabular), Persian (Solar Hijri/Jalali), Hebrew, Indian National (Saka), Buddhist, Coptic, Ethiopian, Minguo (ROC), Japanese era, Chinese, the Julian calendar and Julian Day Numbers — plus the NRF 4-5-4 retail calendar and a leap-year checker.',
+  },
+  {
+    q: 'Are religious dates like Ramadan exact?',
+    a: 'The tools give the civil (calculated) date — for Islam, the Umm al-Qura calendar. Religious observances are often fixed by moon sighting and can differ by a day and by country, so treat the civil date as a close reference, not a ruling.',
+  },
+];
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  collectionPageSchema({
+    name: 'Calendar Tools & Converters',
+    url: '/calendar/',
+    description: 'Convert dates between the Gregorian, Islamic, Hebrew, Persian, Indian, Julian and other calendars, plus the 4-5-4 retail calendar and a leap-year checker — all in your browser.',
+    items: CALENDAR_TOOLS.map((t) => ({ name: t.name, url: `/calendar/${t.slug}/` })),
+  }),
+  faqSchema(faqs),
+];
+---
+
+<Base
+  title="Calendar Converters — Hijri, Hebrew, Persian & More | LazyTools"
+  description={`${CALENDAR_TOOLS.length} free calendar tools: convert dates between the Gregorian, Islamic (Hijri), Hebrew, Persian, Indian and Julian calendars, compute Julian Day Numbers, map the 4-5-4 retail calendar and check leap years. All client-side.`}
+  schema={schema}
+>
+  <div class="mx-auto max-w-5xl px-4 py-6">
+    <Breadcrumbs items={crumbs} />
+
+    <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Calendar Tools & Converters</h1>
+    <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
+      Convert any date between the world's calendar systems — Islamic, Hebrew, Persian, Indian, Julian
+      and more — plus the retail 4-5-4 calendar and a leap-year checker. Every conversion uses the
+      authoritative calendar data built into your browser, computed on your device and never uploaded.
+    </p>
+
+    <div class="mt-5">
+      <PrivacyStrip />
+    </div>
+
+    <ul class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {CALENDAR_TOOLS.map((t) => (
+        <li>
+          <a href={`/calendar/${t.slug}/`} class="flex h-full flex-col rounded-xl border border-slate-200 p-4 transition hover:border-brand-400 hover:shadow-sm">
+            <span class="text-2xl" aria-hidden="true">{t.icon}</span>
+            <span class="mt-2 font-semibold text-slate-900">{t.name}</span>
+            <span class="mt-1 text-sm text-slate-600">{t.lead.split('—')[0]}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <FaqSection faqs={faqs} />
+  </div>
+</Base>

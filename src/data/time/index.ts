@@ -6,7 +6,7 @@ export interface TimeToolDef {
   icon: string;
   description: string;
   lead: string;
-  widget: 'epoch' | 'age' | 'date-diff' | 'date-add' | 'week-number' | 'timezone' | 'retail-454';
+  widget: 'epoch' | 'age' | 'date-diff' | 'date-add' | 'week-number' | 'timezone';
   how: string;
   note?: string;
   faqs: { q: string; a: string }[];
@@ -127,25 +127,5 @@ export const TIME_TOOLS: TimeToolDef[] = [
       { q: 'Is anything sent to a server?', a: 'No — the timezone database ships inside your browser, so conversion is entirely local and even works offline.' },
     ],
     keywords: ['time zone converter', 'timezone converter', 'utc to ist', 'est to gmt', 'world clock converter'],
-  },
-  {
-    slug: '4-5-4-retail-calendar',
-    name: '4-5-4 Retail Calendar',
-    icon: '🛍️',
-    description:
-      'Convert any date to its NRF 4-5-4 retail calendar period — fiscal year, quarter, retail month and week — or view a full fiscal year\'s 4-5-4 breakdown. Computed in your browser.',
-    lead: 'What retail week is today? Map any date to its NRF 4-5-4 fiscal year, quarter, month and week — or lay out a whole retail year, 53-week years included.',
-    widget: 'retail-454',
-    how: 'The 4-5-4 calendar is the National Retail Federation standard that lets retailers compare like-for-like periods: the year is split into four 13-week quarters, each quarter into months of 4, 5 and 4 weeks, so every retail month ends on the same weekday and contains the same number of weekends year over year. This tool computes it from first principles — retail weeks run Sunday–Saturday, the retail year ends on the Saturday nearest 31 January, and quarters map to Feb-Mar-Apr, May-Jun-Jul, Aug-Sep-Oct and Nov-Dec-Jan. No lookup table is shipped; the dates are derived, so it works for any year.',
-    note: '52 weeks is only 364 days, so the calendar drifts a day a year against the Gregorian one. When the 52-week layout would leave four or more days of January uncovered, a 53rd week is added to the final retail month (January), making that year 53 weeks — most recently fiscal 2012, 2017 and 2023. This tool flags those years automatically. Note the 4-5-4 calendar is a planning convention, not a legal fiscal year: many retailers use it, but some adopt 4-4-5 or their own variant, so confirm which your organisation follows.',
-    faqs: [
-      { q: 'What is the 4-5-4 retail calendar?', a: 'A planning calendar from the National Retail Federation that divides the year into four quarters of 13 weeks, each split into retail months of 4, 5 and 4 weeks. Because every month always ends on a Saturday and holds a fixed number of weekends, sales this March compare cleanly to last March — which a Gregorian calendar, with its shifting weekday and weekend counts, can\'t guarantee.' },
-      { q: 'When does the retail year start?', a: 'The retail year ends on the Saturday nearest to 31 January and begins the following Sunday — so it starts on the Sunday closest to 1 February. Fiscal 2026, for example, runs Sunday 1 February 2026 to Saturday 30 January 2027.' },
-      { q: 'What is a 53-week year?', a: 'Fifty-two seven-day weeks is 364 days, one short of a year, so the calendar slips a day annually. Roughly every five to six years — when the 52-week layout would leave four or more days of January uncovered — a 53rd week is added to the last retail month to realign. Recent 53-week years are fiscal 2012, 2017 and 2023; the tool marks them automatically.' },
-      { q: 'Which months are the 5-week months?', a: 'In the standard 4-5-4 pattern the middle month of each quarter has five weeks: March, June, September and December. In a 53-week year January (the final retail month) also becomes five weeks, so the fourth quarter reads 4-5-5.' },
-      { q: 'How is 4-5-4 different from 4-4-5?', a: 'They shuffle where the 5-week month sits in each quarter. 4-5-4 (the NRF default) puts it in the middle; 4-4-5 puts it at the end. Both give 13-week quarters and 52/53-week years — pick the one your finance team standardised on. This tool computes the NRF 4-5-4 variant.' },
-      { q: 'Is this calculated locally?', a: 'Yes — the periods are derived from the 4-5-4 rules in your browser, with no lookup table and no server call. It works offline and for any fiscal year you enter.' },
-    ],
-    keywords: ['4-5-4 calendar', 'retail calendar', 'nrf calendar', 'fiscal calendar 4-5-4', 'retail week number', '454 calendar', 'retail fiscal year'],
   },
 ];

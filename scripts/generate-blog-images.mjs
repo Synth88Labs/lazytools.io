@@ -223,6 +223,13 @@ const POSTS = [
     fact: '4 quarters × 13 weeks = 364 days',
     icon: '🛍️',
   },
+  {
+    slug: 'calendar-systems-guide',
+    kicker: 'WORLD CALENDARS',
+    lines: ['Hijri, Hebrew, Persian', '& Julian: how the', "world's calendars work"],
+    fact: 'lunar · solar · lunisolar',
+    icon: '🗓️',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

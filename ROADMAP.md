@@ -1,7 +1,7 @@
 # LazyTools.io — Public Roadmap
 
 **Status (updated 6 Jul 2026):** LazyTools soft-launched on [lazytools.io](https://lazytools.io) on
-4 July 2026, and **all 13 tool categories are now live** — well ahead of the original three-week
+4 July 2026, and **all 14 tool categories are now live** — well ahead of the original three-week
 plan. We build in the open with weekly Friday releases; the official **v1.0.0 public launch** is
 targeted for **~25 July 2026** once the remaining launch-week items (search-console verification and
 the legal review) are cleared.
@@ -12,7 +12,7 @@ the legal review) are cleared.
 ratings (PHP + SQLite), smart header search, sitemap, auto-generated `llms.txt`, GitHub Actions →
 Namecheap FTPS deploy pipeline.
 
-**All 13 categories live** (~290 pages, 230+ tools):
+**All 14 categories live** (~295 pages, 235+ tools):
 
 | Category | Highlights |
 |---|---|
@@ -24,7 +24,8 @@ Namecheap FTPS deploy pipeline.
 | File & Data | CSV/JSON/XML/YAML, Markdown, JSON formatter, **e-invoice viewer** |
 | Developer Tools | Base64, URL/HTML entities, SHA hashes, JWT, regex, number base |
 | Generators | password, UUID, QR, random number, lorem ipsum |
-| Date & Time | timestamp, age, date-diff/add, ISO week, timezone converter, **19 timezone-pair pages**, **4-5-4 retail calendar** |
+| Date & Time | timestamp, age, date-diff/add, ISO week, timezone converter, **19 timezone-pair pages** |
+| Calendars | **multi-calendar converter** (Hijri/Hebrew/Persian/Indian/Julian…), Hijri, Persian, Hebrew & Julian converters, 4-5-4 retail calendar, leap-year checker |
 | Privacy & Security | EXIF remover, AES-256 file encryption, password strength, file hash |
 | Image Tools | compressor, converter, resizer, Base64, **HEIC→JPG** (libheif wasm) |
 | PDF Tools | merge, split, rotate, images→PDF, **unlock/protect** (qpdf wasm) |

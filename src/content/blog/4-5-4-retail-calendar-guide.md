@@ -4,7 +4,7 @@ description: "The NRF 4-5-4 calendar splits the retail year into 13-week quarter
 pubDate: 2026-07-06
 updatedDate: 2026-07-06
 archetype: explainer
-tools: ["/time/4-5-4-retail-calendar/", "/time/week-number/", "/time/days-between-dates/"]
+tools: ["/calendar/4-5-4-retail-calendar/", "/time/week-number/", "/time/days-between-dates/"]
 keywords:
   - 4-5-4 retail calendar
   - nrf retail calendar
@@ -38,7 +38,7 @@ draft: false
 into four 13-week quarters, each built from retail months of 4, 5 and 4 weeks — so every month ends
 on a Saturday with the same number of weekends, and this year's sales compare cleanly against last
 year's.** You can map any date to its retail week, or lay out a whole fiscal year, in the
-[4-5-4 retail calendar tool](/time/4-5-4-retail-calendar/).
+[4-5-4 retail calendar tool](/calendar/4-5-4-retail-calendar/).
 
 <aside class="key-takeaways">
 <p class="kt-title">⚡ Key takeaways</p>
@@ -111,7 +111,7 @@ The correction is a **53rd week**. The NRF rule: after laying out the 52-week ca
 more days of January remain uncovered, a 53rd week is inserted — added to the **final retail month
 (January)**, so that year's fourth quarter becomes **4-5-5** (14 weeks) and the year totals 53 weeks.
 This happens roughly every five to six years; the most recent were **fiscal 2012, 2017 and 2023**,
-and the [calendar tool](/time/4-5-4-retail-calendar/) flags any year you enter.
+and the [calendar tool](/calendar/4-5-4-retail-calendar/) flags any year you enter.
 
 53-week years are a genuine headache for analysts: that year has ~1.9% more selling days than a
 52-week year, so year-over-year growth looks inflated unless you adjust for the extra week — which is
@@ -134,7 +134,7 @@ reconcile a report, because a March figure under 4-5-4 covers different weeks th
 
 ## Finding any date's retail week
 
-To place a specific date, use the [4-5-4 retail calendar tool](/time/4-5-4-retail-calendar/): enter
+To place a specific date, use the [4-5-4 retail calendar tool](/calendar/4-5-4-retail-calendar/): enter
 the date and it returns the fiscal year, quarter, retail month, and the week number (1–52 or 1–53),
 counting Sunday-to-Saturday weeks from the start of the fiscal year. Switch to the year view to see a
 whole fiscal year's month boundaries at once — useful for building a planning grid or checking where
@@ -162,7 +162,7 @@ starting the Sunday nearest 1 February and ending the Saturday nearest 31 Januar
 compare like-for-like across years. Every five to six years a 53rd week is bolted onto January to
 stop the calendar drifting — most recently fiscal 2012, 2017 and 2023. Map any date to its retail
 year, quarter, month and week, or lay out a full fiscal year, in the
-[4-5-4 retail calendar tool](/time/4-5-4-retail-calendar/) — all computed in your browser.
+[4-5-4 retail calendar tool](/calendar/4-5-4-retail-calendar/) — all computed in your browser.
 
 *Related tools: [week number calculator](/time/week-number/) ·
 [days between dates](/time/days-between-dates/) · [date add/subtract](/time/date-add-subtract/). The

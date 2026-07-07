@@ -23,6 +23,7 @@ import { SECURITY_TOOLS } from '../src/data/security/index.ts';
 import { IMAGE_TOOLS } from '../src/data/image/index.ts';
 import { PDF_TOOLS } from '../src/data/pdf/index.ts';
 import { AUDIO_TOOLS } from '../src/data/video/index.ts';
+import { CALENDAR_TOOLS } from '../src/data/calendar/index.ts';
 
 await copyFile(new URL('../dist/sitemap-index.xml', import.meta.url), new URL('../dist/sitemap.xml', import.meta.url));
 console.log('postbuild: dist/sitemap.xml created (copy of sitemap-index.xml)');
@@ -43,6 +44,7 @@ const slugs = [
   ...PDF_TOOLS.map((t) => `pdf/${t.slug}`),
   ...AUDIO_TOOLS.map((t) => `video/${t.slug}`),
   ...zonePairs().map((p) => `time/zones/${p.slug}`),
+  ...CALENDAR_TOOLS.map((t) => `calendar/${t.slug}`),
 ].sort();
 await writeFile(new URL('../api/tools-allowlist.json', import.meta.url), JSON.stringify(slugs, null, 2) + '\n');
 console.log(`postbuild: api/tools-allowlist.json regenerated (${slugs.length} tools)`);

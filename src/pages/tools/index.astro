@@ -11,6 +11,7 @@ import { FILE_TOOLS } from '../../data/file/index';
 import { DEV_TOOLS } from '../../data/dev/index';
 import { GEN_TOOLS } from '../../data/generate/index';
 import { TIME_TOOLS } from '../../data/time/index';
+import { CALENDAR_TOOLS } from '../../data/calendar/index';
 import { SECURITY_TOOLS } from '../../data/security/index';
 import { IMAGE_TOOLS } from '../../data/image/index';
 import { PDF_TOOLS } from '../../data/pdf/index';
@@ -42,6 +43,7 @@ const schema = [
       ...DEV_TOOLS.map((t) => ({ name: t.name, url: `/dev/${t.slug}/` })),
       ...GEN_TOOLS.map((t) => ({ name: t.name, url: `/generate/${t.slug}/` })),
       ...TIME_TOOLS.map((t) => ({ name: t.name, url: `/time/${t.slug}/` })),
+      ...CALENDAR_TOOLS.map((t) => ({ name: t.name, url: `/calendar/${t.slug}/` })),
       ...SECURITY_TOOLS.map((t) => ({ name: t.name, url: `/security/${t.slug}/` })),
       ...IMAGE_TOOLS.map((t) => ({ name: t.name, url: `/image/${t.slug}/` })),
       ...PDF_TOOLS.map((t) => ({ name: t.name, url: `/pdf/${t.slug}/` })),
@@ -203,6 +205,19 @@ const schema = [
             🌍 Time-zone pairs (IST/EST/PST/GMT…)
           </a>
         </li>
+      </ul>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-bold text-slate-900">🗓️ Calendars</h2>
+      <ul class="mt-4 flex flex-wrap gap-2">
+        {CALENDAR_TOOLS.map((t) => (
+          <li>
+            <a href={`/calendar/${t.slug}/`} class="inline-block rounded-full border border-slate-200 px-3 py-1 text-sm text-slate-600 transition hover:border-brand-400 hover:text-brand-700">
+              {t.icon} {t.name}
+            </a>
+          </li>
+        ))}
       </ul>
     </section>
 
