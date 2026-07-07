@@ -1,0 +1,79 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PrivacyStrip from '../../components/PrivacyStrip.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { PRODUCTIVITY_TOOLS } from '../../data/productivity/index';
+import { breadcrumbSchema, collectionPageSchema, faqSchema } from '../../lib/schema';
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Productivity', url: '/productivity/' },
+];
+
+const faqs = [
+  {
+    q: 'Where is my data stored — is anything uploaded?',
+    a: 'Nothing is uploaded. Your timers, tasks, habits and settings are saved in your browser (localStorage) and never leave your device. That makes these tools private by design — there is no account, no server, and no data to be breached. Export a JSON file whenever you want a backup or to move to another device.',
+  },
+  {
+    q: 'How is this different from Notion, Trello or Todoist?',
+    a: 'Those are cloud apps: your data lives on their servers behind an account. These tools are the opposite — single-purpose, instant, no sign-up, and entirely local. You trade collaboration and sync for privacy, speed and simplicity, which is exactly the right trade for personal planning and focus.',
+  },
+  {
+    q: 'Do the tools work offline?',
+    a: 'Yes — once a tool has loaded it runs with no connection, since all the logic and your data are on your device.',
+  },
+];
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  collectionPageSchema({
+    name: 'Productivity Tools',
+    url: '/productivity/',
+    description: 'A Pomodoro timer, meeting cost calculator, Eisenhower matrix, habit tracker and more — private, no sign-up, saved in your browser.',
+    items: PRODUCTIVITY_TOOLS.map((t) => ({ name: t.name, url: `/productivity/${t.slug}/` })),
+  }),
+  faqSchema(faqs),
+];
+---
+
+<Base
+  title="Productivity Tools — Pomodoro, Planners, Trackers | LazyTools"
+  description={`Free productivity tools that stay on your device: Pomodoro timer, countdown & stopwatch, meeting cost calculator, Eisenhower matrix, habit tracker. No sign-up, saved locally, works offline.`}
+  schema={schema}
+>
+  <div class="mx-auto max-w-5xl px-4 py-6">
+    <Breadcrumbs items={crumbs} />
+
+    <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Productivity Tools</h1>
+    <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
+      Focus timers, planners, trackers and decision tools — with none of the accounts, sync or
+      surveillance. Your tasks, habits and settings are saved in your browser and never uploaded, so
+      it's private by design. No sign-up, works offline, and you can export your data any time.
+    </p>
+
+    <div class="mt-5">
+      <PrivacyStrip />
+    </div>
+
+    <ul class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {PRODUCTIVITY_TOOLS.map((t) => (
+        <li>
+          <a href={`/productivity/${t.slug}/`} class="flex h-full flex-col rounded-xl border border-slate-200 p-4 transition hover:border-brand-400 hover:shadow-sm">
+            <span class="text-2xl" aria-hidden="true">{t.icon}</span>
+            <span class="mt-2 font-semibold text-slate-900">{t.name}</span>
+            <span class="mt-1 text-sm text-slate-600">{t.lead.split('—')[0]}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <p class="mt-6 rounded-xl border border-brand-100 bg-brand-50/50 p-4 text-sm text-slate-600">
+      More productivity tools are on the way — mind map builder, Gantt chart maker, Kanban board,
+      flowchart builder, decision matrix, RICE prioritisation and more. All private, all in your browser.
+    </p>
+
+    <FaqSection faqs={faqs} />
+  </div>
+</Base>

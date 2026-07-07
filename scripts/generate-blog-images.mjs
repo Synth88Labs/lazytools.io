@@ -244,6 +244,13 @@ const POSTS = [
     fact: 'encoding ≠ cipher ≠ encryption',
     icon: '📡',
   },
+  {
+    slug: 'privacy-first-productivity-guide',
+    kicker: 'PRODUCTIVITY',
+    lines: ['Privacy-first', 'productivity: plan &', 'focus without the cloud'],
+    fact: 'your data stays in your browser',
+    icon: '🚀',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

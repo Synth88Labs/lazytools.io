@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="A comparison of cloud productivity apps versus local-first browser tools. Cloud apps send your tasks, notes and habits to a company server behind an account, where the data can be analysed or breached and sync between devices happens automatically. Local-first tools keep data in the device's own local storage, need no account, work offline, and move between devices by exporting and importing a JSON file you control.">
+  <defs>
+    <style>
+      .h { font: 800 30px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .ct { font: 800 22px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; }
+      .item { font: 600 16px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .sub { font: 500 14px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+      .tag { font: 800 15px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; }
+    </style>
+  </defs>
+
+  <text x="600" y="44" text-anchor="middle" class="h">Where does your to-do list actually live?</text>
+
+  <!-- Cloud apps -->
+  <g transform="translate(70 82)">
+    <rect x="0" y="0" width="500" height="452" rx="18" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+    <text x="250" y="44" text-anchor="middle" class="ct" fill="#991b1b">☁️ Cloud apps</text>
+    <text x="250" y="70" text-anchor="middle" class="sub">Notion · Trello · Todoist · Asana</text>
+
+    <!-- flow -->
+    <g transform="translate(40 96)">
+      <rect x="0" y="0" width="120" height="70" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+      <text x="60" y="34" text-anchor="middle" class="item">📝 your</text>
+      <text x="60" y="55" text-anchor="middle" class="item">tasks</text>
+      <text x="200" y="42" text-anchor="middle" class="ct" fill="#dc2626">→</text>
+      <rect x="260" y="0" width="160" height="70" rx="10" fill="#fee2e2" stroke="#dc2626"/>
+      <text x="340" y="34" text-anchor="middle" class="item">🏢 company</text>
+      <text x="340" y="55" text-anchor="middle" class="item">server</text>
+    </g>
+
+    <g transform="translate(40 196)">
+      <text x="0" y="24" class="item">🔑 needs an account &amp; login</text>
+      <text x="0" y="56" class="item">📊 data can be analysed to "improve"</text>
+      <text x="0" y="88" class="item">💥 can be breached or leaked</text>
+      <text x="0" y="120" class="item">🔒 you rely on their privacy policy</text>
+    </g>
+    <rect x="40" y="336" width="420" height="80" rx="12" fill="#dcfce7" stroke="#059669" stroke-width="2"/>
+    <text x="250" y="366" text-anchor="middle" class="tag" fill="#065f46">✓ Worth it for real team collaboration</text>
+    <text x="250" y="394" text-anchor="middle" class="sub">shared boards, live sync, multiple editors</text>
+  </g>
+
+  <!-- Local-first -->
+  <g transform="translate(630 82)">
+    <rect x="0" y="0" width="500" height="452" rx="18" fill="#f0fdf4" stroke="#059669" stroke-width="3"/>
+    <text x="250" y="44" text-anchor="middle" class="ct" fill="#065f46">💻 Local-first browser tools</text>
+    <text x="250" y="70" text-anchor="middle" class="sub">LazyTools Productivity</text>
+
+    <g transform="translate(40 96)">
+      <rect x="0" y="0" width="120" height="70" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+      <text x="60" y="34" text-anchor="middle" class="item">📝 your</text>
+      <text x="60" y="55" text-anchor="middle" class="item">tasks</text>
+      <text x="200" y="42" text-anchor="middle" class="ct" fill="#059669">↺</text>
+      <rect x="260" y="0" width="160" height="70" rx="10" fill="#dcfce7" stroke="#059669"/>
+      <text x="340" y="34" text-anchor="middle" class="item">🔒 this device</text>
+      <text x="340" y="55" text-anchor="middle" class="item">(localStorage)</text>
+    </g>
+
+    <g transform="translate(40 196)">
+      <text x="0" y="24" class="item">🚫 no account, no sign-up</text>
+      <text x="0" y="56" class="item">🛡️ nothing uploaded — no data to leak</text>
+      <text x="0" y="88" class="item">✈️ works offline, loads instantly</text>
+      <text x="0" y="120" class="item">📤 export/import a JSON file you own</text>
+    </g>
+    <rect x="40" y="336" width="420" height="80" rx="12" fill="#fefce8" stroke="#b45309" stroke-width="2"/>
+    <text x="250" y="366" text-anchor="middle" class="tag" fill="#92400e">△ Trade-off: no auto-sync or collaboration</text>
+    <text x="250" y="394" text-anchor="middle" class="sub">move devices by exporting the JSON yourself</text>
+  </g>
+
+  <rect x="250" y="556" width="700" height="46" rx="12" fill="#153056"/>
+  <text x="600" y="585" text-anchor="middle" font-family="'Plus Jakarta Sans','Segoe UI',Arial,sans-serif" font-size="16" font-weight="700" fill="#ffffff">Solo focus &amp; planning? Local wins. Shared team work? Cloud wins.</text>
+</svg>

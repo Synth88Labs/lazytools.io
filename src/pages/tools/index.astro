@@ -8,6 +8,7 @@ import { SIZE_TOOLS } from '../../data/size/index';
 import { TEXT_TOOLS } from '../../data/text/index';
 import { COLOR_TOOLS } from '../../data/color/index';
 import { CIPHER_TOOLS } from '../../data/cipher/index';
+import { PRODUCTIVITY_TOOLS } from '../../data/productivity/index';
 import { FILE_TOOLS } from '../../data/file/index';
 import { DEV_TOOLS } from '../../data/dev/index';
 import { GEN_TOOLS } from '../../data/generate/index';
@@ -46,6 +47,7 @@ const schema = [
       ...TIME_TOOLS.map((t) => ({ name: t.name, url: `/time/${t.slug}/` })),
       ...CALENDAR_TOOLS.map((t) => ({ name: t.name, url: `/calendar/${t.slug}/` })),
       ...CIPHER_TOOLS.map((t) => ({ name: t.name, url: `/cipher/${t.slug}/` })),
+      ...PRODUCTIVITY_TOOLS.map((t) => ({ name: t.name, url: `/productivity/${t.slug}/` })),
       ...SECURITY_TOOLS.map((t) => ({ name: t.name, url: `/security/${t.slug}/` })),
       ...IMAGE_TOOLS.map((t) => ({ name: t.name, url: `/image/${t.slug}/` })),
       ...PDF_TOOLS.map((t) => ({ name: t.name, url: `/pdf/${t.slug}/` })),
@@ -159,6 +161,19 @@ const schema = [
         {CIPHER_TOOLS.map((t) => (
           <li>
             <a href={`/cipher/${t.slug}/`} class="inline-block rounded-full border border-slate-200 px-3 py-1 text-sm text-slate-600 transition hover:border-brand-400 hover:text-brand-700">
+              {t.icon} {t.name}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-bold text-slate-900">🚀 Productivity</h2>
+      <ul class="mt-4 flex flex-wrap gap-2">
+        {PRODUCTIVITY_TOOLS.map((t) => (
+          <li>
+            <a href={`/productivity/${t.slug}/`} class="inline-block rounded-full border border-slate-200 px-3 py-1 text-sm text-slate-600 transition hover:border-brand-400 hover:text-brand-700">
               {t.icon} {t.name}
             </a>
           </li>

@@ -18,6 +18,7 @@ import { AUDIO_TOOLS } from '../data/video/index';
 import { allPairs as zonePairs } from '../data/time/zones';
 import { CALENDAR_TOOLS } from '../data/calendar/index';
 import { CIPHER_TOOLS } from '../data/cipher/index';
+import { PRODUCTIVITY_TOOLS } from '../data/productivity/index';
 
 export interface SearchUnit {
   id: string;
@@ -185,6 +186,9 @@ export function buildSearchPages(): SearchPage[] {
   for (const t of CIPHER_TOOLS) {
     pages.push({ title: t.name, url: `/cipher/${t.slug}/`, keywords: [...t.keywords, 'cipher', 'code', 'converter', t.name.toLowerCase()] });
   }
+  for (const t of PRODUCTIVITY_TOOLS) {
+    pages.push({ title: t.name, url: `/productivity/${t.slug}/`, keywords: [...t.keywords, 'productivity', t.name.toLowerCase()] });
+  }
   for (const t of SECURITY_TOOLS) {
     pages.push({ title: t.name, url: `/security/${t.slug}/`, keywords: [...t.keywords, 'privacy', 'security', t.name.toLowerCase()] });
   }
@@ -208,6 +212,7 @@ export function buildSearchPages(): SearchPage[] {
     { title: 'Time-Zone Pair Converters', url: '/time/zones/', keywords: ['timezone', 'time zone', 'converter', 'ist', 'est', 'pst', 'gmt', 'meeting planner'] },
     { title: 'All Calendar Tools', url: '/calendar/', keywords: ['calendar', 'calendars', 'converter', 'hijri', 'hebrew', 'persian', 'julian', 'nepali', 'bikram sambat', 'date converter'] },
     { title: 'All Codes & Ciphers', url: '/cipher/', keywords: ['cipher', 'ciphers', 'code', 'codes', 'morse', 'nato', 'binary', 'caesar', 'encode', 'decode'] },
+    { title: 'All Productivity Tools', url: '/productivity/', keywords: ['productivity', 'pomodoro', 'timer', 'planner', 'habit', 'eisenhower', 'meeting', 'focus'] },
     { title: 'All File Converters', url: '/file/', keywords: ['file converter', 'csv', 'json', 'yaml', 'xml', 'data converter'] },
     { title: 'All Text Tools', url: '/text/', keywords: ['text tools', 'text', 'words', 'characters', 'lines'] },
     { title: 'All Color Tools', url: '/color/', keywords: ['color tools', 'color', 'hex', 'rgb', 'contrast'] },
