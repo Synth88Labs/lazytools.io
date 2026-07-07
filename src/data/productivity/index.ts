@@ -6,7 +6,7 @@ export interface ProductivityToolDef {
   icon: string;
   description: string;
   lead: string;
-  widget: 'pomodoro' | 'countdown' | 'meeting-cost' | 'eisenhower' | 'habit';
+  widget: 'pomodoro' | 'countdown' | 'meeting-cost' | 'eisenhower' | 'habit' | 'kanban' | 'mindmap' | 'gantt';
   how: string;
   note?: string;
   faqs: { q: string; a: string }[];
@@ -89,6 +89,63 @@ export const PRODUCTIVITY_TOOLS: ProductivityToolDef[] = [
       { q: 'Which quadrant do people neglect most?', a: 'Schedule — important but not urgent. It holds the high-value work (strategy, learning, prevention) that has no deadline, so it gets crowded out by urgent trivia until it, too, becomes a crisis.' },
     ],
     keywords: ['eisenhower matrix', 'urgent important matrix', 'priority matrix', 'task prioritization', 'eisenhower box', 'time management matrix'],
+  },
+  {
+    slug: 'kanban-board',
+    name: 'Kanban Board',
+    icon: '🗂️',
+    description:
+      'A drag-and-drop Kanban board with customizable columns and WIP limits — visualize your workflow. Saved in your browser, exportable, no sign-up.',
+    lead: 'Move cards across To Do → Doing → Done, set work-in-progress limits, and see your workflow at a glance. Private, no account.',
+    widget: 'kanban',
+    how: 'Kanban visualizes work as cards moving through columns that represent stages of a workflow. Add cards to a column, drag them rightward as they progress, and set a WIP (work-in-progress) limit on any column to cap how many things are in flight at once. Rename or add columns to match your process. The whole board is saved in your browser and exports to JSON — nothing is uploaded.',
+    note: 'The quiet superpower of Kanban is the WIP limit. Piling everything into "Doing" feels productive but means nothing actually finishes; capping in-progress work forces you to finish before you start, which is what makes the board flow. If a column keeps hitting its limit, that stage is your bottleneck — a signal worth acting on.',
+    faqs: [
+      { q: 'What is a Kanban board?', a: 'A visual workflow tool: cards represent tasks and columns represent stages (like To Do, Doing, Done). You move cards across the board as work progresses, making bottlenecks and workload obvious at a glance.' },
+      { q: 'What is a WIP limit and why does it matter?', a: 'A work-in-progress limit caps how many cards a column can hold. It stops you starting more than you can finish, which counter-intuitively speeds everything up: less multitasking, more completion. When a column keeps hitting its limit, you\'ve found your bottleneck.' },
+      { q: 'Can I customize the columns?', a: 'Yes — rename them, add new ones, delete ones you don\'t need, and set a WIP limit on each. The board adapts to your process.' },
+      { q: 'Where is my board saved?', a: 'In your browser only. Export a JSON file to back it up or move to another device; nothing is ever uploaded.' },
+      { q: 'Can I print it?', a: 'Yes — use Print / Save as PDF to get a paper or PDF snapshot of the current board.' },
+    ],
+    keywords: ['kanban board', 'kanban board online', 'trello alternative', 'wip limit', 'workflow board', 'kanban no signup'],
+  },
+  {
+    slug: 'mind-map-maker',
+    name: 'Mind Map Maker',
+    icon: '🧠',
+    description:
+      'Build a mind map in your browser — add branches, edit nodes, and export as PNG, PDF or JSON. No sign-up, saved locally, private.',
+    lead: 'Branch out from a central idea: add nodes, edit them, and grow a mind map — then export it as a PNG, PDF or reusable JSON.',
+    widget: 'mindmap',
+    how: 'A mind map starts from one central idea and branches outward into related thoughts, mirroring how ideas actually connect. Click any node to select it, edit its text, and add a child (a sub-idea) or a sibling (a parallel idea); the map re-arranges itself automatically into a tidy tree. Branches are colour-coded so the structure stays readable as it grows. Export the finished map as a PNG or PDF to share, or as JSON to reload and keep editing later — all saved in your browser.',
+    note: 'Mind mapping is at its best when you don\'t stop to judge: get the branches down fast, then reorganise. Because each top-level branch gets its own colour, a glance tells you whether your thinking is lopsided — five branches under one idea and none under another usually means there\'s more to explore. Everything stays on your device.',
+    faqs: [
+      { q: 'What is a mind map good for?', a: 'Brainstorming, note-taking, planning and organising ideas. Starting from a central concept and branching outward matches how thoughts associate, so it\'s faster than a linear list for exploring a topic.' },
+      { q: 'How do I add and edit nodes?', a: 'Click a node to select it, type its text in the box above, then use "＋ Child" for a sub-idea or "＋ Sibling" for a parallel one. The layout re-tidies itself automatically as you add.' },
+      { q: 'Can I export my mind map?', a: 'Yes — as a PNG or PDF image to share or print, or as a JSON file that you can re-import later to keep editing. The map is also auto-saved in your browser.' },
+      { q: 'Is my mind map private?', a: 'Completely — it\'s stored only in your browser and never uploaded. Export a JSON backup to move it between devices yourself.' },
+      { q: 'What do the colours mean?', a: 'Each top-level branch and everything under it shares a colour, so the major themes of your map stay visually distinct as it grows.' },
+    ],
+    keywords: ['mind map maker', 'mind map online', 'mind mapping tool', 'brainstorm tool', 'concept map maker', 'free mind map'],
+  },
+  {
+    slug: 'gantt-chart-maker',
+    name: 'Gantt Chart Maker',
+    icon: '📊',
+    description:
+      'Build a Gantt chart with task bars, milestones, dependencies and % complete on a timeline — export as PNG, PDF or CSV. Saved locally, no sign-up.',
+    lead: 'Lay tasks out on a timeline with bars, milestones and dependencies, track % complete, and export a PNG, PDF or CSV. Private, in your browser.',
+    widget: 'gantt',
+    how: 'A Gantt chart shows a project as horizontal bars on a timeline — each bar a task, spanning its start to end date, so you can see what happens when and what overlaps. Add tasks in the table, set their dates and percent complete, mark milestones (shown as diamonds) and optionally link a task to the one it follows (a dependency arrow). The timeline auto-scales to your project, a red line marks today, and the filled portion of each bar shows progress. Export the chart as a PNG or PDF, the data as CSV or JSON, all saved in your browser.',
+    note: 'Gantt charts are excellent for communicating a plan and terrible if you treat them as gospel — real projects slip, and a chart that isn\'t updated quickly becomes fiction. Use it to see the shape of the work and the critical hand-offs (the dependency arrows), update the percentages as you go, and don\'t over-engineer every sub-task. Everything is computed and stored on your device.',
+    faqs: [
+      { q: 'What is a Gantt chart?', a: 'A bar chart of a project schedule: each task is a horizontal bar positioned by its start and end dates on a timeline, so you can see durations, overlaps and the overall shape of the plan at a glance.' },
+      { q: 'How do dependencies work here?', a: 'Set a task\'s "After" field to the task it follows, and an arrow is drawn from the predecessor to it. It\'s a visual link showing the hand-off; it doesn\'t auto-reschedule, so you keep full control of the dates.' },
+      { q: 'What are milestones?', a: 'Zero-duration markers for key moments — a launch, an approval, a deadline — shown as diamonds rather than bars. Tick the milestone box on any task to turn it into one.' },
+      { q: 'Can I export the chart?', a: 'Yes — as a PNG or PDF image for sharing or printing, or as CSV/JSON data. The whole chart is also auto-saved in your browser.' },
+      { q: 'Is anything uploaded?', a: 'No — the timeline is drawn and stored entirely on your device. Export JSON to back up or move devices.' },
+    ],
+    keywords: ['gantt chart maker', 'gantt chart online', 'project timeline', 'gantt chart free', 'project schedule chart', 'gantt chart generator'],
   },
   {
     slug: 'habit-tracker',

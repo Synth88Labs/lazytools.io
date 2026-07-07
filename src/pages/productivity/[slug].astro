@@ -10,6 +10,9 @@ import CountdownTool from '../../components/productivity/CountdownTool.tsx';
 import MeetingCostTool from '../../components/productivity/MeetingCostTool.tsx';
 import EisenhowerTool from '../../components/productivity/EisenhowerTool.tsx';
 import HabitTrackerTool from '../../components/productivity/HabitTrackerTool.tsx';
+import KanbanTool from '../../components/productivity/KanbanTool.tsx';
+import MindMapTool from '../../components/productivity/MindMapTool.tsx';
+import GanttTool from '../../components/productivity/GanttTool.tsx';
 import { PRODUCTIVITY_TOOLS, type ProductivityToolDef } from '../../data/productivity/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -61,6 +64,9 @@ const schema = [
       {tool.widget === 'meeting-cost' && <MeetingCostTool client:load />}
       {tool.widget === 'eisenhower' && <EisenhowerTool client:load />}
       {tool.widget === 'habit' && <HabitTrackerTool client:load />}
+      {tool.widget === 'kanban' && <KanbanTool client:load />}
+      {tool.widget === 'mindmap' && <MindMapTool client:load />}
+      {tool.widget === 'gantt' && <GanttTool client:load />}
     </div>
 
     <div class="mt-4">

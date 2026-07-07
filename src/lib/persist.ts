@@ -89,6 +89,28 @@ export function svgToPng(svg: SVGSVGElement, scale = 2): Promise<Blob> {
   });
 }
 
+/** Save an <svg> element as a real PDF (image-embedded). pdf-lib is lazy-loaded on first use. */
+export async function downloadSvgAsPdf(svg: SVGSVGElement, filename: string, scale = 2): Promise<void> {
+  const png = await svgToPng(svg, scale);
+  const bytes = new Uint8Array(await png.arrayBuffer());
+  const { PDFDocument } = await import('pdf-lib');
+  const doc = await PDFDocument.create();
+  const img = await doc.embedPng(bytes);
+  const w = (svg.viewBox.baseVal.width || img.width / scale);
+  const h = (svg.viewBox.baseVal.height || img.height / scale);
+  const page = doc.addPage([w, h]);
+  page.drawImage(img, { x: 0, y: 0, width: w, height: h });
+  const out = await doc.save();
+  const ab = new ArrayBuffer(out.byteLength);
+  new Uint8Array(ab).set(out);
+  downloadBlob(new Blob([ab], { type: 'application/pdf' }), filename);
+}
+
+/** Save an <svg> element as a PNG file. */
+export async function downloadSvgAsPng(svg: SVGSVGElement, filename: string, scale = 2): Promise<void> {
+  downloadBlob(await svgToPng(svg, scale), filename);
+}
+
 /** Small stable id. */
 export function uid(): string {
   return Math.random().toString(36).slice(2, 10);
