@@ -272,6 +272,13 @@ const POSTS = [
     fact: 'receive obligation: all companies, 1 Sept 2026',
     icon: '🇫🇷',
   },
+  {
+    slug: 'llm-tokens-cost-guide',
+    kicker: 'DEVELOPER TOOLS',
+    lines: ['LLM tokens explained:', 'what your prompts cost', '& which counts are exact'],
+    fact: 'output tokens cost 5–6× input — cap the reply',
+    icon: '🪙',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

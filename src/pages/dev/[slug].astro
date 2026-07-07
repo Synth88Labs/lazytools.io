@@ -7,6 +7,7 @@ import FaqSection from '../../components/FaqSection.astro';
 import RatingWidget from '../../components/RatingWidget.tsx';
 import DevTransformTool from '../../components/dev/DevTransformTool.tsx';
 import HashTool from '../../components/dev/HashTool.tsx';
+import LlmTokenCounterTool from '../../components/dev/LlmTokenCounterTool.tsx';
 import { DEV_TOOLS, type DevToolDef } from '../../data/dev/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -54,6 +55,7 @@ const schema = [
 
     <div class="mt-6">
       {tool.widget === 'hash' && <HashTool client:load sample={tool.sample} />}
+      {tool.widget === 'llm-tokens' && <LlmTokenCounterTool client:load />}
       {tool.widget === 'transform' && (
         <DevTransformTool client:load computeId={tool.computeId!} options={tool.options} sample={tool.sample} />
       )}

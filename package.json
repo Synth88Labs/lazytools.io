@@ -16,6 +16,7 @@
     "@jspawn/qpdf-wasm": "^0.0.2",
     "@remotemerge/nepali-date-converter": "^1.2.0",
     "astro": "^5.0.0",
+    "gpt-tokenizer": "^3.4.0",
     "heic-to": "^1.5.2",
     "js-yaml": "^5.2.1",
     "marked": "^18.0.5",

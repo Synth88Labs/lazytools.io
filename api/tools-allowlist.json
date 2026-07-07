@@ -40,6 +40,7 @@
   "dev/hash-generator",
   "dev/html-entities-encode-decode",
   "dev/jwt-decoder",
+  "dev/llm-token-counter",
   "dev/number-base-converter",
   "dev/regex-tester",
   "dev/url-encode-decode",

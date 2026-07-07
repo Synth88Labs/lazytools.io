@@ -15,8 +15,8 @@ export interface DevToolDef {
   icon: string;
   description: string;
   lead: string;
-  /** 'transform' uses DevTransformTool; 'hash' uses HashTool */
-  widget: 'transform' | 'hash';
+  /** 'transform' uses DevTransformTool; 'hash' uses HashTool; 'llm-tokens' uses LlmTokenCounterTool */
+  widget: 'transform' | 'hash' | 'llm-tokens';
   computeId?: string;
   options?: DevToolOption[];
   sample?: string;
@@ -217,6 +217,26 @@ export const DEV_TOOLS: DevToolDef[] = [
       { q: 'Octal still exists?', a: 'Unix file permissions keep it alive: chmod 755 is octal for rwxr-xr-x. Otherwise you\'ll mostly meet hex and binary.' },
     ],
     keywords: ['binary to decimal', 'hex converter', 'number base converter', 'decimal to binary', 'hex to decimal', '0xdeadbeef'],
+  },
+  {
+    slug: 'llm-token-counter',
+    name: 'LLM Token Counter & Cost Calculator',
+    icon: '🪙',
+    description:
+      'Count tokens for GPT, Claude and Gemini — exact OpenAI counts via the real o200k tokenizer running in your browser, honestly-labelled estimates for the rest — plus per-request and monthly API cost with dated pricing. Nothing uploaded.',
+    lead: 'Paste a prompt and see what it costs: exact OpenAI token counts (the real tokenizer runs locally), clearly-labelled estimates for Claude and Gemini, a context-window fit bar, and per-model cost math with a visible "prices last verified" date.',
+    widget: 'llm-tokens',
+    how: 'Language models don\'t read words — they read tokens, sub-word chunks produced by each vendor\'s tokenizer, and API bills are denominated in them. For OpenAI models this tool runs the genuine o200k_base tokenizer (via the gpt-tokenizer library) in your browser, so those counts are exact, not approximations. Anthropic and Google do not publish browser-runnable tokenizers, so Claude and Gemini counts are estimates from the ~4-characters-per-token heuristic — multiplied by 1.3 for Anthropic\'s newer models (Opus 4.7+, Fable 5, Sonnet 5), which Anthropic documents as using a tokenizer that "produces approximately 30% more tokens for the same text". Every number is badged EXACT or ESTIMATE so you always know which you\'re looking at. The cost panel multiplies your counted input tokens and expected output tokens by each model\'s per-million-token price, and scales to a monthly figure from your requests-per-day.',
+    note: 'Two honesty notes built into the tool: prices carry a visible "last verified" date with links to the official pricing pages, because API prices change often (Claude Sonnet 5\'s move from $2/$10 to $3/$15 on 1 September 2026 is already pre-announced); and there is deliberately no "exact" badge on Claude or Gemini — any tool claiming exact counts for those models without calling the vendor\'s API is guessing. The privacy angle matters here more than most tools: the text people paste into token counters is precisely their confidential prompts and documents, and this one never transmits a byte.',
+    faqs: [
+      { q: 'Are the token counts exact?', a: 'For OpenAI models, yes — the real o200k_base tokenizer runs in your browser via the gpt-tokenizer library, the same encoding GPT-5.x-era models use. For Claude and Gemini the counts are labelled estimates: those vendors don\'t publish browser-runnable tokenizers, so exact counts are only available from their APIs.' },
+      { q: 'Why do Claude models show more tokens than GPT for the same text?', a: 'Anthropic documents that Opus 4.7 and later, Fable/Mythos 5 and Sonnet 5 use a newer tokenizer that "produces approximately 30% more tokens for the same text" than their previous one. This tool\'s Claude estimates apply that factor for the newer models — a per-token price cut can therefore cost more than it appears if token counts rise.' },
+      { q: 'How is the cost calculated?', a: '(input tokens ÷ 1,000,000 × input price) + (output tokens ÷ 1,000,000 × output price), per request — then × requests/day × 30 for the monthly figure. Standard API list prices; batch and caching discounts (often 50% and 90% respectively) are not included, so treat results as the ceiling.' },
+      { q: 'Are the prices current?', a: 'The table shows the date the prices were last verified against the official OpenAI, Anthropic and Google pricing pages, with links so you can check. API pricing changes frequently — Claude Sonnet 5\'s increase to $3/$15 on 1 September 2026 is already scheduled — so always confirm before committing to a budget.' },
+      { q: 'What is the context-window fit bar?', a: 'It shows what fraction of a chosen context size (128k to 1M tokens) your text occupies, using the exact o200k count. Remember the context window must also hold the system prompt, conversation history and the model\'s reply — filling it to 100% with input leaves no room to answer.' },
+      { q: 'Is my text uploaded to count tokens?', a: 'No — tokenization and all cost math run in your browser, and the page works offline after loading. What people paste into token counters is usually their actual confidential prompts and documents; that\'s exactly why this one has no server side.' },
+    ],
+    keywords: ['llm token counter', 'token counter', 'gpt token counter', 'claude token counter', 'llm cost calculator', 'openai api cost', 'tokenizer online', 'count tokens', 'llm api pricing calculator'],
   },
 ];
 
