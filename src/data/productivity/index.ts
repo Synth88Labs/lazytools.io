@@ -6,7 +6,7 @@ export interface ProductivityToolDef {
   icon: string;
   description: string;
   lead: string;
-  widget: 'pomodoro' | 'countdown' | 'meeting-cost' | 'eisenhower' | 'habit' | 'kanban' | 'mindmap' | 'gantt' | 'decision-matrix' | 'rice' | 'swot' | 'pros-cons';
+  widget: 'pomodoro' | 'countdown' | 'meeting-cost' | 'eisenhower' | 'habit' | 'kanban' | 'mindmap' | 'gantt' | 'decision-matrix' | 'rice' | 'swot' | 'pros-cons' | 'flowchart' | 'whiteboard' | 'time-blocking' | 'okr' | 'checklist' | 'retro' | 'eye-rest';
   how: string;
   note?: string;
   faqs: { q: string; a: string }[];
@@ -222,6 +222,139 @@ export const PRODUCTIVITY_TOOLS: ProductivityToolDef[] = [
       { q: 'Is my decision private?', a: 'Completely — nothing is uploaded; the list lives only in your browser.' },
     ],
     keywords: ['pros and cons list', 'weighted pros and cons', 'decision maker', 'pros cons calculator', 'decision helper', 'weigh options'],
+  },
+  {
+    slug: 'flowchart-maker',
+    name: 'Flowchart Maker',
+    icon: '🔀',
+    description:
+      'Build a flowchart in your browser — drag process, decision and terminator shapes, connect them with arrows, and export PNG, PDF or JSON. No sign-up.',
+    lead: 'Drag shapes, wire them with arrows, map a process or algorithm — then export a PNG, PDF or reusable JSON. Private, in your browser.',
+    widget: 'flowchart',
+    how: 'A flowchart shows a process as connected shapes: rectangles for steps, diamonds for decisions, rounded "terminators" for start and end, and parallelograms for input/output. Add the shapes you need, drag them into place, then turn on Connect and click two shapes to draw an arrow between them — the arrows re-route automatically as you move things. Click a connector to delete it. Export the diagram as a PNG or PDF, or as JSON to reload and keep editing, all saved in your browser.',
+    note: 'Flowcharts are worth it when a process has branches — the decision diamonds are where they earn their keep, forcing you to spell out what happens on each path. For a purely linear list of steps, a checklist is quicker. Keep labels short so the shapes stay readable, and let the layout breathe; a cramped chart is harder to follow than the process it describes. Everything stays on your device.',
+    faqs: [
+      { q: 'What do the flowchart shapes mean?', a: 'By convention: a rectangle is a process or action step, a diamond is a decision (with branching paths), a rounded "terminator" marks the start or end, and a parallelogram is input or output. Using them consistently makes a chart instantly readable to others.' },
+      { q: 'How do I connect shapes?', a: 'Turn on Connect, click the source shape, then click the target — an arrow is drawn between them and follows the shapes as you drag them. Click any connector to remove it.' },
+      { q: 'Can I export the flowchart?', a: 'Yes — as a PNG or PDF image to share or print, or as JSON that you can re-import to keep editing later. It\'s also auto-saved in your browser.' },
+      { q: 'When should I use a flowchart vs a checklist?', a: 'A flowchart shines when the process branches — different paths depending on a decision. For a simple linear sequence, a checklist or SOP builder is faster and clearer.' },
+      { q: 'Is my diagram private?', a: 'Yes — it\'s stored only in your browser and never uploaded. Export JSON to move it between devices yourself.' },
+    ],
+    keywords: ['flowchart maker', 'flowchart online', 'flow chart creator', 'process diagram', 'flowchart generator', 'free flowchart tool'],
+  },
+  {
+    slug: 'whiteboard',
+    name: 'Online Whiteboard',
+    icon: '🖊️',
+    description:
+      'A quick sketch whiteboard — draw freehand with pen and colours, erase, undo, and export a PNG. Auto-saved in your browser, no sign-up.',
+    lead: 'Grab a pen and sketch — freehand drawing with colours and an eraser, saved as you go and exportable as a PNG. Private, no account.',
+    widget: 'whiteboard',
+    how: 'A blank canvas for thinking with your hands: choose a pen colour and size and draw freehand, switch to the eraser to wipe, undo strokes one at a time, or clear the board. Your drawing is auto-saved in your browser stroke by stroke, so it\'s still there when you come back, and you can export it as a PNG to share. It works with a mouse, trackpad or touchscreen/stylus.',
+    note: 'This is a deliberately simple sketch pad — pen, eraser and colours — for rough diagrams, wireframes and visual notes, not a full diagramming suite with shapes and text boxes (the flowchart maker covers structured diagrams). A stylus or touchscreen makes it far more natural than a mouse. Everything stays on your device.',
+    faqs: [
+      { q: 'Is my drawing saved?', a: 'Yes — every stroke is auto-saved in your browser, so the board is still there when you return. Nothing is uploaded; clearing your browser data erases it, so export a PNG for anything you want to keep.' },
+      { q: 'Can I use it with a stylus or touchscreen?', a: 'Yes — it uses pointer input, so a finger, stylus or pen on a touchscreen works naturally, as does a mouse or trackpad.' },
+      { q: 'How do I undo a mistake?', a: 'Undo removes the last stroke; press it repeatedly to step back. The eraser wipes areas you draw over, and Clear empties the whole board.' },
+      { q: 'Can I add shapes and text boxes?', a: 'This is a freehand sketch pad rather than a structured diagram editor. For boxes, arrows and connected shapes, use the flowchart maker; for freeform sketching and notes, this is the tool.' },
+      { q: 'Is anything uploaded?', a: 'No — the canvas and your strokes live entirely in your browser.' },
+    ],
+    keywords: ['online whiteboard', 'whiteboard online free', 'draw online', 'sketch pad online', 'digital whiteboard', 'whiteboard no signup'],
+  },
+  {
+    slug: 'time-blocking-planner',
+    name: 'Time Blocking Planner',
+    icon: '🗓️',
+    description:
+      'Plan your day in time blocks on a visual timeline, categorise each, and see exactly where your hours go. Saved locally, printable to PDF.',
+    lead: 'Give every hour a job: lay your day out in colour-coded blocks and see, honestly, how much goes to deep work versus meetings.',
+    widget: 'time-blocking',
+    how: 'Time blocking means assigning specific tasks to specific slots in your day rather than working from an open to-do list. Add blocks with a start time, length and category, and they appear on a visual day timeline; the tool tallies your time by category so you can see where the hours actually go. Because every block has a category, a glance reveals whether your day is mostly deep work, meetings or admin — often an uncomfortable surprise. Saved in your browser and printable.',
+    note: 'The discipline time blocking enforces is finishing the plan before the day starts, so you\'re deciding priorities calmly rather than reactively. Two tips: leave buffer blocks for overruns and the unexpected, and don\'t schedule every minute — an over-packed plan collapses at the first interruption. The category totals are the real payoff; if "meetings" dwarfs "deep work", that\'s the conversation to have. Everything stays on your device.',
+    faqs: [
+      { q: 'What is time blocking?', a: 'A planning method where you assign each task to a specific time slot in your day, instead of working reactively from a list. It turns "I\'ll get to it" into "this happens from 2 to 3", which protects time for important work.' },
+      { q: 'How does the category breakdown help?', a: 'Every block is tagged (deep work, meetings, admin, break, personal) and the tool sums the hours per category. Seeing that, say, five hours went to meetings and one to focused work is often the insight that changes how you plan.' },
+      { q: 'Should I block out my whole day?', a: 'No — leave buffers. An over-scheduled day breaks at the first overrun or interruption. Block the important work and leave slack for the rest.' },
+      { q: 'Can I print my plan?', a: 'Yes — use Print / Save as PDF for a copy, and export JSON to back it up. Everything is auto-saved in your browser.' },
+      { q: 'Is my schedule private?', a: 'Yes — it\'s stored only in your browser and never uploaded.' },
+    ],
+    keywords: ['time blocking planner', 'time blocking template', 'daily planner online', 'time block schedule', 'day planner', 'timeboxing tool'],
+  },
+  {
+    slug: 'okr-tracker',
+    name: 'OKR / Goal Tracker',
+    icon: '🎯',
+    description:
+      'Track objectives and their measurable key results with automatic progress bars. Saved in your browser, exportable, no sign-up.',
+    lead: 'Set an objective, add measurable key results, and watch progress fill in as you update the numbers. Private goal tracking.',
+    widget: 'okr',
+    how: 'OKR — Objectives and Key Results — pairs an inspiring, qualitative goal (the Objective) with a few measurable outcomes that prove you\'re getting there (the Key Results). Add an objective, give each key result a starting value, a target and a current value, and the tool shows a progress bar for each and an overall roll-up for the objective. As you update the current numbers, the bars move, so a glance tells you which goals are on track and which are stalling. Saved in your browser.',
+    note: 'The craft of OKRs is in the key results: they must be measurable and slightly uncomfortable — if you\'re certain you\'ll hit them, they\'re targets, not stretch goals. Three to five key results per objective is the sweet spot; more and none of them get attention. And key results measure outcomes ("open rate 45%"), not activities ("send more emails") — that distinction is what keeps OKRs honest. Everything stays on your device.',
+    faqs: [
+      { q: 'What are OKRs?', a: 'Objectives and Key Results — a goal-setting framework. The Objective is a qualitative, motivating goal; the Key Results are 2–5 measurable outcomes that show whether you\'re achieving it. Progress on the key results rolls up to show progress on the objective.' },
+      { q: 'How is progress calculated?', a: 'For each key result, progress is how far the current value has moved from its start toward its target. The objective\'s progress is the average of its key results\' progress, shown as a bar.' },
+      { q: 'What makes a good key result?', a: 'It must be measurable (a number, not an activity) and ambitious enough that success isn\'t certain. "Increase trial sign-ups to 500" is a key result; "work on marketing" is not.' },
+      { q: 'How many key results per objective?', a: 'Three to five. Fewer can be too narrow; more and you lose focus, since everything supposedly important means nothing is.' },
+      { q: 'Is my data private?', a: 'Yes — your objectives are saved only in your browser and never uploaded. Export JSON to back up or move devices.' },
+    ],
+    keywords: ['okr tracker', 'goal tracker', 'okr template', 'objectives and key results', 'okr tool', 'goal tracking app'],
+  },
+  {
+    slug: 'checklist-maker',
+    name: 'Checklist & SOP Maker',
+    icon: '📋',
+    description:
+      'Build a reusable checklist or standard operating procedure — tick items off, reorder steps, then reset to run it again. Saved locally, printable.',
+    lead: 'Turn a repeatable process into a checklist you can run again and again — tick, reorder, reset. Private, in your browser.',
+    widget: 'checklist',
+    how: 'A good checklist turns "don\'t forget anything" into a reliable, repeatable procedure. Name your checklist, add steps, reorder them, and tick each off as you go — a progress bar shows how far along you are. When you\'re done, one button resets every item so you can run the same procedure next time. It\'s ideal for standard operating procedures (SOPs): publishing a post, onboarding someone, a pre-flight routine. Saved in your browser and printable.',
+    note: 'Checklists are quietly one of the highest-leverage tools there is — surgeons and pilots use them precisely because expertise doesn\'t prevent slips under pressure. The trick is keeping them short and focused on the steps that are actually forgotten or skipped, not padding them with the obvious. A five-item checklist that gets used beats a thirty-item one that gets ignored. Everything stays on your device.',
+    faqs: [
+      { q: 'What is an SOP?', a: 'A Standard Operating Procedure — a documented, repeatable set of steps for a task, so it\'s done the same way every time regardless of who does it. A reusable checklist is the simplest form of one.' },
+      { q: 'How do I reuse the checklist?', a: 'Tick items off as you complete them, and when you\'re done press Reset to clear all the checkmarks. The steps stay; only the ticks reset, so you can run the same procedure again.' },
+      { q: 'Can I reorder steps?', a: 'Yes — move any step up or down so the sequence matches how the work actually flows.' },
+      { q: 'What makes a good checklist?', a: 'Short and focused on the steps that actually get missed. Checklists work because they catch slips, not because they document the obvious — a lean one that gets used beats an exhaustive one that gets ignored.' },
+      { q: 'Is it saved and can I print it?', a: 'It\'s auto-saved in your browser, exportable as JSON, and printable (Save as PDF) for a paper copy. Nothing is uploaded.' },
+    ],
+    keywords: ['checklist maker', 'sop template', 'checklist template', 'reusable checklist', 'standard operating procedure', 'checklist online'],
+  },
+  {
+    slug: 'retrospective-board',
+    name: 'Retrospective Board',
+    icon: '🔄',
+    description:
+      'Run a team retrospective — What went well, What to improve, Action items — with notes you can upvote. Saved locally, printable, no sign-up.',
+    lead: 'Capture a retro in three columns — what went well, what to improve, actions — and upvote the notes that matter most.',
+    widget: 'retro',
+    how: 'A retrospective is a regular look back at how work went, so a team can keep what\'s working and fix what isn\'t. This board gives you three columns — What went well, What to improve, and Action items — to fill with notes. Upvote the notes the group cares about most and they float to the top, focusing the discussion on what matters. Everything is saved in your browser and can be exported or printed to share.',
+    note: 'The output that actually changes anything is the Action items column — a retro that surfaces problems but ends without owned, specific actions just becomes a complaints session that repeats next time. Keep the tone blameless (the goal is better systems, not culprits), timebox it, and carry the top action items forward. All stored on your device.',
+    faqs: [
+      { q: 'What is a retrospective?', a: 'A recurring session — common in agile teams — to reflect on a period of work: what went well, what could be better, and what to change. The point is continuous improvement, done regularly rather than only after something goes wrong.' },
+      { q: 'How does voting help?', a: 'Upvoting notes surfaces what the group collectively cares about, so a limited discussion focuses on the highest-impact items rather than whatever was mentioned last. Voted notes sort to the top automatically.' },
+      { q: 'Why is the Action items column the important one?', a: 'Because insight without action changes nothing. A retro that ends without specific, owned action items tends to raise the same issues again next time. Capture concrete next steps and carry them forward.' },
+      { q: 'Can the whole team use it together?', a: 'It\'s a local, single-device board — great for a facilitator sharing a screen. Everyone\'s input goes on one board; export the JSON to archive it. There\'s no live multi-user sync, by design (it stays private and account-free).' },
+      { q: 'Is it saved and shareable?', a: 'Auto-saved in your browser, exportable as JSON, and printable to PDF. Nothing is uploaded.' },
+    ],
+    keywords: ['retrospective board', 'sprint retrospective', 'retro board online', 'agile retrospective', 'start stop continue', 'team retrospective tool'],
+  },
+  {
+    slug: 'eye-rest-timer',
+    name: 'Eye Rest Timer (20-20-20)',
+    icon: '👀',
+    description:
+      'A 20-20-20 rule timer to reduce digital eye strain — every 20 minutes it reminds you to look 20 feet away for 20 seconds. Runs in your browser.',
+    lead: 'Ease screen-tired eyes: every 20 minutes, a reminder to look ~20 feet away for 20 seconds. Simple, private, in your browser.',
+    widget: 'eye-rest',
+    how: 'The 20-20-20 rule is the standard advice for digital eye strain: every 20 minutes, look at something about 20 feet (6 metres) away for 20 seconds, giving the focusing muscles in your eyes a rest from close work. This timer runs the cycle for you — it counts down the 20-minute work interval, chimes and prompts you to look away, times the 20-second break, then starts again. Both intervals are adjustable, and it runs entirely in your browser.',
+    note: 'Eye strain from screens (sometimes called computer vision syndrome) comes partly from staring at a fixed near distance and partly from blinking less when concentrating — so the look-away break also nudges you to blink. Allow the browser notification if you\'ll be in another window, and keep the tab open so the timer keeps running. It won\'t replace good lighting and screen positioning, but the regular micro-breaks genuinely help. Nothing is uploaded.',
+    faqs: [
+      { q: 'What is the 20-20-20 rule?', a: 'A simple guideline for reducing digital eye strain: every 20 minutes of screen work, look at something roughly 20 feet (6 metres) away for 20 seconds. It relaxes the eye muscles that stay tensed when focusing up close.' },
+      { q: 'Does looking away really help eye strain?', a: 'It addresses two causes: prolonged near-focus (looking far relaxes the focusing muscles) and reduced blinking during concentration (the break prompts you to blink and re-wet your eyes). It\'s widely recommended by optometrists as an easy habit, alongside good lighting and screen distance.' },
+      { q: 'Can I change the intervals?', a: 'Yes — adjust both the work interval and the rest length. The classic rule is 20 minutes and 20 seconds, but you can tune it to what works for you.' },
+      { q: 'Will it remind me if I switch tabs?', a: 'If you allow notifications, it shows a desktop reminder when it\'s time to look away. Keep the tab open, as browsers pause timers in closed tabs.' },
+      { q: 'Is anything tracked?', a: 'No — the timer runs entirely on your device; nothing is recorded or uploaded.' },
+    ],
+    keywords: ['20-20-20 timer', 'eye rest timer', 'eye strain timer', 'break reminder', 'screen break timer', 'computer eye strain'],
   },
   {
     slug: 'habit-tracker',

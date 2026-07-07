@@ -81,7 +81,7 @@ export default function PomodoroTool() {
   const pct = Math.max(0, Math.min(1, remaining / phaseLen(phase)));
 
   return (
-    <div ref={fs.ref} class={`rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6 ${fs.isFull ? 'flex h-screen flex-col justify-center overflow-auto' : ''}`}>
+    <div ref={fs.ref} class={`rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6 ${fs.isFull ? 'fixed inset-0 z-[60] flex flex-col justify-center overflow-auto !rounded-none' : ''}`}>
       <div class="mb-2 flex justify-end">
         <button type="button" onClick={fs.toggle} class="rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-600 transition hover:border-brand-400">{fs.isFull ? '⤢ Exit full screen' : '⛶ Full screen'}</button>
       </div>

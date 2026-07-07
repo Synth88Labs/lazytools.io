@@ -44,7 +44,7 @@ export default function KanbanTool() {
   const removeCol = (id: string) => setCols((cs) => cs.filter((c) => c.id !== id));
 
   return (
-    <div ref={fs.ref} class={`rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6 ${fs.isFull ? 'flex h-screen flex-col overflow-hidden' : ''}`}>
+    <div ref={fs.ref} class={`rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6 ${fs.isFull ? 'fixed inset-0 z-[60] flex flex-col overflow-hidden !rounded-none' : ''}`}>
       <div class="mb-3 flex flex-wrap gap-2">
         <button type="button" onClick={addCol} class="rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-600 transition hover:border-brand-400">＋ Column</button>
         <button type="button" onClick={() => exportJson('kanban', 'kanban-board.json', cols)} class="rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-600 transition hover:border-brand-400">⬇ Export JSON</button>

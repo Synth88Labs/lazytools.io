@@ -17,6 +17,13 @@ import DecisionMatrixTool from '../../components/productivity/DecisionMatrixTool
 import RiceTool from '../../components/productivity/RiceTool.tsx';
 import SwotTool from '../../components/productivity/SwotTool.tsx';
 import ProsConsTool from '../../components/productivity/ProsConsTool.tsx';
+import FlowchartTool from '../../components/productivity/FlowchartTool.tsx';
+import WhiteboardTool from '../../components/productivity/WhiteboardTool.tsx';
+import TimeBlockingTool from '../../components/productivity/TimeBlockingTool.tsx';
+import OkrTool from '../../components/productivity/OkrTool.tsx';
+import ChecklistTool from '../../components/productivity/ChecklistTool.tsx';
+import RetroTool from '../../components/productivity/RetroTool.tsx';
+import EyeRestTool from '../../components/productivity/EyeRestTool.tsx';
 import { PRODUCTIVITY_TOOLS, type ProductivityToolDef } from '../../data/productivity/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -75,6 +82,13 @@ const schema = [
       {tool.widget === 'rice' && <RiceTool client:load />}
       {tool.widget === 'swot' && <SwotTool client:load />}
       {tool.widget === 'pros-cons' && <ProsConsTool client:load />}
+      {tool.widget === 'flowchart' && <FlowchartTool client:load />}
+      {tool.widget === 'whiteboard' && <WhiteboardTool client:load />}
+      {tool.widget === 'time-blocking' && <TimeBlockingTool client:load />}
+      {tool.widget === 'okr' && <OkrTool client:load />}
+      {tool.widget === 'checklist' && <ChecklistTool client:load />}
+      {tool.widget === 'retro' && <RetroTool client:load />}
+      {tool.widget === 'eye-rest' && <EyeRestTool client:load />}
     </div>
 
     <div class="mt-4">

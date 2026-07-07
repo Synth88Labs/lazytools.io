@@ -6,20 +6,30 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
 import type { RefObject } from 'preact';
 
-/** Fullscreen a container element. Returns a ref to attach, the current state, and a toggle. */
+/**
+ * Fullscreen a container element. Uses the native Fullscreen API when allowed,
+ * and falls back to a CSS full-viewport overlay when it isn't (e.g. inside an
+ * iframe/preview, or on browsers that block it) — so it works everywhere.
+ */
 export function useFullscreen<T extends HTMLElement = HTMLDivElement>(): { ref: RefObject<T>; isFull: boolean; toggle: () => void } {
   const ref = useRef<T>(null);
-  const [isFull, setIsFull] = useState(false);
+  const [nativeFull, setNativeFull] = useState(false);
+  const [cssFull, setCssFull] = useState(false);
   useEffect(() => {
-    const on = () => setIsFull(!!document.fullscreenElement && document.fullscreenElement === ref.current);
+    const on = () => setNativeFull(!!document.fullscreenElement && document.fullscreenElement === ref.current);
     document.addEventListener('fullscreenchange', on);
-    return () => document.removeEventListener('fullscreenchange', on);
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setCssFull(false); };
+    document.addEventListener('keydown', onKey);
+    return () => { document.removeEventListener('fullscreenchange', on); document.removeEventListener('keydown', onKey); };
   }, []);
   const toggle = () => {
-    if (document.fullscreenElement) document.exitFullscreen?.();
-    else ref.current?.requestFullscreen?.().catch(() => {});
+    if (document.fullscreenElement) { document.exitFullscreen?.(); return; }
+    if (cssFull) { setCssFull(false); return; }
+    const el = ref.current;
+    if (el?.requestFullscreen) el.requestFullscreen().catch(() => setCssFull(true));
+    else setCssFull(true);
   };
-  return { ref, isFull, toggle };
+  return { ref, isFull: nativeFull || cssFull, toggle };
 }
 
 /** useState backed by localStorage under `key`. SSR-safe (falls back to `initial`). */

@@ -60,7 +60,7 @@ export default function GanttTool() {
   const btn = 'rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-600 transition hover:border-brand-400';
 
   return (
-    <div ref={fs.ref} class={`rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6 ${fs.isFull ? 'h-screen overflow-auto' : ''}`}>
+    <div ref={fs.ref} class={`rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6 ${fs.isFull ? 'fixed inset-0 z-[60] overflow-auto !rounded-none' : ''}`}>
       <div class="mb-3 flex flex-wrap gap-2">
         <button type="button" onClick={add} class="rounded-lg bg-brand-700 px-3 py-1.5 text-sm font-semibold text-white hover:bg-brand-800">＋ Task</button>
         <button type="button" onClick={() => svgRef.current && downloadSvgAsPng(svgRef.current, 'gantt.png')} class={btn}>🖼 PNG</button>
