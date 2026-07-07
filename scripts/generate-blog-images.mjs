@@ -216,6 +216,13 @@ const POSTS = [
     fact: 'EN 16931 · receive since Jan 2025',
     icon: '🧾',
   },
+  {
+    slug: '4-5-4-retail-calendar-guide',
+    kicker: 'RETAIL CALENDAR',
+    lines: ['The 4-5-4 retail', 'calendar: why months', "aren't normal"],
+    fact: '4 quarters × 13 weeks = 364 days',
+    icon: '🛍️',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
