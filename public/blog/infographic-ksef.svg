@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="Poland's KSeF e-invoicing system. KSeF is a clearance model: the invoice is submitted as FA(3) XML, KSeF validates it, and only on acceptance — when it gets a KSeF number — does the invoice legally exist. Timeline: 1 February 2026 large taxpayers issue and everyone must receive; 1 April 2026 all VAT businesses issue; 1 January 2027 micro-entrepreneurs join and penalties of up to 100 percent of the invoice VAT become enforceable. The FA(3) XML contains Podmiot1 seller, Podmiot2 buyer with NIP identifiers, FaWiersz line items and P-field totals.">
+  <defs>
+    <style>
+      .h { font: 800 30px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .lab { font: 700 19px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .sub { font: 500 15px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+      .big { font: 800 19px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; }
+      .mono { font: 600 13px Consolas, Menlo, monospace; }
+    </style>
+  </defs>
+
+  <text x="600" y="42" text-anchor="middle" class="h">🇵🇱 KSeF: the invoice doesn't exist until the system says so</text>
+
+  <!-- clearance flow -->
+  <g transform="translate(80 70)">
+    <rect x="0" y="0" width="280" height="90" rx="14" fill="#eef9ff" stroke="#1d87f1" stroke-width="2"/>
+    <text x="140" y="38" text-anchor="middle" class="big" fill="#1e3a8a">1. You issue</text>
+    <text x="140" y="64" text-anchor="middle" class="sub">FA(3) XML — not a PDF</text>
+  </g>
+  <text x="405" y="122" text-anchor="middle" font-size="26" fill="#64748b">→</text>
+  <g transform="translate(430 70)">
+    <rect x="0" y="0" width="280" height="90" rx="14" fill="#fefce8" stroke="#b45309" stroke-width="2"/>
+    <text x="140" y="38" text-anchor="middle" class="big" fill="#854d0e">2. KSeF validates</text>
+    <text x="140" y="64" text-anchor="middle" class="sub">schema + business rules — reject = no invoice</text>
+  </g>
+  <text x="755" y="122" text-anchor="middle" font-size="26" fill="#64748b">→</text>
+  <g transform="translate(780 70)">
+    <rect x="0" y="0" width="340" height="90" rx="14" fill="#f0fdf4" stroke="#059669" stroke-width="2"/>
+    <text x="170" y="38" text-anchor="middle" class="big" fill="#065f46">3. Accepted = legally exists</text>
+    <text x="170" y="64" text-anchor="middle" class="sub">gets its KSeF number; XML is the invoice</text>
+  </g>
+
+  <!-- timeline -->
+  <text x="600" y="222" text-anchor="middle" class="lab">Who must issue through KSeF, and when</text>
+  <line x1="110" y1="296" x2="1090" y2="296" stroke="#cbd5e1" stroke-width="4"/>
+  <g transform="translate(230 296)">
+    <circle r="11" fill="#1d87f1"/>
+    <text x="0" y="-52" text-anchor="middle" class="big" fill="#0f172a">1 Feb 2026</text>
+    <text x="0" y="-30" text-anchor="middle" class="sub">large taxpayers issue;</text>
+    <text x="0" y="36" text-anchor="middle" class="sub">EVERYONE must receive</text>
+  </g>
+  <g transform="translate(600 296)">
+    <circle r="11" fill="#7c3aed"/>
+    <text x="0" y="-52" text-anchor="middle" class="big" fill="#0f172a">1 Apr 2026</text>
+    <text x="0" y="-30" text-anchor="middle" class="sub">ALL VAT-registered</text>
+    <text x="0" y="36" text-anchor="middle" class="sub">businesses issue</text>
+  </g>
+  <g transform="translate(950 296)">
+    <circle r="11" fill="#dc2626"/>
+    <text x="0" y="-52" text-anchor="middle" class="big" fill="#0f172a">1 Jan 2027</text>
+    <text x="0" y="-30" text-anchor="middle" class="sub">micro-entrepreneurs join;</text>
+    <text x="0" y="36" text-anchor="middle" class="sub">penalties up to 100% of VAT</text>
+  </g>
+
+  <!-- FA(3) anatomy -->
+  <text x="600" y="410" text-anchor="middle" class="lab">Inside an FA(3) file</text>
+  <g transform="translate(90 430)">
+    <rect x="0" y="0" width="1020" height="150" rx="14" fill="#153056"/>
+    <text x="30" y="32" class="mono" fill="#7ef0c0">&lt;Faktura&gt;</text>
+    <text x="60" y="56" class="mono" fill="#93c5fd">&lt;Naglowek&gt; FA(3) header</text>
+    <text x="60" y="80" class="mono" fill="#93c5fd">&lt;Podmiot1&gt; seller + NIP &lt;Podmiot2&gt; buyer + NIP</text>
+    <text x="60" y="104" class="mono" fill="#93c5fd">&lt;Fa&gt; P_1 date · P_2 number · P_15 total · &lt;FaWiersz&gt; line items · P_13/P_14 VAT</text>
+    <text x="30" y="132" class="mono" fill="#7ef0c0">&lt;/Faktura&gt;</text>
+    <text x="760" y="34" class="sub" fill="#94a3b8">NIP has a mod-11 check digit —</text>
+    <text x="760" y="56" class="sub" fill="#94a3b8">a typo is caught by arithmetic,</text>
+    <text x="760" y="78" class="sub" fill="#94a3b8">before KSeF rejects it for you</text>
+  </g>
+
+  <text x="600" y="614" text-anchor="middle" class="sub">Reading or pre-checking an FA(3) file needs no accounting software — a browser can do both, locally.</text>
+</svg>

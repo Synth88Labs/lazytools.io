@@ -7,6 +7,8 @@ import FaqSection from '../../components/FaqSection.astro';
 import RatingWidget from '../../components/RatingWidget.tsx';
 import FileConvertTool from '../../components/file/FileConvertTool.tsx';
 import EInvoiceTool from '../../components/file/EInvoiceTool.tsx';
+import KsefViewerTool from '../../components/file/KsefViewerTool.tsx';
+import KsefValidatorTool from '../../components/file/KsefValidatorTool.tsx';
 import { FILE_TOOLS, type FileToolDef } from '../../data/file/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -55,6 +57,10 @@ const schema = [
     <div class="mt-6">
       {tool.widget === 'einvoice' ? (
         <EInvoiceTool client:load />
+      ) : tool.widget === 'ksef-viewer' ? (
+        <KsefViewerTool client:load />
+      ) : tool.widget === 'ksef-validator' ? (
+        <KsefValidatorTool client:load />
       ) : (
         <FileConvertTool
           client:load

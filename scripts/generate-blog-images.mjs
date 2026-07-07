@@ -279,6 +279,13 @@ const POSTS = [
     fact: 'output tokens cost 5–6× input — cap the reply',
     icon: '🪙',
   },
+  {
+    slug: 'ksef-fa3-invoice-guide',
+    kicker: 'E-INVOICING',
+    lines: ['KSeF 2026/2027: how to', 'read an FA(3) invoice —', 'no software, no upload'],
+    fact: 'from Jan 2027: penalties up to 100% of VAT',
+    icon: '🇵🇱',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

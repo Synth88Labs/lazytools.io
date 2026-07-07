@@ -172,6 +172,8 @@ function parseXml(xml: string): Parsed {
   const root = dom.documentElement;
   if (root.localName === 'CrossIndustryInvoice') return parseCii(root);
   if (root.localName === 'Invoice' || root.localName === 'CreditNote') return parseUbl(root);
+  if (root.localName === 'Faktura')
+    throw new Error('This is a Polish KSeF structured invoice (FA schema) — open it in the dedicated KSeF viewer at /file/ksef-viewer/.');
   throw new Error(`Unrecognized root element <${root.localName}> — expected a UBL Invoice or UN/CEFACT CrossIndustryInvoice.`);
 }
 
