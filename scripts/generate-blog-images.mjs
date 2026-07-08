@@ -293,6 +293,13 @@ const POSTS = [
     fact: 'tags · language · title · text layer · alt text',
     icon: '♿',
   },
+  {
+    slug: 'pdf-redaction-guide',
+    kicker: 'PDF TOOLS',
+    lines: ['Why PDF redactions', 'keep failing — and how', 'to redact for real'],
+    fact: 'a black box hides text; it does not remove it',
+    icon: '⬛',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

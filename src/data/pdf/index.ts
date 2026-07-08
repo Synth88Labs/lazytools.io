@@ -6,7 +6,7 @@ export interface PdfToolDef {
   icon: string;
   description: string;
   lead: string;
-  widget: 'merge' | 'split' | 'images-to-pdf' | 'rotate' | 'unlock' | 'protect' | 'accessibility';
+  widget: 'merge' | 'split' | 'images-to-pdf' | 'rotate' | 'unlock' | 'protect' | 'accessibility' | 'redact' | 'redact-check';
   how: string;
   note?: string;
   faqs: { q: string; a: string }[];
@@ -148,5 +148,43 @@ export const PDF_TOOLS: PdfToolDef[] = [
       { q: 'Is my document uploaded to be analysed?', a: 'No — pdf.js runs entirely in your browser and the page works offline. Accessibility checks are typically run on reports, statements and contracts; keeping them local is the point.' },
     ],
     keywords: ['pdf accessibility checker', 'check pdf accessibility', 'tagged pdf checker', 'pdf ua check', 'pdf accessibility test online', 'screen reader pdf check', 'eaa pdf accessibility', 'pdf alt text checker'],
+  },
+  {
+    slug: 'redaction-checker',
+    name: 'PDF Redaction Checker',
+    icon: '🕵️',
+    description:
+      'Test whether a "redacted" PDF actually removed the content: extract every piece of text a copy-paste can still read, search it for the redacted term, and check overlay annotations, metadata and attachments — locally, nothing uploaded.',
+    lead: 'Black boxes are not redaction. Before a "redacted" PDF leaves your hands, see everything a copy-paste can still pull out of it — and search for the exact name or number you meant to remove.',
+    widget: 'redact-check',
+    how: 'Most redaction failures share one mechanism: the sensitive text is still in the file, merely covered by a drawn rectangle — so selecting the area and copying, or extracting the text layer, reveals it. This checker extracts the complete machine-readable text of every page (exactly what any script or PDF library sees), tells you how many characters remain, and gives you a search box: type the name, account number or address you redacted, and it reports every page where it still exists, with context. It also flags the other classic leaks — drawn/markup annotations that any editor can delete to reveal what is underneath, document metadata (author, title, creator software, dates), and embedded file attachments that travel with the PDF unredacted.',
+    note: 'This failure mode keeps making headlines: in December 2025, PDFs released in the Epstein files were found to have black boxes drawn over intact, selectable text, and forensic research on tens of thousands of published agency PDFs has found the majority of "redacted" documents still contained the hidden content. The check that would have caught all of it takes ten seconds and — done here — never uploads the document. One honest limitation: a checker can prove content IS still present, but cannot prove a negative; visual content inside images still needs human review.',
+    faqs: [
+      { q: 'How do redactions fail if the page looks black?', a: 'Because appearance and content are separate layers in a PDF. A black rectangle drawn over text changes what you see, not what the file contains — the text underneath remains fully extractable by copy-paste, search or any PDF library, and if the box is an annotation, it can simply be deleted.' },
+      { q: 'What does this checker examine?', a: 'Four things: the complete extractable text of every page (with a search box to hunt for the redacted content), overlay/markup annotations that could be hiding text, document metadata (author, title, software, dates), and embedded file attachments.' },
+      { q: 'The checker found my redacted text — what now?', a: 'The redaction must be done destructively: either use professional redaction that removes the content from the file, or flatten the pages to images with the boxes burned in — the rasterizing redactor here does exactly that. Then re-check the result.' },
+      { q: 'The checker found nothing — is my document safe?', a: 'It passed the checks that catch the overwhelming majority of real-world failures. But no tool can prove a negative: content baked into page images (like a photographed document) needs your eyes, and cropped-but-retained image data is beyond any text-level check.' },
+      { q: 'Is the document I check uploaded?', a: 'No — text extraction and all analysis run in your browser, offline-capable. Documents being redacted are by definition sensitive; that is exactly why this tool has no server side.' },
+    ],
+    keywords: ['pdf redaction checker', 'check pdf redaction', 'redacted pdf still searchable', 'failed redaction', 'hidden text in pdf', 'pdf redaction fail', 'verify pdf redaction', 'copy text under black box'],
+  },
+  {
+    slug: 'redact-pdf',
+    name: 'Redact PDF (Flatten & Burn In)',
+    icon: '⬛',
+    description:
+      'Truly redact a PDF: draw black boxes on the rendered pages, then every page is flattened to an image with the boxes burned in — the text underneath is destroyed, not covered. All in your browser.',
+    lead: 'Draw boxes over what must go, and the tool re-renders every page as a flat image with the boxes burned in — so the hidden text doesn\'t exist in the output, rather than hiding under a rectangle.',
+    widget: 'redact',
+    how: 'The tool renders each page with the pdf.js engine, you draw black rectangles over anything to remove (click and drag; boxes apply per page; undo as needed), and on export every page is re-rendered as a flat image with your boxes painted in before the image is written to a brand-new PDF. Because the output pages are pixels, not the original content streams, the sensitive text, fonts, metadata and attachments of the source simply do not exist in the result — there is nothing to un-hide. This is the same "print it and scan it" logic that forensic guidance recommends, done digitally at 144 DPI.',
+    note: 'The deliberate trade-off: a rasterized PDF is no longer searchable or selectable, and its file size reflects the page images — that\'s the price of redaction that cannot be reversed by deleting an annotation. For documents that must remain accessible, run OCR on the redacted output afterwards (the text you removed stays gone — OCR can only read what\'s visible). Belt and braces: run the result through the redaction checker; it should report zero extractable characters.',
+    faqs: [
+      { q: 'Why flatten pages to images instead of just adding black boxes?', a: 'Because a drawn box leaves the text underneath intact and extractable — the failure behind most public redaction scandals. Flattening re-creates each page as pixels with the box burned in: the content beneath was never copied into the new file, so no editor, script or copy-paste can recover it.' },
+      { q: 'Is the redaction really irreversible?', a: 'Yes, for the file this tool produces: the output contains only page images rendered with your boxes already applied. The original text, fonts, metadata and attachments are not carried over in any form. (Keep the original somewhere safe if you need it — this is a one-way door for the output file.)' },
+      { q: 'What quality are the flattened pages?', a: 'Pages render at twice their nominal size (≈144 DPI), which keeps ordinary documents crisp on screen and in print. The result behaves like a good scan: readable, printable, but not text-selectable.' },
+      { q: 'How do I redact across multiple pages?', a: 'Navigate with Prev/Next and draw boxes on each page that needs them — the counter shows total boxes and per-page boxes. Export flattens every page of the document, including ones without boxes.' },
+      { q: 'Is my document uploaded?', a: 'No — rendering, drawing and rebuilding all happen in your browser, and the tool works offline. Documents being redacted are exactly the files that should never touch a third-party server.' },
+    ],
+    keywords: ['redact pdf', 'pdf redaction tool', 'black out text in pdf', 'remove text from pdf permanently', 'redact pdf without uploading', 'flatten pdf redaction', 'secure pdf redaction free'],
   },
 ];

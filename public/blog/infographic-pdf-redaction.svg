@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="Why PDF redactions fail: a black box drawn over text changes what you see, not what the file contains — the text underneath stays copy-pastable and the box itself can be deleted if it is an annotation. Real redaction destroys the content: flatten pages to images with boxes burned in, so there is nothing to un-hide. Always verify: extract the text layer of the final file and search for the redacted term; it should not be found.">
+  <defs>
+    <style>
+      .h { font: 800 30px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .lab { font: 700 19px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .sub { font: 500 15px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+      .big { font: 800 19px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; }
+      .doc { font: 600 14px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #475569; }
+    </style>
+  </defs>
+
+  <text x="600" y="42" text-anchor="middle" class="h">⬛ A black box is not a redaction</text>
+
+  <!-- fake redaction -->
+  <g transform="translate(80 76)">
+    <rect x="0" y="0" width="490" height="240" rx="14" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+    <text x="245" y="34" text-anchor="middle" class="big" fill="#991b1b">❌ Cosmetic: box drawn over text</text>
+    <g transform="translate(60 56)">
+      <rect x="0" y="0" width="370" height="120" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+      <text x="20" y="30" class="doc">Payment to</text>
+      <rect x="110" y="16" width="150" height="20" fill="#0f172a"/>
+      <text x="20" y="60" class="doc">IBAN:</text>
+      <rect x="70" y="46" width="200" height="20" fill="#0f172a"/>
+      <text x="20" y="95" class="doc" fill="#dc2626" font-style="italic">select + copy still reads: "J. Kowalski · PL61 1090…"</text>
+    </g>
+    <text x="245" y="216" text-anchor="middle" class="sub">text intact under the box · annotation deletable · metadata & attachments untouched</text>
+  </g>
+
+  <!-- real redaction -->
+  <g transform="translate(630 76)">
+    <rect x="0" y="0" width="490" height="240" rx="14" fill="#f0fdf4" stroke="#059669" stroke-width="2"/>
+    <text x="245" y="34" text-anchor="middle" class="big" fill="#065f46">✅ Real: page flattened to an image</text>
+    <g transform="translate(60 56)">
+      <rect x="0" y="0" width="370" height="120" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+      <text x="20" y="30" class="doc">Payment to</text>
+      <rect x="110" y="16" width="150" height="20" fill="#0f172a"/>
+      <text x="20" y="60" class="doc">IBAN:</text>
+      <rect x="70" y="46" width="200" height="20" fill="#0f172a"/>
+      <text x="20" y="95" class="doc" fill="#059669" font-style="italic">select + copy reads: nothing — the page is pixels</text>
+    </g>
+    <text x="245" y="216" text-anchor="middle" class="sub">content destroyed, not covered · no text layer, fonts, metadata or attachments</text>
+  </g>
+
+  <!-- the receipts -->
+  <text x="600" y="368" text-anchor="middle" class="lab">This keeps happening to professionals</text>
+  <g transform="translate(150 388)">
+    <rect x="0" y="0" width="430" height="98" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+    <text x="215" y="34" text-anchor="middle" class="big" fill="#92400e">Dec 2025 — the Epstein files</text>
+    <text x="215" y="60" text-anchor="middle" class="sub">released PDFs had boxes drawn over</text>
+    <text x="215" y="80" text-anchor="middle" class="sub">intact, selectable text</text>
+  </g>
+  <g transform="translate(620 388)">
+    <rect x="0" y="0" width="430" height="98" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+    <text x="215" y="34" text-anchor="middle" class="big" fill="#92400e">Study of ~40,000 published PDFs</text>
+    <text x="215" y="60" text-anchor="middle" class="sub">most "redacted" agency documents still</text>
+    <text x="215" y="80" text-anchor="middle" class="sub">contained the hidden content</text>
+  </g>
+
+  <rect x="200" y="522" width="800" height="52" rx="12" fill="#153056"/>
+  <text x="600" y="544" text-anchor="middle" font-family="'Plus Jakarta Sans','Segoe UI',Arial,sans-serif" font-size="16" font-weight="700" fill="#ffffff">The ten-second verification: extract the final file's text layer</text>
+  <text x="600" y="566" text-anchor="middle" font-family="Consolas,Menlo,monospace" font-size="14" font-weight="600" fill="#7ef0c0">and search it for the term you redacted — it must not be found</text>
+
+  <text x="600" y="614" text-anchor="middle" class="sub">Both the checking and the flattening can run entirely in a browser — sensitive documents never need uploading.</text>
+</svg>
