@@ -1,9 +1,15 @@
-import { useState } from 'preact/hooks';
+import { useEffect, useState } from 'preact/hooks';
 import { PDFDocument, degrees } from 'pdf-lib';
 import { fmtSize } from '../../lib/audio-compute';
+import { renderPdfThumbs, renderFirstPageThumb, indicesToRange, THUMB_PAGE_CAP } from '../../lib/pdf-preview';
 
 interface Props {
   mode: 'merge' | 'split' | 'images-to-pdf' | 'rotate';
+}
+
+interface FileMeta {
+  thumb: string; // data-URL (pdf first page) or object URL (image)
+  pages: number;
 }
 
 /** Parse "1-4, 7, 12-15" into zero-based page indices, clamped to pageCount. */
@@ -25,12 +31,17 @@ function parseRange(spec: string, pageCount: number): number[] {
 export default function PdfTool({ mode }: Props) {
   const multi = mode === 'merge' || mode === 'images-to-pdf';
   const [files, setFiles] = useState<File[]>([]);
+  const [meta, setMeta] = useState<FileMeta[]>([]); // parallel to files (multi modes)
   const [pageCount, setPageCount] = useState(0);
+  const [thumbs, setThumbs] = useState<string[]>([]); // single-file modes
+  const [previewBusy, setPreviewBusy] = useState(false);
   const [range, setRange] = useState('');
   const [rotation, setRotation] = useState(90);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
   const [done, setDone] = useState('');
+
+  useEffect(() => () => { meta.forEach((m) => m.thumb.startsWith('blob:') && URL.revokeObjectURL(m.thumb)); }, []);
 
   async function onFiles(e: Event) {
     const list = Array.from((e.target as HTMLInputElement).files ?? []);
@@ -38,13 +49,34 @@ export default function PdfTool({ mode }: Props) {
     setError('');
     setDone('');
     if (multi) {
+      const start = files.length;
       setFiles((prev) => [...prev, ...list]);
+      setMeta((prev) => [...prev, ...list.map(() => ({ thumb: '', pages: 0 }))]);
+      // fill previews asynchronously, one by one
+      for (let k = 0; k < list.length; k++) {
+        const f = list[k]!;
+        try {
+          const m: FileMeta =
+            mode === 'images-to-pdf'
+              ? { thumb: URL.createObjectURL(f), pages: 1 }
+              : await renderFirstPageThumb(await f.arrayBuffer()).then((r) => ({ thumb: r.thumb, pages: r.pageCount }));
+          setMeta((prev) => prev.map((x, i) => (i === start + k ? m : x)));
+        } catch { /* keep placeholder */ }
+      }
     } else {
       setFiles(list.slice(0, 1));
+      setThumbs([]);
       try {
-        const doc = await PDFDocument.load(await list[0]!.arrayBuffer(), { ignoreEncryption: false });
+        const bytes = await list[0]!.arrayBuffer();
+        const doc = await PDFDocument.load(bytes, { ignoreEncryption: false });
         setPageCount(doc.getPageCount());
         if (mode === 'split') setRange(`1-${doc.getPageCount()}`);
+        if (mode === 'rotate') setRange('');
+        setPreviewBusy(true);
+        renderPdfThumbs(bytes)
+          .then((r) => setThumbs(r.thumbs))
+          .catch((err) => { console.error('pdf preview failed:', err); setThumbs([]); })
+          .finally(() => setPreviewBusy(false));
       } catch {
         setError('Could not read this PDF — it may be password-protected or corrupted.');
         setFiles([]);
@@ -55,13 +87,28 @@ export default function PdfTool({ mode }: Props) {
   }
 
   function move(i: number, dir: -1 | 1) {
-    setFiles((prev) => {
-      const next = [...prev];
-      const j = i + dir;
-      if (j < 0 || j >= next.length) return prev;
-      [next[i], next[j]] = [next[j]!, next[i]!];
-      return next;
-    });
+    const j = i + dir;
+    if (j < 0 || j >= files.length) return;
+    const swap = <T,>(arr: T[]) => { const n = [...arr]; [n[i], n[j]] = [n[j]!, n[i]!]; return n; };
+    setFiles(swap);
+    setMeta(swap);
+  }
+
+  function removeAt(i: number) {
+    const m = meta[i];
+    if (m?.thumb.startsWith('blob:')) URL.revokeObjectURL(m.thumb);
+    setFiles(files.filter((_, j) => j !== i));
+    setMeta(meta.filter((_, j) => j !== i));
+  }
+
+  const selected = new Set(parseRange(range, pageCount));
+  const rotateAll = mode === 'rotate' && range.trim() === '';
+
+  function togglePage(idx: number) {
+    const next = new Set(selected);
+    if (next.has(idx)) next.delete(idx);
+    else next.add(idx);
+    setRange(indicesToRange([...next]));
   }
 
   async function run() {
@@ -132,6 +179,7 @@ export default function PdfTool({ mode }: Props) {
   const accept = mode === 'images-to-pdf' ? 'image/jpeg,image/png' : 'application/pdf';
   const inputCls =
     'rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm font-medium text-slate-900 focus:border-brand-500 focus:outline-none';
+  const rotClass = rotation === 90 ? 'rotate-90' : rotation === 180 ? 'rotate-180' : '-rotate-90';
 
   return (
     <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
@@ -148,13 +196,21 @@ export default function PdfTool({ mode }: Props) {
       {multi && files.length > 0 && (
         <ul class="mt-3 space-y-1.5">
           {files.map((f, i) => (
-            <li class="flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm">
+            <li class="flex items-center gap-3 rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm">
               <span class="w-6 text-center font-bold text-slate-400">{i + 1}</span>
-              <span class="min-w-0 flex-1 truncate font-medium text-slate-800">{f.name}</span>
+              {meta[i]?.thumb ? (
+                <img src={meta[i]!.thumb} alt={`First page of ${f.name}`} class="h-14 w-11 rounded border border-slate-200 bg-white object-contain" />
+              ) : (
+                <span class="flex h-14 w-11 items-center justify-center rounded border border-dashed border-slate-200 text-[10px] text-slate-400">…</span>
+              )}
+              <span class="min-w-0 flex-1 truncate font-medium text-slate-800">
+                {f.name}
+                {mode === 'merge' && meta[i]?.pages ? <span class="ml-1.5 text-xs font-normal text-slate-500">{meta[i]!.pages} p.</span> : null}
+              </span>
               <span class="text-xs text-slate-500">{fmtSize(f.size)}</span>
               <button type="button" onClick={() => move(i, -1)} disabled={i === 0} class="rounded border border-slate-300 px-1.5 text-xs text-slate-600 disabled:opacity-30" aria-label={`Move ${f.name} up`}>↑</button>
               <button type="button" onClick={() => move(i, 1)} disabled={i === files.length - 1} class="rounded border border-slate-300 px-1.5 text-xs text-slate-600 disabled:opacity-30" aria-label={`Move ${f.name} down`}>↓</button>
-              <button type="button" onClick={() => setFiles(files.filter((_, j) => j !== i))} class="rounded border border-slate-300 px-1.5 text-xs text-red-600" aria-label={`Remove ${f.name}`}>✕</button>
+              <button type="button" onClick={() => removeAt(i)} class="rounded border border-slate-300 px-1.5 text-xs text-red-600" aria-label={`Remove ${f.name}`}>✕</button>
             </li>
           ))}
         </ul>
@@ -184,13 +240,61 @@ export default function PdfTool({ mode }: Props) {
         </div>
       )}
 
+      {/* live page preview for split & rotate */}
+      {!multi && files.length > 0 && (
+        <div class="mt-4">
+          {previewBusy && <p class="text-xs text-slate-500">Rendering page preview…</p>}
+          {thumbs.length > 0 && (
+            <>
+              <p class="mb-1.5 text-xs font-semibold uppercase tracking-wide text-slate-500">
+                Live preview{mode === 'split' ? ' — click pages to select' : rotateAll ? ' — all pages rotate' : ' — click pages to choose which rotate'}
+              </p>
+              <ul class="grid max-h-96 grid-cols-3 gap-2 overflow-y-auto rounded-xl border border-slate-200 bg-white p-2 sm:grid-cols-5 lg:grid-cols-6">
+                {thumbs.map((t, i) => {
+                  const active = mode === 'split' ? selected.has(i) : rotateAll || selected.has(i);
+                  return (
+                    <li>
+                      <button
+                        type="button"
+                        onClick={() => togglePage(i)}
+                        class={`group relative flex w-full flex-col items-center rounded-lg border p-1.5 transition ${active ? 'border-brand-500 bg-brand-50 ring-2 ring-brand-200' : 'border-slate-200 bg-white opacity-70 hover:opacity-100'}`}
+                        aria-pressed={active}
+                        aria-label={`Page ${i + 1}${active ? ' (selected)' : ''}`}
+                      >
+                        <span class="flex h-28 w-full items-center justify-center overflow-hidden">
+                          {t ? (
+                            <img
+                              src={t}
+                              alt={`Page ${i + 1}`}
+                              class={`max-h-28 max-w-full rounded border border-slate-100 transition-transform ${mode === 'rotate' && active ? `${rotClass} ${rotation !== 180 ? 'scale-[0.7]' : ''}` : ''}`}
+                            />
+                          ) : (
+                            <span class="text-xs text-slate-400">page {i + 1}</span>
+                          )}
+                        </span>
+                        <span class={`mt-1 text-xs font-semibold ${active ? 'text-brand-800' : 'text-slate-500'}`}>
+                          {i + 1}{mode === 'split' && active ? ' ✓' : mode === 'rotate' && active ? ` ↻${rotation}°` : ''}
+                        </span>
+                      </button>
+                    </li>
+                  );
+                })}
+              </ul>
+              {pageCount > THUMB_PAGE_CAP && (
+                <p class="mt-1.5 text-xs text-slate-500">Previewing the first {THUMB_PAGE_CAP} of {pageCount} pages — the range field still addresses every page.</p>
+              )}
+            </>
+          )}
+        </div>
+      )}
+
       <button
         type="button"
         onClick={run}
         disabled={busy || files.length === 0 || (mode === 'merge' && files.length < 2)}
         class="mt-4 w-full rounded-xl bg-brand-700 px-4 py-3 text-base font-semibold text-white transition hover:bg-brand-800 disabled:opacity-40 sm:w-auto sm:px-8"
       >
-        {busy ? 'Working…' : mode === 'merge' ? `🧷 Merge ${files.length || ''} PDFs` : mode === 'split' ? '✂ Extract pages' : mode === 'rotate' ? '🔄 Rotate & save' : `🖼️ Create PDF from ${files.length || ''} images`}
+        {busy ? 'Working…' : mode === 'merge' ? `🧷 Merge ${files.length || ''} PDFs` : mode === 'split' ? `✂ Extract ${selected.size || ''} page${selected.size === 1 ? '' : 's'}` : mode === 'rotate' ? '🔄 Rotate & save' : `🖼️ Create PDF from ${files.length || ''} images`}
       </button>
 
       <div aria-live="polite">

@@ -29,7 +29,7 @@ Namecheap FTPS deploy pipeline.
 | Codes & Ciphers | Morse (with audio), NATO phonetic alphabet, binary translator, Caesar, ROT13, Vigenère |
 | Privacy & Security | EXIF remover, AES-256 file encryption, password strength, file hash |
 | Image Tools | compressor, converter, resizer, Base64, **HEIC→JPG** (libheif wasm) |
-| PDF Tools | merge, split, rotate, images→PDF, **unlock/protect** (qpdf wasm), **accessibility checker** (EAA — tags/lang/title/alt-text, pdf.js, no upload) |
+| PDF Tools | merge, split, rotate, images→PDF — with **live page previews** (click-to-select pages, live rotation) — **unlock/protect** (qpdf wasm), **accessibility checker** (EAA — tags/lang/title/alt-text, pdf.js, no upload) |
 | Audio | trimmer, speed, volume, WAV converter (Web Audio) |
 | Productivity | **Pomodoro timer**, countdown/stopwatch, meeting-cost meter, Eisenhower matrix, habit tracker, Kanban, mind map, Gantt, decision matrix, RICE, SWOT, pros/cons, flowchart, whiteboard, time-blocking, OKR, checklist, retro board, eye-rest — all saved locally, JSON export |
 | Network & IT | **IPv4 & IPv6 subnet calculators** (exact 128-bit math), CIDR⇄range, IP format converter, IPv6 expand/compress (RFC 5952), chmod calculator, cron parser with next-run times, MAC formatter (EUI-64, link-local) |
