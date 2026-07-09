@@ -6,7 +6,7 @@ export interface MathToolDef {
   icon: string;
   description: string;
   lead: string;
-  widget: 'fraction' | 'dec-frac' | 'gcd-lcm' | 'prime' | 'ratio' | 'quadratic' | 'stats' | 'roman' | 'sci-notation' | 'perm-comb' | 'long-division' | 'radical' | 'modular' | 'slope-line' | 'distance-midpoint' | 'binomial';
+  widget: 'fraction' | 'dec-frac' | 'gcd-lcm' | 'prime' | 'ratio' | 'quadratic' | 'stats' | 'roman' | 'sci-notation' | 'perm-comb' | 'long-division' | 'radical' | 'modular' | 'slope-line' | 'distance-midpoint' | 'binomial' | 'sig-figs' | 'deg-rad' | 'complete-square' | 'synthetic' | 'percentile' | 'divisibility' | 'weighted-avg';
   how: string;
   note?: string;
   faqs: { q: string; a: string }[];
@@ -317,5 +317,138 @@ export const MATH_TOOLS: MathToolDef[] = [
       { q: 'Do fractional coefficients work?', a: 'Yes — (x/2 + 3)⁵ expands with exact fractional coefficients (rationals, not decimals), and n can go to 200 via the term finder with full BigInt precision.' },
     ],
     keywords: ['binomial expansion calculator', 'binomial theorem calculator', 'expand binomial', 'pascals triangle calculator', 'find the coefficient binomial', 'general term binomial'],
+  },
+  {
+    slug: 'significant-figures',
+    name: 'Significant Figures Calculator',
+    icon: '🎯',
+    description:
+      'Count significant figures with every digit color-coded by rule, and round any number to N sig figs — pure digit-string arithmetic, no float mangling. In your browser.',
+    lead: '0.004560 has 4 significant figures — and this calculator shows you exactly which digits count and why, digit by digit, then rounds to any precision you need.',
+    widget: 'sig-figs',
+    how: 'The calculator applies the sig-fig rules to the digit string itself and shows the classification per digit: non-zero digits always count; zeros between non-zero digits count (105 has three); leading zeros never count — they only place the decimal point; trailing zeros count only when there\'s a decimal point (100.0 has four), and in a bare integer like 1200 they\'re flagged amber as ambiguous, with the standard advice to use scientific notation to say what you mean. Rounding to N significant figures happens on the digits too — including the carry case where 9.99 rounded to two sig figs correctly becomes 10 — so no floating-point re-formatting ever corrupts the result.',
+    note: 'The ambiguity flag is the honest part most calculators skip: "1200" genuinely doesn\'t say whether those zeros were measured, and chemistry teachers dock marks for pretending otherwise. Writing 1.2×10³ (two sig figs) or 1.200×10³ (four) settles it — which is why this tool pairs naturally with the scientific-notation converter.',
+    faqs: [
+      { q: 'What are the significant figure rules?', a: 'Non-zero digits always count. Zeros between non-zero digits count. Leading zeros never count. Trailing zeros count only if there\'s a decimal point — in a bare integer they\'re ambiguous. The calculator color-codes every digit by exactly these rules.' },
+      { q: 'How many sig figs does 1200 have?', a: 'Two unambiguous ones (1 and 2) — the trailing zeros are ambiguous without more context. Write 1.2×10³ for two sig figs or 1.200×10³ for four; the tool flags this case explicitly.' },
+      { q: 'How do I round to N significant figures?', a: 'Keep the first N significant digits, look at the next one: 5 or more rounds up. Watch the carry case — 9.99 to 2 sig figs is 10, not 9.9. The tool handles the carry on the digit string exactly.' },
+      { q: 'Why do sig figs matter?', a: 'They encode measurement precision: a length of 2.0 cm claims more certainty than 2 cm. Calculations shouldn\'t claim more precision than their inputs — the reason sig-fig rounding exists in every science course.' },
+      { q: 'Is anything computed in floating point?', a: 'No — counting and rounding operate on the digit characters, so 30-digit numbers work exactly. Runs locally.' },
+    ],
+    keywords: ['significant figures calculator', 'sig fig calculator', 'how many significant figures', 'round to significant figures', 'sig fig counter', 'significant digits rules'],
+  },
+  {
+    slug: 'degrees-radians',
+    name: 'Degrees ⇄ Radians Converter',
+    icon: '📐',
+    description:
+      'Convert degrees to radians in exact π form (45° = π/4, 137° = 137π/180) and back, plus DMS ⇄ decimal degrees — exact fractions, with the working shown. In your browser.',
+    lead: '45° = π/4 — not 0.7853981634. Exact π-fraction conversion both ways, plus a degrees-minutes-seconds panel for GPS-style coordinates.',
+    widget: 'deg-rad',
+    how: 'Degrees to radians multiplies by π/180 and reduces the fraction exactly: 45° → 45π/180 → π/4, and 137° → 137π/180 (already in lowest terms — not every angle is pretty, and the exact form says so honestly). Radians to degrees accepts the coefficient of π (enter 5/6 for 5π/6) and multiplies by 180 exactly. The DMS panel converts degrees-minutes-seconds to exact decimal degrees via 1′ = 1/60° and 1″ = 1/3600°, keeping the result as a fraction before showing the decimal. Common angles (30°, 45°, 60°, 90°…) are one click away with their π forms.',
+    note: 'The exact π form is not pedantry — it\'s what the next step of the mathematics needs. Trigonometric exact values are defined at π/6, π/4, π/3; calculus formulas assume radians; and sin(45°) computed as sin(0.7853981634) carries a rounding error into everything downstream. Decimal radians are shown alongside for numerical work, clearly marked as the approximation.',
+    faqs: [
+      { q: 'How do I convert degrees to radians?', a: 'Multiply by π/180 and simplify: 60° = 60π/180 = π/3. The converter reduces the fraction exactly and shows the step — the decimal (≈1.0472) is the approximation, not the answer.' },
+      { q: 'Why are radians the "natural" angle unit?', a: 'A radian is the angle whose arc equals the radius, which makes the calculus clean: sin′ = cos only in radians, and arc length is simply rθ. That\'s why every formula past trigonometry assumes radians.' },
+      { q: 'How do I enter a radian value like 5π/6?', a: 'Type the coefficient of π — 5/6 — in the radians tab; the tool returns 150° exactly. Decimal radian inputs without π are rarely what a course means, and the exact path avoids that trap.' },
+      { q: 'What is DMS notation?', a: 'Degrees-minutes-seconds: 30° 15′ 50″ means 30 + 15/60 + 50/3600 degrees — the format of GPS coordinates, astronomy and surveying. The tool converts it to an exact fraction of a degree, then decimal.' },
+      { q: 'Is the conversion exact?', a: 'The π-fraction and DMS arithmetic are exact rational math; only the optional decimal display rounds. Runs locally.' },
+    ],
+    keywords: ['degrees to radians', 'radians to degrees', 'degrees to radians in terms of pi', 'dms to decimal degrees', 'convert 45 degrees to radians', 'radian converter exact'],
+  },
+  {
+    slug: 'completing-the-square',
+    name: 'Completing the Square Calculator',
+    icon: '⬜',
+    description:
+      'Convert ax² + bx + c to vertex form a(x + h)² + k with exact fractions and every step shown — vertex, axis of symmetry and extreme value included. In your browser.',
+    lead: '2x² − 4x + 5 = 2(x − 1)² + 3 — completed exactly, with the halve-and-square working written out, plus the vertex (1, 3) it hands you for free.',
+    widget: 'complete-square',
+    how: 'Completing the square rewrites a quadratic in vertex form: factor a out of the x-terms, take half the x-coefficient and square it, add and subtract that square inside, regroup. The calculator performs each of those steps in exact rational arithmetic and displays them numbered — so 3x² + 5x − 1 comes out as 3(x + 5/6)² − 37/12 with honest fractions, where decimal calculators print 3(x + 0.833…)² − 3.083… and the exactness is gone. The vertex (−h, k), axis of symmetry and minimum/maximum value are read straight off the result.',
+    note: 'Completing the square is the technique — it\'s how the quadratic formula is derived, how circles are extracted from x² + y² + Dx + Ey + F = 0, and how integrals with quadratics get solved. The vertex form answers a different question than the roots: where is the extreme point? For the roots themselves, the quadratic solver is the right tool, and the two pages cross-link.',
+    faqs: [
+      { q: 'What are the steps to complete the square?', a: 'Factor a from the x-terms; take half of the x-coefficient and square it; add and subtract that square; regroup into a(x + h)² + k. The calculator shows each step with your exact numbers.' },
+      { q: 'What is vertex form good for?', a: 'It exposes the parabola\'s vertex (−h, k), axis of symmetry and minimum or maximum instantly — the form for optimization problems and graphing. Standard form hides all three.' },
+      { q: 'How does this relate to the quadratic formula?', a: 'The formula IS completing the square done once in general: apply the steps to ax² + bx + c = 0 symbolically and x = (−b ± √(b² − 4ac))/2a falls out. Doing it numerically here is the same walk.' },
+      { q: 'What if a isn\'t 1?', a: 'Factor it out of the x-terms first — the step decimal calculators fumble. 2x² − 4x + 5 → 2(x² − 2x) + 5 → 2(x − 1)² + 3, kept exact throughout.' },
+      { q: 'Does it solve for the roots too?', a: 'That\'s the quadratic equation solver\'s job (linked on this page) — it gives exact roots, the discriminant and the factored form. This page gives the vertex-form identity of the same quadratic.' },
+    ],
+    keywords: ['completing the square calculator', 'vertex form calculator', 'convert to vertex form', 'completing the square steps', 'vertex of a parabola', 'ax2+bx+c to vertex form'],
+  },
+  {
+    slug: 'synthetic-division',
+    name: 'Synthetic & Polynomial Long Division',
+    icon: '🧾',
+    description:
+      'Divide polynomials with the working shown: synthetic division tableau for (x − r) divisors, full long division for any divisor — exact rational coefficients, remainder theorem readout. In your browser.',
+    lead: '(x³ − 6x² + 11x − 6) ÷ (x − 2) = x² − 4x + 3, remainder 0 — so (x − 2) is a factor. The classic synthetic tableau, drawn for your numbers, plus full long division for any divisor.',
+    widget: 'synthetic',
+    how: 'Synthetic division is the fast tableau for dividing by (x − r): bring down the leading coefficient, then repeatedly multiply by r and add to the next coefficient. The tool draws the three-row table exactly as it\'s taught, with the remainder highlighted — which by the remainder theorem equals p(r), so the same table doubles as polynomial evaluation and as a factor test (remainder 0 means (x − r) divides p). For divisors of higher degree, the long-division tab runs the full algorithm — divide leading terms, multiply, subtract, repeat — listing each step until the remainder\'s degree drops below the divisor\'s. Every coefficient is an exact rational, so r = 1/2 (a rational-root candidate) works precisely.',
+    note: 'The remainder theorem readout is the underrated feature: to evaluate p(4), synthetic division by (x − 4) is faster and less error-prone than substituting powers — and the table is the working your algebra course wants shown. Testing rational-root candidates (±1, ±2, ±3, ±1/2…) one synthetic division at a time is exactly how cubic factoring is actually done by hand.',
+    faqs: [
+      { q: 'How does synthetic division work?', a: 'Write r in the corner and the coefficients across the top. Bring down the first coefficient; multiply by r, write under the next coefficient, add; repeat. The bottom row is the quotient\'s coefficients, and the last number is the remainder.' },
+      { q: 'What is the remainder theorem?', a: 'Dividing p(x) by (x − r) leaves remainder p(r). So synthetic division evaluates the polynomial as a by-product — and remainder 0 proves (x − r) is a factor, which the tool announces.' },
+      { q: 'When do I need long division instead?', a: 'When the divisor isn\'t linear-monic — dividing by x² + 1 or 2x − 3 needs the full algorithm. The long-division tab handles any divisor degree with exact coefficients and the step list.' },
+      { q: 'Can r be a fraction?', a: 'Yes — exact rational arithmetic means testing the rational-root candidate 1/2 gives precise coefficients (no 0.4999… drift), which matters because a near-zero float remainder is not a factor proof.' },
+      { q: 'How do I enter missing terms?', a: 'Use 0 for absent powers: x³ − 1 is "1, 0, 0, -1". Coefficients are comma-separated, highest degree first.' },
+    ],
+    keywords: ['synthetic division calculator', 'polynomial long division', 'synthetic division with steps', 'divide polynomials', 'remainder theorem calculator', 'polynomial division steps'],
+  },
+  {
+    slug: 'percentile-calculator',
+    name: 'Percentile Calculator',
+    icon: '📶',
+    description:
+      'Percentiles by all three named methods side by side — linear interpolation (Excel INC), nearest rank, and exclusive (Excel EXC) — plus percentile rank of any value. In your browser.',
+    lead: 'P40 of your data, three ways at once: linear interpolation (Excel\'s PERCENTILE.INC), nearest rank, and exclusive interpolation (PERCENTILE.EXC) — because they genuinely disagree, and knowing which one your course or spreadsheet uses is the whole game.',
+    widget: 'percentile',
+    how: 'There is no single definition of "percentile" — statisticians catalogue nine, and the three that matter in practice disagree visibly on small datasets. This calculator computes all three, labeled by their common names: linear interpolation over (n−1) intervals (R-7 — Excel\'s PERCENTILE.INC and the NumPy default), the classic nearest-rank definition (value at position ⌈p·n/100⌉), and exclusive interpolation over (n+1) (R-6 — Excel\'s PERCENTILE.EXC and Minitab). The working is shown for the interpolation path: sort, compute the rank position, interpolate between the straddling values. The rank tab answers the reverse question — what percentile is this value at? — using the midpoint convention (below + half of equal).',
+    note: 'The "my answer doesn\'t match Excel" confusion that fills statistics forums is almost always a method mismatch, not an arithmetic error — INC and EXC can differ by whole points on a class-sized dataset, and textbook nearest-rank differs from both. Showing the three side by side turns the gotcha into a lesson: percentiles below 1/(n+1) or above n/(n+1) don\'t even exist under EXC, which is why Excel returns #NUM! there and this tool clamps with a note.',
+    faqs: [
+      { q: 'Why do different calculators give different percentiles?', a: 'Because "percentile" has multiple standard definitions. Excel alone ships two (PERCENTILE.INC and .EXC), textbooks often use nearest-rank, and they disagree on small datasets. This tool shows all three, named, so you can match yours.' },
+      { q: 'Which method should I use?', a: 'Whichever your context uses: INC (linear interpolation) for Excel defaults, NumPy and most software; nearest-rank for classic textbook and percentile-of-score definitions; EXC for Minitab and some statistics courses. When reporting, name the method.' },
+      { q: 'How is percentile rank calculated?', a: 'The midpoint convention: (number below + half the number equal) ÷ n × 100. A value equal to the median of 5 points ranks at the 50th percentile.' },
+      { q: 'What\'s the difference between percentile and percentage?', a: 'A percentage is a fraction of a total; a percentile is a position in a distribution. Scoring 80% on a test says how many answers you got right; being at the 80th percentile says you beat 80% of the takers.' },
+      { q: 'Are quartiles just percentiles?', a: 'Yes — Q1 = P25, median = P50, Q3 = P75 (method caveats apply here too). For the full quartile/IQR table, the statistics calculator on this site computes them alongside variance and standard deviation.' },
+    ],
+    keywords: ['percentile calculator', 'percentile rank calculator', 'how to calculate percentile', 'percentile inc vs exc', 'class rank percentile', 'find percentile of data'],
+  },
+  {
+    slug: 'divisibility-checker',
+    name: 'Divisibility Rules Checker',
+    icon: '➿',
+    description:
+      'Test divisibility by 2–13 with each classroom rule actually applied and shown — digit sums, alternating sums, truncate-and-double — plus the digital root. BigInt exact, in your browser.',
+    lead: 'Is 123456 divisible by 8? By 11? Every rule from 2 to 13 applied with its working shown — digit sums, last-digits checks, the truncate-and-double trick for 7 — so you learn the rule while getting the answer.',
+    widget: 'divisibility',
+    how: 'For each divisor 2 through 13 the tool gives the exact verdict (BigInt arithmetic, up to 30-digit numbers) and then shows the classroom rule doing its work: last-digit checks for 2, 5 and 10; last-two and last-three digits for 4 and 8; digit sums for 3 and 9; the alternating digit sum for 11; combination rules for 6 and 12; and the truncation tricks for the awkward ones — remove the last digit and subtract twice it for 7, or add four times it for 13, repeating until the number is small enough to eyeball. The digital root (repeated digit summing until one digit remains) is computed alongside, since it\'s what the 3 and 9 rules are secretly calculating.',
+    note: 'Divisibility rules are arithmetic\'s best party trick with a real payoff: they\'re how you simplify fractions mentally, spot factors before long division, and check answers. The rules for 7 and 13 are the ones nobody remembers — seeing them run step by step on your own number is the fastest way to finally internalize them.',
+    faqs: [
+      { q: 'What are the divisibility rules?', a: 'The classics: 2 — last digit even; 3 — digit sum divisible by 3; 4 — last two digits; 5 — ends in 0/5; 6 — both 2 and 3; 8 — last three digits; 9 — digit sum; 10 — ends in 0; 11 — alternating digit sum; 7 and 13 — truncation tricks the tool demonstrates.' },
+      { q: 'How does the rule for 7 work?', a: 'Chop off the last digit, double it, subtract from what remains; repeat. 826 → 82 − 12 = 70, and 70 is a multiple of 7, so 826 is too. The tool runs this chain on your number and shows every step.' },
+      { q: 'What is a digital root?', a: 'Keep summing the digits until one digit remains: 123456 → 21 → 3. It equals the number mod 9 (with 9 in place of 0) — which is why it powers the 3 and 9 rules and the old "casting out nines" check.' },
+      { q: 'Why does the digit-sum rule work?', a: 'Because 10 ≡ 1 (mod 3 and mod 9), every power of ten leaves remainder 1 — so a number leaves the same remainder as its digit sum. The alternating-sum rule for 11 works the same way with 10 ≡ −1 (mod 11).' },
+      { q: 'Is there a size limit?', a: 'Numbers up to 30 digits, checked exactly with BigInt — the rules\' working stays readable at that size. Runs locally.' },
+    ],
+    keywords: ['divisibility rules', 'divisibility calculator', 'divisibility rule for 7', 'is number divisible by', 'digital root calculator', 'divisibility test with steps'],
+  },
+  {
+    slug: 'weighted-average',
+    name: 'Weighted Average Calculator',
+    icon: '⚖️',
+    description:
+      'Weighted averages with exact fractions and the Σ(value×weight)/Σweight working shown — course grades, portfolio returns, weighted scores. In your browser.',
+    lead: 'Three exam scores at 20%, 30% and 50% weight — the exact course grade, with the multiply-add-divide working shown, and weights that don\'t need to total 100.',
+    widget: 'weighted-avg',
+    how: 'A weighted average multiplies each value by its weight, sums those products, and divides by the sum of the weights: Σ(value × weight) ÷ Σweight. The calculator does this in exact rational arithmetic — enter values and weights as integers, decimals or fractions, add as many rows as you need, and read the result as both a decimal and an exact fraction with the three-step working displayed. Because the division normalizes, weights need not sum to 100 or 1: credit hours (3, 4, 3), percentages (20, 30, 50), or raw ratios all work identically.',
+    note: 'The everyday case is grades — "homework 20%, midterm 30%, final 50%, what\'s my course grade?" — but the same arithmetic prices index funds, averages sensor readings by reliability, and computes GPA (grade points weighted by credit hours). The classic mistake is averaging the averages, which is only right when the weights are equal; the worked steps make the difference visible.',
+    faqs: [
+      { q: 'How is a weighted average calculated?', a: 'Multiply each value by its weight, add the products, divide by the total weight: (92×20 + 78×30 + 85×50) ÷ (20+30+50) = 8430 ÷ 100 = 84.3. The tool shows exactly this working for your rows.' },
+      { q: 'Do the weights have to add up to 100?', a: 'No — dividing by the weight total normalizes automatically. Credit hours, percentages and raw ratios all work; only the weights\' relative sizes matter.' },
+      { q: 'How do I compute a GPA?', a: 'Values are the grade points (A = 4.0 etc.), weights are the credit hours. A 4.0 in a 3-credit class and 3.0 in a 4-credit class → (4×3 + 3×4) ÷ 7 = 24/7 ≈ 3.43 — the tool keeps the exact fraction too.' },
+      { q: 'Why not just average the numbers?', a: 'A plain average treats every value as equally important. If the final exam is half the grade, ignoring the weights misstates the result — sometimes by a full letter grade.' },
+      { q: 'Is the arithmetic exact?', a: 'Yes — rational arithmetic throughout, so third-weights (1/3, 1/3, 1/3) don\'t drift into 0.9999 territory. Runs locally.' },
+    ],
+    keywords: ['weighted average calculator', 'weighted mean', 'grade calculator weighted', 'how to calculate weighted average', 'weighted average formula', 'gpa weighted average'],
   },
 ];

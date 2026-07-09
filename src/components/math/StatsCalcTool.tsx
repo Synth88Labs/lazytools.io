@@ -12,11 +12,16 @@ export default function StatsCalcTool() {
   const zVal = Number(zStr);
   const zOk = zStr.trim() !== '' && Number.isFinite(zVal) && stats && stats.sdPop > 0;
 
+  const allPositive = values.length > 0 && values.every((x) => x > 0);
+  const geoMean = allPositive ? Math.exp(values.reduce((a, x) => a + Math.log(x), 0) / values.length) : null;
+  const harmMean = allPositive ? values.length / values.reduce((a, x) => a + 1 / x, 0) : null;
+
   const rows: [string, string][] = stats
     ? [
         ['Count (n)', String(stats.n)],
         ['Sum', fmt(stats.sum)],
         ['Mean (average)', fmt(stats.mean)],
+        ...(geoMean !== null ? ([['Geometric mean', fmt(geoMean)], ['Harmonic mean', fmt(harmMean!)]] as [string, string][]) : []),
         ['Median', fmt(stats.median)],
         ['Mode', stats.modes.length ? stats.modes.map(fmt).join(', ') : 'none (all values unique)'],
         ['Minimum · Maximum', `${fmt(stats.min)} · ${fmt(stats.max)}`],

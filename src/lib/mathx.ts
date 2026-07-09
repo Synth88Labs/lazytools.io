@@ -382,6 +382,208 @@ export function radicalToString(coef: Rat, radicand: bigint): string {
   return `${numPart}/${coef.d}`;
 }
 
+// ---------- angles: exact degree ⇄ radian ----------
+
+/** d° as an exact multiple of π: d·π/180 reduced → { n, d } meaning (n/d)·π. */
+export function degToPiFraction(deg: Rat): Rat {
+  return deg.div(new Rat(180n));
+}
+
+/** DMS → exact decimal-degree rational. */
+export function dmsToDegrees(d: Rat, m: Rat, s: Rat): Rat {
+  const sign = d.sign() < 0 ? -1 : 1;
+  const abs = new Rat(absB(d.n), d.d).add(m.div(new Rat(60n))).add(s.div(new Rat(3600n)));
+  return sign < 0 ? abs.neg() : abs;
+}
+
+// ---------- significant figures (string-based, no float mangling) ----------
+
+export interface SigFigAnalysis {
+  count: number;
+  /** per-character significance for display: [char, 'sig'|'not'|'ambiguous'|'other'][] */
+  marks: [string, 'sig' | 'not' | 'ambiguous' | 'other'][];
+  note: string;
+}
+
+/** Count significant figures of a plain decimal string, with per-digit classification. */
+export function sigFigCount(sRaw: string): SigFigAnalysis {
+  const s = sRaw.trim();
+  const m = s.match(/^(-?)(\d*)\.?(\d*)$/);
+  if (!m || (!m[2] && !m[3])) throw new Error('Enter a plain number like 0.004560 or 1200.');
+  const hasPoint = s.includes('.');
+  const digits = (m[2] ?? '') + (m[3] ?? '');
+  const pointPos = (m[2] ?? '').length;
+  const firstSig = digits.search(/[1-9]/);
+  const marks: [string, 'sig' | 'not' | 'ambiguous' | 'other'][] = [];
+  let count = 0;
+  let note = '';
+  if (firstSig === -1) {
+    // all zeros
+    for (const ch of s) marks.push([ch, ch === '0' ? 'sig' : 'other']);
+    return { count: 1, marks, note: 'A bare zero is conventionally counted as one significant figure.' };
+  }
+  // find last significant index
+  let lastSig: number;
+  if (hasPoint) {
+    lastSig = digits.length - 1; // trailing zeros after a decimal point ARE significant
+  } else {
+    // trailing zeros in an integer are ambiguous
+    let end = digits.length - 1;
+    while (end > firstSig && digits[end] === '0') end--;
+    lastSig = end;
+  }
+  let di = 0;
+  for (const ch of s) {
+    if (!/\d/.test(ch)) { marks.push([ch, 'other']); continue; }
+    const idx = di++;
+    if (idx < firstSig) marks.push([ch, 'not']);
+    else if (idx <= lastSig) { marks.push([ch, 'sig']); count++; }
+    else marks.push([ch, hasPoint ? 'sig' : 'ambiguous']);
+  }
+  if (!hasPoint && lastSig < digits.length - 1) {
+    note = `Trailing zeros in a whole number are ambiguous — "${s}" has ${count} unambiguous significant figures, or up to ${digits.length - firstSig} if the zeros were measured. Write it in scientific notation to say which you mean.`;
+    if (hasPoint) count += digits.length - 1 - lastSig;
+  } else if (hasPoint && pointPos > 0 && digits.slice(0, pointPos).search(/[1-9]/) === -1) {
+    note = 'Leading zeros are placeholders, never significant.';
+  }
+  return { count, marks, note };
+}
+
+/** Round a decimal string to n significant figures — pure string/BigInt arithmetic. */
+export function sigFigRound(sRaw: string, nSig: number): string {
+  const s = sRaw.trim();
+  const m = s.match(/^(-?)(\d*)\.?(\d*)$/);
+  if (!m || (!m[2] && !m[3])) throw new Error('Enter a plain number.');
+  if (nSig < 1) throw new Error('Significant figures must be at least 1.');
+  const sign = m[1]!;
+  const digits = ((m[2] ?? '') + (m[3] ?? '')).replace(/^0+/, '') || '0';
+  const pointPos = (m[2] ?? '').length; // digits before point in original (incl leading zeros)
+  const leadZeros = ((m[2] ?? '') + (m[3] ?? '')).length - digits.length;
+  if (digits === '0') return '0';
+  // exponent of first significant digit (position relative to decimal point)
+  const firstSigPos = leadZeros; // index in original digit string
+  const exp = pointPos - firstSigPos - 1; // value = d.ddd × 10^exp
+  let keep = digits.slice(0, nSig);
+  if (digits.length > nSig) {
+    const nextDigit = Number(digits[nSig]);
+    let rounded = BigInt(keep);
+    if (nextDigit >= 5) rounded += 1n;
+    keep = String(rounded);
+  }
+  let e = exp;
+  if (keep.length > nSig) { keep = keep.slice(0, nSig); e += 1; } // rounding overflowed (999→1000)
+  // build plain decimal from keep × 10^(e − nSig + 1)
+  const shift = e - nSig + 1;
+  let out: string;
+  if (shift >= 0) out = keep + '0'.repeat(shift);
+  else if (-shift < keep.length) out = keep.slice(0, keep.length + shift) + '.' + keep.slice(keep.length + shift);
+  else out = '0.' + '0'.repeat(-shift - keep.length) + keep;
+  return sign + out;
+}
+
+// ---------- synthetic division ----------
+
+export interface SyntheticResult {
+  /** the three display rows: coefficients, products brought up, sums */
+  top: Rat[];
+  middle: (Rat | null)[];
+  bottom: Rat[];
+  quotient: Rat[];
+  remainder: Rat;
+}
+
+/** Synthetic division of polynomial (coeffs, highest degree first) by (x − r). */
+export function syntheticDivision(coeffs: Rat[], r: Rat): SyntheticResult {
+  if (coeffs.length < 2) throw new Error('The polynomial needs degree at least 1 (two or more coefficients).');
+  const top = coeffs;
+  const middle: (Rat | null)[] = [null];
+  const bottom: Rat[] = [coeffs[0]!];
+  for (let i = 1; i < coeffs.length; i++) {
+    const prod = bottom[i - 1]!.mul(r);
+    middle.push(prod);
+    bottom.push(coeffs[i]!.add(prod));
+  }
+  return { top, middle, bottom, quotient: bottom.slice(0, -1), remainder: bottom[bottom.length - 1]! };
+}
+
+// ---------- completing the square ----------
+
+/** ax² + bx + c = a(x + h)² + k, exactly. */
+export function completeSquare(a: Rat, b: Rat, c: Rat): { h: Rat; k: Rat } {
+  if (a.isZero()) throw new Error('a must be non-zero.');
+  const h = b.div(a).div(new Rat(2n)); // (b/a)/2
+  const k = c.sub(a.mul(h).mul(h));
+  return { h, k };
+}
+
+// ---------- percentile ----------
+
+/** Percentile of dataset (linear interpolation, the Excel PERCENTILE.INC / R-7 method). */
+export function percentileValue(sorted: number[], p: number): number {
+  const n = sorted.length;
+  if (n === 1) return sorted[0]!;
+  const rank = (p / 100) * (n - 1);
+  const lo = Math.floor(rank), hi = Math.ceil(rank);
+  if (lo === hi) return sorted[lo]!;
+  return sorted[lo]! + (rank - lo) * (sorted[hi]! - sorted[lo]!);
+}
+
+/** Percentile rank of a value: % of data points strictly below + half of equal (midpoint method). */
+export function percentileRank(sorted: number[], x: number): number {
+  const below = sorted.filter((v) => v < x).length;
+  const equal = sorted.filter((v) => v === x).length;
+  return ((below + equal / 2) / sorted.length) * 100;
+}
+
+/** Nearest-rank percentile (the classic definition): value at position ⌈p/100·n⌉. */
+export function percentileNearestRank(sorted: number[], p: number): number {
+  if (p <= 0) return sorted[0]!;
+  const rank = Math.ceil((p / 100) * sorted.length);
+  return sorted[Math.min(rank, sorted.length) - 1]!;
+}
+
+/** Exclusive-interpolation percentile (Excel PERCENTILE.EXC / R-6): rank = p/100·(n+1). */
+export function percentileExc(sorted: number[], p: number): number {
+  const n = sorted.length;
+  const rank = (p / 100) * (n + 1);
+  if (rank <= 1) return sorted[0]!;
+  if (rank >= n) return sorted[n - 1]!;
+  const lo = Math.floor(rank);
+  return sorted[lo - 1]! + (rank - lo) * (sorted[lo]! - sorted[lo - 1]!);
+}
+
+// ---------- polynomial long division ----------
+
+export interface PolyDivStep {
+  /** monomial factor added to the quotient this step, as [coef, degree] */
+  factor: [Rat, number];
+  /** remainder polynomial after subtracting factor×divisor (highest degree first) */
+  after: Rat[];
+}
+
+/** Divide P by D (coefficient arrays, highest degree first, exact rationals). */
+export function polyLongDivision(pIn: Rat[], dIn: Rat[]): { quotient: Rat[]; remainder: Rat[]; steps: PolyDivStep[] } {
+  const trim = (a: Rat[]) => { const i = a.findIndex((c) => !c.isZero()); return i === -1 ? [new Rat(0n)] : a.slice(i); };
+  const P = trim(pIn), D = trim(dIn);
+  if (D.length === 1 && D[0]!.isZero()) throw new Error('Division by the zero polynomial.');
+  if (D.length > P.length) return { quotient: [new Rat(0n)], remainder: P, steps: [] };
+  let rem = [...P];
+  const qLen = P.length - D.length + 1;
+  const quotient: Rat[] = Array.from({ length: qLen }, () => new Rat(0n));
+  const steps: PolyDivStep[] = [];
+  for (let i = 0; i < qLen; i++) {
+    const lead = rem[i]!;
+    if (lead.isZero()) continue;
+    const f = lead.div(D[0]!);
+    quotient[i] = f;
+    for (let j = 0; j < D.length; j++) {
+      rem[i + j] = rem[i + j]!.sub(f.mul(D[j]!));
+    }
+    steps.push({ factor: [f, P.length - 1 - i], after: trim(rem.slice(i + 1)) });
+  }
+  return { quotient: trim(quotient), remainder: trim(rem.slice(qLen)), steps };
+}
+
 // ---------- roman numerals ----------
 
 const ROMAN: [number, string][] = [

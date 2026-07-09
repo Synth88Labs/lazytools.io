@@ -38,16 +38,22 @@ export default function DecimalFractionTool() {
   try {
     if (mode === 'd2f') {
       const r = repeatingToRat(decStr);
+      const pct = r.mul(new Rat(100n));
+      const pctDec = pct.toDecimal(6);
       out = [
         { label: 'Exact fraction', value: r.toFrac() },
         ...(r.toMixed() !== r.toFrac() ? [{ label: 'Mixed number', value: r.toMixed() }] : []),
+        { label: 'As a percent', value: `${pctDec.exact ? pctDec.text : pct.toFrac()}%` },
       ];
     } else {
       const r = Rat.parse(fracStr);
       const rep = fracToRepeating(r);
+      const pct = r.mul(new Rat(100n));
+      const pctDec = pct.toDecimal(6);
       out = [
         { label: rep.text.includes('(') ? 'Exact decimal (repeating part in parentheses)' : rep.truncated ? 'Decimal (repetend longer than 400 digits)' : 'Exact decimal', value: rep.text },
         { label: 'Lowest terms', value: r.toFrac() },
+        { label: 'As a percent', value: `${pctDec.exact ? pctDec.text : pct.toFrac()}%` },
       ];
     }
   } catch (e) {
