@@ -25,7 +25,7 @@ One line per item ever surfaced. Format: `- [status] name — date first seen, l
 - [watchlist] SQLite database viewer (sqlite-wasm) — 2026-07-06, 15/25 (no demand evidence gathered yet)
 - [watchlist] Text diff / compare tool — 2026-07-07, 16/25 (client-side privacy diff tools already commoditized; promote via file-level diff variant: CSV/PDF-text diff)
 - [watchlist] Amortization schedule (EMI calculator depth + CSV export + prepayment what-if) — 2026-07-07, 15/25 (build as cheap enhancement to BUILT emi-calculator, not a page bet)
-- [watchlist] Math tools category (fraction, GCD/LCM, prime factorizer, ratio, stats, quadratic) — 2026-07-07, 15/25 (gap axis 1: CalculatorSoup/Omni/Symbolab saturation, no driver; promote only with keyword-gap proof of winnable long-tail)
+- [BUILT] Math tools category (fraction, GCD/LCM, prime factorizer, ratio, stats, quadratic) — 2026-07-07, 15/25 — owner-requested override of the watchlist gate 2026-07-09; shipped /math/ (10 tools) DIFFERENTIATED per quality gate: exact arithmetic (BigInt/rationals/simplified radicals) + steps shown, not a me-too calculator dump; mathx/quadratic libs have a 53-case Node test suite; blog exact-math-guide
 - [watchlist] Fitness/pace calculators (running pace, target heart rate) — 2026-07-07, 15/25 (McMillan/Strava/Omni own the space; no driver)
 - [rejected] Spain Facturae B2B viewer as standalone bet — 2026-07-08 (mandate 2027–2028, too early; B2B syntax mainly UBL already parsed; revisit as e-invoice-viewer variant in 2027)
 - [rejected] Password-manager format converter (Bitwarden↔1Password CSV/JSON) — 2026-07-08 (direct import already works both ways; residual conversion niche/served by community CLI; no durable gap)

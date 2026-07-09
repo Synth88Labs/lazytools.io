@@ -300,6 +300,13 @@ const POSTS = [
     fact: 'a black box hides text; it does not remove it',
     icon: '⬛',
   },
+  {
+    slug: 'exact-math-guide',
+    kicker: 'MATHEMATICS',
+    lines: ['0.1 + 0.2 ≠ 0.3: why', 'calculators quietly round', '& what exact math looks like'],
+    fact: 'floats hold ~15–17 digits — then they invent',
+    icon: '➗',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

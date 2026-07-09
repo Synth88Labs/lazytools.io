@@ -1,0 +1,133 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PrivacyStrip from '../../components/PrivacyStrip.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import RatingWidget from '../../components/RatingWidget.tsx';
+import FractionCalcTool from '../../components/math/FractionCalcTool.tsx';
+import DecimalFractionTool from '../../components/math/DecimalFractionTool.tsx';
+import GcdLcmTool from '../../components/math/GcdLcmTool.tsx';
+import PrimeFactorTool from '../../components/math/PrimeFactorTool.tsx';
+import RatioTool from '../../components/math/RatioTool.tsx';
+import QuadraticTool from '../../components/math/QuadraticTool.tsx';
+import StatsCalcTool from '../../components/math/StatsCalcTool.tsx';
+import RomanNumeralTool from '../../components/math/RomanNumeralTool.tsx';
+import SciNotationTool from '../../components/math/SciNotationTool.tsx';
+import PermCombTool from '../../components/math/PermCombTool.tsx';
+import { MATH_TOOLS, type MathToolDef } from '../../data/math/index';
+import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
+import { ratingFor } from '../../lib/ratings';
+
+export function getStaticPaths() {
+  return MATH_TOOLS.map((t) => ({ params: { slug: t.slug }, props: { slug: t.slug } }));
+}
+
+const { slug } = Astro.props;
+const tool: MathToolDef = MATH_TOOLS.find((t) => t.slug === slug)!;
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Mathematics', url: '/math/' },
+  { name: tool.name, url: `/math/${tool.slug}/` },
+];
+
+const related = MATH_TOOLS.filter((t) => t.slug !== tool.slug).slice(0, 6);
+const allBlogPosts = await getCollection('blog');
+const blogPosts = allBlogPosts.filter((p) => p.data.tools.includes(`/math/${tool.slug}/`));
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  webApplicationSchema({
+    name: tool.name,
+    url: `/math/${tool.slug}/`,
+    description: tool.description,
+    rating: ratingFor(`math/${tool.slug}`),
+  }),
+  faqSchema(tool.faqs),
+];
+---
+
+<Base title={`${tool.name} — Free & Private | LazyTools`} description={tool.description} schema={schema}>
+  <article class="mx-auto max-w-5xl px-4 py-6">
+    <Breadcrumbs items={crumbs} />
+
+    <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+      {tool.icon} {tool.name}
+    </h1>
+
+    <p class="mt-3 text-lg leading-relaxed text-slate-700">
+      <strong class="font-semibold text-slate-900">{tool.lead}</strong>
+    </p>
+
+    <div class="mt-6">
+      {tool.widget === 'fraction' && <FractionCalcTool client:load />}
+      {tool.widget === 'dec-frac' && <DecimalFractionTool client:load />}
+      {tool.widget === 'gcd-lcm' && <GcdLcmTool client:load />}
+      {tool.widget === 'prime' && <PrimeFactorTool client:load />}
+      {tool.widget === 'ratio' && <RatioTool client:load />}
+      {tool.widget === 'quadratic' && <QuadraticTool client:load />}
+      {tool.widget === 'stats' && <StatsCalcTool client:load />}
+      {tool.widget === 'roman' && <RomanNumeralTool client:load />}
+      {tool.widget === 'sci-notation' && <SciNotationTool client:load />}
+      {tool.widget === 'perm-comb' && <PermCombTool client:load />}
+    </div>
+
+    <div class="mt-4">
+      <PrivacyStrip />
+    </div>
+
+    <div class="mt-3">
+      <RatingWidget
+        client:idle
+        toolSlug={`math/${tool.slug}`}
+        avg={ratingFor(`math/${tool.slug}`)?.avg}
+        count={ratingFor(`math/${tool.slug}`)?.count}
+      />
+    </div>
+
+    <section class="prose-lazy mt-6">
+      <h2>How the {tool.name.toLowerCase()} works</h2>
+      <p>{tool.how}</p>
+      {tool.note && <p>{tool.note}</p>}
+    </section>
+
+    <FaqSection faqs={tool.faqs} />
+
+    <section class="mt-10">
+      <h2 class="text-2xl font-bold text-slate-900">Related math tools</h2>
+      <ul class="mt-4 grid gap-2 sm:grid-cols-2">
+        {related.map((r) => (
+          <li>
+            <a href={`/math/${r.slug}/`} class="block rounded-lg border border-slate-200 px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:border-brand-400 hover:text-brand-700">
+              {r.icon} {r.name}
+            </a>
+          </li>
+        ))}
+        <li>
+          <a href="/math/" class="block rounded-lg border border-brand-200 bg-brand-50 px-4 py-2.5 text-sm font-semibold text-brand-800 transition hover:border-brand-400">
+            All mathematics tools →
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    {
+      blogPosts.length > 0 && (
+        <section class="mt-10">
+          <h2 class="text-2xl font-bold text-slate-900">From the blog</h2>
+          <ul class="mt-4 space-y-3">
+            {blogPosts.map((post) => (
+              <li>
+                <a href={`/blog/${post.id}/`} class="block rounded-xl border border-slate-200 p-4 transition hover:border-brand-400 hover:shadow-sm">
+                  <p class="font-semibold text-slate-900">{post.data.title}</p>
+                  <p class="mt-1 text-sm text-slate-600">{post.data.description}</p>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+  </article>
+</Base>

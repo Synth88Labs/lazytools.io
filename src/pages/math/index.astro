@@ -1,0 +1,78 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PrivacyStrip from '../../components/PrivacyStrip.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { MATH_TOOLS } from '../../data/math/index';
+import { breadcrumbSchema, collectionPageSchema, faqSchema } from '../../lib/schema';
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Mathematics', url: '/math/' },
+];
+
+const faqs = [
+  {
+    q: 'What makes these different from other math calculator sites?',
+    a: 'Exactness. These tools compute with arbitrary-precision integers and true rational arithmetic — fractions stay fractions, roots come out in simplified radical form like (3 + √89)/2, and 1000! is produced digit-perfect. Ordinary calculators (and spreadsheet formulas) work in floating point, which silently rounds past 15–17 significant digits and turns 1/3 + 2/3 into 0.9999999999999999.',
+  },
+  {
+    q: 'Why not just ask an AI chatbot?',
+    a: 'Language models are notoriously unreliable at arithmetic — they generate plausible-looking numbers rather than computing them, and you can\'t tell a right answer from a confident wrong one. These calculators run the actual algorithms (Euclid, Miller–Rabin, the quadratic formula) and show the working, so the answer is checkable, not just believable.',
+  },
+  {
+    q: 'Do the tools show the steps?',
+    a: 'Where steps are the point, yes — the fraction calculator shows the common-denominator working, the GCD calculator writes out the Euclidean algorithm line by line, and the quadratic solver walks from discriminant to simplified roots. The answer alone teaches nothing; the working is what you check homework against.',
+  },
+  {
+    q: 'Do they work offline?',
+    a: 'Yes — every computation runs in your browser with no server involved, so once a page has loaded it works with the connection off.',
+  },
+];
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  collectionPageSchema({
+    name: 'Mathematics Tools',
+    url: '/math/',
+    description: 'Exact-arithmetic math calculators: fractions with steps, GCD/LCM, prime factorization, quadratic solver with radical roots, statistics, Roman numerals and more.',
+    items: MATH_TOOLS.map((t) => ({ name: t.name, url: `/math/${t.slug}/` })),
+  }),
+  faqSchema(faqs),
+];
+---
+
+<Base
+  title="Mathematics Tools — Exact Calculators That Show Their Working | LazyTools"
+  description="Free math calculators that compute exactly: fraction arithmetic with steps, GCD/LCM via Euclid, prime factorization, quadratic roots in radical form, statistics, Roman numerals, scientific notation, nCr/nPr. No floating-point rounding, no upload."
+  schema={schema}
+>
+  <div class="mx-auto max-w-5xl px-4 py-6">
+    <Breadcrumbs items={crumbs} />
+
+    <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Mathematics Tools</h1>
+    <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
+      Calculators that compute <strong>exactly</strong> — true fractions, arbitrary-precision
+      integers, simplified radicals — and show their working step by step. No floating-point
+      rounding, no "0.9999999999", and nothing you type leaves your browser.
+    </p>
+
+    <div class="mt-5">
+      <PrivacyStrip />
+    </div>
+
+    <ul class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {MATH_TOOLS.map((t) => (
+        <li>
+          <a href={`/math/${t.slug}/`} class="flex h-full flex-col rounded-xl border border-slate-200 p-4 transition hover:border-brand-400 hover:shadow-sm">
+            <span class="text-2xl" aria-hidden="true">{t.icon}</span>
+            <span class="mt-2 font-semibold text-slate-900">{t.name}</span>
+            <span class="mt-1 text-sm text-slate-600">{t.lead.split('—')[0]}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <FaqSection faqs={faqs} />
+  </div>
+</Base>

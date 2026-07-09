@@ -1,7 +1,7 @@
 # LazyTools.io — Public Roadmap
 
-**Status (updated 7 Jul 2026):** LazyTools soft-launched on [lazytools.io](https://lazytools.io) on
-4 July 2026, and **all 17 tool categories are now live** — well ahead of the original three-week
+**Status (updated 9 Jul 2026):** LazyTools soft-launched on [lazytools.io](https://lazytools.io) on
+4 July 2026, and **all 18 tool categories are now live** — well ahead of the original three-week
 plan. We build in the open with weekly Friday releases; the official **v1.0.0 public launch** is
 targeted for **~25 July 2026** once the remaining launch-week items (search-console verification and
 the legal review) are cleared.
@@ -12,12 +12,13 @@ the legal review) are cleared.
 ratings (PHP + SQLite), smart header search, sitemap, auto-generated `llms.txt`, GitHub Actions →
 Namecheap FTPS deploy pipeline.
 
-**All 17 categories live** (~358 pages, 286+ tools):
+**All 18 categories live** (~370 pages, 296+ tools):
 
 | Category | Highlights |
 |---|---|
 | Unit Converters | 100+ pairs across 11 quantities, exact NIST/BIPM factors |
 | Calculators | percentage, EMI, BMI, age, tip, discount, interest… |
+| Mathematics | **exact arithmetic** — fraction calculator with steps, decimal⇄fraction (repeating decimals), GCD/LCM via Euclid, prime factorizer (Miller–Rabin + Pollard rho), ratio, quadratic solver with radical roots, statistics, Roman numerals, scientific notation, nCr/nPr (BigInt) |
 | Size Converters | ring, shoe, bra, clothing, hat, kids' shoe |
 | Text Tools | counters, case, sort, dedupe, find-and-replace, slugify |
 | Color Tools | HEX/RGB/HSL/CMYK, WCAG contrast, shades, gradient, mixer, **brand color finder** (1,100+ brand palettes, name + reverse-hex search) |
@@ -34,7 +35,7 @@ Namecheap FTPS deploy pipeline.
 | Productivity | **Pomodoro timer**, countdown/stopwatch, meeting-cost meter, Eisenhower matrix, habit tracker, Kanban, mind map, Gantt, decision matrix, RICE, SWOT, pros/cons, flowchart, whiteboard, time-blocking, OKR, checklist, retro board, eye-rest — all saved locally, JSON export |
 | Network & IT | **IPv4 & IPv6 subnet calculators** (exact 128-bit math), CIDR⇄range, IP format converter, IPv6 expand/compress (RFC 5952), chmod calculator, cron parser with next-run times, MAC formatter (EUI-64, link-local) |
 
-**Content & growth engine** — 34 SEO/GEO blog guides (hero + custom SVG infographic, schema,
+**Content & growth engine** — 35 SEO/GEO blog guides (hero + custom SVG infographic, schema,
 cited sources); a daily **market-research agent** that scans for browser-tool opportunities and
 files scored findings to `docs/research/` — the Network & IT category and its IPv6 guide shipped
 directly from its 7 Jul scan (IPv6 crossed 50% of Google traffic in Mar 2026).
