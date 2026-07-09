@@ -3,9 +3,29 @@ import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import { breadcrumbSchema } from '../../lib/schema';
+import { CATEGORIES } from '../../lib/site';
 
 const posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 const hasLivePosts = posts.some((p) => !p.data.draft);
+
+/** Topic = category of the post's first linked tool (e.g. /pdf/merge-pdf/ → PDF Tools). */
+function topicOf(post: (typeof posts)[number]): { slug: string; name: string } {
+  const first = post.data.tools?.[0] ?? '';
+  const seg = first.split('/').filter(Boolean)[0] ?? '';
+  const cat = CATEGORIES.find((c) => c.slug === seg);
+  return cat ? { slug: cat.slug, name: cat.name } : { slug: 'general', name: 'General' };
+}
+
+const topics = [...new Map(posts.map((p) => {
+  const t = topicOf(p);
+  return [t.slug, t];
+})).values()].sort((a, b) => a.name.localeCompare(b.name));
+
+const counts = new Map<string, number>();
+for (const p of posts) {
+  const t = topicOf(p);
+  counts.set(t.slug, (counts.get(t.slug) ?? 0) + 1);
+}
 
 const crumbs = [
   { name: 'Home', url: '/' },
@@ -25,9 +45,35 @@ const crumbs = [
     <p class="mt-3 text-lg text-slate-700">
       Practical guides for everyday conversions, and honest explainers on how online tools handle your data.
     </p>
-    <ul class="mt-8 grid gap-4 sm:grid-cols-2">
+    <p class="mt-1 text-sm text-slate-500">
+      Posts are contributed and editorially reviewed — corrections and suggestions welcome via the
+      <a href="/contact/" class="font-medium text-brand-700 underline decoration-slate-300 underline-offset-2 hover:text-brand-800">contact page</a>.
+    </p>
+
+    <div class="mt-6 flex flex-wrap gap-2" id="blog-filters" role="group" aria-label="Filter posts by topic">
+      <button
+        type="button"
+        data-topic="all"
+        aria-pressed="true"
+        class="blog-pill rounded-full border border-brand-600 bg-brand-700 px-3.5 py-1.5 text-sm font-semibold text-white transition"
+      >
+        All ({posts.length})
+      </button>
+      {topics.map((t) => (
+        <button
+          type="button"
+          data-topic={t.slug}
+          aria-pressed="false"
+          class="blog-pill rounded-full border border-slate-300 bg-white px-3.5 py-1.5 text-sm font-semibold text-slate-600 transition hover:border-brand-400 hover:text-brand-700"
+        >
+          {t.name} ({counts.get(t.slug)})
+        </button>
+      ))}
+    </div>
+
+    <ul class="mt-6 grid gap-4 sm:grid-cols-2" id="blog-grid">
       {posts.map((post) => (
-        <li>
+        <li data-topic={topicOf(post).slug}>
           <a
             href={`/blog/${post.id}/`}
             class="block h-full overflow-hidden rounded-xl border border-slate-200 transition hover:border-brand-400 hover:shadow-sm"
@@ -44,7 +90,7 @@ const crumbs = [
             )}
             <div class="p-5">
               <p class="text-xs font-semibold uppercase tracking-wide text-brand-700">
-                {post.data.archetype}
+                {topicOf(post).name} · {post.data.archetype}
                 {post.data.draft && <span class="ml-2 rounded bg-amber-100 px-2 py-0.5 text-amber-800">draft</span>}
               </p>
               <h2 class="mt-1 text-xl font-bold text-slate-900">{post.data.title}</h2>
@@ -55,5 +101,34 @@ const crumbs = [
         </li>
       ))}
     </ul>
+    <p id="blog-empty" class="mt-6 hidden rounded-lg bg-slate-50 px-4 py-3 text-sm text-slate-600 ring-1 ring-slate-200">
+      No posts in this topic yet.
+    </p>
   </div>
+
+  <script>
+    const pills = document.querySelectorAll<HTMLButtonElement>('.blog-pill');
+    const cards = document.querySelectorAll<HTMLLIElement>('#blog-grid > li');
+    const empty = document.getElementById('blog-empty')!;
+    const ACTIVE = ['border-brand-600', 'bg-brand-700', 'text-white'];
+    const IDLE = ['border-slate-300', 'bg-white', 'text-slate-600'];
+    pills.forEach((pill) => {
+      pill.addEventListener('click', () => {
+        const topic = pill.dataset.topic!;
+        pills.forEach((p) => {
+          const on = p === pill;
+          p.setAttribute('aria-pressed', String(on));
+          p.classList.remove(...(on ? IDLE : ACTIVE));
+          p.classList.add(...(on ? ACTIVE : IDLE));
+        });
+        let shown = 0;
+        cards.forEach((card) => {
+          const show = topic === 'all' || card.dataset.topic === topic;
+          card.style.display = show ? '' : 'none';
+          if (show) shown++;
+        });
+        empty.classList.toggle('hidden', shown > 0);
+      });
+    });
+  </script>
 </Base>

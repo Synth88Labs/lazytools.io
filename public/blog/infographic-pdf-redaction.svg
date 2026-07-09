@@ -23,7 +23,7 @@
       <rect x="70" y="46" width="200" height="20" fill="#0f172a"/>
       <text x="20" y="95" class="doc" fill="#dc2626" font-style="italic">select + copy still reads: "J. Kowalski · PL61 1090…"</text>
     </g>
-    <text x="245" y="216" text-anchor="middle" class="sub">text intact under the box · annotation deletable · metadata & attachments untouched</text>
+    <text x="245" y="216" text-anchor="middle" class="sub">text intact under the box · annotation deletable · metadata &amp; attachments untouched</text>
   </g>
 
   <!-- real redaction -->

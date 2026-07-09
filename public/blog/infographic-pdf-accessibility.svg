@@ -44,7 +44,7 @@
   </g>
   <g transform="translate(794 176)">
     <rect x="0" y="0" width="345" height="92" rx="12" fill="#f0f9ff" stroke="#0284c7" stroke-width="2"/>
-    <text x="16" y="30" class="big" fill="#075985">🧭 Headings & bookmarks</text>
+    <text x="16" y="30" class="big" fill="#075985">🧭 Headings &amp; bookmarks</text>
     <text x="16" y="54" class="item">H1–H6 tags + an outline are how</text>
     <text x="16" y="74" class="item">non-visual readers skim and navigate</text>
   </g>

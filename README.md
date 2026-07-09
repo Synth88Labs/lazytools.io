@@ -13,12 +13,12 @@
   <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-blue.svg"></a>
   <img alt="Built with Astro" src="https://img.shields.io/badge/built%20with-Astro-ff5d01.svg">
   <img alt="PRs welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg">
-  <a href="ROADMAP.md"><img alt="Status: launching soon" src="https://img.shields.io/badge/status-launching%20~July%2025%2C%202026-yellow.svg"></a>
+  <a href="https://lazytools.io"><img alt="Status: live" src="https://img.shields.io/badge/status-live%20at%20lazytools.io-brightgreen.svg"></a>
 </p>
 
 ---
 
-A project by **[Synth88 Labs Inc.](https://synth88.com)**
+A project by **[Synth88 Labs Inc.](https://synth88.com)** · **Live at [lazytools.io](https://lazytools.io)** since July 4, 2026.
 
 ## Why this exists
 
@@ -31,49 +31,69 @@ are no processing servers. The tool code downloads to *your* device and runs the
 yourself: open DevTools, watch the network tab, or switch off your connection mid-use — everything keeps
 working.
 
-## What's live
+## What's live — 18 categories, 296+ tools, ~370 pages
 
-**Unit & Measurement Converters** — 123 conversion pages across 11 categories (length, weight,
-temperature, volume/cooking, area, speed, time, data storage, pressure, energy, power):
+| Category | Highlights |
+|---|---|
+| [Unit Converters](https://lazytools.io/units/) | 123 pages, exact NIST/BIPM factors, per-pair editorial notes |
+| [Calculators](https://lazytools.io/calc/) | percentage, EMI, BMI, age, tip, discount, interest… |
+| [Mathematics](https://lazytools.io/math/) | **exact arithmetic** — fractions with steps, primes (Miller–Rabin), quadratics with radical roots, statistics, Roman numerals, nCr/nPr at BigInt scale |
+| [Size Converters](https://lazytools.io/size/) | ring, shoe, bra, clothing, hat sizes across systems |
+| [Text Tools](https://lazytools.io/text/) | counters, case, sort, dedupe, find & replace |
+| [Color Tools](https://lazytools.io/color/) | HEX/RGB/HSL/CMYK, WCAG contrast, **brand color finder (1,100+ palettes)** |
+| [File & Data](https://lazytools.io/file/) | CSV/JSON/XML/YAML, Markdown, **e-invoicing viewers: Factur-X (FR), KSeF FA(3) (PL), Peppol BIS (BE), XRechnung/ZUGFeRD (DE)** |
+| [Developer Tools](https://lazytools.io/dev/) | Base64, hashes, JWT, regex, **LLM token counter with exact o200k counts** |
+| [Network & IT](https://lazytools.io/network/) | IPv4/IPv6 subnet calculators (exact 128-bit), CIDR, chmod, cron parser, MAC/EUI-64 |
+| [Generators](https://lazytools.io/generate/) | password, UUID, QR, lorem ipsum |
+| [Date & Time](https://lazytools.io/time/) | timestamps, date math, DST-aware timezone pairs |
+| [Calendars](https://lazytools.io/calendar/) | Hijri/Hebrew/Persian/Julian, **Nepali BS⇄AD**, 4-5-4 retail |
+| [Codes & Ciphers](https://lazytools.io/cipher/) | Morse (with audio), NATO, binary, Caesar, Vigenère |
+| [Productivity](https://lazytools.io/productivity/) | Pomodoro, Kanban, mind map, Gantt, habit tracker — saved locally, JSON export |
+| [Privacy & Security](https://lazytools.io/security/) | EXIF remover, AES-256 file encryption, file hash |
+| [Image Tools](https://lazytools.io/image/) | compress, convert, resize, **HEIC→JPG** (libheif wasm) |
+| [PDF Tools](https://lazytools.io/pdf/) | merge/split/rotate **with live page previews**, unlock/protect (qpdf wasm), **accessibility checker (EAA)**, **redaction checker + rasterizing redactor** |
+| [Audio](https://lazytools.io/video/) | trim, speed, volume, WAV convert (Web Audio) |
 
-- Exact, internationally defined factors (1 inch = 25.4 mm exactly; 1 lb = 0.45359237 kg exactly)
-- Two-way instant conversion with a result explainer that shows the actual math
-- Context-aware site search that understands queries like *"70 kg to lbs"* or *"how many pounds in a kilo"*
-- Formula, worked example, conversion table, unit definitions and FAQ on every page
-
-**Coming next** (see the [roadmap](ROADMAP.md)): calculators, developer tools, file converters, text
-utilities, generators, date/time tools, color tools, and privacy/security tools — all client-side.
+Plus **35 in-depth guides** on the [blog](https://lazytools.io/blog/) — each with custom infographics,
+FAQ schema and cited sources — and a research-driven build pipeline (see
+[docs/research/](docs/research/)) that has shipped regulatory-deadline tools ahead of the French,
+Polish and Belgian e-invoicing mandates.
 
 ## Quick start
 
 ```bash
 npm install
 npm run dev      # dev server at localhost:4321
-npm run build    # static site → dist/ (158 pages, ~8s)
+npm run build    # static site → dist/ (~370 pages)
 ```
 
 Stack: [Astro](https://astro.build) (static output) · [Preact](https://preactjs.com) islands ·
-[Tailwind CSS 4](https://tailwindcss.com) · TypeScript. No backend required — the build output is plain
-static files deployable to any host.
+[Tailwind CSS 4](https://tailwindcss.com) · TypeScript. WASM where it earns it (qpdf, libheif,
+pdf.js). No backend required — the build output is plain static files deployable to any host.
 
 ## Use these tools in your own site
 
 The code is MIT-licensed — reuse is the point:
 
-- **Conversion engine**: [`src/data/units/`](src/data/units/) is a self-contained, dependency-free
-  TypeScript library (unit definitions + exact factors + linear-transform conversion). Copy the folder
-  and call `convert(value, fromUnit, toUnit)`.
-- **Converter UI**: [`src/components/UnitConverter.tsx`](src/components/UnitConverter.tsx) is a single
-  Preact component (~6KB) you can drop into any Preact/React project.
-- **Smart search**: [`src/components/SearchBox.tsx`](src/components/SearchBox.tsx) +
-  [`src/lib/search-data.ts`](src/lib/search-data.ts) implement the natural-language unit search.
+- **Conversion engine**: [`src/data/units/`](src/data/units/) — self-contained, dependency-free
+  TypeScript (exact factors, linear transforms). Copy the folder and call `convert(value, from, to)`.
+- **Exact math**: [`src/lib/mathx.ts`](src/lib/mathx.ts) — rational arithmetic, Miller–Rabin,
+  Pollard rho, Euclid with steps; [`src/lib/quadratic.ts`](src/lib/quadratic.ts) — exact quadratic
+  solver with simplified radicals. Node-tested.
+- **Network math**: [`src/lib/net.ts`](src/lib/net.ts) — IPv4/IPv6 (BigInt) subnetting, CIDR sets,
+  cron parsing, EUI-64.
+- **E-invoice parsing**: [`src/lib/ksef.ts`](src/lib/ksef.ts) + the EN 16931 UBL/CII parser in
+  [`src/components/file/EInvoiceTool.tsx`](src/components/file/EInvoiceTool.tsx).
+- **Converter UI**: [`src/components/UnitConverter.tsx`](src/components/UnitConverter.tsx) — a single
+  Preact component you can drop into any Preact/React project.
 
 Attribution is appreciated (a link to [lazytools.io](https://lazytools.io)) but not required by the license.
 
 ## Contributing
 
-Tool requests and PRs welcome — see [CONTRIBUTING.md](CONTRIBUTING.md). Security reports: see
-[SECURITY.md](SECURITY.md).
+Tool requests and PRs welcome — see [CONTRIBUTING.md](CONTRIBUTING.md). Blog posts are contributed
+and editorially reviewed content — corrections and suggestions via the
+[contact page](https://lazytools.io/contact/). Security reports: see [SECURITY.md](SECURITY.md).
 
 ## License & contact
 

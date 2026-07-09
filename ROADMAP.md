@@ -42,8 +42,8 @@ directly from its 7 Jul scan (IPv6 crossed 50% of Google traffic in Mar 2026).
 
 ## In progress — v1.0.0 launch week
 
-- [ ] Google Search Console + Bing Webmaster: verify + submit sitemap ([#11](https://github.com/Synth88Labs/lazytools.io/issues/11)) — *owner action*
-- [ ] Final legal review pass: governing law, analytics naming, clear [DRAFT] markers ([#12](https://github.com/Synth88Labs/lazytools.io/issues/12)) — *owner action*
+- [x] Google Search Console + Bing Webmaster: verified + sitemap submitted ([#11](https://github.com/Synth88Labs/lazytools.io/issues/11)) — *done 9 Jul 2026*
+- [x] Legal review pass: governing-law position set (no customer data held), analytics cookies disclosed honestly, [DRAFT] markers removed ([#12](https://github.com/Synth88Labs/lazytools.io/issues/12)) — *done 9 Jul 2026*
 - [ ] `www.lazytools.io` SSL SAN coverage — handled by Namecheap AutoSSL
 - [ ] **Release `v1.0.0` — official public launch** 🚀
 
