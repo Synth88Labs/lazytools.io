@@ -1,5 +1,7 @@
 import { useState } from 'preact/hooks';
-import { Rat, factorize, extractSquare, radicalToString, gcdB, absB } from '../../lib/mathx';
+import { Rat, factorize, extractSquare, radicalToString, nthRootSimplified, absB } from '../../lib/mathx';
+
+const rootSym = (k: number) => (k === 2 ? '√' : k === 3 ? '∛' : k === 4 ? '∜' : `${k}√`);
 
 const inputCls = 'w-28 rounded-lg border border-slate-300 bg-white px-3 py-2 text-center font-mono text-lg text-slate-900 focus:border-brand-500 focus:outline-none';
 const tabCls = (active: boolean) =>
@@ -8,8 +10,10 @@ const tabCls = (active: boolean) =>
 const sup = (e: bigint) => String(e).split('').map((d) => '⁰¹²³⁴⁵⁶⁷⁸⁹'[Number(d)]).join('');
 
 export default function RadicalSimplifierTool() {
-  const [mode, setMode] = useState<'simplify' | 'rationalize' | 'combine'>('simplify');
+  const [mode, setMode] = useState<'simplify' | 'nth' | 'rationalize' | 'combine'>('simplify');
   const [n, setN] = useState('180');
+  const [nthN, setNthN] = useState('54');
+  const [nthK, setNthK] = useState('3');
   // rationalize c / (a + b√m)
   const [rc, setRc] = useState('1');
   const [ra, setRa] = useState('2');
@@ -43,6 +47,31 @@ export default function RadicalSimplifierTool() {
               <li>Prime-factorize: {s} = <span class="font-mono">{factors.map(([pp, e]) => e === 1n ? String(pp) : `${pp}${sup(e)}`).join(' × ')}</span></li>
               <li>Pull each pair of primes out of the root (a pair p² contributes p outside): outside = <span class="font-mono">{String(k)}</span>, left inside = <span class="font-mono">{String(m)}</span></li>
               <li>√{s} = √({k}² × {String(m)}) = <span class="font-mono font-bold">{radicalToString(new Rat(k), m)}</span>{m === 1n ? ' — a perfect square' : ''}</li>
+            </ol>
+          </div>
+        </>
+      );
+    } else if (mode === 'nth') {
+      const s = nthN.trim().replace(/[,\s]/g, '');
+      const k = parseInt(nthK.trim(), 10);
+      if (!/^\d+$/.test(s) || s === '0') throw new Error('Enter a positive whole number for the radicand.');
+      if (!Number.isInteger(k) || k < 2 || k > 10) throw new Error('Root index from 2 to 10.');
+      if (s.length > 15) throw new Error('Keep the radicand to 15 digits.');
+      const N = BigInt(s);
+      const [out, inside] = nthRootSimplified(N, k);
+      const factors = factorize(N);
+      const disp = inside === 1n ? String(out) : `${out === 1n ? '' : out}${rootSym(k)}${inside}`;
+      body = (
+        <>
+          <p class="mt-5 rounded-xl border border-brand-200 bg-brand-50 px-4 py-3 font-mono text-2xl font-extrabold text-brand-800">
+            {rootSym(k)}{s} = {disp}
+          </p>
+          <div class="mt-4 rounded-xl border border-slate-200 bg-white p-4 text-sm text-slate-700">
+            <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Working</p>
+            <ol class="mt-2 list-decimal space-y-1 pl-5">
+              <li>Prime-factorize: {s} = <span class="font-mono">{factors.map(([pp, e]) => e === 1n ? String(pp) : `${pp}^${e}`).join(' × ')}</span></li>
+              <li>Each group of {k} identical primes leaves the root as one factor: outside = <span class="font-mono">{String(out)}</span>, left inside = <span class="font-mono">{String(inside)}</span></li>
+              <li>{rootSym(k)}{s} = <span class="font-mono font-bold">{disp}</span>{inside === 1n ? ` — a perfect ${k === 2 ? 'square' : k === 3 ? 'cube' : `${k}th power`}` : ''}</li>
             </ol>
           </div>
         </>
@@ -131,6 +160,7 @@ export default function RadicalSimplifierTool() {
     <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
       <div class="flex flex-wrap gap-2">
         <button type="button" class={tabCls(mode === 'simplify')} onClick={() => setMode('simplify')}>Simplify √n</button>
+        <button type="button" class={tabCls(mode === 'nth')} onClick={() => setMode('nth')}>Cube & nth roots</button>
         <button type="button" class={tabCls(mode === 'rationalize')} onClick={() => setMode('rationalize')}>Rationalize c/(a+b√m)</button>
         <button type="button" class={tabCls(mode === 'combine')} onClick={() => setMode('combine')}>Combine surds</button>
       </div>
@@ -139,6 +169,16 @@ export default function RadicalSimplifierTool() {
         <label class="mt-4 flex items-center gap-2 text-2xl font-bold text-slate-500">
           √<input class={inputCls} value={n} onInput={(e) => setN((e.target as HTMLInputElement).value)} aria-label="radicand" />
         </label>
+      )}
+      {mode === 'nth' && (
+        <div class="mt-4 flex flex-wrap items-center gap-2 text-xl font-bold text-slate-500">
+          <label class="flex items-center gap-1">
+            <span class="text-sm font-semibold">index k =</span>
+            <input class="w-16 rounded-lg border border-slate-300 bg-white px-2 py-2 text-center font-mono text-lg" value={nthK} onInput={(e) => setNthK((e.target as HTMLInputElement).value)} aria-label="root index" />
+          </label>
+          <span>{rootSym(parseInt(nthK, 10) || 3)}</span>
+          <input class={inputCls} value={nthN} onInput={(e) => setNthN((e.target as HTMLInputElement).value)} aria-label="radicand for nth root" />
+        </div>
       )}
       {mode === 'rationalize' && (
         <div class="mt-4 flex flex-wrap items-center gap-2 text-xl font-bold text-slate-500">

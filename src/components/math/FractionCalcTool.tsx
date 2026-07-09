@@ -6,15 +6,25 @@ const inputCls = 'w-full rounded-lg border border-slate-300 bg-white px-3 py-2 t
 export default function FractionCalcTool() {
   const [aStr, setAStr] = useState('1 1/2');
   const [bStr, setBStr] = useState('3/4');
-  const [op, setOp] = useState<'+' | '-' | '×' | '÷'>('+');
+  const [op, setOp] = useState<'+' | '-' | '×' | '÷' | '≷'>('+');
 
   let result: Rat | null = null;
+  let compare: string | null = null;
   let steps: string[] = [];
   let error = '';
   try {
     const a = Rat.parse(aStr);
     const b = Rat.parse(bStr);
-    if (op === '+' || op === '-') {
+    if (op === '≷') {
+      const l = lcmB(a.d, b.d);
+      const an = a.n * (l / a.d), bn = b.n * (l / b.d);
+      const rel = an === bn ? '=' : an > bn ? '>' : '<';
+      compare = `${a.toFrac()} ${rel} ${b.toFrac()}`;
+      steps = [
+        `Write both over the common denominator ${l}: ${a.toFrac()} = ${an}/${l} and ${b.toFrac()} = ${bn}/${l}`,
+        `Compare the numerators: ${an} ${rel} ${bn}, so ${compare}`,
+      ];
+    } else if (op === '+' || op === '-') {
       const l = lcmB(a.d, b.d);
       const an = a.n * (l / a.d), bn = b.n * (l / b.d);
       result = op === '+' ? a.add(b) : a.sub(b);
@@ -51,7 +61,7 @@ export default function FractionCalcTool() {
           <input class={inputCls} value={aStr} onInput={(e) => setAStr((e.target as HTMLInputElement).value)} placeholder="1 1/2" />
         </label>
         <select class="rounded-lg border border-slate-300 bg-white px-3 py-2 text-lg font-bold" value={op} onChange={(e) => setOp((e.target as HTMLSelectElement).value as typeof op)}>
-          {['+', '-', '×', '÷'].map((o) => <option value={o}>{o}</option>)}
+          {['+', '-', '×', '÷', '≷'].map((o) => <option value={o}>{o === '≷' ? '≷ compare' : o}</option>)}
         </select>
         <label class="block w-40">
           <span class="text-xs font-semibold uppercase tracking-wide text-slate-500">Second fraction</span>
@@ -61,6 +71,18 @@ export default function FractionCalcTool() {
       <p class="mt-1.5 text-xs text-slate-500">Accepts fractions (3/4), mixed numbers (1 2/3), integers and decimals (2.5).</p>
 
       {error && <p class="mt-4 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800">{error}</p>}
+
+      {compare && (
+        <>
+          <p class="mt-5 rounded-xl border border-brand-200 bg-brand-50 px-4 py-3 font-mono text-3xl font-extrabold text-brand-800">{compare}</p>
+          <div class="mt-4 rounded-xl border border-slate-200 bg-white p-4">
+            <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Working</p>
+            <ol class="mt-2 list-decimal space-y-1 pl-5 text-sm text-slate-700">
+              {steps.map((s) => <li>{s}</li>)}
+            </ol>
+          </div>
+        </>
+      )}
 
       {result && (
         <>

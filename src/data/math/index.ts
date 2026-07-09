@@ -6,7 +6,7 @@ export interface MathToolDef {
   icon: string;
   description: string;
   lead: string;
-  widget: 'fraction' | 'dec-frac' | 'gcd-lcm' | 'prime' | 'ratio' | 'quadratic' | 'stats' | 'roman' | 'sci-notation' | 'perm-comb' | 'long-division' | 'radical' | 'modular' | 'slope-line' | 'distance-midpoint' | 'binomial' | 'sig-figs' | 'deg-rad' | 'complete-square' | 'synthetic' | 'percentile' | 'divisibility' | 'weighted-avg';
+  widget: 'fraction' | 'dec-frac' | 'gcd-lcm' | 'prime' | 'ratio' | 'quadratic' | 'stats' | 'roman' | 'sci-notation' | 'perm-comb' | 'long-division' | 'radical' | 'modular' | 'slope-line' | 'distance-midpoint' | 'binomial' | 'sig-figs' | 'deg-rad' | 'complete-square' | 'synthetic' | 'percentile' | 'divisibility' | 'weighted-avg' | 'exponent' | 'circle' | 'triangle-area';
   how: string;
   note?: string;
   faqs: { q: string; a: string }[];
@@ -450,5 +450,62 @@ export const MATH_TOOLS: MathToolDef[] = [
       { q: 'Is the arithmetic exact?', a: 'Yes — rational arithmetic throughout, so third-weights (1/3, 1/3, 1/3) don\'t drift into 0.9999 territory. Runs locally.' },
     ],
     keywords: ['weighted average calculator', 'weighted mean', 'grade calculator weighted', 'how to calculate weighted average', 'weighted average formula', 'gpa weighted average'],
+  },
+  {
+    slug: 'exponent-calculator',
+    name: 'Exponent Calculator',
+    icon: '🔺',
+    description:
+      'Powers computed exactly at any size: 2^100 with all 31 digits, negative exponents as exact fractions (2⁻³ = 1/8), fractional exponents as simplified radicals (54^(1/3) = 3∛2). In your browser.',
+    lead: '2^100 = 1,267,650,600,228,229,401,496,703,205,376 — every digit, where ordinary calculators overflow to 1.2676506e30. Negative and fractional exponents come out exact too.',
+    widget: 'exponent',
+    how: 'Three exponent cases, all exact. Whole-number exponents run on arbitrary-precision arithmetic — 2^100 produces all 31 digits, 2^1000 all 302, with the digit count stated. Negative exponents apply the reciprocal rule exactly: 2⁻³ is 1/8 the fraction, not 0.125 the float. Fractional exponents are roots: x^(p/k) is the k-th root of x^p, which the tool simplifies symbolically by extracting k-th-power factors — 54^(1/3) = ∛54 = 3∛2, with the factorization working shown. Bases can be integers, decimals or fractions ((3/2)³ = 27/8); a decimal approximation accompanies every non-integer result.',
+    note: 'Exponentiation is where floating point fails loudest: doubles overflow at 2^1024, silently round above 2^53, and "3.7797631^3 ≈ 54" is the closest a decimal calculator gets to the exact statement ∛54 = 3∛2. It\'s also a reliable stumbling block for AI chatbots, which pattern-match large powers rather than computing them — a digits-exact answer is checkable in a way a confident paragraph is not.',
+    faqs: [
+      { q: 'How large an exponent can it handle?', a: 'Whole-number exponents to ±10,000 — 2^10000 is a 3,011-digit integer, computed exactly (very large results state their digit count and show abbreviated digits). The limit is readability, not precision.' },
+      { q: 'What does a negative exponent mean?', a: 'The reciprocal of the positive power: x⁻ⁿ = 1/xⁿ. So 2⁻³ = 1/8 and (3/2)⁻² = 4/9 — exact fractions here, where decimal calculators give 0.125 and 0.4444….' },
+      { q: 'How do fractional exponents work?', a: 'x^(p/k) is the k-th root of x^p. The tool computes x^p exactly, then simplifies the k-th root symbolically: 54^(1/3) = ∛54 = 3∛2, because 54 = 27 × 2 = 3³ × 2. Enter the exponent as a fraction like 1/3 or 2/3.' },
+      { q: 'Why does my calculator say 2^100 = 1.2676506e30?', a: 'It stores numbers as 64-bit floats with ~15–17 significant digits, so everything past that is discarded and shown in scientific notation. Exact integer arithmetic has no such ceiling — all 31 digits are real here.' },
+      { q: 'Does it run locally?', a: 'Yes — BigInt and rational arithmetic in your browser, offline-capable.' },
+    ],
+    keywords: ['exponent calculator', 'power calculator', '2 to the power of 100', 'negative exponent calculator', 'fractional exponent calculator', 'exact power big numbers'],
+  },
+  {
+    slug: 'circle-calculator',
+    name: 'Circle Calculator (in Terms of π)',
+    icon: '⭕',
+    description:
+      'Circle area, circumference, arc length and sector area — answered exactly in terms of π (r = 6 → area 36π), with decimals alongside. In your browser.',
+    lead: 'r = 6 → area = 36π, circumference = 12π — the "in terms of π" form the homework asks for, plus arc length and sector area for any central angle, exact.',
+    widget: 'circle',
+    how: 'Every result is computed as an exact rational coefficient of π and displayed that way: area πr², circumference 2πr, and — given a central angle θ — arc length (θ/360)·2πr and sector area (θ/360)·πr², each with the substitution working shown and a decimal approximation alongside. The radius (or diameter — the tool converts) accepts integers, decimals and fractions, so r = 3/2 gives area 9π/4 exactly. Nothing is rounded until the optional decimal at the very end.',
+    note: '"Give your answer in terms of π" is one of the most common instructions in geometry — and almost every online circle calculator ignores it, jumping straight to 113.097. The symbolic form isn\'t pedantry: it\'s exact (π is irrational; any decimal is wrong somewhere), it cancels cleanly in later algebra, and it\'s the marked answer. The decimal is there too, for when you actually need to cut the material.',
+    faqs: [
+      { q: 'What does "in terms of π" mean?', a: 'Leave π as a symbol instead of substituting 3.14159…: a circle of radius 6 has area 36π exactly, of which 113.097 is only an approximation. Geometry courses usually require the symbolic form.' },
+      { q: 'What are the circle formulas?', a: 'Area = πr², circumference = 2πr (or πd), arc length = (θ/360)·2πr and sector area = (θ/360)·πr² for a central angle θ in degrees. The tool applies each with your values and shows the substitution.' },
+      { q: 'Can I enter the diameter instead of the radius?', a: 'Yes — switch the selector; the tool halves it exactly (d = 7 gives r = 7/2 and area 49π/4).' },
+      { q: 'How are arc length and sector area related?', a: 'Both scale the full circle by the same angle fraction θ/360 — arc scales the circumference, sector scales the area. A 60° slice is exactly one sixth of each.' },
+      { q: 'Is anything rounded?', a: 'The π-coefficients are exact rationals throughout; only the optional decimal display approximates. Runs locally.' },
+    ],
+    keywords: ['circle calculator', 'area of a circle in terms of pi', 'circumference in terms of pi', 'arc length calculator', 'sector area calculator', 'exact circle area'],
+  },
+  {
+    slug: 'triangle-area',
+    name: 'Triangle Area Calculator (Heron\'s Formula)',
+    icon: '🔻',
+    description:
+      'Triangle area from three sides via Heron\'s formula — exact simplified-radical answers (sides 3, 5, 6 → area 2√14), with the working shown. In your browser.',
+    lead: 'Sides 3, 5, 6 → area = 2√14 exactly — via Heron\'s formula in its integer-safe form, with the triangle inequality checked and every step shown.',
+    widget: 'triangle-area',
+    how: 'Heron\'s formula computes a triangle\'s area from its three sides alone. The tool uses the fraction-free form 16A² = (a+b+c)(−a+b+c)(a−b+c)(a+b−c): for rational sides that product is an exact rational, so the area is an exact square root — which the tool simplifies symbolically, giving 2√14 for sides 3-5-6 and exactly 6 for the 3-4-5 right triangle (a Heronian triangle, where the area comes out whole). The triangle inequality is verified first, with a clear message when the three lengths simply cannot form a triangle. Perimeter and semi-perimeter are shown alongside, and every step of the computation is written out.',
+    note: 'The exact radical is the differentiator — every mainstream calculator answers 7.4833 for sides 3-5-6, but "2√14" is what the geometry answer key says, and A² = 56 is what the next line of the problem often needs. The 16A² form also deserves its footnote: computing Heron\'s formula through the semi-perimeter in floating point famously loses precision for thin triangles, a numerical-analysis classic that exact arithmetic sidesteps entirely.',
+    faqs: [
+      { q: 'What is Heron\'s formula?', a: 'Area = √(s(s−a)(s−b)(s−c)) where s is the semi-perimeter (a+b+c)/2 — the area from sides alone, no heights or angles needed. The tool uses the equivalent fraction-free form 16A² = (a+b+c)(−a+b+c)(a−b+c)(a+b−c).' },
+      { q: 'Why is the answer a square root?', a: 'Heron\'s formula produces A², so the area is its square root — exact only if kept symbolic. Sides 3, 5, 6 give 16A² = 896, so A = √896/4 = 2√14. The tool simplifies the radical automatically.' },
+      { q: 'What is a Heronian triangle?', a: 'One with integer sides AND integer area — like 3-4-5 (area 6) or 5-5-6 (area 12). The tool celebrates when your triangle turns out to be one.' },
+      { q: 'What if my three lengths can\'t form a triangle?', a: 'The triangle inequality requires every side to be shorter than the other two combined; 1, 1, 5 fails it. The tool checks first and explains, rather than producing an imaginary area.' },
+      { q: 'Can sides be decimals or fractions?', a: 'Yes — all sides parse as exact rationals, and the radical simplification handles the fractions correctly. Runs locally.' },
+    ],
+    keywords: ['herons formula calculator', 'triangle area from sides', 'area of triangle 3 sides', 'triangle area exact radical', 'heronian triangle', 'semi perimeter formula'],
   },
 ];

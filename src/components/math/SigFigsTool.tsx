@@ -1,9 +1,37 @@
 import { useState } from 'preact/hooks';
-import { sigFigCount, sigFigRound } from '../../lib/mathx';
+import { sigFigCount, sigFigRound, Rat } from '../../lib/mathx';
+
+/** Round to N decimal places (half-up) or to the nearest multiple of `step` — exact rational path. */
+function roundExtra(numStr: string, places: string, stepStr: string): { places?: string; nearest?: string } {
+  const out: { places?: string; nearest?: string } = {};
+  try {
+    const v = Rat.parse(numStr.trim());
+    const p = parseInt(places.trim(), 10);
+    if (Number.isInteger(p) && p >= 0 && p <= 20) {
+      const scale = new Rat(10n ** BigInt(p));
+      const scaled = v.mul(scale);
+      // half-up rounding: round(x) = floor(x + 1/2)
+      const shifted = scaled.add(new Rat(1n, 2n));
+      const fl = (shifted.n - (((shifted.n % shifted.d) + shifted.d) % shifted.d)) / shifted.d;
+      out.places = new Rat(fl).div(scale).toDecimal(p).text;
+    }
+    const step = stepStr.trim() ? Rat.parse(stepStr.trim()) : null;
+    if (step && step.sign() > 0) {
+      const q = v.div(step).add(new Rat(1n, 2n));
+      const fl = (q.n - (((q.n % q.d) + q.d) % q.d)) / q.d;
+      const near = new Rat(fl).mul(step);
+      const dec = near.toDecimal(10);
+      out.nearest = dec.exact ? dec.text : near.toFrac();
+    }
+  } catch { /* partial results fine */ }
+  return out;
+}
 
 export default function SigFigsTool() {
   const [numStr, setNumStr] = useState('0.004560');
   const [nStr, setNStr] = useState('2');
+  const [placesStr, setPlacesStr] = useState('3');
+  const [nearestStr, setNearestStr] = useState('');
 
   let analysis: ReturnType<typeof sigFigCount> | null = null;
   let rounded = '';
@@ -74,6 +102,24 @@ export default function SigFigsTool() {
               <span><span class="rounded border border-amber-300 bg-amber-100 px-1 text-amber-800">amber</span> ambiguous trailing zero</span>
             </p>
             {analysis.note && <p class="mt-2 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800">{analysis.note}</p>}
+          </div>
+
+          <div class="mt-4 rounded-xl border border-slate-200 bg-white p-4">
+            <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Other roundings (exact arithmetic)</p>
+            <div class="mt-2 flex flex-wrap items-center gap-4 text-sm">
+              <label class="flex items-center gap-2 text-slate-600">
+                to
+                <input class="w-16 rounded border border-slate-300 px-2 py-1 text-center font-mono" value={placesStr} onInput={(e) => setPlacesStr((e.target as HTMLInputElement).value)} aria-label="decimal places" />
+                decimal places:
+                <span class="font-mono font-bold text-slate-900">{roundExtra(numStr, placesStr, '').places ?? '—'}</span>
+              </label>
+              <label class="flex items-center gap-2 text-slate-600">
+                to nearest
+                <input class="w-20 rounded border border-slate-300 px-2 py-1 text-center font-mono" value={nearestStr} onInput={(e) => setNearestStr((e.target as HTMLInputElement).value)} placeholder="0.25" aria-label="nearest multiple" />
+                :
+                <span class="font-mono font-bold text-slate-900">{nearestStr.trim() ? roundExtra(numStr, '', nearestStr).nearest ?? '—' : '—'}</span>
+              </label>
+            </div>
           </div>
 
           <div class="mt-4 rounded-xl border border-slate-200 bg-white p-4 text-sm text-slate-700">

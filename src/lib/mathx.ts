@@ -584,6 +584,85 @@ export function polyLongDivision(pIn: Rat[], dIn: Rat[]): { quotient: Rat[]; rem
   return { quotient: trim(quotient), remainder: trim(rem.slice(qLen)), steps };
 }
 
+// ---------- nth roots, powers, divisors, primes ----------
+
+/** k-th root of n simplified: n = outside^k · inside → [outside, inside] (inside k-power-free). */
+export function nthRootSimplified(n: bigint, k: number): [bigint, bigint] {
+  if (n === 0n) return [0n, 1n];
+  if (n < 0n) throw new Error('Use a non-negative radicand (apply the sign separately for odd roots).');
+  let outside = 1n, inside = 1n;
+  for (const [p, e] of factorize(n)) {
+    outside *= p ** (e / BigInt(k));
+    inside *= p ** (e % BigInt(k));
+  }
+  return [outside, inside];
+}
+
+/** Exact rational power with integer exponent (negative allowed). */
+export function ratPow(base: Rat, exp: number): Rat {
+  if (exp === 0) {
+    if (base.isZero()) throw new Error('0⁰ is undefined.');
+    return new Rat(1n);
+  }
+  let r = new Rat(1n);
+  const e = Math.abs(exp);
+  for (let i = 0; i < e; i++) r = r.mul(base);
+  return exp < 0 ? new Rat(1n).div(r) : r;
+}
+
+/** All divisors of n, ascending (throws if there would be more than `cap`). */
+export function divisorsOf(n: bigint, cap = 1024): bigint[] {
+  const factors = factorize(n);
+  let count = 1n;
+  for (const [, e] of factors) count *= e + 1n;
+  if (count > BigInt(cap)) throw new Error(`This number has ${count} divisors — more than the ${cap} this view lists.`);
+  let divs: bigint[] = [1n];
+  for (const [p, e] of factors) {
+    const next: bigint[] = [];
+    let pk = 1n;
+    for (let i = 0n; i <= e; i++) {
+      for (const d of divs) next.push(d * pk);
+      pk *= p;
+    }
+    divs = next;
+  }
+  return divs.sort((a, b) => (a < b ? -1 : 1));
+}
+
+export function nextPrime(n: bigint): bigint {
+  let c = n + 1n;
+  if (c <= 2n) return 2n;
+  if (c % 2n === 0n) c++;
+  while (!isPrime(c)) c += 2n;
+  return c;
+}
+
+export function prevPrime(n: bigint): bigint | null {
+  if (n <= 2n) return null;
+  let c = n - 1n;
+  if (c === 2n) return 2n;
+  if (c % 2n === 0n) c--;
+  while (c >= 3n && !isPrime(c)) c -= 2n;
+  return c >= 2n ? c : null;
+}
+
+// ---------- Heron's formula (exact) ----------
+
+/** Exact triangle area from sides: 16A² = (a+b+c)(−a+b+c)(a−b+c)(a+b−c); A = coef·√radicand. */
+export function heronExact(a: Rat, b: Rat, c: Rat): { coef: Rat; radicand: bigint; sixteenASq: Rat } {
+  const zero = new Rat(0n);
+  for (const s of [a, b, c]) if (s.sign() <= 0) throw new Error('All three sides must be positive.');
+  const t1 = a.add(b).add(c);
+  const t2 = b.add(c).sub(a);
+  const t3 = a.add(c).sub(b);
+  const t4 = a.add(b).sub(c);
+  if (t2.sign() <= 0 || t3.sign() <= 0 || t4.sign() <= 0)
+    throw new Error('These lengths violate the triangle inequality — no triangle has these sides.');
+  const sixteenASq = t1.mul(t2).mul(t3).mul(t4);
+  const { coef, radicand } = sqrtRatSimplified(sixteenASq);
+  return { coef: coef.div(new Rat(4n)), radicand, sixteenASq };
+}
+
 // ---------- roman numerals ----------
 
 const ROMAN: [number, string][] = [

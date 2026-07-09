@@ -28,6 +28,9 @@ import SyntheticDivisionTool from '../../components/math/SyntheticDivisionTool.t
 import PercentileTool from '../../components/math/PercentileTool.tsx';
 import DivisibilityTool from '../../components/math/DivisibilityTool.tsx';
 import WeightedAverageTool from '../../components/math/WeightedAverageTool.tsx';
+import ExponentCalcTool from '../../components/math/ExponentCalcTool.tsx';
+import CircleCalcTool from '../../components/math/CircleCalcTool.tsx';
+import TriangleAreaTool from '../../components/math/TriangleAreaTool.tsx';
 import { MATH_TOOLS, type MathToolDef } from '../../data/math/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -97,6 +100,9 @@ const schema = [
       {tool.widget === 'percentile' && <PercentileTool client:load />}
       {tool.widget === 'divisibility' && <DivisibilityTool client:load />}
       {tool.widget === 'weighted-avg' && <WeightedAverageTool client:load />}
+      {tool.widget === 'exponent' && <ExponentCalcTool client:load />}
+      {tool.widget === 'circle' && <CircleCalcTool client:load />}
+      {tool.widget === 'triangle-area' && <TriangleAreaTool client:load />}
     </div>
 
     <div class="mt-4">

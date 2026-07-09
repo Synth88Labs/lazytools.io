@@ -1,9 +1,9 @@
 import { useState } from 'preact/hooks';
-import { factorize, isPrime } from '../../lib/mathx';
+import { factorize, isPrime, divisorsOf, nextPrime, prevPrime } from '../../lib/mathx';
 
 export default function PrimeFactorTool() {
   const [input, setInput] = useState('360');
-  const [result, setResult] = useState<{ n: bigint; prime: boolean; factors: [bigint, bigint][]; divisors: bigint; divisorSum: bigint } | null>(null);
+  const [result, setResult] = useState<{ n: bigint; prime: boolean; factors: [bigint, bigint][]; divisors: bigint; divisorSum: bigint; divisorList: bigint[] | null; next: bigint; prev: bigint | null } | null>(null);
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
 
@@ -28,7 +28,11 @@ export default function PrimeFactorTool() {
           for (let i = 0n; i <= e; i++) { geo += pow; pow *= p; }
           divisorSum *= geo;
         }
-        setResult({ n, prime, factors, divisors, divisorSum });
+        let divisorList: bigint[] | null = null;
+        if (divisors <= 256n) {
+          try { divisorList = divisorsOf(n); } catch { divisorList = null; }
+        }
+        setResult({ n, prime, factors, divisors, divisorSum, divisorList, next: nextPrime(n), prev: prevPrime(n) });
       } catch (err) {
         setError((err as Error).message);
       }
@@ -81,6 +85,27 @@ export default function PrimeFactorTool() {
               </div>
             </div>
           )}
+
+          {result.divisorList && !result.prime && (
+            <div class="mt-3 rounded-xl border border-slate-200 bg-white p-4">
+              <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">All {result.divisorList.length} factors of {String(result.n)}</p>
+              <p class="mt-2 flex flex-wrap gap-1.5 font-mono text-sm">
+                {result.divisorList.map((d) => (
+                  <span class="rounded bg-slate-50 px-2 py-0.5 text-slate-700 ring-1 ring-slate-200">{String(d)}</span>
+                ))}
+              </p>
+              <p class="mt-3 text-xs font-semibold uppercase tracking-wide text-slate-500">Factor pairs</p>
+              <p class="mt-1 flex flex-wrap gap-1.5 font-mono text-sm">
+                {result.divisorList.filter((d) => d * d <= result.n!).map((d) => (
+                  <span class="rounded bg-brand-50 px-2 py-0.5 text-brand-800 ring-1 ring-brand-100">{String(d)} × {String(result.n / d)}</span>
+                ))}
+              </p>
+            </div>
+          )}
+
+          <p class="mt-3 text-sm text-slate-600">
+            Neighbouring primes: <span class="font-mono font-semibold">{result.prev !== null ? `${result.prev} ←` : ''} {String(result.n)} → {String(result.next)}</span>
+          </p>
         </>
       )}
       <p class="mt-4 text-xs text-slate-500">
