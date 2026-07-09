@@ -7,6 +7,16 @@ export interface Solved {
   roots: string[]; // exact display
   approx: string[];
   vertex: string;
+  /** integer factored form, present when roots are rational: e.g. "2(2x − 5)(x + 1)" */
+  factored?: string;
+}
+
+/** Linear factor (qx − p) from a root p/q in lowest terms, with sign folded in. */
+function linFactor(rootNum: bigint, rootDen: bigint): { text: string; q: bigint } {
+  const r = new Rat(rootNum, rootDen);
+  const p = r.n, q = r.d;
+  const inner = p === 0n ? (q === 1n ? 'x' : `${q}x`) : `${q === 1n ? '' : q}x ${p > 0n ? '−' : '+'} ${absB(p)}`;
+  return { text: `(${inner})`, q };
 }
 
 /** Solve with integerized coefficients for exact surd output. */
@@ -30,7 +40,12 @@ export function solveQuadratic(aS: string, bS: string, cS: string): Solved {
 
   if (D === 0n) {
     const r = fmtRat(-bI, two_a);
-    return { aI, bI, cI, D, kind: 'double', roots: [r], approx: [new Rat(-bI, two_a).toDecimal(8).text], vertex };
+    const f = linFactor(-bI, two_a);
+    const kf = aI / (f.q * f.q);
+    return {
+      aI, bI, cI, D, kind: 'double', roots: [r], approx: [new Rat(-bI, two_a).toDecimal(8).text], vertex,
+      factored: `${kf === 1n ? '' : kf}${f.text}²`,
+    };
   }
 
   const [k, m] = extractSquare(absB(D));
@@ -38,11 +53,14 @@ export function solveQuadratic(aS: string, bS: string, cS: string): Solved {
     // rational roots
     const s = isqrt(D);
     const r1 = fmtRat(-bI + s, two_a), r2 = fmtRat(-bI - s, two_a);
+    const f1 = linFactor(-bI + s, two_a), f2 = linFactor(-bI - s, two_a);
+    const kf = aI / (f1.q * f2.q);
     return {
       aI, bI, cI, D, kind: 'rational',
       roots: [r1, r2],
       approx: [new Rat(-bI + s, two_a).toDecimal(8).text, new Rat(-bI - s, two_a).toDecimal(8).text],
       vertex,
+      factored: `${kf === 1n ? '' : kf}${f1.text}${f2.text}`,
     };
   }
 

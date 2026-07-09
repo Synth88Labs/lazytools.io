@@ -15,6 +15,12 @@ import StatsCalcTool from '../../components/math/StatsCalcTool.tsx';
 import RomanNumeralTool from '../../components/math/RomanNumeralTool.tsx';
 import SciNotationTool from '../../components/math/SciNotationTool.tsx';
 import PermCombTool from '../../components/math/PermCombTool.tsx';
+import LongDivisionTool from '../../components/math/LongDivisionTool.tsx';
+import RadicalSimplifierTool from '../../components/math/RadicalSimplifierTool.tsx';
+import ModularArithmeticTool from '../../components/math/ModularArithmeticTool.tsx';
+import SlopeLineTool from '../../components/math/SlopeLineTool.tsx';
+import DistanceMidpointTool from '../../components/math/DistanceMidpointTool.tsx';
+import BinomialExpansionTool from '../../components/math/BinomialExpansionTool.tsx';
 import { MATH_TOOLS, type MathToolDef } from '../../data/math/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -71,6 +77,12 @@ const schema = [
       {tool.widget === 'roman' && <RomanNumeralTool client:load />}
       {tool.widget === 'sci-notation' && <SciNotationTool client:load />}
       {tool.widget === 'perm-comb' && <PermCombTool client:load />}
+      {tool.widget === 'long-division' && <LongDivisionTool client:load />}
+      {tool.widget === 'radical' && <RadicalSimplifierTool client:load />}
+      {tool.widget === 'modular' && <ModularArithmeticTool client:load />}
+      {tool.widget === 'slope-line' && <SlopeLineTool client:load />}
+      {tool.widget === 'distance-midpoint' && <DistanceMidpointTool client:load />}
+      {tool.widget === 'binomial' && <BinomialExpansionTool client:load />}
     </div>
 
     <div class="mt-4">

@@ -5,9 +5,12 @@ const fmt = (x: number) => (Number.isInteger(x) ? String(x) : x.toPrecision(8).r
 
 export default function StatsCalcTool() {
   const [input, setInput] = useState('12, 15, 11, 15, 18, 22, 15, 9, 14');
+  const [zStr, setZStr] = useState('');
 
   const values = input.split(/[\s,;\n]+/).filter(Boolean).map(Number).filter((x) => Number.isFinite(x));
   const stats = values.length >= 1 ? computeStats(values) : null;
+  const zVal = Number(zStr);
+  const zOk = zStr.trim() !== '' && Number.isFinite(zVal) && stats && stats.sdPop > 0;
 
   const rows: [string, string][] = stats
     ? [
@@ -53,6 +56,27 @@ export default function StatsCalcTool() {
               ))}
             </tbody>
           </table>
+        </div>
+      )}
+
+      {stats && (
+        <div class="mt-4 rounded-xl border border-slate-200 bg-white p-4">
+          <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Z-score of a value — how many standard deviations from the mean?</p>
+          <div class="mt-2 flex flex-wrap items-center gap-3">
+            <input
+              class="w-32 rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-center font-mono text-sm"
+              value={zStr}
+              onInput={(e) => setZStr((e.target as HTMLInputElement).value)}
+              placeholder="e.g. 20"
+              aria-label="value for z-score"
+            />
+            {zOk && (
+              <span class="font-mono text-sm text-slate-800">
+                z = ({fmt(zVal)} − {fmt(stats.mean)}) / σ → <strong>{((zVal - stats.mean) / stats.sdPop).toFixed(4)}</strong> (population)
+                {stats.sdSample > 0 && <> · <strong>{((zVal - stats.mean) / stats.sdSample).toFixed(4)}</strong> (sample)</>}
+              </span>
+            )}
+          </div>
         </div>
       )}
 

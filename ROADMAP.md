@@ -12,13 +12,13 @@ the legal review) are cleared.
 ratings (PHP + SQLite), smart header search, sitemap, auto-generated `llms.txt`, GitHub Actions →
 Namecheap FTPS deploy pipeline.
 
-**All 18 categories live** (~370 pages, 296+ tools):
+**All 18 categories live** (~376 pages, 302+ tools):
 
 | Category | Highlights |
 |---|---|
 | Unit Converters | 100+ pairs across 11 quantities, exact NIST/BIPM factors |
 | Calculators | percentage, EMI, BMI, age, tip, discount, interest… |
-| Mathematics | **exact arithmetic** — fraction calculator with steps, decimal⇄fraction (repeating decimals), GCD/LCM via Euclid, prime factorizer (Miller–Rabin + Pollard rho), ratio, quadratic solver with radical roots, statistics, Roman numerals, scientific notation, nCr/nPr (BigInt) |
+| Mathematics | **exact arithmetic** — fraction calculator with steps, decimal⇄fraction (repeating decimals), GCD/LCM via Euclid, prime factorizer (Miller–Rabin + Pollard rho), ratio, quadratic solver with radical roots, statistics, Roman numerals, scientific notation, nCr/nPr (BigInt), long division with steps, radical simplifier, modular arithmetic (ext. Euclid + square-and-multiply), slope/line & distance/midpoint (exact), binomial expansion |
 | Size Converters | ring, shoe, bra, clothing, hat, kids' shoe |
 | Text Tools | counters, case, sort, dedupe, find-and-replace, slugify |
 | Color Tools | HEX/RGB/HSL/CMYK, WCAG contrast, shades, gradient, mixer, **brand color finder** (1,100+ brand palettes, name + reverse-hex search) |

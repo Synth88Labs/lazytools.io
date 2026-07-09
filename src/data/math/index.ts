@@ -6,7 +6,7 @@ export interface MathToolDef {
   icon: string;
   description: string;
   lead: string;
-  widget: 'fraction' | 'dec-frac' | 'gcd-lcm' | 'prime' | 'ratio' | 'quadratic' | 'stats' | 'roman' | 'sci-notation' | 'perm-comb';
+  widget: 'fraction' | 'dec-frac' | 'gcd-lcm' | 'prime' | 'ratio' | 'quadratic' | 'stats' | 'roman' | 'sci-notation' | 'perm-comb' | 'long-division' | 'radical' | 'modular' | 'slope-line' | 'distance-midpoint' | 'binomial';
   how: string;
   note?: string;
   faqs: { q: string; a: string }[];
@@ -203,5 +203,119 @@ export const MATH_TOOLS: MathToolDef[] = [
       { q: 'Is anything sent to a server?', a: 'No — exact BigInt arithmetic in your browser, offline-capable.' },
     ],
     keywords: ['permutations and combinations calculator', 'ncr calculator', 'npr calculator', 'factorial calculator', 'combinations formula', 'how many combinations', 'binomial coefficient'],
+  },
+  {
+    slug: 'long-division',
+    name: 'Long Division Calculator (with Steps)',
+    icon: '📝',
+    description:
+      'Divide any numbers with the full long-division working shown step by step — quotient, remainder, and the exact decimal with repeating digits identified. In your browser.',
+    lead: '7439 ÷ 12 = 619 r 11 — with every bring-down step laid out the way it\'s taught, plus the exact decimal (619.91(6), repetend in parentheses).',
+    widget: 'long-division',
+    how: 'The calculator performs textbook long division and shows it as a step table: bring down the next digit of the dividend, divide the working value by the divisor to get the next quotient digit, subtract the product, carry the remainder to the next step. After the integer phase you get quotient and remainder — and if you want the decimal, the division simply continues past the point, with cycle detection on the remainders so a repeating expansion is identified exactly and written with the repetend in parentheses (1 ÷ 12 = 0.08(3)). Everything runs on arbitrary-precision integers, so a 30-digit dividend divides as exactly as a 3-digit one.',
+    note: 'The steps are the product here: long division is taught as an algorithm, and checking homework means checking the algorithm\'s intermediate lines, not just the answer. The repetend detection settles the classic confusion between "the calculator ran out of screen" and "the decimal actually repeats" — every rational division either terminates or repeats, and this shows which, with proof.',
+    faqs: [
+      { q: 'How does long division work, step by step?', a: 'Take digits of the dividend left to right. At each step: bring down the next digit, see how many whole times the divisor fits into the working value (that\'s the next quotient digit), subtract that multiple, and carry the remainder into the next step. The table shows each of these lines for your numbers.' },
+      { q: 'What do quotient and remainder mean?', a: 'Dividend = divisor × quotient + remainder, with the remainder smaller than the divisor. 7439 = 12 × 619 + 11, so 7439 ÷ 12 is 619 remainder 11.' },
+      { q: 'How do I get the decimal answer?', a: 'The division continues past the decimal point automatically: append a zero to the remainder and keep dividing. The tool does this with cycle detection, so it shows either the exact terminating decimal or the repeating form with the repetend in parentheses.' },
+      { q: 'Why does the decimal repeat for some divisions?', a: 'Because there are only so many possible remainders (fewer than the divisor) — once a remainder recurs, the digits cycle forever. Divisions whose reduced divisor has only factors 2 and 5 terminate; all others repeat.' },
+      { q: 'Is there a size limit?', a: 'Dividends up to 30 digits keep the step table readable; the arithmetic itself is exact BigInt at any size. Nothing you enter leaves your browser.' },
+    ],
+    keywords: ['long division calculator', 'long division with steps', 'division with remainder', 'long division method', 'divide with steps', 'long division decimals'],
+  },
+  {
+    slug: 'radical-simplifier',
+    name: 'Radical Simplifier & Surd Calculator',
+    icon: '√',
+    description:
+      'Simplify square roots exactly (√180 = 6√5) with the prime-factorization steps, rationalize denominators by the conjugate, and add or multiply surds. In your browser.',
+    lead: '√180 = 6√5 — via the prime factorization, shown. Plus rationalizing c/(a + b√m) with the conjugate, and combining like surds (3√8 + 5√18 = 21√2).',
+    widget: 'radical',
+    how: 'Simplifying a radical means pulling every square factor out of the root: the tool prime-factorizes the radicand, extracts each pair of primes (a pair p² contributes p outside the root), and shows exactly that working — √180 = √(6² × 5) = 6√5. The rationalize tab multiplies a fraction like 1/(2 + √3) by the denominator\'s conjugate, using the difference of squares to clear the root, and presents the exact result with steps. The combine tab simplifies each surd first and then adds, subtracts or multiplies: 3√8 + 5√18 becomes 6√2 + 15√2 = 21√2, while genuinely unlike surds are honestly left as an exact sum rather than mashed into a decimal.',
+    note: 'The "simplify each surd FIRST" habit is the whole trick for combining: 3√8 and 5√18 look unlike, but both reduce to multiples of √2. And rationalizing isn\'t just convention — the exact form (2 − √3) is usable in the next algebra step, where 0.2679… is a dead end. Everything here stays symbolic; decimals are never substituted for answers.',
+    faqs: [
+      { q: 'How do I simplify a square root like √180?', a: 'Prime-factorize: 180 = 2² × 3² × 5. Each pair leaves the root as a single factor: 2 × 3 = 6 outside, 5 left inside → 6√5. The tool shows this factorization working for any number.' },
+      { q: 'What does it mean to rationalize a denominator?', a: 'Rewriting a fraction so no root remains below the line. For 1/(2 + √3), multiply top and bottom by the conjugate (2 − √3): the denominator becomes 2² − 3 = 1, so the result is exactly 2 − √3.' },
+      { q: 'When can two surds be added?', a: 'Only when they simplify to the same radicand ("like surds"): 3√8 + 5√18 = 6√2 + 15√2 = 21√2. If the simplified radicands differ (√2 vs √3), the exact sum is already the simplest form — no calculator can merge them without going decimal.' },
+      { q: 'How are surds multiplied?', a: '√a × √b = √(ab), then simplify the product: 2√6 × 3√10 = 6√60 = 6 × 2√15 = 12√15. The tool shows each stage.' },
+      { q: 'Is anything computed with floating point?', a: 'No — factorization and coefficient arithmetic are exact (BigInt and rationals). Decimal approximations are never used internally, and everything runs locally.' },
+    ],
+    keywords: ['simplify radicals', 'simplify square roots', 'surd calculator', 'radical simplifier', 'rationalize the denominator', 'adding surds', 'simplify root 180'],
+  },
+  {
+    slug: 'modular-arithmetic',
+    name: 'Modular Arithmetic Calculator',
+    icon: '🔁',
+    description:
+      'Compute aᵇ mod n with the square-and-multiply trace, and modular inverses via the extended Euclidean algorithm — full working tables, exact BigInt. In your browser.',
+    lead: '7¹²⁸ mod 13 in seven squarings, not 128 multiplications — with the square-and-multiply table shown. Plus modular inverses (17⁻¹ mod 43) via extended Euclid, step by step.',
+    widget: 'modular',
+    how: 'The power tab computes aᵇ mod n by square-and-multiply: read the exponent in binary, square the accumulator for each bit and multiply by the base when the bit is 1 — turning 128 multiplications into 8 steps, each shown in a trace table with the bit, the operation and the accumulator. The inverse tab runs the extended Euclidean algorithm on (a, n), displaying the full quotient/remainder table; when gcd(a, n) = 1 the back-substituted coefficient is the inverse, verified on-page (a × a⁻¹ ≡ 1 mod n), and when the gcd isn\'t 1 the tool explains why no inverse exists. Both run on exact BigInt, comfortably handling the 20-digit values cryptography homework throws around.',
+    note: 'These two algorithms are the beating heart of public-key cryptography: RSA encryption is literally a^e mod n by square-and-multiply, and the RSA private key is a modular inverse computed by extended Euclid. They\'re also precisely the computations language models fumble most confidently — modular exponentiation answers from chatbots are wrong so often that "verify with a real calculator" is standard advice in CS courses. This is that real calculator, with the working your assignment wants.',
+    faqs: [
+      { q: 'What does aᵇ mod n mean?', a: 'The remainder when aᵇ is divided by n. The trick is that you never need the astronomically large aᵇ itself — reducing mod n after every multiplication keeps numbers small, and square-and-multiply keeps the multiplication count logarithmic in b.' },
+      { q: 'How does square-and-multiply work?', a: 'Write the exponent in binary. Scan its bits left to right: square the accumulator each bit, and additionally multiply by the base when the bit is 1. For b = 128 (binary 10000000) that\'s 7 squarings after the initial step — the table shows every one.' },
+      { q: 'What is a modular inverse?', a: 'The number x with a·x ≡ 1 (mod n) — division\'s stand-in in modular arithmetic. It exists exactly when gcd(a, n) = 1, and the extended Euclidean algorithm finds it; 17⁻¹ mod 43 is 38, since 17 × 38 = 646 = 15 × 43 + 1.' },
+      { q: 'Why does my inverse not exist?', a: 'Because a and n share a factor. If gcd(a, n) = g > 1, then a·x mod n is always a multiple of g and can never be 1. The tool shows the gcd from the Euclid table so you can see the blocking factor.' },
+      { q: 'What is this used for outside homework?', a: 'RSA and Diffie–Hellman key exchange (modular powers), RSA key generation (modular inverse), hashing and checksums, cyclic schedules, and ISBN/IBAN-style check digits — modular arithmetic is the arithmetic of computing.' },
+    ],
+    keywords: ['modular arithmetic calculator', 'mod calculator', 'modular exponentiation', 'a^b mod n', 'modular inverse calculator', 'extended euclidean algorithm', 'square and multiply'],
+  },
+  {
+    slug: 'slope-calculator',
+    name: 'Slope & Line Equation Calculator',
+    icon: '📈',
+    description:
+      'Slope and full line equation from two points — exact fractions (m = 2/3, not 0.6667), in slope-intercept, point-slope and standard form, with the working. In your browser.',
+    lead: 'Through (1, 2) and (4, 4): slope m = 2/3 exactly, y-intercept b = 4/3, and the line in all three forms — slope-intercept, point-slope and integer standard form.',
+    widget: 'slope-line',
+    how: 'From two points the slope is rise over run — (y₂ − y₁)/(x₂ − x₁) — computed as an exact fraction, never a rounded decimal. The y-intercept follows from substituting either point into y = mx + b, again exactly. The tool then writes the line three ways: slope-intercept form (y = mx + b, the graphing form), point-slope form (y − y₁ = m(x − x₁), the form proofs and calculus use), and standard form (Ax + By = C with the fractions cleared to smallest integers). Vertical lines are handled honestly: equal x-coordinates mean an undefined slope, and the tool says so and gives the x = c equation instead of dividing by zero.',
+    note: 'The exact fraction matters more here than almost anywhere: a slope of 2/3 written as 0.6667 fails the "is this line through these points?" check by a hair, and standard-form conversion from a rounded decimal produces the wrong integers. Keeping m and b as fractions until the last step is exactly what a maths teacher does on the board — and what decimal-only calculators can\'t.',
+    faqs: [
+      { q: 'How do I find the slope between two points?', a: 'Divide the change in y by the change in x: m = (y₂ − y₁)/(x₂ − x₁). Through (1, 2) and (4, 4): m = (4 − 2)/(4 − 1) = 2/3 — kept as a fraction, since 0.6667 is already wrong in the fourth decimal.' },
+      { q: 'What are the three forms of a line equation?', a: 'Slope-intercept y = mx + b (best for graphing), point-slope y − y₁ = m(x − x₁) (best when you know a point), and standard Ax + By = C with integer A, B, C (the textbook "final answer" form). The tool derives all three exactly.' },
+      { q: 'What if the two points have the same x?', a: 'Then the run is zero and the slope is undefined — the line is vertical, with equation x = c. The tool detects this and says so instead of producing a division-by-zero error or a giant fake slope.' },
+      { q: 'How is standard form derived?', a: 'Start from y = mx + b, multiply through by the least common denominator to clear fractions, move x and y to one side, and divide by any common factor — the tool shows the result with A positive by convention.' },
+      { q: 'Can coordinates be fractions or decimals?', a: 'Yes — every coordinate is parsed as an exact rational, so points like (1/2, 3/4) or (2.5, −1.25) give exact slopes and intercepts.' },
+    ],
+    keywords: ['slope calculator', 'slope from two points', 'line equation calculator', 'point slope form', 'slope intercept form', 'standard form of a line', 'find equation of line'],
+  },
+  {
+    slug: 'distance-midpoint',
+    name: 'Distance & Midpoint Calculator',
+    icon: '📏',
+    description:
+      'Distance between two points in exact simplified radical form (2√13, not 7.2111) plus the exact midpoint — with the Pythagorean working shown. In your browser.',
+    lead: 'From (−2, 1) to (4, 5): distance = 2√13 exactly — the simplified radical form homework requires — with the decimal alongside, and the midpoint (1, 3).',
+    widget: 'distance-midpoint',
+    how: 'The distance formula is Pythagoras in coordinates: d = √(Δx² + Δy²). The tool computes Δx and Δy as exact rationals, squares and sums them exactly, then simplifies the square root symbolically — extracting square factors so √52 becomes 2√13 — and only then offers a decimal approximation alongside. The midpoint is the coordinate-wise average ((x₁+x₂)/2, (y₁+y₂)/2), kept as exact fractions. Every step of the working is shown: the differences, the squares, the sum, the simplification.',
+    note: 'The simplified radical answer is the genuinely rare feature: most online distance calculators jump straight to 7.2111, but "give your answer in simplified radical form" is how the question is actually asked in algebra and geometry courses — and 2√13 is the answer that scores. It also chains: the next line of many problems needs d², which is exact only if d stayed symbolic.',
+    faqs: [
+      { q: 'What is the distance formula?', a: 'd = √((x₂ − x₁)² + (y₂ − y₁)²) — the Pythagorean theorem applied to the right triangle formed by the two points. From (−2, 1) to (4, 5): d = √(6² + 4²) = √52 = 2√13.' },
+      { q: 'Why give the answer as a radical instead of a decimal?', a: 'Because 2√13 is exact and 7.2111 is not — and algebra/geometry courses explicitly ask for "simplified radical form". The tool gives both, exact first.' },
+      { q: 'How is the radical simplified?', a: 'By extracting square factors: 52 = 4 × 13, so √52 = 2√13. The tool factorizes the sum of squares and pulls out every square factor automatically.' },
+      { q: 'What is the midpoint formula?', a: 'The average of the coordinates: M = ((x₁+x₂)/2, (y₁+y₂)/2). It\'s the point exactly halfway along the segment — computed here as exact fractions, so the midpoint of (0,0) and (1,1) is (1/2, 1/2), not (0.5, 0.5) pretending to be exact.' },
+      { q: 'Do fractional or decimal coordinates work?', a: 'Yes — coordinates parse as exact rationals, and the radical simplification handles the resulting fractions correctly (√(p/q) is rationalized to a clean coefficient times a square-free root).' },
+    ],
+    keywords: ['distance formula calculator', 'distance between two points', 'midpoint calculator', 'midpoint formula', 'distance in radical form', 'simplified radical distance'],
+  },
+  {
+    slug: 'binomial-expansion',
+    name: 'Binomial Expansion Calculator',
+    icon: '🔺',
+    description:
+      'Expand (ax + b)ⁿ with exact coefficients — every sign and number right at any n — plus a single-term finder and the Pascal\'s triangle row. In your browser.',
+    lead: '(2x − 3)⁴ = 16x⁴ − 96x³ + 216x² − 216x + 81 — expanded with exact BigInt coefficients, plus the k-th term on demand and Pascal\'s row for n.',
+    widget: 'binomial',
+    how: 'The binomial theorem says (A + B)ⁿ = Σ C(n,k)·Aⁿ⁻ᵏ·Bᵏ, and the tool computes each term exactly: binomial coefficients as big integers, powers of your (possibly fractional, possibly negative) A and B as exact rationals, signs falling out naturally from the arithmetic rather than from error-prone alternation rules. Full expansions display up to n = 12; beyond that the term finder takes over — give k and get the exact term C(n,k)·Aⁿ⁻ᵏ·Bᵏ·xⁿ⁻ᵏ for any n up to 200, which is how "find the coefficient of x⁷ in (…)²⁰" problems are actually solved. Pascal\'s triangle row n is shown alongside for n ≤ 30.',
+    note: 'Sign errors are the classic binomial-expansion failure — with B negative, terms alternate only when they should, and hand-alternating "+ − + −" breaks the moment A is also negative or a term\'s power is even. Exact arithmetic sidesteps the rule entirely: each term\'s sign is computed, not remembered. The term finder mirrors exam technique: nobody expands (x + 2)²⁰ fully to find one coefficient — you go straight to k with the formula.',
+    faqs: [
+      { q: 'What is the binomial theorem?', a: '(A + B)ⁿ expands to the sum of C(n,k)·Aⁿ⁻ᵏ·Bᵏ for k = 0…n, where C(n,k) are the binomial coefficients — row n of Pascal\'s triangle. The tool applies it with your A, B and n, exactly.' },
+      { q: 'How do I find one specific term without expanding everything?', a: 'Use the general term: term k has coefficient C(n,k)·Aⁿ⁻ᵏ·Bᵏ and power xⁿ⁻ᵏ. To find the x⁷ term of a degree-20 expansion, set k = 13 — the term finder does this for any k.' },
+      { q: 'Why do signs alternate when B is negative?', a: 'Because Bᵏ flips sign with each k: (−3)¹ = −3, (−3)² = +9, and so on. The tool computes each Bᵏ exactly, so the signs are always right — including the tricky cases where A is negative too.' },
+      { q: 'What is Pascal\'s triangle\'s role?', a: 'Row n lists the coefficients C(n,0)…C(n,n) — each entry the sum of the two above it. For (A+B)⁴ the row is 1 4 6 4 1. The tool prints the row for your n (up to 30) as a cross-check.' },
+      { q: 'Do fractional coefficients work?', a: 'Yes — (x/2 + 3)⁵ expands with exact fractional coefficients (rationals, not decimals), and n can go to 200 via the term finder with full BigInt precision.' },
+    ],
+    keywords: ['binomial expansion calculator', 'binomial theorem calculator', 'expand binomial', 'pascals triangle calculator', 'find the coefficient binomial', 'general term binomial'],
   },
 ];

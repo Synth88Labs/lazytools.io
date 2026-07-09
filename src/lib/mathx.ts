@@ -142,7 +142,7 @@ export function repeatingToRat(sRaw: string): Rat {
 function mulmod(a: bigint, b: bigint, m: bigint): bigint {
   return (a * b) % m;
 }
-function powmod(b: bigint, e: bigint, m: bigint): bigint {
+export function powmod(b: bigint, e: bigint, m: bigint): bigint {
   let r = 1n;
   b %= m;
   while (e > 0n) {
@@ -245,6 +245,141 @@ export function nCr(n: number, r: number): bigint {
   let out = 1n;
   for (let i = 1n; i <= BigInt(r); i++) out = (out * (BigInt(n) - BigInt(r) + i)) / i;
   return out;
+}
+
+// ---------- long division ----------
+
+export interface DivisionStep {
+  /** digit of the dividend brought down (or '' for the first chunk) */
+  digit: string;
+  /** working value after bring-down */
+  partial: bigint;
+  /** quotient digit chosen */
+  q: bigint;
+  /** q × divisor subtracted */
+  product: bigint;
+  /** remainder after subtraction */
+  rem: bigint;
+}
+
+export interface LongDivision {
+  quotient: bigint;
+  remainder: bigint;
+  steps: DivisionStep[];
+  /** decimal continuation digits (post-point), with repetend bounds if periodic */
+  decimalDigits: string;
+  repeatStart: number; // index into decimalDigits, -1 if terminating/none
+  truncated: boolean;
+}
+
+/** Classic long-division working: integer phase digit by digit, then decimal phase with repetend detection. */
+export function longDivision(dividend: bigint, divisor: bigint, maxDecimals = 60): LongDivision {
+  if (divisor === 0n) throw new Error('Division by zero');
+  if (dividend < 0n || divisor < 0n) throw new Error('Use non-negative integers (apply signs at the end).');
+  const digits = String(dividend).split('');
+  const steps: DivisionStep[] = [];
+  let cur = 0n;
+  let quotient = 0n;
+  for (const d of digits) {
+    cur = cur * 10n + BigInt(d);
+    const q = cur / divisor;
+    const product = q * divisor;
+    const rem = cur - product;
+    steps.push({ digit: d, partial: cur, q, product, rem });
+    quotient = quotient * 10n + q;
+    cur = rem;
+  }
+  // decimal phase with cycle detection on remainders
+  let decimalDigits = '';
+  let repeatStart = -1;
+  let truncated = false;
+  if (cur !== 0n) {
+    const seen = new Map<string, number>();
+    let rem = cur;
+    while (rem !== 0n) {
+      const key = String(rem);
+      if (seen.has(key)) { repeatStart = seen.get(key)!; break; }
+      if (decimalDigits.length >= maxDecimals) { truncated = true; break; }
+      seen.set(key, decimalDigits.length);
+      rem *= 10n;
+      decimalDigits += String(rem / divisor);
+      rem %= divisor;
+    }
+  }
+  return { quotient, remainder: cur, steps, decimalDigits, repeatStart, truncated };
+}
+
+// ---------- extended Euclid & modular arithmetic ----------
+
+export interface EgcdRow {
+  a: bigint; b: bigint; q: bigint; r: bigint; x: bigint; y: bigint;
+}
+
+/** Extended Euclidean algorithm with the full back-substitution table: g = gcd, and x·a + y·b = g. */
+export function egcd(aIn: bigint, bIn: bigint): { g: bigint; x: bigint; y: bigint; rows: EgcdRow[] } {
+  let [old_r, r] = [aIn, bIn];
+  let [old_x, x] = [1n, 0n];
+  let [old_y, y] = [0n, 1n];
+  const rows: EgcdRow[] = [];
+  while (r !== 0n) {
+    const q = old_r / r;
+    rows.push({ a: old_r, b: r, q, r: old_r - q * r, x, y });
+    [old_r, r] = [r, old_r - q * r];
+    [old_x, x] = [x, old_x - q * x];
+    [old_y, y] = [y, old_y - q * y];
+  }
+  return { g: old_r, x: old_x, y: old_y, rows };
+}
+
+/** Modular inverse of a mod n (throws when gcd(a,n) ≠ 1). */
+export function modInverse(a: bigint, n: bigint): bigint {
+  const { g, x } = egcd(((a % n) + n) % n, n);
+  if (g !== 1n) throw new Error(`No inverse: gcd(${a}, ${n}) = ${g} ≠ 1 — inverses exist only when a and n are coprime.`);
+  return ((x % n) + n) % n;
+}
+
+export interface PowmodStep {
+  bit: string;
+  op: 'square' | 'square+multiply' | 'init';
+  acc: bigint;
+}
+
+/** Square-and-multiply trace for a^e mod n (MSB-first), for teaching displays. */
+export function powmodTrace(base: bigint, exp: bigint, mod: bigint): { result: bigint; steps: PowmodStep[] } {
+  if (mod <= 0n) throw new Error('Modulus must be positive.');
+  const bits = exp.toString(2);
+  let acc = 1n;
+  const b = ((base % mod) + mod) % mod;
+  const steps: PowmodStep[] = [];
+  for (const bit of bits) {
+    const isFirst = steps.length === 0;
+    acc = (acc * acc) % mod;
+    if (bit === '1') acc = (acc * b) % mod;
+    steps.push({ bit, op: isFirst ? 'init' : bit === '1' ? 'square+multiply' : 'square', acc });
+  }
+  return { result: acc, steps };
+}
+
+// ---------- exact radicals of rationals ----------
+
+/** √(r) for a non-negative rational, as coef·√radicand with radicand square-free: √(p/q) = √(pq)/q. */
+export function sqrtRatSimplified(r: Rat): { coef: Rat; radicand: bigint } {
+  if (r.sign() < 0) throw new Error('Square root of a negative number is not real.');
+  if (r.isZero()) return { coef: new Rat(0n), radicand: 1n };
+  const [k, m] = extractSquare(r.n * r.d);
+  return { coef: new Rat(k, r.d), radicand: m };
+}
+
+/** Format coef·√radicand for display: "6√5", "√2/3", "4" (radicand 1). */
+export function radicalToString(coef: Rat, radicand: bigint): string {
+  if (coef.isZero()) return '0';
+  if (radicand === 1n) return coef.toFrac();
+  const surd = `√${radicand}`;
+  if (coef.n === 1n && coef.d === 1n) return surd;
+  if (coef.n === -1n && coef.d === 1n) return `-${surd}`;
+  if (coef.d === 1n) return `${coef.n}${surd}`;
+  const numPart = coef.n === 1n ? surd : coef.n === -1n ? `-${surd}` : `${coef.n}${surd}`;
+  return `${numPart}/${coef.d}`;
 }
 
 // ---------- roman numerals ----------

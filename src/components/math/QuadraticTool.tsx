@@ -57,6 +57,7 @@ export default function QuadraticTool() {
               <li>Discriminant D = b² − 4ac = ({String(s.bI)})² − 4·{String(s.aI)}·{String(s.cI)} = <strong>{String(s.D)}</strong></li>
               <li>Quadratic formula: x = (−b ± √D) / 2a = ({String(-s.bI)} ± √{String(s.D)}) / {String(2n * s.aI)}</li>
               <li>Simplified exactly to the roots above. Vertex of the parabola: {s.vertex}</li>
+              {s.factored && <li>Factored form: <span class="font-mono font-bold">{s.factored} = 0</span></li>}
             </ol>
           </div>
         </>
