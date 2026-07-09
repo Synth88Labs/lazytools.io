@@ -307,6 +307,34 @@ const POSTS = [
     fact: 'floats hold ~15–17 digits — then they invent',
     icon: '➗',
   },
+  {
+    slug: 'brand-colors-guide',
+    kicker: 'COLOR TOOLS',
+    lines: ['Brand colors: the exact', 'hex codes — and how', 'to use them legally'],
+    fact: 'a color isn’t owned; impersonation is the line',
+    icon: '🏷️',
+  },
+  {
+    slug: 'significant-figures-guide',
+    kicker: 'MATHEMATICS',
+    lines: ['Significant figures:', 'the rules, the ambiguous', 'cases & how to round'],
+    fact: '0.004560 → 4 sig figs · 1200 is ambiguous',
+    icon: '🎯',
+  },
+  {
+    slug: 'chmod-permissions-guide',
+    kicker: 'NETWORK & IT',
+    lines: ['chmod 755 explained:', 'Unix file permissions', 'without the guesswork'],
+    fact: 'read=4 · write=2 · execute=1 — each digit sums',
+    icon: '🔑',
+  },
+  {
+    slug: 'cron-expressions-guide',
+    kicker: 'NETWORK & IT',
+    lines: ['Cron syntax explained:', 'five fields, shortcuts', '& the OR-rule trap'],
+    fact: '0 0 1 * 1 fires the 1st AND every Monday',
+    icon: '⏲️',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

@@ -35,7 +35,7 @@ Namecheap FTPS deploy pipeline.
 | Productivity | **Pomodoro timer**, countdown/stopwatch, meeting-cost meter, Eisenhower matrix, habit tracker, Kanban, mind map, Gantt, decision matrix, RICE, SWOT, pros/cons, flowchart, whiteboard, time-blocking, OKR, checklist, retro board, eye-rest — all saved locally, JSON export |
 | Network & IT | **IPv4 & IPv6 subnet calculators** (exact 128-bit math), CIDR⇄range, IP format converter, IPv6 expand/compress (RFC 5952), chmod calculator, cron parser with next-run times, MAC formatter (EUI-64, link-local) |
 
-**Content & growth engine** — 35 SEO/GEO blog guides (hero + custom SVG infographic, schema,
+**Content & growth engine** — 47 SEO/GEO blog guides (hero + custom SVG infographic, schema,
 cited sources); a daily **market-research agent** that scans for browser-tool opportunities and
 files scored findings to `docs/research/` — the Network & IT category and its IPv6 guide shipped
 directly from its 7 Jul scan (IPv6 crossed 50% of Google traffic in Mar 2026).

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="A cron expression has five fields: minute (0 to 59), hour (0 to 23), day of month (1 to 31), month (1 to 12), and day of week (0 to 7 where 0 and 7 are Sunday). Special characters: asterisk means every value, a comma lists values, a hyphen gives a range, and slash gives steps. The classic trap: when both day-of-month and day-of-week are set, cron runs when EITHER matches, not both — so 0 0 1 star 1 fires on the 1st AND every Monday.">
+  <defs>
+    <style>
+      .h { font: 800 30px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill:#0f172a; }
+      .lab { font: 700 19px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill:#334155; }
+      .sub { font: 500 15px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill:#64748b; }
+      .big { font: 800 16px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; }
+      .mono { font: 800 40px Consolas,Menlo,monospace; }
+      .monoS { font: 700 15px Consolas,Menlo,monospace; }
+    </style>
+  </defs>
+
+  <text x="600" y="42" text-anchor="middle" class="h">⏲️ Five fields, left to right</text>
+
+  <!-- five fields -->
+  <g transform="translate(70 70)">
+    <g transform="translate(0 0)"><rect x="0" y="0" width="200" height="120" rx="12" fill="#eef9ff" stroke="#1d87f1" stroke-width="2"/><text x="100" y="52" text-anchor="middle" class="mono" fill="#1e3a8a">*</text><text x="100" y="84" text-anchor="middle" class="big" fill="#1e3a8a">Minute</text><text x="100" y="106" text-anchor="middle" class="sub">0–59</text></g>
+    <g transform="translate(215 0)"><rect x="0" y="0" width="200" height="120" rx="12" fill="#f0fdf4" stroke="#059669" stroke-width="2"/><text x="100" y="52" text-anchor="middle" class="mono" fill="#065f46">*</text><text x="100" y="84" text-anchor="middle" class="big" fill="#065f46">Hour</text><text x="100" y="106" text-anchor="middle" class="sub">0–23</text></g>
+    <g transform="translate(430 0)"><rect x="0" y="0" width="200" height="120" rx="12" fill="#faf5ff" stroke="#7c3aed" stroke-width="2"/><text x="100" y="52" text-anchor="middle" class="mono" fill="#5b21b6">*</text><text x="100" y="84" text-anchor="middle" class="big" fill="#5b21b6">Day of month</text><text x="100" y="106" text-anchor="middle" class="sub">1–31</text></g>
+    <g transform="translate(645 0)"><rect x="0" y="0" width="200" height="120" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/><text x="100" y="52" text-anchor="middle" class="mono" fill="#92400e">*</text><text x="100" y="84" text-anchor="middle" class="big" fill="#92400e">Month</text><text x="100" y="106" text-anchor="middle" class="sub">1–12 / JAN–DEC</text></g>
+    <g transform="translate(860 0)"><rect x="0" y="0" width="200" height="120" rx="12" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/><text x="100" y="52" text-anchor="middle" class="mono" fill="#991b1b">*</text><text x="100" y="84" text-anchor="middle" class="big" fill="#991b1b">Day of week</text><text x="100" y="106" text-anchor="middle" class="sub">0–7 (0/7 = Sun)</text></g>
+  </g>
+
+  <!-- special chars -->
+  <text x="600" y="238" text-anchor="middle" class="lab">The four special characters</text>
+  <g transform="translate(90 258)">
+    <rect x="0" y="0" width="245" height="80" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/><text x="20" y="34" class="monoS" fill="#0f172a">*</text><text x="60" y="34" class="sub" fill="#0f172a">every value</text><text x="20" y="62" class="monoS" fill="#64748b">* * * * *</text><text x="140" y="62" class="sub">every minute</text></g>
+  <g transform="translate(355 258)">
+    <rect x="0" y="0" width="245" height="80" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/><text x="20" y="34" class="monoS" fill="#0f172a">,</text><text x="60" y="34" class="sub" fill="#0f172a">list</text><text x="20" y="62" class="monoS" fill="#64748b">0 9,17 * * *</text><text x="150" y="62" class="sub">9am &amp; 5pm</text></g>
+  <g transform="translate(620 258)">
+    <rect x="0" y="0" width="245" height="80" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/><text x="20" y="34" class="monoS" fill="#0f172a">-</text><text x="60" y="34" class="sub" fill="#0f172a">range</text><text x="20" y="62" class="monoS" fill="#64748b">0 9 * * 1-5</text><text x="150" y="62" class="sub">weekdays</text></g>
+  <g transform="translate(885 258)">
+    <rect x="0" y="0" width="245" height="80" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/><text x="20" y="34" class="monoS" fill="#0f172a">/</text><text x="60" y="34" class="sub" fill="#0f172a">step</text><text x="20" y="62" class="monoS" fill="#64748b">*/15 * * * *</text><text x="150" y="62" class="sub">every 15 min</text></g>
+
+  <!-- the trap -->
+  <g transform="translate(90 366)">
+    <rect x="0" y="0" width="1020" height="180" rx="14" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+    <text x="510" y="40" text-anchor="middle" class="lab" fill="#991b1b">⚠ The trap that bites everyone</text>
+    <text x="510" y="74" text-anchor="middle" class="monoS" fill="#0f172a" font-size="20">0 0 1 * 1</text>
+    <text x="510" y="104" text-anchor="middle" class="sub">reads like "midnight on the 1st, if it's a Monday"…</text>
+    <text x="510" y="132" text-anchor="middle" class="big" fill="#991b1b">…but it fires on the 1st of the month AND on every Monday.</text>
+    <text x="510" y="160" text-anchor="middle" class="sub">When BOTH day-of-month and day-of-week are set, cron matches if EITHER does (OR, not AND).</text>
+  </g>
+
+  <rect x="200" y="560" width="800" height="46" rx="12" fill="#153056"/>
+  <text x="600" y="588" text-anchor="middle" font-family="'Plus Jakarta Sans','Segoe UI',Arial,sans-serif" font-size="15" font-weight="700" fill="#7ef0c0">Always check the next few run times before trusting a schedule.</text>
+</svg>

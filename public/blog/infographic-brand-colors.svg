@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="How to use brand colors: colors themselves are not protected by copyright or trademark, so anyone may use Coca-Cola red or Tiffany blue for inspiration. What trademark law protects is using a brand's identity to confuse consumers. Fair uses include mood boards, matching an embed to a platform's UI, and design study. Not fair: impersonating a brand or implying endorsement. A brand palette is a primary color plus secondary and accent colors, and brands rebrand, so verify against the official style guide for contract work.">
+  <defs>
+    <style>
+      .h { font: 800 30px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill:#0f172a; }
+      .lab { font: 700 19px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill:#334155; }
+      .sub { font: 500 15px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill:#64748b; }
+      .big { font: 800 19px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; }
+      .mono { font: 700 15px Consolas,Menlo,monospace; }
+    </style>
+  </defs>
+
+  <text x="600" y="42" text-anchor="middle" class="h">🏷️ Can you use a brand's colors? Mostly yes.</text>
+
+  <!-- swatch strip -->
+  <g transform="translate(90 70)">
+    <rect x="0" y="0" width="170" height="56" rx="10" fill="#e50914"/><text x="85" y="34" text-anchor="middle" class="mono" fill="#ffffff">Netflix #e50914</text>
+    <rect x="185" y="0" width="170" height="56" rx="10" fill="#1db954"/><text x="270" y="34" text-anchor="middle" class="mono" fill="#0b3d1e">Spotify #1db954</text>
+    <rect x="370" y="0" width="170" height="56" rx="10" fill="#0abab5"/><text x="455" y="34" text-anchor="middle" class="mono" fill="#053b39">Tiffany #0abab5</text>
+    <rect x="555" y="0" width="170" height="56" rx="10" fill="#ff9900"/><text x="640" y="34" text-anchor="middle" class="mono" fill="#4a2c00">Amazon #ff9900</text>
+    <rect x="740" y="0" width="280" height="56" rx="10" fill="#4285f4"/><text x="880" y="34" text-anchor="middle" class="mono" fill="#ffffff">Google #4285f4 +3 more</text>
+  </g>
+
+  <!-- the law -->
+  <g transform="translate(90 156)">
+    <rect x="0" y="0" width="465" height="150" rx="14" fill="#f0fdf4" stroke="#059669" stroke-width="2"/>
+    <text x="232" y="34" text-anchor="middle" class="big" fill="#065f46">A color is not owned</text>
+    <text x="232" y="66" text-anchor="middle" class="sub">copyright &amp; trademark don't protect a hex code —</text>
+    <text x="232" y="88" text-anchor="middle" class="sub">anyone may paint in Coca-Cola red</text>
+    <text x="232" y="122" text-anchor="middle" class="sub" font-weight="700" fill="#065f46">(rare exception: a few registered trade-dress colors</text>
+    <text x="232" y="140" text-anchor="middle" class="sub" font-weight="700" fill="#065f46">in one industry, e.g. Tiffany blue for jewelry)</text>
+  </g>
+  <g transform="translate(645 156)">
+    <rect x="0" y="0" width="465" height="150" rx="14" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+    <text x="232" y="34" text-anchor="middle" class="big" fill="#991b1b">What IS protected</text>
+    <text x="232" y="66" text-anchor="middle" class="sub">using a brand's identity to CONFUSE consumers —</text>
+    <text x="232" y="88" text-anchor="middle" class="sub">passing your product off as theirs,</text>
+    <text x="232" y="110" text-anchor="middle" class="sub">or implying an endorsement that isn't real</text>
+    <text x="232" y="138" text-anchor="middle" class="sub" font-weight="700" fill="#991b1b">that's trademark infringement, not "using a color"</text>
+  </g>
+
+  <!-- fair / not -->
+  <text x="600" y="352" text-anchor="middle" class="lab">Where the line falls in practice</text>
+  <g transform="translate(90 372)">
+    <rect x="0" y="0" width="465" height="150" rx="14" fill="#eef9ff" stroke="#1d87f1" stroke-width="2"/>
+    <text x="24" y="34" class="big" fill="#1e3a8a">✓ Normal design practice</text>
+    <text x="24" y="64" class="sub">• mood boards &amp; palette inspiration</text>
+    <text x="24" y="88" class="sub">• matching a share button to a platform's UI</text>
+    <text x="24" y="112" class="sub">• studying a brand's color system</text>
+    <text x="24" y="136" class="sub">• fan art &amp; commentary</text>
+  </g>
+  <g transform="translate(645 372)">
+    <rect x="0" y="0" width="465" height="150" rx="14" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+    <text x="24" y="34" class="big" fill="#92400e">✗ Crosses into infringement</text>
+    <text x="24" y="64" class="sub">• a logo/product that mimics the brand</text>
+    <text x="24" y="88" class="sub">• implying partnership or endorsement</text>
+    <text x="24" y="112" class="sub">• counterfeit packaging</text>
+    <text x="24" y="136" class="sub">• trade-dress copying in the same market</text>
+  </g>
+
+  <rect x="200" y="556" width="800" height="52" rx="12" fill="#153056"/>
+  <text x="600" y="578" text-anchor="middle" font-family="'Plus Jakarta Sans','Segoe UI',Arial,sans-serif" font-size="16" font-weight="700" fill="#ffffff">A palette is primary + secondary + accent — and brands rebrand.</text>
+  <text x="600" y="598" text-anchor="middle" font-family="'Plus Jakarta Sans','Segoe UI',Arial,sans-serif" font-size="14" font-weight="600" fill="#7ef0c0">For contract work, confirm against the brand's own current style guide.</text>
+</svg>
