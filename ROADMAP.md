@@ -12,7 +12,7 @@ the legal review) are cleared.
 ratings (PHP + SQLite), smart header search, sitemap, auto-generated `llms.txt`, GitHub Actions →
 Namecheap FTPS deploy pipeline.
 
-**All 17 categories live** (~357 pages, 285+ tools):
+**All 17 categories live** (~358 pages, 286+ tools):
 
 | Category | Highlights |
 |---|---|
@@ -20,7 +20,7 @@ Namecheap FTPS deploy pipeline.
 | Calculators | percentage, EMI, BMI, age, tip, discount, interest… |
 | Size Converters | ring, shoe, bra, clothing, hat, kids' shoe |
 | Text Tools | counters, case, sort, dedupe, find-and-replace, slugify |
-| Color Tools | HEX/RGB/HSL/CMYK, WCAG contrast, shades, gradient, mixer |
+| Color Tools | HEX/RGB/HSL/CMYK, WCAG contrast, shades, gradient, mixer, **brand color finder** (1,100+ brand palettes, name + reverse-hex search) |
 | File & Data | CSV/JSON/XML/YAML, Markdown, JSON formatter, **e-invoicing cluster**: EN 16931 viewer + Factur-X (France) + **KSeF FA(3) viewer & pre-checker** (Poland) + Peppol BIS (Belgium) |
 | Developer Tools | Base64, URL/HTML entities, SHA hashes, JWT, regex, number base, **LLM token counter & cost calculator** (exact o200k counts in-browser, dated pricing) |
 | Generators | password, UUID, QR, random number, lorem ipsum |

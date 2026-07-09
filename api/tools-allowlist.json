@@ -29,6 +29,7 @@
   "cipher/rot13",
   "cipher/rot47",
   "cipher/vigenere-cipher",
+  "color/brand-colors",
   "color/color-converter",
   "color/color-mixer",
   "color/color-shades-generator",

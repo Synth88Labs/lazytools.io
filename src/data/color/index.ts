@@ -7,7 +7,7 @@ export interface ColorToolDef {
   description: string;
   lead: string;
   /** which widget the page renders */
-  widget: 'converter' | 'contrast' | 'shades' | 'gradient' | 'mixer';
+  widget: 'converter' | 'contrast' | 'shades' | 'gradient' | 'mixer' | 'brands';
   /** preset input mode for the converter widget */
   presetInput?: 'hex' | 'rgb';
   how: string;
@@ -152,6 +152,26 @@ export const COLOR_TOOLS: ColorToolDef[] = [
       { q: 'Local processing?', a: 'Yes — instant, offline-capable, nothing transmitted.' },
     ],
     keywords: ['color mixer online', 'blend two colors', 'mix hex colors', 'color interpolation', 'midpoint between colors'],
+  },
+  {
+    slug: 'brand-colors',
+    name: 'Brand Color Finder',
+    icon: '🏷️',
+    description:
+      'Look up the official color palettes of 1,100+ famous brands — Google, Netflix, Coca-Cola, Spotify and more. Search by brand name or hex code, click any swatch to copy. Free, instant, in your browser.',
+    lead: 'Need Netflix red or Spotify green? Search 1,100+ brand palettes by name — or reverse-search by hex to see which brands use a color — and click any swatch to copy it.',
+    widget: 'brands',
+    how: 'Every entry pairs a brand with the hex values of its documented palette, primary color first. Type a brand name for an instant filter, or type a hex fragment (with or without the #) to reverse-search — "#e50914" finds Netflix, "1db9" finds Spotify — and click any swatch to copy its code, with the hex revealed on hover. The dataset covers the brands designers actually reach for: tech and social platforms, finance and crypto, airlines and hotels, automotive, retail, food and beverage, media and streaming, telecoms, fashion and luxury, gaming, logistics and sport — over 1,100 in all, searchable entirely in your browser with no request leaving the page.',
+    note: 'Two honest caveats built in. First, provenance: these values are compiled from publicly documented brand guidelines, press kits and long-standing community references — brand colors are facts, but brands do evolve them (rebrands happen), so treat the palette as a strong starting point and check the brand\'s own guidelines for contract work. Corrections are welcome via the contact page. Second, trademarks: brand names appear here only to identify whose colors are shown — the names and logos belong to their owners, and having a brand\'s hex codes does not license you to impersonate it.',
+    faqs: [
+      { q: 'How do I find a specific brand\'s colors?', a: 'Type the brand name in the search box — matching is instant and partial ("spoti" finds Spotify). Each card shows the palette with the primary color first; hover a swatch to see its hex, click to copy it.' },
+      { q: 'Can I search by color instead of by brand?', a: 'Yes — type a hex code or fragment, with or without the #. Searching "#ff0000" lists every brand whose palette starts with that value; a fragment like "1db9" works too. It\'s a quick way to answer "who uses this exact red?"' },
+      { q: 'Are these the official brand colors?', a: 'They are the widely documented values from brand guidelines, press kits and community references — for well-known brands these are stable and reliable. Brands do rebrand, though, so for contract or print work confirm against the brand\'s current style guide. Spot an outdated palette? Report it via the contact page.' },
+      { q: 'Can I legally use these colors?', a: 'Colors themselves are not protected — anyone may paint in Coca-Cola red. What trademark law protects is using a brand\'s identity in ways that confuse consumers. Referencing palettes for inspiration, mood boards or matching an embed to a platform\'s UI is normal practice; impersonating the brand is not.' },
+      { q: 'Why does a brand show several colors?', a: 'Most identity systems have a palette, not a single color: a primary plus secondary and accent colors (Google has four; Slack has five). The first swatch is always the primary — the one people mean by "the brand color".' },
+      { q: 'Is my search sent anywhere?', a: 'No — the entire dataset ships with the page and searching filters it locally. The page works offline, and no analytics see what brands you look up.' },
+    ],
+    keywords: ['brand colors', 'brand color finder', 'brand color palette', 'netflix red hex', 'spotify green hex', 'google colors', 'company brand colors', 'logo colors hex', 'brand color codes', 'official brand colors'],
   },
 ];
 
