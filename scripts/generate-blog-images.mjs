@@ -370,6 +370,13 @@ const POSTS = [
     fact: 'Aa × Aa → 1:2:1 genotype · 3:1 phenotype',
     icon: '🟩',
   },
+  {
+    slug: 'passport-photo-size-by-country-guide',
+    kicker: 'PHOTO SIZE MAKER',
+    lines: ['Passport photo size', 'by country: 35×45,', '2×2 in & the outliers'],
+    fact: 'Spain 26×32 · Canada 50×70 · Kenya 55×55',
+    icon: '🪪',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

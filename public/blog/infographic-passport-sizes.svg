@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" role="img" aria-label="Passport photo sizes around the world fall into groups. The biggest group is the ICAO 35 by 45 millimetre standard, used by the UK, the Schengen area, Germany, France, Australia, Japan passport, India since September 2025, and many more. A second group uses 2 by 2 inches, 51 by 51 millimetres square, used by the United States. Then there are outliers: Spain 26 by 32, China 33 by 48, Malaysia 35 by 50, Greece 40 by 60, Indonesia and Vietnam 40 by 60, Japan visa 45 by 45 square, Canada 50 by 70, Turkey 50 by 60, and Kenya 55 by 55 square. Background colour also varies: most want white, but France and Germany forbid white and require light grey or blue, New Zealand wants light but not white, and Indonesia uses red.">
+  <defs>
+    <style>
+      .h { font: 800 30px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill:#0f172a; }
+      .lab { font: 800 18px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill:#1e3a8a; }
+      .sub { font: 500 14px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill:#64748b; }
+      .sz { font: 800 16px Consolas,Menlo,monospace; fill:#0f172a; }
+      .cn { font: 600 13px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill:#334155; }
+    </style>
+  </defs>
+
+  <text x="600" y="42" text-anchor="middle" class="h">🪪 Passport photo sizes around the world</text>
+
+  <!-- ICAO group -->
+  <g transform="translate(60 70)">
+    <rect x="0" y="0" width="700" height="150" rx="14" fill="#eff6ff" stroke="#1d87f1" stroke-width="2"/>
+    <text x="20" y="30" class="lab">The big one — ICAO 35×45 mm</text>
+    <text x="20" y="54" class="sub">Most of the world inherits this biometric standard</text>
+    <text x="20" y="88" class="cn">🇬🇧 UK · 🇪🇺 Schengen · 🇩🇪 Germany · 🇫🇷 France · 🇮🇹 Italy · 🇳🇱 Netherlands · 🇵🇱 Poland</text>
+    <text x="20" y="112" class="cn">🇦🇺 Australia · 🇯🇵 Japan (passport) · 🇮🇳 India (since Sep 2025) · 🇨🇭 Switzerland · 🇵🇰 Pakistan</text>
+    <text x="20" y="136" class="cn">🇹🇭 Thailand · 🇵🇭 Philippines · 🇿🇦 South Africa · 🇲🇽 Mexico · 🇧🇷 Brazil visa …and many more</text>
+  </g>
+
+  <!-- 2x2 group -->
+  <g transform="translate(780 70)">
+    <rect x="0" y="0" width="360" height="150" rx="14" fill="#f0fdf4" stroke="#059669" stroke-width="2"/>
+    <text x="20" y="30" class="lab" fill="#065f46">The square — 2×2 in (51×51)</text>
+    <text x="20" y="54" class="sub">used by the United States</text>
+    <text x="20" y="90" class="cn">🇺🇸 US passport &amp; visa (600–1200 px)</text>
+    <text x="20" y="118" class="sub">India used to be here — it moved to 35×45 in Sep 2025.</text>
+  </g>
+
+  <!-- outliers -->
+  <text x="60" y="256" class="lab" fill="#5b21b6">The outliers — always check these</text>
+  <g transform="translate(60 272)" font-family="'Plus Jakarta Sans',sans-serif">
+    <!-- row of chips -->
+    <g transform="translate(0 0)"><rect width="205" height="58" rx="10" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/><text x="16" y="26" class="sz">🇪🇸 26×32</text><text x="16" y="46" class="sub">Spain (smallest)</text></g>
+    <g transform="translate(225 0)"><rect width="205" height="58" rx="10" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/><text x="16" y="26" class="sz">🇨🇳 33×48</text><text x="16" y="46" class="sub">China visa</text></g>
+    <g transform="translate(450 0)"><rect width="205" height="58" rx="10" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/><text x="16" y="26" class="sz">🇲🇾 35×50</text><text x="16" y="46" class="sub">Malaysia</text></g>
+    <g transform="translate(675 0)"><rect width="205" height="58" rx="10" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/><text x="16" y="26" class="sz">🇬🇷 40×60</text><text x="16" y="46" class="sub">Greece</text></g>
+    <g transform="translate(900 0)"><rect width="200" height="58" rx="10" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/><text x="16" y="26" class="sz">🇯🇵 45×45</text><text x="16" y="46" class="sub">Japan visa (square)</text></g>
+    <g transform="translate(0 70)"><rect width="205" height="58" rx="10" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/><text x="16" y="26" class="sz">🇻🇳🇮🇩 40×60</text><text x="16" y="46" class="sub">Vietnam · Indonesia</text></g>
+    <g transform="translate(225 70)"><rect width="205" height="58" rx="10" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/><text x="16" y="26" class="sz">🇹🇷 50×60</text><text x="16" y="46" class="sub">Turkey</text></g>
+    <g transform="translate(450 70)"><rect width="205" height="58" rx="10" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/><text x="16" y="26" class="sz">🇨🇦 50×70</text><text x="16" y="46" class="sub">Canada (largest)</text></g>
+    <g transform="translate(675 70)"><rect width="205" height="58" rx="10" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/><text x="16" y="26" class="sz">🇰🇪 55×55</text><text x="16" y="46" class="sub">Kenya (square)</text></g>
+    <g transform="translate(900 70)"><rect width="200" height="58" rx="10" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/><text x="16" y="26" class="sz">🇸🇦 200px²</text><text x="16" y="46" class="sub">Saudi e-Visa</text></g>
+  </g>
+
+  <!-- background note -->
+  <rect x="60" y="430" width="1080" height="86" rx="14" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+  <text x="80" y="462" class="lab" fill="#92400e">Size isn't everything — background colour varies too</text>
+  <text x="80" y="490" class="cn">Most want <tspan font-weight="800">white</tspan>. But 🇫🇷 France &amp; 🇩🇪 Germany <tspan font-weight="800" fill="#b91c1c">forbid white</tspan> (light grey/blue) · 🇳🇿 New Zealand wants light, <tspan font-weight="800">not white</tspan> · 🇮🇩 Indonesia uses <tspan font-weight="800" fill="#b91c1c">red</tspan>.</text>
+
+  <rect x="60" y="530" width="1080" height="60" rx="12" fill="#153056"/>
+  <text x="600" y="558" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="16" font-weight="800" fill="#ffffff">Always confirm your country's exact spec before you print or upload —</text>
+  <text x="600" y="580" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="15" font-weight="700" fill="#7ef0c0">and make the photo privately, in your browser, with the LazyTools Photo Size Maker.</text>
+</svg>
