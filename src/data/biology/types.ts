@@ -16,7 +16,7 @@ export interface BioTool {
   /** which cluster it belongs to on the hub page */
   cluster: 'lab' | 'genetics';
   /** custom island id, or 'calc' for the declarative field→result widget */
-  widget: 'sequence' | 'dilution' | 'punnett' | 'hardy-weinberg' | 'gc-tm' | 'calc';
+  widget: 'sequence' | 'dilution' | 'punnett' | 'hardy-weinberg' | 'gc-tm' | 'mol-weight' | 'calc';
   /** for widget:'calc' — the bio-compute function id + its input fields */
   computeId?: string;
   fields?: BioField[];

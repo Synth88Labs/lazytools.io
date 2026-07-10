@@ -1,5 +1,6 @@
 [
   "biology/dilution-calculator",
+  "biology/dna-molecular-weight",
   "biology/doubling-time",
   "biology/gc-content-tm",
   "biology/hardy-weinberg",
