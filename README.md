@@ -31,7 +31,7 @@ are no processing servers. The tool code downloads to *your* device and runs the
 yourself: open DevTools, watch the network tab, or switch off your connection mid-use — everything keeps
 working.
 
-## What's live — 18 categories, 296+ tools, ~370 pages
+## What's live — 19 categories, 325+ tools, ~410 pages
 
 | Category | Highlights |
 |---|---|
@@ -51,10 +51,11 @@ working.
 | [Productivity](https://lazytools.io/productivity/) | Pomodoro, Kanban, mind map, Gantt, habit tracker — saved locally, JSON export |
 | [Privacy & Security](https://lazytools.io/security/) | EXIF remover, AES-256 file encryption, file hash |
 | [Image Tools](https://lazytools.io/image/) | compress, convert, resize, **HEIC→JPG** (libheif wasm) |
+| [Photo Size Maker](https://lazytools.io/photo/) | **passport / visa / ID photos** for multiple countries — crop to exact official size, **on-device face-position check (MediaPipe BlazeFace)**, background & exposure checks, DPI-correct export; every spec cited + date-verified |
 | [PDF Tools](https://lazytools.io/pdf/) | merge/split/rotate **with live page previews**, unlock/protect (qpdf wasm), **accessibility checker (EAA)**, **redaction checker + rasterizing redactor** |
 | [Audio](https://lazytools.io/video/) | trim, speed, volume, WAV convert (Web Audio) |
 
-Plus **35 in-depth guides** on the [blog](https://lazytools.io/blog/) — each with custom infographics,
+Plus **50 in-depth guides** on the [blog](https://lazytools.io/blog/) — each with custom infographics,
 FAQ schema and cited sources — and a research-driven build pipeline (see
 [docs/research/](docs/research/)) that has shipped regulatory-deadline tools ahead of the French,
 Polish and Belgian e-invoicing mandates.
@@ -64,12 +65,41 @@ Polish and Belgian e-invoicing mandates.
 ```bash
 npm install
 npm run dev      # dev server at localhost:4321
-npm run build    # static site → dist/ (~370 pages)
+npm run build    # static site → dist/ (~410 pages)
 ```
 
-Stack: [Astro](https://astro.build) (static output) · [Preact](https://preactjs.com) islands ·
-[Tailwind CSS 4](https://tailwindcss.com) · TypeScript. WASM where it earns it (qpdf, libheif,
-pdf.js). No backend required — the build output is plain static files deployable to any host.
+## Tech & models
+
+**Framework.** [Astro](https://astro.build) with 100% static output (`output: 'static'`), interactive
+[Preact](https://preactjs.com) islands hydrated per-tool, [Tailwind CSS 4](https://tailwindcss.com) and
+TypeScript throughout. Pages are generated from typed registries under [`src/data/`](src/data/), so a
+new tool is a data entry plus (where needed) one island. The build is plain static files — deployable
+to any host, no SSR, no serverless, no backend.
+
+**The privacy model.** There are no processing servers. Every computation — parsing, encoding,
+cryptography, image and PDF manipulation, **and machine-learning inference** — happens on the user's
+device. Anything heavy is loaded lazily on first use and **self-hosted** under
+[`public/vendor/`](public/vendor/) so nothing is fetched from a third-party CDN. The only network calls
+after page load are an anonymous page-hit counter and an optional star rating (a tiny PHP endpoint that
+stores no personal data).
+
+**On-device models & engines** — what does the heavy lifting, and where:
+
+| Engine / model | Used for | How it runs |
+|---|---|---|
+| **[MediaPipe](https://ai.google.dev/edge/mediapipe) BlazeFace (short-range)** | Photo Size Maker — detects the face and derives head-height %, eye line, centering and tilt for the passport/visa compliance check | Google's face-detection model (`blaze_face_short_range.tflite`, ~230 KB) + the Tasks-Vision WASM runtime, **self-hosted** at `/vendor/mediapipe/`, lazy-loaded on first "Check photo". Falls back to the native [Shape Detection API](https://developer.mozilla.org/docs/Web/API/FaceDetector), then to manual guides |
+| **Canvas 2D API** | Photo crop/resize/matte + export (with JFIF **DPI patched** into the file), image compress/convert/resize, PDF page rasterizing | Native browser image codecs — decode, resample, re-encode JPEG/PNG/WebP |
+| **[libheif](https://github.com/strukturag/libheif) (WASM)** | HEIC/HEIF → JPG/PNG decoding | ~1.2 MB WASM decoder, loaded only when converting |
+| **[qpdf](https://qpdf.sourceforge.io/) (WASM)** | PDF unlock / password-protect | WASM build at `/vendor/qpdf.wasm` |
+| **[pdf.js](https://mozilla.github.io/pdf.js/)** | PDF page previews, accessibility (tag-tree) checker, redaction text-layer extraction | Mozilla's PDF engine + its worker |
+| **[gpt-tokenizer](https://github.com/niieani/gpt-tokenizer)** | LLM token counter — exact `o200k_base`/`cl100k_base` counts | Pure-JS BPE tokenizer, runs in-browser |
+| **Web Crypto API** | AES-256-GCM file encryption, SHA-2 file hashing, PBKDF2 key derivation, secure password generation | Native browser cryptography |
+| **Web Audio API** | Audio trim / speed / volume / WAV conversion | Native, decodes to `AudioBuffer` |
+| **`Intl.DateTimeFormat` (ICU)** | World-calendar conversions (Hijri, Hebrew, Persian, Coptic, Ethiopic, Buddhist, Julian…) | The browser's bundled ICU calendar data; reverse conversion by binary search over the day number |
+| **BigInt / rational arithmetic** | Exact math (primes via Miller–Rabin + Pollard rho, fractions, nCr/nPr), IPv4/IPv6 (128-bit) subnetting | Plain TypeScript, no floating-point rounding |
+
+Self-hosting the WASM/model assets means the strict "no third-party requests" promise holds even for
+the ML features — you can verify it in DevTools' network tab.
 
 ## Use these tools in your own site
 
@@ -86,6 +116,11 @@ The code is MIT-licensed — reuse is the point:
   [`src/components/file/EInvoiceTool.tsx`](src/components/file/EInvoiceTool.tsx).
 - **Converter UI**: [`src/components/UnitConverter.tsx`](src/components/UnitConverter.tsx) — a single
   Preact component you can drop into any Preact/React project.
+- **Passport-photo engine**: [`src/components/photo/PhotoMaker.tsx`](src/components/photo/PhotoMaker.tsx)
+  (crop + guide overlay + DPI-correct export) with the compliance checks in
+  [`src/lib/photo-checks.ts`](src/lib/photo-checks.ts) and the self-hosted MediaPipe face detector in
+  [`src/lib/face-model.ts`](src/lib/face-model.ts); country specs (each source-cited) live in
+  [`src/data/photo/`](src/data/photo/).
 
 Attribution is appreciated (a link to [lazytools.io](https://lazytools.io)) but not required by the license.
 

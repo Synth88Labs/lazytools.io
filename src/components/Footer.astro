@@ -1,7 +1,7 @@
 ---
 import { CATEGORIES, SITE } from '../lib/site';
 /** Only the flagship categories in the footer — the full list lives at /tools/. */
-const FEATURED = ['units', 'calc', 'math', 'pdf', 'image', 'dev'];
+const FEATURED = ['units', 'calc', 'math', 'photo', 'pdf', 'image', 'dev'];
 const featured = FEATURED.map((slug) => CATEGORIES.find((c) => c.slug === slug)!).filter(Boolean);
 const year = new Date().getFullYear();
 ---

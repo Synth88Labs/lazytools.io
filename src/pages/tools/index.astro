@@ -20,6 +20,7 @@ import { SECURITY_TOOLS } from '../../data/security/index';
 import { IMAGE_TOOLS } from '../../data/image/index';
 import { PDF_TOOLS } from '../../data/pdf/index';
 import { AUDIO_TOOLS } from '../../data/video/index';
+import { PHOTO_SPECS } from '../../data/photo/index';
 import { breadcrumbSchema, collectionPageSchema } from '../../lib/schema';
 
 const crumbs = [
@@ -54,6 +55,7 @@ const schema = [
       ...MATH_TOOLS.map((t) => ({ name: t.name, url: `/math/${t.slug}/` })),
       ...SECURITY_TOOLS.map((t) => ({ name: t.name, url: `/security/${t.slug}/` })),
       ...IMAGE_TOOLS.map((t) => ({ name: t.name, url: `/image/${t.slug}/` })),
+      ...PHOTO_SPECS.map((s) => ({ name: `${s.label} Maker`, url: `/photo/${s.slug}/` })),
       ...PDF_TOOLS.map((t) => ({ name: t.name, url: `/pdf/${t.slug}/` })),
       ...AUDIO_TOOLS.map((t) => ({ name: t.name, url: `/video/${t.slug}/` })),
     ],
@@ -301,6 +303,19 @@ const schema = [
           <li>
             <a href={`/image/${t.slug}/`} class="inline-block rounded-full border border-slate-200 px-3 py-1 text-sm text-slate-600 transition hover:border-brand-400 hover:text-brand-700">
               {t.icon} {t.name}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-bold text-slate-900">🪪 Photo Size Maker</h2>
+      <ul class="mt-4 flex flex-wrap gap-2">
+        {PHOTO_SPECS.map((s) => (
+          <li>
+            <a href={`/photo/${s.slug}/`} class="inline-block rounded-full border border-slate-200 px-3 py-1 text-sm text-slate-600 transition hover:border-brand-400 hover:text-brand-700">
+              {s.flag} {s.label}
             </a>
           </li>
         ))}

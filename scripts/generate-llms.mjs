@@ -22,6 +22,7 @@ import { CIPHER_TOOLS } from '../src/data/cipher/index.ts';
 import { PRODUCTIVITY_TOOLS } from '../src/data/productivity/index.ts';
 import { NETWORK_TOOLS } from '../src/data/network/index.ts';
 import { MATH_TOOLS } from '../src/data/math/index.ts';
+import { PHOTO_SPECS } from '../src/data/photo/index.ts';
 import { allPairs as zonePairs } from '../src/data/time/zones.ts';
 
 const U = SITE.url;
@@ -49,6 +50,7 @@ const HUBS = {
   math: { tools: MATH_TOOLS, blurb: 'Exact-arithmetic mathematics: fraction calculator with steps, decimal⇄fraction (incl. repeating decimals), GCD/LCM with Euclidean steps, prime factorizer (Miller–Rabin + Pollard rho), ratio solver, quadratic solver with simplified radical roots, descriptive statistics, Roman numerals, scientific notation, nCr/nPr — BigInt/rational arithmetic, no floating-point rounding.' },
   security: { tools: SECURITY_TOOLS, blurb: 'Image metadata (EXIF/GPS) remover, AES-256 file encryption, honest password-strength checker and file-hash verifier — the category where "no upload" is the whole point.' },
   image: { tools: IMAGE_TOOLS, blurb: 'Compressor, PNG/JPEG/WebP converter, HEIC-to-JPG (libheif wasm), resizer and image-to-Base64 — browser codecs, no upload, no watermark.' },
+  photo: { tools: PHOTO_SPECS.map((s) => ({ name: `${s.label} Maker`, slug: s.slug, description: s.lead })), blurb: 'Passport, visa and national ID photo maker for multiple countries — crop to the exact official size, run an on-device compliance check (background, exposure, and MediaPipe BlazeFace face-position detection), and export with the correct DPI embedded. The photo is processed entirely in the browser and never uploaded; every country spec is transcribed from the official issuing authority with a cited source and last-verified date.' },
   pdf: { tools: PDF_TOOLS, blurb: 'Merge, split, rotate, images-to-PDF, and password unlock/protect (qpdf wasm) — contracts and records processed in the browser, never uploaded.' },
   video: { tools: AUDIO_TOOLS, blurb: 'Audio trimmer, speed changer, volume changer and WAV converter via the Web Audio API — recordings never leave the browser.' },
 };
