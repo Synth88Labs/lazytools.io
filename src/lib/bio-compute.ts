@@ -36,6 +36,32 @@ export const BIO_COMPUTE: Record<string, (v: Record<string, number>) => BioRow[]
       { label: 'Per litre', value: `${fmt(cells * 1000)} cells/L` },
     ];
   },
+  hemocytometer: ({ count, squares, dilution, volume }) => {
+    if (squares <= 0) return [{ label: 'Result', value: 'Enter the number of squares counted' }];
+    const perMl = (count / squares) * 1e4 * (dilution || 1);
+    const rows: BioRow[] = [
+      { label: 'Cell density', value: `${fmt(perMl)} cells/mL`, hint: '(count ÷ squares) × 10⁴ × dilution' },
+    ];
+    if (volume > 0) rows.push({ label: 'Total cells', value: `${fmt(perMl * volume)} in ${fmt(volume)} mL`, hint: 'density × volume' });
+    return rows;
+  },
+  michaelis: ({ vmax, km, s }) => {
+    if (km + s <= 0) return [{ label: 'Result', value: 'Enter Km and [S]' }];
+    const v = (vmax * s) / (km + s);
+    return [
+      { label: 'Reaction velocity v', value: fmt(v), hint: 'v = Vmax·[S] / (Km + [S])' },
+      { label: 'Fraction of Vmax', value: `${fmt((v / vmax) * 100, 1)}%`, hint: 'at [S] = Km, v = ½·Vmax' },
+    ];
+  },
+  qpcr: ({ slope }) => {
+    if (slope >= 0) return [{ label: 'Result', value: 'Standard-curve slope is negative (e.g. −3.32)' }];
+    const fold = Math.pow(10, -1 / slope);
+    const eff = (fold - 1) * 100;
+    return [
+      { label: 'Amplification efficiency', value: `${fmt(eff, 1)}%`, hint: 'E = 10^(−1/slope) − 1' },
+      { label: 'Fold change per cycle', value: `${fmt(fold, 3)}×`, hint: 'ideal is 2× (slope −3.32, 100%)' },
+    ];
+  },
   population: ({ n0, r, t, k }) => {
     const logistic = k > 0;
     const N = logistic ? logisticGrowth(n0, r, t, k) : expGrowth(n0, r, t);

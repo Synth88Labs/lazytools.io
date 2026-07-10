@@ -11,6 +11,7 @@ import PunnettTool from '../../components/biology/PunnettTool.tsx';
 import HardyWeinbergTool from '../../components/biology/HardyWeinbergTool.tsx';
 import GcTmTool from '../../components/biology/GcTmTool.tsx';
 import MolWeightTool from '../../components/biology/MolWeightTool.tsx';
+import ProteinMwTool from '../../components/biology/ProteinMwTool.tsx';
 import BioCalc from '../../components/biology/BioCalc.tsx';
 import { BIO_TOOLS } from '../../data/biology/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
@@ -49,6 +50,7 @@ const blogPosts = allBlog.filter((p) => p.data.tools.includes(`/biology/${tool.s
         : tool.widget === 'hardy-weinberg' ? <HardyWeinbergTool client:load />
         : tool.widget === 'gc-tm' ? <GcTmTool client:load />
         : tool.widget === 'mol-weight' ? <MolWeightTool client:load />
+        : tool.widget === 'protein' ? <ProteinMwTool client:load />
         : <BioCalc client:load computeId={tool.computeId!} fields={tool.fields!} />}
     </div>
 

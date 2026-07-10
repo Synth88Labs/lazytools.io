@@ -144,6 +144,24 @@ export function concFromA260(a260: number, factor: number, dilution = 1): number
   return a260 * factor * dilution;
 }
 
+// ───────────────────────── protein ─────────────────────────
+
+/** Average residue masses (Da) for the 20 standard amino acids (one-letter code). */
+export const AA_RESIDUE_MASS: Record<string, number> = {
+  G: 57.0519, A: 71.0788, S: 87.0782, P: 97.1167, V: 99.1326, T: 101.1051,
+  C: 103.1388, L: 113.1594, I: 113.1594, N: 114.1038, D: 115.0886, Q: 128.1307,
+  K: 128.1741, E: 129.1155, M: 131.1926, H: 137.1411, F: 147.1766, R: 156.1875,
+  Y: 163.1760, W: 186.2132,
+};
+const WATER = 18.01524;
+
+/** Molecular weight (Da) of a protein from its one-letter amino-acid sequence. */
+export function proteinMolecularWeight(seq: string): { mw: number; residues: number } {
+  let mw = 0, n = 0;
+  for (const a of seq) if (AA_RESIDUE_MASS[a] != null) { mw += AA_RESIDUE_MASS[a]; n++; }
+  return { mw: n ? mw + WATER : 0, residues: n };
+}
+
 // ───────────────────────── dilution & molarity ─────────────────────────
 
 /** Solve C1·V1 = C2·V2 for the one missing value (pass null for the unknown). */
