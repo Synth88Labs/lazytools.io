@@ -7,6 +7,12 @@ import FaqSection from '../../components/FaqSection.astro';
 import RatingWidget from '../../components/RatingWidget.tsx';
 import CounterTool from '../../components/text/CounterTool.tsx';
 import TextTransformTool from '../../components/text/TextTransformTool.tsx';
+import InvisibleCharTool from '../../components/text/InvisibleCharTool.tsx';
+import HomoglyphTool from '../../components/text/HomoglyphTool.tsx';
+import TextDiffTool from '../../components/text/TextDiffTool.tsx';
+import ReadabilityTool from '../../components/text/ReadabilityTool.tsx';
+import UnicodeInspectorTool from '../../components/text/UnicodeInspectorTool.tsx';
+import WordFrequencyTool from '../../components/text/WordFrequencyTool.tsx';
 import { TEXT_TOOLS, type TextToolDef } from '../../data/text/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -58,6 +64,12 @@ const schema = [
       {tool.widget === 'transform' && (
         <TextTransformTool client:load computeId={tool.computeId!} options={tool.options} sample={tool.sample} />
       )}
+      {tool.widget === 'invisible' && <InvisibleCharTool client:load />}
+      {tool.widget === 'homoglyph' && <HomoglyphTool client:load />}
+      {tool.widget === 'diff' && <TextDiffTool client:load />}
+      {tool.widget === 'readability' && <ReadabilityTool client:load />}
+      {tool.widget === 'unicode' && <UnicodeInspectorTool client:load />}
+      {tool.widget === 'frequency' && <WordFrequencyTool client:load />}
     </div>
 
     <div class="mt-4">

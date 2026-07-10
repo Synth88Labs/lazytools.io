@@ -171,4 +171,42 @@ export const TRANSFORM: Record<string, (input: string, opts: Opts) => TransformR
     const suffix = String(opts.suffix ?? '');
     return { output: input.split('\n').map((l) => prefix + l + suffix).join('\n') };
   },
+
+  /** Clean pasted / AI-generated text: normalise dashes, quotes, spaces, invisibles. */
+  cleaner: (input, opts) => {
+    let t = input;
+    let changed = 0;
+    const before = t;
+    if (opts.dashes !== false) t = t.replace(/[‐‑‒–—―−]/g, '-'); // hyphens, en/em dashes, minus → -
+    if (opts.quotes !== false) t = t.replace(/[‘’‚‛]/g, "'").replace(/[“”„‟]/g, '"'); // curly → straight
+    if (opts.ellipsis !== false) t = t.replace(/…/g, '...');
+    if (opts.spaces !== false) t = t.replace(/[  -   　]/g, ' ');       // exotic spaces → normal
+    if (opts.invisible !== false) t = t.replace(/[​‌‍⁠﻿­᠎⁡-⁤]/g, ''); // zero-width & format
+    if (opts.collapse === true) t = t.replace(/[ \t]{2,}/g, ' ').replace(/[ \t]+$/gm, '');            // collapse runs + trailing
+    if (before !== t) changed = 1;
+    return { output: t, info: changed ? 'Cleaned: normalised dashes/quotes/spaces and removed hidden characters.' : 'No changes needed — text is already clean.' };
+  },
+
+  /** Unicode normalization (NFC/NFD/NFKC/NFKD) with optional diacritic stripping. */
+  normalize: (input, opts) => {
+    const form = String(opts.form ?? 'NFC') as 'NFC' | 'NFD' | 'NFKC' | 'NFKD';
+    let t = input.normalize(form);
+    if (opts.stripDiacritics === true) t = t.normalize('NFD').replace(/\p{M}+/gu, '').normalize('NFC');
+    return { output: t };
+  },
+
+  /** Convert between delimiters and optionally transpose rows/columns. */
+  delimiter: (input, opts) => {
+    const map: Record<string, string> = { comma: ',', tab: '\t', semicolon: ';', pipe: '|', space: ' ', newline: '\n' };
+    const from = map[String(opts.from ?? 'comma')] ?? ',';
+    const to = map[String(opts.to ?? 'newline')] ?? '\n';
+    const rows = input.split('\n').filter((r) => r.length).map((r) => r.split(from));
+    if (opts.transpose === true) {
+      const cols = Math.max(0, ...rows.map((r) => r.length));
+      const out: string[][] = [];
+      for (let c = 0; c < cols; c++) out.push(rows.map((r) => r[c] ?? ''));
+      return { output: out.map((r) => r.join(to === '\n' ? ',' : to)).join('\n') };
+    }
+    return { output: rows.map((r) => r.join(to)).join('\n') };
+  },
 };
