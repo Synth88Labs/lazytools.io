@@ -377,6 +377,13 @@ const POSTS = [
     fact: 'Spain 26×32 · Canada 50×70 · Kenya 55×55',
     icon: '🪪',
   },
+  {
+    slug: 'dilution-c1v1-c2v2-guide',
+    kicker: 'BIOLOGY & LAB',
+    lines: ['C1V1 = C2V2:', 'how to calculate', 'any dilution'],
+    fact: '100 mL of 1× from 10× = 10 mL stock + 90 mL',
+    icon: '🧪',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
