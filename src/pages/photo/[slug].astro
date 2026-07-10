@@ -1,0 +1,150 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import RatingWidget from '../../components/RatingWidget.tsx';
+import PhotoMaker from '../../components/photo/PhotoMaker.tsx';
+import { PHOTO_SPECS } from '../../data/photo/index';
+import { outputPixels } from '../../data/photo/types';
+import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
+import { ratingFor } from '../../lib/ratings';
+
+export function getStaticPaths() {
+  return PHOTO_SPECS.map((s) => ({ params: { slug: s.slug }, props: { spec: s } }));
+}
+
+const { spec } = Astro.props;
+const px = outputPixels(spec);
+const title = `${spec.label} Maker — Size & Free Editor | LazyTools`;
+const description = `Make a compliant ${spec.label.toLowerCase()} (${spec.widthMm}×${spec.heightMm} mm${spec.widthIn ? `, ${spec.widthIn}×${spec.heightIn} in` : ''}, ${spec.backgroundLabel.toLowerCase()}). Crop, auto-check and download — 100% in your browser, never uploaded.`;
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Photo Size Maker', url: '/photo/' },
+  { name: spec.label, url: `/photo/${spec.slug}/` },
+];
+
+const faqs = [
+  { q: `What size is a ${spec.label.toLowerCase()}?`, a: `${spec.widthMm}×${spec.heightMm} mm${spec.widthIn ? ` (${spec.widthIn}×${spec.heightIn} inches)` : ''}, which is ${px.w}×${px.h} pixels at ${spec.dpi} DPI. ${spec.headHeightMinMm ? `The head should measure ${spec.headHeightMinMm}–${spec.headHeightMaxMm} mm from chin to crown.` : ''}` },
+  { q: `What background does a ${spec.label.toLowerCase()} need?`, a: `A ${spec.backgroundLabel.toLowerCase()}, evenly lit with no shadows or objects behind you. The built-in checker flags a non-uniform or wrong-coloured background.` },
+  { q: `What file format and size should it be?`, a: `${spec.allowedFormats.map((f) => f.toUpperCase()).join(' or ')}${spec.fileSizeMaxKb ? `, ${spec.fileSizeMinKb ?? 0}–${spec.fileSizeMaxKb} KB` : ''}. This tool exports exactly to spec and embeds ${spec.dpi} DPI so print size is correct.` },
+  { q: `Is my photo uploaded to a server?`, a: `No. Every step — cropping, the compliance check and the export — runs on your own device using your browser's canvas. Your photo is never sent anywhere, which matters for a document photo.` },
+  { q: `Does this guarantee my photo will be accepted?`, a: `No tool can guarantee acceptance — the issuing authority decides. This editor produces the correct dimensions and catches common, detectable mistakes (background, exposure, head position), but always confirm against the official ${spec.sourceName} requirements linked on this page.` },
+];
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  webApplicationSchema({ name: `${spec.label} Maker`, url: `/photo/${spec.slug}/`, description, rating: ratingFor(`photo/${spec.slug}`) }),
+  faqSchema(faqs),
+];
+
+const related = PHOTO_SPECS.filter((s) => s.slug !== spec.slug).slice(0, 6);
+const allBlog = await getCollection('blog');
+const blogPosts = allBlog.filter((p) => p.data.tools.includes(`/photo/${spec.slug}/`));
+---
+
+<Base title={title} description={description} schema={schema}>
+  <article class="mx-auto max-w-5xl px-4 py-6">
+    <Breadcrumbs items={crumbs} />
+
+    <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+      {spec.flag} {spec.label} Maker
+    </h1>
+    <p class="mt-3 text-lg leading-relaxed text-slate-700">
+      <strong class="font-semibold text-slate-900">{spec.lead}</strong>
+    </p>
+
+    <div class="mt-6">
+      <PhotoMaker client:load spec={spec} />
+    </div>
+
+    <div class="mt-3">
+      <RatingWidget client:idle toolSlug={`photo/${spec.slug}`} avg={ratingFor(`photo/${spec.slug}`)?.avg} count={ratingFor(`photo/${spec.slug}`)?.count} />
+    </div>
+
+    {/* Do's & Don'ts cards */}
+    <section class="mt-8 grid gap-4 sm:grid-cols-2">
+      <div class="rounded-2xl border border-emerald-200 bg-emerald-50/60 p-5">
+        <h2 class="flex items-center gap-2 text-lg font-bold text-emerald-900"><span class="text-xl">✅</span> Do</h2>
+        <ul class="mt-3 space-y-2">
+          {spec.dos.map((d) => (
+            <li class="flex items-start gap-2 text-sm text-emerald-900/90"><span class="mt-0.5 font-bold text-emerald-600">✓</span><span>{d}</span></li>
+          ))}
+        </ul>
+      </div>
+      <div class="rounded-2xl border border-red-200 bg-red-50/60 p-5">
+        <h2 class="flex items-center gap-2 text-lg font-bold text-red-900"><span class="text-xl">🚫</span> Don't</h2>
+        <ul class="mt-3 space-y-2">
+          {spec.donts.map((d) => (
+            <li class="flex items-start gap-2 text-sm text-red-900/90"><span class="mt-0.5 font-bold text-red-500">✕</span><span>{d}</span></li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    {/* Spec + cited source card */}
+    <section class="mt-4 grid gap-4 sm:grid-cols-[1.4fr_1fr]">
+      <div class="rounded-2xl border border-slate-200 bg-white p-5">
+        <h2 class="text-lg font-bold text-slate-900">Official specification</h2>
+        <dl class="mt-3 grid grid-cols-2 gap-x-4 gap-y-2 text-sm">
+          <dt class="text-slate-500">Print size</dt><dd class="font-semibold text-slate-900">{spec.widthMm}×{spec.heightMm} mm{spec.widthIn ? ` · ${spec.widthIn}×${spec.heightIn} in` : ''}</dd>
+          <dt class="text-slate-500">Pixels @ {spec.dpi} DPI</dt><dd class="font-mono text-slate-900">{px.w}×{px.h}{spec.pixelMin ? ` (${spec.pixelMin}–${spec.pixelMax} allowed)` : ''}</dd>
+          {spec.headHeightMinMm && (<><dt class="text-slate-500">Head height</dt><dd class="font-semibold text-slate-900">{spec.headHeightMinMm}–{spec.headHeightMaxMm} mm (chin→crown)</dd></>)}
+          <dt class="text-slate-500">Background</dt><dd class="font-semibold text-slate-900">{spec.backgroundLabel}</dd>
+          <dt class="text-slate-500">Format</dt><dd class="font-semibold text-slate-900">{spec.allowedFormats.map((f) => f.toUpperCase()).join(' / ')}{spec.fileSizeMaxKb ? ` · ≤${spec.fileSizeMaxKb} KB` : ''}</dd>
+        </dl>
+        {spec.notes && (
+          <ul class="mt-3 space-y-1 border-t border-slate-100 pt-3 text-xs text-slate-500">
+            {spec.notes.map((n) => <li>• {n}</li>)}
+          </ul>
+        )}
+      </div>
+      <div class="rounded-2xl border border-brand-200 bg-brand-50/50 p-5">
+        <h2 class="text-sm font-bold uppercase tracking-wide text-brand-800">Verified source</h2>
+        <p class="mt-2 text-sm font-semibold text-slate-900">{spec.sourceName}</p>
+        <a href={spec.sourceUrl} target="_blank" rel="noopener noreferrer" class="mt-1 block break-words text-sm text-brand-700 underline hover:text-brand-900">Official requirements ↗</a>
+        <p class="mt-3 inline-flex items-center gap-1.5 rounded-full bg-white px-2.5 py-1 text-xs font-medium text-slate-600 ring-1 ring-slate-200">
+          <span class="text-emerald-600">●</span> Last verified {spec.lastVerified}
+        </p>
+        <p class="mt-3 text-xs text-slate-500">Government rules can change. If the official page differs from what you see here, the official page wins — <a href="/contact/" class="underline">tell us</a> and we'll update it.</p>
+      </div>
+    </section>
+
+    <FaqSection faqs={faqs} />
+
+    <section class="mt-10">
+      <h2 class="text-2xl font-bold text-slate-900">Other passport & visa photo sizes</h2>
+      <ul class="mt-4 grid gap-2 sm:grid-cols-2">
+        {related.map((r) => (
+          <li>
+            <a href={`/photo/${r.slug}/`} class="block rounded-lg border border-slate-200 px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:border-brand-400 hover:text-brand-700">
+              {r.flag} {r.label}
+            </a>
+          </li>
+        ))}
+        <li>
+          <a href="/photo/" class="block rounded-lg border border-brand-200 bg-brand-50 px-4 py-2.5 text-sm font-semibold text-brand-800 transition hover:border-brand-400">
+            All photo sizes →
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    {blogPosts.length > 0 && (
+      <section class="mt-10">
+        <h2 class="text-2xl font-bold text-slate-900">From the blog</h2>
+        <ul class="mt-4 space-y-3">
+          {blogPosts.map((post) => (
+            <li>
+              <a href={`/blog/${post.id}/`} class="block rounded-xl border border-slate-200 p-4 transition hover:border-brand-400 hover:shadow-sm">
+                <p class="font-semibold text-slate-900">{post.data.title}</p>
+                <p class="mt-1 text-sm text-slate-600">{post.data.description}</p>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+  </article>
+</Base>

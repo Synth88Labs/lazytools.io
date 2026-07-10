@@ -1,0 +1,101 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PrivacyStrip from '../../components/PrivacyStrip.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { PHOTO_SPECS } from '../../data/photo/index';
+import { breadcrumbSchema, collectionPageSchema, faqSchema } from '../../lib/schema';
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Photo Size Maker', url: '/photo/' },
+];
+
+const groups: { key: string; title: string; icon: string }[] = [
+  { key: 'passport', title: 'Passport photos', icon: '📕' },
+  { key: 'visa', title: 'Visa photos', icon: '🛂' },
+  { key: 'national-id', title: 'National ID photos', icon: '🪪' },
+];
+
+const faqs = [
+  {
+    q: 'How can a passport photo tool work without uploading my photo?',
+    a: 'Your browser can crop, resize, re-encode and analyse images entirely on your device using the canvas API. This tool does exactly that — your photo never touches a server, which matters for something as sensitive as an ID photo. Most "online passport photo" sites upload to earn your traffic, not because a server is needed.',
+  },
+  {
+    q: 'Will the photo be accepted by the government?',
+    a: 'This tool produces the exact official dimensions, embeds the correct print resolution, and flags common detectable mistakes (background, exposure, head position). But no tool can guarantee acceptance — the issuing authority makes the final call, so always check your result against the official requirements linked on each country page.',
+  },
+  {
+    q: 'Do different countries really need different photo sizes?',
+    a: 'Yes. Many countries follow the ICAO 35×45 mm biometric standard, but the US and India use 2×2 inches (51×51 mm), Canada uses 50×70 mm, and China uses 33×48 mm — and background colour, head-height and file-format rules vary too. Each page here carries that country\'s exact, source-cited specification.',
+  },
+  {
+    q: 'Why does each page show a "last verified" date?',
+    a: 'Government photo rules change. Every specification here is transcribed from the official issuing authority and stamped with the date we last checked it against the source, which is linked on the page. If the official page ever differs, the official page wins — and you can tell us to update it.',
+  },
+];
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  collectionPageSchema({
+    name: 'Photo Size Maker',
+    url: '/photo/',
+    description: 'Make compliant passport, visa and national ID photos for countries worldwide — crop, auto-check and export in your browser, never uploaded.',
+    items: PHOTO_SPECS.map((s) => ({ name: `${s.label} Maker`, url: `/photo/${s.slug}/` })),
+  }),
+  faqSchema(faqs),
+];
+
+const countries = new Set(PHOTO_SPECS.map((s) => s.country)).size;
+---
+
+<Base
+  title="Photo Size Maker — Passport, Visa & ID Photos | LazyTools"
+  description={`Free passport, visa and national ID photo maker. Crop to exact official sizes, auto-check background and head position, and export — 100% in your browser, never uploaded.`}
+  schema={schema}
+>
+  <div class="mx-auto max-w-5xl px-4 py-6">
+    <Breadcrumbs items={crumbs} />
+
+    <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Photo Size Maker</h1>
+    <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
+      Turn any photo into a compliant <strong>passport, visa or national ID photo</strong>. Pick your
+      country, crop to the exact official size with on-screen guides, run an on-device compliance
+      check, and download. Every specification is transcribed from the official issuing authority and
+      dated — and your photo is processed entirely in your browser, never uploaded.
+    </p>
+
+    <div class="mt-5">
+      <PrivacyStrip />
+    </div>
+
+    {groups.map((g) => {
+      const items = PHOTO_SPECS.filter((s) => s.docType === g.key);
+      return items.length > 0 && (
+        <section class="mt-8">
+          <h2 class="text-xl font-bold text-slate-900">{g.icon} {g.title}</h2>
+          <ul class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {items.map((s) => (
+              <li>
+                <a href={`/photo/${s.slug}/`} class="flex h-full flex-col rounded-xl border border-slate-200 p-4 transition hover:border-brand-400 hover:shadow-sm">
+                  <span class="text-2xl" aria-hidden="true">{s.flag}</span>
+                  <span class="mt-2 font-semibold text-slate-900">{s.label}</span>
+                  <span class="mt-1 text-sm text-slate-600">{s.widthMm}×{s.heightMm} mm{s.widthIn ? ` · ${s.widthIn}×${s.heightIn} in` : ''} · {s.backgroundLabel.replace(/ background$/i, '')}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      );
+    })}
+
+    <p class="mt-8 rounded-xl border border-slate-200 bg-slate-50 p-4 text-sm text-slate-600">
+      More countries are added in <strong>verified tranches</strong> — each spec checked against the
+      official government source before it goes live, because a wrong dimension means a rejected
+      application. Currently covering {PHOTO_SPECS.length} photo {PHOTO_SPECS.length === 1 ? 'type' : 'types'} across {countries} {countries === 1 ? 'country' : 'countries'}.
+    </p>
+
+    <FaqSection faqs={faqs} />
+  </div>
+</Base>

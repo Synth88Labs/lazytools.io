@@ -24,6 +24,7 @@ export const CATEGORIES: CategoryDef[] = [
   { slug: 'calc', name: 'Calculators', icon: '🧮', description: 'Percentage, finance, health and everyday calculators.', status: 'live' },
   { slug: 'math', name: 'Mathematics', icon: '➗', description: 'Exact math: fractions with steps, primes, quadratics, statistics.', status: 'live' },
   { slug: 'size', name: 'Size Converters', icon: '💍', description: 'Ring, shoe and bra sizes across US, UK, EU and more.', status: 'live' },
+  { slug: 'photo', name: 'Photo Size Maker', icon: '🪪', description: 'Passport, visa & ID photos for 80+ countries — crop, check and export in your browser.', status: 'live' },
   { slug: 'dev', name: 'Developer Tools', icon: '👨‍💻', description: 'Formatters, encoders, hashes and other dev utilities.', status: 'live' },
   { slug: 'file', name: 'File Converters', icon: '🔄', description: 'CSV, JSON, XML, YAML and Markdown conversion.', status: 'live' },
   { slug: 'text', name: 'Text Tools', icon: '✍️', description: 'Counters, case converters, sorting and clean-up.', status: 'live' },

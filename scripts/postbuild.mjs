@@ -28,6 +28,7 @@ import { CIPHER_TOOLS } from '../src/data/cipher/index.ts';
 import { PRODUCTIVITY_TOOLS } from '../src/data/productivity/index.ts';
 import { NETWORK_TOOLS } from '../src/data/network/index.ts';
 import { MATH_TOOLS } from '../src/data/math/index.ts';
+import { PHOTO_SPECS } from '../src/data/photo/index.ts';
 
 await copyFile(new URL('../dist/sitemap-index.xml', import.meta.url), new URL('../dist/sitemap.xml', import.meta.url));
 console.log('postbuild: dist/sitemap.xml created (copy of sitemap-index.xml)');
@@ -53,6 +54,7 @@ const slugs = [
   ...PRODUCTIVITY_TOOLS.map((t) => `productivity/${t.slug}`),
   ...NETWORK_TOOLS.map((t) => `network/${t.slug}`),
   ...MATH_TOOLS.map((t) => `math/${t.slug}`),
+  ...PHOTO_SPECS.map((s) => `photo/${s.slug}`),
 ].sort();
 await writeFile(new URL('../api/tools-allowlist.json', import.meta.url), JSON.stringify(slugs, null, 2) + '\n');
 console.log(`postbuild: api/tools-allowlist.json regenerated (${slugs.length} tools)`);
