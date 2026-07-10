@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="How to build a reverse complement of DNA. Start with the sequence 5-prime A T G C 3-prime. Step one, complement each base using the pairing rules adenine with thymine and guanine with cytosine, giving T A C G. Step two, reverse the order to read 5-prime to 3-prime, giving G C A T. So the reverse complement of A T G C is G C A T. For RNA, thymine is replaced by uracil, so A pairs with U. The complement pairs bases in place; the reverse complement also flips the direction, which is what you need to find the opposite strand or design a primer.">
+  <defs>
+    <style>
+      .h { font: 800 30px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill:#0f172a; }
+      .lab { font: 700 18px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill:#334155; }
+      .sub { font: 500 15px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill:#64748b; }
+      .base { font: 800 30px Consolas,Menlo,monospace; }
+      .end { font: 700 15px Consolas,Menlo,monospace; fill:#94a3b8; }
+    </style>
+  </defs>
+
+  <text x="600" y="44" text-anchor="middle" class="h">🧬 Reverse complement = complement, then reverse</text>
+
+  <!-- original -->
+  <text x="140" y="120" class="lab">Original strand</text>
+  <text x="150" y="176" class="end">5′</text>
+  <g transform="translate(190 150)">
+    <rect x="0" y="0" width="60" height="44" rx="8" fill="#dbeafe"/><text x="30" y="33" text-anchor="middle" class="base" fill="#1e3a8a">A</text>
+    <rect x="70" y="0" width="60" height="44" rx="8" fill="#fee2e2"/><text x="100" y="33" text-anchor="middle" class="base" fill="#991b1b">T</text>
+    <rect x="140" y="0" width="60" height="44" rx="8" fill="#dcfce7"/><text x="170" y="33" text-anchor="middle" class="base" fill="#065f46">G</text>
+    <rect x="210" y="0" width="60" height="44" rx="8" fill="#f3e8ff"/><text x="240" y="33" text-anchor="middle" class="base" fill="#5b21b6">C</text>
+  </g>
+  <text x="480" y="176" class="end">3′</text>
+
+  <!-- step 1: complement -->
+  <text x="140" y="240" class="lab">① Complement each base <tspan class="sub">(A↔T, G↔C)</tspan></text>
+  <text x="150" y="296" class="end">3′</text>
+  <g transform="translate(190 270)">
+    <rect x="0" y="0" width="60" height="44" rx="8" fill="#fee2e2"/><text x="30" y="33" text-anchor="middle" class="base" fill="#991b1b">T</text>
+    <rect x="70" y="0" width="60" height="44" rx="8" fill="#dbeafe"/><text x="100" y="33" text-anchor="middle" class="base" fill="#1e3a8a">A</text>
+    <rect x="140" y="0" width="60" height="44" rx="8" fill="#f3e8ff"/><text x="170" y="33" text-anchor="middle" class="base" fill="#5b21b6">C</text>
+    <rect x="210" y="0" width="60" height="44" rx="8" fill="#dcfce7"/><text x="240" y="33" text-anchor="middle" class="base" fill="#065f46">G</text>
+  </g>
+  <text x="480" y="296" class="end">5′</text>
+
+  <!-- step 2: reverse -->
+  <text x="140" y="360" class="lab">② Reverse the order → read 5′→3′</text>
+  <text x="150" y="416" class="end">5′</text>
+  <g transform="translate(190 390)">
+    <rect x="0" y="0" width="60" height="44" rx="8" fill="#dcfce7"/><text x="30" y="33" text-anchor="middle" class="base" fill="#065f46">G</text>
+    <rect x="70" y="0" width="60" height="44" rx="8" fill="#f3e8ff"/><text x="100" y="33" text-anchor="middle" class="base" fill="#5b21b6">C</text>
+    <rect x="140" y="0" width="60" height="44" rx="8" fill="#dbeafe"/><text x="170" y="33" text-anchor="middle" class="base" fill="#1e3a8a">A</text>
+    <rect x="210" y="0" width="60" height="44" rx="8" fill="#fee2e2"/><text x="240" y="33" text-anchor="middle" class="base" fill="#991b1b">T</text>
+  </g>
+  <text x="480" y="416" class="end">3′</text>
+
+  <!-- result callout -->
+  <g transform="translate(600 150)">
+    <rect x="0" y="0" width="500" height="120" rx="16" fill="#0f172a"/>
+    <text x="250" y="46" text-anchor="middle" font-family="Consolas,monospace" font-size="20" font-weight="700" fill="#94a3b8">ATGC</text>
+    <text x="250" y="80" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="16" fill="#7ef0c0">reverse complement =</text>
+    <text x="250" y="108" text-anchor="middle" font-family="Consolas,monospace" font-size="26" font-weight="800" fill="#ffffff">GCAT</text>
+  </g>
+
+  <!-- pairing key + RNA note -->
+  <g transform="translate(600 300)">
+    <rect x="0" y="0" width="500" height="70" rx="12" fill="#eff6ff" stroke="#1d87f1" stroke-width="2"/>
+    <text x="250" y="30" text-anchor="middle" class="lab" fill="#1e3a8a">Base pairing</text>
+    <text x="250" y="55" text-anchor="middle" font-family="Consolas,monospace" font-size="17" font-weight="700" fill="#0f172a">A = T  ·  G = C  ·  (RNA: A = U)</text>
+  </g>
+
+  <rect x="150" y="470" width="900" height="120" rx="16" fill="#153056"/>
+  <text x="600" y="508" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="17" font-weight="800" fill="#ffffff">The complement pairs bases in place. The reverse complement also flips 5′→3′ —</text>
+  <text x="600" y="534" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="17" font-weight="800" fill="#ffffff">which is what you need to read the opposite strand or design a reverse primer.</text>
+  <text x="600" y="566" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="15" font-weight="700" fill="#7ef0c0">Byte-exact for any length — and your sequence never leaves the browser.</text>
+</svg>

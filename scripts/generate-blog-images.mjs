@@ -356,6 +356,20 @@ const POSTS = [
     fact: '$60 → $100 = 66.7% markup but 40% margin',
     icon: '🏷️',
   },
+  {
+    slug: 'reverse-complement-guide',
+    kicker: 'BIOLOGY & LAB',
+    lines: ['Reverse complement:', 'complement each base,', 'then reverse 5′→3′'],
+    fact: 'ATGC → complement TACG → reverse GCAT',
+    icon: '🧬',
+  },
+  {
+    slug: 'punnett-square-guide',
+    kicker: 'BIOLOGY & LAB',
+    lines: ['Punnett squares:', 'monohybrid 3:1 and', 'where 9:3:3:1 comes from'],
+    fact: 'Aa × Aa → 1:2:1 genotype · 3:1 phenotype',
+    icon: '🟩',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
