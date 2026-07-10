@@ -12,7 +12,7 @@
 export type DocType = 'passport' | 'visa' | 'national-id';
 
 /** Named background colours countries actually specify, plus an exact hex fallback. */
-export type BgColor = 'white' | 'off-white' | 'light-grey' | 'light-blue' | 'cream';
+export type BgColor = 'white' | 'off-white' | 'light-grey' | 'light-blue' | 'cream' | 'red';
 
 export interface PhotoSpec {
   /** URL slug under /photo/, e.g. "us-passport", "schengen-visa". */
@@ -87,6 +87,7 @@ export const BG_HEX: Record<BgColor, string> = {
   'light-grey': '#e9eaec',
   'light-blue': '#dfe8f2',
   cream: '#f6f1e7',
+  red: '#e2231a',
 };
 
 /** mm → pixels at a given DPI (1 in = 25.4 mm). */
