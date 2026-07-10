@@ -391,6 +391,13 @@ const POSTS = [
     fact: 'p = (2·AA + Aa) / 2N · test at 1 df',
     icon: '📊',
   },
+  {
+    slug: 'invisible-characters-guide',
+    kicker: 'TEXT TOOLS',
+    lines: ['Invisible characters:', 'zero-width spaces &', 'hidden AI watermarks'],
+    fact: 'U+200B is invisible on screen — real in the bytes',
+    icon: '👻',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
