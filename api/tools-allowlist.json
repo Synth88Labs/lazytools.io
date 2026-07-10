@@ -1,4 +1,13 @@
 [
+  "biology/dilution-calculator",
+  "biology/doubling-time",
+  "biology/gc-content-tm",
+  "biology/hardy-weinberg",
+  "biology/molarity-calculator",
+  "biology/od600-calculator",
+  "biology/population-growth",
+  "biology/punnett-square",
+  "biology/reverse-complement",
   "calc/age-calculator",
   "calc/auto-loan-calculator",
   "calc/bmi-calculator",

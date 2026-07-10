@@ -1,0 +1,68 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PrivacyStrip from '../../components/PrivacyStrip.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { BIO_TOOLS } from '../../data/biology/index';
+import { breadcrumbSchema, collectionPageSchema, faqSchema } from '../../lib/schema';
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Biology & Lab', url: '/biology/' },
+];
+const clusters = [
+  { key: 'lab', title: 'Molecular biology & lab bench', icon: '🧫' },
+  { key: 'genetics', title: 'Genetics & population', icon: '🧬' },
+];
+const faqs = [
+  { q: 'Are these biology calculators accurate?', a: 'Yes — every tool uses exact, deterministic formulas (the genetic code, C₁V₁=C₂V₂, p²+2pq+q², nucleotide masses). There are no approximations or lookup tables that could drift, and the sequence and genetics tools are byte-exact where a chatbot would make mistakes.' },
+  { q: 'Is my sequence or data uploaded?', a: 'No. Everything runs in your browser with JavaScript — sequences, counts and results never leave your device. That matters for unpublished or proprietary sequence data, which should not be pasted into a chatbot or an upload site.' },
+  { q: 'Why build biology tools that an AI could answer?', a: 'Because AI chatbots reliably get these wrong: they drift on long reverse-complements, mis-fill Punnett grids, and miscalculate χ² tests. A deterministic tool gives the exact answer every time, with the working shown.' },
+  { q: 'Do these work for coursework and the lab?', a: 'Both. The genetics tools (Punnett, Hardy–Weinberg) suit AP-Biology and undergraduate work, while the bench tools (dilution, molarity, Tm, doubling time) are everyday lab calculations for students and researchers alike.' },
+];
+const schema = [
+  breadcrumbSchema(crumbs),
+  collectionPageSchema({ name: 'Biology & Lab Tools', url: '/biology/', description: 'Free, private biology and lab calculators: DNA reverse complement & translation, dilution, Punnett squares, Hardy–Weinberg, primer Tm and more — all in your browser.', items: BIO_TOOLS.map((t) => ({ name: t.name, url: `/biology/${t.slug}/` })) }),
+  faqSchema(faqs),
+];
+---
+
+<Base
+  title="Biology & Lab Tools — Sequence, Dilution, Genetics | LazyTools"
+  description="Free biology calculators that run in your browser: DNA reverse complement & translate, C₁V₁=C₂V₂ dilution, Punnett squares, Hardy–Weinberg, GC content & primer Tm. Exact, private, no upload."
+  schema={schema}
+>
+  <div class="mx-auto max-w-5xl px-4 py-6">
+    <Breadcrumbs items={crumbs} />
+    <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Biology & Lab Tools</h1>
+    <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
+      Exact, deterministic biology tools — from reverse-complementing a sequence to filling a Punnett
+      square or planning a serial dilution. Everything is computed in your browser, so your sequence
+      and data are never uploaded — and the answers are byte-exact where a chatbot would drift.
+    </p>
+
+    <div class="mt-5"><PrivacyStrip /></div>
+
+    {clusters.map((c) => {
+      const items = BIO_TOOLS.filter((t) => t.cluster === c.key);
+      return items.length > 0 && (
+        <section class="mt-8">
+          <h2 class="text-xl font-bold text-slate-900">{c.icon} {c.title}</h2>
+          <ul class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {items.map((t) => (
+              <li>
+                <a href={`/biology/${t.slug}/`} class="flex h-full flex-col rounded-xl border border-slate-200 p-4 transition hover:border-brand-400 hover:shadow-sm">
+                  <span class="text-2xl" aria-hidden="true">{t.icon}</span>
+                  <span class="mt-2 font-semibold text-slate-900">{t.name}</span>
+                  <span class="mt-1 text-sm text-slate-600">{t.lead.split('—')[0]}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      );
+    })}
+
+    <FaqSection faqs={faqs} />
+  </div>
+</Base>

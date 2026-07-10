@@ -11,6 +11,7 @@ import { CIPHER_TOOLS } from '../../data/cipher/index';
 import { PRODUCTIVITY_TOOLS } from '../../data/productivity/index';
 import { NETWORK_TOOLS } from '../../data/network/index';
 import { MATH_TOOLS } from '../../data/math/index';
+import { BIO_TOOLS } from '../../data/biology/index';
 import { FILE_TOOLS } from '../../data/file/index';
 import { DEV_TOOLS } from '../../data/dev/index';
 import { GEN_TOOLS } from '../../data/generate/index';
@@ -53,6 +54,7 @@ const schema = [
       ...PRODUCTIVITY_TOOLS.map((t) => ({ name: t.name, url: `/productivity/${t.slug}/` })),
       ...NETWORK_TOOLS.map((t) => ({ name: t.name, url: `/network/${t.slug}/` })),
       ...MATH_TOOLS.map((t) => ({ name: t.name, url: `/math/${t.slug}/` })),
+      ...BIO_TOOLS.map((t) => ({ name: t.name, url: `/biology/${t.slug}/` })),
       ...SECURITY_TOOLS.map((t) => ({ name: t.name, url: `/security/${t.slug}/` })),
       ...IMAGE_TOOLS.map((t) => ({ name: t.name, url: `/image/${t.slug}/` })),
       ...PHOTO_SPECS.map((s) => ({ name: `${s.label} Maker`, url: `/photo/${s.slug}/` })),
@@ -193,6 +195,19 @@ const schema = [
         {MATH_TOOLS.map((t) => (
           <li>
             <a href={`/math/${t.slug}/`} class="inline-block rounded-full border border-slate-200 px-3 py-1 text-sm text-slate-600 transition hover:border-brand-400 hover:text-brand-700">
+              {t.icon} {t.name}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-bold text-slate-900">🧬 Biology & Lab</h2>
+      <ul class="mt-4 flex flex-wrap gap-2">
+        {BIO_TOOLS.map((t) => (
+          <li>
+            <a href={`/biology/${t.slug}/`} class="inline-block rounded-full border border-slate-200 px-3 py-1 text-sm text-slate-600 transition hover:border-brand-400 hover:text-brand-700">
               {t.icon} {t.name}
             </a>
           </li>

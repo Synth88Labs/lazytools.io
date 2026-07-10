@@ -22,6 +22,7 @@ import { PRODUCTIVITY_TOOLS } from '../data/productivity/index';
 import { NETWORK_TOOLS } from '../data/network/index';
 import { MATH_TOOLS } from '../data/math/index';
 import { PHOTO_SPECS } from '../data/photo/index';
+import { BIO_TOOLS } from '../data/biology/index';
 
 export interface SearchUnit {
   id: string;
@@ -207,6 +208,9 @@ export function buildSearchPages(): SearchPage[] {
   for (const s of PHOTO_SPECS) {
     pages.push({ title: `${s.label} Maker`, url: `/photo/${s.slug}/`, keywords: [s.label.toLowerCase(), `${s.country.toLowerCase()} ${s.docType} photo`, `${s.docType} photo size`, `${s.country.toLowerCase()} passport photo`, 'photo maker', 'photo size', s.country.toLowerCase()] });
   }
+  for (const t of BIO_TOOLS) {
+    pages.push({ title: t.name, url: `/biology/${t.slug}/`, keywords: [...t.keywords, 'biology', 'lab', t.name.toLowerCase()] });
+  }
   for (const t of PDF_TOOLS) {
     pages.push({ title: t.name, url: `/pdf/${t.slug}/`, keywords: [...t.keywords, 'pdf', t.name.toLowerCase()] });
   }
@@ -217,6 +221,7 @@ export function buildSearchPages(): SearchPage[] {
     { title: 'All Privacy & Security Tools', url: '/security/', keywords: ['privacy', 'security', 'exif', 'encrypt', 'metadata', 'checksum'] },
     { title: 'All Image Tools', url: '/image/', keywords: ['image tools', 'compress image', 'resize', 'convert image', 'photo'] },
     { title: 'Photo Size Maker', url: '/photo/', keywords: ['passport photo', 'visa photo', 'id photo', 'photo size maker', 'passport photo maker', 'photo tool', '2x2 photo', '35x45 photo'] },
+    { title: 'All Biology & Lab Tools', url: '/biology/', keywords: ['biology', 'lab', 'dna', 'sequence', 'reverse complement', 'dilution', 'punnett square', 'hardy weinberg', 'molarity', 'pcr', 'primer tm', 'genetics'] },
     { title: 'All PDF Tools', url: '/pdf/', keywords: ['pdf tools', 'merge pdf', 'split pdf', 'rotate pdf'] },
     { title: 'All Audio Tools', url: '/video/', keywords: ['audio tools', 'trim audio', 'mp3', 'wav', 'volume'] },
     { title: 'All Developer Tools', url: '/dev/', keywords: ['developer tools', 'dev', 'encode', 'decode', 'hash', 'regex'] },

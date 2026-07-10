@@ -23,6 +23,7 @@ import { PRODUCTIVITY_TOOLS } from '../src/data/productivity/index.ts';
 import { NETWORK_TOOLS } from '../src/data/network/index.ts';
 import { MATH_TOOLS } from '../src/data/math/index.ts';
 import { PHOTO_SPECS } from '../src/data/photo/index.ts';
+import { BIO_TOOLS } from '../src/data/biology/index.ts';
 import { allPairs as zonePairs } from '../src/data/time/zones.ts';
 
 const U = SITE.url;
@@ -47,6 +48,7 @@ const HUBS = {
   cipher: { tools: CIPHER_TOOLS, blurb: 'Morse code translator (with audio), NATO phonetic alphabet, binary text translator, and the Caesar, ROT13 and Vigenère ciphers — encode and decode, for learning and puzzles (not real security).' },
   productivity: { tools: PRODUCTIVITY_TOOLS, blurb: 'Pomodoro timer, countdown/stopwatch, meeting cost calculator, Eisenhower matrix and habit tracker — private by design: data is saved only in the browser (localStorage), never uploaded, with JSON export.' },
   network: { tools: NETWORK_TOOLS, blurb: 'IPv4 and IPv6 subnet calculators, CIDR-to-range converter, IP format converter, IPv6 expand/compress (RFC 5952), chmod calculator, cron expression parser and MAC address formatter — exact bit math, computed locally so addressing plans never leave the browser.' },
+  biology: { tools: BIO_TOOLS, blurb: 'Biology & lab tools computed in the browser: DNA/RNA reverse complement, transcription and translation (standard genetic code); C₁V₁=C₂V₂ dilution + serial dilution planner; Punnett squares (mono/di/trihybrid with genotype & phenotype ratios); Hardy–Weinberg equilibrium with χ² goodness-of-fit; GC content & primer melting temperature (Tm); molarity; cell doubling time; OD600 to cell density; exponential/logistic population growth — deterministic, staleness-proof, and the sequence data never leaves the browser.' },
   math: { tools: MATH_TOOLS, blurb: 'Exact-arithmetic mathematics: fraction calculator with steps, decimal⇄fraction (incl. repeating decimals), GCD/LCM with Euclidean steps, prime factorizer (Miller–Rabin + Pollard rho), ratio solver, quadratic solver with simplified radical roots, descriptive statistics, Roman numerals, scientific notation, nCr/nPr — BigInt/rational arithmetic, no floating-point rounding.' },
   security: { tools: SECURITY_TOOLS, blurb: 'Image metadata (EXIF/GPS) remover, AES-256 file encryption, honest password-strength checker and file-hash verifier — the category where "no upload" is the whole point.' },
   image: { tools: IMAGE_TOOLS, blurb: 'Compressor, PNG/JPEG/WebP converter, HEIC-to-JPG (libheif wasm), resizer and image-to-Base64 — browser codecs, no upload, no watermark.' },
