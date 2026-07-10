@@ -72,8 +72,45 @@ One line per item ever surfaced. Format: `- [status] name — date first seen, l
 - [watchlist] National ID checksum validator cluster (NIP/PESEL/codice fiscale/NIF) — 2026-07-07, unscored (no evidence gathered; NIP check ships inside KSeF validator regardless; needs dedicated scan)
 - [watchlist] SQLite database viewer (sqlite-wasm) — 2026-07-06, 15/25 (no demand evidence gathered yet)
 - [watchlist] Text diff / compare tool — 2026-07-07, 16/25 (client-side privacy diff tools already commoditized; promote via file-level diff variant: CSV/PDF-text diff)
-- [watchlist] Amortization schedule (EMI calculator depth + CSV export + prepayment what-if) — 2026-07-07, 15/25 (build as cheap enhancement to BUILT emi-calculator, not a page bet)
-- [watchlist] Fitness/pace calculators (running pace, target heart rate) — 2026-07-07, 15/25 (McMillan/Strava/Omni own the space; no driver)
+- [watchlist] Amortization schedule (EMI calculator depth + CSV export + prepayment what-if) — 2026-07-07, 15/25 (build as cheap enhancement to BUILT emi-calculator, not a page bet) — 2026-07-10 calc scan: discharged by the new Mortgage payment + amortization opportunity (dedicated /calc/mortgage-calculator/ page carries the schedule + CSV; EMI stays simple)
+- [watchlist] Fitness/pace calculators (running pace, target heart rate) — 2026-07-07, 15/25 (McMillan/Strava/Omni own the space; no driver; 2026-07-10 calc scan: reconfirmed reject — thin, incumbent-owned)
+
+## /calc/ everyday consumer calculators expansion — scanned 2026-07-10. See 2026-07-10-calculators-expansion.md
+
+- [note] /calc/ category posture 2026-07-10: incumbents (calculator.net/omni/bankrate) already client-side, so privacy/client-side is NOT the differentiator here; competition-gap axis is a structural 2–3 and "future driver" is evergreen not API-led. Scan run as owner-directed category-expansion build (same posture as /math/), returning a ranked build list rather than gating on gap. Architecture: [S]=declarative fields→compute pattern; [C]=custom component (schedule/chart/repeatable rows).
+- [BUILT] TDEE / Calorie calculator (BMR Mifflin-St Jeor + activity + goal calories) — 2026-07-10, 21/25 — shipped /calc/tdee-calculator/ [S]; absorbs standalone BMR + calorie-deficit intents; anchors fitness sub-cluster; blog tdee-calorie-needs-guide
+- [BUILT] Pregnancy due date calculator (Naegele + cycle-length adjust) — 2026-07-10, 21/25 — shipped /calc/due-date-calculator/ [S] (slug shortened from proposed pregnancy-due-date); EDD + gestational age + trimester; "not medical advice" note
+- [BUILT] Mortgage payment + amortization schedule — 2026-07-10, 19/25 (demand=5) — shipped /calc/mortgage-calculator/ [C] full schedule + extra-principal early-payoff + CSV export; discharges the watchlisted EMI amortization-depth item; blog mortgage-amortization-guide
+- [BUILT] Auto / car loan calculator (price/down/trade-in/tax/term) — 2026-07-10, 20/25 — shipped /calc/auto-loan-calculator/ [S]; distinct US car-buying framing vs EMI
+- [BUILT] Markup & margin calculator — 2026-07-10, 20/25 — shipped /calc/markup-margin-calculator/ [S] (slug markup-margin); shows margin-vs-markup gap; blog markup-vs-margin-guide
+- [BUILT] Body fat percentage (US Navy tape method) — 2026-07-10, 19/25 — shipped /calc/body-fat-calculator/ [S]
+- [BUILT] Ideal weight calculator (Devine/Robinson/Miller/Hamwi range) — 2026-07-10, 19/25 — shipped /calc/ideal-weight-calculator/ [S] + healthy-BMI-range row
+- [BUILT] Macro calculator (protein/carb/fat split off goal calories) — 2026-07-10, 19/25 — shipped /calc/macro-calculator/ [S]; cross-links TDEE
+- [BUILT] GPA calculator (+ final-grade-needed companion) — 2026-07-10, 19/25 — shipped /calc/gpa-calculator/ [C] repeatable rows; final-grade-needed FOLDED IN as a second tab (no separate /calc/final-grade-calculator/ page); distinct from /math/ weighted-average
+- [BUILT] Sales tax calculator (rate-as-INPUT, not lookup) — 2026-07-10, 19/25 — shipped /calc/sales-tax-calculator/ [S] with reverse (pre-tax) row; zero maintenance because user supplies rate
+- [opportunity] Loan payoff / extra-payment calculator — 2026-07-10, 19/25 — /calc/loan-payoff-calculator/ [C] schedule sim; serves credit-card-payoff intent; PARTIALLY discharged by mortgage extra-principal field — next tranche as standalone
+- [BUILT] Fuel cost / trip calculator — 2026-07-10, 19/25 — shipped /calc/fuel-cost-calculator/ [S]; mpg-US / mpg-UK / L-per-100km / km-per-L modes
+- [watchlist] Savings goal / how-long-to-save — 2026-07-10, 19/25 [S] (next tranche)
+- [watchlist] Break-even calculator — 2026-07-10, 19/25 [S] (small-business; next tranche)
+- [watchlist] Unit price / cost-per-unit calculator — 2026-07-10, 19/25 [S] (next tranche)
+- [watchlist] One-rep max (Epley/Brzycki) — 2026-07-10, 19/25 [S] (next tranche)
+- [watchlist] Ovulation calculator — 2026-07-10, 19/25 [S] (fertility-privacy angle; pairs with pregnancy due date)
+- [watchlist] ROI calculator — 2026-07-10, 18/25 [S]
+- [watchlist] Down-payment calculator — 2026-07-10, 18/25 [S]
+- [watchlist] Debt-to-income calculator — 2026-07-10, 18/25 [S]
+- [watchlist] APR ↔ APY converter — 2026-07-10, 18/25 [S]
+- [watchlist] Time-card / hours calculator — 2026-07-10, 18/25 [C-lite]
+- [watchlist] Home-project estimators cluster (paint / flooring / concrete) — 2026-07-10, 17/25 each [S] (bundle)
+- [watchlist] Sleep calculator (90-min cycles) — 2026-07-10, 17/25 [S]
+- [watchlist] Retirement / 401k projection — 2026-07-10, 17/25 [C] (assumption-heavy chart; promote once mortgage chart component exists)
+- [watchlist] Rent-vs-buy calculator — 2026-07-10, 14/25 [C] (feasibility low: opinionated multi-assumption model)
+- [note] /calc/ FOLDS 2026-07-10: salary annual↔hourly↔monthly → extend live hourly-to-salary (add monthly row + reverse mode, NO new page); BMR standalone → TDEE page output row; CD calculator → compound-interest (add APY + CD FAQ); fuel-economy mpg → fuel-cost units select / /units/.
+- [rejected] Take-home / income-tax estimator — 2026-07-10 (jurisdiction tax-table staleness = LLM-pricing-class maintenance liability; DO-NOT-BUILD unless committed dated single-jurisdiction verified-tables ritual)
+- [rejected] Inflation calculator — 2026-07-10 (requires dated CPI series; staleness/invented-facts liability)
+- [rejected] Currency converter — 2026-07-10 (charter exclusion: live rates / CORS)
+- [rejected] Love / age-difference calculator — 2026-07-10 (fun, low value, off-brand)
+- [rejected] Water intake calculator — 2026-07-10 (thin, no durable driver)
+
 - [rejected] Truth table generator — 2026-07-10 round3, 15/25 (gap 1–2: truthtablemaker/truthtablegenerator/truth-table.com/Stanford CS103/dCode all free dedicated; needs boolean parser; off-brand for exact-arithmetic /math/)
 - [rejected] Set operations calculator — 2026-07-10 round3, 16/25 (gap=2: mathportal steps + miniwebtool Venn + Omni; possible future /text/ list-comparator variant is a different item)
 - [rejected] Interval notation ⇄ inequality converter — 2026-07-10 round3, 16/25 (gap=2: Omni both directions, Symbolab free, dedicated domain; subset of blocked absolute-value/inequality item)

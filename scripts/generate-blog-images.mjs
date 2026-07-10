@@ -335,6 +335,27 @@ const POSTS = [
     fact: '0 0 1 * 1 fires the 1st AND every Monday',
     icon: '⏲️',
   },
+  {
+    slug: 'tdee-calorie-needs-guide',
+    kicker: 'CALCULATORS',
+    lines: ['BMR vs TDEE: how', 'many calories you', 'actually need'],
+    fact: 'TDEE = BMR × activity factor (1.2 → 1.9)',
+    icon: '🍎',
+  },
+  {
+    slug: 'mortgage-amortization-guide',
+    kicker: 'CALCULATORS',
+    lines: ['Why your first', 'mortgage payment is', 'almost all interest'],
+    fact: 'Payment #1: $1,500 interest · $299 principal',
+    icon: '🏠',
+  },
+  {
+    slug: 'markup-vs-margin-guide',
+    kicker: 'CALCULATORS',
+    lines: ['Markup vs margin:', 'same profit, two very', 'different percentages'],
+    fact: '$60 → $100 = 66.7% markup but 40% margin',
+    icon: '🏷️',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

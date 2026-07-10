@@ -140,10 +140,181 @@ export const COMPUTE: Record<string, (v: Values) => ResultRow[] | null> = {
     const rate = n(v.rate), hours = n(v.hours) || 40;
     if (!Number.isFinite(rate) || rate < 0) return null;
     const weekly = rate * hours;
-    return [
+    const annual = n(v.annual);
+    const rows: ResultRow[] = [
       { label: 'Weekly', value: fmt(weekly), hint: `${fmt(rate)} × ${fmt(hours)} hours` },
       { label: 'Monthly', value: fmt((weekly * 52) / 12), hint: '52 weeks ÷ 12 months' },
       { label: 'Annual', value: fmt(weekly * 52), hint: '52 paid weeks' },
+    ];
+    if (Number.isFinite(annual) && annual > 0) {
+      rows.push({ label: `Reverse: ${fmt(annual)}/yr as hourly`, value: fmt(annual / (hours * 52), 2), hint: `${fmt(annual)} ÷ (${fmt(hours)} h × 52 wk)` });
+    }
+    return rows;
+  },
+
+  // ---------- health & fitness ----------
+  tdee: (v) => {
+    const metric = (v.units ?? 'metric') === 'metric';
+    let w = n(v.weight), h = n(v.height);
+    const age = n(v.age);
+    if (!Number.isFinite(w) || !Number.isFinite(h) || !Number.isFinite(age) || w <= 0 || h <= 0 || age <= 0) return null;
+    if (!metric) { w = w * 0.45359237; h = h * 2.54; }
+    const male = (v.sex ?? 'male') === 'male';
+    const bmr = 10 * w + 6.25 * h - 5 * age + (male ? 5 : -161);
+    const factors: Record<string, [string, number]> = {
+      sedentary: ['sedentary', 1.2],
+      light: ['light', 1.375],
+      moderate: ['moderate', 1.55],
+      active: ['active', 1.725],
+      veryactive: ['very active', 1.9],
+    };
+    const [actLabel, factor] = factors[v.activity ?? 'moderate'] ?? factors.moderate!;
+    const tdee = bmr * factor;
+    return [
+      { label: 'TDEE — maintenance calories', value: `${fmt(tdee, 0)} kcal/day`, hint: `BMR ${fmt(bmr, 0)} × ${factor} (${actLabel})` },
+      { label: 'BMR (at complete rest)', value: `${fmt(bmr, 0)} kcal/day`, hint: 'Mifflin–St Jeor equation' },
+      { label: 'Mild loss (−0.25 kg/wk)', value: `${fmt(tdee - 250, 0)} kcal/day`, hint: '≈ 250 kcal deficit' },
+      { label: 'Weight loss (−0.5 kg/wk)', value: `${fmt(tdee - 500, 0)} kcal/day`, hint: '≈ 500 kcal deficit' },
+      { label: 'Weight gain (+0.5 kg/wk)', value: `${fmt(tdee + 500, 0)} kcal/day`, hint: '≈ 500 kcal surplus' },
+    ];
+  },
+
+  bodyFat: (v) => {
+    const metric = (v.units ?? 'metric') === 'metric';
+    const male = (v.sex ?? 'male') === 'male';
+    let h = n(v.height), neck = n(v.neck), waist = n(v.waist), hip = n(v.hip);
+    if (!Number.isFinite(h) || !Number.isFinite(neck) || !Number.isFinite(waist)) return null;
+    if (!metric) { h *= 2.54; neck *= 2.54; waist *= 2.54; hip *= 2.54; }
+    let bf: number;
+    if (male) {
+      if (waist - neck <= 0) return null;
+      bf = 495 / (1.0324 - 0.19077 * Math.log10(waist - neck) + 0.15456 * Math.log10(h)) - 450;
+    } else {
+      if (!Number.isFinite(hip) || waist + hip - neck <= 0) return null;
+      bf = 495 / (1.29579 - 0.35004 * Math.log10(waist + hip - neck) + 0.221 * Math.log10(h)) - 450;
+    }
+    const cat = bf < (male ? 6 : 14) ? 'essential fat' : bf < (male ? 14 : 21) ? 'athletes' : bf < (male ? 18 : 25) ? 'fitness' : bf < (male ? 25 : 32) ? 'average' : 'above average';
+    return [
+      { label: 'Body fat', value: `${fmt(bf, 1)}%`, hint: `U.S. Navy circumference method (${cat})` },
+      { label: 'Category', value: cat },
+    ];
+  },
+
+  idealWeight: (v) => {
+    const metric = (v.units ?? 'metric') === 'metric';
+    const male = (v.sex ?? 'male') === 'male';
+    let hIn = n(v.height);
+    if (!Number.isFinite(hIn) || hIn <= 0) return null;
+    if (metric) hIn /= 2.54;
+    const over5ft = hIn - 60;
+    const base = male ? { dev: 50, rob: 52, mil: 56.2, ham: 48 } : { dev: 45.5, rob: 49, mil: 53.1, ham: 45.5 };
+    const perIn = male ? { dev: 2.3, rob: 1.9, mil: 1.41, ham: 2.7 } : { dev: 2.3, rob: 1.7, mil: 1.36, ham: 2.2 };
+    const kg = (b: number, p: number) => b + p * over5ft;
+    const disp = (x: number) => metric ? `${fmt(x, 1)} kg` : `${fmt(x / 0.45359237, 1)} lb`;
+    const hm = hIn * 0.0254;
+    return [
+      { label: 'Devine formula', value: disp(kg(base.dev, perIn.dev)), hint: 'the clinical standard (used for drug dosing)' },
+      { label: 'Robinson (1983)', value: disp(kg(base.rob, perIn.rob)) },
+      { label: 'Miller (1983)', value: disp(kg(base.mil, perIn.mil)) },
+      { label: 'Hamwi (1964)', value: disp(kg(base.ham, perIn.ham)) },
+      { label: 'Healthy BMI range (18.5–24.9)', value: `${disp(18.5 * hm * hm)} – ${disp(24.9 * hm * hm)}`, hint: 'often more useful than a single "ideal" number' },
+    ];
+  },
+
+  macro: (v) => {
+    const cal = n(v.calories);
+    if (!Number.isFinite(cal) || cal <= 0) return null;
+    const splits: Record<string, [string, number, number, number]> = {
+      balanced: ['balanced', 0.3, 0.4, 0.3],
+      lowcarb: ['low-carb', 0.4, 0.2, 0.4],
+      highprotein: ['high-protein', 0.4, 0.35, 0.25],
+      keto: ['keto', 0.25, 0.05, 0.7],
+    };
+    const [, pP, pC, pF] = splits[v.split ?? 'balanced'] ?? splits.balanced!;
+    return [
+      { label: `Protein (${fmt(pP * 100, 0)}%)`, value: `${fmt((cal * pP) / 4, 0)} g`, hint: `${fmt(cal * pP, 0)} kcal ÷ 4 kcal/g` },
+      { label: `Carbs (${fmt(pC * 100, 0)}%)`, value: `${fmt((cal * pC) / 4, 0)} g`, hint: `${fmt(cal * pC, 0)} kcal ÷ 4 kcal/g` },
+      { label: `Fat (${fmt(pF * 100, 0)}%)`, value: `${fmt((cal * pF) / 9, 0)} g`, hint: `${fmt(cal * pF, 0)} kcal ÷ 9 kcal/g` },
+    ];
+  },
+
+  dueDate: (v) => {
+    const lmp = v.lmp;
+    if (!lmp || !/^\d{4}-\d{2}-\d{2}$/.test(lmp)) return null;
+    const cycle = n(v.cycle) || 28;
+    const start = new Date(lmp + 'T00:00:00');
+    if (isNaN(start.getTime())) return null;
+    const due = new Date(start.getTime() + (280 + (cycle - 28)) * 86400000);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const daysPreg = Math.floor((today.getTime() - start.getTime()) / 86400000);
+    const weeks = Math.floor(daysPreg / 7), days = daysPreg % 7;
+    const tri = weeks < 13 ? 'First trimester' : weeks < 27 ? 'Second trimester' : weeks <= 42 ? 'Third trimester' : '—';
+    const dueStr = due.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+    const rows: ResultRow[] = [
+      { label: 'Estimated due date', value: dueStr, hint: `LMP + 280 days${cycle !== 28 ? `, adjusted ${cycle > 28 ? '+' : ''}${cycle - 28} for a ${cycle}-day cycle` : " (Naegele's rule)"}` },
+    ];
+    if (daysPreg >= 0 && weeks <= 43) {
+      rows.push({ label: 'Current gestational age', value: `${weeks} weeks, ${days} days`, hint: tri });
+    }
+    return rows;
+  },
+
+  // ---------- finance ----------
+  autoLoan: (v) => {
+    const price = n(v.price), down = n(v.down) || 0, tradeIn = n(v.tradein) || 0, taxRate = n(v.taxrate) || 0, annual = n(v.rate), months = n(v.months);
+    if (!Number.isFinite(price) || !Number.isFinite(annual) || !Number.isFinite(months) || price <= 0 || months <= 0) return null;
+    const tax = Math.max(0, price - tradeIn) * taxRate / 100;
+    const financed = Math.max(0, price + tax - down - tradeIn);
+    const r = annual / 12 / 100;
+    const pay = r === 0 ? financed / months : (financed * r * Math.pow(1 + r, months)) / (Math.pow(1 + r, months) - 1);
+    const total = pay * months;
+    return [
+      { label: 'Monthly payment', value: fmt(pay), hint: `on ${fmt(financed)} financed over ${fmt(months, 0)} months` },
+      { label: 'Amount financed', value: fmt(financed), hint: `price ${fmt(price)}${tax ? ` + tax ${fmt(tax)}` : ''} − down ${fmt(down)}${tradeIn ? ` − trade-in ${fmt(tradeIn)}` : ''}` },
+      { label: 'Total interest', value: fmt(total - financed) },
+      { label: 'Total of payments', value: fmt(total) },
+    ];
+  },
+
+  markupMargin: (v) => {
+    const cost = n(v.cost), price = n(v.price);
+    if (!Number.isFinite(cost) || !Number.isFinite(price) || cost < 0 || price < 0) return null;
+    const profit = price - cost;
+    const markup = cost > 0 ? (profit / cost) * 100 : NaN;
+    const margin = price > 0 ? (profit / price) * 100 : NaN;
+    return [
+      { label: 'Profit per unit', value: fmt(profit), hint: `price ${fmt(price)} − cost ${fmt(cost)}` },
+      { label: 'Markup (on cost)', value: Number.isFinite(markup) ? `${fmt(markup, 1)}%` : '—', hint: 'profit ÷ cost — what you add on top of cost' },
+      { label: 'Margin (on price)', value: Number.isFinite(margin) ? `${fmt(margin, 1)}%` : '—', hint: 'profit ÷ price — the share of revenue you keep' },
+    ];
+  },
+
+  salesTax: (v) => {
+    const amount = n(v.amount), rate = n(v.rate);
+    if (!Number.isFinite(amount) || !Number.isFinite(rate) || amount < 0) return null;
+    const tax = amount * rate / 100;
+    return [
+      { label: 'Tax amount', value: fmt(tax), hint: `${fmt(amount)} × ${fmt(rate)}%` },
+      { label: 'Total (tax added)', value: fmt(amount + tax), hint: 'if the amount was pre-tax' },
+      { label: 'Pre-tax amount (reverse)', value: fmt(amount / (1 + rate / 100)), hint: `if ${fmt(amount)} already includes ${fmt(rate)}% tax` },
+    ];
+  },
+
+  fuelCost: (v) => {
+    const distance = n(v.distance), eff = n(v.efficiency), pricePer = n(v.price);
+    if (!Number.isFinite(distance) || !Number.isFinite(eff) || !Number.isFinite(pricePer) || eff <= 0) return null;
+    const mode = v.units ?? 'mpg-us';
+    let fuelUsed: number, unitLabel: string;
+    if (mode === 'l100km') { fuelUsed = distance * eff / 100; unitLabel = 'litres'; }
+    else if (mode === 'kmpl') { fuelUsed = distance / eff; unitLabel = 'litres'; }
+    else if (mode === 'mpg-uk') { fuelUsed = distance / eff; unitLabel = 'imperial gallons'; }
+    else { fuelUsed = distance / eff; unitLabel = 'US gallons'; }
+    const cost = fuelUsed * pricePer;
+    return [
+      { label: 'Total fuel cost', value: fmt(cost), hint: `${fmt(fuelUsed, 2)} ${unitLabel} × ${fmt(pricePer)}/unit` },
+      { label: 'Fuel used', value: `${fmt(fuelUsed, 2)} ${unitLabel}` },
+      { label: 'Cost per unit distance', value: fmt(distance > 0 ? cost / distance : 0, 3), hint: 'per mile / km travelled' },
     ];
   },
 };

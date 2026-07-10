@@ -17,7 +17,7 @@ Namecheap FTPS deploy pipeline.
 | Category | Highlights |
 |---|---|
 | Unit Converters | 100+ pairs across 11 quantities, exact NIST/BIPM factors |
-| Calculators | percentage, EMI, BMI, age, tip, discount, interest… |
+| Calculators | percentage, EMI, tip, discount, interest, hourly⇄salary… + **finance**: mortgage (full amortization schedule, extra-principal payoff, CSV export), auto loan, markup vs margin, sales tax (with reverse), fuel cost · **health**: BMI, TDEE/BMR (Mifflin–St Jeor), body-fat (US Navy), ideal weight, macros, pregnancy due date · **academic**: GPA + grade-needed-on-final |
 | Mathematics | **exact arithmetic** — fraction calculator with steps, decimal⇄fraction (repeating decimals), GCD/LCM via Euclid, prime factorizer (Miller–Rabin + Pollard rho), ratio, quadratic solver with radical roots, statistics, Roman numerals, scientific notation, nCr/nPr (BigInt), long division with steps, radical simplifier, modular arithmetic (ext. Euclid + square-and-multiply), slope/line & distance/midpoint (exact), binomial expansion, significant figures, degrees⇄radians (exact π), completing the square, synthetic & polynomial division, percentile (3 named methods), divisibility rules, weighted average, exponent calculator (2^100 digit-exact), circle calculator (in terms of π), triangle area (Heron, exact radicals) — 26 tools |
 | Size Converters | ring, shoe, bra, clothing, hat, kids' shoe |
 | Text Tools | counters, case, sort, dedupe, find-and-replace, slugify |
@@ -35,7 +35,7 @@ Namecheap FTPS deploy pipeline.
 | Productivity | **Pomodoro timer**, countdown/stopwatch, meeting-cost meter, Eisenhower matrix, habit tracker, Kanban, mind map, Gantt, decision matrix, RICE, SWOT, pros/cons, flowchart, whiteboard, time-blocking, OKR, checklist, retro board, eye-rest — all saved locally, JSON export |
 | Network & IT | **IPv4 & IPv6 subnet calculators** (exact 128-bit math), CIDR⇄range, IP format converter, IPv6 expand/compress (RFC 5952), chmod calculator, cron parser with next-run times, MAC formatter (EUI-64, link-local) |
 
-**Content & growth engine** — 47 SEO/GEO blog guides (hero + custom SVG infographic, schema,
+**Content & growth engine** — 50 SEO/GEO blog guides (hero + custom SVG infographic, schema,
 cited sources); a daily **market-research agent** that scans for browser-tool opportunities and
 files scored findings to `docs/research/` — the Network & IT category and its IPv6 guide shipped
 directly from its 7 Jul scan (IPv6 crossed 50% of Google traffic in Mar 2026).

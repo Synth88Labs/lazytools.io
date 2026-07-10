@@ -26,6 +26,8 @@ export interface CalcDef {
   fields: CalcField[];
   /** id used to select the compute function in the client widget */
   computeId: string;
+  /** optional custom island instead of the generic field widget (e.g. 'mortgage', 'gpa') */
+  widget?: 'mortgage' | 'gpa';
   /** formula section, plain sentences */
   formula: string;
   /** worked example sentence */
