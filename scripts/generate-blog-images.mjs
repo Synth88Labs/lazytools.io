@@ -384,6 +384,13 @@ const POSTS = [
     fact: '100 mL of 1× from 10× = 10 mL stock + 90 mL',
     icon: '🧪',
   },
+  {
+    slug: 'hardy-weinberg-guide',
+    kicker: 'BIOLOGY & LAB',
+    lines: ['Hardy–Weinberg:', 'p²+2pq+q²=1 and', 'the chi-square test'],
+    fact: 'p = (2·AA + Aa) / 2N · test at 1 df',
+    icon: '📊',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

@@ -31,14 +31,14 @@ are no processing servers. The tool code downloads to *your* device and runs the
 yourself: open DevTools, watch the network tab, or switch off your connection mid-use — everything keeps
 working.
 
-## What's live — 20 categories, 335+ tools, ~420 pages
+## What's live — 20 categories, 380+ tools, ~470 pages
 
 | Category | Highlights |
 |---|---|
 | [Unit Converters](https://lazytools.io/units/) | 123 pages, exact NIST/BIPM factors, per-pair editorial notes |
 | [Calculators](https://lazytools.io/calc/) | percentage, EMI, BMI, age, tip, discount, interest… |
 | [Mathematics](https://lazytools.io/math/) | **exact arithmetic** — fractions with steps, primes (Miller–Rabin), quadratics with radical roots, statistics, Roman numerals, nCr/nPr at BigInt scale |
-| [Biology & Lab](https://lazytools.io/biology/) | **DNA reverse-complement / translate** (sequence never uploaded), C₁V₁=C₂V₂ dilution + serial planner, Punnett squares (mono/di/trihybrid), Hardy–Weinberg + χ², GC content & primer Tm, molarity, doubling time |
+| [Biology & Lab](https://lazytools.io/biology/) | **14 tools** — DNA reverse-complement/translate (sequence never uploaded), C₁V₁=C₂V₂ dilution + serial planner, Punnett (mono/di/trihybrid), Hardy–Weinberg + χ², GC/Tm, DNA & protein molecular weight, molarity, hemocytometer, Michaelis–Menten, qPCR efficiency, doubling time |
 | [Size Converters](https://lazytools.io/size/) | ring, shoe, bra, clothing, hat sizes across systems |
 | [Text Tools](https://lazytools.io/text/) | counters, case, sort, dedupe, find & replace |
 | [Color Tools](https://lazytools.io/color/) | HEX/RGB/HSL/CMYK, WCAG contrast, **brand color finder (1,100+ palettes)** |
