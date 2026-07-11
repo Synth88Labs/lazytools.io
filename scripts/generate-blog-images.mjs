@@ -412,6 +412,13 @@ const POSTS = [
     fact: 'Cyrillic а (U+0430) ≠ Latin a (U+0061)',
     icon: '🕵️',
   },
+  {
+    slug: 'wifi-qr-code-guide',
+    kicker: 'GENERATORS',
+    lines: ['WiFi QR codes:', 'the WIFI: format &', 'how to make one safely'],
+    fact: 'WIFI:T:WPA;S:name;P:password;; — scan to join',
+    icon: '📶',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

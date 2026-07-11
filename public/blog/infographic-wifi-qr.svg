@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-label="How a WiFi QR code works. It encodes a plain-text string in the format WIFI colon T colon WPA semicolon S colon your network name semicolon P colon your password semicolon semicolon. The T field is the security type WPA, WEP, or nopass; S is the SSID or network name; P is the password; and an optional H colon true marks a hidden network. Special characters backslash, semicolon, comma, colon and quote must be escaped with a backslash. When a phone camera scans the code, iOS 11 and later and Android 10 and later read the string and offer to join the network automatically, with no typing. Encoding the credentials directly means there is no tracking redirect, so the code never expires and nothing is uploaded.">
+  <defs>
+    <style>
+      .h { font: 800 30px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill:#0f172a; }
+      .lab { font: 800 18px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill:#334155; }
+      .sub { font: 500 14px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill:#64748b; }
+      .mono { font: 700 17px Consolas,Menlo,monospace; }
+    </style>
+  </defs>
+
+  <text x="600" y="42" text-anchor="middle" class="h">📶 How a WiFi QR code works</text>
+
+  <!-- the string -->
+  <g transform="translate(90 72)">
+    <rect x="0" y="0" width="1020" height="92" rx="14" fill="#0f172a"/>
+    <text x="24" y="40" class="mono" fill="#7ef0c0">WIFI:T:<tspan fill="#fbbf24">WPA</tspan>;S:<tspan fill="#93c5fd">MyNetwork</tspan>;P:<tspan fill="#fca5a5">s3cr3t-pass</tspan>;;</text>
+    <text x="24" y="72" class="sub" fill="#94a3b8">T = security type · S = network name (SSID) · P = password · optional H:true = hidden network</text>
+  </g>
+
+  <!-- fields -->
+  <g transform="translate(90 190)">
+    <rect x="0" y="0" width="245" height="70" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.5"/><text x="16" y="30" class="mono" fill="#92400e">T:</text><text x="16" y="52" class="sub">WPA · WEP · nopass</text>
+    <rect x="258" y="0" width="245" height="70" rx="10" fill="#eff6ff" stroke="#1d87f1" stroke-width="1.5"/><text x="16" y="30" class="mono" fill="#1e3a8a" transform="translate(258 0)">S:</text><text x="16" y="52" class="sub" transform="translate(258 0)">network name (SSID)</text>
+    <rect x="516" y="0" width="245" height="70" rx="10" fill="#fef2f2" stroke="#dc2626" stroke-width="1.5"/><text x="16" y="30" class="mono" fill="#991b1b" transform="translate(516 0)">P:</text><text x="16" y="52" class="sub" transform="translate(516 0)">password</text>
+    <rect x="774" y="0" width="246" height="70" rx="10" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/><text x="16" y="30" class="mono" fill="#5b21b6" transform="translate(774 0)">H:true</text><text x="16" y="52" class="sub" transform="translate(774 0)">hidden network (optional)</text>
+  </g>
+
+  <text x="600" y="308" text-anchor="middle" class="sub">⚠ Escape <tspan class="mono" fill="#0f172a">\ ; , : "</tspan> in the name and password with a backslash — the detail most tools get wrong.</text>
+
+  <!-- scan flow -->
+  <g transform="translate(150 340)">
+    <rect x="0" y="0" width="300" height="70" rx="12" fill="#f0fdf4" stroke="#059669" stroke-width="2"/><text x="150" y="30" text-anchor="middle" class="lab" fill="#065f46">📷 Point camera</text><text x="150" y="54" text-anchor="middle" class="sub">iOS 11+ / Android 10+</text>
+    <text x="335" y="45" text-anchor="middle" font-size="24" fill="#94a3b8">→</text>
+    <g transform="translate(370 0)"><rect x="0" y="0" width="300" height="70" rx="12" fill="#eff6ff" stroke="#1d87f1" stroke-width="2"/><text x="150" y="30" text-anchor="middle" class="lab" fill="#1e3a8a">Tap the prompt</text><text x="150" y="54" text-anchor="middle" class="sub">"Join MyNetwork?"</text></g>
+    <text x="705" y="45" text-anchor="middle" font-size="24" fill="#94a3b8">→</text>
+    <g transform="translate(740 0)"><rect x="0" y="0" width="160" height="70" rx="12" fill="#0f172a"/><text x="80" y="42" text-anchor="middle" class="lab" fill="#7ef0c0">✓ Connected</text></g>
+  </g>
+
+  <rect x="150" y="446" width="900" height="130" rx="16" fill="#153056"/>
+  <text x="600" y="484" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="17" font-weight="800" fill="#ffffff">No typing the password — perfect for a guest network or a café table card.</text>
+  <text x="600" y="518" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="16" font-weight="700" fill="#7ef0c0">Encode the credentials DIRECTLY — no tracking redirect that can expire.</text>
+  <text x="600" y="552" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="15" font-weight="600" fill="#cbd5e1">…and the code is generated in your browser, so the password is never uploaded.</text>
+</svg>
