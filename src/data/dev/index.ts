@@ -16,7 +16,7 @@ export interface DevToolDef {
   description: string;
   lead: string;
   /** 'transform' uses DevTransformTool; 'hash' uses HashTool; 'llm-tokens' uses LlmTokenCounterTool */
-  widget: 'transform' | 'hash' | 'llm-tokens';
+  widget: 'transform' | 'hash' | 'llm-tokens' | 'eth-units' | 'keccak' | 'eip55';
   computeId?: string;
   options?: DevToolOption[];
   sample?: string;
@@ -237,6 +237,61 @@ export const DEV_TOOLS: DevToolDef[] = [
       { q: 'Is my text uploaded to count tokens?', a: 'No — tokenization and all cost math run in your browser, and the page works offline after loading. What people paste into token counters is usually their actual confidential prompts and documents; that\'s exactly why this one has no server side.' },
     ],
     keywords: ['llm token counter', 'token counter', 'gpt token counter', 'claude token counter', 'llm cost calculator', 'openai api cost', 'tokenizer online', 'count tokens', 'llm api pricing calculator'],
+  },
+  {
+    slug: 'ethereum-unit-converter',
+    name: 'Ethereum Unit Converter (Wei, Gwei, Ether)',
+    icon: '⟠',
+    description: 'Convert between Ethereum units — wei, gwei, ether and more — exactly, using BigInt fixed-point math (no floating-point error). Plus satoshi ⇄ BTC. In-browser.',
+    lead: 'Convert between Ethereum units — wei, kwei, mwei, gwei, szabo, finney and ether — exactly, plus satoshi ⇄ BTC. No floating-point rounding, ever.',
+    widget: 'eth-units',
+    how: 'Ethereum amounts are integers of wei (1 ether = 10¹⁸ wei), and gas prices are quoted in gwei (10⁹ wei). Enter a value in any unit and every other unit is computed with BigInt fixed-point arithmetic, so an 18-decimal value like 0.000000000000000001 ether converts to exactly 1 wei — something floating-point maths cannot represent without error. A separate section converts Bitcoin between BTC and satoshi (1 BTC = 100,000,000 sats).',
+    note: 'A developer utility, not a price tool: it converts *units*, never fetches an exchange rate, price, or gas oracle. It handles no keys or funds and gives no financial advice.',
+    faqs: [
+      { q: 'How many wei are in one ether?', a: 'Exactly 1,000,000,000,000,000,000 — that is 10¹⁸ wei. Ether is the human unit; wei is the smallest indivisible unit that the Ethereum protocol actually counts in.' },
+      { q: 'What is gwei used for?', a: 'Gwei (10⁹ wei, also called “nanoether” or “shannon”) is the standard unit for gas prices. A gas price of “30 gwei” means 30 × 10⁹ wei per unit of gas.' },
+      { q: 'Why use BigInt instead of normal numbers?', a: 'Because 10¹⁸ exceeds JavaScript’s safe-integer range and 18-decimal fractions can’t be stored exactly as floating-point. This tool uses BigInt fixed-point maths, so conversions are exact to the last wei.' },
+      { q: 'Does it show live prices or gas fees?', a: 'No — it is purely a unit converter. It never fetches a price, exchange rate or live gas fee, and it gives no financial advice. For a “gas cost in ether” figure you supply the gas price yourself.' },
+      { q: 'Can it convert satoshi and BTC?', a: 'Yes — the Bitcoin section converts between BTC and satoshi, where 1 BTC = 100,000,000 satoshi (8 decimal places).' },
+      { q: 'Is anything uploaded?', a: 'No — all conversion runs in your browser.' },
+    ],
+    keywords: ['ethereum unit converter', 'wei to ether', 'gwei to wei', 'ether to wei', 'wei converter', 'gwei to ether', 'satoshi to btc'],
+  },
+  {
+    slug: 'keccak-256-generator',
+    name: 'Keccak-256 / SHA-3 Hash & Function Selector',
+    icon: '#️⃣',
+    description: 'Generate a Keccak-256 hash (Ethereum’s hash) or a SHA3-256 hash — clearly distinguished — and compute 4-byte function selectors from a signature. In-browser.',
+    lead: 'Hash text with Keccak-256 (the hash Ethereum actually uses) or NIST SHA3-256 — shown side by side so you never confuse them — and compute a contract’s 4-byte function selector.',
+    widget: 'keccak',
+    how: 'Ethereum uses Keccak-256, the original Keccak submission, which is NOT the same as the finalised NIST SHA3-256 standard — they use a different internal padding byte and produce different digests for the same input. This tool computes both and labels each, so you use the right one. The function-selector mode takes a canonical function signature like transfer(address,uint256) and returns the first 4 bytes of its Keccak-256 hash — the selector that prefixes calldata.',
+    note: 'The exactness wedge: most “SHA-3” tools quietly give you one or the other. This shows both, correctly labelled. It is a hashing/dev utility — no keys, no funds, no financial advice.',
+    faqs: [
+      { q: 'Is Keccak-256 the same as SHA3-256?', a: 'No — and this is a common, costly confusion. Ethereum uses Keccak-256 (the original submission, padding byte 0x01). NIST later standardised SHA3-256 with a different padding byte (0x06), so the two produce different hashes for the same input. This tool shows both, labelled.' },
+      { q: 'What does Ethereum use?', a: 'Keccak-256 — for address checksums (EIP-55), function selectors, event topics, storage slots and more. When Solidity code calls keccak256(), it means the Keccak variant, not NIST SHA3-256.' },
+      { q: 'What is a 4-byte function selector?', a: 'The first 4 bytes of the Keccak-256 hash of a function’s canonical signature (e.g. transfer(address,uint256) → 0xa9059cbb). It prefixes the calldata so a contract knows which function to run.' },
+      { q: 'What is a “canonical” signature?', a: 'The function name and parameter types with no spaces and no parameter names — transfer(address,uint256), not transfer(address to, uint256 amount). The selector is computed from that canonical form.' },
+      { q: 'Is my input uploaded?', a: 'No — hashing runs entirely in your browser.' },
+    ],
+    keywords: ['keccak-256 generator', 'keccak256 online', 'sha3 hash generator', 'ethereum hash', 'function selector', '4 byte selector', 'keccak vs sha3'],
+  },
+  {
+    slug: 'eip55-address-checksum',
+    name: 'EIP-55 Ethereum Address Checksum',
+    icon: '✅',
+    description: 'Validate an Ethereum address’s EIP-55 checksum and convert any address to its correct mixed-case checksummed form. Catches typos. Public addresses only, in-browser.',
+    lead: 'Check whether an Ethereum address has a valid EIP-55 checksum, and convert any address to its correct mixed-case form — the standard way wallets catch mistyped addresses.',
+    widget: 'eip55',
+    how: 'EIP-55 hides a checksum in the letter casing of a hex address: each alphabetic character is uppercased when the corresponding nibble of the address’s Keccak-256 hash is 8 or greater. Paste an address and the tool tells you whether its casing is a valid checksum (a strong signal it wasn’t mistyped) and gives you the correctly-checksummed version to copy.',
+    note: 'A safety-oriented developer utility for PUBLIC addresses only. It never handles private keys, seed phrases or funds, performs no transactions, and gives no financial advice — never paste a private key or seed phrase into any tool.',
+    faqs: [
+      { q: 'What is an EIP-55 checksum?', a: 'A way of encoding a checksum into the upper/lowercase pattern of an Ethereum address’s hex letters, defined in EIP-55. A wallet can then detect a single mistyped character, because the casing would no longer match the address’s Keccak-256 hash.' },
+      { q: 'How do I know if an address is valid?', a: 'Paste it here: if the mixed-case matches EIP-55, it’s a valid checksum (unlikely to be mistyped). An all-lowercase or all-uppercase address has no checksum to verify — this tool will give you the correct checksummed form.' },
+      { q: 'Does a valid checksum mean the address is “safe”?', a: 'It only means the address is well-formed and probably not mistyped. It says nothing about who controls the address or whether it’s trustworthy — always verify the recipient through a trusted channel.' },
+      { q: 'Why are some letters uppercase?', a: 'Each hex letter (a–f) is uppercased when the matching nibble of the address’s Keccak-256 hash is ≥ 8. That pattern is the checksum; digits (0–9) are unaffected.' },
+      { q: 'Do you ever handle private keys?', a: 'Never. This works only with public addresses, entirely in your browser. Do not paste a private key or seed phrase into this or any online tool.' },
+    ],
+    keywords: ['eip-55 checksum', 'ethereum address checksum', 'checksum address', 'validate ethereum address', 'ethereum address validator', 'eip55'],
   },
 ];
 

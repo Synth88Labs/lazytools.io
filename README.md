@@ -43,7 +43,7 @@ working.
 | [Text Tools](https://lazytools.io/text/) | **19 tools** — "the invisible & exact layer of text": **invisible-character detector** (AI-watermark / zero-width), **homoglyph/lookalike detector**, **text diff** (LCS), **readability** (Flesch/FK/Fog/SMOG/CLI/ARI), **Unicode inspector**, word frequency, text cleaner (em-dash/smart-quote), Unicode normalizer, plus counters, case, sort, dedupe, find & replace |
 | [Color Tools](https://lazytools.io/color/) | HEX/RGB/HSL/CMYK, WCAG contrast, **brand color finder (1,100+ palettes)** |
 | [File & Data](https://lazytools.io/file/) | CSV/JSON/XML/YAML, Markdown, **e-invoicing viewers: Factur-X (FR), KSeF FA(3) (PL), Peppol BIS (BE), XRechnung/ZUGFeRD (DE)** |
-| [Developer Tools](https://lazytools.io/dev/) | Base64, hashes, JWT, regex, **LLM token counter with exact o200k counts** |
+| [Developer Tools](https://lazytools.io/dev/) | Base64, hashes, JWT, regex, **LLM token counter (exact o200k)**, **Ethereum unit converter** (BigInt-exact wei⇄ether), **Keccak-256/SHA-3 + function selector**, **EIP-55 address checksum** |
 | [Network & IT](https://lazytools.io/network/) | IPv4/IPv6 subnet calculators (exact 128-bit), CIDR, chmod, cron parser, MAC/EUI-64 |
 | [Generators](https://lazytools.io/generate/) | **12 tools** — password, **passphrase (EFF diceware)**, **UUID v4/v7 · ULID · NanoID + decoder**, QR, **WiFi/vCard/email QR**, **barcode (EAN/UPC/Code128, check-digit)**, random number, lorem ipsum |
 | [Date & Time](https://lazytools.io/time/) | timestamps, date math, DST-aware timezone pairs |
