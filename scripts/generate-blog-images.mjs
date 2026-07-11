@@ -7,6 +7,13 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'runners-math-guide',
+    kicker: 'FITNESS GUIDE',
+    lines: ["The runner's math:", 'pace, race times', '& heart-rate zones'],
+    fact: 'a 25-min 5K ≈ a 4-hour marathon (Riegel)',
+    icon: '🏃',
+  },
+  {
     slug: 'tire-size-guide',
     kicker: 'AUTOMOTIVE GUIDE',
     lines: ['How to read a', 'tire size:', '225/45R17 decoded'],

@@ -1,0 +1,58 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PrivacyStrip from '../../components/PrivacyStrip.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { FITNESS_TOOLS } from '../../data/fitness/index';
+import { breadcrumbSchema, collectionPageSchema, faqSchema } from '../../lib/schema';
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Fitness & Exercise', url: '/fitness/' },
+];
+const faqs = [
+  { q: 'Are these fitness calculators accurate?', a: 'They use established exercise-science formulas — Epley/Brzycki/Lombardi for one-rep max, Tanaka/Karvonen for heart rate, Riegel for race prediction, Cooper for VO2 max, and the ACSM MET equation for calories — each cited on its tool page. Formula estimates are population-based, so treat them as guides, not lab measurements.' },
+  { q: 'Do they work in metric and imperial?', a: 'Yes — paces show in both min/km and min/mile, weights toggle between kg and lb, and distances handle km and miles.' },
+  { q: 'Is my data uploaded?', a: 'No. Every tool runs entirely in your browser — nothing is sent to a server, and they work offline.' },
+  { q: 'Is this medical advice?', a: 'No. These are general fitness tools for training and tracking, not medical advice. Check with a doctor before starting hard exercise or a maximal test if you have any health concerns.' },
+];
+const schema = [
+  breadcrumbSchema(crumbs),
+  collectionPageSchema({ name: 'Fitness & Exercise Calculators', url: '/fitness/', description: 'Free, private fitness calculators: running pace, pace converter, one-rep max, heart-rate zones, race time predictor, VO2 max, calories burned and steps to distance.', items: FITNESS_TOOLS.map((t) => ({ name: t.name, url: `/fitness/${t.slug}/` })) }),
+  faqSchema(faqs),
+];
+---
+
+<Base
+  title="Fitness & Exercise Calculators — Pace, 1RM, Heart Rate Zones | LazyTools"
+  description="Free fitness calculators that run in your browser: running pace calculator, pace converter, one-rep max (1RM), heart-rate zones (Karvonen), race time predictor (Riegel), VO2 max (Cooper test), calories burned (MET) and steps to distance. Sourced formulas, no upload."
+  schema={schema}
+>
+  <div class="mx-auto max-w-5xl px-4 py-6">
+    <Breadcrumbs items={crumbs} />
+    <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Fitness & Exercise Calculators</h1>
+    <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
+      Plan your training and track your progress — work out running pace and race times, estimate your one-rep
+      max, find your heart-rate zones, gauge VO2 max and count the calories you burned. Every tool uses a
+      recognised exercise-science formula and runs entirely in your browser.
+    </p>
+
+    <div class="mt-5"><PrivacyStrip /></div>
+
+    <section class="mt-8">
+      <ul class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {FITNESS_TOOLS.map((t) => (
+          <li>
+            <a href={`/fitness/${t.slug}/`} class="flex h-full flex-col rounded-xl border border-slate-200 p-4 transition hover:border-brand-400 hover:shadow-sm">
+              <span class="text-2xl" aria-hidden="true">{t.icon}</span>
+              <span class="mt-2 font-semibold text-slate-900">{t.name}</span>
+              <span class="mt-1 text-sm text-slate-600">{t.lead.split('—')[0].split('(')[0]}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <FaqSection faqs={faqs} />
+  </div>
+</Base>

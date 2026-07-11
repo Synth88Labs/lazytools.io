@@ -31,7 +31,7 @@ are no processing servers. The tool code downloads to *your* device and runs the
 yourself: open DevTools, watch the network tab, or switch off your connection mid-use — everything keeps
 working.
 
-## What's live — 27 categories, 540+ tools, ~656 pages
+## What's live — 28 categories, 550+ tools, ~666 pages
 
 | Category | Highlights |
 |---|---|
@@ -45,6 +45,7 @@ working.
 | [Physics](https://lazytools.io/physics/) | **29 tools** — **SUVAT kinematic-equations solver** (enter any 3 of u/v/a/s/t), **projectile motion** with trajectory graph, free fall, **Newton's 2nd law**, momentum, friction, **kinetic/potential energy**, work, power, Hooke's law, **centripetal force**, **Newton's gravitation**, **wave speed** (v=fλ), **Snell's law** (critical angle + TIR), **Ohm's-law V/I/R/P wheel**, **series/parallel resistors & capacitors**, **wave/SHM visualizer**, **Doppler effect**, **lens & mirror equation**, **torque**, **orbital velocity**, **Carnot efficiency**, **thermal expansion**, **photon energy** (E=hf), **de Broglie**, **E=mc²** |
 | [Size Converters](https://lazytools.io/size/) | ring, shoe, bra, clothing, hat sizes across systems |
 | [Home & DIY](https://lazytools.io/home/) | **12 tools** — **paint**, **tile & flooring**, **concrete** (+ pre-mix bags), **mulch & soil**, **wallpaper**, **gravel & aggregate** (volume + tonnes), **drywall/plasterboard** (sheets), **roofing** (squares + shingle bundles via pitch), **sod & grass seed**, **fence** (posts/panels/rails), **deck boards**, **board-foot** lumber — metric or imperial |
+| [Fitness & Exercise](https://lazytools.io/fitness/) | **8 tools** — **running pace** (pace/time/distance, min/km + min/mile, race presets), **pace converter** (min/km ↔ min/mile ↔ km/h ↔ mph), **one-rep max** (Epley/Brzycki/Lombardi + %-of-1RM table), **heart-rate zones** (Tanaka/Karvonen/Gulati), **race time predictor** (Riegel), **VO2 max** (Cooper test), **calories burned** (ACSM MET, Compendium values), **steps → distance** — sourced formulas, Node-tested |
 | [Automotive](https://lazytools.io/automotive/) | **8 tools** — **tire size calculator** (decode 225/45R17 → overall diameter, sidewall, circumference, revs/mile), **tire comparison & speedometer error** (true speed = indicated × new/old diameter), **gear ratio & RPM** (road speed ↔ engine RPM via gear × final drive × tire), **engine displacement** (π⁄4 × bore² × stroke × cylinders → L/cc/ci), **compression ratio**, **horsepower ↔ torque** (HP = T×RPM/5252 + kW/N·m), **fuel economy** (US↔UK MPG↔L/100km↔km/L, handles the different gallons), **wheel offset ↔ backspacing** — exact geometry, Node-tested |
 | [Cooking & Kitchen](https://lazytools.io/cooking/) | **10 tools** — **grams ↔ cups** (ingredient-aware: flour 120 g, sugar 198 g, honey 336 g per cup — King Arthur weights), **cooking measurement converter** (US/metric/imperial volume, exact NIST factors, flags US-vs-imperial gallon & 20 mL Australian tbsp), **butter** (sticks↔cups↔grams), **oven temperature** (°F↔°C↔gas mark + fan, snapped to the standard cooking table), **recipe scaler** (fractions), **baking pan** size (by area), **baker's percentage / hydration**, **yeast** (active dry↔instant↔fresh), **coffee-to-water ratio**, **USDA meat temperatures** — sourced, private |
 | [Text Tools](https://lazytools.io/text/) | **19 tools** — "the invisible & exact layer of text": **invisible-character detector** (AI-watermark / zero-width), **homoglyph/lookalike detector**, **text diff** (LCS), **readability** (Flesch/FK/Fog/SMOG/CLI/ARI), **Unicode inspector**, word frequency, text cleaner (em-dash/smart-quote), Unicode normalizer, plus counters, case, sort, dedupe, find & replace |
@@ -73,7 +74,7 @@ Polish and Belgian e-invoicing mandates.
 ```bash
 npm install
 npm run dev      # dev server at localhost:4321
-npm run build    # static site → dist/ (~656 pages)
+npm run build    # static site → dist/ (~666 pages)
 ```
 
 ## Tech & models

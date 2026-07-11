@@ -30,6 +30,7 @@ import { HOME_TOOLS } from '../data/home/index';
 import { FIN_TOOLS } from '../data/finance/index';
 import { COOKING_TOOLS } from '../data/cooking/index';
 import { AUTO_TOOLS } from '../data/automotive/index';
+import { FITNESS_TOOLS } from '../data/fitness/index';
 
 export interface SearchUnit {
   id: string;
@@ -239,6 +240,9 @@ export function buildSearchPages(): SearchPage[] {
   for (const t of AUTO_TOOLS) {
     pages.push({ title: t.name, url: `/automotive/${t.slug}/`, keywords: [...t.keywords, 'automotive', 'car', 'vehicle', t.name.toLowerCase()] });
   }
+  for (const t of FITNESS_TOOLS) {
+    pages.push({ title: t.name, url: `/fitness/${t.slug}/`, keywords: [...t.keywords, 'fitness', 'exercise', 'running', 'workout', t.name.toLowerCase()] });
+  }
   for (const t of PDF_TOOLS) {
     pages.push({ title: t.name, url: `/pdf/${t.slug}/`, keywords: [...t.keywords, 'pdf', t.name.toLowerCase()] });
   }
@@ -257,6 +261,7 @@ export function buildSearchPages(): SearchPage[] {
     { title: 'All Finance Calculators', url: '/finance/', keywords: ['finance', 'money', 'compound interest', 'debt payoff', 'snowball', 'avalanche', 'savings goal', 'loan payoff', 'credit card payoff', 'cagr', 'roi', 'rule of 72', 'break even', 'apr apy', 'investment calculator'] },
     { title: 'All Cooking & Kitchen Tools', url: '/cooking/', keywords: ['cooking', 'kitchen', 'baking', 'recipe', 'grams to cups', 'cups to grams', 'oven temperature', 'gas mark', 'butter converter', 'recipe scaler', 'bakers percentage', 'yeast converter', 'coffee ratio', 'meat temperature', 'measurement converter'] },
     { title: 'All Automotive Tools', url: '/automotive/', keywords: ['automotive', 'car', 'vehicle', 'tire size', 'tyre size', 'speedometer error', 'gear ratio', 'rpm calculator', 'engine displacement', 'compression ratio', 'horsepower', 'torque', 'fuel economy', 'mpg', 'l/100km', 'wheel offset', 'backspacing'] },
+    { title: 'All Fitness & Exercise Tools', url: '/fitness/', keywords: ['fitness', 'exercise', 'running', 'workout', 'pace calculator', 'running pace', 'one rep max', '1rm', 'heart rate zones', 'karvonen', 'race time predictor', 'vo2 max', 'cooper test', 'calories burned', 'met', 'steps to distance'] },
     { title: 'All PDF Tools', url: '/pdf/', keywords: ['pdf tools', 'merge pdf', 'split pdf', 'rotate pdf'] },
     { title: 'All Audio Tools', url: '/video/', keywords: ['audio tools', 'trim audio', 'mp3', 'wav', 'volume'] },
     { title: 'All Developer Tools', url: '/dev/', keywords: ['developer tools', 'dev', 'encode', 'decode', 'hash', 'regex'] },

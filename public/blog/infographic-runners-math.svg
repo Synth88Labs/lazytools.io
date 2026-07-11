@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="Three pieces of running math. First, pace equals time divided by distance — a 10K in 50 minutes is a 5 minute per kilometre pace. Second, the Riegel formula predicts times across distances: predicted time equals known time times new distance over old distance to the power 1.06. A 25 minute 5K predicts about 52 minutes for 10K, 1 hour 55 for a half marathon, and 4 hours for a marathon. Third, heart-rate zones: estimate maximum heart rate as 208 minus 0.7 times age, then train in five zones from 50 to 100 percent.">
+  <defs>
+    <style>
+      .h { font: 800 29px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .sub { font: 500 15px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+      .card { font: 800 18px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; }
+      .eq { font: 800 15px Consolas, Menlo, monospace; fill: #0f172a; }
+      .d { font: 600 13px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #475569; }
+    </style>
+  </defs>
+
+  <text x="600" y="42" text-anchor="middle" class="h">The runner's math, in three formulas</text>
+  <text x="600" y="70" text-anchor="middle" class="sub">pace, race prediction and heart-rate zones — everything from a stopwatch</text>
+
+  <!-- Card 1: Pace -->
+  <g transform="translate(60 96)">
+    <rect x="0" y="0" width="345" height="300" rx="16" fill="#eff6ff" stroke="#1d4ed8" stroke-width="2"/>
+    <text x="22" y="40" class="card" fill="#1d4ed8">⏱️ Pace</text>
+    <text x="22" y="76" class="eq">pace = time ÷ distance</text>
+    <line x1="22" y1="94" x2="323" y2="94" stroke="#c7d2fe"/>
+    <text x="22" y="126" class="d">10K in 50:00</text>
+    <text x="22" y="150" class="eq" fill="#1d4ed8">→ 5:00 / km</text>
+    <text x="22" y="178" class="d">(8:03 / mile · 12 km/h)</text>
+    <text x="22" y="228" class="d">Flip it to find a goal pace:</text>
+    <text x="22" y="252" class="d">a 4:00 marathon needs</text>
+    <text x="22" y="276" class="eq" fill="#1d4ed8">5:41 / km</text>
+  </g>
+
+  <!-- Card 2: Riegel -->
+  <g transform="translate(428 96)">
+    <rect x="0" y="0" width="345" height="300" rx="16" fill="#f0fdf4" stroke="#0e9f6e" stroke-width="2"/>
+    <text x="22" y="40" class="card" fill="#15803d">🏅 Riegel prediction</text>
+    <text x="22" y="74" class="eq" font-size="13">t₂ = t₁ × (d₂ ÷ d₁)^1.06</text>
+    <line x1="22" y1="94" x2="323" y2="94" stroke="#86efac"/>
+    <text x="22" y="122" class="d">From a 25:00 5K:</text>
+    <text x="22" y="150" class="d">10K</text><text x="150" y="150" class="eq" fill="#15803d">≈ 52:07</text>
+    <text x="22" y="178" class="d">Half marathon</text><text x="150" y="178" class="eq" fill="#15803d">≈ 1:55</text>
+    <text x="22" y="206" class="d">Marathon</text><text x="150" y="206" class="eq" fill="#15803d">≈ 3:59</text>
+    <text x="22" y="252" class="d">One race predicts</text>
+    <text x="22" y="274" class="d">them all (with training).</text>
+  </g>
+
+  <!-- Card 3: HR zones -->
+  <g transform="translate(796 96)">
+    <rect x="0" y="0" width="345" height="300" rx="16" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+    <text x="22" y="40" class="card" fill="#b91c1c">❤️ Heart-rate zones</text>
+    <text x="22" y="74" class="eq" font-size="13">HRmax ≈ 208 − 0.7 × age</text>
+    <line x1="22" y1="94" x2="323" y2="94" stroke="#fecaca"/>
+    <text x="22" y="120" class="d">Age 30 → 187 bpm max</text>
+    <g font-family="Consolas, Menlo, monospace" font-size="12" fill="#0f172a">
+      <text x="22" y="148">Z1 50–60%  warm-up</text>
+      <text x="22" y="170">Z2 60–70%  fat burn / base</text>
+      <text x="22" y="192">Z3 70–80%  aerobic</text>
+      <text x="22" y="214">Z4 80–90%  threshold</text>
+      <text x="22" y="236">Z5 90–100% VO₂ max</text>
+    </g>
+    <text x="22" y="274" class="d">Add resting HR → Karvonen.</text>
+  </g>
+
+  <!-- footer -->
+  <g transform="translate(60 424)">
+    <rect x="0" y="0" width="1081" height="52" rx="14" fill="#0c2f6b"/>
+    <text x="24" y="32" font-family="Consolas, Menlo, monospace" font-size="14" fill="#7ef0c0">lazytools.io — pace, race-time and heart-rate calculators, private in your browser</text>
+  </g>
+</svg>
