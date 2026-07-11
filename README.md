@@ -31,7 +31,7 @@ are no processing servers. The tool code downloads to *your* device and runs the
 yourself: open DevTools, watch the network tab, or switch off your connection mid-use — everything keeps
 working.
 
-## What's live — 20 categories, 380+ tools, ~470 pages
+## What's live — 20 categories, 410+ tools, ~505 pages
 
 | Category | Highlights |
 |---|---|
@@ -56,7 +56,7 @@ working.
 | [PDF Tools](https://lazytools.io/pdf/) | merge/split/rotate **with live page previews**, unlock/protect (qpdf wasm), **accessibility checker (EAA)**, **redaction checker + rasterizing redactor** |
 | [Audio](https://lazytools.io/video/) | trim, speed, volume, WAV convert (Web Audio) |
 
-Plus **50 in-depth guides** on the [blog](https://lazytools.io/blog/) — each with custom infographics,
+Plus **58 in-depth guides** on the [blog](https://lazytools.io/blog/) — each with custom infographics,
 FAQ schema and cited sources — and a research-driven build pipeline (see
 [docs/research/](docs/research/)) that has shipped regulatory-deadline tools ahead of the French,
 Polish and Belgian e-invoicing mandates.
@@ -66,7 +66,7 @@ Polish and Belgian e-invoicing mandates.
 ```bash
 npm install
 npm run dev      # dev server at localhost:4321
-npm run build    # static site → dist/ (~410 pages)
+npm run build    # static site → dist/ (~505 pages)
 ```
 
 ## Tech & models
@@ -94,6 +94,8 @@ stores no personal data).
 | **[qpdf](https://qpdf.sourceforge.io/) (WASM)** | PDF unlock / password-protect | WASM build at `/vendor/qpdf.wasm` |
 | **[pdf.js](https://mozilla.github.io/pdf.js/)** | PDF page previews, accessibility (tag-tree) checker, redaction text-layer extraction | Mozilla's PDF engine + its worker |
 | **[gpt-tokenizer](https://github.com/niieani/gpt-tokenizer)** | LLM token counter — exact `o200k_base`/`cl100k_base` counts | Pure-JS BPE tokenizer, runs in-browser |
+| **[qrcode](https://github.com/soldair/node-qrcode) + [JsBarcode](https://github.com/lindell/JsBarcode)** | QR codes (URL/WiFi/vCard/email) and 1-D barcodes (EAN/UPC/Code128) with mod-10 check digits | Client-side canvas/SVG render, PNG/SVG export |
+| **Text-forensics + readability libs** | Invisible-character & homoglyph detection, exact LCS text diff, Flesch/FK/Fog/SMOG/CLI/ARI readability | Pure TS (`textscan`, `textdiff`, `readability`), Node-tested |
 | **Web Crypto API** | AES-256-GCM file encryption, SHA-2 file hashing, PBKDF2 key derivation, secure password generation | Native browser cryptography |
 | **Web Audio API** | Audio trim / speed / volume / WAV conversion | Native, decodes to `AudioBuffer` |
 | **`Intl.DateTimeFormat` (ICU)** | World-calendar conversions (Hijri, Hebrew, Persian, Coptic, Ethiopic, Buddhist, Julian…) | The browser's bundled ICU calendar data; reverse conversion by binary search over the day number |

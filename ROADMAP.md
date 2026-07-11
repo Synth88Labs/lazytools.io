@@ -12,19 +12,21 @@ the legal review) are cleared.
 ratings (PHP + SQLite), smart header search, sitemap, auto-generated `llms.txt`, GitHub Actions →
 Namecheap FTPS deploy pipeline.
 
-**All 18 categories live** (~386 pages, 312+ tools):
+**All 20 categories live** (~505 pages, 410+ tools):
 
 | Category | Highlights |
 |---|---|
 | Unit Converters | 100+ pairs across 11 quantities, exact NIST/BIPM factors |
 | Calculators | percentage, EMI, tip, discount, interest, hourly⇄salary… + **finance**: mortgage (full amortization schedule, extra-principal payoff, CSV export), auto loan, markup vs margin, sales tax (with reverse), fuel cost · **health**: BMI, TDEE/BMR (Mifflin–St Jeor), body-fat (US Navy), ideal weight, macros, pregnancy due date · **academic**: GPA + grade-needed-on-final |
 | Mathematics | **exact arithmetic** — fraction calculator with steps, decimal⇄fraction (repeating decimals), GCD/LCM via Euclid, prime factorizer (Miller–Rabin + Pollard rho), ratio, quadratic solver with radical roots, statistics, Roman numerals, scientific notation, nCr/nPr (BigInt), long division with steps, radical simplifier, modular arithmetic (ext. Euclid + square-and-multiply), slope/line & distance/midpoint (exact), binomial expansion, significant figures, degrees⇄radians (exact π), completing the square, synthetic & polynomial division, percentile (3 named methods), divisibility rules, weighted average, exponent calculator (2^100 digit-exact), circle calculator (in terms of π), triangle area (Heron, exact radicals) — 26 tools |
+| Biology & Lab | **14 tools** — DNA reverse-complement/translate (sequence never uploaded), C₁V₁=C₂V₂ dilution + serial planner, Punnett (mono/di/trihybrid), Hardy–Weinberg + χ², GC/Tm, DNA & protein molecular weight, molarity, hemocytometer, Michaelis–Menten, qPCR efficiency, OD600, doubling time, population growth — Node-tested |
 | Size Converters | ring, shoe, bra, clothing, hat, kids' shoe |
-| Text Tools | counters, case, sort, dedupe, find-and-replace, slugify |
+| Photo Size Maker | **passport/visa/ID photos for 57 countries** — crop to exact official size, **on-device ML face check** (MediaPipe BlazeFace), background/exposure checks, DPI-correct export; every spec cited + date-verified |
+| Text Tools | **19 tools** — "the invisible & exact layer of text": **invisible-character detector** (AI-watermark/zero-width), **homoglyph detector**, **text diff** (LCS), **readability** (Flesch/FK/Fog/SMOG/CLI/ARI), **Unicode inspector**, word frequency, text cleaner, Unicode normalizer, fancy-text decoder, strip-HTML, line tools, plus counters/case/sort/dedupe/find-replace |
 | Color Tools | HEX/RGB/HSL/CMYK, WCAG contrast, shades, gradient, mixer, **brand color finder** (1,100+ brand palettes, name + reverse-hex search) |
 | File & Data | CSV/JSON/XML/YAML, Markdown, JSON formatter, **e-invoicing cluster**: EN 16931 viewer + Factur-X (France) + **KSeF FA(3) viewer & pre-checker** (Poland) + Peppol BIS (Belgium) |
 | Developer Tools | Base64, URL/HTML entities, SHA hashes, JWT, regex, number base, **LLM token counter & cost calculator** (exact o200k counts in-browser, dated pricing) |
-| Generators | password, UUID, QR, random number, lorem ipsum |
+| Generators | **12 tools** — password, **passphrase (EFF diceware)**, **UUID v4/v7 · ULID · NanoID + decoder**, QR, **WiFi/vCard/email QR** (encoded directly, no tracking redirect), **barcode** (EAN/UPC/Code128, mod-10 check digit), random number, lorem ipsum |
 | Date & Time | timestamp, age, date-diff/add, ISO week, timezone converter, **19 timezone-pair pages** |
 | Calendars | **multi-calendar converter** (Hijri/Hebrew/Persian/Indian/Julian…), Hijri, Persian, Hebrew & Julian converters, **Nepali BS⇄AD**, 4-5-4/4-4-5/5-4-4 retail calendar, leap-year checker |
 | Codes & Ciphers | Morse (with audio), NATO phonetic alphabet, binary translator, Caesar, ROT13, Vigenère |
@@ -35,7 +37,7 @@ Namecheap FTPS deploy pipeline.
 | Productivity | **Pomodoro timer**, countdown/stopwatch, meeting-cost meter, Eisenhower matrix, habit tracker, Kanban, mind map, Gantt, decision matrix, RICE, SWOT, pros/cons, flowchart, whiteboard, time-blocking, OKR, checklist, retro board, eye-rest — all saved locally, JSON export |
 | Network & IT | **IPv4 & IPv6 subnet calculators** (exact 128-bit math), CIDR⇄range, IP format converter, IPv6 expand/compress (RFC 5952), chmod calculator, cron parser with next-run times, MAC formatter (EUI-64, link-local) |
 
-**Content & growth engine** — 50 SEO/GEO blog guides (hero + custom SVG infographic, schema,
+**Content & growth engine** — 58 SEO/GEO blog guides (hero + custom SVG infographic, schema,
 cited sources); a daily **market-research agent** that scans for browser-tool opportunities and
 files scored findings to `docs/research/` — the Network & IT category and its IPv6 guide shipped
 directly from its 7 Jul scan (IPv6 crossed 50% of Google traffic in Mar 2026).
