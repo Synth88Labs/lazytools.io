@@ -16,7 +16,7 @@ export interface TextToolDef {
   description: string;
   lead: string;
   /** 'counter' = live stats; 'transform' = input→output; others = custom islands */
-  widget: 'counter' | 'transform' | 'invisible' | 'homoglyph' | 'diff' | 'readability' | 'unicode' | 'frequency';
+  widget: 'counter' | 'transform' | 'invisible' | 'homoglyph' | 'diff' | 'readability' | 'unicode' | 'frequency' | 'bionic';
   computeId?: string;
   options?: TextToolOption[];
   /** sample text preloaded so the tool demonstrates itself */
@@ -510,6 +510,98 @@ export const TEXT_TOOLS: TextToolDef[] = [
       { q: 'Is my text uploaded?', a: 'No — the conversion runs entirely in your browser.' },
     ],
     keywords: ['delimiter converter', 'comma to newline', 'newline to comma', 'transpose columns', 'convert delimiter', 'list to csv'],
+  },
+  {
+    slug: 'fancy-text-decoder',
+    name: 'Fancy Text Decoder (Unicode → Plain Text)',
+    icon: '🔠',
+    description: 'Convert stylish “fancy” Unicode text — 𝓼𝓬𝓻𝓲𝓹𝓽, 𝔤𝔬𝔱𝔥𝔦𝔠, ⓒⓘⓡⓒⓛⓔ⓭, ｆｕｌｌｗｉｄｔｈ — back to normal, readable plain text.',
+    lead: 'Turn stylish “fancy” Unicode text (𝓯𝓪𝓷𝓬𝔂, 𝔤𝔬𝔱𝔥𝔦𝔠, 𝕕𝕠𝕦𝕓𝕝𝕖, ⓒⓘⓡⓒⓛⓔ⓭, ｆｕｌｌｗｉｄｔｈ) back into normal, searchable plain text.',
+    widget: 'transform',
+    computeId: 'defancy',
+    options: [
+      { id: 'zalgo', label: 'Also strip zalgo / stacked accent marks', type: 'checkbox', defaultValue: 'true' },
+    ],
+    sample: '𝓣𝓱𝓲𝓼 𝓲𝓼 𝓯𝓪𝓷𝓬𝔂 𝓼𝓬𝓻𝓲𝓹𝓽, 𝔤𝔬𝔱𝔥𝔦𝔠, and ⓝⓞⓡⓜⓐⓛ text.',
+    how: 'Those bold, italic, script, gothic, double-struck, monospace, circled and full-width “fonts” you see on social media aren’t fonts at all — they’re separate Unicode characters that look styled. Because they’re distinct code points, they break search, screen readers and copy-paste. This decoder applies Unicode compatibility normalisation (NFKC) to map every styled variant back to its plain letter, and optionally strips stacked “zalgo” accent marks, giving you clean, readable text.',
+    note: 'The honest, useful direction of the “fancy text” trend: decoding it back to plain text. Styled Unicode is inaccessible to screen readers and unsearchable — converting it back makes it usable again.',
+    faqs: [
+      { q: 'How do I convert fancy text back to normal?', a: 'Paste the styled text here and it is decoded to plain letters automatically. It works for bold, italic, script, gothic (fraktur), double-struck, monospace, circled and full-width Unicode styles.' },
+      { q: 'Why is “fancy” text a problem?', a: 'Those styles are separate Unicode characters, not real fonts, so screen readers often read them incorrectly or not at all, search engines and Ctrl-F don’t match them, and they can break forms and databases. Decoding restores normal, accessible text.' },
+      { q: 'What is zalgo text?', a: 'Text with many combining accent marks stacked on each letter to create a “glitchy” dripping effect. Turn on “strip zalgo” to remove those marks and recover the base letters.' },
+      { q: 'How does the decoding work?', a: 'It uses Unicode NFKC (compatibility) normalisation, which maps styled and full-width characters to their standard equivalents — so 𝓯𝓪𝓷𝓬𝔂 becomes “fancy” and ｆｕｌｌ becomes “full”.' },
+      { q: 'Is my text uploaded?', a: 'No — the conversion runs entirely in your browser.' },
+    ],
+    keywords: ['fancy text to normal', 'unicode to plain text', 'decode fancy text', 'convert fancy text back', 'remove fancy font', 'unfancy text'],
+  },
+  {
+    slug: 'strip-html-tags',
+    name: 'Strip HTML Tags (HTML → Plain Text)',
+    icon: '🏷️',
+    description: 'Remove HTML tags and decode entities to get clean plain text from pasted markup or scraped web content. Private, in-browser.',
+    lead: 'Strip the HTML tags out of pasted markup or scraped content and get clean, readable plain text — entities decoded, whitespace tidied.',
+    widget: 'transform',
+    computeId: 'striphtml',
+    options: [],
+    sample: '<h1>Hello &amp; welcome</h1>\n<p>This is <strong>bold</strong> and&nbsp;spaced.</p>',
+    how: 'The tool removes script and style blocks entirely, turns block-level tags (paragraphs, list items, line breaks, headings) into newlines, strips the remaining tags, decodes HTML entities like &amp;, &nbsp; and numeric references, and collapses leftover whitespace. What’s left is the readable text content.',
+    note: 'A fast, deterministic way to get plain text out of rich-text or scraped HTML — the kind of exact cleanup that is tedious by hand and unreliable to ask an AI for.',
+    faqs: [
+      { q: 'How do I remove HTML tags from text?', a: 'Paste the HTML and the tool returns the text with all tags removed, entities decoded, and whitespace tidied. Block elements become line breaks so the structure stays readable.' },
+      { q: 'Does it decode HTML entities?', a: 'Yes — named entities like &amp;, &lt;, &nbsp; and numeric references like &#233; and &#x1F389; are converted back to the characters they represent.' },
+      { q: 'What happens to scripts and styles?', a: 'Everything inside <script> and <style> tags is removed entirely, so you don’t get JavaScript or CSS in your output.' },
+      { q: 'Will it keep the text structure?', a: 'Paragraphs, headings, list items and <br> become line breaks, so the plain text keeps a sensible layout rather than collapsing into one blob.' },
+      { q: 'Is my content uploaded?', a: 'No — the stripping runs entirely in your browser.' },
+    ],
+    keywords: ['strip html tags', 'remove html tags', 'html to text', 'html to plain text', 'extract text from html', 'clean html'],
+  },
+  {
+    slug: 'line-tools',
+    name: 'Line Tools (Number, Prefix, Suffix, Pad)',
+    icon: '📋',
+    description: 'Number lines, add a prefix or suffix to every line, or pad lines to a fixed width. Fast, deterministic, in-browser.',
+    lead: 'Operate on every line at once — number them, add a prefix or suffix, or pad them to a fixed width.',
+    widget: 'transform',
+    computeId: 'lineops',
+    options: [
+      { id: 'mode', label: 'Operation', type: 'select', defaultValue: 'number', options: [
+        { value: 'number', label: 'Number lines' },
+        { value: 'prefix', label: 'Add prefix' },
+        { value: 'suffix', label: 'Add suffix' },
+        { value: 'padRight', label: 'Pad right to width' },
+        { value: 'padLeft', label: 'Pad left to width' },
+      ] },
+      { id: 'value', label: 'Value (start number, prefix/suffix text, or width)', type: 'text', defaultValue: '1', placeholder: '1  ·  "- "  ·  20' },
+    ],
+    sample: 'apple\nbanana\ncherry\ndate',
+    how: 'Choose an operation and it is applied to every line: “Number lines” prepends an incrementing, right-aligned number from your chosen start; “Add prefix/suffix” wraps each line with the text you enter; and the pad options align every line to a fixed width. Handy for building lists, code, and aligned columns.',
+    note: 'Several small per-line transforms bundled into one deterministic page — the kind of bulk text surgery that is tedious to do by hand across hundreds of lines.',
+    faqs: [
+      { q: 'How do I number a list of lines?', a: 'Choose “Number lines” and set the starting number in the value box. Each line gets a right-aligned number and a period, so the list stays neatly aligned even into the hundreds.' },
+      { q: 'How do I add the same text to every line?', a: 'Choose “Add prefix” or “Add suffix” and type the text in the value box — for example a “- ” prefix to make a bullet list, or a “,” suffix to build a comma-ended list.' },
+      { q: 'What does padding do?', a: 'It makes every line the same width by adding spaces, either on the right (left-aligned) or the left (right-aligned) — useful for aligning columns in monospace text.' },
+      { q: 'Does it change blank lines?', a: 'Blank lines are treated like any other line — they get numbered or padded too, which keeps the line count in sync with your original.' },
+      { q: 'Is my text uploaded?', a: 'No — every operation runs in your browser.' },
+    ],
+    keywords: ['number lines', 'add prefix to each line', 'add suffix to each line', 'pad text', 'line numbering tool', 'bulk edit lines'],
+  },
+  {
+    slug: 'fast-reading-bold',
+    name: 'Fast-Reading Bold Converter',
+    icon: '⚡',
+    description: 'Bold the first part of each word to create a fast-reading fixation aid — an accessibility formatting many readers with ADHD or dyslexia find helpful. Copy as rich text.',
+    lead: 'Add fast-reading emphasis by bolding the first part of every word, giving your eyes a fixation point — then copy it as rich text.',
+    widget: 'bionic',
+    how: 'The converter bolds the first portion of each word — roughly the first 40%, scaled by word length — which many readers use as a visual anchor to move through text more quickly. The preview shows the result, and “Copy formatted” places rich text on your clipboard so the bold styling pastes into documents and email.',
+    note: 'A generic implementation of the fixation-bolding idea, offered as an accessibility aid. It is not affiliated with, and does not use, the trademarked “Bionic Reading” method.',
+    faqs: [
+      { q: 'What is fast-reading bold formatting?', a: 'A reading aid that bolds the first few letters of each word to create fixation points for your eyes. Many readers, including some with ADHD or dyslexia, find it helps them read faster and stay focused.' },
+      { q: 'How much of each word is bolded?', a: 'Roughly the first 40%, adjusted by word length — one letter for short words, more for longer ones. This gives a consistent visual anchor without over-bolding.' },
+      { q: 'Can I paste the bold formatting into a document?', a: 'Yes — “Copy formatted” copies rich text (HTML), so the bold styling is preserved when you paste into a word processor, email or notes app that accepts formatting.' },
+      { q: 'Is this the same as Bionic Reading?', a: 'It applies the same general idea — bolding word beginnings as fixation points — but it is an independent, generic implementation and is not affiliated with the trademarked “Bionic Reading” method.' },
+      { q: 'Is my text uploaded?', a: 'No — the formatting is generated entirely in your browser.' },
+    ],
+    keywords: ['fast reading bold', 'bionic reading alternative', 'bold first letters', 'fixation reading', 'speed reading text', 'reading aid bold'],
   },
 ];
 

@@ -209,4 +209,40 @@ export const TRANSFORM: Record<string, (input: string, opts: Opts) => TransformR
     }
     return { output: rows.map((r) => r.join(to)).join('\n') };
   },
+
+  /** Decode "fancy" / stylish Unicode text (𝓯𝓪𝓷𝓬𝔂, 𝔤𝔬𝔱𝔥𝔦𝔠, ⓕⓤⓛⓛⓦⓘⓓⓣⓗ) back to plain text. */
+  defancy: (input, opts) => {
+    let t = input.normalize('NFKC');
+    if (opts.zalgo !== false) t = t.replace(/\p{M}+/gu, ''); // strip stacked combining marks (zalgo/underline)
+    return { output: t, info: t !== input ? 'Decoded stylish Unicode back to plain text.' : 'No stylised characters found.' };
+  },
+
+  /** Strip HTML tags and decode entities → plain text. */
+  striphtml: (input) => {
+    let t = input.replace(/<script[\s\S]*?<\/script>/gi, '').replace(/<style[\s\S]*?<\/style>/gi, '');
+    t = t.replace(/<\/?(p|div|br|li|tr|h[1-6])\b[^>]*>/gi, '\n').replace(/<[^>]+>/g, '');
+    const named: Record<string, string> = { '&amp;': '&', '&lt;': '<', '&gt;': '>', '&quot;': '"', '&#39;': "'", '&apos;': "'", '&nbsp;': ' ' };
+    t = t.replace(/&#(\d+);/g, (_, d) => String.fromCodePoint(+d))
+         .replace(/&#x([0-9a-f]+);/gi, (_, h) => String.fromCodePoint(parseInt(h, 16)))
+         .replace(/&[a-z]+;/gi, (m) => named[m.toLowerCase()] ?? m);
+    t = t.replace(/[ \t]+/g, ' ').replace(/ *\n */g, '\n').replace(/\n{3,}/g, '\n\n').trim();
+    return { output: t };
+  },
+
+  /** Line operations: number lines, add prefix/suffix, or pad. */
+  lineops: (input, opts) => {
+    const mode = String(opts.mode ?? 'number');
+    const value = String(opts.value ?? '');
+    const lines = input.split('\n');
+    if (mode === 'number') {
+      const start = parseInt(value) || 1;
+      const pad = String(start + lines.length - 1).length;
+      return { output: lines.map((l, i) => `${String(start + i).padStart(pad, ' ')}. ${l}`).join('\n') };
+    }
+    if (mode === 'prefix') return { output: lines.map((l) => value + l).join('\n') };
+    if (mode === 'suffix') return { output: lines.map((l) => l + value).join('\n') };
+    if (mode === 'padRight') { const w = parseInt(value) || 20; return { output: lines.map((l) => l.padEnd(w)).join('\n') }; }
+    if (mode === 'padLeft') { const w = parseInt(value) || 20; return { output: lines.map((l) => l.padStart(w)).join('\n') }; }
+    return { output: input };
+  },
 };

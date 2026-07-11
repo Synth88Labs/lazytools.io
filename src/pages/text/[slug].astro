@@ -13,6 +13,7 @@ import TextDiffTool from '../../components/text/TextDiffTool.tsx';
 import ReadabilityTool from '../../components/text/ReadabilityTool.tsx';
 import UnicodeInspectorTool from '../../components/text/UnicodeInspectorTool.tsx';
 import WordFrequencyTool from '../../components/text/WordFrequencyTool.tsx';
+import BionicReadingTool from '../../components/text/BionicReadingTool.tsx';
 import { TEXT_TOOLS, type TextToolDef } from '../../data/text/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -70,6 +71,7 @@ const schema = [
       {tool.widget === 'readability' && <ReadabilityTool client:load />}
       {tool.widget === 'unicode' && <UnicodeInspectorTool client:load />}
       {tool.widget === 'frequency' && <WordFrequencyTool client:load />}
+      {tool.widget === 'bionic' && <BionicReadingTool client:load />}
     </div>
 
     <div class="mt-4">
