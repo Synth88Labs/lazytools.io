@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="Estimating materials for a home project comes down to two ideas: area and volume. Paint and tiles are area jobs — area equals length times width, then paint equals area times coats divided by coverage, and tiles equal area divided by tile size plus waste. Concrete and mulch are volume jobs — volume equals area times thickness or depth, then divide by a bag yield for the number of bags. Always add a waste allowance: about 10 percent for tiles, 5 to 10 percent for concrete, and buy paint in whole cans with spares.">
+  <defs>
+    <style>
+      .h { font: 800 30px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .sub { font: 500 15px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+      .lab { font: 800 18px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; }
+      .eq { font: 800 18px Consolas, Menlo, monospace; }
+      .d { font: 600 14px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #475569; }
+    </style>
+  </defs>
+
+  <text x="600" y="42" text-anchor="middle" class="h">Two ideas cover every material estimate</text>
+  <text x="600" y="70" text-anchor="middle" class="sub">is it an area job (paint, tiles) or a volume job (concrete, mulch)?</text>
+
+  <!-- Area card -->
+  <g transform="translate(70 96)">
+    <rect x="0" y="0" width="520" height="300" rx="16" fill="#eff6ff" stroke="#1d87f1" stroke-width="2"/>
+    <text x="24" y="40" class="lab" fill="#1d4ed8">▭ Area jobs — surfaces</text>
+    <text x="24" y="78" class="eq" fill="#1d4ed8">area = length × width</text>
+    <line x1="24" y1="98" x2="496" y2="98" stroke="#c7d2fe"/>
+    <text x="24" y="132" class="d">🎨 Paint:</text>
+    <text x="120" y="132" class="eq" fill="#0f172a" font-size="15">area × coats ÷ coverage</text>
+    <text x="24" y="172" class="d">🔲 Tiles:</text>
+    <text x="120" y="172" class="eq" fill="#0f172a" font-size="15">area ÷ tile size + waste</text>
+    <text x="24" y="216" class="d">Wall area = 2 × (length + width) × height,</text>
+    <text x="24" y="238" class="d">minus doors &amp; windows.</text>
+    <text x="24" y="272" class="d">Coverage ≈ 10–12 m²/L (350–400 sq ft/gal).</text>
+  </g>
+
+  <!-- Volume card -->
+  <g transform="translate(610 96)">
+    <rect x="0" y="0" width="520" height="300" rx="16" fill="#f0fdf4" stroke="#0e9f6e" stroke-width="2"/>
+    <text x="24" y="40" class="lab" fill="#15803d">◧ Volume jobs — depth</text>
+    <text x="24" y="78" class="eq" fill="#15803d">volume = area × depth</text>
+    <line x1="24" y1="98" x2="496" y2="98" stroke="#86efac"/>
+    <text x="24" y="132" class="d">🧱 Concrete:</text>
+    <text x="150" y="132" class="eq" fill="#0f172a" font-size="15">L×W×thickness</text>
+    <text x="24" y="172" class="d">🌱 Mulch:</text>
+    <text x="150" y="172" class="eq" fill="#0f172a" font-size="15">area × depth</text>
+    <text x="24" y="212" class="d">Bags = volume ÷ bag yield (round up).</text>
+    <text x="24" y="246" class="d">1 yd³ ≈ 0.76 m³. Bulk beats bags past ~1 m³.</text>
+    <text x="24" y="278" class="d">Add ~5–10% for settling &amp; spills.</text>
+  </g>
+
+  <!-- footer -->
+  <g transform="translate(70 420)">
+    <rect x="0" y="0" width="1060" height="56" rx="14" fill="#0c2f6b"/>
+    <text x="24" y="35" font-family="Consolas, Menlo, monospace" font-size="15" fill="#7ef0c0">lazytools.io — paint, tile, concrete, mulch &amp; wallpaper calculators (metric or imperial), in your browser</text>
+  </g>
+</svg>

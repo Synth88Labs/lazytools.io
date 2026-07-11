@@ -7,6 +7,13 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'estimating-materials-guide',
+    kicker: 'HOME & DIY GUIDE',
+    lines: ['How much do I need?', 'Estimating paint,', 'tile, concrete & mulch'],
+    fact: 'area = L×W · volume = area × depth',
+    icon: '🛠️',
+  },
+  {
     slug: 'oxidation-numbers-guide',
     kicker: 'CHEMISTRY GUIDE',
     lines: ['Oxidation numbers:', 'the rules and how', 'to assign them'],

@@ -31,7 +31,7 @@ are no processing servers. The tool code downloads to *your* device and runs the
 yourself: open DevTools, watch the network tab, or switch off your connection mid-use — everything keeps
 working.
 
-## What's live — 23 categories, 500+ tools, ~606 pages
+## What's live — 24 categories, 505+ tools, ~614 pages
 
 | Category | Highlights |
 |---|---|
@@ -43,6 +43,7 @@ working.
 | [Statistics](https://lazytools.io/statistics/) | **6 tools** — **normal distribution** (z↔p, shaded bell curve via exact erf), **binomial probability** (BigInt-exact coefficients), **confidence intervals** (mean z/t + proportion), **sample size**, **p-value** (z/t/χ²/F, one/two-tailed), **linear regression & correlation** (least-squares + scatter plot, r, r²) |
 | [Physics](https://lazytools.io/physics/) | **29 tools** — **SUVAT kinematic-equations solver** (enter any 3 of u/v/a/s/t), **projectile motion** with trajectory graph, free fall, **Newton's 2nd law**, momentum, friction, **kinetic/potential energy**, work, power, Hooke's law, **centripetal force**, **Newton's gravitation**, **wave speed** (v=fλ), **Snell's law** (critical angle + TIR), **Ohm's-law V/I/R/P wheel**, **series/parallel resistors & capacitors**, **wave/SHM visualizer**, **Doppler effect**, **lens & mirror equation**, **torque**, **orbital velocity**, **Carnot efficiency**, **thermal expansion**, **photon energy** (E=hf), **de Broglie**, **E=mc²** |
 | [Size Converters](https://lazytools.io/size/) | ring, shoe, bra, clothing, hat sizes across systems |
+| [Home & DIY](https://lazytools.io/home/) | **5 tools** — **paint** (wall area − openings × coats ÷ coverage), **tile & flooring** (area ÷ tile + waste, boxes), **concrete** (L×W×thickness → volume + pre-mix bags), **mulch & soil** (area × depth → m³/yd³/bags), **wallpaper** (rolls from drops + pattern repeat) — metric or imperial |
 | [Text Tools](https://lazytools.io/text/) | **19 tools** — "the invisible & exact layer of text": **invisible-character detector** (AI-watermark / zero-width), **homoglyph/lookalike detector**, **text diff** (LCS), **readability** (Flesch/FK/Fog/SMOG/CLI/ARI), **Unicode inspector**, word frequency, text cleaner (em-dash/smart-quote), Unicode normalizer, plus counters, case, sort, dedupe, find & replace |
 | [Color Tools](https://lazytools.io/color/) | HEX/RGB/HSL/CMYK, **OKLCH/OKLAB/LAB converter** (CSS Color 4 + gamut-mapped HEX fallback), WCAG contrast + **accessible-color fixer**, **APCA (WCAG 3) checker**, **contrast grid**, **color-blindness simulator** (Machado 2009, image + palette), **harmony generator**, **image color picker + palette extractor** (median-cut, EyeDropper API), **nearest color-name finder** (CIEDE2000), **Tailwind OKLCH scale generator**, **brand color finder (1,100+ palettes)** |
 | [File & Data](https://lazytools.io/file/) | CSV/JSON/XML/YAML, Markdown, **e-invoicing viewers: Factur-X (FR), KSeF FA(3) (PL), Peppol BIS (BE), XRechnung/ZUGFeRD (DE)** |
@@ -59,7 +60,7 @@ working.
 | [PDF Tools](https://lazytools.io/pdf/) | merge/split/rotate **with live page previews**, unlock/protect (qpdf wasm), **accessibility checker (EAA)**, **redaction checker + rasterizing redactor** |
 | [Audio](https://lazytools.io/video/) | trim, speed, volume, WAV convert (Web Audio) |
 
-Plus **70 in-depth guides** on the [blog](https://lazytools.io/blog/) — each with custom infographics,
+Plus **71 in-depth guides** on the [blog](https://lazytools.io/blog/) — each with custom infographics,
 FAQ schema and cited sources — and a research-driven build pipeline (see
 [docs/research/](docs/research/)) that has shipped regulatory-deadline tools ahead of the French,
 Polish and Belgian e-invoicing mandates.
@@ -69,7 +70,7 @@ Polish and Belgian e-invoicing mandates.
 ```bash
 npm install
 npm run dev      # dev server at localhost:4321
-npm run build    # static site → dist/ (~606 pages)
+npm run build    # static site → dist/ (~614 pages)
 ```
 
 ## Tech & models

@@ -1,0 +1,58 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PrivacyStrip from '../../components/PrivacyStrip.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { HOME_TOOLS } from '../../data/home/index';
+import { breadcrumbSchema, collectionPageSchema, faqSchema } from '../../lib/schema';
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Home & DIY', url: '/home/' },
+];
+const faqs = [
+  { q: 'Are these home & DIY calculators accurate?', a: 'Yes — each is exact area/volume geometry (area = length × width, volume = area × depth), with sensible defaults for coverage, waste and bag sizes that you can override. They estimate materials; always check product labels for the actual coverage and yield.' },
+  { q: 'Do they work in metric and imperial?', a: 'Yes — every calculator has a metric/imperial toggle (metres & litres, or feet & gallons), so you can work in whichever units your materials are sold in.' },
+  { q: 'Is my data uploaded?', a: 'No. Everything is calculated in your browser and nothing is sent to a server — the tools even work offline.' },
+  { q: 'Why do the tools add a waste allowance?', a: 'Because real projects need extra: paint for touch-ups, tiles for cuts and breakages, concrete for settling and spills. The defaults are typical, and you can adjust them to your job.' },
+];
+const schema = [
+  breadcrumbSchema(crumbs),
+  collectionPageSchema({ name: 'Home & DIY Calculators', url: '/home/', description: 'Free, private home improvement and DIY material estimators: paint, tile & flooring, concrete, mulch & soil and wallpaper — metric or imperial, in your browser.', items: HOME_TOOLS.map((t) => ({ name: t.name, url: `/home/${t.slug}/` })) }),
+  faqSchema(faqs),
+];
+---
+
+<Base
+  title="Home & DIY Calculators — Paint, Tile, Concrete, Mulch | LazyTools"
+  description="Free home improvement calculators that run in your browser: paint calculator, tile & flooring calculator, concrete calculator, mulch & soil calculator and wallpaper calculator. Metric or imperial, exact, no upload."
+  schema={schema}
+>
+  <div class="mx-auto max-w-5xl px-4 py-6">
+    <Breadcrumbs items={crumbs} />
+    <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Home & DIY Calculators</h1>
+    <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
+      Estimate exactly how much material your project needs — paint, tiles, concrete, mulch or wallpaper —
+      from simple room or bed dimensions. Every tool works in metric or imperial, adds a sensible waste
+      allowance, and runs entirely in your browser.
+    </p>
+
+    <div class="mt-5"><PrivacyStrip /></div>
+
+    <section class="mt-8">
+      <ul class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {HOME_TOOLS.map((t) => (
+          <li>
+            <a href={`/home/${t.slug}/`} class="flex h-full flex-col rounded-xl border border-slate-200 p-4 transition hover:border-brand-400 hover:shadow-sm">
+              <span class="text-2xl" aria-hidden="true">{t.icon}</span>
+              <span class="mt-2 font-semibold text-slate-900">{t.name}</span>
+              <span class="mt-1 text-sm text-slate-600">{t.lead.split('—')[0].split('(')[0]}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <FaqSection faqs={faqs} />
+  </div>
+</Base>
