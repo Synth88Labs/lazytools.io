@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="Two pillars of accessible color. Pillar one, contrast: WCAG 2 AA requires a contrast ratio of 4.5 to 1 for normal text, 3 to 1 for large text, and AAA requires 7 to 1. The ratio runs from 1 to 1 up to 21 to 1. Pillar two, color blindness: about 1 in 12 men and 1 in 200 women have color-vision deficiency. The main types are deuteranopia (green-weak, most common), protanopia (red-weak), and tritanopia (blue-weak), which make red and green or blue and yellow hard to tell apart. The rule: never rely on color alone — add text, icons or patterns.">
+  <defs>
+    <style>
+      .h { font: 800 30px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .sub { font: 500 15px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+      .lab { font: 800 18px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .mono { font: 700 15px Consolas, Menlo, monospace; fill: #0f172a; }
+      .big { font: 800 30px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; }
+      .cap { font: 700 13px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+    </style>
+  </defs>
+
+  <text x="600" y="44" text-anchor="middle" class="h">Two pillars of accessible color</text>
+  <text x="600" y="72" text-anchor="middle" class="sub">enough contrast to read · not relying on color alone to convey meaning</text>
+
+  <!-- Pillar 1: contrast -->
+  <g transform="translate(70 100)">
+    <rect x="0" y="0" width="520" height="420" rx="16" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/>
+    <text x="24" y="42" class="lab">① Contrast — WCAG 2 ratios</text>
+
+    <!-- sample chips -->
+    <g transform="translate(24 64)">
+      <rect x="0" y="0" width="472" height="60" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+      <text x="16" y="38" font-size="22" font-weight="700" fill="#111827">Aa dark on light — passes</text>
+    </g>
+    <g transform="translate(24 136)">
+      <rect x="0" y="0" width="472" height="60" rx="10" fill="#1d2433"/>
+      <text x="16" y="38" font-size="22" font-weight="700" fill="#c9d3e0">Aa light on dark — passes</text>
+    </g>
+    <g transform="translate(24 208)">
+      <rect x="0" y="0" width="472" height="60" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+      <text x="16" y="38" font-size="22" font-weight="700" fill="#c9c199">Aa low contrast — fails</text>
+    </g>
+
+    <!-- thresholds -->
+    <g transform="translate(24 292)">
+      <rect x="0" y="0" width="150" height="100" rx="12" fill="#dcfce7"/>
+      <text x="75" y="44" text-anchor="middle" class="big" fill="#15803d">4.5:1</text>
+      <text x="75" y="72" text-anchor="middle" class="cap">AA normal text</text>
+      <rect x="162" y="0" width="150" height="100" rx="12" fill="#fef9c3"/>
+      <text x="237" y="44" text-anchor="middle" class="big" fill="#a16207">3:1</text>
+      <text x="237" y="72" text-anchor="middle" class="cap">AA large text</text>
+      <rect x="324" y="0" width="148" height="100" rx="12" fill="#dbeafe"/>
+      <text x="398" y="44" text-anchor="middle" class="big" fill="#1d4ed8">7:1</text>
+      <text x="398" y="72" text-anchor="middle" class="cap">AAA normal</text>
+    </g>
+  </g>
+
+  <!-- Pillar 2: color blindness -->
+  <g transform="translate(610 100)">
+    <rect x="0" y="0" width="520" height="420" rx="16" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/>
+    <text x="24" y="42" class="lab">② Color blindness — ~1 in 12 men</text>
+
+    <!-- types -->
+    <g transform="translate(24 64)">
+      <rect x="0" y="0" width="472" height="66" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+      <circle cx="34" cy="33" r="16" fill="#12b76a"/>
+      <text x="64" y="28" class="mono">Deuteranopia — green-weak</text>
+      <text x="64" y="50" class="cap">most common (~6% of men)</text>
+    </g>
+    <g transform="translate(24 138)">
+      <rect x="0" y="0" width="472" height="66" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+      <circle cx="34" cy="33" r="16" fill="#f04438"/>
+      <text x="64" y="28" class="mono">Protanopia — red-weak</text>
+      <text x="64" y="50" class="cap">reds look darker</text>
+    </g>
+    <g transform="translate(24 212)">
+      <rect x="0" y="0" width="472" height="66" rx="10" fill="#ffffff" stroke="#e2e8f0"/>
+      <circle cx="34" cy="33" r="16" fill="#1d87f1"/>
+      <text x="64" y="28" class="mono">Tritanopia — blue-weak</text>
+      <text x="64" y="50" class="cap">rare; blue/yellow confusion</text>
+    </g>
+
+    <!-- rule -->
+    <g transform="translate(24 296)">
+      <rect x="0" y="0" width="472" height="96" rx="12" fill="#eef2ff" stroke="#c7d2fe" stroke-width="2"/>
+      <text x="20" y="36" class="lab" fill="#3730a3">The rule</text>
+      <text x="20" y="64" class="mono" font-size="14">Never rely on color alone.</text>
+      <text x="20" y="84" class="mono" font-size="14">Add text, icons or patterns as a second cue.</text>
+    </g>
+  </g>
+
+  <!-- footer -->
+  <g transform="translate(70 540)">
+    <rect x="0" y="0" width="1060" height="60" rx="14" fill="#0c2f6b"/>
+    <text x="24" y="38" font-family="Consolas, Menlo, monospace" font-size="15" fill="#7ef0c0">lazytools.io — WCAG contrast checker, accessible-color fixer &amp; color-blindness simulator, in your browser</text>
+  </g>
+</svg>

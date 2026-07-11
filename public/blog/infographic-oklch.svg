@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="OKLCH is a perceptually uniform color format with three parts: L is lightness from 0 to 100 percent, C is chroma or colorfulness from 0 to about 0.37, and H is hue in degrees from 0 to 360. Written as oklch(L% C H), for example oklch(62.3% 0.183 253.6) equals the HEX color #1d87f1. Why OKLCH beats HSL: equal lightness steps look equally light across all hues, so shade ramps and hue rotations behave predictably. It is a CSS Color 4 function supported in about 93 to 95 percent of browsers and is Tailwind CSS 4's default color space. Because OKLCH can describe colors more vivid than an sRGB screen, a converter provides a HEX fallback and flags out-of-gamut colors.">
+  <defs>
+    <style>
+      .h { font: 800 30px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .sub { font: 500 15px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+      .lab { font: 700 16px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .big { font: 800 22px Consolas, Menlo, monospace; }
+      .mono { font: 700 15px Consolas, Menlo, monospace; fill: #0f172a; }
+      .cap { font: 700 13px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+    </style>
+    <linearGradient id="hue" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f04438"/><stop offset="0.17" stop-color="#f79009"/>
+      <stop offset="0.33" stop-color="#eab308"/><stop offset="0.5" stop-color="#12b76a"/>
+      <stop offset="0.67" stop-color="#1d87f1"/><stop offset="0.83" stop-color="#7a5af8"/>
+      <stop offset="1" stop-color="#ee46bc"/>
+    </linearGradient>
+    <linearGradient id="lgrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#000"/><stop offset="1" stop-color="#fff"/>
+    </linearGradient>
+  </defs>
+
+  <text x="600" y="44" text-anchor="middle" class="h">OKLCH — the perceptually uniform CSS color format</text>
+  <text x="600" y="72" text-anchor="middle" class="sub">three intuitive parts, and equal steps that actually look equal</text>
+
+  <!-- the three components -->
+  <g transform="translate(70 100)">
+    <text x="0" y="0" class="mono" font-size="20">oklch( <tspan fill="#1d4ed8">62.3%</tspan>  <tspan fill="#0e9f6e">0.183</tspan>  <tspan fill="#b45309">253.6</tspan> )</text>
+    <text x="470" y="0" class="mono" font-size="20" fill="#94a3b8">=  #1d87f1</text>
+    <rect x="690" y="-22" width="34" height="30" rx="6" fill="#1d87f1"/>
+  </g>
+
+  <!-- L bar -->
+  <g transform="translate(70 150)">
+    <text x="0" y="0" class="lab" fill="#1d4ed8">L — Lightness (0–100%)</text>
+    <rect x="0" y="12" width="1060" height="40" rx="8" fill="url(#lgrad)" stroke="#e2e8f0"/>
+    <text x="6" y="74" class="cap">0% black</text>
+    <text x="1000" y="74" class="cap">100% white</text>
+  </g>
+
+  <!-- C bar -->
+  <g transform="translate(70 240)">
+    <text x="0" y="0" class="lab" fill="#0e9f6e">C — Chroma (0 → ~0.37, grey to vivid)</text>
+    <rect x="0" y="12" width="1060" height="40" rx="8" fill="#1d87f1"/>
+    <rect x="0" y="12" width="1060" height="40" rx="8" fill="url(#lgrad)" fill-opacity="0" />
+    <rect x="0" y="12" width="530" height="40" rx="8" fill="#8aa0b5"/>
+    <text x="6" y="74" class="cap">0 grey</text>
+    <text x="980" y="74" class="cap">high chroma</text>
+  </g>
+
+  <!-- H bar -->
+  <g transform="translate(70 330)">
+    <text x="0" y="0" class="lab" fill="#b45309">H — Hue (0–360°)</text>
+    <rect x="0" y="12" width="1060" height="40" rx="8" fill="url(#hue)" stroke="#e2e8f0"/>
+    <text x="6" y="74" class="cap">0° red</text>
+    <text x="500" y="74" class="cap">150° green</text>
+    <text x="980" y="74" class="cap">300° violet</text>
+  </g>
+
+  <!-- why panel -->
+  <g transform="translate(70 424)">
+    <rect x="0" y="0" width="520" height="96" rx="14" fill="#eef2ff" stroke="#c7d2fe" stroke-width="2"/>
+    <text x="20" y="34" class="lab">Why not HSL?</text>
+    <text x="20" y="62" class="mono" font-size="13">HSL "50% light" yellow ≫ brighter than 50% blue.</text>
+    <text x="20" y="82" class="mono" font-size="13">OKLCH lightness is even → predictable ramps.</text>
+  </g>
+  <g transform="translate(610 424)">
+    <rect x="0" y="0" width="520" height="96" rx="14" fill="#f0fdf4" stroke="#86efac" stroke-width="2"/>
+    <text x="20" y="34" class="lab">Ready to use</text>
+    <text x="20" y="62" class="mono" font-size="13">CSS Color 4 · ~93–95% browsers · Tailwind 4 default.</text>
+    <text x="20" y="82" class="mono" font-size="13">Keep a HEX fallback for out-of-gamut colors.</text>
+  </g>
+
+  <!-- footer -->
+  <g transform="translate(70 540)">
+    <rect x="0" y="0" width="1060" height="60" rx="14" fill="#0c2f6b"/>
+    <text x="24" y="38" font-family="Consolas, Menlo, monospace" font-size="15" fill="#7ef0c0">lazytools.io — exact Ottosson OKLab matrices + gamut-mapped HEX fallback, in your browser</text>
+  </g>
+</svg>

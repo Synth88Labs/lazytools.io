@@ -7,9 +7,17 @@ export interface ColorToolDef {
   description: string;
   lead: string;
   /** which widget the page renders */
-  widget: 'converter' | 'contrast' | 'shades' | 'gradient' | 'mixer' | 'brands';
+  widget:
+    | 'converter' | 'contrast' | 'shades' | 'gradient' | 'mixer' | 'brands'
+    | 'oklch' | 'accessible' | 'apca' | 'grid' | 'cvd' | 'harmony';
   /** preset input mode for the converter widget */
   presetInput?: 'hex' | 'rgb';
+  /** default direction label for the OKLCH converter satellites */
+  oklchDir?: 'hex-to-oklch' | 'oklch-to-hex' | 'rgb-to-oklch';
+  /** default CVD type for the color-blindness simulator satellites */
+  cvdType?: 'protanopia' | 'deuteranopia' | 'tritanopia';
+  /** default scheme for the harmony generator satellites */
+  harmonyPreset?: 'complementary' | 'triadic' | 'analogous';
   how: string;
   note?: string;
   faqs: { q: string; a: string }[];
@@ -172,6 +180,300 @@ export const COLOR_TOOLS: ColorToolDef[] = [
       { q: 'Is my search sent anywhere?', a: 'No — the entire dataset ships with the page and searching filters it locally. The page works offline, and no analytics see what brands you look up.' },
     ],
     keywords: ['brand colors', 'brand color finder', 'brand color palette', 'netflix red hex', 'spotify green hex', 'google colors', 'company brand colors', 'logo colors hex', 'brand color codes', 'official brand colors'],
+  },
+
+  // ---------- OKLCH / modern color-space converter (lead) ----------
+  {
+    slug: 'oklch-color-picker',
+    name: 'OKLCH Color Picker & Converter',
+    icon: '🎛️',
+    description:
+      'Convert any color to and from OKLCH, OKLAB, LAB, LCH, XYZ and HWB — with a guaranteed HEX/RGB fallback and an honest out-of-gamut flag. Exact Ottosson matrices, in your browser.',
+    lead: 'Pick or paste a color and read it in OKLCH, OKLAB, LAB, LCH, HWB, HEX and RGB at once — with a safe HEX fallback and a warning when a color falls outside the sRGB gamut.',
+    widget: 'oklch',
+    how: 'Colors are decoded from sRGB, linearised, and passed through the exact published matrices: linear-sRGB → LMS → OKLab (Björn Ottosson), with OKLCH as its polar form (C = √(a²+b²), H = atan2(b, a)); and linear-sRGB → CIE XYZ (D65) → CIELAB → LCH. HWB comes from the HSV hue with whiteness and blackness. Going the other way, OKLCH → sRGB inverts every step; when the result lands outside the displayable sRGB gamut, the tool reduces chroma along constant lightness and hue (the CSS Color 4 gamut-mapping approach) and flags it, so you always get a usable HEX fallback.',
+    note: 'OKLCH is now the authoring format and HEX the compatibility format — CSS Color 4 shipped oklch() in every evergreen browser (~93–95% coverage) and Tailwind CSS 4 uses OKLCH as its default color space. The everyday pain is round-tripping OKLCH↔HEX with a gamut check; this does exactly that with byte-exact matrix math a chatbot cannot reproduce.',
+    faqs: [
+      { q: 'What is OKLCH?', a: 'OKLCH is a perceptually uniform color space: L is lightness (0–100%), C is chroma (colorfulness), and H is hue (0–360°). Equal numeric steps look like equal visual steps, which is why it is better than HSL for building consistent palettes — and it is a first-class CSS color function, oklch().' },
+      { q: 'How do I convert HEX to OKLCH?', a: 'Paste the HEX code and read the oklch() value. Internally the color is linearised from sRGB and passed through the OKLab matrices, then converted to polar form. For example #1d87f1 becomes oklch(62.3% 0.183 253.6).' },
+      { q: 'Why is my OKLCH color "out of gamut"?', a: 'OKLCH can describe colors more saturated than an sRGB screen can show. When that happens the tool keeps your lightness and hue but lowers chroma until the color fits, and flags it — so the HEX fallback is always displayable. Wide-gamut (P3) displays can show more of these colors.' },
+      { q: 'Is OKLCH better than HSL?', a: 'For perceptual work, yes. HSL lightness is not perceptually even — a "50% lightness" yellow looks far brighter than a 50% blue. OKLCH fixes this, so lightness ramps and hue rotations behave predictably, which is why design systems and Tailwind 4 adopted it.' },
+      { q: 'What are OKLAB, LAB, LCH and HWB?', a: 'OKLAB is the rectangular form of OKLCH (lightness with a/b axes). CIELAB and LCH are the older CIE perceptual space and its polar form. HWB (hue-whiteness-blackness) is an intuitive CSS space. This one tool shows all of them for the same color.' },
+      { q: 'Do OKLCH colors work in all browsers?', a: 'The oklch() function works in all current browsers (Chrome/Edge 111+, Safari 15.4+, Firefox 113+, ~93–95% of users). For older browsers, use the HEX or RGB fallback this tool provides alongside every OKLCH value.' },
+    ],
+    keywords: ['oklch color picker', 'oklch converter', 'oklch to hex', 'hex to oklch', 'oklab converter', 'lab lch color', 'css color 4', 'tailwind oklch'],
+  },
+  {
+    slug: 'hex-to-oklch',
+    name: 'HEX to OKLCH Converter',
+    icon: '🎯',
+    description: 'Convert HEX color codes to OKLCH (CSS Color 4) with exact Ottosson matrices, plus OKLAB, LAB and a P3-gamut note. Free, in your browser.',
+    lead: 'Turn a HEX code into an oklch() value — the perceptually uniform CSS Color 4 format — with OKLAB and LAB shown too.',
+    widget: 'oklch',
+    oklchDir: 'hex-to-oklch',
+    how: 'The HEX code is decoded to sRGB, linearised, and passed through the exact OKLab matrices (linear-sRGB → LMS → OKLab), then written in polar OKLCH form. The tool also shows OKLAB, LAB, LCH, HWB and the original RGB, so you can copy whichever your CSS needs.',
+    note: 'Converting HEX to OKLCH is the first step teams take when migrating a color system to CSS Color 4 or Tailwind 4 — OKLCH lets you build even lightness ramps that HEX and HSL cannot.',
+    faqs: [
+      { q: 'How do I convert HEX to OKLCH?', a: 'Paste the HEX code; the tool linearises the sRGB channels and applies the OKLab transform, giving an oklch(L% C H) value. #1d87f1 becomes oklch(62.3% 0.183 253.6).' },
+      { q: 'Is the conversion exact?', a: 'Yes — it uses Björn Ottosson\'s published OKLab matrices, the same math browsers use for the oklch() function, so the output matches what the browser renders.' },
+      { q: 'Why convert HEX to OKLCH at all?', a: 'OKLCH is perceptually uniform, so adjusting lightness or hue behaves predictably. Teams convert their HEX palettes to OKLCH to build consistent shade scales and to author in the modern CSS format.' },
+      { q: 'What if the HEX color has no exact OKLCH?', a: 'Every sRGB (HEX) color has an exact OKLCH value — the conversion is lossless in that direction. Gamut issues only arise going the other way, when an OKLCH color is too saturated for sRGB.' },
+      { q: 'Does it also give OKLAB and LAB?', a: 'Yes — the same page shows OKLAB (rectangular OKLab), CIELAB, LCH and HWB for the color, so you do not need a separate converter.' },
+    ],
+    keywords: ['hex to oklch', 'hex to oklch converter', 'convert hex to oklch', 'hex to oklab', 'hex color to css color 4'],
+  },
+  {
+    slug: 'oklch-to-hex',
+    name: 'OKLCH to HEX Converter',
+    icon: '🔁',
+    description: 'Convert OKLCH (or OKLAB) colors to HEX and RGB with CSS Color 4 gamut mapping and an out-of-gamut warning. Exact, in your browser.',
+    lead: 'Convert an oklch() value to a safe HEX and RGB fallback — with a clear flag when the color is too vivid for the sRGB screen.',
+    widget: 'oklch',
+    oklchDir: 'oklch-to-hex',
+    how: 'The OKLCH value is converted to OKLab, then inverted through the OKLab matrices back to linear-sRGB and gamma-encoded to HEX/RGB. If the color falls outside sRGB, the tool reduces chroma while holding lightness and hue (the CSS Color 4 gamut-mapping method) so the HEX fallback is always displayable, and it tells you when this happened.',
+    note: 'This is the conversion that makes OKLCH practical: you author in oklch() but still need a HEX fallback for older browsers and tools — and you need to know when a beautiful wide-gamut color will be dulled on an sRGB screen.',
+    faqs: [
+      { q: 'How do I convert OKLCH to HEX?', a: 'Enter the OKLCH lightness, chroma and hue; the tool inverts the OKLab matrices to sRGB and outputs the HEX and RGB. If the color is out of the sRGB gamut, it maps it to the nearest displayable HEX and flags it.' },
+      { q: 'What does "out of gamut" mean here?', a: 'OKLCH can express colors more saturated than sRGB can display. When that happens the exact HEX does not exist, so the tool lowers chroma (keeping lightness and hue) until the color fits and shows a warning — giving you an honest, usable fallback.' },
+      { q: 'Why do I need a HEX fallback if I use OKLCH?', a: 'A small share of browsers and many design or email tools still expect HEX. Providing a HEX fallback alongside oklch() keeps your colors correct everywhere while you author in the modern space.' },
+      { q: 'Is the OKLCH→HEX conversion lossy?', a: 'Only when the OKLCH color is outside sRGB — then gamut mapping changes the chroma slightly. For in-gamut colors the conversion is exact and round-trips back to the same OKLCH.' },
+      { q: 'Does it accept OKLAB too?', a: 'Yes — you can enter an OKLAB (L, a, b) color as well, and it converts through the same inverse matrices to HEX and RGB.' },
+    ],
+    keywords: ['oklch to hex', 'oklch to hex converter', 'convert oklch to hex', 'oklab to hex', 'oklch to rgb', 'oklch fallback hex'],
+  },
+  {
+    slug: 'rgb-to-oklch',
+    name: 'RGB to OKLCH Converter',
+    icon: '📊',
+    description: 'Convert RGB values to OKLCH, OKLAB and LAB with exact matrices — the perceptually uniform CSS Color 4 format. Free, in-browser.',
+    lead: 'Convert rgb() values into oklch() — the perceptually uniform format — with OKLAB, LAB and HEX shown alongside.',
+    widget: 'oklch',
+    oklchDir: 'rgb-to-oklch',
+    how: 'Each RGB channel is linearised from sRGB and passed through the exact OKLab matrices, then written as oklch(L% C H). The page also shows OKLAB, CIELAB, LCH, HWB and the HEX form of the same color.',
+    note: 'RGB and OKLCH describe the same color, but OKLCH separates lightness from hue and chroma perceptually — so once in OKLCH you can lighten or shift hue without the muddiness that RGB and HSL edits produce.',
+    faqs: [
+      { q: 'How do I convert RGB to OKLCH?', a: 'Enter the red, green and blue values (0–255); the tool linearises them and applies the OKLab transform to give an oklch() value, plus OKLAB and LAB.' },
+      { q: 'Is RGB to OKLCH exact?', a: 'Yes — it uses the published OKLab matrices, so the result matches the oklch() a browser computes from the same RGB color.' },
+      { q: 'Why use OKLCH instead of RGB?', a: 'RGB is how screens emit color but is not intuitive to edit; OKLCH is perceptually uniform, so lightness and hue adjustments look even. It is the modern CSS authoring format.' },
+      { q: 'Does it show a HEX version too?', a: 'Yes — the HEX equivalent is shown next to the OKLCH, OKLAB and LAB values.' },
+      { q: 'Is my color uploaded?', a: 'No — every conversion runs in your browser.' },
+    ],
+    keywords: ['rgb to oklch', 'rgb to oklch converter', 'convert rgb to oklch', 'rgb to oklab', 'rgb to lab'],
+  },
+
+  // ---------- Accessibility cluster ----------
+  {
+    slug: 'accessible-color-generator',
+    name: 'Accessible Color Generator (WCAG Fixer)',
+    icon: '♿',
+    description:
+      'Find the nearest accessible color that passes WCAG AA or AAA against your background — hue preserved, contrast fixed. Exact WCAG 2 math, in your browser.',
+    lead: 'Give a foreground and background color and a WCAG target, and get the nearest passing color — same hue, adjusted lightness — that meets the contrast ratio.',
+    widget: 'accessible',
+    how: 'The tool computes the exact WCAG 2 contrast ratio (using sRGB relative luminance) between your foreground and background. If it fails, it binary-searches the foreground lightness — holding hue and saturation in HSL — both lighter and darker until the ratio meets your target (AA 4.5, AA-large 3, or AAA 7), and returns the nearest passing color in each direction with a live preview.',
+    note: 'This extends our contrast checker from "pass or fail" to "here is the fix". Because it holds hue and only moves lightness, the suggested color stays on-brand — the smallest change that makes text legible and WCAG-compliant.',
+    faqs: [
+      { q: 'How do I make a color WCAG accessible?', a: 'Keep the hue and adjust the lightness until the contrast ratio against the background meets the target — 4.5:1 for normal text (AA), 3:1 for large text, or 7:1 for AAA. This tool does that search automatically and shows the nearest passing color lighter and darker.' },
+      { q: 'What contrast ratio do I need?', a: 'WCAG 2 AA requires 4.5:1 for normal text and 3:1 for large text (≥18.66px bold or ≥24px). AAA requires 7:1 (4.5:1 for large). Pick the target and the tool finds a color that meets it.' },
+      { q: 'Will the fixed color still match my brand?', a: 'It preserves the hue and only changes lightness, so it stays the same "color" — just light or dark enough to be legible. That is usually the most brand-faithful accessible option.' },
+      { q: 'Why adjust the text instead of the background?', a: 'Either works; this tool adjusts the foreground because text color is usually the freer choice. You can also swap the two inputs to hold the text and move the background.' },
+      { q: 'Is this WCAG 2 or WCAG 3 (APCA)?', a: 'This uses the current WCAG 2 contrast-ratio method, which is the legally referenced standard. For the emerging WCAG 3 method, see the APCA contrast checker.' },
+    ],
+    keywords: ['accessible color generator', 'wcag color fixer', 'make color accessible', 'accessible color contrast', 'fix color contrast', 'wcag aa color'],
+  },
+  {
+    slug: 'apca-contrast-checker',
+    name: 'APCA Contrast Checker (WCAG 3)',
+    icon: '🔬',
+    description:
+      'Check text contrast with APCA — the WCAG 3 method — reporting Lc (lightness contrast) and the minimum font size, alongside the WCAG 2 ratio. Pinned APCA-W3 0.1.9, in your browser.',
+    lead: 'Measure text/background contrast the WCAG 3 way: APCA reports a signed Lc value (0–±106) that accounts for polarity and maps to a minimum readable font size.',
+    widget: 'apca',
+    how: 'APCA (Accessible Perceptual Contrast Algorithm) estimates the perceived lightness contrast between text and background. The tool computes screen luminance for each color with the APCA exponents, applies the soft black-clamp, and derives Lc — positive for dark-on-light, negative for light-on-dark — then looks up the minimum font size and weight that Lc supports. It shows the WCAG 2 ratio beside it so you can compare the two methods.',
+    note: 'APCA is the contrast method in the draft WCAG 3 and behaves very differently from WCAG 2: it is polarity-aware (dark-on-light vs light-on-dark are not symmetric) and ties contrast to font size. This checker is pinned to APCA-W3 version 0.1.9 — stated on-page because APCA is still versioned.',
+    faqs: [
+      { q: 'What is APCA?', a: 'APCA (Accessible Perceptual Contrast Algorithm) is the contrast method proposed for WCAG 3. Instead of a ratio, it reports Lc — a lightness-contrast value from about 0 to ±106 — that better matches how humans perceive text readability, factoring in whether text is dark-on-light or light-on-dark.' },
+      { q: 'What Lc value do I need?', a: 'As a guide: Lc 90+ for fine print and body text, Lc 75 for larger body text, Lc 60 for large/bold headings, Lc 45 for large display text, and Lc 30 as a non-text minimum. The tool shows the minimum font size each Lc supports.' },
+      { q: 'How is APCA different from WCAG 2 contrast?', a: 'WCAG 2 uses a symmetric ratio (1–21) that ignores polarity and font size. APCA is polarity-aware and size-linked, so some pairs that pass WCAG 2 can be weak in APCA and vice-versa. This tool shows both numbers side by side.' },
+      { q: 'Which APCA version does this use?', a: 'It is pinned to APCA-W3 0.1.9, the version referenced by the current WCAG 3 working draft. APCA has changed across releases, so the version is stated on the page for reproducibility.' },
+      { q: 'Should I use APCA or WCAG 2 today?', a: 'WCAG 2 is the standard currently referenced by law (EAA, ADA, Section 508), so use it for compliance. APCA is worth checking as a forward-looking, often more realistic readability signal — many teams report both.' },
+    ],
+    keywords: ['apca contrast checker', 'apca calculator', 'wcag 3 contrast', 'lc contrast', 'perceptual contrast', 'apca vs wcag'],
+  },
+  {
+    slug: 'contrast-grid',
+    name: 'Contrast Grid Generator',
+    icon: '🔲',
+    description:
+      'Check every foreground/background pair in a palette at once — a full WCAG 2 contrast matrix with AA/AAA pass badges. For design systems, in your browser.',
+    lead: 'Paste a palette and get an N×N grid of WCAG 2 contrast ratios — every color against every other, with AA and AAA pass badges.',
+    widget: 'grid',
+    how: 'Enter one color per line (HEX, RGB or HSL, with an optional label). The tool computes the exact WCAG 2 contrast ratio for every ordered pair using sRGB relative luminance and renders a matrix: each cell shows the ratio and badges for AA (4.5:1), AA-large (3:1) and AAA (7:1), with the actual colors painted so you can see the combination.',
+    note: 'A single-pair checker answers "do these two work?"; a contrast grid answers "which combinations in my whole palette are usable?" — the design-system question. It reuses the exact WCAG math from our contrast checker across the full matrix.',
+    faqs: [
+      { q: 'What is a contrast grid?', a: 'A matrix that pairs every color in a palette against every other and shows the contrast ratio and WCAG pass/fail for each combination — so you can see at a glance which foreground/background pairs are accessible.' },
+      { q: 'How many colors can I check?', a: 'As many as you paste, one per line. The grid grows to N×N, so large palettes produce big grids; a design-system core palette of 6–12 colors is the typical use.' },
+      { q: 'What do the badges mean?', a: 'Each cell shows whether the pair meets WCAG 2 AA (4.5:1 normal text), AA-large (3:1 for large text) and AAA (7:1). A pair can pass for large text but fail for body text — the badges make that explicit.' },
+      { q: 'Can I label my colors?', a: 'Yes — add a label after the color on each line (e.g. "#1d87f1 Primary") and the grid uses it in the row and column headers.' },
+      { q: 'Does this use APCA?', a: 'This grid uses WCAG 2 ratios, the current legal standard. The APCA (WCAG 3) checker is a separate tool for the emerging perceptual method.' },
+    ],
+    keywords: ['contrast grid', 'contrast grid generator', 'palette contrast checker', 'wcag palette', 'design system contrast', 'color matrix contrast'],
+  },
+
+  // ---------- Colour-vision-deficiency simulator ----------
+  {
+    slug: 'color-blindness-simulator',
+    name: 'Color Blindness Simulator',
+    icon: '👁️',
+    description:
+      'Simulate how your image or color palette looks with color blindness — deuteranopia, protanopia, tritanopia and achromatopsia — with a severity slider. On-device, in your browser.',
+    lead: 'See how an uploaded image or a pasted palette appears to people with color-vision deficiency — the four main types, with an adjustable severity — all processed on your device.',
+    widget: 'cvd',
+    how: 'The tool converts each pixel or swatch to linear-sRGB and applies the published Machado, Oliveira & Fernandes (2009) transform matrices for protanopia, deuteranopia and tritanopia (and a luminance projection for achromatopsia), then converts back to sRGB. The severity slider interpolates between your original and the full-dichromat simulation to approximate anomalous trichromacy. Images are drawn to a canvas and never uploaded; palettes are simulated swatch-by-swatch.',
+    note: 'About 1 in 12 men and 1 in 200 women have some color-vision deficiency. The palette mode is the differentiator — you can test the exact swatches in a design system, not just a screenshot — and everything runs on-device, so unreleased designs stay private.',
+    faqs: [
+      { q: 'What types of color blindness can I simulate?', a: 'The four main types: deuteranopia (green-weak, the most common), protanopia (red-weak), tritanopia (blue-weak), and achromatopsia (total, seeing only lightness). A severity slider approximates the milder "anomalous" forms of each.' },
+      { q: 'How accurate is the simulation?', a: 'It uses the Machado, Oliveira & Fernandes (2009) matrices — the field-standard published constants also used by scientific tools — applied in linear-sRGB. Simulations are close approximations of average CVD perception, not a substitute for testing with real users.' },
+      { q: 'Can I test a color palette, not just an image?', a: 'Yes. Paste a list of colors and the tool simulates each swatch under the selected deficiency, so you can check whether two palette colors become indistinguishable — the key design-system question.' },
+      { q: 'Is my image uploaded anywhere?', a: 'No. The image is drawn to a canvas and processed pixel-by-pixel in your browser; it never leaves your device, which matters for unreleased work.' },
+      { q: 'Why do some colors look the same after simulation?', a: 'That is the point — if two colors collapse to nearly the same appearance under, say, deuteranopia, a color-blind user cannot tell them apart. Add a non-color cue (text, icon, pattern) or increase their lightness difference.' },
+    ],
+    keywords: ['color blindness simulator', 'color blind simulator', 'cvd simulator', 'deuteranopia simulator', 'colorblind image', 'simulate color blindness', 'colorblind palette check'],
+  },
+  {
+    slug: 'deuteranopia-simulator',
+    name: 'Deuteranopia Simulator',
+    icon: '🟢',
+    description: 'Simulate deuteranopia (green-blind) — the most common color blindness — on an image or palette, on-device. Machado 2009 matrices, in your browser.',
+    lead: 'See how an image or palette looks with deuteranopia, the most common red-green color-vision deficiency — processed entirely on your device.',
+    widget: 'cvd',
+    cvdType: 'deuteranopia',
+    how: 'Each pixel or swatch is linearised and multiplied by the published Machado (2009) deuteranopia matrix, then converted back to sRGB; a severity slider interpolates toward milder deuteranomaly. Images run on a canvas and are never uploaded.',
+    note: 'Deuteranopia (green-weak) is the most common form of color blindness — roughly 6% of men — so it is the first thing to test when red and green carry meaning in a UI or chart.',
+    faqs: [
+      { q: 'What is deuteranopia?', a: 'Deuteranopia is a red-green color-vision deficiency where the green-sensitive (M) cones are absent, making reds, greens, browns and oranges hard to tell apart. It is the most common type of color blindness.' },
+      { q: 'How common is it?', a: 'Deuteranomaly and deuteranopia together affect roughly 6% of men (and far fewer women), making green-weakness the single most prevalent color-vision deficiency.' },
+      { q: 'What should I check for?', a: 'That red/green status colors, chart series and success/error states remain distinguishable. If two collapse to the same look, add text, icons or a lightness difference.' },
+      { q: 'Is the image uploaded?', a: 'No — it is processed in your browser on a canvas and never sent anywhere.' },
+      { q: 'Can I simulate milder green-weakness?', a: 'Yes — the severity slider interpolates between your original and full deuteranopia to approximate deuteranomaly (partial green-weakness).' },
+    ],
+    keywords: ['deuteranopia simulator', 'deuteranomaly simulator', 'green color blindness', 'red green color blind test image', 'deuteranopia colors'],
+  },
+  {
+    slug: 'protanopia-simulator',
+    name: 'Protanopia Simulator',
+    icon: '🔴',
+    description: 'Simulate protanopia (red-blind) on an image or color palette, on-device, with a severity slider. Machado 2009 matrices, in your browser.',
+    lead: 'See how an image or palette looks with protanopia, a red-weak color-vision deficiency — all processed on your device.',
+    widget: 'cvd',
+    cvdType: 'protanopia',
+    how: 'Each pixel or swatch is linearised and multiplied by the published Machado (2009) protanopia matrix, then converted back to sRGB, with a severity slider for milder protanomaly. Images are processed on a canvas and never uploaded.',
+    note: 'Protanopia (red-weak) darkens reds and confuses them with greens and browns. Because reds appear dimmer, red warning text on a dark background can nearly vanish — worth testing directly.',
+    faqs: [
+      { q: 'What is protanopia?', a: 'Protanopia is a red-green color-vision deficiency where the red-sensitive (L) cones are absent. Reds look darker and are easily confused with greens, browns and blacks.' },
+      { q: 'How is it different from deuteranopia?', a: 'Both are red-green deficiencies, but protanopia specifically dims reds (red appears much darker), whereas deuteranopia affects greens more and keeps brightness closer to normal.' },
+      { q: 'What should I check for?', a: 'Red text or icons on dark backgrounds (they can become very low-contrast) and any red/green distinction. Add non-color cues where meaning depends on red.' },
+      { q: 'Is my image private?', a: 'Yes — it is processed on a canvas in your browser and never uploaded.' },
+      { q: 'Can I adjust severity?', a: 'Yes — the slider interpolates toward full protanopia to approximate protanomaly (partial red-weakness).' },
+    ],
+    keywords: ['protanopia simulator', 'protanomaly simulator', 'red color blindness', 'red blind simulator', 'protanopia colors'],
+  },
+  {
+    slug: 'tritanopia-simulator',
+    name: 'Tritanopia Simulator',
+    icon: '🔵',
+    description: 'Simulate tritanopia (blue-yellow color blindness) on an image or palette, on-device, with a severity slider. Machado 2009 matrices, in your browser.',
+    lead: 'See how an image or palette looks with tritanopia, a rare blue-yellow color-vision deficiency — processed entirely on your device.',
+    widget: 'cvd',
+    cvdType: 'tritanopia',
+    how: 'Each pixel or swatch is linearised and multiplied by the published Machado (2009) tritanopia matrix, then converted back to sRGB, with a severity slider for milder tritanomaly. Everything runs on a canvas in your browser.',
+    note: 'Tritanopia (blue-weak) is rare but affects blues and yellows — the colors many UIs use for links and highlights — so blue/teal or yellow/pink distinctions are the ones to verify.',
+    faqs: [
+      { q: 'What is tritanopia?', a: 'Tritanopia is a blue-yellow color-vision deficiency where the blue-sensitive (S) cones are absent. Blues and greens, and yellows and pinks, become hard to distinguish. It is much rarer than the red-green types and affects men and women about equally.' },
+      { q: 'What should I check for?', a: 'Blue links versus teal, and yellow versus pink or light-green cues. If these collapse, add text or shape cues or widen the lightness gap.' },
+      { q: 'How common is tritanopia?', a: 'Very rare — well under 1% of people — but simulating it still catches blue/yellow ambiguities that affect more common conditions and low-light viewing.' },
+      { q: 'Is my image uploaded?', a: 'No — it is processed on a canvas in your browser and never sent anywhere.' },
+      { q: 'Can I simulate partial blue-weakness?', a: 'Yes — the severity slider approximates tritanomaly by interpolating toward full tritanopia.' },
+    ],
+    keywords: ['tritanopia simulator', 'tritanomaly simulator', 'blue yellow color blindness', 'blue color blind', 'tritanopia colors'],
+  },
+
+  // ---------- Color harmony ----------
+  {
+    slug: 'color-harmony-generator',
+    name: 'Color Harmony Generator',
+    icon: '🎡',
+    description:
+      'Generate complementary, triadic, analogous, split-complementary, tetradic and monochromatic color schemes from any base color — exact hue geometry with HEX, HSL and OKLCH codes. In your browser.',
+    lead: 'Enter a base color and get every classic harmony — complementary, triadic, analogous, split-complementary, tetradic and monochromatic — as exact swatches with copyable HEX, HSL and OKLCH codes.',
+    widget: 'harmony',
+    how: 'Color harmonies are exact rotations on the hue wheel: complementary is +180°, triadic ±120°, analogous ±30°, split-complementary +150°/210°, and tetradic/square +90°/180°/270°; monochromatic varies lightness at a fixed hue. The tool computes each partner hue precisely and shows the resulting colors with HEX, HSL and OKLCH codes to copy.',
+    note: 'This computes exact partner hues — it is geometry, not a "suggest a nice palette" guess. Rotations can be taken in OKLCH hue for perceptually even spacing, which keeps a triad or tetrad looking balanced in a way HSL rotations do not.',
+    faqs: [
+      { q: 'What are color harmonies?', a: 'Harmonies are sets of colors placed at fixed angles on the color wheel: complementary (opposite, 180°), triadic (three colors 120° apart), analogous (neighbours ~30° apart), split-complementary, tetradic and monochromatic. They are the classic starting points for a balanced palette.' },
+      { q: 'What is a complementary color?', a: 'The color directly opposite on the wheel — 180° from your base hue. It gives the strongest contrast; the tool computes it exactly and shows its HEX, HSL and OKLCH.' },
+      { q: 'What is the difference between triadic and analogous?', a: 'Triadic uses three evenly spaced hues (120° apart) for a vibrant, balanced scheme; analogous uses neighbouring hues (~30° apart) for a calm, cohesive look. The generator shows both from your base color.' },
+      { q: 'Why compute harmonies in OKLCH?', a: 'Rotating hue in OKLCH keeps perceived lightness even across the scheme, so a triad or tetrad looks balanced. HSL rotations can make some members look brighter or muddier than others.' },
+      { q: 'Can I copy the codes?', a: 'Yes — every swatch shows copyable HEX, HSL and OKLCH values, so you can drop them straight into CSS or a design tool.' },
+    ],
+    keywords: ['color harmony generator', 'color scheme generator', 'complementary color', 'triadic colors', 'analogous colors', 'color wheel', 'color palette generator'],
+  },
+  {
+    slug: 'complementary-color',
+    name: 'Complementary Color Finder',
+    icon: '🎨',
+    description: 'Find the exact complementary color (180° opposite) of any color, with HEX, HSL and OKLCH codes and a live swatch. Free, in-browser.',
+    lead: 'Enter a color and get its exact complementary — the hue directly opposite on the wheel — plus nearby split-complementary options.',
+    widget: 'harmony',
+    harmonyPreset: 'complementary',
+    how: 'The complementary color is the base hue rotated 180° on the color wheel, keeping saturation and lightness. The tool computes it exactly and also shows the split-complementary pair (+150°/210°) for a softer high-contrast option, each with HEX, HSL and OKLCH.',
+    note: 'Complementary pairs give the strongest color contrast, which is why they draw the eye — useful for a call-to-action against a base brand color. For a less intense version, the split-complementary neighbours are shown too.',
+    faqs: [
+      { q: 'What is a complementary color?', a: 'The color directly opposite on the color wheel — the base hue plus 180°. Blue\'s complement is orange; red\'s is cyan-green. Complementary pairs create the highest contrast.' },
+      { q: 'How do I find a complementary color?', a: 'Add 180° to the hue. Enter your color and the tool does it exactly, returning the complement in HEX, HSL and OKLCH.' },
+      { q: 'What is split-complementary?', a: 'Instead of the exact opposite, it uses the two hues either side of it (+150° and +210°). This keeps strong contrast but is less harsh — the tool shows these as well.' },
+      { q: 'Do complementary colors always look good together?', a: 'They contrast strongly, which is powerful but can vibrate at full saturation. Muting one or using it only as an accent usually reads better — adjust lightness in the OKLCH value shown.' },
+      { q: 'Is my color uploaded?', a: 'No — the computation is entirely in your browser.' },
+    ],
+    keywords: ['complementary color', 'complementary color finder', 'opposite color', 'complementary color calculator', 'split complementary'],
+  },
+  {
+    slug: 'triadic-colors',
+    name: 'Triadic Color Scheme Generator',
+    icon: '🔺',
+    description: 'Generate a triadic color scheme — three hues evenly spaced 120° apart — from any base color, with HEX, HSL and OKLCH. Free, in-browser.',
+    lead: 'Enter a base color and get its triadic scheme — three vibrant, evenly balanced hues 120° apart — with copyable codes.',
+    widget: 'harmony',
+    harmonyPreset: 'triadic',
+    how: 'A triadic scheme takes three hues spaced 120° apart on the wheel (base, base+120°, base+240°), keeping saturation and lightness. The tool computes the two partner hues exactly and shows all three with HEX, HSL and OKLCH.',
+    note: 'Triadic schemes are vibrant yet balanced because the three hues are equidistant. A common approach is to let one dominate and use the other two as accents.',
+    faqs: [
+      { q: 'What is a triadic color scheme?', a: 'Three colors evenly spaced around the color wheel, 120° apart. It is balanced and vivid — think red, yellow, blue — and works well with one dominant color and two accents.' },
+      { q: 'How do I make a triadic palette?', a: 'Take your base hue and add 120° and 240°. Enter a color and the tool returns the exact three-color set in HEX, HSL and OKLCH.' },
+      { q: 'When should I use triadic over analogous?', a: 'Use triadic when you want contrast and energy with balance; use analogous (neighbouring hues) when you want a calmer, more unified look.' },
+      { q: 'How do I keep a triad from looking garish?', a: 'Let one color lead and mute the other two (lower saturation or adjust lightness). The OKLCH codes make even lightness adjustments easy.' },
+      { q: 'Is my color private?', a: 'Yes — everything is computed in your browser.' },
+    ],
+    keywords: ['triadic colors', 'triadic color scheme', 'triad color generator', 'three color palette', 'triadic color wheel'],
+  },
+  {
+    slug: 'analogous-colors',
+    name: 'Analogous Color Scheme Generator',
+    icon: '🌈',
+    description: 'Generate an analogous color scheme — neighbouring hues ~30° apart — from any base color, with HEX, HSL and OKLCH. Free, in-browser.',
+    lead: 'Enter a base color and get its analogous scheme — neighbouring hues about 30° apart — for a calm, cohesive palette.',
+    widget: 'harmony',
+    harmonyPreset: 'analogous',
+    how: 'An analogous scheme uses hues adjacent on the wheel — typically base−30°, base, base+30° (and optionally ±60°) — at the same saturation and lightness. The tool computes the neighbours exactly and shows them with HEX, HSL and OKLCH.',
+    note: 'Analogous colors sit next to each other on the wheel, so they blend naturally — the look of a sunset or a forest. Pick one as the dominant color and use the neighbours for support.',
+    faqs: [
+      { q: 'What is an analogous color scheme?', a: 'A set of colors next to each other on the wheel, usually about 30° apart. Because the hues are close, the palette feels calm and cohesive — common in nature scenes.' },
+      { q: 'How do I create an analogous palette?', a: 'Take your base hue and step ±30° (and optionally ±60°). Enter a color and the tool returns the neighbouring hues in HEX, HSL and OKLCH.' },
+      { q: 'How is analogous different from triadic?', a: 'Analogous hues are close together for a unified, low-contrast look; triadic hues are 120° apart for a vivid, high-contrast balance.' },
+      { q: 'How many analogous colors should I use?', a: 'Three to five works well: one dominant, the rest as support. Vary lightness (see the OKLCH values) to add depth without breaking the harmony.' },
+      { q: 'Is my color uploaded?', a: 'No — the computation runs in your browser.' },
+    ],
+    keywords: ['analogous colors', 'analogous color scheme', 'analogous color generator', 'neighbouring colors', 'analogous palette'],
   },
 ];
 

@@ -11,6 +11,12 @@ import ShadesTool from '../../components/color/ShadesTool.tsx';
 import GradientTool from '../../components/color/GradientTool.tsx';
 import MixerTool from '../../components/color/MixerTool.tsx';
 import BrandColorsTool from '../../components/color/BrandColorsTool.tsx';
+import OklchTool from '../../components/color/OklchTool.tsx';
+import AccessibleColorTool from '../../components/color/AccessibleColorTool.tsx';
+import ApcaTool from '../../components/color/ApcaTool.tsx';
+import ContrastGridTool from '../../components/color/ContrastGridTool.tsx';
+import CvdTool from '../../components/color/CvdTool.tsx';
+import HarmonyTool from '../../components/color/HarmonyTool.tsx';
 import { COLOR_TOOLS, type ColorToolDef } from '../../data/color/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -63,6 +69,12 @@ const schema = [
       {tool.widget === 'gradient' && <GradientTool client:load />}
       {tool.widget === 'mixer' && <MixerTool client:load />}
       {tool.widget === 'brands' && <BrandColorsTool client:load />}
+      {tool.widget === 'oklch' && <OklchTool client:load dir={tool.oklchDir ?? 'hex-to-oklch'} />}
+      {tool.widget === 'accessible' && <AccessibleColorTool client:load />}
+      {tool.widget === 'apca' && <ApcaTool client:load />}
+      {tool.widget === 'grid' && <ContrastGridTool client:load />}
+      {tool.widget === 'cvd' && <CvdTool client:load initialType={tool.cvdType ?? 'deuteranopia'} />}
+      {tool.widget === 'harmony' && <HarmonyTool client:load preset={tool.harmonyPreset ?? 'all'} />}
     </div>
 
     <div class="mt-4">

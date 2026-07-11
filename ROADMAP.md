@@ -12,7 +12,7 @@ the legal review) are cleared.
 ratings (PHP + SQLite), smart header search, sitemap, auto-generated `llms.txt`, GitHub Actions →
 Namecheap FTPS deploy pipeline.
 
-**All 21 categories live** (~516 pages, 420+ tools):
+**All 21 categories live** (~533 pages, 435+ tools):
 
 | Category | Highlights |
 |---|---|
@@ -24,7 +24,7 @@ Namecheap FTPS deploy pipeline.
 | Size Converters | ring, shoe, bra, clothing, hat, kids' shoe |
 | Photo Size Maker | **passport/visa/ID photos for 57 countries** — crop to exact official size, **on-device ML face check** (MediaPipe BlazeFace), background/exposure checks, DPI-correct export; every spec cited + date-verified |
 | Text Tools | **19 tools** — "the invisible & exact layer of text": **invisible-character detector** (AI-watermark/zero-width), **homoglyph detector**, **text diff** (LCS), **readability** (Flesch/FK/Fog/SMOG/CLI/ARI), **Unicode inspector**, word frequency, text cleaner, Unicode normalizer, fancy-text decoder, strip-HTML, line tools, plus counters/case/sort/dedupe/find-replace |
-| Color Tools | HEX/RGB/HSL/CMYK, WCAG contrast, shades, gradient, mixer, **brand color finder** (1,100+ brand palettes, name + reverse-hex search) |
+| Color Tools | **21 tools** — HEX/RGB/HSL/CMYK, **OKLCH/OKLAB/LAB/LCH/HWB converter** (CSS Color 4, exact Ottosson matrices, gamut-mapped HEX fallback), WCAG contrast + **accessible-color fixer**, **APCA/WCAG-3 checker** (pinned 0.1.9), **contrast grid**, **color-blindness simulator** (Machado 2009, image + palette, on-device), **harmony generator**, shades, gradient, mixer, **brand color finder** (1,100+ palettes) |
 | File & Data | CSV/JSON/XML/YAML, Markdown, JSON formatter, **e-invoicing cluster**: EN 16931 viewer + Factur-X (France) + **KSeF FA(3) viewer & pre-checker** (Poland) + Peppol BIS (Belgium) |
 | Developer Tools | Base64, URL/HTML entities, SHA hashes, JWT, regex, number base, **LLM token counter & cost calculator** (exact o200k counts in-browser, dated pricing) |
 | Generators | **12 tools** — password, **passphrase (EFF diceware)**, **UUID v4/v7 · ULID · NanoID + decoder**, QR, **WiFi/vCard/email QR** (encoded directly, no tracking redirect), **barcode** (EAN/UPC/Code128, mod-10 check digit), random number, lorem ipsum |

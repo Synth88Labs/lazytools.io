@@ -7,6 +7,20 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'oklch-color-guide',
+    kicker: 'MODERN CSS COLOR',
+    lines: ['OKLCH: the color', 'format replacing', 'HEX and HSL'],
+    fact: '#1d87f1 = oklch(62.3% 0.183 253.6)',
+    icon: '🎛️',
+  },
+  {
+    slug: 'color-accessibility-guide',
+    kicker: 'ACCESSIBLE COLOR',
+    lines: ['Color contrast &', 'color blindness:', 'design for everyone'],
+    fact: 'WCAG AA = 4.5:1 · ~1 in 12 men are color-blind',
+    icon: '♿',
+  },
+  {
     slug: 'z-score-to-p-value-guide',
     kicker: 'STATISTICS GUIDE',
     lines: ['Z-score to p-value:', 'reading the normal', 'distribution'],
