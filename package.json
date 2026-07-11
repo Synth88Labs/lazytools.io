@@ -20,6 +20,7 @@
     "gpt-tokenizer": "^3.4.0",
     "heic-to": "^1.5.2",
     "js-yaml": "^5.2.1",
+    "jsbarcode": "^3.12.3",
     "marked": "^18.0.5",
     "pdf-lib": "^1.17.1",
     "pdfjs-dist": "^6.1.200",

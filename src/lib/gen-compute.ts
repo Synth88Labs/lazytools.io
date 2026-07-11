@@ -77,3 +77,78 @@ export function generateLorem(mode: 'paragraphs' | 'sentences' | 'words', count:
   }
   return out;
 }
+
+// ───────────────────────── modern IDs (v7 / ULID / NanoID) ─────────────────────────
+
+const hex = (b: number) => b.toString(16).padStart(2, '0');
+
+/** RFC 9562 UUID v7 — 48-bit Unix-ms timestamp + version/variant + secure random, time-sortable. */
+export function uuidV7(ts = Date.now()): string {
+  const b = new Uint8Array(16);
+  crypto.getRandomValues(b);
+  b[0] = Math.floor(ts / 2 ** 40) & 0xff;
+  b[1] = Math.floor(ts / 2 ** 32) & 0xff;
+  b[2] = Math.floor(ts / 2 ** 24) & 0xff;
+  b[3] = Math.floor(ts / 2 ** 16) & 0xff;
+  b[4] = Math.floor(ts / 2 ** 8) & 0xff;
+  b[5] = ts & 0xff;
+  b[6] = (b[6]! & 0x0f) | 0x70; // version 7
+  b[8] = (b[8]! & 0x3f) | 0x80; // variant 10
+  const h = [...b].map(hex).join('');
+  return `${h.slice(0, 8)}-${h.slice(8, 12)}-${h.slice(12, 16)}-${h.slice(16, 20)}-${h.slice(20)}`;
+}
+
+const CROCKFORD = '0123456789ABCDEFGHJKMNPQRSTVWXYZ';
+
+/** ULID — 48-bit ms timestamp + 80-bit randomness, Crockford base32 (26 chars, sortable). */
+export function ulid(ts = Date.now()): string {
+  let t = ts, time = '';
+  for (let i = 0; i < 10; i++) { time = CROCKFORD[t % 32] + time; t = Math.floor(t / 32); }
+  const r = new Uint32Array(16);
+  crypto.getRandomValues(r);
+  let rand = '';
+  for (let i = 0; i < 16; i++) rand += CROCKFORD[r[i]! % 32]; // 32 divides 2^32 → unbiased
+  return time + rand;
+}
+
+const NANO_ALPHABET = 'useandom-26T198340PX75pxJACKVERYMINDBUSHWOLF_GQZbfghjklqvwyzrict';
+
+/** NanoID — URL-safe, cryptographically random. Default 21 chars from a 64-char alphabet. */
+export function nanoid(size = 21, alphabet = NANO_ALPHABET): string {
+  const len = alphabet.length;
+  const bytes = new Uint8Array(size * 2 + 16);
+  crypto.getRandomValues(bytes);
+  let id = '', i = 0;
+  const mask = (2 << Math.floor(Math.log2(len - 1))) - 1; // smallest mask >= len-1
+  while (id.length < size) {
+    if (i >= bytes.length) { crypto.getRandomValues(bytes); i = 0; }
+    const b = bytes[i++]! & mask;
+    if (b < len) id += alphabet[b]; // rejection sampling → unbiased for any alphabet
+  }
+  return id;
+}
+
+export interface IdInfo { kind: string; version?: string; timestamp?: string; note?: string }
+
+/** Decode/inspect a UUID or ULID: version + embedded timestamp where present. */
+export function decodeId(raw: string): IdInfo | null {
+  const s = raw.trim();
+  const uuid = /^([0-9a-f]{8})-([0-9a-f]{4})-([0-9a-f]{4})-([0-9a-f]{4})-([0-9a-f]{12})$/i.exec(s);
+  if (uuid) {
+    const ver = parseInt(s[14]!, 16);
+    const info: IdInfo = { kind: 'UUID', version: `v${ver}` };
+    if (ver === 7) {
+      const ms = parseInt(s.replace(/-/g, '').slice(0, 12), 16);
+      info.timestamp = new Date(ms).toISOString();
+    } else if (ver === 4) {
+      info.note = 'Random UUID — no embedded timestamp.';
+    }
+    return info;
+  }
+  if (/^[0-9A-HJKMNP-TV-Z]{26}$/i.test(s)) {
+    let ms = 0;
+    for (const c of s.slice(0, 10).toUpperCase()) ms = ms * 32 + CROCKFORD.indexOf(c);
+    return { kind: 'ULID', timestamp: new Date(ms).toISOString() };
+  }
+  return null;
+}

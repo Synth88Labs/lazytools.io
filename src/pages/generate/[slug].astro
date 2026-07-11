@@ -6,10 +6,15 @@ import PrivacyStrip from '../../components/PrivacyStrip.astro';
 import FaqSection from '../../components/FaqSection.astro';
 import RatingWidget from '../../components/RatingWidget.tsx';
 import PasswordGenTool from '../../components/generate/PasswordGenTool.tsx';
-import UuidGenTool from '../../components/generate/UuidGenTool.tsx';
 import QrTool from '../../components/generate/QrTool.tsx';
 import RandomNumberTool from '../../components/generate/RandomNumberTool.tsx';
 import LoremTool from '../../components/generate/LoremTool.tsx';
+import WifiQrTool from '../../components/generate/WifiQrTool.tsx';
+import VCardQrTool from '../../components/generate/VCardQrTool.tsx';
+import MessageQrTool from '../../components/generate/MessageQrTool.tsx';
+import BarcodeTool from '../../components/generate/BarcodeTool.tsx';
+import IdGenTool from '../../components/generate/IdGenTool.tsx';
+import PassphraseTool from '../../components/generate/PassphraseTool.tsx';
 import { GEN_TOOLS, type GenToolDef } from '../../data/generate/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -57,10 +62,15 @@ const schema = [
 
     <div class="mt-6">
       {tool.widget === 'password' && <PasswordGenTool client:load />}
-      {tool.widget === 'uuid' && <UuidGenTool client:load />}
       {tool.widget === 'qr' && <QrTool client:load />}
       {tool.widget === 'random-number' && <RandomNumberTool client:load />}
       {tool.widget === 'lorem' && <LoremTool client:load />}
+      {tool.widget === 'wifi-qr' && <WifiQrTool client:load />}
+      {tool.widget === 'vcard-qr' && <VCardQrTool client:load />}
+      {tool.widget === 'message-qr' && <MessageQrTool client:load />}
+      {tool.widget === 'barcode' && <BarcodeTool client:load />}
+      {tool.widget === 'id' && <IdGenTool client:load variant={tool.variant} />}
+      {tool.widget === 'passphrase' && <PassphraseTool client:load />}
     </div>
 
     <div class="mt-4">
