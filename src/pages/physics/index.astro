@@ -1,0 +1,74 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PrivacyStrip from '../../components/PrivacyStrip.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { PHYS_TOOLS } from '../../data/physics/index';
+import { breadcrumbSchema, collectionPageSchema, faqSchema } from '../../lib/schema';
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Physics', url: '/physics/' },
+];
+const clusters = [
+  { key: 'kinematics', title: 'Kinematics & motion', icon: '🏁' },
+  { key: 'dynamics', title: 'Forces & dynamics', icon: '🍎' },
+  { key: 'energy', title: 'Energy, work & power', icon: '💨' },
+  { key: 'gravitation', title: 'Gravitation', icon: '🌍' },
+  { key: 'waves', title: 'Waves & optics', icon: '〰️' },
+  { key: 'electricity', title: 'Electricity', icon: '🔌' },
+  { key: 'modern', title: 'Modern physics', icon: '☢️' },
+] as const;
+const faqs = [
+  { q: 'Are these physics calculators accurate?', a: 'Yes — every tool is an exact, published equation evaluated with fixed CODATA/SI constants (g, G, c, h). There are no lookup tables that drift, and the rearrangement (including the square roots that trip up chatbots) is shown, so results are reliable.' },
+  { q: 'Is my data uploaded?', a: 'No. Every calculation runs in your browser with JavaScript — nothing is sent to a server, and the tools work offline once loaded.' },
+  { q: 'Do these cover my physics course?', a: 'They cover the core of GCSE/IGCSE, A-Level, AP Physics, IB and introductory college physics: kinematics (SUVAT, projectile, free fall), forces and momentum, energy/work/power, circular motion, gravitation, waves and optics, electricity, and modern physics (E=mc², photons).' },
+  { q: 'Why build physics tools an AI could answer?', a: 'Because studies show chatbots make frequent calculation errors on physics problems — especially rearranging square-root equations and handling sign conventions (refraction, projectile). A deterministic solver gives the exact answer every time, with the working.' },
+];
+const schema = [
+  breadcrumbSchema(crumbs),
+  collectionPageSchema({ name: 'Physics Calculators', url: '/physics/', description: 'Free, private physics calculators: kinematics (SUVAT, projectile, free fall), Newton’s laws, energy, gravitation, waves, optics, electricity (Ohm’s law) and modern physics — exact and in your browser.', items: PHYS_TOOLS.map((t) => ({ name: t.name, url: `/physics/${t.slug}/` })) }),
+  faqs && faqSchema(faqs),
+];
+---
+
+<Base
+  title="Physics Calculators — SUVAT, Projectile, Ohm's Law, Energy | LazyTools"
+  description="Free physics calculators that run in your browser: kinematic (SUVAT) equations, projectile motion with trajectory graph, Newton's laws, kinetic & potential energy, gravitation, wave & Snell's law, Ohm's-law wheel, E=mc² and photon energy. Exact, private, no upload."
+  schema={schema}
+>
+  <div class="mx-auto max-w-5xl px-4 py-6">
+    <Breadcrumbs items={crumbs} />
+    <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Physics Calculators</h1>
+    <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
+      Exact, deterministic physics tools across the whole syllabus — solve the SUVAT equations, plot a
+      projectile’s trajectory, work the Ohm’s-law wheel, or compute energy, gravitation, waves and E=mc².
+      Everything is computed in your browser with fixed physical constants and the working shown, so the
+      answers are exact where a chatbot would fumble the algebra.
+    </p>
+
+    <div class="mt-5"><PrivacyStrip /></div>
+
+    {clusters.map((c) => {
+      const items = PHYS_TOOLS.filter((t) => t.cluster === c.key);
+      return items.length > 0 && (
+        <section class="mt-8">
+          <h2 class="text-xl font-bold text-slate-900">{c.icon} {c.title}</h2>
+          <ul class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {items.map((t) => (
+              <li>
+                <a href={`/physics/${t.slug}/`} class="flex h-full flex-col rounded-xl border border-slate-200 p-4 transition hover:border-brand-400 hover:shadow-sm">
+                  <span class="text-2xl" aria-hidden="true">{t.icon}</span>
+                  <span class="mt-2 font-semibold text-slate-900">{t.name}</span>
+                  <span class="mt-1 text-sm text-slate-600">{t.lead.split('—')[0].split('(')[0]}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      );
+    })}
+
+    <FaqSection faqs={faqs} />
+  </div>
+</Base>

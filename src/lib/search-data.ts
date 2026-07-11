@@ -25,6 +25,7 @@ import { PHOTO_SPECS } from '../data/photo/index';
 import { BIO_TOOLS } from '../data/biology/index';
 import { STAT_TOOLS } from '../data/statistics/index';
 import { CHEM_TOOLS } from '../data/chemistry/index';
+import { PHYS_TOOLS } from '../data/physics/index';
 
 export interface SearchUnit {
   id: string;
@@ -219,6 +220,9 @@ export function buildSearchPages(): SearchPage[] {
   for (const t of CHEM_TOOLS) {
     pages.push({ title: t.name, url: `/chemistry/${t.slug}/`, keywords: [...t.keywords, 'chemistry', 'chem', t.name.toLowerCase()] });
   }
+  for (const t of PHYS_TOOLS) {
+    pages.push({ title: t.name, url: `/physics/${t.slug}/`, keywords: [...t.keywords, 'physics', t.name.toLowerCase()] });
+  }
   for (const t of PDF_TOOLS) {
     pages.push({ title: t.name, url: `/pdf/${t.slug}/`, keywords: [...t.keywords, 'pdf', t.name.toLowerCase()] });
   }
@@ -232,6 +236,7 @@ export function buildSearchPages(): SearchPage[] {
     { title: 'All Biology & Lab Tools', url: '/biology/', keywords: ['biology', 'lab', 'dna', 'sequence', 'reverse complement', 'dilution', 'punnett square', 'hardy weinberg', 'molarity', 'pcr', 'primer tm', 'genetics'] },
     { title: 'All Statistics Calculators', url: '/statistics/', keywords: ['statistics', 'stats', 'normal distribution', 'z score', 'p value', 'binomial', 'confidence interval', 'sample size', 'regression', 'correlation', 'hypothesis test'] },
     { title: 'All Chemistry & Lab Tools', url: '/chemistry/', keywords: ['chemistry', 'chem', 'molar mass', 'molecular weight', 'equation balancer', 'balance equation', 'molarity', 'ideal gas', 'pv=nrt', 'specific heat', 'ph', 'percent composition', 'stoichiometry'] },
+    { title: 'All Physics Calculators', url: '/physics/', keywords: ['physics', 'suvat', 'kinematics', 'projectile motion', 'newtons second law', 'f=ma', 'kinetic energy', 'potential energy', 'momentum', 'ohms law', 'wavelength', 'snells law', 'gravitation', 'e=mc2', 'free fall', 'work power'] },
     { title: 'All PDF Tools', url: '/pdf/', keywords: ['pdf tools', 'merge pdf', 'split pdf', 'rotate pdf'] },
     { title: 'All Audio Tools', url: '/video/', keywords: ['audio tools', 'trim audio', 'mp3', 'wav', 'volume'] },
     { title: 'All Developer Tools', url: '/dev/', keywords: ['developer tools', 'dev', 'encode', 'decode', 'hash', 'regex'] },

@@ -7,6 +7,13 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'suvat-equations-guide',
+    kicker: 'PHYSICS GUIDE',
+    lines: ['The SUVAT equations:', 'solve any constant-', 'acceleration problem'],
+    fact: 'know any 3 of u,v,a,s,t → find the other 2',
+    icon: '🏁',
+  },
+  {
     slug: 'colligative-properties-guide',
     kicker: 'CHEMISTRY GUIDE',
     lines: ['Colligative properties:', 'why salt melts ice', '& antifreeze works'],

@@ -1,0 +1,151 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PrivacyStrip from '../../components/PrivacyStrip.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import RatingWidget from '../../components/RatingWidget.tsx';
+import SuvatTool from '../../components/physics/SuvatTool.tsx';
+import ProjectileTool from '../../components/physics/ProjectileTool.tsx';
+import FreeFallTool from '../../components/physics/FreeFallTool.tsx';
+import NewtonsSecondLawTool from '../../components/physics/NewtonsSecondLawTool.tsx';
+import MomentumTool from '../../components/physics/MomentumTool.tsx';
+import FrictionTool from '../../components/physics/FrictionTool.tsx';
+import KineticEnergyTool from '../../components/physics/KineticEnergyTool.tsx';
+import PotentialEnergyTool from '../../components/physics/PotentialEnergyTool.tsx';
+import WorkTool from '../../components/physics/WorkTool.tsx';
+import PowerTool from '../../components/physics/PowerTool.tsx';
+import HookesLawTool from '../../components/physics/HookesLawTool.tsx';
+import CentripetalForceTool from '../../components/physics/CentripetalForceTool.tsx';
+import GravitationTool from '../../components/physics/GravitationTool.tsx';
+import WavelengthTool from '../../components/physics/WavelengthTool.tsx';
+import PhotonEnergyTool from '../../components/physics/PhotonEnergyTool.tsx';
+import MassEnergyTool from '../../components/physics/MassEnergyTool.tsx';
+import SnellsLawTool from '../../components/physics/SnellsLawTool.tsx';
+import OhmsLawTool from '../../components/physics/OhmsLawTool.tsx';
+import { PHYS_TOOLS, type PhysToolDef } from '../../data/physics/index';
+import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
+import { ratingFor } from '../../lib/ratings';
+
+export function getStaticPaths() {
+  return PHYS_TOOLS.map((t) => ({ params: { slug: t.slug }, props: { slug: t.slug } }));
+}
+
+const { slug } = Astro.props;
+const tool: PhysToolDef = PHYS_TOOLS.find((t) => t.slug === slug)!;
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Physics', url: '/physics/' },
+  { name: tool.name, url: `/physics/${tool.slug}/` },
+];
+
+const related = PHYS_TOOLS.filter((t) => t.slug !== tool.slug && t.cluster === tool.cluster).slice(0, 6);
+const fallback = PHYS_TOOLS.filter((t) => t.slug !== tool.slug).slice(0, 6);
+const relatedTools = related.length >= 3 ? related : fallback;
+const allBlogPosts = await getCollection('blog');
+const blogPosts = allBlogPosts.filter((p) => p.data.tools.includes(`/physics/${tool.slug}/`));
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  webApplicationSchema({
+    name: tool.name,
+    url: `/physics/${tool.slug}/`,
+    description: tool.description,
+    rating: ratingFor(`physics/${tool.slug}`),
+  }),
+  faqSchema(tool.faqs),
+];
+---
+
+<Base title={`${tool.name} — Free & Private | LazyTools`} description={tool.description} schema={schema}>
+  <article class="mx-auto max-w-5xl px-4 py-6">
+    <Breadcrumbs items={crumbs} />
+
+    <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+      {tool.icon} {tool.name}
+    </h1>
+
+    <p class="mt-3 text-lg leading-relaxed text-slate-700">
+      <strong class="font-semibold text-slate-900">{tool.lead}</strong>
+    </p>
+
+    <div class="mt-6">
+      {tool.widget === 'suvat' && <SuvatTool client:load />}
+      {tool.widget === 'projectile' && <ProjectileTool client:load />}
+      {tool.widget === 'freefall' && <FreeFallTool client:load />}
+      {tool.widget === 'newton' && <NewtonsSecondLawTool client:load />}
+      {tool.widget === 'momentum' && <MomentumTool client:load />}
+      {tool.widget === 'friction' && <FrictionTool client:load />}
+      {tool.widget === 'ke' && <KineticEnergyTool client:load />}
+      {tool.widget === 'pe' && <PotentialEnergyTool client:load />}
+      {tool.widget === 'work' && <WorkTool client:load />}
+      {tool.widget === 'power' && <PowerTool client:load />}
+      {tool.widget === 'hookes' && <HookesLawTool client:load />}
+      {tool.widget === 'centripetal' && <CentripetalForceTool client:load />}
+      {tool.widget === 'gravitation' && <GravitationTool client:load />}
+      {tool.widget === 'wavelength' && <WavelengthTool client:load />}
+      {tool.widget === 'photon' && <PhotonEnergyTool client:load />}
+      {tool.widget === 'massenergy' && <MassEnergyTool client:load />}
+      {tool.widget === 'snell' && <SnellsLawTool client:load />}
+      {tool.widget === 'ohms' && <OhmsLawTool client:load />}
+    </div>
+
+    <div class="mt-4">
+      <PrivacyStrip />
+    </div>
+
+    <div class="mt-3">
+      <RatingWidget
+        client:idle
+        toolSlug={`physics/${tool.slug}`}
+        avg={ratingFor(`physics/${tool.slug}`)?.avg}
+        count={ratingFor(`physics/${tool.slug}`)?.count}
+      />
+    </div>
+
+    <section class="prose-lazy mt-6">
+      <h2>How the {tool.name.toLowerCase()} works</h2>
+      <p>{tool.how}</p>
+      {tool.note && <p>{tool.note}</p>}
+    </section>
+
+    <FaqSection faqs={tool.faqs} />
+
+    <section class="mt-10">
+      <h2 class="text-2xl font-bold text-slate-900">Related physics tools</h2>
+      <ul class="mt-4 grid gap-2 sm:grid-cols-2">
+        {relatedTools.map((r) => (
+          <li>
+            <a href={`/physics/${r.slug}/`} class="block rounded-lg border border-slate-200 px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:border-brand-400 hover:text-brand-700">
+              {r.icon} {r.name}
+            </a>
+          </li>
+        ))}
+        <li>
+          <a href="/physics/" class="block rounded-lg border border-brand-200 bg-brand-50 px-4 py-2.5 text-sm font-semibold text-brand-800 transition hover:border-brand-400">
+            All physics tools →
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    {
+      blogPosts.length > 0 && (
+        <section class="mt-10">
+          <h2 class="text-2xl font-bold text-slate-900">From the blog</h2>
+          <ul class="mt-4 space-y-3">
+            {blogPosts.map((post) => (
+              <li>
+                <a href={`/blog/${post.id}/`} class="block rounded-xl border border-slate-200 p-4 transition hover:border-brand-400 hover:shadow-sm">
+                  <p class="font-semibold text-slate-900">{post.data.title}</p>
+                  <p class="mt-1 text-sm text-slate-600">{post.data.description}</p>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+  </article>
+</Base>

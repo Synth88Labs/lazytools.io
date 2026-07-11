@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="The five SUVAT equations for constant acceleration link five variables: s displacement, u initial velocity, v final velocity, a acceleration, t time. The equations are: v = u + at (no s); s = one half times u plus v times t (no a); v squared = u squared + 2 a s (no t); s = u t + one half a t squared (no v); s = v t minus one half a t squared (no u). The method: list what you know, pick the equation missing the variable you don't need, and solve. Know any three variables and the other two are determined. Each equation deliberately leaves out one variable.">
+  <defs>
+    <style>
+      .h { font: 800 30px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .sub { font: 500 15px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+      .lab { font: 800 16px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .eq { font: 800 22px Consolas, Menlo, monospace; fill: #1d4ed8; }
+      .miss { font: 700 13px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #94a3b8; }
+      .v { font: 800 20px Consolas, Menlo, monospace; }
+    </style>
+  </defs>
+
+  <text x="600" y="44" text-anchor="middle" class="h">The five SUVAT equations</text>
+  <text x="600" y="72" text-anchor="middle" class="sub">constant acceleration · know any three of s, u, v, a, t → solve the other two</text>
+
+  <!-- variable chips -->
+  <g transform="translate(0 96)">
+    <g transform="translate(300 0)">
+      <rect x="0" y="0" width="90" height="44" rx="10" fill="#eef2ff" stroke="#c7d2fe"/><text x="45" y="29" text-anchor="middle" class="v" fill="#3730a3">s</text>
+      <rect x="102" y="0" width="90" height="44" rx="10" fill="#eef2ff" stroke="#c7d2fe"/><text x="147" y="29" text-anchor="middle" class="v" fill="#3730a3">u</text>
+      <rect x="204" y="0" width="90" height="44" rx="10" fill="#eef2ff" stroke="#c7d2fe"/><text x="249" y="29" text-anchor="middle" class="v" fill="#3730a3">v</text>
+      <rect x="306" y="0" width="90" height="44" rx="10" fill="#eef2ff" stroke="#c7d2fe"/><text x="351" y="29" text-anchor="middle" class="v" fill="#3730a3">a</text>
+      <rect x="408" y="0" width="90" height="44" rx="10" fill="#eef2ff" stroke="#c7d2fe"/><text x="453" y="29" text-anchor="middle" class="v" fill="#3730a3">t</text>
+    </g>
+    <text x="270" y="29" text-anchor="end" class="miss" style="font-size:15px">displacement · velocities · accel · time</text>
+  </g>
+
+  <!-- five equations, each labeled with the missing variable -->
+  <g transform="translate(70 170)">
+    <rect x="0" y="0" width="1060" height="330" rx="16" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/>
+    <g transform="translate(40 40)">
+      <text x="0" y="24" class="eq">v = u + at</text>
+      <text x="820" y="24" text-anchor="end" class="miss">— leaves out s</text>
+      <line x1="0" y1="44" x2="980" y2="44" stroke="#e2e8f0"/>
+
+      <text x="0" y="86" class="eq">s = ½(u + v)·t</text>
+      <text x="820" y="86" text-anchor="end" class="miss">— leaves out a</text>
+      <line x1="0" y1="106" x2="980" y2="106" stroke="#e2e8f0"/>
+
+      <text x="0" y="148" class="eq">v² = u² + 2as</text>
+      <text x="820" y="148" text-anchor="end" class="miss">— leaves out t   (the √ chatbots miss)</text>
+      <line x1="0" y1="168" x2="980" y2="168" stroke="#e2e8f0"/>
+
+      <text x="0" y="210" class="eq">s = ut + ½at²</text>
+      <text x="820" y="210" text-anchor="end" class="miss">— leaves out v</text>
+      <line x1="0" y1="230" x2="980" y2="230" stroke="#e2e8f0"/>
+
+      <text x="0" y="272" class="eq">s = vt − ½at²</text>
+      <text x="820" y="272" text-anchor="end" class="miss">— leaves out u</text>
+    </g>
+  </g>
+
+  <!-- footer -->
+  <g transform="translate(70 520)">
+    <rect x="0" y="0" width="1060" height="60" rx="14" fill="#0c2f6b"/>
+    <text x="24" y="38" font-family="Consolas, Menlo, monospace" font-size="15" fill="#7ef0c0">lazytools.io — SUVAT solver, projectile-motion &amp; free-fall calculators, in your browser</text>
+  </g>
+</svg>

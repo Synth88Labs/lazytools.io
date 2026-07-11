@@ -32,6 +32,7 @@ import { PHOTO_SPECS } from '../src/data/photo/index.ts';
 import { BIO_TOOLS } from '../src/data/biology/index.ts';
 import { STAT_TOOLS } from '../src/data/statistics/index.ts';
 import { CHEM_TOOLS } from '../src/data/chemistry/index.ts';
+import { PHYS_TOOLS } from '../src/data/physics/index.ts';
 
 await copyFile(new URL('../dist/sitemap-index.xml', import.meta.url), new URL('../dist/sitemap.xml', import.meta.url));
 console.log('postbuild: dist/sitemap.xml created (copy of sitemap-index.xml)');
@@ -61,6 +62,7 @@ const slugs = [
   ...BIO_TOOLS.map((t) => `biology/${t.slug}`),
   ...STAT_TOOLS.map((t) => `statistics/${t.slug}`),
   ...CHEM_TOOLS.map((t) => `chemistry/${t.slug}`),
+  ...PHYS_TOOLS.map((t) => `physics/${t.slug}`),
 ].sort();
 await writeFile(new URL('../api/tools-allowlist.json', import.meta.url), JSON.stringify(slugs, null, 2) + '\n');
 console.log(`postbuild: api/tools-allowlist.json regenerated (${slugs.length} tools)`);

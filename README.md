@@ -31,7 +31,7 @@ are no processing servers. The tool code downloads to *your* device and runs the
 yourself: open DevTools, watch the network tab, or switch off your connection mid-use — everything keeps
 working.
 
-## What's live — 22 categories, 465+ tools, ~567 pages
+## What's live — 23 categories, 485+ tools, ~587 pages
 
 | Category | Highlights |
 |---|---|
@@ -41,6 +41,7 @@ working.
 | [Biology & Lab](https://lazytools.io/biology/) | **14 tools** — DNA reverse-complement/translate (sequence never uploaded), C₁V₁=C₂V₂ dilution + serial planner, Punnett (mono/di/trihybrid), Hardy–Weinberg + χ², GC/Tm, DNA & protein molecular weight, molarity, hemocytometer, Michaelis–Menten, qPCR efficiency, doubling time |
 | [Chemistry & Lab](https://lazytools.io/chemistry/) | **26 tools** — **molar mass / molecular weight** (parses hydrates like CuSO₄·5H₂O + nested groups) with percent composition, **chemical equation balancer** (exact integer coefficients via BigInt null-space — correct on redox), **stoichiometry** (limiting reagent + theoretical yield), **empirical/molecular formula**, **mole ↔ grams ↔ particles**, **molarity**, **dilution** (C₁V₁=C₂V₂), **percent yield**, **density**, **ideal / combined gas law**, **specific heat**, **pH**, **Henderson–Hasselbalch**, **Beer–Lambert**, **half-life**, **Gibbs free energy**, **Nernst**, **Arrhenius**, **freezing-point depression / boiling-point elevation**, **ppm**, **percent error** |
 | [Statistics](https://lazytools.io/statistics/) | **6 tools** — **normal distribution** (z↔p, shaded bell curve via exact erf), **binomial probability** (BigInt-exact coefficients), **confidence intervals** (mean z/t + proportion), **sample size**, **p-value** (z/t/χ²/F, one/two-tailed), **linear regression & correlation** (least-squares + scatter plot, r, r²) |
+| [Physics](https://lazytools.io/physics/) | **18 tools** — **SUVAT kinematic-equations solver** (enter any 3 of u/v/a/s/t), **projectile motion** with trajectory graph, free fall, **Newton's 2nd law**, momentum, friction, **kinetic/potential energy**, work, power, Hooke's law, **centripetal force**, **Newton's gravitation**, **wave speed** (v=fλ), **Snell's law** (critical angle + TIR), **Ohm's-law V/I/R/P wheel**, **photon energy** (E=hf), **E=mc²** |
 | [Size Converters](https://lazytools.io/size/) | ring, shoe, bra, clothing, hat sizes across systems |
 | [Text Tools](https://lazytools.io/text/) | **19 tools** — "the invisible & exact layer of text": **invisible-character detector** (AI-watermark / zero-width), **homoglyph/lookalike detector**, **text diff** (LCS), **readability** (Flesch/FK/Fog/SMOG/CLI/ARI), **Unicode inspector**, word frequency, text cleaner (em-dash/smart-quote), Unicode normalizer, plus counters, case, sort, dedupe, find & replace |
 | [Color Tools](https://lazytools.io/color/) | HEX/RGB/HSL/CMYK, **OKLCH/OKLAB/LAB converter** (CSS Color 4 + gamut-mapped HEX fallback), WCAG contrast + **accessible-color fixer**, **APCA (WCAG 3) checker**, **contrast grid**, **color-blindness simulator** (Machado 2009, image + palette), **harmony generator**, **image color picker + palette extractor** (median-cut, EyeDropper API), **nearest color-name finder** (CIEDE2000), **Tailwind OKLCH scale generator**, **brand color finder (1,100+ palettes)** |
@@ -58,7 +59,7 @@ working.
 | [PDF Tools](https://lazytools.io/pdf/) | merge/split/rotate **with live page previews**, unlock/protect (qpdf wasm), **accessibility checker (EAA)**, **redaction checker + rasterizing redactor** |
 | [Audio](https://lazytools.io/video/) | trim, speed, volume, WAV convert (Web Audio) |
 
-Plus **66 in-depth guides** on the [blog](https://lazytools.io/blog/) — each with custom infographics,
+Plus **67 in-depth guides** on the [blog](https://lazytools.io/blog/) — each with custom infographics,
 FAQ schema and cited sources — and a research-driven build pipeline (see
 [docs/research/](docs/research/)) that has shipped regulatory-deadline tools ahead of the French,
 Polish and Belgian e-invoicing mandates.
@@ -68,7 +69,7 @@ Polish and Belgian e-invoicing mandates.
 ```bash
 npm install
 npm run dev      # dev server at localhost:4321
-npm run build    # static site → dist/ (~567 pages)
+npm run build    # static site → dist/ (~587 pages)
 ```
 
 ## Tech & models
