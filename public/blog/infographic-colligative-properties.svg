@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="Colligative properties depend on the number of dissolved particles, not their identity. Freezing-point depression: delta T f equals i times K f times m, which lowers the freezing point — this is why salt melts ice and antifreeze protects an engine. Boiling-point elevation: delta T b equals i times K b times m, which raises the boiling point. Here i is the van't Hoff factor, the number of particles a solute splits into: sodium chloride gives 2, calcium chloride 3, and sugar 1. For water, K f is 1.86 and K b is 0.512 degrees C kg per mol. Example: 1 molal sodium chloride, with i equal to 2, lowers the freezing point by 3.72 degrees C.">
+  <defs>
+    <style>
+      .h { font: 800 30px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .sub { font: 500 15px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+      .t { font: 800 19px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; }
+      .eq { font: 800 24px Consolas, Menlo, monospace; }
+      .d { font: 500 14px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #475569; }
+      .mono { font: 700 14px Consolas, Menlo, monospace; fill: #0f172a; }
+    </style>
+  </defs>
+
+  <text x="600" y="44" text-anchor="middle" class="h">Colligative properties — it’s the number of particles</text>
+  <text x="600" y="72" text-anchor="middle" class="sub">not what the solute is, just how many pieces it dissolves into</text>
+
+  <!-- freezing card -->
+  <g transform="translate(70 100)">
+    <rect x="0" y="0" width="520" height="220" rx="18" fill="#eff6ff" stroke="#1d87f1" stroke-width="2"/>
+    <text x="24" y="42" class="t" fill="#1d4ed8">❄ Freezing-point depression</text>
+    <text x="24" y="88" class="eq" fill="#1d4ed8">ΔTf = i · Kf · m</text>
+    <text x="24" y="124" class="d">Lowers the freezing point.</text>
+    <text x="24" y="148" class="d">Why salt melts ice and antifreeze works.</text>
+    <text x="24" y="184" class="mono">Water Kf = 1.86 °C·kg/mol</text>
+    <text x="24" y="206" class="mono">1 m NaCl (i=2) → 0 °C drops to −3.72 °C</text>
+  </g>
+
+  <!-- boiling card -->
+  <g transform="translate(610 100)">
+    <rect x="0" y="0" width="520" height="220" rx="18" fill="#fff1f2" stroke="#f04438" stroke-width="2"/>
+    <text x="24" y="42" class="t" fill="#b91c1c">🌡 Boiling-point elevation</text>
+    <text x="24" y="88" class="eq" fill="#b91c1c">ΔTb = i · Kb · m</text>
+    <text x="24" y="124" class="d">Raises the boiling point.</text>
+    <text x="24" y="148" class="d">Add ΔTb to 100 °C for water.</text>
+    <text x="24" y="184" class="mono">Water Kb = 0.512 °C·kg/mol</text>
+    <text x="24" y="206" class="mono">1 m NaCl (i=2) → 100 °C rises to 101.02 °C</text>
+  </g>
+
+  <!-- van't Hoff -->
+  <g transform="translate(70 340)">
+    <rect x="0" y="0" width="1060" height="110" rx="16" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/>
+    <text x="24" y="38" class="t" fill="#334155">The van’t Hoff factor i — particles per formula unit</text>
+    <g transform="translate(24 56)">
+      <rect x="0" y="0" width="240" height="42" rx="10" fill="#dcfce7"/>
+      <text x="120" y="27" text-anchor="middle" class="mono">sugar (C₆H₁₂O₆) → i = 1</text>
+      <rect x="256" y="0" width="240" height="42" rx="10" fill="#dbeafe"/>
+      <text x="376" y="27" text-anchor="middle" class="mono">NaCl → i = 2</text>
+      <rect x="512" y="0" width="240" height="42" rx="10" fill="#fef9c3"/>
+      <text x="632" y="27" text-anchor="middle" class="mono">CaCl₂ → i = 3</text>
+      <rect x="768" y="0" width="266" height="42" rx="10" fill="#f1f5f9"/>
+      <text x="901" y="27" text-anchor="middle" class="mono">m = mol solute / kg solvent</text>
+    </g>
+  </g>
+
+  <!-- footer -->
+  <g transform="translate(70 470)">
+    <rect x="0" y="0" width="1060" height="60" rx="14" fill="#0c2f6b"/>
+    <text x="24" y="38" font-family="Consolas, Menlo, monospace" font-size="15" fill="#7ef0c0">lazytools.io — freezing-point &amp; boiling-point calculators, computed in your browser</text>
+  </g>
+</svg>

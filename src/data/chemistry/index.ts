@@ -7,7 +7,8 @@ export interface ChemToolDef {
   widget:
     | 'molarmass' | 'balancer' | 'molarity' | 'idealgas' | 'specheat' | 'ph'
     | 'stoich' | 'mole' | 'empirical' | 'dilution' | 'yield' | 'density'
-    | 'henderson' | 'beerlambert' | 'gaslaw' | 'halflife';
+    | 'henderson' | 'beerlambert' | 'gaslaw' | 'halflife'
+    | 'gibbs' | 'nernst' | 'arrhenius' | 'freezing' | 'boiling' | 'ppm' | 'percenterror';
   /** molar-mass satellites: default view */
   view?: 'mass' | 'percent';
   description: string;
@@ -367,6 +368,135 @@ CHEM_TOOLS.push(
       { q: 'Does this work for non-radioactive decay?', a: 'Yes — any first-order (exponential) decay with a constant half-life follows the same equation, such as drug elimination described by a biological half-life.' },
     ],
     keywords: ['half life calculator', 'radioactive decay calculator', 'half life formula', 'carbon dating calculator', 'exponential decay calculator', 'remaining amount decay'],
+  },
+);
+
+CHEM_TOOLS.push(
+  {
+    slug: 'gibbs-free-energy-calculator',
+    name: 'Gibbs Free Energy Calculator (ΔG = ΔH − TΔS)',
+    icon: '⚡',
+    widget: 'gibbs',
+    description: 'Calculate Gibbs free energy ΔG = ΔH − TΔS and tell whether a reaction is spontaneous — or solve for ΔH, ΔS or T. Exact, in-browser.',
+    lead: 'Find ΔG from enthalpy, temperature and entropy — and see whether the reaction is spontaneous — or solve for any of the four.',
+    how: 'Gibbs free energy is ΔG = ΔH − TΔS, with ΔH in kJ/mol, ΔS in J/(mol·K) and T in kelvin (the tool handles the kJ/J unit conversion). Enter any three and it solves for the fourth. A negative ΔG means the reaction is spontaneous (product-favoured) at that temperature.',
+    note: 'The single most common thermodynamics gotcha is mixing kJ and J — here ΔH is kJ/mol and ΔS is J/(mol·K), converted internally, so you don’t have to. ΔG < 0 spontaneous, ΔG > 0 non-spontaneous, ΔG = 0 at equilibrium.',
+    faqs: [
+      { q: 'What is the Gibbs free energy equation?', a: 'ΔG = ΔH − TΔS: the change in free energy equals the enthalpy change minus the absolute temperature times the entropy change. It predicts whether a process is spontaneous.' },
+      { q: 'When is a reaction spontaneous?', a: 'When ΔG is negative. ΔG > 0 is non-spontaneous (the reverse is favoured), and ΔG = 0 is at equilibrium. This tool states the verdict from your values.' },
+      { q: 'Why do I use kJ for ΔH but J for ΔS?', a: 'By convention ΔH is tabulated in kJ/mol and ΔS in J/(mol·K). They must be in the same units before subtracting — the tool converts ΔS to kJ automatically, avoiding the classic 1000× error.' },
+      { q: 'How do I find the temperature where a reaction becomes spontaneous?', a: 'Set ΔG = 0 and solve for T = ΔH/ΔS. Choose to solve for T with ΔG left at 0 to find the crossover temperature.' },
+      { q: 'What does temperature do to spontaneity?', a: 'It scales the −TΔS term. If ΔH and ΔS have the same sign, spontaneity flips at T = ΔH/ΔS; if they have opposite signs, the reaction is spontaneous (or not) at all temperatures.' },
+    ],
+    keywords: ['gibbs free energy calculator', 'delta g calculator', 'δg = δh - tδs', 'spontaneity calculator', 'free energy calculator', 'gibbs equation'],
+  },
+  {
+    slug: 'nernst-equation-calculator',
+    name: 'Nernst Equation Calculator',
+    icon: '🔋',
+    widget: 'nernst',
+    description: 'Calculate cell potential with the Nernst equation E = E° − (0.0592/n)·log Q at 25 °C — or solve for E°, n or Q. Exact, in-browser.',
+    lead: 'Find a cell’s actual potential from the standard potential, electrons transferred and reaction quotient — the Nernst equation at 25 °C.',
+    how: 'At 25 °C the Nernst equation is E = E° − (0.0592/n)·log₁₀(Q), where E° is the standard cell potential, n the number of electrons transferred, and Q the reaction quotient. Enter any three of E, E°, n, Q and the tool solves for the fourth.',
+    note: 'Uses the 25 °C convention (0.0592 = 2.303RT/F at 298 K). As Q changes, the potential shifts away from E°; at equilibrium Q = K and E = 0 (a dead battery).',
+    faqs: [
+      { q: 'What is the Nernst equation?', a: 'E = E° − (RT/nF)·ln Q, which at 25 °C simplifies to E = E° − (0.0592/n)·log₁₀ Q. It gives a cell’s potential under non-standard concentrations.' },
+      { q: 'How do I calculate cell potential with concentrations?', a: 'Compute the reaction quotient Q from the concentrations, then apply E = E° − (0.0592/n)·log Q. Enter E°, n and Q and the tool returns E.' },
+      { q: 'What is n in the Nernst equation?', a: 'The number of moles of electrons transferred in the balanced redox reaction. For Cu²⁺ + Zn → Cu + Zn²⁺, n = 2.' },
+      { q: 'Why 0.0592?', a: 'It is 2.303·RT/F evaluated at 298 K (25 °C): 2.303 × 8.314 × 298 / 96485 ≈ 0.0592 V. At other temperatures the coefficient changes.' },
+      { q: 'What happens at equilibrium?', a: 'Q equals the equilibrium constant K and E = 0 — the cell can do no more work (it’s discharged).' },
+    ],
+    keywords: ['nernst equation calculator', 'cell potential calculator', 'electrochemistry calculator', 'e = e° - (0.0592/n)log q', 'emf calculator', 'reaction quotient'],
+  },
+  {
+    slug: 'arrhenius-equation-calculator',
+    name: 'Arrhenius Equation Calculator',
+    icon: '📉',
+    widget: 'arrhenius',
+    description: 'Find activation energy from two rate constants and temperatures with the Arrhenius equation — or predict a rate constant at a new temperature. Exact, in-browser.',
+    lead: 'Use the two-point Arrhenius equation to get the activation energy from two rate constants and temperatures — or find k at a new temperature.',
+    how: 'The two-point form is ln(k₂/k₁) = −(Ea/R)·(1/T₂ − 1/T₁), with R = 8.314 J/(mol·K) and temperatures in kelvin. Enter two rate constants and their temperatures to get the activation energy Ea; or give Ea and one (k, T) pair to predict the rate constant at another temperature.',
+    note: 'The standard way to extract activation energy from kinetics data without plotting. Rate constants roughly double for every 10 K near room temperature when Ea is around 50 kJ/mol.',
+    faqs: [
+      { q: 'What is the Arrhenius equation?', a: 'k = A·e^(−Ea/RT), relating a rate constant to temperature. The two-point form, ln(k₂/k₁) = −(Ea/R)(1/T₂ − 1/T₁), lets you find the activation energy from two measurements.' },
+      { q: 'How do I find activation energy from two temperatures?', a: 'Enter the two rate constants and their kelvin temperatures; the tool computes Ea = −R·ln(k₂/k₁) / (1/T₂ − 1/T₁).' },
+      { q: 'What is activation energy?', a: 'The minimum energy barrier a reaction must overcome. A higher Ea means the rate is more temperature-sensitive.' },
+      { q: 'Can I predict a rate constant at a new temperature?', a: 'Yes — give the activation energy and a known (k, T) pair, then solve for k₂ at the target temperature T₂.' },
+      { q: 'What units is activation energy in?', a: 'This tool reports Ea in J/mol (divide by 1000 for kJ/mol), using R = 8.314 J/(mol·K).' },
+    ],
+    keywords: ['arrhenius equation calculator', 'activation energy calculator', 'rate constant temperature', 'two point arrhenius', 'kinetics calculator', 'ea calculator'],
+  },
+  {
+    slug: 'freezing-point-depression-calculator',
+    name: 'Freezing Point Depression Calculator',
+    icon: '❄️',
+    widget: 'freezing',
+    description: 'Calculate freezing-point depression ΔTf = i·Kf·m — or solve for molality, the van’t Hoff factor or Kf. Exact, in-browser.',
+    lead: 'Find how much a solute lowers the freezing point: ΔTf = i·Kf·m — or solve for molality, i, or the cryoscopic constant.',
+    how: 'Freezing-point depression is a colligative property: ΔTf = i·Kf·m, where i is the van’t Hoff factor (particles per formula unit), Kf the cryoscopic constant (1.86 °C·kg/mol for water), and m the molality. Enter any three and the tool solves for the fourth.',
+    note: 'Why salt melts ice and antifreeze works. For ionic solutes use i = number of ions (NaCl ≈ 2, CaCl₂ ≈ 3); for molecular solutes like sugar, i = 1.',
+    faqs: [
+      { q: 'What is freezing point depression?', a: 'The lowering of a solvent’s freezing point when a solute is dissolved in it. It depends on the number of dissolved particles, not their identity — a colligative property. ΔTf = i·Kf·m.' },
+      { q: 'What is the van’t Hoff factor (i)?', a: 'The number of particles a solute splits into. NaCl gives i ≈ 2 (Na⁺ + Cl⁻), CaCl₂ ≈ 3, and non-electrolytes like glucose give i = 1.' },
+      { q: 'What is Kf for water?', a: 'The cryoscopic constant of water is 1.86 °C·kg/mol. Other solvents have their own Kf, which you can enter.' },
+      { q: 'How do I find the new freezing point?', a: 'Subtract ΔTf from the pure solvent’s freezing point. For water, 0 °C − ΔTf. The tool gives ΔTf; subtract it yourself.' },
+      { q: 'Why does salt melt ice?', a: 'Dissolved salt depresses the freezing point below the ambient temperature, so the ice melts. More particles (higher i·m) means a larger depression.' },
+    ],
+    keywords: ['freezing point depression calculator', 'δtf = i kf m', 'colligative properties calculator', 'cryoscopic', 'freezing point of solution', 'molality freezing point'],
+  },
+  {
+    slug: 'boiling-point-elevation-calculator',
+    name: 'Boiling Point Elevation Calculator',
+    icon: '🌡️',
+    widget: 'boiling',
+    description: 'Calculate boiling-point elevation ΔTb = i·Kb·m — or solve for molality, the van’t Hoff factor or Kb. Exact, in-browser.',
+    lead: 'Find how much a solute raises the boiling point: ΔTb = i·Kb·m — or solve for molality, i, or the ebullioscopic constant.',
+    how: 'Boiling-point elevation is a colligative property: ΔTb = i·Kb·m, where i is the van’t Hoff factor, Kb the ebullioscopic constant (0.512 °C·kg/mol for water), and m the molality. Enter any three and the tool solves for the fourth.',
+    note: 'The companion to freezing-point depression. Add ΔTb to the pure solvent’s boiling point (100 °C for water) to get the solution’s boiling point.',
+    faqs: [
+      { q: 'What is boiling point elevation?', a: 'The rise in a solvent’s boiling point when a solute is dissolved. Like freezing-point depression, it depends on the number of particles: ΔTb = i·Kb·m.' },
+      { q: 'What is Kb for water?', a: 'The ebullioscopic constant of water is 0.512 °C·kg/mol. Enter a different Kb for other solvents.' },
+      { q: 'How do I find the new boiling point?', a: 'Add ΔTb to the pure solvent’s boiling point. For water that is 100 °C + ΔTb.' },
+      { q: 'What is the van’t Hoff factor here?', a: 'The same i as in freezing-point depression — the number of particles per formula unit (NaCl ≈ 2, sugar = 1).' },
+      { q: 'Why is boiling-point elevation smaller than freezing-point depression?', a: 'Because Kb (0.512) is smaller than Kf (1.86) for water, the same molality raises the boiling point far less than it lowers the freezing point.' },
+    ],
+    keywords: ['boiling point elevation calculator', 'δtb = i kb m', 'ebullioscopic', 'boiling point of solution', 'colligative boiling point', 'molality boiling point'],
+  },
+  {
+    slug: 'ppm-calculator',
+    name: 'PPM Calculator (Parts Per Million)',
+    icon: '🧴',
+    widget: 'ppm',
+    description: 'Calculate concentration in parts per million (ppm) from solute and solution mass — or solve for either mass. Exact, in-browser.',
+    lead: 'Convert between mass and parts-per-million concentration: ppm = (mass solute ÷ mass solution) × 10⁶.',
+    how: 'Parts per million is a mass fraction scaled by a million: ppm = (mass of solute ÷ mass of solution) × 10⁶, with both masses in the same unit. Enter any two of solute mass, solution mass and ppm and the tool solves for the third. For dilute aqueous solutions, 1 ppm ≈ 1 mg/L.',
+    note: 'The standard way to express trace concentrations — water hardness, pollutants, additives. 1 ppm is one part in a million: 1 mg in 1 kg, or roughly 1 mg per litre of water.',
+    faqs: [
+      { q: 'How do I calculate ppm?', a: 'Divide the mass of solute by the mass of solution and multiply by 1,000,000. 5 mg of solute in 1000 g of solution = (0.005/1000) × 10⁶ = 5 ppm.' },
+      { q: 'Is 1 ppm the same as 1 mg/L?', a: 'For dilute water-based solutions, yes — because 1 L of water weighs about 1 kg, 1 mg/L ≈ 1 ppm. For other solvents or concentrated solutions, use the mass definition.' },
+      { q: 'How do I convert ppm to a percentage?', a: '1% = 10,000 ppm, so divide ppm by 10,000. 250 ppm = 0.025%.' },
+      { q: 'What is ppb?', a: 'Parts per billion — the same idea scaled by 10⁹ instead of 10⁶. 1 ppm = 1000 ppb.' },
+      { q: 'What is ppm used for?', a: 'Expressing very low concentrations: water hardness, dissolved oxygen, CO₂ levels, contaminants and food additives are all commonly given in ppm.' },
+    ],
+    keywords: ['ppm calculator', 'parts per million calculator', 'ppm to mg/l', 'concentration ppm', 'ppm to percent', 'how to calculate ppm'],
+  },
+  {
+    slug: 'percent-error-calculator',
+    name: 'Percent Error Calculator',
+    icon: '🎯',
+    widget: 'percenterror',
+    description: 'Calculate percent error between an experimental (measured) value and the theoretical (accepted) value. Exact, in-browser.',
+    lead: 'Compare a measured value to the accepted value: percent error = |experimental − theoretical| ÷ |theoretical| × 100.',
+    how: 'Percent error measures how far a measurement is from the accepted value: |experimental − theoretical| ÷ |theoretical| × 100. The tool also shows the signed error, indicating whether your measurement came out high or low.',
+    note: 'The standard lab metric for accuracy. A small percent error means your measurement is close to the accepted value; the signed version tells you the direction of the discrepancy.',
+    faqs: [
+      { q: 'How do you calculate percent error?', a: 'Take the absolute difference between the experimental and theoretical values, divide by the absolute theoretical value, and multiply by 100: |exp − theo| / |theo| × 100.' },
+      { q: 'What is a good percent error?', a: 'It depends on the experiment, but in student labs under about 5% is often considered good. Lower is better; the acceptable range depends on the equipment and method.' },
+      { q: 'What is the difference between percent error and percent difference?', a: 'Percent error compares a measurement to a known accepted value; percent difference compares two measured values with no “correct” reference (dividing by their average).' },
+      { q: 'Can percent error be negative?', a: 'The standard percent error uses absolute value, so it is non-negative. This tool also shows a signed error to indicate whether the measurement was too high (+) or too low (−).' },
+      { q: 'Why divide by the theoretical value?', a: 'Because the theoretical (accepted) value is the reference standard; the error is expressed relative to it, making it comparable across different scales.' },
+    ],
+    keywords: ['percent error calculator', 'percentage error', 'experimental theoretical value', 'percent error formula', 'lab error calculator', 'accuracy calculator'],
   },
 );
 

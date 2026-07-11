@@ -7,6 +7,13 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'colligative-properties-guide',
+    kicker: 'CHEMISTRY GUIDE',
+    lines: ['Colligative properties:', 'why salt melts ice', '& antifreeze works'],
+    fact: 'ΔTf = i·Kf·m · water Kf = 1.86 °C·kg/mol',
+    icon: '❄️',
+  },
+  {
     slug: 'the-mole-guide',
     kicker: 'CHEMISTRY GUIDE',
     lines: ['The mole: converting', 'grams, moles and', 'molecules'],
