@@ -1,0 +1,58 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PrivacyStrip from '../../components/PrivacyStrip.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { GARDEN_TOOLS } from '../../data/garden/index';
+import { breadcrumbSchema, collectionPageSchema, faqSchema } from '../../lib/schema';
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Gardening & Plants', url: '/garden/' },
+];
+const faqs = [
+  { q: 'Are these gardening calculators accurate?', a: 'The maths is exact — plant-spacing geometry, fertilizer nitrogen rates, watering volumes and the DLI equation. The reference data (compost C:N ratios, frost-relative planting offsets, light targets) is from extension-service and horticulture sources cited on each tool page, and is presented as general guidance that varies by region and variety.' },
+  { q: 'Do they work in metric and imperial?', a: 'Yes — beds, spacing and water toggle between metres/centimetres and feet/inches, and results show litres and gallons, cubic metres and cubic yards.' },
+  { q: 'Do I need my local frost date?', a: 'For the planting-date calculator, yes — enter your average last spring frost date (from a regional extension service or frost-date lookup) and it works out the sowing and transplant dates. The other tools need no location data.' },
+  { q: 'Is my data uploaded?', a: 'No. Every tool runs entirely in your browser — nothing is sent to a server, and they work offline.' },
+];
+const schema = [
+  breadcrumbSchema(crumbs),
+  collectionPageSchema({ name: 'Gardening & Plants Calculators', url: '/garden/', description: 'Free, private gardening calculators: plant spacing, seed & row spacing, raised bed soil, fertilizer nitrogen rate, garden watering, planting dates, grow-light DLI and compost C:N ratio.', items: GARDEN_TOOLS.map((t) => ({ name: t.name, url: `/garden/${t.slug}/` })) }),
+  faqSchema(faqs),
+];
+---
+
+<Base
+  title="Gardening & Plants Calculators — Spacing, Soil, Planting Dates | LazyTools"
+  description="Free gardening calculators that run in your browser: plant spacing, seed & row spacing, raised bed soil, fertilizer nitrogen rate, garden watering, planting dates from last frost, grow-light DLI and compost C:N ratio. Metric or imperial, sourced, no upload."
+  schema={schema}
+>
+  <div class="mx-auto max-w-5xl px-4 py-6">
+    <Breadcrumbs items={crumbs} />
+    <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Gardening & Plants Calculators</h1>
+    <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
+      Plan and grow a better garden — work out plant spacing and seed counts, fill a raised bed, dial in
+      fertilizer and watering, time your planting to the last frost, and balance a compost pile. Every tool
+      uses exact maths or a sourced horticulture guideline and runs entirely in your browser.
+    </p>
+
+    <div class="mt-5"><PrivacyStrip /></div>
+
+    <section class="mt-8">
+      <ul class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {GARDEN_TOOLS.map((t) => (
+          <li>
+            <a href={`/garden/${t.slug}/`} class="flex h-full flex-col rounded-xl border border-slate-200 p-4 transition hover:border-brand-400 hover:shadow-sm">
+              <span class="text-2xl" aria-hidden="true">{t.icon}</span>
+              <span class="mt-2 font-semibold text-slate-900">{t.name}</span>
+              <span class="mt-1 text-sm text-slate-600">{t.lead.split('—')[0].split('(')[0]}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <FaqSection faqs={faqs} />
+  </div>
+</Base>

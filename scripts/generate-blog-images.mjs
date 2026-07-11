@@ -7,6 +7,13 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'seed-starting-guide',
+    kicker: 'GARDENING GUIDE',
+    lines: ['When to start seeds:', 'timing everything', 'to your last frost'],
+    fact: 'tomatoes: ~7 wk before · beans: after frost',
+    icon: '🌱',
+  },
+  {
     slug: 'dog-age-guide',
     kicker: 'PETS GUIDE',
     lines: ['How old is my dog', 'in human years?', 'The 7× myth, busted'],

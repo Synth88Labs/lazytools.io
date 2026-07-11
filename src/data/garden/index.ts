@@ -1,0 +1,163 @@
+/** Gardening & Plants calculator registry. One entry drives a /garden/ page. */
+
+export interface GardenToolDef {
+  slug: string;
+  name: string;
+  icon: string;
+  widget: 'spacing' | 'seedrow' | 'soil' | 'fertilizer' | 'watering' | 'planting' | 'dli' | 'compost';
+  description: string;
+  lead: string;
+  how: string;
+  note?: string;
+  faqs: { q: string; a: string }[];
+  keywords: string[];
+}
+
+export const GARDEN_TOOLS: GardenToolDef[] = [
+  {
+    slug: 'plant-spacing-calculator',
+    name: 'Plant Spacing Calculator',
+    icon: '🌱',
+    widget: 'spacing',
+    description: 'Calculate how many plants fit in a garden bed at a given spacing — for square-grid or triangular (offset-row) layouts. Metric or imperial, in your browser.',
+    lead: 'Enter your bed size and plant spacing to see how many plants fit — in a square grid or a space-saving triangular layout.',
+    how: 'For a square grid, the number of plants is the bed area divided by the spacing squared. A triangular (offset-row) layout, where each row is shifted half a space, packs plants closer: it fits about 15% more for the same spacing, because the rows sit √3⁄2 (≈ 0.866) of a spacing apart. The tool computes both from your bed dimensions and the on-centre spacing.',
+    note: 'Use the recommended on-centre spacing from the seed packet or plant label. Triangular spacing maximises the number of plants and ground cover, which also helps shade out weeds — handy for intensive or square-foot gardening.',
+    faqs: [
+      { q: 'How many plants fit in my garden bed?', a: 'Divide the bed area by the spacing squared for a square grid. A 10 × 4 ft bed (40 ft²) with plants 12 in (1 ft) apart fits 40 in a grid, or about 46 in a triangular layout. Enter your figures and the tool shows both.' },
+      { q: 'What is triangular plant spacing?', a: 'An offset layout where each row is shifted half a plant-space from the next, so plants sit in a hexagonal pattern. It fits about 15% more plants than a square grid at the same spacing, and gives better ground cover.' },
+      { q: 'How much closer can I plant with triangular spacing?', a: 'About 15.5% more plants for the same on-centre spacing, because the offset rows are spaced 0.866 × the spacing apart instead of a full spacing. It\'s the most efficient equal-distance layout.' },
+      { q: 'What spacing should I use?', a: 'Follow the on-centre spacing on the seed packet or plant tag — it accounts for the mature plant\'s size. Tighter spacing increases yield per area up to a point, then crowds plants and reduces airflow.' },
+      { q: 'Does closer spacing increase yield?', a: 'Up to a point — more plants per area can mean more total yield and fewer weeds, but overcrowding reduces air circulation and light, raising disease risk and shrinking individual plants. Stick near the recommended spacing.' },
+    ],
+    keywords: ['plant spacing calculator', 'how many plants per square foot', 'garden spacing calculator', 'plant spacing chart', 'triangular plant spacing', 'plants per area calculator', 'garden bed plant calculator'],
+  },
+  {
+    slug: 'seed-spacing-calculator',
+    name: 'Seed & Row Spacing Calculator',
+    icon: '🌾',
+    widget: 'seedrow',
+    description: 'Calculate how many seeds you need for a row or a whole bed — from the row length, in-row spacing and (optionally) between-row spacing. Metric or imperial, in your browser.',
+    lead: 'Enter your row length and seed spacing to get the number of seeds per row — and for a whole bed if you add the bed width and row spacing.',
+    how: 'The number of plants along a row is the row length divided by the in-row spacing, plus one (a plant at each end). If you\'re planting several rows in a bed, the tool divides the bed width by the between-row spacing to get the number of rows, and multiplies to give the total.',
+    note: 'Sow a few more seeds than the count suggests to allow for seeds that don\'t germinate, then thin to the final spacing. Root crops like carrots are usually direct-sown and thinned; transplants like tomatoes are spaced at their final positions.',
+    faqs: [
+      { q: 'How many seeds do I need for my garden?', a: 'For one row: row length ÷ in-row spacing + 1. A 10 ft row with seeds every 6 in needs 21 plants. Add the bed width and row spacing and the tool multiplies up for the whole bed.' },
+      { q: 'How far apart should I space seeds?', a: 'Follow the seed packet — it gives the final in-row spacing and the spacing between rows. Small seeds are often sown closer and thinned; large seeds (beans, squash) are spaced at their final distance.' },
+      { q: 'How many rows fit in my bed?', a: 'Divide the bed width by the between-row spacing and add one. A 4 ft (48 in) bed with rows 12 in apart fits 5 rows. Enable the multi-row option and the tool works it out.' },
+      { q: 'Should I plant extra seeds?', a: 'Yes — seeds don\'t all germinate, so sow 10–25% more than your target and thin the seedlings to the recommended spacing once they\'re up. Thinning gives the remaining plants room to grow.' },
+      { q: 'What\'s the difference between in-row and between-row spacing?', a: 'In-row spacing is the gap between plants along a single row; between-row spacing is the gap between the rows. Packets usually list both — for example carrots at 2 in in-row and 12 in between rows.' },
+    ],
+    keywords: ['seed spacing calculator', 'how many seeds do i need', 'row spacing calculator', 'seeds per row calculator', 'garden seed calculator', 'planting calculator seeds', 'vegetable seed spacing'],
+  },
+  {
+    slug: 'raised-bed-soil-calculator',
+    name: 'Raised Bed Soil Calculator',
+    icon: '🪴',
+    widget: 'soil',
+    description: 'Calculate how much soil or compost you need to fill a raised bed or planter — in litres, cubic feet, cubic yards and bags. Metric or imperial, in your browser.',
+    lead: 'Enter your raised bed\'s length, width and depth to get the volume of soil to buy — in litres, cubic feet and yards, and the number of bags.',
+    how: 'The volume of soil is length × width × depth. The tool converts your bed dimensions into litres, cubic metres, cubic feet and cubic yards, and divides by your bag size to estimate the number of bags. For depth it uses centimetres or inches, since beds are shallow relative to their footprint.',
+    note: 'Bulk soil delivery is far cheaper than bags once you need more than about a cubic metre (≈ 1.3 cubic yards). A popular raised-bed recipe is roughly one-third topsoil, one-third compost and one-third aeration (such as perlite or coarse sand). Fill a little proud, as soil settles.',
+    faqs: [
+      { q: 'How much soil do I need for a raised bed?', a: 'Multiply length × width × depth. An 8 × 4 ft bed filled 12 in deep is 32 ft³ (about 906 litres, or 1.2 cubic yards). Enter your dimensions and the tool gives the volume and bag count.' },
+      { q: 'How many bags of soil fill a raised bed?', a: 'Divide the volume by the bag size. A 906-litre bed needs about 18 fifty-litre bags. For large beds, bulk soil is much cheaper than bags — the tool shows both the volume and bag estimate.' },
+      { q: 'What is the best soil mix for a raised bed?', a: 'A common mix is about one-third quality topsoil, one-third compost for nutrients, and one-third material for drainage and aeration (perlite, coarse sand or composted bark). Adjust to your plants and local soil.' },
+      { q: 'How deep should a raised bed be?', a: 'At least 15–20 cm (6–8 in) for most vegetables, and 30 cm (12 in) or more for root crops and to reduce watering. Deeper beds hold moisture better and give roots room.' },
+      { q: 'How much soil for a round or odd-shaped planter?', a: 'For a round pot, volume ≈ π × radius² × depth. This tool handles rectangular beds; for cylinders, calculate the area separately and multiply by the depth.' },
+    ],
+    keywords: ['raised bed soil calculator', 'how much soil for raised bed', 'garden soil calculator', 'soil volume calculator', 'raised bed fill calculator', 'compost calculator raised bed', 'planter soil calculator'],
+  },
+  {
+    slug: 'fertilizer-calculator',
+    name: 'Fertilizer Calculator (Nitrogen Rate)',
+    icon: '🧪',
+    widget: 'fertilizer',
+    description: 'Calculate how much fertilizer to apply to hit a target nitrogen rate — from the N-P-K analysis and your area. In your browser.',
+    lead: 'Enter your target nitrogen rate, your area and the fertilizer\'s %N, and get how much product to apply.',
+    how: 'Fertilizer is dosed by the nutrient it delivers, not the bag weight. The amount of product is the target nitrogen (in pounds per 1,000 ft²) times your area, divided by the fraction of nitrogen in the fertilizer: lb product = (target lb N per 1,000 ft² × area ÷ 1,000) ÷ (%N ÷ 100). The %N is the first number in the N-P-K analysis on the label.',
+    note: 'A typical lawn feeding is about 1 lb of nitrogen per 1,000 ft² per application — the seasonal total is spread across several feedings. More is not better: over-applying nitrogen burns plants, wastes money and pollutes waterways through runoff. Water in granular fertilizer after applying.',
+    faqs: [
+      { q: 'How much fertilizer do I need?', a: 'Product needed = (target lb N per 1,000 ft² × area ÷ 1,000) ÷ (%N ÷ 100). For 1 lb N over 2,000 ft² with a 20-5-10 fertilizer: (1 × 2) ÷ 0.20 = 10 lb of product.' },
+      { q: 'What do the N-P-K numbers mean?', a: 'They\'re the percentages by weight of nitrogen (N), phosphorus (P₂O₅) and potassium (K₂O). A 20-5-10 bag is 20% nitrogen. This calculator uses the first number, %N, since nitrogen usually drives the application rate.' },
+      { q: 'How much nitrogen should I apply to a lawn?', a: 'About 1 lb of actual nitrogen per 1,000 ft² per application is a common guideline, with the yearly total split across several feedings depending on grass type and climate. Follow local extension recommendations.' },
+      { q: 'Can I apply too much fertilizer?', a: 'Yes. Excess nitrogen scorches foliage, promotes weak leafy growth, wastes money and runs off into waterways causing pollution. Measure to a target rate rather than guessing, and don\'t exceed label rates.' },
+      { q: 'How do I convert the rate to a smaller area?', a: 'The formula scales with area — the tool divides your area by 1,000 automatically. For a 250 ft² bed at 1 lb N/1,000 ft² with 10% N, that\'s (1 × 0.25) ÷ 0.10 = 2.5 lb of product.' },
+    ],
+    keywords: ['fertilizer calculator', 'nitrogen rate calculator', 'how much fertilizer to apply', 'npk calculator', 'lawn fertilizer calculator', 'fertilizer application rate', 'lb nitrogen per 1000 sq ft'],
+  },
+  {
+    slug: 'garden-watering-calculator',
+    name: 'Garden Watering Calculator',
+    icon: '💧',
+    widget: 'watering',
+    description: 'Calculate how much water your garden bed needs to apply a given depth — in litres and gallons. Most vegetables want about 1 inch (25 mm) per week. In your browser.',
+    lead: 'Enter your bed size and the depth of water you want to apply, and get the volume in litres and gallons.',
+    how: 'Applying a depth of water over an area is a volume: area × depth. The tool uses the standard conversions — 1 inch of water over 1 ft² is about 0.623 US gallons, and metrically 1 mm over 1 m² is exactly 1 litre. Enter the bed size and target depth and it gives the total to apply.',
+    note: 'Most vegetable gardens need roughly 1 inch (25 mm) of water per week, from rainfall plus irrigation. Water deeply and less often to encourage deep roots, water early in the day to cut evaporation, and adjust for heat, wind and your soil type.',
+    faqs: [
+      { q: 'How much water does my garden need?', a: 'About 1 inch (25 mm) per week for most vegetables, including rain. Over a 10 × 4 ft bed that\'s roughly 25 US gallons (about 95 litres) a week. Enter your bed size and target depth to get the exact volume.' },
+      { q: 'How many gallons is 1 inch of water?', a: 'About 0.623 US gallons per square foot. So an inch over a 40 ft² bed is about 25 gallons. Metrically, 1 mm of water over 1 m² is exactly 1 litre.' },
+      { q: 'How often should I water the garden?', a: 'Deeply once or twice a week is usually better than a little every day — it encourages deep roots. Sandy soils drain faster and need more frequent watering; clay holds water longer. Adjust for weather.' },
+      { q: 'What time of day is best to water?', a: 'Early morning is best: less evaporation, and foliage dries quickly, reducing disease. Evening watering is second-best; midday loses the most to evaporation.' },
+      { q: 'How do I measure how much rain fell?', a: 'A rain gauge shows rainfall in inches or millimetres directly. Subtract the week\'s rain from your ~1-inch target and irrigate the difference — the tool converts that depth into a volume for hand-watering.' },
+    ],
+    keywords: ['garden watering calculator', 'how much water for garden', 'inch of water calculator', 'watering calculator plants', 'garden water gallons', 'vegetable garden watering', 'how much to water garden'],
+  },
+  {
+    slug: 'planting-date-calculator',
+    name: 'Planting Date Calculator (from Last Frost)',
+    icon: '📅',
+    widget: 'planting',
+    description: 'Work out when to start seeds indoors, transplant and direct-sow vegetables — as dates relative to your average last spring frost. In your browser.',
+    lead: 'Pick a vegetable and enter your average last spring frost date to get the dates to start seeds indoors, transplant and direct-sow.',
+    how: 'Almost all vegetable timing is anchored to your average last spring frost. The tool holds a guideline offset for each crop — for example tomatoes started indoors about 7 weeks before the frost and transplanted a week or two after — and adds those offsets to the frost date you enter to give real calendar dates.',
+    note: 'These are general guidelines that vary by region, variety and the season\'s weather. Find your local average last-frost date from a regional extension service or a frost-date lookup, and always check the seed packet — warm-season transplant dates in particular depend on soil warmth, not just the calendar.',
+    faqs: [
+      { q: 'When should I start my seeds indoors?', a: 'It depends on the crop and your last frost date. Tomatoes are typically started about 6–8 weeks before the last frost, peppers 8 weeks, brassicas 4–6 weeks. Enter your frost date and the tool gives the calendar date for each.' },
+      { q: 'What is a last frost date and why does it matter?', a: 'It\'s the average date of the last spring frost in your area — the key reference for planting. Cool-season crops go out before it; tender warm-season crops go out after it, once frost risk has passed.' },
+      { q: 'When can I transplant tomatoes outside?', a: 'Usually about 1–2 weeks after your last frost date, once nights are reliably above about 10 °C (50 °F) and the soil has warmed. Transplanting too early stunts warm-season crops even without a frost.' },
+      { q: 'Which vegetables can I plant before the last frost?', a: 'Cool-season crops such as peas, spinach, lettuce, kale, broccoli, cabbage and onions tolerate light frost and can be sown or transplanted several weeks before the last frost. The tool shows their earlier dates.' },
+      { q: 'Where do I find my last frost date?', a: 'Look it up from your national or regional extension/meteorological service, or a frost-date tool that uses your postcode or nearest weather station. Enter that date here and the calculator does the rest.' },
+    ],
+    keywords: ['planting date calculator', 'when to start seeds', 'last frost date planting', 'seed starting calculator', 'when to plant vegetables', 'frost date calculator', 'vegetable planting schedule'],
+  },
+  {
+    slug: 'grow-light-dli-calculator',
+    name: 'Grow Light DLI Calculator',
+    icon: '💡',
+    widget: 'dli',
+    description: 'Calculate the Daily Light Integral (DLI) your plants receive from your grow light\'s PPFD and photoperiod — with target ranges for seedlings, greens and fruiting plants. In your browser.',
+    lead: 'Enter your grow light\'s intensity (PPFD) and hours per day to get the Daily Light Integral, and see which plants it suits.',
+    how: 'The Daily Light Integral (DLI) is the total amount of usable light a plant gets per day, in moles of photons per square metre. It\'s the light intensity (PPFD, in µmol/m²/s) times the number of seconds of light per day, converted to moles: DLI = PPFD × hours × 3,600 ÷ 1,000,000. The tool compares your result with typical target ranges.',
+    note: 'PPFD is listed on a quality grow light\'s spec sheet at a stated distance, and falls off quickly as you move the light away. Target ranges are general horticulture guidelines: low-light foliage is happy around 3–6, seedlings around 6–10, leafy greens 12–17, and fruiting crops like tomatoes want 20 or more.',
+    faqs: [
+      { q: 'What is DLI (Daily Light Integral)?', a: 'The total number of photosynthetically-active photons that land on a square metre over a whole day, measured in moles (mol/m²/day). It combines light intensity and duration into one number that predicts plant growth.' },
+      { q: 'How do I calculate DLI?', a: 'DLI = PPFD (µmol/m²/s) × photoperiod (hours) × 3,600 ÷ 1,000,000. For 300 PPFD over 14 hours: 300 × 14 × 3,600 ÷ 1,000,000 ≈ 15.1 mol/m²/day.' },
+      { q: 'What DLI do my plants need?', a: 'Roughly: low-light houseplants 3–6, seedlings 6–10, leafy greens and herbs 12–17, and fruiting plants like tomatoes and peppers 20–30 mol/m²/day. Match your light\'s DLI to the crop.' },
+      { q: 'What is PPFD?', a: 'Photosynthetic Photon Flux Density — the intensity of usable light hitting a surface, in µmol/m²/s. It\'s measured at a specific distance from the light and drops sharply as the distance increases.' },
+      { q: 'How can I increase the DLI?', a: 'Raise the intensity (move the light closer or use a stronger fixture) or extend the photoperiod. Both increase the daily total — but respect each crop\'s needs, as too much light or too long a day can stress some plants.' },
+    ],
+    keywords: ['dli calculator', 'daily light integral calculator', 'grow light calculator', 'ppfd to dli', 'grow light dli', 'plant light calculator', 'indoor growing light calculator'],
+  },
+  {
+    slug: 'compost-ratio-calculator',
+    name: 'Compost Ratio Calculator (C:N)',
+    icon: '♻️',
+    widget: 'compost',
+    description: 'Balance your compost pile\'s carbon-to-nitrogen (C:N) ratio by mixing greens and browns — aim for about 25–35:1 for fast decomposition. In your browser.',
+    lead: 'Add the materials in your compost pile and their proportions, and see the blended carbon-to-nitrogen ratio — with guidance to balance it.',
+    how: 'Compost breaks down fastest when the carbon-to-nitrogen (C:N) ratio of the mix is around 25–35:1. Nitrogen-rich "greens" (food scraps, grass, manure) have a low C:N; carbon-rich "browns" (dry leaves, straw, cardboard) have a high one. The tool takes each material\'s typical C:N and your proportions and estimates the blended ratio, then tells you whether to add more greens or browns.',
+    note: 'A rough rule of thumb is 2–3 parts browns to 1 part greens by volume. Too much nitrogen (a low ratio) makes a pile slimy and smelly; too much carbon (a high ratio) makes it break down very slowly. Moisture (like a wrung-out sponge) and turning for air matter just as much as the ratio.',
+    faqs: [
+      { q: 'What is the ideal compost C:N ratio?', a: 'About 25–35 parts carbon to 1 part nitrogen (roughly 30:1) gives the fastest, cleanest decomposition. The finished compost settles nearer 10:1. This tool estimates your mix\'s ratio and flags if it\'s off.' },
+      { q: 'What are greens and browns in composting?', a: '"Greens" are nitrogen-rich, wetter materials — food scraps, grass clippings, coffee grounds, manure. "Browns" are carbon-rich, drier materials — dead leaves, straw, cardboard, wood chips. A good pile blends both.' },
+      { q: 'What is the ratio of browns to greens?', a: 'Roughly 2–3 parts browns to 1 part greens by volume gets you into the ideal C:N range, because browns have a much higher carbon content per unit than greens have nitrogen. Adjust using the tool.' },
+      { q: 'Why is my compost smelly or slimy?', a: 'Usually too much nitrogen (too many greens) and not enough air — a low C:N ratio going anaerobic. Mix in more browns (dry leaves, shredded cardboard) and turn the pile to add oxygen.' },
+      { q: 'Why is my compost breaking down so slowly?', a: 'Often too much carbon (too many browns), too little nitrogen, or the pile is too dry. Add greens, ensure it\'s as moist as a wrung-out sponge, and turn it to introduce air.' },
+    ],
+    keywords: ['compost ratio calculator', 'carbon nitrogen ratio compost', 'c:n ratio calculator', 'browns to greens ratio', 'compost calculator', 'composting ratio', 'compost mix calculator'],
+  },
+];
+
+export const getGardenTool = (slug: string) => GARDEN_TOOLS.find((t) => t.slug === slug);

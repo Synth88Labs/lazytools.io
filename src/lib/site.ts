@@ -34,6 +34,7 @@ export const CATEGORIES: CategoryDef[] = [
   { slug: 'automotive', name: 'Automotive', icon: '🚗', description: 'Tire size, gear ratio, engine displacement, horsepower and fuel economy — exact, in your browser.', status: 'live' },
   { slug: 'fitness', name: 'Fitness & Exercise', icon: '🏃', description: 'Running pace, one-rep max, heart-rate zones, race predictor and calories burned — sourced formulas.', status: 'live' },
   { slug: 'pets', name: 'Pets & Animals', icon: '🐾', description: 'Dog & cat age, feeding portions, gestation due dates, aquarium volume — vet-sourced formulas.', status: 'live' },
+  { slug: 'garden', name: 'Gardening & Plants', icon: '🌱', description: 'Plant spacing, raised-bed soil, fertilizer, watering, planting dates and compost — metric or imperial.', status: 'live' },
   { slug: 'photo', name: 'Photo Size Maker', icon: '🪪', description: 'Passport, visa & ID photos for 80+ countries — crop, check and export in your browser.', status: 'live' },
   { slug: 'dev', name: 'Developer Tools', icon: '👨‍💻', description: 'Formatters, encoders, hashes and other dev utilities.', status: 'live' },
   { slug: 'file', name: 'File Converters', icon: '🔄', description: 'CSV, JSON, XML, YAML and Markdown conversion.', status: 'live' },
