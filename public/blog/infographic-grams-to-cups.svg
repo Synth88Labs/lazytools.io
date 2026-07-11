@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="A cup measures volume, but grams measure weight, so one cup weighs a different number of grams for every ingredient. One US cup weighs about 120 grams of all-purpose flour, 198 grams of granulated sugar, 226 grams of butter, 227 grams of water, and 336 grams of honey. Denser ingredients that pack tightly weigh more per cup. Weighing with a scale is more accurate than scooping, especially for flour which compresses. Weights from King Arthur Baking.">
+  <defs>
+    <style>
+      .h { font: 800 30px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .sub { font: 500 16px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+      .name { font: 700 17px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .val { font: 800 20px Consolas, Menlo, monospace; fill: #0f172a; }
+      .cap { font: 600 13px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #94a3b8; }
+    </style>
+  </defs>
+
+  <text x="600" y="44" text-anchor="middle" class="h">One cup, five very different weights</text>
+  <text x="600" y="72" text-anchor="middle" class="sub">a cup measures volume — grams measure weight, so it depends entirely on the ingredient</text>
+
+  <!-- bars: max 340 for scale. bar x start 360, full width to 1050 (690px) maps 0..350g -->
+  <!-- flour 120 -->
+  <g transform="translate(0 108)">
+    <text x="330" y="22" text-anchor="end" class="name">🌾 Flour</text>
+    <rect x="360" y="4" width="237" height="26" rx="6" fill="#93c5fd"/>
+    <text x="612" y="24" class="val">120 g</text>
+  </g>
+  <!-- sugar 198 -->
+  <g transform="translate(0 156)">
+    <text x="330" y="22" text-anchor="end" class="name">🍬 Sugar</text>
+    <rect x="360" y="4" width="391" height="26" rx="6" fill="#60a5fa"/>
+    <text x="766" y="24" class="val">198 g</text>
+  </g>
+  <!-- butter 226 -->
+  <g transform="translate(0 204)">
+    <text x="330" y="22" text-anchor="end" class="name">🧈 Butter</text>
+    <rect x="360" y="4" width="446" height="26" rx="6" fill="#3b82f6"/>
+    <text x="821" y="24" class="val">226 g</text>
+  </g>
+  <!-- water 227 -->
+  <g transform="translate(0 252)">
+    <text x="330" y="22" text-anchor="end" class="name">💧 Water</text>
+    <rect x="360" y="4" width="448" height="26" rx="6" fill="#2563eb"/>
+    <text x="823" y="24" class="val">227 g</text>
+  </g>
+  <!-- honey 336 -->
+  <g transform="translate(0 300)">
+    <text x="330" y="22" text-anchor="end" class="name">🍯 Honey</text>
+    <rect x="360" y="4" width="663" height="26" rx="6" fill="#1d4ed8"/>
+    <text x="1038" y="24" class="val">336 g</text>
+  </g>
+
+  <text x="360" y="360" class="cap">Each bar = grams in one US cup (236.6 mL). Weights from King Arthur Baking's Ingredient Weight Chart.</text>
+
+  <!-- footer -->
+  <g transform="translate(70 400)">
+    <rect x="0" y="0" width="1060" height="56" rx="14" fill="#0c2f6b"/>
+    <text x="24" y="35" font-family="Consolas, Menlo, monospace" font-size="15" fill="#7ef0c0">lazytools.io — ingredient-aware grams ↔ cups converter, private in your browser</text>
+  </g>
+</svg>

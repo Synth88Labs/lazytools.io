@@ -1,0 +1,133 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PrivacyStrip from '../../components/PrivacyStrip.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import RatingWidget from '../../components/RatingWidget.tsx';
+import GramsToCupsTool from '../../components/cooking/GramsToCupsTool.tsx';
+import MeasurementConverterTool from '../../components/cooking/MeasurementConverterTool.tsx';
+import ButterConverterTool from '../../components/cooking/ButterConverterTool.tsx';
+import OvenTempTool from '../../components/cooking/OvenTempTool.tsx';
+import RecipeScalerTool from '../../components/cooking/RecipeScalerTool.tsx';
+import PanConverterTool from '../../components/cooking/PanConverterTool.tsx';
+import BakersPercentageTool from '../../components/cooking/BakersPercentageTool.tsx';
+import YeastConverterTool from '../../components/cooking/YeastConverterTool.tsx';
+import CoffeeRatioTool from '../../components/cooking/CoffeeRatioTool.tsx';
+import MeatTempTool from '../../components/cooking/MeatTempTool.tsx';
+import { COOKING_TOOLS, type CookingToolDef } from '../../data/cooking/index';
+import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
+import { ratingFor } from '../../lib/ratings';
+
+export function getStaticPaths() {
+  return COOKING_TOOLS.map((t) => ({ params: { slug: t.slug }, props: { slug: t.slug } }));
+}
+
+const { slug } = Astro.props;
+const tool: CookingToolDef = COOKING_TOOLS.find((t) => t.slug === slug)!;
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Cooking & Kitchen', url: '/cooking/' },
+  { name: tool.name, url: `/cooking/${tool.slug}/` },
+];
+
+const related = COOKING_TOOLS.filter((t) => t.slug !== tool.slug).slice(0, 6);
+const allBlogPosts = await getCollection('blog');
+const blogPosts = allBlogPosts.filter((p) => p.data.tools.includes(`/cooking/${tool.slug}/`));
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  webApplicationSchema({
+    name: tool.name,
+    url: `/cooking/${tool.slug}/`,
+    description: tool.description,
+    rating: ratingFor(`cooking/${tool.slug}`),
+  }),
+  faqSchema(tool.faqs),
+];
+---
+
+<Base title={`${tool.name} — Free & Private | LazyTools`} description={tool.description} schema={schema}>
+  <article class="mx-auto max-w-5xl px-4 py-6">
+    <Breadcrumbs items={crumbs} />
+
+    <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+      {tool.icon} {tool.name}
+    </h1>
+
+    <p class="mt-3 text-lg leading-relaxed text-slate-700">
+      <strong class="font-semibold text-slate-900">{tool.lead}</strong>
+    </p>
+
+    <div class="mt-6">
+      {tool.widget === 'grams' && <GramsToCupsTool client:load />}
+      {tool.widget === 'measure' && <MeasurementConverterTool client:load />}
+      {tool.widget === 'butter' && <ButterConverterTool client:load />}
+      {tool.widget === 'oven' && <OvenTempTool client:load />}
+      {tool.widget === 'scaler' && <RecipeScalerTool client:load />}
+      {tool.widget === 'pan' && <PanConverterTool client:load />}
+      {tool.widget === 'bakers' && <BakersPercentageTool client:load />}
+      {tool.widget === 'yeast' && <YeastConverterTool client:load />}
+      {tool.widget === 'coffee' && <CoffeeRatioTool client:load />}
+      {tool.widget === 'meat' && <MeatTempTool client:load />}
+    </div>
+
+    <div class="mt-4">
+      <PrivacyStrip />
+    </div>
+
+    <div class="mt-3">
+      <RatingWidget
+        client:idle
+        toolSlug={`cooking/${tool.slug}`}
+        avg={ratingFor(`cooking/${tool.slug}`)?.avg}
+        count={ratingFor(`cooking/${tool.slug}`)?.count}
+      />
+    </div>
+
+    <section class="prose-lazy mt-6">
+      <h2>How the {tool.name.toLowerCase()} works</h2>
+      <p>{tool.how}</p>
+      {tool.note && <p>{tool.note}</p>}
+    </section>
+
+    <FaqSection faqs={tool.faqs} />
+
+    <section class="mt-10">
+      <h2 class="text-2xl font-bold text-slate-900">Related cooking tools</h2>
+      <ul class="mt-4 grid gap-2 sm:grid-cols-2">
+        {related.map((r) => (
+          <li>
+            <a href={`/cooking/${r.slug}/`} class="block rounded-lg border border-slate-200 px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:border-brand-400 hover:text-brand-700">
+              {r.icon} {r.name}
+            </a>
+          </li>
+        ))}
+        <li>
+          <a href="/cooking/" class="block rounded-lg border border-brand-200 bg-brand-50 px-4 py-2.5 text-sm font-semibold text-brand-800 transition hover:border-brand-400">
+            All cooking & kitchen tools →
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    {
+      blogPosts.length > 0 && (
+        <section class="mt-10">
+          <h2 class="text-2xl font-bold text-slate-900">From the blog</h2>
+          <ul class="mt-4 space-y-3">
+            {blogPosts.map((post) => (
+              <li>
+                <a href={`/blog/${post.id}/`} class="block rounded-xl border border-slate-200 p-4 transition hover:border-brand-400 hover:shadow-sm">
+                  <p class="font-semibold text-slate-900">{post.data.title}</p>
+                  <p class="mt-1 text-sm text-slate-600">{post.data.description}</p>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+  </article>
+</Base>

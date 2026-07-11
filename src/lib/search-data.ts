@@ -28,6 +28,7 @@ import { CHEM_TOOLS } from '../data/chemistry/index';
 import { PHYS_TOOLS } from '../data/physics/index';
 import { HOME_TOOLS } from '../data/home/index';
 import { FIN_TOOLS } from '../data/finance/index';
+import { COOKING_TOOLS } from '../data/cooking/index';
 
 export interface SearchUnit {
   id: string;
@@ -231,6 +232,9 @@ export function buildSearchPages(): SearchPage[] {
   for (const t of FIN_TOOLS) {
     pages.push({ title: t.name, url: `/finance/${t.slug}/`, keywords: [...t.keywords, 'finance', 'money', t.name.toLowerCase()] });
   }
+  for (const t of COOKING_TOOLS) {
+    pages.push({ title: t.name, url: `/cooking/${t.slug}/`, keywords: [...t.keywords, 'cooking', 'kitchen', 'baking', 'recipe', t.name.toLowerCase()] });
+  }
   for (const t of PDF_TOOLS) {
     pages.push({ title: t.name, url: `/pdf/${t.slug}/`, keywords: [...t.keywords, 'pdf', t.name.toLowerCase()] });
   }
@@ -247,6 +251,7 @@ export function buildSearchPages(): SearchPage[] {
     { title: 'All Physics Calculators', url: '/physics/', keywords: ['physics', 'suvat', 'kinematics', 'projectile motion', 'newtons second law', 'f=ma', 'kinetic energy', 'potential energy', 'momentum', 'ohms law', 'wavelength', 'snells law', 'gravitation', 'e=mc2', 'free fall', 'work power'] },
     { title: 'All Home & DIY Calculators', url: '/home/', keywords: ['home', 'diy', 'home improvement', 'paint calculator', 'tile calculator', 'flooring', 'concrete calculator', 'mulch', 'soil', 'wallpaper', 'material estimator'] },
     { title: 'All Finance Calculators', url: '/finance/', keywords: ['finance', 'money', 'compound interest', 'debt payoff', 'snowball', 'avalanche', 'savings goal', 'loan payoff', 'credit card payoff', 'cagr', 'roi', 'rule of 72', 'break even', 'apr apy', 'investment calculator'] },
+    { title: 'All Cooking & Kitchen Tools', url: '/cooking/', keywords: ['cooking', 'kitchen', 'baking', 'recipe', 'grams to cups', 'cups to grams', 'oven temperature', 'gas mark', 'butter converter', 'recipe scaler', 'bakers percentage', 'yeast converter', 'coffee ratio', 'meat temperature', 'measurement converter'] },
     { title: 'All PDF Tools', url: '/pdf/', keywords: ['pdf tools', 'merge pdf', 'split pdf', 'rotate pdf'] },
     { title: 'All Audio Tools', url: '/video/', keywords: ['audio tools', 'trim audio', 'mp3', 'wav', 'volume'] },
     { title: 'All Developer Tools', url: '/dev/', keywords: ['developer tools', 'dev', 'encode', 'decode', 'hash', 'regex'] },

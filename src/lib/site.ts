@@ -30,6 +30,7 @@ export const CATEGORIES: CategoryDef[] = [
   { slug: 'physics', name: 'Physics', icon: '🧲', description: 'SUVAT & projectile motion, Newton\'s laws, energy, gravitation, waves, Ohm\'s law, E=mc² — exact, with the working shown.', status: 'live' },
   { slug: 'size', name: 'Size Converters', icon: '💍', description: 'Ring, shoe and bra sizes across US, UK, EU and more.', status: 'live' },
   { slug: 'home', name: 'Home & DIY', icon: '🛠️', description: 'Paint, tile, concrete, mulch and wallpaper material estimators — metric or imperial.', status: 'live' },
+  { slug: 'cooking', name: 'Cooking & Kitchen', icon: '🍳', description: 'Grams to cups, oven temperature, butter, recipe scaler and USDA meat temps — sourced and private.', status: 'live' },
   { slug: 'photo', name: 'Photo Size Maker', icon: '🪪', description: 'Passport, visa & ID photos for 80+ countries — crop, check and export in your browser.', status: 'live' },
   { slug: 'dev', name: 'Developer Tools', icon: '👨‍💻', description: 'Formatters, encoders, hashes and other dev utilities.', status: 'live' },
   { slug: 'file', name: 'File Converters', icon: '🔄', description: 'CSV, JSON, XML, YAML and Markdown conversion.', status: 'live' },

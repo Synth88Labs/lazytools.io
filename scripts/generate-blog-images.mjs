@@ -7,6 +7,13 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'grams-to-cups-guide',
+    kicker: 'COOKING GUIDE',
+    lines: ['Why a cup of flour', "isn't a cup of sugar:", 'grams vs cups'],
+    fact: '1 cup: flour 120 g · sugar 198 g · honey 336 g',
+    icon: '⚖️',
+  },
+  {
     slug: 'debt-snowball-vs-avalanche-guide',
     kicker: 'FINANCE GUIDE',
     lines: ['Debt snowball vs', 'avalanche: which', 'pays off faster?'],

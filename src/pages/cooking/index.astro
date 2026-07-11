@@ -1,0 +1,58 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PrivacyStrip from '../../components/PrivacyStrip.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { COOKING_TOOLS } from '../../data/cooking/index';
+import { breadcrumbSchema, collectionPageSchema, faqSchema } from '../../lib/schema';
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Cooking & Kitchen', url: '/cooking/' },
+];
+const faqs = [
+  { q: 'Are these cooking conversions accurate?', a: 'Yes. Volume conversions use exact NIST/BIPM factors, ingredient weights come from King Arthur Baking’s Ingredient Weight Chart (the US baking standard), oven temperatures follow the standard UK cooking table, and meat temperatures are the USDA/FoodSafety.gov safe minimums. Sources are cited on each tool.' },
+  { q: 'Why does a cup of flour weigh differently than a cup of sugar?', a: 'Because a cup measures volume, but ingredients have different densities. A US cup of all-purpose flour is about 120 g, while a cup of granulated sugar is 198 g — which is why the grams-to-cups tool asks which ingredient you mean.' },
+  { q: 'Do these handle US, metric and imperial units?', a: 'Yes — and they keep them separate, because a US cup (236.6 mL), metric cup (250 mL) and imperial units all differ. The measurement converter flags the common pitfalls, like the US vs imperial gallon and the 20 mL Australian tablespoon.' },
+  { q: 'Is my data uploaded?', a: 'No. Every tool runs entirely in your browser — nothing is sent to a server, and they work offline.' },
+];
+const schema = [
+  breadcrumbSchema(crumbs),
+  collectionPageSchema({ name: 'Cooking & Kitchen Tools', url: '/cooking/', description: 'Free, private cooking and baking converters: grams to cups, cooking measurements, butter, oven temperature, recipe scaler, pan sizes, baker’s percentage, yeast, coffee ratio and meat temperatures.', items: COOKING_TOOLS.map((t) => ({ name: t.name, url: `/cooking/${t.slug}/` })) }),
+  faqSchema(faqs),
+];
+---
+
+<Base
+  title="Cooking & Kitchen Converters — Grams to Cups, Oven Temp, Butter | LazyTools"
+  description="Free cooking and baking tools that run in your browser: grams to cups converter, cooking measurement converter, butter converter, oven temperature (°F/°C/gas mark), recipe scaler, baking pan sizes, baker's percentage, yeast and coffee ratio calculators, and USDA meat temperatures. Sourced and private."
+  schema={schema}
+>
+  <div class="mx-auto max-w-5xl px-4 py-6">
+    <Breadcrumbs items={crumbs} />
+    <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Cooking & Kitchen Converters</h1>
+    <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
+      Follow any recipe from anywhere — convert grams to cups for real ingredients, switch between °F, °C and gas
+      marks, scale a recipe to any number of servings, and check safe meat temperatures. Weights and temperatures
+      are from trusted sources (King Arthur Baking, USDA, NIST), and every tool runs entirely in your browser.
+    </p>
+
+    <div class="mt-5"><PrivacyStrip /></div>
+
+    <section class="mt-8">
+      <ul class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {COOKING_TOOLS.map((t) => (
+          <li>
+            <a href={`/cooking/${t.slug}/`} class="flex h-full flex-col rounded-xl border border-slate-200 p-4 transition hover:border-brand-400 hover:shadow-sm">
+              <span class="text-2xl" aria-hidden="true">{t.icon}</span>
+              <span class="mt-2 font-semibold text-slate-900">{t.name}</span>
+              <span class="mt-1 text-sm text-slate-600">{t.lead.split('—')[0].split('(')[0]}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <FaqSection faqs={faqs} />
+  </div>
+</Base>
