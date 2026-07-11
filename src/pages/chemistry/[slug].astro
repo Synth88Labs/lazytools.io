@@ -11,6 +11,16 @@ import MolarityTool from '../../components/chemistry/MolarityTool.tsx';
 import IdealGasTool from '../../components/chemistry/IdealGasTool.tsx';
 import SpecificHeatTool from '../../components/chemistry/SpecificHeatTool.tsx';
 import PhTool from '../../components/chemistry/PhTool.tsx';
+import StoichiometryTool from '../../components/chemistry/StoichiometryTool.tsx';
+import MoleTool from '../../components/chemistry/MoleTool.tsx';
+import EmpiricalFormulaTool from '../../components/chemistry/EmpiricalFormulaTool.tsx';
+import PercentYieldTool from '../../components/chemistry/PercentYieldTool.tsx';
+import DilutionTool from '../../components/chemistry/DilutionTool.tsx';
+import DensityTool from '../../components/chemistry/DensityTool.tsx';
+import HendersonTool from '../../components/chemistry/HendersonTool.tsx';
+import BeerLambertTool from '../../components/chemistry/BeerLambertTool.tsx';
+import CombinedGasTool from '../../components/chemistry/CombinedGasTool.tsx';
+import HalfLifeTool from '../../components/chemistry/HalfLifeTool.tsx';
 import { CHEM_TOOLS, type ChemToolDef } from '../../data/chemistry/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -63,6 +73,16 @@ const schema = [
       {tool.widget === 'idealgas' && <IdealGasTool client:load />}
       {tool.widget === 'specheat' && <SpecificHeatTool client:load />}
       {tool.widget === 'ph' && <PhTool client:load />}
+      {tool.widget === 'stoich' && <StoichiometryTool client:load />}
+      {tool.widget === 'mole' && <MoleTool client:load />}
+      {tool.widget === 'empirical' && <EmpiricalFormulaTool client:load />}
+      {tool.widget === 'yield' && <PercentYieldTool client:load />}
+      {tool.widget === 'dilution' && <DilutionTool client:load />}
+      {tool.widget === 'density' && <DensityTool client:load />}
+      {tool.widget === 'henderson' && <HendersonTool client:load />}
+      {tool.widget === 'beerlambert' && <BeerLambertTool client:load />}
+      {tool.widget === 'gaslaw' && <CombinedGasTool client:load />}
+      {tool.widget === 'halflife' && <HalfLifeTool client:load />}
     </div>
 
     <div class="mt-4">

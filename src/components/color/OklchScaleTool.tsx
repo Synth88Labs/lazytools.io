@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'preact/hooks';
 import { parseColor, rgbToHex, type RGB } from '../../lib/color-compute';
 import { rgbToOklch, oklchToRgb, fmtOklch } from '../../lib/color-advanced';
+import ColorSwatchInput from './ColorSwatchInput';
 
 // Tailwind-style perceptual lightness targets per step (OKLCH L, 0..1)
 const STEPS: { step: number; L: number }[] = [
@@ -50,7 +51,7 @@ export default function OklchScaleTool() {
         <label class="block">
           <span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Base color (becomes the mid-tone)</span>
           <div class="flex items-center gap-2">
-            <span class="h-9 w-9 shrink-0 rounded-lg ring-1 ring-slate-300" style={base ? `background:${rgbToHex(base)}` : 'background:#eee'} />
+            <ColorSwatchInput rgb={base} onPick={setRaw} />
             <input value={raw} spellcheck={false} onInput={(e) => setRaw((e.target as HTMLInputElement).value)}
               class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 font-mono text-sm text-slate-900 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200" />
           </div>

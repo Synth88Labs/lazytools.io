@@ -1,4 +1,4 @@
-import { parseFormula, molarMass, balanceEquation, parseEquation } from '../src/lib/chemistry.ts';
+import { parseFormula, molarMass, balanceEquation, parseEquation, empiricalFormula, moleConvert, stoichiometry } from '../src/lib/chemistry.ts';
 
 let pass = 0, fail = 0;
 const approx = (a: number, b: number, tol: number, msg: string) => {
@@ -48,6 +48,33 @@ eq(JSON.stringify(coefs('N2 + H2 = NH3')), JSON.stringify([1, 3, 2]), 'balance a
 
 // parseEquation errors
 throws(() => parseEquation('H2 + O2'), 'no arrow throws');
+
+// --- empirical formula ---
+// 40.0% C, 6.7% H, 53.3% O -> CH2O ; with MW 180 -> C6H12O6
+const ef = empiricalFormula([{ symbol: 'C', amount: 40.0 }, { symbol: 'H', amount: 6.7 }, { symbol: 'O', amount: 53.3 }], 180.16);
+eq(ef.empiricalFormula, 'CH2O', 'empirical CH2O');
+eq(ef.molecularFormula, 'C6H12O6', 'molecular from MW');
+// water: 11.19% H, 88.81% O -> H2O
+eq(empiricalFormula([{ symbol: 'H', amount: 11.19 }, { symbol: 'O', amount: 88.81 }]).empiricalFormula, 'H2O', 'empirical H2O');
+// Fe 69.9%, O 30.1% -> Fe2O3
+eq(empiricalFormula([{ symbol: 'Fe', amount: 69.9 }, { symbol: 'O', amount: 30.1 }]).empiricalFormula, 'Fe2O3', 'empirical Fe2O3');
+
+// --- mole convert ---
+const mc = moleConvert({ mass: 18.015 }, 18.015)!;
+approx(mc.moles, 1, 0.001, 'moleConvert 1 mol water');
+approx(mc.particles / 6.022e23, 1, 0.01, 'moleConvert particles');
+const mc2 = moleConvert({ moles: 2 }, 58.44)!;
+approx(mc2.mass, 116.88, 0.01, 'moleConvert 2 mol NaCl mass');
+
+// --- stoichiometry: 2 H2 + O2 -> 2 H2O, 4 g H2 + 32 g O2 ---
+const st = stoichiometry('H2 + O2 -> H2O', { H2: 4.0, O2: 32.0 });
+// H2: 4/2.016=1.984 mol /2 = 0.992 ; O2: 32/32=1 mol /1 = 1 -> H2 limiting
+eq(st.limiting, 'H2', 'limiting reagent H2');
+const water = st.species.find((s) => s.formula === 'H2O')!;
+approx(water.producedMass, 35.75, 0.3, 'H2O produced mass'); // ~2*0.992*18.015
+// O2 leftover
+const o2 = st.species.find((s) => s.formula === 'O2')!;
+approx(o2.remainingMoles ?? -1, 0.008, 0.01, 'O2 leftover moles');
 
 console.log(`\nMW glucose = ${molarMass('C6H12O6').molarMass.toFixed(3)}`);
 console.log(`balanced: ${balanceEquation('KMnO4 + HCl -> KCl + MnCl2 + H2O + Cl2').balancedString}`);

@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'preact/hooks';
 import { parseColor, rgbToHex, contrastRatio } from '../../lib/color-compute';
 import { apcaContrast, apcaMinFont } from '../../lib/color-advanced';
+import ColorSwatchInput from './ColorSwatchInput';
 
 export default function ApcaTool() {
   const [txtRaw, setTxt] = useState('#5b6b7f');
@@ -20,7 +21,7 @@ export default function ApcaTool() {
     <label class="block">
       <span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">{label}</span>
       <div class="flex items-center gap-2">
-        <span class="h-9 w-9 shrink-0 rounded-lg ring-1 ring-slate-300" style={swatch ? `background:${rgbToHex(swatch)}` : 'background:#eee'} />
+        <ColorSwatchInput rgb={swatch ?? null} onPick={set} title={label} />
         <input value={val} spellcheck={false} onInput={(e) => set((e.target as HTMLInputElement).value)}
           class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 font-mono text-sm text-slate-900 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200" />
       </div>

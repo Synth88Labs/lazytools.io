@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="Three ways to get colors from an image, all on-device. One, pick: click a pixel to read its exact HEX, RGB and HSL, or use the browser EyeDropper API to sample any pixel on screen. Two, palette: median-cut quantization groups the image's pixels into a handful of dominant colors. Three, name: convert a color to CIELAB and find the nearest CSS colour name by CIEDE2000 perceptual distance. All processing happens in the browser; the image is never uploaded.">
+  <defs>
+    <style>
+      .h { font: 800 30px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .sub { font: 500 15px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+      .n { font: 800 20px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #fff; }
+      .t { font: 800 18px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .d { font: 500 13px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #475569; }
+      .mono { font: 700 13px Consolas, Menlo, monospace; fill: #0f172a; }
+    </style>
+  </defs>
+
+  <text x="600" y="44" text-anchor="middle" class="h">Three ways to get colors from an image</text>
+  <text x="600" y="72" text-anchor="middle" class="sub">pick a pixel · extract the palette · name the color — all on-device, nothing uploaded</text>
+
+  <!-- card 1: pick -->
+  <g transform="translate(70 110)">
+    <rect x="0" y="0" width="330" height="330" rx="18" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/>
+    <circle cx="40" cy="42" r="18" fill="#1d87f1"/><text x="40" y="49" text-anchor="middle" class="n">1</text>
+    <text x="72" y="48" class="t">Pick</text>
+    <text x="26" y="90" class="d">Click any pixel → exact color</text>
+    <!-- swatch + codes -->
+    <rect x="26" y="106" width="80" height="80" rx="10" fill="#2f855a"/>
+    <line x1="66" y1="106" x2="66" y2="186" stroke="#fff" stroke-opacity="0.5"/>
+    <line x1="26" y1="146" x2="106" y2="146" stroke="#fff" stroke-opacity="0.5"/>
+    <text x="122" y="128" class="mono">#2f855a</text>
+    <text x="122" y="152" class="mono">rgb(47,133,90)</text>
+    <text x="122" y="176" class="mono">hsl(151,48%,35%)</text>
+    <text x="26" y="228" class="d">…or the EyeDropper API to grab</text>
+    <text x="26" y="248" class="d">any pixel on your whole screen.</text>
+    <rect x="26" y="270" width="278" height="40" rx="10" fill="#1e293b"/>
+    <text x="165" y="295" text-anchor="middle" class="mono" fill="#7ef0c0">🎯 Pick from screen</text>
+  </g>
+
+  <!-- card 2: palette -->
+  <g transform="translate(435 110)">
+    <rect x="0" y="0" width="330" height="330" rx="18" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/>
+    <circle cx="40" cy="42" r="18" fill="#0e9f6e"/><text x="40" y="49" text-anchor="middle" class="n">2</text>
+    <text x="72" y="48" class="t">Palette</text>
+    <text x="26" y="90" class="d">Median-cut quantization →</text>
+    <text x="26" y="110" class="d">the image's dominant colors</text>
+    <g transform="translate(26 130)">
+      <rect x="0" y="0" width="46" height="70" rx="8" fill="#0f3d2e"/>
+      <rect x="52" y="0" width="46" height="70" rx="8" fill="#2f855a"/>
+      <rect x="104" y="0" width="46" height="70" rx="8" fill="#68b090"/>
+      <rect x="156" y="0" width="46" height="70" rx="8" fill="#d9a441"/>
+      <rect x="208" y="0" width="46" height="70" rx="8" fill="#b5532c"/>
+      <rect x="260" y="0" width="44" height="70" rx="8" fill="#eee3cf"/>
+    </g>
+    <text x="26" y="240" class="d">Split the pixels along their</text>
+    <text x="26" y="260" class="d">widest color axis, repeatedly,</text>
+    <text x="26" y="280" class="d">then average each group. Export</text>
+    <text x="26" y="300" class="d">as CSS or Tailwind variables.</text>
+  </g>
+
+  <!-- card 3: name -->
+  <g transform="translate(800 110)">
+    <rect x="0" y="0" width="330" height="330" rx="18" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/>
+    <circle cx="40" cy="42" r="18" fill="#7a5af8"/><text x="40" y="49" text-anchor="middle" class="n">3</text>
+    <text x="72" y="48" class="t">Name</text>
+    <text x="26" y="90" class="d">Nearest CSS color name by</text>
+    <text x="26" y="110" class="d">CIEDE2000 (ΔE) distance</text>
+    <rect x="26" y="128" width="60" height="60" rx="10" fill="#2f855a"/>
+    <text x="100" y="150" class="mono">#2f855a →</text>
+    <text x="100" y="174" class="t" fill="#7c3aed">seagreen</text>
+    <text x="26" y="222" class="d">Convert to CIELAB, then find the</text>
+    <text x="26" y="242" class="d">minimum perceptual distance over</text>
+    <text x="26" y="262" class="d">the standard CSS named colors —</text>
+    <text x="26" y="282" class="d">a measurement, not a guess.</text>
+  </g>
+
+  <!-- footer -->
+  <g transform="translate(70 470)">
+    <rect x="0" y="0" width="1060" height="60" rx="14" fill="#0c2f6b"/>
+    <text x="24" y="38" font-family="Consolas, Menlo, monospace" font-size="15" fill="#7ef0c0">lazytools.io — image color picker, palette extractor &amp; color-name finder, in your browser</text>
+  </g>
+</svg>

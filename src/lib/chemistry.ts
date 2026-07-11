@@ -212,10 +212,123 @@ export function balanceEquation(eq: string): BalanceResult {
   return { reactants: rc, products: pc, balancedString: `${fmt(rc)} → ${fmt(pc)}` };
 }
 
-// ---------- constants + solution/gas helpers ----------
+// ---------- empirical / molecular formula ----------
+
+export interface EmpiricalResult {
+  ratios: { symbol: string; moles: number; ratio: number; whole: number }[];
+  empiricalFormula: string;
+  empiricalMass: number;
+  multiple?: number;
+  molecularFormula?: string;
+}
+
+/** Empirical formula from element → amount (mass in g, or percent). */
+export function empiricalFormula(
+  input: { symbol: string; amount: number }[],
+  molarMassTarget?: number
+): EmpiricalResult {
+  const moles = input
+    .filter((r) => r.amount > 0 && BY_SYMBOL.has(r.symbol))
+    .map((r) => ({ symbol: r.symbol, moles: r.amount / BY_SYMBOL.get(r.symbol)!.weight }));
+  if (!moles.length) throw new Error('Enter at least one element with a positive amount');
+  const minMol = Math.min(...moles.map((m) => m.moles));
+  // ratio to smallest, then scale to whole numbers (handle .5, .33, .25)
+  const ratios = moles.map((m) => ({ ...m, ratio: m.moles / minMol }));
+  let factor = 1;
+  for (const f of [1, 2, 3, 4, 5, 6, 7, 8]) {
+    if (ratios.every((r) => Math.abs(r.ratio * f - Math.round(r.ratio * f)) < 0.08)) { factor = f; break; }
+  }
+  const withWhole = ratios.map((r) => ({ ...r, whole: Math.max(1, Math.round(r.ratio * factor)) }));
+  const empiricalFormulaStr = withWhole.map((r) => r.symbol + (r.whole > 1 ? r.whole : '')).join('');
+  const empiricalMass = withWhole.reduce((s, r) => s + BY_SYMBOL.get(r.symbol)!.weight * r.whole, 0);
+  const out: EmpiricalResult = { ratios: withWhole, empiricalFormula: empiricalFormulaStr, empiricalMass };
+  if (molarMassTarget && molarMassTarget > 0) {
+    const mult = Math.round(molarMassTarget / empiricalMass);
+    if (mult >= 1) {
+      out.multiple = mult;
+      out.molecularFormula = mult === 1 ? empiricalFormulaStr : withWhole.map((r) => r.symbol + (r.whole * mult > 1 ? r.whole * mult : '')).join('');
+    }
+  }
+  return out;
+}
+
+// ---------- mole / mass / particles ----------
 
 export const AVOGADRO = 6.02214076e23;
 export const R_GAS = 0.082057; // L·atm·K⁻¹·mol⁻¹
+
+export interface MoleResult { moles: number; mass: number; particles: number; molarMass: number }
+
+/** Convert between mass (g), moles and particles given a formula (or explicit molar mass). */
+export function moleConvert(known: { moles?: number; mass?: number; particles?: number }, molarMassVal: number): MoleResult | null {
+  let moles: number | null = null;
+  if (known.moles != null) moles = known.moles;
+  else if (known.mass != null && molarMassVal > 0) moles = known.mass / molarMassVal;
+  else if (known.particles != null) moles = known.particles / AVOGADRO;
+  if (moles == null || !isFinite(moles)) return null;
+  return { moles, mass: moles * molarMassVal, particles: moles * AVOGADRO, molarMass: molarMassVal };
+}
+
+// ---------- stoichiometry (limiting reagent + theoretical yield) ----------
+
+export interface StoichSpecies {
+  formula: string; coef: number; role: 'reactant' | 'product';
+  molarMass: number; givenMass?: number; givenMoles?: number;
+  producedMoles: number; producedMass: number; remainingMoles?: number; remainingMass?: number;
+}
+export interface StoichResult {
+  balanced: string;
+  species: StoichSpecies[];
+  limiting?: string;
+  extent: number;
+}
+
+/** Given an equation and masses (g) for one or more reactants, balance it and compute the
+ * limiting reagent, extent of reaction, and produced/remaining amounts. */
+export function stoichiometry(eq: string, reactantMasses: Record<string, number>): StoichResult {
+  const bal = balanceEquation(eq);
+  const all = [
+    ...bal.reactants.map((r) => ({ ...r, role: 'reactant' as const })),
+    ...bal.products.map((p) => ({ ...p, role: 'product' as const })),
+  ];
+  const mm = (f: string) => molarMass(f).molarMass;
+
+  // extent = min over provided reactants of (moles / coef)
+  let extent = Infinity;
+  let limiting: string | undefined;
+  const provided: { formula: string; moles: number; coef: number }[] = [];
+  for (const r of bal.reactants) {
+    const g = reactantMasses[r.formula];
+    if (g != null && g > 0) {
+      const moles = g / mm(r.formula);
+      provided.push({ formula: r.formula, moles, coef: r.coef });
+      const e = moles / r.coef;
+      if (e < extent) { extent = e; limiting = r.formula; }
+    }
+  }
+  if (!isFinite(extent)) extent = 0;
+
+  const species: StoichSpecies[] = all.map((s) => {
+    const molarMassVal = mm(s.formula);
+    const producedMoles = s.coef * extent;
+    const base: StoichSpecies = {
+      formula: s.formula, coef: s.coef, role: s.role, molarMass: molarMassVal,
+      producedMoles, producedMass: producedMoles * molarMassVal,
+    };
+    if (s.role === 'reactant') {
+      const g = reactantMasses[s.formula];
+      if (g != null && g > 0) {
+        base.givenMass = g;
+        base.givenMoles = g / molarMassVal;
+        base.remainingMoles = Math.max(0, base.givenMoles - producedMoles);
+        base.remainingMass = base.remainingMoles * molarMassVal;
+      }
+    }
+    return base;
+  });
+
+  return { balanced: bal.balancedString, species, limiting, extent };
+}
 
 /** Solve molarity M = n/V with n = mass/MW. Provide any 3 of {mass, molarMass, volumeL, molarity}. */
 export function solveMolarity(v: { mass?: number; molarMass?: number; volumeL?: number; molarity?: number }): number | null {

@@ -2,6 +2,7 @@ import { useMemo, useState } from 'preact/hooks';
 import { parseColor, rgbToHex, type RGB } from '../../lib/color-compute';
 import { rgbToLab, deltaE2000 } from '../../lib/color-advanced';
 import { CSS_COLOR_NAMES } from '../../lib/css-color-names';
+import ColorSwatchInput from './ColorSwatchInput';
 
 // precompute Lab for the named set once
 const NAMED = CSS_COLOR_NAMES.map((c) => ({ ...c, rgb: parseColor(c.hex)!, lab: rgbToLab(parseColor(c.hex)!) }));
@@ -25,7 +26,7 @@ export default function ColorNameTool() {
       <label class="block">
         <span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Color — HEX, RGB or HSL</span>
         <div class="flex items-center gap-2">
-          <span class="h-10 w-10 shrink-0 rounded-lg ring-1 ring-slate-300" style={rgb ? `background:${rgbToHex(rgb)}` : 'background:#eee'} />
+          <ColorSwatchInput rgb={rgb} onPick={setRaw} size="lg" />
           <input value={raw} spellcheck={false} onInput={(e) => setRaw((e.target as HTMLInputElement).value)}
             class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 font-mono text-sm text-slate-900 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200" />
         </div>

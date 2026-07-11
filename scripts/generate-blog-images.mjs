@@ -7,6 +7,20 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'the-mole-guide',
+    kicker: 'CHEMISTRY GUIDE',
+    lines: ['The mole: converting', 'grams, moles and', 'molecules'],
+    fact: '1 mol = 6.022×10²³ particles = molar mass in g',
+    icon: '🔢',
+  },
+  {
+    slug: 'color-from-image-guide',
+    kicker: 'COLOR TOOLS GUIDE',
+    lines: ['Extracting colors', 'from an image:', 'pick, palette, name'],
+    fact: 'median-cut palette · CIEDE2000 nearest name',
+    icon: '🖼️',
+  },
+  {
     slug: 'balancing-equations-guide',
     kicker: 'CHEMISTRY GUIDE',
     lines: ['How to balance', 'chemical equations:', 'the algebra method'],

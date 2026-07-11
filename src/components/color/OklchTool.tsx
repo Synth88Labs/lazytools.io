@@ -5,6 +5,7 @@ import {
   oklchToRgb, oklabToRgb,
   fmtOklch, fmtOklab, fmtLab, fmtLch,
 } from '../../lib/color-advanced';
+import ColorSwatchInput from './ColorSwatchInput';
 
 type Dir = 'hex-to-oklch' | 'oklch-to-hex' | 'rgb-to-oklch';
 
@@ -34,11 +35,14 @@ export default function OklchTool({ dir = 'hex-to-oklch' as Dir }: { dir?: Dir }
         <span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">
           Color — HEX, RGB, HSL or oklch()
         </span>
-        <input
-          value={raw} spellcheck={false}
-          onInput={(e) => setRaw((e.target as HTMLInputElement).value)}
-          class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 font-mono text-sm text-slate-900 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200"
-        />
+        <div class="flex items-center gap-2">
+          <ColorSwatchInput rgb={parsed?.rgb ?? null} onPick={setRaw} size="lg" />
+          <input
+            value={raw} spellcheck={false}
+            onInput={(e) => setRaw((e.target as HTMLInputElement).value)}
+            class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 font-mono text-sm text-slate-900 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200"
+          />
+        </div>
       </label>
 
       {parsed ? (
