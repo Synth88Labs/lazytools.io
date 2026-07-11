@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="Series and parallel rules for resistors and capacitors. Resistors: in series they add, R total equals R1 plus R2 plus more, giving a larger total; in parallel the reciprocals add, one over R total equals one over R1 plus one over R2, giving a total smaller than the smallest resistor. Capacitors are the exact opposite: in parallel they add, C total equals C1 plus C2; in series the reciprocals add. Memory aid: whatever a resistor does in series, a capacitor does in parallel. Example resistors 100, 220, 330 ohms: series 650 ohms, parallel about 58.2 ohms.">
+  <defs>
+    <style>
+      .h { font: 800 30px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .sub { font: 500 15px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+      .lab { font: 800 18px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; }
+      .eq { font: 800 19px Consolas, Menlo, monospace; }
+      .d { font: 600 13px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+    </style>
+  </defs>
+
+  <text x="600" y="44" text-anchor="middle" class="h">Series vs parallel — and why capacitors flip the rules</text>
+  <text x="600" y="72" text-anchor="middle" class="sub">it all depends on adding the values or adding their reciprocals</text>
+
+  <!-- Resistors -->
+  <g transform="translate(70 100)">
+    <rect x="0" y="0" width="520" height="230" rx="16" fill="#eff6ff" stroke="#1d87f1" stroke-width="2"/>
+    <text x="24" y="40" class="lab" fill="#1d4ed8">🔗 Resistors</text>
+    <text x="24" y="82" class="eq" fill="#1d4ed8">Series:  R = R₁ + R₂ + …</text>
+    <text x="24" y="108" class="d">adds up → total is larger</text>
+    <line x1="24" y1="126" x2="496" y2="126" stroke="#c7d2fe"/>
+    <text x="24" y="160" class="eq" fill="#1d4ed8">Parallel:  1/R = 1/R₁ + 1/R₂ + …</text>
+    <text x="24" y="186" class="d">reciprocals add → total smaller than the smallest</text>
+    <text x="24" y="216" class="d">e.g. 100, 220, 330 Ω → series 650 Ω · parallel 58.2 Ω</text>
+  </g>
+
+  <!-- Capacitors -->
+  <g transform="translate(610 100)">
+    <rect x="0" y="0" width="520" height="230" rx="16" fill="#f0fdf4" stroke="#0e9f6e" stroke-width="2"/>
+    <text x="24" y="40" class="lab" fill="#15803d">🔋 Capacitors (reversed!)</text>
+    <text x="24" y="82" class="eq" fill="#15803d">Parallel:  C = C₁ + C₂ + …</text>
+    <text x="24" y="108" class="d">adds up → total is larger</text>
+    <line x1="24" y1="126" x2="496" y2="126" stroke="#86efac"/>
+    <text x="24" y="160" class="eq" fill="#15803d">Series:  1/C = 1/C₁ + 1/C₂ + …</text>
+    <text x="24" y="186" class="d">reciprocals add → total smaller than the smallest</text>
+    <text x="24" y="216" class="d">charge Q = CV · energy E = ½CV²</text>
+  </g>
+
+  <!-- memory aid -->
+  <g transform="translate(70 350)">
+    <rect x="0" y="0" width="1060" height="90" rx="16" fill="#eef2ff" stroke="#c7d2fe" stroke-width="2"/>
+    <text x="530" y="40" text-anchor="middle" class="lab" fill="#3730a3">Memory aid</text>
+    <text x="530" y="70" text-anchor="middle" class="eq" fill="#1d4ed8">Whatever a RESISTOR does in series, a CAPACITOR does in parallel.</text>
+  </g>
+
+  <!-- footer -->
+  <g transform="translate(70 460)">
+    <rect x="0" y="0" width="1060" height="60" rx="14" fill="#0c2f6b"/>
+    <text x="24" y="38" font-family="Consolas, Menlo, monospace" font-size="15" fill="#7ef0c0">lazytools.io — series/parallel resistor &amp; capacitor calculators, in your browser</text>
+  </g>
+</svg>

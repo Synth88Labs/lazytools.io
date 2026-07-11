@@ -7,6 +7,13 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'series-parallel-guide',
+    kicker: 'ELECTRONICS GUIDE',
+    lines: ['Series vs parallel:', 'resistors and', 'capacitors'],
+    fact: 'resistors: series add · capacitors: reversed',
+    icon: '🔗',
+  },
+  {
     slug: 'suvat-equations-guide',
     kicker: 'PHYSICS GUIDE',
     lines: ['The SUVAT equations:', 'solve any constant-', 'acceleration problem'],

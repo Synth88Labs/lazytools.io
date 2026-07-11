@@ -23,6 +23,16 @@ import PhotonEnergyTool from '../../components/physics/PhotonEnergyTool.tsx';
 import MassEnergyTool from '../../components/physics/MassEnergyTool.tsx';
 import SnellsLawTool from '../../components/physics/SnellsLawTool.tsx';
 import OhmsLawTool from '../../components/physics/OhmsLawTool.tsx';
+import WaveTool from '../../components/physics/WaveTool.tsx';
+import DopplerTool from '../../components/physics/DopplerTool.tsx';
+import LensMirrorTool from '../../components/physics/LensMirrorTool.tsx';
+import ResistorNetworkTool from '../../components/physics/ResistorNetworkTool.tsx';
+import TorqueTool from '../../components/physics/TorqueTool.tsx';
+import OrbitalVelocityTool from '../../components/physics/OrbitalVelocityTool.tsx';
+import CarnotTool from '../../components/physics/CarnotTool.tsx';
+import ThermalExpansionTool from '../../components/physics/ThermalExpansionTool.tsx';
+import DeBroglieTool from '../../components/physics/DeBroglieTool.tsx';
+import AverageVelocityTool from '../../components/physics/AverageVelocityTool.tsx';
 import { PHYS_TOOLS, type PhysToolDef } from '../../data/physics/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -89,6 +99,16 @@ const schema = [
       {tool.widget === 'massenergy' && <MassEnergyTool client:load />}
       {tool.widget === 'snell' && <SnellsLawTool client:load />}
       {tool.widget === 'ohms' && <OhmsLawTool client:load />}
+      {tool.widget === 'wave' && <WaveTool client:load />}
+      {tool.widget === 'doppler' && <DopplerTool client:load />}
+      {tool.widget === 'lensmirror' && <LensMirrorTool client:load />}
+      {tool.widget === 'resistornet' && <ResistorNetworkTool client:load kind={tool.netKind ?? 'resistor'} />}
+      {tool.widget === 'torque' && <TorqueTool client:load />}
+      {tool.widget === 'orbital' && <OrbitalVelocityTool client:load />}
+      {tool.widget === 'carnot' && <CarnotTool client:load />}
+      {tool.widget === 'thermalexp' && <ThermalExpansionTool client:load />}
+      {tool.widget === 'debroglie' && <DeBroglieTool client:load />}
+      {tool.widget === 'avgvel' && <AverageVelocityTool client:load />}
     </div>
 
     <div class="mt-4">
