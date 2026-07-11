@@ -398,6 +398,20 @@ const POSTS = [
     fact: 'U+200B is invisible on screen — real in the bytes',
     icon: '👻',
   },
+  {
+    slug: 'readability-scores-guide',
+    kicker: 'TEXT TOOLS',
+    lines: ['Readability scores:', 'Flesch Reading Ease', '& grade level explained'],
+    fact: 'Aim for Flesch Reading Ease 60+ (grade 8–9)',
+    icon: '📖',
+  },
+  {
+    slug: 'homoglyph-attacks-guide',
+    kicker: 'TEXT TOOLS',
+    lines: ['Homoglyph attacks:', 'how lookalike letters', 'spoof domains'],
+    fact: 'Cyrillic а (U+0430) ≠ Latin a (U+0061)',
+    icon: '🕵️',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

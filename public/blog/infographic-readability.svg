@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="How readability scores work. Flesch Reading Ease gives a score from 0 to 100 where higher is easier: 90 to 100 is very easy at 5th grade, 60 to 70 is standard plain English at grade 8 to 9, 30 to 50 is difficult at college level, and 0 to 30 is very difficult. Five other formulas give a US grade level instead: Flesch-Kincaid Grade, Gunning Fog, SMOG, Coleman-Liau, and the Automated Readability Index. They are computed from three things: average words per sentence, average syllables per word, and the count of complex three-or-more-syllable words. For a general audience aim for Flesch Reading Ease 60 or higher, about grade 8 to 9.">
+  <defs>
+    <style>
+      .h { font: 800 30px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill:#0f172a; }
+      .lab { font: 800 18px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill:#334155; }
+      .sub { font: 600 13px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill:#ffffff; }
+      .small { font: 500 13px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill:#64748b; }
+      .mono { font: 700 15px Consolas,Menlo,monospace; fill:#0f172a; }
+    </style>
+  </defs>
+
+  <text x="600" y="42" text-anchor="middle" class="h">📖 How readable is your writing?</text>
+
+  <!-- Flesch Reading Ease scale -->
+  <text x="70" y="86" class="lab">Flesch Reading Ease — 0 to 100 (higher = easier)</text>
+  <g transform="translate(70 100)">
+    <rect x="0" y="0" width="212" height="54" rx="8" fill="#059669"/><text x="106" y="24" text-anchor="middle" class="sub">90–100 Very easy</text><text x="106" y="42" text-anchor="middle" class="sub" opacity="0.85">5th grade</text>
+    <rect x="216" y="0" width="212" height="54" rx="8" fill="#65a30d"/><text x="322" y="24" text-anchor="middle" class="sub">60–70 Standard</text><text x="322" y="42" text-anchor="middle" class="sub" opacity="0.85">grade 8–9 · plain English</text>
+    <rect x="432" y="0" width="212" height="54" rx="8" fill="#d97706"/><text x="538" y="24" text-anchor="middle" class="sub">30–50 Difficult</text><text x="538" y="42" text-anchor="middle" class="sub" opacity="0.85">college</text>
+    <rect x="648" y="0" width="212" height="54" rx="8" fill="#b91c1c"/><text x="754" y="24" text-anchor="middle" class="sub">0–30 Very difficult</text><text x="754" y="42" text-anchor="middle" class="sub" opacity="0.85">graduate</text>
+    <g transform="translate(880 0)"><rect x="0" y="0" width="180" height="54" rx="8" fill="#0f172a"/><text x="90" y="24" text-anchor="middle" class="sub">🎯 Aim for 60+</text><text x="90" y="42" text-anchor="middle" class="sub" opacity="0.85">general audience</text></g>
+  </g>
+
+  <!-- five grade-level formulas -->
+  <text x="70" y="212" class="lab">…plus five formulas that give a US grade level</text>
+  <g transform="translate(70 226)">
+    <rect x="0" y="0" width="205" height="46" rx="8" fill="#eff6ff" stroke="#1d87f1" stroke-width="1.5"/><text x="102" y="28" text-anchor="middle" class="mono" fill="#1e3a8a">Flesch–Kincaid</text>
+    <rect x="215" y="0" width="205" height="46" rx="8" fill="#eff6ff" stroke="#1d87f1" stroke-width="1.5"/><text x="317" y="28" text-anchor="middle" class="mono" fill="#1e3a8a">Gunning Fog</text>
+    <rect x="430" y="0" width="205" height="46" rx="8" fill="#eff6ff" stroke="#1d87f1" stroke-width="1.5"/><text x="532" y="28" text-anchor="middle" class="mono" fill="#1e3a8a">SMOG</text>
+    <rect x="645" y="0" width="205" height="46" rx="8" fill="#eff6ff" stroke="#1d87f1" stroke-width="1.5"/><text x="747" y="28" text-anchor="middle" class="mono" fill="#1e3a8a">Coleman–Liau</text>
+    <rect x="860" y="0" width="200" height="46" rx="8" fill="#eff6ff" stroke="#1d87f1" stroke-width="1.5"/><text x="960" y="28" text-anchor="middle" class="mono" fill="#1e3a8a">ARI</text>
+  </g>
+
+  <!-- inputs -->
+  <text x="600" y="330" text-anchor="middle" class="lab">All computed from three simple measures</text>
+  <g transform="translate(150 346)">
+    <rect x="0" y="0" width="290" height="64" rx="12" fill="#f0fdf4" stroke="#059669" stroke-width="2"/><text x="145" y="28" text-anchor="middle" class="mono" fill="#065f46">words ÷ sentences</text><text x="145" y="50" text-anchor="middle" class="small">sentence length</text>
+    <rect x="310" y="0" width="290" height="64" rx="12" fill="#f0fdf4" stroke="#059669" stroke-width="2"/><text x="455" y="28" text-anchor="middle" class="mono" fill="#065f46">syllables ÷ words</text><text x="455" y="50" text-anchor="middle" class="small">word complexity</text>
+    <rect x="620" y="0" width="290" height="64" rx="12" fill="#f0fdf4" stroke="#059669" stroke-width="2"/><text x="765" y="28" text-anchor="middle" class="mono" fill="#065f46">complex words</text><text x="765" y="50" text-anchor="middle" class="small">3+ syllable words</text>
+  </g>
+
+  <rect x="150" y="446" width="900" height="150" rx="16" fill="#153056"/>
+  <text x="600" y="486" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="18" font-weight="800" fill="#ffffff">Shorter sentences + simpler words = higher Reading Ease + lower grade level.</text>
+  <text x="600" y="520" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="16" font-weight="700" fill="#7ef0c0">The formulas are frozen — they never go out of date, and the result is exact.</text>
+  <text x="600" y="556" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="15" font-weight="600" fill="#cbd5e1">A chatbot only estimates readability by feel; a formula counts every syllable.</text>
+  <text x="600" y="582" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="14" font-weight="600" fill="#94a3b8">…and your draft stays in your browser — never uploaded.</text>
+</svg>

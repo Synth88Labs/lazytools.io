@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-label="How a homoglyph attack works. The domain paypal.com can be spoofed by replacing the Latin letter a with a Cyrillic a, which is a different character, U+0430 versus U+0061, but looks identical. To the eye the two strings are the same, but they are different addresses that point to different servers. This is called an IDN homograph attack and is used for phishing and brand impersonation. Other confusable characters include Greek omicron for o and full-width letters. The giveaway is mixed scripts: a single word containing both Latin and Cyrillic letters. A code-point checker reveals the substitution and shows the true ASCII version.">
+  <defs>
+    <style>
+      .h { font: 800 30px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill:#0f172a; }
+      .lab { font: 800 18px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill:#334155; }
+      .sub { font: 500 14px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill:#64748b; }
+      .big { font: 800 34px Consolas,Menlo,monospace; }
+      .cp { font: 700 15px Consolas,Menlo,monospace; }
+    </style>
+  </defs>
+
+  <text x="600" y="42" text-anchor="middle" class="h">🕵️ How a homoglyph attack works</text>
+
+  <!-- two identical-looking domains -->
+  <g transform="translate(120 74)">
+    <rect x="0" y="0" width="440" height="96" rx="14" fill="#f0fdf4" stroke="#059669" stroke-width="2"/>
+    <text x="20" y="34" class="sub">The real one</text>
+    <text x="20" y="72" class="big" fill="#065f46">paypal.com</text>
+    <text x="360" y="72" font-size="26">✓</text>
+  </g>
+  <g transform="translate(640 74)">
+    <rect x="0" y="0" width="440" height="96" rx="14" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+    <text x="20" y="34" class="sub">The spoof</text>
+    <text x="20" y="72" class="big" fill="#0f172a">p<tspan fill="#dc2626">а</tspan>ypal.com</text>
+    <text x="360" y="72" font-size="26">✕</text>
+  </g>
+  <text x="600" y="132" text-anchor="middle" class="sub">…they look identical, but they're different addresses.</text>
+
+  <!-- the swap -->
+  <g transform="translate(300 200)">
+    <rect x="0" y="0" width="600" height="96" rx="14" fill="#eff6ff" stroke="#1d87f1" stroke-width="2"/>
+    <text x="150" y="38" text-anchor="middle" class="lab" fill="#065f46">Latin “a”</text>
+    <text x="150" y="72" text-anchor="middle" class="cp" fill="#0f172a">U+0061</text>
+    <text x="300" y="60" text-anchor="middle" font-size="28" fill="#94a3b8">vs</text>
+    <text x="450" y="38" text-anchor="middle" class="lab" fill="#991b1b">Cyrillic “а”</text>
+    <text x="450" y="72" text-anchor="middle" class="cp" fill="#0f172a">U+0430</text>
+  </g>
+
+  <!-- other confusables -->
+  <text x="600" y="340" text-anchor="middle" class="lab">Other common lookalikes</text>
+  <g transform="translate(210 356)">
+    <rect x="0" y="0" width="250" height="52" rx="10" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/><text x="16" y="32" class="cp" fill="#5b21b6">Cyrillic е о р с у х</text>
+    <rect x="270" y="0" width="250" height="52" rx="10" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/><text x="16" y="32" class="cp" fill="#5b21b6" transform="translate(270 0)">Greek ο ν α ρ</text>
+    <rect x="540" y="0" width="250" height="52" rx="10" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/><text x="556" y="32" class="cp" fill="#5b21b6">Full-width Ａ Ｅ Ｏ</text>
+  </g>
+
+  <rect x="120" y="440" width="960" height="150" rx="16" fill="#153056"/>
+  <text x="600" y="480" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="18" font-weight="800" fill="#ffffff">The giveaway is MIXED SCRIPTS — one word with both Latin and Cyrillic letters.</text>
+  <text x="600" y="514" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="16" font-weight="700" fill="#7ef0c0">Your eyes can't tell them apart. A code-point checker can — instantly.</text>
+  <text x="600" y="550" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="15" font-weight="600" fill="#cbd5e1">Called an IDN homograph attack — used for phishing and brand impersonation.</text>
+  <text x="600" y="576" text-anchor="middle" font-family="'Plus Jakarta Sans',sans-serif" font-size="14" font-weight="600" fill="#94a3b8">…and the check runs in your browser, so nothing you paste is uploaded.</text>
+</svg>
