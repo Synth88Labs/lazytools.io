@@ -12,7 +12,7 @@ the legal review) are cleared.
 ratings (PHP + SQLite), smart header search, sitemap, auto-generated `llms.txt`, GitHub Actions →
 Namecheap FTPS deploy pipeline.
 
-**All 20 categories live** (~505 pages, 410+ tools):
+**All 21 categories live** (~516 pages, 420+ tools):
 
 | Category | Highlights |
 |---|---|
@@ -20,6 +20,7 @@ Namecheap FTPS deploy pipeline.
 | Calculators | percentage, EMI, tip, discount, interest, hourly⇄salary… + **finance**: mortgage (full amortization schedule, extra-principal payoff, CSV export), auto loan, markup vs margin, sales tax (with reverse), fuel cost · **health**: BMI, TDEE/BMR (Mifflin–St Jeor), body-fat (US Navy), ideal weight, macros, pregnancy due date · **academic**: GPA + grade-needed-on-final |
 | Mathematics | **exact arithmetic** — fraction calculator with steps, decimal⇄fraction (repeating decimals), GCD/LCM via Euclid, prime factorizer (Miller–Rabin + Pollard rho), ratio, quadratic solver with radical roots, statistics, Roman numerals, scientific notation, nCr/nPr (BigInt), long division with steps, radical simplifier, modular arithmetic (ext. Euclid + square-and-multiply), slope/line & distance/midpoint (exact), binomial expansion, significant figures, degrees⇄radians (exact π), completing the square, synthetic & polynomial division, percentile (3 named methods), divisibility rules, weighted average, exponent calculator (2^100 digit-exact), circle calculator (in terms of π), triangle area (Heron, exact radicals) — 26 tools |
 | Biology & Lab | **14 tools** — DNA reverse-complement/translate (sequence never uploaded), C₁V₁=C₂V₂ dilution + serial planner, Punnett (mono/di/trihybrid), Hardy–Weinberg + χ², GC/Tm, DNA & protein molecular weight, molarity, hemocytometer, Michaelis–Menten, qPCR efficiency, OD600, doubling time, population growth — Node-tested |
+| Statistics | **6 tools** — normal distribution (z↔p, shaded bell curve via exact erf), binomial probability (BigInt-exact coefficients), confidence intervals (mean z/t + proportion), sample size, p-value (z/t/χ²/F, one/two-tailed via incomplete gamma & beta), linear regression & correlation (least-squares + scatter plot, r, r²) — Node-tested |
 | Size Converters | ring, shoe, bra, clothing, hat, kids' shoe |
 | Photo Size Maker | **passport/visa/ID photos for 57 countries** — crop to exact official size, **on-device ML face check** (MediaPipe BlazeFace), background/exposure checks, DPI-correct export; every spec cited + date-verified |
 | Text Tools | **19 tools** — "the invisible & exact layer of text": **invisible-character detector** (AI-watermark/zero-width), **homoglyph detector**, **text diff** (LCS), **readability** (Flesch/FK/Fog/SMOG/CLI/ARI), **Unicode inspector**, word frequency, text cleaner, Unicode normalizer, fancy-text decoder, strip-HTML, line tools, plus counters/case/sort/dedupe/find-replace |

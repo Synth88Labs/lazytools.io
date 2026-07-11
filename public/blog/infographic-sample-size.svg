@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="How to calculate survey sample size. The formula for a proportion is n equals z squared times p times one minus p, divided by the margin of error squared. Here z is the critical value for the confidence level, p is the expected proportion (use 0.5 when unknown for the most conservative, largest sample), and E is the margin of error. Worked example: at 95 percent confidence the z value is 1.96, with p equal to 0.5 and a margin of error of 5 percent, n equals 385. A table of required sample sizes at 95 percent confidence: a 10 percent margin needs 97, 5 percent needs 385, 3 percent needs 1068, 2 percent needs 2401, and 1 percent needs 9604. For large populations the population size barely changes the answer; the finite-population correction only matters for small populations.">
+  <defs>
+    <style>
+      .h { font: 800 30px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .sub { font: 500 15px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+      .lab { font: 700 16px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .mono { font: 700 18px Consolas, Menlo, monospace; fill: #0f172a; }
+      .monh { font: 800 30px Consolas, Menlo, monospace; fill: #1d4ed8; }
+      .th { font: 800 16px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #475569; }
+      .td { font: 700 18px Consolas, Menlo, monospace; fill: #0f172a; }
+      .tdh { font: 800 18px Consolas, Menlo, monospace; fill: #1d4ed8; }
+    </style>
+  </defs>
+
+  <text x="600" y="44" text-anchor="middle" class="h">How many people do you need to survey?</text>
+  <text x="600" y="72" text-anchor="middle" class="sub">sample size for estimating a proportion, at a chosen confidence and margin of error</text>
+
+  <!-- Formula panel -->
+  <g transform="translate(70 100)">
+    <rect x="0" y="0" width="560" height="230" rx="16" fill="#eef2ff" stroke="#c7d2fe" stroke-width="2"/>
+    <text x="280" y="80" text-anchor="middle" class="monh">n = z² · p(1 − p) / E²</text>
+    <text x="30" y="130" class="mono">z</text><text x="70" y="130" class="lab">critical value for the confidence level</text>
+    <text x="30" y="162" class="mono">p</text><text x="70" y="162" class="lab">expected proportion — use 0.5 if unknown</text>
+    <text x="30" y="194" class="mono">E</text><text x="70" y="194" class="lab">margin of error (the ± you can tolerate)</text>
+  </g>
+
+  <!-- Worked example -->
+  <g transform="translate(660 100)">
+    <rect x="0" y="0" width="470" height="230" rx="16" fill="#f0fdf4" stroke="#86efac" stroke-width="2"/>
+    <text x="30" y="46" class="lab">Worked example — 95% confidence</text>
+    <text x="30" y="86" class="mono">z = 1.96,  p = 0.5,  E = 0.05</text>
+    <text x="30" y="128" class="mono">n = 1.96² · 0.25 / 0.05²</text>
+    <text x="30" y="170" class="mono">  = 0.9604 / 0.0025</text>
+    <text x="30" y="212" class="mono">  = <tspan class="tdh" font-size="28">385</tspan> respondents</text>
+  </g>
+
+  <!-- Table: margin vs n at 95% -->
+  <g transform="translate(70 350)">
+    <rect x="0" y="0" width="1060" height="130" rx="16" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/>
+    <text x="24" y="38" class="lab">Required sample size at 95% confidence (p = 0.5)</text>
+    <!-- header row -->
+    <text x="70"  y="78" text-anchor="middle" class="th">Margin</text>
+    <text x="70"  y="104" text-anchor="middle" class="td">±10%</text>
+    <text x="250" y="78" text-anchor="middle" class="th">±5%</text>
+    <text x="250" y="104" text-anchor="middle" class="tdh">385</text>
+    <text x="430" y="78" text-anchor="middle" class="th">±3%</text>
+    <text x="430" y="104" text-anchor="middle" class="td">1,068</text>
+    <text x="610" y="78" text-anchor="middle" class="th">±2%</text>
+    <text x="610" y="104" text-anchor="middle" class="td">2,401</text>
+    <text x="790" y="78" text-anchor="middle" class="th">±1%</text>
+    <text x="790" y="104" text-anchor="middle" class="td">9,604</text>
+    <text x="70"  y="78" text-anchor="middle" class="th" opacity="0">Margin</text>
+    <text x="70"  y="104" text-anchor="middle" class="td">97</text>
+    <!-- note cell -->
+    <line x1="900" y1="24" x2="900" y2="106" stroke="#e2e8f0" stroke-width="2"/>
+    <text x="920" y="70" class="th">Halving the</text>
+    <text x="920" y="92" class="th">margin ≈ 4× the n</text>
+  </g>
+
+  <!-- footer -->
+  <g transform="translate(70 500)">
+    <rect x="0" y="0" width="1060" height="94" rx="16" fill="#0c2f6b"/>
+    <text x="34" y="42" font-family="Segoe UI, Arial, sans-serif" font-size="19" font-weight="800" fill="#ffffff">Population size barely matters for large groups — 385 covers a town or a nation.</text>
+    <text x="34" y="74" font-family="Consolas, Menlo, monospace" font-size="15" fill="#7ef0c0">lazytools.io — sample-size &amp; confidence-interval calculators, computed in your browser</text>
+  </g>
+</svg>

@@ -7,6 +7,20 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'z-score-to-p-value-guide',
+    kicker: 'STATISTICS GUIDE',
+    lines: ['Z-score to p-value:', 'reading the normal', 'distribution'],
+    fact: 'z = 1.96 → two-tailed p = 0.05',
+    icon: '🔔',
+  },
+  {
+    slug: 'sample-size-guide',
+    kicker: 'SURVEY STATISTICS GUIDE',
+    lines: ['How many people', 'do you need to', 'survey?'],
+    fact: 'n = z²·p(1−p) / E² → 385 at 95% / ±5%',
+    icon: '👥',
+  },
+  {
     slug: 'kg-to-lbs-guide',
     kicker: 'WEIGHT CONVERSION GUIDE',
     lines: ['Kg to Lbs:', 'formula, charts &', 'the 2-second trick'],

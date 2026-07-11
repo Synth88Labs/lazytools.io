@@ -1,0 +1,59 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PrivacyStrip from '../../components/PrivacyStrip.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { STAT_TOOLS } from '../../data/statistics/index';
+import { breadcrumbSchema, collectionPageSchema, faqSchema } from '../../lib/schema';
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Statistics', url: '/statistics/' },
+];
+const faqs = [
+  { q: 'Are these statistics calculators accurate?', a: 'Yes — they use exact distribution functions (the error function for the normal CDF, the regularized incomplete gamma and beta functions for χ², t and F), accurate to about 7 decimal places. That is far beyond a printed table and more reliable than a chatbot, which routinely miscomputes p-values and confidence intervals.' },
+  { q: 'Is my data uploaded anywhere?', a: 'No. Every calculation — probabilities, intervals, regression and charts — runs in your browser with JavaScript. Nothing you type is sent to a server, which matters for unpublished study data.' },
+  { q: 'Do I need to install anything?', a: 'No. These are web pages that work on any modern browser, on desktop or mobile, and keep working offline once loaded.' },
+  { q: 'Are these suitable for coursework and research?', a: 'Both. The tools cover the standard introductory-statistics syllabus (normal distribution, binomial, confidence intervals, hypothesis testing, regression) and give exact values researchers can report, with plain-English interpretation alongside each result.' },
+];
+const schema = [
+  breadcrumbSchema(crumbs),
+  collectionPageSchema({ name: 'Statistics Calculators', url: '/statistics/', description: 'Free, private statistics calculators: normal distribution, binomial probability, confidence intervals, sample size, p-values and linear regression — exact, in your browser.', items: STAT_TOOLS.map((t) => ({ name: t.name, url: `/statistics/${t.slug}/` })) }),
+  faqSchema(faqs),
+];
+---
+
+<Base
+  title="Statistics Calculators — Normal, Binomial, p-value, Regression | LazyTools"
+  description="Free statistics calculators that run in your browser: normal distribution & z-score to p-value, binomial probability, confidence intervals, sample size, p-values (z/t/χ²/F) and linear regression. Exact, private, no upload."
+  schema={schema}
+>
+  <div class="mx-auto max-w-5xl px-4 py-6">
+    <Breadcrumbs items={crumbs} />
+    <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Statistics Calculators</h1>
+    <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
+      Exact statistics tools with a picture and a plain-English answer — the normal distribution with a
+      shaded bell curve, binomial probabilities with BigInt-exact coefficients, confidence intervals,
+      sample size, p-values from any test statistic, and least-squares regression with a scatter plot.
+      Everything is computed in your browser, so your data is never uploaded.
+    </p>
+
+    <div class="mt-5"><PrivacyStrip /></div>
+
+    <section class="mt-8">
+      <ul class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {STAT_TOOLS.map((t) => (
+          <li>
+            <a href={`/statistics/${t.slug}/`} class="flex h-full flex-col rounded-xl border border-slate-200 p-4 transition hover:border-brand-400 hover:shadow-sm">
+              <span class="text-2xl" aria-hidden="true">{t.icon}</span>
+              <span class="mt-2 font-semibold text-slate-900">{t.name}</span>
+              <span class="mt-1 text-sm text-slate-600">{t.lead.split('—')[0]}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <FaqSection faqs={faqs} />
+  </div>
+</Base>

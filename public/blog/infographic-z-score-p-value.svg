@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="Converting a z-score to a p-value on the standard normal distribution. The bell curve is centred at zero; a z-score marks how many standard deviations a value is from the mean. The p-value is the tail area beyond the statistic: a right-tailed p-value is the area above z, a left-tailed p-value is the area below z, and a two-tailed p-value is twice the area beyond the absolute value of z. Common critical values: z of 1.645 gives a one-tailed p of 0.05; z of 1.96 gives a two-tailed p of 0.05; z of 2.576 gives a two-tailed p of 0.01. The empirical rule: about 68 percent of values fall within one standard deviation, 95 percent within two, and 99.7 percent within three.">
+  <defs>
+    <style>
+      .h { font: 800 30px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .sub { font: 500 15px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+      .lab { font: 700 16px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .mono { font: 700 17px Consolas, Menlo, monospace; fill: #0f172a; }
+      .monh { font: 800 17px Consolas, Menlo, monospace; fill: #1d4ed8; }
+      .tick { font: 600 13px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #94a3b8; }
+      .cap { font: 800 15px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; }
+    </style>
+  </defs>
+
+  <text x="600" y="44" text-anchor="middle" class="h">From z-score to p-value on the normal curve</text>
+  <text x="600" y="72" text-anchor="middle" class="sub">the p-value is the tail area beyond your statistic — the shaded region</text>
+
+  <!-- Bell curve panel -->
+  <g transform="translate(70 100)">
+    <rect x="0" y="0" width="640" height="330" rx="16" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/>
+    <!-- baseline -->
+    <line x1="40" y1="270" x2="600" y2="270" stroke="#cbd5e1" stroke-width="2"/>
+    <!-- right tail shaded (z = 1.96 → px). Curve from x=40..600 maps z=-4..4; z=1.96 → 40+((1.96+4)/8)*560 = 40+417.2=457 -->
+    <path d="M457,270
+             C 470,258 482,238 494,210
+             C 508,176 522,140 540,110
+             C 556,86 574,74 600,70
+             L 600,270 Z" fill="#6366f1" fill-opacity="0.30"/>
+    <!-- full curve -->
+    <path d="M40,270
+             C 90,268 120,262 150,248
+             C 185,232 210,205 245,160
+             C 280,112 300,86 320,80
+             C 340,86 360,112 395,160
+             C 430,205 455,232 490,248
+             C 520,262 550,268 600,270"
+          fill="none" stroke="#4338ca" stroke-width="3"/>
+    <!-- mean line -->
+    <line x1="320" y1="270" x2="320" y2="80" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 4"/>
+    <!-- z marker -->
+    <line x1="457" y1="270" x2="457" y2="150" stroke="#4338ca" stroke-width="2"/>
+    <circle cx="457" cy="150" r="4" fill="#4338ca"/>
+    <text x="465" y="140" class="monh">z = 1.96</text>
+    <!-- ticks -->
+    <text x="120" y="292" text-anchor="middle" class="tick">−3σ</text>
+    <text x="187" y="292" text-anchor="middle" class="tick">−2σ</text>
+    <text x="253" y="292" text-anchor="middle" class="tick">−1σ</text>
+    <text x="320" y="292" text-anchor="middle" class="tick">μ (z=0)</text>
+    <text x="387" y="292" text-anchor="middle" class="tick">+1σ</text>
+    <text x="453" y="292" text-anchor="middle" class="tick">+2σ</text>
+    <text x="520" y="292" text-anchor="middle" class="tick">+3σ</text>
+    <!-- shaded label -->
+    <text x="530" y="240" text-anchor="middle" class="cap" fill="#4338ca">p = 0.025</text>
+    <text x="500" y="316" class="lab">right-tail area beyond z = the p-value</text>
+  </g>
+
+  <!-- Right column: three tails + table -->
+  <g transform="translate(740 100)">
+    <rect x="0" y="0" width="390" height="330" rx="16" fill="#eef2ff" stroke="#c7d2fe" stroke-width="2"/>
+    <text x="24" y="40" class="lab">Three ways to take the tail</text>
+    <text x="24" y="72" class="mono">right:  <tspan class="monh">P(Z &gt; z)</tspan></text>
+    <text x="24" y="100" class="mono">left:   <tspan class="monh">P(Z &lt; z)</tspan></text>
+    <text x="24" y="128" class="mono">two:    <tspan class="monh">2·P(Z &gt; |z|)</tspan></text>
+
+    <line x1="24" y1="150" x2="366" y2="150" stroke="#c7d2fe" stroke-width="1.5"/>
+    <text x="24" y="180" class="lab">Critical values worth memorising</text>
+    <text x="24" y="210" class="mono">z = 1.645  →  one-tailed p = 0.05</text>
+    <text x="24" y="238" class="mono">z = 1.960  →  two-tailed p = 0.05</text>
+    <text x="24" y="266" class="mono">z = 2.576  →  two-tailed p = 0.01</text>
+
+    <line x1="24" y1="288" x2="366" y2="288" stroke="#c7d2fe" stroke-width="1.5"/>
+    <text x="24" y="314" class="mono">68 % · 95 % · 99.7 % within 1·2·3 σ</text>
+  </g>
+
+  <!-- footer -->
+  <g transform="translate(70 470)">
+    <rect x="0" y="0" width="1060" height="120" rx="16" fill="#0c2f6b"/>
+    <text x="34" y="46" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="800" fill="#ffffff">A small p-value = your statistic sits far out in the tail.</text>
+    <text x="34" y="82" font-family="Segoe UI, Arial, sans-serif" font-size="17" fill="#bce7ff">Compare it to your significance level α (usually 0.05): p ≤ α means reject the null hypothesis.</text>
+    <text x="34" y="106" font-family="Consolas, Menlo, monospace" font-size="15" fill="#7ef0c0">lazytools.io — exact normal CDF via erf, computed in your browser</text>
+  </g>
+</svg>

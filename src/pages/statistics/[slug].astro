@@ -1,0 +1,125 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PrivacyStrip from '../../components/PrivacyStrip.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import RatingWidget from '../../components/RatingWidget.tsx';
+import NormalDistTool from '../../components/statistics/NormalDistTool.tsx';
+import BinomialTool from '../../components/statistics/BinomialTool.tsx';
+import ConfidenceIntervalTool from '../../components/statistics/ConfidenceIntervalTool.tsx';
+import SampleSizeTool from '../../components/statistics/SampleSizeTool.tsx';
+import PValueTool from '../../components/statistics/PValueTool.tsx';
+import RegressionTool from '../../components/statistics/RegressionTool.tsx';
+import { STAT_TOOLS, type StatToolDef } from '../../data/statistics/index';
+import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
+import { ratingFor } from '../../lib/ratings';
+
+export function getStaticPaths() {
+  return STAT_TOOLS.map((t) => ({ params: { slug: t.slug }, props: { slug: t.slug } }));
+}
+
+const { slug } = Astro.props;
+const tool: StatToolDef = STAT_TOOLS.find((t) => t.slug === slug)!;
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Statistics', url: '/statistics/' },
+  { name: tool.name, url: `/statistics/${tool.slug}/` },
+];
+
+const related = STAT_TOOLS.filter((t) => t.slug !== tool.slug).slice(0, 6);
+const allBlogPosts = await getCollection('blog');
+const blogPosts = allBlogPosts.filter((p) => p.data.tools.includes(`/statistics/${tool.slug}/`));
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  webApplicationSchema({
+    name: tool.name,
+    url: `/statistics/${tool.slug}/`,
+    description: tool.description,
+    rating: ratingFor(`statistics/${tool.slug}`),
+  }),
+  faqSchema(tool.faqs),
+];
+---
+
+<Base title={`${tool.name} — Free & Private | LazyTools`} description={tool.description} schema={schema}>
+  <article class="mx-auto max-w-5xl px-4 py-6">
+    <Breadcrumbs items={crumbs} />
+
+    <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+      {tool.icon} {tool.name}
+    </h1>
+
+    <p class="mt-3 text-lg leading-relaxed text-slate-700">
+      <strong class="font-semibold text-slate-900">{tool.lead}</strong>
+    </p>
+
+    <div class="mt-6">
+      {tool.widget === 'normal' && <NormalDistTool client:load />}
+      {tool.widget === 'binomial' && <BinomialTool client:load />}
+      {tool.widget === 'ci' && <ConfidenceIntervalTool client:load />}
+      {tool.widget === 'sample-size' && <SampleSizeTool client:load />}
+      {tool.widget === 'pvalue' && <PValueTool client:load />}
+      {tool.widget === 'regression' && <RegressionTool client:load />}
+    </div>
+
+    <div class="mt-4">
+      <PrivacyStrip />
+    </div>
+
+    <div class="mt-3">
+      <RatingWidget
+        client:idle
+        toolSlug={`statistics/${tool.slug}`}
+        avg={ratingFor(`statistics/${tool.slug}`)?.avg}
+        count={ratingFor(`statistics/${tool.slug}`)?.count}
+      />
+    </div>
+
+    <section class="prose-lazy mt-6">
+      <h2>How the {tool.name.toLowerCase()} works</h2>
+      <p>{tool.how}</p>
+      {tool.note && <p>{tool.note}</p>}
+    </section>
+
+    <FaqSection faqs={tool.faqs} />
+
+    <section class="mt-10">
+      <h2 class="text-2xl font-bold text-slate-900">Related statistics tools</h2>
+      <ul class="mt-4 grid gap-2 sm:grid-cols-2">
+        {related.map((r) => (
+          <li>
+            <a href={`/statistics/${r.slug}/`} class="block rounded-lg border border-slate-200 px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:border-brand-400 hover:text-brand-700">
+              {r.icon} {r.name}
+            </a>
+          </li>
+        ))}
+        <li>
+          <a href="/statistics/" class="block rounded-lg border border-brand-200 bg-brand-50 px-4 py-2.5 text-sm font-semibold text-brand-800 transition hover:border-brand-400">
+            All statistics tools →
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    {
+      blogPosts.length > 0 && (
+        <section class="mt-10">
+          <h2 class="text-2xl font-bold text-slate-900">From the blog</h2>
+          <ul class="mt-4 space-y-3">
+            {blogPosts.map((post) => (
+              <li>
+                <a href={`/blog/${post.id}/`} class="block rounded-xl border border-slate-200 p-4 transition hover:border-brand-400 hover:shadow-sm">
+                  <p class="font-semibold text-slate-900">{post.data.title}</p>
+                  <p class="mt-1 text-sm text-slate-600">{post.data.description}</p>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+  </article>
+</Base>
