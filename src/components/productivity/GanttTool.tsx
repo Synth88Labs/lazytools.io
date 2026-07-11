@@ -1,4 +1,4 @@
-import { useRef } from 'preact/hooks';
+import { useRef, useState } from 'preact/hooks';
 import { usePersistentState, exportJson, pickJson, uid, downloadBlob, downloadSvgAsPng, downloadSvgAsPdf, todayKey, useFullscreen } from '../../lib/persist';
 
 interface Task { id: string; name: string; start: string; end: string; pct: number; milestone: boolean; after: string; }
@@ -16,12 +16,15 @@ const INITIAL: Task[] = (() => {
   ];
 })();
 
-const LABEL_W = 168, ROW_H = 40, HEAD_H = 46, DAY_W_MIN = 8, DAY_W_MAX = 26;
+const LABEL_W = 168, ROW_H = 40, HEAD_H = 46, DAY_W_MIN = 5, DAY_W_MAX = 60;
+const ZOOM_STEPS = [6, 8, 10, 12, 16, 20, 26, 34, 44, 56];
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 export default function GanttTool() {
   const [tasks, setTasks] = usePersistentState<Task[]>('lt.gantt', INITIAL);
+  const [zoom, setZoom] = useState<number | null>(null); // null = auto-fit
   const svgRef = useRef<SVGSVGElement>(null);
+  const drag = useRef<{ id: string; mode: 'move' | 'start' | 'end'; x0: number; s0: number; e0: number; scale: number } | null>(null);
   const fs = useFullscreen();
 
   const valid = tasks.filter((t) => Number.isFinite(toMs(t.start)) && Number.isFinite(toMs(t.end)));
@@ -30,12 +33,44 @@ export default function GanttTool() {
   const min = starts.length ? Math.min(...starts) - DAY : Date.UTC(2026, 0, 1);
   const max = ends.length ? Math.max(...ends) + DAY : min + 30 * DAY;
   const days = Math.max(1, Math.round((max - min) / DAY) + 1);
-  const dayW = Math.max(DAY_W_MIN, Math.min(DAY_W_MAX, Math.round(1100 / days)));
+  const refW = fs.isFull ? 1700 : 1100;
+  const autoDayW = Math.max(DAY_W_MIN, Math.min(DAY_W_MAX, Math.round(refW / days)));
+  const dayW = zoom ?? autoDayW;
   const chartW = days * dayW;
   const W = LABEL_W + chartW + 20;
   const H = HEAD_H + tasks.length * ROW_H + 16;
   const xOf = (ms: number) => LABEL_W + ((ms - min) / DAY) * dayW;
   const todayMs = toMs(todayKey());
+
+  // drag a bar to move it, or its edges to resize (updates dates)
+  function onBarDown(ev: PointerEvent, t: Task, mode: 'move' | 'start' | 'end') {
+    ev.preventDefault();
+    const svg = svgRef.current;
+    const scale = svg ? (svg.getBoundingClientRect().width || W) / W : 1;
+    drag.current = { id: t.id, mode, x0: ev.clientX, s0: toMs(t.start), e0: Math.max(toMs(t.start), toMs(t.end)), scale };
+    const move = (e: PointerEvent) => {
+      const d = drag.current; if (!d) return;
+      const deltaDays = Math.round((e.clientX - d.x0) / d.scale / dayW);
+      if (deltaDays === 0 && d.mode !== 'move') { /* still allow */ }
+      const iso = (ms: number) => { const dt = new Date(ms); const p = (x: number) => String(x).padStart(2, '0'); return `${dt.getUTCFullYear()}-${p(dt.getUTCMonth() + 1)}-${p(dt.getUTCDate())}`; };
+      setTasks((ts) => ts.map((x) => {
+        if (x.id !== d.id) return x;
+        if (d.mode === 'move') return { ...x, start: iso(d.s0 + deltaDays * DAY), end: iso(d.e0 + deltaDays * DAY) };
+        if (d.mode === 'start') return { ...x, start: iso(Math.min(d.e0, d.s0 + deltaDays * DAY)) };
+        return { ...x, end: iso(Math.max(d.s0, d.e0 + deltaDays * DAY)) };
+      }));
+    };
+    const up = () => { drag.current = null; window.removeEventListener('pointermove', move); window.removeEventListener('pointerup', up); };
+    window.addEventListener('pointermove', move);
+    window.addEventListener('pointerup', up);
+  }
+
+  function zoomBy(dir: number) {
+    const cur = zoom ?? autoDayW;
+    const idx = ZOOM_STEPS.findIndex((s) => s >= cur);
+    const next = ZOOM_STEPS[Math.max(0, Math.min(ZOOM_STEPS.length - 1, (idx < 0 ? ZOOM_STEPS.length - 1 : idx) + dir))];
+    setZoom(next);
+  }
 
   // week gridlines + month labels
   const gridlines: { x: number; label?: string; month?: boolean }[] = [];
@@ -68,7 +103,12 @@ export default function GanttTool() {
         <button type="button" onClick={exportCsv} class={btn}>📊 CSV</button>
         <button type="button" onClick={() => exportJson('gantt', 'gantt.json', tasks)} class={btn}>⬇ JSON</button>
         <button type="button" onClick={() => pickJson().then((d) => Array.isArray(d) && setTasks(d as Task[])).catch(() => {})} class={btn}>⬆ Import</button>
-        <button type="button" onClick={fs.toggle} class={`${btn} ml-auto`}>{fs.isFull ? '⤢ Exit full screen' : '⛶ Full screen'}</button>
+        <div class="ml-auto flex items-center gap-1">
+          <button type="button" onClick={() => zoomBy(-1)} class={btn} title="Zoom out" aria-label="Zoom out">－</button>
+          <button type="button" onClick={() => setZoom(null)} class={`${btn} px-2`} title="Fit to width">Fit</button>
+          <button type="button" onClick={() => zoomBy(1)} class={btn} title="Zoom in" aria-label="Zoom in">＋</button>
+        </div>
+        <button type="button" onClick={fs.toggle} class={btn}>{fs.isFull ? '⤢ Exit full screen' : '⛶ Full screen'}</button>
       </div>
 
       <div class="overflow-auto rounded-xl border border-slate-200 bg-white">
@@ -97,11 +137,17 @@ export default function GanttTool() {
                   <path d={`M ${xOf(Math.max(toMs(pred.start), toMs(pred.end))) + dayW} ${HEAD_H + tasks.indexOf(pred) * ROW_H + ROW_H / 2} L ${x1 - 4} ${x1 < xOf(toMs(pred.end)) ? cy : cy}`} fill="none" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#gah)" opacity="0.8" />
                 )}
                 {ok && (t.milestone ? (
-                  <path d={`M ${x1} ${cy - 9} L ${x1 + 9} ${cy} L ${x1} ${cy + 9} L ${x1 - 9} ${cy} Z`} fill="#7c3aed" stroke="#5b21b6" stroke-width="1.5" />
+                  <path d={`M ${x1} ${cy - 9} L ${x1 + 9} ${cy} L ${x1} ${cy + 9} L ${x1 - 9} ${cy} Z`} fill="#7c3aed" stroke="#5b21b6" stroke-width="1.5" style="cursor:grab" onPointerDown={(ev) => onBarDown(ev as unknown as PointerEvent, t, 'move')} />
                 ) : (
                   <>
                     <rect x={x1} y={cy - 10} width={w} height={20} rx={5} fill="#dbeafe" stroke="#1d87f1" stroke-width="1.5" />
                     <rect x={x1} y={cy - 10} width={(w * Math.max(0, Math.min(100, t.pct))) / 100} height={20} rx={5} fill="#1d87f1" />
+                    {/* drag zones: middle = move, edges = resize */}
+                    <rect x={x1 + 5} y={cy - 10} width={Math.max(0, w - 10)} height={20} fill="transparent" style="cursor:grab" onPointerDown={(ev) => onBarDown(ev as unknown as PointerEvent, t, 'move')}>
+                      <title>{t.name} — drag to move</title>
+                    </rect>
+                    <rect x={x1} y={cy - 10} width={6} height={20} fill="transparent" style="cursor:ew-resize" onPointerDown={(ev) => onBarDown(ev as unknown as PointerEvent, t, 'start')} />
+                    <rect x={x1 + w - 6} y={cy - 10} width={6} height={20} fill="transparent" style="cursor:ew-resize" onPointerDown={(ev) => onBarDown(ev as unknown as PointerEvent, t, 'end')} />
                     {t.pct > 0 && <text x={x1 + w + 6} y={cy + 4} font-size="10.5" fill="#64748b">{t.pct}%</text>}
                   </>
                 ))}
@@ -137,7 +183,7 @@ export default function GanttTool() {
           </tbody>
         </table>
       </div>
-      <p class="mt-3 text-xs text-slate-500">Bars are drawn from each task's dates; the filled part shows % complete, ◆ marks milestones, and the red line is today. Saved locally; export PNG, PDF, CSV or JSON.</p>
+      <p class="mt-3 text-xs text-slate-500"><strong class="text-slate-600">Drag a bar to reschedule it, or drag its ends to resize.</strong> Use ＋ / － / Fit to zoom the timeline. The filled part shows % complete, ◆ marks milestones, and the red line is today. Saved locally; export PNG, PDF, CSV or JSON.</p>
     </div>
   );
 }

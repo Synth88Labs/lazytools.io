@@ -7,6 +7,13 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'reading-periodic-table-guide',
+    kicker: 'CHEMISTRY GUIDE',
+    lines: ['How to read the', 'periodic table:', 'groups, periods, trends'],
+    fact: 'group = column (similar) · period = row',
+    icon: '🧪',
+  },
+  {
     slug: 'series-parallel-guide',
     kicker: 'ELECTRONICS GUIDE',
     lines: ['Series vs parallel:', 'resistors and', 'capacitors'],

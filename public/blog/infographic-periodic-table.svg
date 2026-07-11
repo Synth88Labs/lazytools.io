@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="How to read the periodic table. Columns are groups: elements in the same group have similar chemistry because they share the same number of outer electrons — group 1 alkali metals are very reactive, group 17 halogens are reactive nonmetals, group 18 noble gases are inert. Rows are periods: across a period, atomic number rises one at a time. The blocks are s, p, d and f, matching which orbital fills. Key trends: electronegativity and ionisation energy rise going up and to the right toward fluorine; atomic radius rises going down and to the left. Metals sit on the left, nonmetals on the upper right, with metalloids on the staircase between them.">
+  <defs>
+    <style>
+      .h { font: 800 30px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .sub { font: 500 15px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+      .lab { font: 800 16px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .d { font: 600 13px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #475569; }
+      .t { font: 700 13px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #1d4ed8; }
+    </style>
+  </defs>
+
+  <text x="600" y="42" text-anchor="middle" class="h">How to read the periodic table</text>
+  <text x="600" y="70" text-anchor="middle" class="sub">position tells you an element’s structure and behaviour</text>
+
+  <!-- mini table schematic -->
+  <g transform="translate(70 96)">
+    <rect x="0" y="0" width="640" height="300" rx="14" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/>
+    <!-- columns (groups) arrow -->
+    <text x="320" y="28" text-anchor="middle" class="lab">↕ Group (column) = similar chemistry</text>
+    <!-- simple grid 8 cols x 5 rows -->
+    <g transform="translate(30 46)">
+      <!-- metals block -->
+      <rect x="0" y="0" width="200" height="180" rx="8" fill="#fde68a" opacity="0.6"/>
+      <text x="100" y="100" text-anchor="middle" class="d">Metals (left)</text>
+      <!-- nonmetals -->
+      <rect x="360" y="0" width="220" height="120" rx="8" fill="#bae6fd" opacity="0.7"/>
+      <text x="470" y="60" text-anchor="middle" class="d">Nonmetals (upper right)</text>
+      <!-- metalloid staircase -->
+      <path d="M 300 0 L 300 60 L 360 60 L 360 120 L 420 120 L 420 180" fill="none" stroke="#0e9f6e" stroke-width="3" stroke-dasharray="5 4"/>
+      <text x="300" y="200" class="t" fill="#15803d">↖ metalloid staircase</text>
+      <!-- period arrow -->
+      <text x="290" y="235" text-anchor="middle" class="lab">↔ Period (row) = atomic number rises →</text>
+    </g>
+  </g>
+
+  <!-- trends panel -->
+  <g transform="translate(730 96)">
+    <rect x="0" y="0" width="400" height="300" rx="14" fill="#eef2ff" stroke="#c7d2fe" stroke-width="2"/>
+    <text x="24" y="36" class="lab" fill="#3730a3">Periodic trends</text>
+    <text x="24" y="72" class="d">↗ Electronegativity &amp; ionisation</text>
+    <text x="24" y="92" class="d">   energy rise up &amp; right (→ F).</text>
+    <text x="24" y="126" class="d">↙ Atomic radius rises down &amp; left.</text>
+    <text x="24" y="160" class="d">↕ Groups share outer-electron count,</text>
+    <text x="24" y="180" class="d">   so they react alike.</text>
+    <line x1="24" y1="200" x2="376" y2="200" stroke="#c7d2fe"/>
+    <text x="24" y="228" class="t">Group 1 — alkali metals: very reactive</text>
+    <text x="24" y="252" class="t">Group 17 — halogens: reactive nonmetals</text>
+    <text x="24" y="276" class="t">Group 18 — noble gases: inert</text>
+  </g>
+
+  <!-- footer -->
+  <g transform="translate(70 420)">
+    <rect x="0" y="0" width="1060" height="56" rx="14" fill="#0c2f6b"/>
+    <text x="24" y="35" font-family="Consolas, Menlo, monospace" font-size="15" fill="#7ef0c0">lazytools.io — interactive periodic table &amp; electron-configuration tools, in your browser</text>
+  </g>
+</svg>

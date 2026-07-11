@@ -31,7 +31,7 @@ are no processing servers. The tool code downloads to *your* device and runs the
 yourself: open DevTools, watch the network tab, or switch off your connection mid-use — everything keeps
 working.
 
-## What's live — 23 categories, 495+ tools, ~600 pages
+## What's live — 23 categories, 495+ tools, ~602 pages
 
 | Category | Highlights |
 |---|---|
@@ -39,7 +39,7 @@ working.
 | [Calculators](https://lazytools.io/calc/) | percentage, EMI, BMI, age, tip, discount, interest… |
 | [Mathematics](https://lazytools.io/math/) | **exact arithmetic** — fractions with steps, primes (Miller–Rabin), quadratics with radical roots, statistics, Roman numerals, nCr/nPr at BigInt scale |
 | [Biology & Lab](https://lazytools.io/biology/) | **14 tools** — DNA reverse-complement/translate (sequence never uploaded), C₁V₁=C₂V₂ dilution + serial planner, Punnett (mono/di/trihybrid), Hardy–Weinberg + χ², GC/Tm, DNA & protein molecular weight, molarity, hemocytometer, Michaelis–Menten, qPCR efficiency, doubling time |
-| [Chemistry & Lab](https://lazytools.io/chemistry/) | **26 tools** — **molar mass / molecular weight** (parses hydrates like CuSO₄·5H₂O + nested groups) with percent composition, **chemical equation balancer** (exact integer coefficients via BigInt null-space — correct on redox), **stoichiometry** (limiting reagent + theoretical yield), **empirical/molecular formula**, **mole ↔ grams ↔ particles**, **molarity**, **dilution** (C₁V₁=C₂V₂), **percent yield**, **density**, **ideal / combined gas law**, **specific heat**, **pH**, **Henderson–Hasselbalch**, **Beer–Lambert**, **half-life**, **Gibbs free energy**, **Nernst**, **Arrhenius**, **freezing-point depression / boiling-point elevation**, **ppm**, **percent error** |
+| [Chemistry & Lab](https://lazytools.io/chemistry/) | **28 tools** — **interactive periodic table** (all 118 elements, click for full details, colour by category/phase/block/electronegativity, full-screen), **electron configuration**, **molar mass / molecular weight** (parses hydrates like CuSO₄·5H₂O + nested groups) with percent composition, **chemical equation balancer** (exact integer coefficients via BigInt null-space — correct on redox), **stoichiometry** (limiting reagent + theoretical yield), **empirical/molecular formula**, **mole ↔ grams ↔ particles**, **molarity**, **dilution** (C₁V₁=C₂V₂), **percent yield**, **density**, **ideal / combined gas law**, **specific heat**, **pH**, **Henderson–Hasselbalch**, **Beer–Lambert**, **half-life**, **Gibbs free energy**, **Nernst**, **Arrhenius**, **freezing-point depression / boiling-point elevation**, **ppm**, **percent error** |
 | [Statistics](https://lazytools.io/statistics/) | **6 tools** — **normal distribution** (z↔p, shaded bell curve via exact erf), **binomial probability** (BigInt-exact coefficients), **confidence intervals** (mean z/t + proportion), **sample size**, **p-value** (z/t/χ²/F, one/two-tailed), **linear regression & correlation** (least-squares + scatter plot, r, r²) |
 | [Physics](https://lazytools.io/physics/) | **29 tools** — **SUVAT kinematic-equations solver** (enter any 3 of u/v/a/s/t), **projectile motion** with trajectory graph, free fall, **Newton's 2nd law**, momentum, friction, **kinetic/potential energy**, work, power, Hooke's law, **centripetal force**, **Newton's gravitation**, **wave speed** (v=fλ), **Snell's law** (critical angle + TIR), **Ohm's-law V/I/R/P wheel**, **series/parallel resistors & capacitors**, **wave/SHM visualizer**, **Doppler effect**, **lens & mirror equation**, **torque**, **orbital velocity**, **Carnot efficiency**, **thermal expansion**, **photon energy** (E=hf), **de Broglie**, **E=mc²** |
 | [Size Converters](https://lazytools.io/size/) | ring, shoe, bra, clothing, hat sizes across systems |
@@ -52,14 +52,14 @@ working.
 | [Date & Time](https://lazytools.io/time/) | timestamps, date math, DST-aware timezone pairs |
 | [Calendars](https://lazytools.io/calendar/) | Hijri/Hebrew/Persian/Julian, **Nepali BS⇄AD**, 4-5-4 retail |
 | [Codes & Ciphers](https://lazytools.io/cipher/) | Morse (with audio), NATO, binary, Caesar, Vigenère |
-| [Productivity](https://lazytools.io/productivity/) | Pomodoro, Kanban, mind map, Gantt, habit tracker — saved locally, JSON export |
+| [Productivity](https://lazytools.io/productivity/) | Pomodoro, Kanban, mind map, **interactive Gantt** (drag bars to reschedule/resize, zoom, full-screen), habit tracker — saved locally, JSON export |
 | [Privacy & Security](https://lazytools.io/security/) | EXIF remover, AES-256 file encryption, file hash |
 | [Image Tools](https://lazytools.io/image/) | compress, convert, resize, **HEIC→JPG** (libheif wasm) |
 | [Photo Size Maker](https://lazytools.io/photo/) | **passport / visa / ID photos** for multiple countries — crop to exact official size, **on-device face-position check (MediaPipe BlazeFace)**, background & exposure checks, DPI-correct export; every spec cited + date-verified |
 | [PDF Tools](https://lazytools.io/pdf/) | merge/split/rotate **with live page previews**, unlock/protect (qpdf wasm), **accessibility checker (EAA)**, **redaction checker + rasterizing redactor** |
 | [Audio](https://lazytools.io/video/) | trim, speed, volume, WAV convert (Web Audio) |
 
-Plus **68 in-depth guides** on the [blog](https://lazytools.io/blog/) — each with custom infographics,
+Plus **69 in-depth guides** on the [blog](https://lazytools.io/blog/) — each with custom infographics,
 FAQ schema and cited sources — and a research-driven build pipeline (see
 [docs/research/](docs/research/)) that has shipped regulatory-deadline tools ahead of the French,
 Polish and Belgian e-invoicing mandates.
@@ -69,7 +69,7 @@ Polish and Belgian e-invoicing mandates.
 ```bash
 npm install
 npm run dev      # dev server at localhost:4321
-npm run build    # static site → dist/ (~600 pages)
+npm run build    # static site → dist/ (~602 pages)
 ```
 
 ## Tech & models

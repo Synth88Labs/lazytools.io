@@ -8,7 +8,8 @@ export interface ChemToolDef {
     | 'molarmass' | 'balancer' | 'molarity' | 'idealgas' | 'specheat' | 'ph'
     | 'stoich' | 'mole' | 'empirical' | 'dilution' | 'yield' | 'density'
     | 'henderson' | 'beerlambert' | 'gaslaw' | 'halflife'
-    | 'gibbs' | 'nernst' | 'arrhenius' | 'freezing' | 'boiling' | 'ppm' | 'percenterror';
+    | 'gibbs' | 'nernst' | 'arrhenius' | 'freezing' | 'boiling' | 'ppm' | 'percenterror'
+    | 'periodic' | 'econfig';
   /** molar-mass satellites: default view */
   view?: 'mass' | 'percent';
   description: string;
@@ -497,6 +498,46 @@ CHEM_TOOLS.push(
       { q: 'Why divide by the theoretical value?', a: 'Because the theoretical (accepted) value is the reference standard; the error is expressed relative to it, making it comparable across different scales.' },
     ],
     keywords: ['percent error calculator', 'percentage error', 'experimental theoretical value', 'percent error formula', 'lab error calculator', 'accuracy calculator'],
+  },
+);
+
+CHEM_TOOLS.unshift(
+  {
+    slug: 'periodic-table',
+    name: 'Interactive Periodic Table',
+    icon: '🧪',
+    widget: 'periodic',
+    description: 'An interactive, full-screen periodic table of all 118 elements — click any element for its full details, colour by category, phase, block or electronegativity, and search. Free, in-browser.',
+    lead: 'Explore all 118 elements: click any one for its full profile, recolour the whole table by category, phase, block or electronegativity, and search by name, symbol or number — full-screen.',
+    how: 'The table lays out every element in the standard 18-column form, with the lanthanides and actinides in their own rows. Each cell is coloured by the scheme you choose — element category, physical state at room temperature, orbital block (s/p/d/f) or an electronegativity heat-map. Click a cell to open a detail card with the atomic number and mass, electron configuration, melting and boiling points (in K and °C), density, electronegativity, atomic radius, discovery year and a plain-English summary. Search narrows the highlight to matching elements, and full-screen mode uses the whole display.',
+    note: 'All data — IUPAC standard atomic weights and standard physical properties (CRC/PubChem) — ships with the page, so the table works offline and nothing you search is sent anywhere. Pair it with the electron-configuration and molar-mass tools.',
+    faqs: [
+      { q: 'How do I see an element’s details?', a: 'Click its cell. A card opens with the atomic number and mass, category, group and period, electron configuration, phase, melting and boiling points, density, electronegativity, atomic radius, discovery year and a short summary.' },
+      { q: 'What do the colours mean?', a: 'By default, each colour is an element category (alkali metal, noble gas, metalloid, and so on) — see the legend. You can switch to colour by physical state, by orbital block (s/p/d/f), or by an electronegativity heat-map.' },
+      { q: 'Can I search the periodic table?', a: 'Yes — type an element name, symbol or atomic number and the matching elements stay highlighted while the rest dim.' },
+      { q: 'Why are two rows separated at the bottom?', a: 'Those are the lanthanides (57–71) and actinides (89–103), the f-block. They are pulled out below to keep the main table a manageable 18 columns wide, following the standard convention.' },
+      { q: 'Is the data accurate and current?', a: 'It uses IUPAC standard atomic weights and widely cited physical properties (melting/boiling points, density, electronegativity). Values for the superheavy synthetic elements are shown as unknown where they have not been measured.' },
+      { q: 'Does it work on mobile and offline?', a: 'Yes — the table scrolls horizontally on small screens, works full-screen, and runs entirely in your browser, so it keeps working with no connection.' },
+    ],
+    keywords: ['periodic table', 'interactive periodic table', 'periodic table of elements', 'element properties', 'periodic table with details', 'full screen periodic table', 'element information'],
+  },
+  {
+    slug: 'electron-configuration-calculator',
+    name: 'Electron Configuration Calculator',
+    icon: '🔟',
+    widget: 'econfig',
+    description: 'Find the electron configuration of any element — full notation, Aufbau filling order and electrons per shell. Enter a symbol, name or atomic number. Free, in-browser.',
+    lead: 'Enter an element and get its electron configuration — the observed notation, the idealised Aufbau order, and the number of electrons in each shell.',
+    how: 'Electrons fill orbitals from lowest energy upward (the Aufbau principle / Madelung rule): 1s, 2s, 2p, 3s, 3p, 4s, 3d, and so on. The tool fills that order for the element’s atomic number to build the configuration and the electrons-per-shell breakdown, and shows the experimentally observed configuration alongside it.',
+    note: 'The observed configuration is the real one; the Aufbau order is the textbook prediction. A handful of d- and f-block elements (chromium, copper and others) deviate because half-filled and filled subshells are extra stable.',
+    faqs: [
+      { q: 'How do I write an electron configuration?', a: 'Fill subshells in order of increasing energy (1s, 2s, 2p, 3s, 3p, 4s, 3d…) until you have placed all the element’s electrons. Iron (26) is 1s² 2s² 2p⁶ 3s² 3p⁶ 3d⁶ 4s², written [Ar]3d⁶4s².' },
+      { q: 'What is the Aufbau principle?', a: 'The rule that electrons occupy the lowest-energy orbitals first. The Madelung (n+l) rule gives the filling order, which is why 4s fills before 3d.' },
+      { q: 'What are the electrons per shell?', a: 'The count in each principal shell (K, L, M…). For iron it is 2, 8, 14, 2. They sum to the atomic number.' },
+      { q: 'Why do chromium and copper break the pattern?', a: 'A half-filled (d⁵) or fully filled (d¹⁰) d-subshell is unusually stable, so chromium is [Ar]3d⁵4s¹ and copper [Ar]3d¹⁰4s¹ rather than the naïve prediction. The tool shows the real configuration.' },
+      { q: 'What is noble-gas shorthand?', a: 'Replacing the inner electrons with the previous noble gas in brackets — e.g. [Ar] for argon’s 18 electrons — so iron is [Ar]3d⁶4s² instead of the full string.' },
+    ],
+    keywords: ['electron configuration calculator', 'electron configuration', 'aufbau principle', 'electrons per shell', 'noble gas configuration', 'orbital filling'],
   },
 );
 
