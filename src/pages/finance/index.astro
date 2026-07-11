@@ -1,0 +1,65 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PrivacyStrip from '../../components/PrivacyStrip.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { FIN_TOOLS } from '../../data/finance/index';
+import { breadcrumbSchema, collectionPageSchema, faqSchema } from '../../lib/schema';
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Finance', url: '/finance/' },
+];
+const faqs = [
+  { q: 'Are these finance calculators accurate?', a: 'Yes — they use the standard financial formulas (compound interest, amortization, CAGR) with the figures you enter, and the debt and payoff tools simulate month by month. They estimate outcomes from your inputs; they don’t predict markets.' },
+  { q: 'Is my financial data private?', a: 'Completely. Every calculation runs in your browser — your balances, rates and goals are never sent to a server. The debt tool in particular keeps your whole debt list on your device.' },
+  { q: 'Is this financial advice?', a: 'No. These are educational calculators, not personalised advice. They assume the rates you enter stay constant, which real markets don’t. For decisions about your money, consult a qualified, regulated professional.' },
+  { q: 'Do the tools use live rates or prices?', a: 'No — there are no live feeds. You enter the rates, and everything is computed locally, so the tools work offline and never depend on a third-party service.' },
+];
+const schema = [
+  breadcrumbSchema(crumbs),
+  collectionPageSchema({ name: 'Finance Calculators', url: '/finance/', description: 'Free, private personal-finance calculators: compound interest with contributions, debt payoff (snowball vs avalanche), savings goal, loan and credit-card payoff, CAGR, ROI, rule of 72, break-even and APR↔APY — educational, in your browser.', items: FIN_TOOLS.map((t) => ({ name: t.name, url: `/finance/${t.slug}/` })) }),
+  faqSchema(faqs),
+];
+---
+
+<Base
+  title="Finance Calculators — Compound Interest, Debt Payoff, ROI | LazyTools"
+  description="Free personal-finance calculators that run in your browser: compound interest with contributions, debt snowball vs avalanche, savings goal, loan & credit-card payoff, CAGR, ROI, rule of 72, break-even and APR↔APY. Educational, private, no upload, no live-rate feeds."
+  schema={schema}
+>
+  <div class="mx-auto max-w-5xl px-4 py-6">
+    <Breadcrumbs items={crumbs} />
+    <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Finance Calculators</h1>
+    <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
+      Understand your money with exact, private calculators — grow savings with compound interest, compare
+      the debt snowball and avalanche, plan a savings goal, or work out a loan payoff, ROI or break-even.
+      Everything runs in your browser with the figures you enter; nothing is uploaded, and there are no
+      live-rate feeds.
+    </p>
+
+    <div class="mt-5"><PrivacyStrip /></div>
+
+    <section class="mt-8">
+      <ul class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {FIN_TOOLS.map((t) => (
+          <li>
+            <a href={`/finance/${t.slug}/`} class="flex h-full flex-col rounded-xl border border-slate-200 p-4 transition hover:border-brand-400 hover:shadow-sm">
+              <span class="text-2xl" aria-hidden="true">{t.icon}</span>
+              <span class="mt-2 font-semibold text-slate-900">{t.name}</span>
+              <span class="mt-1 text-sm text-slate-600">{t.lead.split('—')[0].split('(')[0]}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <p class="mt-8 rounded-xl border border-slate-200 bg-slate-50 p-4 text-sm text-slate-600">
+      <strong class="text-slate-700">Educational information, not financial advice.</strong> These tools
+      use standard formulas with the numbers you provide and assume constant rates; real markets vary.
+      For decisions about your money, consult a qualified, regulated financial professional.
+    </p>
+
+    <FaqSection faqs={faqs} />
+  </div>
+</Base>

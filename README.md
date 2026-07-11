@@ -31,12 +31,13 @@ are no processing servers. The tool code downloads to *your* device and runs the
 yourself: open DevTools, watch the network tab, or switch off your connection mid-use — everything keeps
 working.
 
-## What's live — 24 categories, 510+ tools, ~623 pages
+## What's live — 25 categories, 520+ tools, ~634 pages
 
 | Category | Highlights |
 |---|---|
 | [Unit Converters](https://lazytools.io/units/) | 123 pages, exact NIST/BIPM factors, per-pair editorial notes |
 | [Calculators](https://lazytools.io/calc/) | percentage, EMI, BMI, age, tip, discount, interest… |
+| [Finance](https://lazytools.io/finance/) | **10 tools** — **compound interest** (FV with regular contributions + growth chart), **debt payoff** (snowball vs avalanche, month-by-month, payoff-order table), **savings goal**, **loan payoff** (amortization + extra-payment savings), **credit-card payoff** (time or payment), **CAGR**, **ROI** (+ annualized), **rule of 72**, **break-even units**, **APR↔APY** — exact, private, educational (not advice); no live rates |
 | [Mathematics](https://lazytools.io/math/) | **exact arithmetic** — fractions with steps, primes (Miller–Rabin), quadratics with radical roots, statistics, Roman numerals, nCr/nPr at BigInt scale |
 | [Biology & Lab](https://lazytools.io/biology/) | **14 tools** — DNA reverse-complement/translate (sequence never uploaded), C₁V₁=C₂V₂ dilution + serial planner, Punnett (mono/di/trihybrid), Hardy–Weinberg + χ², GC/Tm, DNA & protein molecular weight, molarity, hemocytometer, Michaelis–Menten, qPCR efficiency, doubling time |
 | [Chemistry & Lab](https://lazytools.io/chemistry/) | **31 tools** — **interactive periodic table** (all 118 elements, click for full details, colour by category/phase/block/electronegativity, full-screen), **electron configuration**, **element comparison**, **oxidation-number solver**, **average atomic mass**, **molar mass / molecular weight** (parses hydrates like CuSO₄·5H₂O + nested groups) with percent composition, **chemical equation balancer** (exact integer coefficients via BigInt null-space — correct on redox), **stoichiometry** (limiting reagent + theoretical yield), **empirical/molecular formula**, **mole ↔ grams ↔ particles**, **molarity**, **dilution** (C₁V₁=C₂V₂), **percent yield**, **density**, **ideal / combined gas law**, **specific heat**, **pH**, **Henderson–Hasselbalch**, **Beer–Lambert**, **half-life**, **Gibbs free energy**, **Nernst**, **Arrhenius**, **freezing-point depression / boiling-point elevation**, **ppm**, **percent error** |
@@ -70,7 +71,7 @@ Polish and Belgian e-invoicing mandates.
 ```bash
 npm install
 npm run dev      # dev server at localhost:4321
-npm run build    # static site → dist/ (~623 pages)
+npm run build    # static site → dist/ (~634 pages)
 ```
 
 ## Tech & models

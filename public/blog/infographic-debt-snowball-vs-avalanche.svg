@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="Two ways to pay off multiple debts. Both keep paying every minimum, then throw one fixed extra amount at a single focus debt; when it clears, its whole payment rolls onto the next. The snowball method targets the smallest balance first for fast psychological wins. The avalanche method targets the highest interest rate first, which mathematically costs the least total interest. Same total budget each month; only the target order differs.">
+  <defs>
+    <style>
+      .h { font: 800 30px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .sub { font: 500 15px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+      .lab { font: 800 20px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; }
+      .eq { font: 800 17px Consolas, Menlo, monospace; }
+      .d { font: 600 14px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #475569; }
+      .tag { font: 800 13px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; }
+    </style>
+  </defs>
+
+  <text x="600" y="42" text-anchor="middle" class="h">Two orders to attack the same debts</text>
+  <text x="600" y="70" text-anchor="middle" class="sub">pay every minimum, then aim one fixed extra at a single focus debt — order is the only difference</text>
+
+  <!-- Snowball card -->
+  <g transform="translate(70 96)">
+    <rect x="0" y="0" width="520" height="300" rx="16" fill="#eff6ff" stroke="#1d87f1" stroke-width="2"/>
+    <text x="24" y="42" class="lab" fill="#1d4ed8">❄️ Snowball</text>
+    <rect x="360" y="22" width="136" height="26" rx="13" fill="#dbeafe"/>
+    <text x="428" y="40" text-anchor="middle" class="tag" fill="#1d4ed8">fastest wins</text>
+    <text x="24" y="82" class="eq" fill="#1d4ed8">target smallest balance first</text>
+    <line x1="24" y1="100" x2="496" y2="100" stroke="#c7d2fe"/>
+    <text x="24" y="132" class="d">1️⃣ Clear the smallest debt — quickly.</text>
+    <text x="24" y="164" class="d">2️⃣ Roll its whole payment onto the next.</text>
+    <text x="24" y="196" class="d">3️⃣ Balances vanish one by one, faster.</text>
+    <text x="24" y="248" class="d" font-weight="800">Best when motivation matters —</text>
+    <text x="24" y="270" class="d">visible wins keep you going.</text>
+  </g>
+
+  <!-- Avalanche card -->
+  <g transform="translate(610 96)">
+    <rect x="0" y="0" width="520" height="300" rx="16" fill="#f0fdf4" stroke="#0e9f6e" stroke-width="2"/>
+    <text x="24" y="42" class="lab" fill="#15803d">🏔️ Avalanche</text>
+    <rect x="330" y="22" width="166" height="26" rx="13" fill="#dcfce7"/>
+    <text x="413" y="40" text-anchor="middle" class="tag" fill="#15803d">least interest paid</text>
+    <text x="24" y="82" class="eq" fill="#15803d">target highest APR first</text>
+    <line x1="24" y1="100" x2="496" y2="100" stroke="#86efac"/>
+    <text x="24" y="132" class="d">1️⃣ Attack the costliest interest rate.</text>
+    <text x="24" y="164" class="d">2️⃣ Roll its payment onto the next-highest.</text>
+    <text x="24" y="196" class="d">3️⃣ Every dollar kills the priciest debt.</text>
+    <text x="24" y="248" class="d" font-weight="800">Best for the math —</text>
+    <text x="24" y="270" class="d">saves the most money overall.</text>
+  </g>
+
+  <!-- footer -->
+  <g transform="translate(70 420)">
+    <rect x="0" y="0" width="1060" height="56" rx="14" fill="#0c2f6b"/>
+    <text x="24" y="35" font-family="Consolas, Menlo, monospace" font-size="15" fill="#7ef0c0">lazytools.io — debt payoff calculator: compare snowball vs avalanche month-by-month, private in your browser</text>
+  </g>
+</svg>

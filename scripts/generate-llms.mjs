@@ -28,6 +28,7 @@ import { STAT_TOOLS } from '../src/data/statistics/index.ts';
 import { CHEM_TOOLS } from '../src/data/chemistry/index.ts';
 import { PHYS_TOOLS } from '../src/data/physics/index.ts';
 import { HOME_TOOLS } from '../src/data/home/index.ts';
+import { FIN_TOOLS } from '../src/data/finance/index.ts';
 import { allPairs as zonePairs } from '../src/data/time/zones.ts';
 
 const U = SITE.url;
@@ -41,6 +42,7 @@ const firstSentence = (s) => {
 const HUBS = {
   units: { tools: null, blurb: 'Length, weight, temperature, volume, area, speed, time, data storage, pressure, energy and power converters, each with exact internationally-defined factors, a formula, worked example and conversion table.' },
   calc: { tools: CALCULATORS, blurb: 'Percentage, finance, health and everyday calculators — each shows the formula and its working.' },
+  finance: { tools: FIN_TOOLS, blurb: 'Personal-finance calculators computed exactly in the browser with the figures you enter (NO live rates or feeds): compound interest with regular contributions (FV = P(1+i)ⁿ + annuity term, with a growth chart); debt payoff comparing the snowball (smallest balance first) and avalanche (highest APR first) methods via a month-by-month simulation; savings-goal (required monthly deposit); loan payoff (amortization + extra-payment savings); credit-card payoff (time or payment); CAGR; ROI (+ annualized); rule of 72; break-even units; and APR↔APY conversion. Educational calculators, not financial advice; balances and rates never leave the browser.' },
   size: { tools: SIZE_TOOLS, blurb: 'Ring, shoe, bra, clothing and hat size converters across US, UK, EU and international systems, with measure-at-home guides and full charts.' },
   home: { tools: HOME_TOOLS, blurb: 'Home-improvement & DIY material estimators computed in the browser (metric or imperial): paint (wall area minus openings × coats ÷ coverage), tile & flooring (area ÷ tile size + waste, boxes), concrete (L×W×thickness volume + pre-mix bags), mulch & soil (area × depth in m³/yd³/bags) and wallpaper (drops per roll from height + trim + pattern repeat) — exact area/volume geometry with sensible, overridable defaults for coverage, waste and bag yields.' },
   dev: { tools: DEV_TOOLS, blurb: 'Base64, URL and HTML encoding, SHA hashes, JWT decoder, regex tester and number-base converter — tokens and payloads never leave the browser.' },

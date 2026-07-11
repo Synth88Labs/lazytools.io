@@ -22,6 +22,7 @@ export interface CategoryDef {
 export const CATEGORIES: CategoryDef[] = [
   { slug: 'units', name: 'Unit Converters', icon: '📐', description: 'Convert length, weight, temperature, volume and more — instantly.', status: 'live' },
   { slug: 'calc', name: 'Calculators', icon: '🧮', description: 'Percentage, finance, health and everyday calculators.', status: 'live' },
+  { slug: 'finance', name: 'Finance', icon: '💵', description: 'Compound interest, debt payoff, savings goal, ROI — exact, private, educational (not advice).', status: 'live' },
   { slug: 'math', name: 'Mathematics', icon: '➗', description: 'Exact math: fractions with steps, primes, quadratics, statistics.', status: 'live' },
   { slug: 'biology', name: 'Biology & Lab', icon: '🧬', description: 'DNA sequence tools, dilution, Punnett squares, Hardy–Weinberg, primer Tm — exact and private.', status: 'live' },
   { slug: 'statistics', name: 'Statistics', icon: '📈', description: 'Normal distribution, binomial probability, confidence intervals, p-values — exact, with plain-English interpretation.', status: 'live' },

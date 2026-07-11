@@ -7,6 +7,13 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'debt-snowball-vs-avalanche-guide',
+    kicker: 'FINANCE GUIDE',
+    lines: ['Debt snowball vs', 'avalanche: which', 'pays off faster?'],
+    fact: 'avalanche = least interest · snowball = fastest wins',
+    icon: '❄️',
+  },
+  {
     slug: 'roofing-squares-guide',
     kicker: 'HOME & DIY GUIDE',
     lines: ['How many shingles?', 'Roofing squares', '& pitch explained'],

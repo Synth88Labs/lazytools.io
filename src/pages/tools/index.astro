@@ -16,6 +16,7 @@ import { STAT_TOOLS } from '../../data/statistics/index';
 import { CHEM_TOOLS } from '../../data/chemistry/index';
 import { PHYS_TOOLS } from '../../data/physics/index';
 import { HOME_TOOLS } from '../../data/home/index';
+import { FIN_TOOLS } from '../../data/finance/index';
 import { FILE_TOOLS } from '../../data/file/index';
 import { DEV_TOOLS } from '../../data/dev/index';
 import { GEN_TOOLS } from '../../data/generate/index';
@@ -63,6 +64,7 @@ const schema = [
       ...CHEM_TOOLS.map((t) => ({ name: t.name, url: `/chemistry/${t.slug}/` })),
       ...PHYS_TOOLS.map((t) => ({ name: t.name, url: `/physics/${t.slug}/` })),
       ...HOME_TOOLS.map((t) => ({ name: t.name, url: `/home/${t.slug}/` })),
+      ...FIN_TOOLS.map((t) => ({ name: t.name, url: `/finance/${t.slug}/` })),
       ...SECURITY_TOOLS.map((t) => ({ name: t.name, url: `/security/${t.slug}/` })),
       ...IMAGE_TOOLS.map((t) => ({ name: t.name, url: `/image/${t.slug}/` })),
       ...PHOTO_SPECS.map((s) => ({ name: `${s.label} Maker`, url: `/photo/${s.slug}/` })),
@@ -277,6 +279,19 @@ const schema = [
         {PHYS_TOOLS.map((t) => (
           <li>
             <a href={`/physics/${t.slug}/`} class="inline-block rounded-full border border-slate-200 px-3 py-1 text-sm text-slate-600 transition hover:border-brand-400 hover:text-brand-700">
+              {t.icon} {t.name}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-bold text-slate-900">💵 Finance</h2>
+      <ul class="mt-4 flex flex-wrap gap-2">
+        {FIN_TOOLS.map((t) => (
+          <li>
+            <a href={`/finance/${t.slug}/`} class="inline-block rounded-full border border-slate-200 px-3 py-1 text-sm text-slate-600 transition hover:border-brand-400 hover:text-brand-700">
               {t.icon} {t.name}
             </a>
           </li>

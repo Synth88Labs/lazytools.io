@@ -34,6 +34,7 @@ import { STAT_TOOLS } from '../src/data/statistics/index.ts';
 import { CHEM_TOOLS } from '../src/data/chemistry/index.ts';
 import { PHYS_TOOLS } from '../src/data/physics/index.ts';
 import { HOME_TOOLS } from '../src/data/home/index.ts';
+import { FIN_TOOLS } from '../src/data/finance/index.ts';
 
 await copyFile(new URL('../dist/sitemap-index.xml', import.meta.url), new URL('../dist/sitemap.xml', import.meta.url));
 console.log('postbuild: dist/sitemap.xml created (copy of sitemap-index.xml)');
@@ -65,6 +66,7 @@ const slugs = [
   ...CHEM_TOOLS.map((t) => `chemistry/${t.slug}`),
   ...PHYS_TOOLS.map((t) => `physics/${t.slug}`),
   ...HOME_TOOLS.map((t) => `home/${t.slug}`),
+  ...FIN_TOOLS.map((t) => `finance/${t.slug}`),
 ].sort();
 await writeFile(new URL('../api/tools-allowlist.json', import.meta.url), JSON.stringify(slugs, null, 2) + '\n');
 console.log(`postbuild: api/tools-allowlist.json regenerated (${slugs.length} tools)`);

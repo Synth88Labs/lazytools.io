@@ -27,6 +27,7 @@ import { STAT_TOOLS } from '../data/statistics/index';
 import { CHEM_TOOLS } from '../data/chemistry/index';
 import { PHYS_TOOLS } from '../data/physics/index';
 import { HOME_TOOLS } from '../data/home/index';
+import { FIN_TOOLS } from '../data/finance/index';
 
 export interface SearchUnit {
   id: string;
@@ -227,6 +228,9 @@ export function buildSearchPages(): SearchPage[] {
   for (const t of HOME_TOOLS) {
     pages.push({ title: t.name, url: `/home/${t.slug}/`, keywords: [...t.keywords, 'home', 'diy', 'home improvement', t.name.toLowerCase()] });
   }
+  for (const t of FIN_TOOLS) {
+    pages.push({ title: t.name, url: `/finance/${t.slug}/`, keywords: [...t.keywords, 'finance', 'money', t.name.toLowerCase()] });
+  }
   for (const t of PDF_TOOLS) {
     pages.push({ title: t.name, url: `/pdf/${t.slug}/`, keywords: [...t.keywords, 'pdf', t.name.toLowerCase()] });
   }
@@ -242,6 +246,7 @@ export function buildSearchPages(): SearchPage[] {
     { title: 'All Chemistry & Lab Tools', url: '/chemistry/', keywords: ['chemistry', 'chem', 'molar mass', 'molecular weight', 'equation balancer', 'balance equation', 'molarity', 'ideal gas', 'pv=nrt', 'specific heat', 'ph', 'percent composition', 'stoichiometry'] },
     { title: 'All Physics Calculators', url: '/physics/', keywords: ['physics', 'suvat', 'kinematics', 'projectile motion', 'newtons second law', 'f=ma', 'kinetic energy', 'potential energy', 'momentum', 'ohms law', 'wavelength', 'snells law', 'gravitation', 'e=mc2', 'free fall', 'work power'] },
     { title: 'All Home & DIY Calculators', url: '/home/', keywords: ['home', 'diy', 'home improvement', 'paint calculator', 'tile calculator', 'flooring', 'concrete calculator', 'mulch', 'soil', 'wallpaper', 'material estimator'] },
+    { title: 'All Finance Calculators', url: '/finance/', keywords: ['finance', 'money', 'compound interest', 'debt payoff', 'snowball', 'avalanche', 'savings goal', 'loan payoff', 'credit card payoff', 'cagr', 'roi', 'rule of 72', 'break even', 'apr apy', 'investment calculator'] },
     { title: 'All PDF Tools', url: '/pdf/', keywords: ['pdf tools', 'merge pdf', 'split pdf', 'rotate pdf'] },
     { title: 'All Audio Tools', url: '/video/', keywords: ['audio tools', 'trim audio', 'mp3', 'wav', 'volume'] },
     { title: 'All Developer Tools', url: '/dev/', keywords: ['developer tools', 'dev', 'encode', 'decode', 'hash', 'regex'] },
