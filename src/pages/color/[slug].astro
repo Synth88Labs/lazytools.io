@@ -17,6 +17,9 @@ import ApcaTool from '../../components/color/ApcaTool.tsx';
 import ContrastGridTool from '../../components/color/ContrastGridTool.tsx';
 import CvdTool from '../../components/color/CvdTool.tsx';
 import HarmonyTool from '../../components/color/HarmonyTool.tsx';
+import ImagePickerTool from '../../components/color/ImagePickerTool.tsx';
+import ColorNameTool from '../../components/color/ColorNameTool.tsx';
+import OklchScaleTool from '../../components/color/OklchScaleTool.tsx';
 import { COLOR_TOOLS, type ColorToolDef } from '../../data/color/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -75,6 +78,9 @@ const schema = [
       {tool.widget === 'grid' && <ContrastGridTool client:load />}
       {tool.widget === 'cvd' && <CvdTool client:load initialType={tool.cvdType ?? 'deuteranopia'} />}
       {tool.widget === 'harmony' && <HarmonyTool client:load preset={tool.harmonyPreset ?? 'all'} />}
+      {tool.widget === 'imagepicker' && <ImagePickerTool client:load />}
+      {tool.widget === 'colorname' && <ColorNameTool client:load />}
+      {tool.widget === 'oklchscale' && <OklchScaleTool client:load />}
     </div>
 
     <div class="mt-4">

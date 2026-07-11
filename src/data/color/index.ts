@@ -9,7 +9,8 @@ export interface ColorToolDef {
   /** which widget the page renders */
   widget:
     | 'converter' | 'contrast' | 'shades' | 'gradient' | 'mixer' | 'brands'
-    | 'oklch' | 'accessible' | 'apca' | 'grid' | 'cvd' | 'harmony';
+    | 'oklch' | 'accessible' | 'apca' | 'grid' | 'cvd' | 'harmony'
+    | 'imagepicker' | 'colorname' | 'oklchscale';
   /** preset input mode for the converter widget */
   presetInput?: 'hex' | 'rgb';
   /** default direction label for the OKLCH converter satellites */
@@ -474,6 +475,65 @@ export const COLOR_TOOLS: ColorToolDef[] = [
       { q: 'Is my color uploaded?', a: 'No — the computation runs in your browser.' },
     ],
     keywords: ['analogous colors', 'analogous color scheme', 'analogous color generator', 'neighbouring colors', 'analogous palette'],
+  },
+
+  // ---------- Image picker + palette, name finder, OKLCH scale ----------
+  {
+    slug: 'image-color-picker',
+    name: 'Image Color Picker & Palette Extractor',
+    icon: '🖼️',
+    description:
+      'Pick any color from an image and extract its dominant palette — HEX, RGB, HSL — plus a screen eyedropper where supported. On-device, nothing uploaded.',
+    lead: 'Upload an image, click any pixel to read its exact HEX/RGB/HSL, and get the dominant 6-color palette — all processed on your device.',
+    widget: 'imagepicker',
+    how: 'The image is drawn to a canvas in your browser. Clicking reads the exact pixel color; the dominant palette is found by median-cut quantization over sampled pixels (recursively splitting the color box with the widest channel range, then averaging each box). Where the browser supports the EyeDropper API, you can also sample any pixel on your whole screen, not just the image.',
+    note: 'Two jobs in one page: pick a single color, or pull a whole palette. Because it runs on a canvas in your browser, the image — a screenshot, a mockup, a photo — is never uploaded.',
+    faqs: [
+      { q: 'How do I pick a color from an image?', a: 'Upload the image and click the pixel you want; the tool reads its exact color and shows the HEX, RGB and HSL, with one-click copy. Everything happens in your browser.' },
+      { q: 'How does palette extraction work?', a: 'It uses median-cut quantization: the sampled pixels are repeatedly split along their widest color channel into boxes, and each final box is averaged into one representative color — giving the image\'s dominant palette (6 colors).' },
+      { q: 'Can I pick a color from anywhere on my screen?', a: 'Yes, in browsers that support the EyeDropper API (Chrome and Edge). The "Pick from screen" button lets you sample any pixel on your display; other browsers can still pick from an uploaded image.' },
+      { q: 'Is my image uploaded?', a: 'No — the image is processed on a canvas in your browser and never sent to a server, which matters for unreleased designs and private photos.' },
+      { q: 'What formats work?', a: 'Any image your browser can display — JPG, PNG, WebP, GIF and usually AVIF. Very large images are scaled down for picking, which does not affect the colors.' },
+    ],
+    keywords: ['image color picker', 'color picker from image', 'palette from image', 'extract colors from image', 'eyedropper', 'get color from photo', 'dominant colors'],
+  },
+  {
+    slug: 'color-name-finder',
+    name: 'Color Name Finder',
+    icon: '🏷️',
+    description:
+      'Find the nearest CSS color name for any HEX, RGB or HSL color — by exact CIEDE2000 perceptual distance, with the closest alternatives. Free, in-browser.',
+    lead: 'Enter a color and get its nearest CSS color name — measured by CIEDE2000 perceptual distance — plus the next closest matches.',
+    widget: 'colorname',
+    how: 'Your color and each of the standard CSS Color 4 named colors are converted to CIELAB, then compared with the CIEDE2000 (ΔE00) formula — the industry-standard perceptual color-difference metric. The name with the smallest ΔE is the closest; a ΔE under 1 is an exact match and under ~2.3 is barely distinguishable to the eye.',
+    note: 'This is a measurement, not a guess: nearest-of-N by CIEDE2000 is exactly the kind of thing a chatbot gets wrong (it will name a plausible-but-not-nearest color). The set is the frozen, canonical CSS named-color list — no drifting 30,000-name database to maintain.',
+    faqs: [
+      { q: 'How do I find the name of a color?', a: 'Enter the HEX, RGB or HSL value; the tool measures the perceptual distance (CIEDE2000) from your color to every CSS named color and returns the closest one, plus other near matches.' },
+      { q: 'What is ΔE (CIEDE2000)?', a: 'ΔE is the perceptual distance between two colors in CIELAB space; CIEDE2000 is the refined, industry-standard formula. A ΔE of 0 is identical, under ~1 is indistinguishable, and under ~2.3 is a "just noticeable difference".' },
+      { q: 'Which color names does it use?', a: 'The canonical CSS Color Module Level 4 named colors (the <named-color> keywords like "dodgerblue", "tomato", "rebeccapurple"), one entry per distinct name. It is a fixed, standard list, so results are stable.' },
+      { q: 'Why not match against thousands of names?', a: 'Huge community name lists drift and disagree, which is a maintenance and accuracy liability. Matching the frozen, standard CSS set gives reproducible, citable results that map directly to what you can write in CSS.' },
+      { q: 'Is the nearest name always exact?', a: 'Only if your color happens to equal a named color (ΔE 0). Otherwise it is the closest of the standard set — the ΔE shown tells you how close. Use the HEX for the exact color.' },
+    ],
+    keywords: ['color name finder', 'what color is this hex', 'nearest color name', 'hex to color name', 'name a color', 'css color name'],
+  },
+  {
+    slug: 'tailwind-color-generator',
+    name: 'Tailwind Color Scale Generator (OKLCH)',
+    icon: '🪜',
+    description:
+      'Generate a Tailwind-style 50–950 color scale from any base color using a perceptual OKLCH lightness ramp, with @theme and JS-config export. Free, in-browser.',
+    lead: 'Turn one base color into a full 50–950 shade scale with an even, perceptual OKLCH lightness ramp — copy it straight into Tailwind 4 @theme or a JS config.',
+    widget: 'oklchscale',
+    how: 'The base color is converted to OKLCH, then eleven steps (50–950) are generated by setting each step to a target perceptual lightness while keeping the hue and easing chroma down at the light and dark extremes (so the palest and darkest shades do not look garish). Each step is gamut-mapped back to an sRGB HEX. Because the ramp is even in OKLCH lightness, the steps look evenly spaced — which a naive white/black mix does not achieve.',
+    note: 'Unlike a simple tint/shade tool that mixes toward white and black in sRGB, this ramps lightness in OKLCH, so a 500 reads as the same weight across every hue — the reason Tailwind CSS 4 uses OKLCH for its default palette. Exports both a Tailwind 4 @theme block (OKLCH) and a HEX JS config.',
+    faqs: [
+      { q: 'How do I make a Tailwind color scale?', a: 'Enter your brand color and a name; the tool produces the 50–950 steps by ramping perceptual lightness in OKLCH around your color, and gives you a @theme block and a JS config to paste into Tailwind.' },
+      { q: 'Why OKLCH instead of lightening/darkening in HEX?', a: 'OKLCH lightness is perceptually uniform, so equal steps look equal and a "500" is the same visual weight across hues. Mixing toward white/black in sRGB produces uneven, sometimes muddy steps — which is why Tailwind 4 switched to OKLCH.' },
+      { q: 'What are the 50–950 numbers?', a: 'They are Tailwind\'s shade steps, from the lightest (50) to the darkest (950), with 500 as the mid-tone. This tool maps your base color to that ladder so it drops into a Tailwind theme.' },
+      { q: 'Can I export to Tailwind 4?', a: 'Yes — copy the @theme block, which defines --color-<name>-<step> custom properties in OKLCH (Tailwind 4\'s native format). A HEX JS-config object is also provided for older setups.' },
+      { q: 'Are the colors always in gamut?', a: 'Yes — any step that would fall outside sRGB is chroma-mapped (keeping lightness and hue) to the nearest displayable HEX, so every swatch renders correctly.' },
+    ],
+    keywords: ['tailwind color generator', 'tailwind color scale', 'oklch color scale', 'color shades 50 950', 'tailwind palette generator', 'color scale generator'],
   },
 ];
 

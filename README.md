@@ -31,7 +31,7 @@ are no processing servers. The tool code downloads to *your* device and runs the
 yourself: open DevTools, watch the network tab, or switch off your connection mid-use — everything keeps
 working.
 
-## What's live — 21 categories, 435+ tools, ~533 pages
+## What's live — 21 categories, 440+ tools, ~537 pages
 
 | Category | Highlights |
 |---|---|
@@ -42,7 +42,7 @@ working.
 | [Statistics](https://lazytools.io/statistics/) | **6 tools** — **normal distribution** (z↔p, shaded bell curve via exact erf), **binomial probability** (BigInt-exact coefficients), **confidence intervals** (mean z/t + proportion), **sample size**, **p-value** (z/t/χ²/F, one/two-tailed), **linear regression & correlation** (least-squares + scatter plot, r, r²) |
 | [Size Converters](https://lazytools.io/size/) | ring, shoe, bra, clothing, hat sizes across systems |
 | [Text Tools](https://lazytools.io/text/) | **19 tools** — "the invisible & exact layer of text": **invisible-character detector** (AI-watermark / zero-width), **homoglyph/lookalike detector**, **text diff** (LCS), **readability** (Flesch/FK/Fog/SMOG/CLI/ARI), **Unicode inspector**, word frequency, text cleaner (em-dash/smart-quote), Unicode normalizer, plus counters, case, sort, dedupe, find & replace |
-| [Color Tools](https://lazytools.io/color/) | HEX/RGB/HSL/CMYK, **OKLCH/OKLAB/LAB converter** (CSS Color 4 + gamut-mapped HEX fallback), WCAG contrast + **accessible-color fixer**, **APCA (WCAG 3) checker**, **contrast grid**, **color-blindness simulator** (Machado 2009, image + palette), **harmony generator**, **brand color finder (1,100+ palettes)** |
+| [Color Tools](https://lazytools.io/color/) | HEX/RGB/HSL/CMYK, **OKLCH/OKLAB/LAB converter** (CSS Color 4 + gamut-mapped HEX fallback), WCAG contrast + **accessible-color fixer**, **APCA (WCAG 3) checker**, **contrast grid**, **color-blindness simulator** (Machado 2009, image + palette), **harmony generator**, **image color picker + palette extractor** (median-cut, EyeDropper API), **nearest color-name finder** (CIEDE2000), **Tailwind OKLCH scale generator**, **brand color finder (1,100+ palettes)** |
 | [File & Data](https://lazytools.io/file/) | CSV/JSON/XML/YAML, Markdown, **e-invoicing viewers: Factur-X (FR), KSeF FA(3) (PL), Peppol BIS (BE), XRechnung/ZUGFeRD (DE)** |
 | [Developer Tools](https://lazytools.io/dev/) | Base64, hashes, JWT, regex, **LLM token counter (exact o200k)**, **Ethereum unit converter** (BigInt-exact wei⇄ether), **Keccak-256/SHA-3 + function selector**, **EIP-55 address checksum** |
 | [Network & IT](https://lazytools.io/network/) | IPv4/IPv6 subnet calculators (exact 128-bit), CIDR, chmod, cron parser, MAC/EUI-64 |
@@ -67,7 +67,7 @@ Polish and Belgian e-invoicing mandates.
 ```bash
 npm install
 npm run dev      # dev server at localhost:4321
-npm run build    # static site → dist/ (~533 pages)
+npm run build    # static site → dist/ (~537 pages)
 ```
 
 ## Tech & models
