@@ -7,6 +7,13 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'dog-age-guide',
+    kicker: 'PETS GUIDE',
+    lines: ['How old is my dog', 'in human years?', 'The 7× myth, busted'],
+    fact: 'human age ≈ 16 × ln(dog age) + 31',
+    icon: '🐕',
+  },
+  {
     slug: 'runners-math-guide',
     kicker: 'FITNESS GUIDE',
     lines: ["The runner's math:", 'pace, race times', '& heart-rate zones'],

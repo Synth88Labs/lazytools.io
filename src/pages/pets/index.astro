@@ -1,0 +1,57 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PrivacyStrip from '../../components/PrivacyStrip.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { PET_TOOLS } from '../../data/pets/index';
+import { breadcrumbSchema, collectionPageSchema, faqSchema } from '../../lib/schema';
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Pets & Animals', url: '/pets/' },
+];
+const faqs = [
+  { q: 'Are these pet calculators accurate?', a: 'They use established veterinary formulas and reference data — the 2020 epigenetic dog-age study, the AAHA/AAFP cat chart, the RER/MER energy equations, and Merck gestation periods — each cited on its tool page. They give population-level estimates, not a diagnosis; your vet\'s advice and your pet\'s body condition always come first.' },
+  { q: 'Is this veterinary advice?', a: 'No. These are informational tools for planning and understanding. For health decisions — feeding, weight, pregnancy or unusual changes in drinking — consult your veterinarian.' },
+  { q: 'Is my data uploaded?', a: 'No. Every tool runs entirely in your browser — nothing is sent to a server, and they work offline.' },
+];
+const schema = [
+  breadcrumbSchema(crumbs),
+  collectionPageSchema({ name: 'Pets & Animals Calculators', url: '/pets/', description: 'Free, private pet calculators: dog age, cat age, dog and cat food portions, pet gestation due dates, aquarium volume, pet water intake and dog crate size.', items: PET_TOOLS.map((t) => ({ name: t.name, url: `/pets/${t.slug}/` })) }),
+  faqSchema(faqs),
+];
+---
+
+<Base
+  title="Pets & Animals Calculators — Dog Age, Cat Age, Feeding | LazyTools"
+  description="Free pet calculators that run in your browser: dog age (dog years to human years), cat age, dog and cat food portions (RER/MER), pet gestation due dates, aquarium volume, pet water intake and dog crate size. Vet-sourced formulas, no upload."
+  schema={schema}
+>
+  <div class="mx-auto max-w-5xl px-4 py-6">
+    <Breadcrumbs items={crumbs} />
+    <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Pets & Animals Calculators</h1>
+    <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
+      Understand and care for your pets — convert dog and cat ages to human years, work out how much to feed,
+      plan a due date, size an aquarium or a crate, and check healthy water intake. Every tool uses a
+      vet-sourced formula and runs entirely in your browser.
+    </p>
+
+    <div class="mt-5"><PrivacyStrip /></div>
+
+    <section class="mt-8">
+      <ul class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {PET_TOOLS.map((t) => (
+          <li>
+            <a href={`/pets/${t.slug}/`} class="flex h-full flex-col rounded-xl border border-slate-200 p-4 transition hover:border-brand-400 hover:shadow-sm">
+              <span class="text-2xl" aria-hidden="true">{t.icon}</span>
+              <span class="mt-2 font-semibold text-slate-900">{t.name}</span>
+              <span class="mt-1 text-sm text-slate-600">{t.lead.split('—')[0].split('(')[0]}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <FaqSection faqs={faqs} />
+  </div>
+</Base>

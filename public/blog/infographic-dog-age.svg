@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="A chart comparing two ways to convert dog age to human years, for dog ages 0 to 14. The old 'multiply by 7' rule is a straight line reaching 98 human years at 14 dog years. The 2020 epigenetic formula, human age = 16 times the natural log of dog age plus 31, is a curve that rises steeply early — a 1-year-old dog is about 31 human years, a 2-year-old about 42 — then flattens, reaching about 73 by 14 dog years. Dogs mature fast then age slowly, which the straight 7-times line misses at both ends.">
+  <defs>
+    <style>
+      .h { font: 800 28px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .sub { font: 500 15px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+      .ax { font: 600 13px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #94a3b8; }
+      .lg { font: 700 15px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; }
+      .an { font: 600 13px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #475569; }
+    </style>
+  </defs>
+
+  <text x="600" y="40" text-anchor="middle" class="h">How dogs really age — the "×7" myth vs the science</text>
+  <text x="600" y="66" text-anchor="middle" class="sub">human-year equivalent for a dog aged 0–14 years</text>
+
+  <!-- axes -->
+  <line x1="80" y1="560" x2="1120" y2="560" stroke="#cbd5e1" stroke-width="2"/>
+  <line x1="80" y1="100" x2="80" y2="560" stroke="#cbd5e1" stroke-width="2"/>
+  <!-- y gridlines/labels every 20 -->
+  <g class="ax" text-anchor="end">
+    <line x1="80" y1="468" x2="1120" y2="468" stroke="#eef2f7"/><text x="70" y="473">20</text>
+    <line x1="80" y1="376" x2="1120" y2="376" stroke="#eef2f7"/><text x="70" y="381">40</text>
+    <line x1="80" y1="284" x2="1120" y2="284" stroke="#eef2f7"/><text x="70" y="289">60</text>
+    <line x1="80" y1="192" x2="1120" y2="192" stroke="#eef2f7"/><text x="70" y="197">80</text>
+    <text x="70" y="565">0</text>
+  </g>
+  <!-- x labels -->
+  <g class="ax" text-anchor="middle">
+    <text x="154" y="582">1</text><text x="303" y="582">3</text><text x="525" y="582">6</text><text x="748" y="582">9</text><text x="971" y="582">12</text><text x="1120" y="582">14</text>
+    <text x="600" y="608" class="an">dog age (years)</text>
+  </g>
+  <text x="30" y="330" class="an" transform="rotate(-90 30 330)" text-anchor="middle">human years</text>
+
+  <!-- ×7 line -->
+  <line x1="80" y1="560" x2="1120" y2="109" stroke="#f59e0b" stroke-width="3" stroke-dasharray="7 5"/>
+  <!-- epigenetic curve -->
+  <polyline fill="none" stroke="#1d4ed8" stroke-width="4" stroke-linejoin="round"
+    points="154,417 228,367 303,336 377,315 451,300 525,285 599,272 674,264 748,256 822,248 897,241 971,234 1045,228 1120,223"/>
+
+  <!-- key points on curve -->
+  <circle cx="154" cy="417" r="6" fill="#1d4ed8"/><text x="164" y="410" class="an">1 yr ≈ 31</text>
+  <circle cx="228" cy="367" r="6" fill="#1d4ed8"/><text x="238" y="360" class="an">2 yr ≈ 42</text>
+  <circle cx="1120" cy="223" r="6" fill="#1d4ed8"/>
+
+  <!-- legend -->
+  <g transform="translate(120 120)">
+    <line x1="0" y1="0" x2="34" y2="0" stroke="#f59e0b" stroke-width="3" stroke-dasharray="7 5"/>
+    <text x="42" y="5" class="lg" fill="#b45309">"multiply by 7" (the myth)</text>
+    <line x1="0" y1="28" x2="34" y2="28" stroke="#1d4ed8" stroke-width="4"/>
+    <text x="42" y="33" class="lg" fill="#1d4ed8">16 × ln(age) + 31 (2020 study)</text>
+  </g>
+
+  <!-- footer -->
+  <g transform="translate(80 452)">
+    <rect x="720" y="70" width="320" height="60" rx="12" fill="#eff6ff" stroke="#1d4ed8"/>
+    <text x="880" y="95" text-anchor="middle" class="an" font-weight="800" fill="#1d4ed8">Dogs mature fast, then age slowly</text>
+    <text x="880" y="116" text-anchor="middle" class="an">— the straight line misses both ends</text>
+  </g>
+</svg>
