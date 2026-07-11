@@ -7,6 +7,13 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'roofing-squares-guide',
+    kicker: 'HOME & DIY GUIDE',
+    lines: ['How many shingles?', 'Roofing squares', '& pitch explained'],
+    fact: '1 square = 100 sq ft ≈ 3 bundles',
+    icon: '🏠',
+  },
+  {
     slug: 'estimating-materials-guide',
     kicker: 'HOME & DIY GUIDE',
     lines: ['How much do I need?', 'Estimating paint,', 'tile, concrete & mulch'],

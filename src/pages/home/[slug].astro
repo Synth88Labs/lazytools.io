@@ -10,6 +10,13 @@ import TileCalculator from '../../components/home/TileCalculator.tsx';
 import ConcreteCalculator from '../../components/home/ConcreteCalculator.tsx';
 import MulchCalculator from '../../components/home/MulchCalculator.tsx';
 import WallpaperCalculator from '../../components/home/WallpaperCalculator.tsx';
+import GravelCalculator from '../../components/home/GravelCalculator.tsx';
+import DrywallCalculator from '../../components/home/DrywallCalculator.tsx';
+import RoofingCalculator from '../../components/home/RoofingCalculator.tsx';
+import LawnCalculator from '../../components/home/LawnCalculator.tsx';
+import FenceCalculator from '../../components/home/FenceCalculator.tsx';
+import DeckCalculator from '../../components/home/DeckCalculator.tsx';
+import BoardFootCalculator from '../../components/home/BoardFootCalculator.tsx';
 import { HOME_TOOLS, type HomeToolDef } from '../../data/home/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -61,6 +68,13 @@ const schema = [
       {tool.widget === 'concrete' && <ConcreteCalculator client:load />}
       {tool.widget === 'mulch' && <MulchCalculator client:load />}
       {tool.widget === 'wallpaper' && <WallpaperCalculator client:load />}
+      {tool.widget === 'gravel' && <GravelCalculator client:load />}
+      {tool.widget === 'drywall' && <DrywallCalculator client:load />}
+      {tool.widget === 'roofing' && <RoofingCalculator client:load />}
+      {tool.widget === 'lawn' && <LawnCalculator client:load />}
+      {tool.widget === 'fence' && <FenceCalculator client:load />}
+      {tool.widget === 'deck' && <DeckCalculator client:load />}
+      {tool.widget === 'boardfoot' && <BoardFootCalculator client:load />}
     </div>
 
     <div class="mt-4">
