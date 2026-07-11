@@ -7,6 +7,13 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'oxidation-numbers-guide',
+    kicker: 'CHEMISTRY GUIDE',
+    lines: ['Oxidation numbers:', 'the rules and how', 'to assign them'],
+    fact: 'KMnO₄ → Mn = +7 (by charge balance)',
+    icon: '🔢',
+  },
+  {
     slug: 'reading-periodic-table-guide',
     kicker: 'CHEMISTRY GUIDE',
     lines: ['How to read the', 'periodic table:', 'groups, periods, trends'],

@@ -9,7 +9,7 @@ export interface ChemToolDef {
     | 'stoich' | 'mole' | 'empirical' | 'dilution' | 'yield' | 'density'
     | 'henderson' | 'beerlambert' | 'gaslaw' | 'halflife'
     | 'gibbs' | 'nernst' | 'arrhenius' | 'freezing' | 'boiling' | 'ppm' | 'percenterror'
-    | 'periodic' | 'econfig';
+    | 'periodic' | 'econfig' | 'compare' | 'isotope' | 'oxidation';
   /** molar-mass satellites: default view */
   view?: 'mass' | 'percent';
   description: string;
@@ -538,6 +538,60 @@ CHEM_TOOLS.unshift(
       { q: 'What is noble-gas shorthand?', a: 'Replacing the inner electrons with the previous noble gas in brackets — e.g. [Ar] for argon’s 18 electrons — so iron is [Ar]3d⁶4s² instead of the full string.' },
     ],
     keywords: ['electron configuration calculator', 'electron configuration', 'aufbau principle', 'electrons per shell', 'noble gas configuration', 'orbital filling'],
+  },
+  {
+    slug: 'element-comparison',
+    name: 'Element Comparison Tool',
+    icon: '⚖️',
+    widget: 'compare',
+    description: 'Compare up to five chemical elements side by side — atomic mass, category, electron configuration, melting/boiling points, density, electronegativity and more. Free, in-browser.',
+    lead: 'Pick two to five elements and see their properties lined up in one table — mass, category, configuration, melting and boiling points, density, electronegativity and radius.',
+    how: 'Choose the elements you want to compare and the tool builds a side-by-side table of their key properties from the periodic-table dataset — atomic number and mass, category, group and period, electron configuration, phase, melting and boiling points (in K and °C), density, electronegativity, atomic radius and discovery year.',
+    note: 'Great for spotting periodic trends — line up elements down a group or across a period and watch electronegativity, radius or melting point change. All data ships with the page.',
+    faqs: [
+      { q: 'How do I compare two elements?', a: 'Add each element by name or symbol and the tool shows their properties in adjacent columns, so you can read off the differences in mass, electronegativity, melting point and more at a glance.' },
+      { q: 'How many elements can I compare?', a: 'Up to five at once — enough to compare a whole group or a stretch of a period.' },
+      { q: 'What properties are shown?', a: 'Atomic number and mass, category, group and period, electron configuration, phase, melting and boiling points, density, electronegativity, atomic radius and discovery year.' },
+      { q: 'Can I see periodic trends this way?', a: 'Yes — compare elements down a group (e.g. Li, Na, K) to see reactivity and radius grow, or across a period to see electronegativity rise.' },
+      { q: 'Where does the data come from?', a: 'IUPAC standard atomic weights and widely cited physical properties (CRC/PubChem). It runs entirely in your browser.' },
+    ],
+    keywords: ['element comparison', 'compare elements', 'element properties comparison', 'periodic table comparison', 'compare chemical elements'],
+  },
+  {
+    slug: 'average-atomic-mass-calculator',
+    name: 'Average Atomic Mass Calculator',
+    icon: '🧮',
+    widget: 'isotope',
+    description: 'Calculate the average atomic mass of an element from its isotopes’ masses and natural abundances. Exact weighted average, in-browser.',
+    lead: 'Enter each isotope’s mass and percent abundance to get the element’s average atomic mass — the weighted average that appears on the periodic table.',
+    how: 'An element’s average atomic mass is the abundance-weighted mean of its isotopes: Σ (isotope mass × fractional abundance). Enter each isotope’s mass (in u) and its natural abundance (%), and the tool sums the contributions. The abundances should total 100%.',
+    note: 'This is why atomic masses on the periodic table are not whole numbers — chlorine’s 35.45 comes from ~76% chlorine-35 and ~24% chlorine-37. The tool flags if your abundances don’t add up to 100%.',
+    faqs: [
+      { q: 'How do I calculate average atomic mass?', a: 'Multiply each isotope’s mass by its fractional abundance (percent ÷ 100) and add them up. For chlorine: 34.969 × 0.7577 + 36.966 × 0.2423 ≈ 35.45 u.' },
+      { q: 'Why isn’t atomic mass a whole number?', a: 'Because it is a weighted average over an element’s naturally occurring isotopes, which have different masses. Only a single isotope would give a near-whole number.' },
+      { q: 'What units are isotope masses in?', a: 'Atomic mass units (u, also called daltons). Each isotope’s mass is close to its mass number but not exactly, due to nuclear binding energy.' },
+      { q: 'Do the abundances have to add to 100%?', a: 'Yes — natural abundances are fractions of the whole, so they should total 100%. The tool warns you if they don’t.' },
+      { q: 'What is the difference between mass number and atomic mass?', a: 'Mass number is the whole-number count of protons + neutrons in one isotope; average atomic mass is the weighted average over all isotopes, which is what the periodic table lists.' },
+    ],
+    keywords: ['average atomic mass calculator', 'atomic mass from isotopes', 'isotope abundance calculator', 'weighted average atomic mass', 'relative atomic mass'],
+  },
+  {
+    slug: 'oxidation-number-calculator',
+    name: 'Oxidation Number Calculator',
+    icon: '🔢',
+    widget: 'oxidation',
+    description: 'Find the oxidation number of each element in a compound — standard rules assign the known elements and the tool solves the rest by charge balance. Free, in-browser.',
+    lead: 'Enter a formula and get the oxidation number of every element — the tool applies the standard rules and solves the unknown by balancing to the overall charge.',
+    how: 'The tool parses the formula and assigns oxidation states by the standard rules (group 1 = +1, group 2 = +2, fluorine = −1, oxygen = −2, hydrogen = +1, and so on). The remaining element is found by requiring the oxidation numbers to sum to the overall charge (0 for a neutral compound). For KMnO₄, K = +1 and O = −2 fix everything but manganese, which solves to +7.',
+    note: 'This handles the common textbook cases exactly. Watch the well-known exceptions — peroxides (O = −1), metal hydrides (H = −1) and oxygen–fluorine compounds — where the default rules don’t apply.',
+    faqs: [
+      { q: 'How do I find the oxidation number of an element?', a: 'Assign the elements with fixed rules (group 1 = +1, O = −2, H = +1, etc.), then solve the remaining one so all the oxidation numbers sum to the overall charge. In KMnO₄, +1 + Mn + 4(−2) = 0 gives Mn = +7.' },
+      { q: 'What are the oxidation number rules?', a: 'Free elements are 0; group 1 metals +1; group 2 +2; fluorine −1; oxygen usually −2; hydrogen usually +1; and the sum of oxidation numbers equals the ion’s charge (0 for a neutral compound).' },
+      { q: 'Can it handle polyatomic ions?', a: 'Yes — enter the formula and set the overall charge (e.g. −1 for a nitrate-like ion). The balance then solves for the central atom.' },
+      { q: 'What are the main exceptions?', a: 'Peroxides give oxygen −1 (as in H₂O₂), metal hydrides give hydrogen −1 (as in NaH), and in OF₂ oxygen is +2. The tool uses the default rules, so treat these cases specially.' },
+      { q: 'Why can’t some formulas be solved?', a: 'If two or more elements lack a fixed rule, the oxidation states aren’t uniquely determined by rules alone, and you need additional chemistry (like known ion charges) to assign them.' },
+    ],
+    keywords: ['oxidation number calculator', 'oxidation state calculator', 'find oxidation number', 'oxidation number of', 'oxidation states rules', 'redox oxidation number'],
   },
 );
 

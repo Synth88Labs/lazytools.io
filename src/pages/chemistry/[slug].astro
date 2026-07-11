@@ -30,6 +30,9 @@ import PpmTool from '../../components/chemistry/PpmTool.tsx';
 import PercentErrorTool from '../../components/chemistry/PercentErrorTool.tsx';
 import PeriodicTableTool from '../../components/chemistry/PeriodicTableTool.tsx';
 import ElectronConfigTool from '../../components/chemistry/ElectronConfigTool.tsx';
+import ElementComparisonTool from '../../components/chemistry/ElementComparisonTool.tsx';
+import AverageAtomicMassTool from '../../components/chemistry/AverageAtomicMassTool.tsx';
+import OxidationNumberTool from '../../components/chemistry/OxidationNumberTool.tsx';
 import { CHEM_TOOLS, type ChemToolDef } from '../../data/chemistry/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -101,6 +104,9 @@ const schema = [
       {tool.widget === 'percenterror' && <PercentErrorTool client:load />}
       {tool.widget === 'periodic' && <PeriodicTableTool client:load />}
       {tool.widget === 'econfig' && <ElectronConfigTool client:load />}
+      {tool.widget === 'compare' && <ElementComparisonTool client:load />}
+      {tool.widget === 'isotope' && <AverageAtomicMassTool client:load />}
+      {tool.widget === 'oxidation' && <OxidationNumberTool client:load />}
     </div>
 
     <div class="mt-4">

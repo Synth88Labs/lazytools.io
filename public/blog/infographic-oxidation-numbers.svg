@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="How to assign oxidation numbers. The rules in order of priority: a free element is 0; a monatomic ion equals its charge; group 1 metals are plus 1; group 2 metals are plus 2; fluorine is minus 1; hydrogen is usually plus 1; oxygen is usually minus 2; and the oxidation numbers must sum to the overall charge, which is 0 for a neutral compound. Worked example for KMnO4: potassium is plus 1, four oxygens are minus 2 each giving minus 8, so plus 1 plus manganese minus 8 equals 0, which means manganese is plus 7. Exceptions: peroxides give oxygen minus 1, metal hydrides give hydrogen minus 1.">
+  <defs>
+    <style>
+      .h { font: 800 30px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .sub { font: 500 15px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+      .lab { font: 800 17px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .rule { font: 700 15px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #1d4ed8; }
+      .mono { font: 700 16px Consolas, Menlo, monospace; fill: #0f172a; }
+      .big { font: 800 26px Consolas, Menlo, monospace; fill: #1d4ed8; }
+    </style>
+  </defs>
+
+  <text x="600" y="42" text-anchor="middle" class="h">Assigning oxidation numbers</text>
+  <text x="600" y="70" text-anchor="middle" class="sub">apply the rules in priority order, then solve the rest by charge balance</text>
+
+  <!-- rules -->
+  <g transform="translate(70 96)">
+    <rect x="0" y="0" width="520" height="300" rx="14" fill="#eef2ff" stroke="#c7d2fe" stroke-width="2"/>
+    <text x="24" y="36" class="lab">The rules (top wins)</text>
+    <text x="24" y="72" class="rule">1 · Free element = 0</text>
+    <text x="24" y="100" class="rule">2 · Monatomic ion = its charge</text>
+    <text x="24" y="128" class="rule">3 · Group 1 = +1 · Group 2 = +2</text>
+    <text x="24" y="156" class="rule">4 · Fluorine = −1</text>
+    <text x="24" y="184" class="rule">5 · Hydrogen = +1 (usually)</text>
+    <text x="24" y="212" class="rule">6 · Oxygen = −2 (usually)</text>
+    <text x="24" y="240" class="rule">7 · Sum = overall charge</text>
+    <text x="24" y="268" class="rule">     (0 for a neutral compound)</text>
+  </g>
+
+  <!-- worked example -->
+  <g transform="translate(610 96)">
+    <rect x="0" y="0" width="520" height="200" rx="14" fill="#f0fdf4" stroke="#86efac" stroke-width="2"/>
+    <text x="24" y="36" class="lab" fill="#15803d">Worked example — KMnO₄</text>
+    <text x="24" y="74" class="mono">K = +1   O = −2 (×4 = −8)</text>
+    <text x="24" y="108" class="mono">+1 + Mn + (−8) = 0</text>
+    <text x="24" y="150" class="big">→ Mn = +7</text>
+    <text x="24" y="182" class="sub">the one unknown falls out of the balance</text>
+  </g>
+
+  <!-- exceptions -->
+  <g transform="translate(610 316)">
+    <rect x="0" y="0" width="520" height="80" rx="14" fill="#fef2f2" stroke="#fecaca" stroke-width="2"/>
+    <text x="24" y="34" class="lab" fill="#b91c1c">Watch the exceptions</text>
+    <text x="24" y="62" class="mono" font-size="14">peroxides O = −1 · metal hydrides H = −1 · OF₂ O = +2</text>
+  </g>
+
+  <!-- footer -->
+  <g transform="translate(70 420)">
+    <rect x="0" y="0" width="1060" height="56" rx="14" fill="#0c2f6b"/>
+    <text x="24" y="35" font-family="Consolas, Menlo, monospace" font-size="15" fill="#7ef0c0">lazytools.io — oxidation-number, element-comparison &amp; periodic-table tools, in your browser</text>
+  </g>
+</svg>
