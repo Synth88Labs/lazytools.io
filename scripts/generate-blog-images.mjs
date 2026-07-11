@@ -7,6 +7,13 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'tire-size-guide',
+    kicker: 'AUTOMOTIVE GUIDE',
+    lines: ['How to read a', 'tire size:', '225/45R17 decoded'],
+    fact: 'width mm / aspect % · R · rim inches',
+    icon: '🛞',
+  },
+  {
     slug: 'grams-to-cups-guide',
     kicker: 'COOKING GUIDE',
     lines: ['Why a cup of flour', "isn't a cup of sugar:", 'grams vs cups'],

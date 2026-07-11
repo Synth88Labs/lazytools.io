@@ -1,0 +1,58 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PrivacyStrip from '../../components/PrivacyStrip.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { AUTO_TOOLS } from '../../data/automotive/index';
+import { breadcrumbSchema, collectionPageSchema, faqSchema } from '../../lib/schema';
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Automotive', url: '/automotive/' },
+];
+const faqs = [
+  { q: 'Are these automotive calculators accurate?', a: 'Yes — every one uses exact geometry or a definitional unit conversion, not estimates. Tire dimensions come from the standard code formula, horsepower uses the exact HP = torque × RPM ÷ 5252 relationship, and fuel-economy conversions use the precise US and imperial gallon definitions. They’re Node-tested.' },
+  { q: 'Do they handle metric and imperial units?', a: 'Yes. Tire sizes mix millimetres and inches (as the standard does); the displacement tool takes mm or inches; and the fuel-economy converter covers US MPG, UK MPG, L/100km and km/L — correctly accounting for the different US and UK gallons.' },
+  { q: 'Is my data uploaded?', a: 'No. Every tool runs entirely in your browser — nothing is sent to a server, and they work offline.' },
+  { q: 'Can I use these for modifications and fitment?', a: 'They’re a solid starting point for tire, gearing and wheel-fitment maths. Always verify clearances and manufacturer specifications on your actual vehicle before making changes.' },
+];
+const schema = [
+  breadcrumbSchema(crumbs),
+  collectionPageSchema({ name: 'Automotive Calculators', url: '/automotive/', description: 'Free, private automotive calculators: tire size, tire comparison & speedometer error, gear ratio & RPM, engine displacement, compression ratio, horsepower & torque, fuel economy and wheel offset.', items: AUTO_TOOLS.map((t) => ({ name: t.name, url: `/automotive/${t.slug}/` })) }),
+  faqSchema(faqs),
+];
+---
+
+<Base
+  title="Automotive Calculators — Tire Size, Gear Ratio, Horsepower | LazyTools"
+  description="Free automotive calculators that run in your browser: tire size calculator, tire comparison & speedometer error, gear ratio & RPM, engine displacement, compression ratio, horsepower & torque, fuel economy (MPG ↔ L/100km) and wheel offset. Exact, no upload."
+  schema={schema}
+>
+  <div class="mx-auto max-w-5xl px-4 py-6">
+    <Breadcrumbs items={crumbs} />
+    <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Automotive Calculators</h1>
+    <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
+      Decode a tire size, check the speedometer error from a new set of wheels, work out road speed from RPM,
+      size an engine or convert fuel economy between MPG and L/100km. Every tool is exact geometry or a
+      definitional conversion — no estimates — and runs entirely in your browser.
+    </p>
+
+    <div class="mt-5"><PrivacyStrip /></div>
+
+    <section class="mt-8">
+      <ul class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {AUTO_TOOLS.map((t) => (
+          <li>
+            <a href={`/automotive/${t.slug}/`} class="flex h-full flex-col rounded-xl border border-slate-200 p-4 transition hover:border-brand-400 hover:shadow-sm">
+              <span class="text-2xl" aria-hidden="true">{t.icon}</span>
+              <span class="mt-2 font-semibold text-slate-900">{t.name}</span>
+              <span class="mt-1 text-sm text-slate-600">{t.lead.split('—')[0].split('(')[0]}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <FaqSection faqs={faqs} />
+  </div>
+</Base>

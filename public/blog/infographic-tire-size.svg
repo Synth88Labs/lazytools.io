@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="A tire size like 225 slash 45 R 17 decoded. 225 is the section width in millimetres. 45 is the aspect ratio — the sidewall height is 45 percent of the width, so 101 millimetres. R means radial construction. 17 is the wheel rim diameter in inches. The overall diameter equals the rim plus two sidewalls: 17 inches times 25.4 plus 2 times 101 millimetres, about 634 millimetres or 25 inches.">
+  <defs>
+    <style>
+      .h { font: 800 30px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .sub { font: 500 16px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+      .code { font: 800 46px Consolas, Menlo, monospace; }
+      .lab { font: 700 15px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .val { font: 600 13px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+    </style>
+  </defs>
+
+  <text x="600" y="44" text-anchor="middle" class="h">Reading a tire size: 225/45R17</text>
+  <text x="600" y="72" text-anchor="middle" class="sub">four values in one code — three units, one quirky standard</text>
+
+  <!-- the code, spaced -->
+  <g transform="translate(0 150)">
+    <text x="330" y="0" class="code" fill="#1d4ed8">225</text>
+    <text x="470" y="0" class="code" fill="#334155">/</text>
+    <text x="500" y="0" class="code" fill="#0e9f6e">45</text>
+    <text x="600" y="0" class="code" fill="#b45309">R</text>
+    <text x="650" y="0" class="code" fill="#7c3aed">17</text>
+  </g>
+
+  <!-- connectors + labels -->
+  <g>
+    <line x1="375" y1="165" x2="375" y2="215" stroke="#93c5fd" stroke-width="2"/>
+    <rect x="150" y="220" width="240" height="86" rx="10" fill="#eff6ff" stroke="#1d4ed8"/>
+    <text x="270" y="248" text-anchor="middle" class="lab" fill="#1d4ed8">Section width</text>
+    <text x="270" y="272" text-anchor="middle" class="val">225 millimetres</text>
+    <text x="270" y="293" text-anchor="middle" class="val">(tread width)</text>
+
+    <line x1="522" y1="165" x2="522" y2="330" stroke="#6ee7b7" stroke-width="2"/>
+    <rect x="410" y="335" width="240" height="86" rx="10" fill="#f0fdf4" stroke="#0e9f6e"/>
+    <text x="530" y="363" text-anchor="middle" class="lab" fill="#15803d">Aspect ratio</text>
+    <text x="530" y="387" text-anchor="middle" class="val">sidewall = 45% of width</text>
+    <text x="530" y="408" text-anchor="middle" class="val">= 101 mm tall</text>
+
+    <line x1="615" y1="165" x2="615" y2="215" stroke="#fcd34d" stroke-width="2"/>
+    <rect x="655" y="220" width="150" height="86" rx="10" fill="#fffbeb" stroke="#b45309"/>
+    <text x="730" y="248" text-anchor="middle" class="lab" fill="#b45309">R = radial</text>
+    <text x="730" y="272" text-anchor="middle" class="val">construction</text>
+    <text x="730" y="293" text-anchor="middle" class="val">type</text>
+
+    <line x1="675" y1="165" x2="675" y2="330" stroke="#c4b5fd" stroke-width="2"/>
+    <rect x="670" y="335" width="240" height="86" rx="10" fill="#f5f3ff" stroke="#7c3aed"/>
+    <text x="790" y="363" text-anchor="middle" class="lab" fill="#6d28d9">Rim diameter</text>
+    <text x="790" y="387" text-anchor="middle" class="val">17 INCHES (not mm!)</text>
+    <text x="790" y="408" text-anchor="middle" class="val">the wheel size</text>
+  </g>
+
+  <!-- footer -->
+  <g transform="translate(70 448)">
+    <rect x="0" y="0" width="1060" height="60" rx="14" fill="#0c2f6b"/>
+    <text x="24" y="26" font-family="Consolas, Menlo, monospace" font-size="14" fill="#7ef0c0">overall diameter = rim + 2 × sidewall = 17×25.4 + 2×101 ≈ 634 mm (25.0″)</text>
+    <text x="24" y="47" font-family="Consolas, Menlo, monospace" font-size="13" fill="#cbd5e1">lazytools.io — tire size calculator, exact geometry in your browser</text>
+  </g>
+</svg>

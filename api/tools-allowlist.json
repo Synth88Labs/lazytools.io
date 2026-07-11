@@ -1,4 +1,12 @@
 [
+  "automotive/compression-ratio-calculator",
+  "automotive/engine-displacement-calculator",
+  "automotive/fuel-economy-converter",
+  "automotive/gear-ratio-calculator",
+  "automotive/horsepower-torque-calculator",
+  "automotive/tire-size-calculator",
+  "automotive/tire-size-comparison",
+  "automotive/wheel-offset-calculator",
   "biology/dilution-calculator",
   "biology/dna-molecular-weight",
   "biology/doubling-time",
