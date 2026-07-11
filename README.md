@@ -31,7 +31,7 @@ are no processing servers. The tool code downloads to *your* device and runs the
 yourself: open DevTools, watch the network tab, or switch off your connection mid-use — everything keeps
 working.
 
-## What's live — 21 categories, 440+ tools, ~537 pages
+## What's live — 22 categories, 450+ tools, ~547 pages
 
 | Category | Highlights |
 |---|---|
@@ -39,6 +39,7 @@ working.
 | [Calculators](https://lazytools.io/calc/) | percentage, EMI, BMI, age, tip, discount, interest… |
 | [Mathematics](https://lazytools.io/math/) | **exact arithmetic** — fractions with steps, primes (Miller–Rabin), quadratics with radical roots, statistics, Roman numerals, nCr/nPr at BigInt scale |
 | [Biology & Lab](https://lazytools.io/biology/) | **14 tools** — DNA reverse-complement/translate (sequence never uploaded), C₁V₁=C₂V₂ dilution + serial planner, Punnett (mono/di/trihybrid), Hardy–Weinberg + χ², GC/Tm, DNA & protein molecular weight, molarity, hemocytometer, Michaelis–Menten, qPCR efficiency, doubling time |
+| [Chemistry & Lab](https://lazytools.io/chemistry/) | **9 tools** — **molar mass / molecular weight** (parses hydrates like CuSO₄·5H₂O + nested groups) with percent composition, **chemical equation balancer** (exact integer coefficients via BigInt null-space — correct on redox), **molarity** (auto molar mass from formula), **ideal gas law** (PV=nRT), **specific heat** (q=mcΔT), **pH/pOH** |
 | [Statistics](https://lazytools.io/statistics/) | **6 tools** — **normal distribution** (z↔p, shaded bell curve via exact erf), **binomial probability** (BigInt-exact coefficients), **confidence intervals** (mean z/t + proportion), **sample size**, **p-value** (z/t/χ²/F, one/two-tailed), **linear regression & correlation** (least-squares + scatter plot, r, r²) |
 | [Size Converters](https://lazytools.io/size/) | ring, shoe, bra, clothing, hat sizes across systems |
 | [Text Tools](https://lazytools.io/text/) | **19 tools** — "the invisible & exact layer of text": **invisible-character detector** (AI-watermark / zero-width), **homoglyph/lookalike detector**, **text diff** (LCS), **readability** (Flesch/FK/Fog/SMOG/CLI/ARI), **Unicode inspector**, word frequency, text cleaner (em-dash/smart-quote), Unicode normalizer, plus counters, case, sort, dedupe, find & replace |
@@ -57,7 +58,7 @@ working.
 | [PDF Tools](https://lazytools.io/pdf/) | merge/split/rotate **with live page previews**, unlock/protect (qpdf wasm), **accessibility checker (EAA)**, **redaction checker + rasterizing redactor** |
 | [Audio](https://lazytools.io/video/) | trim, speed, volume, WAV convert (Web Audio) |
 
-Plus **62 in-depth guides** on the [blog](https://lazytools.io/blog/) — each with custom infographics,
+Plus **63 in-depth guides** on the [blog](https://lazytools.io/blog/) — each with custom infographics,
 FAQ schema and cited sources — and a research-driven build pipeline (see
 [docs/research/](docs/research/)) that has shipped regulatory-deadline tools ahead of the French,
 Polish and Belgian e-invoicing mandates.
@@ -67,7 +68,7 @@ Polish and Belgian e-invoicing mandates.
 ```bash
 npm install
 npm run dev      # dev server at localhost:4321
-npm run build    # static site → dist/ (~537 pages)
+npm run build    # static site → dist/ (~547 pages)
 ```
 
 ## Tech & models

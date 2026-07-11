@@ -25,6 +25,7 @@ export const CATEGORIES: CategoryDef[] = [
   { slug: 'math', name: 'Mathematics', icon: '➗', description: 'Exact math: fractions with steps, primes, quadratics, statistics.', status: 'live' },
   { slug: 'biology', name: 'Biology & Lab', icon: '🧬', description: 'DNA sequence tools, dilution, Punnett squares, Hardy–Weinberg, primer Tm — exact and private.', status: 'live' },
   { slug: 'statistics', name: 'Statistics', icon: '📈', description: 'Normal distribution, binomial probability, confidence intervals, p-values — exact, with plain-English interpretation.', status: 'live' },
+  { slug: 'chemistry', name: 'Chemistry & Lab', icon: '⚗️', description: 'Molar mass, chemical equation balancer, molarity, ideal gas, pH — exact, deterministic, with the working shown.', status: 'live' },
   { slug: 'size', name: 'Size Converters', icon: '💍', description: 'Ring, shoe and bra sizes across US, UK, EU and more.', status: 'live' },
   { slug: 'photo', name: 'Photo Size Maker', icon: '🪪', description: 'Passport, visa & ID photos for 80+ countries — crop, check and export in your browser.', status: 'live' },
   { slug: 'dev', name: 'Developer Tools', icon: '👨‍💻', description: 'Formatters, encoders, hashes and other dev utilities.', status: 'live' },

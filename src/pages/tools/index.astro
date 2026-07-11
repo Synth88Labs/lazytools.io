@@ -13,6 +13,7 @@ import { NETWORK_TOOLS } from '../../data/network/index';
 import { MATH_TOOLS } from '../../data/math/index';
 import { BIO_TOOLS } from '../../data/biology/index';
 import { STAT_TOOLS } from '../../data/statistics/index';
+import { CHEM_TOOLS } from '../../data/chemistry/index';
 import { FILE_TOOLS } from '../../data/file/index';
 import { DEV_TOOLS } from '../../data/dev/index';
 import { GEN_TOOLS } from '../../data/generate/index';
@@ -57,6 +58,7 @@ const schema = [
       ...MATH_TOOLS.map((t) => ({ name: t.name, url: `/math/${t.slug}/` })),
       ...BIO_TOOLS.map((t) => ({ name: t.name, url: `/biology/${t.slug}/` })),
       ...STAT_TOOLS.map((t) => ({ name: t.name, url: `/statistics/${t.slug}/` })),
+      ...CHEM_TOOLS.map((t) => ({ name: t.name, url: `/chemistry/${t.slug}/` })),
       ...SECURITY_TOOLS.map((t) => ({ name: t.name, url: `/security/${t.slug}/` })),
       ...IMAGE_TOOLS.map((t) => ({ name: t.name, url: `/image/${t.slug}/` })),
       ...PHOTO_SPECS.map((s) => ({ name: `${s.label} Maker`, url: `/photo/${s.slug}/` })),
@@ -223,6 +225,19 @@ const schema = [
         {STAT_TOOLS.map((t) => (
           <li>
             <a href={`/statistics/${t.slug}/`} class="inline-block rounded-full border border-slate-200 px-3 py-1 text-sm text-slate-600 transition hover:border-brand-400 hover:text-brand-700">
+              {t.icon} {t.name}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-bold text-slate-900">⚗️ Chemistry & Lab</h2>
+      <ul class="mt-4 flex flex-wrap gap-2">
+        {CHEM_TOOLS.map((t) => (
+          <li>
+            <a href={`/chemistry/${t.slug}/`} class="inline-block rounded-full border border-slate-200 px-3 py-1 text-sm text-slate-600 transition hover:border-brand-400 hover:text-brand-700">
               {t.icon} {t.name}
             </a>
           </li>

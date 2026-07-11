@@ -1,0 +1,59 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PrivacyStrip from '../../components/PrivacyStrip.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { CHEM_TOOLS } from '../../data/chemistry/index';
+import { breadcrumbSchema, collectionPageSchema, faqSchema } from '../../lib/schema';
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Chemistry & Lab', url: '/chemistry/' },
+];
+const faqs = [
+  { q: 'Are these chemistry calculators accurate?', a: 'Yes — they use exact, deterministic methods: molar mass sums IUPAC standard atomic weights, and equation balancing solves the reaction’s linear system for exact integer coefficients (no floating point). There are no lookup tables that drift, and the working is shown.' },
+  { q: 'Is my data uploaded?', a: 'No. Every calculation — formula parsing, balancing, molarity, gas law, pH — runs in your browser with JavaScript. Nothing is sent to a server.' },
+  { q: 'Why build chemistry tools an AI could answer?', a: 'Because AI chatbots reliably get these wrong: the published record shows them mis-balancing equations, mis-parsing hydrates, and picking the wrong limiting reagent. A deterministic tool gives the exact answer every time, with the steps shown.' },
+  { q: 'Do these work for coursework and the lab?', a: 'Both. Molar mass, balancing, molarity, the ideal gas law, specific heat and pH cover the core of secondary and introductory-undergraduate chemistry, and the bench calculations (molarity, dilution) are everyday lab work.' },
+];
+const schema = [
+  breadcrumbSchema(crumbs),
+  collectionPageSchema({ name: 'Chemistry & Lab Calculators', url: '/chemistry/', description: 'Free, private chemistry calculators: molar mass, chemical equation balancer, molarity, ideal gas law, specific heat and pH — exact and in your browser.', items: CHEM_TOOLS.map((t) => ({ name: t.name, url: `/chemistry/${t.slug}/` })) }),
+  faqSchema(faqs),
+];
+---
+
+<Base
+  title="Chemistry & Lab Calculators — Molar Mass, Equation Balancer, pH | LazyTools"
+  description="Free chemistry calculators that run in your browser: molar mass & percent composition, exact chemical equation balancer, molarity, ideal gas law (PV=nRT), specific heat and pH. Deterministic, private, no upload."
+  schema={schema}
+>
+  <div class="mx-auto max-w-5xl px-4 py-6">
+    <Breadcrumbs items={crumbs} />
+    <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Chemistry & Lab Calculators</h1>
+    <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
+      Exact, deterministic chemistry tools — parse a formula for its molar mass, balance an equation to
+      exact integer coefficients, or solve molarity, the gas law, specific heat and pH. Everything is
+      computed in your browser, with the working shown, so the answers are byte-exact where a chatbot
+      would drift.
+    </p>
+
+    <div class="mt-5"><PrivacyStrip /></div>
+
+    <section class="mt-8">
+      <ul class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {CHEM_TOOLS.map((t) => (
+          <li>
+            <a href={`/chemistry/${t.slug}/`} class="flex h-full flex-col rounded-xl border border-slate-200 p-4 transition hover:border-brand-400 hover:shadow-sm">
+              <span class="text-2xl" aria-hidden="true">{t.icon}</span>
+              <span class="mt-2 font-semibold text-slate-900">{t.name}</span>
+              <span class="mt-1 text-sm text-slate-600">{t.lead.split('—')[0]}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <FaqSection faqs={faqs} />
+  </div>
+</Base>

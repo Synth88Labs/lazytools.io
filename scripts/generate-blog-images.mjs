@@ -7,6 +7,13 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'balancing-equations-guide',
+    kicker: 'CHEMISTRY GUIDE',
+    lines: ['How to balance', 'chemical equations:', 'the algebra method'],
+    fact: 'KMnO₄+HCl → 2,16,2,2,8,5 (exact)',
+    icon: '⚗️',
+  },
+  {
     slug: 'oklch-color-guide',
     kicker: 'MODERN CSS COLOR',
     lines: ['OKLCH: the color', 'format replacing', 'HEX and HSL'],
