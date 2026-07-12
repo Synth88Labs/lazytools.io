@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="Why the 'feels like' temperature differs from the thermometer. In hot weather, above about 80 degrees Fahrenheit, humidity is the driver: humid air stops sweat evaporating, so it feels hotter — the heat index. In cold weather, below about 50 degrees Fahrenheit, wind is the driver: wind strips warm air from the skin, so it feels colder — the wind chill. A separate measure, the wet-bulb temperature, is the true limit of cooling by sweating; a sustained 35 degrees Celsius wet-bulb is the limit of human survival.">
+  <defs>
+    <style>
+      .h { font: 800 28px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .sub { font: 500 15px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+      .card { font: 800 20px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; }
+      .d { font: 600 14px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #475569; }
+    </style>
+  </defs>
+
+  <text x="600" y="40" text-anchor="middle" class="h">Why "feels like" isn't the thermometer</text>
+  <text x="600" y="66" text-anchor="middle" class="sub">two different things fool your sense of temperature — humidity and wind</text>
+
+  <!-- Hot card -->
+  <g transform="translate(60 96)">
+    <rect x="0" y="0" width="510" height="230" rx="16" fill="#fff1f2" stroke="#e11d48" stroke-width="2"/>
+    <text x="24" y="44" class="card" fill="#be123c">🥵 Hot weather (≥ 80°F / 27°C)</text>
+    <text x="24" y="80" class="d" font-weight="800">Driver: humidity → the HEAT INDEX</text>
+    <line x1="24" y1="96" x2="486" y2="96" stroke="#fecdd3"/>
+    <text x="24" y="126" class="d">Humid air stops sweat evaporating,</text>
+    <text x="24" y="148" class="d">so your body can't cool → feels hotter.</text>
+    <text x="24" y="184" class="d" font-weight="800">90°F + 70% humidity</text>
+    <text x="24" y="208" class="card" font-size="22" fill="#be123c">feels like 106°F</text>
+  </g>
+
+  <!-- Cold card -->
+  <g transform="translate(630 96)">
+    <rect x="0" y="0" width="510" height="230" rx="16" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+    <text x="24" y="44" class="card" fill="#1d4ed8">🥶 Cold weather (≤ 50°F / 10°C)</text>
+    <text x="24" y="80" class="d" font-weight="800">Driver: wind → the WIND CHILL</text>
+    <line x1="24" y1="96" x2="486" y2="96" stroke="#bfdbfe"/>
+    <text x="24" y="126" class="d">Wind strips the warm layer off your</text>
+    <text x="24" y="148" class="d">skin, speeding heat loss → feels colder.</text>
+    <text x="24" y="184" class="d" font-weight="800">20°F + 15 mph wind</text>
+    <text x="24" y="208" class="card" font-size="22" fill="#1d4ed8">feels like 6°F</text>
+  </g>
+
+  <!-- Wet-bulb strip -->
+  <g transform="translate(60 350)">
+    <rect x="0" y="0" width="1080" height="150" rx="16" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+    <text x="24" y="40" class="card" fill="#b45309">🌡️ The hard limit: WET-BULB temperature</text>
+    <text x="24" y="72" class="d">The lowest temperature sweating can reach. When it's high, your body simply cannot cool down —</text>
+    <text x="24" y="94" class="d">whatever you do. A sustained <tspan font-weight="800">35°C (95°F) wet-bulb is the limit of human survival.</tspan></text>
+    <!-- scale -->
+    <g transform="translate(24 112)">
+      <rect x="0" y="0" width="1032" height="18" rx="9" fill="url(#wbgrad)"/>
+      <text x="0" y="34" class="d" font-size="12">safe &lt;25°C</text>
+      <text x="516" y="34" text-anchor="middle" class="d" font-size="12">danger 28–32°C</text>
+      <text x="1032" y="34" text-anchor="end" class="d" font-size="12" font-weight="800" fill="#b45309">35°C survival limit</text>
+    </g>
+  </g>
+  <defs>
+    <linearGradient id="wbgrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#34d399"/><stop offset="0.55" stop-color="#fbbf24"/><stop offset="0.8" stop-color="#f97316"/><stop offset="1" stop-color="#dc2626"/>
+    </linearGradient>
+  </defs>
+
+  <!-- footer -->
+  <g transform="translate(60 520)">
+    <rect x="0" y="0" width="1080" height="48" rx="14" fill="#0c2f6b"/>
+    <text x="24" y="30" font-family="Consolas, Menlo, monospace" font-size="14" fill="#7ef0c0">lazytools.io — heat index, wind chill, wet-bulb & feels-like calculators (NWS formulas)</text>
+  </g>
+</svg>

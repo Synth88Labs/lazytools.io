@@ -571,5 +571,13 @@
   "video/audio-speed-changer",
   "video/audio-to-wav",
   "video/audio-trimmer",
-  "video/audio-volume-changer"
+  "video/audio-volume-changer",
+  "weather/beaufort-scale-calculator",
+  "weather/cloud-base-calculator",
+  "weather/dew-point-calculator",
+  "weather/feels-like-temperature",
+  "weather/heat-index-calculator",
+  "weather/relative-humidity-calculator",
+  "weather/wet-bulb-temperature",
+  "weather/wind-chill-calculator"
 ]

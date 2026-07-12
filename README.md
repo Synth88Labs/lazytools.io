@@ -31,7 +31,7 @@ are no processing servers. The tool code downloads to *your* device and runs the
 yourself: open DevTools, watch the network tab, or switch off your connection mid-use — everything keeps
 working.
 
-## What's live — 31 categories, 580+ tools, ~696 pages
+## What's live — 32 categories, 590+ tools, ~706 pages
 
 | Category | Highlights |
 |---|---|
@@ -45,6 +45,7 @@ working.
 | [Physics](https://lazytools.io/physics/) | **29 tools** — **SUVAT kinematic-equations solver** (enter any 3 of u/v/a/s/t), **projectile motion** with trajectory graph, free fall, **Newton's 2nd law**, momentum, friction, **kinetic/potential energy**, work, power, Hooke's law, **centripetal force**, **Newton's gravitation**, **wave speed** (v=fλ), **Snell's law** (critical angle + TIR), **Ohm's-law V/I/R/P wheel**, **series/parallel resistors & capacitors**, **wave/SHM visualizer**, **Doppler effect**, **lens & mirror equation**, **torque**, **orbital velocity**, **Carnot efficiency**, **thermal expansion**, **photon energy** (E=hf), **de Broglie**, **E=mc²** |
 | [Size Converters](https://lazytools.io/size/) | ring, shoe, bra, clothing, hat sizes across systems |
 | [Home & DIY](https://lazytools.io/home/) | **12 tools** — **paint**, **tile & flooring**, **concrete** (+ pre-mix bags), **mulch & soil**, **wallpaper**, **gravel & aggregate** (volume + tonnes), **drywall/plasterboard** (sheets), **roofing** (squares + shingle bundles via pitch), **sod & grass seed**, **fence** (posts/panels/rails), **deck boards**, **board-foot** lumber — metric or imperial |
+| [Weather & Atmosphere](https://lazytools.io/weather/) | **8 tools** — **heat index** (NWS Rothfusz, temp+humidity→feels-like + risk), **wind chill** (2001 NWS + frostbite times), **dew point** (Magnus/Alduchov–Eskridge), **relative humidity** (from temp+dew point), **feels-like** (heat index/wind chill by regime), **wet-bulb** (Stull 2011, 35°C survival limit), **Beaufort scale** (0–12), **cloud base** (dew-point-spread rule) — °C/°F, verified against NWS values, Node-tested |
 | [Music & Audio](https://lazytools.io/music/) | **8 tools** — **note frequency** (note↔Hz↔MIDI, equal temperament, adjustable A=432), **BPM→delay time** (straight/dotted/triplet + Hz), **tap tempo** BPM counter, **online metronome** (sample-accurate Web Audio, accented downbeat), **interval calculator** (semitones/cents/ratio), **chord transposer** (+capo), **audio file size** (PCM), **bar/time-signature** duration — exact music maths, Node-tested |
 | [Gardening & Plants](https://lazytools.io/garden/) | **8 tools** — **plant spacing** (square grid + triangular offset which fits ~15.5% more), **seed & row spacing**, **raised-bed soil** volume (L/ft³/yd³/bags), **fertilizer** nitrogen rate (from N-P-K + area), **garden watering** (~1 in/wk, 0.623 gal/ft²/in), **planting dates** from your last frost (16 crops), **grow-light DLI** (PPFD × hours), **compost C:N** ratio (greens + browns → 25–35:1) — metric/imperial, extension-sourced, Node-tested |
 | [Pets & Animals](https://lazytools.io/pets/) | **8 tools** — **dog age** (dog↔human years via the 2020 epigenetic formula 16×ln(age)+31 + size-based chart — busts the ×7 myth), **cat age** (15/+9/+4 chart + life stage), **dog & cat food** portions (RER 70×kg^0.75 × MER life-stage factor → cups), **pet gestation** due dates (13 species), **aquarium volume** (L/US-gal/UK-gal), **pet water intake** (~50–60 ml/kg), **dog crate size** (AKC +2–4 in) — vet-sourced formulas, Node-tested |
@@ -77,7 +78,7 @@ Polish and Belgian e-invoicing mandates.
 ```bash
 npm install
 npm run dev      # dev server at localhost:4321
-npm run build    # static site → dist/ (~696 pages)
+npm run build    # static site → dist/ (~706 pages)
 ```
 
 ## Tech & models

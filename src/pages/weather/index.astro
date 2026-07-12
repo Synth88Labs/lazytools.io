@@ -1,0 +1,58 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PrivacyStrip from '../../components/PrivacyStrip.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { WEATHER_TOOLS } from '../../data/weather/index';
+import { breadcrumbSchema, collectionPageSchema, faqSchema } from '../../lib/schema';
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Weather & Atmosphere', url: '/weather/' },
+];
+const faqs = [
+  { q: 'Are these weather calculators accurate?', a: 'They use the official meteorological formulas — the NWS Rothfusz heat index, the 2001 NWS wind chill, the Magnus dew-point equation and Stull\'s wet-bulb formula, each cited on its tool page. They compute an index from the values you enter; they don\'t fetch live weather.' },
+  { q: 'Do they work in °C and °F?', a: 'Yes — every temperature tool toggles between Fahrenheit and Celsius (and wind speed between mph and km/h), converting internally.' },
+  { q: 'Do these show a live forecast?', a: 'No — they\'re calculators. Enter the temperature, humidity or wind and they compute the heat index, dew point, wind chill and so on. For a live forecast or official warnings, use your national weather service.' },
+  { q: 'Is my data uploaded?', a: 'No. Every tool runs entirely in your browser — nothing is sent to a server, and they work offline.' },
+];
+const schema = [
+  breadcrumbSchema(crumbs),
+  collectionPageSchema({ name: 'Weather & Atmosphere Calculators', url: '/weather/', description: 'Free, private weather calculators: heat index, wind chill, dew point, relative humidity, feels-like temperature, wet-bulb temperature, Beaufort wind scale and cloud base.', items: WEATHER_TOOLS.map((t) => ({ name: t.name, url: `/weather/${t.slug}/` })) }),
+  faqSchema(faqs),
+];
+---
+
+<Base
+  title="Weather Calculators — Heat Index, Wind Chill, Dew Point | LazyTools"
+  description="Free weather calculators that run in your browser: heat index, wind chill, dew point, relative humidity, feels-like temperature, wet-bulb temperature, Beaufort wind scale and cloud base. Official NWS/Magnus/Stull formulas, °C or °F, no upload."
+  schema={schema}
+>
+  <div class="mx-auto max-w-5xl px-4 py-6">
+    <Breadcrumbs items={crumbs} />
+    <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Weather & Atmosphere Calculators</h1>
+    <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
+      Understand what the weather really feels like — calculate the heat index, wind chill and "feels like"
+      temperature, work out the dew point and humidity, gauge dangerous wet-bulb heat, read the Beaufort wind
+      scale and estimate cloud base. Official meteorological formulas, running entirely in your browser.
+    </p>
+
+    <div class="mt-5"><PrivacyStrip /></div>
+
+    <section class="mt-8">
+      <ul class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {WEATHER_TOOLS.map((t) => (
+          <li>
+            <a href={`/weather/${t.slug}/`} class="flex h-full flex-col rounded-xl border border-slate-200 p-4 transition hover:border-brand-400 hover:shadow-sm">
+              <span class="text-2xl" aria-hidden="true">{t.icon}</span>
+              <span class="mt-2 font-semibold text-slate-900">{t.name}</span>
+              <span class="mt-1 text-sm text-slate-600">{t.lead.split('—')[0].split('(')[0]}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <FaqSection faqs={faqs} />
+  </div>
+</Base>

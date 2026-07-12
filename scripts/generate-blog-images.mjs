@@ -7,6 +7,13 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'feels-like-guide',
+    kicker: 'WEATHER GUIDE',
+    lines: ["Why 'feels like'", "isn't the temperature:", 'heat, wind & wet-bulb'],
+    fact: 'humid heat & wind both fool the thermometer',
+    icon: '🌡️',
+  },
+  {
     slug: 'music-frequency-guide',
     kicker: 'MUSIC GUIDE',
     lines: ['Why every octave', 'doubles: the math', 'behind musical notes'],
