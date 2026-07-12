@@ -317,4 +317,45 @@ export const COMPUTE: Record<string, (v: Values) => ResultRow[] | null> = {
       { label: 'Cost per unit distance', value: fmt(distance > 0 ? cost / distance : 0, 3), hint: 'per mile / km travelled' },
     ];
   },
+
+  testGrade: (v) => {
+    const correct = n(v.correct), total = n(v.total);
+    if (!Number.isFinite(correct) || !Number.isFinite(total) || total <= 0 || correct < 0) return null;
+    const pct = (correct / total) * 100;
+    const wrong = Math.max(0, total - correct);
+    const letter = pct >= 97 ? 'A+' : pct >= 93 ? 'A' : pct >= 90 ? 'A−' : pct >= 87 ? 'B+' : pct >= 83 ? 'B' : pct >= 80 ? 'B−'
+      : pct >= 77 ? 'C+' : pct >= 73 ? 'C' : pct >= 70 ? 'C−' : pct >= 67 ? 'D+' : pct >= 63 ? 'D' : pct >= 60 ? 'D−' : 'F';
+    return [
+      { label: 'Score', value: `${fmt(pct)}%`, hint: `${fmt(correct, 0)} correct out of ${fmt(total, 0)}` },
+      { label: 'Letter grade', value: letter, hint: 'standard US grading scale' },
+      { label: 'Wrong answers', value: fmt(wrong, 0), hint: total > 0 ? `${fmt((wrong / total) * 100)}% missed` : '' },
+    ];
+  },
+
+  unitPrice: (v) => {
+    const pA = n(v.priceA), qA = n(v.qtyA), pB = n(v.priceB), qB = n(v.qtyB);
+    if (!Number.isFinite(pA) || !Number.isFinite(qA) || qA <= 0) return null;
+    const uA = pA / qA;
+    const rows: ResultRow[] = [{ label: 'Item A — price per unit', value: fmt(uA, 4), hint: `${fmt(pA)} ÷ ${fmt(qA)}` }];
+    if (Number.isFinite(pB) && Number.isFinite(qB) && qB > 0) {
+      const uB = pB / qB;
+      rows.push({ label: 'Item B — price per unit', value: fmt(uB, 4), hint: `${fmt(pB)} ÷ ${fmt(qB)}` });
+      const save = (Math.abs(uA - uB) / Math.max(uA, uB)) * 100;
+      rows.push({ label: 'Better value', value: uA === uB ? 'Same price' : `Item ${uA < uB ? 'A' : 'B'}`, hint: uA === uB ? '' : `${fmt(save)}% cheaper per unit` });
+    }
+    return rows;
+  },
+
+  overtimePay: (v) => {
+    const rate = n(v.rate), reg = n(v.regHours), ot = n(v.otHours);
+    const mult = Number.isFinite(n(v.multiplier)) ? n(v.multiplier) : 1.5;
+    if (!Number.isFinite(rate) || rate < 0) return null;
+    const regH = Number.isFinite(reg) ? reg : 0, otH = Number.isFinite(ot) ? ot : 0;
+    const regPay = rate * regH, otPay = rate * mult * otH;
+    return [
+      { label: 'Regular pay', value: fmt(regPay), hint: `${fmt(regH)} h × ${fmt(rate)}` },
+      { label: 'Overtime pay', value: fmt(otPay), hint: `${fmt(otH)} h × ${fmt(rate)} × ${fmt(mult)}` },
+      { label: 'Total pay', value: fmt(regPay + otPay), hint: `${fmt(regH + otH)} h total` },
+    ];
+  },
 };
