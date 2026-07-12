@@ -11,6 +11,9 @@ import ConfidenceIntervalTool from '../../components/statistics/ConfidenceInterv
 import SampleSizeTool from '../../components/statistics/SampleSizeTool.tsx';
 import PValueTool from '../../components/statistics/PValueTool.tsx';
 import RegressionTool from '../../components/statistics/RegressionTool.tsx';
+import TTestTool from '../../components/statistics/TTestTool.tsx';
+import PoissonTool from '../../components/statistics/PoissonTool.tsx';
+import ChiSquareTool from '../../components/statistics/ChiSquareTool.tsx';
 import { STAT_TOOLS, type StatToolDef } from '../../data/statistics/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -63,6 +66,9 @@ const schema = [
       {tool.widget === 'sample-size' && <SampleSizeTool client:load />}
       {tool.widget === 'pvalue' && <PValueTool client:load />}
       {tool.widget === 'regression' && <RegressionTool client:load />}
+      {tool.widget === 'ttest' && <TTestTool client:load />}
+      {tool.widget === 'poisson' && <PoissonTool client:load />}
+      {tool.widget === 'chisquare' && <ChiSquareTool client:load />}
     </div>
 
     <div class="mt-4">

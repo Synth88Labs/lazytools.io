@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="The t-test explained. It asks whether a difference in means is real or just chance, with t equal to the difference in means divided by its standard error, converted to a p-value. Three types: one-sample compares one group's mean to a fixed value; two-sample compares two independent groups (use Welch's test by default); paired compares before-and-after measurements on the same subjects. Decision: if the p-value is below alpha, usually 0.05, reject the null hypothesis — the difference is statistically significant; otherwise fail to reject it.">
+  <defs>
+    <style>
+      .h { font: 800 27px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .sub { font: 500 15px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+      .ct { font: 800 17px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #1d4ed8; }
+      .q { font: 600 13px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #475569; }
+      .ex { font: 800 17px Consolas, Menlo, monospace; fill: #7ef0c0; }
+      .tag { font: 800 13px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; }
+    </style>
+  </defs>
+
+  <text x="600" y="40" text-anchor="middle" class="h">The t-test: is the difference real, or just chance?</text>
+
+  <!-- formula band -->
+  <g transform="translate(90 62)">
+    <rect width="1020" height="52" rx="14" fill="#0f172a"/>
+    <text x="510" y="34" text-anchor="middle" class="ex">t  =  (difference in means)  ÷  (standard error)   →   p-value</text>
+  </g>
+
+  <!-- three types -->
+  <g transform="translate(90 138)">
+    <rect width="320" height="150" rx="14" fill="#eff6ff" stroke="#1d4ed8"/>
+    <text x="20" y="34" class="ct">One-sample</text>
+    <text x="20" y="62" class="q">one group&#8217;s mean vs a</text>
+    <text x="20" y="82" class="q">fixed / claimed value</text>
+    <text x="20" y="118" class="q" fill="#1d4ed8">&#8220;is the mean = 100?&#8221;</text>
+  </g>
+  <g transform="translate(440 138)">
+    <rect width="320" height="150" rx="14" fill="#ecfdf5" stroke="#059669"/>
+    <text x="20" y="34" class="ct" fill="#047857">Two-sample</text>
+    <text x="20" y="62" class="q">two independent groups</text>
+    <text x="20" y="82" class="q">(Welch&#8217;s by default)</text>
+    <text x="20" y="118" class="q" fill="#047857">&#8220;is A different from B?&#8221;</text>
+  </g>
+  <g transform="translate(790 138)">
+    <rect width="320" height="150" rx="14" fill="#fffbeb" stroke="#d97706"/>
+    <text x="20" y="34" class="ct" fill="#b45309">Paired</text>
+    <text x="20" y="62" class="q">before &#38; after on the</text>
+    <text x="20" y="82" class="q">same subjects</text>
+    <text x="20" y="118" class="q" fill="#b45309">&#8220;did the treatment change it?&#8221;</text>
+  </g>
+
+  <!-- decision -->
+  <g transform="translate(90 316)">
+    <text x="0" y="0" class="ct" fill="#b45309">THE DECISION</text>
+    <g transform="translate(0 20)">
+      <rect width="500" height="70" rx="12" fill="#ecfdf5" stroke="#059669"/>
+      <text x="20" y="30" class="tag" fill="#047857">p &lt; α  (e.g. 0.05)</text>
+      <text x="20" y="54" class="q">reject the null — the difference is significant</text>
+    </g>
+    <g transform="translate(520 20)">
+      <rect width="500" height="70" rx="12" fill="#f1f5f9" stroke="#94a3b8"/>
+      <text x="20" y="30" class="tag" fill="#334155">p ≥ α</text>
+      <text x="20" y="54" class="q">fail to reject — not enough evidence of a difference</text>
+    </g>
+  </g>
+
+  <!-- footer -->
+  <g transform="translate(90 440)">
+    <rect width="1020" height="50" rx="14" fill="#0c2f6b"/>
+    <text x="24" y="31" font-family="Consolas, Menlo, monospace" font-size="14" fill="#7ef0c0">lazytools.io — t-test, chi-square &#38; Poisson calculators with exact p-values, free &#38; private</text>
+  </g>
+
+  <text x="600" y="524" text-anchor="middle" class="sub">&#8220;Fail to reject&#8221; is not proof of no effect — only that the evidence isn&#8217;t strong enough at this level.</text>
+</svg>

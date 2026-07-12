@@ -7,6 +7,13 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 't-test-explained-guide',
+    kicker: 'STATISTICS GUIDE',
+    lines: ['The t-test explained:', 'one-sample, two-sample', 'and paired'],
+    fact: 't = difference in means ÷ standard error',
+    icon: '📐',
+  },
+  {
     slug: 'how-much-house-can-i-afford-guide',
     kicker: 'FINANCE GUIDE',
     lines: ['How much house', 'can you afford?', 'The 28/36 rule'],

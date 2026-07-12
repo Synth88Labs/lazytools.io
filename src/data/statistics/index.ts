@@ -4,7 +4,7 @@ export interface StatToolDef {
   slug: string;
   name: string;
   icon: string;
-  widget: 'normal' | 'binomial' | 'ci' | 'sample-size' | 'pvalue' | 'regression';
+  widget: 'normal' | 'binomial' | 'ci' | 'sample-size' | 'pvalue' | 'regression' | 'ttest' | 'poisson' | 'chisquare';
   description: string;
   lead: string;
   how: string;
@@ -127,6 +127,60 @@ export const STAT_TOOLS: StatToolDef[] = [
       { q: 'Is my data uploaded?', a: 'No — the fit, statistics and chart are all computed in your browser.' },
     ],
     keywords: ['linear regression calculator', 'least squares calculator', 'correlation coefficient calculator', 'r squared calculator', 'regression line calculator', 'scatter plot calculator', 'pearson correlation'],
+  },
+  {
+    slug: 't-test-calculator',
+    name: 'T-Test Calculator',
+    icon: '📐',
+    widget: 'ttest',
+    description: 'Run a one-sample, two-sample (Welch or pooled) or paired t-test from summary statistics — get the t statistic, degrees of freedom, exact p-value and a significance verdict. In your browser.',
+    lead: 'Enter your sample means, standard deviations and sizes to run a t-test — with the t statistic, df, exact p-value and whether the result is significant.',
+    how: 'A t-test asks whether a difference in means is real or just chance. The tool computes the t statistic — the difference in means divided by its standard error — and converts it to an exact p-value using the Student t-distribution. It handles a one-sample test (mean vs a hypothesized value), a two-sample test (defaulting to Welch\'s unequal-variance form, with a pooled option), and a paired test (on the mean and SD of the differences), for one- or two-tailed hypotheses.',
+    note: 'Enter summary statistics rather than raw data. The two-sample test defaults to Welch\'s test, which is more reliable than the classic pooled test when the groups have different sizes or spreads. A p-value below your significance level (α, usually 0.05) means you reject the null hypothesis; "failing to reject" is not proof there\'s no effect, only that the evidence is insufficient. The t-test assumes roughly normal data.',
+    faqs: [
+      { q: 'How do I calculate a t-test?', a: 'Compute t = (difference in means) ÷ (standard error of that difference), find the degrees of freedom, and convert t to a p-value using the t-distribution. Enter your means, standard deviations and sample sizes and the tool does all three exactly.' },
+      { q: 'What is the difference between a one-sample, two-sample and paired t-test?', a: 'A one-sample test compares one group\'s mean to a fixed value; a two-sample test compares the means of two independent groups; a paired test compares two measurements on the same subjects (before/after) by testing whether their differences average to zero.' },
+      { q: 'What is the difference between Welch and pooled t-tests?', a: 'The pooled (Student) test assumes the two groups have equal variances; Welch\'s test does not, and is more robust when variances or sample sizes differ. Welch\'s is the safer default — use pooled only when equal variances are justified.' },
+      { q: 'What does the p-value mean in a t-test?', a: 'The probability of seeing a difference at least this large if the null hypothesis (no real difference) were true. A small p-value (below α, typically 0.05) suggests the difference is unlikely to be chance, so you reject the null hypothesis.' },
+      { q: 'When should I use one-tailed vs two-tailed?', a: 'Use two-tailed (the default) when you\'re testing for any difference in either direction. Use one-tailed only when you have a specific directional hypothesis decided in advance (e.g. the new method is faster), since it concentrates all the significance on one side.' },
+    ],
+    keywords: ['t-test calculator', 't test calculator', 'two sample t test calculator', 'paired t test calculator', 'welch t test calculator', 'student t test', 't statistic p value calculator'],
+  },
+  {
+    slug: 'poisson-distribution-calculator',
+    name: 'Poisson Distribution Calculator',
+    icon: '📮',
+    widget: 'poisson',
+    description: 'Calculate Poisson probabilities — P(X=k), P(X≤k), P(X≥k) and more — for a given average rate λ, with the mean, variance and standard deviation. In your browser.',
+    lead: 'Enter the average rate λ and a count k to get the exact Poisson probabilities and the distribution\'s mean, variance and standard deviation.',
+    how: 'The Poisson distribution gives the probability of a number of independent events in a fixed interval when they occur at a constant average rate λ. The tool computes the exact probability of exactly k events, P(X = k) = e^(−λ)·λ^k ÷ k!, plus the cumulative probabilities (at most k, at least k, fewer than, more than), and reports the distribution\'s mean and variance — which, distinctively, are both equal to λ.',
+    note: 'Use the Poisson model for rare, independent events happening at a steady average rate: customer arrivals, machine failures, typos per page, calls per hour. Its signature property is that the variance equals the mean; if your real data is much more spread out than that (overdispersion), a different model such as the negative binomial may fit better.',
+    faqs: [
+      { q: 'What is the Poisson distribution used for?', a: 'Modelling the count of independent events in a fixed interval of time or space at a constant average rate — arrivals in a queue, defects per batch, calls per hour, goals per match. It answers "what\'s the probability of exactly k events?"' },
+      { q: 'How do I calculate a Poisson probability?', a: 'P(X = k) = e^(−λ)·λ^k ÷ k!, where λ is the average number of events and k the count you\'re asking about. For λ = 3 and k = 2 that\'s e^(−3)·9 ÷ 2 ≈ 0.224. The tool also gives the cumulative probabilities.' },
+      { q: 'What is λ (lambda) in a Poisson distribution?', a: 'The average rate — the expected number of events per interval. It\'s the single parameter of the distribution, and both the mean and the variance equal λ, so the standard deviation is √λ.' },
+      { q: 'What is the difference between the Poisson and binomial distributions?', a: 'The binomial counts successes in a fixed number of trials with a fixed success probability; the Poisson counts events over a continuous interval with no fixed number of trials. The Poisson is the limit of the binomial when trials are many and each success is rare.' },
+      { q: 'Why do the mean and variance both equal λ?', a: 'It\'s a defining mathematical property of the Poisson distribution. It\'s also a useful check: if your observed data has a variance much larger than its mean, the events may not be independent or the rate may not be constant, and Poisson may not fit.' },
+    ],
+    keywords: ['poisson distribution calculator', 'poisson probability calculator', 'poisson calculator', 'p(x=k) poisson', 'poisson cumulative probability', 'lambda poisson calculator', 'poisson mean variance'],
+  },
+  {
+    slug: 'chi-square-test-calculator',
+    name: 'Chi-Square Test Calculator',
+    icon: '🎲',
+    widget: 'chisquare',
+    description: 'Run a chi-square goodness-of-fit or test of independence from your counts — get the χ² statistic, degrees of freedom, exact p-value and expected counts. In your browser.',
+    lead: 'Enter observed and expected counts (goodness-of-fit) or a contingency table (independence) to get the χ² statistic, df, p-value and verdict.',
+    how: 'The chi-square test compares observed counts with the counts a hypothesis predicts: χ² = Σ (observed − expected)² ÷ expected. In goodness-of-fit mode you supply observed and expected counts for one categorical variable (df = categories − 1). In independence mode you paste a contingency table and the tool derives the expected counts from the row and column totals, testing whether the two variables are related (df = (rows − 1)(columns − 1)). It converts χ² to an exact p-value.',
+    note: 'The test needs raw counts, not percentages, and the usual rule of thumb is that expected counts should be at least 5 in each cell for the approximation to hold. A significant result (p below α) means the observed pattern departs from the hypothesis — a poor fit, or an association between the variables — but chi-square shows that a relationship exists, not how strong it is or which direction.',
+    faqs: [
+      { q: 'How do I calculate a chi-square test?', a: 'For each category or cell, take (observed − expected)², divide by expected, and sum: χ² = Σ (O − E)² ÷ E. Then find the degrees of freedom and convert χ² to a p-value using the chi-square distribution. The tool does all of this from your counts.' },
+      { q: 'What is the difference between goodness-of-fit and independence?', a: 'Goodness-of-fit tests whether one categorical variable matches an expected distribution (e.g. is a die fair?). The test of independence uses a two-way table to check whether two categorical variables are associated (e.g. is preference related to age group?).' },
+      { q: 'How are the expected counts found in a test of independence?', a: 'For each cell, expected = (its row total × its column total) ÷ grand total — the count you\'d see if the two variables were completely independent. The tool computes and can display the full expected table.' },
+      { q: 'What are the degrees of freedom for a chi-square test?', a: 'For goodness-of-fit, categories − 1. For a test of independence on an r×c table, (r − 1) × (c − 1). Degrees of freedom set the shape of the chi-square distribution used to get the p-value.' },
+      { q: 'What does a significant chi-square result mean?', a: 'That the observed counts differ from what the hypothesis predicts more than chance would explain — the distribution doesn\'t fit, or the two variables are associated. It doesn\'t measure how strong the association is; for that, look at effect-size measures like Cramér\'s V.' },
+    ],
+    keywords: ['chi square test calculator', 'chi square calculator', 'goodness of fit calculator', 'chi square test of independence', 'contingency table calculator', 'chi square p value calculator', 'expected counts calculator'],
   },
 ];
 
