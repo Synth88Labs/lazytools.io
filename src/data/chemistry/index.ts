@@ -11,7 +11,7 @@ export interface ChemToolDef {
     | 'gibbs' | 'nernst' | 'arrhenius' | 'freezing' | 'boiling' | 'ppm' | 'percenterror'
     | 'periodic' | 'econfig' | 'compare' | 'isotope' | 'oxidation'
     | 'weakacid' | 'ksp' | 'kc' | 'hess'
-    | 'molality' | 'masspercent' | 'osmotic';
+    | 'molality' | 'masspercent' | 'osmotic' | 'titration' | 'raoults';
   /** molar-mass satellites: default view */
   view?: 'mass' | 'percent';
   description: string;
@@ -720,6 +720,42 @@ CHEM_TOOLS.unshift(
       { q: 'Does the physical state of water matter?', a: 'Yes — H₂O(l) has ΔHf° ≈ −285.8 kJ/mol and H₂O(g) ≈ −241.8 kJ/mol, a difference of the heat of vaporisation. Always use the state written in your equation, or the answer will be off.' },
     ],
     keywords: ['hess law calculator', 'enthalpy of reaction calculator', 'heat of reaction calculator', 'standard enthalpy calculator', 'delta h reaction calculator', 'enthalpy of formation calculator', 'exothermic endothermic calculator'],
+  },
+  {
+    slug: 'titration-calculator',
+    name: 'Titration Calculator',
+    icon: '🧪',
+    widget: 'titration',
+    description: 'Find an unknown acid or base concentration from titration data — the known concentration and volume, the analyte volume and the mole ratio. In your browser.',
+    lead: 'Enter the known concentration, the titrant volume used, the analyte volume and the mole ratio to get the unknown concentration.',
+    how: 'At the equivalence point of an acid–base titration, the reacting moles are stoichiometrically balanced: (known concentration × known volume) × mole ratio = unknown concentration × unknown volume. Rearranged, the unknown concentration = C_known × V_known × (mole ratio) ÷ V_unknown. The mole ratio is 1 for a 1:1 reaction like HCl + NaOH, and accounts for polyprotic acids or bases otherwise.',
+    note: 'Volumes can be in any consistent unit (they cancel), so millilitres in gives molarity out. The mole ratio is the coefficient of the unknown divided by the coefficient of the known in the balanced neutralisation — 2 for a diprotic acid (like H₂SO₄) titrated with a monoprotic base. This finds the concentration at the equivalence point; it doesn\'t compute the titration-curve pH.',
+    faqs: [
+      { q: 'How do you calculate concentration from a titration?', a: 'Use the equivalence relationship C₁V₁ × (mole ratio) = C₂V₂. Solve for the unknown: C_unknown = C_known × V_known × mole ratio ÷ V_unknown. For a 1:1 acid–base reaction, that\'s simply C₁V₁ = C₂V₂.' },
+      { q: 'What is the equivalence point?', a: 'The point in a titration where the added titrant has exactly neutralised the analyte — the moles of acid and base are stoichiometrically equal. An indicator or pH meter marks it; the volume there is what you enter as the known volume.' },
+      { q: 'What is the mole ratio in a titration?', a: 'The ratio of the reacting moles from the balanced equation — the unknown\'s coefficient divided by the known\'s. It\'s 1 for HCl + NaOH, but 2 for a diprotic acid like H₂SO₄ reacting with NaOH (H₂SO₄ + 2NaOH), because each acid supplies two H⁺.' },
+      { q: 'Do the volume units matter?', a: 'No, as long as both volumes use the same unit — they cancel in the ratio. Enter both in mL (or both in L) and the concentration comes out in the same units as the known concentration.' },
+      { q: 'Does this give the pH during the titration?', a: 'No — it finds the unknown concentration at the equivalence point. Plotting the pH through the titration (the titration curve) needs the weak-acid/base equilibrium tools, since pH depends on the acid/base strength.' },
+    ],
+    keywords: ['titration calculator', 'titration concentration calculator', 'acid base titration calculator', 'equivalence point calculator', 'c1v1 = c2v2 titration', 'molarity from titration', 'unknown concentration titration'],
+  },
+  {
+    slug: 'raoults-law-calculator',
+    name: "Raoult's Law Calculator",
+    icon: '💨',
+    widget: 'raoults',
+    description: "Calculate the vapour pressure of a solution and the vapour-pressure lowering from Raoult's law — mole fraction of solvent × pure-solvent vapour pressure. In your browser.",
+    lead: "Enter the pure solvent's vapour pressure and the solvent mole fraction to get the solution's vapour pressure and the vapour-pressure lowering.",
+    how: "Raoult's law states that each volatile component's contribution to the vapour pressure is its mole fraction times its pure vapour pressure. For a non-volatile solute, the solution's vapour pressure is P = X_solvent × P°_solvent, and the lowering caused by the solute is ΔP = X_solute × P° = P° − P. The tool computes both; the result carries whatever pressure unit you enter for P°.",
+    note: "Vapour-pressure lowering is a colligative property — it depends on the amount of dissolved solute, not its identity — and it's the reason a solute also raises the boiling point and lowers the freezing point. Raoult's law describes ideal solutions; real mixtures deviate (positive or negative) when solute–solvent interactions differ from solvent–solvent ones.",
+    faqs: [
+      { q: "What is Raoult's law?", a: "It says the vapour pressure of a solvent above a solution equals the solvent's mole fraction times its pure-solvent vapour pressure: P = X_solvent × P°. Adding a non-volatile solute lowers the vapour pressure in proportion to how much solvent it displaces." },
+      { q: 'How do you calculate vapour-pressure lowering?', a: 'ΔP = X_solute × P°, where X_solute is the solute mole fraction and P° the pure solvent\'s vapour pressure. Equivalently, ΔP = P° − (X_solvent × P°). A 0.1 solute mole fraction lowers a 100-unit P° by 10.' },
+      { q: 'Why does a solute lower vapour pressure?', a: 'Non-volatile solute particles take up space at the surface and reduce the fraction of solvent molecules that can escape into the vapour, so fewer evaporate and the vapour pressure drops. More solute (higher mole fraction) means a bigger drop.' },
+      { q: "What is Raoult's law used for?", a: 'To predict how dissolving a solute changes a solvent\'s vapour pressure, boiling point and freezing point, and to model ideal liquid mixtures in distillation. It underlies the colligative-property calculations.' },
+      { q: 'When does Raoult\'s law fail?', a: 'For non-ideal solutions, where solute–solvent attractions differ markedly from the pure liquids\' — causing positive deviations (weaker attractions, higher vapour pressure) or negative ones. It also assumes the solute is non-volatile for the simple lowering form.' },
+    ],
+    keywords: ["raoult's law calculator", 'vapor pressure lowering calculator', 'raoults law', 'solution vapor pressure', 'colligative properties vapor pressure', 'mole fraction vapor pressure', 'vapour pressure solution'],
   },
 );
 

@@ -113,6 +113,22 @@ export const massPercent = (soluteMass: number, solutionMass: number): number =>
 /** Osmotic pressure π = i·M·R·T, atm. R = 0.0820573 L·atm/(mol·K), T in kelvin. */
 export const osmoticPressure = (i: number, molarity: number, tempK: number): number => i * molarity * 0.0820573 * tempK;
 
+/**
+ * Titration: unknown concentration from the equivalence point.
+ * C_unknown = C_known × V_known × moleRatio ÷ V_unknown, where
+ * moleRatio = (moles unknown ÷ moles known) from the balanced equation (1 for a 1:1 acid–base).
+ */
+export function titrationConc(cKnown: number, vKnown: number, vUnknown: number, moleRatio = 1): number | null {
+  if (vUnknown <= 0 || moleRatio <= 0) return null;
+  return (cKnown * vKnown * moleRatio) / vUnknown;
+}
+
+/** Raoult's law: vapour pressure of solution = mole fraction of solvent × pure-solvent vapour pressure. */
+export function raoults(pPure: number, xSolvent: number): { pSolution: number; lowering: number } {
+  const pSolution = pPure * xSolvent;
+  return { pSolution, lowering: pPure - pSolution };
+}
+
 // ---------- BigInt rational arithmetic ----------
 
 function gcd(a: bigint, b: bigint): bigint { a = a < 0n ? -a : a; b = b < 0n ? -b : b; while (b) { [a, b] = [b, a % b]; } return a; }
