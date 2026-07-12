@@ -21,7 +21,7 @@ import ContentPage from '../layouts/ContentPage.astro';
 
   <h2>How to verify this yourself</h2>
   <ul>
-    <li><strong>Watch the network tab.</strong> Open your browser's developer tools (F12 → Network), then use any tool. You'll see the page load and an analytics request to Google — but no request that carries your files or the values you type into the tool.</li>
+    <li><strong>Watch the network tab.</strong> Open your browser's developer tools (F12 → Network), then use any tool. You'll see the page load (and, if you've accepted analytics, a request to Google) — but no request that carries your files or the values you type into the tool.</li>
     <li><strong>Go offline.</strong> Load a tool, then switch off Wi-Fi or enable airplane mode. The tool keeps working, because nothing it does requires a server.</li>
   </ul>
 
@@ -36,7 +36,8 @@ import ContentPage from '../layouts/ContentPage.astro';
   <h2>What we measure (and what we don't)</h2>
   <p>
     We use <strong>Google Analytics</strong> to measure page visits — which tools are popular and roughly where
-    visitors come from. It sets cookies and sends that usage data to Google, and you can
+    visitors come from — but only if you accept our cookie banner. It's off by default (Google Consent Mode), so
+    no cookie is set and no data is sent until you consent; you can decline or
     <a href="/privacy/#optout">opt out</a> at any time. Crucially, analytics only ever records that you
     <em>visited</em> a page — <strong>we never see what you type into a tool, what files you process, or any
     content you work with</strong>, because that never leaves your device. You can also choose to give a tool a

@@ -11,9 +11,11 @@ import ContentPage from '../layouts/ContentPage.astro';
   <p>
     <strong>Plain-English summary:</strong> anything you type into a tool or any file you process stays on your
     device — we never receive it, so we can't store, sell or leak it. Separately, to understand which tools people
-    find useful, we use <strong>Google Analytics</strong> to measure page visits; like most analytics it sets
-    cookies and sends usage data (such as the pages you view and a truncated IP) to Google. We run <strong>no
-    advertising</strong> and never sell your data, and you can <a href="#optout">opt out</a> at any time.
+    find useful, we use <strong>Google Analytics</strong> to measure page visits — but <strong>only if you accept
+    our cookie banner</strong>. Analytics is off by default; until you consent, no analytics cookie is set and no
+    usage data is sent. If you accept, it sets cookies and sends usage data (such as the pages you view and a
+    truncated IP) to Google. We run <strong>no advertising</strong> and never sell your data, and you can
+    <a href="#optout">change your choice</a> at any time.
   </p>
 
   <h2>1. What we never collect</h2>
@@ -26,7 +28,7 @@ import ContentPage from '../layouts/ContentPage.astro';
   <h2>2. What we do handle</h2>
   <ul>
     <li>
-      <strong>Google Analytics (GA4).</strong> We include Google's analytics tag on our pages to understand how the site is used and which tools are worth improving. It sets first-party cookies (for example <code>_ga</code> and <code>_ga_&lt;id&gt;</code>) and sends usage data to Google LLC, which processes it as our data processor. With GA4's default "enhanced measurement," this can include:
+      <strong>Google Analytics (GA4).</strong> We include Google's analytics tag on our pages to understand how the site is used and which tools are worth improving — but it stays dormant until you accept our cookie banner (we use Google Consent Mode, which defaults <code>analytics_storage</code> to denied). Once you consent, it sets first-party cookies (for example <code>_ga</code> and <code>_ga_&lt;id&gt;</code>) and sends usage data to Google LLC, which processes it as our data processor. With GA4's default "enhanced measurement," this can include:
       <ul>
         <li>pages you view, and referring links that brought you;</li>
         <li>engagement signals — how long you're active on a page, how far you scroll, clicks on outbound links, site-search queries typed into our search box, and file downloads;</li>
@@ -42,6 +44,7 @@ import ContentPage from '../layouts/ContentPage.astro';
 
   <h2 id="optout">3. How to opt out of analytics</h2>
   <ul>
+    <li><strong>Decline the cookie banner</strong> — analytics stays off, which is the default until you accept. To withdraw consent after accepting, clear this site's cookies/site data (which resets the banner) and choose Decline.</li>
     <li>Install Google's official <a href="https://tools.google.com/dlpage/gaoptout" rel="noopener">Analytics Opt-out Browser Add-on</a>, which stops GA on every site you visit.</li>
     <li>Use your browser's tracking protection or a content blocker (most block Google Analytics), or block third-party/analytics cookies in your browser settings.</li>
     <li>Clearing your cookies removes the analytics identifiers stored on your device.</li>
@@ -50,8 +53,9 @@ import ContentPage from '../layouts/ContentPage.astro';
 
   <h2>4. Legal bases and your rights (GDPR/CCPA)</h2>
   <p>
-    Analytics cookies and the associated processing are handled on the basis of consent where required; the
-    standard host logs are handled under legitimate interest (operating and securing a free service), and the
+    Analytics cookies are set only after your <strong>prior consent</strong> — we ask via a cookie banner and, using
+    Google Consent Mode, keep analytics denied by default until you accept, satisfying the EU ePrivacy requirement.
+    The standard host logs are handled under legitimate interest (operating and securing a free service), and the
     ratings you voluntarily submit are handled with your consent. You have the right to access, delete or object
     to processing — though because we hold no accounts and no directly identifying data, most such requests have
     little to act on beyond the analytics data held by Google. You can exercise the analytics opt-out above at any

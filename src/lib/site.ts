@@ -4,7 +4,7 @@ export const SITE = {
   url: 'https://lazytools.io',
   tagline: 'Free online tools that never upload your data',
   description:
-    'LazyTools is a collection of free, privacy-first online tools. Everything runs locally in your browser — your files and data are never uploaded to any server.',
+    'LazyTools is a collection of free, privacy-first online tools. Every tool runs locally in your browser — the files and values you enter are never uploaded to any server.',
   github: 'https://github.com/Synth88Labs/lazytools.io',
   parent: { name: 'Synth88 Labs Inc.', url: 'https://synth88.com' },
   email: 'synth88labs@gmail.com',
