@@ -21,6 +21,13 @@ const POSTS = [
     icon: '🔢',
   },
   {
+    slug: 'restriction-digest-fragment-sizes-guide',
+    kicker: 'BIOLOGY GUIDE',
+    lines: ['Restriction digests:', 'predicting the', 'fragment sizes'],
+    fact: 'N cuts → N+1 fragments (linear) · N (circular)',
+    icon: '✂️',
+  },
+  {
     slug: 'redact-pii-before-ai-guide',
     kicker: 'PRIVACY GUIDE',
     lines: ['Scrub the personal', 'data out of text', 'before you paste it into AI'],

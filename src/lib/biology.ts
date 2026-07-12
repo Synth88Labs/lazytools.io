@@ -162,6 +162,144 @@ export function proteinMolecularWeight(seq: string): { mw: number; residues: num
   return { mw: n ? mw + WATER : 0, residues: n };
 }
 
+// ───────────────────────── restriction digest ─────────────────────────
+
+export interface Enzyme {
+  name: string;
+  /** recognition site 5'→3' (may contain IUPAC ambiguity codes) */
+  site: string;
+  /** 0-based offset from the site start where the top strand is cut */
+  cut: number;
+  /** 'blunt' or the overhang description, for display */
+  ends: string;
+}
+
+/**
+ * Common restriction enzymes with recognition site and top-strand cut position.
+ * Standard values (NEB / REBASE); the "^" cut point is encoded as `cut`.
+ * Do not alter these without checking a reference.
+ */
+export const ENZYMES: Enzyme[] = [
+  { name: 'EcoRI', site: 'GAATTC', cut: 1, ends: "5' AATT" },
+  { name: 'BamHI', site: 'GGATCC', cut: 1, ends: "5' GATC" },
+  { name: 'HindIII', site: 'AAGCTT', cut: 1, ends: "5' AGCT" },
+  { name: 'NotI', site: 'GCGGCCGC', cut: 2, ends: "5' GGCC" },
+  { name: 'XhoI', site: 'CTCGAG', cut: 1, ends: "5' TCGA" },
+  { name: 'SalI', site: 'GTCGAC', cut: 1, ends: "5' TCGA" },
+  { name: 'PstI', site: 'CTGCAG', cut: 5, ends: "3' TGCA" },
+  { name: 'SmaI', site: 'CCCGGG', cut: 3, ends: 'blunt' },
+  { name: 'KpnI', site: 'GGTACC', cut: 5, ends: "3' GTAC" },
+  { name: 'SacI', site: 'GAGCTC', cut: 5, ends: "3' AGCT" },
+  { name: 'SpeI', site: 'ACTAGT', cut: 1, ends: "5' CTAG" },
+  { name: 'XbaI', site: 'TCTAGA', cut: 1, ends: "5' CTAG" },
+  { name: 'NheI', site: 'GCTAGC', cut: 1, ends: "5' CTAG" },
+  { name: 'NcoI', site: 'CCATGG', cut: 1, ends: "5' CATG" },
+  { name: 'NdeI', site: 'CATATG', cut: 2, ends: "5' TA" },
+  { name: 'EcoRV', site: 'GATATC', cut: 3, ends: 'blunt' },
+  { name: 'BglII', site: 'AGATCT', cut: 1, ends: "5' GATC" },
+  { name: 'ClaI', site: 'ATCGAT', cut: 2, ends: "5' CG" },
+  { name: 'AflII', site: 'CTTAAG', cut: 1, ends: "5' TTAA" },
+  { name: 'ApaI', site: 'GGGCCC', cut: 5, ends: "3' GGCC" },
+  { name: 'DraI', site: 'TTTAAA', cut: 3, ends: 'blunt' },
+  { name: 'HaeIII', site: 'GGCC', cut: 2, ends: 'blunt' },
+  { name: 'AluI', site: 'AGCT', cut: 2, ends: 'blunt' },
+  { name: 'MspI', site: 'CCGG', cut: 1, ends: "5' CG" },
+  { name: 'TaqI', site: 'TCGA', cut: 1, ends: "5' CG" },
+  { name: 'HinfI', site: 'GANTC', cut: 1, ends: "5' ANT" },
+];
+export const getEnzyme = (name: string) => ENZYMES.find((e) => e.name === name);
+
+const IUPAC_RE: Record<string, string> = {
+  A: 'A', C: 'C', G: 'G', T: 'T',
+  R: '[AG]', Y: '[CT]', S: '[GC]', W: '[AT]', K: '[GT]', M: '[AC]',
+  B: '[CGT]', D: '[AGT]', H: '[ACT]', V: '[ACG]', N: '[ACGT]',
+};
+/** All (overlapping) start indices where `site` (with IUPAC codes) matches `seq`. */
+export function findSites(seq: string, site: string): number[] {
+  const pattern = [...site].map((c) => IUPAC_RE[c] ?? c).join('');
+  const re = new RegExp(pattern, 'g');
+  const hits: number[] = [];
+  for (let i = 0; i <= seq.length - site.length; i++) {
+    re.lastIndex = i;
+    const m = re.exec(seq);
+    if (m && m.index === i) hits.push(i);
+  }
+  return hits;
+}
+
+export interface DigestCut { enzyme: string; site: number; /* 1-based recognition-site start */ cutAt: number; /* 1-based top-strand cut position */ }
+
+/**
+ * Digest a sequence with the named enzymes. Returns each cut (sorted along the
+ * sequence) and the resulting fragment sizes (linear by default; circular wraps).
+ */
+export function digest(rawSeq: string, enzymeNames: string[], circular = false) {
+  const seq = rawSeq;
+  const cuts: DigestCut[] = [];
+  for (const name of enzymeNames) {
+    const e = getEnzyme(name);
+    if (!e) continue;
+    for (const idx of findSites(seq, e.site)) {
+      cuts.push({ enzyme: e.name, site: idx + 1, cutAt: idx + e.cut });
+    }
+  }
+  cuts.sort((a, b) => a.cutAt - b.cutAt);
+  const positions = cuts.map((c) => c.cutAt);
+  const n = seq.length;
+  let fragments: number[] = [];
+  if (positions.length === 0) {
+    fragments = n > 0 ? [n] : [];
+  } else if (circular) {
+    for (let i = 1; i < positions.length; i++) fragments.push(positions[i] - positions[i - 1]);
+    fragments.push(n - positions[positions.length - 1] + positions[0]); // wrap
+  } else {
+    fragments.push(positions[0]);
+    for (let i = 1; i < positions.length; i++) fragments.push(positions[i] - positions[i - 1]);
+    fragments.push(n - positions[positions.length - 1]);
+  }
+  fragments.sort((a, b) => b - a);
+  return { cuts, fragments, length: n };
+}
+
+// ───────────────────────── protein isoelectric point & charge ─────────────────────────
+
+/**
+ * pKa values for ionizable groups (EMBOSS set, as tabulated on the Wikipedia
+ * "Isoelectric point" article). Different pKa sets shift pI by ~0.1–0.3.
+ */
+export const PKA = { nterm: 8.6, cterm: 3.6, C: 8.5, D: 3.9, E: 4.1, H: 6.5, K: 10.8, R: 12.5, Y: 10.1 } as const;
+
+/** Count the charge-relevant residues in a one-letter protein sequence. */
+export function chargeCounts(seq: string) {
+  const c = { C: 0, D: 0, E: 0, H: 0, K: 0, R: 0, Y: 0, residues: 0 };
+  for (const a of seq) {
+    if (AA_RESIDUE_MASS[a] != null) c.residues++;
+    if (a === 'C' || a === 'D' || a === 'E' || a === 'H' || a === 'K' || a === 'R' || a === 'Y') c[a]++;
+  }
+  return c;
+}
+
+type ChargeCounts = ReturnType<typeof chargeCounts>;
+
+/** Net charge of the protein at a given pH (Henderson–Hasselbalch over all groups). */
+export function netCharge(c: ChargeCounts, pH: number): number {
+  const pos = (pk: number) => 1 / (1 + Math.pow(10, pH - pk)); // fraction protonated (positive groups)
+  const neg = (pk: number) => 1 / (1 + Math.pow(10, pk - pH)); // fraction deprotonated (negative groups)
+  const positive = pos(PKA.nterm) + c.K * pos(PKA.K) + c.R * pos(PKA.R) + c.H * pos(PKA.H);
+  const negative = neg(PKA.cterm) + c.D * neg(PKA.D) + c.E * neg(PKA.E) + c.C * neg(PKA.C) + c.Y * neg(PKA.Y);
+  return positive - negative;
+}
+
+/** Isoelectric point: the pH at which net charge is zero (bisection over pH 0–14). */
+export function isoelectricPoint(c: ChargeCounts): number {
+  let lo = 0, hi = 14;
+  for (let i = 0; i < 100; i++) {
+    const mid = (lo + hi) / 2;
+    if (netCharge(c, mid) > 0) lo = mid; else hi = mid;
+  }
+  return (lo + hi) / 2;
+}
+
 // ───────────────────────── dilution & molarity ─────────────────────────
 
 /** Solve C1·V1 = C2·V2 for the one missing value (pass null for the unknown). */

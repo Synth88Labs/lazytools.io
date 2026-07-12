@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="How to predict restriction-digest fragment sizes. A restriction enzyme cuts DNA at its recognition site: EcoRI cuts G-AATTC leaving a sticky AATT overhang, SmaI cuts CCC-GGG leaving a blunt end. To find fragments, locate every cut position along the sequence; the fragment sizes are the distances between consecutive cuts. A linear DNA with N cuts gives N plus 1 fragments because the two ends are free; a circular plasmid with N cuts gives exactly N fragments because it wraps around, so a single cut just linearises it.">
+  <defs>
+    <style>
+      .h { font: 800 27px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .sub { font: 500 15px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+      .lab { font: 800 15px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; }
+      .t { font: 500 13px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #475569; }
+      .mono { font: 700 15px Consolas, Menlo, monospace; fill: #0f172a; }
+      .frag { font: 800 13px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #047857; }
+    </style>
+  </defs>
+
+  <text x="600" y="40" text-anchor="middle" class="h">Predicting restriction-digest fragment sizes</text>
+  <text x="600" y="66" text-anchor="middle" class="sub">where the enzyme cuts &#8594; the distances between cuts are your fragments</text>
+
+  <!-- recognition site cutting -->
+  <g transform="translate(70 96)">
+    <rect width="500" height="150" rx="14" fill="#eff6ff" stroke="#1d4ed8"/>
+    <text x="20" y="30" class="lab" fill="#1d4ed8">The enzyme cuts at its site</text>
+    <text x="20" y="66" class="mono">EcoRI  G&#9660;AATTC</text><text x="250" y="66" class="t">&#8594; sticky 5&#8242; AATT overhang</text>
+    <text x="20" y="98" class="mono">SmaI   CCC&#9660;GGG</text><text x="250" y="98" class="t">&#8594; blunt end</text>
+    <text x="20" y="130" class="t" fill="#1d4ed8">the &#9660; marks where the top strand is cut.</text>
+  </g>
+
+  <!-- fragments = gaps -->
+  <g transform="translate(630 96)">
+    <rect width="500" height="150" rx="14" fill="#ecfdf5" stroke="#059669"/>
+    <text x="20" y="30" class="lab" fill="#047857">Fragments = gaps between cuts</text>
+    <line x1="20" y1="70" x2="470" y2="70" stroke="#334155" stroke-width="3"/>
+    <g fill="#dc2626"><circle cx="90" cy="70" r="5"/><circle cx="200" cy="70" r="5"/><circle cx="360" cy="70" r="5"/></g>
+    <text x="45" y="92" class="frag">|&#8592; f1 &#8594;|</text>
+    <text x="120" y="92" class="frag">|&#8592; f2 &#8594;|</text>
+    <text x="255" y="92" class="frag">|&#8592;&#8212; f3 &#8212;&#8594;|</text>
+    <text x="405" y="92" class="frag">|&#8592; f4 &#8594;|</text>
+    <text x="20" y="128" class="t" fill="#047857">three cuts &#8594; four fragments on a linear molecule.</text>
+  </g>
+
+  <!-- linear vs circular -->
+  <g transform="translate(70 276)">
+    <rect width="500" height="130" rx="14" fill="#fffbeb" stroke="#d97706"/>
+    <text x="20" y="30" class="lab" fill="#b45309">Linear DNA</text>
+    <text x="20" y="62" class="t">both ends are free, so</text>
+    <text x="20" y="92" class="mono" fill="#b45309">N cuts &#8594; N + 1 fragments</text>
+    <text x="20" y="118" class="t">(3 cuts give 4 bands on the gel)</text>
+  </g>
+  <g transform="translate(630 276)">
+    <rect width="500" height="130" rx="14" fill="#faf5ff" stroke="#7c3aed"/>
+    <text x="20" y="30" class="lab" fill="#6d28d9">Circular plasmid</text>
+    <text x="20" y="62" class="t">it wraps around, so</text>
+    <text x="20" y="92" class="mono" fill="#6d28d9">N cuts &#8594; N fragments</text>
+    <text x="20" y="118" class="t">(a single cut just linearises it)</text>
+  </g>
+
+  <!-- footer -->
+  <g transform="translate(70 440)">
+    <rect width="1060" height="50" rx="14" fill="#0c2f6b"/>
+    <text x="24" y="31" font-family="Consolas, Menlo, monospace" font-size="14" fill="#7ef0c0">lazytools.io — restriction digest calculator, fragment sizes in your browser</text>
+  </g>
+
+  <text x="600" y="524" text-anchor="middle" class="sub">Prediction from sequence only — real digests also depend on methylation, star activity &amp; complete cutting.</text>
+</svg>
