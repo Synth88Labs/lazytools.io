@@ -36,6 +36,7 @@ import { GARDEN_TOOLS } from '../data/garden/index';
 import { MUSIC_TOOLS } from '../data/music/index';
 import { WEATHER_TOOLS } from '../data/weather/index';
 import { ASTRO_TOOLS } from '../data/astronomy/index';
+import { PHOTOGRAPHY_TOOLS } from '../data/photography/index';
 
 export interface SearchUnit {
   id: string;
@@ -263,6 +264,9 @@ export function buildSearchPages(): SearchPage[] {
   for (const t of ASTRO_TOOLS) {
     pages.push({ title: t.name, url: `/astronomy/${t.slug}/`, keywords: [...t.keywords, 'astronomy', 'space', 'planets', 'stars', t.name.toLowerCase()] });
   }
+  for (const t of PHOTOGRAPHY_TOOLS) {
+    pages.push({ title: t.name, url: `/photography/${t.slug}/`, keywords: [...t.keywords, 'photography', 'camera', 'lens', 'photo', t.name.toLowerCase()] });
+  }
   for (const t of PDF_TOOLS) {
     pages.push({ title: t.name, url: `/pdf/${t.slug}/`, keywords: [...t.keywords, 'pdf', t.name.toLowerCase()] });
   }
@@ -287,6 +291,7 @@ export function buildSearchPages(): SearchPage[] {
     { title: 'All Music & Audio Tools', url: '/music/', keywords: ['music', 'audio', 'note frequency', 'hz', 'bpm', 'delay time', 'tap tempo', 'metronome', 'interval calculator', 'transpose', 'chord transposer', 'capo', 'audio file size', 'wav', 'time signature', 'a440', 'a432'] },
     { title: 'All Weather & Atmosphere Tools', url: '/weather/', keywords: ['weather', 'temperature', 'atmosphere', 'heat index', 'feels like', 'wind chill', 'dew point', 'relative humidity', 'wet bulb', 'beaufort scale', 'wind speed', 'cloud base', 'apparent temperature', 'frostbite'] },
     { title: 'All Astronomy & Space Tools', url: '/astronomy/', keywords: ['astronomy', 'space', 'moon phase', 'sunrise sunset', 'weight on other planets', 'age on planets', 'light year', 'light travel time', 'angular size', 'telescope calculator', 'magnification', 'parallax', 'parsec', 'planets', 'stars'] },
+    { title: 'All Photography Tools', url: '/photography/', keywords: ['photography', 'camera', 'lens', 'depth of field', 'dof', 'field of view', 'angle of view', 'crop factor', 'equivalent focal length', 'exposure value', 'ev', 'hyperfocal distance', 'time lapse', 'print resolution', 'dpi', 'sunny 16', 'bokeh'] },
     { title: 'All PDF Tools', url: '/pdf/', keywords: ['pdf tools', 'merge pdf', 'split pdf', 'rotate pdf'] },
     { title: 'All Audio Tools', url: '/video/', keywords: ['audio tools', 'trim audio', 'mp3', 'wav', 'volume'] },
     { title: 'All Developer Tools', url: '/dev/', keywords: ['developer tools', 'dev', 'encode', 'decode', 'hash', 'regex'] },

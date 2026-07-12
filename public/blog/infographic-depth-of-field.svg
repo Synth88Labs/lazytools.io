@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="Four things control depth of field — the zone of a photo that looks sharp. One: aperture. A wider aperture (lower f-number like f/1.8) gives a shallower depth of field and blurrier background; a smaller aperture (higher f-number like f/16) keeps more in focus. Two: focal length. A longer lens gives shallower depth of field. Three: subject distance. The closer you focus, the shallower the depth of field. Four: sensor size. A larger sensor gives shallower depth of field for the same framing. For a blurry background: wide aperture, long lens, get close, big sensor. For everything sharp: small aperture, wide lens, step back.">
+  <defs>
+    <style>
+      .h { font: 800 28px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .sub { font: 500 15px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+      .num { font: 800 22px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #ffffff; }
+      .lab { font: 800 18px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .d { font: 600 13px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #475569; }
+    </style>
+  </defs>
+
+  <text x="600" y="42" text-anchor="middle" class="h">Four things control depth of field</text>
+  <text x="600" y="68" text-anchor="middle" class="sub">the zone that looks sharp — shrink it to blur the background</text>
+
+  <!-- 4 cards -->
+  <g transform="translate(60 96)">
+    <rect x="0" y="0" width="255" height="200" rx="16" fill="#eff6ff" stroke="#1d4ed8" stroke-width="2"/>
+    <circle cx="40" cy="42" r="20" fill="#1d4ed8"/><text x="40" y="50" text-anchor="middle" class="num">1</text>
+    <text x="72" y="49" class="lab">Aperture</text>
+    <text x="24" y="92" class="d" font-weight="800">Wider (f/1.8) → shallower</text>
+    <text x="24" y="114" class="d">Smaller (f/16) → deeper</text>
+    <text x="24" y="150" class="d">The biggest, easiest control.</text>
+    <text x="24" y="172" class="d">Open up to blur the background.</text>
+  </g>
+  <g transform="translate(345 96)">
+    <rect x="0" y="0" width="255" height="200" rx="16" fill="#f0fdf4" stroke="#0e9f6e" stroke-width="2"/>
+    <circle cx="40" cy="42" r="20" fill="#0e9f6e"/><text x="40" y="50" text-anchor="middle" class="num">2</text>
+    <text x="72" y="49" class="lab">Focal length</text>
+    <text x="24" y="92" class="d" font-weight="800">Longer lens → shallower</text>
+    <text x="24" y="114" class="d">Wider lens → deeper</text>
+    <text x="24" y="150" class="d">85mm blurs far more</text>
+    <text x="24" y="172" class="d">than 24mm at the same f-stop.</text>
+  </g>
+  <g transform="translate(630 96)">
+    <rect x="0" y="0" width="255" height="200" rx="16" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+    <circle cx="40" cy="42" r="20" fill="#dc2626"/><text x="40" y="50" text-anchor="middle" class="num">3</text>
+    <text x="72" y="49" class="lab">Distance</text>
+    <text x="24" y="92" class="d" font-weight="800">Closer subject → shallower</text>
+    <text x="24" y="114" class="d">Farther subject → deeper</text>
+    <text x="24" y="150" class="d">Step in close for a</text>
+    <text x="24" y="172" class="d">dreamy, soft background.</text>
+  </g>
+  <g transform="translate(915 96)">
+    <rect x="0" y="0" width="225" height="200" rx="16" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+    <circle cx="40" cy="42" r="20" fill="#d97706"/><text x="40" y="50" text-anchor="middle" class="num">4</text>
+    <text x="72" y="49" class="lab">Sensor</text>
+    <text x="24" y="92" class="d" font-weight="800">Bigger sensor → shallower</text>
+    <text x="24" y="114" class="d">Smaller → deeper</text>
+    <text x="24" y="150" class="d">Full-frame blurs more</text>
+    <text x="24" y="172" class="d">than a phone.</text>
+  </g>
+
+  <!-- recipe bars -->
+  <g transform="translate(60 320)">
+    <rect x="0" y="0" width="540" height="150" rx="16" fill="#0c2f6b"/>
+    <text x="24" y="40" class="lab" fill="#7ef0c0">🌫️ For a blurry background</text>
+    <text x="24" y="76" class="d" fill="#cbd5e1">Wide aperture (low f-number) · long lens ·</text>
+    <text x="24" y="98" class="d" fill="#cbd5e1">get close to your subject · big sensor ·</text>
+    <text x="24" y="120" class="d" fill="#cbd5e1">put distance between subject &amp; background.</text>
+  </g>
+  <g transform="translate(600 320)">
+    <rect x="0" y="0" width="540" height="150" rx="16" fill="#334155"/>
+    <text x="24" y="40" class="lab" fill="#fde68a">🏔️ For everything sharp</text>
+    <text x="24" y="76" class="d" fill="#cbd5e1">Small aperture (high f-number, f/8–f/16) ·</text>
+    <text x="24" y="98" class="d" fill="#cbd5e1">wider lens · step back · focus at the</text>
+    <text x="24" y="120" class="d" fill="#cbd5e1">hyperfocal distance for max sharpness.</text>
+  </g>
+
+  <!-- footer -->
+  <g transform="translate(60 494)">
+    <rect x="0" y="0" width="1080" height="44" rx="12" fill="#f1f5f9"/>
+    <text x="24" y="28" font-family="Consolas, Menlo, monospace" font-size="14" fill="#334155">lazytools.io — depth of field, hyperfocal & crop-factor calculators, in your browser</text>
+  </g>
+</svg>

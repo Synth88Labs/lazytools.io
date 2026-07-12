@@ -25,6 +25,7 @@ import { GARDEN_TOOLS } from '../../data/garden/index';
 import { MUSIC_TOOLS } from '../../data/music/index';
 import { WEATHER_TOOLS } from '../../data/weather/index';
 import { ASTRO_TOOLS } from '../../data/astronomy/index';
+import { PHOTOGRAPHY_TOOLS } from '../../data/photography/index';
 import { FILE_TOOLS } from '../../data/file/index';
 import { DEV_TOOLS } from '../../data/dev/index';
 import { GEN_TOOLS } from '../../data/generate/index';
@@ -81,6 +82,7 @@ const schema = [
       ...MUSIC_TOOLS.map((t) => ({ name: t.name, url: `/music/${t.slug}/` })),
       ...WEATHER_TOOLS.map((t) => ({ name: t.name, url: `/weather/${t.slug}/` })),
       ...ASTRO_TOOLS.map((t) => ({ name: t.name, url: `/astronomy/${t.slug}/` })),
+      ...PHOTOGRAPHY_TOOLS.map((t) => ({ name: t.name, url: `/photography/${t.slug}/` })),
       ...SECURITY_TOOLS.map((t) => ({ name: t.name, url: `/security/${t.slug}/` })),
       ...IMAGE_TOOLS.map((t) => ({ name: t.name, url: `/image/${t.slug}/` })),
       ...PHOTO_SPECS.map((s) => ({ name: `${s.label} Maker`, url: `/photo/${s.slug}/` })),
@@ -308,6 +310,19 @@ const schema = [
         {FIN_TOOLS.map((t) => (
           <li>
             <a href={`/finance/${t.slug}/`} class="inline-block rounded-full border border-slate-200 px-3 py-1 text-sm text-slate-600 transition hover:border-brand-400 hover:text-brand-700">
+              {t.icon} {t.name}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-bold text-slate-900">📸 Photography</h2>
+      <ul class="mt-4 flex flex-wrap gap-2">
+        {PHOTOGRAPHY_TOOLS.map((t) => (
+          <li>
+            <a href={`/photography/${t.slug}/`} class="inline-block rounded-full border border-slate-200 px-3 py-1 text-sm text-slate-600 transition hover:border-brand-400 hover:text-brand-700">
               {t.icon} {t.name}
             </a>
           </li>

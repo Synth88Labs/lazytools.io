@@ -7,6 +7,13 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'depth-of-field-guide',
+    kicker: 'PHOTOGRAPHY GUIDE',
+    lines: ['How to blur the', 'background: the 4 keys', 'to depth of field'],
+    fact: 'aperture · focal length · distance · sensor',
+    icon: '🎞️',
+  },
+  {
     slug: 'light-travel-time-guide',
     kicker: 'ASTRONOMY GUIDE',
     lines: ['Why you always', 'see space in the past:', 'light travel time'],

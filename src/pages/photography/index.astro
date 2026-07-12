@@ -1,0 +1,58 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PrivacyStrip from '../../components/PrivacyStrip.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { PHOTOGRAPHY_TOOLS } from '../../data/photography/index';
+import { breadcrumbSchema, collectionPageSchema, faqSchema } from '../../lib/schema';
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Photography', url: '/photography/' },
+];
+const faqs = [
+  { q: 'Are these photography calculators accurate?', a: 'Yes — they use standard optics formulas (hyperfocal distance, depth of field, angle of view, exposure value) and verified sensor dimensions and circle-of-confusion values. Sources are cited on each tool page.' },
+  { q: 'What sensor sizes are supported?', a: 'Full frame, APS-C (Canon and Nikon/Sony), APS-H, Micro Four Thirds, 1-inch, medium format and smartphone sensors — each with the correct dimensions, crop factor and circle of confusion.' },
+  { q: 'Do these change my exposure for crop factor?', a: 'No — crop factor affects field of view and depth of field, not exposure. An f/2.8 lens exposes as f/2.8 on any sensor. The "equivalent aperture" is only for comparing depth of field between formats.' },
+  { q: 'Is my data uploaded?', a: 'No. Every tool runs entirely in your browser — nothing is sent to a server, and they work offline.' },
+];
+const schema = [
+  breadcrumbSchema(crumbs),
+  collectionPageSchema({ name: 'Photography Calculators', url: '/photography/', description: 'Free, private photography calculators: depth of field, field of view, crop factor, exposure value, hyperfocal distance, time-lapse, print resolution and the Sunny 16 rule.', items: PHOTOGRAPHY_TOOLS.map((t) => ({ name: t.name, url: `/photography/${t.slug}/` })) }),
+  faqSchema(faqs),
+];
+---
+
+<Base
+  title="Photography Calculators — Depth of Field, Field of View, Exposure | LazyTools"
+  description="Free photography calculators that run in your browser: depth of field, field of view, crop factor, exposure value (EV), hyperfocal distance, time-lapse, print resolution and the Sunny 16 rule. Standard optics formulas, verified sensor data, no upload."
+  schema={schema}
+>
+  <div class="mx-auto max-w-5xl px-4 py-6">
+    <Breadcrumbs items={crumbs} />
+    <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Photography Calculators</h1>
+    <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
+      Master the technical side of photography — work out depth of field and hyperfocal distance, compare
+      lenses and sensors, plan exposure and time-lapses, and size your prints. Standard optics formulas with
+      real sensor data, running entirely in your browser.
+    </p>
+
+    <div class="mt-5"><PrivacyStrip /></div>
+
+    <section class="mt-8">
+      <ul class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {PHOTOGRAPHY_TOOLS.map((t) => (
+          <li>
+            <a href={`/photography/${t.slug}/`} class="flex h-full flex-col rounded-xl border border-slate-200 p-4 transition hover:border-brand-400 hover:shadow-sm">
+              <span class="text-2xl" aria-hidden="true">{t.icon}</span>
+              <span class="mt-2 font-semibold text-slate-900">{t.name}</span>
+              <span class="mt-1 text-sm text-slate-600">{t.lead.split('—')[0].split('(')[0]}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <FaqSection faqs={faqs} />
+  </div>
+</Base>
