@@ -7,6 +7,13 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'pdf-to-jpg-without-uploading-guide',
+    kicker: 'PDF GUIDE',
+    lines: ['Convert PDF to JPG', 'without uploading it', 'to anyone'],
+    fact: 'pages render to images in your browser — nothing leaves',
+    icon: '🖼️',
+  },
+  {
     slug: 'redact-pii-before-ai-guide',
     kicker: 'PRIVACY GUIDE',
     lines: ['Scrub the personal', 'data out of text', 'before you paste it into AI'],

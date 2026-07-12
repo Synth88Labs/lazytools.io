@@ -302,6 +302,7 @@
   "pdf/accessibility-checker",
   "pdf/jpg-to-pdf",
   "pdf/merge-pdf",
+  "pdf/pdf-to-jpg",
   "pdf/protect-pdf",
   "pdf/redact-pdf",
   "pdf/redaction-checker",

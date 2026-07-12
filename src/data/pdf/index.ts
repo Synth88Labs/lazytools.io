@@ -6,7 +6,7 @@ export interface PdfToolDef {
   icon: string;
   description: string;
   lead: string;
-  widget: 'merge' | 'split' | 'images-to-pdf' | 'rotate' | 'unlock' | 'protect' | 'accessibility' | 'redact' | 'redact-check';
+  widget: 'merge' | 'split' | 'images-to-pdf' | 'rotate' | 'unlock' | 'protect' | 'accessibility' | 'redact' | 'redact-check' | 'to-images';
   how: string;
   note?: string;
   faqs: { q: string; a: string }[];
@@ -186,5 +186,23 @@ export const PDF_TOOLS: PdfToolDef[] = [
       { q: 'Is my document uploaded?', a: 'No — rendering, drawing and rebuilding all happen in your browser, and the tool works offline. Documents being redacted are exactly the files that should never touch a third-party server.' },
     ],
     keywords: ['redact pdf', 'pdf redaction tool', 'black out text in pdf', 'remove text from pdf permanently', 'redact pdf without uploading', 'flatten pdf redaction', 'secure pdf redaction free'],
+  },
+  {
+    slug: 'pdf-to-jpg',
+    name: 'PDF to JPG',
+    icon: '🖼️',
+    widget: 'to-images',
+    description: 'Convert PDF pages to JPG or PNG images and download them — every page rendered in your browser, nothing uploaded. In your browser.',
+    lead: 'Open a PDF to turn each page into a JPG or PNG image you can download individually or all at once — the file never leaves your device.',
+    how: 'The tool renders each page of your PDF to a canvas with the pdf.js engine, then exports it as an image. Choose JPG (smaller files) or PNG (lossless, best for text and diagrams), pick a resolution, and download each page or all of them together. Because rendering happens entirely in your browser, the PDF is never uploaded to a server.',
+    note: 'Higher resolution makes sharper images and larger files — "High" (≈216 DPI) keeps scanned text crisp, while "Screen" is fine for quick previews. The output is a picture, so the text is no longer selectable; if you need editable text, that requires OCR. Very large PDFs are capped at the first 100 pages to keep the browser responsive.',
+    faqs: [
+      { q: 'How do I convert a PDF to JPG?', a: 'Open the PDF here, choose JPG and a resolution, and each page is rendered to an image you can download — individually or all at once. It all happens in your browser, so nothing is uploaded.' },
+      { q: 'Is my PDF uploaded to a server?', a: 'No. The pages are rendered and exported locally in your browser with pdf.js, and the tool works offline. Documents you convert are exactly the ones that shouldn\'t be sent to a third-party service.' },
+      { q: 'Should I choose JPG or PNG?', a: 'JPG gives smaller files and is fine for most pages, especially photos. PNG is lossless and sharper for text, line art and diagrams, at the cost of a larger file. Pick PNG when crispness matters, JPG when size does.' },
+      { q: 'What resolution should I use?', a: 'For on-screen viewing, "Screen" (72 dpi) is enough. For printing or keeping scanned text readable, choose "Good" (144 dpi) or "High" (216 dpi). Higher resolution means sharper but larger images.' },
+      { q: 'Can I still edit the text after converting?', a: 'No — converting to an image turns the text into pixels, so it\'s no longer selectable or editable. To get editable text back from an image you\'d need optical character recognition (OCR), which is a separate step.' },
+    ],
+    keywords: ['pdf to jpg', 'pdf to image', 'convert pdf to jpg', 'pdf to png', 'pdf to jpg without uploading', 'pdf pages to images', 'export pdf as image'],
   },
 ];

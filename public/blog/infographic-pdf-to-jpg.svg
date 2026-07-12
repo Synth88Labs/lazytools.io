@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="Convert a PDF to JPG without uploading it. The usual way sends your PDF to a website's servers, converts it there, and sends images back — your document sits on a stranger's machine. The private way renders each page to an image inside your own browser with a PDF engine, so the file never leaves your device. Choosing between formats: JPG makes smaller files, good for photos; PNG is lossless and sharper for text and diagrams. Resolution: 72 dpi for screen, 144 for good quality, 216 for print or keeping scanned text crisp.">
+  <defs>
+    <style>
+      .h { font: 800 27px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .sub { font: 500 15px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+      .lab { font: 800 14px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; }
+      .t { font: 500 13px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #475569; }
+      .mono { font: 700 12px Consolas, Menlo, monospace; fill: #334155; }
+    </style>
+  </defs>
+
+  <text x="600" y="40" text-anchor="middle" class="h">Convert a PDF to JPG — without uploading it</text>
+  <text x="600" y="66" text-anchor="middle" class="sub">most online converters send your document to their servers; this one doesn't</text>
+
+  <!-- the usual way -->
+  <g transform="translate(70 96)">
+    <rect width="500" height="150" rx="14" fill="#fef2f2" stroke="#dc2626"/>
+    <text x="20" y="32" class="lab" fill="#b91c1c">✗ THE USUAL WAY (upload)</text>
+    <text x="20" y="62" class="t">your PDF  →  uploaded to a website's servers</text>
+    <text x="20" y="86" class="t">→  converted there  →  images sent back</text>
+    <text x="20" y="122" class="t" fill="#b91c1c">your document sits on someone else's machine.</text>
+  </g>
+  <!-- the private way -->
+  <g transform="translate(630 96)">
+    <rect width="500" height="150" rx="14" fill="#ecfdf5" stroke="#059669"/>
+    <text x="20" y="32" class="lab" fill="#047857">✓ IN YOUR BROWSER (local)</text>
+    <text x="20" y="62" class="t">a PDF engine renders each page to an</text>
+    <text x="20" y="86" class="t">image right on your device</text>
+    <text x="20" y="122" class="t" fill="#047857">the file never leaves your computer.</text>
+  </g>
+
+  <!-- choices -->
+  <g transform="translate(70 276)">
+    <text x="0" y="0" class="lab" fill="#1d4ed8">JPG or PNG?</text>
+    <g transform="translate(0 24)">
+      <rect width="500" height="120" rx="12" fill="#eff6ff" stroke="#1d4ed8"/>
+      <text x="20" y="34" class="mono" fill="#1d4ed8">JPG</text><text x="90" y="34" class="t">smaller files · good for photos &amp; scans</text>
+      <text x="20" y="66" class="mono" fill="#4338ca">PNG</text><text x="90" y="66" class="t">lossless · sharper for text &amp; diagrams</text>
+      <text x="20" y="98" class="t" fill="#64748b">rule of thumb: PNG when crispness matters, JPG when size does</text>
+    </g>
+  </g>
+  <g transform="translate(630 276)">
+    <text x="0" y="0" class="lab" fill="#b45309">Which resolution?</text>
+    <g transform="translate(0 24)">
+      <rect width="500" height="120" rx="12" fill="#fffbeb" stroke="#d97706"/>
+      <text x="20" y="34" class="mono" fill="#b45309">72 dpi</text><text x="120" y="34" class="t">quick on-screen viewing</text>
+      <text x="20" y="66" class="mono" fill="#b45309">144 dpi</text><text x="120" y="66" class="t">good general quality</text>
+      <text x="20" y="98" class="mono" fill="#b45309">216 dpi</text><text x="120" y="98" class="t">print &amp; crisp scanned text</text>
+    </g>
+  </g>
+
+  <!-- footer -->
+  <g transform="translate(70 440)">
+    <rect width="1060" height="50" rx="14" fill="#0c2f6b"/>
+    <text x="24" y="31" font-family="Consolas, Menlo, monospace" font-size="14" fill="#7ef0c0">lazytools.io — PDF to JPG &amp; PNG, rendered in your browser, nothing uploaded</text>
+  </g>
+
+  <text x="600" y="524" text-anchor="middle" class="sub">Converting to an image turns the text into pixels — it's no longer selectable (that would need OCR).</text>
+</svg>

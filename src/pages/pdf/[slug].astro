@@ -10,6 +10,7 @@ import PdfPasswordTool from '../../components/pdf/PdfPasswordTool.tsx';
 import PdfAccessibilityTool from '../../components/pdf/PdfAccessibilityTool.tsx';
 import PdfRedactorTool from '../../components/pdf/PdfRedactorTool.tsx';
 import PdfRedactionCheckerTool from '../../components/pdf/PdfRedactionCheckerTool.tsx';
+import PdfToJpgTool from '../../components/pdf/PdfToJpgTool.tsx';
 import { PDF_TOOLS, type PdfToolDef } from '../../data/pdf/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -64,6 +65,8 @@ const schema = [
         <PdfRedactorTool client:load />
       ) : tool.widget === 'redact-check' ? (
         <PdfRedactionCheckerTool client:load />
+      ) : tool.widget === 'to-images' ? (
+        <PdfToJpgTool client:load />
       ) : (
         <PdfTool client:load mode={tool.widget} />
       )}
