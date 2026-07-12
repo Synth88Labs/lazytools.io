@@ -40,6 +40,7 @@ import { PHOTOGRAPHY_TOOLS } from '../data/photography/index';
 import { ELECTRONICS_TOOLS } from '../data/electronics/index';
 import { TRAVEL_TOOLS } from '../data/travel/index';
 import { PRINTING3D_TOOLS } from '../data/printing3d/index';
+import { SOLAR_TOOLS } from '../data/solar/index';
 
 export interface SearchUnit {
   id: string;
@@ -279,6 +280,9 @@ export function buildSearchPages(): SearchPage[] {
   for (const t of PRINTING3D_TOOLS) {
     pages.push({ title: t.name, url: `/3d-printing/${t.slug}/`, keywords: [...t.keywords, '3d printing', '3d print', 'filament', 'fdm', 'maker', t.name.toLowerCase()] });
   }
+  for (const t of SOLAR_TOOLS) {
+    pages.push({ title: t.name, url: `/solar/${t.slug}/`, keywords: [...t.keywords, 'solar', 'off grid', 'off-grid', 'battery', 'energy', 'renewable', t.name.toLowerCase()] });
+  }
   for (const t of PDF_TOOLS) {
     pages.push({ title: t.name, url: `/pdf/${t.slug}/`, keywords: [...t.keywords, 'pdf', t.name.toLowerCase()] });
   }
@@ -307,6 +311,7 @@ export function buildSearchPages(): SearchPage[] {
     { title: 'All Electronics & Circuits Tools', url: '/electronics/', keywords: ['electronics', 'circuit', 'resistor color code', 'resistor calculator', 'led resistor', 'voltage divider', 'capacitor code', 'wire gauge', 'awg', 'rc filter', 'time constant', '555 timer', 'ne555', 'battery life', 'ohms law'] },
     { title: 'All Travel & Trips Tools', url: '/travel/', keywords: ['travel', 'trip', 'flight distance', 'great circle', 'flight time', 'layover', 'connection time', 'jet lag', 'tip calculator', 'tipping by country', 'road trip', 'driving time', 'travel budget', 'luggage size', 'carry on', 'baggage', 'vacation', 'holiday'] },
     { title: 'All 3D Printing Tools', url: '/3d-printing/', keywords: ['3d printing', '3d print', 'filament calculator', 'filament weight', 'filament length', 'filament cost', 'print cost', 'electricity cost', 'model scale', 'e-steps', 'esteps calibration', 'flow rate', 'extrusion multiplier', 'volumetric flow', 'resin cost', 'fdm', 'sla', 'maker'] },
+    { title: 'All Solar & Energy Tools', url: '/solar/', keywords: ['solar', 'off grid', 'off-grid', 'solar panel output', 'solar production', 'battery bank', 'battery sizing', 'inverter size', 'off grid load', 'appliance cost', 'electricity cost', 'solar payback', 'roi', 'voltage drop', 'charge time', 'peak sun hours', 'renewable energy', 'photovoltaic'] },
     { title: 'All PDF Tools', url: '/pdf/', keywords: ['pdf tools', 'merge pdf', 'split pdf', 'rotate pdf'] },
     { title: 'All Audio Tools', url: '/video/', keywords: ['audio tools', 'trim audio', 'mp3', 'wav', 'volume'] },
     { title: 'All Developer Tools', url: '/dev/', keywords: ['developer tools', 'dev', 'encode', 'decode', 'hash', 'regex'] },

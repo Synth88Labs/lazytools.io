@@ -7,6 +7,13 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'how-many-solar-panels-guide',
+    kicker: 'SOLAR GUIDE',
+    lines: ['How many solar', 'panels do I need?', 'A simple way to size it'],
+    fact: 'daily kWh ÷ (panel W × sun hours × 0.8)',
+    icon: '☀️',
+  },
+  {
     slug: 'cube-rule-scaling-guide',
     kicker: '3D PRINTING GUIDE',
     lines: ['Why a bigger print', 'uses so much more', 'filament: the cube rule'],

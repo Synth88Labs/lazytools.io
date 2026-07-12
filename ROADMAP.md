@@ -12,7 +12,7 @@ the legal review) are cleared.
 ratings (PHP + SQLite), smart header search, sitemap, auto-generated `llms.txt`, GitHub Actions →
 Namecheap FTPS deploy pipeline.
 
-**All 37 categories live** (~760 pages, 620+ tools):
+**All 38 categories live** (~770 pages, 630+ tools):
 
 | Category | Highlights |
 |---|---|

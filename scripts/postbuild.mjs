@@ -47,6 +47,7 @@ import { PHOTOGRAPHY_TOOLS } from '../src/data/photography/index.ts';
 import { ELECTRONICS_TOOLS } from '../src/data/electronics/index.ts';
 import { TRAVEL_TOOLS } from '../src/data/travel/index.ts';
 import { PRINTING3D_TOOLS } from '../src/data/printing3d/index.ts';
+import { SOLAR_TOOLS } from '../src/data/solar/index.ts';
 
 await copyFile(new URL('../dist/sitemap-index.xml', import.meta.url), new URL('../dist/sitemap.xml', import.meta.url));
 console.log('postbuild: dist/sitemap.xml created (copy of sitemap-index.xml)');
@@ -91,6 +92,7 @@ const slugs = [
   ...ELECTRONICS_TOOLS.map((t) => `electronics/${t.slug}`),
   ...TRAVEL_TOOLS.map((t) => `travel/${t.slug}`),
   ...PRINTING3D_TOOLS.map((t) => `3d-printing/${t.slug}`),
+  ...SOLAR_TOOLS.map((t) => `solar/${t.slug}`),
 ].sort();
 await writeFile(new URL('../api/tools-allowlist.json', import.meta.url), JSON.stringify(slugs, null, 2) + '\n');
 console.log(`postbuild: api/tools-allowlist.json regenerated (${slugs.length} tools)`);

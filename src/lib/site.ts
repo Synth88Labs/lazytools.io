@@ -42,6 +42,7 @@ export const CATEGORIES: CategoryDef[] = [
   { slug: 'electronics', name: 'Electronics & Circuits', icon: '🔌', description: 'Resistor & capacitor codes, LED resistor, voltage divider, 555 timer, wire gauge and battery life.', status: 'live' },
   { slug: 'travel', name: 'Travel & Trips', icon: '🧳', description: 'Flight distance & time, layover check, jet lag, tip-by-country, road-trip time, budget and luggage size.', status: 'live' },
   { slug: '3d-printing', name: '3D Printing', icon: '🖨️', description: 'Filament weight/length & cost, print electricity, model scaling, E-steps & flow calibration, resin cost.', status: 'live' },
+  { slug: 'solar', name: 'Solar & Energy', icon: '☀️', description: 'Solar panel output, off-grid load, battery bank & inverter sizing, appliance cost, payback, voltage drop.', status: 'live' },
   { slug: 'photo', name: 'Photo Size Maker', icon: '🪪', description: 'Passport, visa & ID photos for 80+ countries — crop, check and export in your browser.', status: 'live' },
   { slug: 'dev', name: 'Developer Tools', icon: '👨‍💻', description: 'Formatters, encoders, hashes and other dev utilities.', status: 'live' },
   { slug: 'file', name: 'File Converters', icon: '🔄', description: 'CSV, JSON, XML, YAML and Markdown conversion.', status: 'live' },

@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="How to size a solar array in three steps. Step 1: find your daily energy use in kilowatt-hours, for example 10 kWh per day. Step 2: find your location's peak sun hours, for example 4.5 hours per day. Step 3: divide. Number of panels = daily kWh divided by (panel watts times peak sun hours times system efficiency of about 0.8, divided by 1000). Worked example: 10 kWh per day divided by (400 watt panel times 4.5 sun hours times 0.8 divided by 1000 = 1.44 kWh per panel) gives about 7 panels. Then add a margin for cloudy days.">
+  <defs>
+    <style>
+      .h { font: 800 28px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .sub { font: 500 15px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+      .step { font: 800 15px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #b45309; }
+      .lab { font: 700 15px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .val { font: 800 26px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .ex { font: 800 16px Consolas, Menlo, monospace; fill: #0f172a; }
+    </style>
+  </defs>
+
+  <text x="600" y="42" text-anchor="middle" class="h">How many solar panels do I need?</text>
+  <text x="600" y="68" text-anchor="middle" class="sub">size an array in three steps: your usage, your sun, then divide</text>
+
+  <!-- three step cards -->
+  <g transform="translate(70 100)">
+    <rect x="0" y="0" width="320" height="130" rx="14" fill="#eff6ff" stroke="#1d4ed8"/>
+    <text x="20" y="30" class="step">STEP 1 · YOUR USAGE</text>
+    <text x="20" y="68" class="lab">Daily energy you use</text>
+    <text x="20" y="104" class="val" fill="#1d4ed8">10 kWh/day</text>
+  </g>
+  <g transform="translate(440 100)">
+    <rect x="0" y="0" width="320" height="130" rx="14" fill="#fffbeb" stroke="#d97706"/>
+    <text x="20" y="30" class="step">STEP 2 · YOUR SUN</text>
+    <text x="20" y="68" class="lab">Peak sun hours (your area)</text>
+    <text x="20" y="104" class="val" fill="#b45309">4.5 h/day</text>
+  </g>
+  <g transform="translate(810 100)">
+    <rect x="0" y="0" width="320" height="130" rx="14" fill="#ecfdf5" stroke="#059669"/>
+    <text x="20" y="30" class="step" fill="#047857">STEP 3 · DIVIDE</text>
+    <text x="20" y="68" class="lab">Panels needed</text>
+    <text x="20" y="104" class="val" fill="#047857">≈ 7 panels</text>
+  </g>
+
+  <!-- formula band -->
+  <g transform="translate(70 262)">
+    <rect x="0" y="0" width="1060" height="64" rx="14" fill="#0f172a"/>
+    <text x="530" y="40" text-anchor="middle" class="ex" fill="#7ef0c0">panels = daily kWh ÷ ( panel W × peak sun hours × 0.8 ÷ 1000 )</text>
+  </g>
+
+  <!-- worked example -->
+  <g transform="translate(70 350)">
+    <text x="0" y="0" class="lab" fill="#1d4ed8">WORKED EXAMPLE</text>
+    <g class="ex">
+      <text x="0" y="34">one 400 W panel: 400 × 4.5 × 0.8 ÷ 1000  =  1.44 kWh/day</text>
+      <text x="0" y="66">panels: 10 kWh/day ÷ 1.44 kWh  =  6.9  →  round up to 7</text>
+    </g>
+    <text x="0" y="100" class="sub">…then add a margin (often ~25%) for cloudy days, winter sun and losses — so 8–9 panels to be safe.</text>
+  </g>
+
+  <!-- footer -->
+  <g transform="translate(70 486)">
+    <rect x="0" y="0" width="1060" height="52" rx="14" fill="#0c2f6b"/>
+    <text x="24" y="32" font-family="Consolas, Menlo, monospace" font-size="14" fill="#7ef0c0">lazytools.io — solar panel output &amp; off-grid load calculators, free &amp; private</text>
+  </g>
+
+  <text x="600" y="576" text-anchor="middle" class="sub">Use your worst-month peak sun hours for off-grid sizing — a temperate site gets far less sun in winter than summer.</text>
+</svg>
