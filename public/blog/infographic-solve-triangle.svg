@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="How to solve a triangle: which rule to use for each set of known values. If you know three sides (SSS) or two sides and the angle between them (SAS), use the law of cosines. If you know two angles and any side (ASA or AAS), use the angle sum then the law of sines. If you know two sides and an angle not between them (SSA), use the law of sines — this ambiguous case can give two triangles, one, or none. The law of sines is a over sine A equals b over sine B equals c over sine C. The law of cosines is c squared equals a squared plus b squared minus two a b cosine C.">
+  <defs>
+    <style>
+      .h { font: 800 27px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill:#0f172a; }
+      .sub { font: 500 15px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill:#64748b; }
+      .lab { font: 800 15px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; }
+      .t { font: 500 13px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill:#475569; }
+      .mono { font: 700 16px Consolas,Menlo,monospace; fill:#0f172a; }
+    </style>
+  </defs>
+
+  <text x="600" y="40" text-anchor="middle" class="h">How to solve a triangle — which rule to use</text>
+  <text x="600" y="66" text-anchor="middle" class="sub">pick the law that matches the three things you already know</text>
+
+  <!-- law of cosines cases -->
+  <g transform="translate(70 96)">
+    <rect width="500" height="176" rx="14" fill="#eff6ff" stroke="#1d4ed8"/>
+    <text x="20" y="30" class="lab" fill="#1d4ed8">Know 3 sides (SSS) or 2 sides + the angle between (SAS)?</text>
+    <text x="20" y="58" class="t">&#8594; use the LAW OF COSINES</text>
+    <text x="20" y="92" class="mono">c&#178; = a&#178; + b&#178; &#8722; 2ab&#183;cos C</text>
+    <text x="20" y="124" class="t">SSS: find each angle from the three sides.</text>
+    <text x="20" y="146" class="t">SAS: find the third side, then the angles.</text>
+  </g>
+
+  <!-- law of sines cases -->
+  <g transform="translate(630 96)">
+    <rect width="500" height="176" rx="14" fill="#ecfdf5" stroke="#059669"/>
+    <text x="20" y="30" class="lab" fill="#047857">Know 2 angles + a side (ASA / AAS)?</text>
+    <text x="20" y="58" class="t">&#8594; angles sum to 180&#176;, then the LAW OF SINES</text>
+    <text x="20" y="92" class="mono">a/sin A = b/sin B = c/sin C</text>
+    <text x="20" y="124" class="t">Third angle = 180&#176; &#8722; the other two, then</text>
+    <text x="20" y="146" class="t">each side from the shared ratio.</text>
+  </g>
+
+  <!-- SSA ambiguous -->
+  <g transform="translate(70 300)">
+    <rect width="1060" height="118" rx="14" fill="#fffbeb" stroke="#d97706"/>
+    <text x="20" y="32" class="lab" fill="#b45309">Know 2 sides + a non-included angle (SSA)? The ambiguous case</text>
+    <text x="20" y="62" class="t">Use the law of sines &#8212; but the known side may reach in two ways, one way, or not at all.</text>
+    <text x="20" y="90" class="t" fill="#b45309">So SSA can give TWO valid triangles, one, or none. A good solver shows every answer that fits.</text>
+  </g>
+
+  <!-- footer -->
+  <g transform="translate(70 448)">
+    <rect width="1060" height="50" rx="14" fill="#0c2f6b"/>
+    <text x="24" y="31" font-family="Consolas,Menlo,monospace" font-size="14" fill="#7ef0c0">lazytools.io &#8212; triangle solver: enter any 3 values, get every side, angle &amp; area</text>
+  </g>
+
+  <text x="600" y="532" text-anchor="middle" class="sub">You always need at least one side &#8212; three angles fix the shape but not the size.</text>
+</svg>

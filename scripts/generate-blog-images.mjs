@@ -28,6 +28,13 @@ const POSTS = [
     icon: '✂️',
   },
   {
+    slug: 'solve-a-triangle-guide',
+    kicker: 'MATH GUIDE',
+    lines: ['How to solve a triangle:', 'law of sines', '& law of cosines'],
+    fact: 'SSS · SAS · ASA/AAS · the ambiguous SSA case',
+    icon: '📐',
+  },
+  {
     slug: 'redact-pii-before-ai-guide',
     kicker: 'PRIVACY GUIDE',
     lines: ['Scrub the personal', 'data out of text', 'before you paste it into AI'],
