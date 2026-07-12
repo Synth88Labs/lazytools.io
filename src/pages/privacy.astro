@@ -25,7 +25,17 @@ import ContentPage from '../layouts/ContentPage.astro';
 
   <h2>2. What we do handle</h2>
   <ul>
-    <li><strong>Google Analytics (GA4).</strong> We include Google's analytics tag on our pages to measure traffic — which pages are visited, roughly where visitors come from, and general device/browser type. This sets first-party cookies (for example <code>_ga</code>) and sends the associated usage data to Google, which processes it as our data processor. It measures page visits, not the content you enter into any tool. You can <a href="#optout">opt out</a> as described below.</li>
+    <li>
+      <strong>Google Analytics (GA4).</strong> We include Google's analytics tag on our pages to understand how the site is used and which tools are worth improving. It sets first-party cookies (for example <code>_ga</code> and <code>_ga_&lt;id&gt;</code>) and sends usage data to Google LLC, which processes it as our data processor. With GA4's default "enhanced measurement," this can include:
+      <ul>
+        <li>pages you view, and referring links that brought you;</li>
+        <li>engagement signals — how long you're active on a page, how far you scroll, clicks on outbound links, site-search queries typed into our search box, and file downloads;</li>
+        <li>general device and browser information (type, operating system, screen size, language);</li>
+        <li>an <strong>approximate, city-level location</strong> derived from your IP address (Google does not log the full IP address for EU/EEA/UK traffic);</li>
+        <li>a pseudonymous identifier stored in the cookie so returning visits can be recognised.</li>
+      </ul>
+      This measures how you use the pages — <strong>never the content you type into a tool or the files you process</strong>, which stay on your device. Google may process this data on servers outside your country, including the United States, under its own <a href="https://business.safety.google/adsprocessorterms/" rel="noopener">data-processing terms</a>. Data is retained for the period configured in Google Analytics (GA4 offers retention windows of 2 to 14 months for user-level data). You can <a href="#optout">opt out</a> at any time, as described below.
+    </li>
     <li><strong>Standard server logs.</strong> Like every website, our hosting provider (Namecheap) automatically records basic web-server logs — IP address, requested URL and timestamp — for security and reliability. These are ordinary host logs, retained for a limited period; we do not use them to build profiles.</li>
     <li><strong>Opt-in anonymous ratings.</strong> If — and only if — you click to rate a tool, we store just the tool's name and your star value (1–5), plus a timestamp. As the <a href="https://github.com/Synth88Labs/lazytools.io" rel="noopener">source code</a> shows, this records <strong>no IP address, no cookie, no user agent and no identifier</strong>. Whether you've rated a tool is remembered only in your own browser's local storage, never sent to us.</li>
   </ul>

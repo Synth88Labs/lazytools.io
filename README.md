@@ -99,8 +99,10 @@ to any host, no SSR, no serverless, no backend.
 **The privacy model.** There are no processing servers. Every computation — parsing, encoding,
 cryptography, image and PDF manipulation, **and machine-learning inference** — happens on the user's
 device. Anything heavy is loaded lazily on first use and **self-hosted** under
-[`public/vendor/`](public/vendor/) so nothing is fetched from a third-party CDN. There are **no analytics
-and no cookies** — no Google Analytics, no tracking pixel, nothing to consent to. The only network call
+[`public/vendor/`](public/vendor/) so nothing is fetched from a third-party CDN. **Tool content — the files
+you open and the values you type — is never uploaded**, and that promise is architectural, not a policy.
+Site *usage* is measured with **Google Analytics (GA4)**, which sets cookies and records page visits and
+engagement (see the [privacy policy](https://lazytools.io/privacy/) and [cookie statement](https://lazytools.io/cookies/), with an [opt-out](https://lazytools.io/privacy/#optout)); it only ever sees *that a page was visited*, never the content processed on it. The other network call
 after page load is an **optional star rating**: a tiny PHP endpoint ([`api/rate.php`](api/rate.php)) that
 fires only when a user clicks to rate a tool and stores just the tool name, star value and a timestamp —
 no IP address, no cookie, no user agent, no identifiers. (Standard host access logs apply, as with any site.)
