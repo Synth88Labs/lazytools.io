@@ -34,6 +34,22 @@ export function escapeVelocity(mass: number, radius: number, G = G_GRAV): number
 
 /* ---------------- Latent heat Q = m·L ---------------- */
 export function latentHeat(mass: number, L: number): number { return mass * L; }
+
+/* ---------------- Terminal velocity v = √(2mg/ρACd) ---------------- */
+export function terminalVelocity(mass: number, area: number, dragCoeff: number, fluidDensity = 1.225, g = G_STD): number | null {
+  if (area <= 0 || dragCoeff <= 0 || fluidDensity <= 0 || mass <= 0) return null;
+  return Math.sqrt((2 * mass * g) / (fluidDensity * area * dragCoeff));
+}
+
+/* ---------------- Magnetic force ---------------- */
+/** Lorentz force on a moving charge: F = |q|·v·B·sinθ. */
+export function lorentzForce(q: number, v: number, B: number, angleDeg = 90): number {
+  return Math.abs(q) * v * B * Math.sin((angleDeg * Math.PI) / 180);
+}
+/** Force on a current-carrying wire: F = B·I·L·sinθ. */
+export function wireForce(B: number, I: number, L: number, angleDeg = 90): number {
+  return B * I * L * Math.sin((angleDeg * Math.PI) / 180);
+}
 /** Speed of light in vacuum, m/s (exact, SI definition). */
 export const SPEED_OF_LIGHT = 299792458;
 

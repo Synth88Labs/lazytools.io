@@ -14,6 +14,8 @@ import PressureTool from '../../components/physics/PressureTool.tsx';
 import BuoyancyTool from '../../components/physics/BuoyancyTool.tsx';
 import EscapeVelocityTool from '../../components/physics/EscapeVelocityTool.tsx';
 import LatentHeatTool from '../../components/physics/LatentHeatTool.tsx';
+import TerminalVelocityTool from '../../components/physics/TerminalVelocityTool.tsx';
+import MagneticForceTool from '../../components/physics/MagneticForceTool.tsx';
 import ProjectileTool from '../../components/physics/ProjectileTool.tsx';
 import FreeFallTool from '../../components/physics/FreeFallTool.tsx';
 import NewtonsSecondLawTool from '../../components/physics/NewtonsSecondLawTool.tsx';
@@ -125,6 +127,8 @@ const schema = [
       {tool.widget === 'buoyancy' && <BuoyancyTool client:load />}
       {tool.widget === 'escapevel' && <EscapeVelocityTool client:load />}
       {tool.widget === 'latentheat' && <LatentHeatTool client:load />}
+      {tool.widget === 'terminalvel' && <TerminalVelocityTool client:load />}
+      {tool.widget === 'magforce' && <MagneticForceTool client:load />}
     </div>
 
     <div class="mt-4">

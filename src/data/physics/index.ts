@@ -11,7 +11,8 @@ export interface PhysToolDef {
     | 'wave' | 'doppler' | 'lensmirror' | 'resistornet' | 'torque' | 'orbital'
     | 'carnot' | 'thermalexp' | 'debroglie' | 'avgvel'
     | 'coulomb' | 'collision' | 'relativity' | 'harmonics'
-    | 'pressure' | 'buoyancy' | 'escapevel' | 'latentheat';
+    | 'pressure' | 'buoyancy' | 'escapevel' | 'latentheat'
+    | 'terminalvel' | 'magforce';
   cluster: 'kinematics' | 'dynamics' | 'energy' | 'gravitation' | 'waves' | 'electricity' | 'modern' | 'thermodynamics';
   /** for the resistor-network widget: resistor or capacitor rules */
   netKind?: 'resistor' | 'capacitor';
@@ -443,6 +444,44 @@ export const PHYS_TOOLS: PhysToolDef[] = [
       { q: 'Why does the temperature stay constant during a phase change?', a: 'Because the added energy breaks intermolecular bonds (melting, boiling) rather than speeding molecules up. Only once the phase change is complete does further heat raise the temperature again.' },
     ],
     keywords: ['latent heat calculator', 'q = ml', 'latent heat of fusion', 'latent heat of vaporization', 'phase change energy', 'heat to melt ice', 'specific latent heat'],
+  },
+  {
+    slug: 'terminal-velocity-calculator',
+    name: 'Terminal Velocity Calculator',
+    icon: '🪂',
+    widget: 'terminalvel',
+    cluster: 'dynamics',
+    description: 'Calculate terminal velocity — the steady falling speed where air resistance balances weight — from mass, frontal area, drag coefficient and fluid density. In your browser.',
+    lead: 'Enter mass, frontal area, drag coefficient and fluid density to get the terminal velocity, in m/s, km/h and mph.',
+    how: 'A falling object speeds up until the upward drag force equals its weight; after that it falls at a constant terminal velocity. Setting drag equal to weight and solving gives v = √(2mg ÷ (ρ·A·Cd)), where m is mass, g gravity, ρ the fluid density, A the frontal (cross-sectional) area and Cd the drag coefficient. Presets are included for common drag coefficients and for air and water.',
+    note: 'Terminal velocity rises with mass and falls with area and drag — which is why a feather and a hammer fall together only in a vacuum. A belly-down skydiver reaches roughly 55 m/s (about 200 km/h); a head-down dive can exceed 90 m/s. The Cd and area are approximate for real, tumbling bodies, so treat the result as an estimate.',
+    faqs: [
+      { q: 'What is terminal velocity?', a: 'The constant speed a falling object eventually reaches when air resistance (drag) exactly balances its weight, so the net force — and acceleration — is zero. It keeps falling, but no longer speeds up.' },
+      { q: 'How do you calculate terminal velocity?', a: 'v = √(2mg ÷ (ρ·A·Cd)), where m is mass, g = 9.81 m/s², ρ the fluid density, A the frontal area and Cd the drag coefficient. Heavier or more streamlined objects have higher terminal velocities.' },
+      { q: 'What is the terminal velocity of a human?', a: 'About 55 m/s (roughly 120 mph or 200 km/h) for a skydiver falling belly-down, and up to ~90 m/s in a streamlined head-down dive. It depends on body position, which changes the area and drag.' },
+      { q: 'Why do heavier objects have a higher terminal velocity?', a: 'Because weight (which drives the fall) grows with mass, while drag depends on area and speed. A heavier object needs a higher speed for drag to catch up to its greater weight — so it falls faster before balancing out.' },
+      { q: 'Does terminal velocity depend on the fluid?', a: 'Yes — the denser the fluid, the more drag and the lower the terminal velocity. The same object falls far slower in water (ρ ≈ 1000 kg/m³) than in air (ρ ≈ 1.225 kg/m³). Set the fluid density accordingly.' },
+    ],
+    keywords: ['terminal velocity calculator', 'terminal velocity formula', 'terminal velocity of a human', 'drag terminal velocity', 'falling speed calculator', 'skydiver terminal velocity'],
+  },
+  {
+    slug: 'magnetic-force-calculator',
+    name: 'Magnetic Force Calculator',
+    icon: '🧲',
+    widget: 'magforce',
+    cluster: 'electricity',
+    description: 'Calculate the magnetic force on a moving charge (F = qvB) or a current-carrying wire (F = BIL), including the angle to the field. In your browser.',
+    lead: 'Choose a moving charge or a current-carrying wire, enter the values, and get the magnetic force — with the angle to the field.',
+    how: 'A magnetic field exerts a force on moving charge. For a single charge, the Lorentz force is F = q·v·B·sinθ, where q is the charge, v its speed, B the field strength and θ the angle between the velocity and the field. For a straight current-carrying wire, the force is F = B·I·L·sinθ, with I the current and L the length in the field. Both are maximal when the motion or current is perpendicular to the field (θ = 90°) and zero when parallel.',
+    note: 'The force is always perpendicular to both the velocity (or current) and the field — its direction follows the right-hand rule; this tool gives the magnitude. On a moving charge the magnetic force does no work (it only bends the path into a circle or helix), which is the basis of mass spectrometers and cyclotrons.',
+    faqs: [
+      { q: 'How do you calculate the magnetic force on a moving charge?', a: 'F = q·v·B·sinθ, where q is the charge in coulombs, v the speed, B the magnetic field in tesla and θ the angle between v and B. A charge moving along the field (θ = 0) feels no force; perpendicular (θ = 90°) feels the most.' },
+      { q: 'What is the force on a current-carrying wire in a magnetic field?', a: 'F = B·I·L·sinθ, where I is the current, L the length of wire in the field, B the field strength and θ the angle between the wire and the field. This is the force that turns electric motors.' },
+      { q: 'When is the magnetic force zero?', a: 'When the motion (or current) is parallel to the field, because sin 0° = 0. There\'s no magnetic force on a charge moving straight along the field lines, or on a wire aligned with the field.' },
+      { q: 'What is the Lorentz force?', a: 'The force on a charged particle from electric and magnetic fields. Its magnetic part is F = qvB·sinθ, always perpendicular to the velocity — so it curves the particle\'s path without changing its speed.' },
+      { q: 'Why does the magnetic force do no work on a charge?', a: 'Because it acts perpendicular to the velocity, so there\'s no force component along the direction of motion. It changes the direction (bending the path into a circle or helix) but not the speed or kinetic energy.' },
+    ],
+    keywords: ['magnetic force calculator', 'lorentz force calculator', 'f = qvb', 'f = bil', 'force on a wire magnetic field', 'magnetic force on a charge', 'magnetic field force'],
   },
 ];
 
