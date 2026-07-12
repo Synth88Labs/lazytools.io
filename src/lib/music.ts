@@ -51,6 +51,77 @@ export function intervalName(semis: number): string {
   return oct > 0 && within !== 0 ? `${base} + ${oct} oct` : oct > 0 && within === 0 ? `${oct} octave${oct > 1 ? 's' : ''}` : base;
 }
 
+/* ---------------- Chords & scales ---------------- */
+
+export interface ChordType { id: string; name: string; symbol: string; intervals: number[] }
+/** Chord formulas as semitone intervals from the root (definitional, equal-temperament). */
+export const CHORD_TYPES: ChordType[] = [
+  { id: 'maj', name: 'Major', symbol: '', intervals: [0, 4, 7] },
+  { id: 'min', name: 'Minor', symbol: 'm', intervals: [0, 3, 7] },
+  { id: 'dim', name: 'Diminished', symbol: 'dim', intervals: [0, 3, 6] },
+  { id: 'aug', name: 'Augmented', symbol: 'aug', intervals: [0, 4, 8] },
+  { id: 'sus2', name: 'Suspended 2nd', symbol: 'sus2', intervals: [0, 2, 7] },
+  { id: 'sus4', name: 'Suspended 4th', symbol: 'sus4', intervals: [0, 5, 7] },
+  { id: '6', name: 'Major 6th', symbol: '6', intervals: [0, 4, 7, 9] },
+  { id: 'm6', name: 'Minor 6th', symbol: 'm6', intervals: [0, 3, 7, 9] },
+  { id: '7', name: 'Dominant 7th', symbol: '7', intervals: [0, 4, 7, 10] },
+  { id: 'maj7', name: 'Major 7th', symbol: 'maj7', intervals: [0, 4, 7, 11] },
+  { id: 'm7', name: 'Minor 7th', symbol: 'm7', intervals: [0, 3, 7, 10] },
+  { id: 'm7b5', name: 'Half-diminished 7th', symbol: 'm7♭5', intervals: [0, 3, 6, 10] },
+  { id: 'dim7', name: 'Diminished 7th', symbol: 'dim7', intervals: [0, 3, 6, 9] },
+  { id: 'mMaj7', name: 'Minor-major 7th', symbol: 'mMaj7', intervals: [0, 3, 7, 11] },
+  { id: 'add9', name: 'Add 9', symbol: 'add9', intervals: [0, 4, 7, 14] },
+  { id: '9', name: 'Dominant 9th', symbol: '9', intervals: [0, 4, 7, 10, 14] },
+  { id: 'maj9', name: 'Major 9th', symbol: 'maj9', intervals: [0, 4, 7, 11, 14] },
+  { id: 'm9', name: 'Minor 9th', symbol: 'm9', intervals: [0, 3, 7, 10, 14] },
+];
+
+export interface ScaleType { id: string; name: string; intervals: number[] }
+/** Scale/mode formulas as semitone intervals from the tonic. */
+export const SCALE_TYPES: ScaleType[] = [
+  { id: 'major', name: 'Major (Ionian)', intervals: [0, 2, 4, 5, 7, 9, 11] },
+  { id: 'natural-minor', name: 'Natural Minor (Aeolian)', intervals: [0, 2, 3, 5, 7, 8, 10] },
+  { id: 'harmonic-minor', name: 'Harmonic Minor', intervals: [0, 2, 3, 5, 7, 8, 11] },
+  { id: 'melodic-minor', name: 'Melodic Minor (ascending)', intervals: [0, 2, 3, 5, 7, 9, 11] },
+  { id: 'dorian', name: 'Dorian', intervals: [0, 2, 3, 5, 7, 9, 10] },
+  { id: 'phrygian', name: 'Phrygian', intervals: [0, 1, 3, 5, 7, 8, 10] },
+  { id: 'lydian', name: 'Lydian', intervals: [0, 2, 4, 6, 7, 9, 11] },
+  { id: 'mixolydian', name: 'Mixolydian', intervals: [0, 2, 4, 5, 7, 9, 10] },
+  { id: 'locrian', name: 'Locrian', intervals: [0, 1, 3, 5, 6, 8, 10] },
+  { id: 'major-pentatonic', name: 'Major Pentatonic', intervals: [0, 2, 4, 7, 9] },
+  { id: 'minor-pentatonic', name: 'Minor Pentatonic', intervals: [0, 3, 5, 7, 10] },
+  { id: 'blues', name: 'Blues', intervals: [0, 3, 5, 6, 7, 10] },
+  { id: 'whole-tone', name: 'Whole Tone', intervals: [0, 2, 4, 6, 8, 10] },
+  { id: 'chromatic', name: 'Chromatic', intervals: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] },
+];
+
+/** Note names for a chord/scale from a root pitch-class (0–11) and interval list. */
+export function notesFromIntervals(rootPc: number, intervals: number[], flat = false): string[] {
+  const names = flat ? NOTE_NAMES_FLAT : NOTE_NAMES;
+  return intervals.map((i) => names[(((rootPc + i) % 12) + 12) % 12]);
+}
+
+/** Unique, sorted pitch-class set (0–11) from a list of pitch classes. */
+export function pcSet(pcs: number[]): number[] {
+  return [...new Set(pcs.map((p) => (((p % 12) + 12) % 12)))].sort((a, b) => a - b);
+}
+
+/** Identify every chord (any root) whose exact pitch-class set matches the given notes. */
+export function identifyChord(pcs: number[]): { root: string; symbol: string; name: string }[] {
+  const target = pcSet(pcs);
+  if (target.length < 2) return [];
+  const out: { root: string; symbol: string; name: string }[] = [];
+  for (let root = 0; root < 12; root++) {
+    for (const ct of CHORD_TYPES) {
+      const set = pcSet(ct.intervals.map((i) => root + i));
+      if (set.length === target.length && set.every((v, idx) => v === target[idx])) {
+        out.push({ root: NOTE_NAMES[root], symbol: NOTE_NAMES[root] + ct.symbol, name: `${NOTE_NAMES[root]} ${ct.name}` });
+      }
+    }
+  }
+  return out;
+}
+
 /* ---------------- BPM / delay timing ---------------- */
 
 export interface NoteDivision { id: string; label: string; beats: number }

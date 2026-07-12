@@ -289,6 +289,7 @@
   "math/weighted-average",
   "music/audio-file-size-calculator",
   "music/bpm-delay-calculator",
+  "music/chord-scale-finder",
   "music/interval-calculator",
   "music/metronome",
   "music/note-frequency-calculator",

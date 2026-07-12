@@ -13,6 +13,7 @@ import IntervalTool from '../../components/music/IntervalTool.tsx';
 import TransposeTool from '../../components/music/TransposeTool.tsx';
 import AudioFileSizeTool from '../../components/music/AudioFileSizeTool.tsx';
 import TimeSignatureTool from '../../components/music/TimeSignatureTool.tsx';
+import ChordScaleTool from '../../components/music/ChordScaleTool.tsx';
 import { MUSIC_TOOLS, type MusicToolDef } from '../../data/music/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -67,6 +68,7 @@ const schema = [
       {tool.widget === 'transpose' && <TransposeTool client:load />}
       {tool.widget === 'filesize' && <AudioFileSizeTool client:load />}
       {tool.widget === 'timesig' && <TimeSignatureTool client:load />}
+      {tool.widget === 'chordscale' && <ChordScaleTool client:load />}
     </div>
 
     <div class="mt-4">

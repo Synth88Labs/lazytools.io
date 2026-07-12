@@ -4,7 +4,7 @@ export interface MusicToolDef {
   slug: string;
   name: string;
   icon: string;
-  widget: 'notefreq' | 'delay' | 'tap' | 'metronome' | 'interval' | 'transpose' | 'filesize' | 'timesig';
+  widget: 'notefreq' | 'delay' | 'tap' | 'metronome' | 'interval' | 'transpose' | 'filesize' | 'timesig' | 'chordscale';
   description: string;
   lead: string;
   how: string;
@@ -157,6 +157,25 @@ export const MUSIC_TOOLS: MusicToolDef[] = [
       { q: 'Why calculate bar lengths?', a: 'For arranging and syncing: fitting a song section to a video cue, planning an intro of a set length, or lining up loops. Knowing the seconds-per-bar turns musical structure into clock time.' },
     ],
     keywords: ['time signature calculator', 'bar length calculator', 'bars to seconds', 'song length calculator bpm', 'measures to time', 'how long is a bar', 'music bar duration'],
+  },
+  {
+    slug: 'chord-scale-finder',
+    name: 'Chord & Scale Finder',
+    icon: '🎹',
+    widget: 'chordscale',
+    description: 'Build any chord or scale from a root note, or identify the chord from a set of notes — with a piano diagram, in your browser.',
+    lead: 'Pick a root and a chord or scale to see its notes on a keyboard — or tap the notes you\'re playing and let the tool name the chord.',
+    how: 'Every chord and scale is a fixed pattern of semitone steps from a root: a major triad is the root plus 4 and 7 semitones, a major scale is 0-2-4-5-7-9-11. In "Build" mode you choose a root and a chord or scale and the tool lays out the notes (spelled with sharps or flats) and lights them on a one-octave keyboard. In "Identify" mode you tap the notes you have and it matches your exact set — regardless of octave or inversion — to every named chord that fits.',
+    note: 'Because a set of pitch classes can belong to more than one chord, symmetric shapes return several names: a diminished 7th (every note three semitones apart) is spelled four ways, one from each of its notes. The spellings are equal-tempered and enharmonic (A♯ = B♭) — the tool doesn\'t pick a key-correct spelling, just the pitches.',
+    faqs: [
+      { q: 'What notes are in a C major chord?', a: 'C, E and G — the root plus the notes 4 and 7 semitones above it. A major triad is always root, major third and perfect fifth; the tool builds it for any root you pick.' },
+      { q: 'How do I find the notes of a scale?', a: 'Apply the scale\'s semitone formula to the root. A major scale is 0-2-4-5-7-9-11 semitones, so C major is C D E F G A B; G major (same pattern from G) is G A B C D E F♯. Choose the root and scale and the tool spells it out.' },
+      { q: 'How do I identify a chord from its notes?', a: 'Switch to "Identify", tap the notes you\'re playing, and the tool matches that exact set of pitch classes to every named chord that fits — ignoring octave and inversion. Tap C, E and G and it returns C major.' },
+      { q: 'Why does one set of notes match several chords?', a: 'Some chords are symmetric, so the same pitches spell more than one chord. The diminished 7th stacks minor thirds evenly, so C-E♭-G♭-A is also E♭, G♭ and A diminished 7th — the tool lists all the valid names.' },
+      { q: 'What is the difference between a chord and a scale here?', a: 'A chord is a small set of notes played together (usually 3–5); a scale is the ordered set of 5–12 notes a melody or key draws from. Both are built from semitone formulas — the tool covers common chords and scales/modes.' },
+      { q: 'Does it spell chords in the correct key?', a: 'No — it gives the correct pitches but a single enharmonic spelling (choosing sharps or flats by your toggle), not a key-signature-aware spelling. So it may show A♯ where a score in the key would write B♭; the sounding notes are identical.' },
+    ],
+    keywords: ['chord finder', 'scale finder', 'chord calculator', 'what notes are in a chord', 'chord identifier', 'scale notes', 'chord spelling', 'guitar piano chord finder'],
   },
 ];
 
