@@ -6,6 +6,10 @@ import PrivacyStrip from '../../components/PrivacyStrip.astro';
 import FaqSection from '../../components/FaqSection.astro';
 import RatingWidget from '../../components/RatingWidget.tsx';
 import SuvatTool from '../../components/physics/SuvatTool.tsx';
+import CoulombTool from '../../components/physics/CoulombTool.tsx';
+import CollisionTool from '../../components/physics/CollisionTool.tsx';
+import RelativityTool from '../../components/physics/RelativityTool.tsx';
+import HarmonicsTool from '../../components/physics/HarmonicsTool.tsx';
 import ProjectileTool from '../../components/physics/ProjectileTool.tsx';
 import FreeFallTool from '../../components/physics/FreeFallTool.tsx';
 import NewtonsSecondLawTool from '../../components/physics/NewtonsSecondLawTool.tsx';
@@ -109,6 +113,10 @@ const schema = [
       {tool.widget === 'thermalexp' && <ThermalExpansionTool client:load />}
       {tool.widget === 'debroglie' && <DeBroglieTool client:load />}
       {tool.widget === 'avgvel' && <AverageVelocityTool client:load />}
+      {tool.widget === 'coulomb' && <CoulombTool client:load />}
+      {tool.widget === 'collision' && <CollisionTool client:load />}
+      {tool.widget === 'relativity' && <RelativityTool client:load />}
+      {tool.widget === 'harmonics' && <HarmonicsTool client:load />}
     </div>
 
     <div class="mt-4">

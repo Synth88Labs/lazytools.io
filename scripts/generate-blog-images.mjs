@@ -7,6 +7,13 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'elastic-inelastic-collisions-guide',
+    kicker: 'PHYSICS GUIDE',
+    lines: ['Elastic vs inelastic', 'collisions: what', 'is conserved, and why'],
+    fact: 'momentum always · kinetic energy only if elastic',
+    icon: '🎱',
+  },
+  {
     slug: 'weak-acid-ph-ice-guide',
     kicker: 'CHEMISTRY GUIDE',
     lines: ['How to find the pH', 'of a weak acid:', 'the ICE-table method'],

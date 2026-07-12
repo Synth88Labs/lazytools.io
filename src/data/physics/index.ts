@@ -9,7 +9,8 @@ export interface PhysToolDef {
     | 'ke' | 'pe' | 'work' | 'power' | 'hookes' | 'centripetal' | 'gravitation'
     | 'wavelength' | 'photon' | 'massenergy' | 'snell' | 'ohms'
     | 'wave' | 'doppler' | 'lensmirror' | 'resistornet' | 'torque' | 'orbital'
-    | 'carnot' | 'thermalexp' | 'debroglie' | 'avgvel';
+    | 'carnot' | 'thermalexp' | 'debroglie' | 'avgvel'
+    | 'coulomb' | 'collision' | 'relativity' | 'harmonics';
   cluster: 'kinematics' | 'dynamics' | 'energy' | 'gravitation' | 'waves' | 'electricity' | 'modern' | 'thermodynamics';
   /** for the resistor-network widget: resistor or capacitor rules */
   netKind?: 'resistor' | 'capacitor';
@@ -579,6 +580,82 @@ PHYS_TOOLS.push(
       { q: 'Can average velocity be zero?', a: 'Yes — if you return to your start point, the displacement is zero, so the average velocity is zero even though you moved.' },
     ],
     keywords: ['average velocity calculator', 'v = δx/δt', 'average speed calculator', 'displacement time velocity', 'average acceleration calculator', 'velocity formula'],
+  },
+  {
+    slug: 'coulombs-law-calculator',
+    name: "Coulomb's Law Calculator",
+    icon: '⚡',
+    widget: 'coulomb',
+    cluster: 'electricity',
+    description: 'Calculate the electrostatic force between two point charges with Coulomb\'s law, with the attractive/repulsive direction. In your browser.',
+    lead: 'Enter two charges and their separation to get the electrostatic force between them — magnitude and whether it attracts or repels.',
+    how: 'Coulomb\'s law gives the force between two point charges: F = k·q₁·q₂ ÷ r², where k = 8.99×10⁹ N·m²/C² is the Coulomb constant and r is the distance between them. The tool computes the magnitude and reads the sign of the product q₁·q₂ to tell you the direction — like charges repel, opposite charges attract — and also shows the electric field each charge produces at that distance.',
+    note: 'Enter charges in coulombs; everyday charges are tiny, so use scientific notation (1 µC = 1e-6 C, 1 nC = 1e-9 C). The law is the electrostatic twin of Newton\'s law of gravitation — both fall off as 1/r² — but electric forces can attract or repel and are vastly stronger. It applies to point charges (or uniformly charged spheres) in a vacuum.',
+    faqs: [
+      { q: 'What is Coulomb\'s law?', a: 'It gives the electrostatic force between two point charges: F = k·q₁·q₂ ÷ r², with k = 8.99×10⁹ N·m²/C². The force grows with the charges and falls off with the square of the distance between them.' },
+      { q: 'How do I calculate the force between two charges?', a: 'Multiply the two charges, multiply by Coulomb\'s constant (8.99×10⁹), and divide by the distance squared. For two 1 µC charges 0.1 m apart: 8.99×10⁹ × (1e-6)² ÷ 0.1² ≈ 0.9 N.' },
+      { q: 'When is the force attractive or repulsive?', a: 'Like charges (both positive or both negative) repel; opposite charges attract. The tool determines this from the sign of the product of the two charges.' },
+      { q: 'How is Coulomb\'s law like gravity?', a: 'Both are inverse-square laws — force ∝ 1/r². But gravity only attracts and depends on mass, while the electric force can attract or repel and depends on charge, and it is enormously stronger for everyday particles.' },
+      { q: 'What is the electric field of a point charge?', a: 'E = k·q ÷ r², the force per unit charge a distance r from the charge. Multiply it by a second charge to recover the Coulomb force. The tool shows the field alongside the force.' },
+    ],
+    keywords: ['coulombs law calculator', 'electrostatic force calculator', 'force between two charges', 'coulomb force calculator', 'electric force calculator', 'charge force calculator', 'electric field point charge'],
+  },
+  {
+    slug: 'collision-calculator',
+    name: 'Collision Calculator (1D)',
+    icon: '🎱',
+    widget: 'collision',
+    cluster: 'dynamics',
+    description: 'Solve a one-dimensional collision for the final velocities — elastic, perfectly inelastic, or any coefficient of restitution — with momentum and kinetic-energy tracking. In your browser.',
+    lead: 'Enter two masses and their initial velocities to get the final velocities after an elastic, inelastic or partially-elastic collision.',
+    how: 'Momentum is conserved in every collision: m₁u₁ + m₂u₂ = m₁v₁ + m₂v₂. That is one equation for two unknowns, so the second comes from the coefficient of restitution e, which sets how much relative speed survives the impact. The tool solves both together — e = 1 for a perfectly elastic collision (kinetic energy also conserved), e = 0 for a perfectly inelastic one (the objects stick together) — and reports the kinetic energy before, after and lost.',
+    note: 'Velocities are signed: use a negative value for an object moving the opposite way. The elastic case is the one that trips people up, because it needs two conservation laws at once; a classic result is that equal masses simply exchange velocities. Real collisions sit between the extremes (0 < e < 1), losing some energy to heat, sound and deformation.',
+    faqs: [
+      { q: 'How do I calculate final velocities in a collision?', a: 'Use conservation of momentum plus the collision type. For a perfectly elastic collision, v₁ = ((m₁−m₂)u₁ + 2m₂u₂)/(m₁+m₂) and v₂ = ((m₂−m₁)u₂ + 2m₁u₁)/(m₁+m₂). The tool handles elastic, inelastic and everything between.' },
+      { q: 'What is the difference between elastic and inelastic collisions?', a: 'In an elastic collision both momentum and kinetic energy are conserved. In an inelastic one only momentum is conserved — some kinetic energy becomes heat, sound or deformation. Perfectly inelastic means the objects stick together afterward.' },
+      { q: 'What is the coefficient of restitution?', a: 'A number e from 0 to 1 measuring how "bouncy" a collision is: the ratio of relative speed after to before. e = 1 is perfectly elastic, e = 0 is perfectly inelastic (they stick), and real collisions are in between.' },
+      { q: 'What happens when two equal masses collide elastically?', a: 'They exchange velocities. If one is moving and the other still, the moving one stops and the other moves off at the first one\'s speed — the classic Newton\'s-cradle result.' },
+      { q: 'Is momentum always conserved?', a: 'Yes, in any collision with no external forces — elastic or inelastic. Kinetic energy is only conserved in a perfectly elastic collision; otherwise some is lost, which the tool shows as the kinetic energy lost.' },
+    ],
+    keywords: ['collision calculator', 'elastic collision calculator', 'inelastic collision calculator', 'final velocity calculator', 'conservation of momentum calculator', '1d collision calculator', 'coefficient of restitution calculator'],
+  },
+  {
+    slug: 'special-relativity-calculator',
+    name: 'Special Relativity Calculator',
+    icon: '🚀',
+    widget: 'relativity',
+    cluster: 'modern',
+    description: 'Calculate the Lorentz factor and its consequences — time dilation, length contraction, relativistic energy and momentum — from a speed near light. In your browser.',
+    lead: 'Enter a speed as a fraction of light to get the Lorentz factor γ, plus time dilation, length contraction and relativistic energy.',
+    how: 'Everything in special relativity flows from the Lorentz factor γ = 1 ÷ √(1 − (v/c)²). The tool computes γ from your speed, then applies it: a moving clock runs slow (dilated time = γ × proper time), a moving object contracts along its motion (contracted length = proper length ÷ γ), its relativistic kinetic energy is (γ − 1)mc² and its total energy is γmc².',
+    note: 'Enter the speed as a fraction of the speed of light c (299,792,458 m/s) — 0.8 means 0.8c. The effects are negligible at everyday speeds (γ ≈ 1) and grow sharply as v approaches c, where γ → ∞ and energy would become infinite — which is why no object with mass can reach the speed of light.',
+    faqs: [
+      { q: 'What is the Lorentz factor?', a: 'γ = 1 ÷ √(1 − (v/c)²), the factor by which time, length and energy are modified at speed v. It equals 1 at rest and grows without bound as v approaches the speed of light.' },
+      { q: 'How do I calculate time dilation?', a: 'Multiply the proper time (measured in the moving frame) by γ: a moving clock ticks slower by that factor. At 0.8c, γ = 1.667, so 1 second aboard is 1.667 seconds to a stationary observer.' },
+      { q: 'What is length contraction?', a: 'A moving object is shortened along its direction of motion by the factor γ: contracted length = proper length ÷ γ. At 0.8c a 1 m rod measures 0.6 m to a stationary observer.' },
+      { q: 'Why can\'t anything travel faster than light?', a: 'As v approaches c, γ approaches infinity, so a mass\'s energy and momentum would become infinite — it would take infinite energy to get there. Only massless things (like light) travel at c.' },
+      { q: 'What is relativistic kinetic energy?', a: 'KE = (γ − 1)mc². At low speeds this reduces to the familiar ½mv², but near light speed it grows far faster, diverging as v → c. The tool also shows the total energy γmc².' },
+    ],
+    keywords: ['special relativity calculator', 'lorentz factor calculator', 'time dilation calculator', 'length contraction calculator', 'relativistic energy calculator', 'gamma factor calculator', 'relativistic kinetic energy'],
+  },
+  {
+    slug: 'standing-wave-harmonics-calculator',
+    name: 'Standing Wave & Harmonics Calculator',
+    icon: '🎸',
+    widget: 'harmonics',
+    cluster: 'waves',
+    description: 'Calculate the harmonic frequencies of a vibrating string or an open/closed pipe from the wave speed and length. In your browser.',
+    lead: 'Choose a string or pipe and enter the wave speed and length to list the fundamental and its harmonics.',
+    how: 'A standing wave only fits certain wavelengths, giving a series of resonant frequencies. A string fixed at both ends — and a pipe open at both ends — resonate at fₙ = n·v ÷ 2L for n = 1, 2, 3…, while a pipe closed at one end supports only the odd harmonics fₙ = n·v ÷ 4L (n = 1, 3, 5…). The tool lists the fundamental (n = 1) and the next several harmonics with their frequencies and wavelengths.',
+    note: 'Use the wave speed for the system — about 340 m/s for sound in air, or the string\'s own wave speed (which depends on its tension and thickness). The closed pipe missing its even harmonics is why a clarinet plays about an octave lower than a flute of the same length and has its distinctive tone. The lowest frequency is the pitch you hear; the overtones shape the timbre.',
+    faqs: [
+      { q: 'How do I calculate the harmonics of a string?', a: 'For a string fixed at both ends, fₙ = n·v ÷ 2L, where v is the wave speed, L the length and n = 1, 2, 3… The fundamental is n = 1; each higher harmonic is an integer multiple of it.' },
+      { q: 'What is the fundamental frequency?', a: 'The lowest resonant frequency of the system (n = 1) — the pitch you perceive. For a string or open pipe it\'s v ÷ 2L; for a closed pipe it\'s v ÷ 4L, an octave lower for the same length.' },
+      { q: 'Why does a closed pipe only have odd harmonics?', a: 'A closed end forces a node and the open end an antinode, and only odd multiples of the quarter-wavelength fit that pattern. So a closed pipe produces fₙ = n·v ÷ 4L for n = 1, 3, 5… — the even harmonics are missing.' },
+      { q: 'What\'s the difference between a harmonic and an overtone?', a: 'The harmonics are the whole series (1st, 2nd, 3rd…); the overtones are all of them above the fundamental. So the 2nd harmonic is the 1st overtone. On a closed pipe, where evens are absent, the numbering of overtones and harmonics differs.' },
+      { q: 'How do harmonics create an instrument\'s tone?', a: 'The fundamental sets the pitch, and the relative strengths of the overtones give the timbre — why a violin and a flute playing the same note sound different. The set of harmonics available (all vs odd-only) is a big part of an instrument\'s character.' },
+    ],
+    keywords: ['standing wave calculator', 'harmonics calculator', 'harmonic frequency calculator', 'fundamental frequency calculator', 'string harmonics calculator', 'pipe harmonics calculator', 'resonant frequency string'],
   },
 );
 
