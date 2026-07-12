@@ -6,6 +6,9 @@ import PrivacyStrip from '../../components/PrivacyStrip.astro';
 import FaqSection from '../../components/FaqSection.astro';
 import RatingWidget from '../../components/RatingWidget.tsx';
 import PlantSpacingTool from '../../components/garden/PlantSpacingTool.tsx';
+import GddTool from '../../components/garden/GddTool.tsx';
+import PondVolumeTool from '../../components/garden/PondVolumeTool.tsx';
+import SprayMixTool from '../../components/garden/SprayMixTool.tsx';
 import SeedRowTool from '../../components/garden/SeedRowTool.tsx';
 import RaisedBedSoilTool from '../../components/garden/RaisedBedSoilTool.tsx';
 import FertilizerTool from '../../components/garden/FertilizerTool.tsx';
@@ -60,6 +63,9 @@ const schema = [
 
     <div class="mt-6">
       {tool.widget === 'spacing' && <PlantSpacingTool client:load />}
+      {tool.widget === 'gdd' && <GddTool client:load />}
+      {tool.widget === 'pond' && <PondVolumeTool client:load />}
+      {tool.widget === 'spraymix' && <SprayMixTool client:load />}
       {tool.widget === 'seedrow' && <SeedRowTool client:load />}
       {tool.widget === 'soil' && <RaisedBedSoilTool client:load />}
       {tool.widget === 'fertilizer' && <FertilizerTool client:load />}

@@ -153,3 +153,30 @@ export const CROPS: Crop[] = [
 export const getCrop = (id: string) => CROPS.find((c) => c.id === id);
 
 export { SQFT_PER_SQM, GAL_PER_SQFT_INCH };
+
+/* ---------------- GDD / pond volume / spray mix ---------------- */
+
+/** Growing degree days for one day: max(0, ((min(tMax,cap)+tMin)/2) − tBase). */
+export function growingDegreeDays(tMax: number, tMin: number, tBase: number, cap?: number): number {
+  const hi = cap != null ? Math.min(tMax, cap) : tMax;
+  const avg = (hi + tMin) / 2;
+  return Math.max(0, avg - tBase);
+}
+
+/** Pond volume (litres & US gallons) and liner size (m) from L×W×avg depth (m) + overlap. */
+export function pondVolume(lengthM: number, widthM: number, depthM: number, overlapM = 0.3) {
+  if (lengthM <= 0 || widthM <= 0 || depthM <= 0) return null;
+  const m3 = lengthM * widthM * depthM;
+  return {
+    litres: m3 * 1000,
+    gallons: m3 * 264.172,
+    linerLength: lengthM + 2 * depthM + 2 * overlapM,
+    linerWidth: widthM + 2 * depthM + 2 * overlapM,
+  };
+}
+
+/** Spray mix: product amount = tank volume × rate per volume unit. */
+export function sprayMix(tankVolume: number, ratePerUnit: number): number | null {
+  if (tankVolume < 0 || ratePerUnit < 0) return null;
+  return tankVolume * ratePerUnit;
+}

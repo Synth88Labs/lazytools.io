@@ -4,7 +4,7 @@ export interface GardenToolDef {
   slug: string;
   name: string;
   icon: string;
-  widget: 'spacing' | 'seedrow' | 'soil' | 'fertilizer' | 'watering' | 'planting' | 'dli' | 'compost';
+  widget: 'spacing' | 'seedrow' | 'soil' | 'fertilizer' | 'watering' | 'planting' | 'dli' | 'compost' | 'gdd' | 'pond' | 'spraymix';
   description: string;
   lead: string;
   how: string;
@@ -157,6 +157,60 @@ export const GARDEN_TOOLS: GardenToolDef[] = [
       { q: 'Why is my compost breaking down so slowly?', a: 'Often too much carbon (too many browns), too little nitrogen, or the pile is too dry. Add greens, ensure it\'s as moist as a wrung-out sponge, and turn it to introduce air.' },
     ],
     keywords: ['compost ratio calculator', 'carbon nitrogen ratio compost', 'c:n ratio calculator', 'browns to greens ratio', 'compost calculator', 'composting ratio', 'compost mix calculator'],
+  },
+  {
+    slug: 'growing-degree-days-calculator',
+    name: 'Growing Degree Days (GDD) Calculator',
+    icon: '🌡️',
+    widget: 'gdd',
+    description: 'Calculate growing degree days (GDD) from the daily high, low and a crop base temperature — to predict crop development, pest emergence and harvest timing. In your browser.',
+    lead: 'Enter the daily high and low and a base temperature to get the growing degree days, and multiply by the number of similar days for an accumulated total.',
+    how: 'Growing degree days measure the accumulated warmth a crop or insect experiences. For one day, GDD = ((daily high + daily low) ÷ 2) − base temperature, and negative results are treated as zero. The base is the temperature below which development stops — commonly 10 °C (50 °F), lower for cool-season crops and higher for warm-season ones. Add up the daily GDD across the season, or multiply a typical day by the number of days for a rough total.',
+    note: 'GDD predicts biological timing far better than calendar days: crops flower, insects hatch and pests reach spray-worthy stages at fairly consistent GDD totals. Some methods cap the daily high (e.g. at 30 °C for corn) so extreme heat doesn\'t inflate the count; this tool uses the simple average method. Base temperatures and thresholds are crop-specific — check your local extension service.',
+    faqs: [
+      { q: 'How do you calculate growing degree days?', a: 'Average the day\'s high and low, then subtract the base temperature: GDD = ((high + low) ÷ 2) − base, with any negative result counted as zero. A day with a 30 °C high and 12 °C low at a 10 °C base is ((30+12)/2) − 10 = 11 GDD.' },
+      { q: 'What is the base temperature?', a: 'The temperature below which a crop or organism doesn\'t develop. It\'s commonly 10 °C (50 °F) for many crops, about 4 °C for cool-season plants and higher for warm-season ones like corn. Use the value for your specific crop.' },
+      { q: 'What are growing degree days used for?', a: 'To predict development stages — germination, flowering, maturity — and to time pest and disease management, since insects reach each life stage at consistent GDD totals rather than on fixed dates. It\'s more reliable than the calendar.' },
+      { q: 'How do I accumulate GDD over a season?', a: 'Add each day\'s GDD from a start date (often planting or a biofix). This tool gives one day\'s value and can multiply by a number of similar days; for precise tracking, sum the actual daily highs and lows.' },
+      { q: 'Should I cap the maximum temperature?', a: 'Some crops use an upper threshold (e.g. cap the high at 30 °C for corn) so very hot days don\'t overstate development. This calculator uses the simple average method; apply a cap manually by entering the capped high if your crop needs one.' },
+    ],
+    keywords: ['growing degree days calculator', 'gdd calculator', 'growing degree day formula', 'heat units calculator', 'gdd base temperature', 'degree days farming'],
+  },
+  {
+    slug: 'pond-volume-calculator',
+    name: 'Pond Volume & Liner Calculator',
+    icon: '⛲',
+    widget: 'pond',
+    description: 'Calculate a pond\'s volume in litres and gallons from length, width and average depth — plus the liner size you need. In your browser.',
+    lead: 'Enter the length, width and average depth to get the pond volume in litres and gallons, and the liner dimensions to buy.',
+    how: 'Volume is length × width × average depth: one cubic metre is 1,000 litres or about 264 US gallons. Use the average depth for a sloped or bowl-shaped pond rather than the deepest point. The liner must cover the bottom, up both sides and over the edges, so each dimension gets twice the depth added plus an overlap: liner = (length + 2×depth + overlap) × (width + 2×depth + overlap).',
+    note: 'Volume matters for dosing treatments, sizing a pump and filter (aim to turn over the whole volume every 1–2 hours), and stocking fish safely. The rectangular formula slightly overestimates an irregular pond — a common refinement multiplies by about 0.85 for a natural shape. Add extra liner for folds and settling.',
+    faqs: [
+      { q: 'How do you calculate pond volume?', a: 'Multiply length × width × average depth. In metres that gives cubic metres; ×1,000 for litres, ×264 for US gallons. A 3 × 2 × 0.5 m pond is 3 m³ = 3,000 litres ≈ 793 gallons.' },
+      { q: 'How big a liner do I need for my pond?', a: 'Add twice the maximum depth to both the length and the width (to line the sides), plus an overlap of about 30 cm / 1 ft for the edges. So liner length = pond length + 2×depth + overlap, and likewise for width.' },
+      { q: 'Should I use average or maximum depth?', a: 'Average depth for the volume, since most ponds are shallower at the edges. Use the maximum depth when sizing the liner, because it has to reach the deepest point up the sides.' },
+      { q: 'Why does pond volume matter?', a: 'It sets the dose for water treatments, the pump and filter size (turn the volume over every 1–2 hours), and how many fish you can keep. Under- or over-dosing and undersizing a pump are common mistakes fixed by knowing the volume.' },
+      { q: 'Is the calculation exact for an irregular pond?', a: 'The rectangular formula slightly overestimates a curved or natural-shaped pond. A common adjustment multiplies by about 0.85; for an accurate figure, measure the average depth carefully or fill through a metered source.' },
+    ],
+    keywords: ['pond volume calculator', 'pond gallons calculator', 'pond liner calculator', 'how many gallons in my pond', 'pond size calculator', 'pond water volume', 'liner size pond'],
+  },
+  {
+    slug: 'spray-mix-calculator',
+    name: 'Spray & Pesticide Mix Calculator',
+    icon: '💦',
+    widget: 'spraymix',
+    description: 'Calculate how much product to add to a sprayer from the tank volume and the label rate (oz per gallon or mL per litre). In your browser.',
+    lead: 'Enter your sprayer volume and the product\'s label rate to get how much concentrate to add.',
+    how: 'The amount of product is the tank volume times the label\'s application rate: for a rate given per gallon (or per litre) of water, product = tank volume × rate. A 2 oz-per-gallon rate in a 5-gallon sprayer needs 10 fluid ounces of concentrate. Choose US (oz per gallon) or metric (mL per litre) units.',
+    note: 'The product label is the legal authority — always follow its exact rate, timing and safety directions, and never exceed the maximum rate (more is not better and can harm plants or violate the label). This tool handles the simple dilution arithmetic; it doesn\'t know your specific product. Measure concentrates precisely, wear the specified protective equipment, and mix only what you\'ll use.',
+    faqs: [
+      { q: 'How much pesticide do I mix per gallon?', a: 'Multiply the tank size by the label rate: if the label says 2 oz per gallon and your sprayer holds 5 gallons, add 2 × 5 = 10 oz. Always use the rate printed on your product\'s label.' },
+      { q: 'How do you calculate a spray mix ratio?', a: 'Product amount = water volume × rate per unit volume. The tool multiplies your tank size by the per-gallon (or per-litre) rate. For a ratio like 1:100, that\'s about 1.3 oz per gallon (128 oz ÷ 100).' },
+      { q: 'Is more product more effective?', a: 'No — exceeding the label rate can damage plants, leave illegal residues and waste money, without improving control. The labelled rate is tested for effectiveness and safety; stick to it.' },
+      { q: 'What units does the label use?', a: 'Often ounces per gallon (US) or millilitres per litre (metric); some list a ratio or an amount per area. This tool covers the per-volume rates — switch between US and metric units to match your label.' },
+      { q: 'How much spray mix should I make?', a: 'Only what you\'ll apply in one session — mixed pesticide degrades and storing it is often prohibited. Estimate the area and your sprayer\'s coverage, then mix that many tank-loads at the label rate.' },
+    ],
+    keywords: ['spray mix calculator', 'pesticide mix calculator', 'oz per gallon calculator', 'spray ratio calculator', 'herbicide mixing calculator', 'how much pesticide per gallon', 'tank mix calculator'],
   },
 ];
 
