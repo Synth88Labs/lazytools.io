@@ -13,6 +13,9 @@ import CompressionTool from '../../components/automotive/CompressionTool.tsx';
 import HorsepowerTool from '../../components/automotive/HorsepowerTool.tsx';
 import FuelEconomyTool from '../../components/automotive/FuelEconomyTool.tsx';
 import WheelOffsetTool from '../../components/automotive/WheelOffsetTool.tsx';
+import EvChargingTool from '../../components/automotive/EvChargingTool.tsx';
+import PowerToWeightTool from '../../components/automotive/PowerToWeightTool.tsx';
+import StoppingDistanceTool from '../../components/automotive/StoppingDistanceTool.tsx';
 import { AUTO_TOOLS, type AutoToolDef } from '../../data/automotive/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -67,6 +70,9 @@ const schema = [
       {tool.widget === 'hp' && <HorsepowerTool client:load />}
       {tool.widget === 'fueleconomy' && <FuelEconomyTool client:load />}
       {tool.widget === 'offset' && <WheelOffsetTool client:load />}
+      {tool.widget === 'evcharge' && <EvChargingTool client:load />}
+      {tool.widget === 'pwr2wt' && <PowerToWeightTool client:load />}
+      {tool.widget === 'stopping' && <StoppingDistanceTool client:load />}
     </div>
 
     <div class="mt-4">

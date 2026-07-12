@@ -127,4 +127,36 @@ export function offsetFromBackspacing(widthIn: number, backspacingIn: number) {
   return backspacingMm - widthMm / 2;
 }
 
+/* ---------------- EV charging time ---------------- */
+/** Hours to charge from SoC% to SoC%. energy = batteryKwh × ΔSoC; time = energy ÷ (chargerKw × efficiency). */
+export function evChargingTime(batteryKwh: number, socStart: number, socEnd: number, chargerKw: number, efficiency = 0.9) {
+  if (chargerKw <= 0 || efficiency <= 0 || socEnd <= socStart) return null;
+  const energyNeeded = batteryKwh * ((socEnd - socStart) / 100);
+  const hours = energyNeeded / (chargerKw * efficiency);
+  return { hours, energyNeeded };
+}
+
+/* ---------------- Power-to-weight ratio ---------------- */
+/** Power (hp) and mass (kg) → common power-to-weight expressions. */
+export function powerToWeight(hp: number, massKg: number) {
+  if (massKg <= 0) return null;
+  const kw = hp * 0.7456998715822702;
+  return {
+    hpPerTonne: (hp / massKg) * 1000,
+    hpPerLb: hp / (massKg * 2.2046226218487757),
+    wPerKg: (kw * 1000) / massKg,
+    kwPerTonne: (kw / massKg) * 1000,
+  };
+}
+
+/* ---------------- Stopping distance ---------------- */
+/** Reaction + braking distance (m) from speed (km/h), reaction time (s) and tyre-road friction μ. */
+export function stoppingDistance(speedKmh: number, reactionS: number, mu: number, g = 9.80665) {
+  if (mu <= 0) return null;
+  const v = speedKmh / 3.6; // m/s
+  const reaction = v * reactionS;
+  const braking = (v * v) / (2 * mu * g);
+  return { reaction, braking, total: reaction + braking };
+}
+
 export { MM_PER_INCH };

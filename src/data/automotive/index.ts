@@ -4,7 +4,7 @@ export interface AutoToolDef {
   slug: string;
   name: string;
   icon: string;
-  widget: 'tire' | 'tirecompare' | 'gear' | 'displacement' | 'compression' | 'hp' | 'fueleconomy' | 'offset';
+  widget: 'tire' | 'tirecompare' | 'gear' | 'displacement' | 'compression' | 'hp' | 'fueleconomy' | 'offset' | 'evcharge' | 'pwr2wt' | 'stopping';
   description: string;
   lead: string;
   how: string;
@@ -157,6 +157,60 @@ export const AUTO_TOOLS: AutoToolDef[] = [
       { q: 'Is more offset better?', a: 'Neither is universally better — it depends on the vehicle. The safe approach is to match the manufacturer’s offset, or change it only after checking clearance to the suspension, brakes and fenders. Big changes also load wheel bearings differently.' },
     ],
     keywords: ['wheel offset calculator', 'backspacing calculator', 'offset to backspacing', 'wheel fitment calculator', 'et offset calculator', 'wheel backspacing to offset', 'rim offset calculator'],
+  },
+  {
+    slug: 'ev-charging-time-calculator',
+    name: 'EV Charging Time Calculator',
+    icon: '🔌',
+    widget: 'evcharge',
+    description: 'Estimate how long an electric car takes to charge — from battery size, start and target charge levels, charger power and efficiency. In your browser.',
+    lead: 'Enter your battery size, the charge levels and the charger power to estimate the charging time and energy added.',
+    how: 'The energy you need is the battery capacity times the change in state of charge (SoC): a 60 kWh battery going 20% → 80% needs 60 × 0.60 = 36 kWh. Divide by the charger\'s effective power (its rated kW times a charging efficiency, since some energy is lost as heat) to get the time. Presets cover everything from a 3-pin plug (2.3 kW) to ultra-rapid DC (350 kW).',
+    note: 'This is an average estimate. Real charging isn\'t constant: DC rapid charging tapers sharply above about 80% to protect the battery, so the last 20% takes disproportionately long — which is why rapid-charge figures are usually quoted 10–80%. AC charging is also capped by the car\'s onboard charger, so a 22 kW wall box won\'t help a car limited to 7.4 kW AC.',
+    faqs: [
+      { q: 'How long does it take to charge an electric car?', a: 'Time = energy needed ÷ (charger power × efficiency). A 60 kWh car charging 20→80% (36 kWh) at 11 kW and 90% efficiency takes about 3.6 hours; on a 50 kW rapid charger, under an hour. It depends heavily on the charger and the car\'s limits.' },
+      { q: 'How do you calculate EV charging time?', a: 'Work out the energy to add — battery capacity × the change in state of charge — then divide by the charger\'s effective power (rated kW × charging efficiency). The tool does this and shows the energy added too.' },
+      { q: 'Why does the last 20% charge so slowly?', a: 'To protect the battery, DC fast chargers taper the power as the battery fills, so charging above ~80% is much slower. That\'s why rapid-charge times are usually given for 10–80%, and why topping right up on a road trip isn\'t worth the wait.' },
+      { q: 'Does a more powerful charger always charge faster?', a: 'Only up to the car\'s own limit. AC charging is capped by the onboard charger (often 7.4 or 11 kW), so a bigger AC unit won\'t help beyond that. DC charging is capped by the car\'s maximum accept rate. Enter the lower of the charger and car limits.' },
+      { q: 'What charging efficiency should I use?', a: 'Around 85–90% is typical — some energy is lost as heat in the charger, cables and battery. Slower AC charging tends to be a bit less efficient in percentage terms; the tool lets you set it.' },
+    ],
+    keywords: ['ev charging time calculator', 'electric car charging time', 'ev charge calculator', 'how long to charge ev', 'charging time calculator kwh', 'ev charging speed'],
+  },
+  {
+    slug: 'power-to-weight-ratio-calculator',
+    name: 'Power-to-Weight Ratio Calculator',
+    icon: '🏎️',
+    widget: 'pwr2wt',
+    description: 'Calculate power-to-weight ratio — hp per tonne, W/kg, hp per pound — from a vehicle\'s power and weight. The best single predictor of acceleration. In your browser.',
+    lead: 'Enter power (hp or kW) and weight (kg or lb) to get the power-to-weight ratio in hp/tonne, W/kg, hp/lb and kW/tonne.',
+    how: 'Power-to-weight ratio divides an engine\'s power by the vehicle\'s mass — how much power there is to move each unit of weight. The tool converts your inputs to consistent units and reports the ratio four common ways: horsepower per tonne, watts per kilogram, horsepower per pound and kilowatts per tonne. A higher ratio means quicker acceleration for a given aerodynamic and traction limit.',
+    note: 'Power-to-weight predicts acceleration better than raw power alone — a light car with modest power can out-accelerate a heavy, powerful one. Use kerb (unladen) weight for comparisons, and remember real-world acceleration also depends on traction, gearing, aerodynamics and where in the rev range the power arrives. Cyclists and runners compare fitness the same way, in W/kg.',
+    faqs: [
+      { q: 'How do you calculate power-to-weight ratio?', a: 'Divide power by weight in consistent units: a 300 hp car weighing 1,500 kg is 300 ÷ 1.5 = 200 hp per tonne. The tool also gives W/kg, hp/lb and kW/tonne.' },
+      { q: 'What is a good power-to-weight ratio?', a: 'Roughly: an economy car is 60–90 hp/tonne, a hot hatch around 150, a sports car 200–300, and a supercar 400+. Higher means quicker acceleration, other things being equal.' },
+      { q: 'Why does power-to-weight matter more than horsepower?', a: 'Because acceleration depends on force relative to mass. A light car with less power can beat a heavy, powerful one — which is why lightweight track cars feel so fast despite modest engines.' },
+      { q: 'What weight should I use?', a: 'Kerb (unladen) weight for like-for-like comparisons, or add passengers and cargo for a real-world figure. Adding weight lowers the ratio and dulls acceleration noticeably.' },
+      { q: 'What is a good W/kg for cycling?', a: 'Cyclists compare sustained power in watts per kilogram: recreational riders are around 2–3 W/kg, strong amateurs 4, and professional riders can hold 5–6 W/kg for long efforts. It\'s the same ratio idea applied to the rider.' },
+    ],
+    keywords: ['power to weight ratio calculator', 'hp per tonne calculator', 'power to weight calculator', 'w/kg calculator', 'hp to weight ratio', 'power weight ratio car'],
+  },
+  {
+    slug: 'stopping-distance-calculator',
+    name: 'Stopping Distance Calculator',
+    icon: '🛑',
+    widget: 'stopping',
+    description: 'Calculate braking and total stopping distance from speed, reaction time and road grip — reaction distance plus v²/(2μg). In your browser.',
+    lead: 'Enter your speed, reaction time and the tyre–road grip to get the reaction, braking and total stopping distances.',
+    how: 'Stopping distance has two parts: the reaction distance you travel before braking (speed × reaction time) and the braking distance once the brakes are applied (v² ÷ 2μg, where μ is the tyre–road friction coefficient and g gravity). The tool adds them for the total, in metres or feet, with grip presets for dry, wet, snow and icy roads.',
+    note: 'Braking distance grows with the square of speed, so doubling your speed roughly quadruples the braking distance — the single most important thing to understand about speed and safety. Grip (μ) falls dramatically off dry tarmac: roughly 0.7 dry, 0.4 wet, 0.2 snow, 0.1 ice. This is an idealised physics estimate; real distances depend on the vehicle, tyres, brakes and surface.',
+    faqs: [
+      { q: 'How do you calculate stopping distance?', a: 'Add the reaction distance (speed × reaction time) to the braking distance (v² ÷ 2μg). At 100 km/h with a 1-second reaction on dry road (μ ≈ 0.7), that\'s about 28 m reacting plus 56 m braking — roughly 84 m total.' },
+      { q: 'Why does stopping distance increase so much with speed?', a: 'Because braking distance depends on the square of speed (v²). Doubling your speed quadruples the braking distance, so a small increase in speed adds a lot of stopping distance — and energy to dissipate.' },
+      { q: 'How does the road surface affect stopping distance?', a: 'Through the friction coefficient μ. Grip drops from about 0.7 on dry tarmac to 0.4 wet, 0.2 on snow and 0.1 on ice — so braking distance can be several times longer in poor conditions at the same speed.' },
+      { q: 'What is a typical reaction time?', a: 'About 1 to 1.5 seconds for an alert driver; longer if distracted, tired or impaired. Reaction distance is speed × reaction time, so at highway speeds even a second means many metres travelled before braking begins.' },
+      { q: 'Does this account for my specific car?', a: 'No — it\'s a physics estimate based on grip, not your vehicle\'s exact brakes, tyres, weight or ABS. Modern cars can approach these figures on good tyres; worn tyres or brakes do worse. Treat it as a guide, not a guarantee.' },
+    ],
+    keywords: ['stopping distance calculator', 'braking distance calculator', 'reaction distance', 'stopping distance formula', 'total stopping distance', 'speed braking distance'],
   },
 ];
 
