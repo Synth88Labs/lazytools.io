@@ -7,6 +7,13 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'music-frequency-guide',
+    kicker: 'MUSIC GUIDE',
+    lines: ['Why every octave', 'doubles: the math', 'behind musical notes'],
+    fact: 'f = 440 × 2^((n−69)/12) · A4 = 440 Hz',
+    icon: '🎵',
+  },
+  {
     slug: 'seed-starting-guide',
     kicker: 'GARDENING GUIDE',
     lines: ['When to start seeds:', 'timing everything', 'to your last frost'],

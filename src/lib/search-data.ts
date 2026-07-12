@@ -33,6 +33,7 @@ import { AUTO_TOOLS } from '../data/automotive/index';
 import { FITNESS_TOOLS } from '../data/fitness/index';
 import { PET_TOOLS } from '../data/pets/index';
 import { GARDEN_TOOLS } from '../data/garden/index';
+import { MUSIC_TOOLS } from '../data/music/index';
 
 export interface SearchUnit {
   id: string;
@@ -251,6 +252,9 @@ export function buildSearchPages(): SearchPage[] {
   for (const t of GARDEN_TOOLS) {
     pages.push({ title: t.name, url: `/garden/${t.slug}/`, keywords: [...t.keywords, 'garden', 'gardening', 'plants', 'vegetable', t.name.toLowerCase()] });
   }
+  for (const t of MUSIC_TOOLS) {
+    pages.push({ title: t.name, url: `/music/${t.slug}/`, keywords: [...t.keywords, 'music', 'audio', 'sound', t.name.toLowerCase()] });
+  }
   for (const t of PDF_TOOLS) {
     pages.push({ title: t.name, url: `/pdf/${t.slug}/`, keywords: [...t.keywords, 'pdf', t.name.toLowerCase()] });
   }
@@ -272,6 +276,7 @@ export function buildSearchPages(): SearchPage[] {
     { title: 'All Fitness & Exercise Tools', url: '/fitness/', keywords: ['fitness', 'exercise', 'running', 'workout', 'pace calculator', 'running pace', 'one rep max', '1rm', 'heart rate zones', 'karvonen', 'race time predictor', 'vo2 max', 'cooper test', 'calories burned', 'met', 'steps to distance'] },
     { title: 'All Pets & Animals Tools', url: '/pets/', keywords: ['pets', 'dog', 'cat', 'animal', 'dog age calculator', 'dog years to human years', 'cat age calculator', 'dog food calculator', 'how much to feed', 'pet gestation', 'dog pregnancy', 'aquarium volume', 'fish tank', 'pet water intake', 'dog crate size'] },
     { title: 'All Gardening & Plants Tools', url: '/garden/', keywords: ['garden', 'gardening', 'plants', 'vegetable', 'plant spacing', 'seed spacing', 'raised bed soil', 'fertilizer calculator', 'nitrogen rate', 'garden watering', 'planting date', 'last frost', 'grow light', 'dli', 'compost ratio', 'carbon nitrogen'] },
+    { title: 'All Music & Audio Tools', url: '/music/', keywords: ['music', 'audio', 'note frequency', 'hz', 'bpm', 'delay time', 'tap tempo', 'metronome', 'interval calculator', 'transpose', 'chord transposer', 'capo', 'audio file size', 'wav', 'time signature', 'a440', 'a432'] },
     { title: 'All PDF Tools', url: '/pdf/', keywords: ['pdf tools', 'merge pdf', 'split pdf', 'rotate pdf'] },
     { title: 'All Audio Tools', url: '/video/', keywords: ['audio tools', 'trim audio', 'mp3', 'wav', 'volume'] },
     { title: 'All Developer Tools', url: '/dev/', keywords: ['developer tools', 'dev', 'encode', 'decode', 'hash', 'regex'] },

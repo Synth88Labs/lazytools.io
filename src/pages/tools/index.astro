@@ -22,6 +22,7 @@ import { AUTO_TOOLS } from '../../data/automotive/index';
 import { FITNESS_TOOLS } from '../../data/fitness/index';
 import { PET_TOOLS } from '../../data/pets/index';
 import { GARDEN_TOOLS } from '../../data/garden/index';
+import { MUSIC_TOOLS } from '../../data/music/index';
 import { FILE_TOOLS } from '../../data/file/index';
 import { DEV_TOOLS } from '../../data/dev/index';
 import { GEN_TOOLS } from '../../data/generate/index';
@@ -75,6 +76,7 @@ const schema = [
       ...FITNESS_TOOLS.map((t) => ({ name: t.name, url: `/fitness/${t.slug}/` })),
       ...PET_TOOLS.map((t) => ({ name: t.name, url: `/pets/${t.slug}/` })),
       ...GARDEN_TOOLS.map((t) => ({ name: t.name, url: `/garden/${t.slug}/` })),
+      ...MUSIC_TOOLS.map((t) => ({ name: t.name, url: `/music/${t.slug}/` })),
       ...SECURITY_TOOLS.map((t) => ({ name: t.name, url: `/security/${t.slug}/` })),
       ...IMAGE_TOOLS.map((t) => ({ name: t.name, url: `/image/${t.slug}/` })),
       ...PHOTO_SPECS.map((s) => ({ name: `${s.label} Maker`, url: `/photo/${s.slug}/` })),
@@ -302,6 +304,19 @@ const schema = [
         {FIN_TOOLS.map((t) => (
           <li>
             <a href={`/finance/${t.slug}/`} class="inline-block rounded-full border border-slate-200 px-3 py-1 text-sm text-slate-600 transition hover:border-brand-400 hover:text-brand-700">
+              {t.icon} {t.name}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-bold text-slate-900">🎵 Music & Audio</h2>
+      <ul class="mt-4 flex flex-wrap gap-2">
+        {MUSIC_TOOLS.map((t) => (
+          <li>
+            <a href={`/music/${t.slug}/`} class="inline-block rounded-full border border-slate-200 px-3 py-1 text-sm text-slate-600 transition hover:border-brand-400 hover:text-brand-700">
               {t.icon} {t.name}
             </a>
           </li>

@@ -1,0 +1,58 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PrivacyStrip from '../../components/PrivacyStrip.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { MUSIC_TOOLS } from '../../data/music/index';
+import { breadcrumbSchema, collectionPageSchema, faqSchema } from '../../lib/schema';
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Music & Audio', url: '/music/' },
+];
+const faqs = [
+  { q: 'Are these music tools accurate?', a: 'Yes — they use exact, standard formulas: equal-temperament pitch (A4 = 440 Hz, the ISO 16 standard), BPM-to-milliseconds timing, intervals in cents, and PCM audio file size. The metronome uses sample-accurate Web Audio timing.' },
+  { q: 'Do I need to install anything?', a: 'No — everything runs in your browser. The metronome and tap tempo use built-in Web Audio and timing, with no plugins or sign-up.' },
+  { q: 'Can I change the tuning reference?', a: 'Yes — the note frequency calculator lets you set A4 to 440, 432, 442 or any reference, and retunes every note accordingly.' },
+  { q: 'Is my data uploaded?', a: 'No. Every tool runs entirely in your browser — nothing is sent to a server, and they work offline.' },
+];
+const schema = [
+  breadcrumbSchema(crumbs),
+  collectionPageSchema({ name: 'Music & Audio Tools', url: '/music/', description: 'Free, private music tools: note frequency calculator, BPM to delay time, tap tempo, online metronome, interval calculator, chord transposer, audio file size and time signature calculator.', items: MUSIC_TOOLS.map((t) => ({ name: t.name, url: `/music/${t.slug}/` })) }),
+  faqSchema(faqs),
+];
+---
+
+<Base
+  title="Music & Audio Tools — Note Frequency, BPM Delay, Metronome | LazyTools"
+  description="Free music and audio tools that run in your browser: note frequency calculator (Hz & MIDI), BPM to delay time, tap tempo BPM counter, online metronome, interval calculator, chord transposer, audio file size and time signature calculator. Exact, no upload."
+  schema={schema}
+>
+  <div class="mx-auto max-w-5xl px-4 py-6">
+    <Breadcrumbs items={crumbs} />
+    <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Music & Audio Tools</h1>
+    <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
+      For musicians and producers — convert notes to frequencies, turn tempo into delay times, tap out a BPM,
+      practise to a precise metronome, work out intervals, transpose chords and size up audio files. Exact
+      music maths, running entirely in your browser.
+    </p>
+
+    <div class="mt-5"><PrivacyStrip /></div>
+
+    <section class="mt-8">
+      <ul class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {MUSIC_TOOLS.map((t) => (
+          <li>
+            <a href={`/music/${t.slug}/`} class="flex h-full flex-col rounded-xl border border-slate-200 p-4 transition hover:border-brand-400 hover:shadow-sm">
+              <span class="text-2xl" aria-hidden="true">{t.icon}</span>
+              <span class="mt-2 font-semibold text-slate-900">{t.name}</span>
+              <span class="mt-1 text-sm text-slate-600">{t.lead.split('—')[0].split('(')[0]}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <FaqSection faqs={faqs} />
+  </div>
+</Base>

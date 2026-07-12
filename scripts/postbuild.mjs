@@ -40,6 +40,7 @@ import { AUTO_TOOLS } from '../src/data/automotive/index.ts';
 import { FITNESS_TOOLS } from '../src/data/fitness/index.ts';
 import { PET_TOOLS } from '../src/data/pets/index.ts';
 import { GARDEN_TOOLS } from '../src/data/garden/index.ts';
+import { MUSIC_TOOLS } from '../src/data/music/index.ts';
 
 await copyFile(new URL('../dist/sitemap-index.xml', import.meta.url), new URL('../dist/sitemap.xml', import.meta.url));
 console.log('postbuild: dist/sitemap.xml created (copy of sitemap-index.xml)');
@@ -77,6 +78,7 @@ const slugs = [
   ...FITNESS_TOOLS.map((t) => `fitness/${t.slug}`),
   ...PET_TOOLS.map((t) => `pets/${t.slug}`),
   ...GARDEN_TOOLS.map((t) => `garden/${t.slug}`),
+  ...MUSIC_TOOLS.map((t) => `music/${t.slug}`),
 ].sort();
 await writeFile(new URL('../api/tools-allowlist.json', import.meta.url), JSON.stringify(slugs, null, 2) + '\n');
 console.log(`postbuild: api/tools-allowlist.json regenerated (${slugs.length} tools)`);
