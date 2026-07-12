@@ -31,6 +31,9 @@ import WeightedAverageTool from '../../components/math/WeightedAverageTool.tsx';
 import ExponentCalcTool from '../../components/math/ExponentCalcTool.tsx';
 import CircleCalcTool from '../../components/math/CircleCalcTool.tsx';
 import TriangleAreaTool from '../../components/math/TriangleAreaTool.tsx';
+import TriangleSolverTool from '../../components/math/TriangleSolverTool.tsx';
+import MatrixCalcTool from '../../components/math/MatrixCalcTool.tsx';
+import LogarithmTool from '../../components/math/LogarithmTool.tsx';
 import { MATH_TOOLS, type MathToolDef } from '../../data/math/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -103,6 +106,9 @@ const schema = [
       {tool.widget === 'exponent' && <ExponentCalcTool client:load />}
       {tool.widget === 'circle' && <CircleCalcTool client:load />}
       {tool.widget === 'triangle-area' && <TriangleAreaTool client:load />}
+      {tool.widget === 'triangle-solve' && <TriangleSolverTool client:load />}
+      {tool.widget === 'matrix' && <MatrixCalcTool client:load />}
+      {tool.widget === 'logarithm' && <LogarithmTool client:load />}
     </div>
 
     <div class="mt-4">

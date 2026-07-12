@@ -6,7 +6,7 @@ export interface MathToolDef {
   icon: string;
   description: string;
   lead: string;
-  widget: 'fraction' | 'dec-frac' | 'gcd-lcm' | 'prime' | 'ratio' | 'quadratic' | 'stats' | 'roman' | 'sci-notation' | 'perm-comb' | 'long-division' | 'radical' | 'modular' | 'slope-line' | 'distance-midpoint' | 'binomial' | 'sig-figs' | 'deg-rad' | 'complete-square' | 'synthetic' | 'percentile' | 'divisibility' | 'weighted-avg' | 'exponent' | 'circle' | 'triangle-area';
+  widget: 'fraction' | 'dec-frac' | 'gcd-lcm' | 'prime' | 'ratio' | 'quadratic' | 'stats' | 'roman' | 'sci-notation' | 'perm-comb' | 'long-division' | 'radical' | 'modular' | 'slope-line' | 'distance-midpoint' | 'binomial' | 'sig-figs' | 'deg-rad' | 'complete-square' | 'synthetic' | 'percentile' | 'divisibility' | 'weighted-avg' | 'exponent' | 'circle' | 'triangle-area' | 'triangle-solve' | 'matrix' | 'logarithm';
   how: string;
   note?: string;
   faqs: { q: string; a: string }[];
@@ -507,5 +507,62 @@ export const MATH_TOOLS: MathToolDef[] = [
       { q: 'Can sides be decimals or fractions?', a: 'Yes — all sides parse as exact rationals, and the radical simplification handles the fractions correctly. Runs locally.' },
     ],
     keywords: ['herons formula calculator', 'triangle area from sides', 'area of triangle 3 sides', 'triangle area exact radical', 'heronian triangle', 'semi perimeter formula'],
+  },
+  {
+    slug: 'triangle-solver',
+    name: 'Triangle Solver (Law of Sines & Cosines)',
+    icon: '📐',
+    description: 'Solve a triangle from any 3 values — sides and angles — and get every remaining side, angle, area and perimeter, with a scaled diagram. Handles the ambiguous SSA case. In your browser.',
+    lead: 'Enter any three values (with at least one side) and get the complete triangle — all sides, all angles, area and perimeter — drawn to scale.',
+    widget: 'triangle-solve',
+    how: 'Give three of the six measurements — sides a, b, c and angles A, B, C (each angle opposite its same-letter side) — and the tool finds the rest. Three sides (SSS) or two sides and the included angle (SAS) are solved with the law of cosines; two angles and a side (ASA or AAS) use the angle sum and the law of sines; two sides and a non-included angle (SSA) use the law of sines and can yield two valid triangles (the "ambiguous case"), both of which are shown. Area comes from ½·a·b·sin C.',
+    note: 'Angles are in degrees and must sum to 180°. The SSA case is genuinely ambiguous — a given side, another side and a non-included angle can describe two different triangles, one triangle, or none, depending on whether the side is long enough to "reach"; the solver reports each valid answer rather than silently picking one.',
+    faqs: [
+      { q: 'How do I solve a triangle?', a: 'You need any three measurements including at least one side. Depending on which three you have, you use the law of cosines (for SSS or SAS) or the law of sines (for ASA, AAS or SSA) to find the missing sides and angles. This tool detects the case and solves it.' },
+      { q: 'What is the law of sines?', a: 'a/sin A = b/sin B = c/sin C — each side divided by the sine of its opposite angle gives the same ratio. It solves triangles when you know a side and its opposite angle plus one more value (ASA, AAS, SSA).' },
+      { q: 'What is the law of cosines?', a: 'c² = a² + b² − 2ab·cos C (and cyclic versions). It finds the third side from two sides and the included angle (SAS), or any angle from all three sides (SSS).' },
+      { q: 'What is the ambiguous (SSA) case?', a: 'When you know two sides and an angle not between them, the known side may be long enough to form the triangle in two different ways — giving two valid triangles. The solver shows both; if the side is too short it reports no solution.' },
+      { q: 'Why do the angles have to add up to 180°?', a: 'In Euclidean (flat) geometry the interior angles of every triangle sum to exactly 180°, so once two angles are known the third is fixed. The solver uses this and rejects angle sets that break it.' },
+      { q: 'Can I enter a right triangle?', a: 'Yes — enter 90 for one angle, or three sides like 3, 4, 5. A right triangle is just a normal case for the laws of sines and cosines; the tool will confirm the 90° angle.' },
+    ],
+    keywords: ['triangle solver', 'law of sines calculator', 'law of cosines calculator', 'solve a triangle', 'triangle calculator sides angles', 'sss sas asa aas ssa', 'ambiguous case triangle', 'find missing side triangle'],
+  },
+  {
+    slug: 'matrix-calculator',
+    name: 'Matrix Calculator',
+    icon: '🔢',
+    description: 'Add, subtract, multiply, transpose, and find the determinant and inverse of 2×2 and 3×3 matrices — exact operations, in your browser.',
+    lead: 'Enter one or two matrices and compute the determinant, inverse, transpose, sum, difference or product — for 2×2 and 3×3.',
+    widget: 'matrix',
+    how: 'Pick a size and an operation and fill in the numbers. Addition and subtraction work element by element (same size). Multiplication takes the dot product of each row of A with each column of B. The transpose flips rows and columns. The determinant is found by cofactor expansion, and the inverse by Gauss–Jordan elimination — reducing [A | I] until the left side is the identity, leaving A⁻¹ on the right. A matrix with determinant zero is singular and has no inverse; the tool says so.',
+    note: 'Determinant and inverse need a square matrix. Matrix multiplication is not commutative — A×B generally differs from B×A — and is only defined when A\'s column count equals B\'s row count. Everything is computed with floating-point arithmetic and shown to six significant figures.',
+    faqs: [
+      { q: 'How do you multiply two matrices?', a: 'Each entry of the product is the dot product of a row of the first matrix with a column of the second: multiply matching elements and add. It\'s only defined when the first matrix has as many columns as the second has rows, and the result is generally not the same as multiplying them the other way round.' },
+      { q: 'How do you find the determinant of a 3×3 matrix?', a: 'Expand along a row using cofactors: multiply each element by the determinant of the 2×2 matrix left after removing its row and column, with alternating + and − signs, and add. This tool does it for you and shows the value.' },
+      { q: 'How do you find the inverse of a matrix?', a: 'Augment the matrix with the identity, [A | I], then use Gauss–Jordan elimination to turn the left half into the identity; the right half becomes A⁻¹. It exists only if the determinant is non-zero.' },
+      { q: 'What is a singular matrix?', a: 'A square matrix whose determinant is zero. It has no inverse, because its rows (or columns) are linearly dependent — they don\'t span the full space. The calculator detects this and tells you instead of returning nonsense.' },
+      { q: 'What is the transpose of a matrix?', a: 'The matrix you get by swapping rows and columns — element (i, j) becomes (j, i). A 2×3 matrix transposes to 3×2. It\'s used throughout linear algebra, from dot products to covariance.' },
+      { q: 'Is matrix multiplication commutative?', a: 'No. In general A×B ≠ B×A, and often only one of the two is even defined. Order matters, which is why the tool labels the operation A×B specifically.' },
+    ],
+    keywords: ['matrix calculator', 'matrix multiplication calculator', 'determinant calculator', 'matrix inverse calculator', '3x3 matrix calculator', 'transpose matrix', 'matrix addition', 'inverse of a matrix'],
+  },
+  {
+    slug: 'logarithm-calculator',
+    name: 'Logarithm Calculator',
+    icon: '🧮',
+    description: 'Compute a logarithm in any base — natural log (ln), log base 10 and log base 2 — plus the antilogarithm. Uses the change-of-base formula. In your browser.',
+    lead: 'Find log base b of any value — or ln, log₁₀ and log₂ at once — and reverse it with the antilogarithm.',
+    widget: 'logarithm',
+    how: 'A logarithm answers "to what power must the base be raised to get this number?": logₐb(x) is the exponent y with bʸ = x. For any base the tool uses the change-of-base formula, logₐb(x) = ln(x) ÷ ln(b), so it works for base 10, base 2, the natural base e, or any base you type. It also shows ln, log₁₀ and log₂ together, and an antilogarithm (bˣ) that reverses the operation.',
+    note: 'The value must be positive and the base positive and not equal to 1 — logarithms of zero or negative numbers, or in base 1, are undefined. Natural log (base e ≈ 2.71828) is written ln; "log" with no base usually means base 10 in engineering and base e in pure maths, which is why picking the base explicitly matters.',
+    faqs: [
+      { q: 'How do I calculate a logarithm in any base?', a: 'Use the change-of-base formula: logₐb(x) = ln(x) ÷ ln(b), or equivalently log(x) ÷ log(b) with any common log. For example log₂(8) = ln(8)/ln(2) = 3. The tool does this for whatever base you enter.' },
+      { q: 'What is the difference between ln and log?', a: 'ln is the natural logarithm, base e (≈ 2.718). "log" usually means base 10 (common log) in science and engineering, but base e in some maths contexts. Because it\'s ambiguous, this tool lets you set the base explicitly and shows ln, log₁₀ and log₂ side by side.' },
+      { q: 'What is an antilogarithm?', a: 'The inverse of a logarithm: if log_b(x) = y then the antilog is bʸ = x. So the antilog base 10 of 3 is 10³ = 1000. The tool has a separate bˣ field for this.' },
+      { q: 'Why can\'t I take the log of a negative number?', a: 'Because no real power of a positive base gives a negative (or zero) result — bʸ is always positive for a positive base. Logs of negatives exist only in complex numbers, which this tool doesn\'t cover.' },
+      { q: 'What is log base 2 used for?', a: 'Base-2 logs count doublings, so they appear throughout computing and information theory — bits of information, algorithm complexity (O(log n)), and octaves in music. log₂(1024) = 10, for instance.' },
+      { q: 'What does log_b(1) equal?', a: 'Always 0, for any base, because b⁰ = 1. And log_b(b) = 1, because b¹ = b. These two identities are worth remembering.' },
+    ],
+    keywords: ['logarithm calculator', 'log calculator', 'natural log calculator', 'ln calculator', 'log base 2 calculator', 'change of base formula', 'antilog calculator', 'log base 10'],
   },
 ];
