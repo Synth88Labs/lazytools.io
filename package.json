@@ -5,9 +5,10 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && node scripts/postbuild.mjs",
+    "build": "node scripts/check-svg.mjs && astro build && node scripts/postbuild.mjs",
     "preview": "astro preview",
-    "test": "node scripts/verify-factors.ts"
+    "test": "node scripts/verify-factors.ts",
+    "check:svg": "node scripts/check-svg.mjs"
   },
   "dependencies": {
     "@astrojs/preact": "^4.0.0",
