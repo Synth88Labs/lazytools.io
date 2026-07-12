@@ -7,6 +7,13 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'financial-ratios-explained-guide',
+    kicker: 'FINANCE GUIDE',
+    lines: ['Financial ratios', 'explained: the 6 families', 'and how to read them'],
+    fact: 'liquidity · leverage · coverage · profit · efficiency · value',
+    icon: '📊',
+  },
+  {
     slug: 'elastic-inelastic-collisions-guide',
     kicker: 'PHYSICS GUIDE',
     lines: ['Elastic vs inelastic', 'collisions: what', 'is conserved, and why'],

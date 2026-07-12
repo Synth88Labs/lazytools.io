@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="The six families of financial ratios. Liquidity: can it pay short-term bills? Current ratio, quick ratio, cash ratio. Leverage: how much debt? Debt-to-equity, debt ratio, equity multiplier. Coverage: can earnings cover debt? Interest coverage, DSCR, fixed-charge coverage. Profitability: how much profit from sales? Gross, operating and net margin, ROA, ROE. Efficiency: how well are assets used? Inventory turnover, DSO, asset turnover, cash conversion cycle. Valuation: is the stock expensive? P/E, P/B, dividend yield, EV/EBITDA. Liquidity and coverage have fairly universal healthy thresholds; profitability, efficiency and valuation must be compared to industry peers.">
+  <defs>
+    <style>
+      .h { font: 800 27px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .sub { font: 500 15px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+      .ct { font: 800 17px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; }
+      .q { font: 600 12px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #475569; }
+      .r { font: 600 12px Consolas, Menlo, monospace; fill: #334155; }
+      .tag { font: 800 11px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; }
+    </style>
+  </defs>
+
+  <text x="600" y="40" text-anchor="middle" class="h">The six families of financial ratios</text>
+  <text x="600" y="66" text-anchor="middle" class="sub">each answers one question about a company&#8217;s health</text>
+
+  <!-- 6 cards in 2 rows x 3 -->
+  <!-- Liquidity -->
+  <g transform="translate(60 92)">
+    <rect width="345" height="150" rx="14" fill="#eff6ff" stroke="#1d4ed8"/>
+    <text x="18" y="32" class="ct" fill="#1d4ed8">💧 Liquidity</text>
+    <text x="18" y="54" class="q">Can it pay short-term bills?</text>
+    <text x="18" y="80" class="r">current · quick · cash ratio</text>
+    <text x="18" y="100" class="r">net working capital</text>
+    <rect x="18" y="116" width="150" height="22" rx="11" fill="#dcfce7"/><text x="30" y="131" class="tag" fill="#166534">universal thresholds</text>
+  </g>
+  <!-- Leverage -->
+  <g transform="translate(428 92)">
+    <rect width="345" height="150" rx="14" fill="#fef2f2" stroke="#dc2626"/>
+    <text x="18" y="32" class="ct" fill="#b91c1c">⚖️ Leverage</text>
+    <text x="18" y="54" class="q">How much debt does it carry?</text>
+    <text x="18" y="80" class="r">debt-to-equity · debt ratio</text>
+    <text x="18" y="100" class="r">equity multiplier · debt-to-capital</text>
+    <rect x="18" y="116" width="180" height="22" rx="11" fill="#fef9c3"/><text x="30" y="131" class="tag" fill="#854d0e">compare to industry</text>
+  </g>
+  <!-- Coverage -->
+  <g transform="translate(796 92)">
+    <rect width="345" height="150" rx="14" fill="#ecfdf5" stroke="#059669"/>
+    <text x="18" y="32" class="ct" fill="#047857">🛡️ Coverage</text>
+    <text x="18" y="54" class="q">Can earnings cover the debt?</text>
+    <text x="18" y="80" class="r">interest coverage (TIE)</text>
+    <text x="18" y="100" class="r">DSCR · fixed-charge coverage</text>
+    <rect x="18" y="116" width="150" height="22" rx="11" fill="#dcfce7"/><text x="30" y="131" class="tag" fill="#166534">lender benchmarks</text>
+  </g>
+  <!-- Profitability -->
+  <g transform="translate(60 262)">
+    <rect width="345" height="150" rx="14" fill="#fffbeb" stroke="#d97706"/>
+    <text x="18" y="32" class="ct" fill="#b45309">📊 Profitability</text>
+    <text x="18" y="54" class="q">How much profit from sales?</text>
+    <text x="18" y="80" class="r">gross · operating · net margin</text>
+    <text x="18" y="100" class="r">ROA · ROE</text>
+    <rect x="18" y="116" width="180" height="22" rx="11" fill="#fef9c3"/><text x="30" y="131" class="tag" fill="#854d0e">compare to industry</text>
+  </g>
+  <!-- Efficiency -->
+  <g transform="translate(428 262)">
+    <rect width="345" height="150" rx="14" fill="#f5f3ff" stroke="#7c3aed"/>
+    <text x="18" y="32" class="ct" fill="#6d28d9">⚙️ Efficiency</text>
+    <text x="18" y="54" class="q">How well are assets used?</text>
+    <text x="18" y="80" class="r">inventory turnover · DSO · DPO</text>
+    <text x="18" y="100" class="r">asset turnover · cash cycle</text>
+    <rect x="18" y="116" width="180" height="22" rx="11" fill="#fef9c3"/><text x="30" y="131" class="tag" fill="#854d0e">compare to industry</text>
+  </g>
+  <!-- Valuation -->
+  <g transform="translate(796 262)">
+    <rect width="345" height="150" rx="14" fill="#eef2ff" stroke="#4f46e5"/>
+    <text x="18" y="32" class="ct" fill="#4338ca">💹 Valuation</text>
+    <text x="18" y="54" class="q">Is the stock expensive?</text>
+    <text x="18" y="80" class="r">P/E · P/B · P/S · EPS</text>
+    <text x="18" y="100" class="r">dividend yield · EV/EBITDA</text>
+    <rect x="18" y="116" width="180" height="22" rx="11" fill="#fef9c3"/><text x="30" y="131" class="tag" fill="#854d0e">compare to industry</text>
+  </g>
+
+  <!-- footer -->
+  <g transform="translate(60 442)">
+    <rect x="0" y="0" width="1081" height="50" rx="14" fill="#0c2f6b"/>
+    <text x="24" y="31" font-family="Consolas, Menlo, monospace" font-size="14" fill="#7ef0c0">lazytools.io — 6 financial-ratio calculators, each result interpreted in plain business terms</text>
+  </g>
+
+  <text x="600" y="530" text-anchor="middle" class="sub">Liquidity &#38; coverage ratios have fairly universal healthy levels; profitability, efficiency &#38; valuation only make sense against peers.</text>
+  <text x="600" y="556" text-anchor="middle" class="q" fill="#94a3b8">Educational information, not investment advice.</text>
+</svg>

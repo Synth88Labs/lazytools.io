@@ -4,7 +4,8 @@ export interface FinanceToolDef {
   slug: string;
   name: string;
   icon: string;
-  widget: 'compound' | 'debt' | 'savings' | 'loan' | 'creditcard' | 'cagr' | 'rule72' | 'roi' | 'breakeven' | 'aprapy';
+  widget: 'compound' | 'debt' | 'savings' | 'loan' | 'creditcard' | 'cagr' | 'rule72' | 'roi' | 'breakeven' | 'aprapy'
+    | 'liquidityratios' | 'leverageratios' | 'coverageratios' | 'profitabilityratios' | 'efficiencyratios' | 'valuationratios';
   description: string;
   lead: string;
   how: string;
@@ -193,6 +194,114 @@ export const FIN_TOOLS: FinanceToolDef[] = [
       { q: 'Which should I use to compare offers?', a: 'Convert everything to APY (or everything to APR) at the same compounding frequency, then compare. Mixing the two is misleading.' },
     ],
     keywords: ['apr to apy calculator', 'apy calculator', 'apr apy converter', 'effective annual rate calculator', 'nominal vs effective rate', 'apy from apr'],
+  },
+  {
+    slug: 'liquidity-ratios-calculator',
+    name: 'Liquidity Ratios Calculator',
+    icon: '💧',
+    widget: 'liquidityratios',
+    description: 'Calculate the current ratio, quick (acid-test) ratio, cash ratio and net working capital — each interpreted in plain business terms. In your browser.',
+    lead: 'Enter a few balance-sheet figures to get the current, quick and cash ratios and working capital — each explained, with a healthy / caution / concern read.',
+    how: 'Liquidity ratios measure whether a company can pay its short-term bills from short-term resources. From current assets, inventory, cash and current liabilities the tool computes the current ratio (current assets ÷ current liabilities), the quick or acid-test ratio (which strips out inventory), the cash ratio (cash alone ÷ current liabilities) and net working capital (current assets − current liabilities) — and interprets each one for you.',
+    note: 'These are among the more universal ratios, but context still matters: a current ratio below 1 is a warning for most firms yet normal for fast-turnover retailers who sell inventory before suppliers are paid. Widely-cited healthy bands are a current ratio around 1.5–3 and a quick ratio of 1 or more. This is educational information, not financial advice.',
+    faqs: [
+      { q: 'What is a good current ratio?', a: 'Often cited as roughly 1.5 to 3: enough short-term assets to comfortably cover short-term liabilities. Below 1 means current assets don\'t cover current liabilities; well above 3 can signal cash or inventory sitting idle. It varies by industry, so compare to peers.' },
+      { q: 'What is the difference between the current ratio and the quick ratio?', a: 'The quick (acid-test) ratio excludes inventory — the hardest current asset to turn into cash quickly — so it\'s a stricter test of liquidity. A quick ratio of 1 or more means a firm can meet short-term obligations without selling inventory.' },
+      { q: 'What is the cash ratio?', a: 'The most conservative liquidity measure: cash and equivalents ÷ current liabilities. A value of 0.2 or higher is generally seen as healthy; most companies run below 1 because holding enough cash to cover every liability would waste earning potential.' },
+      { q: 'What is net working capital?', a: 'Current assets minus current liabilities — the short-term financial cushion in dollars. Positive means the firm can fund day-to-day operations; negative can signal strain, though some efficient retailers run negative working capital deliberately.' },
+      { q: 'Are these ratios enough to judge a company?', a: 'No — they only cover short-term liquidity. Read them alongside leverage, coverage, profitability and efficiency ratios, the trend over time, and the industry context for a full picture. This tool is educational, not investment advice.' },
+    ],
+    keywords: ['liquidity ratios calculator', 'current ratio calculator', 'quick ratio calculator', 'acid test ratio calculator', 'cash ratio calculator', 'working capital calculator', 'current ratio interpretation'],
+  },
+  {
+    slug: 'leverage-ratios-calculator',
+    name: 'Leverage & Solvency Ratios Calculator',
+    icon: '⚖️',
+    widget: 'leverageratios',
+    description: 'Calculate the debt-to-equity, debt ratio, equity multiplier and debt-to-capital ratios — each interpreted for financial risk. In your browser.',
+    lead: 'Enter total debt, equity and assets to get the debt-to-equity, debt, equity-multiplier and debt-to-capital ratios — each explained in terms of financial risk.',
+    how: 'Leverage (solvency) ratios show how much a company relies on borrowed money versus owners\' capital, and how much risk that carries. From total debt, equity and assets the tool computes debt-to-equity (debt ÷ equity), the debt ratio (debt ÷ assets), the equity multiplier (assets ÷ equity) and debt-to-capital (debt ÷ (debt + equity)) — and interprets each.',
+    note: 'Leverage is one of the most industry-dependent measures: utilities, telecoms and banks carry structurally high debt against stable cash flows, while tech and healthcare run low. So a debt-to-equity of 2 may be prudent in one sector and alarming in another — always compare to peers. Also note whether "debt" means total liabilities or only interest-bearing debt, as sources differ. Educational information, not financial advice.',
+    faqs: [
+      { q: 'What is a good debt-to-equity ratio?', a: 'A common rule of thumb is 1 to 2 for many industries, with below 1 seen as conservative and above 2 as higher-risk. But it\'s strongly industry-dependent — capital-intensive sectors run much higher — so compare to peers rather than an absolute cutoff.' },
+      { q: 'What does the debt ratio tell me?', a: 'What fraction of a company\'s assets are financed by debt (debt ÷ assets). Below about 0.5 is generally viewed as conservative; approaching 1 means the firm is heavily financed by debt and more exposed to rising rates or a downturn.' },
+      { q: 'What is the equity multiplier?', a: 'Total assets ÷ shareholders\' equity — a leverage gauge showing how many dollars of assets each dollar of equity supports. A multiplier of 2 means assets are twice equity (the rest funded by debt); higher means more leverage.' },
+      { q: 'What is the difference between debt-to-equity and debt-to-capital?', a: 'Both measure leverage. Debt-to-equity compares debt to equity; debt-to-capital compares debt to total capital (debt + equity), so it\'s always between 0 and 1 and shows debt\'s share of the whole funding mix.' },
+      { q: 'Is high leverage always bad?', a: 'No. Debt is cheaper than equity and can boost returns, and stable-cash-flow businesses safely carry a lot. It becomes dangerous when earnings can\'t reliably cover the interest — which is what the coverage ratios test. Educational information, not advice.' },
+    ],
+    keywords: ['leverage ratios calculator', 'debt to equity ratio calculator', 'debt ratio calculator', 'equity multiplier calculator', 'debt to capital ratio', 'solvency ratio calculator', 'debt to equity interpretation'],
+  },
+  {
+    slug: 'coverage-ratios-calculator',
+    name: 'Coverage Ratios Calculator',
+    icon: '🛡️',
+    widget: 'coverageratios',
+    description: 'Calculate the interest coverage (times interest earned), debt service coverage (DSCR) and fixed-charge coverage ratios — the ones lenders care about most. In your browser.',
+    lead: 'Enter earnings and debt obligations to get the interest coverage, DSCR and fixed-charge coverage ratios — each interpreted against lender benchmarks.',
+    how: 'Coverage ratios test how comfortably a company\'s earnings cover its debt obligations. The tool computes interest coverage (times interest earned = EBIT ÷ interest), the debt service coverage ratio (net operating income ÷ total debt service, principal plus interest) and, if you enter lease/rent, the fixed-charge coverage ratio — and reads each against the benchmarks lenders use.',
+    note: 'These are the ratios banks lean on when they lend, so their thresholds are among the most consistently cited: interest coverage above roughly 2.5–3× is generally safe (below 1.5× is risky), and lenders typically require a DSCR of at least 1.25×. Stable-cash-flow sectors like utilities get some leeway. Educational information, not financial advice.',
+    faqs: [
+      { q: 'What is a good interest coverage ratio?', a: 'Above about 2.5 to 3 times is generally considered safe — operating earnings comfortably cover the interest bill. Below 1.5× is a distress signal, and below 1× means earnings don\'t even cover interest. Stable-cash-flow firms can run a bit lower.' },
+      { q: 'What is the debt service coverage ratio (DSCR)?', a: 'Net operating income ÷ total debt service (principal + interest). It shows whether operations generate enough to cover all debt payments. Lenders typically require at least 1.25×; below 1 means the company can\'t cover its debt from operations.' },
+      { q: 'What DSCR do lenders require?', a: 'Commonly 1.25× or higher — a 25% income cushion over debt payments — though riskier property types (hotels, some retail) may need 1.40–1.50×. A DSCR under 1 usually fails underwriting because income falls short of the payments.' },
+      { q: 'What is the fixed-charge coverage ratio?', a: 'A broader version of interest coverage that also includes fixed obligations like lease and rent payments. Lenders often set a covenant floor around 1.2–1.25×. It gives a fuller picture for companies with big lease commitments.' },
+      { q: 'Why do lenders focus on coverage ratios?', a: 'Because they directly answer the question a lender cares about most: can this business generate enough earnings to keep paying its debt? Leverage ratios show how much debt there is; coverage ratios show whether it\'s affordable. Educational information, not advice.' },
+    ],
+    keywords: ['coverage ratio calculator', 'interest coverage ratio calculator', 'times interest earned calculator', 'dscr calculator', 'debt service coverage ratio calculator', 'fixed charge coverage ratio', 'interest coverage interpretation'],
+  },
+  {
+    slug: 'profitability-ratios-calculator',
+    name: 'Profitability Ratios Calculator',
+    icon: '📊',
+    widget: 'profitabilityratios',
+    description: 'Calculate gross, operating and net profit margins plus return on assets (ROA) and return on equity (ROE) — each interpreted in business terms. In your browser.',
+    lead: 'Enter income-statement and balance-sheet figures to get the margins, ROA and ROE — each explained, with guidance to benchmark against industry peers.',
+    how: 'Profitability ratios show how much profit a company extracts from its sales, assets and equity. From revenue, cost of goods sold, operating income, net income, assets and equity the tool computes gross margin, operating margin, net profit margin, return on assets (net income ÷ assets) and return on equity (net income ÷ equity) — and explains what each says about the business.',
+    note: 'These ratios are highly industry-dependent — software margins dwarf grocery margins, and asset-light firms post far higher returns than utilities — so there is no universal "good" number. The tool interprets them directionally and flags that you should compare to industry peers and the company\'s own trend. A high ROE can also be driven by heavy debt, so read it with the leverage ratios. Educational, not investment advice.',
+    faqs: [
+      { q: 'What is a good net profit margin?', a: 'It depends entirely on the industry — retail often nets 2–6%, software 20–30%+. There\'s no universal threshold, so a positive, stable or rising margin compared to peers matters more than the absolute number.' },
+      { q: 'What is the difference between gross, operating and net margin?', a: 'Gross margin is after the direct cost of goods; operating margin is after running costs too (but before interest and tax); net margin is after everything. Each strips away more costs, showing profitability at a different level of the income statement.' },
+      { q: 'What is a good ROE?', a: 'Around 15–20% is often cited as strong for broad markets, but it\'s best judged against industry peers. Watch out: a high ROE can come from high leverage rather than efficiency, so always read it alongside the debt ratios.' },
+      { q: 'What is the difference between ROA and ROE?', a: 'ROA (net income ÷ assets) measures how efficiently a company uses all its assets; ROE (net income ÷ equity) measures the return to shareholders specifically. ROE is boosted by debt, ROA isn\'t — the gap between them reflects leverage.' },
+      { q: 'Why does the tool say "compare to peers" instead of good/bad?', a: 'Because profitability benchmarks vary so much by sector that a single healthy/concern cutoff would mislead — a 4% ROA is fine for a utility but weak for software. So the tool interprets the meaning and points you to peer and trend comparison. Educational information, not advice.' },
+    ],
+    keywords: ['profitability ratios calculator', 'profit margin calculator', 'net profit margin calculator', 'gross margin calculator', 'return on equity calculator', 'return on assets calculator', 'roe roa calculator'],
+  },
+  {
+    slug: 'efficiency-ratios-calculator',
+    name: 'Efficiency Ratios Calculator',
+    icon: '⚙️',
+    widget: 'efficiencyratios',
+    description: 'Calculate inventory turnover, receivables and payables days (DSO/DPO), asset turnover and the cash conversion cycle — each interpreted for working-capital health. In your browser.',
+    lead: 'Enter working-capital figures to get inventory turnover, DSO, DPO, asset turnover and the cash conversion cycle — each explained in business terms.',
+    how: 'Efficiency (activity) ratios show how well a company turns its assets and working capital into sales and cash. The tool computes inventory turnover (and days inventory outstanding), receivables turnover (and DSO — days to collect), payables turnover (and DPO — days to pay), asset turnover (revenue ÷ assets) and the cash conversion cycle (DIO + DSO − DPO) — interpreting each.',
+    note: 'Like profitability, these are industry-relative — grocers turn inventory many times a year while heavy-equipment makers turn it slowly — so compare to peers and to your own payment terms rather than an absolute target. A shorter, or even negative, cash conversion cycle is generally better because it frees up working capital. Educational information, not financial advice.',
+    faqs: [
+      { q: 'What is inventory turnover and what is a good number?', a: 'Cost of goods sold ÷ average inventory — how many times a year stock is sold and replaced. "Good" varies hugely by industry (groceries high, machinery low), so compare to peers. Days inventory outstanding = 365 ÷ turnover.' },
+      { q: 'What is DSO (days sales outstanding)?', a: 'The average number of days customers take to pay: 365 ÷ receivables turnover. Compare it to your credit terms — a DSO well above them means slow collection and cash tied up in receivables.' },
+      { q: 'What is the cash conversion cycle?', a: 'Days inventory outstanding + days sales outstanding − days payable outstanding: the time to convert money spent on inventory back into cash from customers. Shorter is better; a negative cycle means suppliers effectively finance your operations.' },
+      { q: 'Is a negative cash conversion cycle good?', a: 'Usually yes — it means you collect from customers before paying suppliers, funding operations with supplier credit. Big retailers like this are famous for it. It reflects strong working-capital management, though it depends on the business model.' },
+      { q: 'What is asset turnover?', a: 'Revenue ÷ total assets — how much sales each dollar of assets generates. Asset-light retailers and services run high; capital-intensive manufacturers and utilities run low. It\'s a peer-comparison metric, which is why the tool flags it as such.' },
+    ],
+    keywords: ['efficiency ratios calculator', 'inventory turnover calculator', 'days sales outstanding calculator', 'dso calculator', 'asset turnover calculator', 'cash conversion cycle calculator', 'activity ratios calculator'],
+  },
+  {
+    slug: 'valuation-ratios-calculator',
+    name: 'Valuation Ratios Calculator',
+    icon: '💹',
+    widget: 'valuationratios',
+    description: 'Calculate P/E, P/B, P/S, EPS, dividend yield, payout ratio and EV/EBITDA — each interpreted, with guidance to compare against sector and growth. In your browser.',
+    lead: 'Enter share price, shares and financials to get the P/E, P/B, P/S, EPS, dividend yield, payout ratio and EV/EBITDA — each explained in plain terms.',
+    how: 'Valuation (market) ratios relate a company\'s share price and enterprise value to its earnings, book value, sales and cash flow, telling you how expensive the stock is. The tool computes EPS, P/E (price ÷ EPS), P/B (price ÷ book value per share), P/S (market cap ÷ revenue), dividend yield, the payout ratio and EV/EBITDA — and interprets each.',
+    note: 'Valuation multiples only mean something in context — versus sector peers, the company\'s own history and its growth rate. A P/E of 30 is cheap for a fast grower and expensive for a utility, so the tool interprets the meaning rather than declaring a number good or bad. One hard signal it does flag: a dividend payout ratio above 100% is unsustainable. Educational information, not investment advice.',
+    faqs: [
+      { q: 'What is a good P/E ratio?', a: 'There isn\'t a universal one — the market has historically averaged roughly 15–25, growth stocks trade far higher and value stocks lower. A high P/E reflects high growth expectations or overvaluation; it\'s only meaningful compared to sector peers, history and the growth rate.' },
+      { q: 'What does the P/B ratio tell me?', a: 'Price ÷ book value per share — how the market values the company relative to its accounting net worth. Below 1 can flag undervaluation or underlying asset problems; a premium reflects intangibles and growth the balance sheet doesn\'t capture. Most useful for asset-heavy and financial firms.' },
+      { q: 'What is a sustainable dividend payout ratio?', a: 'Dividends ÷ net income. Mature income companies may pay out 50–80%; growth firms little or nothing. Above 100% is unsustainable — the company is paying out more than it earns, dipping into reserves or debt to do so.' },
+      { q: 'Why is EV/EBITDA used instead of P/E?', a: 'Enterprise value ÷ EBITDA is capital-structure-neutral — it includes debt and ignores it in the denominator — so it compares companies with different debt levels and tax situations better than P/E. Below about 10 is often seen as reasonable, but it\'s sector-dependent.' },
+      { q: 'What is enterprise value?', a: 'Market capitalisation plus net debt (total debt minus cash) — the theoretical cost to buy the whole business, not just its equity. It\'s the numerator in EV/EBITDA and gives a fuller valuation than share price alone. Enter it directly in the tool.' },
+    ],
+    keywords: ['valuation ratios calculator', 'pe ratio calculator', 'price to earnings calculator', 'price to book calculator', 'dividend yield calculator', 'dividend payout ratio calculator', 'ev ebitda calculator'],
   },
 ];
 

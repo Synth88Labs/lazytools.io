@@ -6,6 +6,12 @@ import PrivacyStrip from '../../components/PrivacyStrip.astro';
 import FaqSection from '../../components/FaqSection.astro';
 import RatingWidget from '../../components/RatingWidget.tsx';
 import CompoundInterestTool from '../../components/finance/CompoundInterestTool.tsx';
+import LiquidityRatiosTool from '../../components/finance/LiquidityRatiosTool.tsx';
+import LeverageRatiosTool from '../../components/finance/LeverageRatiosTool.tsx';
+import CoverageRatiosTool from '../../components/finance/CoverageRatiosTool.tsx';
+import ProfitabilityRatiosTool from '../../components/finance/ProfitabilityRatiosTool.tsx';
+import EfficiencyRatiosTool from '../../components/finance/EfficiencyRatiosTool.tsx';
+import ValuationRatiosTool from '../../components/finance/ValuationRatiosTool.tsx';
 import DebtPayoffTool from '../../components/finance/DebtPayoffTool.tsx';
 import SavingsGoalTool from '../../components/finance/SavingsGoalTool.tsx';
 import LoanPayoffTool from '../../components/finance/LoanPayoffTool.tsx';
@@ -71,6 +77,12 @@ const schema = [
       {tool.widget === 'roi' && <RoiTool client:load />}
       {tool.widget === 'breakeven' && <BreakEvenTool client:load />}
       {tool.widget === 'aprapy' && <AprApyTool client:load />}
+      {tool.widget === 'liquidityratios' && <LiquidityRatiosTool client:load />}
+      {tool.widget === 'leverageratios' && <LeverageRatiosTool client:load />}
+      {tool.widget === 'coverageratios' && <CoverageRatiosTool client:load />}
+      {tool.widget === 'profitabilityratios' && <ProfitabilityRatiosTool client:load />}
+      {tool.widget === 'efficiencyratios' && <EfficiencyRatiosTool client:load />}
+      {tool.widget === 'valuationratios' && <ValuationRatiosTool client:load />}
     </div>
 
     <div class="mt-4">
