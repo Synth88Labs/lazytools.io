@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" role="img" aria-label="How to read the number printed on a surface-mount resistor. A 3-digit code is two significant figures plus a multiplier that counts zeros: 103 means 10 then three zeros, 10 kilohms — so a plain 470 is 47 ohms, not 470. A 4-digit code on precise 1 percent parts uses three significant figures: 1002 is 100 then two zeros, 10 kilohms. An R stands in for a decimal point on small values: R47 is 0.47 ohms, 4R7 is 4.7 ohms. An EIA-96 code is two digits giving a position in the 1 percent value table plus a letter multiplier: 01C is 100 times 100, 10 kilohms. A code of 0, 00 or 000 is a zero-ohm jumper.">
+  <defs>
+    <style>
+      .h { font: 800 27px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .sub { font: 500 15px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+      .lab { font: 800 15px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; }
+      .t { font: 500 13px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #475569; }
+      .code { font: 800 22px Consolas, Menlo, monospace; fill: #0f172a; }
+      .val { font: 800 20px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #047857; }
+    </style>
+  </defs>
+
+  <text x="600" y="40" text-anchor="middle" class="h">Reading an SMD resistor code</text>
+  <text x="600" y="66" text-anchor="middle" class="sub">the tiny number on a chip resistor, four common formats</text>
+
+  <!-- 3-digit -->
+  <g transform="translate(70 96)">
+    <rect width="500" height="118" rx="14" fill="#eff6ff" stroke="#1d4ed8"/>
+    <text x="20" y="30" class="lab" fill="#1d4ed8">3-digit — 2 figures + zeros</text>
+    <text x="20" y="66" class="code">103</text>
+    <text x="120" y="66" class="t">= 10, then 3 zeros</text>
+    <text x="20" y="98" class="val">10 k&#8486;</text>
+    <text x="130" y="98" class="t" fill="#b91c1c">so 470 = 47 &#8486;, not 470</text>
+  </g>
+
+  <!-- 4-digit -->
+  <g transform="translate(630 96)">
+    <rect width="500" height="118" rx="14" fill="#f5f3ff" stroke="#7c3aed"/>
+    <text x="20" y="30" class="lab" fill="#6d28d9">4-digit (1%) — 3 figures + zeros</text>
+    <text x="20" y="66" class="code">1002</text>
+    <text x="140" y="66" class="t">= 100, then 2 zeros</text>
+    <text x="20" y="98" class="val">10 k&#8486;</text>
+    <text x="130" y="98" class="t">precise 1% parts use three figures</text>
+  </g>
+
+  <!-- R-notation -->
+  <g transform="translate(70 236)">
+    <rect width="500" height="118" rx="14" fill="#fffbeb" stroke="#d97706"/>
+    <text x="20" y="30" class="lab" fill="#b45309">R-notation — R is the decimal point</text>
+    <text x="20" y="66" class="code">R47</text>
+    <text x="110" y="66" class="val" font-size="16">0.47 &#8486;</text>
+    <text x="230" y="66" class="code">4R7</text>
+    <text x="320" y="66" class="val" font-size="16">4.7 &#8486;</text>
+    <text x="20" y="98" class="t">used for values under 10 &#8486; (and some precise parts)</text>
+  </g>
+
+  <!-- EIA-96 -->
+  <g transform="translate(630 236)">
+    <rect width="500" height="118" rx="14" fill="#ecfdf5" stroke="#059669"/>
+    <text x="20" y="30" class="lab" fill="#047857">EIA-96 — 2 digits + letter</text>
+    <text x="20" y="66" class="code">01C</text>
+    <text x="110" y="66" class="t">01 &#8594; 100 (table) &#215; C (&#215;100)</text>
+    <text x="20" y="98" class="val">10 k&#8486;</text>
+    <text x="130" y="98" class="t">the digits are a lookup, not the value</text>
+  </g>
+
+  <!-- zero-ohm -->
+  <g transform="translate(70 384)">
+    <rect width="1060" height="56" rx="14" fill="#f1f5f9" stroke="#94a3b8"/>
+    <text x="24" y="34" class="code">0 &#183; 00 &#183; 000</text>
+    <text x="240" y="34" class="t" font-size="14">= a zero-ohm resistor — a wire link used as a jumper, not a real resistance.</text>
+  </g>
+
+  <!-- footer -->
+  <g transform="translate(70 462)">
+    <rect width="1060" height="50" rx="14" fill="#0c2f6b"/>
+    <text x="24" y="31" font-family="Consolas, Menlo, monospace" font-size="14" fill="#7ef0c0">lazytools.io — SMD resistor code calculator, decoded in your browser</text>
+  </g>
+
+  <text x="600" y="548" text-anchor="middle" class="sub">The #1 mistake: reading a 3-digit code as a plain number. The last digit counts zeros.</text>
+</svg>

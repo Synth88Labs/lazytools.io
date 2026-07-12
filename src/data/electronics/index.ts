@@ -4,7 +4,7 @@ export interface ElectronicsToolDef {
   slug: string;
   name: string;
   icon: string;
-  widget: 'resistor' | 'led' | 'divider' | 'capcode' | 'awg' | 'rc' | 'timer555' | 'battery';
+  widget: 'resistor' | 'led' | 'divider' | 'capcode' | 'awg' | 'rc' | 'timer555' | 'battery' | 'smd' | 'lc';
   description: string;
   lead: string;
   how: string;
@@ -157,6 +157,44 @@ export const ELECTRONICS_TOOLS: ElectronicsToolDef[] = [
       { q: 'What efficiency factor should I use?', a: 'Around 0.8 (80%) is a reasonable default for many batteries and loads; use lower (0.7) for high-drain or cold conditions and higher (0.85–0.9) for gentle, steady loads. Adjust it to match your situation.' },
     ],
     keywords: ['battery life calculator', 'battery runtime calculator', 'mah battery life calculator', 'battery capacity calculator', 'how long will battery last', 'battery discharge calculator', 'battery hours calculator'],
+  },
+  {
+    slug: 'smd-resistor-code-calculator',
+    name: 'SMD Resistor Code Calculator',
+    icon: '🔢',
+    widget: 'smd',
+    description: 'Decode an SMD (chip) resistor\'s printed number code into its resistance — 3-digit, 4-digit (1%), EIA-96, R-notation and 0-ohm jumpers. In your browser.',
+    lead: 'Type the number printed on a surface-mount resistor to read its resistance — handles 3-digit, 4-digit, EIA-96 and R-notation markings.',
+    how: 'Surface-mount resistors are too small for color bands, so they print a short numeric code. A 3-digit code is two significant figures followed by a ×10ⁿ multiplier — 103 is 10 with three zeros = 10 kΩ (so a plain 470 is 47 Ω, not 470 Ω). Precise 1% parts use a 4-digit code with three significant figures (1002 = 100 × 10² = 10 kΩ). An "R" stands in for a decimal point on small values (R47 = 0.47 Ω, 4R7 = 4.7 Ω). The compact EIA-96 code is two digits — a position in the 1% E96 value table — plus a letter multiplier (01C = 100 × 100 = 10 kΩ). A code of 0, 00 or 000 is a zero-ohm jumper. The tool detects the format and shows the value with SI prefixes.',
+    note: 'The most common gotcha is reading a 3-digit code as a plain number: 220 is 22 Ω (22 × 10⁰), while 220 Ω would be printed 221. If a code has a letter that isn\'t part of R-notation, it\'s EIA-96 — the two leading digits are a lookup index, not the value itself. Zero-ohm links (marked 0 or 000) are used as jumpers, not resistors.',
+    faqs: [
+      { q: 'How do I read an SMD resistor code?', a: 'For a 3-digit code, the first two digits are significant figures and the third is the number of zeros: 103 = 10,000 Ω = 10 kΩ. A 4-digit code uses three significant figures plus a multiplier (1002 = 10 kΩ). An R marks a decimal point (R47 = 0.47 Ω).' },
+      { q: 'What does 103 mean on a resistor?', a: '10 kΩ. The code 103 is 10 followed by three zeros (10 × 10³ = 10,000 Ω). Likewise 104 = 100 kΩ and 102 = 1 kΩ.' },
+      { q: 'Why is 470 equal to 47 ohms, not 470?', a: 'Because the last digit is a multiplier (number of zeros), not a value digit. 470 = 47 × 10⁰ = 47 Ω. To print 470 Ω you\'d use 471 (47 × 10¹). This is the most common SMD-code mistake.' },
+      { q: 'What is the EIA-96 code on tiny resistors?', a: 'A compact 1% marking: two digits give a position in the E96 value table (01 = 100, 68 = 499…) and a letter is the multiplier (A = ×1, B = ×10, C = ×100, R = ×0.01, and so on). So 01C = 100 × 100 = 10 kΩ and 68X = 499 × 0.1 = 49.9 Ω.' },
+      { q: 'What does an R in the code mean?', a: 'The R takes the place of the decimal point for values below 10 Ω (and on some precise parts). R47 = 0.47 Ω, 4R7 = 4.7 Ω, 47R0 = 47 Ω.' },
+      { q: 'What is a 000 or 0 resistor?', a: 'A zero-ohm resistor — a wire link in resistor form, used as a jumper to route a track or as a placeholder that can be swapped for a real value later. It has essentially no resistance.' },
+    ],
+    keywords: ['smd resistor code calculator', 'smd resistor calculator', 'chip resistor code', 'smd resistor 103', 'eia-96 code calculator', 'smd resistor value', '4 digit smd resistor code', 'r47 resistor'],
+  },
+  {
+    slug: 'lc-resonant-frequency-calculator',
+    name: 'LC Resonant Frequency Calculator',
+    icon: '📻',
+    widget: 'lc',
+    description: 'Calculate the resonant frequency of an LC tank circuit from its inductance and capacitance, plus the characteristic impedance. In your browser.',
+    lead: 'Enter an inductance and capacitance to get the LC circuit\'s resonant frequency and its characteristic impedance.',
+    how: 'An inductor and capacitor together form a resonant "tank": the inductor\'s reactance rises with frequency while the capacitor\'s falls, and at one frequency they\'re equal and cancel. That resonant frequency is fₒ = 1 ÷ (2π·√(L·C)). The tool also gives the characteristic impedance √(L/C) — the reactance of each element at resonance — which sets the impedance level of the tuned circuit. Pick any henry and farad units; they\'re converted automatically.',
+    note: 'This is the ideal (lossless) resonance. A real circuit\'s resistance sets its Q (sharpness) and slightly shifts a series-vs-parallel resonance, but the frequency formula is the standard starting point for tuning filters, oscillators and antenna matching. To halve the frequency, quadruple either L or C (frequency scales with 1/√).',
+    faqs: [
+      { q: 'How do I calculate LC resonant frequency?', a: 'fₒ = 1 ÷ (2π·√(L·C)), with L in henries and C in farads. For L = 100 µH and C = 100 pF that\'s about 1.59 MHz. Larger L or C gives a lower frequency.' },
+      { q: 'What is a resonant (tank) circuit?', a: 'An inductor and capacitor connected so energy sloshes between the magnetic field of the coil and the electric field of the capacitor. It naturally oscillates at its resonant frequency — the basis of radio tuning, oscillators and filters.' },
+      { q: 'What happens at resonance?', a: 'The inductive and capacitive reactances are equal and opposite, so they cancel. A series LC then looks like a very low impedance (a short) and a parallel LC like a very high impedance (an open), which is what makes them select one frequency.' },
+      { q: 'How do I change the resonant frequency?', a: 'Adjust L or C. Because frequency depends on 1/√(L·C), quadrupling either value halves the frequency; doubling both drops it to about 71%. Variable capacitors or tunable inductors are how radios sweep across a band.' },
+      { q: 'What is the characteristic impedance √(L/C)?', a: 'The magnitude of each element\'s reactance at resonance, which sets the tank\'s impedance level. Together with the circuit\'s resistance it determines the quality factor Q and thus how sharp the resonance is.' },
+      { q: 'Does the resistance matter for the frequency?', a: 'For the ideal formula, no — resonance depends only on L and C. Resistance mainly sets the Q (bandwidth/sharpness) and causes a small shift in lossy circuits, but fₒ = 1 ÷ (2π·√(L·C)) is the standard design value.' },
+    ],
+    keywords: ['lc resonant frequency calculator', 'resonant frequency calculator', 'lc circuit calculator', 'tank circuit calculator', 'lc tuning calculator', 'inductor capacitor frequency', 'resonance calculator', 'lc oscillator frequency'],
   },
 ];
 

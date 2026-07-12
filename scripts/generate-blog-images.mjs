@@ -14,6 +14,13 @@ const POSTS = [
     icon: '🖼️',
   },
   {
+    slug: 'how-to-read-smd-resistor-codes-guide',
+    kicker: 'ELECTRONICS GUIDE',
+    lines: ['How to read', 'SMD resistor codes:', '103, 4700, 01C & R47'],
+    fact: '3-digit · 4-digit 1% · EIA-96 · R-notation',
+    icon: '🔢',
+  },
+  {
     slug: 'redact-pii-before-ai-guide',
     kicker: 'PRIVACY GUIDE',
     lines: ['Scrub the personal', 'data out of text', 'before you paste it into AI'],

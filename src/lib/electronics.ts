@@ -72,6 +72,66 @@ export function fmtCapacitance(pf: number): string {
   return `${+pf.toPrecision(4)} pF`;
 }
 
+/* ---------------- SMD resistor code ---------------- */
+
+/**
+ * EIA-96 3-significant-figure lookup, code 01–96 → value (the E96 1% series).
+ * Standard EIA/IEC table — do not alter values.
+ */
+export const EIA96: number[] = [
+  100, 102, 105, 107, 110, 113, 115, 118, 121, 124, 127, 130, 133, 137, 140, 143,
+  147, 150, 154, 158, 162, 165, 169, 174, 178, 182, 187, 191, 196, 200, 205, 210,
+  215, 221, 226, 232, 237, 243, 249, 255, 261, 267, 274, 280, 287, 294, 301, 309,
+  316, 324, 332, 340, 348, 357, 365, 374, 383, 392, 402, 412, 422, 432, 442, 453,
+  464, 475, 487, 499, 511, 523, 536, 549, 562, 576, 590, 604, 619, 634, 649, 665,
+  681, 698, 715, 732, 750, 768, 787, 806, 825, 845, 866, 887, 909, 931, 953, 976,
+];
+/** EIA-96 multiplier letters. */
+const EIA96_MULT: Record<string, number> = {
+  Z: 0.001, Y: 0.01, R: 0.01, X: 0.1, S: 0.1, A: 1, B: 10, H: 10, C: 100, D: 1e3, E: 1e4, F: 1e5,
+};
+
+export interface SmdResult { ohms: number; format: string; }
+/**
+ * Decode an SMD resistor marking to ohms. Handles 3-digit (103), 4-digit 1%
+ * (1002), EIA-96 (01C, 68X), R-notation decimals (R47, 4R7, 47R0) and 0-ohm
+ * jumpers (0, 00, 000). Returns null on an unrecognisable code.
+ */
+export function decodeSmd(raw: string): SmdResult | null {
+  const code = raw.trim().toUpperCase();
+  if (!code) return null;
+  if (/^0+$/.test(code)) return { ohms: 0, format: 'Zero-ohm jumper' };
+  // EIA-96: two digits + multiplier letter
+  const eia = code.match(/^(\d{2})([A-Z])$/);
+  if (eia) {
+    const idx = parseInt(eia[1], 10);
+    const mult = EIA96_MULT[eia[2]];
+    if (idx >= 1 && idx <= 96 && mult != null) return { ohms: EIA96[idx - 1] * mult, format: 'EIA-96 (1%)' };
+    return null;
+  }
+  // R-notation decimal: the R marks the decimal point
+  if (/^\d*R\d*$/.test(code)) {
+    const v = parseFloat(code.replace('R', '.'));
+    return isFinite(v) ? { ohms: v, format: 'R-notation' } : null;
+  }
+  // 3-digit: two significant figures + power-of-ten multiplier
+  if (/^\d{3}$/.test(code)) {
+    return { ohms: parseInt(code.slice(0, 2), 10) * Math.pow(10, parseInt(code[2], 10)), format: '3-digit' };
+  }
+  // 4-digit (1%): three significant figures + multiplier
+  if (/^\d{4}$/.test(code)) {
+    return { ohms: parseInt(code.slice(0, 3), 10) * Math.pow(10, parseInt(code[3], 10)), format: '4-digit (1%)' };
+  }
+  return null;
+}
+
+/* ---------------- LC resonance ---------------- */
+
+/** LC resonant (tank) frequency f = 1 ÷ (2π·√(LC)), Hz, from L (H) and C (F). */
+export const lcResonance = (l: number, c: number) => 1 / (2 * Math.PI * Math.sqrt(l * c));
+/** Characteristic impedance of an LC tank, √(L/C), Ω. */
+export const lcImpedance = (l: number, c: number) => Math.sqrt(l / c);
+
 /* ---------------- AWG wire gauge ---------------- */
 
 const CU_RESISTIVITY = 1.68e-8; // Ω·m (annealed copper, 20°C)

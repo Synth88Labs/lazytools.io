@@ -13,6 +13,8 @@ import WireGaugeTool from '../../components/electronics/WireGaugeTool.tsx';
 import RcFilterTool from '../../components/electronics/RcFilterTool.tsx';
 import Timer555Tool from '../../components/electronics/Timer555Tool.tsx';
 import BatteryLifeTool from '../../components/electronics/BatteryLifeTool.tsx';
+import SmdResistorTool from '../../components/electronics/SmdResistorTool.tsx';
+import LcResonanceTool from '../../components/electronics/LcResonanceTool.tsx';
 import { ELECTRONICS_TOOLS, type ElectronicsToolDef } from '../../data/electronics/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -67,6 +69,8 @@ const schema = [
       {tool.widget === 'rc' && <RcFilterTool client:load />}
       {tool.widget === 'timer555' && <Timer555Tool client:load />}
       {tool.widget === 'battery' && <BatteryLifeTool client:load />}
+      {tool.widget === 'smd' && <SmdResistorTool client:load />}
+      {tool.widget === 'lc' && <LcResonanceTool client:load />}
     </div>
 
     <div class="mt-4">
