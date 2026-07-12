@@ -8,6 +8,9 @@ import RatingWidget from '../../components/RatingWidget.tsx';
 import HeatIndexTool from '../../components/weather/HeatIndexTool.tsx';
 import WindChillTool from '../../components/weather/WindChillTool.tsx';
 import DewPointTool from '../../components/weather/DewPointTool.tsx';
+import AbsoluteHumidityTool from '../../components/weather/AbsoluteHumidityTool.tsx';
+import VpdTool from '../../components/weather/VpdTool.tsx';
+import RainfallTool from '../../components/weather/RainfallTool.tsx';
 import HumidityTool from '../../components/weather/HumidityTool.tsx';
 import FeelsLikeTool from '../../components/weather/FeelsLikeTool.tsx';
 import WetBulbTool from '../../components/weather/WetBulbTool.tsx';
@@ -62,6 +65,9 @@ const schema = [
       {tool.widget === 'heatindex' && <HeatIndexTool client:load />}
       {tool.widget === 'windchill' && <WindChillTool client:load />}
       {tool.widget === 'dewpoint' && <DewPointTool client:load />}
+      {tool.widget === 'abshumidity' && <AbsoluteHumidityTool client:load />}
+      {tool.widget === 'vpd' && <VpdTool client:load />}
+      {tool.widget === 'rainfall' && <RainfallTool client:load />}
       {tool.widget === 'humidity' && <HumidityTool client:load />}
       {tool.widget === 'feelslike' && <FeelsLikeTool client:load />}
       {tool.widget === 'wetbulb' && <WetBulbTool client:load />}

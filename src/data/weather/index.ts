@@ -4,7 +4,7 @@ export interface WeatherToolDef {
   slug: string;
   name: string;
   icon: string;
-  widget: 'heatindex' | 'windchill' | 'dewpoint' | 'humidity' | 'feelslike' | 'wetbulb' | 'beaufort' | 'cloudbase';
+  widget: 'heatindex' | 'windchill' | 'dewpoint' | 'humidity' | 'feelslike' | 'wetbulb' | 'beaufort' | 'cloudbase' | 'abshumidity' | 'vpd' | 'rainfall';
   description: string;
   lead: string;
   how: string;
@@ -157,6 +157,60 @@ export const WEATHER_TOOLS: WeatherToolDef[] = [
       { q: 'Does a small spread mean fog?', a: 'A temperature–dew point spread near zero at the surface means the air is saturated there, so mist or fog is likely. As the spread widens, any cloud base rises accordingly.' },
     ],
     keywords: ['cloud base calculator', 'cloud base height calculator', 'temperature dew point spread', 'cumulus cloud base', 'cloud base estimate', 'dew point cloud base', 'lifted condensation level'],
+  },
+  {
+    slug: 'absolute-humidity-calculator',
+    name: 'Absolute Humidity Calculator',
+    icon: '💦',
+    widget: 'abshumidity',
+    description: 'Calculate absolute humidity — the actual mass of water vapour per cubic metre of air (g/m³) — from temperature and relative humidity. In your browser.',
+    lead: 'Enter the air temperature and relative humidity to get the absolute humidity: the real amount of water vapour in the air, in grams per cubic metre.',
+    how: 'Absolute humidity is the mass of water vapour in a given volume of air (g/m³), regardless of temperature. The tool finds the saturation vapour pressure at your temperature with the Magnus formula, multiplies by the relative humidity to get the actual vapour pressure, then converts to a mass density using the ideal-gas law: AH = 2.1674 × (saturation pressure in hPa) × RH ÷ (273.15 + T). It works in °C or °F.',
+    note: 'Unlike relative humidity — a percentage of the maximum the air can hold — absolute humidity is an actual quantity. Because warm air holds far more moisture, 50% RH at 30 °C contains much more water than 50% RH at 10 °C, which matters for greenhouses, museums, drying and condensation control.',
+    faqs: [
+      { q: 'What is absolute humidity?', a: 'The actual mass of water vapour in a cubic metre of air, measured in grams per cubic metre (g/m³). It doesn\'t depend on temperature the way relative humidity does — it\'s a straight amount of water.' },
+      { q: 'How do you calculate absolute humidity?', a: 'From temperature and relative humidity: find the saturation vapour pressure (Magnus formula), multiply by the RH to get the actual vapour pressure, then divide by the gas constant times temperature. A common form is AH = 2.1674 × es(hPa) × RH ÷ (273.15 + T °C).' },
+      { q: 'What is the difference between absolute and relative humidity?', a: 'Relative humidity is a percentage — how full the air is compared with its maximum at that temperature. Absolute humidity is the actual mass of vapour per volume. The same RH means much more water in warm air than in cold air.' },
+      { q: 'What is a comfortable absolute humidity?', a: 'Indoor comfort is often around 7–12 g/m³. Below ~6 g/m³ air feels dry (static, dry skin); above ~13 g/m³ it feels muggy and raises condensation and mould risk. This tool gives the figure so you can compare.' },
+      { q: 'Why does absolute humidity matter?', a: 'For anything sensitive to the real amount of water in the air: greenhouse and grow-room control, museum and archive preservation, drying processes, and predicting condensation on cold surfaces — where relative humidity alone can mislead across temperatures.' },
+    ],
+    keywords: ['absolute humidity calculator', 'absolute humidity formula', 'g/m3 humidity', 'water vapor content air', 'humidity mass calculator', 'absolute vs relative humidity'],
+  },
+  {
+    slug: 'vpd-calculator',
+    name: 'VPD Calculator (Vapor Pressure Deficit)',
+    icon: '🌱',
+    widget: 'vpd',
+    description: 'Calculate vapor pressure deficit (VPD) in kPa from air temperature, humidity and leaf temperature — with grow-stage target zones. For greenhouses and grow rooms. In your browser.',
+    lead: 'Enter air temperature, relative humidity and an optional leaf-temperature offset to get the VPD in kPa — with the ideal range for each growth stage.',
+    how: 'Vapor pressure deficit is the difference between how much moisture the air could hold (at leaf temperature) and how much it actually holds — the "drying power" that pulls water out of a leaf and drives transpiration. VPD = SVP(leaf) − SVP(air) × RH ÷ 100, using the Magnus saturation vapour pressure, expressed in kilopascals. Leaves usually sit a degree or two below air temperature; enter that offset for a more accurate figure.',
+    note: 'VPD is the metric serious growers tune instead of bare humidity, because it accounts for temperature. Rough targets: 0.4–0.8 kPa for clones and seedlings, 0.8–1.2 kPa for vegetative growth, and 1.2–1.6 kPa for flowering/fruiting. Too low invites mould and weak transpiration; too high stresses plants and closes stomata.',
+    faqs: [
+      { q: 'What is VPD (vapor pressure deficit)?', a: 'The gap between the water vapour the air is holding and the maximum it could hold at leaf temperature. It\'s the drying demand on the plant — higher VPD pulls more water through the plant via transpiration.' },
+      { q: 'How do you calculate VPD?', a: 'VPD = saturation vapour pressure at leaf temperature − (saturation vapour pressure at air temperature × relative humidity ÷ 100), in kPa. The saturation pressures come from the Magnus formula. This tool does it from your temperature, RH and leaf offset.' },
+      { q: 'What is a good VPD for plants?', a: 'It depends on the stage: about 0.4–0.8 kPa for clones and seedlings, 0.8–1.2 kPa for vegetative growth, and 1.2–1.6 kPa for flowering. The tool shows which zone your value falls in.' },
+      { q: 'Why use VPD instead of humidity?', a: 'Because the same relative humidity means very different drying power at different temperatures. VPD combines temperature and humidity into the single number that actually governs transpiration, so it\'s a better control target for greenhouses and grow rooms.' },
+      { q: 'What is leaf temperature offset?', a: 'Leaves are often 1–3 °C cooler than the surrounding air (from transpiration) or warmer under intense light. Because VPD depends on leaf temperature, entering this offset gives a more accurate result than assuming leaf equals air temperature.' },
+    ],
+    keywords: ['vpd calculator', 'vapor pressure deficit calculator', 'vpd chart', 'grow room vpd', 'vpd kpa calculator', 'leaf temperature vpd', 'greenhouse vpd'],
+  },
+  {
+    slug: 'rainwater-collection-calculator',
+    name: 'Rainwater Collection Calculator',
+    icon: '🌧️',
+    widget: 'rainfall',
+    description: 'Calculate how much rainwater you can harvest from a roof — from its footprint area, the rainfall depth and a runoff coefficient — in litres and gallons. In your browser.',
+    lead: 'Enter your roof\'s footprint area, the rainfall and a runoff coefficient to see how much water you can collect, in litres and US gallons.',
+    how: 'The water a roof sheds is its horizontal footprint area × the rainfall depth × a runoff coefficient (for losses). The neat identity is that one millimetre of rain over one square metre is exactly one litre, and one inch over one square foot is about 0.623 US gallons. The tool converts your area and rainfall to consistent units, applies the runoff coefficient, and reports litres and gallons. Metric or imperial inputs both work.',
+    note: 'Use the roof\'s horizontal footprint (the area it covers on the ground), not the sloped surface area — a pitched roof catches rain according to its footprint. A runoff coefficient around 0.8–0.9 is typical for a solid roof, accounting for splash, evaporation, wetting and first-flush diversion; rougher or more absorbent surfaces collect less.',
+    faqs: [
+      { q: 'How much rainwater can I collect from my roof?', a: 'Multiply the roof\'s footprint area by the rainfall depth by a runoff coefficient. As a rule of thumb, 1 mm of rain on 1 m² gives 1 litre, so a 100 m² roof in 25 mm of rain yields about 2,250 litres at 0.9 efficiency.' },
+      { q: 'How do you calculate rainwater harvesting?', a: 'Harvest = catchment area × rainfall × runoff coefficient. Keep units consistent (the tool handles m²/ft² and mm/inches), and use a coefficient of about 0.8–0.9 for a typical roof to allow for losses.' },
+      { q: 'Do I use the sloped or flat roof area?', a: 'The flat (horizontal) footprint — the area the roof covers when viewed from above. Rain falls vertically, so a pitched roof collects according to its footprint, not the larger sloped surface.' },
+      { q: 'What is a runoff coefficient?', a: 'A factor (0–1) for how much rain actually reaches your tank after splash, evaporation, surface wetting and first-flush diversion. Smooth metal roofs are high (~0.9); rougher or absorbent surfaces are lower.' },
+      { q: 'How much is one inch of rain on my roof?', a: 'About 0.623 US gallons per square foot. So an inch of rain on a 1,000 ft² roof is roughly 623 gallons before losses — multiply by your runoff coefficient for the usable amount.' },
+    ],
+    keywords: ['rainwater collection calculator', 'rainwater harvesting calculator', 'roof rainwater calculator', 'how much rainwater can i collect', 'rain barrel calculator', 'rainfall to gallons'],
   },
 ];
 

@@ -671,12 +671,15 @@
   "video/audio-to-wav",
   "video/audio-trimmer",
   "video/audio-volume-changer",
+  "weather/absolute-humidity-calculator",
   "weather/beaufort-scale-calculator",
   "weather/cloud-base-calculator",
   "weather/dew-point-calculator",
   "weather/feels-like-temperature",
   "weather/heat-index-calculator",
+  "weather/rainwater-collection-calculator",
   "weather/relative-humidity-calculator",
+  "weather/vpd-calculator",
   "weather/wet-bulb-temperature",
   "weather/wind-chill-calculator"
 ]

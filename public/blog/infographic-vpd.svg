@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="VPD, vapor pressure deficit, explained. VPD is the drying power of the air: the gap between how much water vapour the air holds and the maximum it could hold at leaf temperature. VPD equals the saturation vapour pressure at leaf temperature minus the saturation vapour pressure at air temperature times relative humidity over 100, in kilopascals. Target ranges by growth stage: propagation and clones 0.4 to 0.8 kPa, vegetative growth 0.8 to 1.2 kPa, flowering and fruiting 1.2 to 1.6 kPa. Below 0.4 is too humid with mould risk; above 1.6 is too dry and stresses the plant.">
+  <defs>
+    <style>
+      .h { font: 800 27px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill:#0f172a; }
+      .sub { font: 500 15px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill:#64748b; }
+      .lab { font: 800 15px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; }
+      .t { font: 500 13px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill:#475569; }
+      .mono { font: 700 15px Consolas,Menlo,monospace; fill:#0f172a; }
+      .zone { font: 800 14px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill:#fff; }
+    </style>
+  </defs>
+
+  <text x="600" y="40" text-anchor="middle" class="h">VPD — the air's drying power on a plant</text>
+  <text x="600" y="66" text-anchor="middle" class="sub">what growers tune instead of bare humidity, because it factors in temperature</text>
+
+  <!-- what it is -->
+  <g transform="translate(70 96)">
+    <rect width="1060" height="112" rx="14" fill="#ecfdf5" stroke="#059669"/>
+    <text x="20" y="32" class="lab" fill="#047857">Vapor pressure deficit = how much drier the air is than saturated</text>
+    <text x="20" y="62" class="mono">VPD = SVP(leaf temp) &#8722; SVP(air temp) &#215; RH/100    (kPa)</text>
+    <text x="20" y="92" class="t">Higher VPD pulls more water from the leaf (transpiration); too high stresses it, too low invites mould.</text>
+  </g>
+
+  <!-- the target bar -->
+  <g transform="translate(70 240)">
+    <text x="0" y="0" class="lab" fill="#0f172a">Target range by growth stage (kPa)</text>
+    <g transform="translate(0 20)">
+      <rect x="0" width="150" height="54" rx="8" fill="#2563eb"/>
+      <rect x="158" width="220" height="54" rx="8" fill="#059669"/>
+      <rect x="386" width="300" height="54" rx="8" fill="#16a34a"/>
+      <rect x="694" width="220" height="54" rx="8" fill="#d97706"/>
+      <rect x="922" width="138" height="54" rx="8" fill="#dc2626"/>
+      <text x="75" y="24" text-anchor="middle" class="zone" font-size="12">&lt; 0.4</text><text x="75" y="42" text-anchor="middle" class="zone" font-size="11">too humid</text>
+      <text x="268" y="24" text-anchor="middle" class="zone">0.4–0.8</text><text x="268" y="42" text-anchor="middle" class="zone" font-size="11">clones / seedlings</text>
+      <text x="536" y="24" text-anchor="middle" class="zone">0.8–1.2</text><text x="536" y="42" text-anchor="middle" class="zone" font-size="11">vegetative growth</text>
+      <text x="804" y="24" text-anchor="middle" class="zone">1.2–1.6</text><text x="804" y="42" text-anchor="middle" class="zone" font-size="11">flower / fruit</text>
+      <text x="991" y="24" text-anchor="middle" class="zone" font-size="12">&gt; 1.6</text><text x="991" y="42" text-anchor="middle" class="zone" font-size="11">too dry</text>
+    </g>
+  </g>
+
+  <!-- tip -->
+  <g transform="translate(70 360)">
+    <rect width="1060" height="56" rx="14" fill="#f1f5f9" stroke="#94a3b8"/>
+    <text x="24" y="34" class="t" font-size="14">Leaves run ~1–3&#176;C cooler than the air — enter a leaf-temperature offset for an accurate VPD.</text>
+  </g>
+
+  <!-- footer -->
+  <g transform="translate(70 446)">
+    <rect width="1060" height="50" rx="14" fill="#0c2f6b"/>
+    <text x="24" y="31" font-family="Consolas,Menlo,monospace" font-size="14" fill="#7ef0c0">lazytools.io &#8212; VPD calculator: temp + humidity &#8594; kPa &amp; the right zone</text>
+  </g>
+
+  <text x="600" y="530" text-anchor="middle" class="sub">Same humidity, different temperature = different VPD — which is why growers track VPD, not just RH.</text>
+</svg>

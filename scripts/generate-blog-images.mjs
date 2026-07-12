@@ -35,6 +35,13 @@ const POSTS = [
     icon: '📐',
   },
   {
+    slug: 'vpd-explained-guide',
+    kicker: 'GROWING GUIDE',
+    lines: ['VPD explained:', 'the number growers tune', 'instead of humidity'],
+    fact: 'clones 0.4–0.8 · veg 0.8–1.2 · flower 1.2–1.6 kPa',
+    icon: '🌱',
+  },
+  {
     slug: 'redact-pii-before-ai-guide',
     kicker: 'PRIVACY GUIDE',
     lines: ['Scrub the personal', 'data out of text', 'before you paste it into AI'],

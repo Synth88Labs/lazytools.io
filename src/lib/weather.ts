@@ -60,6 +60,24 @@ export function relHumidity(T: number, Td: number): number {
   return 100 * (num / den);
 }
 
+/** Saturation vapour pressure (hPa) via the Magnus formula. */
+export const satVaporPressureHpa = (T: number): number => 6.112 * Math.exp((MAGNUS_A * T) / (MAGNUS_B + T));
+
+/** Absolute humidity (g/m³) from temperature (°C) and relative humidity (%). */
+export function absoluteHumidity(T: number, RH: number): number {
+  return (2.1674 * satVaporPressureHpa(T) * RH) / (273.15 + T);
+}
+
+/** Vapour pressure deficit (kPa) from air temp (°C), RH (%) and optional leaf temp (°C). */
+export function vpd(airT: number, RH: number, leafT: number = airT): number {
+  const svpLeaf = satVaporPressureHpa(leafT) / 10; // hPa → kPa
+  const svpAir = satVaporPressureHpa(airT) / 10;
+  return svpLeaf - svpAir * (RH / 100);
+}
+
+/** Harvested rainwater (litres) from roof footprint (m²), rainfall (mm) and runoff coefficient. */
+export const rainfallCollectionL = (areaM2: number, rainMm: number, coeff = 0.9): number => areaM2 * rainMm * coeff;
+
 /* ---------------- Wet-bulb (Stull 2011) ---------------- */
 
 /** Wet-bulb temperature (°C) from T (°C) and RH (%), at ~sea-level pressure. */
