@@ -11,8 +11,8 @@ const soon = CATEGORIES.filter((c) => c.status === 'coming-soon');
 
 const faqs = [
   { q: 'Are LazyTools really free?', a: 'Yes — every tool is completely free, with no sign-up, no account, no trial, no usage limits and no paywalled features. There\'s nothing to install either; each tool opens instantly in your browser.' },
-  { q: 'Do my files or data get uploaded to a server?', a: 'No. Every tool runs entirely in your browser using JavaScript and WebAssembly, so the files you open and the values you type are processed on your own device and never sent anywhere. You can prove it: open your browser\'s network tab and watch, or switch off your internet connection mid-use — the tools keep working.' },
-  { q: 'Does LazyTools track me or use cookies?', a: 'No. There is no analytics, no tracking pixel and no cookies — nothing to consent to. The only optional data is an anonymous star rating you can choose to leave on a tool (just the tool name and star value, with no IP address, cookie or identifier).' },
+  { q: 'Do my files or data get uploaded to a server?', a: 'No. Every tool runs entirely in your browser using JavaScript and WebAssembly, so the files you open and the values you type are processed on your own device and never sent anywhere. You can prove it: switch off your internet connection mid-use and the tools keep working, or watch your browser\'s network tab — you\'ll see the page and an analytics tag load, but nothing carrying your files or inputs.' },
+  { q: 'Does LazyTools track me or use cookies?', a: 'We use Google Analytics to measure page visits, which sets cookies and sends usage data (like which pages you view) to Google — you can opt out any time (see the privacy policy). But analytics only records that you visited a page; it never sees the files or values you enter into a tool, which stay on your device. We run no ads and never sell your data.' },
   { q: 'Do the tools work offline?', a: 'Yes. Because the processing happens in your browser, most tools keep working with no internet connection once the page has loaded — handy on a plane or with a patchy signal.' },
   { q: 'How many tools are there, and what kinds?', a: 'Over 660 tools across 39 categories — unit and size converters, everyday and financial calculators, exact math, chemistry, physics, biology and statistics, cooking, automotive, fitness, pet, gardening, music, weather, astronomy, photography and electronics calculators, travel and trip planners, 3D-printing, solar/off-grid energy and homebrewing calculators, developer utilities, text and color tools, generators, PDF and image tools, and a passport/visa photo maker.' },
   { q: 'How accurate are the calculators?', a: 'They\'re built for exactness — using precise NIST/BIPM conversion factors, published scientific and engineering formulas, and BigInt or exact-fraction math where rounding would otherwise creep in. Many categories were checked against authoritative sources (NASA, NOAA, USDA, King Arthur Baking and others), and the harder libraries are unit-tested.' },
@@ -60,7 +60,7 @@ const flagship = [
 
 <Base
   title="LazyTools — Free Online Tools That Never Upload Your Data"
-  description="660+ free, privacy-first online tools across 39 categories: unit converters, calculators, finance, exact math, chemistry & physics, cooking, automotive, fitness, pets, gardening, music, weather, astronomy, photography & electronics calculators, travel & trip planners, 3D-printing, solar/off-grid energy & homebrewing calculators, biology & lab tools, passport & visa photo makers, text-forensics and developer utilities, QR & barcode generators, PDF and image tools, and more. Everything runs in your browser — your files and inputs are never uploaded, with no analytics, cookies or tracking. No sign-up, no limits."
+  description="660+ free, privacy-first online tools across 39 categories: unit converters, calculators, finance, exact math, chemistry & physics, cooking, automotive, fitness, pets, gardening, music, weather, astronomy, photography & electronics calculators, travel & trip planners, 3D-printing, solar/off-grid energy & homebrewing calculators, biology & lab tools, passport & visa photo makers, text-forensics and developer utilities, QR & barcode generators, PDF and image tools, and more. Everything runs in your browser — your files and inputs are never uploaded or sent to any server. No sign-up, no limits."
   schema={[faqSchema(faqs)]}
 >
   <!-- Hero -->
@@ -70,8 +70,8 @@ const flagship = [
         Free online tools that <span class="text-brand-600">never upload</span> your data
       </h1>
       <p class="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-slate-600">
-        Every LazyTools utility runs entirely in your browser. No uploads, no accounts, no tracking your
-        content — open a tool and it even works offline. Private by architecture, not by promise.
+        Every LazyTools utility runs entirely in your browser. No uploads, no accounts, and your content never
+        leaves your device — open a tool and it even works offline. Private by architecture, not by promise.
       </p>
       <div class="mt-7 flex flex-wrap items-center justify-center gap-3">
         <a

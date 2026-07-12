@@ -178,7 +178,7 @@ export const COLOR_TOOLS: ColorToolDef[] = [
       { q: 'Are these the official brand colors?', a: 'They are the widely documented values from brand guidelines, press kits and community references — for well-known brands these are stable and reliable. Brands do rebrand, though, so for contract or print work confirm against the brand\'s current style guide. Spot an outdated palette? Report it via the contact page.' },
       { q: 'Can I legally use these colors?', a: 'Colors themselves are not protected — anyone may paint in Coca-Cola red. What trademark law protects is using a brand\'s identity in ways that confuse consumers. Referencing palettes for inspiration, mood boards or matching an embed to a platform\'s UI is normal practice; impersonating the brand is not.' },
       { q: 'Why does a brand show several colors?', a: 'Most identity systems have a palette, not a single color: a primary plus secondary and accent colors (Google has four; Slack has five). The first swatch is always the primary — the one people mean by "the brand color".' },
-      { q: 'Is my search sent anywhere?', a: 'No — the entire dataset ships with the page and searching filters it locally. The page works offline, and no analytics see what brands you look up.' },
+      { q: 'Is my search sent anywhere?', a: 'No — the entire dataset ships with the page and searching filters it locally. The page works offline, and your search runs entirely on your device — the brand names you look up are never sent anywhere.' },
     ],
     keywords: ['brand colors', 'brand color finder', 'brand color palette', 'netflix red hex', 'spotify green hex', 'google colors', 'company brand colors', 'logo colors hex', 'brand color codes', 'official brand colors'],
   },

@@ -72,7 +72,7 @@ export default function RatingWidget({ toolSlug, avg, count }: Props) {
         </div>
       </div>
       <span class="text-xs text-slate-400">
-        {avg && count ? `${avg.toFixed(1)} ★ · ${count.toLocaleString()} ratings · ` : ''}Anonymous — no tracking
+        {avg && count ? `${avg.toFixed(1)} ★ · ${count.toLocaleString()} ratings · ` : ''}Anonymous — no account, no identifier
       </span>
     </div>
   );

@@ -14,14 +14,14 @@ import ContentPage from '../layouts/ContentPage.astro';
 
   <h2>What happens when you use a tool</h2>
   <ol>
-    <li>Your browser downloads the page — HTML, styles and a small piece of JavaScript. This is the only network traffic involved.</li>
+    <li>Your browser downloads the page — HTML, styles and a small piece of JavaScript (plus a lightweight analytics tag; see below). None of that traffic carries your files or the values you enter.</li>
     <li>When you type a value or pick a file, the tool's code runs <em>on your device</em>, using your browser's built-in JavaScript engine (and WebAssembly for heavier tools like image or PDF processing).</li>
     <li>The result is computed locally and shown to you. Nothing you entered ever leaves your machine.</li>
   </ol>
 
   <h2>How to verify this yourself</h2>
   <ul>
-    <li><strong>Watch the network tab.</strong> Open your browser's developer tools (F12 → Network), then use any tool. You will see no requests carrying your data — the page loads once, and that's it.</li>
+    <li><strong>Watch the network tab.</strong> Open your browser's developer tools (F12 → Network), then use any tool. You'll see the page load and an analytics request to Google — but no request that carries your files or the values you type into the tool.</li>
     <li><strong>Go offline.</strong> Load a tool, then switch off Wi-Fi or enable airplane mode. The tool keeps working, because nothing it does requires a server.</li>
   </ul>
 
@@ -35,12 +35,14 @@ import ContentPage from '../layouts/ContentPage.astro';
 
   <h2>What we measure (and what we don't)</h2>
   <p>
-    We run <strong>no analytics and set no cookies</strong> — there's no Google Analytics, no tracking pixel and
-    nothing to consent to. The only way we learn a tool is useful is if you choose to give it a star rating, which
-    is stored anonymously (just the tool name and star value, no IP, no cookie, no identifier). We never see what
-    you type into a tool, what files you process, or any content you work with. The one unavoidable exception is
-    the standard access log our web host keeps for every visit, like any website. See the
-    <a href="/privacy/">privacy policy</a> for the complete picture.
+    We use <strong>Google Analytics</strong> to measure page visits — which tools are popular and roughly where
+    visitors come from. It sets cookies and sends that usage data to Google, and you can
+    <a href="/privacy/#optout">opt out</a> at any time. Crucially, analytics only ever records that you
+    <em>visited</em> a page — <strong>we never see what you type into a tool, what files you process, or any
+    content you work with</strong>, because that never leaves your device. You can also choose to give a tool a
+    star rating, stored anonymously (just the tool name and star value, no IP, no cookie, no identifier). See the
+    <a href="/privacy/">privacy policy</a> for the complete picture, including the standard access logs every web
+    host keeps.
   </p>
 
   <h2>Technical stack, briefly</h2>
