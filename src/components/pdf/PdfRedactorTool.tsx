@@ -1,5 +1,6 @@
 import { useRef, useState } from 'preact/hooks';
 import { fmtSize } from '../../lib/audio-compute';
+import { keepRenderingWhenHidden } from '../../lib/pdf-preview';
 
 interface Box {
   page: number; // zero-based
@@ -12,6 +13,7 @@ let pdfjsPromise: Promise<any> | null = null;
 async function getPdfjs() {
   if (!pdfjsPromise) {
     pdfjsPromise = (async () => {
+      keepRenderingWhenHidden();
       const pdfjs = await import('pdfjs-dist');
       const workerUrl = (await import('pdfjs-dist/build/pdf.worker.min.mjs?url')).default;
       pdfjs.GlobalWorkerOptions.workerSrc = workerUrl;

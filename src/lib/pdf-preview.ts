@@ -1,10 +1,26 @@
 /** Lazy pdf.js page-thumbnail rendering for the PDF tools' live previews. */
 
+/**
+ * pdf.js drives its canvas paint loop with requestAnimationFrame, which browsers
+ * pause while a tab is backgrounded — so a render started in a hidden tab (e.g. the
+ * user switches tabs mid-conversion) stalls until they come back. This makes progress
+ * continue in a hidden tab by falling back to setTimeout only while document.hidden is
+ * true; visible-tab behaviour is untouched. Installed once per page, globally idempotent.
+ */
+export function keepRenderingWhenHidden() {
+  if (typeof window === 'undefined' || (window as unknown as { __bgRaf?: boolean }).__bgRaf) return;
+  (window as unknown as { __bgRaf?: boolean }).__bgRaf = true;
+  const raf = window.requestAnimationFrame.bind(window);
+  window.requestAnimationFrame = (cb: FrameRequestCallback): number =>
+    document.hidden ? (window.setTimeout(() => cb(performance.now()), 16) as unknown as number) : raf(cb);
+}
+
 let pdfjsPromise: Promise<typeof import('pdfjs-dist')> | null = null;
 
 async function getPdfjs() {
   if (!pdfjsPromise) {
     pdfjsPromise = (async () => {
+      keepRenderingWhenHidden();
       const pdfjs = await import('pdfjs-dist');
       const workerUrl = (await import('pdfjs-dist/build/pdf.worker.min.mjs?url')).default;
       pdfjs.GlobalWorkerOptions.workerSrc = workerUrl;

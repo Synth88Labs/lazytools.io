@@ -1,9 +1,11 @@
 import { useState } from 'preact/hooks';
+import { keepRenderingWhenHidden } from '../../lib/pdf-preview';
 
 let pdfjsPromise: Promise<any> | null = null;
 async function getPdfjs() {
   if (!pdfjsPromise) {
     pdfjsPromise = (async () => {
+      keepRenderingWhenHidden();
       const pdfjs = await import('pdfjs-dist');
       const workerUrl = (await import('pdfjs-dist/build/pdf.worker.min.mjs?url')).default;
       pdfjs.GlobalWorkerOptions.workerSrc = workerUrl;
