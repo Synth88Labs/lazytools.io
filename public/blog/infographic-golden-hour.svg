@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="Golden hour and blue hour by the sun's angle. As the sun sits at different elevations, the light changes. Above +6 degrees: ordinary daylight, harsh and high. Golden hour: sun between minus 4 and plus 6 degrees, warm soft directional light. Blue hour: sun between minus 6 and minus 4 degrees, deep even blue twilight. Then civil twilight to minus 6, nautical to minus 12, and astronomical twilight to minus 18 degrees, after which the sky is fully dark. The windows are longer near the poles and the solstices, and shorter near the equator.">
+  <defs>
+    <style>
+      .h { font: 800 27px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .sub { font: 500 15px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+      .band { font: 800 15px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; }
+      .ang { font: 700 13px Consolas, Menlo, monospace; fill: #334155; }
+      .desc { font: 500 13px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #475569; }
+    </style>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#7dd3fc"/><stop offset="30%" stop-color="#fcd34d"/>
+      <stop offset="50%" stop-color="#fb923c"/><stop offset="66%" stop-color="#6366f1"/>
+      <stop offset="82%" stop-color="#1e3a8a"/><stop offset="100%" stop-color="#0b1220"/>
+    </linearGradient>
+  </defs>
+
+  <text x="600" y="40" text-anchor="middle" class="h">Golden hour &amp; blue hour: it's all the sun's angle</text>
+  <text x="600" y="66" text-anchor="middle" class="sub">as the sun sinks past the horizon, the light passes through distinct bands</text>
+
+  <!-- gradient bar -->
+  <rect x="90" y="92" width="120" height="470" rx="12" fill="url(#sky)"/>
+  <!-- horizon line -->
+  <line x1="70" y1="256" x2="1130" y2="256" stroke="#0f172a" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <text x="1120" y="250" text-anchor="end" class="ang" fill="#0f172a">horizon 0°</text>
+
+  <!-- bands -->
+  <g transform="translate(240 0)">
+    <g transform="translate(0 108)"><text x="0" y="0" class="band" fill="#0284c7">Daylight</text><text x="0" y="20" class="ang">sun above +6°</text><text x="300" y="0" class="desc">harsh, high, high-contrast light</text></g>
+    <g transform="translate(0 178)"><rect x="-12" y="-22" width="640" height="46" rx="10" fill="#fffbeb" stroke="#d97706"/><text x="0" y="0" class="band" fill="#b45309">☀ Golden hour</text><text x="0" y="18" class="ang">sun −4° to +6°</text><text x="300" y="4" class="desc" fill="#b45309">warm, soft, directional — the magic light</text></g>
+    <g transform="translate(0 236)"><rect x="-12" y="-20" width="640" height="40" rx="10" fill="#eef2ff" stroke="#4f46e5"/><text x="0" y="0" class="band" fill="#4338ca">🔵 Blue hour</text><text x="0" y="16" class="ang">sun −6° to −4°</text><text x="300" y="2" class="desc" fill="#4338ca">deep even blue — cityscapes, long exposures</text></g>
+    <g transform="translate(0 300)"><text x="0" y="0" class="band" fill="#475569">Civil twilight</text><text x="0" y="18" class="ang">to −6°</text><text x="300" y="2" class="desc">enough light for most outdoor activity</text></g>
+    <g transform="translate(0 360)"><text x="0" y="0" class="band" fill="#334155">Nautical twilight</text><text x="0" y="18" class="ang">to −12°</text><text x="300" y="2" class="desc">the sea horizon is still just visible</text></g>
+    <g transform="translate(0 420)"><text x="0" y="0" class="band" fill="#1e293b">Astronomical twilight</text><text x="0" y="18" class="ang">to −18°</text><text x="300" y="2" class="desc">after this the sky is fully dark</text></g>
+  </g>
+
+  <!-- footer -->
+  <g transform="translate(90 500)">
+    <rect x="0" y="0" width="1020" height="50" rx="14" fill="#0c2f6b"/>
+    <text x="24" y="31" font-family="Consolas, Menlo, monospace" font-size="14" fill="#7ef0c0">lazytools.io — golden hour &amp; blue hour calculator for any date &amp; place</text>
+  </g>
+
+  <text x="600" y="576" text-anchor="middle" class="sub">Longer near the poles and the solstices, brief near the equator — the sun drops at different angles.</text>
+</svg>

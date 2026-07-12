@@ -6,6 +6,9 @@ import PrivacyStrip from '../../components/PrivacyStrip.astro';
 import FaqSection from '../../components/FaqSection.astro';
 import RatingWidget from '../../components/RatingWidget.tsx';
 import MoonPhaseTool from '../../components/astronomy/MoonPhaseTool.tsx';
+import GoldenHourTool from '../../components/astronomy/GoldenHourTool.tsx';
+import StarMagnitudeTool from '../../components/astronomy/StarMagnitudeTool.tsx';
+import RedshiftTool from '../../components/astronomy/RedshiftTool.tsx';
 import SunTimesTool from '../../components/astronomy/SunTimesTool.tsx';
 import PlanetWeightTool from '../../components/astronomy/PlanetWeightTool.tsx';
 import PlanetAgeTool from '../../components/astronomy/PlanetAgeTool.tsx';
@@ -67,6 +70,9 @@ const schema = [
       {tool.widget === 'angular' && <AngularSizeTool client:load />}
       {tool.widget === 'telescope' && <TelescopeTool client:load />}
       {tool.widget === 'parallax' && <ParallaxTool client:load />}
+      {tool.widget === 'goldenhour' && <GoldenHourTool client:load />}
+      {tool.widget === 'magnitude' && <StarMagnitudeTool client:load />}
+      {tool.widget === 'redshift' && <RedshiftTool client:load />}
     </div>
 
     <div class="mt-4">

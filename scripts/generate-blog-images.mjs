@@ -7,6 +7,13 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'golden-hour-blue-hour-guide',
+    kicker: 'PHOTOGRAPHY GUIDE',
+    lines: ['Golden hour & blue hour:', 'the sun angles that', 'make the best light'],
+    fact: 'golden −4° to +6° · blue −6° to −4°',
+    icon: '🌅',
+  },
+  {
     slug: 't-test-explained-guide',
     kicker: 'STATISTICS GUIDE',
     lines: ['The t-test explained:', 'one-sample, two-sample', 'and paired'],

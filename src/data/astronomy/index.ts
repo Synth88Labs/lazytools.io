@@ -4,7 +4,7 @@ export interface AstroToolDef {
   slug: string;
   name: string;
   icon: string;
-  widget: 'moonphase' | 'sun' | 'planetweight' | 'planetage' | 'lighttime' | 'angular' | 'telescope' | 'parallax';
+  widget: 'moonphase' | 'sun' | 'planetweight' | 'planetage' | 'lighttime' | 'angular' | 'telescope' | 'parallax' | 'goldenhour' | 'magnitude' | 'redshift';
   description: string;
   lead: string;
   how: string;
@@ -157,6 +157,60 @@ export const ASTRO_TOOLS: AstroToolDef[] = [
       { q: 'Why are parallax angles so small?', a: 'Because stars are enormously far away compared with the size of Earth\'s orbit. Even the nearest shifts by under one arcsecond — a coin seen from several kilometres away — which is why precise measurement needs space telescopes.' },
     ],
     keywords: ['parallax distance calculator', 'stellar parallax calculator', 'parsec calculator', 'parallax to distance', 'star distance calculator', 'parallax angle calculator', 'parsecs to light years'],
+  },
+  {
+    slug: 'golden-hour-calculator',
+    name: 'Golden Hour & Blue Hour Calculator',
+    icon: '🌅',
+    widget: 'goldenhour',
+    description: 'Find the golden hour, blue hour and twilight times for any date and location — the best light for photography — computed with the NOAA solar algorithm. In your browser.',
+    lead: 'Enter a date and location to get the morning and evening golden hour and blue hour windows, plus civil, nautical and astronomical twilight.',
+    how: 'The quality of daylight depends on how high the sun sits. The tool computes the sun\'s elevation through the day with the NOAA solar-position algorithm and reads off the key windows: golden hour, when the sun is roughly between −4° and +6° and the light is warm and soft; blue hour, the −6° to −4° twilight; and the civil (−6°), nautical (−12°) and astronomical (−18°) twilight boundaries for dawn and dusk.',
+    note: 'Times are local and depend on your latitude, longitude and UTC offset (remember daylight saving). Golden hour is longer near the poles and near the solstices, and in high-latitude summer some twilights never end — a dash means the sun never drops to that elevation that day. The exact golden-hour elevation limits vary slightly between sources; these use the common −4° to +6° convention.',
+    faqs: [
+      { q: 'What is golden hour?', a: 'The period after sunrise and before sunset when the sun is low (about −4° to +6° elevation), giving warm, soft, directional light that photographers prize. It\'s not exactly an hour — its length depends on your latitude and the season.' },
+      { q: 'What is blue hour?', a: 'The twilight window when the sun is between about −6° and −4° below the horizon, before sunrise and after sunset, when the sky takes on a deep, even blue. It\'s shorter than golden hour and great for cityscapes and long exposures.' },
+      { q: 'What is the difference between civil, nautical and astronomical twilight?', a: 'They mark how far the sun is below the horizon: civil twilight to −6° (enough light for most outdoor activity), nautical to −12° (the horizon is still visible at sea), and astronomical to −18° (the sky is fully dark for faint-object observing).' },
+      { q: 'Why does golden hour last longer in some places?', a: 'Because the sun rises and sets at a shallower angle at high latitudes and near the solstices, so it takes longer to cross the golden-hour elevation band. Near the equator the sun drops steeply and golden hour is brief.' },
+      { q: 'Why do some twilight times show a dash?', a: 'Because the sun never reaches that elevation on that date at that latitude — for example, in high-latitude summer the sun may never sink to −18°, so there is no astronomical night and the astronomical-twilight times don\'t exist.' },
+    ],
+    keywords: ['golden hour calculator', 'blue hour calculator', 'golden hour time', 'twilight calculator', 'photography light calculator', 'sunrise sunset golden hour', 'civil nautical astronomical twilight'],
+  },
+  {
+    slug: 'star-magnitude-calculator',
+    name: 'Star Magnitude & Distance Calculator',
+    icon: '✨',
+    widget: 'magnitude',
+    description: 'Convert between apparent magnitude, absolute magnitude and distance using the distance modulus, and compare star brightness. In your browser.',
+    lead: 'Enter any two of apparent magnitude, absolute magnitude and distance to solve for the third — and compare how much brighter one star is than another.',
+    how: 'A star\'s apparent magnitude (m) is how bright it looks from Earth; its absolute magnitude (M) is how bright it would appear at a standard 10 parsecs, letting you compare true luminosities. The two are linked by the distance modulus, m − M = 5·log₁₀(d) − 5, so knowing any two gives the third. The tool also compares brightness with Pogson\'s scale, where every 5 magnitudes is exactly a factor of 100.',
+    note: 'The magnitude scale is counter-intuitive: smaller numbers are brighter (the Sun is −26.7, a faint naked-eye star is +6), and it\'s logarithmic, so one magnitude is about 2.512× in brightness. Distances here are in parsecs (1 pc ≈ 3.26 light-years). This ignores interstellar extinction (dust dimming), which shifts real measurements.',
+    faqs: [
+      { q: 'What is the difference between apparent and absolute magnitude?', a: 'Apparent magnitude (m) is how bright a star looks from Earth, which depends on distance. Absolute magnitude (M) is how bright it would look from a fixed 10 parsecs — a measure of true luminosity you can compare between stars.' },
+      { q: 'What is the distance modulus?', a: 'The difference m − M, which depends only on distance: m − M = 5·log₁₀(d) − 5, with d in parsecs. It\'s a cornerstone of measuring cosmic distances — find m and M and you get the distance.' },
+      { q: 'Why is a smaller magnitude brighter?', a: 'The scale is historical, running from the brightest stars (1st magnitude) to the faintest visible (6th). It was later made precise and extended, keeping the backwards direction, so brighter objects have smaller — even negative — magnitudes.' },
+      { q: 'How much brighter is one magnitude?', a: 'About 2.512 times. The scale is defined so that a difference of exactly 5 magnitudes is a brightness ratio of 100, and 100^(1/5) ≈ 2.512. So a 1st-magnitude star is 100× brighter than a 6th-magnitude one.' },
+      { q: 'How do I find a star\'s distance from its magnitudes?', a: 'Rearrange the distance modulus: d = 10^((m − M + 5) ÷ 5) parsecs. If you know both magnitudes, this gives the distance directly — the tool does it in the "find distance" mode.' },
+    ],
+    keywords: ['star magnitude calculator', 'absolute magnitude calculator', 'apparent magnitude calculator', 'distance modulus calculator', 'stellar brightness calculator', 'magnitude to distance', 'star luminosity calculator'],
+  },
+  {
+    slug: 'redshift-calculator',
+    name: 'Redshift Calculator',
+    icon: '🔴',
+    widget: 'redshift',
+    description: 'Convert cosmological redshift to recession velocity and distance, and the observed wavelength shift — with a relativistic option. In your browser.',
+    lead: 'Enter a redshift or recession velocity to get the other, the stretched wavelength and a rough Hubble distance — relativistic or classical.',
+    how: 'As the universe expands, light from distant galaxies is stretched to longer wavelengths — cosmological redshift, z. The tool converts between z and recession velocity (v ≈ cz at small z, or the exact relativistic relation 1 + z = √((1+β)/(1−β)) for large z), gives the observed wavelength of a spectral line (λ_observed = λ_rest × (1+z)), and estimates the distance from Hubble\'s law, v ÷ H₀.',
+    note: 'Use the relativistic option once z is more than about 0.1, where v ≈ cz noticeably overestimates the velocity. The Hubble-law distance is a first approximation with an adjustable H₀ (≈ 70 km/s/Mpc); true cosmological distances (comoving, luminosity) require integrating a full cosmological model. This is educational; professional work uses those models.',
+    faqs: [
+      { q: 'What is redshift?', a: 'The stretching of light to longer, redder wavelengths. Cosmological redshift z comes from the expansion of the universe: λ_observed = λ_rest × (1 + z). The larger the z, the more distant and faster-receding the object.' },
+      { q: 'How do I convert redshift to velocity?', a: 'For small z, v ≈ c × z. For large z you need the relativistic Doppler relation, 1 + z = √((1+β)/(1−β)) where β = v/c, because v ≈ cz would exceed the speed of light. The tool applies whichever you choose.' },
+      { q: 'What is Hubble\'s law?', a: 'That a galaxy\'s recession velocity is proportional to its distance: v = H₀ × d, with H₀ ≈ 70 km/s/Mpc. Rearranged, d ≈ v ÷ H₀ gives a rough distance from the velocity — a first estimate, not a precise cosmological distance.' },
+      { q: 'When do I need the relativistic formula?', a: 'Once z is more than roughly 0.1, the simple v = cz overestimates the velocity, and beyond z = 1 it would give faster than light. The relativistic relation keeps the velocity below c for any redshift.' },
+      { q: 'What is the difference between redshift and the Doppler effect?', a: 'The everyday Doppler effect comes from motion through space (like a passing siren). Cosmological redshift comes from space itself expanding between us and a distant galaxy — the light is stretched in transit, not just shifted by relative motion.' },
+    ],
+    keywords: ['redshift calculator', 'redshift to velocity calculator', 'cosmological redshift calculator', 'redshift distance calculator', 'z to velocity', 'hubble law calculator', 'wavelength redshift calculator'],
   },
 ];
 
