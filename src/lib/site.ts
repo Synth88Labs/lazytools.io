@@ -39,7 +39,7 @@ export const CATEGORIES: CategoryDef[] = [
   { slug: 'weather', name: 'Weather & Atmosphere', icon: '🌦️', description: 'Heat index, wind chill, dew point, wet-bulb and feels-like temperature — official NWS formulas.', status: 'live' },
   { slug: 'astronomy', name: 'Astronomy & Space', icon: '🔭', description: 'Moon phase, sunrise & sunset, weight & age on other planets, light-time and telescope optics.', status: 'live' },
   { slug: 'photography', name: 'Photography', icon: '📸', description: 'Depth of field, field of view, crop factor, exposure, hyperfocal distance and print size.', status: 'live' },
-  { slug: 'electronics', name: 'Electronics & Circuits', icon: '🔌', description: 'Resistor & capacitor codes, LED resistor, voltage divider, 555 timer, wire gauge and battery life.', status: 'live' },
+  { slug: 'electronics', name: 'Electronics & Circuits', icon: '🔌', description: 'Resistor color & SMD codes, LED resistor, voltage divider, 555 timer, RC & LC filters, wire gauge, battery life.', status: 'live' },
   { slug: 'travel', name: 'Travel & Trips', icon: '🧳', description: 'Flight distance & time, layover check, jet lag, tip-by-country, road-trip time, budget and luggage size.', status: 'live' },
   { slug: '3d-printing', name: '3D Printing', icon: '🖨️', description: 'Filament weight/length & cost, print electricity, model scaling, E-steps & flow calibration, resin cost.', status: 'live' },
   { slug: 'solar', name: 'Solar & Energy', icon: '☀️', description: 'Solar panel output, off-grid load, battery bank & inverter sizing, appliance cost, payback, voltage drop.', status: 'live' },
