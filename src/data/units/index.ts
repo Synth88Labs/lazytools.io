@@ -11,6 +11,8 @@ import { pressure } from './pressure.ts';
 import { energy } from './energy.ts';
 import { power } from './power.ts';
 import { dataTransferRate } from './data-transfer-rate.ts';
+import { frequency } from './frequency.ts';
+import { torque } from './torque.ts';
 
 export type { Quantity, Unit, PairMeta };
 
@@ -27,6 +29,8 @@ export const QUANTITIES: Quantity[] = [
   energy,
   power,
   dataTransferRate,
+  frequency,
+  torque,
 ];
 
 /** baseValue = v * factor + offset; target = (base - offset2) / factor2 */

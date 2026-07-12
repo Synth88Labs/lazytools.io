@@ -70,6 +70,24 @@ const AUTHORITATIVE: Record<string, Record<string, number>> = {
     hp: 550 * 0.45359237 * 9.80665 * 0.3048,
     ps: 75 * 9.80665, btuh: 1055.05585262 / 3600,
   },
+  // base: bit/s. 1 byte = 8 bits; SI kilo = 1000, IEC mebi = 1024².
+  'data-transfer-rate': {
+    bps: 1, kbps: 1e3, mbps: 1e6, gbps: 1e9,
+    'kb-s': 8 * 1e3, 'mb-s': 8 * 1e6, 'gb-s': 8 * 1e9, 'mib-s': 8 * 1024 * 1024,
+  },
+  // base: hertz. 1 RPM = 1/60 Hz; 1 rad/s = 1/(2π) Hz.
+  frequency: {
+    hz: 1, khz: 1e3, mhz: 1e6, ghz: 1e9,
+    rpm: 1 / 60, 'rad-s': 1 / (2 * Math.PI), bpm: 1 / 60,
+  },
+  // base: newton-metre. 1 lbf = 0.45359237×9.80665 N; 1 ft = 0.3048 m; 1 kgf·m = 9.80665 N·m.
+  torque: {
+    nm: 1, knm: 1e3,
+    'lbf-ft': 0.45359237 * 9.80665 * 0.3048,
+    'lbf-in': (0.45359237 * 9.80665 * 0.3048) / 12,
+    'kgf-m': 9.80665,
+    'ozf-in': (0.45359237 * 9.80665 * 0.3048) / 12 / 16,
+  },
 };
 
 // Temperature is offset-based → verified via known point pairs instead.
