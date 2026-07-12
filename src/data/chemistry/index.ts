@@ -10,7 +10,8 @@ export interface ChemToolDef {
     | 'henderson' | 'beerlambert' | 'gaslaw' | 'halflife'
     | 'gibbs' | 'nernst' | 'arrhenius' | 'freezing' | 'boiling' | 'ppm' | 'percenterror'
     | 'periodic' | 'econfig' | 'compare' | 'isotope' | 'oxidation'
-    | 'weakacid' | 'ksp' | 'kc' | 'hess';
+    | 'weakacid' | 'ksp' | 'kc' | 'hess'
+    | 'molality' | 'masspercent' | 'osmotic';
   /** molar-mass satellites: default view */
   view?: 'mass' | 'percent';
   description: string;
@@ -186,6 +187,60 @@ export const CHEM_TOOLS: ChemToolDef[] = [
       { q: 'Does temperature affect pH?', a: 'Yes — the “14” and 1×10⁻¹⁴ values are for 25 °C. At higher temperatures water’s Kw increases, so neutral pH is slightly below 7. This tool uses the standard 25 °C values.' },
     ],
     keywords: ['ph calculator', 'poh calculator', 'ph to h+ concentration', 'hydrogen ion concentration', 'ph from concentration', 'acid base calculator'],
+  },
+  {
+    slug: 'molality-calculator',
+    name: 'Molality Calculator',
+    icon: '⚗️',
+    widget: 'molality',
+    description: 'Calculate molality (mol/kg) from a solute\'s formula and mass and the mass of solvent — molar mass looked up from the formula. Exact, in your browser.',
+    lead: 'Enter the solute\'s formula and mass and the solvent mass to get the molality — moles of solute per kilogram of solvent.',
+    how: 'Molality is b = moles of solute ÷ kilograms of solvent. The tool reads the solute\'s formula to find its molar mass, converts your solute mass to moles (mass ÷ molar mass), then divides by the solvent mass in kilograms. Because it uses the solvent\'s mass rather than the solution\'s volume, molality is independent of temperature.',
+    note: 'Molality (mol/kg, symbol m or b) is easy to confuse with molarity (mol/L, symbol M). Molality is preferred for colligative properties — boiling-point elevation and freezing-point depression — precisely because mass doesn\'t expand or contract with temperature the way volume does.',
+    faqs: [
+      { q: 'What is molality?', a: 'Molality is the number of moles of solute per kilogram of solvent (mol/kg). It measures concentration by the solvent\'s mass, so it doesn\'t change when temperature changes the volume.' },
+      { q: 'How do you calculate molality?', a: 'b = moles of solute ÷ kg of solvent. Find the moles from the solute\'s mass and molar mass (mass ÷ molar mass), then divide by the solvent mass in kilograms. This tool gets the molar mass from the formula for you.' },
+      { q: 'What is the difference between molality and molarity?', a: 'Molality is moles per kilogram of solvent (mol/kg); molarity is moles per litre of solution (mol/L). Molality uses mass and is temperature-independent; molarity uses volume, which expands with temperature. For dilute aqueous solutions the two are numerically close.' },
+      { q: 'Why is molality used for colligative properties?', a: 'Because freezing-point depression (ΔT = Kf·b) and boiling-point elevation (ΔT = Kb·b) depend on the ratio of solute particles to solvent mass, which molality captures directly and which doesn\'t drift with temperature.' },
+      { q: 'What does a formula like CaCl2 give?', a: 'The tool computes its molar mass (110.98 g/mol) and, with your masses, the molality of the compound. Colligative effects also depend on how many ions it dissociates into (the van\'t Hoff factor), handled separately in the freezing/boiling-point tools.' },
+    ],
+    keywords: ['molality calculator', 'molality formula', 'mol/kg calculator', 'molality vs molarity', 'how to calculate molality', 'moles per kg solvent'],
+  },
+  {
+    slug: 'mass-percent-calculator',
+    name: 'Mass Percent (w/w) Calculator',
+    icon: '％',
+    widget: 'masspercent',
+    description: 'Calculate mass percent concentration (%w/w) from the mass of solute and solvent — solute ÷ total solution mass × 100. In your browser.',
+    lead: 'Enter the mass of solute and solvent to get the mass percent (%w/w) — the concentration on reagent and nutrition labels.',
+    how: 'Mass percent by weight is %(w/w) = mass of solute ÷ mass of solution × 100, where the solution\'s mass is the solute plus the solvent. The tool adds your two masses to get the solution mass and computes the percentage. Any consistent mass unit works — grams in, grams out — since the units cancel in the ratio.',
+    note: 'Mass percent is distinct from percent composition (the mass fraction of each element within a compound\'s formula) and from ppm (used for trace amounts). It\'s the everyday "how concentrated is this solution" figure — a 0.9% saline drip, a 3% hydrogen-peroxide bottle, a 70% isopropyl alcohol.',
+    faqs: [
+      { q: 'How do you calculate mass percent?', a: 'Mass percent (w/w) = mass of solute ÷ total mass of solution × 100. Dissolve 10 g of salt in 90 g of water and the solution is 10 g ÷ 100 g × 100 = 10% salt by mass.' },
+      { q: 'What is the difference between %w/w and %w/v?', a: 'Mass percent (w/w) is grams of solute per 100 g of solution; weight/volume percent (w/v) is grams per 100 mL of solution. This tool computes w/w; for w/v you\'d divide by the solution\'s volume instead of its mass.' },
+      { q: 'Is mass percent the same as percent composition?', a: 'No. Percent composition is the mass fraction of each element inside a compound (from its formula). Mass percent here is the fraction of solute in a solution. Use the percent-composition tool for the former.' },
+      { q: 'How do I make a 10% solution?', a: 'Make the solute 10% of the total mass: for 100 g of a 10% solution, use 10 g of solute and 90 g of solvent. Scale as needed — 25 g solute + 225 g solvent is also 10%.' },
+      { q: 'What mass unit should I use?', a: 'Any, as long as both masses use the same one, because the units cancel in the ratio. Grams are usual in the lab; the percentage comes out the same whether you use grams or kilograms.' },
+    ],
+    keywords: ['mass percent calculator', 'percent by mass calculator', 'w/w percent', 'mass percent concentration', 'weight percent calculator', 'how to calculate mass percent'],
+  },
+  {
+    slug: 'osmotic-pressure-calculator',
+    name: 'Osmotic Pressure Calculator (π = iMRT)',
+    icon: '💧',
+    widget: 'osmotic',
+    description: 'Calculate osmotic pressure from molarity, temperature and the van\'t Hoff factor — π = iMRT — in atm, kPa and mmHg. In your browser.',
+    lead: 'Enter the molarity, temperature and van\'t Hoff factor to get the osmotic pressure π = iMRT, shown in atm, kPa and mmHg.',
+    how: 'Osmotic pressure is the pressure that must be applied to a solution to stop pure solvent flowing into it across a semipermeable membrane: π = i·M·R·T, where i is the van\'t Hoff factor (particles per formula unit), M the molarity (mol/L), R the gas constant 0.08206 L·atm/(mol·K), and T the absolute temperature in kelvin. The tool converts your Celsius temperature to kelvin and reports the pressure in atmospheres, kilopascals and millimetres of mercury.',
+    note: 'The van\'t Hoff factor counts the dissolved particles: 1 for a non-electrolyte like glucose, 2 for NaCl or KCl (which split into two ions), 3 for CaCl₂. Osmotic pressure is a colligative property — it depends on the number of dissolved particles, not their identity — which is why it can be used to measure the molar mass of large molecules like proteins.',
+    faqs: [
+      { q: 'What is osmotic pressure?', a: 'The pressure needed to stop solvent moving by osmosis into a solution through a semipermeable membrane. It rises with how many solute particles are dissolved, making it a colligative property.' },
+      { q: 'How do you calculate osmotic pressure?', a: 'π = iMRT, where i is the van\'t Hoff factor, M the molarity in mol/L, R = 0.08206 L·atm/(mol·K) and T the temperature in kelvin. A 0.1 M glucose solution at 25 °C gives about 2.45 atm.' },
+      { q: 'What is the van\'t Hoff factor?', a: 'The number of particles a formula unit produces in solution: 1 for glucose (stays whole), 2 for NaCl (Na⁺ + Cl⁻), 3 for CaCl₂ (Ca²⁺ + 2Cl⁻). It multiplies the effective concentration of particles.' },
+      { q: 'Why does NaCl give twice the osmotic pressure of glucose?', a: 'Because each NaCl unit dissociates into two ions (i = 2) while glucose stays as one particle (i = 1). Colligative properties count particles, so the same molarity of NaCl exerts about double the osmotic pressure.' },
+      { q: 'Why does temperature matter?', a: 'Osmotic pressure is proportional to absolute temperature (T in kelvin) — warmer solutions push harder, just as with gas pressure. Always convert °C to K by adding 273.15; the tool does this automatically.' },
+    ],
+    keywords: ['osmotic pressure calculator', 'pi = imrt', 'osmotic pressure formula', 'van\'t hoff factor', 'colligative properties calculator', 'osmosis pressure'],
   },
 ];
 

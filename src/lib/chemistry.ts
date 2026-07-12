@@ -104,6 +104,15 @@ export function molarMass(formula: string): MolarMassResult {
   };
 }
 
+// ---------- solution / colligative extras ----------
+
+/** Molality b = moles of solute ÷ kilograms of solvent (mol/kg). */
+export const molality = (soluteMol: number, solventKg: number): number => (solventKg > 0 ? soluteMol / solventKg : NaN);
+/** Mass percent (w/w) = mass of solute ÷ mass of solution × 100. */
+export const massPercent = (soluteMass: number, solutionMass: number): number => (solutionMass > 0 ? (soluteMass / solutionMass) * 100 : NaN);
+/** Osmotic pressure π = i·M·R·T, atm. R = 0.0820573 L·atm/(mol·K), T in kelvin. */
+export const osmoticPressure = (i: number, molarity: number, tempK: number): number => i * molarity * 0.0820573 * tempK;
+
 // ---------- BigInt rational arithmetic ----------
 
 function gcd(a: bigint, b: bigint): bigint { a = a < 0n ? -a : a; b = b < 0n ? -b : b; while (b) { [a, b] = [b, a % b]; } return a; }

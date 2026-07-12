@@ -12,6 +12,9 @@ import EquilibriumTool from '../../components/chemistry/EquilibriumTool.tsx';
 import HessLawTool from '../../components/chemistry/HessLawTool.tsx';
 import EquationBalancerTool from '../../components/chemistry/EquationBalancerTool.tsx';
 import MolarityTool from '../../components/chemistry/MolarityTool.tsx';
+import MolalityTool from '../../components/chemistry/MolalityTool.tsx';
+import MassPercentTool from '../../components/chemistry/MassPercentTool.tsx';
+import OsmoticPressureTool from '../../components/chemistry/OsmoticPressureTool.tsx';
 import IdealGasTool from '../../components/chemistry/IdealGasTool.tsx';
 import SpecificHeatTool from '../../components/chemistry/SpecificHeatTool.tsx';
 import PhTool from '../../components/chemistry/PhTool.tsx';
@@ -86,6 +89,9 @@ const schema = [
       {tool.widget === 'molarmass' && <MolarMassTool client:load view={tool.view ?? 'mass'} />}
       {tool.widget === 'balancer' && <EquationBalancerTool client:load />}
       {tool.widget === 'molarity' && <MolarityTool client:load />}
+      {tool.widget === 'molality' && <MolalityTool client:load />}
+      {tool.widget === 'masspercent' && <MassPercentTool client:load />}
+      {tool.widget === 'osmotic' && <OsmoticPressureTool client:load />}
       {tool.widget === 'idealgas' && <IdealGasTool client:load />}
       {tool.widget === 'specheat' && <SpecificHeatTool client:load />}
       {tool.widget === 'ph' && <PhTool client:load />}
