@@ -14,7 +14,7 @@ const faqs = [
   { q: 'Do my files or data get uploaded to a server?', a: 'No. Every tool runs entirely in your browser using JavaScript and WebAssembly, so the files you open and the values you type are processed on your own device and never sent anywhere. You can prove it: open your browser\'s network tab and watch, or switch off your internet connection mid-use — the tools keep working.' },
   { q: 'Does LazyTools track me or use cookies?', a: 'No. There is no analytics, no tracking pixel and no cookies — nothing to consent to. The only optional data is an anonymous star rating you can choose to leave on a tool (just the tool name and star value, with no IP address, cookie or identifier).' },
   { q: 'Do the tools work offline?', a: 'Yes. Because the processing happens in your browser, most tools keep working with no internet connection once the page has loaded — handy on a plane or with a patchy signal.' },
-  { q: 'How many tools are there, and what kinds?', a: 'Over 600 tools across 36 categories — unit and size converters, everyday and financial calculators, exact math, chemistry, physics, biology and statistics, cooking, automotive, fitness, pet, gardening, music, weather, astronomy, photography and electronics calculators, travel and trip planners, developer utilities, text and color tools, generators, PDF and image tools, and a passport/visa photo maker.' },
+  { q: 'How many tools are there, and what kinds?', a: 'Over 620 tools across 37 categories — unit and size converters, everyday and financial calculators, exact math, chemistry, physics, biology and statistics, cooking, automotive, fitness, pet, gardening, music, weather, astronomy, photography and electronics calculators, travel and trip planners, 3D-printing calculators, developer utilities, text and color tools, generators, PDF and image tools, and a passport/visa photo maker.' },
   { q: 'How accurate are the calculators?', a: 'They\'re built for exactness — using precise NIST/BIPM conversion factors, published scientific and engineering formulas, and BigInt or exact-fraction math where rounding would otherwise creep in. Many categories were checked against authoritative sources (NASA, NOAA, USDA, King Arthur Baking and others), and the harder libraries are unit-tested.' },
   { q: 'Do I need to create an account?', a: 'Never. LazyTools has no accounts and holds no personal data — you just open a tool and use it. Some tools optionally remember your preferences in your browser\'s own local storage, which stays on your device.' },
   { q: 'Is LazyTools open source?', a: 'Yes — the site is open source on GitHub, so you can read exactly how every tool works and verify the privacy claims for yourself. It\'s a project of Synth88 Labs.' },
@@ -48,6 +48,7 @@ const flagship = [
   { icon: '🎞️', name: 'Depth of Field Calculator', url: '/photography/depth-of-field-calculator/' },
   { icon: '🎨', name: 'Resistor Color Code Calculator', url: '/electronics/resistor-color-code-calculator/' },
   { icon: '🛫', name: 'Flight Distance Calculator', url: '/travel/flight-distance-calculator/' },
+  { icon: '🧵', name: 'Filament Weight & Length Calculator', url: '/3d-printing/filament-calculator/' },
   { icon: '💵', name: 'Compound Interest Calculator', url: '/finance/compound-interest-calculator/' },
   { icon: '❄️', name: 'Debt Payoff Calculator', url: '/finance/debt-payoff-calculator/' },
   { icon: '％', name: 'Percentage Calculator', url: '/calc/percentage-calculator/' },
@@ -56,7 +57,7 @@ const flagship = [
 
 <Base
   title="LazyTools — Free Online Tools That Never Upload Your Data"
-  description="600+ free, privacy-first online tools across 36 categories: unit converters, calculators, finance, exact math, chemistry & physics, cooking, automotive, fitness, pets, gardening, music, weather, astronomy, photography & electronics calculators, travel & trip planners, biology & lab tools, passport & visa photo makers, text-forensics and developer utilities, QR & barcode generators, PDF and image tools, and more. Everything runs in your browser — your files and inputs are never uploaded, with no analytics, cookies or tracking. No sign-up, no limits."
+  description="620+ free, privacy-first online tools across 37 categories: unit converters, calculators, finance, exact math, chemistry & physics, cooking, automotive, fitness, pets, gardening, music, weather, astronomy, photography & electronics calculators, travel & trip planners, 3D-printing calculators, biology & lab tools, passport & visa photo makers, text-forensics and developer utilities, QR & barcode generators, PDF and image tools, and more. Everything runs in your browser — your files and inputs are never uploaded, with no analytics, cookies or tracking. No sign-up, no limits."
   schema={[faqSchema(faqs)]}
 >
   <!-- Hero -->

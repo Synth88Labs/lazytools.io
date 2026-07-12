@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="The cube rule of 3D print scaling. When you scale a model up, each of its three dimensions grows by the same factor, but the volume — and so the filament used and the print time — grows by the cube of that factor. Scaling to 200 percent (twice as long, wide and tall) makes 2 cubed, equals 8 times the volume, not 2 times. A table: 50 percent scale uses one eighth the material; 100 percent uses 1 times; 150 percent uses about 3.4 times; 200 percent uses 8 times; 300 percent uses 27 times.">
+  <defs>
+    <style>
+      .h { font: 800 28px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .sub { font: 500 15px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+      .lab { font: 700 13px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .big { font: 800 22px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .row { font: 600 15px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .rowb { font: 800 15px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #1d4ed8; }
+    </style>
+  </defs>
+
+  <text x="600" y="42" text-anchor="middle" class="h">The cube rule of 3D-print scaling</text>
+  <text x="600" y="68" text-anchor="middle" class="sub">scale every side by 2 and the volume — filament and time — goes up by 2³ = 8</text>
+
+  <!-- small cube 1x -->
+  <g transform="translate(120 150)">
+    <path d="M0 40 L60 10 L120 40 L120 110 L60 140 L0 110 Z" fill="#bfdbfe" stroke="#1d4ed8" stroke-width="2"/>
+    <path d="M0 40 L60 70 L120 40" fill="none" stroke="#1d4ed8" stroke-width="2"/>
+    <path d="M60 70 L60 140" fill="none" stroke="#1d4ed8" stroke-width="2"/>
+    <text x="60" y="185" text-anchor="middle" class="big">1× size</text>
+    <text x="60" y="210" text-anchor="middle" class="lab">1 unit of filament</text>
+  </g>
+
+  <text x="330" y="230" text-anchor="middle" class="big" fill="#64748b">→</text>
+
+  <!-- big cube 2x, drawn as 8 stacked unit cubes -->
+  <g transform="translate(400 96)">
+    <!-- outer 2x cube -->
+    <path d="M0 80 L120 20 L240 80 L240 220 L120 280 L0 220 Z" fill="#93c5fd" stroke="#1d4ed8" stroke-width="2.5"/>
+    <path d="M0 80 L120 140 L240 80" fill="none" stroke="#1e3a8a" stroke-width="1.5" stroke-opacity="0.5"/>
+    <path d="M120 140 L120 280" fill="none" stroke="#1e3a8a" stroke-width="1.5" stroke-opacity="0.5"/>
+    <!-- internal subdivisions (the 8 sub-cubes) -->
+    <path d="M60 50 L180 110 M180 50 L60 110" fill="none" stroke="#1e40af" stroke-width="1" stroke-opacity="0.35"/>
+    <path d="M0 150 L120 210 L240 150" fill="none" stroke="#1e40af" stroke-width="1" stroke-opacity="0.35"/>
+    <text x="120" y="325" text-anchor="middle" class="big">2× size</text>
+    <text x="120" y="350" text-anchor="middle" class="lab" fill="#1d4ed8">8 units of filament (2³)</text>
+  </g>
+
+  <!-- table -->
+  <g transform="translate(720 140)">
+    <text x="0" y="0" class="lab" fill="#1d4ed8">SCALE → MATERIAL &amp; TIME</text>
+    <g>
+      <g transform="translate(0 30)"><text x="0" y="0" class="row">50%</text><text x="120" y="0" class="row" text-anchor="end">×0.125 (⅛)</text></g>
+      <g transform="translate(0 60)"><text x="0" y="0" class="row">100%</text><text x="120" y="0" class="row" text-anchor="end">×1</text></g>
+      <g transform="translate(0 90)"><text x="0" y="0" class="row">150%</text><text x="120" y="0" class="row" text-anchor="end">×3.4</text></g>
+      <g transform="translate(0 120)"><text x="0" y="0" class="rowb">200%</text><text x="120" y="0" class="rowb" text-anchor="end">×8</text></g>
+      <g transform="translate(0 150)"><text x="0" y="0" class="row">300%</text><text x="120" y="0" class="row" text-anchor="end">×27</text></g>
+    </g>
+    <text x="0" y="192" class="lab" fill="#b45309">material factor = (scale ÷ 100)³</text>
+  </g>
+
+  <!-- footer -->
+  <g transform="translate(70 470)">
+    <rect x="0" y="0" width="1060" height="52" rx="14" fill="#0c2f6b"/>
+    <text x="24" y="32" font-family="Consolas, Menlo, monospace" font-size="14" fill="#7ef0c0">lazytools.io — model scale calculator: new size, filament &amp; print-time multiplier</text>
+  </g>
+
+  <text x="600" y="560" text-anchor="middle" class="sub">Each side scales linearly; volume scales by the cube — which is why "just a bit bigger" can double the filament and hours.</text>
+</svg>

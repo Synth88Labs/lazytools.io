@@ -1,0 +1,83 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PrivacyStrip from '../../components/PrivacyStrip.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { PRINTING3D_TOOLS } from '../../data/printing3d/index';
+import { breadcrumbSchema, collectionPageSchema, faqSchema } from '../../lib/schema';
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: '3D Printing', url: '/3d-printing/' },
+];
+const faqs = [
+  { q: 'Are these 3D printing calculators accurate?', a: 'The geometry is exact — filament weight/length/volume follow directly from the cross-section (π·(d/2)²) and material density, and the calibration formulas (E-steps, flow, volumetric flow) are the standard community methods. The reference values — filament and resin densities, typical printer wattage — are cited and, where they vary by brand or grade, flagged so you can enter your own.' },
+  { q: 'Do I need to install anything or upload my model?', a: 'No. Every tool runs entirely in your browser — no accounts, no uploads, no model files leave your device. You enter the numbers your slicer already reports (grams, length, resin volume, time) and the tools do the maths. They work offline.' },
+  { q: 'Where do I get the figures to enter?', a: 'Mostly from your slicer (Cura, PrusaSlicer, OrcaSlicer, Bambu Studio, Lychee, Chitubox), which reports a print\'s filament weight or length, resin volume and estimated time. For calibration tools you measure a test print with calipers.' },
+  { q: 'Which filament densities do the tools use?', a: 'Commonly-cited reference densities — PLA 1.24, PETG 1.27, ABS 1.04 g/cm³ and so on. Brands vary a little (and Nylon, wood-fill and carbon-fibre filaments vary a lot), so the material picker shows the density and you can check your spool\'s datasheet for precision.' },
+];
+const schema = [
+  breadcrumbSchema(crumbs),
+  collectionPageSchema({ name: '3D Printing Calculators', url: '/3d-printing/', description: 'Free, private 3D printing calculators: filament weight & length, filament and electricity cost, model scaling, E-steps and flow calibration, volumetric flow, and resin cost.', items: PRINTING3D_TOOLS.map((t) => ({ name: t.name, url: `/3d-printing/${t.slug}/` })) }),
+  faqSchema(faqs),
+];
+---
+
+<Base
+  title="3D Printing Calculators — Filament, Cost, E-Steps, Flow | LazyTools"
+  description="Free 3D printing calculators that run in your browser: filament weight & length, filament and electricity cost, model scaling, E-steps and flow-rate calibration, volumetric flow, and resin cost. Exact geometry, cited densities, no upload."
+  schema={schema}
+>
+  <div class="mx-auto max-w-5xl px-4 py-6">
+    <Breadcrumbs items={crumbs} />
+    <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">3D Printing Calculators</h1>
+    <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
+      The numbers behind every print — convert filament between weight, length and volume, price a print in
+      material and electricity, resize a model (and see why it uses so much more filament), calibrate your
+      extruder's E-steps and flow rate, check your hotend's volumetric flow, and cost a resin print. Exact
+      geometry and standard calibration methods, running entirely in your browser.
+    </p>
+
+    <div class="mt-5"><PrivacyStrip /></div>
+
+    <section class="mt-8">
+      <ul class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {PRINTING3D_TOOLS.map((t) => (
+          <li>
+            <a href={`/3d-printing/${t.slug}/`} class="flex h-full flex-col rounded-xl border border-slate-200 p-4 transition hover:border-brand-400 hover:shadow-sm">
+              <span class="text-2xl" aria-hidden="true">{t.icon}</span>
+              <span class="mt-2 font-semibold text-slate-900">{t.name}</span>
+              <span class="mt-1 text-sm text-slate-600">{t.lead.split('—')[0].split('(')[0]}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="prose-lazy mt-10">
+      <h2>From spool to finished print, worked out in your browser</h2>
+      <p>
+        Most 3D-printing maths comes down to two things: <strong>how much material and money a print costs</strong>,
+        and <strong>getting the printer dialled in</strong>. Because filament is a uniform cylinder, its weight,
+        length and volume are locked together by its diameter and density — so the
+        <a href="/3d-printing/filament-calculator/">filament calculator</a> converts freely between them, and
+        the <a href="/3d-printing/filament-cost-calculator/">cost</a> and
+        <a href="/3d-printing/print-energy-cost-calculator/">electricity</a> tools turn a sliced print into a
+        real price. The <a href="/3d-printing/model-scale-calculator/">scale calculator</a> makes the cube rule
+        obvious: doubling a model's size is eight times the filament, not twice.
+      </p>
+      <p>
+        The other half is calibration. The <a href="/3d-printing/e-steps-calculator/">E-steps</a> and
+        <a href="/3d-printing/flow-rate-calculator/">flow-rate</a> tools use the standard measure-and-correct
+        methods so your extruder pushes exactly the right amount of plastic, and the
+        <a href="/3d-printing/volumetric-flow-calculator/">volumetric flow</a> tool reveals the real speed limit —
+        how fast your hotend can actually melt filament — so you stop chasing speeds that just under-extrude.
+        Everything runs offline and privately; you only ever type in the numbers your slicer already gives you.
+        For the underlying material and geometry maths, see the <a href="/units/">Units</a> and
+        <a href="/math/">Mathematics</a> categories.
+      </p>
+    </section>
+
+    <FaqSection faqs={faqs} />
+  </div>
+</Base>

@@ -7,6 +7,13 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'cube-rule-scaling-guide',
+    kicker: '3D PRINTING GUIDE',
+    lines: ['Why a bigger print', 'uses so much more', 'filament: the cube rule'],
+    fact: 'scale 2× → 8× the material and print time',
+    icon: '🖨️',
+  },
+  {
     slug: 'great-circle-distance-guide',
     kicker: 'TRAVEL GUIDE',
     lines: ['Why flight paths', 'curve on the map:', 'great-circle distance'],

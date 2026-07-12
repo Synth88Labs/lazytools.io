@@ -1,4 +1,12 @@
 [
+  "3d-printing/e-steps-calculator",
+  "3d-printing/filament-calculator",
+  "3d-printing/filament-cost-calculator",
+  "3d-printing/flow-rate-calculator",
+  "3d-printing/model-scale-calculator",
+  "3d-printing/print-energy-cost-calculator",
+  "3d-printing/resin-cost-calculator",
+  "3d-printing/volumetric-flow-calculator",
   "astronomy/age-on-other-planets",
   "astronomy/angular-size-calculator",
   "astronomy/light-travel-time-calculator",
