@@ -111,3 +111,26 @@ export function tintsAndShades(base: RGB, n = 9): { tints: RGB[]; shades: RGB[] 
     shades: steps.map((t) => mix(base, black, t)),
   };
 }
+
+/** RGB (0–255) → HSV (h 0–360, s/v 0–100). */
+export function rgbToHsv({ r, g, b }: RGB): { h: number; s: number; v: number } {
+  r /= 255; g /= 255; b /= 255;
+  const mx = Math.max(r, g, b), mn = Math.min(r, g, b), d = mx - mn;
+  let h = 0;
+  if (d !== 0) {
+    if (mx === r) h = ((g - b) / d) % 6;
+    else if (mx === g) h = (b - r) / d + 2;
+    else h = (r - g) / d + 4;
+    h *= 60; if (h < 0) h += 360;
+  }
+  return { h, s: mx === 0 ? 0 : (d / mx) * 100, v: mx * 100 };
+}
+/** HSV (h 0–360, s/v 0–100) → RGB (0–255). */
+export function hsvToRgb(h: number, s: number, v: number): RGB {
+  s /= 100; v /= 100;
+  const c = v * s, x = c * (1 - Math.abs(((h / 60) % 2) - 1)), m = v - c;
+  let r = 0, g = 0, b = 0; const hp = h / 60;
+  if (hp < 1) { r = c; g = x; } else if (hp < 2) { r = x; g = c; } else if (hp < 3) { g = c; b = x; }
+  else if (hp < 4) { g = x; b = c; } else if (hp < 5) { r = x; b = c; } else { r = c; b = x; }
+  return { r: Math.round((r + m) * 255), g: Math.round((g + m) * 255), b: Math.round((b + m) * 255) };
+}

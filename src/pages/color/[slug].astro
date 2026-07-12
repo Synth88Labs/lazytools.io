@@ -6,6 +6,9 @@ import PrivacyStrip from '../../components/PrivacyStrip.astro';
 import FaqSection from '../../components/FaqSection.astro';
 import RatingWidget from '../../components/RatingWidget.tsx';
 import ColorConverterTool from '../../components/color/ColorConverterTool.tsx';
+import HsvConverterTool from '../../components/color/HsvConverterTool.tsx';
+import DeltaETool from '../../components/color/DeltaETool.tsx';
+import ColorTempTool from '../../components/color/ColorTempTool.tsx';
 import ContrastCheckerTool from '../../components/color/ContrastCheckerTool.tsx';
 import ShadesTool from '../../components/color/ShadesTool.tsx';
 import GradientTool from '../../components/color/GradientTool.tsx';
@@ -67,6 +70,9 @@ const schema = [
 
     <div class="mt-6">
       {tool.widget === 'converter' && <ColorConverterTool client:load preset={tool.presetInput ?? 'hex'} />}
+      {tool.widget === 'hsv' && <HsvConverterTool client:load />}
+      {tool.widget === 'deltae' && <DeltaETool client:load />}
+      {tool.widget === 'colortemp' && <ColorTempTool client:load />}
       {tool.widget === 'contrast' && <ContrastCheckerTool client:load />}
       {tool.widget === 'shades' && <ShadesTool client:load />}
       {tool.widget === 'gradient' && <GradientTool client:load />}

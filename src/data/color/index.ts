@@ -10,7 +10,8 @@ export interface ColorToolDef {
   widget:
     | 'converter' | 'contrast' | 'shades' | 'gradient' | 'mixer' | 'brands'
     | 'oklch' | 'accessible' | 'apca' | 'grid' | 'cvd' | 'harmony'
-    | 'imagepicker' | 'colorname' | 'oklchscale';
+    | 'imagepicker' | 'colorname' | 'oklchscale'
+    | 'hsv' | 'deltae' | 'colortemp';
   /** preset input mode for the converter widget */
   presetInput?: 'hex' | 'rgb';
   /** default direction label for the OKLCH converter satellites */
@@ -534,6 +535,60 @@ export const COLOR_TOOLS: ColorToolDef[] = [
       { q: 'Are the colors always in gamut?', a: 'Yes — any step that would fall outside sRGB is chroma-mapped (keeping lightness and hue) to the nearest displayable HEX, so every swatch renders correctly.' },
     ],
     keywords: ['tailwind color generator', 'tailwind color scale', 'oklch color scale', 'color shades 50 950', 'tailwind palette generator', 'color scale generator'],
+  },
+  {
+    slug: 'hsv-color-converter',
+    name: 'HSV / HSB Color Converter',
+    icon: '🎨',
+    widget: 'hsv',
+    description: 'Convert any color to HSV (HSB) — hue, saturation and value/brightness — and back to HEX and RGB, with a live swatch. In your browser.',
+    lead: 'Enter a HEX, RGB or named color to get its HSV (HSB) values, alongside HEX and RGB.',
+    how: 'HSV — hue, saturation, value (also called HSB, with B for brightness) — is the colour model most colour pickers use. Hue is the angle on the colour wheel (0–360°), saturation is how vivid the colour is (0–100%), and value is how bright (0–100%). The tool parses your colour, converts RGB to HSV by finding the max and min channels, and shows HEX and RGB too.',
+    note: 'HSV is often confused with HSL. The difference is the third component: in HSV, value at 100% with full saturation gives the pure, vivid hue, whereas HSL\'s lightness at 100% is always white (and 50% is the vivid hue). Designers pick HSV in tools like Photoshop; HSL is common in CSS.',
+    faqs: [
+      { q: 'What is HSV colour?', a: 'HSV stands for hue, saturation, value — a way to describe colour by its position on the colour wheel (hue), how vivid it is (saturation) and how bright it is (value). It\'s also called HSB, where B is brightness.' },
+      { q: 'How do you convert RGB to HSV?', a: 'Scale RGB to 0–1, find the max (value) and the range max−min. Saturation is range ÷ max; hue comes from which channel is the max and the differences between them, mapped to 0–360°. The tool does it and shows the result.' },
+      { q: 'What is the difference between HSV and HSL?', a: 'Both use hue and saturation, but the third value differs. HSV\'s "value" measures brightness where 100% saturated + 100% value is the pure vivid hue; HSL\'s "lightness" makes 100% white and 0% black, with the vivid hue at 50%. Same colours, different coordinates.' },
+      { q: 'Is HSV the same as HSB?', a: 'Yes — HSB (hue, saturation, brightness) is another name for HSV. Adobe apps say HSB; most other software says HSV. The values are identical.' },
+      { q: 'What colour is HSV 210, 88, 95?', a: 'A vivid blue — hue 210° is blue, 88% saturation is quite pure, and 95% value is bright. Enter it and the tool shows the exact HEX and RGB.' },
+    ],
+    keywords: ['hsv color converter', 'hsv to rgb', 'hsv to hex', 'rgb to hsv', 'hsb color converter', 'hsv color picker', 'hue saturation value'],
+  },
+  {
+    slug: 'delta-e-calculator',
+    name: 'Delta-E Color Difference Calculator',
+    icon: '🎯',
+    widget: 'deltae',
+    description: 'Calculate the perceptual difference (Delta-E) between two colors — CIEDE2000 and CIE76 — to judge how closely they match. In your browser.',
+    lead: 'Enter two colors to get their Delta-E — how different they look — with the CIEDE2000 and CIE76 values and a plain-English verdict.',
+    how: 'Delta-E (ΔE) is the distance between two colours in the perceptually-uniform CIELAB space. The tool converts each colour from RGB through XYZ to Lab, then computes the difference two ways: the modern, perceptually-accurate CIEDE2000 formula, and the older CIE76 (a simple straight-line distance) for comparison. A smaller ΔE means a closer match.',
+    note: 'A ΔE of about 1.0 is the "just-noticeable difference" — the smallest change a person can typically see. Below 1 the colours look identical; 1–2 is a very close match; large values are obviously different. CIEDE2000 corrects CIE76\'s known weaknesses (especially in blues and near-neutrals), so trust it over CIE76 when they disagree.',
+    faqs: [
+      { q: 'What is Delta-E?', a: 'A single number for how different two colours look, measured in CIELAB colour space. ΔE ≈ 1 is the just-noticeable difference; smaller means the colours match more closely, larger means they\'re clearly different.' },
+      { q: 'What is a good Delta-E value?', a: 'For a close match, aim for ΔE below about 2 (below 1 is imperceptible to most people). Print and display calibration often target ΔE under 2–3; brand-colour tolerances are frequently set around 1–2.' },
+      { q: 'What is the difference between CIEDE2000 and CIE76?', a: 'CIE76 is the original, simple Euclidean distance in Lab; CIEDE2000 adds corrections for how our eyes actually perceive lightness, chroma and hue differences, making it far more accurate — especially for blues and near-greys. This tool shows both.' },
+      { q: 'How is Delta-E calculated?', a: 'Convert both colours to CIELAB (via XYZ), then apply the ΔE formula. CIE76 is √(ΔL²+Δa²+Δb²); CIEDE2000 is a weighted formula with lightness, chroma and hue terms plus a rotation correction. The tool computes both.' },
+      { q: 'What is Delta-E used for?', a: 'Colour quality control — matching prints to a proof, calibrating monitors, checking brand colours across materials, and grading how faithfully a device reproduces colour. It turns "close enough?" into a measurable number.' },
+    ],
+    keywords: ['delta e calculator', 'color difference calculator', 'ciede2000 calculator', 'delta e color', 'color matching calculator', 'cie76 delta e', 'perceptual color difference'],
+  },
+  {
+    slug: 'color-temperature-to-rgb',
+    name: 'Color Temperature (Kelvin) to RGB',
+    icon: '🌡️',
+    widget: 'colortemp',
+    description: 'Convert a color temperature in Kelvin to an approximate RGB / HEX color — from warm candlelight to cool daylight — with a live swatch. In your browser.',
+    lead: 'Drag the Kelvin slider (or pick a preset) to see the approximate on-screen colour of that light, in HEX and RGB.',
+    how: 'Colour temperature describes the colour of a light source on the Kelvin scale — counter-intuitively, lower numbers are warmer (orange) and higher numbers cooler (blue). The tool maps a temperature to an approximate sRGB colour using the widely-used Tanner Helland approximation, valid from about 1,000 K to 40,000 K, and shows the HEX and RGB with a swatch.',
+    note: 'This is a visual approximation for screen display, not a calibrated blackbody spectrum — real light also depends on the source and your display\'s white point. Common references: candle ~1,900 K, incandescent bulb ~2,700 K, neutral daylight ~5,600 K, an overcast sky ~6,500 K, and deep shade 8,000 K+.',
+    faqs: [
+      { q: 'What colour is a given Kelvin temperature?', a: 'Low Kelvin is warm and orange (candle ~1,900 K, incandescent ~2,700 K), the middle is neutral white (~5,000–6,500 K), and high Kelvin is cool blue-white (8,000 K+). The tool shows the approximate on-screen colour for any value.' },
+      { q: 'Why is lower Kelvin "warmer"?', a: 'It\'s the opposite of the temperature feeling: a physically cooler glowing object emits redder light, and a hotter one bluer. So "warm" light (orange) is a low colour temperature, and "cool" light (blue) is a high one — a naming quirk of the Kelvin scale.' },
+      { q: 'What is daylight in Kelvin?', a: 'Average midday daylight is around 5,600–6,500 K; an overcast sky is near 6,500 K, and open shade under a blue sky can reach 8,000–10,000 K. Photographers set white balance to these values.' },
+      { q: 'How accurate is the Kelvin-to-RGB conversion?', a: 'It\'s a good visual approximation (the Tanner Helland algorithm), not a spectrally accurate blackbody rendering. Use it to preview or choose a light\'s tone; for colour-critical work, measure with a colorimeter.' },
+      { q: 'What Kelvin should a light bulb be?', a: 'Warm white bulbs are ~2,700 K (cozy, like incandescent), soft/neutral white ~3,000–4,000 K, and daylight bulbs ~5,000–6,500 K (bright, energising). Choose by the mood and task for the room.' },
+    ],
+    keywords: ['color temperature to rgb', 'kelvin to rgb', 'kelvin to hex', 'color temperature calculator', 'light temperature color', 'kelvin color chart', 'white balance color'],
   },
 ];
 
