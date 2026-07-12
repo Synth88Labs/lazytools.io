@@ -4,7 +4,7 @@ export interface CookingToolDef {
   slug: string;
   name: string;
   icon: string;
-  widget: 'grams' | 'measure' | 'butter' | 'oven' | 'scaler' | 'pan' | 'bakers' | 'yeast' | 'coffee' | 'meat';
+  widget: 'grams' | 'measure' | 'butter' | 'oven' | 'scaler' | 'pan' | 'bakers' | 'yeast' | 'coffee' | 'meat' | 'brine' | 'airfryer' | 'roast';
   description: string;
   lead: string;
   how: string;
@@ -193,6 +193,60 @@ export const COOKING_TOOLS: CookingToolDef[] = [
       { q: 'Why let meat rest after cooking?', a: 'Resting lets carry-over heat finish the cooking (the temperature keeps rising a few degrees) and lets juices redistribute. USDA requires a 3-minute rest for whole cuts of beef, pork, lamb and veal at 145 °F.' },
     ],
     keywords: ['meat cooking temperature', 'safe internal temperature chart', 'chicken cooking temperature', 'steak doneness temperatures', 'usda safe cooking temperatures', 'meat temperature guide', 'beef internal temp'],
+  },
+  {
+    slug: 'brine-calculator',
+    name: 'Brine Calculator (Salt Ratio)',
+    icon: '🧂',
+    widget: 'brine',
+    description: 'Calculate how much salt (and optional sugar) to add for a wet brine from the water amount and target percentage — for juicy poultry, pork and more. In your browser.',
+    lead: 'Enter the water amount and a target salt percentage to get the exact salt (and optional sugar) to add for a wet brine.',
+    how: 'A wet brine is salt dissolved in water by weight: salt = water weight × the salt percentage. Because one millilitre of water weighs one gram, you can enter the water in grams or millilitres interchangeably. Enter a sugar percentage too if your recipe uses one. The tool gives the amounts in grams (and ounces for salt).',
+    note: 'A 5% brine is a versatile all-purpose strength; 3% suits a longer soak, and 8%+ a short one. Salt seasons throughout and helps the meat hold moisture. For a dry brine, salt the surface at about 1% of the meat\'s own weight instead of dissolving in water. Salt types differ in density by volume, which is why measuring salt by weight is far more reliable than by the tablespoon.',
+    faqs: [
+      { q: 'How much salt do I need for a brine?', a: 'For a wet brine, salt = water weight × the salt percentage. A 5% brine in 1,000 g (1 L) of water needs 50 g of salt. Weighing salt is more accurate than measuring by volume, which varies with the salt type.' },
+      { q: 'What percentage should a brine be?', a: 'Around 5% salt is a good all-purpose wet brine; use 3% for a longer soak (overnight or more) and 6–8% for a quick brine of a few hours. Stronger brines work faster but can oversalt if left too long.' },
+      { q: 'What is the difference between a wet brine and a dry brine?', a: 'A wet brine dissolves salt in water and submerges the food; a dry brine rubs salt directly on the surface (about 1% of the food\'s weight). Dry brining gives crispier skin; wet brining adds the most moisture. This tool sizes a wet brine.' },
+      { q: 'Can I use table salt, kosher salt or sea salt?', a: 'Yes — by weight they\'re interchangeable, which is why this tool works in grams. By volume they differ a lot (kosher salt is fluffier), so a "cup of salt" varies; weighing avoids that error.' },
+      { q: 'Should I add sugar to a brine?', a: 'Sugar is optional — it aids browning and balances the salt, common in poultry and pork brines at roughly 2–5% of the water weight. Enter a sugar percentage and the tool includes it.' },
+    ],
+    keywords: ['brine calculator', 'brine ratio calculator', 'salt brine calculator', 'wet brine calculator', 'turkey brine calculator', 'how much salt for brine', 'brine percentage'],
+  },
+  {
+    slug: 'air-fryer-conversion-calculator',
+    name: 'Air Fryer Conversion Calculator',
+    icon: '🍟',
+    widget: 'airfryer',
+    description: 'Convert a conventional-oven recipe to air fryer settings — lower the temperature by 25 °F and the time by about 20%. In your browser.',
+    lead: 'Enter the oven temperature and time from your recipe to get the air-fryer temperature and time.',
+    how: 'An air fryer is a compact convection oven: rapidly circulating hot air cooks faster and browns more, so oven recipes need adjusting. The widely used rule is to lower the temperature by about 25 °F (≈15 °C) and cut the cooking time by roughly 20%. The tool applies both and rounds the temperature to a practical setting.',
+    note: 'Air fryers vary in power and basket size, so treat the result as a starting point — check for doneness a few minutes early the first time you make something, and shake or turn food halfway. Because air circulation matters, don\'t overcrowd the basket; cook in batches if needed.',
+    faqs: [
+      { q: 'How do you convert oven time to air fryer?', a: 'Lower the temperature by about 25 °F (≈15 °C) and reduce the cooking time by roughly 20%. A dish at 400 °F for 30 minutes becomes about 375 °F for 24 minutes in an air fryer.' },
+      { q: 'Do you reduce temperature or time for an air fryer?', a: 'Both — the standard rule cuts the temperature by ~25 °F and the time by ~20%, because the strong convection cooks faster and browns more than a conventional oven at the same setting.' },
+      { q: 'Why does an air fryer cook faster?', a: 'It\'s essentially a small, powerful convection oven: a fan blasts hot air around the food from close range, so heat transfers faster and the surface crisps quickly. That\'s why both a lower temperature and a shorter time are needed.' },
+      { q: 'Can I put oven recipes straight into an air fryer?', a: 'Usually with the temperature and time adjustment above, yes — but check early, don\'t overcrowd the basket, and shake or flip food partway. Very saucy or liquid dishes and delicate batters transfer less well.' },
+      { q: 'Is the conversion the same for every food?', a: 'It\'s a good general rule, but dense or thick items may need a touch more time and thin, crispy foods a touch less. Always confirm with a thermometer for meats and check visually the first time.' },
+    ],
+    keywords: ['air fryer conversion calculator', 'oven to air fryer', 'air fryer time calculator', 'convert oven recipe to air fryer', 'air fryer temperature conversion', 'oven to air fryer chart'],
+  },
+  {
+    slug: 'roast-cooking-time-calculator',
+    name: 'Roast Cooking Time Calculator',
+    icon: '🍗',
+    widget: 'roast',
+    description: 'Estimate roasting time by weight for turkey, chicken, beef, pork, ham and lamb — with the USDA safe internal temperatures. In your browser.',
+    lead: 'Enter the weight and choose the meat to estimate the roasting time, with the safe internal temperature to cook to.',
+    how: 'Roasting time is estimated as the weight times a minutes-per-pound figure for that cut and oven temperature — for example, an unstuffed turkey at 325 °F is about 13 minutes per pound. The tool converts kilograms to pounds if needed, applies the per-pound rate for your chosen meat, and shows the total time along with the USDA safe internal temperature to cook to.',
+    note: 'Times are estimates, not guarantees — the reliable test of doneness is the internal temperature measured with a thermometer, because shape, bone, starting temperature (fridge-cold vs room-temp) and oven accuracy all shift the timing. Rest larger roasts before carving so the juices redistribute; the temperature also rises a few degrees during the rest.',
+    faqs: [
+      { q: 'How long do you cook a turkey per pound?', a: 'About 13 minutes per pound for an unstuffed turkey at 325 °F, or roughly 15 min/lb if stuffed. A 12-lb unstuffed bird is around 2 hours 36 minutes — but always confirm 74 °C (165 °F) in the thickest part with a thermometer.' },
+      { q: 'How do you calculate roasting time?', a: 'Multiply the weight by the minutes-per-pound for the cut and oven temperature. The tool has per-pound rates built in for common roasts and shows the total, but the internal temperature is the true doneness check.' },
+      { q: 'What temperature should meat be cooked to?', a: 'USDA safe minimums: poultry 74 °C (165 °F); pork, beef, veal and lamb roasts 63 °C (145 °F) with a 3-minute rest; pre-cooked ham reheated to 60 °C (140 °F). Ground meats are higher. The tool shows the target for your chosen meat.' },
+      { q: 'Should I use the oven timer or a thermometer?', a: 'A thermometer. Timing gets you close, but doneness depends on internal temperature, which varies with the roast\'s shape and your oven. Pull the roast at the target temp rather than at a set clock time.' },
+      { q: 'Does a stuffed bird take longer?', a: 'Yes — the stuffing adds mass and slows heat reaching the centre, so a stuffed turkey needs roughly 15 min/lb versus 13 for unstuffed, and the stuffing itself must reach 74 °C (165 °F).' },
+    ],
+    keywords: ['roast cooking time calculator', 'turkey cooking time calculator', 'minutes per pound roast', 'how long to cook a turkey', 'roast time by weight', 'beef roasting time', 'chicken roasting time'],
   },
 ];
 

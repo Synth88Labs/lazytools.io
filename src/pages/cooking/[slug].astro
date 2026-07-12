@@ -6,6 +6,9 @@ import PrivacyStrip from '../../components/PrivacyStrip.astro';
 import FaqSection from '../../components/FaqSection.astro';
 import RatingWidget from '../../components/RatingWidget.tsx';
 import GramsToCupsTool from '../../components/cooking/GramsToCupsTool.tsx';
+import BrineTool from '../../components/cooking/BrineTool.tsx';
+import AirFryerTool from '../../components/cooking/AirFryerTool.tsx';
+import RoastTimeTool from '../../components/cooking/RoastTimeTool.tsx';
 import MeasurementConverterTool from '../../components/cooking/MeasurementConverterTool.tsx';
 import ButterConverterTool from '../../components/cooking/ButterConverterTool.tsx';
 import OvenTempTool from '../../components/cooking/OvenTempTool.tsx';
@@ -62,6 +65,9 @@ const schema = [
 
     <div class="mt-6">
       {tool.widget === 'grams' && <GramsToCupsTool client:load />}
+      {tool.widget === 'brine' && <BrineTool client:load />}
+      {tool.widget === 'airfryer' && <AirFryerTool client:load />}
+      {tool.widget === 'roast' && <RoastTimeTool client:load />}
       {tool.widget === 'measure' && <MeasurementConverterTool client:load />}
       {tool.widget === 'butter' && <ButterConverterTool client:load />}
       {tool.widget === 'oven' && <OvenTempTool client:load />}

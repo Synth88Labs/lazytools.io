@@ -179,3 +179,22 @@ export const DONENESS: { label: string; f: number; c: number; note?: string }[] 
   { label: 'Medium-well', f: 150, c: 66 },
   { label: 'Well done', f: 160, c: 71 },
 ];
+
+/* ---------------- brine / air-fryer / roast time ---------------- */
+
+/** Wet brine: salt (g) = water weight (g) × salt %. Optional sugar % too. */
+export function brine(waterG: number, saltPct: number, sugarPct = 0) {
+  if (waterG <= 0) return null;
+  return { saltG: waterG * (saltPct / 100), sugarG: waterG * (sugarPct / 100) };
+}
+
+/** Oven → air fryer: lower temperature by 25 °F and time by ~20% (published convention). */
+export function airFryerConvert(ovenTempF: number, ovenTimeMin: number) {
+  return { tempF: ovenTempF - 25, timeMin: ovenTimeMin * 0.8 };
+}
+
+/** Roast time (minutes) = weight (lb) × minutes-per-lb + a fixed base. */
+export function roastTime(weightLb: number, minPerLb: number, baseMin = 0): number | null {
+  if (weightLb <= 0 || minPerLb < 0) return null;
+  return weightLb * minPerLb + baseMin;
+}
