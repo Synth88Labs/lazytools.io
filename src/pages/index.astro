@@ -1,11 +1,24 @@
 ---
 import Base from '../layouts/Base.astro';
+import FaqSection from '../components/FaqSection.astro';
 import { CATEGORIES, SITE } from '../lib/site';
 import { popularPairsGlobal, titleNoun } from '../data/units';
+import { faqSchema } from '../lib/schema';
 
 const popularPairs = popularPairsGlobal(4);
 const live = CATEGORIES.filter((c) => c.status === 'live');
 const soon = CATEGORIES.filter((c) => c.status === 'coming-soon');
+
+const faqs = [
+  { q: 'Are LazyTools really free?', a: 'Yes — every tool is completely free, with no sign-up, no account, no trial, no usage limits and no paywalled features. There\'s nothing to install either; each tool opens instantly in your browser.' },
+  { q: 'Do my files or data get uploaded to a server?', a: 'No. Every tool runs entirely in your browser using JavaScript and WebAssembly, so the files you open and the values you type are processed on your own device and never sent anywhere. You can prove it: open your browser\'s network tab and watch, or switch off your internet connection mid-use — the tools keep working.' },
+  { q: 'Does LazyTools track me or use cookies?', a: 'No. There is no analytics, no tracking pixel and no cookies — nothing to consent to. The only optional data is an anonymous star rating you can choose to leave on a tool (just the tool name and star value, with no IP address, cookie or identifier).' },
+  { q: 'Do the tools work offline?', a: 'Yes. Because the processing happens in your browser, most tools keep working with no internet connection once the page has loaded — handy on a plane or with a patchy signal.' },
+  { q: 'How many tools are there, and what kinds?', a: 'Over 600 tools across 34 categories — unit and size converters, everyday and financial calculators, exact math, chemistry, physics, biology and statistics, cooking, automotive, fitness, pet, gardening, music, weather, astronomy and photography calculators, developer utilities, text and color tools, generators, PDF and image tools, and a passport/visa photo maker.' },
+  { q: 'How accurate are the calculators?', a: 'They\'re built for exactness — using precise NIST/BIPM conversion factors, published scientific and engineering formulas, and BigInt or exact-fraction math where rounding would otherwise creep in. Many categories were checked against authoritative sources (NASA, NOAA, USDA, King Arthur Baking and others), and the harder libraries are unit-tested.' },
+  { q: 'Do I need to create an account?', a: 'Never. LazyTools has no accounts and holds no personal data — you just open a tool and use it. Some tools optionally remember your preferences in your browser\'s own local storage, which stays on your device.' },
+  { q: 'Is LazyTools open source?', a: 'Yes — the site is open source on GitHub, so you can read exactly how every tool works and verify the privacy claims for yourself. It\'s a project of Synth88 Labs.' },
+];
 
 /** Flagship tools across categories — hand-picked, highest-intent entries. */
 const flagship = [
@@ -41,7 +54,8 @@ const flagship = [
 
 <Base
   title="LazyTools — Free Online Tools That Never Upload Your Data"
-  description="540+ free, privacy-first online tools across 27 categories: unit converters, calculators, finance, exact math, chemistry & physics, cooking & kitchen converters, automotive calculators, biology & lab tools, passport & visa photo makers, text-forensics and developer utilities, QR & barcode generators, PDF and image tools, and more. Everything runs locally in your browser — your data never leaves your device. No sign-up, no limits."
+  description="600+ free, privacy-first online tools across 34 categories: unit converters, calculators, finance, exact math, chemistry & physics, cooking, automotive, fitness, pets, gardening, music, weather, astronomy & photography calculators, biology & lab tools, passport & visa photo makers, text-forensics and developer utilities, QR & barcode generators, PDF and image tools, and more. Everything runs in your browser — your files and inputs are never uploaded, with no analytics, cookies or tracking. No sign-up, no limits."
+  schema={[faqSchema(faqs)]}
 >
   <!-- Hero -->
   <section class="bg-gradient-to-b from-brand-50 to-white">
@@ -58,7 +72,7 @@ const flagship = [
           href="/tools/"
           class="rounded-xl bg-brand-700 px-6 py-3 font-semibold text-white shadow-sm transition hover:bg-brand-800"
         >
-          Browse 540+ free tools
+          Browse 600+ free tools
         </a>
         <a
           href="/how-it-works/"
@@ -149,5 +163,23 @@ const flagship = [
         See the technical details
       </a>
     </div>
+  </section>
+
+  <!-- What you can do -->
+  <section class="mx-auto max-w-5xl px-4 pb-4">
+    <h2 class="text-2xl font-bold text-slate-900">One toolbox for the whole day</h2>
+    <div class="mt-4 grid gap-4 text-sm leading-relaxed text-slate-600 sm:grid-cols-2 lg:grid-cols-3">
+      <p><strong class="text-slate-900">Convert anything.</strong> Length, weight, temperature, volume, data and hundreds more unit pairs with exact NIST/BIPM factors — plus ring, shoe and clothing sizes across US, UK and EU systems.</p>
+      <p><strong class="text-slate-900">Do the math, exactly.</strong> Percentages, loans and mortgages, fractions with steps, primes, quadratics, statistics and BigInt-scale arithmetic that never silently rounds.</p>
+      <p><strong class="text-slate-900">Run the lab.</strong> Balance chemical equations, compute molar mass, solve SUVAT and Ohm's law, and work through biology and statistics — each showing the working, not just an answer.</p>
+      <p><strong class="text-slate-900">Handle everyday life.</strong> Plan finances, scale a recipe, size a tire, pace a run, tell your dog's age in human years, space a garden bed, tune an instrument or read the weather's "feels like."</p>
+      <p><strong class="text-slate-900">Work with files, privately.</strong> Merge and split PDFs, compress and convert images, clean metadata, and make passport & visa photos for 80+ countries — all without an upload.</p>
+      <p><strong class="text-slate-900">Build and inspect.</strong> Format and encode data, hash and check text, generate QR codes, passwords and UUIDs, and detect invisible characters or AI watermarks in text.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="mx-auto max-w-5xl px-4 pb-12">
+    <FaqSection faqs={faqs} />
   </section>
 </Base>
