@@ -37,6 +37,7 @@ export const CATEGORIES: CategoryDef[] = [
   { slug: 'garden', name: 'Gardening & Plants', icon: '🌱', description: 'Plant spacing, raised-bed soil, fertilizer, watering, planting dates and compost — metric or imperial.', status: 'live' },
   { slug: 'music', name: 'Music & Audio', icon: '🎵', description: 'Note frequencies, BPM to delay time, tap tempo, metronome, intervals and transposing — for musicians.', status: 'live' },
   { slug: 'weather', name: 'Weather & Atmosphere', icon: '🌦️', description: 'Heat index, wind chill, dew point, wet-bulb and feels-like temperature — official NWS formulas.', status: 'live' },
+  { slug: 'astronomy', name: 'Astronomy & Space', icon: '🔭', description: 'Moon phase, sunrise & sunset, weight & age on other planets, light-time and telescope optics.', status: 'live' },
   { slug: 'photo', name: 'Photo Size Maker', icon: '🪪', description: 'Passport, visa & ID photos for 80+ countries — crop, check and export in your browser.', status: 'live' },
   { slug: 'dev', name: 'Developer Tools', icon: '👨‍💻', description: 'Formatters, encoders, hashes and other dev utilities.', status: 'live' },
   { slug: 'file', name: 'File Converters', icon: '🔄', description: 'CSV, JSON, XML, YAML and Markdown conversion.', status: 'live' },

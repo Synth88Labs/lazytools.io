@@ -1,4 +1,12 @@
 [
+  "astronomy/age-on-other-planets",
+  "astronomy/angular-size-calculator",
+  "astronomy/light-travel-time-calculator",
+  "astronomy/moon-phase-calculator",
+  "astronomy/parallax-distance-calculator",
+  "astronomy/sunrise-sunset-calculator",
+  "astronomy/telescope-calculator",
+  "astronomy/weight-on-other-planets",
   "automotive/compression-ratio-calculator",
   "automotive/engine-displacement-calculator",
   "automotive/fuel-economy-converter",

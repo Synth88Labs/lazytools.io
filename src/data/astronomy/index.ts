@@ -1,0 +1,163 @@
+/** Astronomy & Space calculator registry. One entry drives an /astronomy/ page. */
+
+export interface AstroToolDef {
+  slug: string;
+  name: string;
+  icon: string;
+  widget: 'moonphase' | 'sun' | 'planetweight' | 'planetage' | 'lighttime' | 'angular' | 'telescope' | 'parallax';
+  description: string;
+  lead: string;
+  how: string;
+  note?: string;
+  faqs: { q: string; a: string }[];
+  keywords: string[];
+}
+
+export const ASTRO_TOOLS: AstroToolDef[] = [
+  {
+    slug: 'moon-phase-calculator',
+    name: 'Moon Phase Calculator',
+    icon: '🌙',
+    widget: 'moonphase',
+    description: 'Find the moon phase for any date — the phase name, illumination percentage, moon age and days to the next full and new moon. In your browser.',
+    lead: 'Pick a date to see the moon phase — its name, how illuminated it is, its age in days, and when the next full and new moon fall.',
+    how: 'The moon cycles through its phases every 29.53 days — the synodic month, the time from one new moon to the next. The tool measures how far through the current cycle the chosen date is (the moon\'s "age" in days), anchored to a known reference new moon, and from that gives the phase name and the illuminated fraction of the disc.',
+    note: 'This uses the mean synodic period, so it\'s accurate to within a few hours — more than enough to identify the phase and plan around a full or new moon. The exact instant of each phase wobbles slightly because the moon\'s orbit isn\'t a perfect circle.',
+    faqs: [
+      { q: 'What moon phase is it today?', a: 'Set the date to today and the tool shows the current phase, its illumination and the moon\'s age in days. The eight phases run new → waxing crescent → first quarter → waxing gibbous → full → waning gibbous → last quarter → waning crescent.' },
+      { q: 'How long is the moon\'s cycle?', a: '29.53 days — the synodic month, from one new moon to the next. That\'s why full moons fall on different calendar dates each month and there\'s occasionally a second full moon (a "blue moon").' },
+      { q: 'What does moon illumination percentage mean?', a: 'The fraction of the moon\'s disc that\'s lit as seen from Earth. 0% is a new moon (dark), 50% is a quarter moon (half lit), and 100% is a full moon. It rises and falls smoothly through the cycle.' },
+      { q: 'When is the next full moon?', a: 'The tool shows the days until the next full and new moon from your chosen date. Full moons recur about every 29.5 days.' },
+      { q: 'What is the moon\'s age?', a: 'How many days it\'s been since the last new moon — 0 at new moon, about 7.4 at first quarter, 14.8 at full, and 22 at last quarter, resetting after 29.53 days.' },
+    ],
+    keywords: ['moon phase calculator', 'moon phase today', 'lunar phase calculator', 'moon illumination', 'current moon phase', 'moon phase by date', 'full moon calculator'],
+  },
+  {
+    slug: 'sunrise-sunset-calculator',
+    name: 'Sunrise & Sunset Calculator',
+    icon: '🌅',
+    widget: 'sun',
+    description: 'Calculate sunrise, sunset, solar noon and day length for any location and date, using the NOAA solar-position algorithm. In your browser.',
+    lead: 'Enter a date and location to get the sunrise, sunset, solar noon and day length — from the NOAA solar algorithm.',
+    how: 'The tool computes the sun\'s position from the date using the NOAA solar-position algorithm — working out the solar declination and the equation of time, then the hour angle at which the sun crosses the horizon for your latitude. Sunrise and sunset use a 90.833° zenith, which accounts for atmospheric refraction and the sun\'s own radius. Enter your latitude, longitude and UTC offset (or pick a city).',
+    note: 'Times are local clock time, so set the UTC offset correctly for the date — including daylight saving if it applies. Longitude is positive for east. The algorithm is accurate to about a minute for latitudes within ±72°; near the poles the sun may not rise or set at all.',
+    faqs: [
+      { q: 'What time is sunrise and sunset today?', a: 'Enter today\'s date and your latitude, longitude and UTC offset (or choose a city preset), and the tool gives sunrise, sunset, solar noon and the length of the day.' },
+      { q: 'How is sunrise calculated?', a: 'From the sun\'s declination and the equation of time for the date (via the NOAA algorithm), then the hour angle where the sun reaches a 90.833° zenith — the standard sunrise/sunset altitude, which includes refraction and the sun\'s radius.' },
+      { q: 'What is solar noon?', a: 'The moment the sun is highest and due south (or north), midway between sunrise and sunset. It rarely coincides with 12:00 clock time because of your longitude within the time zone and the equation of time.' },
+      { q: 'Why do I need my UTC offset?', a: 'To convert the sun\'s position into your local clock time. Enter the offset that applies on the date — remember to add an hour during daylight saving time.' },
+      { q: 'Why doesn\'t the sun rise at the poles?', a: 'Above about 66.5° latitude, near the solstices the sun can stay below the horizon all day (polar night) or above it all day (midnight sun). The tool flags these cases.' },
+    ],
+    keywords: ['sunrise sunset calculator', 'sunrise time calculator', 'sunset calculator', 'day length calculator', 'solar noon calculator', 'daylight hours calculator', 'noaa sunrise'],
+  },
+  {
+    slug: 'weight-on-other-planets',
+    name: 'Weight on Other Planets Calculator',
+    icon: '🪐',
+    widget: 'planetweight',
+    description: 'Find out how much you\'d weigh on the Moon, Mars, Jupiter and every other planet — from your Earth weight and each body\'s surface gravity. In your browser.',
+    lead: 'Enter your Earth weight to see what you\'d weigh on the Moon, Mars, Jupiter, the Sun and every planet.',
+    how: 'Your weight is your mass times the local surface gravity, so it changes from world to world even though your mass doesn\'t. The tool multiplies your Earth weight by each body\'s surface-gravity ratio (from the NASA Planetary Fact Sheet) — about 0.17 on the Moon, 0.38 on Mars, 2.36 on Jupiter — to show what a scale would read there.',
+    note: 'Gravity for the gas giants is quoted at the cloud-top (1-bar) level, since they have no solid surface. On the Sun you couldn\'t stand at all, but the number (about 28× Earth) shows how crushing its gravity is.',
+    faqs: [
+      { q: 'How much would I weigh on the Moon?', a: 'About one-sixth of your Earth weight — the Moon\'s surface gravity is 0.166× Earth\'s. So a 150 lb person would weigh about 25 lb on the Moon.' },
+      { q: 'How much would I weigh on Mars?', a: 'About 38% of your Earth weight (Mars gravity is 0.377× Earth\'s). A 150 lb person would weigh around 57 lb on Mars.' },
+      { q: 'Why does my weight change but not my mass?', a: 'Mass is the amount of matter in you and never changes. Weight is the force of gravity on that mass — mass × surface gravity — so it varies with the world you\'re standing on.' },
+      { q: 'Where would I weigh the most?', a: 'Of the planets, Jupiter, at about 2.36× your Earth weight (a 150 lb person would weigh 354 lb). The Sun\'s gravity is far higher still, about 28× Earth\'s.' },
+      { q: 'What about weight on the gas giants?', a: 'Gas giants have no solid surface, so their "surface gravity" is measured at the cloud tops (the 1-bar pressure level). The tool uses those NASA values for Jupiter, Saturn, Uranus and Neptune.' },
+    ],
+    keywords: ['weight on other planets', 'weight on planets calculator', 'how much would i weigh on mars', 'weight on the moon', 'planet weight calculator', 'gravity on other planets', 'weight on jupiter'],
+  },
+  {
+    slug: 'age-on-other-planets',
+    name: 'Age on Other Planets Calculator',
+    icon: '🎂',
+    widget: 'planetage',
+    description: 'Find your age on Mercury, Mars, Jupiter and every other planet — a year is one orbit, and each planet\'s is a different length. In your browser.',
+    lead: 'Enter your age or birthday to see how old you\'d be on every planet, where a "year" is one trip around the Sun.',
+    how: 'A year is the time a planet takes to orbit the Sun once, and that varies enormously — 88 days for Mercury, 165 Earth-years for Neptune. The tool divides your age in Earth years by each planet\'s orbital period (from NASA) to give your age in that planet\'s years, and shows when your next "birthday" there would be.',
+    note: 'This is about orbital years, not how ageing would actually work. On fast Mercury you rack up years quickly; on distant Neptune, most people never complete a single Neptunian year.',
+    faqs: [
+      { q: 'How old would I be on Mars?', a: 'A Mars year is 1.88 Earth years, so divide your Earth age by 1.88 — a 30-year-old is about 16 Mars years old. The tool shows every planet at once.' },
+      { q: 'How old would I be on Mercury?', a: 'Mercury orbits the Sun in just 88 days, so you\'d be about 4.15× older in Mercury years — a 30-year-old would be roughly 124 Mercury years old.' },
+      { q: 'Why is my age different on each planet?', a: 'Because a "year" is one orbit of the Sun, and each planet takes a different time. Closer planets orbit faster (shorter years, so more of them), and distant planets orbit slowly (long years, so fewer).' },
+      { q: 'Could I ever be one year old on Neptune?', a: 'Only if you lived past 165 — a Neptune year is 164.8 Earth years. Most people never reach their first Neptunian birthday.' },
+      { q: 'Does this mean I\'d age differently?', a: 'No — this counts orbital years for fun, not biological ageing. Your body would age at the same rate; only the count of "years" changes with each planet\'s orbit.' },
+    ],
+    keywords: ['age on other planets', 'age on planets calculator', 'how old would i be on mars', 'age on mercury', 'planet age calculator', 'your age on other planets', 'age on jupiter'],
+  },
+  {
+    slug: 'light-travel-time-calculator',
+    name: 'Light Travel Time & Distance Calculator',
+    icon: '🌠',
+    widget: 'lighttime',
+    description: 'Calculate how long light takes to cross any distance, and convert between km, AU, light-years and parsecs. See the universe as it was. In your browser.',
+    lead: 'Enter a distance to see how long light takes to travel it — and the distance in km, AU, light-years and parsecs.',
+    how: 'Light travels at a constant 299,792.458 km every second, so the travel time is simply the distance divided by that speed. The tool converts your distance (in km, astronomical units, light-years or parsecs) to a common basis, gives the light travel time in sensible units, and shows the distance in all four scales.',
+    note: 'Because light takes time to reach us, we always see space in the past: the Moon 1.3 seconds ago, the Sun 8.3 minutes ago, the nearest star over 4 years ago, and distant galaxies as they were billions of years back. One light-year is about 9.46 trillion km.',
+    faqs: [
+      { q: 'How long does light take to reach Earth from the Sun?', a: 'About 8 minutes and 20 seconds — the Sun is 1 astronomical unit (149.6 million km) away, and light covers that in roughly 500 seconds. So you always see the Sun as it was 8⅓ minutes ago.' },
+      { q: 'What is a light-year?', a: 'The distance light travels in one year — about 9.46 trillion kilometres (9.4607×10¹² km). It\'s a distance, not a time, and it\'s how astronomers measure interstellar space.' },
+      { q: 'How far away is the nearest star?', a: 'Proxima Centauri is about 4.24 light-years (1.30 parsecs) away, so its light takes over four years to reach us — we see it as it was more than four years ago.' },
+      { q: 'What\'s the difference between a light-year and a parsec?', a: 'Both are distances. A parsec is about 3.26 light-years, defined from stellar parallax. Astronomers often use parsecs; light-years are more familiar in popular science.' },
+      { q: 'Why do we see stars "in the past"?', a: 'Light takes time to travel, so the light entering your eye left the object long ago. The farther away something is, the further back in time you\'re seeing it — a form of cosmic time travel.' },
+    ],
+    keywords: ['light travel time calculator', 'light year calculator', 'distance to light time', 'how long does light take', 'light years to km', 'au to light years', 'speed of light distance'],
+  },
+  {
+    slug: 'angular-size-calculator',
+    name: 'Angular Size Calculator',
+    icon: '📐',
+    widget: 'angular',
+    description: 'Calculate the angular (apparent) size of an object from its diameter and distance — in degrees, arcminutes and arcseconds. In your browser.',
+    lead: 'Enter an object\'s diameter and distance to get its angular size — how big it appears — in degrees, arcminutes and arcseconds.',
+    how: 'Angular size is how large something looks in the sky, regardless of its true size — it depends on the ratio of diameter to distance. The tool uses θ = 2 × arctan(diameter ÷ (2 × distance)), which for small angles reduces to the astronomer\'s rule θ(arcseconds) ≈ 206,265 × diameter ÷ distance. Enter the diameter and distance in the same units.',
+    note: 'The Moon and the Sun both appear about half a degree across — a coincidence that makes total solar eclipses possible. Angular sizes are given in degrees, arcminutes (1⁄60 of a degree) and arcseconds (1⁄60 of an arcminute).',
+    faqs: [
+      { q: 'What is angular size?', a: 'The apparent size of an object as an angle in the sky — how much of your field of view it fills. A nearby small object and a distant large one can have the same angular size. It depends on diameter ÷ distance.' },
+      { q: 'How do I calculate angular size?', a: 'θ = 2 × arctan(diameter ÷ (2 × distance)). For distant objects this simplifies to θ in arcseconds ≈ 206,265 × diameter ÷ distance (in the same units). The tool does both.' },
+      { q: 'How big is the full moon in the sky?', a: 'About 0.5° (half a degree), or roughly 31 arcminutes across. Surprisingly small — you can cover it with the tip of your little finger held at arm\'s length.' },
+      { q: 'Why do the Sun and Moon look the same size?', a: 'By coincidence, the Sun is about 400× larger than the Moon but also about 400× farther away, so both span roughly half a degree. That near-match is why the Moon can exactly cover the Sun in a total eclipse.' },
+      { q: 'What are arcminutes and arcseconds?', a: 'Subdivisions of a degree for measuring small angles: 1 degree = 60 arcminutes, and 1 arcminute = 60 arcseconds. Planets and stars are measured in arcseconds.' },
+    ],
+    keywords: ['angular size calculator', 'apparent size calculator', 'angular diameter calculator', 'arcseconds calculator', 'small angle calculator', 'angular size of the moon', 'apparent diameter'],
+  },
+  {
+    slug: 'telescope-calculator',
+    name: 'Telescope Calculator',
+    icon: '🔭',
+    widget: 'telescope',
+    description: 'Calculate telescope magnification, focal ratio, exit pupil, resolving power (Dawes/Rayleigh) and maximum useful magnification from focal length, aperture and eyepiece. In your browser.',
+    lead: 'Enter your telescope\'s focal length, aperture and eyepiece to get magnification, focal ratio, exit pupil and resolving power.',
+    how: 'Magnification is the telescope\'s focal length divided by the eyepiece\'s; the focal ratio (f-number) is focal length divided by aperture. The tool also gives the exit pupil (aperture ÷ magnification), the maximum useful magnification (about 2× the aperture in mm), and the resolving power from Dawes\' limit (116 ÷ aperture in mm) and the Rayleigh criterion (138 ÷ aperture in mm).',
+    note: 'Aperture matters most: it sets how much light you gather and how fine a detail you can resolve. Dawes\' limit is an empirical double-star figure; Rayleigh is the theoretical diffraction limit. Real-world magnification is usually capped by atmospheric "seeing" well below the 2×-aperture rule of thumb.',
+    faqs: [
+      { q: 'How do I calculate telescope magnification?', a: 'Divide the telescope\'s focal length by the eyepiece\'s focal length. A 1,200 mm telescope with a 10 mm eyepiece gives 120× magnification. Swap eyepieces to change the power.' },
+      { q: 'What is the focal ratio (f-number)?', a: 'The focal length divided by the aperture — a 1,200 mm scope with a 150 mm aperture is f/8. Lower f-numbers (faster scopes) give brighter, wider fields; higher ones suit planets and the moon.' },
+      { q: 'What is the maximum useful magnification?', a: 'Roughly 2× the aperture in millimetres (or 50× per inch) — about 300× for a 150 mm scope. Beyond that the image just gets dimmer and blurrier, and atmospheric turbulence usually limits you sooner.' },
+      { q: 'What is Dawes\' limit?', a: 'A measure of a telescope\'s resolving power: 116 ÷ aperture in mm, in arcseconds. It\'s the smallest separation of two equal stars a scope can split. A 150 mm telescope resolves about 0.77 arcseconds.' },
+      { q: 'What is the exit pupil?', a: 'The width of the light beam leaving the eyepiece: aperture ÷ magnification. Keeping it under about 7 mm (the dark-adapted human pupil) ensures you\'re not wasting light; small exit pupils suit high-power planetary views.' },
+    ],
+    keywords: ['telescope calculator', 'telescope magnification calculator', 'focal ratio calculator', 'telescope eyepiece calculator', 'dawes limit calculator', 'exit pupil calculator', 'telescope resolving power'],
+  },
+  {
+    slug: 'parallax-distance-calculator',
+    name: 'Stellar Parallax Distance Calculator',
+    icon: '✨',
+    widget: 'parallax',
+    description: 'Convert a star\'s parallax angle to its distance (in parsecs, light-years and km) and back — the fundamental method for measuring stellar distances. In your browser.',
+    lead: 'Convert a star\'s parallax angle to its distance — in parsecs and light-years — or work out the parallax for a given distance.',
+    how: 'As Earth orbits the Sun, nearby stars appear to shift slightly against the far background; half that annual shift is the star\'s parallax angle. The distance follows directly: distance in parsecs = 1 ÷ parallax in arcseconds — which is exactly how the parsec ("parallax-arcsecond") is defined. The tool converts either way and also gives light-years (1 parsec ≈ 3.26 ly).',
+    note: 'Parallax is the first rung of the cosmic distance ladder and the only direct way to measure stellar distances. The angles are tiny — even the nearest star shifts under one arcsecond — which is why space telescopes like Gaia are needed to measure them precisely.',
+    faqs: [
+      { q: 'How do you calculate distance from parallax?', a: 'Distance in parsecs = 1 ÷ parallax angle in arcseconds. A star with a parallax of 0.1 arcseconds is 10 parsecs (about 32.6 light-years) away. It\'s the definition of the parsec.' },
+      { q: 'What is stellar parallax?', a: 'The apparent shift of a nearby star against distant background stars as Earth moves around the Sun. The bigger the shift, the closer the star — it\'s the most direct way to measure stellar distances.' },
+      { q: 'What is a parsec?', a: 'The distance at which a star shows a parallax of one arcsecond — about 3.26 light-years or 3.09×10¹³ km. The name is short for "parallax of one arcsecond."' },
+      { q: 'How far away is Proxima Centauri by parallax?', a: 'Its parallax is about 0.77 arcseconds, giving a distance of 1 ÷ 0.77 ≈ 1.30 parsecs, or about 4.24 light-years — the nearest star to the Sun.' },
+      { q: 'Why are parallax angles so small?', a: 'Because stars are enormously far away compared with the size of Earth\'s orbit. Even the nearest shifts by under one arcsecond — a coin seen from several kilometres away — which is why precise measurement needs space telescopes.' },
+    ],
+    keywords: ['parallax distance calculator', 'stellar parallax calculator', 'parsec calculator', 'parallax to distance', 'star distance calculator', 'parallax angle calculator', 'parsecs to light years'],
+  },
+];
+
+export const getAstroTool = (slug: string) => ASTRO_TOOLS.find((t) => t.slug === slug);

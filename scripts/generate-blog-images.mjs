@@ -7,6 +7,13 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'light-travel-time-guide',
+    kicker: 'ASTRONOMY GUIDE',
+    lines: ['Why you always', 'see space in the past:', 'light travel time'],
+    fact: 'Sun 8 min ago · nearest star 4.2 years ago',
+    icon: '🌠',
+  },
+  {
     slug: 'feels-like-guide',
     kicker: 'WEATHER GUIDE',
     lines: ["Why 'feels like'", "isn't the temperature:", 'heat, wind & wet-bulb'],
