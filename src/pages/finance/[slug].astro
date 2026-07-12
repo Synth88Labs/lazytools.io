@@ -15,6 +15,9 @@ import ValuationRatiosTool from '../../components/finance/ValuationRatiosTool.ts
 import AffordabilityTool from '../../components/finance/AffordabilityTool.tsx';
 import RetirementTool from '../../components/finance/RetirementTool.tsx';
 import BudgetTool from '../../components/finance/BudgetTool.tsx';
+import DebtToIncomeTool from '../../components/finance/DebtToIncomeTool.tsx';
+import InflationTool from '../../components/finance/InflationTool.tsx';
+import NpvIrrTool from '../../components/finance/NpvIrrTool.tsx';
 import DebtPayoffTool from '../../components/finance/DebtPayoffTool.tsx';
 import SavingsGoalTool from '../../components/finance/SavingsGoalTool.tsx';
 import LoanPayoffTool from '../../components/finance/LoanPayoffTool.tsx';
@@ -89,6 +92,9 @@ const schema = [
       {tool.widget === 'affordability' && <AffordabilityTool client:load />}
       {tool.widget === 'retirement' && <RetirementTool client:load />}
       {tool.widget === 'budget' && <BudgetTool client:load />}
+      {tool.widget === 'dti' && <DebtToIncomeTool client:load />}
+      {tool.widget === 'inflation' && <InflationTool client:load />}
+      {tool.widget === 'npvirr' && <NpvIrrTool client:load />}
     </div>
 
     <div class="mt-4">

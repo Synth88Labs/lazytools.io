@@ -151,6 +151,38 @@ export function retirement(i: {
 }
 
 /** 50/30/20 budget split of monthly take-home pay. */
+/** Debt-to-income ratios (%): front-end = housing ÷ income, back-end = all debt ÷ income. */
+export function debtToIncome(housing: number, otherDebt: number, grossMonthlyIncome: number): { front: number; back: number } | null {
+  if (grossMonthlyIncome <= 0) return null;
+  return { front: (housing / grossMonthlyIncome) * 100, back: ((housing + otherDebt) / grossMonthlyIncome) * 100 };
+}
+
+/** Inflation-adjusted (real) value of a nominal amount after N years at a rate. */
+export function inflationAdjust(nominal: number, annualRatePct: number, years: number): { real: number; lossPct: number } {
+  const real = nominal / Math.pow(1 + annualRatePct / 100, years);
+  return { real, lossPct: nominal !== 0 ? (1 - real / nominal) * 100 : 0 };
+}
+
+/** Net present value of a cash-flow series (index 0 = today, usually negative) at a discount rate (%). */
+export function npv(ratePct: number, cashflows: number[]): number {
+  const r = ratePct / 100;
+  return cashflows.reduce((sum, cf, t) => sum + cf / Math.pow(1 + r, t), 0);
+}
+
+/** Internal rate of return (%) — the rate where NPV = 0 — via bisection. Null if no sign change. */
+export function irr(cashflows: number[]): number | null {
+  const f = (r: number) => cashflows.reduce((s, cf, t) => s + cf / Math.pow(1 + r, t), 0);
+  let lo = -0.9999, hi = 10;
+  let flo = f(lo), fhi = f(hi);
+  if (flo * fhi > 0) return null;
+  for (let i = 0; i < 200; i++) {
+    const mid = (lo + hi) / 2, fm = f(mid);
+    if (Math.abs(fm) < 1e-9) return mid * 100;
+    if (flo * fm < 0) { hi = mid; fhi = fm; } else { lo = mid; flo = fm; }
+  }
+  return ((lo + hi) / 2) * 100;
+}
+
 export function budget503020(takeHome: number, split: { needs: number; wants: number; savings: number } = { needs: 0.5, wants: 0.3, savings: 0.2 }): { needs: number; wants: number; savings: number } | null {
   if (takeHome < 0) return null;
   return { needs: takeHome * split.needs, wants: takeHome * split.wants, savings: takeHome * split.savings };

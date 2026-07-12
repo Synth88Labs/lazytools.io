@@ -6,7 +6,8 @@ export interface FinanceToolDef {
   icon: string;
   widget: 'compound' | 'debt' | 'savings' | 'loan' | 'creditcard' | 'cagr' | 'rule72' | 'roi' | 'breakeven' | 'aprapy'
     | 'liquidityratios' | 'leverageratios' | 'coverageratios' | 'profitabilityratios' | 'efficiencyratios' | 'valuationratios'
-    | 'affordability' | 'retirement' | 'budget';
+    | 'affordability' | 'retirement' | 'budget'
+    | 'dti' | 'inflation' | 'npvirr';
   description: string;
   lead: string;
   how: string;
@@ -357,6 +358,61 @@ export const FIN_TOOLS: FinanceToolDef[] = [
       { q: 'Is take-home pay before or after retirement contributions?', a: 'Use your actual after-tax pay. If retirement contributions are deducted from your paycheck, you can either count them inside the 20% savings bucket or budget your post-deduction take-home — just be consistent so savings aren\'t double-counted.' },
     ],
     keywords: ['50 30 20 budget calculator', 'budget calculator', 'monthly budget calculator', '50/30/20 rule', 'needs wants savings calculator', 'take home pay budget', 'personal budget calculator'],
+  },
+  {
+    slug: 'debt-to-income-calculator',
+    name: 'Debt-to-Income (DTI) Calculator',
+    icon: '⚖️',
+    widget: 'dti',
+    description: 'Calculate your debt-to-income ratio — front-end and back-end — from your monthly debts and gross income, with the lender bands explained. In your browser.',
+    lead: 'Enter your monthly housing payment, other debts and gross monthly income to get your front-end and back-end DTI ratios, with what lenders look for.',
+    how: 'Debt-to-income ratio is your monthly debt payments divided by your gross (pre-tax) monthly income, as a percentage. The front-end ratio counts housing only (rent or mortgage, plus taxes and insurance); the back-end ratio counts all recurring debt — housing plus car loans, student loans, and minimum credit-card payments. The tool computes both and flags where they fall against common lender thresholds.',
+    note: 'A widely used guideline is 28/36: housing at or below 28% of gross income and total debt at or below 36%. The "qualified mortgage" rule generally caps back-end DTI near 43%. Lower is safer and can improve loan terms. This is educational information, not lending or financial advice.',
+    faqs: [
+      { q: 'How do you calculate debt-to-income ratio?', a: 'Add up your monthly debt payments and divide by your gross monthly income, then multiply by 100. If you pay $2,000 in debts on $6,000 income, your DTI is 33%.' },
+      { q: 'What is the difference between front-end and back-end DTI?', a: 'Front-end counts only housing costs against income; back-end counts all debt payments (housing plus loans and minimum card payments). Lenders usually weigh the back-end ratio most heavily.' },
+      { q: 'What is a good debt-to-income ratio?', a: 'Generally 36% or below (back-end) is considered healthy, and many lenders prefer housing (front-end) at or under 28%. Above 43% makes qualifying for a mortgage harder.' },
+      { q: 'Does DTI use gross or net income?', a: 'Gross income — your pay before taxes and deductions. Using net (take-home) income would overstate your ratio compared with how lenders calculate it.' },
+      { q: 'What debts count toward DTI?', a: 'Recurring monthly obligations: rent or mortgage (with taxes and insurance), car and student loans, minimum credit-card payments, and other loan payments. Utilities, groceries and other variable spending are not counted.' },
+    ],
+    keywords: ['debt to income calculator', 'dti calculator', 'debt to income ratio', 'front end back end dti', 'mortgage dti calculator', '28/36 rule', 'how to calculate dti'],
+  },
+  {
+    slug: 'inflation-calculator',
+    name: 'Inflation Calculator',
+    icon: '📉',
+    widget: 'inflation',
+    description: 'See how inflation erodes the value of money over time — the real (today\'s-money) value of an amount after N years at a given rate, and how much you\'d need to keep pace. In your browser.',
+    lead: 'Enter an amount, an average inflation rate and a number of years to see its real (purchasing-power) value and how much you\'d need to keep pace.',
+    how: 'Inflation reduces what a fixed amount of money can buy. The real (inflation-adjusted) value after N years is amount ÷ (1 + rate)ᴺ, using the average annual inflation rate you enter. The tool also shows the percentage of purchasing power lost, and the future amount that would buy the same as your amount does today (amount × (1 + rate)ᴺ).',
+    note: 'You supply the rate, so there\'s no fixed price-index table to go out of date — pick a figure (long-run inflation has often averaged around 2–3% in many economies) or model a scenario. This is a compounding calculation, not a forecast, and it\'s educational rather than financial advice.',
+    faqs: [
+      { q: 'How do you calculate the effect of inflation?', a: 'Divide the amount by (1 + inflation rate) raised to the number of years: real value = amount ÷ (1 + r)ᴺ. At 3% for 10 years, $1,000 is worth about $744 in today\'s money.' },
+      { q: 'How much value does money lose to inflation?', a: 'At 3% a year, money loses roughly a quarter of its purchasing power over 10 years and nearly half over 20. Higher rates erode it faster — the effect compounds.' },
+      { q: 'What inflation rate should I use?', a: 'For long-run planning, many people use around 2–3%, close to central-bank targets and long historical averages, but you can enter any rate to model a specific scenario. The tool uses whatever you provide.' },
+      { q: 'What is the difference between nominal and real value?', a: 'Nominal value is the face amount of money; real value is what it can actually buy, adjusted for inflation. Inflation calculations convert between them.' },
+      { q: 'How much will I need to keep the same purchasing power?', a: 'Multiply by (1 + rate)ᴺ: to match what $10,000 buys today after 20 years at 3%, you\'d need about $18,061. The tool shows this "needed to keep pace" figure.' },
+    ],
+    keywords: ['inflation calculator', 'inflation rate calculator', 'purchasing power calculator', 'real value of money', 'future value inflation', 'money worth over time', 'inflation adjustment'],
+  },
+  {
+    slug: 'npv-irr-calculator',
+    name: 'NPV & IRR Calculator',
+    icon: '📈',
+    widget: 'npvirr',
+    description: 'Calculate net present value (NPV) and internal rate of return (IRR) from a series of cash flows and a discount rate — for investment and project analysis. In your browser.',
+    lead: 'Enter a discount rate and your yearly cash flows (year 0 is today, usually a negative outlay) to get the NPV and IRR.',
+    how: 'Net present value discounts every future cash flow back to today and sums them: NPV = Σ CFₜ ÷ (1 + rate)ᵗ, where t is the year. A positive NPV means the cash flows are worth more than the discount rate demands — the investment adds value. The internal rate of return (IRR) is the discount rate at which the NPV is exactly zero — the project\'s own break-even rate of return — found here by bisection. Add or remove years to match your project\'s length.',
+    note: 'Compare IRR against your required return (the discount rate or "hurdle rate"): if IRR exceeds it, NPV is positive. IRR is undefined when the cash flows never change sign (all inflows or all outflows), and unconventional flows (multiple sign changes) can have more than one IRR — NPV is the more robust measure. Educational, not investment advice.',
+    faqs: [
+      { q: 'How do you calculate NPV?', a: 'Discount each cash flow to the present and add them up: NPV = Σ CFₜ ÷ (1 + r)ᵗ. For an outlay of $1,000 today and $300 a year for five years at 8%, the NPV is about $198 — positive, so it beats the 8% rate.' },
+      { q: 'What is IRR?', a: 'The internal rate of return is the discount rate that makes NPV zero — the effective annual return the cash flows earn. If IRR is above your required return, the project has a positive NPV.' },
+      { q: 'What does a positive NPV mean?', a: 'That the investment\'s discounted cash flows exceed its cost at your chosen discount rate — it creates value and clears your required return. A negative NPV means it falls short.' },
+      { q: 'How are NPV and IRR related?', a: 'IRR is the discount rate at which NPV equals zero. So if your discount rate is below the IRR, NPV is positive; above the IRR, NPV is negative. They\'re two views of the same cash flows.' },
+      { q: 'Why is my IRR shown as n/a?', a: 'IRR requires the cash flows to change sign at least once (an outlay followed by returns). If every value is positive or every value is negative, there\'s no rate that zeroes the NPV, so IRR is undefined.' },
+      { q: 'Which is better, NPV or IRR?', a: 'NPV is generally the more reliable decision rule — it directly measures value added and handles unusual cash-flow patterns, whereas IRR can be undefined or have multiple values. IRR is a useful, intuitive summary rate alongside it.' },
+    ],
+    keywords: ['npv calculator', 'irr calculator', 'net present value calculator', 'internal rate of return', 'discounted cash flow calculator', 'npv irr', 'investment return calculator'],
   },
 ];
 
