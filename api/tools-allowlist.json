@@ -437,6 +437,7 @@
   "security/file-hash-checker",
   "security/image-metadata-remover",
   "security/password-strength-checker",
+  "security/pii-redactor",
   "size/bra-size-converter",
   "size/clothing-size-converter",
   "size/hat-size-converter",

@@ -6,7 +6,7 @@ export interface SecurityToolDef {
   icon: string;
   description: string;
   lead: string;
-  widget: 'metadata' | 'encrypt' | 'strength' | 'file-hash';
+  widget: 'metadata' | 'encrypt' | 'strength' | 'file-hash' | 'piiredact';
   how: string;
   note?: string;
   faqs: { q: string; a: string }[];
@@ -89,5 +89,24 @@ export const SECURITY_TOOLS: SecurityToolDef[] = [
       { q: 'Why no MD5?', a: 'The Web Crypto API excludes MD5 deliberately — its collision resistance has been broken for two decades. Any site still publishing only MD5 sums is overdue an update; SHA-256 is the drop-in replacement.' },
     ],
     keywords: ['sha256 checksum', 'file hash checker', 'verify file checksum', 'sha256 of file online', 'checksum verifier'],
+  },
+  {
+    slug: 'pii-redactor',
+    name: 'PII Redactor',
+    icon: '🕵️',
+    widget: 'piiredact',
+    description: 'Detect and mask personal data — emails, phone numbers, SSNs, credit-card numbers, IP addresses and IBANs — in text before you paste it into a chatbot, ticket or forum. In your browser.',
+    lead: 'Paste text and the tool finds and masks personal data — emails, phones, SSNs, cards, IPs and IBANs — so you can safely share it without leaking it.',
+    how: 'The redactor scans your text with pattern matching for common kinds of personal data: email addresses, phone numbers, US Social Security numbers, credit-card numbers (validated with the Luhn checksum so random digit strings are ignored), IPv4 and IPv6 addresses, and IBANs (validated with the mod-97 check). It highlights what it found and produces a masked copy you can pick the style of — labels like [EMAIL], solid blocks, or a partial mask that keeps the last four digits — ready to copy.',
+    note: 'This exists for one increasingly common moment: before you paste an error log, email or spreadsheet row into an AI chatbot, support ticket or public forum. Everything runs in your browser and nothing is uploaded. But detection is pattern-based and best-effort — it can miss names, street addresses, unusual formats or context-specific identifiers, so always review the output rather than trusting it blindly.',
+    faqs: [
+      { q: 'What does a PII redactor do?', a: 'It finds personally identifiable information — emails, phone numbers, SSNs, card numbers, IP addresses, IBANs — in a block of text and replaces it with a mask, so you can share the text without exposing the personal data. This one works entirely in your browser.' },
+      { q: 'How do I remove personal data before using ChatGPT?', a: 'Paste the text here first, let the tool mask the emails, phone numbers, IDs and card numbers it detects, then copy the redacted version into the chatbot. It keeps the meaning while stripping the sensitive details — and nothing is uploaded in the process.' },
+      { q: 'Is my text uploaded anywhere?', a: 'No. All the detection and masking happen locally in your browser with JavaScript; the text never leaves your device and the tool works offline. That is the whole point — you would not want to send data to a server just to scrub it.' },
+      { q: 'How accurate is the detection?', a: 'Good for well-structured data (emails, card numbers via the Luhn check, IPs, IBANs via mod-97), but it is pattern-based, so it can miss names, addresses, dates of birth or unusual formats, and can occasionally over-match. Always review the highlighted results before relying on them.' },
+      { q: 'Why validate credit cards with the Luhn algorithm?', a: 'So random 16-digit strings (like order numbers or IDs) are not flagged as cards. The Luhn checksum is the same check card networks use, so only genuinely card-shaped numbers are masked — cutting false positives sharply.' },
+      { q: 'What masking styles are there?', a: 'Labels (replace with [EMAIL], [PHONE], etc. — clearest for a human reader), blocks (solid ████ characters), or partial (keep the last four digits, e.g. ••••1234 — useful when you still need to reference the item). Pick whichever suits where the text is going.' },
+    ],
+    keywords: ['pii redactor', 'redact personal information', 'remove pii from text', 'redact text before chatgpt', 'mask sensitive data', 'anonymize text', 'redact email phone ssn'],
   },
 ];

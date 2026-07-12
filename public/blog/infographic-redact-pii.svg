@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="Scrub personal data before pasting text into AI. Before: a support message containing an email jane at example dot com, a phone 555-123-4567, an SSN 123-45-6789 and a card 4111 1111 1111 1111. Run it through a local redactor in your browser. After: the same message with each item replaced by a label like bracket EMAIL, bracket PHONE, bracket SSN, bracket CARD. The meaning is kept; the personal data is removed; nothing is uploaded. What it catches: emails, phone numbers, SSNs, credit cards validated by the Luhn check, IP addresses and IBANs. What it can miss: names, street addresses, and unusual formats — so always review.">
+  <defs>
+    <style>
+      .h { font: 800 27px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .sub { font: 500 15px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+      .lab { font: 800 13px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; }
+      .mono { font: 600 13px Consolas, Menlo, monospace; }
+    </style>
+  </defs>
+
+  <text x="600" y="40" text-anchor="middle" class="h">Scrub personal data before pasting text into AI</text>
+  <text x="600" y="66" text-anchor="middle" class="sub">the redaction happens in your browser — the raw data never leaves your device</text>
+
+  <!-- BEFORE card -->
+  <g transform="translate(70 96)">
+    <rect width="440" height="220" rx="14" fill="#fef2f2" stroke="#dc2626"/>
+    <text x="20" y="30" class="lab" fill="#b91c1c">BEFORE — contains PII</text>
+    <text x="20" y="66" class="mono" fill="#334155">Hi, I'm Jane. Reach me at</text>
+    <text x="20" y="88" class="mono" fill="#dc2626">jane@example.com</text>
+    <text x="20" y="110" class="mono" fill="#334155">or on <tspan fill="#dc2626">(555) 123-4567</tspan>.</text>
+    <text x="20" y="140" class="mono" fill="#334155">SSN <tspan fill="#dc2626">123-45-6789</tspan></text>
+    <text x="20" y="162" class="mono" fill="#334155">card <tspan fill="#dc2626">4111 1111 1111 1111</tspan></text>
+    <text x="20" y="196" class="mono" fill="#334155">server <tspan fill="#dc2626">192.168.1.42</tspan></text>
+  </g>
+
+  <!-- arrow -->
+  <g transform="translate(530 200)">
+    <text x="65" y="-6" text-anchor="middle" class="lab" fill="#1d4ed8">redact</text>
+    <text x="65" y="4" text-anchor="middle" class="sub" fill="#1d4ed8">(local)</text>
+    <path d="M10 20 L120 20" stroke="#1d4ed8" stroke-width="3"/><path d="M112 12 L124 20 L112 28 Z" fill="#1d4ed8"/>
+  </g>
+
+  <!-- AFTER card -->
+  <g transform="translate(690 96)">
+    <rect width="440" height="220" rx="14" fill="#ecfdf5" stroke="#059669"/>
+    <text x="20" y="30" class="lab" fill="#047857">AFTER — safe to share</text>
+    <text x="20" y="66" class="mono" fill="#334155">Hi, I'm Jane. Reach me at</text>
+    <text x="20" y="88" class="mono" fill="#047857">[EMAIL]</text>
+    <text x="20" y="110" class="mono" fill="#334155">or on <tspan fill="#047857">[PHONE]</tspan>.</text>
+    <text x="20" y="140" class="mono" fill="#334155">SSN <tspan fill="#047857">[SSN]</tspan></text>
+    <text x="20" y="162" class="mono" fill="#334155">card <tspan fill="#047857">[CARD]</tspan></text>
+    <text x="20" y="196" class="mono" fill="#334155">server <tspan fill="#047857">[IPV4]</tspan></text>
+  </g>
+
+  <!-- catches / misses -->
+  <g transform="translate(70 344)">
+    <rect width="530" height="118" rx="12" fill="#eff6ff" stroke="#1d4ed8"/>
+    <text x="20" y="30" class="lab" fill="#1d4ed8">✓ CATCHES</text>
+    <text x="20" y="58" class="sub" fill="#334155">emails · phone numbers · US SSNs</text>
+    <text x="20" y="80" class="sub" fill="#334155">credit cards (Luhn-checked) · IP addresses</text>
+    <text x="20" y="102" class="sub" fill="#334155">IBANs (mod-97 checked)</text>
+  </g>
+  <g transform="translate(620 344)">
+    <rect width="510" height="118" rx="12" fill="#fffbeb" stroke="#d97706"/>
+    <text x="20" y="30" class="lab" fill="#b45309">⚠ CAN MISS — always review</text>
+    <text x="20" y="58" class="sub" fill="#334155">names · street addresses</text>
+    <text x="20" y="80" class="sub" fill="#334155">dates of birth · unusual formats</text>
+    <text x="20" y="102" class="sub" fill="#334155">context-specific identifiers</text>
+  </g>
+
+  <!-- footer -->
+  <g transform="translate(70 486)">
+    <rect width="1060" height="50" rx="14" fill="#0c2f6b"/>
+    <text x="24" y="31" font-family="Consolas, Menlo, monospace" font-size="14" fill="#7ef0c0">lazytools.io — PII redactor: mask personal data locally, nothing uploaded</text>
+  </g>
+
+  <text x="600" y="566" text-anchor="middle" class="sub">Everything runs in your browser — you would not want to upload data to a server just to scrub it.</text>
+</svg>

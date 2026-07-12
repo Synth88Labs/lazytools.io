@@ -69,7 +69,7 @@ working.
 | [Calendars](https://lazytools.io/calendar/) | Hijri/Hebrew/Persian/Julian, **Nepali BS⇄AD**, 4-5-4 retail |
 | [Codes & Ciphers](https://lazytools.io/cipher/) | Morse (with audio), NATO, binary, Caesar, Vigenère |
 | [Productivity](https://lazytools.io/productivity/) | Pomodoro, Kanban, mind map, **interactive Gantt** (drag bars to reschedule/resize, zoom, full-screen), habit tracker — saved locally, JSON export |
-| [Privacy & Security](https://lazytools.io/security/) | EXIF remover, AES-256 file encryption, file hash |
+| [Privacy & Security](https://lazytools.io/security/) | EXIF remover, AES-256 file encryption, file hash, **PII redactor** (mask emails/phones/SSNs/cards[Luhn]/IPs/IBANs in text before pasting into AI — 100% client-side) |
 | [Image Tools](https://lazytools.io/image/) | compress, convert, resize, **HEIC→JPG** (libheif wasm) |
 | [Photo Size Maker](https://lazytools.io/photo/) | **passport / visa / ID photos** for multiple countries — crop to exact official size, **on-device face-position check (MediaPipe BlazeFace)**, background & exposure checks, DPI-correct export; every spec cited + date-verified |
 | [PDF Tools](https://lazytools.io/pdf/) | merge/split/rotate **with live page previews**, unlock/protect (qpdf wasm), **accessibility checker (EAA)**, **redaction checker + rasterizing redactor** |

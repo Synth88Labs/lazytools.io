@@ -9,6 +9,7 @@ import MetadataRemoverTool from '../../components/security/MetadataRemoverTool.t
 import FileEncryptTool from '../../components/security/FileEncryptTool.tsx';
 import PasswordStrengthTool from '../../components/security/PasswordStrengthTool.tsx';
 import FileHashTool from '../../components/security/FileHashTool.tsx';
+import PiiRedactorTool from '../../components/security/PiiRedactorTool.tsx';
 import { SECURITY_TOOLS, type SecurityToolDef } from '../../data/security/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -59,6 +60,7 @@ const schema = [
       {tool.widget === 'encrypt' && <FileEncryptTool client:load />}
       {tool.widget === 'strength' && <PasswordStrengthTool client:load />}
       {tool.widget === 'file-hash' && <FileHashTool client:load />}
+      {tool.widget === 'piiredact' && <PiiRedactorTool client:load />}
     </div>
 
     <div class="mt-4">

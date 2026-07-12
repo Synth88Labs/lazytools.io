@@ -7,6 +7,13 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'redact-pii-before-ai-guide',
+    kicker: 'PRIVACY GUIDE',
+    lines: ['Scrub the personal', 'data out of text', 'before you paste it into AI'],
+    fact: 'emails · phones · SSNs · cards · IPs — masked locally',
+    icon: '🕵️',
+  },
+  {
     slug: 'golden-hour-blue-hour-guide',
     kicker: 'PHOTOGRAPHY GUIDE',
     lines: ['Golden hour & blue hour:', 'the sun angles that', 'make the best light'],
