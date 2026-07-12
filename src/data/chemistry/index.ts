@@ -9,7 +9,8 @@ export interface ChemToolDef {
     | 'stoich' | 'mole' | 'empirical' | 'dilution' | 'yield' | 'density'
     | 'henderson' | 'beerlambert' | 'gaslaw' | 'halflife'
     | 'gibbs' | 'nernst' | 'arrhenius' | 'freezing' | 'boiling' | 'ppm' | 'percenterror'
-    | 'periodic' | 'econfig' | 'compare' | 'isotope' | 'oxidation';
+    | 'periodic' | 'econfig' | 'compare' | 'isotope' | 'oxidation'
+    | 'weakacid' | 'ksp' | 'kc' | 'hess';
   /** molar-mass satellites: default view */
   view?: 'mass' | 'percent';
   description: string;
@@ -592,6 +593,78 @@ CHEM_TOOLS.unshift(
       { q: 'Why can’t some formulas be solved?', a: 'If two or more elements lack a fixed rule, the oxidation states aren’t uniquely determined by rules alone, and you need additional chemistry (like known ion charges) to assign them.' },
     ],
     keywords: ['oxidation number calculator', 'oxidation state calculator', 'find oxidation number', 'oxidation number of', 'oxidation states rules', 'redox oxidation number'],
+  },
+  {
+    slug: 'weak-acid-base-ph-calculator',
+    name: 'Weak Acid & Base pH Calculator',
+    icon: '⚗️',
+    widget: 'weakacid',
+    description: 'Calculate the pH of a weak acid or base from its Ka (or Kb) and concentration, using the exact ICE-table quadratic. Plus pOH, ion concentration and % ionization. In your browser.',
+    lead: 'Enter the Ka (or Kb) and the concentration to get the pH of a weak acid or base — solved exactly, no "x is small" shortcut.',
+    how: 'A weak acid only partly ionises, so its pH isn\'t simply −log of the concentration. Setting up the ICE table for HA ⇌ H⁺ + A⁻ gives Ka = x² ÷ (C − x) where x = [H⁺]; the tool solves that quadratic exactly (x² + Ka·x − Ka·C = 0), then reports pH = −log x, along with pOH, the ion concentration and the percent ionization. Weak bases work the same way through Kb and pOH.',
+    note: 'Because it solves the full quadratic rather than assuming x is negligible, it stays accurate for stronger weak acids and dilute solutions where the common approximation breaks down. It models a single (monoprotic) ionisation step at 25 °C (pKw = 14); for polyprotic acids it treats only the first dissociation. Enter Ka in decimal or scientific form (e.g. 1.8e-5).',
+    faqs: [
+      { q: 'How do I find the pH of a weak acid?', a: 'From its Ka and concentration: set Ka = x²/(C − x) with x = [H⁺] and solve the quadratic, then pH = −log x. For 0.1 M acetic acid (Ka = 1.8×10⁻⁵) the pH is about 2.87 — not 1, as a strong acid would give.' },
+      { q: 'Why can\'t I just take −log of the concentration?', a: 'That only works for strong acids, which ionise completely. A weak acid ionises partially, so the actual [H⁺] is far lower than the acid concentration — you must solve the equilibrium, which this tool does exactly.' },
+      { q: 'What is percent ionization?', a: 'The fraction of the acid (or base) that actually dissociates: [H⁺] ÷ initial concentration × 100. Weak acids typically ionise only a few percent; it rises as the solution gets more dilute.' },
+      { q: 'What is the difference between Ka and pKa?', a: 'pKa = −log Ka, a more convenient scale. A smaller pKa (larger Ka) means a stronger acid. Acetic acid\'s Ka of 1.8×10⁻⁵ is a pKa of about 4.74.' },
+      { q: 'Does this work for weak bases?', a: 'Yes — switch to base mode and enter the Kb. It solves for [OH⁻], gives the pOH, then pH = 14 − pOH at 25 °C.' },
+    ],
+    keywords: ['weak acid ph calculator', 'weak base ph calculator', 'ph from ka', 'ice table calculator', 'ka to ph', 'percent ionization calculator', 'weak acid equilibrium calculator'],
+  },
+  {
+    slug: 'ksp-solubility-calculator',
+    name: 'Ksp & Molar Solubility Calculator',
+    icon: '🧂',
+    widget: 'ksp',
+    description: 'Convert between the solubility product Ksp and molar solubility for any salt stoichiometry, with the common-ion effect. In your browser.',
+    lead: 'Enter a salt\'s Ksp and ion subscripts to get its molar solubility (or go the other way) — including the common-ion effect.',
+    how: 'For a sparingly soluble salt AₐBᵦ dissolving as a·Aⁿ⁺ + b·Bᵐ⁻, the solubility product is Ksp = (a·s)ᵃ·(b·s)ᵇ = aᵃ·bᵇ·s^(a+b), where s is the molar solubility. The tool rearranges this to s = (Ksp ÷ (aᵃ·bᵇ))^(1/(a+b)), converts either direction, and — if you supply a common-ion concentration — solves the suppressed solubility numerically.',
+    note: 'Watch the stoichiometry: the exponents come from the ion subscripts, which is exactly where the arithmetic trips people up (Ag₂CrO₄ is 2:1, so Ksp = 4s³, not s²). A common ion already in solution shifts the dissolution equilibrium left and sharply lowers solubility. Ksp values change with temperature and vary between sources, so use the value from your own data.',
+    faqs: [
+      { q: 'How do I calculate molar solubility from Ksp?', a: 'Write the dissolution equation, express Ksp in terms of s using the ion coefficients, and solve. For AgCl (1:1), Ksp = s², so s = √Ksp = √(1.8×10⁻¹⁰) ≈ 1.3×10⁻⁵ M. The tool handles any stoichiometry.' },
+      { q: 'What is the solubility product Ksp?', a: 'The equilibrium constant for a solid dissolving into its ions: Ksp = product of the ion concentrations, each raised to its coefficient. A smaller Ksp means a less soluble salt.' },
+      { q: 'How does the common-ion effect work?', a: 'Adding an ion the salt already contains (e.g. dissolving AgCl in NaCl solution) pushes the dissolution equilibrium backward, so much less of the salt dissolves. The tool computes the reduced solubility when you enter the common-ion concentration.' },
+      { q: 'Why is Ag₂CrO₄ not just √Ksp?', a: 'Because its stoichiometry is 2:1 — it releases 2 Ag⁺ and 1 CrO₄²⁻, so Ksp = (2s)²(s) = 4s³. You must build the Ksp expression from the coefficients, which is why the subscripts matter here.' },
+      { q: 'Does temperature change Ksp?', a: 'Yes — Ksp is temperature-dependent (usually rising with temperature for most salts). Published values are typically at 25 °C; use the value that matches your conditions.' },
+    ],
+    keywords: ['ksp calculator', 'molar solubility calculator', 'solubility product calculator', 'ksp to solubility', 'common ion effect calculator', 'solubility from ksp', 'ksp molar solubility'],
+  },
+  {
+    slug: 'equilibrium-constant-calculator',
+    name: 'Equilibrium Constant (Kc) & ICE Calculator',
+    icon: '⚖️',
+    widget: 'kc',
+    description: 'Solve for equilibrium concentrations from initial concentrations and Kc using an ICE table, with the reaction-quotient shift direction. In your browser.',
+    lead: 'Set the reaction coefficients, initial concentrations and Kc to find the equilibrium concentrations and which way the reaction shifts.',
+    how: 'Given a reaction aA + bB ⇌ cC + dD, its initial concentrations and the equilibrium constant Kc, the tool builds the ICE table and finds the extent of reaction ξ at which the reaction quotient Q equals Kc: each concentration becomes initial ± coefficient·ξ. It solves that numerically (Q is monotonic in ξ), and compares the initial Q₀ with Kc to tell you whether the reaction shifts forward or reverse to reach equilibrium.',
+    note: 'Include only species that appear in the equilibrium expression — leave out pure solids and liquids (set their coefficient to 0). Concentrations are molar; for gas-phase equilibria you can use Kc with molar concentrations. The solver assumes a single reaction reaching one equilibrium state within the physically allowed range of ξ.',
+    faqs: [
+      { q: 'How do I find equilibrium concentrations from Kc?', a: 'Set up an ICE table: each species changes by its coefficient times the extent of reaction ξ. Then solve Q(ξ) = Kc for ξ and substitute back. The tool does this numerically for you and reports every equilibrium concentration.' },
+      { q: 'What is the reaction quotient Q?', a: 'The same expression as Kc but evaluated at the current (initial) concentrations. Comparing them predicts the shift: Q < Kc shifts forward (toward products), Q > Kc shifts reverse (toward reactants), and Q = Kc means the system is already at equilibrium.' },
+      { q: 'What is an ICE table?', a: 'A bookkeeping table of Initial, Change and Equilibrium concentrations. The Change row is the coefficient times the extent of reaction ξ (negative for reactants, positive for products); the Equilibrium row feeds into the Kc expression.' },
+      { q: 'Which species do I include?', a: 'Only gases and aqueous species — the ones that appear in the equilibrium-constant expression. Pure solids and pure liquids have an activity of 1 and are left out (set their coefficient to 0).' },
+      { q: 'What does the extent of reaction ξ mean?', a: 'How far the reaction proceeds from the initial state to equilibrium, in mol/L. A positive ξ means net forward reaction; negative means net reverse. Each concentration shifts by its coefficient times ξ.' },
+    ],
+    keywords: ['equilibrium constant calculator', 'kc calculator', 'ice table calculator', 'reaction quotient calculator', 'equilibrium concentration calculator', 'q vs k calculator', 'chemical equilibrium solver'],
+  },
+  {
+    slug: 'hess-law-calculator',
+    name: 'Hess\'s Law Enthalpy Calculator',
+    icon: '🔥',
+    widget: 'hess',
+    description: 'Calculate the enthalpy of reaction (ΔH°rxn) from standard formation enthalpies of the reactants and products. In your browser.',
+    lead: 'Enter each species\' coefficient and standard enthalpy of formation to get the reaction enthalpy — and whether it\'s exothermic or endothermic.',
+    how: 'Because enthalpy is a state function, the heat of a reaction depends only on the reactants and products, not the route between them (Hess\'s law). The tool applies ΔH°rxn = Σ(coefficient · ΔHf° of products) − Σ(coefficient · ΔHf° of reactants), summing the formation enthalpies you enter and reporting the reaction enthalpy in kJ/mol with an exothermic/endothermic verdict.',
+    note: 'Enter ΔHf° values (kJ/mol) from a single consistent data table, and remember an element in its standard state has ΔHf° = 0. Physical state matters — H₂O(l) and H₂O(g) have different formation enthalpies, so use the state that appears in your equation. The result is the standard enthalpy at 25 °C, per mole of reaction as written.',
+    faqs: [
+      { q: 'How do I calculate enthalpy of reaction using Hess\'s law?', a: 'ΔH°rxn = Σ(ΔHf° products × coefficient) − Σ(ΔHf° reactants × coefficient). For methane combustion (CH₄ + 2O₂ → CO₂ + 2H₂O(l)) that\'s [−393.5 + 2(−285.8)] − [−74.8 + 0] ≈ −890 kJ/mol.' },
+      { q: 'What is Hess\'s law?', a: 'The principle that the total enthalpy change of a reaction is the same whatever path it takes, because enthalpy is a state function. It lets you find a reaction\'s ΔH from formation enthalpies or by adding known steps.' },
+      { q: 'What is the standard enthalpy of formation?', a: 'ΔHf° is the enthalpy change when one mole of a compound forms from its elements in their standard states, at 25 °C and 1 bar. Elements in their standard state (like O₂ or graphite) have ΔHf° = 0 by definition.' },
+      { q: 'How do I know if a reaction is exothermic or endothermic?', a: 'By the sign of ΔH°rxn: negative means exothermic (releases heat), positive means endothermic (absorbs heat). The tool shows the value and the verdict.' },
+      { q: 'Does the physical state of water matter?', a: 'Yes — H₂O(l) has ΔHf° ≈ −285.8 kJ/mol and H₂O(g) ≈ −241.8 kJ/mol, a difference of the heat of vaporisation. Always use the state written in your equation, or the answer will be off.' },
+    ],
+    keywords: ['hess law calculator', 'enthalpy of reaction calculator', 'heat of reaction calculator', 'standard enthalpy calculator', 'delta h reaction calculator', 'enthalpy of formation calculator', 'exothermic endothermic calculator'],
   },
 );
 

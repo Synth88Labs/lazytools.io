@@ -6,6 +6,10 @@ import PrivacyStrip from '../../components/PrivacyStrip.astro';
 import FaqSection from '../../components/FaqSection.astro';
 import RatingWidget from '../../components/RatingWidget.tsx';
 import MolarMassTool from '../../components/chemistry/MolarMassTool.tsx';
+import WeakAcidTool from '../../components/chemistry/WeakAcidTool.tsx';
+import KspTool from '../../components/chemistry/KspTool.tsx';
+import EquilibriumTool from '../../components/chemistry/EquilibriumTool.tsx';
+import HessLawTool from '../../components/chemistry/HessLawTool.tsx';
 import EquationBalancerTool from '../../components/chemistry/EquationBalancerTool.tsx';
 import MolarityTool from '../../components/chemistry/MolarityTool.tsx';
 import IdealGasTool from '../../components/chemistry/IdealGasTool.tsx';
@@ -107,6 +111,10 @@ const schema = [
       {tool.widget === 'compare' && <ElementComparisonTool client:load />}
       {tool.widget === 'isotope' && <AverageAtomicMassTool client:load />}
       {tool.widget === 'oxidation' && <OxidationNumberTool client:load />}
+      {tool.widget === 'weakacid' && <WeakAcidTool client:load />}
+      {tool.widget === 'ksp' && <KspTool client:load />}
+      {tool.widget === 'kc' && <EquilibriumTool client:load />}
+      {tool.widget === 'hess' && <HessLawTool client:load />}
     </div>
 
     <div class="mt-4">

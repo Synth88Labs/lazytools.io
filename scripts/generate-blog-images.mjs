@@ -7,6 +7,13 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'weak-acid-ph-ice-guide',
+    kicker: 'CHEMISTRY GUIDE',
+    lines: ['How to find the pH', 'of a weak acid:', 'the ICE-table method'],
+    fact: 'Ka = x² / (C − x)  →  solve for x = [H⁺]',
+    icon: '⚗️',
+  },
+  {
     slug: 'how-to-calculate-abv-guide',
     kicker: 'HOMEBREWING GUIDE',
     lines: ['How to calculate ABV:', 'original gravity, final', 'gravity & alcohol'],
