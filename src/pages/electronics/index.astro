@@ -1,0 +1,75 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PrivacyStrip from '../../components/PrivacyStrip.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { ELECTRONICS_TOOLS } from '../../data/electronics/index';
+import { breadcrumbSchema, collectionPageSchema, faqSchema } from '../../lib/schema';
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Electronics & Circuits', url: '/electronics/' },
+];
+const faqs = [
+  { q: 'Are these electronics calculators accurate?', a: 'Yes — they use the standard tables and textbook formulas: the IEC 60062 resistor and capacitor color codes, the AWG diameter equation and copper resistivity, the NE555 timer equations, and Ohm\'s law. The data was cross-checked against IEC, manufacturer datasheets and NEC references.' },
+  { q: 'Do these replace a datasheet or electrical code?', a: 'No. They\'re design aids for hobby and learning use. For anything involving mains voltage, building wiring or safety-critical current ratings, always follow your local electrical code and the component datasheets, and consult a qualified professional.' },
+  { q: 'Is my data uploaded?', a: 'No. Every tool runs entirely in your browser — nothing is sent to a server, and they work offline.' },
+];
+const schema = [
+  breadcrumbSchema(crumbs),
+  collectionPageSchema({ name: 'Electronics & Circuits Calculators', url: '/electronics/', description: 'Free, private electronics calculators: resistor color code, LED resistor, voltage divider, capacitor code, wire gauge (AWG), RC time constant, 555 timer and battery life.', items: ELECTRONICS_TOOLS.map((t) => ({ name: t.name, url: `/electronics/${t.slug}/` })) }),
+  faqSchema(faqs),
+];
+---
+
+<Base
+  title="Electronics & Circuits Calculators — Resistor Code, LED, 555 Timer | LazyTools"
+  description="Free electronics calculators that run in your browser: resistor color code, LED series resistor, voltage divider, capacitor code, wire gauge (AWG), RC time constant & filter, 555 timer, and battery life. Standard formulas and IEC/AWG data, no upload."
+  schema={schema}
+>
+  <div class="mx-auto max-w-5xl px-4 py-6">
+    <Breadcrumbs items={crumbs} />
+    <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Electronics & Circuits Calculators</h1>
+    <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
+      The everyday bench tools for building circuits — decode a resistor's color bands or a capacitor's code,
+      size an LED resistor, work out a voltage divider or RC filter, design a 555 timer, look up a wire gauge,
+      and estimate battery life. Standard formulas and reference tables, running entirely in your browser.
+    </p>
+
+    <div class="mt-5"><PrivacyStrip /></div>
+
+    <section class="mt-8">
+      <ul class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {ELECTRONICS_TOOLS.map((t) => (
+          <li>
+            <a href={`/electronics/${t.slug}/`} class="flex h-full flex-col rounded-xl border border-slate-200 p-4 transition hover:border-brand-400 hover:shadow-sm">
+              <span class="text-2xl" aria-hidden="true">{t.icon}</span>
+              <span class="mt-2 font-semibold text-slate-900">{t.name}</span>
+              <span class="mt-1 text-sm text-slate-600">{t.lead.split('—')[0].split('(')[0]}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="prose-lazy mt-10">
+      <h2>From color bands to working circuits</h2>
+      <p>
+        Two things dominate the electronics bench: <strong>reading component markings</strong> and
+        <strong>applying a handful of formulas</strong>. The resistor color code and 3-digit capacitor code
+        pack a value into a few bands or digits, and these tools decode them instantly (with a live picture of
+        the resistor). The rest is Ohm's law and a few standard relations — the series resistor an LED needs,
+        how two resistors divide a voltage, the time constant and cutoff of an RC pair, and the frequency of a
+        555 timer — each shown with the equation so the tool teaches as it calculates.
+      </p>
+      <p>
+        Everything runs in your browser, so it's fast, private and works offline at the bench. One safety note:
+        the wire-gauge current ratings are conservative guidelines, and anything involving mains voltage or
+        building wiring must follow your local electrical code. For the underlying theory — Ohm's law, energy
+        and the resistor/capacitor networks — see the <a href="/physics/">Physics</a> category.
+      </p>
+    </section>
+
+    <FaqSection faqs={faqs} />
+  </div>
+</Base>

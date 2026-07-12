@@ -7,6 +7,13 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'resistor-color-code-guide',
+    kicker: 'ELECTRONICS GUIDE',
+    lines: ['How to read a', 'resistor color code:', 'bands to ohms'],
+    fact: 'digit · digit · ×10ⁿ multiplier · tolerance',
+    icon: '🎨',
+  },
+  {
     slug: 'depth-of-field-guide',
     kicker: 'PHOTOGRAPHY GUIDE',
     lines: ['How to blur the', 'background: the 4 keys', 'to depth of field'],

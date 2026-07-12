@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="How to read a 4-band resistor color code. The four bands from left to right are: first digit, second digit, multiplier (number of zeros), and tolerance. The color-to-number table: Black 0, Brown 1, Red 2, Orange 3, Yellow 4, Green 5, Blue 6, Violet 7, Grey 8, White 9; as multipliers the same colors mean times ten to that power, plus Gold times 0.1 and Silver times 0.01; as tolerance Brown is plus or minus 1 percent, Gold 5 percent, Silver 10 percent. Example: Brown Black Red Gold reads 1, 0, times 100, giving 1000 ohms or 1 kilohm at plus or minus 5 percent.">
+  <defs>
+    <style>
+      .h { font: 800 28px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .sub { font: 500 15px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+      .lab { font: 700 13px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .row { font: 600 14px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .ex { font: 800 17px Consolas, Menlo, monospace; fill: #0f172a; }
+    </style>
+  </defs>
+
+  <text x="600" y="42" text-anchor="middle" class="h">Reading a resistor color code</text>
+  <text x="600" y="68" text-anchor="middle" class="sub">four bands: two digits, a multiplier, and a tolerance</text>
+
+  <!-- resistor -->
+  <g transform="translate(370 96)">
+    <rect x="-60" y="26" width="60" height="6" fill="#94a3b8"/><rect x="180" y="26" width="60" height="6" fill="#94a3b8"/>
+    <rect x="0" y="0" width="180" height="58" rx="10" fill="#e8d3a0" stroke="#d4b483"/>
+    <rect x="24" y="0" width="14" height="58" fill="#78350f"/>
+    <rect x="52" y="0" width="14" height="58" fill="#111827"/>
+    <rect x="80" y="0" width="14" height="58" fill="#dc2626"/>
+    <rect x="140" y="0" width="14" height="58" fill="#d4af37"/>
+    <text x="31" y="80" text-anchor="middle" class="lab">digit 1</text>
+    <text x="59" y="80" text-anchor="middle" class="lab">digit 2</text>
+    <text x="87" y="80" text-anchor="middle" class="lab">×10ⁿ</text>
+    <text x="147" y="80" text-anchor="middle" class="lab">tol.</text>
+  </g>
+
+  <!-- color table (two columns) -->
+  <g transform="translate(70 210)">
+    <text x="0" y="0" class="lab" fill="#1d4ed8">COLOR → DIGIT / MULTIPLIER</text>
+    <g class="row">
+      <g transform="translate(0 24)"><rect width="18" height="18" rx="3" fill="#111827"/><text x="28" y="14">Black — 0 · ×1</text></g>
+      <g transform="translate(0 50)"><rect width="18" height="18" rx="3" fill="#78350f"/><text x="28" y="14">Brown — 1 · ×10</text></g>
+      <g transform="translate(0 76)"><rect width="18" height="18" rx="3" fill="#dc2626"/><text x="28" y="14">Red — 2 · ×100</text></g>
+      <g transform="translate(0 102)"><rect width="18" height="18" rx="3" fill="#ea580c"/><text x="28" y="14">Orange — 3 · ×1k</text></g>
+      <g transform="translate(0 128)"><rect width="18" height="18" rx="3" fill="#eab308"/><text x="28" y="14">Yellow — 4 · ×10k</text></g>
+      <g transform="translate(280 24)"><rect width="18" height="18" rx="3" fill="#16a34a"/><text x="28" y="14">Green — 5 · ×100k</text></g>
+      <g transform="translate(280 50)"><rect width="18" height="18" rx="3" fill="#2563eb"/><text x="28" y="14">Blue — 6 · ×1M</text></g>
+      <g transform="translate(280 76)"><rect width="18" height="18" rx="3" fill="#7c3aed"/><text x="28" y="14">Violet — 7 · ×10M</text></g>
+      <g transform="translate(280 102)"><rect width="18" height="18" rx="3" fill="#6b7280"/><text x="28" y="14">Grey — 8</text></g>
+      <g transform="translate(280 128)"><rect width="18" height="18" rx="3" fill="#f3f4f6" stroke="#cbd5e1"/><text x="28" y="14">White — 9</text></g>
+    </g>
+  </g>
+
+  <!-- tolerance + example -->
+  <g transform="translate(700 210)">
+    <text x="0" y="0" class="lab" fill="#b45309">TOLERANCE BAND</text>
+    <g class="row">
+      <g transform="translate(0 24)"><rect width="18" height="18" rx="3" fill="#78350f"/><text x="28" y="14">Brown ±1%</text></g>
+      <g transform="translate(0 50)"><rect width="18" height="18" rx="3" fill="#dc2626"/><text x="28" y="14">Red ±2%</text></g>
+      <g transform="translate(0 76)"><rect width="18" height="18" rx="3" fill="#d4af37"/><text x="28" y="14">Gold ±5%</text></g>
+      <g transform="translate(0 102)"><rect width="18" height="18" rx="3" fill="#c0c0c0"/><text x="28" y="14">Silver ±10%</text></g>
+      <g transform="translate(0 128)"><rect width="18" height="18" rx="3" fill="#eef2f7" stroke="#cbd5e1"/><text x="28" y="14">none ±20%</text></g>
+    </g>
+  </g>
+
+  <!-- example strip -->
+  <g transform="translate(70 384)">
+    <rect x="0" y="0" width="1060" height="56" rx="14" fill="#eff6ff" stroke="#1d4ed8"/>
+    <text x="24" y="34" class="ex" fill="#1d4ed8">Brown · Black · Red · Gold  →  1 , 0 , ×100  =  1000 Ω  =  1 kΩ  ±5%</text>
+  </g>
+
+  <!-- footer -->
+  <g transform="translate(70 462)">
+    <rect x="0" y="0" width="1060" height="52" rx="14" fill="#0c2f6b"/>
+    <text x="24" y="32" font-family="Consolas, Menlo, monospace" font-size="14" fill="#7ef0c0">lazytools.io — resistor color code calculator with a live visual resistor</text>
+  </g>
+</svg>
