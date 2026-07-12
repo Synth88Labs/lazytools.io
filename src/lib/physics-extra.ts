@@ -7,6 +7,33 @@
 
 /** Coulomb constant k = 1/(4πε₀), N·m²/C² (CODATA). */
 export const COULOMB_K = 8.9875517873681764e9;
+const G_GRAV = 6.6743e-11; // gravitational constant, N·m²/kg² (CODATA)
+const G_STD = 9.80665;     // standard gravity, m/s²
+
+/* ---------------- Pressure P = F/A ---------------- */
+/** Solve P = F/A for whichever field is null (F in N, A in m², P in Pa). */
+export function pressureSolve(F: number | null, A: number | null, P: number | null): { value: number; solved: 'P' | 'F' | 'A'; unit: string } | null {
+  if (F != null && A != null && A !== 0) return { value: F / A, solved: 'P', unit: 'Pa' };
+  if (P != null && A != null) return { value: P * A, solved: 'F', unit: 'N' };
+  if (P != null && F != null && P !== 0) return { value: F / P, solved: 'A', unit: 'm²' };
+  return null;
+}
+
+/* ---------------- Buoyancy (Archimedes) Fb = ρ·V·g ---------------- */
+export function buoyancy(rhoFluid: number, volume: number, g = G_STD, objectMass: number | null = null) {
+  const buoyantForce = rhoFluid * volume * g;
+  const weight = objectMass != null ? objectMass * g : null;
+  return { buoyantForce, weight, floats: weight != null ? buoyantForce >= weight : null };
+}
+
+/* ---------------- Escape velocity v = √(2GM/r) ---------------- */
+export function escapeVelocity(mass: number, radius: number, G = G_GRAV): number | null {
+  if (radius <= 0 || mass <= 0) return null;
+  return Math.sqrt((2 * G * mass) / radius);
+}
+
+/* ---------------- Latent heat Q = m·L ---------------- */
+export function latentHeat(mass: number, L: number): number { return mass * L; }
 /** Speed of light in vacuum, m/s (exact, SI definition). */
 export const SPEED_OF_LIGHT = 299792458;
 

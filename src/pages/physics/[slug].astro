@@ -10,6 +10,10 @@ import CoulombTool from '../../components/physics/CoulombTool.tsx';
 import CollisionTool from '../../components/physics/CollisionTool.tsx';
 import RelativityTool from '../../components/physics/RelativityTool.tsx';
 import HarmonicsTool from '../../components/physics/HarmonicsTool.tsx';
+import PressureTool from '../../components/physics/PressureTool.tsx';
+import BuoyancyTool from '../../components/physics/BuoyancyTool.tsx';
+import EscapeVelocityTool from '../../components/physics/EscapeVelocityTool.tsx';
+import LatentHeatTool from '../../components/physics/LatentHeatTool.tsx';
 import ProjectileTool from '../../components/physics/ProjectileTool.tsx';
 import FreeFallTool from '../../components/physics/FreeFallTool.tsx';
 import NewtonsSecondLawTool from '../../components/physics/NewtonsSecondLawTool.tsx';
@@ -117,6 +121,10 @@ const schema = [
       {tool.widget === 'collision' && <CollisionTool client:load />}
       {tool.widget === 'relativity' && <RelativityTool client:load />}
       {tool.widget === 'harmonics' && <HarmonicsTool client:load />}
+      {tool.widget === 'pressure' && <PressureTool client:load />}
+      {tool.widget === 'buoyancy' && <BuoyancyTool client:load />}
+      {tool.widget === 'escapevel' && <EscapeVelocityTool client:load />}
+      {tool.widget === 'latentheat' && <LatentHeatTool client:load />}
     </div>
 
     <div class="mt-4">

@@ -10,7 +10,8 @@ export interface PhysToolDef {
     | 'wavelength' | 'photon' | 'massenergy' | 'snell' | 'ohms'
     | 'wave' | 'doppler' | 'lensmirror' | 'resistornet' | 'torque' | 'orbital'
     | 'carnot' | 'thermalexp' | 'debroglie' | 'avgvel'
-    | 'coulomb' | 'collision' | 'relativity' | 'harmonics';
+    | 'coulomb' | 'collision' | 'relativity' | 'harmonics'
+    | 'pressure' | 'buoyancy' | 'escapevel' | 'latentheat';
   cluster: 'kinematics' | 'dynamics' | 'energy' | 'gravitation' | 'waves' | 'electricity' | 'modern' | 'thermodynamics';
   /** for the resistor-network widget: resistor or capacitor rules */
   netKind?: 'resistor' | 'capacitor';
@@ -366,6 +367,82 @@ export const PHYS_TOOLS: PhysToolDef[] = [
       { q: 'What units are used?', a: 'Volts (V), amperes (A), ohms (Ω) and watts (W). 1 V = 1 A × 1 Ω, and 1 W = 1 V × 1 A.' },
     ],
     keywords: ['ohms law calculator', 'ohms law wheel', 'v = ir calculator', 'voltage current resistance power', 'electrical power calculator', 'watts law calculator'],
+  },
+  {
+    slug: 'pressure-calculator',
+    name: 'Pressure Calculator (P = F/A)',
+    icon: '🧱',
+    widget: 'pressure',
+    cluster: 'dynamics',
+    description: 'Calculate pressure from force and area (P = F/A), or solve for the force or area — with the result in pascals, kPa, psi and bar. In your browser.',
+    lead: 'Enter any two of force, area and pressure, and the calculator solves the third — shown in pascals, kPa, psi and bar.',
+    how: 'Pressure is the force acting perpendicular to a surface divided by the area it\'s spread over: P = F ÷ A, in pascals (1 Pa = 1 newton per square metre). Rearranged, force is F = P × A and area is A = F ÷ P. Enter any two values and the tool solves the missing one, and converts a pressure result into the everyday units kilopascals, pounds per square inch and bar.',
+    note: 'The same force concentrated on a smaller area produces far greater pressure — which is why a drawing pin, a knife edge or a stiletto heel exerts enough pressure to pierce or dent, while the same push spread over a wide surface does not. This is force over area, distinct from fluid pressure with depth (ρgh).',
+    faqs: [
+      { q: 'How do you calculate pressure?', a: 'Divide the force by the area it acts on: P = F ÷ A. A 100 N force on 0.5 m² gives 200 Pa. The SI unit is the pascal (Pa), equal to one newton per square metre.' },
+      { q: 'What is a pascal?', a: 'The SI unit of pressure — one newton of force spread over one square metre (1 Pa = 1 N/m²). It\'s a small unit: atmospheric pressure is about 101,325 Pa (101 kPa), and car tyres run near 220 kPa (32 psi).' },
+      { q: 'How do I convert pascals to psi?', a: 'Divide by 6,894.76: 1 psi = 6,894.76 Pa. So 200 kPa is about 29 psi. The tool shows psi, kPa and bar automatically for any pressure result.' },
+      { q: 'Why does a sharp knife cut better?', a: 'Because the same force is concentrated onto a much smaller contact area, so the pressure (force ÷ area) is far higher — high enough to exceed the material\'s strength. A blunt edge spreads the force over more area, lowering the pressure.' },
+      { q: 'Is this the same as fluid or tyre pressure?', a: 'It\'s the same definition of pressure (force per area), but fluid pressure that increases with depth uses P = ρgh, and gas pressure follows the gas laws. This tool covers the basic mechanical P = F/A relationship.' },
+    ],
+    keywords: ['pressure calculator', 'p = f/a', 'force area pressure', 'pascals calculator', 'pressure formula', 'psi calculator', 'how to calculate pressure'],
+  },
+  {
+    slug: 'buoyancy-calculator',
+    name: 'Buoyancy Calculator (Archimedes)',
+    icon: '🛟',
+    widget: 'buoyancy',
+    cluster: 'dynamics',
+    description: 'Calculate the buoyant force on a submerged or floating object from Archimedes\' principle (F = ρVg), and find out whether it floats or sinks. In your browser.',
+    lead: 'Enter the fluid density and displaced volume to get the buoyant force — add the object\'s mass to see whether it floats or sinks.',
+    how: 'Archimedes\' principle says the upward buoyant force on an object equals the weight of the fluid it displaces: F = ρ_fluid × V × g, where ρ is the fluid\'s density, V the displaced volume and g gravity (9.81 m/s²). If you also enter the object\'s mass, the tool compares its weight (m × g) to the buoyant force: it floats when the buoyant force from its fully submerged volume is at least its weight — equivalently, when its average density is less than the fluid\'s.',
+    note: 'Density presets are built in (fresh water 1000, seawater 1025, oil ~900, mercury 13534 kg/m³). A ship of steel floats because its shape displaces a large volume of water — its average density, including the air inside, is below water\'s. The same steel as a solid block sinks.',
+    faqs: [
+      { q: 'What is Archimedes\' principle?', a: 'The buoyant (upward) force on a body in a fluid equals the weight of the fluid it displaces: F = ρ·V·g. It explains why objects feel lighter in water and why some float.' },
+      { q: 'How do I calculate buoyant force?', a: 'Multiply the fluid\'s density by the displaced volume and by g: F = ρ × V × 9.81. One cubic metre submerged in water (1000 kg/m³) experiences about 9,807 N of buoyancy.' },
+      { q: 'Will an object float or sink?', a: 'It floats if its average density is less than the fluid\'s — equivalently, if the buoyant force when fully submerged is at least its weight. Enter the object\'s mass and the tool tells you which.' },
+      { q: 'Why does a steel ship float but a steel bar sinks?', a: 'A ship\'s hull encloses a large volume of air, so it displaces a lot of water for its weight — its average density is below water\'s. A solid steel bar displaces only its own small volume, so it sinks.' },
+      { q: 'Does buoyancy work in air?', a: 'Yes — air (density ~1.2 kg/m³) exerts a small buoyant force, which is why helium and hot-air balloons rise. Set the fluid density to air to explore it, though the forces are much smaller than in water.' },
+    ],
+    keywords: ['buoyancy calculator', 'archimedes principle calculator', 'buoyant force calculator', 'float or sink calculator', 'displacement force', 'f = pvg', 'density buoyancy'],
+  },
+  {
+    slug: 'escape-velocity-calculator',
+    name: 'Escape Velocity Calculator',
+    icon: '🚀',
+    widget: 'escapevel',
+    cluster: 'gravitation',
+    description: 'Calculate the escape velocity of a planet, moon or star from its mass and radius — v = √(2GM/r) — with presets for the Solar System. In your browser.',
+    lead: 'Enter a body\'s mass and radius (or pick a preset) to get the escape velocity — the speed needed to break free of its gravity.',
+    how: 'Escape velocity is the minimum speed an object needs to escape a body\'s gravitational pull with no further propulsion, starting from its surface: v = √(2GM/r), where G is the gravitational constant (6.6743×10⁻¹¹), M the body\'s mass and r its radius. Notice the escaping object\'s own mass cancels out — a pebble and a spaceship need the same escape speed. The result is shown in km/s, m/s, km/h and Mach.',
+    note: 'Escape velocity is exactly √2 (≈1.41) times the speed of a circular orbit at the same radius. Earth\'s is about 11.2 km/s; the Moon\'s only 2.4 km/s, which is why the lunar lander needed far less fuel to leave. It assumes a non-rotating body and ignores atmospheric drag.',
+    faqs: [
+      { q: 'What is escape velocity?', a: 'The minimum speed needed to break free of a body\'s gravity without additional thrust. For Earth it\'s about 11.2 km/s (25,000 mph). Below that speed an unpowered object falls back or enters orbit.' },
+      { q: 'How do you calculate escape velocity?', a: 'v = √(2GM/r), where G = 6.6743×10⁻¹¹, M is the body\'s mass in kg and r its radius in metres. The tool has presets for Earth, Moon, Mars, Jupiter and the Sun, or enter any mass and radius.' },
+      { q: 'Does escape velocity depend on the object\'s mass?', a: 'No — the mass of the escaping object cancels out of the equation, so a marble and a rocket need the same escape speed. What differs is the energy (and fuel) required to reach that speed.' },
+      { q: 'How is escape velocity related to orbital velocity?', a: 'Escape velocity is √2 times the circular-orbit velocity at the same radius. So if a low circular orbit needs ~7.9 km/s, escaping from that radius needs ~11.2 km/s.' },
+      { q: 'Why is the Moon\'s escape velocity so much lower?', a: 'Because it has far less mass and a smaller radius than Earth, giving weaker surface gravity. Its escape velocity is about 2.4 km/s — roughly a fifth of Earth\'s — which made ascent from the lunar surface much easier.' },
+    ],
+    keywords: ['escape velocity calculator', 'escape velocity formula', 'escape velocity earth', 'v = sqrt(2gm/r)', 'planet escape velocity', 'gravity escape speed'],
+  },
+  {
+    slug: 'latent-heat-calculator',
+    name: 'Latent Heat Calculator (Q = mL)',
+    icon: '💧',
+    widget: 'latentheat',
+    cluster: 'thermodynamics',
+    description: 'Calculate the heat needed for a phase change — melting or boiling — with Q = mL, using specific latent heats for water and other materials. In your browser.',
+    lead: 'Enter a mass and the specific latent heat (or pick a preset) to get the energy for the phase change, in kJ, J and kcal.',
+    how: 'A phase change — melting or boiling — absorbs energy at constant temperature: Q = m × L, where m is the mass and L the specific latent heat (of fusion for melting, of vaporisation for boiling). The tool multiplies them and shows the heat in kilojoules, joules and kilocalories. Presets include water\'s latent heat of fusion (334 kJ/kg) and vaporisation (2,260 kJ/kg), plus a few other materials.',
+    note: 'Latent heat is separate from the sensible heat that raises temperature (q = mcΔT). During a phase change the temperature holds steady while the energy goes into breaking or forming bonds. Water\'s exceptionally large latent heat of vaporisation is why steam scalds so badly and why sweating cools you so effectively.',
+    faqs: [
+      { q: 'What is latent heat?', a: 'The energy absorbed or released during a phase change (melting, boiling, freezing, condensing) at constant temperature. It goes into rearranging molecular bonds rather than changing temperature.' },
+      { q: 'How do you calculate latent heat energy?', a: 'Q = m × L, where m is the mass in kg and L the specific latent heat in J/kg. Melting 2 kg of ice (L = 334,000 J/kg) needs 668,000 J = 668 kJ.' },
+      { q: 'What is the difference between latent and specific heat?', a: 'Specific heat (q = mcΔT) is the energy to change a substance\'s temperature; latent heat (Q = mL) is the energy to change its phase at constant temperature. A full heating curve uses both in turn.' },
+      { q: 'What is the latent heat of vaporisation of water?', a: 'About 2,260 kJ/kg — much larger than its latent heat of fusion (334 kJ/kg). That\'s why boiling a pot dry takes far longer than melting the same mass of ice, and why steam carries so much energy.' },
+      { q: 'Why does the temperature stay constant during a phase change?', a: 'Because the added energy breaks intermolecular bonds (melting, boiling) rather than speeding molecules up. Only once the phase change is complete does further heat raise the temperature again.' },
+    ],
+    keywords: ['latent heat calculator', 'q = ml', 'latent heat of fusion', 'latent heat of vaporization', 'phase change energy', 'heat to melt ice', 'specific latent heat'],
   },
 ];
 
