@@ -58,6 +58,6 @@
   <!-- footer -->
   <g transform="translate(60 520)">
     <rect x="0" y="0" width="1080" height="48" rx="14" fill="#0c2f6b"/>
-    <text x="24" y="30" font-family="Consolas, Menlo, monospace" font-size="14" fill="#7ef0c0">lazytools.io — heat index, wind chill, wet-bulb & feels-like calculators (NWS formulas)</text>
+    <text x="24" y="30" font-family="Consolas, Menlo, monospace" font-size="14" fill="#7ef0c0">lazytools.io — heat index, wind chill, wet-bulb &amp; feels-like calculators (NWS formulas)</text>
   </g>
 </svg>

@@ -58,7 +58,7 @@
   <!-- footer -->
   <g transform="translate(70 448)">
     <rect x="0" y="0" width="1060" height="52" rx="14" fill="#0c2f6b"/>
-    <text x="24" y="32" font-family="Consolas, Menlo, monospace" font-size="14" fill="#7ef0c0">lazytools.io — flight distance calculator: great-circle distance, bearing & rough flight time, on a live map</text>
+    <text x="24" y="32" font-family="Consolas, Menlo, monospace" font-size="14" fill="#7ef0c0">lazytools.io — flight distance calculator: great-circle distance, bearing &amp; rough flight time, on a live map</text>
   </g>
 
   <text x="600" y="536" text-anchor="middle" class="sub">Great-circle = the shortest path on a sphere. Actual flights follow airways, avoid restricted airspace and ride the winds, so they run slightly longer.</text>
