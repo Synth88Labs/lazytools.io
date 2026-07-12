@@ -8,24 +8,36 @@ import { CATEGORIES } from '../../lib/site';
 const posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 const hasLivePosts = posts.some((p) => !p.data.draft);
 
-/** Topic = category of the post's first linked tool (e.g. /pdf/merge-pdf/ → PDF Tools). */
-function topicOf(post: (typeof posts)[number]): { slug: string; name: string } {
+/** Fine-grained category of the post's first linked tool (shown on each card). */
+function categoryOf(post: (typeof posts)[number]): { slug: string; name: string } {
   const first = post.data.tools?.[0] ?? '';
   const seg = first.split('/').filter(Boolean)[0] ?? '';
   const cat = CATEGORIES.find((c) => c.slug === seg);
   return cat ? { slug: cat.slug, name: cat.name } : { slug: 'general', name: 'General' };
 }
 
-const topics = [...new Map(posts.map((p) => {
-  const t = topicOf(p);
-  return [t.slug, t];
-})).values()].sort((a, b) => a.name.localeCompare(b.name));
+/** A handful of broad topic groups for the filter pills — the 39 categories roll up into these. */
+const GROUP_ORDER = ['science', 'home', 'money', 'files', 'dev', 'everyday'] as const;
+const GROUP_NAME: Record<string, string> = {
+  science: 'Science & Math', home: 'Home & Auto', money: 'Money & Health',
+  files: 'PDF & Images', dev: 'Dev & Privacy', everyday: 'Text & Everyday',
+};
+const CATEGORY_GROUP: Record<string, string> = {
+  math: 'science', statistics: 'science', physics: 'science', chemistry: 'science', biology: 'science', astronomy: 'science', electronics: 'science', weather: 'science',
+  home: 'home', garden: 'home', cooking: 'home', pets: 'home', automotive: 'home', solar: 'home', brewing: 'home', '3d-printing': 'home',
+  finance: 'money', calc: 'money', fitness: 'money',
+  pdf: 'files', image: 'files', video: 'files', photo: 'files', file: 'files', photography: 'files',
+  dev: 'dev', security: 'dev', network: 'dev', cipher: 'dev', generate: 'dev',
+  text: 'everyday', color: 'everyday', units: 'everyday', size: 'everyday', time: 'everyday', calendar: 'everyday', music: 'everyday', travel: 'everyday', productivity: 'everyday',
+};
+function groupOf(post: (typeof posts)[number]): { slug: string; name: string } {
+  const slug = CATEGORY_GROUP[categoryOf(post).slug] ?? 'everyday';
+  return { slug, name: GROUP_NAME[slug] };
+}
 
 const counts = new Map<string, number>();
-for (const p of posts) {
-  const t = topicOf(p);
-  counts.set(t.slug, (counts.get(t.slug) ?? 0) + 1);
-}
+for (const p of posts) { const g = groupOf(p).slug; counts.set(g, (counts.get(g) ?? 0) + 1); }
+const topics = GROUP_ORDER.filter((g) => counts.has(g)).map((g) => ({ slug: g, name: GROUP_NAME[g] }));
 
 const crumbs = [
   { name: 'Home', url: '/' },
@@ -73,7 +85,7 @@ const crumbs = [
 
     <ul class="mt-6 grid gap-4 sm:grid-cols-2" id="blog-grid">
       {posts.map((post) => (
-        <li data-topic={topicOf(post).slug}>
+        <li data-topic={groupOf(post).slug}>
           <a
             href={`/blog/${post.id}/`}
             class="block h-full overflow-hidden rounded-xl border border-slate-200 transition hover:border-brand-400 hover:shadow-sm"
@@ -90,7 +102,7 @@ const crumbs = [
             )}
             <div class="p-5">
               <p class="text-xs font-semibold uppercase tracking-wide text-brand-700">
-                {topicOf(post).name} · {post.data.archetype}
+                {categoryOf(post).name} · {post.data.archetype}
                 {post.data.draft && <span class="ml-2 rounded bg-amber-100 px-2 py-0.5 text-amber-800">draft</span>}
               </p>
               <h2 class="mt-1 text-xl font-bold text-slate-900">{post.data.title}</h2>
