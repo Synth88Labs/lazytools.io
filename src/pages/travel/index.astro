@@ -1,0 +1,82 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PrivacyStrip from '../../components/PrivacyStrip.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { TRAVEL_TOOLS } from '../../data/travel/index';
+import { breadcrumbSchema, collectionPageSchema, faqSchema } from '../../lib/schema';
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Travel & Trips', url: '/travel/' },
+];
+const faqs = [
+  { q: 'Are these travel calculators accurate?', a: 'The geometry is exact: flight distance uses the haversine great-circle formula on a mean Earth radius of 6,371 km, and road-trip and budget maths are straightforward. The estimators (flight time, jet lag, baggage limits, tipping customs) rest on typical real-world figures that vary — each page cites its source and explains the assumptions.' },
+  { q: 'Do these use my location or send data anywhere?', a: 'No. Every tool runs entirely in your browser — no location access, no accounts, no currency conversion calls. Your inputs never leave your device, and the tools work offline.' },
+  { q: 'Do the tools convert currency?', a: 'No — the tip and budget tools work in whatever currency you type, with no conversion. That keeps them private and offline; live exchange rates would require sending your figures to a server.' },
+  { q: 'Can I rely on the baggage and tipping figures?', a: 'Treat them as guidance. Baggage limits vary by airline and fare and tipping is cultural and changes over time, so we show common reference figures with clear caveats — always confirm your specific airline\'s rules, and read the bill for service charges.' },
+];
+const schema = [
+  breadcrumbSchema(crumbs),
+  collectionPageSchema({ name: 'Travel & Trips Calculators', url: '/travel/', description: 'Free, private travel calculators: flight distance, flight time, layover, jet lag, tip by country, road-trip time, travel budget and luggage size.', items: TRAVEL_TOOLS.map((t) => ({ name: t.name, url: `/travel/${t.slug}/` })) }),
+  faqSchema(faqs),
+];
+---
+
+<Base
+  title="Travel & Trips Calculators — Flight Distance, Jet Lag, Tips | LazyTools"
+  description="Free travel calculators that run in your browser: flight distance and time, layover checker, jet lag estimator, tip-by-country, road-trip time, travel budget and luggage size. No location access, no sign-up, no upload."
+  schema={schema}
+>
+  <div class="mx-auto max-w-5xl px-4 py-6">
+    <Breadcrumbs items={crumbs} />
+    <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Travel & Trips Calculators</h1>
+    <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
+      Plan the trip without the spreadsheet — measure the great-circle distance and rough flight time between
+      any two cities, check whether a layover is long enough, estimate jet lag, split a restaurant bill with
+      customary tips by country, work out road-trip driving time, size a travel budget, and check a bag against
+      cabin and checked limits. Everything runs in your browser — no location access, no sign-up.
+    </p>
+
+    <div class="mt-5"><PrivacyStrip /></div>
+
+    <section class="mt-8">
+      <ul class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {TRAVEL_TOOLS.map((t) => (
+          <li>
+            <a href={`/travel/${t.slug}/`} class="flex h-full flex-col rounded-xl border border-slate-200 p-4 transition hover:border-brand-400 hover:shadow-sm">
+              <span class="text-2xl" aria-hidden="true">{t.icon}</span>
+              <span class="mt-2 font-semibold text-slate-900">{t.name}</span>
+              <span class="mt-1 text-sm text-slate-600">{t.lead.split('—')[0].split('(')[0]}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="prose-lazy mt-10">
+      <h2>From the map to the bill, worked out in your browser</h2>
+      <p>
+        Trip planning is a pile of small calculations: <em>how far is it, how long will it take, is my
+        connection tight, how much will jet lag cost me, what do I tip here, and will my bag fit?</em> These
+        tools answer each one directly. The <a href="/travel/flight-distance-calculator/">flight distance
+        calculator</a> draws the great-circle route on a world map and reads off the distance, bearing and a
+        rough flight time; the <a href="/travel/layover-calculator/">layover checker</a> tells you whether a
+        connection clears a typical minimum; and the <a href="/travel/jet-lag-calculator/">jet lag
+        calculator</a> turns the time zones you cross into days of adjustment, with tips to shorten them.
+      </p>
+      <p>
+        The everyday-money tools stay honest about what they can and can't do. The
+        <a href="/travel/tip-calculator/">tip calculator</a> and <a href="/travel/travel-budget-calculator/">budget
+        planner</a> work in whatever currency you type — <strong>no conversion, nothing sent to a server</strong> —
+        because private, offline maths matters more than a live exchange rate you can look up separately. The
+        distances and flight times are great-circle estimates, and the baggage and tipping figures are common
+        references that vary by airline and country, so we cite sources and flag the assumptions on every page.
+        For the raw unit maths behind a trip, see the <a href="/units/">Units</a> and <a href="/calculators/">Calculators</a>
+        categories.
+      </p>
+    </section>
+
+    <FaqSection faqs={faqs} />
+  </div>
+</Base>

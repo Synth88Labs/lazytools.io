@@ -7,6 +7,13 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'great-circle-distance-guide',
+    kicker: 'TRAVEL GUIDE',
+    lines: ['Why flight paths', 'curve on the map:', 'great-circle distance'],
+    fact: 'the shortest route bends toward the poles',
+    icon: '🛫',
+  },
+  {
     slug: 'resistor-color-code-guide',
     kicker: 'ELECTRONICS GUIDE',
     lines: ['How to read a', 'resistor color code:', 'bands to ohms'],

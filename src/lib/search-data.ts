@@ -38,6 +38,7 @@ import { WEATHER_TOOLS } from '../data/weather/index';
 import { ASTRO_TOOLS } from '../data/astronomy/index';
 import { PHOTOGRAPHY_TOOLS } from '../data/photography/index';
 import { ELECTRONICS_TOOLS } from '../data/electronics/index';
+import { TRAVEL_TOOLS } from '../data/travel/index';
 
 export interface SearchUnit {
   id: string;
@@ -271,6 +272,9 @@ export function buildSearchPages(): SearchPage[] {
   for (const t of ELECTRONICS_TOOLS) {
     pages.push({ title: t.name, url: `/electronics/${t.slug}/`, keywords: [...t.keywords, 'electronics', 'circuit', 'resistor', 'component', t.name.toLowerCase()] });
   }
+  for (const t of TRAVEL_TOOLS) {
+    pages.push({ title: t.name, url: `/travel/${t.slug}/`, keywords: [...t.keywords, 'travel', 'trip', 'flight', 'vacation', 'holiday', t.name.toLowerCase()] });
+  }
   for (const t of PDF_TOOLS) {
     pages.push({ title: t.name, url: `/pdf/${t.slug}/`, keywords: [...t.keywords, 'pdf', t.name.toLowerCase()] });
   }
@@ -297,6 +301,7 @@ export function buildSearchPages(): SearchPage[] {
     { title: 'All Astronomy & Space Tools', url: '/astronomy/', keywords: ['astronomy', 'space', 'moon phase', 'sunrise sunset', 'weight on other planets', 'age on planets', 'light year', 'light travel time', 'angular size', 'telescope calculator', 'magnification', 'parallax', 'parsec', 'planets', 'stars'] },
     { title: 'All Photography Tools', url: '/photography/', keywords: ['photography', 'camera', 'lens', 'depth of field', 'dof', 'field of view', 'angle of view', 'crop factor', 'equivalent focal length', 'exposure value', 'ev', 'hyperfocal distance', 'time lapse', 'print resolution', 'dpi', 'sunny 16', 'bokeh'] },
     { title: 'All Electronics & Circuits Tools', url: '/electronics/', keywords: ['electronics', 'circuit', 'resistor color code', 'resistor calculator', 'led resistor', 'voltage divider', 'capacitor code', 'wire gauge', 'awg', 'rc filter', 'time constant', '555 timer', 'ne555', 'battery life', 'ohms law'] },
+    { title: 'All Travel & Trips Tools', url: '/travel/', keywords: ['travel', 'trip', 'flight distance', 'great circle', 'flight time', 'layover', 'connection time', 'jet lag', 'tip calculator', 'tipping by country', 'road trip', 'driving time', 'travel budget', 'luggage size', 'carry on', 'baggage', 'vacation', 'holiday'] },
     { title: 'All PDF Tools', url: '/pdf/', keywords: ['pdf tools', 'merge pdf', 'split pdf', 'rotate pdf'] },
     { title: 'All Audio Tools', url: '/video/', keywords: ['audio tools', 'trim audio', 'mp3', 'wav', 'volume'] },
     { title: 'All Developer Tools', url: '/dev/', keywords: ['developer tools', 'dev', 'encode', 'decode', 'hash', 'regex'] },

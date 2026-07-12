@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="Why flight paths curve on a map. On a flat (Mercator-style) map the shortest route between two cities — the great circle — appears as a curve that bends toward the nearer pole, while the straight line drawn on the map (a rhumb line) is actually a longer path. Example: New York to London is about 5,540 km along the great circle. The distance comes from the haversine formula: a equals sine squared of half the latitude difference plus cosine lat1 times cosine lat2 times sine squared of half the longitude difference; distance equals Earth radius 6,371 km times 2 times the arctangent of root a. Great-circle distance is the shortest possible path; real flights are a little longer because of airways, air-traffic routing and winds.">
+  <defs>
+    <style>
+      .h { font: 800 28px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .sub { font: 500 15px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+      .lab { font: 700 13px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .cty { font: 700 13px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #f8fafc; }
+      .leg { font: 600 14px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .ex { font: 800 16px Consolas, Menlo, monospace; fill: #0f172a; }
+      .mono { font: 600 13px Consolas, Menlo, monospace; }
+    </style>
+  </defs>
+
+  <text x="600" y="42" text-anchor="middle" class="h">Why flight paths curve on the map</text>
+  <text x="600" y="68" text-anchor="middle" class="sub">the shortest route over a round Earth is a great circle — it bends toward the pole</text>
+
+  <!-- map panel -->
+  <g transform="translate(70 92)">
+    <rect x="0" y="0" width="720" height="330" rx="14" fill="#0c2f6b"/>
+    <!-- graticule -->
+    <g stroke="#ffffff" stroke-opacity="0.08" stroke-width="1">
+      <line x1="0" y1="66" x2="720" y2="66"/><line x1="0" y1="132" x2="720" y2="132"/>
+      <line x1="0" y1="198" x2="720" y2="198"/><line x1="0" y1="264" x2="720" y2="264"/>
+      <line x1="120" y1="0" x2="120" y2="330"/><line x1="240" y1="0" x2="240" y2="330"/>
+      <line x1="360" y1="0" x2="360" y2="330"/><line x1="480" y1="0" x2="480" y2="330"/>
+      <line x1="600" y1="0" x2="600" y2="330"/>
+    </g>
+    <!-- straight (rhumb) line on the flat map -->
+    <line x1="205" y1="150" x2="470" y2="130" stroke="#f87171" stroke-width="2.5" stroke-dasharray="2 4"/>
+    <!-- great-circle arc: bends up (north) -->
+    <path d="M205 150 Q337 82 470 130" fill="none" stroke="#7ef0c0" stroke-width="3"/>
+    <!-- endpoints -->
+    <circle cx="205" cy="150" r="6" fill="#fbbf24"/>
+    <circle cx="470" cy="130" r="6" fill="#fbbf24"/>
+    <text x="205" y="172" text-anchor="middle" class="cty">New York</text>
+    <text x="470" y="118" text-anchor="middle" class="cty">London</text>
+    <!-- annotations -->
+    <text x="337" y="70" text-anchor="middle" class="mono" fill="#7ef0c0">great circle — shortest ✓</text>
+    <text x="337" y="168" text-anchor="middle" class="mono" fill="#fca5a5">straight on the map — longer</text>
+  </g>
+
+  <!-- right column: formula + facts -->
+  <g transform="translate(820 92)">
+    <rect x="0" y="0" width="310" height="330" rx="14" fill="#eff6ff" stroke="#1d4ed8"/>
+    <text x="20" y="34" class="lab" fill="#1d4ed8">THE HAVERSINE FORMULA</text>
+    <text x="20" y="64" class="mono" fill="#0f172a">a = sin²(Δφ/2)</text>
+    <text x="34" y="86" class="mono" fill="#0f172a">+ cos φ₁·cos φ₂·sin²(Δλ/2)</text>
+    <text x="20" y="116" class="mono" fill="#0f172a">d = R · 2·atan2(√a, √(1−a))</text>
+    <line x1="20" y1="136" x2="290" y2="136" stroke="#1d4ed8" stroke-opacity="0.25"/>
+    <text x="20" y="164" class="leg">R = 6,371 km  (mean Earth radius)</text>
+    <text x="20" y="190" class="leg">φ = latitude,  λ = longitude</text>
+    <text x="20" y="228" class="lab" fill="#b45309">NEW YORK → LONDON</text>
+    <text x="20" y="258" class="ex" fill="#0f172a">≈ 5,540 km  (3,442 mi)</text>
+    <text x="20" y="290" class="leg" fill="#475569">initial bearing ≈ 51° (northeast)</text>
+    <text x="20" y="314" class="leg" fill="#475569">real flight is a little longer</text>
+  </g>
+
+  <!-- footer -->
+  <g transform="translate(70 448)">
+    <rect x="0" y="0" width="1060" height="52" rx="14" fill="#0c2f6b"/>
+    <text x="24" y="32" font-family="Consolas, Menlo, monospace" font-size="14" fill="#7ef0c0">lazytools.io — flight distance calculator: great-circle distance, bearing & rough flight time, on a live map</text>
+  </g>
+
+  <text x="600" y="536" text-anchor="middle" class="sub">Great-circle = the shortest path on a sphere. Actual flights follow airways, avoid restricted airspace and ride the winds, so they run slightly longer.</text>
+</svg>
