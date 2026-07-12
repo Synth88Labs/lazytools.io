@@ -80,6 +80,15 @@ const AUTHORITATIVE: Record<string, Record<string, number>> = {
     hz: 1, khz: 1e3, mhz: 1e6, ghz: 1e9,
     rpm: 1 / 60, 'rad-s': 1 / (2 * Math.PI), bpm: 1 / 60,
   },
+  // base: newton. 1 lbf = 0.45359237×9.80665 N; 1 kgf = 9.80665 N; 1 dyne = 1e-5 N; 1 poundal = 0.45359237×0.3048 N.
+  force: {
+    n: 1, kn: 1e3,
+    lbf: 0.45359237 * 9.80665,
+    kgf: 9.80665,
+    dyn: 1e-5,
+    ozf: (0.45359237 * 9.80665) / 16,
+    pdl: 0.45359237 * 0.3048,
+  },
   // base: newton-metre. 1 lbf = 0.45359237×9.80665 N; 1 ft = 0.3048 m; 1 kgf·m = 9.80665 N·m.
   torque: {
     nm: 1, knm: 1e3,
