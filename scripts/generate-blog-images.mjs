@@ -7,6 +7,13 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'how-much-house-can-i-afford-guide',
+    kicker: 'FINANCE GUIDE',
+    lines: ['How much house', 'can you afford?', 'The 28/36 rule'],
+    fact: 'housing ≤ 28% income · all debts ≤ 36%',
+    icon: '🔑',
+  },
+  {
     slug: 'financial-ratios-explained-guide',
     kicker: 'FINANCE GUIDE',
     lines: ['Financial ratios', 'explained: the 6 families', 'and how to read them'],

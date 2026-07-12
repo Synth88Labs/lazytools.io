@@ -5,7 +5,8 @@ export interface FinanceToolDef {
   name: string;
   icon: string;
   widget: 'compound' | 'debt' | 'savings' | 'loan' | 'creditcard' | 'cagr' | 'rule72' | 'roi' | 'breakeven' | 'aprapy'
-    | 'liquidityratios' | 'leverageratios' | 'coverageratios' | 'profitabilityratios' | 'efficiencyratios' | 'valuationratios';
+    | 'liquidityratios' | 'leverageratios' | 'coverageratios' | 'profitabilityratios' | 'efficiencyratios' | 'valuationratios'
+    | 'affordability' | 'retirement' | 'budget';
   description: string;
   lead: string;
   how: string;
@@ -302,6 +303,60 @@ export const FIN_TOOLS: FinanceToolDef[] = [
       { q: 'What is enterprise value?', a: 'Market capitalisation plus net debt (total debt minus cash) — the theoretical cost to buy the whole business, not just its equity. It\'s the numerator in EV/EBITDA and gives a fuller valuation than share price alone. Enter it directly in the tool.' },
     ],
     keywords: ['valuation ratios calculator', 'pe ratio calculator', 'price to earnings calculator', 'price to book calculator', 'dividend yield calculator', 'dividend payout ratio calculator', 'ev ebitda calculator'],
+  },
+  {
+    slug: 'home-affordability-calculator',
+    name: 'Home Affordability Calculator',
+    icon: '🔑',
+    widget: 'affordability',
+    description: 'Find out how much house you can afford from your income, debts and down payment, using the lender 28/36 debt-to-income rule. In your browser.',
+    lead: 'Enter your income, monthly debts and down payment to see the home price, loan and monthly payment you can afford under the 28/36 rule.',
+    how: 'Lenders judge affordability with the 28/36 rule: your housing payment should stay under about 28% of gross monthly income (the front-end ratio), and all your debt payments together under 36% (the back-end ratio). The tool takes the lower of those two limits, subtracts estimated taxes, insurance and HOA to find the affordable principal-and-interest payment, works back to the loan amount, and adds your down payment for the maximum home price.',
+    note: 'This is a conservative planning guideline, not a pre-approval — lenders vary and some allow higher ratios, especially with strong credit or reserves. It also uses gross (pre-tax) income, so the "affordable" payment may still feel tight against take-home pay; many buyers deliberately borrow below the ceiling. Educational information, not financial advice.',
+    faqs: [
+      { q: 'How much house can I afford?', a: 'A common guideline is a home price around 3–4× your gross annual income, but it depends on your down payment, other debts and rates. The 28/36 rule ties it to your income: housing under 28% of gross monthly income, total debts under 36%. Enter your figures for a specific number.' },
+      { q: 'What is the 28/36 rule?', a: 'A lender rule of thumb: spend no more than 28% of gross monthly income on housing (the front-end ratio) and no more than 36% on all debt payments combined (the back-end ratio). It keeps the total debt burden manageable.' },
+      { q: 'What is debt-to-income (DTI)?', a: 'The share of your gross monthly income that goes to debt payments. Lenders use it to gauge how much more you can borrow — the "36" in the 28/36 rule is a back-end DTI limit. Lower DTI means more borrowing room.' },
+      { q: 'Does a bigger down payment let me afford more?', a: 'Yes — it adds directly to the home price you can buy (price = affordable loan + down payment), reduces or removes PMI, and lowers the monthly payment on the same house. The tool adds your down payment to the max loan for the home-price ceiling.' },
+      { q: 'Should I borrow the maximum I can afford?', a: 'Often not. The 28/36 ceiling is a limit, not a target, and it uses pre-tax income — borrowing below it leaves room for savings, emergencies and lifestyle. This tool shows the ceiling; how close you get to it is a personal choice. Not financial advice.' },
+    ],
+    keywords: ['home affordability calculator', 'how much house can i afford', 'mortgage affordability calculator', '28 36 rule calculator', 'debt to income calculator', 'house affordability by income', 'home buying calculator'],
+  },
+  {
+    slug: 'retirement-calculator',
+    name: 'Retirement Calculator',
+    icon: '🏖️',
+    widget: 'retirement',
+    description: 'Project your retirement savings from contributions and employer match, and see your FIRE "number" using the 4% rule. In your browser.',
+    lead: 'Enter your age, savings, monthly contributions and return to project your balance at retirement — and the number you need under the 4% rule.',
+    how: 'The tool grows your current savings and monthly contributions (including any employer match) at your assumed annual return to your retirement age, using compound growth. It then works out your "number" — the nest egg needed to live off your investments — from the 4% safe-withdrawal rule: annual retirement expenses ÷ your withdrawal rate, roughly 25× your yearly spending. It compares the two to tell you whether you\'re on track.',
+    note: 'This is an illustration with a constant assumed return; real markets vary year to year, so the actual outcome will differ. It ignores inflation, taxes and other income like Social Security or a pension. The 4% rule (from the Bengen and Trinity studies) is a well-known guideline, not a guarantee — retirement planning is complex. Educational information, not financial advice.',
+    faqs: [
+      { q: 'How much do I need to retire?', a: 'A common rule of thumb is about 25× your annual expenses — the flip side of the 4% withdrawal rule. If you\'ll spend $50,000 a year, that\'s roughly $1.25 million. The tool calculates your number from your own expenses and withdrawal rate.' },
+      { q: 'What is the 4% rule?', a: 'A guideline from retirement research (Bengen; the Trinity study) suggesting you can withdraw about 4% of your portfolio in the first year, adjusting for inflation after, with a low chance of running out over ~30 years. Your "number" is annual expenses ÷ 4% = 25× expenses.' },
+      { q: 'What is FIRE?', a: 'Financial Independence, Retire Early — accumulating roughly 25× your annual expenses so investment income can cover your lifestyle. This tool shows both your projected balance and that FIRE number so you can see the gap.' },
+      { q: 'Should I count my employer match?', a: 'Yes — it\'s free money that compounds like your own contributions, so include it (many people at least contribute enough to get the full match). Enter it as a monthly amount alongside your own contribution.' },
+      { q: 'Why does the tool ignore inflation and tax?', a: 'To keep it a simple illustration. In reality, inflation raises the number you\'ll need and taxes reduce what you keep, while a pension or Social Security reduces what your portfolio must cover. Use this as a starting estimate, then plan in detail. Not financial advice.' },
+    ],
+    keywords: ['retirement calculator', 'retirement savings calculator', '401k calculator', 'fire calculator', '4 percent rule calculator', 'how much to retire', 'retirement number calculator'],
+  },
+  {
+    slug: 'budget-calculator',
+    name: '50/30/20 Budget Calculator',
+    icon: '🧮',
+    widget: 'budget',
+    description: 'Split your monthly take-home pay into needs, wants and savings with the 50/30/20 budgeting rule. In your browser.',
+    lead: 'Enter your monthly take-home pay to see the 50/30/20 split — how much to put toward needs, wants, and savings and debt.',
+    how: 'The 50/30/20 rule is a simple budgeting framework: of your after-tax income, put 50% toward needs (essentials you can\'t skip), 30% toward wants (lifestyle and discretionary spending) and 20% toward savings and extra debt repayment. The tool splits your take-home pay across the three buckets and shows what belongs in each.',
+    note: 'It\'s a starting framework, not a strict rule — high housing costs make hitting 50% needs hard in expensive areas, and if you have high-interest debt or no emergency fund, weighting more toward the savings bucket makes sense. Adjust the proportions to your situation. Popularised by Senator Elizabeth Warren. Educational information, not financial advice.',
+    faqs: [
+      { q: 'What is the 50/30/20 rule?', a: 'A budgeting guideline that splits after-tax income into 50% needs, 30% wants and 20% savings and debt repayment. It\'s an easy framework for balancing essentials, lifestyle and financial goals without tracking every category.' },
+      { q: 'What counts as a "need" versus a "want"?', a: 'Needs are essentials you can\'t easily go without: housing, utilities, groceries, insurance, transport and minimum debt payments. Wants are discretionary: dining out, subscriptions, hobbies, travel and shopping. The line can blur, so judge by necessity.' },
+      { q: 'Should the 20% go to savings or debt?', a: 'Both — the 20% bucket covers building an emergency fund, retirement and investing, plus any extra debt repayment beyond the minimums (which sit in "needs"). If you have high-interest debt, prioritise it within this bucket.' },
+      { q: 'What if I can\'t stick to 50% for needs?', a: 'That\'s common in high-cost areas. Treat 50/30/20 as a target to move toward, not a pass/fail — trimming wants, boosting income, or temporarily accepting a higher needs share are all valid. The framework is meant to be adapted.' },
+      { q: 'Is take-home pay before or after retirement contributions?', a: 'Use your actual after-tax pay. If retirement contributions are deducted from your paycheck, you can either count them inside the 20% savings bucket or budget your post-deduction take-home — just be consistent so savings aren\'t double-counted.' },
+    ],
+    keywords: ['50 30 20 budget calculator', 'budget calculator', 'monthly budget calculator', '50/30/20 rule', 'needs wants savings calculator', 'take home pay budget', 'personal budget calculator'],
   },
 ];
 

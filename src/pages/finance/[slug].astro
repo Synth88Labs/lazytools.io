@@ -12,6 +12,9 @@ import CoverageRatiosTool from '../../components/finance/CoverageRatiosTool.tsx'
 import ProfitabilityRatiosTool from '../../components/finance/ProfitabilityRatiosTool.tsx';
 import EfficiencyRatiosTool from '../../components/finance/EfficiencyRatiosTool.tsx';
 import ValuationRatiosTool from '../../components/finance/ValuationRatiosTool.tsx';
+import AffordabilityTool from '../../components/finance/AffordabilityTool.tsx';
+import RetirementTool from '../../components/finance/RetirementTool.tsx';
+import BudgetTool from '../../components/finance/BudgetTool.tsx';
 import DebtPayoffTool from '../../components/finance/DebtPayoffTool.tsx';
 import SavingsGoalTool from '../../components/finance/SavingsGoalTool.tsx';
 import LoanPayoffTool from '../../components/finance/LoanPayoffTool.tsx';
@@ -83,6 +86,9 @@ const schema = [
       {tool.widget === 'profitabilityratios' && <ProfitabilityRatiosTool client:load />}
       {tool.widget === 'efficiencyratios' && <EfficiencyRatiosTool client:load />}
       {tool.widget === 'valuationratios' && <ValuationRatiosTool client:load />}
+      {tool.widget === 'affordability' && <AffordabilityTool client:load />}
+      {tool.widget === 'retirement' && <RetirementTool client:load />}
+      {tool.widget === 'budget' && <BudgetTool client:load />}
     </div>
 
     <div class="mt-4">

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="How much house can you afford — the 28/36 rule. The front-end ratio: your monthly housing payment should be no more than 28 percent of gross monthly income. The back-end ratio: all your monthly debt payments together, including housing, should be no more than 36 percent of gross monthly income. Lenders use the lower of the two limits. Worked example: 8,000 dollars gross monthly income. 28 percent is 2,240 dollars for housing. 36 percent is 2,880 dollars for all debts; minus 500 dollars of existing debts leaves 2,380 for housing. The lower limit, 2,240 dollars, is the maximum housing payment.">
+  <defs>
+    <style>
+      .h { font: 800 27px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .sub { font: 500 15px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+      .ct { font: 800 44px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; }
+      .lab { font: 700 15px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .cap { font: 600 13px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+      .ex { font: 800 16px Consolas, Menlo, monospace; fill: #0f172a; }
+    </style>
+  </defs>
+
+  <text x="600" y="42" text-anchor="middle" class="h">How much house can you afford? The 28/36 rule</text>
+  <text x="600" y="68" text-anchor="middle" class="sub">two limits on your income — lenders use whichever is lower</text>
+
+  <!-- 28 card -->
+  <g transform="translate(90 100)">
+    <rect width="480" height="150" rx="16" fill="#eff6ff" stroke="#1d4ed8"/>
+    <text x="30" y="60" class="ct" fill="#1d4ed8">28%</text>
+    <text x="170" y="46" class="lab">FRONT-END RATIO</text>
+    <text x="170" y="72" class="cap">housing payment (PITI)</text>
+    <text x="170" y="90" class="cap">≤ 28% of gross monthly income</text>
+    <text x="30" y="128" class="ex" fill="#1d4ed8">0.28 × $8,000 = $2,240</text>
+  </g>
+  <!-- 36 card -->
+  <g transform="translate(630 100)">
+    <rect width="480" height="150" rx="16" fill="#fffbeb" stroke="#d97706"/>
+    <text x="30" y="60" class="ct" fill="#b45309">36%</text>
+    <text x="170" y="46" class="lab">BACK-END RATIO</text>
+    <text x="170" y="72" class="cap">ALL debt payments (incl. housing)</text>
+    <text x="170" y="90" class="cap">≤ 36% of gross monthly income</text>
+    <text x="30" y="128" class="ex" fill="#b45309">0.36 × $8,000 − $500 = $2,380</text>
+  </g>
+
+  <!-- take the lower -->
+  <g transform="translate(90 288)">
+    <rect width="1020" height="60" rx="14" fill="#0f172a"/>
+    <text x="510" y="38" text-anchor="middle" class="ex" fill="#7ef0c0">take the lower limit  →  max housing payment = $2,240 / month</text>
+  </g>
+
+  <!-- then work back -->
+  <g transform="translate(90 372)">
+    <text x="0" y="0" class="lab" fill="#1d4ed8">THEN WORK BACK TO A PRICE</text>
+    <text x="0" y="30" class="ex">$2,240 − taxes/insurance  →  loan you can carry  +  down payment</text>
+    <text x="0" y="58" class="sub">= the home price you can afford. Bigger down payment or lower debts → more house.</text>
+  </g>
+
+  <!-- footer -->
+  <g transform="translate(90 460)">
+    <rect width="1020" height="50" rx="14" fill="#0c2f6b"/>
+    <text x="24" y="31" font-family="Consolas, Menlo, monospace" font-size="14" fill="#7ef0c0">lazytools.io — home affordability &#38; mortgage calculators, free &#38; private</text>
+  </g>
+
+  <text x="600" y="548" text-anchor="middle" class="sub">A conservative guideline, not a pre-approval — many buyers borrow below the ceiling for breathing room.</text>
+  <text x="600" y="572" text-anchor="middle" class="cap" fill="#94a3b8">Educational information, not financial advice.</text>
+</svg>
