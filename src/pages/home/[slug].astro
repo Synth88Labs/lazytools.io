@@ -6,6 +6,9 @@ import PrivacyStrip from '../../components/PrivacyStrip.astro';
 import FaqSection from '../../components/FaqSection.astro';
 import RatingWidget from '../../components/RatingWidget.tsx';
 import PaintCalculator from '../../components/home/PaintCalculator.tsx';
+import StairCalculator from '../../components/home/StairCalculator.tsx';
+import StudCalculator from '../../components/home/StudCalculator.tsx';
+import BtuCalculator from '../../components/home/BtuCalculator.tsx';
 import TileCalculator from '../../components/home/TileCalculator.tsx';
 import ConcreteCalculator from '../../components/home/ConcreteCalculator.tsx';
 import MulchCalculator from '../../components/home/MulchCalculator.tsx';
@@ -64,6 +67,9 @@ const schema = [
 
     <div class="mt-6">
       {tool.widget === 'paint' && <PaintCalculator client:load />}
+      {tool.widget === 'stair' && <StairCalculator client:load />}
+      {tool.widget === 'stud' && <StudCalculator client:load />}
+      {tool.widget === 'btu' && <BtuCalculator client:load />}
       {tool.widget === 'tile' && <TileCalculator client:load />}
       {tool.widget === 'concrete' && <ConcreteCalculator client:load />}
       {tool.widget === 'mulch' && <MulchCalculator client:load />}

@@ -5,7 +5,8 @@ export interface HomeToolDef {
   name: string;
   icon: string;
   widget: 'paint' | 'tile' | 'concrete' | 'mulch' | 'wallpaper'
-    | 'gravel' | 'drywall' | 'roofing' | 'lawn' | 'fence' | 'deck' | 'boardfoot';
+    | 'gravel' | 'drywall' | 'roofing' | 'lawn' | 'fence' | 'deck' | 'boardfoot'
+    | 'stair' | 'stud' | 'btu';
   description: string;
   lead: string;
   how: string;
@@ -233,6 +234,60 @@ HOME_TOOLS.push(
       { q: 'How do I work out the cost?', a: 'Multiply the total board feet by the price per board foot. Enter a price and the tool shows the total cost.' },
     ],
     keywords: ['board foot calculator', 'board feet calculator', 'lumber calculator', 'how to calculate board feet', 'bf lumber calculator', 'wood board foot'],
+  },
+  {
+    slug: 'stair-calculator',
+    name: 'Stair Calculator (Rise & Run)',
+    icon: '🪜',
+    widget: 'stair',
+    description: 'Calculate a staircase from the total rise — number and height of risers, tread run, and stringer length — with the building-code limits checked. In your browser.',
+    lead: 'Enter the total floor-to-floor rise, a target riser height and the tread depth to get the number of risers, the actual riser height, the run and the stringer length.',
+    how: 'The number of risers is the total rise divided by your target riser height, rounded to a whole number; the actual riser height is the total rise divided by that count (so every step is equal). A flight always has one fewer tread than risers, so the total run is treads × tread depth, and the diagonal stringer length is √(rise² + run²) by Pythagoras. The tool flags if the riser or tread falls outside common code limits.',
+    note: 'US IRC limits are a maximum 7¾-inch riser and a minimum 10-inch tread, and all steps in a flight must be within about ⅜ inch of each other — which is why you divide into equal risers rather than leaving an odd last step. Codes vary by country and by residential vs commercial, so always confirm locally; comfort rules of thumb include "riser + tread ≈ 17–18 in" and "2×riser + tread ≈ 25 in".',
+    faqs: [
+      { q: 'How do you calculate the number of stairs?', a: 'Divide the total floor-to-floor rise by a comfortable riser height (around 7–7.75 in) and round to a whole number. That\'s the number of risers; the actual riser height is the total rise divided by it, so every step is equal.' },
+      { q: 'How do you calculate stringer length?', a: 'It\'s the diagonal of the staircase: √(total rise² + total run²). If the rise is 112 in and the run 140 in, the stringer is about 179 in. Add length for how it meets the floor and landing.' },
+      { q: 'What is the maximum riser height?', a: 'Under the US IRC, 7¾ inches for residential stairs; the minimum tread depth is 10 inches. Commercial codes are stricter. Steps must also be uniform — no more than about ⅜ inch difference between them.' },
+      { q: 'What is a comfortable stair angle?', a: 'Most comfortable stairs land between about 30° and 37°. A common comfort rule is riser + tread ≈ 17–18 inches, or 2 × riser + tread ≈ 25 inches. Steeper stairs save space but are harder to climb.' },
+      { q: 'Why is there one fewer tread than risers?', a: 'Because the top "tread" is the landing or upper floor itself, so it isn\'t counted. A flight with 15 risers has 14 treads. The tool accounts for this when computing the run.' },
+    ],
+    keywords: ['stair calculator', 'rise and run calculator', 'staircase calculator', 'stair stringer calculator', 'how many stairs', 'riser tread calculator', 'stair rise run'],
+  },
+  {
+    slug: 'stud-calculator',
+    name: 'Wall Stud Calculator',
+    icon: '🧱',
+    widget: 'stud',
+    description: 'Calculate how many studs a wall needs from its length and the on-center spacing (16″ or 24″), plus plate material — with an allowance for openings. In your browser.',
+    lead: 'Enter the wall length and stud spacing to get the number of studs, with extra studs for doors and windows and the plate material.',
+    how: 'The number of studs is the wall length divided by the on-center spacing, rounded up, plus one for the end of the wall: studs = ⌈length ÷ spacing⌉ + 1. Each door or window opening adds roughly two more studs (a king and a jack stud on each side, simplified here). Plate material is the wall length doubled — one top plate and one bottom plate.',
+    note: 'This is a framing estimate for a straight wall at 16-inch on-center spacing (the standard for load-bearing walls; 24-inch is used for some non-load-bearing walls). Add extra studs for corners, T-intersections with partition walls, and the cripple studs above and below openings. Buy a few spare — real framing always uses more than the minimum.',
+    faqs: [
+      { q: 'How many studs do I need for a wall?', a: 'Divide the wall length by the stud spacing and round up, then add one for the end: for a 20-ft wall at 16 in on-center, that\'s ⌈240 ÷ 16⌉ + 1 = 16 studs, before extras for openings and corners.' },
+      { q: 'What is 16 inch on center?', a: '"On center" (OC) means the spacing measured from the centre of one stud to the centre of the next. 16-inch OC — a stud every 16 inches — is the standard for load-bearing walls; it also lines up with 4×8 sheet goods.' },
+      { q: 'How do doors and windows change the stud count?', a: 'Each opening needs king studs (full height, on each side) and jack studs (supporting the header), so it adds studs even though the opening removes some. This tool adds about two studs per opening as a simple allowance.' },
+      { q: 'How much plate material do I need?', a: 'Two lengths of the wall — a bottom plate and a top plate (often a double top plate, which would be three). The tool shows the wall length doubled; add a plate length if your design uses a double top plate.' },
+      { q: 'Should I use 16 or 24 inch spacing?', a: '16-inch OC is standard for load-bearing walls and gives a stiffer wall; 24-inch OC ("advanced framing") uses less lumber and is allowed for many non-load-bearing and some engineered walls. Follow your plans and local code.' },
+    ],
+    keywords: ['stud calculator', 'wall stud calculator', 'how many studs', 'framing calculator', '16 inch on center calculator', 'wall framing studs', 'stud spacing calculator'],
+  },
+  {
+    slug: 'btu-calculator',
+    name: 'BTU Calculator (Air Conditioner Sizing)',
+    icon: '❄️',
+    widget: 'btu',
+    description: 'Estimate the cooling capacity (BTU) an air conditioner needs for a room — from its area, sun exposure, occupancy and whether it\'s a kitchen. In your browser.',
+    lead: 'Enter the room area and a few conditions to estimate the air-conditioner cooling capacity you need, in BTU per hour.',
+    how: 'A common sizing guideline (from ENERGY STAR) is about 20 BTU per hour per square foot of floor area. The tool starts there and adjusts: +10% for a very sunny room or −10% for a heavily shaded one, +600 BTU for each regular occupant beyond two, and +4,000 BTU if it\'s a kitchen (to cover appliance heat). The result is the recommended cooling capacity in BTU/h, also shown in tons and watts.',
+    note: 'Bigger is not better: an oversized air conditioner cools the air quickly but short-cycles, so it removes less humidity and wastes energy, leaving the room cold and clammy. This is a quick estimate for a single room; for a whole house, high ceilings or ducted systems, a proper Manual J heat-load calculation accounts for insulation, windows and climate.',
+    faqs: [
+      { q: 'How many BTU do I need to cool a room?', a: 'Roughly 20 BTU per hour per square foot, so about 6,000 BTU for a 300 ft² room — then adjust up for sun, extra people or a kitchen. This tool applies those adjustments for you.' },
+      { q: 'How do you calculate air conditioner size?', a: 'Multiply the room\'s area by ~20 BTU/ft², then add for heat gains: +10% if very sunny, +600 BTU per person beyond two, +4,000 for a kitchen. The result is the cooling capacity in BTU/h (12,000 BTU = 1 ton).' },
+      { q: 'What size AC for a 300 square foot room?', a: 'About 6,000 BTU/h as a baseline (300 × 20). A sunny 300 ft² room, or one with several people, would want a bit more — the tool shows the adjusted figure.' },
+      { q: 'Is a bigger BTU air conditioner better?', a: 'No. An oversized unit cools too fast and shuts off before removing humidity, so the room feels cold and damp and the compressor wears from short-cycling. Match the capacity to the room.' },
+      { q: 'How many BTU is a ton of cooling?', a: '12,000 BTU per hour equals one ton of cooling. So a 24,000 BTU/h system is a 2-ton unit. The tool shows tons alongside BTU.' },
+    ],
+    keywords: ['btu calculator', 'air conditioner size calculator', 'ac btu calculator', 'how many btu to cool a room', 'ac sizing calculator', 'room air conditioner size', 'btu per square foot'],
   },
 );
 
