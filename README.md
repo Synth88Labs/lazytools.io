@@ -31,11 +31,11 @@ are no processing servers. The tool code downloads to *your* device and runs the
 yourself: open DevTools, watch the network tab, or switch off your connection mid-use — everything keeps
 working.
 
-## What's live — 39 categories, 660+ tools, ~810 pages
+## What's live — 39 categories, 720+ tools, ~880 pages
 
 | Category | Highlights |
 |---|---|
-| [Unit Converters](https://lazytools.io/units/) | 123 pages, exact NIST/BIPM factors, per-pair editorial notes |
+| [Unit Converters](https://lazytools.io/units/) | **17 quantities** — length, weight, temperature, volume, area, speed, time, data storage, pressure, energy, power, **data-transfer-rate** (Mbps↔MB/s), **frequency** (Hz/RPM/rad·s), **torque** (N·m↔lbf·ft), **force** (N/lbf/kgf), **density**, **volumetric flow-rate** (L/min↔GPM) — exact NIST/BIPM factors (audited by verify-factors.ts), per-pair editorial notes |
 | [Calculators](https://lazytools.io/calc/) | **24 tools** — percentage, EMI, BMI, age, tip, discount, interest, mortgage, sales tax, fuel cost, GPA, **test grade (EZ grader)**, **unit price** (price-per-unit comparison), **overtime pay**… |
 | [Finance](https://lazytools.io/finance/) | **19 tools** — **compound interest** (FV with regular contributions + growth chart), **debt payoff** (snowball vs avalanche, month-by-month, payoff-order table), **savings goal**, **loan payoff** (amortization + extra-payment savings), **credit-card payoff** (time or payment), **CAGR**, **ROI** (+ annualized), **rule of 72**, **break-even units**, **APR↔APY**, plus **6 financial-ratio calculators** — **liquidity** (current/quick/cash/working capital), **leverage** (D/E, debt ratio, equity multiplier), **coverage** (interest coverage/TIE, DSCR, fixed-charge), **profitability** (gross/operating/net margin, ROA, ROE), **efficiency** (turnover, DSO/DPO, cash conversion cycle), **valuation** (P/E, P/B, P/S, dividend yield/payout, EV/EBITDA) — **each result interpreted in plain business terms** with healthy/caution/concern or compare-to-peers; benchmarks research-verified (CFI/Investopedia/lender norms) — plus **home affordability** (28/36 DTI rule), **retirement/FIRE** (projection + 4% rule) and **50/30/20 budget** — exact, private, educational (not advice); no live rates |
 | [Mathematics](https://lazytools.io/math/) | **30 tools, exact arithmetic** — fractions with steps, primes (Miller–Rabin), quadratics with radical roots, statistics, Roman numerals, nCr/nPr at BigInt scale, **triangle solver** (law of sines/cosines, ambiguous SSA), **matrix calculator** (det/inverse/multiply), **logarithm** (any base + antilog) |

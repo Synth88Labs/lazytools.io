@@ -80,6 +80,19 @@ const AUTHORITATIVE: Record<string, Record<string, number>> = {
     hz: 1, khz: 1e3, mhz: 1e6, ghz: 1e9,
     rpm: 1 / 60, 'rad-s': 1 / (2 * Math.PI), bpm: 1 / 60,
   },
+  // base: kg/m³. 1 g/cm³ = 1000; 1 lb/ft³ = 0.45359237/0.3048³; 1 lb/in³ = 0.45359237/0.0254³.
+  density: {
+    'kg-m3': 1, 'g-cm3': 1000, 'g-ml': 1000, 'kg-l': 1000, 'g-l': 1,
+    'lb-ft3': 0.45359237 / (0.3048 ** 3),
+    'lb-in3': 0.45359237 / (0.0254 ** 3),
+  },
+  // base: m³/s. 1 US gal = 3.785411784 L; 1 ft³ = 0.3048³ m³.
+  'flow-rate': {
+    'm3-s': 1, 'm3-h': 1 / 3600, 'l-s': 1e-3, 'l-min': 1e-3 / 60,
+    gpm: 0.003785411784 / 60,
+    cfm: (0.3048 ** 3) / 60,
+    'ft3-s': 0.3048 ** 3,
+  },
   // base: newton. 1 lbf = 0.45359237×9.80665 N; 1 kgf = 9.80665 N; 1 dyne = 1e-5 N; 1 poundal = 0.45359237×0.3048 N.
   force: {
     n: 1, kn: 1e3,
