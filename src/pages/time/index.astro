@@ -69,6 +69,12 @@ const schema = [
       ))}
     </ul>
 
+    <section class="prose-lazy mt-10">
+      <h2>Dates and time zones, without the traps</h2>
+      <p>Time is deceptively tricky: Unix timestamps, ISO strings, leap years, and the ever-present <strong>time-zone and daylight-saving</strong> pitfalls that cause off-by-an-hour bugs and missed meetings. These tools convert timestamps, do date arithmetic (add or subtract days, find the gap between two dates, work out an exact age), and compare times across zones — using your device's own time-zone database.</p>
+      <p>Everything is computed locally in your browser, so a birthdate or a deadline you enter isn't sent anywhere. For converting between world calendar systems — Hijri, Hebrew, Persian, Julian and more — see the <a href="/calendar/">Calendars</a> category.</p>
+    </section>
+
     <FaqSection faqs={faqs} />
   </div>
 </Base>

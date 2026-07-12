@@ -69,6 +69,12 @@ const schema = [
       ))}
     </ul>
 
+    <section class="prose-lazy mt-10">
+      <h2>Generate locally, share deliberately</h2>
+      <p>QR codes, strong passwords, UUIDs, barcodes, and Wi-Fi and vCard QR codes are all produced <strong>on your device</strong>. That's more important than it sounds: many online QR generators encode your Wi-Fi password or contact details on their servers, where the payload can be logged. Here the code is drawn in your browser, so the thing you're encoding — a password, a network key, a private address — is never transmitted.</p>
+      <p>Passwords and UUIDs use the browser's cryptographically-secure random source, not a weak <code>Math.random()</code>. Generate what you need, then choose to share it — nothing is sent anywhere by default, and it all works offline.</p>
+    </section>
+
     <FaqSection faqs={faqs} />
   </div>
 </Base>

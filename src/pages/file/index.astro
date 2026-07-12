@@ -69,6 +69,12 @@ const schema = [
       ))}
     </ul>
 
+    <section class="prose-lazy mt-10">
+      <h2>Convert data without uploading it</h2>
+      <p>Moving structured data between formats — <strong>CSV, JSON, XML, YAML and Markdown</strong> — is a routine chore that most online converters do by uploading your file to a server. These do it in your browser instead, parsing and re-serialising locally so the conversion is instant and your data never leaves the page. Delimiters, nesting and types are preserved, and you can paste or drop a file either way.</p>
+      <p>That matters when the "data" is a customer export, a financial extract or an internal config: there's no server to receive it, cache it or leak it. Round-trip a file to check it survives, and everything works offline once loaded.</p>
+    </section>
+
     <FaqSection faqs={faqs} />
   </div>
 </Base>

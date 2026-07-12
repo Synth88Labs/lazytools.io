@@ -69,6 +69,12 @@ const schema = [
       ))}
     </ul>
 
+    <section class="prose-lazy mt-10">
+      <h2>The visible — and invisible — layer of text</h2>
+      <p>Text carries more than the words you see. Copied text can hide <strong>invisible zero-width characters</strong> (increasingly used as AI watermarks), <strong>homoglyphs</strong> — lookalike letters from other alphabets used in phishing — and inconsistent Unicode that breaks search and sorting. Alongside the everyday counters, case converters, sorting and clean-up, these tools surface that hidden layer: an invisible-character detector, a homoglyph checker, a Unicode inspector and readability scoring (Flesch, Fog, SMOG and more).</p>
+      <p>Because everything runs in your browser, you can paste a confidential draft, an unreleased announcement or a suspicious message and analyse it without any of it being uploaded. Nothing you type is transmitted — the tools work offline once the page has loaded.</p>
+    </section>
+
     <FaqSection faqs={faqs} />
   </div>
 </Base>

@@ -68,6 +68,12 @@ const schema = [
       ))}
     </ul>
 
+    <section class="prose-lazy mt-10">
+      <h2>Colour, done accessibly</h2>
+      <p>Working with colour means juggling several models — HEX and RGB for the web, HSL for intuitive tweaks, and the newer <strong>OKLCH</strong> for perceptually even lightness. These tools convert between them precisely and build harmonious palettes, but they also take accessibility seriously: check any pair against the <strong>WCAG contrast</strong> thresholds (and the newer APCA), simulate the main types of colour-blindness, and pull a palette straight from an image.</p>
+      <p>Good contrast isn't optional — text that fails WCAG AA is genuinely hard for many people to read. Everything is computed locally, so you can drop in a screenshot of unreleased work to sample its colours without the image ever leaving your device.</p>
+    </section>
+
     <FaqSection faqs={faqs} />
   </div>
 </Base>

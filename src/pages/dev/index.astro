@@ -69,6 +69,12 @@ const schema = [
       ))}
     </ul>
 
+    <section class="prose-lazy mt-10">
+      <h2>Developer utilities that keep secrets local</h2>
+      <p>These are the small, sharp tools you reach for a dozen times a day: Base64 and URL encoding, JSON and other formatters, hashes (SHA family via the browser's Web Crypto), JWT decoding, regex testing, an exact LLM <strong>token counter</strong>, and Ethereum helpers (BigInt-exact wei⇄ether, Keccak-256, EIP-55 checksums). Each does one job cleanly and shows its working.</p>
+      <p>Crucially, they run entirely in your browser — so pasting an API key, a private JWT, a config file or a wallet address never sends it to a server. That's the difference between a convenient tool and a liability: your secrets stay on your machine, and the tools keep working offline.</p>
+    </section>
+
     <FaqSection faqs={faqs} />
   </div>
 </Base>

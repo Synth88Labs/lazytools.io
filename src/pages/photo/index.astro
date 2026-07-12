@@ -96,6 +96,12 @@ const countries = new Set(PHOTO_SPECS.map((s) => s.country)).size;
       application. Currently covering {PHOTO_SPECS.length} photo {PHOTO_SPECS.length === 1 ? 'type' : 'types'} across {countries} {countries === 1 ? 'country' : 'countries'}.
     </p>
 
+    <section class="prose-lazy mt-10">
+      <h2>Compliant ID photos, made privately</h2>
+      <p>Passport, visa and ID photos have exact, country-specific rules — the crop dimensions, head size, background and margins differ for each of <strong>80+ countries</strong>. This tool applies the correct specification, helps you position and crop the shot, and checks it against the requirements. The face detection runs as a <strong>self-hosted machine-learning model in your browser</strong>, so your photo is analysed on your own device and never uploaded.</p>
+      <p>That privacy matters for a document photo of your own face: there's no server to receive it, and it works offline once the model has loaded. Export a print-ready or upload-ready image sized to the country you need.</p>
+    </section>
+
     <FaqSection faqs={faqs} />
   </div>
 </Base>
