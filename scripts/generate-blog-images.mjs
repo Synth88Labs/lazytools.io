@@ -7,6 +7,13 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'how-to-calculate-abv-guide',
+    kicker: 'HOMEBREWING GUIDE',
+    lines: ['How to calculate ABV:', 'original gravity, final', 'gravity & alcohol'],
+    fact: 'ABV ≈ (OG − FG) × 131.25',
+    icon: '🍺',
+  },
+  {
     slug: 'how-many-solar-panels-guide',
     kicker: 'SOLAR GUIDE',
     lines: ['How many solar', 'panels do I need?', 'A simple way to size it'],

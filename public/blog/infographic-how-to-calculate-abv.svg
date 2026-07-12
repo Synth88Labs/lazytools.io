@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="How to calculate ABV from gravity. Yeast eats sugar and makes alcohol plus CO2, so the wort gets lighter. Original gravity, measured before fermentation, might be 1.050. Final gravity, measured after, might be 1.010. ABV equals original gravity minus final gravity, times 131.25. Worked example: 1.050 minus 1.010 equals 0.040, times 131.25 equals about 5.25 percent ABV. For strong beers above 1.070, a more accurate formula reads a little higher.">
+  <defs>
+    <style>
+      .h { font: 800 28px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .sub { font: 500 15px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+      .lab { font: 700 14px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .cap { font: 700 12px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+      .val { font: 800 30px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .ex { font: 800 17px Consolas, Menlo, monospace; fill: #0f172a; }
+    </style>
+  </defs>
+
+  <text x="600" y="42" text-anchor="middle" class="h">How to calculate ABV from gravity</text>
+  <text x="600" y="68" text-anchor="middle" class="sub">yeast turns sugar into alcohol, so the wort gets lighter — the drop tells you the strength</text>
+
+  <!-- OG card -->
+  <g transform="translate(90 105)">
+    <rect x="0" y="0" width="270" height="150" rx="14" fill="#fffbeb" stroke="#d97706"/>
+    <text x="20" y="30" class="cap" fill="#b45309">BEFORE FERMENTATION</text>
+    <text x="20" y="58" class="lab">Original Gravity (OG)</text>
+    <text x="20" y="104" class="val" fill="#b45309">1.050</text>
+    <text x="20" y="132" class="cap">lots of sugar · denser</text>
+  </g>
+
+  <!-- arrow + yeast -->
+  <g transform="translate(390 155)">
+    <text x="60" y="10" text-anchor="middle" class="cap" fill="#047857">yeast eats sugar</text>
+    <text x="60" y="30" text-anchor="middle" class="ex" fill="#047857">→</text>
+    <text x="60" y="58" text-anchor="middle" class="cap" fill="#047857">→ alcohol + CO₂</text>
+  </g>
+
+  <!-- FG card -->
+  <g transform="translate(530 105)">
+    <rect x="0" y="0" width="270" height="150" rx="14" fill="#ecfdf5" stroke="#059669"/>
+    <text x="20" y="30" class="cap" fill="#047857">AFTER FERMENTATION</text>
+    <text x="20" y="58" class="lab">Final Gravity (FG)</text>
+    <text x="20" y="104" class="val" fill="#047857">1.010</text>
+    <text x="20" y="132" class="cap">sugar gone · lighter</text>
+  </g>
+
+  <!-- ABV result -->
+  <g transform="translate(830 105)">
+    <rect x="0" y="0" width="280" height="150" rx="14" fill="#eff6ff" stroke="#1d4ed8"/>
+    <text x="140" y="34" text-anchor="middle" class="cap" fill="#1d4ed8">ALCOHOL BY VOLUME</text>
+    <text x="140" y="92" text-anchor="middle" font-family="'Plus Jakarta Sans','Segoe UI',Arial,sans-serif" font-weight="800" font-size="46" fill="#1d4ed8">5.25%</text>
+    <text x="140" y="128" text-anchor="middle" class="cap">a typical session beer</text>
+  </g>
+
+  <!-- formula band -->
+  <g transform="translate(90 290)">
+    <rect x="0" y="0" width="1020" height="60" rx="14" fill="#0f172a"/>
+    <text x="510" y="38" text-anchor="middle" class="ex" fill="#7ef0c0">ABV%  =  ( OG − FG ) × 131.25</text>
+  </g>
+
+  <!-- worked example -->
+  <g transform="translate(90 378)">
+    <text x="0" y="0" class="lab" fill="#1d4ed8">WORKED EXAMPLE</text>
+    <text x="0" y="34" class="ex">( 1.050 − 1.010 ) × 131.25  =  0.040 × 131.25  =  5.25% ABV</text>
+    <text x="0" y="66" class="sub">For strong beers (above ~1.070) a more accurate formula reads a little higher — the simple one drifts low.</text>
+  </g>
+
+  <!-- footer -->
+  <g transform="translate(90 470)">
+    <rect x="0" y="0" width="1020" height="52" rx="14" fill="#0c2f6b"/>
+    <text x="24" y="32" font-family="Consolas, Menlo, monospace" font-size="14" fill="#7ef0c0">lazytools.io — ABV, IBU &amp; priming-sugar calculators, free &amp; private</text>
+  </g>
+
+  <text x="600" y="562" text-anchor="middle" class="sub">Take both gravity readings at the hydrometer's calibration temperature (or correct for temperature) for an accurate result.</text>
+</svg>

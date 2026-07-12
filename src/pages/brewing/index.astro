@@ -1,0 +1,83 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PrivacyStrip from '../../components/PrivacyStrip.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { BREWING_TOOLS } from '../../data/brewing/index';
+import { breadcrumbSchema, collectionPageSchema, faqSchema } from '../../lib/schema';
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Homebrewing', url: '/brewing/' },
+];
+const faqs = [
+  { q: 'Are these homebrewing calculators accurate?', a: 'They use the established brewing formulas — ABV = (OG − FG) × 131.25 (and Hall\'s equation for strong beers), the Tinseth IBU model, the standard Brix↔SG cubics, hydrometer temperature correction, priming-sugar from CO₂ stoichiometry, Palmer\'s strike-water equation, and Sean Terrill\'s refractometer cubic. Each was verified against its source (Palmer, Tinseth, Terrill, Brewer\'s Friend) and is cited on the tool.' },
+  { q: 'Do the tools work in metric and imperial?', a: 'Yes where it matters — the strike-water and priming tools take °C or °F, and the strike tool handles L/kg or qt/lb. Gravity is unitless specific gravity; IBU and priming volumes are metric (litres), which you can convert in the Units category.' },
+  { q: 'Is anything uploaded?', a: 'No. Every tool runs entirely in your browser — no accounts, no uploads, nothing sent to a server. Your recipe numbers stay on your device, and the tools work offline on brew day.' },
+  { q: 'Are these estimates or exact?', a: 'The gravity, ABV, Brix and strike-water maths are exact formulas. IBU, priming sugar and refractometer correction are industry-standard models that estimate real-world behaviour — excellent for designing and comparing recipes, but hop utilization and refractometer factors vary, so treat those as close estimates and confirm critical readings with a hydrometer.' },
+];
+const schema = [
+  breadcrumbSchema(crumbs),
+  collectionPageSchema({ name: 'Homebrewing Calculators', url: '/brewing/', description: 'Free, private homebrewing calculators: ABV, IBU (Tinseth), priming sugar, Brix to specific gravity, hydrometer temperature correction, strike water, gravity dilution and refractometer final gravity.', items: BREWING_TOOLS.map((t) => ({ name: t.name, url: `/brewing/${t.slug}/` })) }),
+  faqSchema(faqs),
+];
+---
+
+<Base
+  title="Homebrewing Calculators — ABV, IBU, Priming Sugar & More | LazyTools"
+  description="Free homebrewing calculators that run in your browser: ABV from gravity, IBU (Tinseth), priming sugar, Brix to specific gravity, hydrometer temperature correction, strike water temperature, gravity dilution and refractometer final gravity. Established formulas, cited, no sign-up."
+  schema={schema}
+>
+  <div class="mx-auto max-w-5xl px-4 py-6">
+    <Breadcrumbs items={crumbs} />
+    <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Homebrewing Calculators</h1>
+    <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
+      The brew-day maths, done for you — work out your beer's ABV, bitterness (IBU) and priming sugar, convert
+      between Brix and gravity, correct a hydrometer or refractometer reading, hit your mash temperature with
+      the right strike water, and dilute a too-strong wort. Established brewing formulas, cited to their
+      sources, running entirely in your browser.
+    </p>
+
+    <div class="mt-5"><PrivacyStrip /></div>
+
+    <section class="mt-8">
+      <ul class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {BREWING_TOOLS.map((t) => (
+          <li>
+            <a href={`/brewing/${t.slug}/`} class="flex h-full flex-col rounded-xl border border-slate-200 p-4 transition hover:border-brand-400 hover:shadow-sm">
+              <span class="text-2xl" aria-hidden="true">{t.icon}</span>
+              <span class="mt-2 font-semibold text-slate-900">{t.name}</span>
+              <span class="mt-1 text-sm text-slate-600">{t.lead.split('—')[0].split('(')[0]}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="prose-lazy mt-10">
+      <h2>From mash to bottle, the numbers that matter</h2>
+      <p>
+        Brewing is equal parts craft and measurement, and a handful of numbers run through the whole day. Before
+        the boil, the <a href="/brewing/strike-water-calculator/">strike-water calculator</a> gets your mash to
+        the right temperature and the <a href="/brewing/brix-to-sg-calculator/">Brix↔SG converter</a> squares
+        your refractometer with your hydrometer. During the boil, the
+        <a href="/brewing/ibu-calculator/">IBU calculator</a> balances the bitterness of your hop additions
+        using Glenn Tinseth's model. And when a reading looks off, the
+        <a href="/brewing/hydrometer-temperature-correction/">temperature correction</a> and
+        <a href="/brewing/refractometer-calculator/">refractometer</a> tools set it straight.
+      </p>
+      <p>
+        After fermentation, the <a href="/brewing/abv-calculator/">ABV calculator</a> turns your original and
+        final gravity into alcohol content (with the accurate formula for big beers), and at bottling the
+        <a href="/brewing/priming-sugar-calculator/">priming-sugar calculator</a> doses exactly the carbonation
+        you want — no bottle bombs. If a batch comes out stronger than planned, the
+        <a href="/brewing/gravity-dilution-calculator/">dilution calculator</a> tells you how much water to add.
+        Every formula is the established one and cited to its source; nothing is uploaded, and it all works
+        offline in the brewhouse. For unit conversions and general maths, see the
+        <a href="/units/">Units</a> and <a href="/calculators/">Calculators</a> categories.
+      </p>
+    </section>
+
+    <FaqSection faqs={faqs} />
+  </div>
+</Base>

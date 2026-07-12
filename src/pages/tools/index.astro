@@ -30,6 +30,7 @@ import { ELECTRONICS_TOOLS } from '../../data/electronics/index';
 import { TRAVEL_TOOLS } from '../../data/travel/index';
 import { PRINTING3D_TOOLS } from '../../data/printing3d/index';
 import { SOLAR_TOOLS } from '../../data/solar/index';
+import { BREWING_TOOLS } from '../../data/brewing/index';
 import { FILE_TOOLS } from '../../data/file/index';
 import { DEV_TOOLS } from '../../data/dev/index';
 import { GEN_TOOLS } from '../../data/generate/index';
@@ -91,6 +92,7 @@ const schema = [
       ...TRAVEL_TOOLS.map((t) => ({ name: t.name, url: `/travel/${t.slug}/` })),
       ...PRINTING3D_TOOLS.map((t) => ({ name: t.name, url: `/3d-printing/${t.slug}/` })),
       ...SOLAR_TOOLS.map((t) => ({ name: t.name, url: `/solar/${t.slug}/` })),
+      ...BREWING_TOOLS.map((t) => ({ name: t.name, url: `/brewing/${t.slug}/` })),
       ...SECURITY_TOOLS.map((t) => ({ name: t.name, url: `/security/${t.slug}/` })),
       ...IMAGE_TOOLS.map((t) => ({ name: t.name, url: `/image/${t.slug}/` })),
       ...PHOTO_SPECS.map((s) => ({ name: `${s.label} Maker`, url: `/photo/${s.slug}/` })),
@@ -370,6 +372,19 @@ const schema = [
         {SOLAR_TOOLS.map((t) => (
           <li>
             <a href={`/solar/${t.slug}/`} class="inline-block rounded-full border border-slate-200 px-3 py-1 text-sm text-slate-600 transition hover:border-brand-400 hover:text-brand-700">
+              {t.icon} {t.name}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-bold text-slate-900">🍺 Homebrewing</h2>
+      <ul class="mt-4 flex flex-wrap gap-2">
+        {BREWING_TOOLS.map((t) => (
+          <li>
+            <a href={`/brewing/${t.slug}/`} class="inline-block rounded-full border border-slate-200 px-3 py-1 text-sm text-slate-600 transition hover:border-brand-400 hover:text-brand-700">
               {t.icon} {t.name}
             </a>
           </li>
