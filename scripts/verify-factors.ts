@@ -110,6 +110,17 @@ const AUTHORITATIVE: Record<string, Record<string, number>> = {
     'kgf-m': 9.80665,
     'ozf-in': (0.45359237 * 9.80665 * 0.3048) / 12 / 16,
   },
+  // base: degree. π rad = 180°; 400 gon = 360°; 1° = 60′ = 3600″; 1 turn = 360°; 32 compass points = 360°.
+  angle: {
+    deg: 1,
+    rad: 180 / Math.PI,
+    grad: 0.9,
+    arcmin: 1 / 60,
+    arcsec: 1 / 3600,
+    mrad: (180 / Math.PI) / 1000,
+    turn: 360,
+    point: 11.25,
+  },
 };
 
 // Temperature is offset-based → verified via known point pairs instead.

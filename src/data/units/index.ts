@@ -16,6 +16,7 @@ import { torque } from './torque.ts';
 import { force } from './force.ts';
 import { density } from './density.ts';
 import { flowRate } from './flow-rate.ts';
+import { angle } from './angle.ts';
 
 export type { Quantity, Unit, PairMeta };
 
@@ -37,6 +38,7 @@ export const QUANTITIES: Quantity[] = [
   force,
   density,
   flowRate,
+  angle,
 ];
 
 /** baseValue = v * factor + offset; target = (base - offset2) / factor2 */
