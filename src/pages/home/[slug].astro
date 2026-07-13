@@ -9,6 +9,8 @@ import PaintCalculator from '../../components/home/PaintCalculator.tsx';
 import StairCalculator from '../../components/home/StairCalculator.tsx';
 import StudCalculator from '../../components/home/StudCalculator.tsx';
 import BtuCalculator from '../../components/home/BtuCalculator.tsx';
+import RampTool from '../../components/home/RampTool.tsx';
+import FirewoodTool from '../../components/home/FirewoodTool.tsx';
 import TileCalculator from '../../components/home/TileCalculator.tsx';
 import ConcreteCalculator from '../../components/home/ConcreteCalculator.tsx';
 import MulchCalculator from '../../components/home/MulchCalculator.tsx';
@@ -70,6 +72,8 @@ const schema = [
       {tool.widget === 'stair' && <StairCalculator client:load />}
       {tool.widget === 'stud' && <StudCalculator client:load />}
       {tool.widget === 'btu' && <BtuCalculator client:load />}
+      {tool.widget === 'ramp' && <RampTool client:load />}
+      {tool.widget === 'firewood' && <FirewoodTool client:load />}
       {tool.widget === 'tile' && <TileCalculator client:load />}
       {tool.widget === 'concrete' && <ConcreteCalculator client:load />}
       {tool.widget === 'mulch' && <MulchCalculator client:load />}

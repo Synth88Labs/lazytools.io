@@ -32,3 +32,43 @@ export function coolingBtu(areaSqft: number, opts: CoolingOpts = {}): number | n
   if (opts.kitchen) btu += 4000;
   return Math.round(btu / 50) * 50;
 }
+
+/* ---------------- Wheelchair / ADA ramp ---------------- */
+
+export interface RampResult {
+  run: number;       // horizontal run, same unit as rise
+  length: number;    // sloped ramp length (hypotenuse), same unit
+  angleDeg: number;  // incline angle in degrees
+  adaCompliant: boolean; // true if slope ≤ 1:12
+}
+/**
+ * Ramp geometry from a vertical rise and a slope ratio (1:ratio). Run = rise ×
+ * ratio; ramp length = √(rise² + run²). The ADA maximum for wheelchair ramps is
+ * 1:12 (about 4.76°), so a ratio ≥ 12 is compliant. Rise and run share a unit.
+ */
+export function rampLength(rise: number, ratio: number): RampResult | null {
+  if (rise <= 0 || ratio <= 0) return null;
+  const run = rise * ratio;
+  const length = Math.sqrt(rise * rise + run * run);
+  const angleDeg = (Math.atan(rise / run) * 180) / Math.PI;
+  return { run, length, angleDeg, adaCompliant: ratio >= 12 };
+}
+
+/* ---------------- Firewood (cords) ---------------- */
+
+export interface FirewoodResult {
+  cubicFeet: number;
+  cords: number;      // full cords (128 ft³)
+  faceCords16: number; // face cords assuming 16-inch logs
+}
+/**
+ * Firewood stack volume in cords. A full cord is a stack 4 ft × 4 ft × 8 ft =
+ * 128 cubic feet. Inputs are the stack's length, height and depth in feet.
+ * Also gives face cords for 16-inch logs (a face cord is 8×4 ft by the log
+ * length, so a 16-inch/1.333-ft depth face cord ≈ 42.67 ft³).
+ */
+export function firewoodCords(lengthFt: number, heightFt: number, depthFt: number): FirewoodResult | null {
+  if (lengthFt <= 0 || heightFt <= 0 || depthFt <= 0) return null;
+  const cubicFeet = lengthFt * heightFt * depthFt;
+  return { cubicFeet, cords: cubicFeet / 128, faceCords16: cubicFeet / (8 * 4 * (16 / 12)) };
+}

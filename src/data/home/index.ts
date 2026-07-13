@@ -6,7 +6,7 @@ export interface HomeToolDef {
   icon: string;
   widget: 'paint' | 'tile' | 'concrete' | 'mulch' | 'wallpaper'
     | 'gravel' | 'drywall' | 'roofing' | 'lawn' | 'fence' | 'deck' | 'boardfoot'
-    | 'stair' | 'stud' | 'btu';
+    | 'stair' | 'stud' | 'btu' | 'ramp' | 'firewood';
   description: string;
   lead: string;
   how: string;
@@ -105,6 +105,42 @@ export const HOME_TOOLS: HomeToolDef[] = [
       { q: 'Why buy from the same batch?', a: 'Wallpaper colour can vary between print batches. Buy all your rolls (plus a spare) with the same batch number so they match on the wall.' },
     ],
     keywords: ['wallpaper calculator', 'how many rolls of wallpaper', 'wallpaper rolls calculator', 'wallpaper estimator', 'wallpaper quantity', 'rolls of wallpaper needed'],
+  },
+  {
+    slug: 'wheelchair-ramp-calculator',
+    name: 'Wheelchair Ramp Calculator',
+    icon: '♿',
+    widget: 'ramp',
+    description: 'Calculate the ramp length and run needed for a given rise and slope — with an ADA 1:12 compliance check for wheelchair ramps. In your browser.',
+    lead: 'Enter the vertical rise and a slope to get the ramp\'s length, horizontal run and incline angle, with an ADA compliance check.',
+    how: 'A ramp trades height for length: the gentler the slope, the longer it must be. For a slope written as 1:N, the horizontal run is the rise times N, and the actual sloped ramp length is √(rise² + run²). The tool also gives the incline angle and checks it against the ADA maximum of 1:12 (about 4.8°) for public, unassisted wheelchair use. Pick a common slope or a gentler one and read off the run and ramp length you need.',
+    note: 'The ADA limits a single ramp run to a 30-inch rise before a level landing, requires handrails above a 6-inch rise, and caps the slope at 1:12 for public unassisted use (steeper ratios like 1:8 are only for short, occupied or unoccupied situations). Building codes vary by country and setting — treat this as a planning aid and confirm your local requirements.',
+    faqs: [
+      { q: 'How long should a wheelchair ramp be?', a: 'At the ADA 1:12 slope, the ramp needs 12 inches of run for every 1 inch of rise — so a 30-inch rise needs a 30-foot run. The sloped ramp itself is slightly longer: √(rise² + run²). Enter your rise for the exact figures.' },
+      { q: 'What is the ADA ramp slope?', a: 'The maximum is 1:12 — one unit of rise per twelve of run, about a 4.8° incline — for public, unassisted wheelchair ramps. Gentler slopes (1:16 to 1:20) are easier still; steeper ones are only allowed in limited, assisted or temporary cases.' },
+      { q: 'How do I calculate ramp length from rise and slope?', a: 'Run = rise × slope ratio (12 for 1:12). The sloped ramp length is √(rise² + run²), which is just a little more than the run. This calculator returns run, ramp length and the incline angle.' },
+      { q: 'What is the maximum rise for a single ramp run?', a: 'The ADA allows a 30-inch (760 mm) maximum rise for one ramp run before a level landing is required, with a 30-foot maximum horizontal run at 1:12. Longer climbs use a series of ramps and landings.' },
+      { q: 'Do I need handrails on a ramp?', a: 'Under the ADA, ramps with a rise greater than 6 inches need handrails on both sides. Requirements vary by jurisdiction and by whether the ramp is residential or public, so check your local building code.' },
+    ],
+    keywords: ['wheelchair ramp calculator', 'ada ramp calculator', 'ramp slope calculator', 'ramp length calculator', 'ramp rise run calculator', '1:12 ramp calculator', 'ramp incline calculator'],
+  },
+  {
+    slug: 'firewood-cord-calculator',
+    name: 'Firewood Cord Calculator',
+    icon: '🪵',
+    widget: 'firewood',
+    description: 'Calculate how many cords of firewood are in a stack from its length, height and depth — full cords and face cords. In your browser.',
+    lead: 'Measure your neatly stacked woodpile\'s length, height and depth to see how many cords it holds.',
+    how: 'Firewood is sold by the cord — a stack measuring 4 ft × 4 ft × 8 ft, which is 128 cubic feet of wood and air. The tool multiplies your stack\'s length, height and depth to get its volume, divides by 128 for full cords, and also gives face cords (a stack 4 ft high and 8 ft long but only one log deep) for 16-inch logs. Measure the tightly stacked pile in feet (or metres) — a loose, thrown heap contains less wood than the same volume neatly stacked.',
+    note: 'A "cord" always means 128 cubic feet, but a "face cord" or "rick" depends on the log length: for 16-inch logs it\'s about a third of a full cord, for 24-inch logs about half. When buying, confirm whether a price is for a full cord or a face cord, and measure the delivered wood stacked, not piled.',
+    faqs: [
+      { q: 'How many cubic feet are in a cord of firewood?', a: 'A full cord is 128 cubic feet — a stack 4 feet high, 4 feet deep and 8 feet long. This calculator divides your stack\'s volume by 128 to give the number of cords.' },
+      { q: 'What is the difference between a cord and a face cord?', a: 'A full cord is 4×4×8 ft (128 ft³). A face cord (or rick) is 4 ft high × 8 ft long but only as deep as the logs are long — so for 16-inch logs it\'s about one-third of a full cord. Always clarify which you\'re buying.' },
+      { q: 'How do I measure a firewood stack?', a: 'Stack the wood tightly in a rectangle and measure its length, height and depth. Multiply the three for the volume, then divide by 128 for cords. Loose or thrown piles hold less wood than neatly stacked ones of the same size.' },
+      { q: 'How much is a face cord of 16-inch wood?', a: 'A face cord of 16-inch logs is a 4 ft × 8 ft stack about 1.33 ft deep — roughly 42.7 cubic feet, or about one-third of a full cord. This tool shows face cords alongside full cords.' },
+      { q: 'Why does stacking matter for firewood volume?', a: 'A cord is a stacked measure — 128 ft³ of neatly stacked wood. The same wood thrown loosely takes up more apparent space but contains less actual wood (more air), so sellers and buyers should measure it stacked.' },
+    ],
+    keywords: ['firewood cord calculator', 'cord of wood calculator', 'face cord calculator', 'firewood calculator', 'how much is a cord of wood', 'cord wood measurement', 'firewood stack calculator'],
   },
 ];
 
