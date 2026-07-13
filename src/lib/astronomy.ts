@@ -139,4 +139,42 @@ export function parallaxDistancePc(parallaxArcsec: number): number | null {
   return parallaxArcsec > 0 ? 1 / parallaxArcsec : null;
 }
 
+/* ---------------- Kepler's third law ---------------- */
+
+/**
+ * Kepler's third law in solar-system units: P² = a³ ÷ M, with P in years, a in
+ * AU and the central mass M in solar masses (M = 1 for the Sun). So the orbital
+ * period is P = √(a³ ÷ M). Exact for a two-body orbit; a good approximation for
+ * planets and satellites where one body dominates the mass.
+ */
+export function keplerPeriodYears(semiMajorAU: number, centralMassSolar = 1): number | null {
+  if (semiMajorAU <= 0 || centralMassSolar <= 0) return null;
+  return Math.sqrt((semiMajorAU ** 3) / centralMassSolar);
+}
+/** Inverse: semi-major axis (AU) from the orbital period (years) and central mass (solar masses). */
+export function keplerAxisAU(periodYears: number, centralMassSolar = 1): number | null {
+  if (periodYears <= 0 || centralMassSolar <= 0) return null;
+  return Math.cbrt((periodYears ** 2) * centralMassSolar);
+}
+
+/* ---------------- Schwarzschild radius ---------------- */
+
+export const G_SI = 6.674e-11; // gravitational constant, m³·kg⁻¹·s⁻²
+export const C_MS = 299792458; // speed of light, m/s (exact)
+export const M_SUN_KG = 1.98892e30; // solar mass, kg
+
+/**
+ * Schwarzschild radius (event-horizon radius) of a non-rotating mass:
+ * r_s = 2·G·M ÷ c². Returns metres from a mass in kilograms. About 2.95 km per
+ * solar mass; ~8.87 mm for the whole Earth.
+ */
+export function schwarzschildRadiusM(massKg: number): number | null {
+  if (massKg <= 0) return null;
+  return (2 * G_SI * massKg) / (C_MS ** 2);
+}
+/** Schwarzschild radius (metres) from a mass given in solar masses. */
+export function schwarzschildRadiusFromSolar(massSolar: number): number | null {
+  return schwarzschildRadiusM(massSolar * M_SUN_KG);
+}
+
 export { rad, deg };

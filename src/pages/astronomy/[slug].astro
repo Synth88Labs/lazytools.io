@@ -9,6 +9,8 @@ import MoonPhaseTool from '../../components/astronomy/MoonPhaseTool.tsx';
 import GoldenHourTool from '../../components/astronomy/GoldenHourTool.tsx';
 import StarMagnitudeTool from '../../components/astronomy/StarMagnitudeTool.tsx';
 import RedshiftTool from '../../components/astronomy/RedshiftTool.tsx';
+import KeplerTool from '../../components/astronomy/KeplerTool.tsx';
+import SchwarzschildTool from '../../components/astronomy/SchwarzschildTool.tsx';
 import SunTimesTool from '../../components/astronomy/SunTimesTool.tsx';
 import PlanetWeightTool from '../../components/astronomy/PlanetWeightTool.tsx';
 import PlanetAgeTool from '../../components/astronomy/PlanetAgeTool.tsx';
@@ -73,6 +75,8 @@ const schema = [
       {tool.widget === 'goldenhour' && <GoldenHourTool client:load />}
       {tool.widget === 'magnitude' && <StarMagnitudeTool client:load />}
       {tool.widget === 'redshift' && <RedshiftTool client:load />}
+      {tool.widget === 'kepler' && <KeplerTool client:load />}
+      {tool.widget === 'schwarzschild' && <SchwarzschildTool client:load />}
     </div>
 
     <div class="mt-4">

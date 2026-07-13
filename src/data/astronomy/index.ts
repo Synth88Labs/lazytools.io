@@ -4,7 +4,7 @@ export interface AstroToolDef {
   slug: string;
   name: string;
   icon: string;
-  widget: 'moonphase' | 'sun' | 'planetweight' | 'planetage' | 'lighttime' | 'angular' | 'telescope' | 'parallax' | 'goldenhour' | 'magnitude' | 'redshift';
+  widget: 'moonphase' | 'sun' | 'planetweight' | 'planetage' | 'lighttime' | 'angular' | 'telescope' | 'parallax' | 'goldenhour' | 'magnitude' | 'redshift' | 'kepler' | 'schwarzschild';
   description: string;
   lead: string;
   how: string;
@@ -211,6 +211,42 @@ export const ASTRO_TOOLS: AstroToolDef[] = [
       { q: 'What is the difference between redshift and the Doppler effect?', a: 'The everyday Doppler effect comes from motion through space (like a passing siren). Cosmological redshift comes from space itself expanding between us and a distant galaxy — the light is stretched in transit, not just shifted by relative motion.' },
     ],
     keywords: ['redshift calculator', 'redshift to velocity calculator', 'cosmological redshift calculator', 'redshift distance calculator', 'z to velocity', 'hubble law calculator', 'wavelength redshift calculator'],
+  },
+  {
+    slug: 'keplers-third-law-calculator',
+    name: 'Kepler\'s Third Law Calculator',
+    icon: '🪐',
+    widget: 'kepler',
+    description: 'Calculate an orbit\'s period from its distance, or its distance from its period, using Kepler\'s third law (P² = a³). Works for any central mass. In your browser.',
+    lead: 'Enter a semi-major axis to get the orbital period — or a period to get the distance — for the Sun or any central mass.',
+    how: 'Kepler\'s third law says the square of an orbital period equals the cube of the semi-major axis, once you use the right units. In solar-system units that\'s simply P² = a³ ÷ M: period P in years, semi-major axis a in astronomical units, and central mass M in solar masses. So a planet at 1 AU around the Sun (M = 1) orbits in exactly 1 year, and one at 4 AU takes 8 years. The tool solves either direction and lets you change the central mass to model other stars or a planet\'s moons.',
+    note: 'The law assumes one dominant central mass and an elliptical orbit described by its semi-major axis (the average of closest and farthest distance). It\'s the relationship behind everything from planet spotting to detecting exoplanets by their orbital timing.',
+    faqs: [
+      { q: 'What is Kepler\'s third law?', a: 'It states that the square of a planet\'s orbital period is proportional to the cube of its semi-major axis: P² ∝ a³. In solar-system units (years, AU, solar masses) the constant is 1, giving P² = a³ ÷ M.' },
+      { q: 'How do I calculate orbital period from distance?', a: 'P = √(a³ ÷ M), with a in AU and M in solar masses. For the Sun, a planet at 9 AU has a period of √(729) = 27 years. Enter your distance and mass to get the exact figure.' },
+      { q: 'What is a semi-major axis?', a: 'Half the longest diameter of an elliptical orbit — effectively the orbit\'s average radius, the mean of its closest (perihelion) and farthest (aphelion) distances from the central body. It\'s the "a" in Kepler\'s third law.' },
+      { q: 'Does Kepler\'s third law work for moons and other stars?', a: 'Yes, as long as one body dominates the mass. Change the central mass to that star or planet (in solar masses) and the same P² = a³ ÷ M applies. It\'s how astronomers weigh stars and planets from their satellites\' orbits.' },
+      { q: 'Why is Earth\'s period exactly 1 year in this formula?', a: 'Because the units are defined around Earth: 1 AU is Earth\'s average distance and 1 year is its period, with the Sun as 1 solar mass. Plugging a = 1 and M = 1 into P = √(a³ ÷ M) gives exactly 1.' },
+    ],
+    keywords: ['keplers third law calculator', 'orbital period calculator', 'kepler calculator', 'orbital period from distance', 'semi major axis calculator', 'planet orbit calculator', 'p squared a cubed'],
+  },
+  {
+    slug: 'schwarzschild-radius-calculator',
+    name: 'Schwarzschild Radius Calculator',
+    icon: '🕳️',
+    widget: 'schwarzschild',
+    description: 'Calculate the Schwarzschild radius — the event-horizon size of a black hole — from any mass in solar masses, Earth masses or kilograms. In your browser.',
+    lead: 'Enter a mass to get its Schwarzschild radius: how small it would have to be squeezed to become a black hole.',
+    how: 'The Schwarzschild radius is the radius of the event horizon of a non-rotating black hole of a given mass: r = 2GM ÷ c², where G is the gravitational constant and c the speed of light. Because c² is enormous, the radius is tiny — about 2.95 km per solar mass. Squeeze any mass inside its Schwarzschild radius and not even light escapes. The tool takes a mass in solar masses, Earth masses or kilograms and shows the radius (and event-horizon diameter) in sensible units.',
+    note: 'This is the classic result for a spherical, non-rotating (Schwarzschild) black hole. Real black holes usually spin, which shrinks the horizon slightly (the Kerr solution), but the Schwarzschild radius is the standard reference size and a good order-of-magnitude guide.',
+    faqs: [
+      { q: 'What is the Schwarzschild radius?', a: 'The radius at which a mass becomes a black hole — the size of its event horizon. Compress a mass within this radius and its escape velocity exceeds the speed of light, so nothing, not even light, can escape. It\'s r = 2GM ÷ c².' },
+      { q: 'How do I calculate the Schwarzschild radius?', a: 'r = 2GM ÷ c², with G = 6.674×10⁻¹¹, c = 3×10⁸ m/s and mass in kilograms. A handy shortcut: the radius is about 2.95 km for every solar mass, so a 10-solar-mass black hole is roughly 30 km across.' },
+      { q: 'What is the Schwarzschild radius of the Sun?', a: 'About 2.95 km. If the Sun (which is 1.4 million km across) were crushed into a sphere under 3 km in radius, it would become a black hole. Our Sun won\'t — it isn\'t massive enough to collapse that far.' },
+      { q: 'What is the Schwarzschild radius of the Earth?', a: 'About 8.9 mm — smaller than a marble. That\'s how much you\'d have to compress the entire Earth to make it a black hole, which is why stellar-mass black holes require the collapse of very massive stars.' },
+      { q: 'Do real black holes match the Schwarzschild radius?', a: 'For non-rotating ones, yes. Most real black holes spin, described by the Kerr solution, which makes the horizon a bit smaller than the Schwarzschild value. The Schwarzschild radius remains the standard baseline size for a given mass.' },
+    ],
+    keywords: ['schwarzschild radius calculator', 'black hole radius calculator', 'event horizon calculator', 'black hole size calculator', 'schwarzschild radius formula', 'mass to black hole radius', 'r = 2gm/c2'],
   },
 ];
 
