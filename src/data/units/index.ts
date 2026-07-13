@@ -22,6 +22,7 @@ import { illuminance } from './illuminance.ts';
 import { magneticField } from './magnetic-field.ts';
 import { viscosity } from './viscosity.ts';
 import { kinematicViscosity } from './kinematic-viscosity.ts';
+import { radioactivity } from './radioactivity.ts';
 
 export type { Quantity, Unit, PairMeta };
 
@@ -49,6 +50,7 @@ export const QUANTITIES: Quantity[] = [
   magneticField,
   viscosity,
   kinematicViscosity,
+  radioactivity,
 ];
 
 /** baseValue = v * factor + offset; target = (base - offset2) / factor2 */

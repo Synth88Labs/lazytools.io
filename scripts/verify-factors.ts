@@ -163,6 +163,17 @@ const AUTHORITATIVE: Record<string, Record<string, number>> = {
     st: 1e-4,
     cst: 1e-6,
   },
+  // base: becquerel (1 decay/s). 1 Ci = 3.7e10 Bq (exact); 1 rutherford = 1e6 Bq.
+  radioactivity: {
+    bq: 1,
+    kbq: 1e3,
+    mbq: 1e6,
+    gbq: 1e9,
+    ci: 3.7e10,
+    mci: 3.7e7,
+    uci: 3.7e4,
+    rd: 1e6,
+  },
 };
 
 // Temperature is offset-based → verified via known point pairs instead.
