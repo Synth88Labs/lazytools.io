@@ -128,3 +128,17 @@ export function beaufort(mph: number): BeaufortLevel {
 export function cloudBaseFt(tF: number, tdF: number): number {
   return Math.max(0, ((tF - tdF) / 4.4) * 1000);
 }
+
+/** Density altitude (ft) — pilot approximation from pressure altitude (ft) and outside air temp (°C). */
+export function densityAltitude(pressureAltFt: number, oatC: number): number {
+  const isaC = 15 - 1.98 * (pressureAltFt / 1000);
+  return pressureAltFt + 120 * (oatC - isaC);
+}
+
+/** Snow roof load from depth (m) and snow density (kg/m³): mass/area, pressure and lb/ft². */
+export function snowLoad(depthM: number, densityKgM3: number) {
+  if (depthM < 0 || densityKgM3 <= 0) return null;
+  const massPerArea = depthM * densityKgM3; // kg/m²
+  const kPa = (massPerArea * 9.80665) / 1000;
+  return { massPerArea, kPa, psf: kPa * 20.8854342 };
+}

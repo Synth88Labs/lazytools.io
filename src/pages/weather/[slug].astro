@@ -11,6 +11,8 @@ import DewPointTool from '../../components/weather/DewPointTool.tsx';
 import AbsoluteHumidityTool from '../../components/weather/AbsoluteHumidityTool.tsx';
 import VpdTool from '../../components/weather/VpdTool.tsx';
 import RainfallTool from '../../components/weather/RainfallTool.tsx';
+import DensityAltitudeTool from '../../components/weather/DensityAltitudeTool.tsx';
+import SnowLoadTool from '../../components/weather/SnowLoadTool.tsx';
 import HumidityTool from '../../components/weather/HumidityTool.tsx';
 import FeelsLikeTool from '../../components/weather/FeelsLikeTool.tsx';
 import WetBulbTool from '../../components/weather/WetBulbTool.tsx';
@@ -68,6 +70,8 @@ const schema = [
       {tool.widget === 'abshumidity' && <AbsoluteHumidityTool client:load />}
       {tool.widget === 'vpd' && <VpdTool client:load />}
       {tool.widget === 'rainfall' && <RainfallTool client:load />}
+      {tool.widget === 'densityalt' && <DensityAltitudeTool client:load />}
+      {tool.widget === 'snowload' && <SnowLoadTool client:load />}
       {tool.widget === 'humidity' && <HumidityTool client:load />}
       {tool.widget === 'feelslike' && <FeelsLikeTool client:load />}
       {tool.widget === 'wetbulb' && <WetBulbTool client:load />}

@@ -4,7 +4,7 @@ export interface WeatherToolDef {
   slug: string;
   name: string;
   icon: string;
-  widget: 'heatindex' | 'windchill' | 'dewpoint' | 'humidity' | 'feelslike' | 'wetbulb' | 'beaufort' | 'cloudbase' | 'abshumidity' | 'vpd' | 'rainfall';
+  widget: 'heatindex' | 'windchill' | 'dewpoint' | 'humidity' | 'feelslike' | 'wetbulb' | 'beaufort' | 'cloudbase' | 'abshumidity' | 'vpd' | 'rainfall' | 'densityalt' | 'snowload';
   description: string;
   lead: string;
   how: string;
@@ -211,6 +211,42 @@ export const WEATHER_TOOLS: WeatherToolDef[] = [
       { q: 'How much is one inch of rain on my roof?', a: 'About 0.623 US gallons per square foot. So an inch of rain on a 1,000 ft² roof is roughly 623 gallons before losses — multiply by your runoff coefficient for the usable amount.' },
     ],
     keywords: ['rainwater collection calculator', 'rainwater harvesting calculator', 'roof rainwater calculator', 'how much rainwater can i collect', 'rain barrel calculator', 'rainfall to gallons'],
+  },
+  {
+    slug: 'density-altitude-calculator',
+    name: 'Density Altitude Calculator',
+    icon: '✈️',
+    widget: 'densityalt',
+    description: 'Calculate density altitude and pressure altitude from field elevation, altimeter setting and temperature — the altitude the air performs like, for pilots. In your browser.',
+    lead: 'Enter your field elevation, altimeter setting and outside air temperature to get the pressure altitude and density altitude.',
+    how: 'Pressure altitude is your elevation corrected for the current barometric pressure: PA = elevation + (29.92 − altimeter setting) × 1,000 ft. Density altitude then corrects that for temperature — the altitude the air actually performs like: DA ≈ PA + 120 × (OAT − ISA temperature), where the standard (ISA) temperature falls about 2 °C per 1,000 ft from 15 °C at sea level. Hot, high and humid conditions push density altitude well above your true altitude.',
+    note: 'High density altitude thins the air, cutting engine power, propeller thrust, wing lift and climb performance — a leading factor in hot-and-high takeoff accidents. This is the standard pilot approximation (it ignores humidity, a smaller effect); use your aircraft\'s performance charts and official weather for actual flight planning.',
+    faqs: [
+      { q: 'What is density altitude?', a: 'The altitude at which the air density equals what your aircraft is actually experiencing — pressure altitude corrected for temperature. On a hot day at a high-elevation airport, the density altitude can be thousands of feet above the field elevation.' },
+      { q: 'How do you calculate density altitude?', a: 'First find pressure altitude: elevation + (29.92 − altimeter) × 1,000. Then density altitude ≈ PA + 120 × (outside air temp − ISA temp), where ISA temp = 15 − 2 × (PA/1,000) °C. The tool does both from your inputs.' },
+      { q: 'Why does density altitude matter for flying?', a: 'Because thinner air reduces engine power, propeller efficiency, lift and climb rate, and lengthens the takeoff roll. High density altitude — hot, high, humid — is a common cause of poor takeoff performance, so pilots check it before departure.' },
+      { q: 'What is pressure altitude?', a: 'Your altitude referenced to the standard pressure of 29.92 inHg (1013.25 hPa). Set 29.92 in the altimeter and it reads pressure altitude; the tool computes it from your field elevation and current altimeter setting.' },
+      { q: 'Does humidity affect density altitude?', a: 'Yes, slightly — humid air is less dense, raising density altitude a little — but the standard pilot formula (used here) ignores it because the effect is small compared with temperature and pressure. For precise figures use a full atmospheric model.' },
+    ],
+    keywords: ['density altitude calculator', 'pressure altitude calculator', 'density altitude formula', 'da calculator aviation', 'high density altitude', 'aircraft performance altitude'],
+  },
+  {
+    slug: 'snow-load-calculator',
+    name: 'Snow Load Calculator (Roof)',
+    icon: '🌨️',
+    widget: 'snowload',
+    description: 'Estimate the weight of snow on a roof from depth and snow density — in lb/ft², kPa and kg/m² — with density presets for fresh, settled and wet snow. In your browser.',
+    lead: 'Enter the snow depth and choose (or set) the snow density to estimate the roof load in lb/ft², kPa and kg/m².',
+    how: 'The load a roof carries is the mass of snow per unit area — depth × snow density — expressed as a pressure. The tool multiplies depth by density to get kilograms per square metre, then converts to a pressure in kilopascals (× gravity) and to pounds per square foot. Because snow density ranges enormously — light fresh snow near 50–100 kg/m³ up to wet or packed snow at 400–500 and ice near 900 — depth alone can\'t tell you the weight.',
+    note: 'This is a quick estimate, not a structural determination. Real roofs are designed to a code "design snow load" (such as ASCE 7 in the US) that accounts for the ground snow load, roof slope and exposure, thermal effects, and drifting — which can pile far more snow on one part of a roof. If you\'re worried about a roof, consult the code or an engineer; clear snow safely.',
+    faqs: [
+      { q: 'How much does snow weigh on a roof?', a: 'It depends on depth and density. Fresh light snow is roughly 5–10 lb/ft² per foot of depth; wet or packed snow much more. The tool computes the load from the depth and a density you set — e.g. 30 cm of settled snow (300 kg/m³) is about 18 lb/ft².' },
+      { q: 'How do you calculate snow load?', a: 'Load = snow depth × snow density. In metric that gives kg/m² (mass per area); multiply by gravity for kPa, and convert for lb/ft². The big unknown is density, which the tool provides presets for.' },
+      { q: 'What is the density of snow?', a: 'Very variable: fresh light snow around 50–100 kg/m³, settled snow 200–300, wet or packed snow 400–500, and solid ice near 900 kg/m³. That\'s why two roofs with the same snow depth can carry very different loads.' },
+      { q: 'When is snow load dangerous for a roof?', a: 'When it approaches the roof\'s design capacity, which varies by region and building. Wet, heavy or rain-soaked snow and drifting are the biggest risks. If you notice sagging, cracking or sticking doors, treat it seriously and clear snow safely or call a professional.' },
+      { q: 'Is this the same as the code design snow load?', a: 'No — building codes (e.g. ASCE 7) set a design snow load using the local ground snow load with factors for roof slope, exposure, thermal condition and drifting. This tool estimates the load from actual measured depth and density; use the code for structural design.' },
+    ],
+    keywords: ['snow load calculator', 'roof snow load calculator', 'snow weight calculator', 'snow load lb/ft2', 'how much does snow weigh', 'roof snow weight', 'snow density load'],
   },
 ];
 
