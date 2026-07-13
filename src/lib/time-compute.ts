@@ -173,3 +173,62 @@ export function fromDateInputValue(s: string): Date | null {
   if (!y || !m || !d) return null;
   return new Date(y, m - 1, d);
 }
+
+/* ---------------- Business (working) days ---------------- */
+
+export interface BusinessDaysResult {
+  totalDays: number;
+  weekdays: number;
+  weekendDays: number;
+  businessDays: number;
+}
+/**
+ * Count business (working) days between two ISO dates (YYYY-MM-DD), inclusive
+ * of both endpoints. Weekdays are Mon–Fri; an optional whole-number `holidays`
+ * count (that fall on weekdays) is subtracted. Order-independent. Uses UTC to
+ * avoid timezone drift.
+ */
+export function businessDays(startISO: string, endISO: string, holidays = 0): BusinessDaysResult | null {
+  const MS = 86400000;
+  const s0 = new Date(`${startISO}T00:00:00Z`).getTime();
+  const e0 = new Date(`${endISO}T00:00:00Z`).getTime();
+  if (!Number.isFinite(s0) || !Number.isFinite(e0)) return null;
+  const s = Math.min(s0, e0);
+  const e = Math.max(s0, e0);
+  const totalDays = Math.round((e - s) / MS) + 1;
+  let weekdays = 0;
+  for (let t = s; t <= e; t += MS) {
+    const day = new Date(t).getUTCDay();
+    if (day !== 0 && day !== 6) weekdays++;
+  }
+  const h = Math.max(0, Math.floor(holidays));
+  return { totalDays, weekdays, weekendDays: totalDays - weekdays, businessDays: Math.max(0, weekdays - h) };
+}
+
+/* ---------------- Duration between two clock times ---------------- */
+
+export interface TimeBetweenResult {
+  totalMinutes: number;
+  hours: number;
+  minutes: number;
+  decimalHours: number;
+}
+/**
+ * Duration between two 24-hour clock times "HH:MM". If the end is earlier than
+ * the start (or `overnight` is set), it's treated as crossing midnight and 24 h
+ * is added. Returns total minutes plus an h:m and decimal-hours breakdown.
+ */
+export function timeBetween(startHHMM: string, endHHMM: string, overnight = false): TimeBetweenResult | null {
+  const parse = (s: string): number | null => {
+    const m = /^(\d{1,2}):(\d{2})$/.exec(s.trim());
+    if (!m) return null;
+    const h = +m[1], min = +m[2];
+    if (h > 23 || min > 59) return null;
+    return h * 60 + min;
+  };
+  const a = parse(startHHMM), b = parse(endHHMM);
+  if (a == null || b == null) return null;
+  let diff = b - a;
+  if (diff < 0 || overnight) diff += 1440;
+  return { totalMinutes: diff, hours: Math.floor(diff / 60), minutes: diff % 60, decimalHours: diff / 60 };
+}

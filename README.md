@@ -65,7 +65,7 @@ working.
 | [Developer Tools](https://lazytools.io/dev/) | Base64, hashes, JWT, regex, number-base, **query-string parser** (↔ JSON), **HTTP status code lookup**, **LLM token counter (exact o200k)**, **Ethereum unit converter** (BigInt-exact wei⇄ether), **Keccak-256/SHA-3 + function selector**, **EIP-55 address checksum** |
 | [Network & IT](https://lazytools.io/network/) | IPv4/IPv6 subnet calculators (exact 128-bit), CIDR, chmod, cron parser, MAC/EUI-64, **download-time & bandwidth (Mbps↔MB/s) converters** |
 | [Generators](https://lazytools.io/generate/) | **15 tools** — **dice roller & coin flip** (crypto-random), **MAC address** generator, **test credit-card** numbers (Luhn-valid, clearly test-only), password, **passphrase (EFF diceware)**, **UUID v4/v7 · ULID · NanoID + decoder**, QR, **WiFi/vCard/email QR**, **barcode (EAN/UPC/Code128, check-digit)**, random number, lorem ipsum |
-| [Date & Time](https://lazytools.io/time/) | timestamps, date math, DST-aware timezone pairs |
+| [Date & Time](https://lazytools.io/time/) | timestamps, age, days-between, date add/subtract, week number, **business/working-days**, **time-duration (hours between two times)**, DST-aware timezone pairs |
 | [Calendars](https://lazytools.io/calendar/) | Hijri/Hebrew/Persian/Julian, **Nepali BS⇄AD**, 4-5-4 retail |
 | [Codes & Ciphers](https://lazytools.io/cipher/) | Morse (with audio), NATO, binary, Caesar, Vigenère |
 | [Productivity](https://lazytools.io/productivity/) | Pomodoro, Kanban, mind map, **interactive Gantt** (drag bars to reschedule/resize, zoom, full-screen), habit tracker — saved locally, JSON export |

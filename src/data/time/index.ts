@@ -6,7 +6,7 @@ export interface TimeToolDef {
   icon: string;
   description: string;
   lead: string;
-  widget: 'epoch' | 'age' | 'date-diff' | 'date-add' | 'week-number' | 'timezone';
+  widget: 'epoch' | 'age' | 'date-diff' | 'date-add' | 'week-number' | 'timezone' | 'business-days' | 'time-duration';
   how: string;
   note?: string;
   faqs: { q: string; a: string }[];
@@ -127,5 +127,41 @@ export const TIME_TOOLS: TimeToolDef[] = [
       { q: 'Is anything sent to a server?', a: 'No — the timezone database ships inside your browser, so conversion is entirely local and even works offline.' },
     ],
     keywords: ['time zone converter', 'timezone converter', 'utc to ist', 'est to gmt', 'world clock converter'],
+  },
+  {
+    slug: 'business-days-calculator',
+    name: 'Business Days Calculator',
+    icon: '📆',
+    widget: 'business-days',
+    description: 'Count the working days (Monday–Friday) between two dates, excluding weekends and optional public holidays. In your browser.',
+    lead: 'Pick a start and end date to count the business days between them — weekends excluded, with an option to subtract public holidays.',
+    how: 'The tool counts every Monday-to-Friday day from the start date to the end date, including both endpoints, and skips Saturdays and Sundays. Because many deadlines are quoted in "working days", this is what you need for delivery estimates, project timelines, notice periods and leave planning rather than a raw calendar-day count. It also shows the weekday total, the weekend days and the total calendar days. Enter the number of public holidays that fall on weekdays within the range to subtract them.',
+    note: 'It doesn\'t know any country\'s holiday calendar, so add the count of weekday public holidays yourself for an exact working-day figure. Both the start and end dates are counted, which matches how most "business days" deadlines work — check whether your specific contract counts the start day if precision matters.',
+    faqs: [
+      { q: 'How do I count business days between two dates?', a: 'Count only the Monday-to-Friday days in the range. This calculator does it automatically from your start and end dates (including both), excluding weekends, and lets you subtract public holidays for a true working-day total.' },
+      { q: 'Are weekends included in business days?', a: 'No — business (working) days are Monday to Friday. Saturdays and Sundays are excluded. The tool shows the weekend-day count separately so you can see the difference from the calendar total.' },
+      { q: 'Does this account for public holidays?', a: 'Not automatically, because holidays differ by country and region. Enter the number of public holidays that fall on weekdays within your date range and the tool subtracts them from the business-day count.' },
+      { q: 'Are the start and end dates both counted?', a: 'Yes — this calculator counts both endpoints (inclusive), which is how most working-day deadlines are stated. If your situation excludes the start date, subtract one working day.' },
+      { q: 'What are business days used for?', a: 'Delivery and shipping estimates, payment and settlement terms, contractual notice periods, court and government deadlines, and planning annual leave — all commonly measured in working days rather than calendar days.' },
+    ],
+    keywords: ['business days calculator', 'working days calculator', 'weekdays between dates', 'business days between dates', 'workday calculator', 'net working days', 'days excluding weekends'],
+  },
+  {
+    slug: 'time-duration-calculator',
+    name: 'Time Duration Calculator',
+    icon: '⏱️',
+    widget: 'time-duration',
+    description: 'Calculate the hours and minutes between two times of day — with overnight support and an optional break — for timesheets and shifts. In your browser.',
+    lead: 'Enter a start and end time to get the duration in hours and minutes, decimal hours and total minutes — with a break deduction.',
+    how: 'The calculator finds the elapsed time from the start clock time to the end clock time. If the end is earlier than the start it assumes the period runs past midnight (an overnight shift) and adds 24 hours. It returns the duration as hours and minutes, as decimal hours (so 8 h 30 m reads as 8.5 for payroll), and as total minutes. Enter an unpaid break in minutes to subtract it and get the net worked time.',
+    note: 'Both times are 24-hour clock values. Decimal hours are what most timesheets and payroll systems expect — multiply by an hourly rate directly. For durations spanning multiple days, use the days-between or business-days calculators instead; this one is for times within a single day (or one overnight crossing).',
+    faqs: [
+      { q: 'How do I calculate hours between two times?', a: 'Subtract the start time from the end time. For 9:00 to 17:30 that\'s 8 hours 30 minutes. If the end is before the start (e.g., 22:00 to 06:00), it crosses midnight and is 8 hours. The tool handles both automatically.' },
+      { q: 'How do I convert hours and minutes to decimal?', a: 'Divide the minutes by 60 and add to the hours: 8 h 30 m = 8 + 30/60 = 8.5 hours. The calculator shows decimal hours directly, which is what payroll and timesheets use.' },
+      { q: 'Does it handle overnight shifts?', a: 'Yes. If the end time is earlier than the start time, it assumes the shift runs past midnight and adds 24 hours — so 22:00 to 06:00 correctly gives 8 hours.' },
+      { q: 'How do I subtract a lunch break?', a: 'Enter the break length in minutes and the tool deducts it from the total to show net worked time. A 9:00–17:30 day with a 30-minute break is 8 hours worked.' },
+      { q: 'What if my shift spans more than 24 hours?', a: 'This tool is for a duration within a day or a single overnight crossing. For multi-day spans, use a days-between-dates calculator and add the leftover hours, or track each day separately.' },
+    ],
+    keywords: ['time duration calculator', 'hours between two times', 'time calculator', 'work hours calculator', 'time card calculator', 'hours and minutes calculator', 'overnight shift hours', 'decimal hours calculator'],
   },
 ];

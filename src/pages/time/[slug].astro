@@ -11,6 +11,8 @@ import DateDiffTool from '../../components/time/DateDiffTool.tsx';
 import DateAddTool from '../../components/time/DateAddTool.tsx';
 import WeekNumberTool from '../../components/time/WeekNumberTool.tsx';
 import TimezoneTool from '../../components/time/TimezoneTool.tsx';
+import BusinessDaysTool from '../../components/time/BusinessDaysTool.tsx';
+import TimeDurationTool from '../../components/time/TimeDurationTool.tsx';
 import { TIME_TOOLS, type TimeToolDef } from '../../data/time/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -63,6 +65,8 @@ const schema = [
       {tool.widget === 'date-add' && <DateAddTool client:load />}
       {tool.widget === 'week-number' && <WeekNumberTool client:load />}
       {tool.widget === 'timezone' && <TimezoneTool client:load />}
+      {tool.widget === 'business-days' && <BusinessDaysTool client:load />}
+      {tool.widget === 'time-duration' && <TimeDurationTool client:load />}
     </div>
 
     <div class="mt-4">
