@@ -1,11 +1,17 @@
 ---
 import SearchBox from './SearchBox.tsx';
 import { buildSearchQuantities, buildSearchPages } from '../lib/search-data';
-import { CATEGORIES } from '../lib/site';
+import { CATEGORIES, CATEGORY_GROUPS } from '../lib/site';
 
 const quantities = buildSearchQuantities();
 const pages = buildSearchPages();
 const liveCategories = CATEGORIES.filter((c) => c.status === 'live');
+const catBySlug = new Map(liveCategories.map((c) => [c.slug, c]));
+/** Groups with their live categories resolved, for the mega-menu. */
+const menuGroups = CATEGORY_GROUPS.map((g) => ({
+  ...g,
+  cats: g.categories.map((s) => catBySlug.get(s)).filter((c): c is NonNullable<typeof c> => Boolean(c)),
+})).filter((g) => g.cats.length > 0);
 
 const NAV = [
   { href: '/tools/', label: 'All Tools' },
@@ -51,21 +57,30 @@ const NAV = [
                 <path d="M6 9l6 6 6-6" />
               </svg>
             </summary>
-            <ul class="grid gap-0.5 pb-1 pl-3 sm:absolute sm:right-0 sm:top-full sm:z-50 sm:mt-1 sm:w-[28rem] sm:grid-cols-2 sm:gap-1 sm:rounded-xl sm:border sm:border-slate-200 sm:bg-white sm:p-2 sm:pl-2 sm:shadow-lg">
-              {liveCategories.map((c) => (
-                <li>
-                  <a href={`/${c.slug}/`} class="flex items-center gap-2 rounded-lg px-3 py-2 hover:bg-slate-100 hover:text-slate-900">
-                    <span aria-hidden="true">{c.icon}</span>
-                    {c.name}
-                  </a>
-                </li>
-              ))}
-              <li class="sm:col-span-2">
-                <a href="/tools/" class="block rounded-lg px-3 py-2 font-semibold text-brand-700 hover:bg-brand-50">
-                  All tools directory →
-                </a>
-              </li>
-            </ul>
+            <div class="pb-1 pl-3 sm:absolute sm:right-0 sm:top-full sm:z-50 sm:mt-1 sm:w-[56rem] sm:max-w-[calc(100vw-2rem)] sm:rounded-2xl sm:border sm:border-slate-200 sm:bg-white sm:p-4 sm:pl-4 sm:shadow-xl">
+              <div class="grid gap-x-5 gap-y-4 sm:grid-cols-3">
+                {menuGroups.map((g) => (
+                  <div class="break-inside-avoid">
+                    <p class="mb-1.5 flex items-center gap-1.5 px-1 text-xs font-bold uppercase tracking-wide text-slate-400">
+                      <span aria-hidden="true">{g.icon}</span>{g.name}
+                    </p>
+                    <ul class="grid gap-0.5">
+                      {g.cats.map((c) => (
+                        <li>
+                          <a href={`/${c.slug}/`} class="flex items-center gap-2 rounded-lg px-2 py-1.5 text-sm hover:bg-slate-100 hover:text-slate-900">
+                            <span aria-hidden="true" class="text-base">{c.icon}</span>
+                            <span class="truncate">{c.name}</span>
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+              <a href="/tools/" class="mt-3 flex items-center justify-center gap-1 rounded-xl border border-brand-200 bg-brand-50 px-3 py-2.5 text-sm font-semibold text-brand-800 hover:border-brand-400">
+                Browse the full tools directory →
+              </a>
+            </div>
           </details>
         </li>
         {NAV.map((item) => (

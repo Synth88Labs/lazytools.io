@@ -60,3 +60,44 @@ export const CATEGORIES: CategoryDef[] = [
   { slug: 'pdf', name: 'PDF Tools', icon: '📄', description: 'Merge, split and rotate PDFs in your browser.', status: 'live' },
   { slug: 'video', name: 'Audio & Video', icon: '🎬', description: 'Trim, convert and adjust audio privately.', status: 'live' },
 ];
+
+/** Purpose-driven theme groups for the header mega-menu and the /tools/ overview. */
+export interface CategoryGroup {
+  slug: string;
+  name: string;
+  icon: string;
+  blurb: string;
+  categories: string[]; // category slugs, in display order
+}
+export const CATEGORY_GROUPS: CategoryGroup[] = [
+  {
+    slug: 'everyday', name: 'Everyday & Money', icon: '🧮',
+    blurb: 'Converters, calculators, finance and planning',
+    categories: ['units', 'calc', 'finance', 'size', 'time', 'calendar', 'travel', 'text', 'productivity'],
+  },
+  {
+    slug: 'science', name: 'Science & Engineering', icon: '🔬',
+    blurb: 'Exact math, stats and the STEM cluster',
+    categories: ['math', 'statistics', 'physics', 'chemistry', 'biology', 'astronomy', 'electronics'],
+  },
+  {
+    slug: 'home', name: 'Home & Lifestyle', icon: '🏡',
+    blurb: 'DIY, garden, kitchen, car, pets and hobbies',
+    categories: ['home', 'garden', 'cooking', 'pets', 'automotive', 'solar', 'brewing', '3d-printing', 'weather', 'fitness'],
+  },
+  {
+    slug: 'media', name: 'Media & Files', icon: '🎨',
+    blurb: 'Color, music, photos, images, PDFs and converters',
+    categories: ['color', 'music', 'photography', 'photo', 'image', 'video', 'pdf', 'file'],
+  },
+  {
+    slug: 'dev', name: 'Developer & Privacy', icon: '⌨️',
+    blurb: 'Dev utilities, network, ciphers, generators, security',
+    categories: ['dev', 'network', 'cipher', 'generate', 'security'],
+  },
+];
+
+/** Map a category slug to its group (or null). */
+export function groupForCategory(slug: string): CategoryGroup | null {
+  return CATEGORY_GROUPS.find((g) => g.categories.includes(slug)) ?? null;
+}
