@@ -4,7 +4,7 @@ export interface FitnessToolDef {
   slug: string;
   name: string;
   icon: string;
-  widget: 'pace' | 'paceconv' | 'onerm' | 'hrzone' | 'racepredict' | 'vo2' | 'calories' | 'steps';
+  widget: 'pace' | 'paceconv' | 'onerm' | 'hrzone' | 'racepredict' | 'vo2' | 'calories' | 'steps' | 'swim' | 'deficit';
   description: string;
   lead: string;
   how: string;
@@ -157,6 +157,42 @@ export const FITNESS_TOOLS: FitnessToolDef[] = [
       { q: 'Is a walking stride the same as a running stride?', a: 'No — running strides are longer, so the same number of steps covers more ground running than walking. Enter your running stride directly if you\'re converting run steps.' },
     ],
     keywords: ['steps to distance calculator', 'steps to km', 'steps to miles', 'how far is 10000 steps', 'stride length calculator', 'step distance converter', 'pedometer distance calculator'],
+  },
+  {
+    slug: 'swimming-pace-calculator',
+    name: 'Swimming Pace Calculator',
+    icon: '🏊',
+    widget: 'swim',
+    description: 'Calculate your swimming pace per 100 metres and per 100 yards from a distance and time — plus speed. In your browser.',
+    lead: 'Enter the distance you swam and your time to get your pace per 100 m and per 100 yd.',
+    how: 'Swim pace is your time divided by the distance, expressed per 100 — the standard swimming yardstick. Enter how far you swam (metres or yards) and your total time, and the tool returns the pace per 100 metres (used in long-course and metric pools) and per 100 yards (US yard pools), along with your speed in metres per second. It converts between metres and yards so you can compare training in either pool.',
+    note: 'Per-100 pace is the number swimmers actually track — a 1:30/100 m pace is easy to compare across sets, distances and sessions. Yard pools are about 8.6% shorter than metre pools, so a per-100-yard time is naturally a little faster than the same effort per 100 metres; the tool accounts for that.',
+    faqs: [
+      { q: 'How do I calculate swimming pace?', a: 'Divide your time by the distance and multiply by 100. Swimming 1,500 m in 30 minutes (1,800 s) is 1,800 ÷ 1,500 × 100 = 120 seconds, i.e. a 2:00 per 100 m pace.' },
+      { q: 'What is a good swimming pace per 100m?', a: 'It varies hugely by level: recreational swimmers are often around 2:00–2:30/100 m, fitness swimmers 1:30–2:00, and competitive swimmers well under 1:30. Track your own trend rather than comparing to others.' },
+      { q: 'What is the difference between 100m and 100yd pace?', a: 'A yard is shorter than a metre (1 yd = 0.9144 m), so 100 yards is about 8.6% less distance than 100 metres. Your per-100-yard time is therefore a bit lower than your per-100-metre time for the same effort.' },
+      { q: 'How do I convert pool yards to metres?', a: 'Multiply yards by 0.9144 to get metres (or metres by 1.0936 for yards). This tool does it automatically so a swim logged in a yard pool can be compared with metric training.' },
+      { q: 'Why is pace measured per 100 in swimming?', a: 'Pools and sets are built around 25 m/yd lengths, so 100 (four lengths of a 25 m pool) is a natural, consistent unit. Per-100 pace lets you compare a 50, a 200 and a 1,500 on the same scale.' },
+    ],
+    keywords: ['swimming pace calculator', 'swim pace calculator', 'pace per 100m', 'pace per 100 yards', 'swim speed calculator', 'swimming time calculator', 'pool pace calculator'],
+  },
+  {
+    slug: 'calorie-deficit-calculator',
+    name: 'Calorie Deficit Calculator',
+    icon: '📉',
+    widget: 'deficit',
+    description: 'Find the daily calorie deficit needed to lose a target weight over a chosen timeframe — based on ~7,700 kcal per kg of fat. Educational, not medical advice. In your browser.',
+    lead: 'Enter how much weight you want to lose and over how many weeks to get the daily calorie deficit required.',
+    how: 'Losing body fat means eating fewer calories than you burn — a deficit. A kilogram of body fat stores roughly 7,700 kcal (a pound about 3,500), so the total deficit to lose your target weight is that figure times the weight. Spread over your chosen number of weeks, that gives the daily deficit to subtract from your maintenance calories (your TDEE). The tool also shows the implied weekly loss rate and flags targets that are unusually aggressive.',
+    note: 'This is a simplified model. Real weight change also reflects water, glycogen and muscle, and the body adapts by lowering its energy use as you lose weight, so progress often slows. A sustainable rate is about 0.5–1 kg (1–2 lb) per week; very large deficits are hard to keep up and risk losing muscle. This is educational, not medical or dietary advice — consult a professional for a plan.',
+    faqs: [
+      { q: 'How do I calculate a calorie deficit?', a: 'Multiply the weight you want to lose by about 7,700 kcal per kg (3,500 per lb) for the total deficit, then divide by the number of days. Losing 5 kg in 10 weeks needs about a 550-kcal daily deficit.' },
+      { q: 'How big should my calorie deficit be?', a: 'A common guideline is a 500-kcal daily deficit for roughly 0.5 kg (1 lb) of loss per week. Larger deficits lose weight faster but are harder to sustain and can cost muscle; going below your BMR long-term is not advised.' },
+      { q: 'How many calories are in a kilogram of fat?', a: 'Roughly 7,700 kcal per kilogram (about 3,500 per pound). This estimate is the basis for deficit calculations, though the real figure varies a little and the body\'s response isn\'t perfectly linear.' },
+      { q: 'How do I use the daily deficit?', a: 'Subtract it from your maintenance calories (TDEE — the calories that keep your weight stable). If your TDEE is 2,400 and you need a 550 deficit, aim for about 1,850 kcal a day, through eating less, moving more, or both.' },
+      { q: 'Why is my weight loss slower than the calculator predicts?', a: 'The model is simplified. Water and glycogen shifts mask fat loss day to day, and as you get lighter your body burns fewer calories (metabolic adaptation), so the same intake becomes a smaller deficit. Adjust as you go.' },
+    ],
+    keywords: ['calorie deficit calculator', 'weight loss calorie calculator', 'daily calorie deficit', 'how many calories to lose weight', 'calorie deficit to lose weight', 'weight loss timeline calculator', 'deficit calculator'],
   },
 ];
 

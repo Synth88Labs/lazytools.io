@@ -153,4 +153,42 @@ export function stepsDistance(steps: number, strideM: number) {
   return { metres, km: metres / 1000, miles: metres / M_PER_MILE };
 }
 
+/* ---------------- Swimming pace ---------------- */
+
+export interface SwimPace {
+  per100m: number;   // seconds per 100 m
+  per100yd: number;  // seconds per 100 yd
+  speedMs: number;   // metres per second
+}
+/** Swim pace from a distance (metres) and time (seconds): pace per 100 m and per 100 yd. */
+export function swimPace(distanceM: number, timeSec: number): SwimPace | null {
+  if (distanceM <= 0 || timeSec <= 0) return null;
+  const secPerM = timeSec / distanceM;
+  return { per100m: secPerM * 100, per100yd: secPerM * 91.44, speedMs: distanceM / timeSec };
+}
+
+/* ---------------- Calorie deficit / weight-loss timeline ---------------- */
+
+/** Energy in one kg / one lb of body fat (commonly used estimates). */
+export const KCAL_PER_KG_FAT = 7700;
+export const KCAL_PER_LB_FAT = 3500;
+
+export interface DeficitResult {
+  totalDeficit: number;   // kcal to lose the target weight
+  dailyDeficit: number;   // kcal/day over the period
+  weeklyRate: number;     // weight lost per week, same unit as input
+}
+/**
+ * Daily calorie deficit to lose `amount` of weight over `days`, using ~7,700
+ * kcal per kg (or 3,500 per lb) of fat. Returns the total and per-day deficit
+ * and the implied weekly rate. A simplified model — real loss varies.
+ */
+export function calorieDeficit(amount: number, days: number, unit: 'kg' | 'lb'): DeficitResult | null {
+  if (amount <= 0 || days <= 0) return null;
+  const perUnit = unit === 'kg' ? KCAL_PER_KG_FAT : KCAL_PER_LB_FAT;
+  const totalDeficit = amount * perUnit;
+  const dailyDeficit = totalDeficit / days;
+  return { totalDeficit, dailyDeficit, weeklyRate: amount / (days / 7) };
+}
+
 export { M_PER_MILE };
