@@ -584,6 +584,8 @@
   "travel/layover-calculator",
   "travel/luggage-size-calculator",
   "travel/road-trip-calculator",
+  "travel/speed-distance-time-calculator",
+  "travel/time-zone-converter",
   "travel/tip-calculator",
   "travel/travel-budget-calculator",
   "units/acres-to-hectares",

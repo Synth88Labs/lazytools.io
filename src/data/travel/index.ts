@@ -4,7 +4,7 @@ export interface TravelToolDef {
   slug: string;
   name: string;
   icon: string;
-  widget: 'distance' | 'flighttime' | 'layover' | 'jetlag' | 'tip' | 'roadtrip' | 'budget' | 'luggage';
+  widget: 'distance' | 'flighttime' | 'layover' | 'jetlag' | 'tip' | 'roadtrip' | 'budget' | 'luggage' | 'timezone' | 'sdt';
   description: string;
   lead: string;
   how: string;
@@ -157,6 +157,42 @@ export const TRAVEL_TOOLS: TravelToolDef[] = [
       { q: 'Does this check weight too?', a: 'No — it checks dimensions only. Weight limits are separate (often ~7–10 kg cabin, ~23 kg checked economy) and vary by airline and cabin, so weigh your bag and check your carrier\'s allowance as well.' },
     ],
     keywords: ['luggage size calculator', 'suitcase volume calculator', 'carry on size checker', 'baggage linear dimensions', 'litres suitcase calculator', 'checked baggage size', 'bag volume litres'],
+  },
+  {
+    slug: 'time-zone-converter',
+    name: 'Time Zone Converter',
+    icon: '🕒',
+    widget: 'timezone',
+    description: 'Convert a time between UTC offsets and see whether it lands on the previous, same or next day — for scheduling calls and travel. In your browser.',
+    lead: 'Enter a time and pick two UTC offsets to convert it, with a clear "same/next/previous day" note.',
+    how: 'Every time zone is an offset from Coordinated Universal Time (UTC). To convert a clock time from one zone to another you add the difference between their offsets — for example UTC−5 to UTC+0 is +5 hours. The tool does that and, because adding hours can cross midnight, tells you whether the result is on the previous, same or next day. It works entirely with numeric offsets, so there\'s no location lookup — you choose the zones directly.',
+    note: 'This uses fixed UTC offsets and does not know about daylight saving time, which shifts many zones by an hour for part of the year. For a specific date, check whether DST is active at either end and adjust the offset accordingly (for example New York is UTC−5 in winter but UTC−4 in summer).',
+    faqs: [
+      { q: 'How do I convert between time zones?', a: 'Add the difference in UTC offsets to the original time. From UTC−5 to UTC+1 is a +6-hour shift, so 09:00 becomes 15:00. If the result passes midnight, it moves to the next or previous day — this tool shows that automatically.' },
+      { q: 'What is a UTC offset?', a: 'The number of hours a time zone is ahead of (+) or behind (−) Coordinated Universal Time. New York is UTC−5 (standard time), London UTC+0, Tokyo UTC+9. Some zones use half or quarter hours, like India at UTC+5:30.' },
+      { q: 'Does this account for daylight saving time?', a: 'No — it uses fixed offsets. Many regions shift by an hour in summer (for example UTC−5 becomes UTC−4), so for a specific date pick the offset that is actually in effect there. Zones near the equator often don\'t use DST at all.' },
+      { q: 'Why does the converted time show a different day?', a: 'Because adding or subtracting enough hours crosses midnight. Converting from a far-eastern zone to a far-western one can land you on the previous day, and vice versa — the tool labels the result "previous/same/next day" so you don\'t miscount.' },
+      { q: 'How do I schedule a call across time zones?', a: 'Convert your proposed time into each participant\'s zone and check the day label so nobody is caught at 3 a.m. or on the wrong date. Entering the offsets directly keeps it simple; just confirm DST for the meeting\'s actual date.' },
+    ],
+    keywords: ['time zone converter', 'utc offset converter', 'convert time between zones', 'time difference calculator', 'world clock converter', 'meeting time zone calculator', 'utc time converter'],
+  },
+  {
+    slug: 'speed-distance-time-calculator',
+    name: 'Speed, Distance & Time Calculator',
+    icon: '🚗',
+    widget: 'sdt',
+    description: 'Solve for speed, distance or travel time from the other two — distance = speed × time — in km or miles. For trip planning. In your browser.',
+    lead: 'Enter any two of speed, distance and time, and the calculator works out the third.',
+    how: 'Travel maths rests on one identity: distance = average speed × time. Rearranged, time = distance ÷ speed and speed = distance ÷ time. Pick which quantity to solve for, enter the other two, and the tool returns the answer — travel time is also shown in hours and minutes. Keep the units consistent (kilometres with km/h, or miles with mph); the toggle sets both together.',
+    note: 'This assumes a constant average speed, so real journeys — with traffic, stops, junctions and speed limits — usually take longer than the ideal time. For a rough road-trip estimate, use a realistic average well below your top cruising speed, and add time for breaks.',
+    faqs: [
+      { q: 'How do I calculate travel time?', a: 'Divide the distance by your average speed: time = distance ÷ speed. 300 km at 60 km/h takes 5 hours. The calculator also breaks the answer into hours and minutes.' },
+      { q: 'How do I calculate average speed?', a: 'Divide the distance by the time taken: speed = distance ÷ time. Covering 150 miles in 3 hours is an average of 50 mph. Note this is average speed, including any slow sections, not your top speed.' },
+      { q: 'How do I calculate distance from speed and time?', a: 'Multiply them: distance = speed × time. Two hours at 80 km/h covers 160 km. Make sure the speed and time units match (km/h with hours, mph with hours).' },
+      { q: 'Why does my real journey take longer?', a: 'The formula uses a steady average speed, but real trips include acceleration, braking, traffic, junctions, rest stops and varying limits. Use a conservative average speed and add buffer time for a realistic arrival estimate.' },
+      { q: 'What units should I use?', a: 'Keep them consistent: kilometres with km/h, or miles with mph, and time in hours (use decimals — 1.5 for an hour and a half). The km/mi toggle sets the distance and speed units together so they always match.' },
+    ],
+    keywords: ['speed distance time calculator', 'travel time calculator', 'average speed calculator', 'distance calculator speed time', 'how long will my drive take', 'journey time calculator', 'time from speed and distance'],
   },
 ];
 

@@ -202,3 +202,28 @@ export const TIP_CUSTOMS: TipCustom[] = [
   { country: 'Mexico', low: 10, high: 15, note: 'Expected (propina); ~10–15% is standard.' },
   { country: 'Brazil', low: 0, high: 10, note: 'A 10% service charge (serviço) is usually added to the bill; extra optional.' },
 ];
+
+/* ---------------- Speed / distance / time ---------------- */
+
+export interface SDT { distance: number; speed: number; hours: number; }
+/**
+ * Solve the speed–distance–time identity distance = speed × time. Provide
+ * exactly two of {distance, speed, hours} (pass null for the unknown) and the
+ * third is returned, in consistent units (e.g. km, km/h, hours). Returns null
+ * if not exactly two are given or the inputs are unsolvable.
+ */
+export function solveSDT(distance: number | null, speed: number | null, hours: number | null): SDT | null {
+  const known = [distance, speed, hours].filter((x) => x != null && isFinite(x)).length;
+  if (known !== 2) return null;
+  if (distance == null) {
+    if (speed! < 0 || hours! < 0) return null;
+    return { distance: speed! * hours!, speed: speed!, hours: hours! };
+  }
+  if (speed == null) {
+    if (hours! <= 0 || distance < 0) return null;
+    return { distance, speed: distance / hours!, hours: hours! };
+  }
+  // hours unknown
+  if (speed <= 0 || distance < 0) return null;
+  return { distance, speed, hours: distance / speed };
+}
