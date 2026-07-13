@@ -1,62 +1,42 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-label="A byte contains 8 bits, so a bit-rate divided by 8 gives the byte-rate. 100 megabits per second equals 12.5 megabytes per second; 1 gigabit per second equals 125 megabytes per second; 25 megabits per second equals about 3.1 megabytes per second. Lowercase b means bits, uppercase B means bytes.">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-label="A byte is 8 bits, so you divide the megabit speed by 8 to get megabytes per second. 100 Mbps equals 12.5 MB/s. Examples: 25 Mbps is about 3.1 MB/s, 300 Mbps is 37.5 MB/s, and 1 Gbps is 125 MB/s. Lowercase b means bits (speed); uppercase B means bytes (files).">
   <defs>
     <style>
-      .h { font: 800 28px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill:#0f172a; }
-      .sub { font: 500 15px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill:#64748b; }
-      .panel { font: 800 17px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill:#0f172a; }
-      .big { font: 800 34px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; }
-      .lab { font: 700 15px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill:#334155; }
-      .mono { font: 700 15px Consolas,Menlo,monospace; fill:#1e3a8a; }
-      .bit { font: 700 16px Consolas,Menlo,monospace; fill:#fff; }
+      .title { font: 800 40px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill:#0f172a; }
+      .sub { font: 600 22px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill:#64748b; }
+      .hero { font: 800 60px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; }
+      .heroSub { font: 600 22px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill:#64748b; }
+      .ex { font: 700 30px Consolas,Menlo,monospace; fill:#0f172a; }
+      .key { font: 700 24px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; }
     </style>
   </defs>
 
-  <rect x="0" y="0" width="1200" height="640" fill="#f8fafc" />
-  <text x="600" y="44" text-anchor="middle" class="h">Mbps vs MB/s: divide by 8</text>
-  <text x="600" y="70" text-anchor="middle" class="sub">Internet speed is measured in bits; files and downloads in bytes — and a byte is 8 bits</text>
+  <rect x="0" y="0" width="1200" height="700" fill="#f8fafc" />
+  <text x="600" y="62" text-anchor="middle" class="title">Mbps vs MB/s — divide by 8</text>
+  <text x="600" y="98" text-anchor="middle" class="sub">Speed is measured in bits; files in bytes. A byte = 8 bits.</text>
 
-  <!-- The byte = 8 bits visual -->
-  <text x="70" y="120" class="panel">1 byte = 8 bits</text>
-  <g>
-    <rect x="70" y="135" width="360" height="40" rx="6" fill="#e2e8f0" stroke="#cbd5e1" />
-    <g>
-      <rect x="76" y="139" width="42" height="32" rx="3" fill="#2563eb" /><text x="97" y="161" text-anchor="middle" class="bit">1</text>
-      <rect x="121" y="139" width="42" height="32" rx="3" fill="#2563eb" /><text x="142" y="161" text-anchor="middle" class="bit">0</text>
-      <rect x="166" y="139" width="42" height="32" rx="3" fill="#2563eb" /><text x="187" y="161" text-anchor="middle" class="bit">1</text>
-      <rect x="211" y="139" width="42" height="32" rx="3" fill="#2563eb" /><text x="232" y="161" text-anchor="middle" class="bit">1</text>
-      <rect x="256" y="139" width="42" height="32" rx="3" fill="#2563eb" /><text x="277" y="161" text-anchor="middle" class="bit">0</text>
-      <rect x="301" y="139" width="42" height="32" rx="3" fill="#2563eb" /><text x="322" y="161" text-anchor="middle" class="bit">1</text>
-      <rect x="346" y="139" width="42" height="32" rx="3" fill="#2563eb" /><text x="367" y="161" text-anchor="middle" class="bit">0</text>
-      <rect x="391" y="139" width="33" height="32" rx="3" fill="#2563eb" /><text x="407" y="161" text-anchor="middle" class="bit">0</text>
-    </g>
-  </g>
-  <text x="450" y="162" class="lab">= 1 byte (B)</text>
+  <!-- Hero equation -->
+  <rect x="70" y="140" width="1060" height="180" rx="18" fill="#eff6ff" stroke="#bfdbfe" stroke-width="2" />
+  <text x="250" y="235" text-anchor="middle" class="hero" fill="#1d4ed8">100 Mbps</text>
+  <text x="250" y="272" text-anchor="middle" class="heroSub">megabits / second</text>
+  <text x="560" y="238" text-anchor="middle" class="hero" fill="#475569">÷ 8</text>
+  <text x="900" y="235" text-anchor="middle" class="hero" fill="#0f766e">12.5 MB/s</text>
+  <text x="900" y="272" text-anchor="middle" class="heroSub">megabytes / second</text>
 
-  <!-- The core conversion -->
-  <rect x="70" y="205" width="1060" height="110" rx="12" fill="#eff6ff" stroke="#bfdbfe" />
-  <text x="140" y="270" text-anchor="middle" class="big" fill="#1d4ed8">100 Mbps</text>
-  <text x="140" y="296" text-anchor="middle" class="sub">megabits / s</text>
-  <text x="320" y="272" text-anchor="middle" class="big" fill="#475569">÷ 8</text>
-  <text x="530" y="270" text-anchor="middle" class="big" fill="#0f766e">12.5 MB/s</text>
-  <text x="530" y="296" text-anchor="middle" class="sub">megabytes / s</text>
-  <line x1="700" y1="225" x2="700" y2="295" stroke="#bfdbfe" stroke-width="2" />
-  <text x="915" y="248" text-anchor="middle" class="lab">lowercase b = bits (speed)</text>
-  <text x="915" y="278" text-anchor="middle" class="lab">uppercase B = bytes (files)</text>
-
-  <!-- Examples -->
-  <text x="70" y="360" class="panel">More examples</text>
-  <g class="mono">
-    <text x="70" y="395">25 Mbps  ÷ 8  =  3.1 MB/s</text>
-    <text x="70" y="425">100 Mbps ÷ 8  =  12.5 MB/s</text>
-    <text x="70" y="455">300 Mbps ÷ 8  =  37.5 MB/s</text>
-    <text x="620" y="395">500 Mbps ÷ 8  =  62.5 MB/s</text>
-    <text x="620" y="425">1 Gbps   ÷ 8  =  125 MB/s</text>
-    <text x="620" y="455">8 Mb          =  1 MB</text>
+  <!-- Examples: 3 big rows -->
+  <g class="ex">
+    <text x="150" y="410">25 Mbps</text><text x="470" y="410" fill="#94a3b8">=</text><text x="540" y="410" fill="#0f766e">3.1 MB/s</text>
+    <text x="150" y="470">300 Mbps</text><text x="470" y="470" fill="#94a3b8">=</text><text x="540" y="470" fill="#0f766e">37.5 MB/s</text>
+    <text x="150" y="530">1 Gbps</text><text x="470" y="530" fill="#94a3b8">=</text><text x="540" y="530" fill="#0f766e">125 MB/s</text>
   </g>
 
-  <!-- Download time note -->
-  <rect x="70" y="490" width="1060" height="110" rx="12" fill="#fff" stroke="#e2e8f0" />
-  <text x="90" y="525" class="panel">How long for a 1 GB file?</text>
-  <text x="90" y="556" class="lab">Time = file bits ÷ speed bits.  1 GB = 8,000,000,000 bits.</text>
-  <text x="90" y="584" class="lab">On 100 Mbps (100,000,000 bps): 8,000,000,000 ÷ 100,000,000 = about 80 seconds — not 10.</text>
+  <!-- Lowercase b vs uppercase B -->
+  <rect x="820" y="370" width="310" height="185" rx="14" fill="#fff" stroke="#e2e8f0" stroke-width="2" />
+  <text x="850" y="420" class="key" fill="#1d4ed8">b = bits</text>
+  <text x="850" y="450" class="sub">internet speed</text>
+  <text x="850" y="505" class="key" fill="#0f766e">B = bytes</text>
+  <text x="850" y="535" class="sub">file sizes</text>
+
+  <!-- Bottom takeaway -->
+  <rect x="70" y="590" width="1060" height="70" rx="14" fill="#fefce8" stroke="#fde68a" stroke-width="2" />
+  <text x="600" y="634" text-anchor="middle" class="key" fill="#854d0e">A 1 GB file on 100 Mbps takes about 80 seconds — not 10.</text>
 </svg>
