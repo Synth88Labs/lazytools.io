@@ -169,3 +169,74 @@ export function audioBitrate(sampleRate: number, bitDepth: number, channels: num
 export function barSeconds(bpm: number, beatsPerBar: number, denom: number): number {
   return beatsPerBar * (4 / denom) * (60 / bpm);
 }
+
+/* ---------------- Audio buffer latency ---------------- */
+
+/**
+ * Latency of one audio buffer in milliseconds: buffer size (samples) ÷ sample
+ * rate (Hz) × 1000. Round-trip latency (in + out) is about twice this, plus
+ * converter/driver overhead the DAW adds on top.
+ */
+export function bufferLatencyMs(bufferSamples: number, sampleRate: number): number {
+  return (bufferSamples / sampleRate) * 1000;
+}
+
+/* ---------------- Key signatures (circle of fifths) ---------------- */
+
+export interface KeySig {
+  /** Number of accidentals (0–7). */
+  count: number;
+  /** 'sharp', 'flat' or 'none'. */
+  type: 'sharp' | 'flat' | 'none';
+  /** The accidental note names, in order. */
+  accidentals: string[];
+  /** Relative minor (for a major key) or relative major (for a minor key). */
+  relative: string;
+}
+
+const SHARP_ORDER = ['F♯', 'C♯', 'G♯', 'D♯', 'A♯', 'E♯', 'B♯'];
+const FLAT_ORDER = ['B♭', 'E♭', 'A♭', 'D♭', 'G♭', 'C♭', 'F♭'];
+
+/** Major keys around the circle of fifths → accidentals + relative minor. */
+export const MAJOR_KEYS: Record<string, KeySig> = {
+  'C': { count: 0, type: 'none', accidentals: [], relative: 'A minor' },
+  'G': { count: 1, type: 'sharp', accidentals: SHARP_ORDER.slice(0, 1), relative: 'E minor' },
+  'D': { count: 2, type: 'sharp', accidentals: SHARP_ORDER.slice(0, 2), relative: 'B minor' },
+  'A': { count: 3, type: 'sharp', accidentals: SHARP_ORDER.slice(0, 3), relative: 'F♯ minor' },
+  'E': { count: 4, type: 'sharp', accidentals: SHARP_ORDER.slice(0, 4), relative: 'C♯ minor' },
+  'B': { count: 5, type: 'sharp', accidentals: SHARP_ORDER.slice(0, 5), relative: 'G♯ minor' },
+  'F♯': { count: 6, type: 'sharp', accidentals: SHARP_ORDER.slice(0, 6), relative: 'D♯ minor' },
+  'C♯': { count: 7, type: 'sharp', accidentals: SHARP_ORDER.slice(0, 7), relative: 'A♯ minor' },
+  'F': { count: 1, type: 'flat', accidentals: FLAT_ORDER.slice(0, 1), relative: 'D minor' },
+  'B♭': { count: 2, type: 'flat', accidentals: FLAT_ORDER.slice(0, 2), relative: 'G minor' },
+  'E♭': { count: 3, type: 'flat', accidentals: FLAT_ORDER.slice(0, 3), relative: 'C minor' },
+  'A♭': { count: 4, type: 'flat', accidentals: FLAT_ORDER.slice(0, 4), relative: 'F minor' },
+  'D♭': { count: 5, type: 'flat', accidentals: FLAT_ORDER.slice(0, 5), relative: 'B♭ minor' },
+  'G♭': { count: 6, type: 'flat', accidentals: FLAT_ORDER.slice(0, 6), relative: 'E♭ minor' },
+  'C♭': { count: 7, type: 'flat', accidentals: FLAT_ORDER.slice(0, 7), relative: 'A♭ minor' },
+};
+
+/** Minor keys → same accidentals as their relative major. */
+export const MINOR_KEYS: Record<string, KeySig> = {
+  'A': { count: 0, type: 'none', accidentals: [], relative: 'C major' },
+  'E': { count: 1, type: 'sharp', accidentals: SHARP_ORDER.slice(0, 1), relative: 'G major' },
+  'B': { count: 2, type: 'sharp', accidentals: SHARP_ORDER.slice(0, 2), relative: 'D major' },
+  'F♯': { count: 3, type: 'sharp', accidentals: SHARP_ORDER.slice(0, 3), relative: 'A major' },
+  'C♯': { count: 4, type: 'sharp', accidentals: SHARP_ORDER.slice(0, 4), relative: 'E major' },
+  'G♯': { count: 5, type: 'sharp', accidentals: SHARP_ORDER.slice(0, 5), relative: 'B major' },
+  'D♯': { count: 6, type: 'sharp', accidentals: SHARP_ORDER.slice(0, 6), relative: 'F♯ major' },
+  'A♯': { count: 7, type: 'sharp', accidentals: SHARP_ORDER.slice(0, 7), relative: 'C♯ major' },
+  'D': { count: 1, type: 'flat', accidentals: FLAT_ORDER.slice(0, 1), relative: 'F major' },
+  'G': { count: 2, type: 'flat', accidentals: FLAT_ORDER.slice(0, 2), relative: 'B♭ major' },
+  'C': { count: 3, type: 'flat', accidentals: FLAT_ORDER.slice(0, 3), relative: 'E♭ major' },
+  'F': { count: 4, type: 'flat', accidentals: FLAT_ORDER.slice(0, 4), relative: 'A♭ major' },
+  'B♭': { count: 5, type: 'flat', accidentals: FLAT_ORDER.slice(0, 5), relative: 'D♭ major' },
+  'E♭': { count: 6, type: 'flat', accidentals: FLAT_ORDER.slice(0, 6), relative: 'G♭ major' },
+  'A♭': { count: 7, type: 'flat', accidentals: FLAT_ORDER.slice(0, 7), relative: 'C♭ major' },
+};
+
+/** Look up a key signature by tonic and mode. Returns null for an unknown key. */
+export function keySignature(tonic: string, mode: 'major' | 'minor'): KeySig | null {
+  const table = mode === 'major' ? MAJOR_KEYS : MINOR_KEYS;
+  return table[tonic] ?? null;
+}

@@ -4,7 +4,7 @@ export interface MusicToolDef {
   slug: string;
   name: string;
   icon: string;
-  widget: 'notefreq' | 'delay' | 'tap' | 'metronome' | 'interval' | 'transpose' | 'filesize' | 'timesig' | 'chordscale';
+  widget: 'notefreq' | 'delay' | 'tap' | 'metronome' | 'interval' | 'transpose' | 'filesize' | 'timesig' | 'chordscale' | 'bufferlatency' | 'keysig';
   description: string;
   lead: string;
   how: string;
@@ -176,6 +176,42 @@ export const MUSIC_TOOLS: MusicToolDef[] = [
       { q: 'Does it spell chords in the correct key?', a: 'No — it gives the correct pitches but a single enharmonic spelling (choosing sharps or flats by your toggle), not a key-signature-aware spelling. So it may show A♯ where a score in the key would write B♭; the sounding notes are identical.' },
     ],
     keywords: ['chord finder', 'scale finder', 'chord calculator', 'what notes are in a chord', 'chord identifier', 'scale notes', 'chord spelling', 'guitar piano chord finder'],
+  },
+  {
+    slug: 'audio-buffer-latency-calculator',
+    name: 'Audio Buffer Latency Calculator',
+    icon: '🎚️',
+    widget: 'bufferlatency',
+    description: 'Calculate the latency in milliseconds of an audio buffer from its size and sample rate — one-way and round-trip. For DAW and interface setup. In your browser.',
+    lead: 'Pick a buffer size and sample rate to see the resulting latency in milliseconds — both one-way and round-trip.',
+    how: 'A digital audio interface processes sound in blocks (buffers). The time to fill one buffer is simply its size in samples divided by the sample rate: a 256-sample buffer at 48 kHz takes 256 ÷ 48000 = 5.33 ms. That\'s the one-way (output) latency; the round-trip you feel when monitoring a live input through the computer is roughly double, plus a few milliseconds of AD/DA converter and driver overhead. The tool shows both so you can trade playing feel against CPU load.',
+    note: 'Lower the buffer for tracking (so playing feels immediate) and raise it for mixing (so plugin-heavy projects don\'t glitch). Under about 10 ms round-trip feels tight; above ~20–30 ms starts to feel laggy for live performance. The exact converter overhead varies by interface and isn\'t included here.',
+    faqs: [
+      { q: 'How do I calculate audio latency?', a: 'Latency of one buffer (ms) = buffer size in samples ÷ sample rate in Hz × 1000. A 512-sample buffer at 44.1 kHz is 512 ÷ 44100 × 1000 ≈ 11.6 ms one way.' },
+      { q: 'What buffer size should I use?', a: 'Use a small buffer (64–128) when recording or playing a virtual instrument so it feels responsive, and a large one (512–2048) when mixing so plugin-heavy projects don\'t drop out. It\'s a trade-off between latency and CPU headroom.' },
+      { q: 'What is round-trip latency?', a: 'The delay from a sound entering the interface, through the computer, and back out — what you hear when monitoring a live input through the DAW. It\'s about twice the buffer latency plus the interface\'s converter and driver overhead.' },
+      { q: 'Does a higher sample rate reduce latency?', a: 'Yes, for the same buffer size: 256 samples is 5.33 ms at 48 kHz but only 2.67 ms at 96 kHz. But a higher sample rate also uses more CPU and disk, so it\'s not free — many engineers stay at 44.1/48 kHz and lower the buffer instead.' },
+      { q: 'Why does low latency cause audio glitches?', a: 'A smaller buffer gives the CPU less time to process each block before it\'s needed, so a busy project can miss the deadline and produce clicks or dropouts. Raising the buffer gives more headroom at the cost of more delay.' },
+    ],
+    keywords: ['audio buffer latency calculator', 'buffer size latency', 'daw latency calculator', 'sample rate latency', 'audio latency ms', 'round trip latency calculator', 'buffer size ms'],
+  },
+  {
+    slug: 'key-signature-calculator',
+    name: 'Key Signature Finder',
+    icon: '🎼',
+    widget: 'keysig',
+    description: 'Find the key signature of any major or minor key — how many sharps or flats, which notes, and the relative key. Based on the circle of fifths. In your browser.',
+    lead: 'Choose a major or minor key to see its key signature — the number of sharps or flats, exactly which notes, and its relative key.',
+    how: 'Key signatures follow the circle of fifths. Starting from C major (no sharps or flats), each move clockwise up a fifth adds one sharp, applied in the fixed order F♯ C♯ G♯ D♯ A♯ E♯ B♯; each move anticlockwise down a fifth adds one flat, in the order B♭ E♭ A♭ D♭ G♭ C♭ F♭. Every major key shares its signature with a relative minor a minor third below (C major / A minor), so the tool shows the sharps or flats, the exact accidental notes, and the relative key.',
+    note: 'The relative minor uses the same notes and signature as its major key but centres on a different tonic. Don\'t confuse it with the parallel minor (same tonic, different signature — C major vs C minor), which differs by three flats.',
+    faqs: [
+      { q: 'How many sharps or flats does a key have?', a: 'It depends on the key. C major/A minor have none; each step clockwise round the circle of fifths adds a sharp (G major = 1, D = 2, A = 3…) and each step the other way adds a flat (F = 1, B♭ = 2, E♭ = 3…). Pick a key to see the exact count.' },
+      { q: 'What order do sharps and flats go in?', a: 'Sharps are always added in the order F♯ C♯ G♯ D♯ A♯ E♯ B♯, and flats in the reverse order B♭ E♭ A♭ D♭ G♭ C♭ F♭. A key with three sharps therefore has F♯, C♯ and G♯.' },
+      { q: 'What is a relative minor?', a: 'The minor key that shares a major key\'s exact key signature, built on the sixth degree — a minor third below the major tonic. C major\'s relative minor is A minor; both use no sharps or flats.' },
+      { q: 'What is the circle of fifths?', a: 'A diagram arranging the twelve keys by ascending fifths. Moving clockwise adds sharps, anticlockwise adds flats, and opposite keys are a tritone apart. It\'s the map that ties every key signature together.' },
+      { q: 'What\'s the difference between relative and parallel minor?', a: 'A relative minor shares the major key\'s signature but has a different tonic (C major / A minor). A parallel minor shares the tonic but has a different signature (C major / C minor, which differs by three flats).' },
+    ],
+    keywords: ['key signature calculator', 'key signature finder', 'circle of fifths calculator', 'how many sharps in a key', 'relative minor finder', 'key signature chart', 'sharps and flats by key'],
   },
 ];
 
