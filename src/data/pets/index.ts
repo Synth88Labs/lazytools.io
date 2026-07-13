@@ -4,7 +4,7 @@ export interface PetToolDef {
   slug: string;
   name: string;
   icon: string;
-  widget: 'dogage' | 'catage' | 'dogfood' | 'catfood' | 'gestation' | 'aquarium' | 'water' | 'crate' | 'choctox';
+  widget: 'dogage' | 'catage' | 'dogfood' | 'catfood' | 'gestation' | 'aquarium' | 'water' | 'crate' | 'choctox' | 'stocking' | 'heater';
   description: string;
   lead: string;
   how: string;
@@ -176,6 +176,42 @@ export const PET_TOOLS: PetToolDef[] = [
       { q: 'How long does theobromine stay in a dog?', a: 'Theobromine has a long half-life in dogs (around 17.5 hours), so it accumulates and effects can persist for 24–72 hours. That slow clearance is exactly why even moderate amounts are risky and why prompt veterinary care matters.' },
     ],
     keywords: ['dog chocolate toxicity calculator', 'chocolate toxicity calculator dog', 'how much chocolate is toxic to dogs', 'dog ate chocolate calculator', 'theobromine calculator dog', 'chocolate poisoning dog', 'dog chocolate danger calculator'],
+  },
+  {
+    slug: 'aquarium-stocking-calculator',
+    name: 'Aquarium Stocking Calculator',
+    icon: '🐠',
+    widget: 'stocking',
+    description: 'Check whether your freshwater aquarium is over- or under-stocked using the inch-per-gallon guideline and your tank size. In your browser.',
+    lead: 'Enter your tank size and the total adult length of your fish to see how full the tank is.',
+    how: 'The best-known stocking guideline is about one inch of adult fish per (net) gallon of water. This tool takes your tank\'s rated volume, trims it to roughly 85% to account for substrate and décor, and compares your total adult fish length against that net capacity — returning a percentage and a status from understocked to overstocked. It uses the adult size of each fish, not its size today, since fish grow.',
+    note: 'The inch-per-gallon rule is only a starting point. A single fish\'s waste and oxygen demand scale with its body mass, not its length, so tall or heavy-bodied fish (goldfish, cichlids, plecos) need far more room than the rule suggests. Filtration, surface area, temperament and territory all matter. Research each species\' real requirements before stocking.',
+    faqs: [
+      { q: 'How many fish can I put in my tank?', a: 'A rough guide is one inch of adult fish per net gallon (about 85% of the tank\'s rated volume). A 20-gallon tank gives roughly 17 inches of fish. But body mass and waste matter more than length, so treat it as a ceiling, not a target — and research each species.' },
+      { q: 'Is the inch-per-gallon rule accurate?', a: 'Only loosely. It works reasonably for small, slender community fish but badly overestimates capacity for large, heavy-bodied or messy fish. A single goldfish, for example, needs far more than its "inches" imply. Use it as a sanity check alongside species research.' },
+      { q: 'Why use adult size, not current size?', a: 'Fish grow, often much larger than the store size. Stocking to their current length leads to a badly overcrowded tank within months. Always plan around the maximum adult size of each species.' },
+      { q: 'What is net vs gross tank volume?', a: 'Gross is the tank\'s rated capacity; net is the actual water volume after substrate, rocks, plants and equipment displace some — usually around 85% of the rated figure. Stocking should be based on net volume, which this tool estimates for you.' },
+      { q: 'What else affects how many fish a tank holds?', a: 'Filtration capacity, surface area for gas exchange, the fishes\' temperament and territory needs, and your maintenance routine. A well-filtered, larger-footprint tank with peaceful fish holds more than the rule implies; an under-filtered one holds less.' },
+    ],
+    keywords: ['aquarium stocking calculator', 'how many fish in a tank', 'inch per gallon calculator', 'fish tank stocking', 'aquarium stocking level', 'fish per gallon calculator', 'is my tank overstocked'],
+  },
+  {
+    slug: 'aquarium-heater-size-calculator',
+    name: 'Aquarium Heater Size Calculator',
+    icon: '🌡️',
+    widget: 'heater',
+    description: 'Find the right aquarium heater wattage from your tank size, room temperature and target temperature. In your browser.',
+    lead: 'Enter your tank size, room temperature and target temperature to get the recommended heater wattage.',
+    how: 'A heater has to add enough energy to hold the tank above room temperature and offset heat loss. The common hobby guideline is 2.5–5 watts per gallon, scaled by how far above the room you need to heat: about 2.5 W/gallon for a small rise, 3.5 for moderate, and 5 for a large rise in a cool room. The tool works out the temperature rise from your room and target, applies the right figure, and rounds up to the nearest stock heater size.',
+    note: 'For tanks larger than about 40 gallons, two smaller heaters are better than one big one — they heat the water more evenly and, if one sticks off, the tank cools slowly rather than crashing (and if one sticks on, it can\'t cook the whole tank). Always run a separate thermometer to verify, and pick a heater with a reliable thermostat.',
+    faqs: [
+      { q: 'What size heater do I need for my aquarium?', a: 'As a guide, 2.5–5 watts per gallon depending on how far above room temperature you\'re heating. A 20-gallon tank in a normal room needs roughly 50–100 watts. Enter your numbers for a specific recommendation rounded to a stock size.' },
+      { q: 'How many watts per gallon for an aquarium heater?', a: 'About 2.5 watts per gallon for a small temperature rise, 3.5 for a moderate one, and up to 5 watts per gallon if the room is cold and you need a large rise. Colder rooms need more wattage for the same tank.' },
+      { q: 'Should I use one heater or two?', a: 'For tanks over ~40 gallons, two heaters splitting the wattage give more even heating and a safety margin: if one fails off the other limits the drop, and if one sticks on it can\'t overheat the whole tank. Small tanks are fine with one.' },
+      { q: 'Does room temperature matter for heater size?', a: 'Yes — the heater only has to make up the difference between room and target temperature. A tank in a warm room needs far less wattage than the same tank in a cold basement, which is why this calculator asks for both.' },
+      { q: 'Can a heater be too powerful?', a: 'An oversized heater can overheat the tank quickly if its thermostat sticks on, which is risky for fish. Match the wattage to the tank rather than massively oversizing, use a reliable thermostatic heater, and always confirm with a separate thermometer.' },
+    ],
+    keywords: ['aquarium heater size calculator', 'fish tank heater wattage', 'aquarium heater watts', 'what size heater for aquarium', 'heater watts per gallon', 'fish tank heater calculator', 'aquarium heating calculator'],
   },
 ];
 

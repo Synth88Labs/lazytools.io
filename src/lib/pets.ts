@@ -173,4 +173,49 @@ export function chocolateToxicity(type: string, amountG: number, dogKg: number):
   return { theobromineMg, dosePerKg, risk };
 }
 
+/* ---------------- Aquarium stocking ---------------- */
+
+export interface StockingResult {
+  netGallons: number;
+  maxInchesRule: number;   // 1 inch of fish per net gallon
+  usedInches: number;
+  percent: number;
+  status: 'understocked' | 'ok' | 'fully stocked' | 'overstocked';
+}
+/**
+ * Freshwater stocking estimate by the classic "1 inch of adult fish per (net)
+ * gallon" guideline. Net volume is ~85% of the tank's rated volume once
+ * substrate and décor are accounted for. A rough guide only — real capacity
+ * depends on fish body mass, waste output, filtration and surface area.
+ */
+export function aquariumStocking(grossGallons: number, totalFishInches: number): StockingResult | null {
+  if (grossGallons <= 0 || totalFishInches < 0) return null;
+  const netGallons = grossGallons * 0.85;
+  const maxInchesRule = netGallons; // 1 inch per net gallon
+  const percent = maxInchesRule > 0 ? (totalFishInches / maxInchesRule) * 100 : 0;
+  let status: StockingResult['status'];
+  if (percent < 50) status = 'understocked';
+  else if (percent <= 90) status = 'ok';
+  else if (percent <= 100) status = 'fully stocked';
+  else status = 'overstocked';
+  return { netGallons, maxInchesRule, usedInches: totalFishInches, percent, status };
+}
+
+/* ---------------- Aquarium heater wattage ---------------- */
+
+/**
+ * Suggested aquarium heater wattage from tank volume (US gallons) and the
+ * temperature rise needed above room temperature (°F). Uses the standard
+ * hobby guideline of roughly 2.5–5 watts per gallon scaled by the rise:
+ * ~2.5 W/gal for a small rise, ~3.5 for moderate, ~5 for a large rise.
+ */
+export function heaterWatts(gallons: number, tempRiseF: number): number | null {
+  if (gallons <= 0 || tempRiseF < 0) return null;
+  let perGal: number;
+  if (tempRiseF <= 5) perGal = 2.5;
+  else if (tempRiseF <= 10) perGal = 3.5;
+  else perGal = 5;
+  return gallons * perGal;
+}
+
 export { L_PER_GAL_US, L_PER_GAL_UK };

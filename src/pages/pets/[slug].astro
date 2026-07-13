@@ -13,6 +13,8 @@ import AquariumTool from '../../components/pets/AquariumTool.tsx';
 import WaterIntakeTool from '../../components/pets/WaterIntakeTool.tsx';
 import CrateSizeTool from '../../components/pets/CrateSizeTool.tsx';
 import ChocolateToxicityTool from '../../components/pets/ChocolateToxicityTool.tsx';
+import AquariumStockingTool from '../../components/pets/AquariumStockingTool.tsx';
+import HeaterWattageTool from '../../components/pets/HeaterWattageTool.tsx';
 import { PET_TOOLS, type PetToolDef } from '../../data/pets/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -68,6 +70,8 @@ const schema = [
       {tool.widget === 'water' && <WaterIntakeTool client:load />}
       {tool.widget === 'crate' && <CrateSizeTool client:load />}
       {tool.widget === 'choctox' && <ChocolateToxicityTool client:load />}
+      {tool.widget === 'stocking' && <AquariumStockingTool client:load />}
+      {tool.widget === 'heater' && <HeaterWattageTool client:load />}
     </div>
 
     <div class="mt-4">
