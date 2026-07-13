@@ -131,6 +131,14 @@ const AUTHORITATIVE: Record<string, Record<string, number>> = {
     mphs: 1609.344 / 3600,
     ins2: 0.0254,
   },
+  // base: lux (lm/m²). 1 fc = 1 lm/ft² = 1/0.3048² lux; 1 phot = 1e4 lux; 1 nox = 1e-3 lux.
+  illuminance: {
+    lx: 1,
+    fc: 1 / (0.3048 ** 2),
+    klx: 1e3,
+    ph: 1e4,
+    nox: 1e-3,
+  },
 };
 
 // Temperature is offset-based → verified via known point pairs instead.
