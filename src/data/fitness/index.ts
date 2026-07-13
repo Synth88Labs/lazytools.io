@@ -4,7 +4,7 @@ export interface FitnessToolDef {
   slug: string;
   name: string;
   icon: string;
-  widget: 'pace' | 'paceconv' | 'onerm' | 'hrzone' | 'racepredict' | 'vo2' | 'calories' | 'steps' | 'bodyfat' | 'tdee';
+  widget: 'pace' | 'paceconv' | 'onerm' | 'hrzone' | 'racepredict' | 'vo2' | 'calories' | 'steps';
   description: string;
   lead: string;
   how: string;
@@ -157,42 +157,6 @@ export const FITNESS_TOOLS: FitnessToolDef[] = [
       { q: 'Is a walking stride the same as a running stride?', a: 'No — running strides are longer, so the same number of steps covers more ground running than walking. Enter your running stride directly if you\'re converting run steps.' },
     ],
     keywords: ['steps to distance calculator', 'steps to km', 'steps to miles', 'how far is 10000 steps', 'stride length calculator', 'step distance converter', 'pedometer distance calculator'],
-  },
-  {
-    slug: 'body-fat-calculator',
-    name: 'Body Fat Calculator (US Navy)',
-    icon: '📏',
-    widget: 'bodyfat',
-    description: 'Estimate your body fat percentage with the US Navy tape method — from height and a few circumference measurements. In your browser.',
-    lead: 'Enter your height and a couple of tape measurements to estimate your body-fat percentage and category.',
-    how: 'The US Navy circumference method estimates body fat from the ratio of your body measurements to your height, using a logarithmic formula validated against hydrostatic weighing. Men need height, neck and waist; women add hip. The tool converts your measurements (inches or centimetres) and returns a percentage plus a general fitness category. It needs only a tape measure, which is why the military and gyms use it, though it\'s an estimate — typically within 3–4% of a DEXA scan.',
-    note: 'Measure consistently for repeatable results: waist at the navel, neck just below the larynx, hip at the widest point, tape snug but not compressing the skin, and ideally first thing in the morning. Because it\'s based on averages, very muscular or very lean builds can read high or low — track the trend over time rather than obsessing over a single number, and consult a professional for medical assessment.',
-    faqs: [
-      { q: 'How does the US Navy body fat method work?', a: 'It uses body circumferences relative to height in a logarithmic formula. Men: 86.010·log₁₀(waist − neck) − 70.041·log₁₀(height) + 36.76. Women add hip: 163.205·log₁₀(waist + hip − neck) − 97.684·log₁₀(height) − 78.387. All measurements in inches.' },
-      { q: 'How accurate is the Navy body fat calculator?', a: 'For most people it lands within about 3–4% of a DEXA or hydrostatic measurement — good for tracking trends. It\'s less accurate for very muscular or very lean builds, since it\'s based on population averages, not your individual composition.' },
-      { q: 'Where do I measure for body fat?', a: 'Waist at the navel, neck just below the Adam\'s apple, and (for women) hips at the widest point. Keep the tape level and snug without compressing the skin, and measure at the same time of day for consistency.' },
-      { q: 'What is a healthy body fat percentage?', a: 'General ranges: men ~10–20% and women ~18–28% are commonly considered fit/average, with athletes lower. "Essential fat" (the minimum for health) is about 3–5% for men and 10–13% for women. These are broad guides, not medical thresholds.' },
-      { q: 'Why do women need a hip measurement?', a: 'Women store proportionally more fat around the hips, so the formula includes hip circumference to model female body composition accurately. The male formula uses only waist and neck against height.' },
-    ],
-    keywords: ['body fat calculator', 'navy body fat calculator', 'body fat percentage calculator', 'how to calculate body fat', 'body fat tape measure', 'us navy body fat', 'bodyfat estimate'],
-  },
-  {
-    slug: 'tdee-calculator',
-    name: 'TDEE & BMR Calculator',
-    icon: '🔥',
-    widget: 'tdee',
-    description: 'Calculate your BMR and total daily energy expenditure (TDEE) with the Mifflin-St Jeor equation — plus calorie targets for losing or gaining weight. In your browser.',
-    lead: 'Enter your details and activity level to get your BMR, maintenance calories (TDEE) and targets for losing or gaining weight.',
-    how: 'Your basal metabolic rate (BMR) is the energy your body burns at complete rest, estimated here with the Mifflin-St Jeor equation — the most accurate of the common formulas: 10 × weight(kg) + 6.25 × height(cm) − 5 × age + 5 (men) or − 161 (women). Multiplying BMR by an activity factor (1.2 sedentary up to 1.9 for very hard training) gives your total daily energy expenditure (TDEE) — the calories to maintain your weight. The tool also shows a roughly 500-kcal deficit and surplus for gradual weight loss or gain.',
-    note: 'These are population-average estimates; individual metabolism varies by ±10% or more, and the activity factors are approximate. Use the number as a starting point, then adjust based on how your weight actually responds over 2–3 weeks. For medical, pregnancy or clinical situations, consult a doctor or dietitian rather than a calculator.',
-    faqs: [
-      { q: 'What is the difference between BMR and TDEE?', a: 'BMR is the energy you\'d burn lying at rest all day. TDEE is BMR plus everything else — daily activity, exercise and digestion — so it\'s always higher. TDEE = BMR × an activity multiplier, and it\'s the number you use for maintenance calories.' },
-      { q: 'How do I calculate my TDEE?', a: 'First find BMR with Mifflin-St Jeor (10·kg + 6.25·cm − 5·age ± 5/161), then multiply by your activity factor: 1.2 (sedentary), 1.375 (light), 1.55 (moderate), 1.725 (very active) or 1.9 (extra active). The result is your maintenance calories.' },
-      { q: 'How many calories to lose weight?', a: 'A deficit of about 500 kcal/day below your TDEE gives roughly 0.5 kg (1 lb) of loss per week, since a kilogram of fat is about 7,700 kcal. The tool shows this target automatically. Avoid going below your BMR for long.' },
-      { q: 'Which BMR formula is most accurate?', a: 'Mifflin-St Jeor (used here) is generally the most accurate predictive equation for the general population, more so than the older Harris-Benedict. All predictive formulas are estimates; only lab measurement gives your exact BMR.' },
-      { q: 'What activity level should I choose?', a: 'Be honest and conservative — most people overestimate. "Sedentary" suits desk work with little exercise; "moderate" means real training 3–5 days a week. If unsure, pick the lower option and adjust once you see how your weight responds.' },
-    ],
-    keywords: ['tdee calculator', 'bmr calculator', 'maintenance calories calculator', 'daily calorie calculator', 'mifflin st jeor calculator', 'how many calories to maintain weight', 'total daily energy expenditure'],
   },
 ];
 

@@ -15,6 +15,9 @@ RewriteRule ^sitemap\.xml$ /sitemap-index.xml [L]
 
 # ---- Moved tools (301) ----
 RewriteRule ^time/4-5-4-retail-calendar/?$ /calendar/4-5-4-retail-calendar/ [L,R=301]
+# TDEE & body-fat live in /calc/ (canonical); the short-lived /fitness/ duplicates redirect there.
+RewriteRule ^fitness/tdee-calculator/?$ /calc/tdee-calculator/ [L,R=301]
+RewriteRule ^fitness/body-fat-calculator/?$ /calc/body-fat-calculator/ [L,R=301]
 
 # ---- MIME types ----
 AddType application/wasm .wasm

@@ -13,8 +13,6 @@ import RaceTimePredictorTool from '../../components/fitness/RaceTimePredictorToo
 import Vo2MaxTool from '../../components/fitness/Vo2MaxTool.tsx';
 import CaloriesBurnedTool from '../../components/fitness/CaloriesBurnedTool.tsx';
 import StepsDistanceTool from '../../components/fitness/StepsDistanceTool.tsx';
-import BodyFatTool from '../../components/fitness/BodyFatTool.tsx';
-import TdeeTool from '../../components/fitness/TdeeTool.tsx';
 import { FITNESS_TOOLS, type FitnessToolDef } from '../../data/fitness/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -69,8 +67,6 @@ const schema = [
       {tool.widget === 'vo2' && <Vo2MaxTool client:load />}
       {tool.widget === 'calories' && <CaloriesBurnedTool client:load />}
       {tool.widget === 'steps' && <StepsDistanceTool client:load />}
-      {tool.widget === 'bodyfat' && <BodyFatTool client:load />}
-      {tool.widget === 'tdee' && <TdeeTool client:load />}
     </div>
 
     <div class="mt-4">
