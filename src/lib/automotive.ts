@@ -159,4 +159,45 @@ export function stoppingDistance(speedKmh: number, reactionS: number, mu: number
   return { reaction, braking, total: reaction + braking };
 }
 
+/* ---------------- Quarter-mile estimate ---------------- */
+
+/**
+ * Estimated 1/4-mile elapsed time (seconds) from power and weight, by the
+ * widely-used empirical "Fox" equation: ET = 5.825 × (weight_lb ÷ hp)^(1/3).
+ * A rough real-world estimate — traction, gearing, aerodynamics and driver all
+ * shift the actual number.
+ */
+export function quarterMileET(hp: number, weightLb: number): number | null {
+  if (hp <= 0 || weightLb <= 0) return null;
+  return 5.825 * Math.cbrt(weightLb / hp);
+}
+/** Estimated 1/4-mile trap speed (mph): 234 × (hp ÷ weight_lb)^(1/3). */
+export function quarterMileMph(hp: number, weightLb: number): number | null {
+  if (hp <= 0 || weightLb <= 0) return null;
+  return 234 * Math.cbrt(hp / weightLb);
+}
+
+/* ---------------- Trip fuel cost ---------------- */
+
+export type EfficiencyMode = 'mpg' | 'kmL' | 'l100km';
+
+/**
+ * Fuel consumed for a trip. `mpg`/`kmL` are distance-per-fuel (fuel =
+ * distance ÷ efficiency); `l100km` is fuel-per-distance (fuel = distance ÷ 100
+ * × value). Distance and efficiency must share a distance unit (miles+mpg, or
+ * km+kmL/l100km). Returns the fuel quantity in the matching unit
+ * (gallons for mpg, litres for the metric modes).
+ */
+export function fuelUsed(distance: number, efficiency: number, mode: EfficiencyMode): number | null {
+  if (distance < 0 || efficiency <= 0) return null;
+  if (mode === 'l100km') return (distance / 100) * efficiency;
+  return distance / efficiency;
+}
+/** Trip fuel cost = fuel used × price per unit of fuel. */
+export function tripFuelCost(distance: number, efficiency: number, mode: EfficiencyMode, pricePerUnit: number): number | null {
+  const fuel = fuelUsed(distance, efficiency, mode);
+  if (fuel == null || pricePerUnit < 0) return null;
+  return fuel * pricePerUnit;
+}
+
 export { MM_PER_INCH };

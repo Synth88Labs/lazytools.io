@@ -4,7 +4,7 @@ export interface AutoToolDef {
   slug: string;
   name: string;
   icon: string;
-  widget: 'tire' | 'tirecompare' | 'gear' | 'displacement' | 'compression' | 'hp' | 'fueleconomy' | 'offset' | 'evcharge' | 'pwr2wt' | 'stopping';
+  widget: 'tire' | 'tirecompare' | 'gear' | 'displacement' | 'compression' | 'hp' | 'fueleconomy' | 'offset' | 'evcharge' | 'pwr2wt' | 'stopping' | 'quartermile' | 'fuelcost';
   description: string;
   lead: string;
   how: string;
@@ -211,6 +211,42 @@ export const AUTO_TOOLS: AutoToolDef[] = [
       { q: 'Does this account for my specific car?', a: 'No — it\'s a physics estimate based on grip, not your vehicle\'s exact brakes, tyres, weight or ABS. Modern cars can approach these figures on good tyres; worn tyres or brakes do worse. Treat it as a guide, not a guarantee.' },
     ],
     keywords: ['stopping distance calculator', 'braking distance calculator', 'reaction distance', 'stopping distance formula', 'total stopping distance', 'speed braking distance'],
+  },
+  {
+    slug: 'quarter-mile-calculator',
+    name: 'Quarter-Mile ET & Trap Speed Calculator',
+    icon: '🏁',
+    widget: 'quartermile',
+    description: 'Estimate a car\'s 1/4-mile elapsed time and trap speed from its horsepower and weight, using the classic drag-racing formulas. In your browser.',
+    lead: 'Enter horsepower and weight to estimate the 1/4-mile elapsed time and trap speed.',
+    how: 'Drag racers have long estimated quarter-mile performance from just power and weight using empirical formulas fitted to real timeslips. This tool uses the widely-quoted pair: elapsed time ET ≈ 5.825 × (weight ÷ horsepower)^⅓ and trap speed ≈ 234 × (horsepower ÷ weight)^⅓, with weight in pounds. Power-to-weight is what dominates straight-line acceleration, which is why these one-line formulas get surprisingly close for a well-set-up car.',
+    note: 'These are ballpark estimates for a traction-limited rear-drive car launching well. Real results swing with tyres, gearing, transmission, aerodynamics, altitude and driver skill — a car that can\'t hook up will run slower ET despite the same power. Use crank or wheel horsepower consistently and include the driver\'s weight.',
+    faqs: [
+      { q: 'How do I estimate quarter-mile time from horsepower?', a: 'A common formula is ET = 5.825 × (weight ÷ hp)^⅓, with weight in pounds. A 3,300 lb car with 300 hp estimates to about 12.9 seconds. It\'s an approximation — traction and gearing shift the real number.' },
+      { q: 'How is trap speed calculated?', a: 'Trap speed (the speed at the end of the quarter mile) ≈ 234 × (hp ÷ weight)^⅓ in mph. Because it depends mainly on power-to-weight and less on the launch, trap speed is often a better guide to a car\'s power than ET.' },
+      { q: 'Why is my real quarter-mile time different?', a: 'The formulas assume a good launch and traction. Wheelspin, tall gearing, a slipping clutch, high altitude or a heavy street car will all run slower than predicted; a sticky-tyred, well-tuned car can beat it. Treat the estimate as a starting point.' },
+      { q: 'Should I use crank or wheel horsepower?', a: 'Either works as long as you\'re consistent, but the formulas were largely fitted to flywheel (crank) figures. Wheel horsepower is roughly 10–15% lower due to drivetrain loss, so using it gives a slightly more conservative estimate.' },
+      { q: 'Does weight include the driver?', a: 'Yes — use the car\'s race weight with the driver and any fuel aboard, since that\'s what actually accelerates. Adding the driver (typically 70–90 kg) noticeably affects the result on a light car.' },
+    ],
+    keywords: ['quarter mile calculator', 'et calculator drag', 'trap speed calculator', 'horsepower to quarter mile', '1/4 mile time calculator', 'drag racing calculator', 'power to weight quarter mile'],
+  },
+  {
+    slug: 'fuel-cost-calculator',
+    name: 'Fuel Cost Calculator',
+    icon: '⛽',
+    widget: 'fuelcost',
+    description: 'Calculate the fuel cost of a trip from the distance, your vehicle\'s fuel economy and the fuel price — in mpg or L/100km, any currency. In your browser.',
+    lead: 'Enter your trip distance, fuel economy and fuel price to see what the fuel will cost.',
+    how: 'The fuel a trip needs is the distance divided by your fuel economy — miles ÷ mpg for gallons, or km ÷ (km/L) for litres — while an L/100km figure multiplies: distance ÷ 100 × L/100km. Multiply the fuel used by the price per unit and you have the trip cost. The tool supports US mpg, km/L and L/100km so you can use whatever your car and country quote, and you enter the price in your own currency, so no exchange rates or location data are involved.',
+    note: 'Use your real-world economy, not the official figure, for an honest estimate — city driving, cold weather, roof boxes, heavy loads and high speeds all raise consumption. For a return journey, double the distance. The result is in whatever currency you enter the price in.',
+    faqs: [
+      { q: 'How do I calculate the fuel cost of a trip?', a: 'Work out the fuel used (distance ÷ mpg, or distance ÷ 100 × L/100km), then multiply by the price per gallon or litre. For 300 miles at 30 mpg with fuel at 3.50: 10 gallons × 3.50 = 35.' },
+      { q: 'How much fuel will I use?', a: 'Divide distance by fuel economy for distance-per-fuel units (mpg, km/L), or multiply distance ÷ 100 by an L/100km figure. 500 km at 8 L/100km uses 40 litres. The tool shows fuel used alongside the cost.' },
+      { q: 'Does this work with L/100km and mpg?', a: 'Yes — pick your units: US mpg with miles, or km/L or L/100km with kilometres. The calculator handles the different maths for distance-per-fuel versus fuel-per-distance automatically.' },
+      { q: 'What currency does it use?', a: 'Whatever you type. You enter the fuel price in your own currency and the cost comes out in the same one — there\'s no exchange-rate conversion or location lookup, so it works anywhere and stays entirely in your browser.' },
+      { q: 'How do I estimate cost for a round trip?', a: 'Double the one-way distance before calculating, or simply enter the total there-and-back distance. Remember real economy is often worse than the sticker figure, so pad the estimate a little for a safety margin.' },
+    ],
+    keywords: ['fuel cost calculator', 'trip fuel cost', 'gas cost calculator', 'petrol cost calculator', 'fuel cost per mile', 'how much fuel for trip', 'journey cost calculator', 'l/100km cost calculator'],
   },
 ];
 
