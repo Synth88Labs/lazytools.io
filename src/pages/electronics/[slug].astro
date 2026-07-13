@@ -18,6 +18,8 @@ import LcResonanceTool from '../../components/electronics/LcResonanceTool.tsx';
 import SeriesParallelResistanceTool from '../../components/electronics/SeriesParallelResistanceTool.tsx';
 import SeriesParallelCapacitanceTool from '../../components/electronics/SeriesParallelCapacitanceTool.tsx';
 import OhmsLawTool from '../../components/electronics/OhmsLawTool.tsx';
+import ReactanceTool from '../../components/electronics/ReactanceTool.tsx';
+import DecibelTool from '../../components/electronics/DecibelTool.tsx';
 import { ELECTRONICS_TOOLS, type ElectronicsToolDef } from '../../data/electronics/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -77,6 +79,8 @@ const schema = [
       {tool.widget === 'sp-res' && <SeriesParallelResistanceTool client:load />}
       {tool.widget === 'sp-cap' && <SeriesParallelCapacitanceTool client:load />}
       {tool.widget === 'ohmslaw' && <OhmsLawTool client:load />}
+      {tool.widget === 'reactance' && <ReactanceTool client:load />}
+      {tool.widget === 'decibel' && <DecibelTool client:load />}
     </div>
 
     <div class="mt-4">

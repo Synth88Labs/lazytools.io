@@ -4,7 +4,7 @@ export interface ElectronicsToolDef {
   slug: string;
   name: string;
   icon: string;
-  widget: 'resistor' | 'led' | 'divider' | 'capcode' | 'awg' | 'rc' | 'timer555' | 'battery' | 'smd' | 'lc' | 'sp-res' | 'sp-cap' | 'ohmslaw';
+  widget: 'resistor' | 'led' | 'divider' | 'capcode' | 'awg' | 'rc' | 'timer555' | 'battery' | 'smd' | 'lc' | 'sp-res' | 'sp-cap' | 'ohmslaw' | 'reactance' | 'decibel';
   description: string;
   lead: string;
   how: string;
@@ -250,6 +250,42 @@ export const ELECTRONICS_TOOLS: ElectronicsToolDef[] = [
       { q: 'What is the series capacitance of two equal capacitors?', a: 'Half the value. Two 10 µF capacitors in series give 5 µF. In general N equal capacitors in series give C ÷ N.' },
     ],
     keywords: ['series parallel capacitor calculator', 'parallel capacitor calculator', 'series capacitor calculator', 'total capacitance calculator', 'capacitors in series', 'capacitors in parallel', 'equivalent capacitance calculator', 'combine capacitors calculator'],
+  },
+  {
+    slug: 'reactance-calculator',
+    name: 'Reactance Calculator (Xc & Xʟ)',
+    icon: '〰️',
+    widget: 'reactance',
+    description: 'Calculate capacitive reactance (Xc = 1/2πfC) or inductive reactance (Xʟ = 2πfL) at a given frequency. In your browser.',
+    lead: 'Enter a frequency and a capacitance or inductance to get its reactance — the frequency-dependent AC opposition in ohms.',
+    how: 'Reactance is the opposition a capacitor or inductor presents to alternating current, measured in ohms but varying with frequency. Capacitive reactance is Xc = 1 ÷ (2πfC): it falls as frequency rises, so a capacitor blocks DC and passes high frequencies. Inductive reactance is Xʟ = 2πfL: it rises with frequency, so an inductor passes DC and opposes high frequencies. Pick the component type, enter the frequency and the capacitance or inductance (with convenient units), and the tool returns the reactance.',
+    note: 'Reactance is the imaginary part of impedance; in a circuit with resistance too, the total opposition is the impedance Z = √(R² + X²). At the resonant frequency of an LC pair the capacitive and inductive reactances are equal and cancel — see the LC resonant-frequency calculator.',
+    faqs: [
+      { q: 'How do I calculate capacitive reactance?', a: 'Xc = 1 ÷ (2πfC), with f in hertz and C in farads. A 1 µF capacitor at 1 kHz has a reactance of about 159 Ω. Doubling the frequency halves the reactance.' },
+      { q: 'How do I calculate inductive reactance?', a: 'Xʟ = 2πfL, with f in hertz and L in henries. A 10 mH inductor at 1 kHz has a reactance of about 63 Ω. Doubling the frequency doubles the reactance.' },
+      { q: 'What is the difference between reactance and resistance?', a: 'Resistance opposes current the same at all frequencies and dissipates power as heat. Reactance opposes alternating current in a frequency-dependent way and stores energy (in a capacitor\'s field or an inductor\'s field) rather than dissipating it.' },
+      { q: 'Why does capacitor reactance decrease with frequency?', a: 'A capacitor charges and discharges more times per second as frequency rises, so more current flows for the same voltage — which means lower reactance. At DC (0 Hz) its reactance is infinite, blocking current entirely.' },
+      { q: 'What is impedance versus reactance?', a: 'Impedance Z combines resistance R and reactance X into the total opposition to AC: Z = √(R² + X²) in magnitude. Reactance is just the part contributed by capacitors and inductors; this tool gives that reactance.' },
+    ],
+    keywords: ['reactance calculator', 'capacitive reactance calculator', 'inductive reactance calculator', 'xc calculator', 'xl calculator', 'capacitor reactance', 'inductor reactance', 'impedance calculator'],
+  },
+  {
+    slug: 'decibel-calculator',
+    name: 'Decibel (dB) Calculator',
+    icon: '🔊',
+    widget: 'decibel',
+    description: 'Convert a power or amplitude (voltage) ratio to decibels and back — 10·log for power, 20·log for amplitude. In your browser.',
+    lead: 'Convert a ratio to decibels or decibels to a ratio, for power (10·log) or amplitude/voltage (20·log).',
+    how: 'The decibel expresses a ratio between two quantities on a logarithmic scale. For power, dB = 10·log₁₀(P₂/P₁); for amplitude quantities like voltage, current or sound pressure, dB = 20·log₁₀(A₂/A₁) — the factor of 20 because power goes as amplitude squared. The tool converts either way: enter a ratio to get decibels, or a decibel value to get the ratio back (10^(dB/10) for power, 10^(dB/20) for amplitude). Pick power or amplitude and the direction.',
+    note: 'Remember the landmark values: +3 dB is roughly double the power, +6 dB double the voltage, +10 dB ten times the power and +20 dB ten times the voltage. 0 dB means the two quantities are equal, and negative decibels mean a reduction. Decibels are dimensionless — a "dB" only has meaning relative to a stated reference (dBm, dBV, dB SPL name theirs).',
+    faqs: [
+      { q: 'How do I convert a ratio to decibels?', a: 'For power, dB = 10·log₁₀(ratio); for voltage or other amplitudes, dB = 20·log₁₀(ratio). So ×2 power is about +3 dB, and ×2 voltage is about +6 dB. Enter your ratio and pick the type.' },
+      { q: 'Why is it 10·log for power but 20·log for voltage?', a: 'Power is proportional to voltage (or amplitude) squared. Taking the log brings the exponent 2 out front, turning 10·log of the power ratio into 20·log of the voltage ratio — the same decibel result expressed in different quantities.' },
+      { q: 'What does +3 dB mean?', a: 'About double the power (10·log₁₀2 ≈ 3.01 dB). For voltage, doubling is about +6 dB. −3 dB is roughly half the power, which is why the −3 dB point marks a filter\'s cutoff (half-power) frequency.' },
+      { q: 'What is 0 dB?', a: 'A ratio of 1 — the two quantities are equal, since log₁₀(1) = 0. Positive decibels indicate a gain (increase), negative decibels a loss (decrease).' },
+      { q: 'Are decibels absolute or relative?', a: 'Relative by themselves — a decibel is a ratio. Absolute decibel units name a reference: dBm is relative to 1 milliwatt, dBV to 1 volt, dB SPL to the threshold of hearing. This calculator works with the underlying ratios.' },
+    ],
+    keywords: ['decibel calculator', 'db calculator', 'ratio to db', 'db to ratio', 'power to db calculator', 'voltage gain db', 'decibel gain calculator', '10 log 20 log'],
   },
 ];
 

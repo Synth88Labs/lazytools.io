@@ -238,4 +238,19 @@ export function ohmsLaw(v?: number | null, i?: number | null, r?: number | null,
   return { v: V as number, i: I as number, r: R as number, p: P as number };
 }
 
+/* ---------------- Decibels ---------------- */
+
+/** Decibels from a power ratio: dB = 10·log₁₀(P₂/P₁). */
+export function dbFromPowerRatio(ratio: number): number | null {
+  return ratio > 0 ? 10 * Math.log10(ratio) : null;
+}
+/** Decibels from an amplitude ratio (voltage/current/pressure): dB = 20·log₁₀(A₂/A₁). */
+export function dbFromAmplitudeRatio(ratio: number): number | null {
+  return ratio > 0 ? 20 * Math.log10(ratio) : null;
+}
+/** Power ratio from decibels: 10^(dB/10). */
+export const powerRatioFromDb = (db: number) => Math.pow(10, db / 10);
+/** Amplitude ratio from decibels: 10^(dB/20). */
+export const amplitudeRatioFromDb = (db: number) => Math.pow(10, db / 20);
+
 export { CU_RESISTIVITY };
