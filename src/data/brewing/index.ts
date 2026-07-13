@@ -4,7 +4,7 @@ export interface BrewingToolDef {
   slug: string;
   name: string;
   icon: string;
-  widget: 'abv' | 'ibu' | 'priming' | 'brix' | 'hydrometer' | 'strike' | 'dilution' | 'refractometer';
+  widget: 'abv' | 'ibu' | 'priming' | 'brix' | 'hydrometer' | 'strike' | 'dilution' | 'refractometer' | 'carbonation' | 'color';
   description: string;
   lead: string;
   how: string;
@@ -157,6 +157,42 @@ export const BREWING_TOOLS: BrewingToolDef[] = [
       { q: 'Can I track fermentation progress with a refractometer?', a: 'Yes — that\'s a great use. A few drops each day, run through this correction, shows the gravity falling and stabilising, telling you when fermentation is complete without drawing large hydrometer samples.' },
     ],
     keywords: ['refractometer calculator', 'refractometer final gravity', 'refractometer correction calculator', 'refractometer fg abv', 'wort correction factor', 'refractometer alcohol correction', 'brewing refractometer calculator'],
+  },
+  {
+    slug: 'keg-carbonation-calculator',
+    name: 'Keg Carbonation Pressure Calculator',
+    icon: '🫧',
+    widget: 'carbonation',
+    description: 'Find the CO₂ regulator pressure to force-carbonate beer to a target volume at a given temperature — in PSI, kPa and bar. In your browser.',
+    lead: 'Enter your beer\'s temperature and target CO₂ volumes to get the regulator pressure for force carbonation.',
+    how: 'How much CO₂ dissolves in beer depends on both pressure and temperature: colder beer holds more gas at the same pressure. To force-carbonate in a keg, you set the regulator to the pressure that, at your serving temperature, holds the CO₂ level (measured in "volumes") you want. The tool solves the standard solubility relation P = (volumes + 0.003342) ÷ (0.01821 + 0.09011·e^(−(T−32)/43.11)) − 14.695 for the gauge pressure, and shows it in PSI, kPa and bar.',
+    note: 'Set the regulator, keep the keg at that temperature, and give it about a week to reach equilibrium — or speed it up by rocking/shaking the cold keg under pressure. If the beer is very cold and lightly carbonated the required pressure can be near zero. Once carbonated, drop to a lower serving pressure that matches your line length to avoid foaming.',
+    faqs: [
+      { q: 'What PSI to carbonate beer?', a: 'It depends on temperature and target CO₂. For a typical ale at 2.5 volumes and 38°F (3°C), about 11–12 PSI. Colder beer needs less pressure, warmer needs more — enter your numbers for the exact figure.' },
+      { q: 'How do I force-carbonate a keg?', a: 'Chill the beer, set the CO₂ regulator to the pressure this calculator gives for your temperature and target volumes, and leave it connected for about a week. To carbonate faster, rock or shake the cold keg while it\'s under pressure for a few minutes a day.' },
+      { q: 'What are CO₂ "volumes"?', a: 'A volume of CO₂ is the amount of gas that, at standard conditions, would fill the same volume as the liquid. Most beers sit around 2.0–2.7 volumes; British ales are lower (1.5–2.0) and wheat/Belgian styles higher (3.0–4.0).' },
+      { q: 'Why does temperature affect carbonation pressure?', a: 'CO₂ is more soluble in cold liquid, so colder beer holds more gas at a given pressure. To reach the same carbonation, warm beer needs a higher regulator pressure than cold beer — which is why the temperature input matters.' },
+      { q: 'What is the difference between carbonation and serving pressure?', a: 'Carbonation pressure sets the CO₂ level; serving pressure pushes beer through the lines to the tap. They\'re often different — you carbonate at the calculated pressure, then serve at a pressure balanced to your line length and height so the pour isn\'t all foam.' },
+    ],
+    keywords: ['keg carbonation calculator', 'force carbonation calculator', 'co2 pressure calculator beer', 'carbonation pressure chart', 'beer carbonation psi', 'kegging pressure calculator', 'co2 volumes calculator'],
+  },
+  {
+    slug: 'beer-color-srm-ebc-calculator',
+    name: 'Beer Color Calculator (SRM & EBC)',
+    icon: '🎨',
+    widget: 'color',
+    description: 'Estimate your beer\'s colour in SRM and EBC from the grain bill and batch volume, using the Morey equation — with a colour swatch. In your browser.',
+    lead: 'Add your malts and batch volume to estimate the beer\'s colour in SRM and EBC, with a visual swatch.',
+    how: 'Beer colour is estimated from the malts and how concentrated they are in the batch. For each grain you find its malt colour units — MCU = malt colour in °Lovibond × weight in pounds ÷ volume in gallons — and add them up. The total goes through the Morey equation, SRM = 1.4922 × MCU^0.6859, which flattens out at dark colours the way real beer does. EBC, the European scale, is simply SRM × 1.97. Add a row for each malt in your recipe.',
+    note: 'This is an estimate: actual colour also shifts with boil length and intensity (Maillard browning), mash pH, water chemistry and oxidation, so the finished beer can differ from the number. The swatch is a visual approximation of the SRM value, not a precise colour match. Use °Lovibond (°L) for malt colour — it\'s close to SRM for the malts themselves.',
+    faqs: [
+      { q: 'How do I calculate beer colour (SRM)?', a: 'Add each malt\'s colour units — MCU = °Lovibond × pounds ÷ gallons — then apply the Morey equation: SRM = 1.4922 × MCU^0.6859. For a 5-gallon batch with 9 lb of 10°L malt (MCU 18), that\'s about 10.6 SRM, a gold colour.' },
+      { q: 'What is the difference between SRM and EBC?', a: 'They\'re two scales for the same thing — beer colour. SRM is used in the US, EBC in Europe, and they convert with EBC = SRM × 1.97. A pale lager is around 3–4 SRM; a stout is 40+.' },
+      { q: 'What is the Morey equation?', a: 'A widely-used formula relating malt colour units to perceived beer colour: SRM = 1.4922 × MCU^0.6859. The exponent under 1 reflects that adding dark malt has diminishing returns on colour once beer is already dark — matching how real beer looks.' },
+      { q: 'Why is my actual beer darker than the estimate?', a: 'Colour also comes from the boil (longer/harder boils darken wort through Maillard reactions), mash pH, water chemistry and oxidation over time. The grain-bill estimate is a good baseline, but expect the finished beer to run a little darker.' },
+      { q: 'What is °Lovibond?', a: 'The traditional scale for the colour of a malt (or beer), close to SRM in value for the malts themselves. Malt suppliers list each grain\'s °L; enter those figures here. It\'s effectively interchangeable with SRM for individual malts in this calculation.' },
+    ],
+    keywords: ['beer color calculator', 'srm calculator', 'ebc calculator', 'beer color srm ebc', 'morey equation calculator', 'malt color units calculator', 'grain bill color calculator', 'beer colour calculator'],
   },
 ];
 

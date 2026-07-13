@@ -145,3 +145,33 @@ export function refractometerFg(originalBrix: number, finalBrix: number, wcf = 1
   // Terrill cubic (coefficients per seanterrill.com; last term is 0.000063293, i.e. 0.63293e-4)
   return 1.0 - 0.0044993 * oi + 0.011774 * fi + 0.00027581 * oi * oi - 0.0012717 * fi * fi - 0.00000728 * oi * oi * oi + 0.000063293 * fi * fi * fi;
 }
+
+/* ---------------- Keg carbonation pressure ---------------- */
+
+/**
+ * Regulator gauge pressure (PSI) to force-carbonate beer to a target CO₂
+ * volume at a serving temperature (°F), from the standard solubility relation
+ * P = (vols + 0.003342) ÷ (0.01821 + 0.09011·e^(−(T−32)/43.11)) − 14.695.
+ * Colder beer holds more CO₂, so it needs less pressure.
+ */
+export function carbonationPressurePsi(tempF: number, volumesCO2: number): number | null {
+  if (volumesCO2 <= 0) return null;
+  const henry = 0.01821 + 0.09011 * Math.exp(-(tempF - 32) / 43.11);
+  const p = (volumesCO2 + 0.003342) / henry - 14.695;
+  return p; // may be negative for very cold beer / low target — caller can clamp
+}
+
+/* ---------------- Beer colour (SRM / EBC) ---------------- */
+
+/** Malt colour units for one grain: colour (°Lovibond) × weight (lb) ÷ volume (gal). Sum across grains. */
+export function mcu(colorLovibond: number, weightLb: number, volumeGal: number): number | null {
+  if (colorLovibond < 0 || weightLb < 0 || volumeGal <= 0) return null;
+  return (colorLovibond * weightLb) / volumeGal;
+}
+/** Beer colour in SRM from total MCU, via the Morey equation: SRM = 1.4922 × MCU^0.6859. */
+export function srmFromMcu(totalMcu: number): number {
+  if (totalMcu <= 0) return 0;
+  return 1.4922 * Math.pow(totalMcu, 0.6859);
+}
+/** Convert SRM to European EBC (EBC = SRM × 1.97). */
+export const srmToEbc = (srm: number) => srm * 1.97;

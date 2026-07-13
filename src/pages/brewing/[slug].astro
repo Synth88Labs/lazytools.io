@@ -13,6 +13,8 @@ import HydrometerTool from '../../components/brewing/HydrometerTool.tsx';
 import StrikeWaterTool from '../../components/brewing/StrikeWaterTool.tsx';
 import DilutionTool from '../../components/brewing/DilutionTool.tsx';
 import RefractometerTool from '../../components/brewing/RefractometerTool.tsx';
+import CarbonationTool from '../../components/brewing/CarbonationTool.tsx';
+import BeerColorTool from '../../components/brewing/BeerColorTool.tsx';
 import { BREWING_TOOLS, type BrewingToolDef } from '../../data/brewing/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -67,6 +69,8 @@ const schema = [
       {tool.widget === 'strike' && <StrikeWaterTool client:load />}
       {tool.widget === 'dilution' && <DilutionTool client:load />}
       {tool.widget === 'refractometer' && <RefractometerTool client:load />}
+      {tool.widget === 'carbonation' && <CarbonationTool client:load />}
+      {tool.widget === 'color' && <BeerColorTool client:load />}
     </div>
 
     <div class="mt-4">
