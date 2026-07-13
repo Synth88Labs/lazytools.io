@@ -156,6 +156,13 @@ const AUTHORITATIVE: Record<string, Record<string, number>> = {
     cp: 1e-3,
     up: 1e-7,
   },
+  // base: m²/s. 1 stokes = 1 cm²/s = 1e-4 m²/s; 1 cSt = 1 mm²/s = 1e-6 m²/s.
+  'kinematic-viscosity': {
+    m2s: 1,
+    mm2s: 1e-6,
+    st: 1e-4,
+    cst: 1e-6,
+  },
 };
 
 // Temperature is offset-based → verified via known point pairs instead.
