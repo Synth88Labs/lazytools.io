@@ -4,7 +4,7 @@ export interface WeatherToolDef {
   slug: string;
   name: string;
   icon: string;
-  widget: 'heatindex' | 'windchill' | 'dewpoint' | 'humidity' | 'feelslike' | 'wetbulb' | 'beaufort' | 'cloudbase' | 'abshumidity' | 'vpd' | 'rainfall' | 'densityalt' | 'snowload';
+  widget: 'heatindex' | 'windchill' | 'dewpoint' | 'humidity' | 'feelslike' | 'wetbulb' | 'beaufort' | 'cloudbase' | 'abshumidity' | 'vpd' | 'rainfall' | 'densityalt' | 'snowload' | 'humidex' | 'sealevel';
   description: string;
   lead: string;
   how: string;
@@ -247,6 +247,42 @@ export const WEATHER_TOOLS: WeatherToolDef[] = [
       { q: 'Is this the same as the code design snow load?', a: 'No — building codes (e.g. ASCE 7) set a design snow load using the local ground snow load with factors for roof slope, exposure, thermal condition and drifting. This tool estimates the load from actual measured depth and density; use the code for structural design.' },
     ],
     keywords: ['snow load calculator', 'roof snow load calculator', 'snow weight calculator', 'snow load lb/ft2', 'how much does snow weigh', 'roof snow weight', 'snow density load'],
+  },
+  {
+    slug: 'humidex-calculator',
+    name: 'Humidex Calculator',
+    icon: '🥵',
+    widget: 'humidex',
+    description: 'Calculate the humidex — Canada\'s humidity heat index — from air temperature and dew point, with the comfort category. In your browser.',
+    lead: 'Enter the air temperature and dew point to get the humidex and how it feels.',
+    how: 'Humidex is the index Environment Canada uses to describe how hot humid air actually feels. It combines the air temperature with the moisture in the air (from the dew point): humidex = T + 0.5555 × (e − 10), where e is the water-vapour pressure derived from the dew point. Higher dew points mean more humidity and a higher humidex. It\'s reported without units but read on the same scale as temperature — a humidex of 40 feels like oppressive heat even if the thermometer says 31.',
+    note: 'Humidex uses the dew point, whereas the US heat index uses relative humidity — they measure the same discomfort differently and give slightly different numbers. Environment Canada\'s comfort guide: below 30 is comfortable, 30–39 causes some discomfort, 40–45 great discomfort (avoid exertion), and 46 or above is dangerous with heat-stroke risk.',
+    faqs: [
+      { q: 'What is humidex?', a: 'Humidex is Environment Canada\'s measure of how hot it feels when humidity is factored in, combining air temperature and dew point into a single number read on the temperature scale. A humidex of 40+ means it feels oppressively hot.' },
+      { q: 'How is humidex calculated?', a: 'humidex = T + 0.5555 × (e − 10), where T is the air temperature in °C and e is the vapour pressure (in hPa) computed from the dew point: e = 6.11 × exp(5417.7530 × (1/273.16 − 1/dewpoint_K)).' },
+      { q: 'What is the difference between humidex and heat index?', a: 'Both describe how hot humid air feels, but humidex (Canada) uses the dew point while the US heat index uses relative humidity. They\'re calculated differently and can give slightly different values for the same conditions.' },
+      { q: 'What humidex is dangerous?', a: 'Environment Canada considers 40–45 to cause great discomfort (avoid exertion) and 46 or higher to be dangerous, with heat stroke possible. Below 30 is generally comfortable and 30–39 causes some discomfort.' },
+      { q: 'Why does humidex use dew point instead of humidity?', a: 'Dew point is a direct measure of the actual moisture in the air, independent of temperature, so it maps cleanly to vapour pressure. That makes the humidex formula straightforward — though you can convert relative humidity and temperature to a dew point first.' },
+    ],
+    keywords: ['humidex calculator', 'humidex', 'humidity index calculator', 'feels like temperature canada', 'humidex from dew point', 'canadian heat index', 'humidex chart'],
+  },
+  {
+    slug: 'sea-level-pressure-calculator',
+    name: 'Sea-Level Pressure Calculator',
+    icon: '🌡️',
+    widget: 'sealevel',
+    description: 'Reduce a barometer\'s station pressure to sea-level pressure using altitude and temperature — the value quoted in weather reports. In your browser.',
+    lead: 'Enter your barometer\'s station pressure, your altitude and the temperature to get the equivalent sea-level pressure.',
+    how: 'A barometer reads the actual air pressure where it sits (station pressure), which falls as you climb — so readings from places at different altitudes can\'t be compared directly. Weather services "reduce" them to a common baseline, sea level, using the barometric formula with the observed temperature: P₀ = P × (1 − 0.0065·h / (T + 0.0065·h + 273.15))⁻⁵·²⁵⁷, where h is altitude in metres and T the temperature in °C. The result is what forecasts and pressure maps quote, and it\'s how you spot highs and lows.',
+    note: 'The correction grows with altitude — roughly 12 hPa per 100 m near the surface — so getting your elevation right matters. This is the standard temperature-dependent reduction; official station algorithms may use a 12-hour mean temperature and other refinements, but this gives an accurate everyday figure. Standard sea-level pressure is 1013.25 hPa (29.92 inHg).',
+    faqs: [
+      { q: 'What is the difference between station and sea-level pressure?', a: 'Station pressure is the actual pressure measured at your location and altitude; sea-level pressure adjusts it to what it would be at sea level, so readings from different elevations can be compared. Forecasts always quote sea-level pressure.' },
+      { q: 'How do I convert station pressure to sea level?', a: 'Use the barometric formula with your altitude and temperature: P₀ = P × (1 − 0.0065·h / (T + 0.0065·h + 273.15))⁻⁵·²⁵⁷. Near the surface it adds roughly 12 hPa per 100 m of elevation. This tool does it for you.' },
+      { q: 'Why does altitude affect barometric pressure?', a: 'Air pressure comes from the weight of the atmosphere above you. The higher you go, the less air is overhead, so the pressure drops — about 1 hPa per 8 m near sea level. That\'s why raw barometer readings must be corrected to compare weather between locations.' },
+      { q: 'What is standard sea-level pressure?', a: '1013.25 hPa, equal to 29.92 inHg or 760 mmHg. Readings above that suggest higher pressure (typically fair weather) and below it lower pressure (often more unsettled conditions).' },
+      { q: 'Does temperature matter for the correction?', a: 'Yes — colder air is denser, so the pressure changes faster with height, making the correction larger. This calculator includes the observed temperature; simpler altitude-only formulas are less accurate, especially at higher elevations.' },
+    ],
+    keywords: ['sea level pressure calculator', 'station pressure to sea level', 'barometric pressure altitude calculator', 'altimeter setting calculator', 'pressure reduction calculator', 'qnh calculator', 'barometer altitude correction'],
   },
 ];
 

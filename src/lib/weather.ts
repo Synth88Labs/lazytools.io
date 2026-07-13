@@ -142,3 +142,40 @@ export function snowLoad(depthM: number, densityKgM3: number) {
   const kPa = (massPerArea * 9.80665) / 1000;
   return { massPerArea, kPa, psf: kPa * 20.8854342 };
 }
+
+/* ---------------- Humidex (Environment Canada) ---------------- */
+
+/**
+ * Humidex — Environment Canada's humidity index — from air temperature and
+ * dew point (°C): humidex = T + 0.5555 × (e − 10), where the vapour pressure
+ * e = 6.11 × exp(5417.7530 × (1/273.16 − 1/(dewpoint + 273.16))) hPa. Defined
+ * for warm, humid conditions; below the dew-point/temperature threshold it just
+ * returns the air temperature.
+ */
+export function humidex(tempC: number, dewPointC: number): number {
+  const e = 6.11 * Math.exp(5417.7530 * (1 / 273.16 - 1 / (dewPointC + 273.15)));
+  const h = tempC + 0.5555 * (e - 10);
+  return h < tempC ? tempC : h;
+}
+/** Comfort band for a humidex value (Environment Canada guidance). */
+export function humidexComfort(h: number): string {
+  if (h < 30) return 'Comfortable';
+  if (h < 40) return 'Some discomfort';
+  if (h < 46) return 'Great discomfort; avoid exertion';
+  return 'Dangerous; heat stroke possible';
+}
+
+/* ---------------- Sea-level pressure reduction ---------------- */
+
+/**
+ * Reduce a station (absolute) pressure to equivalent sea-level pressure using
+ * the barometric formula with the observed temperature:
+ * P₀ = P × (1 − 0.0065·h / (T + 0.0065·h + 273.15))^(−5.257), with station
+ * pressure P (hPa), altitude h (m) and temperature T (°C). This is what turns a
+ * barometer reading into the sea-level pressure quoted in forecasts.
+ */
+export function seaLevelPressure(stationHpa: number, altitudeM: number, tempC: number): number | null {
+  if (stationHpa <= 0) return null;
+  const lapse = 0.0065 * altitudeM;
+  return stationHpa * Math.pow(1 - lapse / (tempC + lapse + 273.15), -5.257);
+}

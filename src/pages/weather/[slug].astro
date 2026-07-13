@@ -18,6 +18,8 @@ import FeelsLikeTool from '../../components/weather/FeelsLikeTool.tsx';
 import WetBulbTool from '../../components/weather/WetBulbTool.tsx';
 import BeaufortTool from '../../components/weather/BeaufortTool.tsx';
 import CloudBaseTool from '../../components/weather/CloudBaseTool.tsx';
+import HumidexTool from '../../components/weather/HumidexTool.tsx';
+import SeaLevelPressureTool from '../../components/weather/SeaLevelPressureTool.tsx';
 import { WEATHER_TOOLS, type WeatherToolDef } from '../../data/weather/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -77,6 +79,8 @@ const schema = [
       {tool.widget === 'wetbulb' && <WetBulbTool client:load />}
       {tool.widget === 'beaufort' && <BeaufortTool client:load />}
       {tool.widget === 'cloudbase' && <CloudBaseTool client:load />}
+      {tool.widget === 'humidex' && <HumidexTool client:load />}
+      {tool.widget === 'sealevel' && <SeaLevelPressureTool client:load />}
     </div>
 
     <div class="mt-4">
