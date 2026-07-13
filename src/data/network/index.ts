@@ -6,7 +6,7 @@ export interface NetworkToolDef {
   icon: string;
   description: string;
   lead: string;
-  widget: 'subnet' | 'ipv6-subnet' | 'cidr-range' | 'ip-converter' | 'ipv6-format' | 'chmod' | 'cron' | 'mac';
+  widget: 'subnet' | 'ipv6-subnet' | 'cidr-range' | 'ip-converter' | 'ipv6-format' | 'chmod' | 'cron' | 'mac' | 'downloadtime' | 'bandwidth';
   how: string;
   note?: string;
   faqs: { q: string; a: string }[];
@@ -163,5 +163,41 @@ export const NETWORK_TOOLS: NetworkToolDef[] = [
       { q: 'Is the MAC I paste sent anywhere?', a: 'No — formatting happens locally. MAC addresses identify your hardware, so they’re not something to feed into random online tools that log requests.' },
     ],
     keywords: ['mac address formatter', 'mac address converter', 'mac address format', 'eui-64 calculator', 'ipv6 link local from mac', 'cisco mac format', 'normalize mac address'],
+  },
+  {
+    slug: 'download-time-calculator',
+    name: 'Download Time Calculator',
+    icon: '⏱️',
+    widget: 'downloadtime',
+    description: 'Calculate how long a download or upload takes from the file size and your connection speed — with a realistic overhead option. In your browser.',
+    lead: 'Enter a file size and your connection speed to see how long the transfer takes — both the theoretical best and a realistic estimate.',
+    how: 'Transfer time is the file size in bits divided by the connection speed in bits per second. The catch that trips everyone up is units: internet speeds are quoted in bits (Mbps) but file sizes in bytes (MB), and there are eight bits in a byte — so a 1 GB file on a 100 Mbps line takes about 80 seconds, not 10. The tool converts both sides to a common base, and can knock ~10% off the ideal rate to account for the protocol overhead and congestion that make real transfers slower.',
+    note: 'Your real speed is usually below the advertised figure — Wi-Fi, the server\'s upload limit, congestion and TCP/IP overhead all cut into it. The "real-world overhead" option applies a 90% efficiency factor as a rough guide; a busy or distant server can be much slower. Uploads use your upload speed, which on many home connections is far lower than the download speed.',
+    faqs: [
+      { q: 'How do I calculate download time?', a: 'Download time = file size ÷ speed, with both in the same units. Convert the file to bits (bytes × 8) and divide by the speed in bits per second: a 1 GB file over 100 Mbps is 8,000,000,000 bits ÷ 100,000,000 = 80 seconds.' },
+      { q: 'Why does my download take longer than calculated?', a: 'Advertised speeds are a maximum you rarely hit. Wi-Fi loss, a slow or busy server, distance, and protocol overhead all reduce real throughput — typically by 10–20% or more. Enable the overhead option for a more realistic figure.' },
+      { q: 'Is 100 Mbps the same as 100 MB/s?', a: 'No — and this is the most common mistake. 100 Mbps (megabits) is only 12.5 MB/s (megabytes), because a byte is 8 bits. So a 100 Mbps connection downloads a 1 GB file in about 80 seconds, not 10.' },
+      { q: 'How long to download a 1 GB file?', a: 'On 100 Mbps, roughly 80 seconds theoretically (about 90 with overhead); on 1 Gbps, about 8 seconds; on 10 Mbps, about 13 minutes. Enter your exact speed for a precise figure.' },
+      { q: 'Does this work for uploads too?', a: 'Yes — just enter your upload speed instead of download. On many home connections upload is much slower than download, so uploading a large file can take far longer than downloading the same file.' },
+    ],
+    keywords: ['download time calculator', 'how long to download', 'file transfer time calculator', 'download speed calculator', 'upload time calculator', 'mbps download time', 'data transfer time'],
+  },
+  {
+    slug: 'bandwidth-converter',
+    name: 'Bandwidth Converter',
+    icon: '🔀',
+    widget: 'bandwidth',
+    description: 'Convert internet speed between bits and bytes per second — bps, Kbps, Mbps, Gbps and B/s, KB/s, MB/s, GB/s. In your browser.',
+    lead: 'Enter a speed in any unit to convert it instantly between bit-rates (Mbps) and byte-rates (MB/s).',
+    how: 'Network speeds are measured two ways that differ by a factor of eight: bit-rates (bps, Kbps, Mbps, Gbps), which ISPs advertise, and byte-rates (B/s, KB/s, MB/s, GB/s), which download managers display. Since one byte is eight bits, you divide a bit-rate by 8 to get the byte-rate — 100 Mbps equals 12.5 MB/s. The tool works in decimal units (kilo = 1000), the networking convention, and shows every unit at once from whatever you type.',
+    note: 'Don\'t confuse the lowercase "b" (bits) with uppercase "B" (bytes): Mbps is megabits per second, MB/s is megabytes per second, and they differ 8×. Networking uses decimal prefixes (1 Kbps = 1000 bps); storage sometimes uses binary ones (1 KiB = 1024 B), which is a separate distinction.',
+    faqs: [
+      { q: 'How do I convert Mbps to MB/s?', a: 'Divide by 8. Megabits per second ÷ 8 = megabytes per second, because a byte is 8 bits. So 100 Mbps = 12.5 MB/s, and 1 Gbps = 125 MB/s.' },
+      { q: 'What is the difference between Mbps and MB/s?', a: 'Mbps is megabits per second (lowercase b, used for connection speed); MB/s is megabytes per second (uppercase B, used for file transfer rate). They differ by a factor of 8, so 80 Mbps is only 10 MB/s.' },
+      { q: 'Why do ISPs advertise speed in megabits?', a: 'Partly convention from telecoms, and partly because the bit is the fundamental unit of data transmission — and the bigger-sounding number (100 Mbps vs 12.5 MB/s) markets better. Your download manager then reports bytes, which is why the on-screen rate looks eight times smaller.' },
+      { q: 'Are these decimal or binary units?', a: 'Decimal — 1 Kbps = 1000 bps, 1 Mbps = 1,000,000 bps, matching networking standards. Binary units (1024-based, like KiB) are mainly used for memory and storage sizes, not transmission speed.' },
+      { q: 'How fast is 1 Gbps in MB/s?', a: '125 MB/s (1,000,000,000 bits ÷ 8 = 125,000,000 bytes). In practice you\'ll see less because of overhead and the limits of drives, Wi-Fi and the server on the other end.' },
+    ],
+    keywords: ['bandwidth converter', 'mbps to mb/s', 'mbps to mbps converter', 'bits to bytes per second', 'internet speed converter', 'gbps to mb/s', 'data rate converter', 'kbps to kb/s'],
   },
 ];

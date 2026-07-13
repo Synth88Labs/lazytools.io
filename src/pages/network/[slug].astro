@@ -13,6 +13,8 @@ import Ipv6FormatTool from '../../components/network/Ipv6FormatTool.tsx';
 import ChmodCalculatorTool from '../../components/network/ChmodCalculatorTool.tsx';
 import CronParserTool from '../../components/network/CronParserTool.tsx';
 import MacFormatterTool from '../../components/network/MacFormatterTool.tsx';
+import DownloadTimeTool from '../../components/network/DownloadTimeTool.tsx';
+import BandwidthConverterTool from '../../components/network/BandwidthConverterTool.tsx';
 import { NETWORK_TOOLS, type NetworkToolDef } from '../../data/network/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -67,6 +69,8 @@ const schema = [
       {tool.widget === 'chmod' && <ChmodCalculatorTool client:load />}
       {tool.widget === 'cron' && <CronParserTool client:load />}
       {tool.widget === 'mac' && <MacFormatterTool client:load />}
+      {tool.widget === 'downloadtime' && <DownloadTimeTool client:load />}
+      {tool.widget === 'bandwidth' && <BandwidthConverterTool client:load />}
     </div>
 
     <div class="mt-4">
