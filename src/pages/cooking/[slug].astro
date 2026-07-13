@@ -9,6 +9,8 @@ import GramsToCupsTool from '../../components/cooking/GramsToCupsTool.tsx';
 import BrineTool from '../../components/cooking/BrineTool.tsx';
 import AirFryerTool from '../../components/cooking/AirFryerTool.tsx';
 import RoastTimeTool from '../../components/cooking/RoastTimeTool.tsx';
+import SlowCookerTool from '../../components/cooking/SlowCookerTool.tsx';
+import RiceWaterTool from '../../components/cooking/RiceWaterTool.tsx';
 import MeasurementConverterTool from '../../components/cooking/MeasurementConverterTool.tsx';
 import ButterConverterTool from '../../components/cooking/ButterConverterTool.tsx';
 import OvenTempTool from '../../components/cooking/OvenTempTool.tsx';
@@ -68,6 +70,8 @@ const schema = [
       {tool.widget === 'brine' && <BrineTool client:load />}
       {tool.widget === 'airfryer' && <AirFryerTool client:load />}
       {tool.widget === 'roast' && <RoastTimeTool client:load />}
+      {tool.widget === 'slowcooker' && <SlowCookerTool client:load />}
+      {tool.widget === 'rice' && <RiceWaterTool client:load />}
       {tool.widget === 'measure' && <MeasurementConverterTool client:load />}
       {tool.widget === 'butter' && <ButterConverterTool client:load />}
       {tool.widget === 'oven' && <OvenTempTool client:load />}

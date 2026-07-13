@@ -4,7 +4,7 @@ export interface CookingToolDef {
   slug: string;
   name: string;
   icon: string;
-  widget: 'grams' | 'measure' | 'butter' | 'oven' | 'scaler' | 'pan' | 'bakers' | 'yeast' | 'coffee' | 'meat' | 'brine' | 'airfryer' | 'roast';
+  widget: 'grams' | 'measure' | 'butter' | 'oven' | 'scaler' | 'pan' | 'bakers' | 'yeast' | 'coffee' | 'meat' | 'brine' | 'airfryer' | 'roast' | 'slowcooker' | 'rice';
   description: string;
   lead: string;
   how: string;
@@ -247,6 +247,42 @@ export const COOKING_TOOLS: CookingToolDef[] = [
       { q: 'Does a stuffed bird take longer?', a: 'Yes — the stuffing adds mass and slows heat reaching the centre, so a stuffed turkey needs roughly 15 min/lb versus 13 for unstuffed, and the stuffing itself must reach 74 °C (165 °F).' },
     ],
     keywords: ['roast cooking time calculator', 'turkey cooking time calculator', 'minutes per pound roast', 'how long to cook a turkey', 'roast time by weight', 'beef roasting time', 'chicken roasting time'],
+  },
+  {
+    slug: 'slow-cooker-conversion-calculator',
+    name: 'Slow Cooker Conversion Calculator',
+    icon: '🍲',
+    widget: 'slowcooker',
+    description: 'Convert a conventional oven or stovetop recipe time to slow-cooker time on Low and High. In your browser.',
+    lead: 'Enter your recipe\'s normal cooking time to get the equivalent slow-cooker time on Low and High.',
+    how: 'Slow cookers work at a low, steady temperature, so a dish that takes minutes on the stove takes hours in the crock. The tool uses the standard Crock-Pot conversion bands: roughly, a 15–30 minute recipe becomes 4–6 hours on Low (or 1.5–2.5 on High); 35–45 minutes becomes 6–8 hours Low; and anything up to a few hours becomes 8–10 hours Low. Low and High reach the same final temperature — High just gets there faster — so pick based on how long you\'ll be away.',
+    note: 'Cut the added liquid by about a third, since the lid traps steam that would otherwise evaporate. Brown meat and sauté aromatics first for flavour, add dairy, seafood and tender vegetables in the last 30–60 minutes, and resist lifting the lid (each peek adds ~20 minutes). These are estimates — cooker size, how full it is and ingredient density all matter, so check for doneness.',
+    faqs: [
+      { q: 'How do I convert a recipe to a slow cooker?', a: 'As a rule of thumb, 15–30 minutes of conventional cooking becomes 4–6 hours on Low or 1.5–2.5 on High; 35–45 minutes becomes 6–8 hours Low; up to a few hours becomes 8–10 hours Low. Also cut the liquid by about a third.' },
+      { q: 'What is the difference between Low and High on a slow cooker?', a: 'Both settle at about the same temperature (90–100°C / 195–210°F); High just reaches it faster. High takes roughly half the time of Low. Tougher cuts do better on Low for longer, which breaks down connective tissue more gently.' },
+      { q: 'Why do I use less liquid in a slow cooker?', a: 'The lid seals in steam that would normally evaporate, so liquid doesn\'t reduce the way it does on the stove. Reducing added liquid by about a third stops the dish coming out watery. You can thicken at the end if needed.' },
+      { q: 'Can I convert any recipe to a slow cooker?', a: 'Braises, stews, soups, chillis and tough cuts convert beautifully. Dishes meant to be crisp, quick-cooked or delicate (seared steaks, stir-fries, seafood) don\'t. Add quick-cooking items like peas, cream or pasta near the end.' },
+      { q: 'Is it better to cook on Low or High?', a: 'Low is more forgiving and better for tough cuts and long days out; High is fine when you\'re short on time and the dish isn\'t collagen-heavy. Many recipes work on either — just match the time from this calculator.' },
+    ],
+    keywords: ['slow cooker conversion calculator', 'crock pot conversion', 'oven to slow cooker time', 'convert recipe to slow cooker', 'slow cooker low vs high time', 'slow cooker cooking times', 'stovetop to crockpot'],
+  },
+  {
+    slug: 'rice-water-ratio-calculator',
+    name: 'Rice to Water Ratio Calculator',
+    icon: '🍚',
+    widget: 'rice',
+    description: 'Calculate how much water to use for perfect rice — by type and quantity — plus the cooked yield and simmer time. In your browser.',
+    lead: 'Choose your rice type and amount to get the right water quantity, the cooked yield and the simmer time.',
+    how: 'Different rices absorb different amounts of water. The calculator multiplies your dry-rice amount by the standard water ratio for the type — 2:1 for white long-grain, 2.5:1 for brown, 1.5:1 for basmati and jasmine, 1.25:1 for sushi rice and 3:1 for wild rice — and also estimates the cooked yield (rice roughly triples) and a typical simmer time. Because it\'s a ratio, the water comes out in the same unit as the rice, so cups or millilitres both work.',
+    note: 'For fluffier grains, rinse the rice until the water runs clear to wash off surface starch, bring it to a boil, then cover and simmer on low without stirring, and let it rest off the heat for 5–10 minutes before fluffing. Absorption varies with your pan, lid and heat, so treat the water as a strong starting point and fine-tune to taste. The absorption method (all water absorbed) is assumed — not boiling and draining.',
+    faqs: [
+      { q: 'What is the water to rice ratio?', a: 'It depends on the type: white long-grain is about 2 cups water per cup of rice, brown rice 2.5, basmati and jasmine 1.5, sushi rice 1.25, and wild rice 3. Enter your amount and type for the exact quantity.' },
+      { q: 'How much water for 1 cup of rice?', a: 'For white long-grain rice, about 2 cups of water per cup of dry rice. Brown rice needs ~2.5 cups, basmati/jasmine ~1.5. The tool scales this to any amount and shows the cooked yield.' },
+      { q: 'How much does rice expand when cooked?', a: 'Roughly three times its dry volume — so 1 cup of dry rice yields about 3 cups cooked (a bit more for brown and wild). Plan portions of about ½–¾ cup cooked rice per person as a side.' },
+      { q: 'Why is brown rice water ratio higher?', a: 'Brown rice keeps its bran layer, which is tougher and slower to absorb water, so it needs more water (~2.5:1) and a longer simmer (about 45 minutes) than white rice. Soaking it first can shorten the cooking time.' },
+      { q: 'Does rinsing rice change the water amount?', a: 'Not the ratio, but rinsing removes surface starch for fluffier, less sticky grains. Drain it well after rinsing so you don\'t add extra water. Sushi rice is an exception where a little stickiness is desirable.' },
+    ],
+    keywords: ['rice water ratio calculator', 'rice to water ratio', 'how much water for rice', 'water for 1 cup rice', 'brown rice water ratio', 'basmati rice water ratio', 'rice cooking calculator'],
   },
 ];
 

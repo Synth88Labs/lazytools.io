@@ -198,3 +198,50 @@ export function roastTime(weightLb: number, minPerLb: number, baseMin = 0): numb
   if (weightLb <= 0 || minPerLb < 0) return null;
   return weightLb * minPerLb + baseMin;
 }
+
+/* ---------------- Slow cooker conversion ---------------- */
+
+export interface SlowCookerResult {
+  lowHours: [number, number];
+  highHours: [number, number];
+}
+/**
+ * Convert a conventional oven/stovetop cooking time (minutes) to slow-cooker
+ * time ranges on Low and High. Uses the widely-published Crock-Pot conversion
+ * bands (e.g. a 15–30 min recipe ≈ 4–6 h Low or 1.5–2.5 h High). An estimate —
+ * recipes with lots of liquid or dense ingredients vary.
+ */
+export function slowCookerConvert(conventionalMin: number): SlowCookerResult | null {
+  if (conventionalMin <= 0) return null;
+  if (conventionalMin <= 30) return { lowHours: [4, 6], highHours: [1.5, 2.5] };
+  if (conventionalMin <= 45) return { lowHours: [6, 8], highHours: [3, 4] };
+  return { lowHours: [8, 10], highHours: [4, 6] }; // 45 min – ~3 h conventional
+}
+
+/* ---------------- Rice-to-water ratio ---------------- */
+
+export interface RiceType {
+  id: string;
+  label: string;
+  waterRatio: number; // cups water per cup dry rice
+  minutes: number;    // approx simmer time
+  yieldRatio: number; // cups cooked per cup dry
+}
+/** Common rice types with cited water ratios and simmer times (per cup of dry rice). */
+export const RICE_TYPES: RiceType[] = [
+  { id: 'white', label: 'White (long-grain)', waterRatio: 2, minutes: 18, yieldRatio: 3 },
+  { id: 'basmati', label: 'Basmati', waterRatio: 1.5, minutes: 15, yieldRatio: 3 },
+  { id: 'jasmine', label: 'Jasmine', waterRatio: 1.5, minutes: 15, yieldRatio: 3 },
+  { id: 'brown', label: 'Brown (long-grain)', waterRatio: 2.5, minutes: 45, yieldRatio: 3.5 },
+  { id: 'sushi', label: 'Sushi (short-grain)', waterRatio: 1.25, minutes: 20, yieldRatio: 2.5 },
+  { id: 'wild', label: 'Wild rice', waterRatio: 3, minutes: 45, yieldRatio: 3.5 },
+];
+export const getRiceType = (id: string) => RICE_TYPES.find((r) => r.id === id);
+
+export interface RiceResult { water: number; yield: number; minutes: number; }
+/** Water (same volume unit as rice), cooked yield and simmer time for a quantity of dry rice. */
+export function riceWater(cupsRice: number, typeId: string): RiceResult | null {
+  const t = getRiceType(typeId);
+  if (!t || cupsRice <= 0) return null;
+  return { water: cupsRice * t.waterRatio, yield: cupsRice * t.yieldRatio, minutes: t.minutes };
+}
