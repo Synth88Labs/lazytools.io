@@ -12,7 +12,7 @@ export interface PhysToolDef {
     | 'carnot' | 'thermalexp' | 'debroglie' | 'avgvel'
     | 'coulomb' | 'collision' | 'relativity' | 'harmonics'
     | 'pressure' | 'buoyancy' | 'escapevel' | 'latentheat'
-    | 'terminalvel' | 'magforce';
+    | 'terminalvel' | 'magforce' | 'pendulum' | 'spring';
   cluster: 'kinematics' | 'dynamics' | 'energy' | 'gravitation' | 'waves' | 'electricity' | 'modern' | 'thermodynamics';
   /** for the resistor-network widget: resistor or capacitor rules */
   netKind?: 'resistor' | 'capacitor';
@@ -482,6 +482,44 @@ export const PHYS_TOOLS: PhysToolDef[] = [
       { q: 'Why does the magnetic force do no work on a charge?', a: 'Because it acts perpendicular to the velocity, so there\'s no force component along the direction of motion. It changes the direction (bending the path into a circle or helix) but not the speed or kinetic energy.' },
     ],
     keywords: ['magnetic force calculator', 'lorentz force calculator', 'f = qvb', 'f = bil', 'force on a wire magnetic field', 'magnetic force on a charge', 'magnetic field force'],
+  },
+  {
+    slug: 'pendulum-calculator',
+    name: 'Simple Pendulum Calculator',
+    icon: '🕰️',
+    widget: 'pendulum',
+    cluster: 'waves',
+    description: 'Calculate a simple pendulum\'s period and frequency from its length and gravity — on Earth or other worlds. In your browser.',
+    lead: 'Enter the pendulum length (and pick a gravity) to get its period and frequency.',
+    how: 'A simple pendulum swings with a period T = 2π·√(L/g), where L is the length from the pivot to the centre of the bob and g is the local gravitational acceleration. Remarkably, the period doesn\'t depend on the mass of the bob or, for small swings, on how far it swings — only on length and gravity. The tool returns the period (time for one complete back-and-forth) and the frequency (swings per second), and lets you switch gravity to the Moon, Mars or Jupiter.',
+    note: 'This is the small-angle approximation, accurate to about 1% for swings under roughly 20°; larger amplitudes swing slightly slower. Because the period grows with the square root of length, you need four times the length to double the period — which is how a grandfather clock\'s ~1 m pendulum keeps a 2-second beat.',
+    faqs: [
+      { q: 'How do you calculate the period of a pendulum?', a: 'T = 2π·√(L/g), with L the length in metres and g ≈ 9.81 m/s². A 1-metre pendulum on Earth has a period of about 2.0 seconds. Longer pendulums swing more slowly.' },
+      { q: 'Does a pendulum\'s period depend on mass?', a: 'No. The period depends only on length and gravity, not on the mass of the bob — a heavy and a light pendulum of the same length keep the same time. This is a classic and slightly surprising result.' },
+      { q: 'Does amplitude affect the period?', a: 'For small swings, barely — the simple formula assumes it doesn\'t. For larger amplitudes the period increases a little (about 1% by 20°, more beyond), because the restoring force is no longer perfectly proportional to displacement.' },
+      { q: 'How long is a pendulum with a 1-second swing?', a: 'A pendulum with a 1-second period is about 0.25 m long on Earth; a "seconds pendulum" that ticks each second (a 2-second full period) is about 0.994 m. Length scales with the square of the period.' },
+      { q: 'How does gravity change the period?', a: 'Weaker gravity means a longer period. On the Moon (g ≈ 1.62) a pendulum swings much more slowly than on Earth, and on Jupiter (g ≈ 24.8) much faster. Switch the gravity setting to compare.' },
+    ],
+    keywords: ['pendulum calculator', 'pendulum period calculator', 'simple pendulum calculator', 'period of a pendulum', 'pendulum frequency calculator', 'pendulum length period', 'grandfather clock pendulum'],
+  },
+  {
+    slug: 'spring-oscillation-calculator',
+    name: 'Spring Oscillation Calculator',
+    icon: '🪀',
+    widget: 'spring',
+    cluster: 'waves',
+    description: 'Calculate the period, frequency and angular frequency of a mass on a spring from the mass and spring constant. In your browser.',
+    lead: 'Enter the mass and spring stiffness to get the oscillation period, frequency and angular frequency.',
+    how: 'A mass bouncing on an ideal spring undergoes simple harmonic motion with period T = 2π·√(m/k), where m is the mass and k the spring constant (stiffness). A heavier mass or a softer spring oscillates more slowly. From the period you get the frequency f = 1/T (oscillations per second) and the angular frequency ω = √(k/m) = 2πf. Gravity plays no part in the period — it only shifts where the mass hangs at rest.',
+    note: 'This assumes an ideal massless spring obeying Hooke\'s law and no damping or friction, so a real spring-mass system runs slightly differently and eventually decays. The spring constant k comes from the spring itself (force ÷ stretch, in N/m); measure it by hanging a known weight and seeing how far the spring extends.',
+    faqs: [
+      { q: 'How do you calculate the period of a spring?', a: 'T = 2π·√(m/k), where m is the mass in kilograms and k the spring constant in newtons per metre. A 0.5 kg mass on a 200 N/m spring has a period of about 0.31 seconds.' },
+      { q: 'Does gravity affect a spring\'s oscillation period?', a: 'No. Gravity only changes the equilibrium position the mass hangs at; the period depends solely on mass and spring stiffness. A vertical and a horizontal spring-mass system oscillate at the same rate.' },
+      { q: 'What is the spring constant k?', a: 'A measure of a spring\'s stiffness — the force needed per unit of stretch, in newtons per metre (Hooke\'s law, F = kx). A stiffer spring has a higher k and, for the same mass, oscillates faster.' },
+      { q: 'What is angular frequency?', a: 'ω = √(k/m) = 2πf, in radians per second. It\'s the natural rate of the oscillation used in the equations of motion; the ordinary frequency f = ω/2π counts full cycles per second.' },
+      { q: 'How does mass change the oscillation?', a: 'A heavier mass oscillates more slowly: the period grows with the square root of mass, so quadrupling the mass doubles the period. A lighter mass on the same spring bounces faster.' },
+    ],
+    keywords: ['spring oscillation calculator', 'spring period calculator', 'mass spring calculator', 'simple harmonic motion calculator', 'spring frequency calculator', 'period of mass on spring', 'shm calculator'],
   },
 ];
 

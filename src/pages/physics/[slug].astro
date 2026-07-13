@@ -43,6 +43,8 @@ import CarnotTool from '../../components/physics/CarnotTool.tsx';
 import ThermalExpansionTool from '../../components/physics/ThermalExpansionTool.tsx';
 import DeBroglieTool from '../../components/physics/DeBroglieTool.tsx';
 import AverageVelocityTool from '../../components/physics/AverageVelocityTool.tsx';
+import PendulumTool from '../../components/physics/PendulumTool.tsx';
+import SpringOscillationTool from '../../components/physics/SpringOscillationTool.tsx';
 import { PHYS_TOOLS, type PhysToolDef } from '../../data/physics/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -129,6 +131,8 @@ const schema = [
       {tool.widget === 'latentheat' && <LatentHeatTool client:load />}
       {tool.widget === 'terminalvel' && <TerminalVelocityTool client:load />}
       {tool.widget === 'magforce' && <MagneticForceTool client:load />}
+      {tool.widget === 'pendulum' && <PendulumTool client:load />}
+      {tool.widget === 'spring' && <SpringOscillationTool client:load />}
     </div>
 
     <div class="mt-4">

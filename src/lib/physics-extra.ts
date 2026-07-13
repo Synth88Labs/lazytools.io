@@ -143,3 +143,34 @@ export function fundamental(medium: Medium, waveSpeed: number, length: number): 
   if (waveSpeed <= 0 || length <= 0) return null;
   return medium === 'closedPipe' ? waveSpeed / (4 * length) : waveSpeed / (2 * length);
 }
+
+/* ---------------- Simple harmonic motion ---------------- */
+
+export const G_EARTH = 9.80665; // standard gravity, m/s²
+
+export interface Oscillation { period: number; frequency: number; }
+/**
+ * Simple pendulum (small-swing) period T = 2π·√(L/g), from length L (m) and
+ * gravitational acceleration g (m/s²). Valid for small amplitudes; the period
+ * is independent of mass and (to first order) amplitude.
+ */
+export function pendulumPeriod(lengthM: number, g = G_EARTH): Oscillation | null {
+  if (lengthM <= 0 || g <= 0) return null;
+  const period = 2 * Math.PI * Math.sqrt(lengthM / g);
+  return { period, frequency: 1 / period };
+}
+/** Inverse: pendulum length (m) that gives a target period (s): L = g·(T/2π)². */
+export function pendulumLength(periodS: number, g = G_EARTH): number | null {
+  if (periodS <= 0 || g <= 0) return null;
+  return g * (periodS / (2 * Math.PI)) ** 2;
+}
+/**
+ * Mass–spring oscillator period T = 2π·√(m/k), from mass m (kg) and spring
+ * constant k (N/m). The frequency is 1/T; heavier mass or softer spring gives
+ * a longer period.
+ */
+export function springPeriod(massKg: number, kNPerM: number): Oscillation | null {
+  if (massKg <= 0 || kNPerM <= 0) return null;
+  const period = 2 * Math.PI * Math.sqrt(massKg / kNPerM);
+  return { period, frequency: 1 / period };
+}
