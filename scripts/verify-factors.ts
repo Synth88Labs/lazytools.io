@@ -174,6 +174,15 @@ const AUTHORITATIVE: Record<string, Record<string, number>> = {
     uci: 3.7e4,
     rd: 1e6,
   },
+  // base: nit (cd/m²). 1 stilb = 1e4 nit; 1 foot-lambert = 1/(π·0.3048²) nit.
+  luminance: {
+    nit: 1,
+    cdm2: 1,
+    knit: 1e3,
+    mnit: 1e-3,
+    sb: 1e4,
+    fl: 1 / (0.3048 ** 2 * Math.PI),
+  },
 };
 
 // Temperature is offset-based → verified via known point pairs instead.
