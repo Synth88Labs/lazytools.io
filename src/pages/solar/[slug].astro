@@ -13,6 +13,8 @@ import ApplianceCostTool from '../../components/solar/ApplianceCostTool.tsx';
 import PaybackTool from '../../components/solar/PaybackTool.tsx';
 import VoltageDropTool from '../../components/solar/VoltageDropTool.tsx';
 import ChargeTimeTool from '../../components/solar/ChargeTimeTool.tsx';
+import PanelTiltTool from '../../components/solar/PanelTiltTool.tsx';
+import ArrayWiringTool from '../../components/solar/ArrayWiringTool.tsx';
 import { SOLAR_TOOLS, type SolarToolDef } from '../../data/solar/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -67,6 +69,8 @@ const schema = [
       {tool.widget === 'payback' && <PaybackTool client:load />}
       {tool.widget === 'vdrop' && <VoltageDropTool client:load />}
       {tool.widget === 'charge' && <ChargeTimeTool client:load />}
+      {tool.widget === 'tilt' && <PanelTiltTool client:load />}
+      {tool.widget === 'array' && <ArrayWiringTool client:load />}
     </div>
 
     <div class="mt-4">

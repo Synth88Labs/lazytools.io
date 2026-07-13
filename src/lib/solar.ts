@@ -121,3 +121,56 @@ export const APPLIANCE_PRESETS: { name: string; watts: number }[] = [
   { name: 'Coffee maker', watts: 900 },
   { name: 'Water pump', watts: 250 },
 ];
+
+/* ---------------- Panel tilt angle ---------------- */
+
+export interface TiltResult {
+  yearRound: number;
+  summer: number;
+  winter: number;
+}
+/**
+ * Optimal fixed panel tilt (degrees from horizontal) by latitude. Year-round
+ * uses the widely-cited Landau refinement of the "tilt ≈ latitude" rule, which
+ * gives a slightly shallower angle; summer and winter apply the standard
+ * ±15° seasonal adjustment. Uses the absolute latitude (works for either
+ * hemisphere); panels face the equator.
+ */
+export function solarTilt(latitudeDeg: number): TiltResult {
+  const lat = Math.abs(latitudeDeg);
+  let yearRound: number;
+  if (lat < 25) yearRound = lat * 0.87;
+  else if (lat <= 50) yearRound = lat * 0.76 + 3.1;
+  else yearRound = lat * 0.89; // high latitudes, approximate
+  return {
+    yearRound,
+    summer: Math.max(0, lat - 15),
+    winter: Math.min(90, lat + 15),
+  };
+}
+
+/* ---------------- Array wiring ---------------- */
+
+export interface ArrayResult {
+  panels: number;
+  voc: number;
+  isc: number;
+  power: number;
+}
+/**
+ * Total array electrical figures for panels wired in series strings and
+ * parallel: series multiplies voltage (Voc × series), parallel multiplies
+ * current (Isc × parallel), and total power is the sum of all panels
+ * (Pmax × series × parallel). Check the string Voc against your charge
+ * controller / inverter maximum input voltage.
+ */
+export function arrayWiring(series: number, parallel: number, voc: number, isc: number, pmax: number): ArrayResult | null {
+  if (series < 1 || parallel < 1 || voc <= 0 || isc <= 0 || pmax <= 0) return null;
+  const s = Math.floor(series), p = Math.floor(parallel);
+  return {
+    panels: s * p,
+    voc: voc * s,
+    isc: isc * p,
+    power: pmax * s * p,
+  };
+}

@@ -4,7 +4,7 @@ export interface SolarToolDef {
   slug: string;
   name: string;
   icon: string;
-  widget: 'output' | 'load' | 'battery' | 'inverter' | 'appliance' | 'payback' | 'vdrop' | 'charge';
+  widget: 'output' | 'load' | 'battery' | 'inverter' | 'appliance' | 'payback' | 'vdrop' | 'charge' | 'tilt' | 'array';
   description: string;
   lead: string;
   how: string;
@@ -157,6 +157,42 @@ export const SOLAR_TOOLS: SolarToolDef[] = [
       { q: 'Why add a losses allowance?', a: 'Charging isn\'t 100% efficient — some energy becomes heat, especially near full charge for lead-acid. Adding roughly 10–20% to the ideal time gives a more realistic figure for a full charge.' },
     ],
     keywords: ['battery charge time calculator', 'how long to charge battery', 'c rate calculator', 'battery charging time', 'solar battery charge time', 'charge current calculator', 'lithium battery charge calculator'],
+  },
+  {
+    slug: 'solar-panel-tilt-angle-calculator',
+    name: 'Solar Panel Tilt Angle Calculator',
+    icon: '📐',
+    widget: 'tilt',
+    description: 'Find the best tilt angle for your solar panels from your latitude — year-round, plus summer and winter settings. In your browser.',
+    lead: 'Enter your latitude to get the optimal panel tilt angle for year-round output, and separate summer and winter angles.',
+    how: 'The best tilt for a fixed solar panel is close to your latitude, so the winter sun (which sits low in the sky) still strikes the panel closer to head-on. The tool uses a refined version of that rule for the year-round angle, then applies the standard ±15° seasonal adjustment: flatten the panels by about 15° in summer (when the sun is high) and steepen them by 15° in winter. Angles are measured from horizontal, with the panels facing the equator.',
+    note: 'A fixed installation is usually set to the year-round angle and left alone; if your mounts allow two or four adjustments a year, the summer/winter angles capture a bit more energy. Very steep winter angles also help shed snow. Roof pitch, shading and whether you want to favour summer or winter generation all shift the ideal in practice.',
+    faqs: [
+      { q: 'What angle should my solar panels be?', a: 'For year-round output, roughly your latitude — this tool gives a refined value. For example, near 40° latitude a fixed tilt of about 33–40° works well. Adjust ±15° if you tilt seasonally.' },
+      { q: 'What is the best tilt angle for winter?', a: 'About your latitude plus 15°, so the panels face the low winter sun more directly. Steeper winter angles also help snow slide off. This tool shows the winter angle from your latitude automatically.' },
+      { q: 'Should I change my panel angle seasonally?', a: 'If your mounts allow it, yes — flattening in summer and steepening in winter captures a little more energy over the year. Many fixed rooftop systems just use the year-round angle for simplicity, which is only slightly less than optimal.' },
+      { q: 'Which direction should panels face?', a: 'Towards the equator: due south in the northern hemisphere and due north in the southern. Facing within about 15° of that has little effect; larger deviations reduce output and can shift when peak generation occurs during the day.' },
+      { q: 'Does latitude alone determine the best angle?', a: 'It\'s the dominant factor, but local conditions matter: shading, typical cloud cover, snow, whether you want to maximise summer or winter yield, and your roof\'s existing pitch. Treat the latitude-based angle as the starting point.' },
+    ],
+    keywords: ['solar panel tilt angle calculator', 'best angle for solar panels', 'solar panel angle by latitude', 'solar tilt calculator', 'optimal solar panel angle', 'panel tilt by season', 'solar panel orientation'],
+  },
+  {
+    slug: 'solar-array-wiring-calculator',
+    name: 'Solar Array Wiring Calculator',
+    icon: '🔌',
+    widget: 'array',
+    description: 'Calculate the total voltage, current and power of a solar array from the panel specs and how many are wired in series and parallel. In your browser.',
+    lead: 'Enter your panel specs and wiring layout to get the whole array\'s voltage, current and power.',
+    how: 'Solar panels combine like any DC sources: wiring them in series adds their voltages (the open-circuit voltage Voc times the number in a string) while the current stays the same, and wiring strings in parallel adds their currents (the short-circuit current Isc times the number of strings) at the same voltage. Total power is simply the sum of every panel\'s rated wattage. The tool multiplies out your series and parallel counts and shows array Voc, Isc and power so you can match them to your equipment.',
+    note: 'The critical check is array Voc against the maximum input voltage of your charge controller or inverter — and remember Voc rises in cold weather (roughly +0.3%/°C below 25°C), so a cold sunny morning can push it well above the rated figure. Size for the coldest expected temperature, and make sure your controller can handle the array\'s short-circuit current too.',
+    faqs: [
+      { q: 'How do I wire solar panels in series vs parallel?', a: 'Series (positive to negative down a string) adds voltage and keeps current the same; parallel (all positives together, all negatives together) adds current at the same voltage. Series suits higher-voltage MPPT controllers; parallel keeps voltage low but needs thicker cable for the higher current.' },
+      { q: 'How do I calculate total array voltage?', a: 'Multiply a panel\'s open-circuit voltage (Voc) by the number of panels in a series string. Parallel strings don\'t add voltage. For 40 V panels three-in-series, the array Voc is 120 V.' },
+      { q: 'How do I calculate array current?', a: 'Multiply a panel\'s short-circuit current (Isc) by the number of parallel strings. Panels in series share the same current. Two parallel strings of 9 A panels give 18 A.' },
+      { q: 'Why does cold weather matter for array voltage?', a: 'Panel voltage rises as temperature falls — about 0.3% per °C below the 25°C rating. On a cold, clear morning the array Voc can exceed its rated value and damage a controller sized only for the nominal figure, so always leave headroom.' },
+      { q: 'What is the difference between Voc/Isc and operating voltage?', a: 'Voc and Isc are the open-circuit voltage and short-circuit current — the maximum voltage (no load) and current (dead short). In normal operation the panel runs at its lower Vmp/Imp (maximum-power point). Voc/Isc are used for sizing limits; Vmp/Imp for expected output.' },
+    ],
+    keywords: ['solar array wiring calculator', 'solar panel series parallel calculator', 'solar array voltage calculator', 'panels in series calculator', 'solar string calculator', 'array voltage current calculator', 'solar wiring configuration'],
   },
 ];
 
