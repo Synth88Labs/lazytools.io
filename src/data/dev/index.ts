@@ -293,6 +293,57 @@ export const DEV_TOOLS: DevToolDef[] = [
     ],
     keywords: ['eip-55 checksum', 'ethereum address checksum', 'checksum address', 'validate ethereum address', 'ethereum address validator', 'eip55'],
   },
+  {
+    slug: 'query-string-parser',
+    name: 'Query String Parser',
+    icon: '🔗',
+    description:
+      'Parse a URL query string into readable key/value JSON, or build a query string from JSON — URL-decoding handled, repeated keys become arrays. Runs in your browser.',
+    lead: 'Paste a URL or query string to see its parameters as clean JSON — or switch to build mode to turn JSON into a query string.',
+    widget: 'transform',
+    computeId: 'querystring',
+    options: [
+      {
+        id: 'mode', label: 'Mode', type: 'select', defaultValue: 'parse',
+        options: [
+          { value: 'parse', label: 'Parse (query string → JSON)' },
+          { value: 'build', label: 'Build (JSON → query string)' },
+        ],
+      },
+    ],
+    sample: 'https://example.com/search?q=hello+world&page=2&tag=a&tag=b',
+    how: 'In parse mode the tool takes a full URL or a bare query string, keeps only the part after "?" (and drops any "#fragment"), splits it on "&", and decodes each key and value with percent-decoding (and "+" → space). Repeated keys — like tag=a&tag=b — are collected into an array, and the result is shown as formatted JSON. In build mode it does the reverse: a JSON object of key → value (or key → array) is encoded back into a properly percent-encoded query string.',
+    note: 'Everything runs locally, so URLs with tokens or personal data stay in your browser. Parsing is lenient — it tolerates a missing "?", a leading "&", and values without an "=". Build mode expects a JSON object; use an array value to repeat a key.',
+    faqs: [
+      { q: 'How do I parse a URL query string?', a: 'Paste the URL or just the part after "?". The tool splits on "&", decodes each key and value, and shows them as JSON. For example ?q=hello+world&page=2 becomes {"q": "hello world", "page": "2"}.' },
+      { q: 'What happens with repeated parameters?', a: 'Keys that appear more than once — like tag=a&tag=b&tag=c — are grouped into an array: {"tag": ["a", "b", "c"]}. That preserves every value rather than keeping only the last.' },
+      { q: 'Does it handle URL-encoded characters?', a: 'Yes. Percent-encoded sequences (%20, %C3%A9, etc.) and "+" for spaces are decoded, so "S%C3%A3o+Paulo" reads back as "São Paulo". Build mode re-encodes them correctly.' },
+      { q: 'How do I build a query string from values?', a: 'Switch to build mode and enter a JSON object, e.g. {"q":"hello world","page":2}. The tool percent-encodes it into q=hello%20world&page=2. Array values repeat the key.' },
+      { q: 'Is my URL sent anywhere?', a: 'No — parsing and building happen entirely in your browser with the standard encode/decode functions. URLs containing tokens, IDs or personal data never leave your device.' },
+    ],
+    keywords: ['query string parser', 'url parameter parser', 'parse query string', 'query string to json', 'url query decoder', 'build query string', 'url params to json'],
+  },
+  {
+    slug: 'http-status-code-lookup',
+    name: 'HTTP Status Code Lookup',
+    icon: '🚦',
+    description:
+      'Look up what an HTTP status code means — 200, 301, 404, 500 and more — with a plain-English description and its class. Type one or several codes.',
+    lead: 'Enter one or more HTTP status codes to see their names, meanings and class (2xx success, 4xx client error, and so on).',
+    widget: 'transform',
+    computeId: 'httpstatus',
+    sample: '301 404 500',
+    how: 'HTTP responses carry a three-digit status code whose first digit sets the class: 1xx informational, 2xx success, 3xx redirection, 4xx client error and 5xx server error. The tool pulls any three-digit codes out of what you type — so you can paste "what does 502 mean" or a list like "301 404 500" — and returns each code\'s standard name, a plain-English description, and its class.',
+    note: 'Covers the common standard codes from the IANA registry (RFC 9110 and related). A valid but unlisted code still gets labelled by its class. Some codes are used loosely in the wild — 401 really means "unauthenticated", and many APIs return 422 for validation errors — so also check the specific API\'s documentation.',
+    faqs: [
+      { q: 'What does HTTP 404 mean?', a: '404 Not Found means the server could not find the requested resource — usually a broken or mistyped URL, or a page that has been moved or deleted. It is a client-side (4xx) error.' },
+      { q: 'What is the difference between 301 and 302?', a: '301 Moved Permanently says the resource has a new permanent URL (and passes SEO value), while 302 Found is a temporary redirect — keep using the original URL for future requests. Use 301 for permanent moves.' },
+      { q: 'What does a 500 error mean?', a: '500 Internal Server Error is a generic server-side failure: something went wrong on the server that it cannot describe more specifically. It is not a problem with your request format — check server logs.' },
+      { q: 'What do the status code classes mean?', a: 'The first digit sets the class: 1xx informational, 2xx success (200 OK, 201 Created), 3xx redirection (301, 304), 4xx client errors (400, 401, 403, 404), and 5xx server errors (500, 502, 503).' },
+      { q: 'What is the difference between 401 and 403?', a: '401 Unauthorized means you are not authenticated (no or invalid credentials), while 403 Forbidden means you are authenticated but not allowed to access the resource. 401 is "who are you?"; 403 is "you can\'t".' },
+    ],
+    keywords: ['http status code', 'http status code lookup', 'what does 404 mean', 'http error codes', '500 error meaning', '301 vs 302', 'http response codes list'],
+  },
 ];
 
 export function getDevTool(slug: string): DevToolDef | undefined {

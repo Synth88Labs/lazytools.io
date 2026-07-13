@@ -139,4 +139,95 @@ export const DEV: Record<string, (input: string, opts: Opts) => DevResult> = {
     ];
     return { output: out.join('\n'), info: `parsed as base-${from} · exact (BigInt, no precision loss)` };
   },
+
+  querystring: (input, opts) => {
+    const mode = String(opts.mode ?? 'parse');
+    if (mode === 'build') {
+      // JSON object → query string
+      let obj: Record<string, unknown>;
+      try { obj = JSON.parse(input); } catch { throw new Error('Enter a JSON object to build a query string, e.g. {"q":"hello world","page":2}.'); }
+      if (obj === null || typeof obj !== 'object' || Array.isArray(obj)) throw new Error('Expected a JSON object of key → value.');
+      const parts: string[] = [];
+      for (const [k, v] of Object.entries(obj)) {
+        const vals = Array.isArray(v) ? v : [v];
+        for (const item of vals) parts.push(`${encodeURIComponent(k)}=${encodeURIComponent(String(item))}`);
+      }
+      return { output: parts.join('&'), info: `${parts.length} parameter${parts.length === 1 ? '' : 's'}` };
+    }
+    // parse: query string (or full URL) → pretty JSON
+    let qs = input.trim();
+    const hadQuestion = qs.indexOf('?') !== -1;
+    if (hadQuestion) qs = qs.slice(qs.indexOf('?') + 1);
+    const hashIdx = qs.indexOf('#');
+    if (hashIdx !== -1) qs = qs.slice(0, hashIdx);
+    qs = qs.replace(/^&+|&+$/g, '');
+    // A URL without a query string (no "?" and no "=") has no parameters.
+    if (!qs || (!hadQuestion && !qs.includes('='))) return { output: '{}', info: 'no parameters' };
+    const result: Record<string, string | string[]> = {};
+    let count = 0;
+    for (const pair of qs.split('&')) {
+      if (!pair) continue;
+      const eq = pair.indexOf('=');
+      const rawKey = eq === -1 ? pair : pair.slice(0, eq);
+      const rawVal = eq === -1 ? '' : pair.slice(eq + 1);
+      let key: string, val: string;
+      try { key = decodeURIComponent(rawKey.replace(/\+/g, ' ')); val = decodeURIComponent(rawVal.replace(/\+/g, ' ')); }
+      catch { key = rawKey; val = rawVal; }
+      count++;
+      if (key in result) {
+        const existing = result[key];
+        result[key] = Array.isArray(existing) ? [...existing, val] : [existing, val];
+      } else result[key] = val;
+    }
+    return { output: JSON.stringify(result, null, 2), info: `${count} parameter${count === 1 ? '' : 's'} · repeated keys become arrays` };
+  },
+
+  httpstatus: (input) => {
+    const codes = input.match(/\d{3}/g);
+    if (!codes || codes.length === 0) throw new Error('Enter an HTTP status code, e.g. 404, or a few like "301 404 500".');
+    const lines = codes.map((c) => {
+      const s = HTTP_STATUS[c];
+      const cls = HTTP_CLASS[c[0]] ?? 'Unknown class';
+      if (!s) return `${c}  — Unassigned / non-standard (${cls})`;
+      return `${c} ${s.name}\n     ${s.desc}\n     Class: ${cls}`;
+    });
+    return { output: lines.join('\n\n'), info: `${codes.length} code${codes.length === 1 ? '' : 's'} looked up` };
+  },
+};
+
+const HTTP_CLASS: Record<string, string> = {
+  '1': '1xx Informational', '2': '2xx Success', '3': '3xx Redirection', '4': '4xx Client Error', '5': '5xx Server Error',
+};
+
+/** Common HTTP status codes (IANA registry / RFC 9110 and friends). */
+export const HTTP_STATUS: Record<string, { name: string; desc: string }> = {
+  '100': { name: 'Continue', desc: 'The client should continue the request or ignore this if already finished.' },
+  '101': { name: 'Switching Protocols', desc: 'The server is switching protocols as requested by the Upgrade header.' },
+  '200': { name: 'OK', desc: 'The request succeeded; the meaning depends on the method (GET returns the resource, POST the result).' },
+  '201': { name: 'Created', desc: 'The request succeeded and a new resource was created.' },
+  '202': { name: 'Accepted', desc: 'The request was accepted for processing, but is not yet complete.' },
+  '204': { name: 'No Content', desc: 'The request succeeded but there is no content to return.' },
+  '206': { name: 'Partial Content', desc: 'The server is delivering part of the resource in response to a Range header.' },
+  '301': { name: 'Moved Permanently', desc: 'The resource has permanently moved to a new URL; update your links. SEO value is passed.' },
+  '302': { name: 'Found', desc: 'The resource is temporarily at a different URL; keep using the original URL for future requests.' },
+  '303': { name: 'See Other', desc: 'The response is at another URL, to be fetched with GET (common after a POST).' },
+  '304': { name: 'Not Modified', desc: 'The cached version is still valid; the client can reuse it (conditional request).' },
+  '307': { name: 'Temporary Redirect', desc: 'Like 302, but the method must not change on redirect.' },
+  '308': { name: 'Permanent Redirect', desc: 'Like 301, but the method must not change on redirect.' },
+  '400': { name: 'Bad Request', desc: 'The server could not understand the request due to malformed syntax.' },
+  '401': { name: 'Unauthorized', desc: 'Authentication is required and has failed or not been provided.' },
+  '403': { name: 'Forbidden', desc: 'The server understood the request but refuses to authorize it — you lack permission.' },
+  '404': { name: 'Not Found', desc: 'The server cannot find the requested resource; the URL may be broken or the resource removed.' },
+  '405': { name: 'Method Not Allowed', desc: 'The HTTP method is not supported for this resource.' },
+  '408': { name: 'Request Timeout', desc: 'The server timed out waiting for the request.' },
+  '409': { name: 'Conflict', desc: 'The request conflicts with the current state of the resource.' },
+  '410': { name: 'Gone', desc: 'The resource is permanently gone with no forwarding address.' },
+  '418': { name: "I'm a teapot", desc: 'An April Fools\' joke code (RFC 2324); the server refuses to brew coffee because it is a teapot.' },
+  '422': { name: 'Unprocessable Content', desc: 'The request was well-formed but has semantic errors (common in APIs for validation failures).' },
+  '429': { name: 'Too Many Requests', desc: 'The user has sent too many requests in a given time (rate limiting).' },
+  '500': { name: 'Internal Server Error', desc: 'A generic server-side error; something went wrong that the server cannot be more specific about.' },
+  '501': { name: 'Not Implemented', desc: 'The server does not support the functionality required to fulfil the request.' },
+  '502': { name: 'Bad Gateway', desc: 'The server, acting as a gateway or proxy, got an invalid response from an upstream server.' },
+  '503': { name: 'Service Unavailable', desc: 'The server is temporarily unable to handle the request (overloaded or down for maintenance).' },
+  '504': { name: 'Gateway Timeout', desc: 'The server, acting as a gateway, did not get a timely response from an upstream server.' },
 };
