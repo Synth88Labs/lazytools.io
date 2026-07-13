@@ -15,6 +15,9 @@ import MessageQrTool from '../../components/generate/MessageQrTool.tsx';
 import BarcodeTool from '../../components/generate/BarcodeTool.tsx';
 import IdGenTool from '../../components/generate/IdGenTool.tsx';
 import PassphraseTool from '../../components/generate/PassphraseTool.tsx';
+import DiceRollerTool from '../../components/generate/DiceRollerTool.tsx';
+import MacAddressTool from '../../components/generate/MacAddressTool.tsx';
+import TestCardTool from '../../components/generate/TestCardTool.tsx';
 import { GEN_TOOLS, type GenToolDef } from '../../data/generate/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -71,6 +74,9 @@ const schema = [
       {tool.widget === 'barcode' && <BarcodeTool client:load />}
       {tool.widget === 'id' && <IdGenTool client:load variant={tool.variant} />}
       {tool.widget === 'passphrase' && <PassphraseTool client:load />}
+      {tool.widget === 'dice' && <DiceRollerTool client:load />}
+      {tool.widget === 'mac' && <MacAddressTool client:load />}
+      {tool.widget === 'testcard' && <TestCardTool client:load />}
     </div>
 
     <div class="mt-4">

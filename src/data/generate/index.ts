@@ -6,7 +6,7 @@ export interface GenToolDef {
   icon: string;
   description: string;
   lead: string;
-  widget: 'password' | 'uuid' | 'qr' | 'random-number' | 'lorem' | 'wifi-qr' | 'vcard-qr' | 'message-qr' | 'barcode' | 'id' | 'passphrase';
+  widget: 'password' | 'uuid' | 'qr' | 'random-number' | 'lorem' | 'wifi-qr' | 'vcard-qr' | 'message-qr' | 'barcode' | 'id' | 'passphrase' | 'dice' | 'mac' | 'testcard';
   /** for widget:'id' — which tab (v4/v7/ulid/nanoid) the page defaults to */
   variant?: 'v4' | 'v7' | 'ulid' | 'nanoid';
   how: string;
@@ -243,6 +243,60 @@ export const GEN_TOOLS: GenToolDef[] = [
       { q: 'Is the passphrase generated privately?', a: 'Yes — the word list and the generation both run in your browser; no passphrase is ever sent to a server.' },
     ],
     keywords: ['passphrase generator', 'diceware generator', 'memorable password generator', 'eff wordlist', 'random word password', 'strong passphrase'],
+  },
+  {
+    slug: 'dice-roller',
+    name: 'Dice Roller & Coin Flip',
+    icon: '🎲',
+    widget: 'dice',
+    description: 'Roll virtual dice (d4, d6, d8, d10, d12, d20, d100) or flip a coin — fair, cryptographic randomness for tabletop games and decisions. In your browser.',
+    lead: 'Choose your dice and how many, then roll — or flip a coin. Uses cryptographic randomness for a fair result.',
+    how: 'Pick a die type (from a four-sided d4 up to a hundred-sided d100) and how many to roll, then hit Roll. Each die is generated with your browser\'s cryptographic random-number generator (Web Crypto), which is unbiased and unpredictable — unlike simple pseudo-random shortcuts. When you roll several dice, the tool shows each result and the total. The coin flip returns heads or tails the same fair way.',
+    note: 'Everything runs locally, so there\'s no server round-trip and the rolls can\'t be tampered with. Roll up to 100 dice at once for big damage rolls or statistics. For polyhedral RPG dice (d4/d6/d8/d10/d12/d20), pick the matching option; d100 covers percentile rolls.',
+    faqs: [
+      { q: 'How does an online dice roller work?', a: 'It generates a random number from 1 to the number of sides for each die, using the browser\'s cryptographic random generator so the result is fair and unpredictable. This tool shows each die and totals them.' },
+      { q: 'Are the dice rolls really random?', a: 'Yes — they use the Web Crypto API\'s cryptographically secure random generator, which is unbiased and can\'t be predicted, rather than a simple pseudo-random function. Every face has an equal chance.' },
+      { q: 'What dice can I roll?', a: 'The standard polyhedral set — d4, d6, d8, d10, d12, d20 — plus d100 for percentile rolls, and a coin flip. Roll from 1 up to 100 dice at once.' },
+      { q: 'Can I roll multiple dice at once?', a: 'Yes — set the count and the tool rolls them together, showing each result and the sum. Handy for damage rolls, stat generation or any multi-dice throw.' },
+      { q: 'Do I need dice or an app?', a: 'No — this works in any browser, even offline once loaded, so it\'s a quick stand-in when you\'ve lost your dice or need more than you have on hand.' },
+    ],
+    keywords: ['dice roller', 'roll dice online', 'virtual dice', 'd20 roller', 'dnd dice roller', 'coin flip', 'online dice'],
+  },
+  {
+    slug: 'mac-address-generator',
+    name: 'MAC Address Generator',
+    icon: '🔗',
+    widget: 'mac',
+    description: 'Generate random MAC addresses for testing and mock devices — with your choice of separator, case and a locally-administered flag. In your browser.',
+    lead: 'Generate one or many random MAC addresses, with the separator, case and locally-administered option you need.',
+    how: 'A MAC address is a 48-bit identifier written as six hexadecimal octets. The tool generates random octets and formats them with your chosen separator (colon, dash or none) and case. The "locally administered" option sets the second-least-significant bit of the first octet — the bit that marks an address as one you\'ve assigned yourself rather than a manufacturer-burned (universally administered) one — which is correct for test and virtual addresses.',
+    note: 'Use generated MACs for testing, virtual machines, network simulations or as placeholders — not to impersonate a specific real device. The locally-administered flag keeps them clearly distinct from real hardware addresses (their first octet ends up as 02, 06, 0A or 0E…). Generate up to 100 at once and copy them all.',
+    faqs: [
+      { q: 'What is a MAC address?', a: 'A Media Access Control address — a 48-bit hardware identifier for a network interface, written as six hex octets like 02:1a:2b:3c:4d:5e. It identifies devices on a local network.' },
+      { q: 'How do you generate a random MAC address?', a: 'Pick six random bytes and format them as hex octets. For a self-assigned address, set the locally-administered bit in the first octet. This tool does both and lets you choose the separator and case.' },
+      { q: 'What is a locally administered MAC address?', a: 'One assigned by software rather than burned in by the manufacturer, marked by a specific bit in the first octet (making it 02, 06, 0A or 0E…). It\'s the correct type for virtual machines, testing and spoofing without clashing with real hardware ranges.' },
+      { q: 'What are the separator options?', a: 'MAC addresses are commonly written with colons (02:1a:2b:…), dashes (02-1a-2b-…) or no separator, and in upper or lower case. Choose the format your platform or tool expects.' },
+      { q: 'Can I use these on a real network?', a: 'They\'re random and meant for testing, VMs and mock data. You can assign one to a virtual interface, but don\'t use a generated MAC to impersonate a specific real device or bypass access controls.' },
+    ],
+    keywords: ['mac address generator', 'random mac address', 'generate mac address', 'mac address maker', 'locally administered mac', 'fake mac address', 'mac generator'],
+  },
+  {
+    slug: 'test-credit-card-generator',
+    name: 'Test Credit Card Number Generator',
+    icon: '💳',
+    widget: 'testcard',
+    description: 'Generate Luhn-valid TEST credit-card numbers (Visa, Mastercard, Amex, Discover) for testing payment forms. Not real cards. In your browser.',
+    lead: 'Generate randomly-created, Luhn-valid test card numbers by network — for testing checkout and validation. These are not real cards.',
+    how: 'Each number starts with a real network prefix (Visa 4, Mastercard 5, Amex 34/37, Discover 6011) and is filled with random digits, then the final check digit is set so the whole number passes the Luhn (mod-10) algorithm that card fields use to catch typos. That makes the numbers syntactically valid — a form will accept them — while they correspond to no real account.',
+    note: 'These are for development and QA only: they are randomly generated, carry no funds and cannot make a purchase. Real payment processors are only reached with their own official test cards in sandbox mode — use Stripe\'s, PayPal\'s or your gateway\'s documented test numbers for end-to-end testing. Never enter a real card number into any tool.',
+    faqs: [
+      { q: 'Are these real credit card numbers?', a: 'No. They are randomly generated numbers that merely pass the Luhn check and start with a valid network prefix, so a form accepts their format. They belong to no account, have no funds and cannot buy anything.' },
+      { q: 'What are test credit card numbers for?', a: 'For developers and QA to test that a checkout or validation form correctly accepts well-formed numbers and computes the Luhn check — without using a real card. For live transaction testing, use your payment processor\'s official sandbox test cards.' },
+      { q: 'What is the Luhn algorithm?', a: 'A mod-10 checksum used by card numbers: doubling every second digit (subtracting 9 if over 9) and summing must give a multiple of 10. It catches most single-digit typos. This tool sets the final digit so the number passes it.' },
+      { q: 'Can I use these to make a purchase?', a: 'No — they are not linked to any real account and will be declined by any real payment system. They only test that a form\'s input validation works. Attempting to use them for actual payment would fail and is not their purpose.' },
+      { q: 'Should I use these with Stripe or PayPal?', a: 'For those, use the official test card numbers in the provider\'s documentation with their sandbox/test mode — they trigger specific test behaviours. These generic Luhn-valid numbers are best for testing your own form\'s format validation.' },
+    ],
+    keywords: ['test credit card generator', 'fake credit card number generator', 'luhn valid card number', 'dummy credit card numbers', 'test card numbers', 'credit card generator for testing', 'valid test card'],
   },
 ];
 
