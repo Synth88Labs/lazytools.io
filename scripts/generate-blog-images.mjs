@@ -7,6 +7,13 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'what-is-a-cord-of-wood-guide',
+    kicker: 'FIREWOOD GUIDE',
+    lines: ['What is a cord', 'of wood? Full cord', 'vs face cord'],
+    fact: 'full cord = 4×4×8 ft = 128 ft³ · face cord ≈ 1/3',
+    icon: '🪵',
+  },
+  {
     slug: 'mbps-vs-mbps-internet-speed-guide',
     kicker: 'INTERNET SPEED GUIDE',
     lines: ['Mbps vs MB/s:', 'why your download', 'is 8× slower'],
