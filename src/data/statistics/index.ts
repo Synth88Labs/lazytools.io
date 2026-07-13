@@ -4,7 +4,7 @@ export interface StatToolDef {
   slug: string;
   name: string;
   icon: string;
-  widget: 'normal' | 'binomial' | 'ci' | 'sample-size' | 'pvalue' | 'regression' | 'ttest' | 'poisson' | 'chisquare';
+  widget: 'normal' | 'binomial' | 'ci' | 'sample-size' | 'pvalue' | 'regression' | 'ttest' | 'poisson' | 'chisquare' | 'descriptive' | 'zscore';
   description: string;
   lead: string;
   how: string;
@@ -181,6 +181,42 @@ export const STAT_TOOLS: StatToolDef[] = [
       { q: 'What does a significant chi-square result mean?', a: 'That the observed counts differ from what the hypothesis predicts more than chance would explain — the distribution doesn\'t fit, or the two variables are associated. It doesn\'t measure how strong the association is; for that, look at effect-size measures like Cramér\'s V.' },
     ],
     keywords: ['chi square test calculator', 'chi square calculator', 'goodness of fit calculator', 'chi square test of independence', 'contingency table calculator', 'chi square p value calculator', 'expected counts calculator'],
+  },
+  {
+    slug: 'descriptive-statistics-calculator',
+    name: 'Descriptive Statistics Calculator',
+    icon: '📊',
+    widget: 'descriptive',
+    description: 'Get mean, median, mode, range, quartiles, variance and standard deviation from a data set — sample and population, all at once. In your browser.',
+    lead: 'Paste your numbers to get a full statistical summary — mean, median, mode, quartiles, standard deviation and more.',
+    how: 'Enter a list of numbers and the tool computes the whole descriptive summary: the measures of centre (mean, median, mode), spread (range, interquartile range, variance and standard deviation) and the five-number summary (min, Q1, median, Q3, max). It shows both sample statistics (dividing by n − 1, the usual estimate from a sample) and population statistics (dividing by n, when your data is the entire population). Quartiles use linear interpolation, matching Excel\'s QUARTILE.INC.',
+    note: 'Use sample statistics when your data is a sample drawn from a larger group you want to describe — that\'s the default in most research. Use population statistics only when you truly have every member of the group. The mode shows every most-frequent value (data can be multi-modal) or "none" when all values are distinct.',
+    faqs: [
+      { q: 'What are descriptive statistics?', a: 'Numbers that summarise a data set: measures of centre (mean, median, mode), of spread (range, variance, standard deviation, IQR) and position (quartiles, min, max). They describe the data at hand, unlike inferential statistics which generalise to a population.' },
+      { q: 'What is the difference between sample and population standard deviation?', a: 'Sample standard deviation divides the summed squared deviations by n − 1 (Bessel\'s correction) to estimate a population from a sample; population standard deviation divides by n and is used when you have the entire population. The sample version is the usual default.' },
+      { q: 'How are quartiles calculated?', a: 'This tool sorts the data and interpolates linearly between order statistics — the inclusive method (Excel\'s QUARTILE.INC / the R-7 rule). Q1 is the 25th percentile, Q2 the median, Q3 the 75th; the IQR is Q3 − Q1. Other methods exist and can differ slightly on small samples.' },
+      { q: 'What is the difference between mean, median and mode?', a: 'The mean is the arithmetic average; the median is the middle value when sorted (robust to outliers); the mode is the most frequent value. When data is skewed, the median often describes the "typical" value better than the mean.' },
+      { q: 'Can a data set have more than one mode?', a: 'Yes — if several values tie for the highest frequency the data is multi-modal, and this tool lists them all. If every value appears once there is no mode, shown as "none".' },
+    ],
+    keywords: ['descriptive statistics calculator', 'mean median mode calculator', 'standard deviation calculator', 'five number summary calculator', 'variance calculator', 'quartile calculator', 'statistics summary calculator', 'mean median mode range'],
+  },
+  {
+    slug: 'z-score-calculator',
+    name: 'Z-Score Calculator',
+    icon: '📐',
+    widget: 'zscore',
+    description: 'Calculate a z-score (standard score) from a value, mean and standard deviation — with the percentile under the normal curve. In your browser.',
+    lead: 'Enter a value, the mean and the standard deviation to get its z-score and the percentile it falls at.',
+    how: 'A z-score expresses how far a value is from the mean in units of standard deviation: z = (x − μ) ÷ σ. A z of +1 means one standard deviation above the mean, −2 means two below. Assuming the data is normally distributed, the tool also gives the percentile — the proportion of the distribution below your value — by integrating the standard normal curve, so you can see how a score ranks (z = 0 is the 50th percentile, z ≈ 1.96 the 97.5th).',
+    note: 'The percentile assumes an approximately normal (bell-shaped) distribution; for strongly skewed data the z-score is still valid as a standardised distance but the percentile will be off. Z-scores are how you compare values measured on different scales — a test score and a height, say — on a common footing.',
+    faqs: [
+      { q: 'What is a z-score?', a: 'A standard score: the number of standard deviations a value lies from the mean, z = (x − μ) ÷ σ. It puts values from different distributions on the same scale so they can be compared directly.' },
+      { q: 'How do I calculate a z-score?', a: 'Subtract the mean from your value and divide by the standard deviation. For x = 85, μ = 70, σ = 10: z = (85 − 70) ÷ 10 = 1.5, meaning the value is 1.5 standard deviations above the mean.' },
+      { q: 'What does a negative z-score mean?', a: 'That the value is below the mean. A z of −1.5 is 1.5 standard deviations below average; positive z-scores are above the mean, and z = 0 is exactly at the mean.' },
+      { q: 'How does a z-score relate to percentile?', a: 'For a normal distribution, the percentile is the area under the curve to the left of the z-score. z = 0 is the 50th percentile, z = 1 about the 84th, and z = 1.96 about the 97.5th. This tool computes it for you.' },
+      { q: 'What is considered an unusual z-score?', a: 'By a common rule of thumb, z-scores beyond ±2 are somewhat unusual (outside ~95% of the data) and beyond ±3 are rare (outside ~99.7%). The exact cut-off depends on your context and significance level.' },
+    ],
+    keywords: ['z score calculator', 'z-score calculator', 'standard score calculator', 'z score to percentile', 'how to calculate z score', 'standardized score calculator', 'z value calculator'],
   },
 ];
 
