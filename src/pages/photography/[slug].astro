@@ -13,6 +13,8 @@ import HyperfocalTool from '../../components/photography/HyperfocalTool.tsx';
 import TimeLapseTool from '../../components/photography/TimeLapseTool.tsx';
 import PrintResolutionTool from '../../components/photography/PrintResolutionTool.tsx';
 import Sunny16Tool from '../../components/photography/Sunny16Tool.tsx';
+import StarTrailTool from '../../components/photography/StarTrailTool.tsx';
+import FlashGuideNumberTool from '../../components/photography/FlashGuideNumberTool.tsx';
 import { PHOTOGRAPHY_TOOLS, type PhotographyToolDef } from '../../data/photography/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -67,6 +69,8 @@ const schema = [
       {tool.widget === 'timelapse' && <TimeLapseTool client:load />}
       {tool.widget === 'print' && <PrintResolutionTool client:load />}
       {tool.widget === 'sunny16' && <Sunny16Tool client:load />}
+      {tool.widget === 'startrail' && <StarTrailTool client:load />}
+      {tool.widget === 'flashgn' && <FlashGuideNumberTool client:load />}
     </div>
 
     <div class="mt-4">

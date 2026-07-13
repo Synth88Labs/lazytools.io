@@ -4,7 +4,7 @@ export interface PhotographyToolDef {
   slug: string;
   name: string;
   icon: string;
-  widget: 'dof' | 'fov' | 'crop' | 'ev' | 'hyperfocal' | 'timelapse' | 'print' | 'sunny16';
+  widget: 'dof' | 'fov' | 'crop' | 'ev' | 'hyperfocal' | 'timelapse' | 'print' | 'sunny16' | 'startrail' | 'flashgn';
   description: string;
   lead: string;
   how: string;
@@ -157,6 +157,42 @@ export const PHOTOGRAPHY_TOOLS: PhotographyToolDef[] = [
       { q: 'Why learn Sunny 16 with modern cameras?', a: 'It teaches how aperture, shutter and ISO trade off, gives you a sanity check on your meter, and lets you shoot confidently in tricky metering situations or with fully manual/film cameras.' },
     ],
     keywords: ['sunny 16 calculator', 'sunny 16 rule', 'exposure without meter', 'sunny 16 chart', 'film exposure calculator', 'daylight exposure calculator', 'sunny sixteen rule'],
+  },
+  {
+    slug: 'star-trail-500-rule-calculator',
+    name: 'Star Trail (500 Rule) Calculator',
+    icon: '🌌',
+    widget: 'startrail',
+    description: 'Find the longest exposure before stars trail, from your focal length and sensor — the 500 rule (and stricter 300/200). For astrophotography. In your browser.',
+    lead: 'Pick your sensor and focal length to get the longest shutter time that keeps stars as sharp points, not streaks.',
+    how: 'As the Earth rotates, stars drift across the frame, so a long exposure records them as short streaks instead of points. The "500 rule" estimates the longest safe shutter: seconds ≈ 500 ÷ (focal length × crop factor). A wider lens sees a larger patch of sky, so each star moves a smaller fraction of the frame and you can expose longer. The crop factor converts your lens to its full-frame-equivalent field of view, so the same 24 mm lens allows a shorter exposure on a crop-sensor body than on full frame.',
+    note: 'The 500 rule is lenient and dates from lower-resolution days; on today\'s high-megapixel sensors stars trail sooner, so many photographers use 300 or even 200. For critical sharpness the NPF rule factors in aperture and pixel pitch. Use a sturdy tripod and a wide aperture, and raise ISO rather than exposing longer if you need more light.',
+    faqs: [
+      { q: 'What is the 500 rule in photography?', a: 'A guideline for the longest exposure that keeps stars as points: shutter time (seconds) = 500 ÷ (focal length × crop factor). For a 20 mm lens on full frame that\'s about 25 seconds; longer and stars begin to streak.' },
+      { q: 'How do I calculate max shutter for stars?', a: 'Divide 500 by your effective focal length (focal length × sensor crop factor). A 24 mm lens on an APS-C body (1.5×) gives 500 ÷ 36 ≈ 14 seconds. Use 300 or 200 instead of 500 for stricter, sharper results.' },
+      { q: 'Should I use the 500, 300 or 200 rule?', a: 'Use 500 for web-sized images or forgiving setups, 300 for a balance, and 200 for high-resolution sensors or when you\'ll pixel-peep or print large. Lower numbers give shorter exposures and rounder stars.' },
+      { q: 'Does crop factor affect the 500 rule?', a: 'Yes — a crop sensor magnifies the view, so stars cross the frame faster relative to it. Multiply focal length by the crop factor (1.5× APS-C, 2× Micro Four Thirds) before dividing into 500. This tool does it automatically from the sensor you pick.' },
+      { q: 'What is the NPF rule?', a: 'A more precise formula than the 500 rule that accounts for aperture, pixel pitch and declination for pin-sharp stars. It gives shorter times than the 500 rule; the 500/300/200 rules are simpler field approximations that work well in practice.' },
+    ],
+    keywords: ['500 rule calculator', 'star trail calculator', 'astrophotography exposure calculator', 'max shutter for stars', '500 rule astrophotography', 'milky way exposure calculator', 'star exposure time'],
+  },
+  {
+    slug: 'flash-guide-number-calculator',
+    name: 'Flash Guide Number Calculator',
+    icon: '⚡',
+    widget: 'flashgn',
+    description: 'Work out flash aperture or reach from the guide number, distance and ISO — GN = f-number × distance. For manual flash photography. In your browser.',
+    lead: 'Enter a flash guide number and either the distance or aperture to get the correct exposure setting, adjusted for ISO.',
+    how: 'A flash\'s guide number (GN) captures its power as a simple product: GN = f-number × distance, at ISO 100. Rearranged, the aperture for a correct exposure is GN ÷ distance, and the maximum reach at a chosen aperture is GN ÷ f-number. Because film/sensor sensitivity scales the effective power, raising the ISO multiplies the effective guide number by the square root of the ISO ratio — ISO 400 doubles it. The tool solves for whichever value you need and applies the ISO adjustment.',
+    note: 'Guide numbers assume direct, undiffused flash in the rated distance unit (metres or feet — check which). Bouncing off a ceiling, using a diffuser or shooting a dark room all lose light and need a wider aperture or more power. Manufacturers often quote GN at the flash\'s longest zoom setting, which flatters the number, so treat it as a starting point and confirm with a test shot.',
+    faqs: [
+      { q: 'What is a flash guide number?', a: 'A measure of flash power: guide number (GN) = f-number × distance for a correct exposure at ISO 100. A higher GN means a more powerful flash that reaches farther or allows a smaller aperture.' },
+      { q: 'How do I calculate flash aperture?', a: 'Aperture = guide number ÷ distance. With a GN of 56 (metres, ISO 100) and a subject 5 m away, the aperture is 56 ÷ 5 ≈ f/11. Move closer and you stop down; move away and you open up.' },
+      { q: 'How does ISO affect the guide number?', a: 'Effective GN scales with the square root of the ISO ratio: GN × √(ISO ÷ 100). So doubling ISO from 100 to 200 multiplies GN by about 1.4, and ISO 400 doubles it — letting the same flash reach farther or use a smaller aperture.' },
+      { q: 'Are guide numbers in metres or feet?', a: 'Both are used, so always check which your flash is rated in — a GN of 56 in metres is far more powerful than 56 in feet. This calculator keeps the distance in whichever unit you choose, matching the guide number.' },
+      { q: 'Why is my flash exposure off from the guide number?', a: 'Guide numbers assume direct flash at a rated zoom. Bouncing, diffusing, or a wide zoom setting all reduce the light reaching the subject, so you\'ll need a wider aperture or higher ISO than the raw GN math suggests. Use it as a starting point and confirm with a test frame.' },
+    ],
+    keywords: ['flash guide number calculator', 'guide number calculator', 'flash aperture calculator', 'flash distance calculator', 'gn flash calculator', 'manual flash exposure calculator', 'flash power calculator'],
   },
 ];
 

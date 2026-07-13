@@ -98,4 +98,30 @@ export function timelapse(shootSeconds: number, intervalSec: number, fps: number
 export function printInches(pixels: number, dpi: number): number { return pixels / dpi; }
 export function megapixels(w: number, h: number): number { return (w * h) / 1e6; }
 
+/* ---------------- Astro: max shutter before star trails ---------------- */
+
+/**
+ * Longest exposure (seconds) before stars visibly trail, by the "rule of N"
+ * for a static tripod: seconds = N ÷ (focal length in mm × crop factor). N is
+ * traditionally 500 (lenient) or 300/200 for pixel-peeping or high-res sensors.
+ * The crop factor converts the lens to its full-frame-equivalent field of view.
+ */
+export function maxShutterSeconds(focalMm: number, crop: number, rule = 500): number {
+  if (focalMm <= 0 || crop <= 0) return 0;
+  return rule / (focalMm * crop);
+}
+
+/* ---------------- Flash guide number ---------------- */
+
+/**
+ * Flash guide number relates aperture and distance: GN = f-number × distance.
+ * So the correct aperture at a distance is GN ÷ distance, and the reach at a
+ * given aperture is GN ÷ f-number. GN is quoted at ISO 100 for a distance unit
+ * (metres or feet); doubling ISO multiplies effective GN by √2.
+ */
+export const flashAperture = (gn: number, distance: number) => distance > 0 ? gn / distance : 0;
+export const flashDistance = (gn: number, fStop: number) => fStop > 0 ? gn / fStop : 0;
+/** Effective guide number at a different ISO: GN × √(ISO ÷ 100). */
+export const flashGnAtIso = (gn100: number, iso: number) => gn100 * Math.sqrt(iso / 100);
+
 export { FF_DIAGONAL };
