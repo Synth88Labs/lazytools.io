@@ -7,6 +7,13 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'how-much-chocolate-is-toxic-to-dogs-guide',
+    kicker: 'PET SAFETY GUIDE',
+    lines: ['How much chocolate', 'is toxic to dogs?', 'Type + weight = dose'],
+    fact: 'theobromine: signs 20 mg/kg · serious 40–60 · fatal 100+',
+    icon: '🍫',
+  },
+  {
     slug: 'pdf-to-jpg-without-uploading-guide',
     kicker: 'PDF GUIDE',
     lines: ['Convert PDF to JPG', 'without uploading it', 'to anyone'],
