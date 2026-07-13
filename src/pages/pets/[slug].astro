@@ -12,6 +12,7 @@ import GestationTool from '../../components/pets/GestationTool.tsx';
 import AquariumTool from '../../components/pets/AquariumTool.tsx';
 import WaterIntakeTool from '../../components/pets/WaterIntakeTool.tsx';
 import CrateSizeTool from '../../components/pets/CrateSizeTool.tsx';
+import ChocolateToxicityTool from '../../components/pets/ChocolateToxicityTool.tsx';
 import { PET_TOOLS, type PetToolDef } from '../../data/pets/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -66,6 +67,7 @@ const schema = [
       {tool.widget === 'aquarium' && <AquariumTool client:load />}
       {tool.widget === 'water' && <WaterIntakeTool client:load />}
       {tool.widget === 'crate' && <CrateSizeTool client:load />}
+      {tool.widget === 'choctox' && <ChocolateToxicityTool client:load />}
     </div>
 
     <div class="mt-4">

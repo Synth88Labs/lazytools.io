@@ -4,7 +4,7 @@ export interface PetToolDef {
   slug: string;
   name: string;
   icon: string;
-  widget: 'dogage' | 'catage' | 'dogfood' | 'catfood' | 'gestation' | 'aquarium' | 'water' | 'crate';
+  widget: 'dogage' | 'catage' | 'dogfood' | 'catfood' | 'gestation' | 'aquarium' | 'water' | 'crate' | 'choctox';
   description: string;
   lead: string;
   how: string;
@@ -157,6 +157,25 @@ export const PET_TOOLS: PetToolDef[] = [
       { q: 'What if my dog is between crate sizes?', a: 'Size up to the larger crate so your dog can stand and turn comfortably, and add a divider if you need to reduce the interior for training. Comfort and the ability to stand fully are the priorities.' },
     ],
     keywords: ['dog crate size calculator', 'what size crate for my dog', 'dog crate size chart', 'crate size by weight', 'how to measure dog for crate', 'dog kennel size', 'crate dimensions dog'],
+  },
+  {
+    slug: 'dog-chocolate-toxicity-calculator',
+    name: 'Dog Chocolate Toxicity Calculator',
+    icon: '🍫',
+    widget: 'choctox',
+    description: 'Estimate how dangerous the chocolate your dog ate is, from the type, amount and your dog\'s weight — with a clear risk level. Not a substitute for a vet. In your browser.',
+    lead: 'Enter the type of chocolate, how much your dog ate and its weight to estimate the theobromine dose and see the risk level — then call your vet.',
+    how: 'Chocolate is toxic to dogs because of theobromine (and some caffeine), which they break down far more slowly than people do. The calculator multiplies a typical theobromine content for the chocolate type (white, milk, dark, baking, cocoa powder) by the amount eaten, divides by your dog\'s body weight to get a dose in mg per kg, and compares it to published veterinary thresholds: signs usually begin around 20 mg/kg, serious cardiac and neurological effects around 40–60 mg/kg, and doses over about 100 mg/kg can be fatal.',
+    note: 'This is an estimate only — real theobromine content varies between products and individual dogs react differently, so a "low risk" result does not mean it\'s safe to wait. If your dog has eaten any chocolate, contact your vet or a pet poison helpline straight away (US ASPCA Animal Poison Control 888-426-4435; UK Animal PoisonLine 01202 509000). The darker and more bitter the chocolate, the more theobromine it contains.',
+    faqs: [
+      { q: 'How much chocolate is toxic to a dog?', a: 'It depends on the chocolate and the dog\'s weight. Signs typically begin around 20 mg/kg of theobromine — roughly 3.5 g of milk chocolate or 0.5 g of baking chocolate per kg of body weight. Darker chocolate is far more dangerous, and doses over ~100 mg/kg can be fatal. Enter your details for an estimate.' },
+      { q: 'Which chocolate is most dangerous for dogs?', a: 'Baking (unsweetened) chocolate and cocoa powder have the most theobromine, then dark/semisweet, then milk chocolate. White chocolate has almost none, so it rarely causes theobromine poisoning — though its fat and sugar can still upset a dog\'s stomach.' },
+      { q: 'My dog ate chocolate — what should I do?', a: 'Call your vet or a pet poison helpline immediately, even if this tool shows low risk. Have the chocolate type, amount and your dog\'s weight ready. Don\'t try to make the dog vomit unless a professional tells you to. This calculator is a guide, not a diagnosis.' },
+      { q: 'What are the symptoms of chocolate poisoning in dogs?', a: 'Vomiting, diarrhoea, restlessness, excessive thirst and urination, a racing or irregular heartbeat, tremors and, at high doses, seizures. Signs can take 6–12 hours to appear and last for days because theobromine clears slowly.' },
+      { q: 'Is white chocolate safe for dogs?', a: 'It has almost no theobromine, so theobromine poisoning is unlikely, but it\'s not "safe" — the high fat and sugar can cause vomiting, diarrhoea or even pancreatitis. It\'s best to keep all chocolate away from dogs.' },
+      { q: 'How long does theobromine stay in a dog?', a: 'Theobromine has a long half-life in dogs (around 17.5 hours), so it accumulates and effects can persist for 24–72 hours. That slow clearance is exactly why even moderate amounts are risky and why prompt veterinary care matters.' },
+    ],
+    keywords: ['dog chocolate toxicity calculator', 'chocolate toxicity calculator dog', 'how much chocolate is toxic to dogs', 'dog ate chocolate calculator', 'theobromine calculator dog', 'chocolate poisoning dog', 'dog chocolate danger calculator'],
   },
 ];
 

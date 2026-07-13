@@ -353,6 +353,7 @@
   "pets/cat-age-calculator",
   "pets/cat-food-calculator",
   "pets/dog-age-calculator",
+  "pets/dog-chocolate-toxicity-calculator",
   "pets/dog-crate-size-calculator",
   "pets/dog-food-calculator",
   "pets/pet-gestation-calculator",

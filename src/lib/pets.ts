@@ -130,4 +130,47 @@ export function crateSize(lengthCm: number, heightCm: number, marginCm = 7.5) {
   return { length: lengthCm + marginCm, height: heightCm + marginCm };
 }
 
+/* ---------------- Dog chocolate toxicity ---------------- */
+
+/**
+ * Theobromine content by chocolate type, in mg per gram. Theobromine is the
+ * methylxanthine that poisons dogs (caffeine adds a little more). Values are
+ * mid-range figures from the Merck Veterinary Manual and Pet Poison Helpline;
+ * real products vary, so this is an estimate, not a diagnosis.
+ */
+export const THEOBROMINE_MG_PER_G: Record<string, { label: string; mg: number }> = {
+  white: { label: 'White chocolate', mg: 0.009 },
+  milk: { label: 'Milk chocolate', mg: 2.06 },
+  dark: { label: 'Dark / semisweet chocolate', mg: 5.36 },
+  baking: { label: 'Baking (unsweetened) chocolate', mg: 14.1 },
+  cocoa: { label: 'Cocoa powder', mg: 26.0 },
+  cocoaMulch: { label: 'Cocoa bean mulch', mg: 9.1 },
+};
+
+export type ChocRisk = 'none' | 'mild' | 'moderate' | 'severe' | 'lethal';
+export interface ChocResult {
+  theobromineMg: number;
+  dosePerKg: number;
+  risk: ChocRisk;
+}
+/**
+ * Estimate a dog's theobromine dose (mg per kg body weight) from a chocolate
+ * type, amount eaten and the dog's weight, and band the risk. Published
+ * veterinary thresholds (theobromine, per kg): signs from ~20 mg/kg, serious
+ * cardiac/neurologic effects ~40–50 mg/kg, seizures ~60 mg/kg, potentially
+ * fatal ~100–200 mg/kg. Not a substitute for a vet or poison-control call.
+ */
+export function chocolateToxicity(type: string, amountG: number, dogKg: number): ChocResult | null {
+  const t = THEOBROMINE_MG_PER_G[type];
+  if (!t || amountG <= 0 || dogKg <= 0) return null;
+  const theobromineMg = t.mg * amountG;
+  const dosePerKg = theobromineMg / dogKg;
+  let risk: ChocRisk = 'none';
+  if (dosePerKg >= 100) risk = 'lethal';
+  else if (dosePerKg >= 60) risk = 'severe';
+  else if (dosePerKg >= 40) risk = 'moderate';
+  else if (dosePerKg >= 20) risk = 'mild';
+  return { theobromineMg, dosePerKg, risk };
+}
+
 export { L_PER_GAL_US, L_PER_GAL_UK };
