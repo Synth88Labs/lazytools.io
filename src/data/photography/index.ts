@@ -4,7 +4,7 @@ export interface PhotographyToolDef {
   slug: string;
   name: string;
   icon: string;
-  widget: 'dof' | 'fov' | 'crop' | 'ev' | 'hyperfocal' | 'timelapse' | 'print' | 'sunny16' | 'startrail' | 'flashgn';
+  widget: 'dof' | 'fov' | 'crop' | 'ev' | 'hyperfocal' | 'timelapse' | 'print' | 'sunny16' | 'startrail' | 'flashgn' | 'ndfilter' | 'diffraction';
   description: string;
   lead: string;
   how: string;
@@ -193,6 +193,42 @@ export const PHOTOGRAPHY_TOOLS: PhotographyToolDef[] = [
       { q: 'Why is my flash exposure off from the guide number?', a: 'Guide numbers assume direct flash at a rated zoom. Bouncing, diffusing, or a wide zoom setting all reduce the light reaching the subject, so you\'ll need a wider aperture or higher ISO than the raw GN math suggests. Use it as a starting point and confirm with a test frame.' },
     ],
     keywords: ['flash guide number calculator', 'guide number calculator', 'flash aperture calculator', 'flash distance calculator', 'gn flash calculator', 'manual flash exposure calculator', 'flash power calculator'],
+  },
+  {
+    slug: 'nd-filter-calculator',
+    name: 'ND Filter Calculator',
+    icon: '🌫️',
+    widget: 'ndfilter',
+    description: 'Calculate the new shutter speed after adding a neutral-density filter — from your base exposure and the filter\'s stops. For long-exposure photography. In your browser.',
+    lead: 'Pick your metered shutter speed and the ND filter strength to get the new long-exposure shutter time.',
+    how: 'A neutral-density (ND) filter darkens the whole scene evenly so you can use a much longer shutter in bright light — for silky water, streaking clouds or empty-looking streets. Every "stop" of ND doubles the exposure time, so the new time is your metered time × 2^(stops). A 10-stop ND (often sold as ND1000) multiplies the exposure by 1,024: a metered 1/60 s becomes about 17 seconds. Choose your base shutter and the filter strength and the tool gives the new time.',
+    note: 'Meter and focus first without the filter, then attach it (strong NDs make autofocus and viewfinders go dark). Once the calculated time passes about 30 seconds — the usual longest standard setting — switch to bulb mode with a remote or intervalometer, and use a tripod. Stacking filters adds their stops together.',
+    faqs: [
+      { q: 'How do I calculate shutter speed with an ND filter?', a: 'Multiply your metered shutter time by 2 raised to the number of stops: new time = base × 2^stops. A 6-stop ND on a 1/8 s exposure gives 1/8 × 64 = 8 seconds.' },
+      { q: 'How many stops is an ND1000 filter?', a: 'ND1000 is a 10-stop filter (2^10 = 1024, so it cuts light by about 1,000×). It turns a 1/60 s exposure into roughly 17 seconds — ideal for daytime long exposures of water and clouds.' },
+      { q: 'What ND filter do I need for long exposures?', a: 'For visibly smoothing water or clouds in daylight you usually want 6 to 10 stops. A 10-stop is the classic choice for multi-second daytime exposures; 3–6 stops suit brighter blur or slightly dimmer light. Enter the stops to see the resulting time.' },
+      { q: 'Can I stack ND filters?', a: 'Yes — stacking adds their stop values (a 6-stop plus a 3-stop gives 9 stops). Watch for vignetting on wide lenses and some loss of image quality with cheaper filters. Add the total stops in this calculator.' },
+      { q: 'Why does my long exposure need bulb mode?', a: 'Most cameras\' longest standard shutter is 30 seconds. When the ND math gives a longer time, you must use bulb mode and time the exposure with a remote or intervalometer, keeping the camera on a tripod throughout.' },
+    ],
+    keywords: ['nd filter calculator', 'neutral density filter calculator', 'long exposure calculator', 'nd1000 calculator', 'nd filter shutter speed', 'nd stops calculator', 'long exposure shutter calculator'],
+  },
+  {
+    slug: 'diffraction-limit-calculator',
+    name: 'Diffraction Limit Calculator',
+    icon: '🔬',
+    widget: 'diffraction',
+    description: 'Find the diffraction-limited aperture for your camera — the f-number where stopping down starts to soften detail — from the sensor and megapixels. In your browser.',
+    lead: 'Choose your sensor and resolution to find the aperture where diffraction begins to limit sharpness.',
+    how: 'Stopping the lens down (higher f-number) deepens focus but also spreads each point of light into a larger "Airy disk" through diffraction, of diameter d = 2.44 · λ · N (λ ≈ 0.55 µm green light, N the f-number). When that disk grows bigger than a sensor pixel, fine per-pixel detail starts to soften. The tool estimates your pixel pitch from the sensor size and megapixels, then reports the diffraction-limited aperture — the f-number where the Airy disk first equals a pixel — and whether your chosen aperture is already in the softened range.',
+    note: 'This is a guide, not a hard wall: image detail degrades gradually past the limit, and the extra depth of field from stopping down is often worth a touch of diffraction softening — landscape shooters routinely use f/11–f/16 knowing this. Higher-resolution sensors have smaller pixels and so hit diffraction at wider apertures, but they still resolve at least as much detail as lower-resolution ones at the same aperture.',
+    faqs: [
+      { q: 'What is the diffraction-limited aperture?', a: 'The f-number at which the Airy disk (the blur from diffraction) grows to the size of one sensor pixel. Beyond it, stopping down further reduces per-pixel sharpness. For a 24 MP full-frame sensor it\'s around f/6.7–f/8.' },
+      { q: 'At what aperture does diffraction start?', a: 'It depends on pixel size: smaller pixels (higher resolution or smaller sensors) soften at wider apertures. This calculator computes it for your sensor and megapixels — commonly f/8–f/11 on full frame, wider on crop and phone sensors.' },
+      { q: 'What is the Airy disk?', a: 'The smallest spot a lens can focus a point of light into, limited by diffraction. Its diameter is 2.44 · λ · N, so it grows as you stop down. When it exceeds a pixel, the sensor can no longer resolve finer detail.' },
+      { q: 'Should I avoid stopping down past the diffraction limit?', a: 'Not necessarily. Detail softens gradually, and the extra depth of field is often more valuable than perfect per-pixel sharpness — f/11 to f/16 is common in landscapes. Treat the limit as the point where you weigh sharpness against depth of field.' },
+      { q: 'Do high-megapixel cameras suffer more from diffraction?', a: 'They reach the diffraction limit at wider apertures because their pixels are smaller, but they never resolve less than a lower-resolution sensor at the same aperture — you just see the softening at 100% earlier. Downsized to the same output size, more megapixels still help.' },
+    ],
+    keywords: ['diffraction limit calculator', 'diffraction limited aperture', 'diffraction calculator photography', 'airy disk calculator', 'sharpest aperture calculator', 'pixel pitch diffraction', 'when does diffraction start'],
   },
 ];
 

@@ -124,4 +124,40 @@ export const flashDistance = (gn: number, fStop: number) => fStop > 0 ? gn / fSt
 /** Effective guide number at a different ISO: GN × √(ISO ÷ 100). */
 export const flashGnAtIso = (gn100: number, iso: number) => gn100 * Math.sqrt(iso / 100);
 
+/* ---------------- ND filter exposure ---------------- */
+
+/**
+ * New shutter time (seconds) after adding a neutral-density filter of `stops`.
+ * Each stop doubles the exposure time, so time = base × 2^stops. A 10-stop ND
+ * turns 1/60 s into about 17 seconds.
+ */
+export function ndShutter(baseSeconds: number, stops: number): number | null {
+  if (baseSeconds <= 0 || stops < 0) return null;
+  return baseSeconds * Math.pow(2, stops);
+}
+
+/* ---------------- Diffraction limit ---------------- */
+
+/** Green-light wavelength used for diffraction estimates (µm). */
+export const DIFFRACTION_LAMBDA_UM = 0.55;
+/** Airy-disk diameter (µm) at an aperture: d = 2.44 · λ · N (N = f-number). */
+export function airyDiskUm(fNumber: number, lambdaUm = DIFFRACTION_LAMBDA_UM): number | null {
+  if (fNumber <= 0) return null;
+  return 2.44 * lambdaUm * fNumber;
+}
+/** Pixel pitch (µm) from a sensor width (mm) and its horizontal pixel count. */
+export function pixelPitchUm(sensorWidthMm: number, horizontalPixels: number): number | null {
+  if (sensorWidthMm <= 0 || horizontalPixels <= 0) return null;
+  return (sensorWidthMm / horizontalPixels) * 1000;
+}
+/**
+ * Diffraction-limited aperture — the f-number where the Airy disk diameter
+ * first equals the pixel pitch, i.e. where stopping down further starts to
+ * soften per-pixel detail: N = pixelPitch ÷ (2.44 · λ).
+ */
+export function diffractionApertureN(pixelPitchUm: number, lambdaUm = DIFFRACTION_LAMBDA_UM): number | null {
+  if (pixelPitchUm <= 0) return null;
+  return pixelPitchUm / (2.44 * lambdaUm);
+}
+
 export { FF_DIAGONAL };
