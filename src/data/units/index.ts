@@ -20,6 +20,7 @@ import { angle } from './angle.ts';
 import { acceleration } from './acceleration.ts';
 import { illuminance } from './illuminance.ts';
 import { magneticField } from './magnetic-field.ts';
+import { viscosity } from './viscosity.ts';
 
 export type { Quantity, Unit, PairMeta };
 
@@ -45,6 +46,7 @@ export const QUANTITIES: Quantity[] = [
   acceleration,
   illuminance,
   magneticField,
+  viscosity,
 ];
 
 /** baseValue = v * factor + offset; target = (base - offset2) / factor2 */

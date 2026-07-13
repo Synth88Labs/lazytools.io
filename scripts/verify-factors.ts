@@ -148,6 +148,14 @@ const AUTHORITATIVE: Record<string, Record<string, number>> = {
     mg: 1e-7,
     nt: 1e-9,
   },
+  // base: Pa·s. 1 poise = 0.1 Pa·s; 1 cP = 1 mPa·s = 1e-3 Pa·s; 1 µP = 1e-7 Pa·s.
+  viscosity: {
+    pas: 1,
+    mpas: 1e-3,
+    p: 0.1,
+    cp: 1e-3,
+    up: 1e-7,
+  },
 };
 
 // Temperature is offset-based → verified via known point pairs instead.
