@@ -16,7 +16,7 @@ function categoryOf(post: (typeof posts)[number]): { slug: string; name: string 
   return cat ? { slug: cat.slug, name: cat.name } : { slug: 'general', name: 'General' };
 }
 
-/** A handful of broad topic groups for the filter pills — the 39 categories roll up into these. */
+/** A handful of broad topic groups for the filter pills — all tool categories roll up into these. */
 const GROUP_ORDER = ['science', 'home', 'money', 'files', 'dev', 'everyday'] as const;
 const GROUP_NAME: Record<string, string> = {
   science: 'Science & Math', home: 'Home & Auto', money: 'Money & Health',

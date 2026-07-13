@@ -31,7 +31,7 @@ are no processing servers. The tool code downloads to *your* device and runs the
 yourself: open DevTools, watch the network tab, or switch off your connection mid-use — everything keeps
 working.
 
-## What's live — 39 categories, 720+ tools, ~880 pages
+## What's live — 39 categories, 780+ tools, ~940 pages
 
 | Category | Highlights |
 |---|---|
@@ -85,7 +85,7 @@ Polish and Belgian e-invoicing mandates.
 ```bash
 npm install
 npm run dev      # dev server at localhost:4321
-npm run build    # static site → dist/ (~810 pages)
+npm run build    # static site → dist/ (~940 pages)
 ```
 
 ## Tech & models

@@ -4,17 +4,21 @@ import FaqSection from '../components/FaqSection.astro';
 import { CATEGORIES, SITE } from '../lib/site';
 import { popularPairsGlobal, titleNoun } from '../data/units';
 import { faqSchema } from '../lib/schema';
+import allowlist from '../../api/tools-allowlist.json';
 
 const popularPairs = popularPairsGlobal(4);
 const live = CATEGORIES.filter((c) => c.status === 'live');
 const soon = CATEGORIES.filter((c) => c.status === 'coming-soon');
+// Derived from the generated tool registry so these never go stale.
+const catCount = live.length;
+const toolCount = Math.floor(allowlist.length / 10) * 10; // rounded-down floor, e.g. 780
 
 const faqs = [
   { q: 'Are LazyTools really free?', a: 'Yes — every tool is completely free, with no sign-up, no account, no trial, no usage limits and no paywalled features. There\'s nothing to install either; each tool opens instantly in your browser.' },
   { q: 'Do my files or data get uploaded to a server?', a: 'No. Every tool runs entirely in your browser using JavaScript and WebAssembly, so the files you open and the values you type are processed on your own device and never sent anywhere. You can prove it: switch off your internet connection mid-use and the tools keep working, or watch your browser\'s network tab — you\'ll see the page and an analytics tag load, but nothing carrying your files or inputs.' },
   { q: 'Does LazyTools track me or use cookies?', a: 'Only if you accept our cookie banner. We use Google Analytics to measure page visits, but it stays off by default (Google Consent Mode) — no cookies are set and no data is sent until you consent, and you can decline. Even when enabled, analytics only records that you visited a page; it never sees the files or values you enter into a tool, which stay on your device. We run no ads and never sell your data.' },
   { q: 'Do the tools work offline?', a: 'Yes. Because the processing happens in your browser, most tools keep working with no internet connection once the page has loaded — handy on a plane or with a patchy signal.' },
-  { q: 'How many tools are there, and what kinds?', a: 'Over 660 tools across 39 categories — unit and size converters, everyday and financial calculators, exact math, chemistry, physics, biology and statistics, cooking, automotive, fitness, pet, gardening, music, weather, astronomy, photography and electronics calculators, travel and trip planners, 3D-printing, solar/off-grid energy and homebrewing calculators, developer utilities, text and color tools, generators, PDF and image tools, and a passport/visa photo maker.' },
+  { q: 'How many tools are there, and what kinds?', a: `Over ${toolCount} tools across ${catCount} categories — unit and size converters, everyday and financial calculators, exact math, chemistry, physics, biology and statistics, cooking, automotive, fitness, pet, gardening, music, weather, astronomy, photography and electronics calculators, travel and trip planners, 3D-printing, solar/off-grid energy and homebrewing calculators, developer utilities, text and color tools, generators, PDF and image tools, and a passport/visa photo maker.` },
   { q: 'How accurate are the calculators?', a: 'They\'re built for exactness — using precise NIST/BIPM conversion factors, published scientific and engineering formulas, and BigInt or exact-fraction math where rounding would otherwise creep in. Many categories were checked against authoritative sources (NASA, NOAA, USDA, King Arthur Baking and others), and the harder libraries are unit-tested.' },
   { q: 'Do I need to create an account?', a: 'Never. LazyTools has no accounts and holds no personal data — you just open a tool and use it. Some tools optionally remember your preferences in your browser\'s own local storage, which stays on your device.' },
   { q: 'Is LazyTools open source?', a: 'Yes — the site is open source on GitHub, so you can read exactly how every tool works and verify the privacy claims for yourself. It\'s a project of Synth88 Labs.' },
@@ -60,7 +64,7 @@ const flagship = [
 
 <Base
   title="LazyTools — Free Online Tools That Never Upload Your Data"
-  description="660+ free, privacy-first online tools across 39 categories: unit converters, calculators, finance, exact math, chemistry & physics, cooking, automotive, fitness, pets, gardening, music, weather, astronomy, photography & electronics calculators, travel & trip planners, 3D-printing, solar/off-grid energy & homebrewing calculators, biology & lab tools, passport & visa photo makers, text-forensics and developer utilities, QR & barcode generators, PDF and image tools, and more. Everything runs in your browser — your files and inputs are never uploaded or sent to any server. No sign-up, no limits."
+  description={`${toolCount}+ free, privacy-first online tools across ${catCount} categories: unit converters, calculators, finance, exact math, chemistry & physics, cooking, automotive, fitness, pets, gardening, music, weather, astronomy, photography & electronics calculators, travel & trip planners, 3D-printing, solar/off-grid energy & homebrewing calculators, biology & lab tools, passport & visa photo makers, text-forensics and developer utilities, QR & barcode generators, PDF and image tools, and more. Everything runs in your browser — your files and inputs are never uploaded or sent to any server. No sign-up, no limits.`}
   schema={[faqSchema(faqs)]}
 >
   <!-- Hero -->
@@ -78,7 +82,7 @@ const flagship = [
           href="/tools/"
           class="rounded-xl bg-brand-700 px-6 py-3 font-semibold text-white shadow-sm transition hover:bg-brand-800"
         >
-          Browse 660+ free tools
+          Browse {toolCount}+ free tools
         </a>
         <a
           href="/how-it-works/"
