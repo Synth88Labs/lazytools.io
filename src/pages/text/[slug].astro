@@ -14,6 +14,9 @@ import ReadabilityTool from '../../components/text/ReadabilityTool.tsx';
 import UnicodeInspectorTool from '../../components/text/UnicodeInspectorTool.tsx';
 import WordFrequencyTool from '../../components/text/WordFrequencyTool.tsx';
 import BionicReadingTool from '../../components/text/BionicReadingTool.tsx';
+import NumberToWordsTool from '../../components/text/NumberToWordsTool.tsx';
+import UpsideDownTool from '../../components/text/UpsideDownTool.tsx';
+import RandomLinePickerTool from '../../components/text/RandomLinePickerTool.tsx';
 import { TEXT_TOOLS, type TextToolDef } from '../../data/text/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -72,6 +75,9 @@ const schema = [
       {tool.widget === 'unicode' && <UnicodeInspectorTool client:load />}
       {tool.widget === 'frequency' && <WordFrequencyTool client:load />}
       {tool.widget === 'bionic' && <BionicReadingTool client:load />}
+      {tool.widget === 'numwords' && <NumberToWordsTool client:load />}
+      {tool.widget === 'upsidedown' && <UpsideDownTool client:load />}
+      {tool.widget === 'linepicker' && <RandomLinePickerTool client:load />}
     </div>
 
     <div class="mt-4">

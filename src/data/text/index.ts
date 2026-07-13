@@ -16,7 +16,7 @@ export interface TextToolDef {
   description: string;
   lead: string;
   /** 'counter' = live stats; 'transform' = input→output; others = custom islands */
-  widget: 'counter' | 'transform' | 'invisible' | 'homoglyph' | 'diff' | 'readability' | 'unicode' | 'frequency' | 'bionic';
+  widget: 'counter' | 'transform' | 'invisible' | 'homoglyph' | 'diff' | 'readability' | 'unicode' | 'frequency' | 'bionic' | 'numwords' | 'upsidedown' | 'linepicker';
   computeId?: string;
   options?: TextToolOption[];
   /** sample text preloaded so the tool demonstrates itself */
@@ -602,6 +602,60 @@ export const TEXT_TOOLS: TextToolDef[] = [
       { q: 'Is my text uploaded?', a: 'No — the formatting is generated entirely in your browser.' },
     ],
     keywords: ['fast reading bold', 'bionic reading alternative', 'bold first letters', 'fixation reading', 'speed reading text', 'reading aid bold'],
+  },
+  {
+    slug: 'number-to-words',
+    name: 'Number to Words Converter',
+    icon: '🔢',
+    widget: 'numwords',
+    description: 'Convert a number to written English words — plus the "amount in words" cheque format with cents as a fraction. In your browser.',
+    lead: 'Enter a number to spell it out in English words, and get the cheque-style "amount in words" line for the same value.',
+    how: 'The tool breaks the number into groups of three digits, names each group (hundreds, tens and ones) and appends the scale — thousand, million, billion and so on. Decimals are read digit by digit after "point", and negatives get "negative". The cheque format writes the whole number in words followed by the cents as a fraction over 100, the standard way to fill in the amount line of a cheque.',
+    note: 'Writing amounts in words prevents tampering and misreading on cheques, contracts and invoices — the words are the legally controlling figure if they disagree with the digits. This uses the short-scale English naming (a billion is a thousand million), which is standard in the US and modern UK usage.',
+    faqs: [
+      { q: 'How do you write a number in words?', a: 'Break it into groups of three from the right, name each group and add its scale word: 1,234 is "one thousand two hundred thirty-four". Tens and ones from 21–99 are hyphenated (twenty-one). The tool does it for any number.' },
+      { q: 'How do I write an amount on a cheque?', a: 'Spell out the whole-dollar (or -pound) amount in words, then write the cents as a fraction over 100 — for example "One thousand two hundred thirty-four and 50/100". The tool produces exactly this line.' },
+      { q: 'Why write numbers in words on legal documents?', a: 'Because words are harder to alter than digits and resolve ambiguity — if the words and figures on a cheque disagree, the written words are usually the legally binding amount.' },
+      { q: 'Does it handle decimals and negative numbers?', a: 'Yes. Decimals are read digit by digit after "point" (12.5 → "twelve point five"), and negative values are prefixed with "negative". The cheque format renders the fractional part as cents over 100.' },
+      { q: 'Is a billion a thousand million or a million million?', a: 'This tool uses the short scale (standard in the US and modern UK), where a billion is a thousand million (10⁹) and a trillion is 10¹². The older long scale, where a billion was a million million, is rarely used today.' },
+    ],
+    keywords: ['number to words', 'number to words converter', 'amount in words', 'spell out numbers', 'numbers to text', 'cheque amount in words', 'write number in words'],
+  },
+  {
+    slug: 'upside-down-text',
+    name: 'Upside Down Text Generator',
+    icon: '🙃',
+    widget: 'upsidedown',
+    description: 'Flip text upside down into ready-to-paste Unicode — for social media bios, usernames and messages. In your browser.',
+    lead: 'Type your text to flip it upside down into Unicode characters you can copy and paste anywhere.',
+    how: 'Each letter, digit and common punctuation mark is swapped for a Unicode character that resembles its 180°-rotated form, and the whole string is reversed so it reads from the bottom up. The result is normal Unicode text, so you can copy it into places that accept text — social profiles, comments, chat — where it appears flipped.',
+    note: 'A handful of characters have no widely-supported upside-down equivalent and are left unchanged. Because it relies on look-alike Unicode glyphs, how faithfully it renders depends on the font; most modern apps display it well. It\'s a playful text effect, not an encoding — it doesn\'t hide or encrypt anything.',
+    faqs: [
+      { q: 'How do you make upside-down text?', a: 'Replace each character with a Unicode look-alike of its flipped form and reverse the order so it reads bottom-to-top. This tool does it instantly and gives you copy-ready text.' },
+      { q: 'Can I paste upside-down text on Instagram or TikTok?', a: 'Yes — it\'s standard Unicode, so it pastes into bios, captions, usernames and comments on most platforms. A few apps with strict character filters may strip some glyphs.' },
+      { q: 'Is upside-down text real letters?', a: 'They\'re real Unicode characters chosen to look like flipped letters (for example "ɐ" for a rotated "a"), not the actual letters. That\'s why it copies and pastes as text rather than as an image.' },
+      { q: 'Why do some characters not flip?', a: 'Not every character has a good upside-down look-alike in Unicode, so those are left as they are. The result is still readable; only a few symbols stay upright.' },
+      { q: 'Does it work in every font?', a: 'Mostly. The flipped glyphs are widely supported, but rendering depends on the font — some display certain characters better than others. Most phones, browsers and social apps show it correctly.' },
+    ],
+    keywords: ['upside down text', 'upside down text generator', 'flip text', 'flipped text generator', 'text flipper', 'upside down letters', 'rotate text 180'],
+  },
+  {
+    slug: 'random-line-picker',
+    name: 'Random Line Picker',
+    icon: '🎲',
+    widget: 'linepicker',
+    description: 'Pick random items from a list — for raffles, giveaways, winners and decisions — using your browser\'s cryptographic randomness. In your browser.',
+    lead: 'Paste a list (one item per line), choose how many to pick, and draw random items fairly.',
+    how: 'Enter one item per line, set how many you want, and the tool draws them at random using your browser\'s cryptographic random-number generator (Web Crypto) for an unpredictable, unbiased result. "No repeats" shuffles the list and takes the requested number of distinct items; unchecking it lets the same item be drawn more than once.',
+    note: 'Because it runs entirely in your browser and uses cryptographic randomness, the draw is fair and your list never leaves your device — good for private raffles, prize draws, sampling and quick decisions. For "no repeats", you can\'t draw more items than the list contains.',
+    faqs: [
+      { q: 'How do I pick a random item from a list?', a: 'Paste your list with one item per line, set the count to 1, and press Pick. The tool selects an item at random. For a winner draw, that\'s your winner.' },
+      { q: 'Is the random pick fair?', a: 'Yes — it uses the browser\'s cryptographic random generator (Web Crypto), which is unbiased and unpredictable, unlike some simple pseudo-random shortcuts. Every item has an equal chance.' },
+      { q: 'Can I pick more than one at a time?', a: 'Yes — set the number to pick. With "no repeats" it draws that many distinct items (up to the list size); without it, the same item can come up more than once.' },
+      { q: 'Can the same item be picked twice?', a: 'Only if you uncheck "no repeats". By default the tool draws distinct items, so nobody wins twice in a single draw.' },
+      { q: 'Is my list private?', a: 'Yes — everything runs in your browser and the list is never uploaded. It\'s suitable for private raffles, giveaways and any list you\'d rather not send to a server.' },
+    ],
+    keywords: ['random line picker', 'random name picker', 'raffle picker', 'pick random from list', 'giveaway winner picker', 'random item selector', 'random line generator'],
   },
 ];
 

@@ -246,3 +246,78 @@ export const TRANSFORM: Record<string, (input: string, opts: Opts) => TransformR
     return { output: input };
   },
 };
+
+/* ---------------- number to words ---------------- */
+const NTW_ONES = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
+const NTW_TENS = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
+const NTW_SCALES = ['', ' thousand', ' million', ' billion', ' trillion', ' quadrillion'];
+
+function ntwThree(n: number): string {
+  let s = '';
+  if (n >= 100) { s += NTW_ONES[Math.floor(n / 100)] + ' hundred'; n %= 100; if (n) s += ' '; }
+  if (n >= 20) { s += NTW_TENS[Math.floor(n / 10)]; n %= 10; if (n) s += '-' + NTW_ONES[n]; }
+  else if (n > 0) s += NTW_ONES[n];
+  return s;
+}
+
+/** Integer (0 to ~10^18) to English words. */
+export function integerToWords(num: number): string {
+  if (!isFinite(num)) return '';
+  num = Math.trunc(Math.abs(num));
+  if (num === 0) return 'zero';
+  const groups: number[] = [];
+  while (num > 0) { groups.push(num % 1000); num = Math.floor(num / 1000); }
+  const parts: string[] = [];
+  for (let i = groups.length - 1; i >= 0; i--) {
+    if (groups[i] === 0) continue;
+    parts.push(ntwThree(groups[i]) + NTW_SCALES[i]);
+  }
+  return parts.join(' ');
+}
+
+/** Full number (sign + decimals) to English words, e.g. -12.5 → "negative twelve point five". */
+export function numberToWords(num: number): string {
+  if (!isFinite(num)) return '';
+  const neg = num < 0;
+  const s = Math.abs(num).toString();
+  const [intStr, fracStr] = s.split('.');
+  let out = integerToWords(parseInt(intStr, 10));
+  if (fracStr) out += ' point ' + [...fracStr].map((d) => NTW_ONES[parseInt(d, 10)]).join(' ');
+  return (neg ? 'negative ' : '') + out;
+}
+
+/** Cheque/"amount in words" style: "one thousand two hundred thirty-four and 50/100". */
+export function amountToWords(num: number): string {
+  const neg = num < 0;
+  const abs = Math.abs(num);
+  const dollars = Math.trunc(abs);
+  const cents = Math.round((abs - dollars) * 100);
+  const words = integerToWords(dollars);
+  const cap = words.charAt(0).toUpperCase() + words.slice(1);
+  return (neg ? 'Negative ' : '') + cap + ' and ' + String(cents).padStart(2, '0') + '/100';
+}
+
+/* ---------------- upside-down text ---------------- */
+const FLIP: Record<string, string> = {
+  a: 'ɐ', b: 'q', c: 'ɔ', d: 'p', e: 'ǝ', f: 'ɟ', g: 'ƃ', h: 'ɥ', i: 'ᴉ', j: 'ɾ', k: 'ʞ', l: 'l', m: 'ɯ', n: 'u', o: 'o', p: 'd', q: 'b', r: 'ɹ', s: 's', t: 'ʇ', u: 'n', v: 'ʌ', w: 'ʍ', x: 'x', y: 'ʎ', z: 'z',
+  A: '∀', B: 'q', C: 'Ɔ', D: 'p', E: 'Ǝ', F: 'Ⅎ', G: 'פ', H: 'H', I: 'I', J: 'ſ', K: 'ʞ', L: '˥', M: 'W', N: 'N', O: 'O', P: 'Ԁ', Q: 'Q', R: 'ᴚ', S: 'S', T: '┴', U: '∩', V: 'Λ', W: 'M', X: 'X', Y: '⅄', Z: 'Z',
+  '0': '0', '1': 'Ɩ', '2': 'ᄅ', '3': 'Ɛ', '4': 'ㄣ', '5': 'ϛ', '6': '9', '7': 'ㄥ', '8': '8', '9': '6',
+  '.': '˙', ',': "'", '?': '¿', '!': '¡', "'": ',', '"': '„', '(': ')', ')': '(', '[': ']', ']': '[', '{': '}', '}': '{', '<': '>', '>': '<', '&': '⅋', '_': '‾',
+};
+/** Flip text upside down (map glyphs and reverse order). */
+export function upsideDown(text: string): string {
+  return [...text].map((c) => FLIP[c] ?? c).reverse().join('');
+}
+
+/* ---------------- random line picker ---------------- */
+/** Pick n random lines. unique = no repeats (up to available). rand injectable for testing. */
+export function pickLines(lines: string[], n: number, unique: boolean, rand: () => number = Math.random): string[] {
+  const pool = lines.filter((l) => l.trim() !== '');
+  if (pool.length === 0 || n <= 0) return [];
+  if (unique) {
+    const copy = [...pool];
+    for (let i = copy.length - 1; i > 0; i--) { const j = Math.floor(rand() * (i + 1));[copy[i], copy[j]] = [copy[j], copy[i]]; }
+    return copy.slice(0, Math.min(n, copy.length));
+  }
+  return Array.from({ length: n }, () => pool[Math.floor(rand() * pool.length)]);
+}
