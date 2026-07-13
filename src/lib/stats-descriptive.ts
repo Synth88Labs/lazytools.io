@@ -76,3 +76,52 @@ export function describe(data: number[]): Describe | null {
 export function zScore(x: number, mean: number, sd: number): number | null {
   return sd > 0 ? (x - mean) / sd : null;
 }
+
+/* ---------------- Geometric & harmonic means ---------------- */
+
+/** Geometric mean = (∏xᵢ)^(1/n) = exp(mean(ln xᵢ)). Requires all values > 0. */
+export function geometricMean(data: number[]): number | null {
+  if (data.length === 0 || data.some((x) => x <= 0)) return null;
+  const sumLn = data.reduce((s, x) => s + Math.log(x), 0);
+  return Math.exp(sumLn / data.length);
+}
+/** Harmonic mean = n ÷ Σ(1/xᵢ). Requires all values > 0. */
+export function harmonicMean(data: number[]): number | null {
+  if (data.length === 0 || data.some((x) => x <= 0)) return null;
+  const sumRecip = data.reduce((s, x) => s + 1 / x, 0);
+  return data.length / sumRecip;
+}
+
+/* ---------------- Odds ↔ probability ---------------- */
+
+function gcd(a: number, b: number): number {
+  a = Math.abs(Math.round(a)); b = Math.abs(Math.round(b));
+  while (b) { [a, b] = [b, a % b]; }
+  return a || 1;
+}
+
+export interface OddsResult {
+  probability: number;   // 0..1
+  percent: number;       // 0..100
+  decimalOdds: number;   // betting decimal odds = 1/p
+  forA: number;          // simplified "for : against"
+  forB: number;
+}
+/** Probability (0..1) and equivalent odds from "for : against" odds. */
+export function oddsToProbability(forVal: number, againstVal: number): OddsResult | null {
+  if (forVal < 0 || againstVal < 0 || forVal + againstVal <= 0) return null;
+  const p = forVal / (forVal + againstVal);
+  const g = gcd(forVal, againstVal);
+  return { probability: p, percent: p * 100, decimalOdds: p > 0 ? 1 / p : Infinity, forA: forVal / g, forB: againstVal / g };
+}
+/** Odds and decimal odds from a probability given as a percentage (0..100). */
+export function probabilityToOdds(percent: number): OddsResult | null {
+  if (percent <= 0 || percent >= 100) return null;
+  const p = percent / 100;
+  // odds for:against = p : (1-p); scale to integers then simplify
+  const scale = 1e6;
+  const a = Math.round(p * scale);
+  const b = Math.round((1 - p) * scale);
+  const g = gcd(a, b);
+  return { probability: p, percent, decimalOdds: 1 / p, forA: a / g, forB: b / g };
+}

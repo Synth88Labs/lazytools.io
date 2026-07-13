@@ -4,7 +4,7 @@ export interface StatToolDef {
   slug: string;
   name: string;
   icon: string;
-  widget: 'normal' | 'binomial' | 'ci' | 'sample-size' | 'pvalue' | 'regression' | 'ttest' | 'poisson' | 'chisquare' | 'descriptive' | 'zscore';
+  widget: 'normal' | 'binomial' | 'ci' | 'sample-size' | 'pvalue' | 'regression' | 'ttest' | 'poisson' | 'chisquare' | 'descriptive' | 'zscore' | 'means' | 'odds';
   description: string;
   lead: string;
   how: string;
@@ -217,6 +217,42 @@ export const STAT_TOOLS: StatToolDef[] = [
       { q: 'What is considered an unusual z-score?', a: 'By a common rule of thumb, z-scores beyond ±2 are somewhat unusual (outside ~95% of the data) and beyond ±3 are rare (outside ~99.7%). The exact cut-off depends on your context and significance level.' },
     ],
     keywords: ['z score calculator', 'z-score calculator', 'standard score calculator', 'z score to percentile', 'how to calculate z score', 'standardized score calculator', 'z value calculator'],
+  },
+  {
+    slug: 'geometric-harmonic-mean-calculator',
+    name: 'Geometric & Harmonic Mean Calculator',
+    icon: '📐',
+    widget: 'means',
+    description: 'Calculate the geometric mean and harmonic mean of a data set — the right averages for growth rates and for rates over distance — with the arithmetic mean for comparison. In your browser.',
+    lead: 'Paste your numbers to get the geometric mean, the harmonic mean and the arithmetic mean side by side.',
+    how: 'Different situations need different averages. The geometric mean is the nth root of the product of the values (equivalently, exp of the mean of their logarithms) — it\'s the correct average for things that multiply, like year-on-year growth rates or investment returns. The harmonic mean is the number of values divided by the sum of their reciprocals — the correct average for rates measured over a fixed quantity, like average speed over equal distances. The tool computes both, plus the familiar arithmetic mean, so you can compare them.',
+    note: 'Both the geometric and harmonic means require every value to be positive (they use logarithms and reciprocals). For any set of positive numbers, the arithmetic mean is always at least the geometric mean, which is at least the harmonic mean — they\'re equal only when all the values are identical.',
+    faqs: [
+      { q: 'What is the geometric mean?', a: 'The nth root of the product of n numbers: for 2, 4, 8 it\'s (2·4·8)^(1/3) = 4. It\'s the right average for growth rates and ratios — averaging annual returns of +50% and −50% gives a geometric mean below zero, correctly reflecting the loss.' },
+      { q: 'What is the harmonic mean?', a: 'The number of values divided by the sum of their reciprocals: for 1, 2, 4 it\'s 3 ÷ (1 + ½ + ¼) ≈ 1.71. It\'s the correct average for rates over a fixed distance, such as average speed, and for ratios like the P/E of a portfolio.' },
+      { q: 'When should I use the geometric mean instead of the arithmetic mean?', a: 'Use the geometric mean for quantities that compound or multiply — investment returns, growth rates, index numbers, ratios. The arithmetic mean overstates the average return of a volatile series; the geometric mean gives the true compound rate.' },
+      { q: 'When is the harmonic mean the right average?', a: 'When averaging rates over a constant numerator — average speed over equal distances, average price-to-earnings, or rates like miles per gallon across equal-distance trips. Using the arithmetic mean there gives too high a figure.' },
+      { q: 'Why do the means need positive numbers?', a: 'The geometric mean takes logarithms (undefined for zero or negatives) and the harmonic mean takes reciprocals (undefined for zero). Both are defined only for strictly positive data; the tool flags it if any value isn\'t.' },
+    ],
+    keywords: ['geometric mean calculator', 'harmonic mean calculator', 'geometric mean', 'harmonic mean', 'average growth rate calculator', 'mean of ratios calculator', 'types of mean calculator'],
+  },
+  {
+    slug: 'odds-probability-calculator',
+    name: 'Odds & Probability Calculator',
+    icon: '🎲',
+    widget: 'odds',
+    description: 'Convert between odds and probability — enter odds like 3:1 to get the percentage, or a probability to get the odds and decimal odds. In your browser.',
+    lead: 'Convert odds to a probability, or a probability to odds — with decimal (betting) odds shown too.',
+    how: 'Odds and probability describe the same chance in different ways. Odds of A:B "in favour" mean A chances of the event happening for every B chances of it not — so the probability is A ÷ (A + B). A 3:1 favourite has a 3 ÷ 4 = 75% chance. The tool converts either direction: enter odds to get the probability and decimal odds, or enter a probability percentage to get the simplified odds and the decimal odds (1 ÷ probability, the total return per unit staked).',
+    note: 'Be clear whether odds are quoted "for" (chances to win first) or "against" (chances to lose first) — 3:1 on and 3:1 against are very different. Decimal (European) odds include your stake in the payout; fractional (UK) and American (moneyline) odds are just other notations for the same underlying ratio.',
+    faqs: [
+      { q: 'How do I convert odds to probability?', a: 'For odds of A:B in favour, probability = A ÷ (A + B). So 3:1 gives 3 ÷ 4 = 75%, and 1:4 gives 1 ÷ 5 = 20%. Enter the two numbers and the tool returns the percentage and decimal odds.' },
+      { q: 'How do I convert probability to odds?', a: 'Odds "for : against" are probability : (1 − probability). A 75% chance is 0.75 : 0.25 = 3:1. This calculator simplifies the ratio to whole numbers and also shows the decimal odds.' },
+      { q: 'What are decimal odds?', a: 'Decimal (European) odds are 1 ÷ probability — the total amount returned per unit staked, stake included. A 25% chance is decimal odds of 4.0, meaning a 1-unit bet returns 4 units (a 3-unit profit). They map directly to the implied probability.' },
+      { q: 'What is the difference between "odds for" and "odds against"?', a: '"Odds for" (or "on") lists chances to win first, e.g. 3:1 on = 75% chance. "Odds against" lists chances to lose first, e.g. 3:1 against = 25% chance. Always check which way a quote is stated, as they invert the probability.' },
+      { q: 'What is implied probability in betting?', a: 'The probability that a set of odds corresponds to: 1 ÷ decimal odds, or A ÷ (A + B) for fractional odds. Bookmakers set odds so the implied probabilities sum to more than 100% (the "overround"), which is their margin.' },
+    ],
+    keywords: ['odds to probability calculator', 'probability to odds calculator', 'odds calculator', 'implied probability calculator', 'decimal odds calculator', 'odds converter', 'probability percentage to odds'],
   },
 ];
 
