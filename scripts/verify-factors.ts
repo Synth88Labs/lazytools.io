@@ -121,6 +121,16 @@ const AUTHORITATIVE: Record<string, Record<string, number>> = {
     turn: 360,
     point: 11.25,
   },
+  // base: m/s². g = 9.80665 (exact); 1 ft/s² = 0.3048; 1 Gal = 0.01; km/h/s = 1000/3600; mph/s = 1609.344/3600.
+  acceleration: {
+    ms2: 1,
+    g: 9.80665,
+    fts2: 0.3048,
+    gal: 0.01,
+    kmhs: 1000 / 3600,
+    mphs: 1609.344 / 3600,
+    ins2: 0.0254,
+  },
 };
 
 // Temperature is offset-based → verified via known point pairs instead.
