@@ -4,7 +4,7 @@ export interface ElectronicsToolDef {
   slug: string;
   name: string;
   icon: string;
-  widget: 'resistor' | 'led' | 'divider' | 'capcode' | 'awg' | 'rc' | 'timer555' | 'battery' | 'smd' | 'lc';
+  widget: 'resistor' | 'led' | 'divider' | 'capcode' | 'awg' | 'rc' | 'timer555' | 'battery' | 'smd' | 'lc' | 'sp-res' | 'sp-cap' | 'ohmslaw';
   description: string;
   lead: string;
   how: string;
@@ -195,6 +195,61 @@ export const ELECTRONICS_TOOLS: ElectronicsToolDef[] = [
       { q: 'Does the resistance matter for the frequency?', a: 'For the ideal formula, no — resonance depends only on L and C. Resistance mainly sets the Q (bandwidth/sharpness) and causes a small shift in lossy circuits, but fₒ = 1 ÷ (2π·√(L·C)) is the standard design value.' },
     ],
     keywords: ['lc resonant frequency calculator', 'resonant frequency calculator', 'lc circuit calculator', 'tank circuit calculator', 'lc tuning calculator', 'inductor capacitor frequency', 'resonance calculator', 'lc oscillator frequency'],
+  },
+  {
+    slug: 'ohms-law-calculator',
+    name: 'Ohm\'s Law Calculator',
+    icon: '⚡',
+    widget: 'ohmslaw',
+    description: 'Solve Ohm\'s law and the power wheel — enter any two of voltage, current, resistance and power and get all four. In your browser.',
+    lead: 'Enter any two of voltage, current, resistance and power, and the calculator fills in the other two using Ohm\'s law.',
+    how: 'Ohm\'s law states that voltage equals current times resistance (V = I × R), and electrical power extends it: P = V × I, which also equals I²R and V²/R. Those relationships form the "power wheel" — with any two of the four quantities known, the remaining two are fixed. The tool detects which two you entered, picks the right formula, and shows voltage (V), current (A), resistance (Ω) and power (W) together. Use consistent base units.',
+    note: 'Keep everything in base units: volts, amps, ohms and watts. If you\'re working in milliamps or kilohms, convert first (1 mA = 0.001 A, 1 kΩ = 1000 Ω) or the power and resistance will be off by factors of a thousand.',
+    faqs: [
+      { q: 'What is Ohm\'s law?', a: 'Ohm\'s law says the current through a conductor is proportional to the voltage across it and inversely proportional to its resistance: V = I × R. Rearranged, I = V / R and R = V / I.' },
+      { q: 'How do I calculate power from voltage and current?', a: 'Power is voltage times current: P = V × I. A 12 V supply delivering 2 A provides 24 W. You can also use P = I²R or P = V²/R when you know the resistance instead.' },
+      { q: 'Can I find resistance from power and voltage?', a: 'Yes — R = V² / P. For 12 V dissipating 24 W, R = 144 / 24 = 6 Ω. Enter just the voltage and power and the calculator returns the current and resistance too.' },
+      { q: 'What is the power wheel?', a: 'A chart of the twelve rearrangements of V = IR and P = VI, letting you get any quantity from any two others. This calculator does the same thing: give it two values and it computes the rest.' },
+      { q: 'What units should I use?', a: 'Volts, amps, ohms and watts — the SI base units. Convert milliamps to amps (÷1000) and kilohms/megohms to ohms (×1000 / ×1,000,000) before entering, so the results come out in watts and ohms correctly.' },
+      { q: 'Why do I need exactly two values?', a: 'Ohm\'s law has four linked quantities and two independent equations, so any two fix the other two. With only one value the system is underdetermined; with three, the inputs could conflict — so enter exactly two and leave the rest blank.' },
+    ],
+    keywords: ['ohms law calculator', 'ohm\'s law calculator', 'voltage current resistance calculator', 'power calculator watts', 'v=ir calculator', 'power wheel calculator', 'electrical power calculator', 'resistance from power calculator'],
+  },
+  {
+    slug: 'series-parallel-resistor-calculator',
+    name: 'Series & Parallel Resistor Calculator',
+    icon: '🔗',
+    widget: 'sp-res',
+    description: 'Calculate the total resistance of any number of resistors in series and in parallel at once. Enter a list of values in ohms. In your browser.',
+    lead: 'Enter a list of resistor values and get the total resistance both in series (added up) and in parallel (the reciprocal rule).',
+    how: 'Resistors in series carry the same current and their resistances simply add: R = R₁ + R₂ + …. Resistors in parallel share the same voltage, and their conductances add, so the total is the reciprocal of the summed reciprocals: 1/R = 1/R₁ + 1/R₂ + …. The parallel total is always smaller than the smallest individual resistor. Type any number of values separated by commas, spaces or new lines and both totals update instantly.',
+    note: 'Combining resistors is how you reach values that aren\'t made as standard parts — put two in series or parallel to hit a target. Two equal resistors in parallel give exactly half the value; two equal in series give double. Power sharing differs too: series resistors share voltage, parallel ones share current.',
+    faqs: [
+      { q: 'How do I calculate resistors in series?', a: 'Add them up: R = R₁ + R₂ + R₃ + …. Three resistors of 100, 220 and 330 Ω in series total 650 Ω. Series resistors carry the same current and their voltages add.' },
+      { q: 'How do I calculate resistors in parallel?', a: 'Add the reciprocals and invert: 1/R = 1/R₁ + 1/R₂ + …. For 6 Ω and 3 Ω in parallel, 1/6 + 1/3 = 1/2, so R = 2 Ω — always less than the smallest resistor.' },
+      { q: 'What is the parallel resistance of two equal resistors?', a: 'Exactly half. Two 100 Ω resistors in parallel give 50 Ω. In general, N equal resistors in parallel give R ÷ N.' },
+      { q: 'Why is parallel resistance smaller than the smallest resistor?', a: 'Adding a parallel path gives current another route, so more current flows for the same voltage — which means lower total resistance. Each extra resistor can only lower it further.' },
+      { q: 'Can I mix series and parallel?', a: 'Yes, by working in stages: reduce each parallel cluster to a single value with this tool, then add those in series (or vice-versa). Break the network into series and parallel blocks and combine them step by step.' },
+    ],
+    keywords: ['series parallel resistor calculator', 'parallel resistor calculator', 'series resistor calculator', 'total resistance calculator', 'resistors in parallel', 'resistors in series', 'equivalent resistance calculator', 'combine resistors calculator'],
+  },
+  {
+    slug: 'series-parallel-capacitor-calculator',
+    name: 'Series & Parallel Capacitor Calculator',
+    icon: '🔋',
+    widget: 'sp-cap',
+    description: 'Calculate the total capacitance of any number of capacitors in series and in parallel. Enter a list of values in microfarads. In your browser.',
+    lead: 'Enter a list of capacitor values in µF and get the total capacitance both in parallel (added up) and in series (the reciprocal rule).',
+    how: 'Capacitors combine the opposite way to resistors. In parallel they share the same voltage and their capacitances add: C = C₁ + C₂ + …. In series the same charge sits on each, the voltages add, and the reciprocals combine: 1/C = 1/C₁ + 1/C₂ + …, giving a total smaller than the smallest capacitor. Enter any number of values in microfarads separated by commas, spaces or new lines; both totals update as you type.',
+    note: 'Put capacitors in parallel to increase total capacitance (common for bulk supply decoupling); series capacitors reduce it but share the voltage, which raises the effective voltage rating. Two equal capacitors in series give half the value at twice the voltage handling.',
+    faqs: [
+      { q: 'How do I calculate capacitors in parallel?', a: 'Add them: C = C₁ + C₂ + …. Three capacitors of 1, 2 and 3 µF in parallel total 6 µF. Parallel capacitors share the same voltage and their charges add.' },
+      { q: 'How do I calculate capacitors in series?', a: 'Add the reciprocals and invert: 1/C = 1/C₁ + 1/C₂ + …. Two 2 µF capacitors in series give 1 µF — the total is always less than the smallest.' },
+      { q: 'Why are capacitors the opposite of resistors?', a: 'Capacitance is proportional to plate area and inversely to plate spacing. Parallel capacitors add plate area (more capacitance); series capacitors effectively increase spacing (less), which mirrors the series/parallel rules for resistors flipped around.' },
+      { q: 'Does putting capacitors in series increase voltage rating?', a: 'Yes — the applied voltage divides across them, so series capacitors can withstand more total voltage, though real designs add balancing resistors because tolerances make the split uneven. The total capacitance drops accordingly.' },
+      { q: 'What is the series capacitance of two equal capacitors?', a: 'Half the value. Two 10 µF capacitors in series give 5 µF. In general N equal capacitors in series give C ÷ N.' },
+    ],
+    keywords: ['series parallel capacitor calculator', 'parallel capacitor calculator', 'series capacitor calculator', 'total capacitance calculator', 'capacitors in series', 'capacitors in parallel', 'equivalent capacitance calculator', 'combine capacitors calculator'],
   },
 ];
 

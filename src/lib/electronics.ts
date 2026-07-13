@@ -191,4 +191,51 @@ export const voltageDivider = (vin: number, r1: number, r2: number) => (vin * r2
 export const batteryLifeHours = (capacityMah: number, loadMa: number, derate = 0.8) =>
   (capacityMah / loadMa) * derate;
 
+/* ---------------- Series / parallel networks ---------------- */
+
+/** Total resistance of resistors in series (Ω) — simple sum. */
+export const seriesResistance = (vals: number[]) => vals.reduce((a, b) => a + b, 0);
+/** Total resistance of resistors in parallel (Ω): 1 ÷ Σ(1/Rᵢ). */
+export function parallelResistance(vals: number[]): number {
+  const recip = vals.reduce((a, b) => a + (b > 0 ? 1 / b : Infinity), 0);
+  return recip > 0 ? 1 / recip : 0;
+}
+/** Total capacitance in parallel (F) — simple sum. */
+export const parallelCapacitance = (vals: number[]) => vals.reduce((a, b) => a + b, 0);
+/** Total capacitance in series (F): 1 ÷ Σ(1/Cᵢ) — the reciprocal rule (opposite of resistors). */
+export function seriesCapacitance(vals: number[]): number {
+  const recip = vals.reduce((a, b) => a + (b > 0 ? 1 / b : Infinity), 0);
+  return recip > 0 ? 1 / recip : 0;
+}
+/** Total inductance in series (H) — simple sum (no mutual coupling). */
+export const seriesInductance = (vals: number[]) => vals.reduce((a, b) => a + b, 0);
+/** Total inductance in parallel (H): 1 ÷ Σ(1/Lᵢ). */
+export function parallelInductance(vals: number[]): number {
+  const recip = vals.reduce((a, b) => a + (b > 0 ? 1 / b : Infinity), 0);
+  return recip > 0 ? 1 / recip : 0;
+}
+
+/* ---------------- Ohm's law / power ---------------- */
+
+export interface OhmsResult { v: number; i: number; r: number; p: number; }
+/**
+ * Ohm's-law + power wheel. Supply EXACTLY two of voltage V (V), current I (A),
+ * resistance R (Ω), power P (W); returns all four. Pass null/undefined for the
+ * two unknowns. Returns null if fewer or more than two are given, or the pair
+ * is unsolvable (e.g. non-positive R with only P known).
+ */
+export function ohmsLaw(v?: number | null, i?: number | null, r?: number | null, p?: number | null): OhmsResult | null {
+  const known = [v, i, r, p].filter((x) => x != null && isFinite(x as number)).length;
+  if (known !== 2) return null;
+  let V = v ?? null, I = i ?? null, R = r ?? null, P = p ?? null;
+  if (V != null && I != null) { R = I !== 0 ? V / I : Infinity; P = V * I; }
+  else if (V != null && R != null) { if (R <= 0) return null; I = V / R; P = (V * V) / R; }
+  else if (V != null && P != null) { if (V === 0) return null; I = P / V; R = (V * V) / P; }
+  else if (I != null && R != null) { V = I * R; P = I * I * R; }
+  else if (I != null && P != null) { if (I === 0) return null; V = P / I; R = P / (I * I); }
+  else if (R != null && P != null) { if (R < 0 || P < 0) return null; V = Math.sqrt(P * R); I = R > 0 ? Math.sqrt(P / R) : Infinity; }
+  else return null;
+  return { v: V as number, i: I as number, r: R as number, p: P as number };
+}
+
 export { CU_RESISTIVITY };

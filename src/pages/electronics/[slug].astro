@@ -15,6 +15,9 @@ import Timer555Tool from '../../components/electronics/Timer555Tool.tsx';
 import BatteryLifeTool from '../../components/electronics/BatteryLifeTool.tsx';
 import SmdResistorTool from '../../components/electronics/SmdResistorTool.tsx';
 import LcResonanceTool from '../../components/electronics/LcResonanceTool.tsx';
+import SeriesParallelResistanceTool from '../../components/electronics/SeriesParallelResistanceTool.tsx';
+import SeriesParallelCapacitanceTool from '../../components/electronics/SeriesParallelCapacitanceTool.tsx';
+import OhmsLawTool from '../../components/electronics/OhmsLawTool.tsx';
 import { ELECTRONICS_TOOLS, type ElectronicsToolDef } from '../../data/electronics/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -71,6 +74,9 @@ const schema = [
       {tool.widget === 'battery' && <BatteryLifeTool client:load />}
       {tool.widget === 'smd' && <SmdResistorTool client:load />}
       {tool.widget === 'lc' && <LcResonanceTool client:load />}
+      {tool.widget === 'sp-res' && <SeriesParallelResistanceTool client:load />}
+      {tool.widget === 'sp-cap' && <SeriesParallelCapacitanceTool client:load />}
+      {tool.widget === 'ohmslaw' && <OhmsLawTool client:load />}
     </div>
 
     <div class="mt-4">
