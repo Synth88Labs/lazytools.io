@@ -34,6 +34,8 @@ import TriangleAreaTool from '../../components/math/TriangleAreaTool.tsx';
 import TriangleSolverTool from '../../components/math/TriangleSolverTool.tsx';
 import MatrixCalcTool from '../../components/math/MatrixCalcTool.tsx';
 import LogarithmTool from '../../components/math/LogarithmTool.tsx';
+import SequenceTool from '../../components/math/SequenceTool.tsx';
+import VectorTool from '../../components/math/VectorTool.tsx';
 import { MATH_TOOLS, type MathToolDef } from '../../data/math/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -109,6 +111,8 @@ const schema = [
       {tool.widget === 'triangle-solve' && <TriangleSolverTool client:load />}
       {tool.widget === 'matrix' && <MatrixCalcTool client:load />}
       {tool.widget === 'logarithm' && <LogarithmTool client:load />}
+      {tool.widget === 'sequence' && <SequenceTool client:load />}
+      {tool.widget === 'vector' && <VectorTool client:load />}
     </div>
 
     <div class="mt-4">

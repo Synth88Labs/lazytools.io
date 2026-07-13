@@ -137,3 +137,60 @@ export function matInverse(A: Matrix): Matrix | null {
 
 /** log base `base` of `x`, via change of base. */
 export function logBase(x: number, base: number): number { return Math.log(x) / Math.log(base); }
+
+/* ---------------- Sequences & series ---------------- */
+
+export interface SeqResult {
+  nth: number;
+  sum: number;
+  terms: number[];
+}
+/**
+ * Arithmetic sequence: aₙ = a₁ + (n−1)d, with sum Sₙ = n/2·(2a₁ + (n−1)d).
+ * Returns the nth term, the sum of the first n terms, and up to the first
+ * `maxTerms` terms for display. n must be a positive integer.
+ */
+export function arithmeticSequence(a1: number, d: number, n: number, maxTerms = 20): SeqResult | null {
+  if (!Number.isFinite(a1) || !Number.isFinite(d) || !Number.isInteger(n) || n < 1) return null;
+  const nth = a1 + (n - 1) * d;
+  const sum = (n / 2) * (2 * a1 + (n - 1) * d);
+  const count = Math.min(n, maxTerms);
+  const terms = Array.from({ length: count }, (_, i) => a1 + i * d);
+  return { nth, sum, terms };
+}
+/**
+ * Geometric sequence: aₙ = a₁·r^(n−1), with sum Sₙ = a₁(1−rⁿ)/(1−r) (or a₁·n
+ * when r = 1). Returns nth term, sum of first n terms, and the first terms.
+ */
+export function geometricSequence(a1: number, r: number, n: number, maxTerms = 20): SeqResult | null {
+  if (!Number.isFinite(a1) || !Number.isFinite(r) || !Number.isInteger(n) || n < 1) return null;
+  const nth = a1 * Math.pow(r, n - 1);
+  const sum = r === 1 ? a1 * n : a1 * (1 - Math.pow(r, n)) / (1 - r);
+  const count = Math.min(n, maxTerms);
+  const terms = Array.from({ length: count }, (_, i) => a1 * Math.pow(r, i));
+  return { nth, sum, terms };
+}
+
+/* ---------------- Vectors (2D / 3D) ---------------- */
+
+export type Vec = number[];
+const same = (a: Vec, b: Vec) => a.length === b.length;
+export const vecMagnitude = (v: Vec) => Math.sqrt(v.reduce((s, x) => s + x * x, 0));
+export function vecAdd(a: Vec, b: Vec): Vec | null { return same(a, b) ? a.map((x, i) => x + b[i]) : null; }
+export function vecSub(a: Vec, b: Vec): Vec | null { return same(a, b) ? a.map((x, i) => x - b[i]) : null; }
+export const vecScale = (v: Vec, k: number): Vec => v.map((x) => x * k);
+export function vecDot(a: Vec, b: Vec): number | null { return same(a, b) ? a.reduce((s, x, i) => s + x * b[i], 0) : null; }
+/** 3D cross product a × b. Returns null unless both are 3-component vectors. */
+export function vecCross(a: Vec, b: Vec): Vec | null {
+  if (a.length !== 3 || b.length !== 3) return null;
+  return [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
+}
+/** Angle between two vectors in degrees, via cosθ = (a·b)/(|a||b|). */
+export function vecAngle(a: Vec, b: Vec): number | null {
+  const dot = vecDot(a, b);
+  if (dot == null) return null;
+  const m = vecMagnitude(a) * vecMagnitude(b);
+  if (m === 0) return null;
+  const cos = Math.max(-1, Math.min(1, dot / m));
+  return (Math.acos(cos) * 180) / Math.PI;
+}

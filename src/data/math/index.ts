@@ -6,7 +6,7 @@ export interface MathToolDef {
   icon: string;
   description: string;
   lead: string;
-  widget: 'fraction' | 'dec-frac' | 'gcd-lcm' | 'prime' | 'ratio' | 'quadratic' | 'stats' | 'roman' | 'sci-notation' | 'perm-comb' | 'long-division' | 'radical' | 'modular' | 'slope-line' | 'distance-midpoint' | 'binomial' | 'sig-figs' | 'deg-rad' | 'complete-square' | 'synthetic' | 'percentile' | 'divisibility' | 'weighted-avg' | 'exponent' | 'circle' | 'triangle-area' | 'triangle-solve' | 'matrix' | 'logarithm';
+  widget: 'fraction' | 'dec-frac' | 'gcd-lcm' | 'prime' | 'ratio' | 'quadratic' | 'stats' | 'roman' | 'sci-notation' | 'perm-comb' | 'long-division' | 'radical' | 'modular' | 'slope-line' | 'distance-midpoint' | 'binomial' | 'sig-figs' | 'deg-rad' | 'complete-square' | 'synthetic' | 'percentile' | 'divisibility' | 'weighted-avg' | 'exponent' | 'circle' | 'triangle-area' | 'triangle-solve' | 'matrix' | 'logarithm' | 'sequence' | 'vector';
   how: string;
   note?: string;
   faqs: { q: string; a: string }[];
@@ -564,5 +564,41 @@ export const MATH_TOOLS: MathToolDef[] = [
       { q: 'What does log_b(1) equal?', a: 'Always 0, for any base, because b⁰ = 1. And log_b(b) = 1, because b¹ = b. These two identities are worth remembering.' },
     ],
     keywords: ['logarithm calculator', 'log calculator', 'natural log calculator', 'ln calculator', 'log base 2 calculator', 'change of base formula', 'antilog calculator', 'log base 10'],
+  },
+  {
+    slug: 'sequence-calculator',
+    name: 'Arithmetic & Geometric Sequence Calculator',
+    icon: '🔢',
+    widget: 'sequence',
+    description: 'Find the nth term and the sum of an arithmetic or geometric sequence from the first term, common difference or ratio, and number of terms. In your browser.',
+    lead: 'Enter the first term, the common difference or ratio, and how many terms to get the nth term, the sum and the sequence itself.',
+    how: 'An arithmetic sequence changes by a fixed amount each step, the common difference d, so the nth term is aₙ = a₁ + (n − 1)d and the sum of the first n terms is Sₙ = n⁄2 · (2a₁ + (n − 1)d). A geometric sequence multiplies by a fixed common ratio r each step, so aₙ = a₁ · r^(n − 1) and the partial sum is Sₙ = a₁(1 − rⁿ)⁄(1 − r) (and simply a₁ · n when r = 1). Pick the type, enter the three values, and the tool returns the nth term, the running sum and the first terms.',
+    note: 'Use the arithmetic mode for anything that grows by a constant amount (savings of a fixed monthly deposit, rows of seats increasing by a set number) and geometric for constant-ratio growth or decay (compound interest, halving, population doubling). For a geometric series with |r| < 1, the partial sums approach a finite limit a₁⁄(1 − r) as n grows.',
+    faqs: [
+      { q: 'How do I find the nth term of a sequence?', a: 'For an arithmetic sequence, aₙ = a₁ + (n − 1)d, where d is the common difference. For a geometric sequence, aₙ = a₁ · r^(n − 1), where r is the common ratio. Enter your values and the tool computes it exactly.' },
+      { q: 'What is the difference between arithmetic and geometric?', a: 'An arithmetic sequence adds the same number each step (2, 5, 8, 11…, difference 3); a geometric sequence multiplies by the same number each step (3, 6, 12, 24…, ratio 2). One grows linearly, the other exponentially.' },
+      { q: 'How do I calculate the sum of a sequence?', a: 'Arithmetic: Sₙ = n⁄2 · (2a₁ + (n − 1)d), or n × the average of the first and last terms. Geometric: Sₙ = a₁(1 − rⁿ)⁄(1 − r). This tool shows the sum of the first n terms automatically.' },
+      { q: 'What is the common difference or common ratio?', a: 'The common difference d is what you add each step in an arithmetic sequence (found by subtracting any term from the next). The common ratio r is what you multiply by each step in a geometric sequence (found by dividing any term by the previous one).' },
+      { q: 'Does a geometric series have a finite sum?', a: 'The infinite sum converges only when |r| < 1, to a₁⁄(1 − r). If |r| ≥ 1 the terms don\'t shrink and the sum grows without bound. This calculator gives the sum of a specified finite number of terms either way.' },
+    ],
+    keywords: ['sequence calculator', 'arithmetic sequence calculator', 'geometric sequence calculator', 'nth term calculator', 'sum of sequence calculator', 'common difference calculator', 'common ratio calculator', 'series sum calculator'],
+  },
+  {
+    slug: 'vector-calculator',
+    name: 'Vector Calculator (2D & 3D)',
+    icon: '➡️',
+    widget: 'vector',
+    description: 'Calculate vector magnitude, addition, subtraction, dot product, cross product and the angle between two 2D or 3D vectors. In your browser.',
+    lead: 'Enter two 2D or 3D vectors to get their magnitudes, sum, difference, dot and cross products, and the angle between them.',
+    how: 'A vector has both size and direction, written as components (x, y) in 2D or (x, y, z) in 3D. The magnitude (length) is √(x² + y² + …). Adding or subtracting vectors works component by component. The dot product a·b = Σaᵢbᵢ is a single number tied to the angle between them by a·b = |a||b|cosθ — it\'s zero when the vectors are perpendicular. The cross product a × b (3D only) is a new vector perpendicular to both, with magnitude |a||b|sinθ. The tool computes all of these at once and the angle in degrees.',
+    note: 'The dot product tells you how much two vectors point the same way (positive), opposite (negative) or at right angles (zero). The cross product gives a perpendicular direction following the right-hand rule and is only defined in three dimensions — in 2D you can only get its magnitude (the scalar z-component). Enter zeros for unused components.',
+    faqs: [
+      { q: 'How do I calculate the magnitude of a vector?', a: 'Take the square root of the sum of the squares of its components: |v| = √(x² + y² + z²). For (3, 4) the magnitude is √(9 + 16) = 5; for (2, 3, 6) it\'s √49 = 7.' },
+      { q: 'What is the dot product?', a: 'The dot product a·b = a₁b₁ + a₂b₂ + a₃b₃ is a single number. It equals |a||b|cosθ, so it\'s positive when vectors point similarly, negative when opposite, and exactly zero when they are perpendicular.' },
+      { q: 'What is the cross product?', a: 'For two 3D vectors, a × b is a vector perpendicular to both, with magnitude |a||b|sinθ and direction given by the right-hand rule. It\'s used for normals, torque and rotational quantities. It isn\'t defined for 2D vectors (only its scalar magnitude is).' },
+      { q: 'How do I find the angle between two vectors?', a: 'Rearrange the dot-product formula: θ = arccos( (a·b) ⁄ (|a||b|) ). The tool does this and returns the angle in degrees — 0° means parallel, 90° perpendicular, 180° opposite.' },
+      { q: 'How do I add two vectors?', a: 'Add them component by component: (1, 2, 3) + (4, 5, 6) = (5, 7, 9). Subtraction works the same way. Geometrically, addition places them tip-to-tail; the result is the vector from the start of the first to the end of the second.' },
+    ],
+    keywords: ['vector calculator', 'dot product calculator', 'cross product calculator', 'vector magnitude calculator', 'angle between vectors calculator', '3d vector calculator', 'vector addition calculator', '2d vector calculator'],
   },
 ];
