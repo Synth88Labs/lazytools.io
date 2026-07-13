@@ -7,6 +7,13 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'mbps-vs-mbps-internet-speed-guide',
+    kicker: 'INTERNET SPEED GUIDE',
+    lines: ['Mbps vs MB/s:', 'why your download', 'is 8× slower'],
+    fact: '8 bits = 1 byte · 100 Mbps = 12.5 MB/s',
+    icon: '🚀',
+  },
+  {
     slug: 'how-much-chocolate-is-toxic-to-dogs-guide',
     kicker: 'PET SAFETY GUIDE',
     lines: ['How much chocolate', 'is toxic to dogs?', 'Type + weight = dose'],
