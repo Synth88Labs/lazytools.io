@@ -19,6 +19,7 @@ import { flowRate } from './flow-rate.ts';
 import { angle } from './angle.ts';
 import { acceleration } from './acceleration.ts';
 import { illuminance } from './illuminance.ts';
+import { magneticField } from './magnetic-field.ts';
 
 export type { Quantity, Unit, PairMeta };
 
@@ -43,6 +44,7 @@ export const QUANTITIES: Quantity[] = [
   angle,
   acceleration,
   illuminance,
+  magneticField,
 ];
 
 /** baseValue = v * factor + offset; target = (base - offset2) / factor2 */

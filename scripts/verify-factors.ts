@@ -139,6 +139,15 @@ const AUTHORITATIVE: Record<string, Record<string, number>> = {
     ph: 1e4,
     nox: 1e-3,
   },
+  // base: tesla. 1 gauss = 1e-4 T; 1 milligauss = 1e-7 T; 1 nanotesla = 1e-9 T.
+  'magnetic-field': {
+    t: 1,
+    mt: 1e-3,
+    ut: 1e-6,
+    g: 1e-4,
+    mg: 1e-7,
+    nt: 1e-9,
+  },
 };
 
 // Temperature is offset-based → verified via known point pairs instead.
