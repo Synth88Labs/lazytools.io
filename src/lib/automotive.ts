@@ -200,4 +200,34 @@ export function tripFuelCost(distance: number, efficiency: number, mode: Efficie
   return fuel * pricePerUnit;
 }
 
+/* ---------------- Fuel range ---------------- */
+
+/**
+ * Driving range from a tank of fuel. For `mpg` (miles per US gallon) or `kmL`
+ * (km per litre), range = tank × efficiency. For `l100km`, range =
+ * tank ÷ (L/100km) × 100. Tank is gallons for mpg, litres for the metric modes.
+ */
+export function fuelRange(tank: number, efficiency: number, mode: EfficiencyMode): number | null {
+  if (tank <= 0 || efficiency <= 0) return null;
+  return mode === 'l100km' ? (tank / efficiency) * 100 : tank * efficiency;
+}
+
+/* ---------------- Tire pressure vs temperature ---------------- */
+
+/** Standard atmospheric pressure (psi) used to convert gauge ↔ absolute. */
+export const ATM_PSI = 14.6959;
+/**
+ * Corrected tire pressure (psi gauge) when the temperature changes, via
+ * Gay-Lussac's law on absolute pressure and temperature (°F → Rankine):
+ * P₂ = (P₁ + atm)·(T₂ + 459.67)/(T₁ + 459.67) − atm. Roughly ±1 psi per 10 °F.
+ */
+export function tirePressureAtTemp(coldPsi: number, fromTempF: number, toTempF: number, atmPsi = ATM_PSI): number | null {
+  if (coldPsi <= 0) return null;
+  const p1abs = coldPsi + atmPsi;
+  const t1 = fromTempF + 459.67;
+  const t2 = toTempF + 459.67;
+  if (t1 <= 0) return null;
+  return p1abs * (t2 / t1) - atmPsi;
+}
+
 export { MM_PER_INCH };

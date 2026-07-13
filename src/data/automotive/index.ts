@@ -4,7 +4,7 @@ export interface AutoToolDef {
   slug: string;
   name: string;
   icon: string;
-  widget: 'tire' | 'tirecompare' | 'gear' | 'displacement' | 'compression' | 'hp' | 'fueleconomy' | 'offset' | 'evcharge' | 'pwr2wt' | 'stopping' | 'quartermile' | 'fuelcost';
+  widget: 'tire' | 'tirecompare' | 'gear' | 'displacement' | 'compression' | 'hp' | 'fueleconomy' | 'offset' | 'evcharge' | 'pwr2wt' | 'stopping' | 'quartermile' | 'fuelcost' | 'fuelrange' | 'tirepressure';
   description: string;
   lead: string;
   how: string;
@@ -247,6 +247,42 @@ export const AUTO_TOOLS: AutoToolDef[] = [
       { q: 'How do I estimate cost for a round trip?', a: 'Double the one-way distance before calculating, or simply enter the total there-and-back distance. Remember real economy is often worse than the sticker figure, so pad the estimate a little for a safety margin.' },
     ],
     keywords: ['fuel cost calculator', 'trip fuel cost', 'gas cost calculator', 'petrol cost calculator', 'fuel cost per mile', 'how much fuel for trip', 'journey cost calculator', 'l/100km cost calculator'],
+  },
+  {
+    slug: 'fuel-range-calculator',
+    name: 'Fuel Range Calculator',
+    icon: '🛣️',
+    widget: 'fuelrange',
+    description: 'Calculate how far you can drive on a tank of fuel from your tank capacity and fuel economy — mpg, km/L or L/100km. In your browser.',
+    lead: 'Enter your tank capacity and fuel economy to see how far a full tank will take you.',
+    how: 'Driving range is simply how much fuel you carry times how far you go per unit of fuel. For miles per gallon or kilometres per litre, range = tank × economy; for a L/100km figure, range = tank ÷ (L/100km) × 100. The tool works in whichever units you use and also shows a "safe range" that keeps a reserve buffer so you don\'t run the tank to empty.',
+    note: 'This is a best-case figure — real economy is usually worse than the official or dashboard number because of highway speeds, cold weather, headwinds, loads, air-conditioning and city stop-start driving. Keep a 10–15% reserve: running very low stresses the fuel pump (it\'s cooled by the fuel) and leaves no margin if the next station is further than expected.',
+    faqs: [
+      { q: 'How do I calculate driving range?', a: 'Multiply tank capacity by fuel economy: 12 gallons × 30 mpg = 360 miles, or 50 litres × 12 km/L = 600 km. For an L/100km rating, divide the tank by it and multiply by 100. This tool does all three.' },
+      { q: 'How far can I drive on a full tank?', a: 'It depends on your tank size and economy. A typical car with a 12-gallon tank at 30 mpg goes about 360 miles on a full tank — but plan to refuel before empty. Enter your numbers for a specific figure.' },
+      { q: 'Why is my real range lower than calculated?', a: 'Official and dashboard economy figures are optimistic. Highway speed, cold, wind, cargo, roof racks, air-con and city traffic all reduce economy, so real range often falls 10–20% short. Use a conservative economy figure and keep a reserve.' },
+      { q: 'How much fuel reserve should I keep?', a: 'Aim to refuel with about 10–15% of the tank left. Beyond peace of mind, running the tank very low can overheat and wear the fuel pump, which relies on the fuel around it for cooling. The tool shows this "safe range".' },
+      { q: 'Does this work in metric and imperial?', a: 'Yes — choose mpg with gallons, or km/L or L/100km with litres. The range comes out in miles or kilometres to match, so you can use whichever your car displays.' },
+    ],
+    keywords: ['fuel range calculator', 'driving range calculator', 'how far on a tank of gas', 'tank range calculator', 'car range calculator', 'miles per tank calculator', 'fuel tank range'],
+  },
+  {
+    slug: 'tire-pressure-temperature-calculator',
+    name: 'Tire Pressure Temperature Calculator',
+    icon: '🌡️',
+    widget: 'tirepressure',
+    description: 'See how your tire pressure changes with temperature — set pressure and the temperature swing give the new pressure. About 1 psi per 10°F. In your browser.',
+    lead: 'Enter your set pressure and the temperature when you set it versus now to see the current pressure.',
+    how: 'The air in a tire is a fixed volume, so by Gay-Lussac\'s law its pressure rises and falls with absolute temperature. The tool converts your gauge pressure to absolute, scales it by the ratio of absolute temperatures (°F converted to the Rankine scale), and converts back — giving the pressure now. The handy rule of thumb that falls out is about 1 psi of change for every 10 °F (roughly 0.07 bar per 5 °C).',
+    note: 'Always set tire pressure when the tires are cold (before driving), because driving heats them and raises the reading by several psi. A seasonal temperature drop is why the low-pressure warning light often comes on during the first cold morning of autumn — the air genuinely contracted, so top up to the placard pressure at the current temperature.',
+    faqs: [
+      { q: 'How much does tire pressure change with temperature?', a: 'About 1 psi for every 10 °F (roughly 0.07 bar per 5 °C) change in air temperature. A 30 °F drop lowers a 32 psi tire by around 2.5–3 psi — enough to trigger a low-pressure warning.' },
+      { q: 'Why does my tire pressure light come on when it gets cold?', a: 'Cold air contracts, so the pressure genuinely drops. The first cold morning of the season often takes tires below the warning threshold even with no leak. Top them up to the placard pressure at the current temperature.' },
+      { q: 'Should I set tire pressure when tires are hot or cold?', a: 'Cold — before driving, or at least 3 hours after. Driving heats the tires and raises the pressure by several psi, so setting them hot leaves them under-inflated once they cool. Manufacturer placard pressures are cold values.' },
+      { q: 'Does temperature affect pressure the same in bar or psi?', a: 'The physics is the same; only the units differ. The ~1 psi per 10 °F rule is about 0.07 bar per 5 °C. The tool uses the exact Gay-Lussac relation on absolute pressure and temperature, so it\'s accurate in either system.' },
+      { q: 'Is a pressure change from temperature a problem?', a: 'It\'s normal, but low pressure isn\'t good — it worsens handling, increases wear on the tire shoulders and cuts fuel economy. Check and adjust with the seasons, and don\'t bleed off the extra pressure that appears when tires are hot from driving.' },
+    ],
+    keywords: ['tire pressure temperature calculator', 'tyre pressure temperature', 'tire pressure cold weather', 'psi per degree calculator', 'tire pressure drop temperature', 'cold tire pressure calculator', 'temperature tire pressure'],
   },
 ];
 

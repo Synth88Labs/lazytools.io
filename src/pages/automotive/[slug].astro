@@ -18,6 +18,8 @@ import PowerToWeightTool from '../../components/automotive/PowerToWeightTool.tsx
 import StoppingDistanceTool from '../../components/automotive/StoppingDistanceTool.tsx';
 import QuarterMileTool from '../../components/automotive/QuarterMileTool.tsx';
 import FuelCostTool from '../../components/automotive/FuelCostTool.tsx';
+import FuelRangeTool from '../../components/automotive/FuelRangeTool.tsx';
+import TirePressureTempTool from '../../components/automotive/TirePressureTempTool.tsx';
 import { AUTO_TOOLS, type AutoToolDef } from '../../data/automotive/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -77,6 +79,8 @@ const schema = [
       {tool.widget === 'stopping' && <StoppingDistanceTool client:load />}
       {tool.widget === 'quartermile' && <QuarterMileTool client:load />}
       {tool.widget === 'fuelcost' && <FuelCostTool client:load />}
+      {tool.widget === 'fuelrange' && <FuelRangeTool client:load />}
+      {tool.widget === 'tirepressure' && <TirePressureTempTool client:load />}
     </div>
 
     <div class="mt-4">
