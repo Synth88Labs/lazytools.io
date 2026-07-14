@@ -7,6 +7,13 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'how-to-calculate-square-footage-guide',
+    kicker: 'HOME MEASURING GUIDE',
+    lines: ['How to calculate', 'square footage', 'of any room'],
+    fact: 'area = length × width · 1 m² = 10.764 ft²',
+    icon: '📐',
+  },
+  {
     slug: 'what-is-a-cord-of-wood-guide',
     kicker: 'FIREWOOD GUIDE',
     lines: ['What is a cord', 'of wood? Full cord', 'vs face cord'],
