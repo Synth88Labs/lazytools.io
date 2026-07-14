@@ -4,7 +4,7 @@ export interface BrewingToolDef {
   slug: string;
   name: string;
   icon: string;
-  widget: 'abv' | 'ibu' | 'priming' | 'brix' | 'hydrometer' | 'strike' | 'dilution' | 'refractometer' | 'carbonation' | 'color';
+  widget: 'abv' | 'ibu' | 'priming' | 'brix' | 'hydrometer' | 'strike' | 'dilution' | 'refractometer' | 'carbonation' | 'color' | 'masheff' | 'yeastpitch';
   description: string;
   lead: string;
   how: string;
@@ -193,6 +193,42 @@ export const BREWING_TOOLS: BrewingToolDef[] = [
       { q: 'What is °Lovibond?', a: 'The traditional scale for the colour of a malt (or beer), close to SRM in value for the malts themselves. Malt suppliers list each grain\'s °L; enter those figures here. It\'s effectively interchangeable with SRM for individual malts in this calculation.' },
     ],
     keywords: ['beer color calculator', 'srm calculator', 'ebc calculator', 'beer color srm ebc', 'morey equation calculator', 'malt color units calculator', 'grain bill color calculator', 'beer colour calculator'],
+  },
+  {
+    slug: 'mash-efficiency-calculator',
+    name: 'Mash Efficiency Calculator',
+    icon: '🌾',
+    widget: 'masheff',
+    description: 'Calculate your brewhouse (mash) efficiency from the measured original gravity, grain bill and batch volume. In your browser.',
+    lead: 'Enter your measured OG, grain weight and batch volume to see your mash efficiency percentage.',
+    how: 'Mash efficiency is how much of the sugar locked in your grain you actually extracted into the wort. It\'s the gravity points you measured divided by the maximum the grain could give: actual points are (OG − 1) × 1000, and the maximum is grain weight × its potential (PPG, points per pound per gallon — about 36–37 for base malt) divided by the batch volume in gallons. The tool converts metric inputs and returns the efficiency percentage with a quick verdict.',
+    note: 'Most all-grain homebrewers land between 65% and 80%. If yours is low, the usual culprits are too coarse a crush, mash pH out of the 5.2–5.6 range, too short a mash, or an inefficient sparge. Knowing your typical efficiency lets you scale a recipe\'s grain bill to hit the OG you want. Extract and partial-mash brews behave differently.',
+    faqs: [
+      { q: 'What is mash efficiency?', a: 'The percentage of the grain\'s available sugar you extracted into the wort. It\'s the measured gravity points ÷ the maximum the grain could yield. Most all-grain brewers get 65–80%; consistency matters more than a high number.' },
+      { q: 'How do I calculate brewhouse efficiency?', a: 'Efficiency = ((OG − 1) × 1000) ÷ (grain lb × PPG ÷ volume gal) × 100. For 1.050 OG from 10 lb of 36-PPG malt in 5 gallons: 50 ÷ (72) = about 69%. This tool does the maths and unit conversion.' },
+      { q: 'What is a good mash efficiency?', a: 'Around 70–75% is a solid, typical figure for all-grain brewing. Below ~60% suggests something to improve; above ~85% is unusually high and worth double-checking your measurements.' },
+      { q: 'How do I improve mash efficiency?', a: 'Crush the grain finer (without shredding the husks), keep mash pH near 5.2–5.6, give a full 60-minute mash at the right temperature, stir well, and sparge slowly and thoroughly. Water-to-grain ratio and vorlauf also help.' },
+      { q: 'What is PPG?', a: 'Points per pound per gallon — a malt\'s sugar potential. Base malts are about 36–37 PPG (a pound in a gallon of water at 100% efficiency would read ~1.037). Specialty malts vary; suppliers list each grain\'s potential.' },
+    ],
+    keywords: ['mash efficiency calculator', 'brewhouse efficiency calculator', 'mash efficiency', 'brewing efficiency calculator', 'og efficiency calculator', 'grain to gravity calculator', 'all grain efficiency'],
+  },
+  {
+    slug: 'yeast-pitching-rate-calculator',
+    name: 'Yeast Pitching Rate Calculator',
+    icon: '🧫',
+    widget: 'yeastpitch',
+    description: 'Calculate how many yeast cells to pitch from your batch volume, original gravity and target pitch rate — with liquid packs and dry-yeast grams. In your browser.',
+    lead: 'Enter your batch size, original gravity and pitch rate to see the yeast cells needed — and how many packs or grams that is.',
+    how: 'Pitching the right number of yeast cells gives a clean, healthy fermentation. The standard calculation is cells = pitch rate × volume (in millilitres) × wort gravity (in degrees Plato), where the pitch rate is quoted in million cells per millilitre per degree Plato. Ales use about 0.75, lagers roughly double because they ferment cold. The tool converts your gravity to Plato, works out the total cells (in billions), and translates that into fresh liquid packs (~100 billion cells each) or grams of dry yeast (~10 billion cells per gram).',
+    note: 'A liquid yeast pack is ~100 billion cells when fresh but loses viability with age, so a single pack often under-pitches a standard batch — that\'s why brewers make a starter. Dry yeast is densely packed (~10 billion cells per gram) and usually enough for an ale batch in one or two sachets. Under-pitching risks stress, off-flavours and slow starts; gross over-pitching can thin out character.',
+    faqs: [
+      { q: 'How much yeast do I need to pitch?', a: 'Cells = pitch rate × volume in mL × gravity in °Plato. A 20 L ale at 1.050 (≈12.4 °P) at the standard 0.75 rate needs about 186 billion cells — roughly two fresh liquid packs or ~19 g of dry yeast. Enter your numbers for the exact figure.' },
+      { q: 'What is the standard yeast pitch rate?', a: 'About 0.75 million cells per mL per °Plato for ales, and around 1.5 (double) for lagers because they ferment at colder temperatures. High-gravity beers use higher rates too. The tool lets you pick the rate.' },
+      { q: 'How many cells are in a yeast pack?', a: 'A fresh liquid yeast pack holds roughly 100 billion cells, but viability drops with age (often ~75% of the way to its date). Dry yeast is about 10 billion viable cells per gram, so an 11 g sachet is ~110 billion.' },
+      { q: 'Do I need a yeast starter?', a: 'Often, yes — a single aged liquid pack under-pitches a standard 5-gallon/20 L batch, especially for lagers or strong beers. A starter grows the cell count up to the target. Dry yeast usually has enough cells to pitch directly.' },
+      { q: 'What happens if I under-pitch yeast?', a: 'Too few cells stress the yeast: slow or stuck starts, higher esters and fusel alcohols, and off-flavours like diacetyl. Pitching the calculated rate of healthy yeast gives a cleaner, more predictable fermentation.' },
+    ],
+    keywords: ['yeast pitching rate calculator', 'yeast pitch calculator', 'how much yeast to pitch', 'yeast cell count calculator', 'pitching rate calculator', 'yeast starter calculator', 'lager yeast pitch rate'],
   },
 ];
 

@@ -15,6 +15,8 @@ import DilutionTool from '../../components/brewing/DilutionTool.tsx';
 import RefractometerTool from '../../components/brewing/RefractometerTool.tsx';
 import CarbonationTool from '../../components/brewing/CarbonationTool.tsx';
 import BeerColorTool from '../../components/brewing/BeerColorTool.tsx';
+import MashEfficiencyTool from '../../components/brewing/MashEfficiencyTool.tsx';
+import YeastPitchTool from '../../components/brewing/YeastPitchTool.tsx';
 import { BREWING_TOOLS, type BrewingToolDef } from '../../data/brewing/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -71,6 +73,8 @@ const schema = [
       {tool.widget === 'refractometer' && <RefractometerTool client:load />}
       {tool.widget === 'carbonation' && <CarbonationTool client:load />}
       {tool.widget === 'color' && <BeerColorTool client:load />}
+      {tool.widget === 'masheff' && <MashEfficiencyTool client:load />}
+      {tool.widget === 'yeastpitch' && <YeastPitchTool client:load />}
     </div>
 
     <div class="mt-4">

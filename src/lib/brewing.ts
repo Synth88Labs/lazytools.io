@@ -175,3 +175,43 @@ export function srmFromMcu(totalMcu: number): number {
 }
 /** Convert SRM to European EBC (EBC = SRM × 1.97). */
 export const srmToEbc = (srm: number) => srm * 1.97;
+
+/* ---------------- Mash efficiency ---------------- */
+
+/**
+ * Mash (brewhouse) efficiency as a percentage: the gravity points actually
+ * achieved ÷ the maximum the grain could give. Actual points = (OG − 1)×1000;
+ * max points = (grain weight lb × potential PPG) ÷ batch volume gal. Typical
+ * all-grain efficiency is 65–80%.
+ */
+export function mashEfficiency(og: number, grainLb: number, ppg: number, volumeGal: number): number | null {
+  if (og <= 1 || grainLb <= 0 || ppg <= 0 || volumeGal <= 0) return null;
+  const actualPoints = (og - 1) * 1000;
+  const maxPoints = (grainLb * ppg) / volumeGal;
+  return (actualPoints / maxPoints) * 100;
+}
+
+/* ---------------- Yeast pitching rate ---------------- */
+
+/** Degrees Plato from specific gravity (standard cubic polynomial). */
+export function sgToPlato(sg: number): number {
+  return -616.868 + 1111.14 * sg - 630.272 * sg * sg + 135.997 * sg * sg * sg;
+}
+export interface PitchResult {
+  plato: number;
+  cellsBillion: number;
+  liquidPacks: number;   // ~100 billion cells each (fresh)
+  dryGrams: number;      // ~10 billion cells per gram
+}
+/**
+ * Yeast cells needed to pitch, from batch volume (litres), original gravity and
+ * a pitch rate in million cells per mL per °Plato (≈0.75 ale, 1.0 standard,
+ * 1.5 lager). cells(billion) = rate × volume_mL × °P ÷ 1000.
+ */
+export function yeastCells(volumeL: number, og: number, pitchRate: number): PitchResult | null {
+  if (volumeL <= 0 || og <= 1 || pitchRate <= 0) return null;
+  const plato = sgToPlato(og);
+  if (plato <= 0) return null;
+  const cellsBillion = (pitchRate * (volumeL * 1000) * plato) / 1000;
+  return { plato, cellsBillion, liquidPacks: cellsBillion / 100, dryGrams: cellsBillion / 10 };
+}
