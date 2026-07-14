@@ -358,4 +358,54 @@ export const COMPUTE: Record<string, (v: Values) => ResultRow[] | null> = {
       { label: 'Total pay', value: fmt(regPay + otPay), hint: `${fmt(regH + otH)} h total` },
     ];
   },
+
+  squareFootage: (v) => {
+    const len = n(v.length), wid = n(v.width);
+    const qty = Number.isFinite(n(v.quantity)) && n(v.quantity) > 0 ? n(v.quantity) : 1;
+    const unit = v.unit === 'm' ? 'm' : 'ft';
+    if (!Number.isFinite(len) || !Number.isFinite(wid) || len <= 0 || wid <= 0) return null;
+    const areaOne = len * wid;
+    const total = areaOne * qty;
+    // 1 ft² = 0.09290304 m² exactly; 1 m² = 10.7639104167 ft².
+    const toSqm = unit === 'ft' ? 0.09290304 : 1;
+    const toSqft = unit === 'ft' ? 1 : 10.7639104167;
+    const label = unit === 'ft' ? 'ft²' : 'm²';
+    const rows: ResultRow[] = [
+      { label: `Area ${qty > 1 ? 'per unit' : ''}`.trim(), value: `${fmt(areaOne, 3)} ${label}`, hint: `${fmt(len, 3)} × ${fmt(wid, 3)} ${unit}` },
+    ];
+    if (qty > 1) rows.push({ label: `Total area (${fmt(qty, 0)} units)`, value: `${fmt(total, 3)} ${label}`, hint: `${fmt(areaOne, 3)} × ${fmt(qty, 0)}` });
+    rows.push({ label: 'In square feet', value: `${fmt(total * toSqft, 3)} ft²`, hint: unit === 'm' ? '× 10.7639' : '' });
+    rows.push({ label: 'In square metres', value: `${fmt(total * toSqm, 3)} m²`, hint: unit === 'ft' ? '× 0.092903' : '' });
+    return rows;
+  },
+
+  costPerArea: (v) => {
+    const price = n(v.price), area = n(v.area);
+    const unit = v.unit === 'm2' ? 'm2' : 'ft2';
+    if (!Number.isFinite(price) || !Number.isFinite(area) || area <= 0) return null;
+    const per = price / area;
+    // convert per-unit-area price to the other unit
+    const perSqft = unit === 'ft2' ? per : per * 0.09290304; // $/m² × 0.0929 = $/ft²
+    const perSqm = unit === 'ft2' ? per / 0.09290304 : per;
+    return [
+      { label: unit === 'ft2' ? 'Cost per square foot' : 'Cost per square metre', value: fmt(per, 2), hint: `${fmt(price)} ÷ ${fmt(area, 2)}` },
+      { label: 'Cost per square foot', value: fmt(perSqft, 2), hint: unit === 'm2' ? 'converted from /m²' : '' },
+      { label: 'Cost per square metre', value: fmt(perSqm, 2), hint: unit === 'ft2' ? 'converted from /ft²' : '' },
+    ];
+  },
+
+  mixRatio: (v) => {
+    // Ratio 1:N (one part concentrate to N parts diluent) for a target total volume.
+    const parts = n(v.parts), total = n(v.total);
+    if (!Number.isFinite(parts) || parts < 0 || !Number.isFinite(total) || total <= 0) return null;
+    const totalParts = 1 + parts;
+    const concentrate = total / totalParts;
+    const diluent = total * parts / totalParts;
+    const unit = v.unit || 'mL';
+    return [
+      { label: 'Concentrate needed', value: `${fmt(concentrate, 3)} ${unit}`, hint: `${fmt(total, 2)} ÷ ${fmt(totalParts, 2)} parts` },
+      { label: 'Water / diluent needed', value: `${fmt(diluent, 3)} ${unit}`, hint: `${fmt(concentrate, 3)} × ${fmt(parts, 2)}` },
+      { label: 'Mixing ratio', value: `1 : ${fmt(parts, 2)}`, hint: `${fmt(100 / totalParts, 2)}% concentrate by volume` },
+    ];
+  },
 };
