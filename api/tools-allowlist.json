@@ -207,6 +207,7 @@
   "dev/number-base-converter",
   "dev/query-string-parser",
   "dev/regex-tester",
+  "dev/text-to-hex-converter",
   "dev/unicode-escape-converter",
   "dev/url-encode-decode",
   "electronics/555-timer-calculator",

@@ -225,6 +225,27 @@ export const DEV: Record<string, (input: string, opts: Opts) => DevResult> = {
     out = out.replace(/\\u([0-9a-fA-F]{4})/g, (_, h) => { n++; return String.fromCharCode(parseInt(h, 16)); });
     return { output: out, info: `${n} \\u escape${n === 1 ? '' : 's'} decoded` };
   },
+
+  textHex: (input, opts) => {
+    const mode = String(opts.mode ?? 'encode');
+    if (mode === 'encode') {
+      const bytes = new TextEncoder().encode(input); // UTF-8
+      const hex = Array.from(bytes, (b) => b.toString(16).padStart(2, '0')).join(' ');
+      return { output: hex, info: `${bytes.length} UTF-8 byte${bytes.length === 1 ? '' : 's'} → hex` };
+    }
+    // decode: strip anything that isn't a hex digit (spaces, 0x, colons, commas), pair up.
+    const clean = input.replace(/0x/gi, '').replace(/[^0-9a-fA-F]/g, '');
+    if (clean.length === 0) return { output: '', info: 'no hex digits found' };
+    if (clean.length % 2 !== 0) throw new Error('Hex input has an odd number of digits — each byte needs two hex digits.');
+    const bytes = new Uint8Array(clean.length / 2);
+    for (let i = 0; i < bytes.length; i++) bytes[i] = parseInt(clean.slice(i * 2, i * 2 + 2), 16);
+    try {
+      const text = new TextDecoder('utf-8', { fatal: true }).decode(bytes);
+      return { output: text, info: `${bytes.length} byte${bytes.length === 1 ? '' : 's'} → UTF-8 text` };
+    } catch {
+      throw new Error('Those bytes are not valid UTF-8 text. Check the hex is correct and complete.');
+    }
+  },
 };
 
 const HTTP_CLASS: Record<string, string> = {

@@ -404,6 +404,36 @@ export const DEV_TOOLS: DevToolDef[] = [
     ],
     keywords: ['unicode escape', 'unicode to text', 'u+ to character', 'unicode escape converter', 'text to unicode', 'decode unicode escape', 'javascript unicode escape'],
   },
+  {
+    slug: 'text-to-hex-converter',
+    name: 'Text to Hex Converter',
+    icon: '🔡',
+    description:
+      'Convert text to hexadecimal (UTF-8 byte values) or decode hex back to text. Handles spaces, 0x prefixes and colons on decode. In-browser.',
+    lead: 'Turn any text into its UTF-8 hex bytes — or paste hex (with or without spaces and 0x) to decode it back to readable text.',
+    widget: 'transform',
+    computeId: 'textHex',
+    options: [
+      {
+        id: 'mode', label: 'Mode', type: 'select', defaultValue: 'encode',
+        options: [
+          { value: 'encode', label: 'Text → hex' },
+          { value: 'decode', label: 'Hex → text' },
+        ],
+      },
+    ],
+    sample: 'Hello, world!',
+    how: 'Encoding first converts the text to UTF-8 bytes (so accented letters and emoji become their multi-byte sequences), then writes each byte as two hexadecimal digits, space-separated. Decoding strips out any spaces, 0x prefixes, colons or commas, pairs the remaining hex digits into bytes, and decodes them back as UTF-8 — rejecting input that isn’t valid UTF-8 so you know the hex was wrong.',
+    note: 'The output is UTF-8, the modern default. A plain ASCII character is one byte (e.g. A = 41), but characters like é or emoji take two to four bytes, so the hex is longer than the character count. For raw byte values in another encoding, this tool assumes UTF-8.',
+    faqs: [
+      { q: 'How do I convert text to hex?', a: 'Encode the text as UTF-8 bytes and write each byte as two hex digits. "Hi" is 48 69. This tool does it automatically — choose Text → hex and paste your text.' },
+      { q: 'How do I convert hex to text?', a: 'Choose Hex → text and paste the hex. Spaces, 0x prefixes and colons are ignored, so "48 69", "4869" and "0x48 0x69" all decode to "Hi". The bytes are read as UTF-8.' },
+      { q: 'Why is the hex longer than my text?', a: 'Because non-ASCII characters take more than one byte in UTF-8. A plain letter is one byte (two hex digits), but é is two bytes and most emoji are four, so the hex grows accordingly.' },
+      { q: 'What if decoding fails?', a: 'An odd number of hex digits, or bytes that don’t form valid UTF-8, will error. Check that every byte has two digits and that the hex is complete and correct.' },
+      { q: 'Is this the same as ASCII codes?', a: 'For plain English text, yes — ASCII characters have the same one-byte hex values in UTF-8 (A = 41, space = 20). They differ only for non-ASCII characters, which UTF-8 encodes as multiple bytes.' },
+    ],
+    keywords: ['text to hex', 'hex to text', 'string to hex', 'hex to string', 'text to hexadecimal', 'ascii to hex', 'hex converter'],
+  },
 ];
 
 export function getDevTool(slug: string): DevToolDef | undefined {
