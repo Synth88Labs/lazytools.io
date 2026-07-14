@@ -57,18 +57,18 @@ const NAV = [
                 <path d="M6 9l6 6 6-6" />
               </svg>
             </summary>
-            <div class="pb-1 pl-3 sm:absolute sm:right-0 sm:top-full sm:z-50 sm:mt-1 sm:w-[56rem] sm:max-w-[calc(100vw-2rem)] sm:rounded-2xl sm:border sm:border-slate-200 sm:bg-white sm:p-4 sm:pl-4 sm:shadow-xl">
-              <div class="grid gap-x-5 gap-y-4 sm:grid-cols-3">
+            <div class="pb-1 pl-3 sm:absolute sm:right-0 sm:top-full sm:z-50 sm:mt-1 sm:w-[44rem] sm:max-w-[calc(100vw-2rem)] sm:rounded-2xl sm:border sm:border-slate-200 sm:bg-white sm:p-3 sm:pl-3 sm:shadow-xl">
+              <div class="sm:columns-4 sm:gap-x-4">
                 {menuGroups.map((g) => (
-                  <div class="break-inside-avoid">
-                    <p class="mb-1.5 flex items-center gap-1.5 px-1 text-xs font-bold uppercase tracking-wide text-slate-400">
-                      <span aria-hidden="true">{g.icon}</span>{g.name}
+                  <div class="mb-2.5 break-inside-avoid">
+                    <p class="mb-1 flex items-center gap-1 px-1 text-[11px] font-bold uppercase text-slate-400">
+                      <span aria-hidden="true">{g.icon}</span><span>{g.name}</span>
                     </p>
-                    <ul class="grid gap-0.5">
+                    <ul>
                       {g.cats.map((c) => (
                         <li>
-                          <a href={`/${c.slug}/`} class="flex items-center gap-2 rounded-lg px-2 py-1.5 text-sm hover:bg-slate-100 hover:text-slate-900">
-                            <span aria-hidden="true" class="text-base">{c.icon}</span>
+                          <a href={`/${c.slug}/`} class="flex items-center gap-1.5 rounded-md px-2 py-1 text-[13px] hover:bg-slate-100 hover:text-slate-900">
+                            <span aria-hidden="true" class="text-sm">{c.icon}</span>
                             <span class="truncate">{c.name}</span>
                           </a>
                         </li>
@@ -77,7 +77,7 @@ const NAV = [
                   </div>
                 ))}
               </div>
-              <a href="/tools/" class="mt-3 flex items-center justify-center gap-1 rounded-xl border border-brand-200 bg-brand-50 px-3 py-2.5 text-sm font-semibold text-brand-800 hover:border-brand-400">
+              <a href="/tools/" class="mt-2 flex items-center justify-center gap-1 rounded-lg border border-brand-200 bg-brand-50 px-3 py-1.5 text-[13px] font-semibold text-brand-800 hover:border-brand-400">
                 Browse the full tools directory →
               </a>
             </div>
