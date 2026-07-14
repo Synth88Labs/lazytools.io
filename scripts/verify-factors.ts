@@ -183,6 +183,15 @@ const AUTHORITATIVE: Record<string, Record<string, number>> = {
     sb: 1e4,
     fl: 1 / (0.3048 ** 2 * Math.PI),
   },
+  // base: coulomb (A·s). 1 Ah = 3600 C; 1 mAh = 3.6 C.
+  charge: {
+    c: 1,
+    mc: 1e-3,
+    uc: 1e-6,
+    kc: 1e3,
+    ah: 3600,
+    mah: 3.6,
+  },
 };
 
 // Temperature is offset-based → verified via known point pairs instead.
