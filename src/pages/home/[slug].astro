@@ -15,6 +15,8 @@ import RoofPitchCalculator from '../../components/home/RoofPitchCalculator.tsx';
 import RebarCalculator from '../../components/home/RebarCalculator.tsx';
 import BrickCalculator from '../../components/home/BrickCalculator.tsx';
 import ExcavationCalculator from '../../components/home/ExcavationCalculator.tsx';
+import TrimCalculator from '../../components/home/TrimCalculator.tsx';
+import RetainingWallCalculator from '../../components/home/RetainingWallCalculator.tsx';
 import TileCalculator from '../../components/home/TileCalculator.tsx';
 import ConcreteCalculator from '../../components/home/ConcreteCalculator.tsx';
 import MulchCalculator from '../../components/home/MulchCalculator.tsx';
@@ -82,6 +84,8 @@ const schema = [
       {tool.widget === 'rebar' && <RebarCalculator client:load />}
       {tool.widget === 'brick' && <BrickCalculator client:load />}
       {tool.widget === 'excavation' && <ExcavationCalculator client:load />}
+      {tool.widget === 'trim' && <TrimCalculator client:load />}
+      {tool.widget === 'retainingwall' && <RetainingWallCalculator client:load />}
       {tool.widget === 'tile' && <TileCalculator client:load />}
       {tool.widget === 'concrete' && <ConcreteCalculator client:load />}
       {tool.widget === 'mulch' && <MulchCalculator client:load />}

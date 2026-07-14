@@ -7,7 +7,7 @@ export interface HomeToolDef {
   widget: 'paint' | 'tile' | 'concrete' | 'mulch' | 'wallpaper'
     | 'gravel' | 'drywall' | 'roofing' | 'lawn' | 'fence' | 'deck' | 'boardfoot'
     | 'stair' | 'stud' | 'btu' | 'ramp' | 'firewood' | 'roofpitch' | 'rebar'
-    | 'brick' | 'excavation';
+    | 'brick' | 'excavation' | 'trim' | 'retainingwall';
   description: string;
   lead: string;
   how: string;
@@ -397,6 +397,42 @@ HOME_TOOLS.push(
       { q: 'Do I need to call before digging?', a: 'Yes — always locate buried utilities first. In the US call 811, and elsewhere use your national utility-location service, before any excavation. This tool estimates volume only, not site safety.' },
     ],
     keywords: ['excavation calculator', 'dirt calculator', 'soil removal calculator', 'cubic yards of dirt', 'excavation volume calculator', 'how much dirt to remove', 'truckloads of soil'],
+  },
+  {
+    slug: 'trim-molding-calculator',
+    name: 'Trim & Molding Calculator',
+    icon: '📏',
+    widget: 'trim',
+    description: 'Calculate how much baseboard, crown molding or trim you need for a room — from the perimeter, door openings and a waste allowance, plus the number of stock lengths to buy. In your browser.',
+    lead: 'Enter the room dimensions and door count, and get the baseboard and crown molding lengths (with waste) plus how many stock pieces to buy.',
+    how: 'Trim runs around the room perimeter, which is 2 × (length + width). Baseboard stops at each door opening, so the tool subtracts the total door width; crown molding and picture rail run continuously above the doors, so they use the full perimeter. It then adds your waste percentage for mitre cuts and mistakes and divides by your stock length, rounding up to whole pieces.',
+    note: 'Add about 10% waste for a simple room and more where there are many corners, since each inside and outside mitre wastes a little material. Buy from the same batch and profile, and remember that long walls may need a scarf joint between two pieces. This estimates length only, not the exact cut list.',
+    faqs: [
+      { q: 'How much baseboard do I need?', a: 'Measure the room perimeter (2 × (length + width)), subtract the width of each door opening, and add about 10% for waste. For a 12 × 10 ft room with one 32-inch door that’s roughly (44 − 2.67) × 1.10 ≈ 45.5 ft.' },
+      { q: 'Does crown molding subtract doors?', a: 'No — crown molding, picture rail and cove run continuously around the top of the room, over the doors, so they use the full perimeter. Only baseboard and chair rail stop at door openings.' },
+      { q: 'How much extra trim should I buy?', a: 'About 10% for a straightforward room, more (up to 15%) where there are lots of corners, a complex profile or long walls needing joints. Mitre cuts at every corner waste a little material each time.' },
+      { q: 'How do I work out how many pieces to buy?', a: 'Divide the total length needed (including waste) by the length of one stock piece and round up. For 45 ft of trim in 12 ft lengths that’s 45 ÷ 12 = 3.75, so buy 4 pieces.' },
+      { q: 'What is a scarf joint?', a: 'An angled joint used to join two pieces of trim end-to-end on a wall longer than a single stock length. Cut both ends at 45° so they overlap; it hides the seam better than a straight butt joint.' },
+    ],
+    keywords: ['trim calculator', 'baseboard calculator', 'crown molding calculator', 'molding calculator', 'how much baseboard do i need', 'trim molding calculator', 'quarter round calculator'],
+  },
+  {
+    slug: 'retaining-wall-calculator',
+    name: 'Retaining Wall Calculator',
+    icon: '🧱',
+    widget: 'retainingwall',
+    description: 'Calculate how many blocks you need for a retaining wall — blocks per course, number of courses, cap blocks and base gravel — from the wall length, height and block size. In your browser.',
+    lead: 'Enter the wall length and height and your block size, and get the blocks per course, the number of courses, cap blocks and the base gravel volume.',
+    how: 'The number of blocks in each course is the wall length divided by the block face width, rounded up. The number of courses is the wall height divided by the block height, rounded up. Multiply the two for the body of the wall, then add one cap course along the top. The tool also estimates a compacted gravel base trench — roughly 6 inches (15 cm) deep and about 1.5 block-widths wide — to sit the first course on.',
+    note: 'Segmental block retaining walls taller than about 3–4 feet (1–1.2 m) usually require engineering, geogrid soil reinforcement, drainage aggregate behind the wall and often a permit. Always build on compacted gravel, backfill with free-draining stone, and check your local codes before starting — this tool estimates block quantities only, not structural design.',
+    faqs: [
+      { q: 'How many blocks do I need for a retaining wall?', a: 'Divide the wall length by the block width and round up for blocks per course, divide the height by the block height and round up for the number of courses, then multiply the two and add a cap course. A 20 ft long, 3 ft high wall of 12 × 4 in blocks needs about 20 per course × 9 courses ≈ 180 blocks plus 20 caps.' },
+      { q: 'How many courses high can I build?', a: 'For dry-stacked segmental blocks, walls up to about 3–4 feet are typically DIY-safe with a proper gravel base and drainage. Taller walls need geogrid reinforcement and usually an engineer and permit — the taller the wall, the greater the soil pressure.' },
+      { q: 'How much gravel base do I need?', a: 'Plan on a compacted gravel base trench about 6 inches (15 cm) deep and a little wider than the block, running the full length of the wall. This calculator estimates that base volume for you; add free-draining gravel behind the wall separately.' },
+      { q: 'Do I need cap blocks?', a: 'Cap blocks finish the top course, hide the hollow cores and are usually glued on with concrete adhesive. They add one course’s worth of blocks; untick the option if your block system doesn’t use separate caps.' },
+      { q: 'Do retaining walls need drainage?', a: 'Yes — water pressure behind a wall is a leading cause of failure. Backfill with free-draining gravel and include a perforated drain pipe at the base. This tool covers block quantities; follow the manufacturer’s and local drainage requirements.' },
+    ],
+    keywords: ['retaining wall calculator', 'retaining wall block calculator', 'how many blocks for a retaining wall', 'retaining wall blocks', 'block wall calculator', 'segmental retaining wall', 'retaining wall base gravel'],
   },
 );
 
