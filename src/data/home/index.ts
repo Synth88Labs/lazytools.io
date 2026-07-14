@@ -6,7 +6,7 @@ export interface HomeToolDef {
   icon: string;
   widget: 'paint' | 'tile' | 'concrete' | 'mulch' | 'wallpaper'
     | 'gravel' | 'drywall' | 'roofing' | 'lawn' | 'fence' | 'deck' | 'boardfoot'
-    | 'stair' | 'stud' | 'btu' | 'ramp' | 'firewood';
+    | 'stair' | 'stud' | 'btu' | 'ramp' | 'firewood' | 'roofpitch';
   description: string;
   lead: string;
   how: string;
@@ -324,6 +324,24 @@ HOME_TOOLS.push(
       { q: 'How many BTU is a ton of cooling?', a: '12,000 BTU per hour equals one ton of cooling. So a 24,000 BTU/h system is a 2-ton unit. The tool shows tons alongside BTU.' },
     ],
     keywords: ['btu calculator', 'air conditioner size calculator', 'ac btu calculator', 'how many btu to cool a room', 'ac sizing calculator', 'room air conditioner size', 'btu per square foot'],
+  },
+  {
+    slug: 'roof-pitch-calculator',
+    name: 'Roof Pitch Calculator',
+    icon: '📐',
+    widget: 'roofpitch',
+    description: 'Convert roof rise and run into pitch (x-in-12), angle in degrees and slope percentage — plus the rafter length multiplier. Works in any unit, in your browser.',
+    lead: 'Enter the roof’s rise and run and get the pitch as x-in-12, the angle in degrees, the slope percentage and the rafter length.',
+    how: 'Roof pitch is the ratio of vertical rise to horizontal run. Expressed the US way it is the rise per 12 units of run (so a 4/12 pitch rises 4 for every 12 across). The angle in degrees is arctan(rise ÷ run), the slope percentage is rise ÷ run × 100, and the rafter length per unit of run is √(rise² + run²) ÷ run. Enter a total span and the tool returns the actual rafter length from ridge to eave for one side (half the span × the multiplier).',
+    note: 'Common pitches: 4/12 ≈ 18.4°, 6/12 ≈ 26.6°, 9/12 ≈ 36.9°, 12/12 = 45°. Low-slope roofs (below about 3/12) usually need membrane rather than shingles, and pitches above 9/12 are “steep-slope” and cost more to work on. Always confirm structural details with a builder or the shingle manufacturer’s spec.',
+    faqs: [
+      { q: 'How do I calculate roof pitch?', a: 'Divide the vertical rise by the horizontal run, then multiply by 12 to express it as x-in-12. A roof that rises 4 units over 12 units of run is a 4/12 pitch; its angle is arctan(4 ÷ 12) ≈ 18.4°.' },
+      { q: 'What does 4/12 pitch mean in degrees?', a: 'A 4/12 pitch rises 4 inches for every 12 inches of horizontal run, which is an angle of about 18.4°. In general, angle = arctan(rise ÷ run).' },
+      { q: 'What is the difference between pitch, angle and slope?', a: 'Pitch is the rise-in-12 ratio (e.g. 6/12), angle is that expressed in degrees (26.6°), and slope percentage is rise ÷ run × 100 (50%). They all describe the same steepness in different units.' },
+      { q: 'How do I find the rafter length?', a: 'The rafter length per unit of run is √(rise² + run²) ÷ run. Multiply that by the horizontal run (half the span for a symmetric ridge) to get the ridge-to-eave rafter length. Add for overhang and ridge board separately.' },
+      { q: 'What is considered a steep roof?', a: 'Roofs steeper than about 9/12 (36.9°) are generally called steep-slope and are harder and costlier to work on. Below roughly 3/12 (14°) a roof is low-slope and usually needs a membrane rather than standard shingles.' },
+    ],
+    keywords: ['roof pitch calculator', 'roof angle calculator', 'roof slope calculator', 'pitch to degrees', 'rafter length calculator', 'roof pitch in degrees', '4/12 pitch angle'],
   },
 );
 
