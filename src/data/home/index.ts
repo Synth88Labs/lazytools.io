@@ -6,7 +6,8 @@ export interface HomeToolDef {
   icon: string;
   widget: 'paint' | 'tile' | 'concrete' | 'mulch' | 'wallpaper'
     | 'gravel' | 'drywall' | 'roofing' | 'lawn' | 'fence' | 'deck' | 'boardfoot'
-    | 'stair' | 'stud' | 'btu' | 'ramp' | 'firewood' | 'roofpitch' | 'rebar';
+    | 'stair' | 'stud' | 'btu' | 'ramp' | 'firewood' | 'roofpitch' | 'rebar'
+    | 'brick' | 'excavation';
   description: string;
   lead: string;
   how: string;
@@ -360,6 +361,42 @@ HOME_TOOLS.push(
       { q: 'Should I account for lap splices?', a: 'Yes, on runs longer than a single bar. Where two bars overlap, add a lap length of roughly 40 times the bar diameter (check your code). This estimator counts bars and length for the mat; add splice length separately.' },
     ],
     keywords: ['rebar calculator', 'concrete rebar calculator', 'rebar weight calculator', 'rebar spacing calculator', 'how much rebar do i need', 'rebar grid calculator', 'slab reinforcement calculator'],
+  },
+  {
+    slug: 'brick-calculator',
+    name: 'Brick & Block Calculator',
+    icon: '🧱',
+    widget: 'brick',
+    description: 'Calculate how many bricks or concrete blocks you need for a wall — from the wall size, brick/block type and mortar joint, with a waste allowance. Metric or imperial, in your browser.',
+    lead: 'Enter your wall dimensions and pick a brick or block type, and get the number to buy — including the mortar joint and a waste allowance.',
+    how: 'A brick or block occupies its own face area plus one mortar joint on the width and height. The tool works out that effective face area, divides the wall area (length × height) by it to get the bare count, rounds up, and adds your waste percentage. Presets cover modular and standard bricks and standard concrete block (CMU); you can change the mortar joint and waste to match your job.',
+    note: 'A 3⁄8 inch (10 mm) mortar joint is standard for both brick and block. Rules of thumb: about 7 modular bricks per square foot of wall, or roughly 1.125 concrete blocks per square foot. Subtract door and window openings from the wall area, and buy 5–10% extra for cuts and breakage.',
+    faqs: [
+      { q: 'How many bricks do I need per square foot?', a: 'About 7 modular bricks per square foot of wall face, including the mortar joint. For a single-thickness wall, multiply the wall area in square feet by 7 for a quick estimate; this tool does it precisely for your brick size and joint.' },
+      { q: 'How many concrete blocks per square foot?', a: 'A standard 16 × 8 inch block covers about 0.89 square feet with its mortar joint, so roughly 1.125 blocks per square foot of wall. For 100 square feet that is about 113 blocks before waste.' },
+      { q: 'Does the mortar joint change the count?', a: 'Yes — the joint adds to each unit’s effective size, so a wall needs slightly fewer bricks than the bare brick size suggests. A 3⁄8 inch (10 mm) joint is standard and is included in this calculator.' },
+      { q: 'How much waste should I add?', a: 'Typically 5–10% for cuts, breakage and future repairs. Add more for walls with lots of corners, openings or decorative cuts. Keeping a few spares from the same batch helps with later repairs.' },
+      { q: 'Should I subtract windows and doors?', a: 'For a tighter estimate, yes — subtract the area of any openings from the wall area before calculating. For a rough buying figure you can leave them in, which builds in a little extra.' },
+    ],
+    keywords: ['brick calculator', 'how many bricks do i need', 'block calculator', 'concrete block calculator', 'cmu calculator', 'bricks per square foot', 'brick wall calculator'],
+  },
+  {
+    slug: 'excavation-calculator',
+    name: 'Excavation Calculator',
+    icon: '🚜',
+    widget: 'excavation',
+    description: 'Calculate excavation volume in cubic yards or cubic metres — plus soil weight, the bulked-up loose volume and the number of truckloads to haul it away. Metric or imperial, in your browser.',
+    lead: 'Enter the dig’s length, width and depth and get the in-ground volume, the soil weight, the loose (swelled) volume and how many truckloads to haul.',
+    how: 'Excavation is a volume job: length × width × depth. The tool converts that into cubic yards (or cubic metres), multiplies by the soil density to estimate the weight, and applies a swell (bulking) factor because dug soil expands once loose — so the volume you haul away is bigger than the hole. Dividing the loose volume by your truck capacity gives the number of loads.',
+    note: 'Soil swells about 20–30% when excavated (sand less, clay more), so always haul-plan on the loose volume. Density varies widely — dry soil is roughly 2,200 lb/yd³ (1,600 kg/m³), while wet soil, clay or rock is heavier. Call 811 (US) or your local utility-location service before you dig.',
+    faqs: [
+      { q: 'How do I calculate excavation volume?', a: 'Multiply length × width × depth in the same unit, then convert to cubic yards (divide cubic feet by 27) or cubic metres. A 20 × 10 ft area dug 1 ft deep is 200 ft³ ÷ 27 ≈ 7.4 cubic yards.' },
+      { q: 'What is soil swell or bulking?', a: 'Excavated soil expands as it is loosened, typically by 20–30%. So a 10 cubic yard hole yields roughly 12–13 cubic yards of loose spoil to haul — always size trucks and skips on the loose volume, not the in-ground volume.' },
+      { q: 'How much does excavated soil weigh?', a: 'It depends on type and moisture: dry soil is about 2,200 lb per cubic yard (1,600 kg/m³), while wet soil or clay can exceed 3,000 lb/yd³. Enter your material’s density for a better weight estimate.' },
+      { q: 'How many truckloads is my excavation?', a: 'Divide the loose (swelled) volume by the truck’s capacity and round up. A typical dump truck holds about 10–14 cubic yards; enter your truck size to get the load count.' },
+      { q: 'Do I need to call before digging?', a: 'Yes — always locate buried utilities first. In the US call 811, and elsewhere use your national utility-location service, before any excavation. This tool estimates volume only, not site safety.' },
+    ],
+    keywords: ['excavation calculator', 'dirt calculator', 'soil removal calculator', 'cubic yards of dirt', 'excavation volume calculator', 'how much dirt to remove', 'truckloads of soil'],
   },
 );
 
