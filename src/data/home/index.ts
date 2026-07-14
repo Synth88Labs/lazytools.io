@@ -7,7 +7,7 @@ export interface HomeToolDef {
   widget: 'paint' | 'tile' | 'concrete' | 'mulch' | 'wallpaper'
     | 'gravel' | 'drywall' | 'roofing' | 'lawn' | 'fence' | 'deck' | 'boardfoot'
     | 'stair' | 'stud' | 'btu' | 'ramp' | 'firewood' | 'roofpitch' | 'rebar'
-    | 'brick' | 'excavation' | 'trim' | 'retainingwall';
+    | 'brick' | 'excavation' | 'trim' | 'retainingwall' | 'paver';
   description: string;
   lead: string;
   how: string;
@@ -433,6 +433,24 @@ HOME_TOOLS.push(
       { q: 'Do retaining walls need drainage?', a: 'Yes — water pressure behind a wall is a leading cause of failure. Backfill with free-draining gravel and include a perforated drain pipe at the base. This tool covers block quantities; follow the manufacturer’s and local drainage requirements.' },
     ],
     keywords: ['retaining wall calculator', 'retaining wall block calculator', 'how many blocks for a retaining wall', 'retaining wall blocks', 'block wall calculator', 'segmental retaining wall', 'retaining wall base gravel'],
+  },
+  {
+    slug: 'paver-calculator',
+    name: 'Paver & Patio Calculator',
+    icon: '🧱',
+    widget: 'paver',
+    description: 'Calculate how many pavers you need for a patio or path — plus the gravel base and bedding sand — from the area, paver size and a waste allowance. Metric or imperial, in your browser.',
+    lead: 'Enter the patio dimensions and your paver size, and get the number of pavers to buy plus the gravel base and bedding sand volumes.',
+    how: 'The number of pavers is the patio area (length × width) divided by the area of a single paver, rounded up, plus a waste allowance for cuts and breakage. The tool also estimates the base: a compacted gravel sub-base about 6 inches (15 cm) deep and a bedding-sand layer about 1 inch (2.5 cm) deep, both spread over the whole area.',
+    note: 'Add about 10% waste for a straight layout and 15–20% for a diagonal or herringbone pattern, which needs many angled cuts around the edges. A solid, well-compacted gravel base and screeded sand bed are what stop pavers from sinking and shifting — don’t skimp on the sub-base. Buy pavers from the same batch for consistent colour.',
+    faqs: [
+      { q: 'How many pavers do I need?', a: 'Divide the patio area by the area of one paver and round up. For a 12 × 10 ft (120 sq ft) patio with 8 × 4 in pavers (0.222 sq ft each), that’s 120 ÷ 0.222 ≈ 540 pavers before waste.' },
+      { q: 'How much waste should I add for pavers?', a: 'About 10% for a straight or running-bond layout, and 15–20% for diagonal or herringbone patterns, which produce many cut pieces around the perimeter. Keep a few spares for future repairs.' },
+      { q: 'How much gravel base do I need under pavers?', a: 'Plan on a compacted gravel sub-base about 4–6 inches (10–15 cm) deep for a patio or walkway. This calculator estimates that volume; go deeper for driveways or soft ground.' },
+      { q: 'How much bedding sand goes under pavers?', a: 'A screeded bedding layer of coarse sand about 1 inch (2.5 cm) deep sits between the gravel base and the pavers. The tool estimates that volume separately from the gravel.' },
+      { q: 'Do I need edge restraints?', a: 'Yes — plastic or metal edge restraints (or a concrete haunch) keep the outer pavers from spreading and the whole field from creeping over time. They’re essential for a lasting installation but aren’t part of this quantity estimate.' },
+    ],
+    keywords: ['paver calculator', 'patio paver calculator', 'how many pavers do i need', 'paver base calculator', 'brick paver calculator', 'patio calculator', 'pavers per square foot'],
   },
 );
 
