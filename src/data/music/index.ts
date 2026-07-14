@@ -4,7 +4,7 @@ export interface MusicToolDef {
   slug: string;
   name: string;
   icon: string;
-  widget: 'notefreq' | 'delay' | 'tap' | 'metronome' | 'interval' | 'transpose' | 'filesize' | 'timesig' | 'chordscale' | 'bufferlatency' | 'keysig';
+  widget: 'notefreq' | 'delay' | 'tap' | 'metronome' | 'interval' | 'transpose' | 'filesize' | 'timesig' | 'chordscale' | 'bufferlatency' | 'keysig' | 'samplerate' | 'reverb';
   description: string;
   lead: string;
   how: string;
@@ -212,6 +212,42 @@ export const MUSIC_TOOLS: MusicToolDef[] = [
       { q: 'What\'s the difference between relative and parallel minor?', a: 'A relative minor shares the major key\'s signature but has a different tonic (C major / A minor). A parallel minor shares the tonic but has a different signature (C major / C minor, which differs by three flats).' },
     ],
     keywords: ['key signature calculator', 'key signature finder', 'circle of fifths calculator', 'how many sharps in a key', 'relative minor finder', 'key signature chart', 'sharps and flats by key'],
+  },
+  {
+    slug: 'sample-rate-calculator',
+    name: 'Sample Rate & Nyquist Calculator',
+    icon: '🎚️',
+    widget: 'samplerate',
+    description: 'Find the Nyquist frequency and dynamic range for a digital audio sample rate and bit depth — 44.1 kHz gives 22.05 kHz, 16-bit gives ~96 dB. In your browser.',
+    lead: 'Pick a sample rate and bit depth to see the Nyquist frequency and the dynamic range.',
+    how: 'Two numbers define digital audio quality. The sample rate sets the highest frequency that can be captured: by the Nyquist–Shannon theorem it\'s exactly half the sample rate (the Nyquist frequency), so 44.1 kHz reaches 22.05 kHz — just past the ~20 kHz limit of human hearing. The bit depth sets the dynamic range, the gap between the quietest and loudest sound, at about 6.02 dB per bit — so 16-bit gives roughly 96 dB and 24-bit about 144 dB. The tool computes both and the mono data rate.',
+    note: 'Higher sample rates (96 kHz, 192 kHz) capture ultrasonic content useful during editing and slowing down audio, but for final listening 44.1/48 kHz already covers human hearing. Extra bit depth mainly buys headroom for mixing; 24-bit is the production standard, with 16-bit fine for distribution.',
+    faqs: [
+      { q: 'What is the Nyquist frequency?', a: 'The highest frequency a sample rate can accurately represent — exactly half the sample rate. At 44.1 kHz it\'s 22.05 kHz; at 48 kHz it\'s 24 kHz. Frequencies above it must be filtered out to avoid aliasing.' },
+      { q: 'Why is CD audio 44.1 kHz?', a: 'To capture the full ~20 kHz range of human hearing you need a sample rate above 40 kHz (twice 20 kHz). 44.1 kHz gives a Nyquist frequency of 22.05 kHz, leaving room for the anti-aliasing filter above 20 kHz.' },
+      { q: 'How much dynamic range does bit depth give?', a: 'About 6.02 dB per bit. So 16-bit provides roughly 96 dB, 24-bit about 144 dB. That\'s the ratio between the smallest and largest signal the format can encode.' },
+      { q: 'Is a higher sample rate always better?', a: 'Not for listening — 44.1/48 kHz already covers human hearing. Higher rates (96/192 kHz) help during production (editing, pitch/time changes, ultrasonic capture) but increase file size and CPU load with no audible benefit in the final mix for most people.' },
+      { q: 'What is aliasing?', a: 'When a signal contains frequencies above the Nyquist limit, they get "folded" back as false lower frequencies — aliases. Anti-aliasing filters remove content above Nyquist before sampling to prevent this distortion.' },
+    ],
+    keywords: ['sample rate calculator', 'nyquist frequency calculator', 'nyquist calculator', 'bit depth dynamic range', 'audio sample rate', 'sampling frequency calculator', 'digital audio calculator'],
+  },
+  {
+    slug: 'reverb-time-calculator',
+    name: 'Reverb Time (RT60) Calculator',
+    icon: '🏛️',
+    widget: 'reverb',
+    description: 'Estimate a room\'s reverberation time (RT60) from its dimensions and how absorptive it is, using the Sabine equation. For acoustics and studio setup. In your browser.',
+    lead: 'Enter your room\'s dimensions and how absorptive it is to estimate the reverberation time.',
+    how: 'Reverberation time (RT60) is how long a sound takes to fade by 60 decibels — effectively to silence — after it stops. The Sabine equation estimates it from the room\'s volume and how much sound its surfaces soak up: RT60 = 0.161 × volume ÷ total absorption, where total absorption (in "sabins") is the surface area times an average absorption coefficient. The tool works out the volume and surface area from your length, width and height, applies the coefficient for your room type, and reports RT60 with a plain-language verdict.',
+    note: 'This uses a single average absorption coefficient, so it\'s a ballpark — real rooms absorb differently at each frequency and with each material, and furnishings matter a lot. Typical targets: about 0.3–0.5 s for a control room or home studio, 0.4–0.6 s for a listening room or home cinema, up to 1.5–2.5 s for a concert hall. Adding soft, porous material (curtains, carpet, acoustic panels) raises absorption and shortens the reverb.',
+    faqs: [
+      { q: 'What is RT60?', a: 'The reverberation time — how long it takes a sound to decay by 60 dB after the source stops. A short RT60 (a "dead" room) suits recording and speech clarity; a long one (a "live" room) adds a sense of space to music.' },
+      { q: 'What is the Sabine equation?', a: 'RT60 = 0.161 × V ÷ A (metric), where V is the room volume in cubic metres and A is the total absorption in sabins (surface area × average absorption coefficient). It\'s the classic formula for estimating reverberation time.' },
+      { q: 'What is a good reverb time for a room?', a: 'It depends on use: about 0.3–0.5 s for a studio control room, 0.4–0.6 s for a home theatre or listening room, 0.6–1.0 s for a living room, and 1.5–2.5 s for a concert hall. Speech needs shorter times than orchestral music.' },
+      { q: 'How do I reduce reverb in a room?', a: 'Add absorption: soft furnishings, thick curtains, carpet or rugs, upholstered furniture, bookshelves and acoustic panels all raise the absorption coefficient and shorten RT60. Hard, bare surfaces (glass, tile, plaster) do the opposite.' },
+      { q: 'How accurate is this estimate?', a: 'It\'s a first approximation. Sabine\'s formula assumes a fairly reverberant room with evenly spread absorption and uses one average coefficient, whereas real absorption varies by frequency and material. Use it to plan treatment, then measure to confirm.' },
+    ],
+    keywords: ['reverb time calculator', 'rt60 calculator', 'reverberation time calculator', 'sabine equation calculator', 'room acoustics calculator', 'reverb decay calculator', 'studio acoustics calculator'],
   },
 ];
 

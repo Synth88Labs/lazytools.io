@@ -350,6 +350,8 @@
   "music/key-signature-calculator",
   "music/metronome",
   "music/note-frequency-calculator",
+  "music/reverb-time-calculator",
+  "music/sample-rate-calculator",
   "music/tap-tempo",
   "music/time-signature-calculator",
   "music/transpose-calculator",

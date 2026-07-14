@@ -16,6 +16,8 @@ import TimeSignatureTool from '../../components/music/TimeSignatureTool.tsx';
 import ChordScaleTool from '../../components/music/ChordScaleTool.tsx';
 import BufferLatencyTool from '../../components/music/BufferLatencyTool.tsx';
 import KeySignatureTool from '../../components/music/KeySignatureTool.tsx';
+import SampleRateTool from '../../components/music/SampleRateTool.tsx';
+import ReverbTool from '../../components/music/ReverbTool.tsx';
 import { MUSIC_TOOLS, type MusicToolDef } from '../../data/music/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -73,6 +75,8 @@ const schema = [
       {tool.widget === 'chordscale' && <ChordScaleTool client:load />}
       {tool.widget === 'bufferlatency' && <BufferLatencyTool client:load />}
       {tool.widget === 'keysig' && <KeySignatureTool client:load />}
+      {tool.widget === 'samplerate' && <SampleRateTool client:load />}
+      {tool.widget === 'reverb' && <ReverbTool client:load />}
     </div>
 
     <div class="mt-4">

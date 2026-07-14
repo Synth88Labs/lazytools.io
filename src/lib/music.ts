@@ -240,3 +240,32 @@ export function keySignature(tonic: string, mode: 'major' | 'minor'): KeySig | n
   const table = mode === 'major' ? MAJOR_KEYS : MINOR_KEYS;
   return table[tonic] ?? null;
 }
+
+/* ---------------- Digital audio: Nyquist & dynamic range ---------------- */
+
+/** Nyquist frequency (Hz) — the highest frequency a sample rate can represent: sampleRate ÷ 2. */
+export const nyquistFrequency = (sampleRate: number) => sampleRate / 2;
+/** Theoretical dynamic range (dB) of PCM audio at a bit depth: bits × 20·log₁₀(2) ≈ 6.02 dB per bit. */
+export const dynamicRangeDb = (bitDepth: number) => bitDepth * 20 * Math.log10(2);
+
+/* ---------------- Room acoustics: reverberation time (Sabine) ---------------- */
+
+export interface ReverbResult {
+  volumeM3: number;
+  surfaceM2: number;
+  sabins: number;
+  rt60: number; // seconds
+}
+/**
+ * Reverberation time RT60 (s) by the Sabine equation: RT60 = 0.161 · V / A,
+ * with V the room volume (m³) and A the total absorption (sabins) = surface
+ * area × average absorption coefficient. Inputs are room length, width and
+ * height in metres and an average absorption coefficient (0–1).
+ */
+export function reverbRT60(lengthM: number, widthM: number, heightM: number, absorption: number): ReverbResult | null {
+  if (lengthM <= 0 || widthM <= 0 || heightM <= 0 || absorption <= 0 || absorption > 1) return null;
+  const volumeM3 = lengthM * widthM * heightM;
+  const surfaceM2 = 2 * (lengthM * widthM + lengthM * heightM + widthM * heightM);
+  const sabins = surfaceM2 * absorption;
+  return { volumeM3, surfaceM2, sabins, rt60: (0.161 * volumeM3) / sabins };
+}
