@@ -192,6 +192,15 @@ const AUTHORITATIVE: Record<string, Record<string, number>> = {
     ah: 3600,
     mah: 3.6,
   },
+  // base: point (1/72 in). 1 pica = 12 pt; 1 CSS px = 0.75 pt; 1 in = 72 pt.
+  typography: {
+    pt: 1,
+    px: 0.75,
+    pc: 12,
+    in: 72,
+    mm: 72 / 25.4,
+    cm: 720 / 25.4,
+  },
 };
 
 // Temperature is offset-based → verified via known point pairs instead.

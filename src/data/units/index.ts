@@ -25,6 +25,7 @@ import { kinematicViscosity } from './kinematic-viscosity.ts';
 import { radioactivity } from './radioactivity.ts';
 import { luminance } from './luminance.ts';
 import { charge } from './charge.ts';
+import { typography } from './typography.ts';
 
 export type { Quantity, Unit, PairMeta };
 
@@ -55,6 +56,7 @@ export const QUANTITIES: Quantity[] = [
   radioactivity,
   luminance,
   charge,
+  typography,
 ];
 
 /** baseValue = v * factor + offset; target = (base - offset2) / factor2 */
