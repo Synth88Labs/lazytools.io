@@ -6,7 +6,7 @@ export interface HomeToolDef {
   icon: string;
   widget: 'paint' | 'tile' | 'concrete' | 'mulch' | 'wallpaper'
     | 'gravel' | 'drywall' | 'roofing' | 'lawn' | 'fence' | 'deck' | 'boardfoot'
-    | 'stair' | 'stud' | 'btu' | 'ramp' | 'firewood' | 'roofpitch';
+    | 'stair' | 'stud' | 'btu' | 'ramp' | 'firewood' | 'roofpitch' | 'rebar';
   description: string;
   lead: string;
   how: string;
@@ -342,6 +342,24 @@ HOME_TOOLS.push(
       { q: 'What is considered a steep roof?', a: 'Roofs steeper than about 9/12 (36.9°) are generally called steep-slope and are harder and costlier to work on. Below roughly 3/12 (14°) a roof is low-slope and usually needs a membrane rather than standard shingles.' },
     ],
     keywords: ['roof pitch calculator', 'roof angle calculator', 'roof slope calculator', 'pitch to degrees', 'rafter length calculator', 'roof pitch in degrees', '4/12 pitch angle'],
+  },
+  {
+    slug: 'rebar-calculator',
+    name: 'Rebar Calculator',
+    icon: '🏗️',
+    widget: 'rebar',
+    description: 'Calculate rebar for a concrete slab — number of bars each way, total linear length, weight by bar size and tie-wire intersections, from the slab size and grid spacing. In your browser.',
+    lead: 'Enter your slab dimensions and grid spacing and get the number of bars each way, the total length, the weight for your bar size, and the number of grid intersections.',
+    how: 'For a reinforcing grid, the bars in each direction are spaced across the opposite side: bars = floor((side − 2 × edge clearance) ÷ spacing) + 1. The tool counts the lengthwise and widthwise bars, multiplies each by its effective length to get the total linear metres or feet, and multiplies by the mass per length of the chosen ASTM bar size (#3–#8) for the weight. The number of grid intersections tells you roughly how many tie wires you need.',
+    note: 'This estimates a single flat mat for a slab or footing. Add lap-splice length (commonly about 40 times the bar diameter) where bars are joined on long runs, and always follow your local building code and engineer’s drawings for bar size, spacing and concrete cover — this tool is a material estimate, not a structural design.',
+    faqs: [
+      { q: 'How do I calculate how much rebar I need?', a: 'Count the bars in each direction as floor((side − 2 × edge clearance) ÷ spacing) + 1, multiply each count by its length, and add them for the total linear feet or metres. For a 20 × 10 ft slab at 12″ spacing that’s roughly 21 + 11 bars.' },
+      { q: 'What spacing should rebar be?', a: 'Residential slabs commonly use #3 or #4 bar on a 12–18 inch (30–45 cm) grid, but the correct spacing depends on the load and your local code. Use the drawings or engineer’s spec; this tool lets you enter any spacing.' },
+      { q: 'How much does rebar weigh?', a: 'It depends on the bar size: #3 ≈ 0.376 lb/ft (0.56 kg/m), #4 ≈ 0.668 lb/ft (0.994 kg/m), #5 ≈ 1.043 lb/ft (1.552 kg/m). The tool multiplies your total length by the mass per length of the size you pick.' },
+      { q: 'What is edge clearance (concrete cover)?', a: 'The gap between the bar and the edge of the slab, which keeps steel protected inside the concrete — typically about 3 inches (7.5 cm) from a soil-cast edge. The bars start and stop that distance in from each side.' },
+      { q: 'Should I account for lap splices?', a: 'Yes, on runs longer than a single bar. Where two bars overlap, add a lap length of roughly 40 times the bar diameter (check your code). This estimator counts bars and length for the mat; add splice length separately.' },
+    ],
+    keywords: ['rebar calculator', 'concrete rebar calculator', 'rebar weight calculator', 'rebar spacing calculator', 'how much rebar do i need', 'rebar grid calculator', 'slab reinforcement calculator'],
   },
 );
 
