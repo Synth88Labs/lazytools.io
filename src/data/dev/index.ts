@@ -344,6 +344,66 @@ export const DEV_TOOLS: DevToolDef[] = [
     ],
     keywords: ['http status code', 'http status code lookup', 'what does 404 mean', 'http error codes', '500 error meaning', '301 vs 302', 'http response codes list'],
   },
+  {
+    slug: 'json-string-escape',
+    name: 'JSON String Escaper / Unescaper',
+    icon: '🔧',
+    description:
+      'Escape any text so it fits inside a JSON string (quotes, backslashes, newlines, control chars) — or unescape a JSON string body back to plain text. In-browser.',
+    lead: 'Turn raw text into a safe JSON string value — escaping ", \\, newlines and tabs — or paste an escaped value to get the original text back.',
+    widget: 'transform',
+    computeId: 'jsonEscape',
+    options: [
+      {
+        id: 'mode', label: 'Mode', type: 'select', defaultValue: 'encode',
+        options: [
+          { value: 'encode', label: 'Escape (text → JSON string)' },
+          { value: 'decode', label: 'Unescape (JSON string → text)' },
+        ],
+      },
+    ],
+    sample: 'Line 1\nHe said "hi"\tC:\\temp',
+    how: 'Escaping runs the text through the same rules a JSON serializer uses: the double quote, backslash, newline, carriage return, tab and other control characters are replaced with their backslash escapes (\\", \\\\, \\n, \\r, \\t, \\uXXXX), so the result can be dropped between the quotes of a JSON string. Unescaping does the reverse by parsing the text as a JSON string literal, turning \\n back into a real newline and \\uXXXX back into its character.',
+    note: 'Paste the text that goes *between* the quotes, not including the surrounding quotation marks. Unescaping fails if the text contains a bare (unescaped) double quote or a lone backslash, because that is not a valid JSON string body — escape it first, or fix the stray character.',
+    faqs: [
+      { q: 'How do I escape a string for JSON?', a: 'Replace the special characters — double quote, backslash, newline, carriage return, tab and other control characters — with their backslash escapes (\\", \\\\, \\n, \\r, \\t). This tool does it for you: paste the raw text and choose Escape.' },
+      { q: 'Which characters must be escaped in a JSON string?', a: 'The double quote (") and backslash (\\) must always be escaped, along with the control characters U+0000–U+001F (newline, tab, etc.). Forward slashes and non-ASCII characters may be escaped but do not have to be.' },
+      { q: 'How do I unescape a JSON string?', a: 'Choose Unescape and paste the escaped body (without the surrounding quotes). The tool parses it as a JSON string literal, so \\n becomes a real newline, \\" becomes a quote and \\uXXXX becomes its character.' },
+      { q: 'Why does unescaping fail?', a: 'A JSON string body cannot contain a bare double quote or a lone backslash — those must be escaped. If unescaping errors, the input has a stray " or \\; escape it or remove it and try again.' },
+      { q: 'Does it handle newlines and tabs?', a: 'Yes. Escaping converts real newlines to \\n, carriage returns to \\r and tabs to \\t; unescaping turns them back into the actual whitespace characters.' },
+    ],
+    keywords: ['json escape', 'json string escape', 'escape json', 'json unescape', 'escape quotes for json', 'json string escaper', 'escape newline json'],
+  },
+  {
+    slug: 'unicode-escape-converter',
+    name: 'Unicode Escape Converter',
+    icon: '🔤',
+    description:
+      'Convert non-ASCII text to \\uXXXX Unicode escape sequences — or decode \\uXXXX (and \\u{...}) escapes back to characters. Great for JSON, Java, JS and config files. In-browser.',
+    lead: 'Turn accented letters, emoji and other non-ASCII characters into \\uXXXX escapes — or paste \\u escapes to get the readable text back.',
+    widget: 'transform',
+    computeId: 'unicodeEscape',
+    options: [
+      {
+        id: 'mode', label: 'Mode', type: 'select', defaultValue: 'encode',
+        options: [
+          { value: 'encode', label: 'Encode (text → \\uXXXX)' },
+          { value: 'decode', label: 'Decode (\\uXXXX → text)' },
+        ],
+      },
+    ],
+    sample: 'café ☕ – naïve',
+    how: 'Encoding replaces every character outside the basic ASCII range (code point above 127) with a \\uXXXX escape — the four-hex-digit UTF-16 code unit used by JSON, JavaScript, Java and many config formats. Characters above the Basic Multilingual Plane (like most emoji) become a surrogate pair of two \\u escapes. Decoding turns \\uXXXX back into its character, and also understands the \\u{...} form used in modern JavaScript and Rust.',
+    note: 'ASCII characters (plain English letters, digits and common punctuation) are left untouched — only non-ASCII characters are escaped, which is what makes text safe for ASCII-only channels while staying readable. To escape absolutely everything, this isn’t the tool; it targets the common "keep it ASCII-safe" use case.',
+    faqs: [
+      { q: 'What is a Unicode escape sequence?', a: 'A way of writing a character using its code point in hexadecimal, like \\u00e9 for é. It lets you include any character in source code or data files that only safely handle ASCII.' },
+      { q: 'How do I convert text to \\u escapes?', a: 'Choose Encode and paste your text; every non-ASCII character becomes a \\uXXXX sequence. For example café becomes caf\\u00e9. Plain ASCII characters are left as-is.' },
+      { q: 'Why does an emoji become two \\u escapes?', a: 'Characters above U+FFFF (including most emoji) are stored as a UTF-16 surrogate pair, so they encode as two \\uXXXX units. Decoding the pair together reproduces the original emoji.' },
+      { q: 'Does it support the \\u{...} form?', a: 'For decoding, yes — the tool understands both the fixed four-digit \\uXXXX form and the braced \\u{1F600} form used in modern JavaScript and Rust. Encoding produces the widely compatible \\uXXXX form.' },
+      { q: 'Is this the same as URL or HTML encoding?', a: 'No. URL encoding uses %XX bytes and HTML uses &#...; entities. \\uXXXX is the escape used inside string literals in JSON, JavaScript, Java and similar languages — use the matching tool for each context.' },
+    ],
+    keywords: ['unicode escape', 'unicode to text', 'u+ to character', 'unicode escape converter', 'text to unicode', 'decode unicode escape', 'javascript unicode escape'],
+  },
 ];
 
 export function getDevTool(slug: string): DevToolDef | undefined {

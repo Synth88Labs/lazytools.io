@@ -193,6 +193,38 @@ export const DEV: Record<string, (input: string, opts: Opts) => DevResult> = {
     });
     return { output: lines.join('\n\n'), info: `${codes.length} code${codes.length === 1 ? '' : 's'} looked up` };
   },
+
+  jsonEscape: (input, opts) => {
+    const mode = String(opts.mode ?? 'encode');
+    if (mode === 'encode') {
+      // JSON.stringify a string produces a fully escaped, double-quoted literal;
+      // strip the outer quotes to get the inner escaped form.
+      const quoted = JSON.stringify(input);
+      return { output: quoted.slice(1, -1), info: 'escaped for a JSON string (\\", \\\\, \\n, \\t, control chars, \\uXXXX)' };
+    }
+    // decode: wrap in quotes and parse as a JSON string.
+    try {
+      const parsed = JSON.parse('"' + input + '"');
+      return { output: String(parsed), info: 'unescaped from a JSON string literal' };
+    } catch {
+      throw new Error('Not a valid JSON string body — check for unescaped quotes or backslashes. Paste the text between the quotes, without the surrounding quotes.');
+    }
+  },
+
+  unicodeEscape: (input, opts) => {
+    const mode = String(opts.mode ?? 'encode');
+    if (mode === 'encode') {
+      // Escape every non-ASCII UTF-16 code unit to \uXXXX.
+      const out = input.replace(/[^\x00-\x7F]/g, (c) => '\\u' + c.charCodeAt(0).toString(16).padStart(4, '0'));
+      const n = (input.match(/[^\x00-\x7F]/g) ?? []).length;
+      return { output: out, info: `${n} non-ASCII character${n === 1 ? '' : 's'} escaped to \\uXXXX` };
+    }
+    // decode: turn \uXXXX (and \u{XXXXX}) back into characters.
+    let n = 0;
+    let out = input.replace(/\\u\{([0-9a-fA-F]{1,6})\}/g, (_, h) => { n++; return String.fromCodePoint(parseInt(h, 16)); });
+    out = out.replace(/\\u([0-9a-fA-F]{4})/g, (_, h) => { n++; return String.fromCharCode(parseInt(h, 16)); });
+    return { output: out, info: `${n} \\u escape${n === 1 ? '' : 's'} decoded` };
+  },
 };
 
 const HTTP_CLASS: Record<string, string> = {
