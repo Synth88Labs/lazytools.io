@@ -6,7 +6,7 @@ export interface ChartToolDef {
   icon: string;
   description: string;
   lead: string;
-  widget: 'bar' | 'line' | 'pie';
+  widget: 'bar' | 'line' | 'pie' | 'funnel' | 'radar' | 'waterfall';
   how: string;
   note?: string;
   faqs: { q: string; a: string }[];
@@ -70,6 +70,63 @@ export const CHART_TOOLS: ChartToolDef[] = [
       { q: 'Why should a pie chart only use positive numbers?', a: 'A pie shows each value’s share of a total, and a share can’t be negative, so only positive values are drawn. If you have negative numbers (like profit and loss), a bar chart is the right choice.' },
     ],
     keywords: ['pie chart maker', 'donut chart maker', 'create pie chart online', 'pie chart generator', 'make a pie chart', 'pie chart with percentages', 'free pie chart maker'],
+  },
+  {
+    slug: 'funnel-chart-maker',
+    name: 'Funnel Chart Maker',
+    icon: '🫙',
+    description:
+      'Make a funnel chart to show conversion through stages — paste “stage, value” lines and get each stage’s drop-off and percentage of the top. Download PNG or SVG, nothing uploaded.',
+    lead: 'Paste your funnel stages as “label, value” lines and get a clean funnel chart with each stage’s percentage of the top — download a crisp PNG or an editable SVG in your browser.',
+    widget: 'funnel',
+    how: 'Enter one “stage, value” pair per line, from the widest stage at the top to the narrowest at the bottom. The tool draws each stage as a trapezoid whose width is proportional to its value, so the tapering shape shows how many people or items drop off between steps, and labels each stage with its count and its percentage of the first (top) stage. It’s drawn as an SVG in your browser with a 2× PNG export — your numbers are never uploaded.',
+    note: 'Funnel charts are made for sequential conversion processes — marketing and sales funnels, sign-up flows, checkout steps, hiring pipelines — where each stage is a subset of the one above it. List the stages in order; the biggest drop between two stages is the bottleneck worth fixing first. For unordered categories that aren’t subsets of each other, a bar chart is the honest choice.',
+    faqs: [
+      { q: 'How do I make a funnel chart?', a: 'Paste your stages as “label, value” lines, biggest first (for example “Visitors, 12000” then “Sign-ups, 4200”). The tool draws the tapering funnel and labels each stage with its value and its percentage of the top stage. Download as PNG or SVG.' },
+      { q: 'What is a funnel chart used for?', a: 'To visualise how many people or items make it through each step of a sequential process — a marketing or sales funnel, a sign-up or checkout flow, a recruiting pipeline. The narrowing shape shows drop-off between stages.' },
+      { q: 'How is the percentage calculated?', a: 'Each stage is labelled with its share of the first (top) stage, so you can see overall conversion at a glance. The top stage is 100%, and each stage below shows what fraction of that starting total remains.' },
+      { q: 'What order should the stages be in?', a: 'Top to bottom, from the largest stage to the smallest, following the real sequence. Each stage should be a subset of the one above it — that’s what makes a funnel meaningful.' },
+      { q: 'Is my data uploaded?', a: 'No. The funnel is drawn in your browser from the text you paste, so your data stays on your device and the tool works offline once loaded.' },
+    ],
+    keywords: ['funnel chart maker', 'sales funnel chart', 'conversion funnel maker', 'funnel chart generator', 'make a funnel chart', 'marketing funnel chart', 'free funnel chart maker'],
+  },
+  {
+    slug: 'radar-chart-maker',
+    name: 'Radar Chart Maker',
+    icon: '🕸️',
+    description:
+      'Make a radar (spider) chart from your data — paste “axis, value” lines and get a multi-axis polygon for comparing strengths. Download PNG or SVG, all in your browser.',
+    lead: 'Paste your data as “axis, value” lines and get a radar (spider) chart — great for skills, ratings and multi-attribute comparisons. Download a crisp PNG or an editable SVG.',
+    widget: 'radar',
+    how: 'Enter one “axis, value” pair per line — each line becomes a spoke radiating from the centre. The tool scales every value against the largest, plots a point along each spoke, and connects them into a filled polygon over concentric grid rings. The further a point sits from the centre, the higher the value on that axis, so the overall shape shows strengths and weaknesses at a glance. Drawn as an SVG in your browser, with a 2× PNG export and no upload.',
+    note: 'Radar charts (also called spider or web charts) suit three or more comparable attributes measured on a similar scale — a character’s stats, a product’s ratings, a candidate’s skills. They’re best for showing an overall profile or shape rather than precise readings; if exact comparison matters, a bar chart is easier to read. Keep it to a handful of axes so the shape stays legible.',
+    faqs: [
+      { q: 'How do I make a radar chart?', a: 'Paste one “axis, value” pair per line (for example “Speed, 8”), with at least three axes. The tool draws the spokes, scales your values and connects them into a filled polygon. Download as PNG or SVG.' },
+      { q: 'What is a radar chart good for?', a: 'Comparing several attributes of one or a few items on a common scale — skill sets, product or game-character stats, survey dimensions. The polygon’s shape shows the overall profile of strengths and weaknesses.' },
+      { q: 'How many axes can a radar chart have?', a: 'At least three (fewer can’t form a polygon) and ideally up to around eight to ten; beyond that the labels crowd and the shape gets hard to read. This tool handles up to twelve axes.' },
+      { q: 'Are the values scaled?', a: 'Yes — every value is scaled against the largest one in your data, which becomes the outer ring, so axes with different natural ranges still plot on the same chart. Use similar scales across axes for a fair comparison.' },
+      { q: 'Is a radar chart the same as a spider chart?', a: 'Yes — “radar chart,” “spider chart” and “web chart” are all names for the same multi-axis plot. This maker produces exactly that, downloadable as PNG or SVG.' },
+    ],
+    keywords: ['radar chart maker', 'spider chart maker', 'radar chart generator', 'spider graph maker', 'make a radar chart', 'web chart maker', 'free radar chart maker'],
+  },
+  {
+    slug: 'waterfall-chart-maker',
+    name: 'Waterfall Chart Maker',
+    icon: '🪜',
+    description:
+      'Make a waterfall chart showing a running total — paste a starting value then positive and negative changes, and see how each contributes. Download PNG or SVG, nothing uploaded.',
+    lead: 'Paste a starting value followed by positive and negative changes, and get a waterfall chart of the running total — download a crisp PNG or an editable SVG in your browser.',
+    widget: 'waterfall',
+    how: 'Enter one “label, value” pair per line. The first line is treated as a starting total drawn from zero; each line after it is a change that floats up (for a positive value) or down (for a negative one) from wherever the running total left off, so you can see exactly how each item builds up or eats into the total. Positive and negative steps are coloured differently, dashed connectors link them, and each bar is labelled with its signed value. Drawn as an SVG in your browser with a 2× PNG export — your data is never uploaded.',
+    note: 'Waterfall charts (also called bridge or cascade charts) are ideal for explaining how a starting figure becomes an ending figure through a series of gains and losses — revenue to profit, budget variance, inventory changes, headcount movement. Enter negative changes with a minus sign (for example “Refunds, -180”). Order the steps the way the story flows; the chart’s job is to make each contribution visible.',
+    faqs: [
+      { q: 'How do I make a waterfall chart?', a: 'Paste a starting value first (for example “Start, 1000”), then each change on its own line, using a minus sign for decreases (“Fees, -120”). The tool floats each bar from the running total and labels its signed value. Download as PNG or SVG.' },
+      { q: 'What is a waterfall chart used for?', a: 'Showing how an initial value becomes a final value through a sequence of increases and decreases — profit bridges, budget variance, cash-flow movement, headcount changes. Each floating bar is one contribution to the running total.' },
+      { q: 'How do I enter decreases?', a: 'Put a minus sign in front of the value, like “Refunds, -180”. Positive and negative steps are drawn in different colours and float down or up from the previous running total accordingly.' },
+      { q: 'What is the first value?', a: 'The first line is treated as the starting total and is drawn as a full bar from zero. Every line after it is a change relative to the running total, so the chart reads left to right as a story.' },
+      { q: 'Is a waterfall chart the same as a bridge chart?', a: 'Yes — “waterfall,” “bridge” and “cascade” chart are different names for the same running-total visualisation. This maker builds it from your data and exports PNG or SVG.' },
+    ],
+    keywords: ['waterfall chart maker', 'bridge chart maker', 'waterfall chart generator', 'cascade chart maker', 'make a waterfall chart', 'running total chart', 'free waterfall chart maker'],
   },
 ];
 

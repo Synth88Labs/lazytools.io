@@ -18,6 +18,7 @@ import RiceTool from '../../components/productivity/RiceTool.tsx';
 import SwotTool from '../../components/productivity/SwotTool.tsx';
 import ProsConsTool from '../../components/productivity/ProsConsTool.tsx';
 import FlowchartTool from '../../components/productivity/FlowchartTool.tsx';
+import SwimlaneTool from '../../components/productivity/SwimlaneTool.tsx';
 import WhiteboardTool from '../../components/productivity/WhiteboardTool.tsx';
 import TimeBlockingTool from '../../components/productivity/TimeBlockingTool.tsx';
 import OkrTool from '../../components/productivity/OkrTool.tsx';
@@ -83,6 +84,7 @@ const schema = [
       {tool.widget === 'swot' && <SwotTool client:load />}
       {tool.widget === 'pros-cons' && <ProsConsTool client:load />}
       {tool.widget === 'flowchart' && <FlowchartTool client:load />}
+      {tool.widget === 'swimlane' && <SwimlaneTool client:load />}
       {tool.widget === 'whiteboard' && <WhiteboardTool client:load />}
       {tool.widget === 'time-blocking' && <TimeBlockingTool client:load />}
       {tool.widget === 'okr' && <OkrTool client:load />}

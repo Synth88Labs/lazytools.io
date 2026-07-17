@@ -6,7 +6,7 @@ export interface ProductivityToolDef {
   icon: string;
   description: string;
   lead: string;
-  widget: 'pomodoro' | 'countdown' | 'meeting-cost' | 'eisenhower' | 'habit' | 'kanban' | 'mindmap' | 'gantt' | 'decision-matrix' | 'rice' | 'swot' | 'pros-cons' | 'flowchart' | 'whiteboard' | 'time-blocking' | 'okr' | 'checklist' | 'retro' | 'eye-rest';
+  widget: 'pomodoro' | 'countdown' | 'meeting-cost' | 'eisenhower' | 'habit' | 'kanban' | 'mindmap' | 'gantt' | 'decision-matrix' | 'rice' | 'swot' | 'pros-cons' | 'flowchart' | 'whiteboard' | 'time-blocking' | 'okr' | 'checklist' | 'retro' | 'eye-rest' | 'swimlane';
   how: string;
   note?: string;
   faqs: { q: string; a: string }[];
@@ -374,5 +374,24 @@ export const PRODUCTIVITY_TOOLS: ProductivityToolDef[] = [
       { q: 'What does the % column mean?', a: 'Your completion rate for the visible month — days marked done out of the days in that month.' },
     ],
     keywords: ['habit tracker', 'daily habit tracker', 'streak tracker', 'dont break the chain', 'habit tracker online', 'monthly habit tracker'],
+  },
+  {
+    slug: 'swimlane-diagram-maker',
+    name: 'Swimlane Diagram Maker',
+    icon: '🏊',
+    description:
+      'Build a swimlane (cross-functional) process diagram in your browser — steps organized into lanes by person, team or system, connected with arrows. Export PNG, PDF or JSON. No sign-up.',
+    lead: 'Map who does what: add lanes for each role, drop steps into them, wire the flow with arrows — then export a PNG, PDF or reusable JSON. Private, in your browser.',
+    widget: 'swimlane',
+    how: 'A swimlane diagram is a flowchart split into parallel lanes, where each lane is a person, team, department or system, so you can see not just what happens but who is responsible for each step. Add a lane for each actor, then add steps and drag them into the right lane and along the timeline — steps snap to a clean grid so the diagram stays aligned. Turn on Connect and click two steps to draw the arrow that shows the flow of work, including hand-offs that cross from one lane to another. Rename or delete lanes and steps as the process changes. Export the finished diagram as a PNG or PDF to share, or as JSON to reload and keep editing.',
+    note: 'Swimlanes earn their keep on cross-functional processes — order fulfilment, onboarding, approvals, support tickets — where the interesting failures happen at the hand-offs between teams. The arrows that jump between lanes are exactly those hand-off points, so pay attention to how many there are: each one is a place work can stall or get dropped. For a process that all happens in one place, a plain flowchart or checklist is simpler. Everything stays on your device and is saved locally.',
+    faqs: [
+      { q: 'What is a swimlane diagram?', a: 'A swimlane (or cross-functional) diagram is a process flowchart divided into lanes, where each lane represents a person, team, department or system. It shows both the sequence of steps and who is responsible for each one, making hand-offs between roles obvious.' },
+      { q: 'How do I make a swimlane diagram here?', a: 'Add a lane for each role, then add steps and drag them into the correct lane and column — they snap to a grid. Turn on Connect and click two steps to draw an arrow between them. Edit text inline, and export as PNG, PDF or JSON.' },
+      { q: 'When should I use a swimlane instead of a flowchart?', a: 'Use a swimlane when more than one person, team or system is involved and you care about who does what — it makes hand-offs between roles visible. For a process that stays within a single role, a plain flowchart is simpler.' },
+      { q: 'Can steps hand off between lanes?', a: 'Yes — connect a step in one lane to a step in another and the arrow crosses lanes. Those cross-lane arrows are the hand-off points, often where a process is slowest or most error-prone, so they are worth reviewing.' },
+      { q: 'Is my diagram private, and can I export it?', a: 'It is stored only in your browser and never uploaded. Export it as a PNG or PDF image to share or print, or as JSON to re-import later or move it between your own devices.' },
+    ],
+    keywords: ['swimlane diagram maker', 'swimlane maker', 'cross functional flowchart', 'swim lane diagram', 'process mapping tool', 'swimlane flowchart', 'swimlane diagram online'],
   },
 ];

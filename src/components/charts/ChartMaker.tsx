@@ -1,7 +1,7 @@
 import { useMemo, useRef, useState } from 'preact/hooks';
 import type { JSX } from 'preact';
 
-type Mode = 'bar' | 'line' | 'pie';
+type Mode = 'bar' | 'line' | 'pie' | 'funnel' | 'radar' | 'waterfall';
 
 interface Row {
   label: string;
@@ -20,6 +20,9 @@ const SAMPLE: Record<Mode, string> = {
   bar: 'Mon, 12\nTue, 19\nWed, 8\nThu, 22\nFri, 17\nSat, 25\nSun, 14',
   line: 'Jan, 30\nFeb, 42\nMar, 38\nApr, 55\nMay, 61\nJun, 58\nJul, 72',
   pie: 'Direct, 45\nSocial, 25\nSearch, 18\nEmail, 12',
+  funnel: 'Visitors, 12000\nSign-ups, 4200\nTrials, 1800\nPaid, 640\nRenewed, 410',
+  radar: 'Speed, 8\nPower, 6\nRange, 7\nDefense, 9\nAgility, 5\nStamina, 7',
+  waterfall: 'Start, 1000\nSales, 750\nRefunds, -180\nFees, -120\nBonus, 300',
 };
 
 /** Parse "label, value" (comma or tab) per line. */
@@ -57,6 +60,9 @@ export default function ChartMaker({ mode }: { mode: Mode }) {
   const chart = useMemo(() => {
     if (rows.length === 0) return null;
     if (mode === 'pie') return renderPie(rows, palette.colors, W, H, titleH, donut);
+    if (mode === 'funnel') return renderFunnel(rows, palette.colors, W, H, titleH);
+    if (mode === 'radar') return renderRadar(rows, palette.colors, W, H, titleH);
+    if (mode === 'waterfall') return renderWaterfall(rows, palette.colors, W, H, titleH);
     return renderAxisChart(rows, palette.colors, W, H, titleH, mode);
   }, [rows, palette, mode, donut, titleH]);
 
@@ -267,5 +273,95 @@ function renderPie(rows: Row[], colors: string[], W: number, H: number, titleH: 
     ly += 26;
   });
 
+  return { nodes };
+}
+
+/** Funnel chart — stacked centred trapezoids, width proportional to value. */
+function renderFunnel(rows: Row[], colors: string[], W: number, H: number, titleH: number) {
+  const nodes: JSX.Element[] = [];
+  const data = rows.filter((r) => r.value >= 0);
+  if (data.length === 0) { nodes.push(<text key="e" x={W / 2} y={H / 2} text-anchor="middle" font-size="14" fill="#94a3b8">Funnel charts need non-negative values.</text>); return { nodes }; }
+  const maxV = Math.max(...data.map((r) => r.value)) || 1;
+  const top = data[0].value || maxV;
+  const padT = titleH + 12, padB = 24, padL = 150;
+  const plotW = W - padL - 150;
+  const stageH = (H - padT - padB) / data.length;
+  const gap = 6;
+  const cxc = W / 2;
+  const half = (v: number) => (Math.max(0, v) / maxV) * (plotW / 2);
+  data.forEach((r, i) => {
+    const y0 = padT + i * stageH;
+    const y1 = y0 + stageH - gap;
+    const wTop = half(r.value);
+    const wBot = half(i < data.length - 1 ? data[i + 1].value : r.value);
+    const color = colors[i % colors.length];
+    nodes.push(<path key={`f${i}`} d={`M ${cxc - wTop} ${y0} L ${cxc + wTop} ${y0} L ${cxc + wBot} ${y1} L ${cxc - wBot} ${y1} Z`} fill={color} stroke="#fff" stroke-width="1.5" />);
+    const pct = top > 0 ? Math.round((r.value / top) * 100) : 0;
+    nodes.push(<text key={`fv${i}`} x={cxc} y={y0 + stageH / 2 - 2} text-anchor="middle" font-size="13" font-weight="700" fill="#fff">{niceNum(r.value)}</text>);
+    nodes.push(<text key={`fp${i}`} x={cxc} y={y0 + stageH / 2 + 14} text-anchor="middle" font-size="10" font-weight="600" fill="#f1f5f9">{pct}%</text>);
+    nodes.push(<text key={`fl${i}`} x={padL - 12} y={y0 + stageH / 2 + 4} text-anchor="end" font-size="12" fill="#334155">{r.label.length > 18 ? r.label.slice(0, 17) + '…' : r.label}</text>);
+  });
+  return { nodes };
+}
+
+/** Radar (spider) chart — one axis per row, values scaled to max. */
+function renderRadar(rows: Row[], colors: string[], W: number, H: number, titleH: number) {
+  const nodes: JSX.Element[] = [];
+  const data = rows.slice(0, 12);
+  if (data.length < 3) { nodes.push(<text key="e" x={W / 2} y={H / 2} text-anchor="middle" font-size="14" fill="#94a3b8">Radar charts need at least 3 values.</text>); return { nodes }; }
+  const maxV = Math.max(1, ...data.map((r) => Math.max(0, r.value)));
+  const cxc = W / 2, cyc = titleH + (H - titleH) / 2;
+  const R = Math.min(cxc, (H - titleH) / 2) - 64;
+  const n = data.length;
+  const ang = (i: number) => -Math.PI / 2 + (i / n) * Math.PI * 2;
+  const color = colors[0];
+  for (let g = 1; g <= 4; g++) {
+    const rr = (R * g) / 4;
+    const pts = data.map((_, i) => `${cxc + rr * Math.cos(ang(i))},${cyc + rr * Math.sin(ang(i))}`).join(' ');
+    nodes.push(<polygon key={`g${g}`} points={pts} fill="none" stroke="#e2e8f0" stroke-width="1" />);
+  }
+  data.forEach((r, i) => {
+    const x = cxc + R * Math.cos(ang(i)), y = cyc + R * Math.sin(ang(i));
+    nodes.push(<line key={`a${i}`} x1={cxc} y1={cyc} x2={x} y2={y} stroke="#cbd5e1" stroke-width="1" />);
+    const lx = cxc + (R + 22) * Math.cos(ang(i)), ly = cyc + (R + 22) * Math.sin(ang(i));
+    const anchor = Math.abs(Math.cos(ang(i))) < 0.3 ? 'middle' : Math.cos(ang(i)) > 0 ? 'start' : 'end';
+    nodes.push(<text key={`al${i}`} x={lx} y={ly + 4} text-anchor={anchor} font-size="12" font-weight="600" fill="#334155">{r.label.length > 12 ? r.label.slice(0, 11) + '…' : r.label}</text>);
+  });
+  const dpts = data.map((r, i) => { const rr = (Math.max(0, r.value) / maxV) * R; return `${cxc + rr * Math.cos(ang(i))},${cyc + rr * Math.sin(ang(i))}`; });
+  nodes.push(<polygon key="poly" points={dpts.join(' ')} fill={color} fill-opacity="0.22" stroke={color} stroke-width="2.5" stroke-linejoin="round" />);
+  data.forEach((r, i) => { const rr = (Math.max(0, r.value) / maxV) * R; nodes.push(<circle key={`d${i}`} cx={cxc + rr * Math.cos(ang(i))} cy={cyc + rr * Math.sin(ang(i))} r="3.5" fill="#fff" stroke={color} stroke-width="2" />); });
+  return { nodes };
+}
+
+/** Waterfall chart — floating bars showing a running total. */
+function renderWaterfall(rows: Row[], colors: string[], W: number, H: number, titleH: number) {
+  const nodes: JSX.Element[] = [];
+  if (rows.length === 0) return { nodes };
+  const padL = 56, padR = 20, padB = 46, padT = titleH + 10;
+  const plotW = W - padL - padR, plotH = H - padT - padB;
+  let cum = 0;
+  const segs = rows.map((r, i) => {
+    const start = i === 0 ? 0 : cum;
+    const end = i === 0 ? r.value : cum + r.value;
+    cum = end;
+    return { label: r.label, value: r.value, start, end, isTotal: i === 0 };
+  });
+  const allY = [0, ...segs.map((s) => s.start), ...segs.map((s) => s.end)];
+  const maxY = Math.max(...allY), minY = Math.min(...allY);
+  const range = maxY - minY || 1;
+  const y = (v: number) => padT + plotH - ((v - minY) / range) * plotH;
+  const n = segs.length, step = plotW / n, bw = Math.min(step * 0.6, 60);
+  for (let i = 0; i <= 4; i++) { const t = minY + (range * i) / 4; const yy = y(t); nodes.push(<line key={`g${i}`} x1={padL} y1={yy} x2={W - padR} y2={yy} stroke="#e2e8f0" stroke-width="1" />); nodes.push(<text key={`gl${i}`} x={padL - 8} y={yy + 4} text-anchor="end" font-size="11" fill="#94a3b8">{niceNum(t)}</text>); }
+  nodes.push(<line key="axis" x1={padL} y1={y(0)} x2={W - padR} y2={y(0)} stroke="#cbd5e1" stroke-width="1.5" />);
+  const upColor = colors[0], downColor = colors[3] ?? colors[1], totalColor = '#475569';
+  segs.forEach((s, i) => {
+    const cxb = padL + step * i + step / 2;
+    const yTop = y(Math.max(s.start, s.end)), yBot = y(Math.min(s.start, s.end));
+    const color = s.isTotal ? totalColor : s.value >= 0 ? upColor : downColor;
+    nodes.push(<rect key={`b${i}`} x={cxb - bw / 2} y={yTop} width={bw} height={Math.max(1, yBot - yTop)} rx="2" fill={color} />);
+    nodes.push(<text key={`v${i}`} x={cxb} y={yTop - 5} text-anchor="middle" font-size="11" font-weight="600" fill="#475569">{(s.value >= 0 && !s.isTotal ? '+' : '') + niceNum(s.value)}</text>);
+    if (i < segs.length - 1) nodes.push(<line key={`c${i}`} x1={cxb + bw / 2} y1={y(s.end)} x2={cxb + step - bw / 2} y2={y(s.end)} stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 2" />);
+    nodes.push(<text key={`x${i}`} x={cxb} y={H - padB + 18} text-anchor="middle" font-size="11" fill="#475569">{s.label.length > 10 ? s.label.slice(0, 9) + '…' : s.label}</text>);
+  });
   return { nodes };
 }
