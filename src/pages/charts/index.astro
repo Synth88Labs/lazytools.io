@@ -1,0 +1,84 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PrivacyStrip from '../../components/PrivacyStrip.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { CHART_TOOLS } from '../../data/charts/index';
+import { breadcrumbSchema, collectionPageSchema, faqSchema } from '../../lib/schema';
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Charts & Design', url: '/charts/' },
+];
+
+const faqs = [
+  {
+    q: 'How can a chart maker work without uploading my data?',
+    a: 'The charts are drawn with SVG directly in your browser from the numbers you paste, and the PNG export renders that SVG onto a canvas locally. No server is involved, so your data never leaves your device and the tools work offline.',
+  },
+  {
+    q: 'Can I download the charts as PNG and SVG?',
+    a: 'Yes — every chart maker exports a crisp 2× PNG for slides and documents, and an editable, infinitely scalable SVG for design tools like Figma, Illustrator and Inkscape.',
+  },
+  {
+    q: 'Is there a watermark or sign-up?',
+    a: 'Neither. There is no account, no watermark and no limit — just paste your data, pick a palette and download.',
+  },
+  {
+    q: 'Which chart type should I use?',
+    a: 'Use a bar chart to compare independent categories, a line chart to show a trend over time or a sequence, and a pie or donut chart to show parts of a single whole.',
+  },
+];
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  collectionPageSchema({
+    name: 'Charts & Design Tools',
+    url: '/charts/',
+    description: 'Free chart makers — bar, line, pie and donut charts from your own data, downloaded as PNG or SVG, all in your browser with no upload.',
+    items: CHART_TOOLS.map((t) => ({ name: t.name, url: `/charts/${t.slug}/` })),
+  }),
+  faqSchema(faqs),
+];
+---
+
+<Base
+  title="Charts & Design — Free Chart Makers (PNG & SVG) | LazyTools"
+  description={`Free chart makers: bar, line, pie and donut charts from your own data, downloaded as PNG or SVG. Paste “label, value” lines — everything renders in your browser, nothing is uploaded.`}
+  schema={schema}
+>
+  <div class="mx-auto max-w-5xl px-4 py-6">
+    <Breadcrumbs items={crumbs} />
+
+    <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Charts &amp; Design</h1>
+    <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
+      Turn a few lines of data into a clean chart and download it as a crisp PNG or an editable SVG —
+      bar, line, pie and donut. Everything is drawn in your browser, so the numbers you paste are
+      never uploaded.
+    </p>
+
+    <div class="mt-5">
+      <PrivacyStrip />
+    </div>
+
+    <ul class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {CHART_TOOLS.map((t) => (
+        <li>
+          <a href={`/charts/${t.slug}/`} class="flex h-full flex-col rounded-xl border border-slate-200 p-4 transition hover:border-brand-400 hover:shadow-sm">
+            <span class="text-2xl" aria-hidden="true">{t.icon}</span>
+            <span class="mt-2 font-semibold text-slate-900">{t.name}</span>
+            <span class="mt-1 text-sm text-slate-600">{t.lead.split('—')[0]}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <section class="prose-lazy mt-10">
+      <h2>Make charts in the browser, not the cloud</h2>
+      <p>Most online chart makers ask you to paste your figures into someone else's server, then hand back an image — often watermarked, behind a sign-up, or capped until you pay. That trade never made sense for a job the browser can do itself. These chart makers draw everything with <strong>SVG on your own device</strong>: paste “label, value” lines straight from a spreadsheet, pick a color palette, add a title, and download a sharp <strong>2× PNG</strong> or a vector <strong>SVG</strong> you can edit in Figma or Illustrator.</p>
+      <p>Because nothing is uploaded, they're safe for private, unpublished or sensitive numbers, and they keep working offline once the page has loaded. For color palettes and contrast, see the <a href="/color/">Color Tools</a>; for exact data crunching, the <a href="/statistics/">Statistics</a> tools.</p>
+    </section>
+
+    <FaqSection faqs={faqs} />
+  </div>
+</Base>

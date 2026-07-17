@@ -24,6 +24,7 @@ import { IMAGE_TOOLS } from '../src/data/image/index.ts';
 import { PDF_TOOLS } from '../src/data/pdf/index.ts';
 import { AUDIO_TOOLS } from '../src/data/video/index.ts';
 import { CALENDAR_TOOLS } from '../src/data/calendar/index.ts';
+import { CHART_TOOLS } from '../src/data/charts/index.ts';
 import { CIPHER_TOOLS } from '../src/data/cipher/index.ts';
 import { PRODUCTIVITY_TOOLS } from '../src/data/productivity/index.ts';
 import { NETWORK_TOOLS } from '../src/data/network/index.ts';
@@ -70,6 +71,7 @@ const slugs = [
   ...AUDIO_TOOLS.map((t) => `video/${t.slug}`),
   ...zonePairs().map((p) => `time/zones/${p.slug}`),
   ...CALENDAR_TOOLS.map((t) => `calendar/${t.slug}`),
+  ...CHART_TOOLS.map((t) => `charts/${t.slug}`),
   ...CIPHER_TOOLS.map((t) => `cipher/${t.slug}`),
   ...PRODUCTIVITY_TOOLS.map((t) => `productivity/${t.slug}`),
   ...NETWORK_TOOLS.map((t) => `network/${t.slug}`),
