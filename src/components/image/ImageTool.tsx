@@ -2,7 +2,7 @@ import { useState } from 'preact/hooks';
 import { fmtSize } from '../../lib/audio-compute';
 
 interface Props {
-  mode: 'compress' | 'convert' | 'resize' | 'base64';
+  mode: 'compress' | 'convert' | 'resize' | 'base64' | 'rotate' | 'circle';
 }
 
 export default function ImageTool({ mode }: Props) {
@@ -18,6 +18,9 @@ export default function ImageTool({ mode }: Props) {
   const [b64, setB64] = useState('');
   const [error, setError] = useState('');
   const [copied, setCopied] = useState(false);
+  const [rotation, setRotation] = useState(0); // 0 | 90 | 180 | 270
+  const [flipH, setFlipH] = useState(false);
+  const [flipV, setFlipV] = useState(false);
 
   function onFile(e: Event) {
     const f = (e.target as HTMLInputElement).files?.[0];
@@ -50,33 +53,59 @@ export default function ImageTool({ mode }: Props) {
     const img = new Image();
     img.onload = () => {
       const canvas = document.createElement('canvas');
-      const targetW = mode === 'resize' ? Math.max(1, width) : dims.w;
-      const targetH = mode === 'resize' ? Math.max(1, height) : dims.h;
+      // Circle crop is always square; a quarter-turn swaps width and height.
+      const square = Math.min(dims.w, dims.h);
+      const quarter = mode === 'rotate' && (rotation === 90 || rotation === 270);
+      const targetW = mode === 'resize' ? Math.max(1, width) : mode === 'circle' ? square : quarter ? dims.h : dims.w;
+      const targetH = mode === 'resize' ? Math.max(1, height) : mode === 'circle' ? square : quarter ? dims.w : dims.h;
       canvas.width = targetW;
       canvas.height = targetH;
       const ctx = canvas.getContext('2d')!;
       ctx.imageSmoothingQuality = 'high';
-      if (format === 'image/jpeg') {
+      // A circle crop only makes sense with transparency, so it forces PNG.
+      const outFormat = mode === 'circle' ? 'image/png' : format;
+      if (outFormat === 'image/jpeg') {
         // JPEG has no alpha — flatten transparency onto white
         ctx.fillStyle = '#ffffff';
         ctx.fillRect(0, 0, targetW, targetH);
       }
-      ctx.drawImage(img, 0, 0, targetW, targetH);
+      if (mode === 'circle') {
+        ctx.beginPath();
+        ctx.arc(square / 2, square / 2, square / 2, 0, Math.PI * 2);
+        ctx.closePath();
+        ctx.clip();
+        // Centre-crop the source to the square before drawing.
+        ctx.drawImage(img, (dims.w - square) / 2, (dims.h - square) / 2, square, square, 0, 0, square, square);
+      } else if (mode === 'rotate') {
+        ctx.translate(targetW / 2, targetH / 2);
+        ctx.rotate((rotation * Math.PI) / 180);
+        ctx.scale(flipH ? -1 : 1, flipV ? -1 : 1);
+        ctx.drawImage(img, -dims.w / 2, -dims.h / 2, dims.w, dims.h);
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+      } else {
+        ctx.drawImage(img, 0, 0, targetW, targetH);
+      }
+      const suffix =
+        mode === 'resize' ? `${targetW}x${targetH}`
+        : mode === 'compress' ? 'compressed'
+        : mode === 'circle' ? 'circle'
+        : mode === 'rotate' ? 'rotated'
+        : 'converted';
       canvas.toBlob(
         (blob) => {
           if (!blob) return setError('Encoding failed — this browser may not support the chosen format.');
-          const ext = format === 'image/png' ? 'png' : format === 'image/webp' ? 'webp' : 'jpg';
+          const ext = outFormat === 'image/png' ? 'png' : outFormat === 'image/webp' ? 'webp' : 'jpg';
           const url = URL.createObjectURL(blob);
           const a = document.createElement('a');
           a.href = url;
-          a.download = `${file.name.replace(/\.[^.]+$/, '')}-${mode === 'resize' ? `${targetW}x${targetH}` : mode === 'compress' ? 'compressed' : 'converted'}.${ext}`;
+          a.download = `${file.name.replace(/\.[^.]+$/, '')}-${suffix}.${ext}`;
           a.click();
           URL.revokeObjectURL(url);
           const delta = file.size > 0 ? Math.round((1 - blob.size / file.size) * 100) : 0;
           setOutInfo(`✓ Downloaded — ${fmtSize(file.size)} → ${fmtSize(blob.size)}${delta > 0 ? ` (${delta}% smaller)` : ''}`);
         },
-        format,
-        format === 'image/png' ? undefined : quality / 100
+        outFormat,
+        outFormat === 'image/png' ? undefined : quality / 100
       );
     };
     img.src = preview;
@@ -135,7 +164,43 @@ export default function ImageTool({ mode }: Props) {
               </div>
             )}
 
-            {(mode === 'convert' || mode === 'compress' || mode === 'resize') && (
+            {mode === 'rotate' && (
+              <div class="space-y-3">
+                <div>
+                  <span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Rotate</span>
+                  <div class="flex flex-wrap gap-2">
+                    {[0, 90, 180, 270].map((deg) => (
+                      <button type="button" onClick={() => setRotation(deg)}
+                        class={`rounded-lg border px-3 py-1.5 text-sm font-semibold transition ${rotation === deg ? 'border-brand-500 bg-brand-50 text-brand-800' : 'border-slate-300 bg-white text-slate-600 hover:border-brand-400'}`}>
+                        {deg === 0 ? 'None' : `${deg}°`}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                <div class="flex flex-wrap gap-4">
+                  <label class="flex items-center gap-2 text-sm font-medium text-slate-700">
+                    <input type="checkbox" checked={flipH} onChange={(e) => setFlipH((e.target as HTMLInputElement).checked)} class="h-4 w-4 rounded border-slate-300 text-brand-600" />
+                    Flip horizontally (mirror)
+                  </label>
+                  <label class="flex items-center gap-2 text-sm font-medium text-slate-700">
+                    <input type="checkbox" checked={flipV} onChange={(e) => setFlipV((e.target as HTMLInputElement).checked)} class="h-4 w-4 rounded border-slate-300 text-brand-600" />
+                    Flip vertically
+                  </label>
+                </div>
+                {(rotation === 90 || rotation === 270) && (
+                  <p class="text-xs text-slate-500">Output will be {dims.h}×{dims.w}px — a quarter-turn swaps width and height.</p>
+                )}
+              </div>
+            )}
+
+            {mode === 'circle' && (
+              <p class="text-sm text-slate-600">
+                The image is centre-cropped to a square, then masked to a circle. Output is always <strong>PNG</strong>, since the corners need transparency —
+                {dims.w === dims.h ? ' your image is already square.' : ` a ${Math.min(dims.w, dims.h)}×${Math.min(dims.w, dims.h)}px circle from the middle.`}
+              </p>
+            )}
+
+            {(mode === 'convert' || mode === 'compress' || mode === 'resize' || mode === 'rotate') && (
               <div class="mt-3">
                 <label for="it-fmt" class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Output format</label>
                 <select id="it-fmt" value={format} onChange={(e) => setFormat((e.target as HTMLSelectElement).value as typeof format)} class={`${inputCls} max-w-xs`}>
@@ -147,7 +212,7 @@ export default function ImageTool({ mode }: Props) {
               </div>
             )}
 
-            {format !== 'image/png' && (
+            {format !== 'image/png' && mode !== 'circle' && (
               <div class="mt-3">
                 <label for="it-q" class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Quality: {quality}</label>
                 <input id="it-q" type="range" min={40} max={100} value={quality} onInput={(e) => setQuality(parseInt((e.target as HTMLInputElement).value, 10))} class="w-full max-w-xs accent-brand-600" />
@@ -155,7 +220,7 @@ export default function ImageTool({ mode }: Props) {
             )}
 
             <button type="button" onClick={render} class="mt-4 rounded-xl bg-brand-700 px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-brand-800">
-              ⬇ {mode === 'compress' ? 'Compress' : mode === 'resize' ? 'Resize' : 'Convert'} & download
+              ⬇ {mode === 'compress' ? 'Compress' : mode === 'resize' ? 'Resize' : mode === 'rotate' ? 'Apply' : mode === 'circle' ? 'Crop to circle' : 'Convert'} &amp; download
             </button>
             {outInfo && <p class="mt-2 text-sm font-medium text-mint-700" aria-live="polite">{outInfo}</p>}
           </div>

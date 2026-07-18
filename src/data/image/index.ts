@@ -6,7 +6,7 @@ export interface ImageToolDef {
   icon: string;
   description: string;
   lead: string;
-  widget: 'compress' | 'convert' | 'resize' | 'base64' | 'heic';
+  widget: 'compress' | 'convert' | 'resize' | 'base64' | 'heic' | 'rotate' | 'circle';
   how: string;
   note?: string;
   faqs: { q: string; a: string }[];
@@ -108,5 +108,43 @@ export const IMAGE_TOOLS: ImageToolDef[] = [
       { q: 'Is my image uploaded to convert it?', a: 'No — the encoding is a local byte transformation in your browser. The string appears in the output box and nowhere else.' },
     ],
     keywords: ['image to base64', 'base64 image encoder', 'data url generator', 'convert image to data uri', 'png to base64'],
+  },
+  {
+    slug: 'rotate-image',
+    name: 'Rotate & Flip Image',
+    icon: '🔄',
+    description:
+      'Rotate an image by 90°, 180° or 270° and flip it horizontally or vertically — then download. Runs entirely in your browser, nothing uploaded.',
+    lead: 'Straighten a sideways photo or mirror an image: rotate in quarter turns, flip horizontally or vertically, and download the result — all on your device.',
+    widget: 'rotate',
+    how: 'The image is redrawn onto a canvas with a transform applied: the canvas is rotated about its centre by the angle you choose, and scaled by −1 on either axis to mirror it. A quarter turn (90° or 270°) swaps the output width and height, so a 4000×3000 photo becomes 3000×4000. Because the pixels are re-encoded, you can also pick the output format and quality. Everything happens in your browser — the photo is never uploaded.',
+    note: 'Rotating by exact quarter turns is lossless in terms of geometry — no pixels are interpolated, since every pixel maps exactly onto another. The re-encoding step is what costs a little quality on JPEG, so choose PNG (or a high quality setting) if you plan to edit further. A common use is fixing photos that appear sideways because the EXIF orientation flag was ignored by the app that opened them; re-saving here bakes the correct orientation into the pixels themselves.',
+    faqs: [
+      { q: 'How do I rotate an image 90 degrees?', a: 'Upload the image, choose 90°, and download. The output width and height swap — a 4000×3000 landscape photo becomes 3000×4000 portrait. Everything is processed in your browser.' },
+      { q: 'What is the difference between rotating and flipping?', a: 'Rotating turns the image around its centre, preserving the arrangement of the content. Flipping mirrors it, so text reads backwards and left becomes right. You can combine both here.' },
+      { q: 'Why does my photo appear sideways on some devices?', a: 'Cameras often store the photo in its original sensor orientation plus an EXIF "orientation" flag telling viewers how to rotate it. Apps that ignore that flag show it sideways. Rotating and re-saving here bakes the correct orientation into the pixels, so every viewer shows it correctly.' },
+      { q: 'Does rotating lose quality?', a: 'The rotation itself is geometrically lossless at 90° increments, since each pixel maps exactly onto another. Any small quality cost comes from re-encoding — pick PNG or a high quality setting to minimise it.' },
+      { q: 'Is my photo uploaded?', a: 'No. The image is drawn onto a canvas in your browser and re-encoded locally. It never leaves your device, and the tool works offline once the page has loaded.' },
+    ],
+    keywords: ['rotate image', 'flip image', 'mirror image online', 'rotate photo 90 degrees', 'image rotator', 'turn image sideways'],
+  },
+  {
+    slug: 'circle-crop-image',
+    name: 'Circle Crop Image',
+    icon: '⭕',
+    description:
+      'Crop any image into a circle with a transparent background — perfect for profile pictures and avatars. Exports PNG, processed entirely in your browser.',
+    lead: 'Turn any photo into a round avatar: the image is centre-cropped to a square and masked to a circle, exported as a transparent PNG. Nothing is uploaded.',
+    widget: 'circle',
+    how: 'The tool takes the largest square that fits in the middle of your image, then uses a circular clipping path on a canvas so only the pixels inside the circle are drawn. The corners are left fully transparent, which is why the output is always PNG — JPEG has no alpha channel and would fill those corners with white. The result is a square PNG whose visible content is a perfect circle, ready to drop into a profile field or a design.',
+    note: 'Because the crop is taken from the centre, compose accordingly — if your subject sits off to one side, crop the image to roughly square first so the circle lands where you want it. Note that most platforms (social profiles, chat apps) apply their own circular mask to a square photo, so you often do not need a pre-cropped circle for those; this tool matters when you need genuine transparency, such as placing an avatar over a coloured background in a document, slide or web page.',
+    faqs: [
+      { q: 'How do I crop an image into a circle?', a: 'Upload the image and download — the tool centre-crops it to a square and masks it to a circle automatically. The result is a PNG with transparent corners.' },
+      { q: 'Why is the output always PNG?', a: 'The corners outside the circle must be transparent, and only formats with an alpha channel can store transparency. JPEG has none, so saving as JPEG would fill the corners with white instead of leaving them clear.' },
+      { q: 'Can I choose which part of the image the circle takes?', a: 'The circle is taken from the centre of the image. If your subject is off-centre, crop or reframe the picture to roughly square first, so that the centre of the file is the part you want inside the circle.' },
+      { q: 'Do I need a circular image for a profile picture?', a: 'Usually not — most social platforms and chat apps apply their own circular mask to a square upload. A real circular PNG matters when you need transparency, such as overlaying an avatar on a coloured background in a slide, document or web page.' },
+      { q: 'Is my photo uploaded anywhere?', a: 'No. The masking is done on a canvas inside your browser and the PNG is generated locally, so the image never leaves your device.' },
+    ],
+    keywords: ['circle crop', 'circle crop image', 'round profile picture', 'crop image into circle', 'circular avatar maker', 'round image png'],
   },
 ];
