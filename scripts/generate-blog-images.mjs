@@ -7,6 +7,20 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'dew-point-vs-humidity-guide',
+    kicker: 'WEATHER GUIDE',
+    lines: ['Dew point vs', 'humidity: why 100%', 'can feel fine'],
+    fact: 'RH depends on temperature · dew point measures real moisture',
+    icon: '💧',
+  },
+  {
+    slug: 'crop-factor-explained-guide',
+    kicker: 'PHOTOGRAPHY GUIDE',
+    lines: ['Crop factor:', 'your 50mm doesn’t', 'become a 75mm'],
+    fact: 'framing changes · exposure doesn’t · DoF equivalent = f × crop',
+    icon: '📷',
+  },
+  {
     slug: 'bpm-to-delay-time-guide',
     kicker: 'MUSIC PRODUCTION GUIDE',
     lines: ['BPM to delay time:', 'the 60,000 rule', 'every producer knows'],

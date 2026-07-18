@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-label="A lens projects one image circle; a smaller sensor captures less of it, so a 50mm frames like 75mm on APS-C. Exposure unchanged; depth of field equivalent aperture is f-number times crop factor.">
+  <rect width="1200" height="700" fill="#f8fafc"/>
+  <text x="600" y="58" text-anchor="middle" font-family="system-ui, sans-serif" font-size="42" font-weight="800" fill="#0f172a">The lens doesn't change. The crop does.</text>
+
+  <!-- image circle -->
+  <circle cx="330" cy="290" r="176" fill="#e0e7ff" stroke="#6366f1" stroke-width="4"/>
+  <text x="330" y="98" text-anchor="middle" font-family="system-ui, sans-serif" font-size="24" font-weight="700" fill="#4338ca">lens image circle</text>
+  <!-- full frame rect -->
+  <rect x="186" y="242" width="288" height="192" fill="none" stroke="#1e3a8a" stroke-width="5"/>
+  <text x="330" y="466" text-anchor="middle" font-family="system-ui, sans-serif" font-size="24" font-weight="700" fill="#1e3a8a">full frame 36×24</text>
+  <!-- apsc rect -->
+  <rect x="234" y="274" width="192" height="128" fill="#fecaca" fill-opacity="0.55" stroke="#dc2626" stroke-width="5"/>
+  <text x="330" y="352" text-anchor="middle" font-family="system-ui, sans-serif" font-size="24" font-weight="800" fill="#991b1b">APS-C 1.5×</text>
+
+  <!-- right panel -->
+  <rect x="560" y="110" width="570" height="118" rx="16" fill="#0f172a"/>
+  <text x="845" y="154" text-anchor="middle" font-family="system-ui, sans-serif" font-size="26" font-weight="700" fill="#93c5fd">EQUIVALENT FOCAL LENGTH</text>
+  <text x="845" y="204" text-anchor="middle" font-family="system-ui, sans-serif" font-size="34" font-weight="800" fill="#f8fafc">50 mm × 1.5 = frames like 75 mm</text>
+
+  <rect x="560" y="248" width="570" height="130" rx="16" fill="#dcfce7" stroke="#16a34a" stroke-width="4"/>
+  <text x="845" y="290" text-anchor="middle" font-family="system-ui, sans-serif" font-size="27" font-weight="800" fill="#166534">EXPOSURE: UNCHANGED</text>
+  <text x="845" y="332" text-anchor="middle" font-family="system-ui, sans-serif" font-size="26" fill="#15803d">f/4 · 1/200 s · ISO 400</text>
+  <text x="845" y="364" text-anchor="middle" font-family="system-ui, sans-serif" font-size="25" font-weight="700" fill="#166534">same brightness on every sensor</text>
+
+  <rect x="560" y="396" width="570" height="130" rx="16" fill="#fef3c7" stroke="#d97706" stroke-width="4"/>
+  <text x="845" y="438" text-anchor="middle" font-family="system-ui, sans-serif" font-size="27" font-weight="800" fill="#92400e">DEPTH OF FIELD: SCALES</text>
+  <text x="845" y="480" text-anchor="middle" font-family="system-ui, sans-serif" font-size="26" fill="#b45309">equivalent f = f-number × crop</text>
+  <text x="845" y="512" text-anchor="middle" font-family="system-ui, sans-serif" font-size="25" font-weight="700" fill="#92400e">25 mm f/1.4 MFT ≈ 50 mm f/2.8 FF</text>
+
+  <rect x="70" y="556" width="1060" height="104" rx="18" fill="#1e293b"/>
+  <text x="600" y="600" text-anchor="middle" font-family="system-ui, sans-serif" font-size="28" font-weight="800" fill="#f8fafc">A crop sensor doesn't magnify — it shows you less of the same image.</text>
+  <text x="600" y="640" text-anchor="middle" font-family="system-ui, sans-serif" font-size="25" fill="#cbd5e1">Crop a full-frame file to APS-C proportions and you get the same picture.</text>
+</svg>
