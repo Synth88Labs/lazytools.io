@@ -7,6 +7,27 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'which-chart-type-to-use-guide',
+    kicker: 'DATA VISUALIZATION GUIDE',
+    lines: ['Which chart type', 'should you use?', 'A decision guide'],
+    fact: 'bar = compare · line = over time · pie = parts of a whole',
+    icon: '📊',
+  },
+  {
+    slug: 'what-is-a-swimlane-diagram-guide',
+    kicker: 'PROCESS MAPPING GUIDE',
+    lines: ['What is a', 'swimlane diagram?', 'Who does what'],
+    fact: 'one lane per role · every crossing is a hand-off · 3–7 lanes',
+    icon: '🏊',
+  },
+  {
+    slug: 'roof-pitch-explained-guide',
+    kicker: 'ROOFING GUIDE',
+    lines: ['Roof pitch', 'explained: 4/12', 'in degrees'],
+    fact: '4/12 = 18.4° · walkable to ~4/12 · shingles need 2/12 min',
+    icon: '📐',
+  },
+  {
     slug: 'how-to-calculate-square-footage-guide',
     kicker: 'HOME MEASURING GUIDE',
     lines: ['How to calculate', 'square footage', 'of any room'],

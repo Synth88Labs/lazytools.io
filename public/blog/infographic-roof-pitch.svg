@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-label="A 4/12 roof pitch triangle with 12 inches of run and 4 inches of rise, equal to 18.4 degrees, plus a conversion table.">
+  <rect width="1200" height="700" fill="#f8fafc"/>
+  <text x="600" y="62" text-anchor="middle" font-family="system-ui, sans-serif" font-size="44" font-weight="800" fill="#0f172a">Pitch = rise per 12 of run</text>
+  <text x="600" y="106" text-anchor="middle" font-family="system-ui, sans-serif" font-size="27" fill="#475569">The run is always 12 — only the rise changes.</text>
+
+  <!-- triangle -->
+  <polygon points="110,470 590,470 590,310" fill="#dbeafe" stroke="#2563eb" stroke-width="5"/>
+  <!-- run label -->
+  <line x1="110" y1="512" x2="590" y2="512" stroke="#334155" stroke-width="3"/>
+  <text x="350" y="548" text-anchor="middle" font-family="system-ui, sans-serif" font-size="30" font-weight="700" fill="#334155">RUN = 12″</text>
+  <!-- rise label -->
+  <line x1="634" y1="310" x2="634" y2="470" stroke="#334155" stroke-width="3"/>
+  <text x="656" y="398" font-family="system-ui, sans-serif" font-size="30" font-weight="700" fill="#334155">RISE</text>
+  <text x="656" y="434" font-family="system-ui, sans-serif" font-size="30" font-weight="700" fill="#334155">= 4″</text>
+  <!-- angle -->
+  <text x="196" y="454" font-family="system-ui, sans-serif" font-size="30" font-weight="800" fill="#1e3a8a">18.4°</text>
+  <text x="350" y="390" text-anchor="middle" font-family="system-ui, sans-serif" font-size="38" font-weight="800" fill="#1e3a8a">4/12</text>
+
+  <!-- table -->
+  <rect x="770" y="286" width="360" height="272" rx="16" fill="#ffffff" stroke="#e2e8f0" stroke-width="3"/>
+  <text x="800" y="330" font-family="system-ui, sans-serif" font-size="26" font-weight="800" fill="#0f172a">PITCH</text>
+  <text x="1010" y="330" font-family="system-ui, sans-serif" font-size="26" font-weight="800" fill="#0f172a">ANGLE</text>
+  <line x1="794" y1="346" x2="1106" y2="346" stroke="#e2e8f0" stroke-width="3"/>
+  <text x="800" y="390" font-family="system-ui, sans-serif" font-size="27" fill="#334155">4/12</text>
+  <text x="1010" y="390" font-family="system-ui, sans-serif" font-size="27" font-weight="700" fill="#1e3a8a">18.4°</text>
+  <text x="800" y="434" font-family="system-ui, sans-serif" font-size="27" fill="#334155">6/12</text>
+  <text x="1010" y="434" font-family="system-ui, sans-serif" font-size="27" font-weight="700" fill="#1e3a8a">26.6°</text>
+  <text x="800" y="478" font-family="system-ui, sans-serif" font-size="27" fill="#334155">9/12</text>
+  <text x="1010" y="478" font-family="system-ui, sans-serif" font-size="27" font-weight="700" fill="#1e3a8a">36.9°</text>
+  <text x="800" y="522" font-family="system-ui, sans-serif" font-size="27" fill="#334155">12/12</text>
+  <text x="1010" y="522" font-family="system-ui, sans-serif" font-size="27" font-weight="700" fill="#1e3a8a">45.0°</text>
+
+  <rect x="110" y="596" width="1020" height="72" rx="16" fill="#0f172a"/>
+  <text x="620" y="642" text-anchor="middle" font-family="system-ui, sans-serif" font-size="30" font-weight="700" fill="#f8fafc">angle = arctan(rise ÷ run) · walkable up to about 4/12</text>
+</svg>

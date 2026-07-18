@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-label="A swimlane diagram with Customer, Sales and Warehouse lanes; arrows crossing between lanes are the hand-offs.">
+  <rect width="1200" height="700" fill="#f8fafc"/>
+  <text x="600" y="60" text-anchor="middle" font-family="system-ui, sans-serif" font-size="42" font-weight="800" fill="#0f172a">Every crossing is a hand-off.</text>
+  <text x="600" y="104" text-anchor="middle" font-family="system-ui, sans-serif" font-size="27" fill="#475569">That's where work waits, and context gets lost.</text>
+
+  <!-- lanes -->
+  <rect x="60" y="140" width="1080" height="140" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+  <rect x="60" y="280" width="1080" height="140" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/>
+  <rect x="60" y="420" width="1080" height="140" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+  <rect x="60" y="140" width="210" height="140" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="2"/>
+  <rect x="60" y="280" width="210" height="140" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="2"/>
+  <rect x="60" y="420" width="210" height="140" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="2"/>
+  <text x="165" y="218" text-anchor="middle" font-family="system-ui, sans-serif" font-size="27" font-weight="800" fill="#334155">Customer</text>
+  <text x="165" y="358" text-anchor="middle" font-family="system-ui, sans-serif" font-size="27" font-weight="800" fill="#334155">Sales</text>
+  <text x="165" y="498" text-anchor="middle" font-family="system-ui, sans-serif" font-size="27" font-weight="800" fill="#334155">Warehouse</text>
+
+  <defs><marker id="swa" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#dc2626"/></marker></defs>
+
+  <!-- steps -->
+  <rect x="320" y="180" width="170" height="60" rx="10" fill="#ffffff" stroke="#2563eb" stroke-width="3"/>
+  <text x="405" y="217" text-anchor="middle" font-family="system-ui, sans-serif" font-size="22" font-weight="600" fill="#1e293b">Place order</text>
+
+  <rect x="540" y="320" width="170" height="60" rx="10" fill="#ffffff" stroke="#2563eb" stroke-width="3"/>
+  <text x="625" y="357" text-anchor="middle" font-family="system-ui, sans-serif" font-size="22" font-weight="600" fill="#1e293b">Confirm</text>
+
+  <rect x="760" y="460" width="170" height="60" rx="10" fill="#ffffff" stroke="#2563eb" stroke-width="3"/>
+  <text x="845" y="497" text-anchor="middle" font-family="system-ui, sans-serif" font-size="22" font-weight="600" fill="#1e293b">Pick + pack</text>
+
+  <rect x="960" y="180" width="170" height="60" rx="10" fill="#ffffff" stroke="#2563eb" stroke-width="3"/>
+  <text x="1045" y="217" text-anchor="middle" font-family="system-ui, sans-serif" font-size="22" font-weight="600" fill="#1e293b">Receive</text>
+
+  <!-- crossing arrows -->
+  <line x1="490" y1="215" x2="540" y2="345" stroke="#dc2626" stroke-width="4" marker-end="url(#swa)"/>
+  <line x1="710" y1="355" x2="760" y2="485" stroke="#dc2626" stroke-width="4" marker-end="url(#swa)"/>
+  <line x1="930" y1="485" x2="1000" y2="245" stroke="#dc2626" stroke-width="4" marker-end="url(#swa)"/>
+
+  <rect x="60" y="596" width="1080" height="72" rx="16" fill="#0f172a"/>
+  <text x="600" y="642" text-anchor="middle" font-family="system-ui, sans-serif" font-size="28" font-weight="700" fill="#f8fafc">3 lanes · 3 hand-offs — count them, then ask which you can remove.</text>
+</svg>
