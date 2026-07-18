@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-label="Magnification equals telescope focal length divided by eyepiece focal length, with a useful maximum of about 50 times the aperture in inches.">
+  <rect width="1200" height="700" fill="#0f172a"/>
+  <text x="600" y="66" text-anchor="middle" font-family="system-ui, sans-serif" font-size="44" font-weight="800" fill="#f8fafc">Aperture sets the ceiling — not power</text>
+
+  <!-- formula -->
+  <rect x="90" y="112" width="1020" height="130" rx="18" fill="#1e293b" stroke="#334155" stroke-width="3"/>
+  <text x="600" y="166" text-anchor="middle" font-family="system-ui, sans-serif" font-size="30" font-weight="700" fill="#7dd3fc">MAGNIFICATION</text>
+  <text x="600" y="216" text-anchor="middle" font-family="system-ui, sans-serif" font-size="36" font-weight="800" fill="#f8fafc">telescope focal length ÷ eyepiece focal length</text>
+
+  <!-- example -->
+  <text x="600" y="292" text-anchor="middle" font-family="system-ui, sans-serif" font-size="32" fill="#cbd5e1">1000 mm ÷ 10 mm eyepiece =</text>
+  <text x="600" y="344" text-anchor="middle" font-family="system-ui, sans-serif" font-size="52" font-weight="800" fill="#4ade80">100×</text>
+
+  <!-- limit -->
+  <rect x="90" y="384" width="495" height="180" rx="18" fill="#14532d" stroke="#16a34a" stroke-width="4"/>
+  <text x="337" y="428" text-anchor="middle" font-family="system-ui, sans-serif" font-size="26" font-weight="800" fill="#86efac">USEFUL MAXIMUM</text>
+  <text x="337" y="482" text-anchor="middle" font-family="system-ui, sans-serif" font-size="40" font-weight="800" fill="#f8fafc">50× per inch</text>
+  <text x="337" y="524" text-anchor="middle" font-family="system-ui, sans-serif" font-size="25" fill="#bbf7d0">4″ scope → about 200×</text>
+  <text x="337" y="552" text-anchor="middle" font-family="system-ui, sans-serif" font-size="23" fill="#86efac">(≈0.5 mm exit pupil)</text>
+
+  <rect x="615" y="384" width="495" height="180" rx="18" fill="#7f1d1d" stroke="#dc2626" stroke-width="4"/>
+  <text x="862" y="428" text-anchor="middle" font-family="system-ui, sans-serif" font-size="26" font-weight="800" fill="#fca5a5">BEYOND THAT</text>
+  <text x="862" y="482" text-anchor="middle" font-family="system-ui, sans-serif" font-size="36" font-weight="800" fill="#f8fafc">empty magnification</text>
+  <text x="862" y="524" text-anchor="middle" font-family="system-ui, sans-serif" font-size="25" fill="#fecaca">bigger · dimmer · blurrier</text>
+  <text x="862" y="552" text-anchor="middle" font-family="system-ui, sans-serif" font-size="23" fill="#fca5a5">no extra detail</text>
+
+  <text x="600" y="618" text-anchor="middle" font-family="system-ui, sans-serif" font-size="27" font-weight="700" fill="#fbbf24">A “600×” 60 mm telescope honestly tops out near 120×.</text>
+  <text x="600" y="660" text-anchor="middle" font-family="system-ui, sans-serif" font-size="25" fill="#94a3b8">Planetary observers usually work at just 20–30× per inch.</text>
+</svg>

@@ -76,7 +76,7 @@ working.
 | [PDF Tools](https://lazytools.io/pdf/) | merge/split/rotate **with live page previews**, JPG↔PDF (**PDF→JPG/PNG** rendered in-browser via pdf.js, + **images→PDF**), unlock/protect (qpdf wasm), **accessibility checker (EAA)**, **redaction checker + rasterizing redactor** |
 | [Audio](https://lazytools.io/video/) | trim, speed, volume, WAV convert (Web Audio) |
 
-Plus **111 in-depth guides** on the [blog](https://lazytools.io/blog/) — each with custom infographics,
+Plus **113 in-depth guides** on the [blog](https://lazytools.io/blog/) — each with custom infographics,
 FAQ schema and cited sources — and a research-driven build pipeline (see
 [docs/research/](docs/research/)) that has shipped regulatory-deadline tools ahead of the French,
 Polish and Belgian e-invoicing mandates.

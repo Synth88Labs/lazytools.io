@@ -7,6 +7,20 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'telescope-magnification-guide',
+    kicker: 'ASTRONOMY GUIDE',
+    lines: ['Telescope power:', 'why “600x” on', 'the box is a lie'],
+    fact: 'mag = focal ÷ eyepiece · useful max ≈ 50× per inch of aperture',
+    icon: '🔭',
+  },
+  {
+    slug: 'paver-base-depth-guide',
+    kicker: 'HARDSCAPING GUIDE',
+    lines: ['How deep should', 'a paver base be?', 'Gravel + sand'],
+    fact: 'patio 4–6″ gravel · driveway 8–12″ · always 1″ bedding sand',
+    icon: '🧱',
+  },
+  {
     slug: 'how-long-does-jet-lag-last-guide',
     kicker: 'TRAVEL HEALTH GUIDE',
     lines: ['How long does', 'jet lag last?', 'East vs west'],
