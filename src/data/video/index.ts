@@ -6,7 +6,7 @@ export interface AudioToolDef {
   icon: string;
   description: string;
   lead: string;
-  widget: 'trim' | 'speed' | 'volume' | 'wav';
+  widget: 'trim' | 'speed' | 'volume' | 'wav' | 'frame';
   how: string;
   note?: string;
   faqs: { q: string; a: string }[];
@@ -89,5 +89,25 @@ export const AUDIO_TOOLS: AudioToolDef[] = [
       { q: 'Is the audio sent to a server for conversion?', a: 'No — the browser\'s own decoder does the work locally. It runs offline, and no copy of your file exists anywhere but your device.' },
     ],
     keywords: ['mp3 to wav', 'convert audio to wav', 'm4a to wav', 'audio converter online', 'flac to wav'],
+  },
+  {
+    slug: 'video-frame-extractor',
+    name: 'Video Frame Extractor',
+    icon: '🎞️',
+    description:
+      'Grab a still frame from any video as a PNG or JPEG — scrub to the exact moment and capture at full resolution. Runs in your browser, the video is never uploaded.',
+    lead: 'Pull a still image out of a video: scrub to the moment you want, then capture it at the video’s full resolution as PNG or JPEG. Nothing leaves your device.',
+    widget: 'frame',
+    how: 'The video is loaded straight into a <video> element from a local object URL, so your browser’s own decoder handles playback. Scrub to the moment you want and the tool draws that exact frame onto a canvas sized to the video’s native resolution, then encodes it as a PNG or JPEG for download. Because the whole pipeline is the browser’s built-in decoder plus a canvas, there is no upload, no conversion queue and no watermark — and the captured image is full quality, not the size of the on-screen preview.',
+    note: 'Deliberately built without ffmpeg.wasm. Frame-accurate seeking and re-encoding would need SharedArrayBuffer, which requires cross-origin isolation headers that break third-party scripts on the page, plus a download of around 25 MB before you could do anything. For pulling a still out of a video none of that is necessary — the decoder is already in your browser. The trade-off is that browsers do not expose exact frame boundaries, so the ±1 frame buttons assume roughly 30 fps; use the slider for fine positioning. Which formats open at all depends on your browser’s codec support: MP4 (H.264) and WebM are near-universal, while some MOV and AVI variants may not decode.',
+    faqs: [
+      { q: 'How do I extract a frame from a video?', a: 'Choose the video, scrub the slider to the moment you want, then click Capture. The frame downloads as a PNG or JPEG at the video’s full resolution. Everything happens in your browser.' },
+      { q: 'Is the captured image full quality?', a: 'Yes — the frame is drawn to a canvas matching the video’s native resolution, so a 1080p video yields a 1920×1080 image regardless of how large the preview appears on screen. PNG is lossless; JPEG lets you trade some quality for a smaller file.' },
+      { q: 'Why are the frame-step buttons approximate?', a: 'Browsers don’t expose exact frame boundaries to web pages, so stepping assumes about 30 fps. If your video runs at a different rate, use the slider to fine-tune the position — the capture itself is always exact for wherever the video is paused.' },
+      { q: 'Which video formats work?', a: 'Whatever your browser can decode — MP4 (H.264) and WebM work almost everywhere, and most MOV files do too. Some AVI, MKV or unusual codec combinations may not open, in which case the tool tells you rather than failing silently.' },
+      { q: 'Why not use ffmpeg for this?', a: 'ffmpeg.wasm needs SharedArrayBuffer, which requires cross-origin isolation headers that would block third-party scripts on the page, and it downloads roughly 25 MB before doing any work. Your browser already contains a video decoder, so a still frame needs neither.' },
+      { q: 'Is my video uploaded?', a: 'No. It’s read from your device as a local object URL and decoded by your browser. Nothing is transmitted, and the tool works offline once the page has loaded.' },
+    ],
+    keywords: ['extract frame from video', 'video frame extractor', 'video to image', 'screenshot from video', 'video thumbnail grabber', 'save frame as png'],
   },
 ];

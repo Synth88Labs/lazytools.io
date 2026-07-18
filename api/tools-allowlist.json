@@ -892,6 +892,7 @@
   "video/audio-to-wav",
   "video/audio-trimmer",
   "video/audio-volume-changer",
+  "video/video-frame-extractor",
   "weather/absolute-humidity-calculator",
   "weather/beaufort-scale-calculator",
   "weather/cloud-base-calculator",
