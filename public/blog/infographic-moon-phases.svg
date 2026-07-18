@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-label="The eight moon phases in order with waxing growing from new to full and waning shrinking from full to new over 29.5 days.">
+  <rect width="1200" height="700" fill="#0f172a"/>
+  <text x="600" y="62" text-anchor="middle" font-family="system-ui, sans-serif" font-size="42" font-weight="800" fill="#f8fafc">Half the Moon is always lit</text>
+  <text x="600" y="106" text-anchor="middle" font-family="system-ui, sans-serif" font-size="27" fill="#94a3b8">The phase is just how much of that half faces us.</text>
+
+  <defs>
+    <clipPath id="cL"><rect x="0" y="0" width="60" height="120"/></clipPath>
+    <clipPath id="cR"><rect x="60" y="0" width="60" height="120"/></clipPath>
+  </defs>
+
+  <!-- Row of 8 phases: cx positions -->
+  <!-- 1 New -->
+  <circle cx="130" cy="230" r="52" fill="#1e293b" stroke="#475569" stroke-width="3"/>
+  <text x="130" y="316" text-anchor="middle" font-family="system-ui, sans-serif" font-size="21" font-weight="700" fill="#cbd5e1">New</text>
+  <!-- 2 Waxing crescent -->
+  <circle cx="265" cy="230" r="52" fill="#1e293b" stroke="#475569" stroke-width="3"/>
+  <path d="M 265 178 A 52 52 0 0 1 265 282 A 26 52 0 0 0 265 178 Z" fill="#fde68a"/>
+  <text x="265" y="316" text-anchor="middle" font-family="system-ui, sans-serif" font-size="21" font-weight="700" fill="#cbd5e1">Wax. crescent</text>
+  <!-- 3 First quarter -->
+  <circle cx="400" cy="230" r="52" fill="#1e293b" stroke="#475569" stroke-width="3"/>
+  <path d="M 400 178 A 52 52 0 0 1 400 282 Z" fill="#fde68a"/>
+  <text x="400" y="316" text-anchor="middle" font-family="system-ui, sans-serif" font-size="21" font-weight="700" fill="#cbd5e1">First quarter</text>
+  <!-- 4 Waxing gibbous -->
+  <circle cx="535" cy="230" r="52" fill="#1e293b" stroke="#475569" stroke-width="3"/>
+  <path d="M 535 178 A 52 52 0 0 1 535 282 A 26 52 0 0 1 535 178 Z" fill="#fde68a"/>
+  <text x="535" y="316" text-anchor="middle" font-family="system-ui, sans-serif" font-size="21" font-weight="700" fill="#cbd5e1">Wax. gibbous</text>
+  <!-- 5 Full -->
+  <circle cx="670" cy="230" r="52" fill="#fde68a" stroke="#fbbf24" stroke-width="3"/>
+  <text x="670" y="316" text-anchor="middle" font-family="system-ui, sans-serif" font-size="21" font-weight="700" fill="#cbd5e1">Full</text>
+  <!-- 6 Waning gibbous -->
+  <circle cx="805" cy="230" r="52" fill="#1e293b" stroke="#475569" stroke-width="3"/>
+  <path d="M 805 178 A 52 52 0 0 0 805 282 A 26 52 0 0 0 805 178 Z" fill="#fde68a"/>
+  <text x="805" y="316" text-anchor="middle" font-family="system-ui, sans-serif" font-size="21" font-weight="700" fill="#cbd5e1">Wan. gibbous</text>
+  <!-- 7 Third quarter -->
+  <circle cx="940" cy="230" r="52" fill="#1e293b" stroke="#475569" stroke-width="3"/>
+  <path d="M 940 178 A 52 52 0 0 0 940 282 Z" fill="#fde68a"/>
+  <text x="940" y="316" text-anchor="middle" font-family="system-ui, sans-serif" font-size="21" font-weight="700" fill="#cbd5e1">Third quarter</text>
+  <!-- 8 Waning crescent -->
+  <circle cx="1075" cy="230" r="52" fill="#1e293b" stroke="#475569" stroke-width="3"/>
+  <path d="M 1075 178 A 52 52 0 0 0 1075 282 A 26 52 0 0 1 1075 178 Z" fill="#fde68a"/>
+  <text x="1075" y="316" text-anchor="middle" font-family="system-ui, sans-serif" font-size="21" font-weight="700" fill="#cbd5e1">Wan. crescent</text>
+
+  <!-- waxing / waning bars -->
+  <rect x="200" y="358" width="470" height="52" rx="12" fill="#1e3a8a"/>
+  <text x="435" y="392" text-anchor="middle" font-family="system-ui, sans-serif" font-size="27" font-weight="800" fill="#bfdbfe">WAXING → growing</text>
+  <rect x="700" y="358" width="440" height="52" rx="12" fill="#4c1d95"/>
+  <text x="920" y="392" text-anchor="middle" font-family="system-ui, sans-serif" font-size="27" font-weight="800" fill="#ddd6fe">WANING → shrinking</text>
+
+  <rect x="90" y="446" width="1020" height="212" rx="18" fill="#1e293b" stroke="#334155" stroke-width="3"/>
+  <text x="600" y="496" text-anchor="middle" font-family="system-ui, sans-serif" font-size="32" font-weight="800" fill="#f8fafc">Full cycle = 29.53 days (synodic month)</text>
+  <text x="600" y="542" text-anchor="middle" font-family="system-ui, sans-serif" font-size="26" fill="#cbd5e1">The orbit takes 27.3 days — Earth moves too, so the Moon needs ~2 more</text>
+  <text x="600" y="588" text-anchor="middle" font-family="system-ui, sans-serif" font-size="26" fill="#cbd5e1">days to line up with the Sun again.</text>
+  <text x="600" y="634" text-anchor="middle" font-family="system-ui, sans-serif" font-size="26" font-weight="700" fill="#fbbf24">No dark side: at new moon, the FAR side is fully lit.</text>
+</svg>

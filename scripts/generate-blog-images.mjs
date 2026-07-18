@@ -7,6 +7,20 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'moon-phases-explained-guide',
+    kicker: 'ASTRONOMY GUIDE',
+    lines: ['Moon phases:', 'why 8, why 29.5', 'days, no dark side'],
+    fact: 'phases = viewing angle, not Earth’s shadow · synodic month 29.53 d',
+    icon: '🌗',
+  },
+  {
+    slug: 'ibu-beer-bitterness-guide',
+    kicker: 'HOMEBREWING GUIDE',
+    lines: ['IBU explained:', 'why 60 IBU isn’t', 'twice as bitter'],
+    fact: 'IBU = mg/L iso-alpha acids · BU:GU predicts balance',
+    icon: '🍺',
+  },
+  {
     slug: 'telescope-magnification-guide',
     kicker: 'ASTRONOMY GUIDE',
     lines: ['Telescope power:', 'why “600x” on', 'the box is a lie'],
