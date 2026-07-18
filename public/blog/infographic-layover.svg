@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-label="Airline minimum connection times versus realistic safe layover times for domestic and international flights.">
+  <rect width="1200" height="700" fill="#f8fafc"/>
+  <text x="600" y="62" text-anchor="middle" font-family="system-ui, sans-serif" font-size="42" font-weight="800" fill="#0f172a">What the airline allows ≠ what is safe</text>
+
+  <text x="330" y="128" text-anchor="middle" font-family="system-ui, sans-serif" font-size="27" font-weight="800" fill="#94a3b8">AIRLINE MINIMUM</text>
+  <text x="870" y="128" text-anchor="middle" font-family="system-ui, sans-serif" font-size="27" font-weight="800" fill="#166534">PLAN FOR</text>
+
+  <!-- Domestic -->
+  <text x="80" y="212" font-family="system-ui, sans-serif" font-size="30" font-weight="700" fill="#334155">Domestic</text>
+  <rect x="80" y="232" width="440" height="76" rx="14" fill="#ffffff" stroke="#e2e8f0" stroke-width="4"/>
+  <text x="300" y="280" text-anchor="middle" font-family="system-ui, sans-serif" font-size="34" font-weight="700" fill="#64748b">30 min – 2 hr</text>
+  <rect x="620" y="232" width="500" height="76" rx="14" fill="#dcfce7" stroke="#16a34a" stroke-width="4"/>
+  <text x="870" y="280" text-anchor="middle" font-family="system-ui, sans-serif" font-size="34" font-weight="800" fill="#166534">60 – 90 minutes</text>
+
+  <!-- International -->
+  <text x="80" y="374" font-family="system-ui, sans-serif" font-size="30" font-weight="700" fill="#334155">International</text>
+  <rect x="80" y="394" width="440" height="76" rx="14" fill="#ffffff" stroke="#e2e8f0" stroke-width="4"/>
+  <text x="300" y="442" text-anchor="middle" font-family="system-ui, sans-serif" font-size="34" font-weight="700" fill="#64748b">1 – 3 hours</text>
+  <rect x="620" y="394" width="500" height="76" rx="14" fill="#dcfce7" stroke="#16a34a" stroke-width="4"/>
+  <text x="870" y="442" text-anchor="middle" font-family="system-ui, sans-serif" font-size="34" font-weight="800" fill="#166534">2 – 3 hours</text>
+
+  <!-- add time for -->
+  <text x="600" y="524" text-anchor="middle" font-family="system-ui, sans-serif" font-size="26" font-weight="700" fill="#475569">Add more time for: immigration · terminal change · checked bags</text>
+
+  <rect x="80" y="552" width="1040" height="108" rx="18" fill="#0f172a"/>
+  <text x="600" y="596" text-anchor="middle" font-family="system-ui, sans-serif" font-size="30" font-weight="800" fill="#f8fafc">One ticket? The airline rebooks you.</text>
+  <text x="600" y="636" text-anchor="middle" font-family="system-ui, sans-serif" font-size="28" font-weight="700" fill="#fca5a5">Separate tickets? You buy a new one. Allow 3 hr+.</text>
+</svg>

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-label="A tire at 35 PSI at 70 degrees falls to 32 PSI at 40 degrees and 29 PSI at 10 degrees, about 1 PSI per 10 degrees Fahrenheit.">
+  <rect width="1200" height="700" fill="#f8fafc"/>
+  <text x="600" y="64" text-anchor="middle" font-family="system-ui, sans-serif" font-size="46" font-weight="800" fill="#0f172a">≈1 PSI lost per 10°F drop</text>
+  <text x="600" y="110" text-anchor="middle" font-family="system-ui, sans-serif" font-size="28" fill="#475569">Same air. No leak. Just colder molecules.</text>
+
+  <!-- three states -->
+  <g>
+    <circle cx="230" cy="290" r="92" fill="#ffffff" stroke="#16a34a" stroke-width="10"/>
+    <circle cx="230" cy="290" r="34" fill="#e2e8f0"/>
+    <text x="230" y="262" text-anchor="middle" font-family="system-ui, sans-serif" font-size="34" font-weight="800" fill="#166534">70°F</text>
+    <text x="230" y="424" text-anchor="middle" font-family="system-ui, sans-serif" font-size="42" font-weight="800" fill="#166534">35 PSI</text>
+    <text x="230" y="462" text-anchor="middle" font-family="system-ui, sans-serif" font-size="24" fill="#475569">set correctly</text>
+  </g>
+  <g>
+    <circle cx="600" cy="290" r="92" fill="#ffffff" stroke="#f59e0b" stroke-width="10"/>
+    <circle cx="600" cy="290" r="34" fill="#e2e8f0"/>
+    <text x="600" y="262" text-anchor="middle" font-family="system-ui, sans-serif" font-size="34" font-weight="800" fill="#92400e">40°F</text>
+    <text x="600" y="424" text-anchor="middle" font-family="system-ui, sans-serif" font-size="42" font-weight="800" fill="#92400e">32 PSI</text>
+    <text x="600" y="462" text-anchor="middle" font-family="system-ui, sans-serif" font-size="24" fill="#475569">−30°F = −3 PSI</text>
+  </g>
+  <g>
+    <circle cx="970" cy="290" r="92" fill="#ffffff" stroke="#dc2626" stroke-width="10"/>
+    <circle cx="970" cy="290" r="34" fill="#e2e8f0"/>
+    <text x="970" y="262" text-anchor="middle" font-family="system-ui, sans-serif" font-size="34" font-weight="800" fill="#991b1b">10°F</text>
+    <text x="970" y="424" text-anchor="middle" font-family="system-ui, sans-serif" font-size="42" font-weight="800" fill="#991b1b">29 PSI</text>
+    <text x="970" y="462" text-anchor="middle" font-family="system-ui, sans-serif" font-size="24" fill="#475569">light may trigger</text>
+  </g>
+
+  <text x="415" y="300" text-anchor="middle" font-family="system-ui, sans-serif" font-size="46" fill="#94a3b8">→</text>
+  <text x="785" y="300" text-anchor="middle" font-family="system-ui, sans-serif" font-size="46" fill="#94a3b8">→</text>
+
+  <rect x="80" y="512" width="1040" height="148" rx="18" fill="#0f172a"/>
+  <text x="600" y="558" text-anchor="middle" font-family="system-ui, sans-serif" font-size="29" font-weight="800" fill="#f8fafc">TPMS warns at about 25% below spec — so no light ≠ correct pressure.</text>
+  <text x="600" y="602" text-anchor="middle" font-family="system-ui, sans-serif" font-size="27" fill="#cbd5e1">Check COLD: morning, or parked 3+ hours. Driving inflates the reading.</text>
+  <text x="600" y="640" text-anchor="middle" font-family="system-ui, sans-serif" font-size="26" font-weight="700" fill="#fca5a5">Use the door-jamb placard — not the tire sidewall maximum.</text>
+</svg>

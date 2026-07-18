@@ -7,6 +7,34 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'how-long-does-jet-lag-last-guide',
+    kicker: 'TRAVEL HEALTH GUIDE',
+    lines: ['How long does', 'jet lag last?', 'East vs west'],
+    fact: 'west ≈1 day/zone · east ≈1.5 days/zone · light is the lever',
+    icon: '🌍',
+  },
+  {
+    slug: 'how-much-layover-time-guide',
+    kicker: 'AIR TRAVEL GUIDE',
+    lines: ['How much layover', 'time do you', 'actually need?'],
+    fact: 'domestic 60–90 min · international 2–3 hr · one ticket matters',
+    icon: '✈️',
+  },
+  {
+    slug: 'tire-pressure-cold-weather-guide',
+    kicker: 'CAR CARE GUIDE',
+    lines: ['Why your tire', 'pressure light', 'comes on in winter'],
+    fact: '≈1 PSI lost per 10°F · TPMS warns at ~25% low',
+    icon: '🛞',
+  },
+  {
+    slug: 'rebar-spacing-concrete-slab-guide',
+    kicker: 'CONCRETE GUIDE',
+    lines: ['Rebar in a slab:', 'spacing, cover', 'and lap splices'],
+    fact: '#4 bar @ 12–18″ · 3″ cover · bars = (side−2×cover)/spacing +1',
+    icon: '🏗️',
+  },
+  {
     slug: 'which-chart-type-to-use-guide',
     kicker: 'DATA VISUALIZATION GUIDE',
     lines: ['Which chart type', 'should you use?', 'A decision guide'],
