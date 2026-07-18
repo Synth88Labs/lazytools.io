@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-label="60000 divided by BPM gives quarter note delay in milliseconds, with subdivisions at 120 BPM.">
+  <rect width="1200" height="700" fill="#0f172a"/>
+  <text x="600" y="64" text-anchor="middle" font-family="system-ui, sans-serif" font-size="44" font-weight="800" fill="#f8fafc">One division gives you the beat</text>
+
+  <!-- formula -->
+  <rect x="140" y="106" width="920" height="126" rx="18" fill="#4c1d95" stroke="#7c3aed" stroke-width="4"/>
+  <text x="600" y="156" text-anchor="middle" font-family="system-ui, sans-serif" font-size="30" font-weight="700" fill="#ddd6fe">QUARTER NOTE (ms)</text>
+  <text x="600" y="210" text-anchor="middle" font-family="system-ui, sans-serif" font-size="46" font-weight="800" fill="#f8fafc">60,000 ÷ BPM</text>
+
+  <text x="600" y="278" text-anchor="middle" font-family="system-ui, sans-serif" font-size="30" fill="#94a3b8">At 120 BPM → 60,000 ÷ 120 =</text>
+  <text x="600" y="330" text-anchor="middle" font-family="system-ui, sans-serif" font-size="50" font-weight="800" fill="#4ade80">500 ms</text>
+
+  <!-- subdivisions -->
+  <rect x="90" y="368" width="240" height="118" rx="14" fill="#1e293b" stroke="#334155" stroke-width="3"/>
+  <text x="210" y="408" text-anchor="middle" font-family="system-ui, sans-serif" font-size="25" font-weight="700" fill="#94a3b8">EIGHTH ÷2</text>
+  <text x="210" y="456" text-anchor="middle" font-family="system-ui, sans-serif" font-size="38" font-weight="800" fill="#f8fafc">250 ms</text>
+
+  <rect x="345" y="368" width="240" height="118" rx="14" fill="#1e293b" stroke="#334155" stroke-width="3"/>
+  <text x="465" y="408" text-anchor="middle" font-family="system-ui, sans-serif" font-size="25" font-weight="700" fill="#94a3b8">16TH ÷4</text>
+  <text x="465" y="456" text-anchor="middle" font-family="system-ui, sans-serif" font-size="38" font-weight="800" fill="#f8fafc">125 ms</text>
+
+  <rect x="600" y="368" width="255" height="118" rx="14" fill="#78350f" stroke="#f59e0b" stroke-width="4"/>
+  <text x="727" y="408" text-anchor="middle" font-family="system-ui, sans-serif" font-size="25" font-weight="700" fill="#fcd34d">DOTTED 8TH ×1.5</text>
+  <text x="727" y="456" text-anchor="middle" font-family="system-ui, sans-serif" font-size="38" font-weight="800" fill="#f8fafc">375 ms</text>
+
+  <rect x="870" y="368" width="240" height="118" rx="14" fill="#1e293b" stroke="#334155" stroke-width="3"/>
+  <text x="990" y="408" text-anchor="middle" font-family="system-ui, sans-serif" font-size="25" font-weight="700" fill="#94a3b8">8TH TRIPLET ×⅔</text>
+  <text x="990" y="456" text-anchor="middle" font-family="system-ui, sans-serif" font-size="38" font-weight="800" fill="#f8fafc">167 ms</text>
+
+  <rect x="90" y="520" width="1020" height="138" rx="18" fill="#1e293b" stroke="#334155" stroke-width="3"/>
+  <text x="600" y="566" text-anchor="middle" font-family="system-ui, sans-serif" font-size="28" font-weight="800" fill="#fcd34d">Dotted eighth = 45,000 ÷ BPM — the classic rhythmic echo</text>
+  <text x="600" y="610" text-anchor="middle" font-family="system-ui, sans-serif" font-size="26" fill="#cbd5e1">Same maths drives reverb pre-delay, sidechain release and LFO rates.</text>
+  <text x="600" y="648" text-anchor="middle" font-family="system-ui, sans-serif" font-size="25" fill="#94a3b8">Reverse it: BPM = 60,000 ÷ delay ms</text>
+</svg>

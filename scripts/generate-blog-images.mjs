@@ -7,6 +7,20 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'bpm-to-delay-time-guide',
+    kicker: 'MUSIC PRODUCTION GUIDE',
+    lines: ['BPM to delay time:', 'the 60,000 rule', 'every producer knows'],
+    fact: 'quarter note ms = 60,000 ÷ BPM · dotted 8th = 45,000 ÷ BPM',
+    icon: '🎛️',
+  },
+  {
+    slug: 'aquarium-stocking-inch-per-gallon-guide',
+    kicker: 'FISHKEEPING GUIDE',
+    lines: ['The 1 inch per', 'gallon rule is wrong', '— here’s why'],
+    fact: 'waste scales with MASS · double the length ≈ 8× the volume',
+    icon: '🐠',
+  },
+  {
     slug: 'moon-phases-explained-guide',
     kicker: 'ASTRONOMY GUIDE',
     lines: ['Moon phases:', 'why 8, why 29.5', 'days, no dark side'],
