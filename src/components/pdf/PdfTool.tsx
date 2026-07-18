@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'preact/hooks';
-import { PDFDocument, degrees } from 'pdf-lib';
+import { PDFDocument, degrees, rgb, StandardFonts } from 'pdf-lib';
 import { fmtSize } from '../../lib/audio-compute';
 import { renderPdfThumbs, renderFirstPageThumb, indicesToRange, THUMB_PAGE_CAP } from '../../lib/pdf-preview';
 
 interface Props {
-  mode: 'merge' | 'split' | 'images-to-pdf' | 'rotate';
+  mode: 'merge' | 'split' | 'images-to-pdf' | 'rotate' | 'watermark' | 'numbers';
 }
 
 interface FileMeta {
@@ -40,6 +40,13 @@ export default function PdfTool({ mode }: Props) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
   const [done, setDone] = useState('');
+  const [wmText, setWmText] = useState('CONFIDENTIAL');
+  const [wmOpacity, setWmOpacity] = useState(15);
+  const [wmSize, setWmSize] = useState(60);
+  const [wmDiagonal, setWmDiagonal] = useState(true);
+  const [numPos, setNumPos] = useState<'bottom-center' | 'bottom-right' | 'top-right'>('bottom-center');
+  const [numStart, setNumStart] = useState(1);
+  const [numSkipFirst, setNumSkipFirst] = useState(false);
 
   useEffect(() => () => { meta.forEach((m) => m.thumb.startsWith('blob:') && URL.revokeObjectURL(m.thumb)); }, []);
 
@@ -146,6 +153,58 @@ export default function PdfTool({ mode }: Props) {
           const pages = await out.copyPages(src, indices);
           pages.forEach((p) => out.addPage(p));
           outName = `${files[0]!.name.replace(/\.pdf$/i, '')}-pages.pdf`;
+        } else if (mode === 'watermark') {
+          const text = wmText.trim();
+          if (!text) throw new Error('Enter the watermark text first.');
+          const font = await src.embedFont(StandardFonts.HelveticaBold);
+          const indices = range.trim() ? parseRange(range, src.getPageCount()) : src.getPageIndices();
+          if (!indices.length) throw new Error('No valid pages in that range.');
+          for (const i of indices) {
+            const page = src.getPage(i);
+            const { width, height } = page.getSize();
+            const size = wmSize;
+            const textW = font.widthOfTextAtSize(text, size);
+            if (wmDiagonal) {
+              // Centre the rotated text: step back along the 45° baseline from the middle.
+              const rad = Math.PI / 4;
+              page.drawText(text, {
+                x: width / 2 - (textW / 2) * Math.cos(rad),
+                y: height / 2 - (textW / 2) * Math.sin(rad),
+                size,
+                font,
+                color: rgb(0.5, 0.5, 0.5),
+                opacity: wmOpacity / 100,
+                rotate: degrees(45),
+              });
+            } else {
+              page.drawText(text, {
+                x: (width - textW) / 2,
+                y: height / 2 - size / 2,
+                size,
+                font,
+                color: rgb(0.5, 0.5, 0.5),
+                opacity: wmOpacity / 100,
+              });
+            }
+          }
+          out = src;
+          outName = `${files[0]!.name.replace(/\.pdf$/i, '')}-watermarked.pdf`;
+        } else if (mode === 'numbers') {
+          const font = await src.embedFont(StandardFonts.Helvetica);
+          const pages = src.getPages();
+          const size = 11;
+          const margin = 28;
+          pages.forEach((page, i) => {
+            if (numSkipFirst && i === 0) return;
+            const label = String(numStart + i - (numSkipFirst ? 1 : 0));
+            const { width, height } = page.getSize();
+            const textW = font.widthOfTextAtSize(label, size);
+            const x = numPos === 'bottom-center' ? (width - textW) / 2 : width - margin - textW;
+            const y = numPos === 'top-right' ? height - margin : margin;
+            page.drawText(label, { x, y, size, font, color: rgb(0.35, 0.35, 0.35) });
+          });
+          out = src;
+          outName = `${files[0]!.name.replace(/\.pdf$/i, '')}-numbered.pdf`;
         } else {
           // rotate in place
           const indices = range.trim() ? parseRange(range, src.getPageCount()) : src.getPageIndices();
@@ -240,6 +299,57 @@ export default function PdfTool({ mode }: Props) {
         </div>
       )}
 
+      {mode === 'watermark' && files.length > 0 && (
+        <div class="mt-4 space-y-3">
+          <div class="flex flex-wrap items-end gap-3">
+            <div>
+              <label for="pt-wm" class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Watermark text</label>
+              <input id="pt-wm" type="text" value={wmText} onInput={(e) => setWmText((e.target as HTMLInputElement).value)} placeholder="CONFIDENTIAL" class={`${inputCls} w-64`} spellcheck={false} />
+            </div>
+            <div>
+              <label for="pt-wmsize" class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Size: {wmSize}pt</label>
+              <input id="pt-wmsize" type="range" min={20} max={120} value={wmSize} onInput={(e) => setWmSize(parseInt((e.target as HTMLInputElement).value, 10))} class="w-40 accent-brand-600" />
+            </div>
+            <div>
+              <label for="pt-wmop" class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Opacity: {wmOpacity}%</label>
+              <input id="pt-wmop" type="range" min={5} max={60} value={wmOpacity} onInput={(e) => setWmOpacity(parseInt((e.target as HTMLInputElement).value, 10))} class="w-40 accent-brand-600" />
+            </div>
+          </div>
+          <div class="flex flex-wrap items-end gap-4">
+            <label class="flex items-center gap-2 text-sm font-medium text-slate-700">
+              <input type="checkbox" checked={wmDiagonal} onChange={(e) => setWmDiagonal((e.target as HTMLInputElement).checked)} class="h-4 w-4 rounded border-slate-300 text-brand-600" />
+              Diagonal (45°)
+            </label>
+            <div>
+              <label for="pt-wmrange" class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Pages (empty = all {pageCount})</label>
+              <input id="pt-wmrange" type="text" value={range} onInput={(e) => setRange((e.target as HTMLInputElement).value)} placeholder="e.g. 1-5" class={`${inputCls} w-44`} spellcheck={false} />
+            </div>
+          </div>
+          <p class="text-xs text-slate-500">The watermark is drawn into the page content — it is not a removable layer, but it also does not encrypt or protect the file.</p>
+        </div>
+      )}
+
+      {mode === 'numbers' && files.length > 0 && (
+        <div class="mt-4 flex flex-wrap items-end gap-3">
+          <div>
+            <label for="pt-npos" class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Position</label>
+            <select id="pt-npos" value={numPos} onChange={(e) => setNumPos((e.target as HTMLSelectElement).value as typeof numPos)} class={inputCls}>
+              <option value="bottom-center">Bottom centre</option>
+              <option value="bottom-right">Bottom right</option>
+              <option value="top-right">Top right</option>
+            </select>
+          </div>
+          <div>
+            <label for="pt-nstart" class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Start at</label>
+            <input id="pt-nstart" type="number" min={0} value={numStart} onInput={(e) => setNumStart(parseInt((e.target as HTMLInputElement).value, 10) || 1)} class={`${inputCls} w-24`} />
+          </div>
+          <label class="flex items-center gap-2 pb-3 text-sm font-medium text-slate-700">
+            <input type="checkbox" checked={numSkipFirst} onChange={(e) => setNumSkipFirst((e.target as HTMLInputElement).checked)} class="h-4 w-4 rounded border-slate-300 text-brand-600" />
+            Skip first page (cover)
+          </label>
+        </div>
+      )}
+
       {/* live page preview for split & rotate */}
       {!multi && files.length > 0 && (
         <div class="mt-4">
@@ -294,7 +404,7 @@ export default function PdfTool({ mode }: Props) {
         disabled={busy || files.length === 0 || (mode === 'merge' && files.length < 2)}
         class="mt-4 w-full rounded-xl bg-brand-700 px-4 py-3 text-base font-semibold text-white transition hover:bg-brand-800 disabled:opacity-40 sm:w-auto sm:px-8"
       >
-        {busy ? 'Working…' : mode === 'merge' ? `🧷 Merge ${files.length || ''} PDFs` : mode === 'split' ? `✂ Extract ${selected.size || ''} page${selected.size === 1 ? '' : 's'}` : mode === 'rotate' ? '🔄 Rotate & save' : `🖼️ Create PDF from ${files.length || ''} images`}
+        {busy ? 'Working…' : mode === 'merge' ? `🧷 Merge ${files.length || ''} PDFs` : mode === 'split' ? `✂ Extract ${selected.size || ''} page${selected.size === 1 ? '' : 's'}` : mode === 'rotate' ? '🔄 Rotate & save' : mode === 'watermark' ? '💧 Add watermark & save' : mode === 'numbers' ? '🔢 Add page numbers & save' : `🖼️ Create PDF from ${files.length || ''} images`}
       </button>
 
       <div aria-live="polite">

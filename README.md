@@ -73,7 +73,7 @@ working.
 | [Privacy & Security](https://lazytools.io/security/) | EXIF remover, AES-256 file encryption, file hash, **PII redactor** (mask emails/phones/SSNs/cards[Luhn]/IPs/IBANs in text before pasting into AI — 100% client-side) |
 | [Image Tools](https://lazytools.io/image/) | **7 tools** — compress, convert, resize, **HEIC→JPG** (libheif wasm), image→Base64, **rotate & flip** (90/180/270 + mirror, EXIF-orientation fix), **circle crop** (transparent-PNG avatars) |
 | [Photo Size Maker](https://lazytools.io/photo/) | **passport / visa / ID photos** for multiple countries — crop to exact official size, **on-device face-position check (MediaPipe BlazeFace)**, background & exposure checks, DPI-correct export; every spec cited + date-verified |
-| [PDF Tools](https://lazytools.io/pdf/) | merge/split/rotate **with live page previews**, JPG↔PDF (**PDF→JPG/PNG** rendered in-browser via pdf.js, + **images→PDF**), unlock/protect (qpdf wasm), **accessibility checker (EAA)**, **redaction checker + rasterizing redactor** |
+| [PDF Tools](https://lazytools.io/pdf/) | **12 tools** — merge/split/rotate **with live page previews**, JPG↔PDF (**PDF→JPG/PNG** rendered in-browser via pdf.js, + **images→PDF**), unlock/protect (qpdf wasm), **accessibility checker (EAA)**, **redaction checker + rasterizing redactor**, **text watermark** (size/opacity/45° diagonal), **page numbers** (position, start-at, skip cover) |
 | [Audio](https://lazytools.io/video/) | trim, speed, volume, WAV convert (Web Audio) |
 
 Plus **119 in-depth guides** on the [blog](https://lazytools.io/blog/) — each with custom infographics,

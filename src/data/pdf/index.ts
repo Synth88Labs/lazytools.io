@@ -6,7 +6,7 @@ export interface PdfToolDef {
   icon: string;
   description: string;
   lead: string;
-  widget: 'merge' | 'split' | 'images-to-pdf' | 'rotate' | 'unlock' | 'protect' | 'accessibility' | 'redact' | 'redact-check' | 'to-images';
+  widget: 'merge' | 'split' | 'images-to-pdf' | 'rotate' | 'unlock' | 'protect' | 'accessibility' | 'redact' | 'redact-check' | 'to-images' | 'watermark' | 'numbers';
   how: string;
   note?: string;
   faqs: { q: string; a: string }[];
@@ -204,5 +204,45 @@ export const PDF_TOOLS: PdfToolDef[] = [
       { q: 'Can I still edit the text after converting?', a: 'No — converting to an image turns the text into pixels, so it\'s no longer selectable or editable. To get editable text back from an image you\'d need optical character recognition (OCR), which is a separate step.' },
     ],
     keywords: ['pdf to jpg', 'pdf to image', 'convert pdf to jpg', 'pdf to png', 'pdf to jpg without uploading', 'pdf pages to images', 'export pdf as image'],
+  },
+  {
+    slug: 'watermark-pdf',
+    name: 'Add Watermark to PDF',
+    icon: '💧',
+    description:
+      'Stamp text like DRAFT or CONFIDENTIAL across every page of a PDF — adjustable size, opacity and 45° diagonal. Runs in your browser, never uploaded.',
+    lead: 'Add a text watermark across your PDF pages — set the wording, size, opacity and angle, then download. The file is processed on your device.',
+    widget: 'watermark',
+    how: 'The tool loads the PDF with pdf-lib, embeds a standard Helvetica Bold font, and draws your text onto each selected page at the opacity and size you choose. With the diagonal option the text is rotated 45° and centred by stepping back along its own baseline, so it sits squarely in the middle of the page whatever its length. Pages are edited in place — the rest of the document is untouched — and the whole operation happens in your browser.',
+    note: 'A watermark drawn this way becomes part of the page content, so it will not simply toggle off in a viewer. It is not a security measure, though: anyone determined can edit the PDF or cover the text. Use it to mark status — DRAFT, SAMPLE, INTERNAL — rather than to protect a document. If you need genuine restriction, add a password with the PDF protect tool instead. Keep opacity low (10–20%) so the underlying text stays readable.',
+    faqs: [
+      { q: 'How do I add a watermark to a PDF?', a: 'Choose your PDF, type the watermark text, set size and opacity, and download. By default the text is drawn diagonally across the centre of every page. Everything happens in your browser — the file is never uploaded.' },
+      { q: 'Can I watermark only certain pages?', a: 'Yes. Leave the page field empty to watermark every page, or enter a range like 1-5 or 2, 4, 7 to mark only those pages.' },
+      { q: 'Is the watermark removable?', a: 'It is drawn into the page content rather than added as a separate toggleable layer, so it will not switch off in a normal viewer. It is not tamper-proof, though — a determined person with PDF editing tools can remove or obscure it.' },
+      { q: 'Does a watermark protect my document?', a: 'No. It marks status and discourages casual misuse, but it does not restrict opening, copying or printing. For actual restriction, use password protection instead.' },
+      { q: 'What opacity should I use?', a: 'Around 10–20% usually reads clearly as a watermark while leaving the document text legible underneath. Higher values start to compete with the content.' },
+      { q: 'Is my PDF uploaded?', a: 'No. It is parsed and rewritten by pdf-lib inside your browser, so the document never leaves your device and the tool works offline once loaded.' },
+    ],
+    keywords: ['add watermark to pdf', 'pdf watermark', 'watermark pdf online', 'stamp draft on pdf', 'confidential watermark pdf', 'free pdf watermark'],
+  },
+  {
+    slug: 'add-page-numbers-pdf',
+    name: 'Add Page Numbers to PDF',
+    icon: '🔢',
+    description:
+      'Number the pages of a PDF — choose the position, the starting number, and whether to skip a cover page. Processed entirely in your browser.',
+    lead: 'Add page numbers to a PDF: pick bottom-centre, bottom-right or top-right, set where the count starts, and optionally skip the cover. Nothing is uploaded.',
+    widget: 'numbers',
+    how: 'The tool opens the PDF with pdf-lib, embeds a standard Helvetica font, and draws a number onto each page at a fixed margin from the edge. The horizontal position is computed from each page\'s own width and the rendered width of the number, so it stays properly centred or right-aligned even in a document that mixes page sizes. Skipping the first page shifts the count so the page after the cover becomes your starting number.',
+    note: 'Numbers are drawn on top of the existing content at a small margin, so on a page whose text runs very close to the edge they may overlap. Check the output if your document has unusually tight margins. The numbering is plain text drawn into the page — it does not create PDF-level page labels, so a viewer\'s own page counter (which always starts at 1) can still differ from the printed number when you skip a cover or start at another value.',
+    faqs: [
+      { q: 'How do I add page numbers to a PDF?', a: 'Select the PDF, choose a position, and download. Numbers are drawn onto every page at a small margin from the edge. It runs in your browser, so the file is never uploaded.' },
+      { q: 'Can I skip the cover page?', a: 'Yes. Tick "Skip first page" and no number appears on page one, with the count beginning on the following page so it carries your chosen starting number.' },
+      { q: 'Can I start numbering at a number other than 1?', a: 'Yes — set "Start at" to any value. This is useful when a document is one part of a larger set and the numbering should continue from a previous file.' },
+      { q: 'Where are the numbers placed?', a: 'Bottom centre, bottom right or top right, at a fixed margin from the page edge. The horizontal position is calculated per page, so it stays aligned even if page sizes vary within the document.' },
+      { q: 'Will the numbers overlap my content?', a: 'They can, if your document has text running very close to the page edge, because the numbers are drawn on top of the existing content. Check the result if your margins are unusually tight.' },
+      { q: 'Is my PDF uploaded to a server?', a: 'No. The document is read and rewritten locally by pdf-lib in your browser, so it never leaves your device.' },
+    ],
+    keywords: ['add page numbers to pdf', 'pdf page numbers', 'number pdf pages', 'insert page numbers pdf', 'paginate pdf', 'free pdf page numbering'],
   },
 ];
