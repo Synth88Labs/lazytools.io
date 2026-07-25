@@ -7,6 +7,7 @@ import FaqSection from '../../components/FaqSection.astro';
 import CalcWidget from '../../components/CalcWidget.tsx';
 import MortgageCalc from '../../components/calc/MortgageCalc.tsx';
 import GpaCalc from '../../components/calc/GpaCalc.tsx';
+import AspectRatioCalc from '../../components/calc/AspectRatioCalc.tsx';
 import RatingWidget from '../../components/RatingWidget.tsx';
 import { CALCULATORS, type CalcDef } from '../../data/calc/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
@@ -70,6 +71,8 @@ const schema = [
         <MortgageCalc client:load />
       ) : calc.widget === 'gpa' ? (
         <GpaCalc client:load />
+      ) : calc.widget === 'aspect-ratio' ? (
+        <AspectRatioCalc client:load />
       ) : (
         <CalcWidget client:load computeId={calc.computeId} fields={calc.fields} />
       )}

@@ -694,6 +694,30 @@ export const CALCULATORS: CalcDef[] = [
     ],
     keywords: ['dilution ratio calculator', 'dilution calculator', 'mixing ratio calculator', '1 to 10 dilution', 'cleaning solution dilution', 'concentrate to water ratio', 'how to dilute'],
   },
+  {
+    slug: 'aspect-ratio-calculator',
+    name: 'Aspect Ratio Calculator',
+    icon: '📐',
+    description:
+      'Work out image and video dimensions for any aspect ratio — enter 16:9 (or your own) and one side, and the other is calculated so nothing stretches. Also reduces any width×height to its simplest ratio. In your browser.',
+    lead: 'Pick an aspect ratio like 16:9 and type one dimension — the other is filled in so your image or video keeps its shape without stretching.',
+    widget: 'aspect-ratio',
+    fields: [],
+    computeId: '',
+    formula:
+      'For a ratio W:H, the missing dimension is found by cross-multiplication: new height = new width × H ÷ W, and new width = new height × W ÷ H. To turn a pixel size into a ratio, divide both sides by their greatest common divisor (GCD) — 1920×1080 ÷ 120 = 16:9.',
+    example: 'At 16:9, a width of 1280 px gives a height of 1280 × 9 ÷ 16 = 720 px (so 1280×720). Reducing 1920×1080 by its GCD of 120 gives the ratio 16:9.',
+    note: 'Aspect ratio is the proportional relationship between width and height, independent of actual size — 1280×720, 1920×1080 and 3840×2160 are all 16:9. Keeping the ratio fixed while changing one dimension is what stops an image or video being squashed or stretched. Common ones: 16:9 for HD video and most screens, 9:16 for vertical Reels/TikTok/Stories, 1:1 for square social posts, 4:3 for older displays and many slides, 3:2 for most DSLR photos, and 21:9 for ultrawide/cinematic. Note that changing the ratio does not add detail — upscaling to a larger size still just enlarges the pixels you have.',
+    faqs: [
+      { q: 'How do I calculate aspect ratio?', a: 'Divide the width by the height and reduce to the simplest whole-number ratio using the greatest common divisor. 1920×1080 has a GCD of 120, so it reduces to 16:9. This calculator does it automatically — enter the pixel size and read off the ratio.' },
+      { q: 'How do I find a dimension for a given ratio?', a: 'Cross-multiply: for a W:H ratio, new height = new width × H ÷ W. At 16:9, a 1280 px width gives 1280 × 9 ÷ 16 = 720 px. Enter the ratio and one dimension and the other is filled in for you.' },
+      { q: 'What is a 16:9 aspect ratio in pixels?', a: 'There is no single pixel size — 16:9 is a proportion. Common 16:9 resolutions are 1280×720 (720p), 1920×1080 (1080p) and 3840×2160 (4K UHD). All share the same shape.' },
+      { q: 'Why does keeping the aspect ratio matter?', a: 'Changing width and height independently to a different ratio squashes or stretches the image, distorting faces and circles. Locking the ratio recalculates the second dimension so the content keeps its true proportions.' },
+      { q: 'What aspect ratio should I use for social media?', a: 'Broadly: 1:1 (square) or 4:5 for feed posts, 9:16 (vertical) for Reels, TikTok and Stories, and 16:9 for landscape video and YouTube. Each platform has its own recommended pixel sizes within those ratios.' },
+      { q: 'Does changing the aspect ratio reduce quality?', a: 'Cropping to a new ratio removes pixels but keeps sharpness; stretching to a new ratio distorts the image. Scaling to a larger size at the same ratio does not add real detail — it just enlarges the existing pixels, which looks softer.' },
+    ],
+    keywords: ['aspect ratio calculator', 'aspect ratio', '16:9 calculator', 'ratio calculator dimensions', 'resize keep aspect ratio', 'pixel dimensions calculator', 'aspect ratio to pixels'],
+  },
 ];
 
 export function getCalc(slug: string): CalcDef | undefined {
