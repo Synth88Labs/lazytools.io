@@ -8,6 +8,7 @@ import CalcWidget from '../../components/CalcWidget.tsx';
 import MortgageCalc from '../../components/calc/MortgageCalc.tsx';
 import GpaCalc from '../../components/calc/GpaCalc.tsx';
 import AspectRatioCalc from '../../components/calc/AspectRatioCalc.tsx';
+import SleepCalc from '../../components/calc/SleepCalc.tsx';
 import RatingWidget from '../../components/RatingWidget.tsx';
 import { CALCULATORS, type CalcDef } from '../../data/calc/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
@@ -73,6 +74,8 @@ const schema = [
         <GpaCalc client:load />
       ) : calc.widget === 'aspect-ratio' ? (
         <AspectRatioCalc client:load />
+      ) : calc.widget === 'sleep' ? (
+        <SleepCalc client:load />
       ) : (
         <CalcWidget client:load computeId={calc.computeId} fields={calc.fields} />
       )}

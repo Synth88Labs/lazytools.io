@@ -86,6 +86,7 @@
   "calc/percentage-change-calculator",
   "calc/sales-tax-calculator",
   "calc/simple-interest-calculator",
+  "calc/sleep-calculator",
   "calc/square-footage-calculator",
   "calc/tdee-calculator",
   "calc/test-grade-calculator",

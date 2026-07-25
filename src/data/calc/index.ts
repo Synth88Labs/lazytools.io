@@ -718,6 +718,31 @@ export const CALCULATORS: CalcDef[] = [
     ],
     keywords: ['aspect ratio calculator', 'aspect ratio', '16:9 calculator', 'ratio calculator dimensions', 'resize keep aspect ratio', 'pixel dimensions calculator', 'aspect ratio to pixels'],
   },
+  {
+    slug: 'sleep-calculator',
+    name: 'Sleep Calculator',
+    icon: '😴',
+    description:
+      'Work out the best time to go to bed or wake up based on 90-minute sleep cycles, so you wake between cycles and feel less groggy. Free, private, in your browser.',
+    lead: 'Set a wake-up time (or a bedtime) and get the times that fall at the end of a sleep cycle — waking between cycles is what leaves you refreshed instead of groggy.',
+    widget: 'sleep',
+    fields: [],
+    computeId: '',
+    formula:
+      'A sleep cycle averages about 90 minutes. Working back from your wake time: bedtime = wake time − (number of cycles × 90 min) − time to fall asleep (about 15 min). Working forward from your bedtime: wake time = bedtime + 15 min to fall asleep + (number of cycles × 90 min). Most adults do best on 5 or 6 complete cycles — 7.5 to 9 hours.',
+    example: 'To wake at 7:00 AM with a 15-minute sleep latency, five 90-minute cycles (7.5 hours) means going to bed at about 10:45 PM; six cycles (9 hours) means about 9:15 PM.',
+    note: 'Sleep runs in cycles of roughly 90 minutes (individually 70–120), moving through light sleep, deep sleep and REM. Waking at the end of a cycle — in light sleep — is far easier than being pulled out of deep sleep mid-cycle, which is what causes that heavy, groggy "sleep inertia". So the goal is not just enough hours but waking at a cycle boundary: aim for 5–6 complete cycles rather than a round number of hours. These are averages, not a diagnosis — cycle length varies between people and across the night, and the first cycle is often shorter. Persistent trouble sleeping, loud snoring or daytime exhaustion are worth raising with a doctor; this tool is general information, not medical advice.',
+    faqs: [
+      { q: 'What time should I go to bed to wake up at 7am?', a: 'For a 7:00 AM wake-up, allowing about 15 minutes to fall asleep, aim for roughly 10:45 PM (five 90-minute cycles, 7.5 hours) or 9:15 PM (six cycles, 9 hours). Both land you at the end of a cycle so waking is easier.' },
+      { q: 'How long is a sleep cycle?', a: 'About 90 minutes on average, though it ranges from roughly 70 to 120 minutes and varies between people and across the night. Each cycle moves through light sleep, deep sleep and REM before starting again.' },
+      { q: 'How many sleep cycles do I need?', a: 'Most adults do best on five to six complete cycles a night — about 7.5 to 9 hours. Four cycles (6 hours) is a workable minimum for the occasional short night; consistently fewer takes a toll.' },
+      { q: 'Why do I wake up groggy even after 8 hours?', a: 'Because an alarm can pull you out of deep sleep in the middle of a cycle, causing "sleep inertia" — that heavy, disoriented feeling. Waking at the end of a cycle, in light sleep, avoids it, which is why cycle timing can matter more than total hours.' },
+      { q: 'What is sleep latency?', a: 'The time it takes to fall asleep after lying down — commonly 10 to 20 minutes for a healthy adult. This calculator adds it to the maths so the cycle timing reflects actual sleep, not just time in bed. Adjust it if you know you drift off faster or slower.' },
+      { q: 'Is the 90-minute sleep cycle exact?', a: 'No — it is an average. Real cycles vary from about 70 to 120 minutes, the first cycle is often shorter, and later cycles contain more REM. Treat the results as good target times rather than a precise schedule.' },
+      { q: 'Is this medical advice?', a: 'No. It is general information based on typical sleep-cycle timing. If you regularly struggle to fall or stay asleep, snore heavily, or feel exhausted during the day, talk to a doctor — those can signal a sleep disorder that a calculator cannot address.' },
+    ],
+    keywords: ['sleep calculator', 'bedtime calculator', 'what time should i go to bed', 'sleep cycle calculator', 'wake up time calculator', 'best time to sleep', '90 minute sleep cycle'],
+  },
 ];
 
 export function getCalc(slug: string): CalcDef | undefined {

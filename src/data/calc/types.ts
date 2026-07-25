@@ -27,7 +27,7 @@ export interface CalcDef {
   /** id used to select the compute function in the client widget */
   computeId: string;
   /** optional custom island instead of the generic field widget (e.g. 'mortgage', 'gpa') */
-  widget?: 'mortgage' | 'gpa' | 'aspect-ratio';
+  widget?: 'mortgage' | 'gpa' | 'aspect-ratio' | 'sleep';
   /** formula section, plain sentences */
   formula: string;
   /** worked example sentence */
