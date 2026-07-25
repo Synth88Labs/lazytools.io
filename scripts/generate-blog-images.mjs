@@ -7,6 +7,13 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'aspect-ratio-explained-guide',
+    kicker: 'DESIGN & VIDEO GUIDE',
+    lines: ['Aspect ratio', 'explained: what', '16:9 really means'],
+    fact: 'ratio = W : H, not pixels · height = width × H ÷ W',
+    icon: '📐',
+  },
+  {
     slug: 'dew-point-vs-humidity-guide',
     kicker: 'WEATHER GUIDE',
     lines: ['Dew point vs', 'humidity: why 100%', 'can feel fine'],

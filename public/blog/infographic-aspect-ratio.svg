@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-label="Three rectangles at 1280x720, 1920x1080 and 3840x2160 all share the 16:9 shape, because aspect ratio is a proportion independent of size.">
+  <rect width="1200" height="700" fill="#f8fafc"/>
+  <text x="600" y="60" text-anchor="middle" font-family="system-ui, sans-serif" font-size="44" font-weight="800" fill="#0f172a">Same shape, three sizes</text>
+  <text x="600" y="104" text-anchor="middle" font-family="system-ui, sans-serif" font-size="27" fill="#475569">Aspect ratio is a proportion — not a pixel count.</text>
+
+  <!-- three nested 16:9 rectangles (all share shape). heights in 16:9 -->
+  <!-- big: 480x270 -->
+  <rect x="70" y="150" width="480" height="270" fill="#dbeafe" stroke="#2563eb" stroke-width="4"/>
+  <text x="310" y="300" text-anchor="middle" font-family="system-ui, sans-serif" font-size="30" font-weight="800" fill="#1e3a8a">3840 × 2160</text>
+  <!-- mid: 320x180 -->
+  <rect x="70" y="150" width="320" height="180" fill="#bfdbfe" stroke="#2563eb" stroke-width="3"/>
+  <text x="230" y="215" text-anchor="middle" font-family="system-ui, sans-serif" font-size="24" font-weight="700" fill="#1e3a8a">1920 × 1080</text>
+  <!-- small: 213x120 -->
+  <rect x="70" y="150" width="213" height="120" fill="#93c5fd" stroke="#1e40af" stroke-width="3"/>
+  <text x="176" y="196" text-anchor="middle" font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#1e3a8a">1280×720</text>
+
+  <text x="310" y="464" text-anchor="middle" font-family="system-ui, sans-serif" font-size="34" font-weight="800" fill="#1d4ed8">all = 16 : 9</text>
+
+  <!-- right: the formula -->
+  <rect x="600" y="150" width="530" height="150" rx="16" fill="#0f172a"/>
+  <text x="865" y="200" text-anchor="middle" font-family="system-ui, sans-serif" font-size="26" font-weight="700" fill="#93c5fd">FIND A SIDE</text>
+  <text x="865" y="252" text-anchor="middle" font-family="system-ui, sans-serif" font-size="30" font-weight="800" fill="#f8fafc">height = width × H ÷ W</text>
+  <text x="865" y="286" text-anchor="middle" font-family="system-ui, sans-serif" font-size="24" fill="#cbd5e1">1280 × 9 ÷ 16 = 720</text>
+
+  <rect x="600" y="318" width="530" height="150" rx="16" fill="#14532d"/>
+  <text x="865" y="368" text-anchor="middle" font-family="system-ui, sans-serif" font-size="26" font-weight="700" fill="#86efac">FIND THE RATIO</text>
+  <text x="865" y="420" text-anchor="middle" font-family="system-ui, sans-serif" font-size="30" font-weight="800" fill="#f8fafc">divide W × H by their GCD</text>
+  <text x="865" y="454" text-anchor="middle" font-family="system-ui, sans-serif" font-size="24" fill="#bbf7d0">1920 × 1080 ÷ 120 = 16 : 9</text>
+
+  <rect x="70" y="512" width="1060" height="146" rx="18" fill="#7f1d1d"/>
+  <text x="600" y="560" text-anchor="middle" font-family="system-ui, sans-serif" font-size="30" font-weight="800" fill="#fecaca">Lock the ratio when resizing.</text>
+  <text x="600" y="602" text-anchor="middle" font-family="system-ui, sans-serif" font-size="26" fill="#fee2e2">Change width &amp; height to a different ratio → the image stretches.</text>
+  <text x="600" y="640" text-anchor="middle" font-family="system-ui, sans-serif" font-size="24" fill="#fca5a5">To change ratio, CROP (keeps it sharp) — don't stretch.</text>
+</svg>
