@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-label="To wake at 6 AM, go to bed at 10:15 PM for 5 cycles or 8:45 PM for 6 cycles. Sleep cycles are about 90 minutes; wake between them to avoid grogginess.">
+  <rect width="1200" height="700" fill="#0f172a"/>
+  <text x="600" y="62" text-anchor="middle" font-family="system-ui, sans-serif" font-size="44" font-weight="800" fill="#f8fafc">Wake between cycles, not mid-cycle</text>
+  <text x="600" y="104" text-anchor="middle" font-family="system-ui, sans-serif" font-size="26" fill="#94a3b8">A sleep cycle ≈ 90 min · count back in 90-min blocks + 15 min to fall asleep</text>
+
+  <!-- cycle wave: light -> deep -> light, 5 cycles -->
+  <g stroke="#38bdf8" stroke-width="4" fill="none">
+    <path d="M 90 200 Q 155 320 220 200 Q 285 320 350 200 Q 415 320 480 200 Q 545 320 610 200"/>
+  </g>
+  <!-- boundary dots (good wake points) -->
+  <g fill="#4ade80">
+    <circle cx="90" cy="200" r="7"/><circle cx="220" cy="200" r="7"/><circle cx="350" cy="200" r="7"/><circle cx="480" cy="200" r="7"/><circle cx="610" cy="200" r="7"/>
+  </g>
+  <!-- deep-sleep trough marker (bad wake point) -->
+  <circle cx="545" cy="290" r="8" fill="#f87171"/>
+  <text x="350" y="150" text-anchor="middle" font-family="system-ui, sans-serif" font-size="20" font-weight="700" fill="#86efac">● end of cycle = easy wake</text>
+  <text x="690" y="296" font-family="system-ui, sans-serif" font-size="20" font-weight="700" fill="#fca5a5">● deep sleep = groggy</text>
+
+  <!-- bedtime cards for waking at 6 AM -->
+  <text x="600" y="378" text-anchor="middle" font-family="system-ui, sans-serif" font-size="28" font-weight="800" fill="#f8fafc">To wake at 6:00 AM, go to bed at…</text>
+
+  <rect x="150" y="404" width="420" height="150" rx="16" fill="#1e293b" stroke="#38bdf8" stroke-width="4"/>
+  <text x="360" y="450" text-anchor="middle" font-family="system-ui, sans-serif" font-size="26" font-weight="700" fill="#7dd3fc">5 CYCLES · 7.5 HR</text>
+  <text x="360" y="510" text-anchor="middle" font-family="system-ui, sans-serif" font-size="52" font-weight="800" fill="#f8fafc">10:15 PM</text>
+  <text x="360" y="542" text-anchor="middle" font-family="system-ui, sans-serif" font-size="20" fill="#4ade80">recommended for most adults</text>
+
+  <rect x="630" y="404" width="420" height="150" rx="16" fill="#1e293b" stroke="#334155" stroke-width="3"/>
+  <text x="840" y="450" text-anchor="middle" font-family="system-ui, sans-serif" font-size="26" font-weight="700" fill="#94a3b8">6 CYCLES · 9 HR</text>
+  <text x="840" y="510" text-anchor="middle" font-family="system-ui, sans-serif" font-size="52" font-weight="800" fill="#f8fafc">8:45 PM</text>
+  <text x="840" y="542" text-anchor="middle" font-family="system-ui, sans-serif" font-size="20" fill="#cbd5e1">if your schedule allows</text>
+
+  <rect x="150" y="586" width="900" height="76" rx="16" fill="#7f1d1d"/>
+  <text x="600" y="632" text-anchor="middle" font-family="system-ui, sans-serif" font-size="27" font-weight="700" fill="#fecaca">A well-timed 7.5 h can beat a badly-timed 8.5 h.</text>
+</svg>

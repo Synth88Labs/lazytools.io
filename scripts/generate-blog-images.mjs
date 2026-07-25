@@ -7,6 +7,13 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'what-time-to-go-to-bed-guide',
+    kicker: 'SLEEP GUIDE',
+    lines: ['What time should', 'you go to bed?', 'Sleep cycle math'],
+    fact: 'wake at 6 AM → bed 10:15 PM · 90-min cycles · 5 = 7.5 hr',
+    icon: '😴',
+  },
+  {
     slug: 'aspect-ratio-explained-guide',
     kicker: 'DESIGN & VIDEO GUIDE',
     lines: ['Aspect ratio', 'explained: what', '16:9 really means'],
