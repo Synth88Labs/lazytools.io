@@ -6,7 +6,7 @@ export interface FontToolDef {
   icon: string;
   description: string;
   lead: string;
-  widget: 'fancy' | 'pxrem' | 'typescale' | 'lineheight' | 'zalgo' | 'blank' | 'symbols' | 'discord' | 'clamp' | 'repeater' | 'mirror' | 'lenny' | 'gradient' | 'measure';
+  widget: 'fancy' | 'pxrem' | 'typescale' | 'lineheight' | 'zalgo' | 'blank' | 'symbols' | 'discord' | 'clamp' | 'repeater' | 'mirror' | 'lenny' | 'gradient' | 'measure' | 'ascii';
   /** For 'fancy' widgets — which Unicode styles to show (omit = all). */
   styles?: string[];
   placeholder?: string;
@@ -472,6 +472,25 @@ export const FONT_TOOLS: FontToolDef[] = [
       { q: 'Does line length really affect readability?', a: 'Yes — overly long lines tire the eye and cause it to lose its place returning to the left margin; overly short lines break reading rhythm. Keeping within ~45–75 CPL measurably helps comprehension.' },
     ],
     keywords: ['line length calculator', 'characters per line', 'ideal line length', 'measure typography', 'reading width css', 'ch unit calculator', 'optimal line length'],
+  },
+  {
+    slug: 'ascii-art-text-generator',
+    name: 'ASCII Art Text Generator (Big Text)',
+    icon: '🅰',
+    description:
+      'Turn words into big ASCII-art banners in 10 classic FIGlet fonts — Standard, Big, Slant, ANSI Shadow and more. Copy or download for READMEs, terminals and code. Free, in your browser.',
+    lead: 'Type a word and get it as a big ASCII-art banner — choose from 10 classic FIGlet fonts (Standard, Big, Slant, ANSI Shadow, Doom…), then copy it or download a .txt for a README, terminal login or code comment.',
+    widget: 'ascii',
+    how: 'ASCII art spells each letter out of many smaller characters arranged into a large shape. This tool uses the classic FIGlet font format: every font defines a multi-line pattern for each character, and the generator lays your letters out side by side with tight kerning so they touch cleanly. It parses the fonts and renders everything in your browser — no server, no upload.',
+    note: 'The output only lines up in a monospace (fixed-width) context — a code block, README, terminal, or a <pre> tag — because it relies on every column being the same width. Pasting it into a proportional-font field (like a normal chat message) will skew the shapes. Fonts like ANSI Shadow use block-drawing characters, so they look best where those glyphs are supported.',
+    faqs: [
+      { q: 'How do I make ASCII art text?', a: 'Type your word, pick a FIGlet font, and copy the big-text banner. Paste it into a monospace place — a README, code comment or terminal — so the characters line up correctly.' },
+      { q: 'Where does ASCII art like this get used?', a: 'Classic uses are README headers on GitHub, banners in CLI tools and login messages (MOTD), figlet-style output in scripts, and decorative headers in code comments.' },
+      { q: 'Why does my ASCII art look jumbled when I paste it?', a: 'It was pasted somewhere using a proportional font, so the columns no longer align. Paste it into a fixed-width/monospace context (code block, terminal, <pre>) and it will render correctly.' },
+      { q: 'What are the fonts?', a: 'They\'re the standard FIGlet fonts — Standard, Big, Slant, Small, Banner, Shadow, ANSI Shadow, Doom, Block and Mini — the same classic set the figlet command-line tool ships with.' },
+      { q: 'Is it private?', a: 'Yes — the fonts and renderer run entirely in your browser. Nothing you type is uploaded, and it works offline once loaded.' },
+    ],
+    keywords: ['ascii art generator', 'text to ascii', 'ascii art text', 'figlet', 'big text generator', 'ascii banner', 'ascii text art', 'text to ascii art'],
   },
 ];
 

@@ -279,6 +279,7 @@
   "fitness/steps-to-distance-calculator",
   "fitness/swimming-pace-calculator",
   "fitness/vo2-max-calculator",
+  "fonts/ascii-art-text-generator",
   "fonts/bold-text-generator",
   "fonts/bubble-text-generator",
   "fonts/css-clamp-generator",
