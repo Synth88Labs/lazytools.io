@@ -9,6 +9,12 @@ import FancyTextTool from '../../components/fonts/FancyTextTool.tsx';
 import PxRemCalc from '../../components/fonts/PxRemCalc.tsx';
 import TypeScaleTool from '../../components/fonts/TypeScaleTool.tsx';
 import LineHeightCalc from '../../components/fonts/LineHeightCalc.tsx';
+import ZalgoTool from '../../components/fonts/ZalgoTool.tsx';
+import BlankNameTool from '../../components/fonts/BlankNameTool.tsx';
+import SymbolPicker from '../../components/fonts/SymbolPicker.tsx';
+import DiscordColorTool from '../../components/fonts/DiscordColorTool.tsx';
+import ClampTool from '../../components/fonts/ClampTool.tsx';
+import TextRepeater from '../../components/fonts/TextRepeater.tsx';
 import { FONT_TOOLS, type FontToolDef } from '../../data/fonts/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -59,6 +65,12 @@ const schema = [
       {tool.widget === 'pxrem' && <PxRemCalc client:load />}
       {tool.widget === 'typescale' && <TypeScaleTool client:load />}
       {tool.widget === 'lineheight' && <LineHeightCalc client:load />}
+      {tool.widget === 'zalgo' && <ZalgoTool client:load />}
+      {tool.widget === 'blank' && <BlankNameTool client:load />}
+      {tool.widget === 'symbols' && <SymbolPicker client:load />}
+      {tool.widget === 'discord' && <DiscordColorTool client:load />}
+      {tool.widget === 'clamp' && <ClampTool client:load />}
+      {tool.widget === 'repeater' && <TextRepeater client:load />}
     </div>
 
     <div class="mt-4">

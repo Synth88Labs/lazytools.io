@@ -6,7 +6,7 @@ export interface FontToolDef {
   icon: string;
   description: string;
   lead: string;
-  widget: 'fancy' | 'pxrem' | 'typescale' | 'lineheight';
+  widget: 'fancy' | 'pxrem' | 'typescale' | 'lineheight' | 'zalgo' | 'blank' | 'symbols' | 'discord' | 'clamp' | 'repeater';
   /** For 'fancy' widgets — which Unicode styles to show (omit = all). */
   styles?: string[];
   placeholder?: string;
@@ -248,6 +248,157 @@ export const FONT_TOOLS: FontToolDef[] = [
       { q: 'How is line height calculated in pixels?', a: 'Multiply the font size by the unitless line-height: 16px text at 1.5 gives a 24px line box. The calculator does this and shows the result alongside the recommended range.' },
     ],
     keywords: ['line height calculator', 'line height css', 'leading calculator', 'best line height for reading', 'line spacing calculator', 'line-height px calculator'],
+  },
+  {
+    slug: 'superscript-subscript-generator',
+    name: 'Superscript & Subscript Generator',
+    icon: 'ˣ',
+    description:
+      'Convert text and numbers to Unicode superscript (ˣ⁷) and subscript (ₓ₇) you can copy and paste anywhere — footnotes, x², H₂O, citations. Free, in your browser.',
+    lead: 'Turn text into superscript (ᵗⁱⁿʸ ᵃᵇᵒᵛᵉ) and subscript (below the line) — copy and paste it into places with no formatting: footnotes, chemistry like H₂O, maths like x², references and social posts.',
+    widget: 'fancy',
+    styles: ['superscript', 'subscript'],
+    placeholder: 'H2O x2 e=mc2',
+    how: 'Unicode already contains small raised and lowered versions of most letters and all digits — designed for phonetics, maths and notation. This tool maps each character you type onto its superscript or subscript equivalent, so the result is plain, pasteable text rather than a font effect. It works in fields that offer no formatting at all.',
+    note: 'The catch is coverage: Unicode has a superscript for nearly every letter and digit, but its subscript set is small — only a handful of letters (a, e, h, i, j, k, l, m, n, o, p, r, s, t, u, v, x) plus all digits and a few symbols. Characters with no small form are left unchanged so words never turn into boxes.',
+    faqs: [
+      { q: 'How do I make superscript or subscript text to copy and paste?', a: 'Type your text and copy the superscript or subscript version. Each character becomes a raised or lowered Unicode character, so the notation pastes into documents, chats and posts that have no formatting button.' },
+      { q: 'Why are some subscript letters missing?', a: 'Unicode only defines subscript forms for a limited set of letters. Where no subscript character exists, the tool leaves the original letter as-is rather than substitute a wrong-looking one. Superscript coverage is much more complete.' },
+      { q: 'Can I use this for chemical formulas and exponents?', a: 'Yes — subscript digits give you H₂O and CO₂, and superscript digits give you x², m³ or E=mc². Because they are real characters, they stay correct when pasted into email, forums or spreadsheets.' },
+      NOT_A_FONT_FAQ,
+      ACCESS_FAQ,
+    ],
+    keywords: ['superscript generator', 'subscript generator', 'superscript copy paste', 'subscript text', 'tiny text generator', 'x squared symbol', 'h2o subscript'],
+  },
+  {
+    slug: 'glitch-text-generator',
+    name: 'Glitch Text Generator (Zalgo)',
+    icon: 'Z̸',
+    description:
+      'Create glitchy, cursed "Zalgo" text with an adjustable madness slider, then copy and paste it anywhere. Free Unicode glitch generator, in your browser.',
+    lead: 'Turn plain words into glitchy, corrupted "Zalgo" text — drag the madness slider for more or less chaos, choose up/mid/down marks, and copy and paste the cursed result anywhere.',
+    widget: 'zalgo',
+    how: 'Zalgo text works by stacking Unicode "combining marks" — the accents and diacritics normally used to modify a letter — on top of each character, many at a time. Piling them above, through and below each letter creates the dripping, glitched look. The madness slider controls how many marks are added; the up/mid/down toggles choose where they stack. Everything is generated in your browser.',
+    note: 'Because it is built from real combining characters, the glitch survives copy-and-paste — but some apps cap how many marks they render, so very intense settings can look calmer once pasted, and a few platforms strip combining marks entirely. It is decorative only: screen readers and search cannot make sense of it, so never use it for anything that must be read.',
+    faqs: [
+      { q: 'What is Zalgo or glitch text?', a: 'Text that has many Unicode combining marks stacked on each letter, giving a creepy, corrupted, "glitching" appearance. It is popular for horror aesthetics, edgy usernames and memes.' },
+      { q: 'How do I make cursed text to copy and paste?', a: 'Type your text, set the madness slider, and copy the result. The glitch is made of real characters, so it pastes into bios, chats and posts — though some apps tone it down or strip the marks.' },
+      { q: 'Why does my glitch text look less intense after pasting?', a: 'Some platforms limit how many combining marks they display per character for performance, so extreme settings render more calmly there. Lower the madness a little if you want a consistent look across apps.' },
+      NOT_A_FONT_FAQ,
+      ACCESS_FAQ,
+    ],
+    keywords: ['glitch text generator', 'zalgo text', 'cursed text generator', 'creepy text', 'corrupted text generator', 'glitchy text copy paste', 'scary text'],
+  },
+  {
+    slug: 'invisible-name-generator',
+    name: 'Invisible Text & Blank Name Generator',
+    icon: '⬚',
+    description:
+      'Copy an invisible character for a blank username, bio or message — for Free Fire, WhatsApp, Discord and more. Free, in your browser, nothing uploaded.',
+    lead: 'Copy an invisible / blank character to use as an empty username, bio or "silent" message in Free Fire, WhatsApp, Discord and other apps — pick a type and length, then copy.',
+    widget: 'blank',
+    how: 'Some Unicode characters take up a name slot but render as nothing — the Hangul filler (U+3164), the empty braille cell (U+2800), zero-width and no-break spaces. Apps that reject an ordinary blank space often still accept one of these, so you can set an "empty" name or send a blank message. Pick a character type and how many to string together, then copy.',
+    note: 'This is the exact opposite of the invisible-character detector in the text-tools section — one hides these characters, the other finds them. Platform rules change often and some apps trim or block blank names, so if one type is rejected, try another; the Hangul filler is accepted most widely.',
+    faqs: [
+      { q: 'How do I get a blank or invisible name?', a: 'Copy an invisible character here (the Hangul filler works most widely) and paste it as your username or nickname. The app sees a valid character, but nothing is drawn — so the name looks empty.' },
+      { q: 'Why doesn\'t a normal space work for a blank name?', a: 'Most apps trim leading and trailing spaces, so a plain space collapses to nothing and gets rejected. Invisible characters like the Hangul filler are not treated as whitespace, so they survive the trim.' },
+      { q: 'Which app is this for — Free Fire, WhatsApp, Discord?', a: 'All of them and more. The technique is generic; support varies by app and changes over time. If one character type is blocked, try a different one from the list.' },
+      { q: 'Is it really invisible?', a: 'It has no visible glyph, though some characters occupy a small width. The text is still there in the data — it just isn\'t drawn on screen.' },
+    ],
+    keywords: ['invisible name', 'blank name copy paste', 'invisible character', 'free fire invisible space', 'empty character copy paste', 'blank text', 'invisible text generator'],
+  },
+  {
+    slug: 'symbols-copy-paste',
+    name: 'Symbols & Special Characters (Copy Paste)',
+    icon: '★',
+    description:
+      'Browse and copy cool text symbols — arrows, stars, hearts, currency, math, shapes, brackets and more. One click to copy any special character. Free, in your browser.',
+    lead: 'Click any symbol to copy it — arrows, stars, hearts, currency, maths, shapes, brackets and more. A clean, searchable picker for the special characters your keyboard doesn\'t have.',
+    widget: 'symbols',
+    how: 'Every symbol here is a standard Unicode character, grouped into categories so you can find one fast. Click it and it goes to your clipboard, ready to paste into a document, bio, message or spreadsheet. Filter the categories with the search box if you know roughly what you want.',
+    note: 'Unlike the Unicode inspector (which looks up a character you already have), this is a browse-and-copy palette for characters you don\'t. A few symbols render in colour or slightly differently depending on your device\'s fonts — pick one that displays cleanly for you before relying on it.',
+    faqs: [
+      { q: 'How do I copy and paste symbols?', a: 'Click any symbol in the grid and it\'s copied to your clipboard. Then paste it wherever you like — no keyboard shortcuts or character maps needed.' },
+      { q: 'Are these symbols safe to use in usernames and bios?', a: 'Mostly yes — they\'re standard Unicode. Some platforms restrict certain characters, and rendering varies by device, so preview before you rely on a particular one.' },
+      { q: 'Why does a symbol look different on my phone?', a: 'Each device draws Unicode with its own system fonts, so a symbol can appear bolder, thinner or in colour (for emoji-style characters). The underlying character is the same everywhere.' },
+      { q: 'Do I need to install anything?', a: 'No. Everything is standard Unicode and runs in your browser — click, copy, paste. Nothing is uploaded.' },
+    ],
+    keywords: ['copy paste symbols', 'cool symbols', 'text symbols', 'special characters copy paste', 'heart symbol copy paste', 'star symbol', 'arrow symbols', 'symbols copy and paste'],
+  },
+  {
+    slug: 'discord-colored-text-generator',
+    name: 'Discord Colored Text Generator',
+    icon: '🎨',
+    description:
+      'Make colored text for Discord using ANSI code blocks — pick text and background colours, bold and underline, then copy the block to paste. Free, in your browser.',
+    lead: 'Give your Discord messages colour: pick a text colour, background, bold and underline, preview it, and copy a ready-made ANSI code block to paste straight into chat.',
+    widget: 'discord',
+    how: 'Discord has no colour button, but its desktop and web apps render a special "ansi" code block using terminal colour codes. This tool wraps your text in the right escape sequences and fenced code block, so pasting the copied output shows up coloured. Choose from Discord\'s eight text colours and backgrounds, plus bold and underline, and the preview mirrors how it will look.',
+    note: 'The escape character that makes this work can\'t be typed on a normal keyboard, which is why a generator is needed — the copied block already includes it. One limitation is platform: ANSI colour only renders in the Discord desktop and browser apps; the mobile app shows the text without colour. It is deterministic — the same choices always produce the same code.',
+    faqs: [
+      { q: 'How do I make colored text in Discord?', a: 'Discord reads colour from an "ansi" code block. Pick your colours here, copy the generated block, and paste it into a Discord message — it renders coloured on desktop and web.' },
+      { q: 'Why isn\'t my colored text showing on mobile?', a: 'The Discord mobile app doesn\'t render ANSI colour code blocks yet, so it shows the plain text instead. Colour appears on the desktop and browser apps.' },
+      { q: 'Why can\'t I just type the colour codes myself?', a: 'The codes start with an invisible ESC (escape) character that isn\'t on your keyboard. The generator inserts it for you, which is the whole reason a tool is needed.' },
+      { q: 'Is my message text sent anywhere?', a: 'No. The code block is built entirely in your browser; nothing you type is uploaded.' },
+    ],
+    keywords: ['discord colored text', 'discord text color generator', 'discord ansi color', 'colored text discord', 'discord color codes', 'how to color text in discord'],
+  },
+  {
+    slug: 'css-clamp-generator',
+    name: 'CSS clamp() Fluid Typography Generator',
+    icon: '🔡',
+    description:
+      'Generate a responsive CSS clamp() font-size that scales smoothly between two viewport widths, with a live preview. Free developer tool, runs in your browser.',
+    lead: 'Set a min and max font size and the viewport range they map to, and get a copy-ready CSS clamp() that scales type smoothly between them — with a live preview at any screen width.',
+    widget: 'clamp',
+    how: 'clamp(MIN, PREFERRED, MAX) returns the preferred value but never below MIN or above MAX. For fluid type, the preferred value is a straight line between your two (viewport, font-size) points, written as a vw term plus a rem offset. The tool solves that line — slope and intercept — from your inputs and formats the result, so the font grows with the screen and then locks at each end.',
+    note: 'Including a rem in the preferred value (not just vw) matters for accessibility: a pure-vw font ignores the user\'s browser zoom, while the rem part keeps it responsive to their text-size setting. The maths is exact linear interpolation, so the output is deterministic. Pair this with the px-to-rem, type-scale and line-height tools for a complete CSS typography setup.',
+    faqs: [
+      { q: 'What does CSS clamp() do for font size?', a: 'It sets a fluid size that scales with the viewport between a minimum and maximum. Below your min viewport it stays at the min size; above your max viewport it stays at the max; in between it interpolates smoothly — no media queries needed.' },
+      { q: 'Why does the clamp value include both vw and rem?', a: 'The vw part makes the font scale with screen width; the rem part is an offset that also keeps the size responsive to the user\'s zoom / default text size. A vw-only value would break that accessibility behaviour.' },
+      { q: 'How is the middle (preferred) value calculated?', a: 'It\'s the equation of the line through your two points (min viewport, min size) and (max viewport, max size). The slope becomes the vw coefficient and the intercept becomes the rem offset.' },
+      { q: 'Do I still need media queries?', a: 'Usually not for the font size itself — clamp() handles the smooth scaling. You might still use queries for layout changes, but the type resizes on its own.' },
+    ],
+    keywords: ['css clamp generator', 'fluid typography', 'clamp calculator', 'responsive font size css', 'clamp font size', 'css clamp font', 'fluid type scale'],
+  },
+  {
+    slug: 'emoji-letters-generator',
+    name: 'Emoji Letters Generator',
+    icon: '🅰️',
+    description:
+      'Turn text into 🇦-style regional-indicator and 🅰-style squared emoji letters to copy and paste into Discord, Instagram and games. Free, in your browser.',
+    lead: 'Spell words with emoji letters — 🇧🇮🇬 regional-indicator (flag-style) letters and 🅱🅾🆇 squared emoji letters — then copy and paste them into Discord, Instagram or a username.',
+    widget: 'fancy',
+    styles: ['regional', 'squared'],
+    placeholder: 'BIG LETTERS',
+    how: 'Two Unicode letter sets look like emoji: "regional indicators" (the A–Z symbols normally combined into flags) and "negative squared" letters (white letters on a coloured tile). This tool maps each letter of your text onto both, so you get big, blocky, emoji-style lettering as plain pasteable characters.',
+    note: 'These only cover A–Z, so digits, spaces and punctuation pass through unchanged. A quirk of regional indicators: two that happen to form a real country code can merge into a flag in some apps — usually harmless, occasionally surprising. They render largest and most reliably on Discord and mobile.',
+    faqs: [
+      { q: 'How do I make big emoji letters for Discord?', a: 'Type your word and copy the squared or regional-indicator version — each letter becomes an emoji-style tile that shows up large in Discord and many chat apps.' },
+      { q: 'What\'s the difference between the two styles?', a: 'Regional indicators are the flag-style letters (🇦 🇧 🇨); squared letters are white glyphs on a coloured square (🅰 🅱). Both spell out A–Z; pick whichever looks better where you\'re pasting.' },
+      { q: 'Why did two of my letters turn into a flag?', a: 'Regional indicators are the same characters used to build flag emoji. If two adjacent letters form a valid country code, some apps merge them into that flag. It only affects certain letter pairs.' },
+      NOT_A_FONT_FAQ,
+      PASTE_FAQ,
+    ],
+    keywords: ['emoji letters', 'regional indicator generator', 'text to emoji', 'discord emoji letters', 'big letter emoji', 'squared letters copy paste', 'emoji text generator'],
+  },
+  {
+    slug: 'text-repeater',
+    name: 'Text Repeater',
+    icon: '🔁',
+    description:
+      'Repeat any text or phrase as many times as you want, with a choice of separators and optional numbering. Copy the result instantly. Free, in your browser.',
+    lead: 'Repeat a word or phrase as many times as you like — choose a separator (new line, space, comma or your own), optionally number each line, and copy the result in one click.',
+    widget: 'repeater',
+    how: 'Type your text, set a count, and the tool joins that many copies together with the separator you choose. It\'s handy for filling test data, padding a field, making a list, or the classic repeated-message joke. Everything is generated in your browser, up to 10,000 repeats.',
+    note: 'Choosing "new line" gives you a vertical list; "nothing" concatenates the copies directly; "comma" builds a quick comma-separated list. The optional numbering prefixes each copy with its position, which is useful for generating ordered placeholder content.',
+    faqs: [
+      { q: 'How do I repeat text multiple times?', a: 'Enter your text, set how many times to repeat it, pick a separator, and copy the result. The tool builds the repeated string instantly — no spreadsheet formulas needed.' },
+      { q: 'Can I put each repeat on its own line?', a: 'Yes — choose the "New line" separator and every copy goes on a separate line. Other options include space, comma, nothing, or a custom separator you type.' },
+      { q: 'Is there a limit?', a: 'You can repeat up to 10,000 times, which is plenty for test data or lists while staying fast in the browser.' },
+      { q: 'What is this useful for?', a: 'Generating placeholder or test data, filling a form field to a length, quickly building a delimited list, or sending a repeated message for fun.' },
+    ],
+    keywords: ['text repeater', 'repeat text', 'repeat text generator', 'repeat string online', 'duplicate text', 'repeat word multiple times'],
   },
 ];
 
