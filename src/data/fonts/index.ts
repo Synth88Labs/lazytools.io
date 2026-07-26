@@ -6,7 +6,7 @@ export interface FontToolDef {
   icon: string;
   description: string;
   lead: string;
-  widget: 'fancy' | 'pxrem' | 'typescale' | 'lineheight' | 'zalgo' | 'blank' | 'symbols' | 'discord' | 'clamp' | 'repeater';
+  widget: 'fancy' | 'pxrem' | 'typescale' | 'lineheight' | 'zalgo' | 'blank' | 'symbols' | 'discord' | 'clamp' | 'repeater' | 'mirror' | 'lenny' | 'gradient' | 'measure';
   /** For 'fancy' widgets — which Unicode styles to show (omit = all). */
   styles?: string[];
   placeholder?: string;
@@ -399,6 +399,79 @@ export const FONT_TOOLS: FontToolDef[] = [
       { q: 'What is this useful for?', a: 'Generating placeholder or test data, filling a form field to a length, quickly building a delimited list, or sending a repeated message for fun.' },
     ],
     keywords: ['text repeater', 'repeat text', 'repeat text generator', 'repeat string online', 'duplicate text', 'repeat word multiple times'],
+  },
+  {
+    slug: 'mirror-text-generator',
+    name: 'Mirror & Backwards Text Generator',
+    icon: 'ↄ',
+    description:
+      'Flip text into mirror writing (Ɔↄ) or simply reverse the letter order, then copy and paste it anywhere. Free Unicode mirror tool, in your browser.',
+    lead: 'Turn text into mirror writing — reversed order with horizontally-flipped letters, like it\'s seen in a mirror — or just reverse the character order. Copy and paste either version anywhere.',
+    widget: 'mirror',
+    how: 'The mirror version reverses your text and swaps each letter for a Unicode look-alike that is flipped left-to-right, so the whole thing reads as if reflected. The backwards version only reverses the order of characters, keeping each letter normal. Both are generated in your browser and produced as plain, pasteable text.',
+    note: 'Not every letter has a convincing horizontally-flipped twin in Unicode, so a few (like o, x, l) are left unchanged — the effect is strongest on words with letters that do mirror cleanly. This is distinct from upside-down text (rotated 180°) and from a plain reverse: mirror text specifically simulates a left-right reflection.',
+    faqs: [
+      { q: 'How do I write text backwards or in mirror writing?', a: 'Type your text and copy the mirror version (reversed with flipped letters) or the backwards version (reversed order only). Both are real Unicode text, so they paste into bios, chats and captions.' },
+      { q: 'What is the difference between mirror and upside-down text?', a: 'Mirror text is flipped left-to-right, as if reflected in a mirror. Upside-down text is rotated 180°. They use different character sets — see the upside-down generator in the text tools for the rotated version.' },
+      { q: 'Why are some letters not flipped?', a: 'Unicode doesn\'t have a good mirror-image glyph for every letter. Where none exists, the tool keeps the original so the word stays legible rather than showing a blank box.' },
+      NOT_A_FONT_FAQ,
+      PASTE_FAQ,
+    ],
+    keywords: ['mirror text', 'backwards text generator', 'reverse text generator', 'mirror writing', 'flip text', 'reversed text copy paste', 'mirrored text'],
+  },
+  {
+    slug: 'lenny-face-generator',
+    name: 'Lenny Face & Kaomoji Generator',
+    icon: 'ʖ',
+    description:
+      'Copy ( ͡° ͜ʖ ͡°) Lenny faces and Japanese kaomoji — happy, shrug, table flip, angry, cute and more. One click to copy any text face. Free, in your browser.',
+    lead: 'Browse and copy Lenny faces and kaomoji — ( ͡° ͜ʖ ͡°), ¯\\_(ツ)_/¯, (╯°□°）╯︵ ┻━┻ and dozens more — grouped by mood. Click any face to copy it instantly.',
+    widget: 'lenny',
+    how: 'Lenny faces and kaomoji are little faces built entirely from standard Unicode letters, punctuation and combining marks — no images or emoji required. This tool collects the popular ones into mood groups so you can find and copy one fast. Click a face and it goes straight to your clipboard, ready to paste.',
+    note: 'Because they\'re assembled from ordinary characters, kaomoji paste into almost any text field — chats, forums, game names, bios. A few faces use combining marks (like the eyebrows in a Lenny face) that render slightly differently across fonts, so preview if precise alignment matters.',
+    faqs: [
+      { q: 'How do I make a Lenny face?', a: 'You don\'t have to type it — click ( ͡° ͜ʖ ͡°) or any face in the picker to copy it, then paste it into your message. Each one is plain Unicode text.' },
+      { q: 'What is a kaomoji?', a: 'A kaomoji is a Japanese-style emoticon read upright (not sideways), built from Unicode characters — for example (◕‿◕) or ¯\\_(ツ)_/¯. Unlike emoji, they\'re just text.' },
+      { q: 'Will the table-flip and shrug faces paste correctly?', a: 'In most apps, yes — they\'re standard characters including the backslash and Katakana ツ. A few platforms render combining marks a little differently, so check before relying on exact spacing.' },
+      { q: 'Is it free and private?', a: 'Yes — everything runs in your browser, nothing is uploaded, and there\'s no sign-up.' },
+    ],
+    keywords: ['lenny face', 'kaomoji', 'text faces', 'shrug emoji text', 'table flip text', 'japanese emoticons', 'lenny face copy paste', '( ͡° ͜ʖ ͡°)'],
+  },
+  {
+    slug: 'css-gradient-text-generator',
+    name: 'CSS Gradient Text Generator',
+    icon: '🌈',
+    description:
+      'Create gradient text with CSS background-clip — pick two colours and an angle, preview live, copy the CSS or download a transparent PNG. Free, in your browser.',
+    lead: 'Give text a colour gradient: pick two colours and an angle, see it live, then copy the CSS (background-clip: text) or download a transparent PNG for anywhere that can\'t run CSS.',
+    widget: 'gradient',
+    how: 'The CSS approach paints a linear-gradient as the element\'s background, clips that background to the shape of the text with background-clip: text, and makes the text fill transparent so the gradient shows through. The tool builds that rule from your colours and angle and previews it. For places that can\'t run CSS — social posts, images — it also renders the same gradient text to a 2× PNG with a transparent background.',
+    note: 'background-clip: text needs the -webkit- prefix to work across browsers, which the copied CSS includes. Because the visible colour comes from the background, always keep the underlying text real (not an image) so screen readers and search still read it — the gradient is purely decorative. The PNG export is for contexts where you can\'t use CSS at all.',
+    faqs: [
+      { q: 'How do I make gradient text in CSS?', a: 'Set a linear-gradient as the background, add background-clip: text (with the -webkit- prefix) and make the text fill transparent so the gradient shows through the letters. This tool generates that exact CSS from your colours and angle.' },
+      { q: 'Why is my gradient text invisible?', a: 'Almost always a missing prefix or fill: you need -webkit-background-clip: text and -webkit-text-fill-color: transparent (plus the unprefixed versions). The copied CSS here includes all of them.' },
+      { q: 'Can I use gradient text where CSS isn\'t allowed?', a: 'Yes — use the Download PNG button to export the styled text as a transparent image you can drop into a post, slide or design tool.' },
+      { q: 'Is gradient text bad for accessibility?', a: 'Only if you replace real text with an image. Keep the actual text in the HTML and treat the gradient as decoration; screen readers then read it normally.' },
+    ],
+    keywords: ['css gradient text', 'gradient text generator', 'text gradient css', 'background clip text', 'gradient text maker', 'colorful text css'],
+  },
+  {
+    slug: 'line-length-calculator',
+    name: 'Line Length (Measure) Calculator',
+    icon: '📖',
+    description:
+      'Find the ideal text column width for readability — 45–75 characters per line — from your font size, with a max-width in px, rem, em and ch. Free, in your browser.',
+    lead: 'Work out the ideal reading width for your body text: set a font size and target characters per line, and get the max-width in px, rem, em and ch — with a live preview and a readability verdict.',
+    widget: 'measure',
+    how: 'Readability research recommends roughly 45–75 characters per line for body text, about 66 being ideal. The calculator estimates the average character width from your font size (proportional fonts average close to half the font size per character) and multiplies by your target characters-per-line to give the column width, expressed in px, rem, em and approximate ch units, with a live sample at that width.',
+    note: 'Set your text container with max-width in em or ch rather than a fixed pixel value, so the measure stays correct if the font size changes. This is a typographic best practice tied to accessibility — the WCAG reading guidance and long-standing typography (Bringhurst) both point to keeping lines from running too long, which is where the eye gets lost jumping back to the next line.',
+    faqs: [
+      { q: 'What is the ideal line length for reading?', a: 'About 45–75 characters per line for body text, with roughly 66 as the sweet spot. Shorter lines feel choppy; longer lines make it hard to find the next line. This tool converts that target into a column width for your font size.' },
+      { q: 'What CSS should I use to limit line length?', a: 'Set max-width on your text container. Using em or ch units (e.g. max-width: 66ch) keeps the measure correct even if the font size changes, which fixed pixels don\'t.' },
+      { q: 'What is a ch unit?', a: '1ch is the width of the "0" glyph in the current font. It\'s a handy unit for line length because a max-width in ch maps almost directly to characters-per-line.' },
+      { q: 'Does line length really affect readability?', a: 'Yes — overly long lines tire the eye and cause it to lose its place returning to the left margin; overly short lines break reading rhythm. Keeping within ~45–75 CPL measurably helps comprehension.' },
+    ],
+    keywords: ['line length calculator', 'characters per line', 'ideal line length', 'measure typography', 'reading width css', 'ch unit calculator', 'optimal line length'],
   },
 ];
 

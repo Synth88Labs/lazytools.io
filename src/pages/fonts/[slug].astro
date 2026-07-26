@@ -15,6 +15,10 @@ import SymbolPicker from '../../components/fonts/SymbolPicker.tsx';
 import DiscordColorTool from '../../components/fonts/DiscordColorTool.tsx';
 import ClampTool from '../../components/fonts/ClampTool.tsx';
 import TextRepeater from '../../components/fonts/TextRepeater.tsx';
+import MirrorTool from '../../components/fonts/MirrorTool.tsx';
+import LennyPicker from '../../components/fonts/LennyPicker.tsx';
+import GradientTextTool from '../../components/fonts/GradientTextTool.tsx';
+import MeasureTool from '../../components/fonts/MeasureTool.tsx';
 import { FONT_TOOLS, type FontToolDef } from '../../data/fonts/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -71,6 +75,10 @@ const schema = [
       {tool.widget === 'discord' && <DiscordColorTool client:load />}
       {tool.widget === 'clamp' && <ClampTool client:load />}
       {tool.widget === 'repeater' && <TextRepeater client:load />}
+      {tool.widget === 'mirror' && <MirrorTool client:load />}
+      {tool.widget === 'lenny' && <LennyPicker client:load />}
+      {tool.widget === 'gradient' && <GradientTextTool client:load />}
+      {tool.widget === 'measure' && <MeasureTool client:load />}
     </div>
 
     <div class="mt-4">
