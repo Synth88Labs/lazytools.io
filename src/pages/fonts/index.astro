@@ -1,0 +1,84 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PrivacyStrip from '../../components/PrivacyStrip.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { FONT_TOOLS } from '../../data/fonts/index';
+import { breadcrumbSchema, collectionPageSchema, faqSchema } from '../../lib/schema';
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Fonts & Typography', url: '/fonts/' },
+];
+
+const faqs = [
+  {
+    q: 'Are the fancy fonts real fonts?',
+    a: 'No — nothing is installed. The generators map each letter to a look-alike Unicode character (mostly from the Mathematical Alphanumeric Symbols block), so the styled text is plain Unicode that copies and pastes into places that don\'t allow font changes, like social bios and usernames.',
+  },
+  {
+    q: 'Will the styled text paste into Instagram, Discord and TikTok?',
+    a: 'Yes — those and most chat apps, spreadsheets and document titles accept Unicode text, so the styling survives copy-and-paste. A few older systems strip unsupported characters, so preview before you rely on it.',
+  },
+  {
+    q: 'Are Unicode fancy fonts accessible?',
+    a: 'No, and it\'s worth knowing: screen readers announce the underlying characters as "mathematical bold" letters or skip them, and search can misread them. Use fancy text for decoration, never for meaning a reader needs.',
+  },
+  {
+    q: 'What are the calculators for?',
+    a: 'The px-to-rem converter, type scale generator and line-height calculator are for web designers and developers working with CSS typography — converting units, building a harmonious set of heading sizes, and setting comfortable line spacing.',
+  },
+];
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  collectionPageSchema({
+    name: 'Fonts & Typography Tools',
+    url: '/fonts/',
+    description: 'Fancy text and font generators (bold, italic, cursive, small caps, bubble and more) plus CSS typography calculators — all in your browser.',
+    items: FONT_TOOLS.map((t) => ({ name: t.name, url: `/fonts/${t.slug}/` })),
+  }),
+  faqSchema(faqs),
+];
+---
+
+<Base
+  title="Fonts & Typography — Fancy Text Generators & CSS Tools | LazyTools"
+  description="Free font and fancy-text generators — bold, italic, cursive, small caps, bubble and wide text to copy and paste — plus px-to-rem, type-scale and line-height calculators. Everything runs in your browser."
+  schema={schema}
+>
+  <div class="mx-auto max-w-5xl px-4 py-6">
+    <Breadcrumbs items={crumbs} />
+
+    <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Fonts &amp; Typography</h1>
+    <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
+      Turn plain text into copy-and-paste <strong>fancy fonts</strong> — bold, italic, cursive, small
+      caps, bubble and wide — for bios, usernames and captions. Plus CSS typography calculators for
+      designers: px-to-rem, modular type scales and line height. Everything runs in your browser.
+    </p>
+
+    <div class="mt-5">
+      <PrivacyStrip />
+    </div>
+
+    <ul class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {FONT_TOOLS.map((t) => (
+        <li>
+          <a href={`/fonts/${t.slug}/`} class="flex h-full flex-col rounded-xl border border-slate-200 p-4 transition hover:border-brand-400 hover:shadow-sm">
+            <span class="text-2xl" aria-hidden="true">{t.icon}</span>
+            <span class="mt-2 font-semibold text-slate-900">{t.name}</span>
+            <span class="mt-1 text-sm text-slate-600">{t.lead.split('—')[0]}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <section class="prose-lazy mt-10">
+      <h2>Fancy fonts are Unicode, not fonts</h2>
+      <p>The "fonts" from these generators aren't installed anywhere. Each letter is swapped for a look-alike <strong>Unicode character</strong> — bold, italic and cursive come from the Mathematical Alphanumeric Symbols block; bubble, small caps and full-width letters from their own blocks. Because the result is ordinary text, it keeps its styling when pasted into places that offer no formatting at all: Instagram and TikTok bios, Discord names, message threads. The one real trade-off is accessibility — screen readers can't read styled Unicode properly, so it's for decoration, not meaning.</p>
+      <p>The <a href="/fonts/px-to-rem-converter/">CSS typography calculators</a> serve a different audience — web designers and developers sizing type with rem, building a <a href="/fonts/type-scale-generator/">modular scale</a>, or setting comfortable <a href="/fonts/line-height-calculator/">line height</a>. To turn styled Unicode back into plain letters, use the fancy-text decoder in <a href="/text/">Text Tools</a>.</p>
+    </section>
+
+    <FaqSection faqs={faqs} />
+  </div>
+</Base>

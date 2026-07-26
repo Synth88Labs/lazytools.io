@@ -8,6 +8,7 @@ import { SIZE_TOOLS } from '../../data/size/index';
 import { TEXT_TOOLS } from '../../data/text/index';
 import { COLOR_TOOLS } from '../../data/color/index';
 import { CHART_TOOLS } from '../../data/charts/index';
+import { FONT_TOOLS } from '../../data/fonts/index';
 import { CIPHER_TOOLS } from '../../data/cipher/index';
 import { PRODUCTIVITY_TOOLS } from '../../data/productivity/index';
 import { NETWORK_TOOLS } from '../../data/network/index';
@@ -72,6 +73,7 @@ const schema = [
       ...TEXT_TOOLS.map((t) => ({ name: t.name, url: `/text/${t.slug}/` })),
       ...COLOR_TOOLS.map((t) => ({ name: t.name, url: `/color/${t.slug}/` })),
       ...CHART_TOOLS.map((t) => ({ name: t.name, url: `/charts/${t.slug}/` })),
+      ...FONT_TOOLS.map((t) => ({ name: t.name, url: `/fonts/${t.slug}/` })),
       ...FILE_TOOLS.map((t) => ({ name: t.name, url: `/file/${t.slug}/` })),
       ...DEV_TOOLS.map((t) => ({ name: t.name, url: `/dev/${t.slug}/` })),
       ...GEN_TOOLS.map((t) => ({ name: t.name, url: `/generate/${t.slug}/` })),
@@ -256,6 +258,19 @@ const schema = [
         {CHART_TOOLS.map((t) => (
           <li>
             <a href={`/charts/${t.slug}/`} class="inline-block rounded-full border border-slate-200 px-3 py-1 text-sm text-slate-600 transition hover:border-brand-400 hover:text-brand-700">
+              {t.icon} {t.name}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-bold text-slate-900">🔤 Fonts & Typography</h2>
+      <ul class="mt-4 flex flex-wrap gap-2">
+        {FONT_TOOLS.map((t) => (
+          <li>
+            <a href={`/fonts/${t.slug}/`} class="inline-block rounded-full border border-slate-200 px-3 py-1 text-sm text-slate-600 transition hover:border-brand-400 hover:text-brand-700">
               {t.icon} {t.name}
             </a>
           </li>

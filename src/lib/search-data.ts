@@ -20,6 +20,7 @@ import { CALENDAR_TOOLS } from '../data/calendar/index';
 import { CIPHER_TOOLS } from '../data/cipher/index';
 import { PRODUCTIVITY_TOOLS } from '../data/productivity/index';
 import { CHART_TOOLS } from '../data/charts/index';
+import { FONT_TOOLS } from '../data/fonts/index';
 import { NETWORK_TOOLS } from '../data/network/index';
 import { MATH_TOOLS } from '../data/math/index';
 import { PHOTO_SPECS } from '../data/photo/index';
@@ -216,6 +217,9 @@ export function buildSearchPages(): SearchPage[] {
   for (const t of CHART_TOOLS) {
     pages.push({ title: t.name, url: `/charts/${t.slug}/`, keywords: [...t.keywords, 'chart', 'graph', 'chart maker', 'design', t.name.toLowerCase()] });
   }
+  for (const t of FONT_TOOLS) {
+    pages.push({ title: t.name, url: `/fonts/${t.slug}/`, keywords: [...t.keywords, 'font', 'text', 'typography', 'generator', t.name.toLowerCase()] });
+  }
   for (const t of NETWORK_TOOLS) {
     pages.push({ title: t.name, url: `/network/${t.slug}/`, keywords: [...t.keywords, 'network', 'it', t.name.toLowerCase()] });
   }
@@ -336,6 +340,7 @@ export function buildSearchPages(): SearchPage[] {
     { title: 'All Text Tools', url: '/text/', keywords: ['text tools', 'text', 'words', 'characters', 'lines'] },
     { title: 'All Color Tools', url: '/color/', keywords: ['color tools', 'color', 'hex', 'rgb', 'contrast'] },
     { title: 'All Charts & Design Tools', url: '/charts/', keywords: ['charts', 'chart maker', 'graph maker', 'bar chart', 'line chart', 'pie chart', 'funnel chart', 'radar chart', 'waterfall chart', 'data visualization', 'design'] },
+    { title: 'All Fonts & Typography Tools', url: '/fonts/', keywords: ['fonts', 'font generator', 'fancy text', 'bold text', 'italic', 'cursive', 'small caps', 'bubble text', 'typography', 'px to rem', 'type scale', 'line height'] },
     { title: 'All Size Converters', url: '/size/', keywords: ['size', 'sizes', 'sizing', 'ring', 'shoe', 'bra', 'clothing'] },
     { title: 'All Calculators', url: '/calc/', keywords: ['calculator', 'calculators', 'calculate', 'math'] },
     { title: 'All Tools Directory', url: '/tools/', keywords: ['all tools', 'directory', 'list', 'tools'] },

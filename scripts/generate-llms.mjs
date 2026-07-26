@@ -10,6 +10,7 @@ import { SIZE_TOOLS } from '../src/data/size/index.ts';
 import { TEXT_TOOLS } from '../src/data/text/index.ts';
 import { COLOR_TOOLS } from '../src/data/color/index.ts';
 import { CHART_TOOLS } from '../src/data/charts/index.ts';
+import { FONT_TOOLS } from '../src/data/fonts/index.ts';
 import { FILE_TOOLS } from '../src/data/file/index.ts';
 import { DEV_TOOLS } from '../src/data/dev/index.ts';
 import { GEN_TOOLS } from '../src/data/generate/index.ts';
@@ -82,6 +83,7 @@ const HUBS = {
   calendar: { tools: CALENDAR_TOOLS, blurb: 'Convert dates between the Gregorian, Islamic (Hijri), Hebrew, Persian, Indian, Julian and other calendars via the browser\'s ICU data, plus Julian Day Numbers, the NRF 4-5-4 retail calendar and a leap-year checker.' },
   color: { tools: COLOR_TOOLS, blurb: 'HEX/RGB/HSL/CMYK conversion, WCAG contrast checker, shades and tints, gradient generator and color mixer.' },
   charts: { tools: CHART_TOOLS, blurb: 'Chart makers — bar, line, pie/donut, funnel, radar and waterfall — that turn pasted "label, value" data into a chart and export PNG or SVG entirely in the browser, with nothing uploaded.' },
+  fonts: { tools: FONT_TOOLS, blurb: 'Fancy text and font generators (bold, italic, cursive, small caps, bubble, wide, strikethrough) that map letters to look-alike Unicode characters for copy-and-paste into bios and captions, plus CSS typography calculators (px-to-rem, modular type scale, line height). Runs in the browser.' },
   cipher: { tools: CIPHER_TOOLS, blurb: 'Morse code translator (with audio), NATO phonetic alphabet, binary text translator, and the Caesar, ROT13 and Vigenère ciphers — encode and decode, for learning and puzzles (not real security).' },
   productivity: { tools: PRODUCTIVITY_TOOLS, blurb: 'Pomodoro timer, countdown/stopwatch, meeting cost calculator, Eisenhower matrix and habit tracker — private by design: data is saved only in the browser (localStorage), never uploaded, with JSON export.' },
   network: { tools: NETWORK_TOOLS, blurb: 'IPv4 and IPv6 subnet calculators, CIDR-to-range converter, IP format converter, IPv6 expand/compress (RFC 5952), chmod calculator, cron expression parser and MAC address formatter — exact bit math, computed locally so addressing plans never leave the browser.' },

@@ -53,6 +53,7 @@ export const CATEGORIES: CategoryDef[] = [
   { slug: 'calendar', name: 'Calendars', icon: '🗓️', description: 'Convert between world calendars — Hijri, Hebrew, Persian, Julian and more.', status: 'live' },
   { slug: 'color', name: 'Color Tools', icon: '🎨', description: 'Color conversion, contrast and palettes.', status: 'live' },
   { slug: 'charts', name: 'Charts & Design', icon: '📊', description: 'Bar, line, pie and donut chart makers — from your data to PNG or SVG, in your browser.', status: 'live' },
+  { slug: 'fonts', name: 'Fonts & Typography', icon: '🔤', description: 'Fancy text & font generators (bold, cursive, small caps) plus px-to-rem, type-scale and line-height tools.', status: 'live' },
   { slug: 'cipher', name: 'Codes & Ciphers', icon: '📡', description: 'Morse code, NATO alphabet, binary and classic ciphers.', status: 'live' },
   { slug: 'productivity', name: 'Productivity', icon: '🚀', description: 'Pomodoro, planners, trackers and decision tools — saved locally.', status: 'live' },
   { slug: 'network', name: 'Network & IT', icon: '🌐', description: 'Subnet calculators, CIDR, chmod, cron and MAC tools.', status: 'live' },
@@ -88,8 +89,8 @@ export const CATEGORY_GROUPS: CategoryGroup[] = [
   },
   {
     slug: 'media', name: 'Media & Files', icon: '🎨',
-    blurb: 'Color, charts, music, photos, images, PDFs and converters',
-    categories: ['color', 'charts', 'music', 'photography', 'photo', 'image', 'video', 'pdf', 'file'],
+    blurb: 'Color, charts, fonts, music, photos, images, PDFs and converters',
+    categories: ['color', 'charts', 'fonts', 'music', 'photography', 'photo', 'image', 'video', 'pdf', 'file'],
   },
   {
     slug: 'dev', name: 'Developer & Privacy', icon: '⌨️',
