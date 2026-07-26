@@ -853,6 +853,13 @@ const POSTS = [
     fact: 'WIFI:T:WPA;S:name;P:password;; — scan to join',
     icon: '📶',
   },
+  {
+    slug: 'how-font-generators-work-guide',
+    kicker: 'FONTS & TYPOGRAPHY',
+    lines: ['Instagram fonts:', 'not fonts at all —', 'Unicode characters'],
+    fact: 'Bold 𝗔 is U+1D5D4, a distinct character — not styled A',
+    icon: '🔤',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

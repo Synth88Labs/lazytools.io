@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-label="How a font generator works: it swaps each plain letter for a different Unicode character that looks styled, and screen readers read the character's real name.">
+  <rect width="1200" height="700" fill="#f8fafc"/>
+  <text x="600" y="62" text-anchor="middle" font-family="system-ui, sans-serif" font-size="44" font-weight="800" fill="#0f172a">It's not a font. It's a character swap.</text>
+  <text x="600" y="106" text-anchor="middle" font-family="system-ui, sans-serif" font-size="27" fill="#475569">Each &#8220;styled&#8221; letter is a different Unicode character with its own code point.</text>
+
+  <!-- Input card -->
+  <g>
+    <rect x="70" y="160" width="320" height="150" rx="16" fill="#ffffff" stroke="#e2e8f0" stroke-width="3"/>
+    <text x="230" y="200" text-anchor="middle" font-family="system-ui, sans-serif" font-size="22" font-weight="700" fill="#64748b">YOU TYPE</text>
+    <text x="230" y="262" text-anchor="middle" font-family="system-ui, sans-serif" font-size="56" font-weight="700" fill="#0f172a">Hello</text>
+    <text x="230" y="294" text-anchor="middle" font-family="ui-monospace, monospace" font-size="20" fill="#94a3b8">plain ASCII &#183; H = U+0048</text>
+  </g>
+
+  <!-- Arrow / mapping -->
+  <g>
+    <text x="600" y="222" text-anchor="middle" font-family="system-ui, sans-serif" font-size="24" font-weight="700" fill="#7c3aed">look up each letter</text>
+    <line x1="410" y1="235" x2="790" y2="235" stroke="#7c3aed" stroke-width="4" stroke-dasharray="2 10" stroke-linecap="round"/>
+    <path d="M 790 235 l -20 -11 l 0 22 z" fill="#7c3aed"/>
+    <text x="600" y="286" text-anchor="middle" font-family="system-ui, sans-serif" font-size="21" fill="#64748b">in the Unicode table</text>
+  </g>
+
+  <!-- Output card -->
+  <g>
+    <rect x="810" y="160" width="320" height="150" rx="16" fill="#ffffff" stroke="#ddd6fe" stroke-width="3"/>
+    <text x="970" y="200" text-anchor="middle" font-family="system-ui, sans-serif" font-size="22" font-weight="700" fill="#7c3aed">YOU PASTE</text>
+    <text x="970" y="262" text-anchor="middle" font-family="system-ui, sans-serif" font-size="56" font-weight="700" fill="#4c1d95">&#120283;&#120306;&#120313;&#120313;&#120316;</text>
+    <text x="970" y="294" text-anchor="middle" font-family="ui-monospace, monospace" font-size="20" fill="#94a3b8">bold &#183; that H = U+1D5DB</text>
+  </g>
+
+  <!-- Why it works -->
+  <g>
+    <rect x="70" y="360" width="510" height="270" rx="16" fill="#ffffff" stroke="#dcfce7" stroke-width="3"/>
+    <text x="100" y="410" font-family="system-ui, sans-serif" font-size="28" font-weight="800" fill="#166534">&#10003; Why it works everywhere</text>
+    <text x="100" y="456" font-family="system-ui, sans-serif" font-size="23" fill="#334155">The characters live in the text itself, so they</text>
+    <text x="100" y="486" font-family="system-ui, sans-serif" font-size="23" fill="#334155">survive a copy-paste into any bio or caption.</text>
+    <text x="100" y="524" font-family="system-ui, sans-serif" font-size="23" fill="#334155">No CSS, no font file, no app support needed.</text>
+    <text x="100" y="574" font-family="system-ui, sans-serif" font-size="23" fill="#334155">Unicode defines 150,000+ characters &#8212; whole</text>
+    <text x="100" y="604" font-family="system-ui, sans-serif" font-size="23" fill="#334155">alphabets already look bold, italic or cursive.</text>
+  </g>
+
+  <!-- The catch -->
+  <g>
+    <rect x="620" y="360" width="510" height="270" rx="16" fill="#ffffff" stroke="#fecaca" stroke-width="3"/>
+    <text x="650" y="410" font-family="system-ui, sans-serif" font-size="28" font-weight="800" fill="#991b1b">&#9888; The accessibility catch</text>
+    <text x="650" y="456" font-family="system-ui, sans-serif" font-size="23" fill="#334155">A screen reader reads the character&#8217;s real</text>
+    <text x="650" y="486" font-family="system-ui, sans-serif" font-size="23" fill="#334155">name, not the letter. Bold &#8220;Hello&#8221; becomes:</text>
+    <text x="650" y="530" font-family="ui-monospace, monospace" font-size="21" fill="#991b1b">&#8220;math bold small h, math bold</text>
+    <text x="650" y="558" font-family="ui-monospace, monospace" font-size="21" fill="#991b1b">small e, math bold small l&#8230;&#8221;</text>
+    <text x="650" y="604" font-family="system-ui, sans-serif" font-size="22" font-style="italic" fill="#64748b">Keep names &amp; key info in plain text.</text>
+  </g>
+
+  <text x="600" y="674" text-anchor="middle" font-family="system-ui, sans-serif" font-size="22" fill="#94a3b8">lazytools.io/fonts &#183; runs entirely in your browser</text>
+</svg>
