@@ -61,6 +61,19 @@ const flagship = [
   { icon: '❄️', name: 'Debt Payoff Calculator', url: '/finance/debt-payoff-calculator/' },
   { icon: '％', name: 'Percentage Calculator', url: '/calc/percentage-calculator/' },
 ];
+
+/** Recently shipped tools — newest first. Keep to the last ~10 additions. */
+const newTools = [
+  { icon: '🔤', name: 'Fancy Font Generator', tag: 'Fonts', url: '/fonts/font-generator/' },
+  { icon: '𝒮', name: 'Cursive Text Generator', tag: 'Fonts', url: '/fonts/cursive-text-generator/' },
+  { icon: '📐', name: 'Type Scale Generator', tag: 'Fonts', url: '/fonts/type-scale-generator/' },
+  { icon: '😴', name: 'Sleep Calculator', tag: 'Calculators', url: '/calc/sleep-calculator/' },
+  { icon: '🖼️', name: 'Aspect Ratio Calculator', tag: 'Calculators', url: '/calc/aspect-ratio-calculator/' },
+  { icon: '🎞️', name: 'Video Frame Extractor', tag: 'Audio & Video', url: '/video/video-frame-extractor/' },
+  { icon: '💧', name: 'PDF Watermark', tag: 'PDF Tools', url: '/pdf/watermark-pdf/' },
+  { icon: '🔄', name: 'Rotate & Flip Image', tag: 'Image Tools', url: '/image/rotate-image/' },
+  { icon: '🏊', name: 'Swimlane Diagram Maker', tag: 'Productivity', url: '/productivity/swimlane-diagram-maker/' },
+];
 ---
 
 <Base
@@ -99,6 +112,32 @@ const flagship = [
         <li>🆓 Free forever</li>
       </ul>
     </div>
+  </section>
+
+  <!-- New & recently added -->
+  <section class="mx-auto max-w-5xl px-4 pt-12 pb-2">
+    <div class="flex items-center gap-3">
+      <span class="rounded-full bg-emerald-100 px-2.5 py-0.5 text-xs font-bold uppercase tracking-wide text-emerald-700">New</span>
+      <h2 class="text-2xl font-bold text-slate-900">Recently added</h2>
+    </div>
+    <p class="mt-2 text-sm text-slate-600">The latest tools to land on LazyTools — freshly built and privacy-first like the rest.</p>
+    <ul class="mt-5 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+      {newTools.map((t) => (
+        <li>
+          <a
+            href={t.url}
+            class="flex items-center gap-3 rounded-lg border border-emerald-200 bg-emerald-50/40 px-4 py-3 transition hover:border-emerald-400 hover:shadow-sm"
+          >
+            <span class="text-xl" aria-hidden="true">{t.icon}</span>
+            <span class="min-w-0 flex-1">
+              <span class="block truncate text-sm font-semibold text-slate-800">{t.name}</span>
+              <span class="block text-xs text-slate-500">{t.tag}</span>
+            </span>
+            <span class="rounded bg-emerald-600 px-1.5 py-0.5 text-[10px] font-bold uppercase text-white">New</span>
+          </a>
+        </li>
+      ))}
+    </ul>
   </section>
 
   <!-- Categories -->
