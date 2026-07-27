@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-label="Adding VAT multiplies the net price by 1 plus the rate; removing VAT divides the gross price by 1 plus the rate — you divide, you do not subtract.">
+  <rect width="1200" height="700" fill="#f8fafc"/>
+  <text x="600" y="62" text-anchor="middle" font-family="system-ui, sans-serif" font-size="44" font-weight="800" fill="#0f172a">Adding vs. removing VAT</text>
+  <text x="600" y="104" text-anchor="middle" font-family="system-ui, sans-serif" font-size="26" fill="#475569">The direction that trips people up: to remove VAT you <tspan font-weight="700" fill="#b91c1c">divide</tspan>, you don't subtract.</text>
+
+  <!-- Add VAT card -->
+  <g>
+    <rect x="70" y="150" width="500" height="330" rx="18" fill="#ffffff" stroke="#bbf7d0" stroke-width="3"/>
+    <text x="100" y="200" font-family="system-ui, sans-serif" font-size="28" font-weight="800" fill="#166534">➕ Add VAT (20%)</text>
+    <text x="100" y="248" font-family="system-ui, sans-serif" font-size="23" fill="#334155">Start with the net price:</text>
+    <text x="100" y="292" font-family="ui-monospace, monospace" font-size="30" font-weight="700" fill="#0f172a">£50.00</text>
+    <text x="100" y="340" font-family="system-ui, sans-serif" font-size="23" fill="#334155">Multiply by 1.20:</text>
+    <text x="100" y="384" font-family="ui-monospace, monospace" font-size="26" fill="#166534">£50 × 1.20 = £60.00</text>
+    <line x1="100" y1="410" x2="540" y2="410" stroke="#e2e8f0" stroke-width="2"/>
+    <text x="100" y="448" font-family="system-ui, sans-serif" font-size="22" fill="#475569">VAT = £10.00 &#183; Gross = <tspan font-weight="700" fill="#166534">£60.00</tspan></text>
+  </g>
+
+  <!-- Remove VAT card -->
+  <g>
+    <rect x="630" y="150" width="500" height="330" rx="18" fill="#ffffff" stroke="#fecaca" stroke-width="3"/>
+    <text x="660" y="200" font-family="system-ui, sans-serif" font-size="28" font-weight="800" fill="#991b1b">➖ Remove VAT (20%)</text>
+    <text x="660" y="248" font-family="system-ui, sans-serif" font-size="23" fill="#334155">Start with the gross price:</text>
+    <text x="660" y="292" font-family="ui-monospace, monospace" font-size="30" font-weight="700" fill="#0f172a">£60.00</text>
+    <text x="660" y="340" font-family="system-ui, sans-serif" font-size="23" fill="#334155">Divide by 1.20:</text>
+    <text x="660" y="384" font-family="ui-monospace, monospace" font-size="26" fill="#991b1b">£60 ÷ 1.20 = £50.00</text>
+    <line x1="660" y1="410" x2="1100" y2="410" stroke="#e2e8f0" stroke-width="2"/>
+    <text x="660" y="448" font-family="system-ui, sans-serif" font-size="22" fill="#475569">Net = <tspan font-weight="700" fill="#991b1b">£50.00</tspan>, not £48 (60 − 20%)</text>
+  </g>
+
+  <!-- Why divide box -->
+  <g>
+    <rect x="70" y="510" width="1060" height="130" rx="16" fill="#eff6ff" stroke="#bfdbfe" stroke-width="2"/>
+    <text x="600" y="558" text-anchor="middle" font-family="system-ui, sans-serif" font-size="24" font-weight="700" fill="#1e3a8a">Why not just subtract 20%?</text>
+    <text x="600" y="596" text-anchor="middle" font-family="system-ui, sans-serif" font-size="22" fill="#334155">The 20% was added to the smaller net figure (£50), not the gross (£60). Subtracting 20% of £60</text>
+    <text x="600" y="624" text-anchor="middle" font-family="system-ui, sans-serif" font-size="22" fill="#334155">removes £12 and lands at £48 — too low. Dividing by 1.20 correctly undoes the original multiplication.</text>
+  </g>
+
+  <text x="600" y="676" text-anchor="middle" font-family="system-ui, sans-serif" font-size="20" fill="#94a3b8">lazytools.io/calc/vat-gst-calculator &#183; runs entirely in your browser</text>
+</svg>

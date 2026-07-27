@@ -408,4 +408,112 @@ export const COMPUTE: Record<string, (v: Values) => ResultRow[] | null> = {
       { label: 'Mixing ratio', value: `1 : ${fmt(parts, 2)}`, hint: `${fmt(100 / totalParts, 2)}% concentrate by volume` },
     ];
   },
+
+  vat: (v) => {
+    const amount = n(v.amount), rate = n(v.rate);
+    if (!Number.isFinite(amount) || amount < 0 || !Number.isFinite(rate) || rate < 0) return null;
+    const r = rate / 100;
+    if (v.mode === 'remove') {
+      const net = amount / (1 + r);
+      const vatAmt = amount - net;
+      return [
+        { label: `Net price (excl. ${fmt(rate)}% VAT)`, value: fmt(net, 2), hint: `${fmt(amount, 2)} ÷ ${fmt(1 + r, 4)}` },
+        { label: 'VAT / GST amount', value: fmt(vatAmt, 2), hint: `${fmt(amount, 2)} − ${fmt(net, 2)}` },
+        { label: 'Gross price (incl.)', value: fmt(amount, 2), hint: 'the price you entered' },
+      ];
+    }
+    const vatAmt = amount * r;
+    return [
+      { label: `VAT / GST at ${fmt(rate)}%`, value: fmt(vatAmt, 2), hint: `${fmt(amount, 2)} × ${fmt(r, 4)}` },
+      { label: 'Gross price (incl. VAT)', value: fmt(amount + vatAmt, 2), hint: `${fmt(amount, 2)} + ${fmt(vatAmt, 2)}` },
+      { label: 'Net price (excl.)', value: fmt(amount, 2), hint: 'the price you entered' },
+    ];
+  },
+
+  finalGrade: (v) => {
+    const current = n(v.current), target = n(v.target), weight = n(v.weight);
+    if (!Number.isFinite(current) || !Number.isFinite(target) || !Number.isFinite(weight) || weight <= 0 || weight > 100) return null;
+    const w = weight / 100;
+    const needed = (target - current * (1 - w)) / w;
+    const verdict = needed > 100
+      ? `Not reachable with this final alone — you'd need ${fmt(needed, 1)}% (over 100%).`
+      : needed <= 0
+        ? `Already secured — even a 0% final keeps you at or above ${fmt(target, 1)}%.`
+        : `Achievable — you need ${fmt(needed, 1)}% or higher.`;
+    return [
+      { label: 'Score needed on the final', value: `${fmt(needed, 1)}%`, hint: `(target ${fmt(target)}% − current ${fmt(current)}% × ${fmt(1 - w, 2)}) ÷ ${fmt(w, 2)}` },
+      { label: 'Verdict', value: verdict },
+      { label: 'Final is worth', value: `${fmt(weight)}% of your grade`, hint: `current work covers the other ${fmt(100 - weight)}%` },
+    ];
+  },
+
+  proteinIntake: (v) => {
+    const weight = n(v.weight);
+    if (!Number.isFinite(weight) || weight <= 0) return null;
+    const kg = v.unit === 'lb' ? weight * 0.453592 : weight;
+    const bands: Record<string, [number, number, string]> = {
+      sedentary: [0.8, 1.0, 'general health (RDA floor)'],
+      active: [1.2, 1.6, 'recreationally active'],
+      strength: [1.6, 2.2, 'building muscle / strength training'],
+      cut: [1.8, 2.4, 'fat loss while preserving muscle'],
+    };
+    const [lo, hi, desc] = bands[v.goal ?? 'active'] ?? bands.active;
+    const gLo = kg * lo, gHi = kg * hi;
+    return [
+      { label: 'Daily protein target', value: `${fmt(gLo, 0)}–${fmt(gHi, 0)} g`, hint: `${fmt(lo, 1)}–${fmt(hi, 1)} g per kg × ${fmt(kg, 1)} kg` },
+      { label: 'Goal', value: desc },
+      { label: 'Per meal (4 meals)', value: `${fmt(gLo / 4, 0)}–${fmt(gHi / 4, 0)} g`, hint: 'spread evenly across the day' },
+    ];
+  },
+
+  ovulation: (v) => {
+    if (!v.lastPeriod) return null;
+    const cycle = n(v.cycleLength) || 28;
+    if (cycle < 20 || cycle > 45) return null;
+    const lmp = new Date(v.lastPeriod + 'T00:00:00');
+    if (isNaN(lmp.getTime())) return null;
+    const day = (d: Date) => d.toLocaleDateString('en-US', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' });
+    const add = (base: Date, days: number) => new Date(base.getTime() + days * 86400000);
+    const ovul = add(lmp, cycle - 14);
+    const fertileStart = add(ovul, -5);
+    const fertileEnd = add(ovul, 1);
+    const nextPeriod = add(lmp, cycle);
+    return [
+      { label: 'Estimated ovulation', value: day(ovul), hint: `about ${cycle - 14} days after your period started` },
+      { label: 'Fertile window', value: `${day(fertileStart)} → ${day(fertileEnd)}`, hint: 'the ~6 days when conception is most likely' },
+      { label: 'Next period expected', value: day(nextPeriod), hint: `cycle length ${cycle} days` },
+    ];
+  },
+
+  gestationalAge: (v) => {
+    if (!v.lmp) return null;
+    const lmp = new Date(v.lmp + 'T00:00:00');
+    if (isNaN(lmp.getTime())) return null;
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const days = Math.floor((today.getTime() - lmp.getTime()) / 86400000);
+    if (days < 0 || days > 320) return null;
+    const weeks = Math.floor(days / 7);
+    const rem = days % 7;
+    const trimester = weeks < 13 ? 'First trimester' : weeks < 27 ? 'Second trimester' : 'Third trimester';
+    const due = new Date(lmp.getTime() + 280 * 86400000);
+    return [
+      { label: 'You are', value: `${weeks} weeks, ${rem} day${rem === 1 ? '' : 's'}`, hint: `${days} days since your last period began` },
+      { label: 'Trimester', value: trimester },
+      { label: 'Estimated due date', value: due.toLocaleDateString('en-US', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' }), hint: 'Naegele\'s rule: last period + 280 days' },
+    ];
+  },
+
+  electricityCost: (v) => {
+    const power = n(v.power), hours = n(v.hours), rate = n(v.rate);
+    if (!Number.isFinite(power) || power < 0 || !Number.isFinite(hours) || hours < 0 || !Number.isFinite(rate) || rate < 0) return null;
+    const kwhDay = (power / 1000) * hours;
+    const costDay = kwhDay * rate;
+    return [
+      { label: 'Energy used per day', value: `${fmt(kwhDay, 3)} kWh`, hint: `${fmt(power)} W ÷ 1000 × ${fmt(hours)} h` },
+      { label: 'Cost per day', value: fmt(costDay, 2), hint: `${fmt(kwhDay, 3)} kWh × ${fmt(rate, 4)} per kWh` },
+      { label: 'Cost per month', value: fmt(costDay * 30, 2), hint: '× 30 days' },
+      { label: 'Cost per year', value: fmt(costDay * 365, 2), hint: '× 365 days' },
+    ];
+  },
 };

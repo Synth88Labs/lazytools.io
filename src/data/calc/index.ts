@@ -743,6 +743,164 @@ export const CALCULATORS: CalcDef[] = [
     ],
     keywords: ['sleep calculator', 'bedtime calculator', 'what time should i go to bed', 'sleep cycle calculator', 'wake up time calculator', 'best time to sleep', '90 minute sleep cycle'],
   },
+  {
+    slug: 'vat-gst-calculator',
+    name: 'VAT / GST Calculator',
+    icon: '🧾',
+    description:
+      'Add or remove VAT / GST from a price at any rate — see the net, the tax, and the gross. Works for UK, EU, Australia, India and more. Private, in your browser.',
+    lead: 'To add VAT, multiply the net price by (1 + rate); to remove it, divide the gross price by (1 + rate). At 20%, £50 net becomes £60 gross, and £60 gross is £50 net.',
+    fields: [
+      { id: 'amount', label: 'Amount', type: 'number', placeholder: '50', defaultValue: '50' },
+      { id: 'rate', label: 'VAT / GST rate', type: 'number', suffix: '%', placeholder: '20', defaultValue: '20', step: 0.5 },
+      { id: 'mode', label: 'Direction', type: 'select', defaultValue: 'add', options: [
+        { value: 'add', label: 'Add VAT (amount is net / excl.)' },
+        { value: 'remove', label: 'Remove VAT (amount is gross / incl.)' },
+      ] },
+    ],
+    computeId: 'vat',
+    formula:
+      'Adding: gross = net × (1 + rate/100), and the tax is net × rate/100. Removing: net = gross ÷ (1 + rate/100), and the tax is gross − net. "Remove VAT" is the reverse calculation people most often get wrong — you divide, you don\'t subtract the percentage.',
+    example: 'Add 20% to 50 → tax 10, gross 60. Remove 20% from 60 → net 50 (60 ÷ 1.20), not 48.',
+    note: 'Common standard rates: UK & France 20%, Germany 19%, Ireland 23%, Australia & New Zealand GST 10% and 15%, India GST commonly 18%, Singapore GST 9%. Rates and reduced-rate categories change — confirm the current rate for your country and product before relying on a figure. Nothing you type is sent anywhere.',
+    faqs: [
+      { q: 'How do I remove VAT from a price?', a: 'Divide the VAT-inclusive price by 1 plus the rate as a decimal. To remove 20% VAT from 60, compute 60 ÷ 1.20 = 50. Subtracting 20% of 60 (giving 48) is the common mistake — it\'s wrong because the 20% was added to the smaller net figure, not the gross.' },
+      { q: 'What is the difference between VAT and GST?', a: 'They work the same way arithmetically — a percentage consumption tax added to a price. "VAT" is used in the UK, EU and many other countries; "GST" (goods and services tax) is the term in Australia, New Zealand, India, Singapore and Canada. This tool handles either at any rate.' },
+      { q: 'What VAT rate should I use?', a: 'Use your country\'s current standard rate unless the product falls under a reduced or zero rate. Because rates and categories change, treat the presets in the notes as a starting point and verify the official current rate.' },
+      { q: 'Is my price data private?', a: 'Yes — the calculation runs entirely in your browser and nothing is uploaded. It also works offline once the page has loaded.' },
+    ],
+    keywords: ['vat calculator', 'gst calculator', 'remove vat', 'add vat', 'vat calculator uk', 'reverse vat calculator', 'how to calculate vat'],
+  },
+  {
+    slug: 'final-grade-calculator',
+    name: 'Final Grade Calculator',
+    icon: '🎯',
+    description:
+      'Find the exact score you need on your final exam to reach your target grade, from your current grade and the final\'s weight. Free, private, in your browser.',
+    lead: 'The score you need on the final = (target − current × (1 − final weight)) ÷ final weight — so with 85% going in, a 30%-weighted final, and a 90% target, you need 101.7% (just out of reach).',
+    fields: [
+      { id: 'current', label: 'Current grade', type: 'number', suffix: '%', placeholder: '85', defaultValue: '85' },
+      { id: 'target', label: 'Target final grade', type: 'number', suffix: '%', placeholder: '90', defaultValue: '90' },
+      { id: 'weight', label: 'Final exam is worth', type: 'number', suffix: '%', placeholder: '30', defaultValue: '30' },
+    ],
+    computeId: 'finalGrade',
+    formula:
+      'needed = (target − current × (1 − w)) ÷ w, where w is the final\'s weight as a decimal. Your current grade covers (1 − w) of the course; the final covers w. Solving for the final score that lands you exactly on target gives the formula.',
+    example: 'Current 85%, target 90%, final worth 30% → (90 − 85 × 0.70) ÷ 0.30 = 101.7%, so an A- target isn\'t reachable on the final alone here.',
+    note: 'If the result is above 100%, your target isn\'t achievable from the final alone; if it\'s zero or negative, you\'ve already secured the target no matter how the final goes. Use it in reverse too — try different targets to see which grade is realistically still in play. This is the "what do I need on my final" question, distinct from scoring a test you\'ve already taken.',
+    faqs: [
+      { q: 'What grade do I need on my final?', a: 'Enter your current grade, the grade you\'re aiming for, and how much the final is worth. The calculator solves for the minimum final score that reaches your target, and tells you if it\'s achievable, already locked in, or out of reach.' },
+      { q: 'How is the required final score calculated?', a: 'It rearranges the weighted-average formula. Your current grade contributes (100% − final weight) of the total; the final contributes its weight. Solving "current×(1−w) + final×w = target" for the final gives needed = (target − current×(1−w)) ÷ w.' },
+      { q: 'What if it says I need more than 100%?', a: 'Then your target can\'t be reached from the final exam alone — you\'d need extra credit or a lower target. Lower the target grade to see what\'s realistically still attainable.' },
+      { q: 'Does my current grade already include the final?', a: 'No — enter your grade on everything except the final. The tool treats the final as the remaining weighted portion of the course.' },
+    ],
+    keywords: ['final grade calculator', 'what do i need on my final', 'grade needed calculator', 'final exam grade calculator', 'what grade do i need', 'final grade needed'],
+  },
+  {
+    slug: 'protein-intake-calculator',
+    name: 'Protein Intake Calculator',
+    icon: '🍗',
+    description:
+      'Work out how much protein to eat per day in grams, based on your body weight and goal (general health, active, building muscle, or fat loss). Private, in your browser.',
+    lead: 'Daily protein is set per kilogram of body weight: roughly 0.8 g/kg for general health, 1.2–1.6 g/kg if active, and 1.6–2.2 g/kg when building muscle or dieting to preserve it.',
+    fields: [
+      { id: 'weight', label: 'Body weight', type: 'number', placeholder: '70', defaultValue: '70' },
+      { id: 'unit', label: 'Unit', type: 'select', defaultValue: 'kg', options: [
+        { value: 'kg', label: 'kilograms (kg)' },
+        { value: 'lb', label: 'pounds (lb)' },
+      ] },
+      { id: 'goal', label: 'Goal', type: 'select', defaultValue: 'active', options: [
+        { value: 'sedentary', label: 'General health (sedentary)' },
+        { value: 'active', label: 'Recreationally active' },
+        { value: 'strength', label: 'Build muscle / strength' },
+        { value: 'cut', label: 'Fat loss (preserve muscle)' },
+      ] },
+    ],
+    computeId: 'proteinIntake',
+    formula:
+      'target grams = body weight in kg × protein factor (g/kg). The factor rises with training and dieting demands: ~0.8 g/kg (RDA, general health), 1.2–1.6 (active), 1.6–2.2 (strength/muscle), 1.8–2.4 (fat loss while keeping muscle). Pounds are converted to kilograms first (÷ 2.2046).',
+    example: '70 kg, building muscle → 70 × 1.6–2.2 = about 112–154 g of protein per day.',
+    note: 'These ranges reflect widely-cited sports-nutrition guidance (ISSN, Academy of Nutrition and Dietetics). They\'re general targets, not medical or dietary advice — needs vary with age, health conditions and kidney function, so check with a professional if you have any. Spreading protein across ~3–4 meals of 20–40 g each aids muscle protein synthesis better than one large serving.',
+    faqs: [
+      { q: 'How much protein do I need per day?', a: 'For general health, about 0.8 g per kg of body weight. If you exercise regularly, 1.2–1.6 g/kg; for building muscle or dieting while preserving muscle, 1.6–2.2 g/kg. Enter your weight and goal and the tool gives your gram range.' },
+      { q: 'Should I use my body weight in kg or pounds?', a: 'Either — pick the unit and the calculator converts. The science is expressed per kilogram, so pounds are divided by 2.2046 first.' },
+      { q: 'Is more protein always better?', a: 'Up to a point. Most people see no added muscle benefit beyond ~2.2 g/kg, and very high intakes mainly add calories. Total daily intake and spreading it across meals matter more than any single large serving.' },
+      { q: 'Is this medical advice?', a: 'No. These are general fitness-nutrition ranges. Protein needs change with age, pregnancy, and kidney or other health conditions — consult a doctor or dietitian for personal guidance.' },
+    ],
+    keywords: ['protein intake calculator', 'how much protein per day', 'protein calculator', 'grams of protein per day', 'daily protein calculator', 'protein per kg body weight'],
+  },
+  {
+    slug: 'ovulation-calculator',
+    name: 'Ovulation Calculator',
+    icon: '🌸',
+    description:
+      'Estimate your ovulation day and fertile window from the date of your last period and your cycle length — calculated privately in your browser, never uploaded.',
+    lead: 'Ovulation typically happens about 14 days before your next period — so for a 28-day cycle it\'s around day 14, and the fertile window spans the 5 days before ovulation plus the day itself.',
+    fields: [
+      { id: 'lastPeriod', label: 'First day of your last period', type: 'date' },
+      { id: 'cycleLength', label: 'Average cycle length', type: 'number', suffix: 'days', placeholder: '28', defaultValue: '28' },
+    ],
+    computeId: 'ovulation',
+    formula:
+      'Estimated ovulation = first day of last period + (cycle length − 14), because the luteal phase after ovulation is fairly constant at about 14 days. The fertile window is the 5 days before ovulation through 1 day after, since sperm survive several days and the egg about a day.',
+    example: 'Last period started June 1, 28-day cycle → ovulation about June 15, fertile window roughly June 10–16, next period about June 29.',
+    note: 'This is an estimate based on a regular cycle and the calendar method — it is not a form of contraception and not medical advice. Real ovulation shifts with cycle variability, stress and health, so ovulation tests, temperature tracking or a clinician give more accuracy. Your dates are personal data; this tool keeps them on your device and uploads nothing.',
+    faqs: [
+      { q: 'When am I most fertile?', a: 'In the roughly 6-day window ending on ovulation day — the 5 days before plus the day of ovulation — because sperm can survive up to about 5 days and the egg for about 24 hours. The calculator marks this window from your last period and cycle length.' },
+      { q: 'How is the ovulation day estimated?', a: 'By counting back ~14 days from your expected next period (the luteal phase is relatively fixed). For a cycle of length C, ovulation is estimated at day C − 14 of the cycle.' },
+      { q: 'How accurate is a calendar ovulation estimate?', a: 'It\'s a useful approximation for regular cycles but can be off by days if your cycle varies. For higher accuracy, combine it with ovulation predictor kits, basal body temperature, or cervical-mucus tracking.' },
+      { q: 'Can I use this as birth control?', a: 'No. It is not a contraceptive method and doesn\'t account for cycle variability. If you\'re avoiding pregnancy, use a proven contraceptive method and speak with a healthcare provider.' },
+    ],
+    keywords: ['ovulation calculator', 'fertile window calculator', 'most fertile days', 'ovulation calendar', 'when do i ovulate', 'fertility calculator'],
+  },
+  {
+    slug: 'gestational-age-calculator',
+    name: 'Pregnancy Week Calculator',
+    icon: '🤰',
+    description:
+      'Find out how many weeks and days pregnant you are and your trimester, from the first day of your last period — plus your estimated due date. Private, in your browser.',
+    lead: 'Pregnancy is dated from the first day of your last period, not conception — so "how far along" you are is simply the number of weeks and days since that date, and the due date is 280 days (40 weeks) after it.',
+    fields: [
+      { id: 'lmp', label: 'First day of your last period', type: 'date' },
+    ],
+    computeId: 'gestationalAge',
+    formula:
+      'Gestational age = today − first day of last menstrual period (LMP), expressed in completed weeks and days. Trimesters: weeks 0–12 (first), 13–26 (second), 27+ (third). Estimated due date = LMP + 280 days (Naegele\'s rule).',
+    example: 'If your last period began 10 weeks and 3 days ago, you are 10 weeks 3 days pregnant — in the first trimester, with a due date about 40 weeks after that period.',
+    note: 'Dating from the last period means the first ~2 weeks of "pregnancy" are before conception even occurs — this is the standard clinical convention. It is an estimate: an early ultrasound is more accurate, especially with irregular cycles, and this tool is not a substitute for prenatal care or medical advice. Your date stays on your device and is never uploaded.',
+    faqs: [
+      { q: 'How many weeks pregnant am I?', a: 'Count from the first day of your last menstrual period to today. Enter that date and the calculator shows completed weeks and days, your trimester, and an estimated due date.' },
+      { q: 'Why is pregnancy dated from the last period, not conception?', a: 'Because the last period is a date most people know precisely, while the exact conception day usually isn\'t. By convention, gestational age starts from the last period — which is why you\'re considered ~2 weeks "pregnant" at conception.' },
+      { q: 'How is the due date calculated?', a: 'By Naegele\'s rule: last period plus 280 days (40 weeks). It assumes a regular 28-day cycle, so it\'s an estimate — only about 1 in 20 babies arrive exactly on the due date.' },
+      { q: 'Is this a substitute for a doctor?', a: 'No. It\'s a convenience estimate. An early ultrasound gives more accurate dating, and prenatal care should come from your healthcare provider.' },
+    ],
+    keywords: ['how many weeks pregnant am i', 'pregnancy week calculator', 'gestational age calculator', 'how far along am i', 'pregnancy weeks calculator', 'weeks pregnant calculator'],
+  },
+  {
+    slug: 'electricity-cost-calculator',
+    name: 'Electricity Cost Calculator',
+    icon: '🔌',
+    description:
+      'Calculate what any appliance costs to run — per day, month and year — from its wattage, hours of use and your electricity rate. Free, private, in your browser.',
+    lead: 'Running cost = power (kW) × hours × price per kWh. A 1500 W heater used 5 hours a day at $0.20/kWh costs 1.5 × 5 × 0.20 = $1.50 a day.',
+    fields: [
+      { id: 'power', label: 'Appliance power', type: 'number', suffix: 'W', placeholder: '1500', defaultValue: '1500' },
+      { id: 'hours', label: 'Hours used per day', type: 'number', suffix: 'h', placeholder: '5', defaultValue: '5', step: 0.5 },
+      { id: 'rate', label: 'Electricity price', type: 'number', suffix: 'per kWh', placeholder: '0.20', defaultValue: '0.20', step: 0.01 },
+    ],
+    computeId: 'electricityCost',
+    formula:
+      'Daily energy (kWh) = watts ÷ 1000 × hours per day. Daily cost = daily kWh × price per kWh. Monthly and yearly costs scale by 30 and 365. Electricity is billed in kilowatt-hours — one kWh is 1000 watts running for one hour.',
+    example: 'A 1500 W heater, 5 h/day, at 0.20 per kWh → 7.5 kWh/day × 0.20 = 1.50/day ≈ 45/month ≈ 547/year.',
+    note: 'Use the nameplate wattage (on the label or in the manual) for resistive devices like heaters and kettles; motor- and compressor-driven appliances (fridges, ACs) cycle on and off, so estimate their average on-time rather than assuming they run continuously. Enter the rate in whatever currency your bill uses — the maths is the same, and nothing you enter leaves your browser.',
+    faqs: [
+      { q: 'How do I calculate the cost of running an appliance?', a: 'Multiply its power in kilowatts (watts ÷ 1000) by the hours you use it and by your price per kWh. The calculator does this and projects the daily figure out to monthly and yearly costs.' },
+      { q: 'Where do I find an appliance\'s wattage?', a: 'On the rating label (often on the back or base) or in the manual, usually shown in watts (W). If only amps and volts are given, watts = volts × amps.' },
+      { q: 'Why is my fridge or AC cost lower than the calculation suggests?', a: 'Because they don\'t run constantly — the compressor cycles on and off. Estimate the fraction of the day it\'s actually running (or use its annual kWh label) rather than a full 24 hours.' },
+      { q: 'What currency does it use?', a: 'Whatever you enter for the price per kWh — the arithmetic is currency-agnostic. Results appear in the same units as the rate you type.' },
+    ],
+    keywords: ['electricity cost calculator', 'appliance running cost', 'kwh cost calculator', 'cost to run appliance', 'energy cost calculator', 'how much does it cost to run', 'watts to cost'],
+  },
 ];
 
 export function getCalc(slug: string): CalcDef | undefined {

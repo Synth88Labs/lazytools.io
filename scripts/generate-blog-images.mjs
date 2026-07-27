@@ -860,6 +860,13 @@ const POSTS = [
     fact: 'Bold 𝗔 is U+1D5D4, a distinct character — not styled A',
     icon: '🔤',
   },
+  {
+    slug: 'how-to-calculate-vat-guide',
+    kicker: 'CALCULATORS',
+    lines: ['Adding vs removing', 'VAT: multiply to add,', 'divide to remove'],
+    fact: 'Remove 20% VAT: gross ÷ 1.20 — you divide, not subtract',
+    icon: '🧾',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
