@@ -6,7 +6,7 @@ export interface PdfToolDef {
   icon: string;
   description: string;
   lead: string;
-  widget: 'merge' | 'split' | 'images-to-pdf' | 'rotate' | 'unlock' | 'protect' | 'accessibility' | 'redact' | 'redact-check' | 'to-images' | 'watermark' | 'numbers';
+  widget: 'merge' | 'split' | 'images-to-pdf' | 'rotate' | 'unlock' | 'protect' | 'accessibility' | 'redact' | 'redact-check' | 'to-images' | 'watermark' | 'numbers' | 'to-text';
   how: string;
   note?: string;
   faqs: { q: string; a: string }[];
@@ -244,5 +244,23 @@ export const PDF_TOOLS: PdfToolDef[] = [
       { q: 'Is my PDF uploaded to a server?', a: 'No. The document is read and rewritten locally by pdf-lib in your browser, so it never leaves your device.' },
     ],
     keywords: ['add page numbers to pdf', 'pdf page numbers', 'number pdf pages', 'insert page numbers pdf', 'paginate pdf', 'free pdf page numbering'],
+  },
+  {
+    slug: 'pdf-to-text',
+    name: 'PDF to Text',
+    icon: '📝',
+    description:
+      'Extract the text from a PDF and copy it or download a .txt file — keeping line breaks. Works entirely in your browser; the document is never uploaded.',
+    lead: 'Pull the words out of a digital PDF: choose a file and the text layer is extracted on your device, with line breaks preserved, ready to copy or download as a .txt.',
+    widget: 'to-text',
+    how: 'A digital PDF stores its words as a selectable text layer. This tool reads that layer with pdf.js — the same engine your browser uses to display PDFs — walking each page and reconstructing lines from the position of every text fragment. The result is the plain text of the document, which you can copy or save as a .txt file. Everything happens locally: the PDF is read in memory in your browser and never sent anywhere.',
+    note: 'It extracts an existing text layer; it does not perform OCR. A scanned or photographed PDF stores its pages as images with no text layer, so those return nothing — you\'d need optical character recognition to read words out of an image. Layout-heavy PDFs (multi-column, tables) may not reflow in perfect reading order, since the text is reconstructed from fragment positions.',
+    faqs: [
+      { q: 'How do I extract text from a PDF?', a: 'Choose the PDF here and its text is pulled out on your device, with line breaks preserved. Then copy it or download a .txt file. No upload and no sign-up.' },
+      { q: 'Why does my PDF return no text?', a: 'It\'s almost certainly a scanned or image-only PDF — the pages are pictures with no text layer to extract. Reading words out of images requires OCR, which this tool doesn\'t do.' },
+      { q: 'Does the layout stay the same?', a: 'Line breaks are preserved as closely as the file allows, but complex layouts (multiple columns, tables) may not come out in perfect reading order because the text is reassembled from fragment positions.' },
+      { q: 'Is my document private?', a: 'Completely. The PDF is read in your browser\'s memory with pdf.js and never uploaded, so even sensitive documents stay on your device. It works offline once the page has loaded.' },
+    ],
+    keywords: ['pdf to text', 'extract text from pdf', 'copy text from pdf', 'pdf to txt', 'get text out of pdf', 'pdf text extractor'],
   },
 ];

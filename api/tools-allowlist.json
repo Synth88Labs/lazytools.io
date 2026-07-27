@@ -427,6 +427,7 @@
   "pdf/jpg-to-pdf",
   "pdf/merge-pdf",
   "pdf/pdf-to-jpg",
+  "pdf/pdf-to-text",
   "pdf/protect-pdf",
   "pdf/redact-pdf",
   "pdf/redaction-checker",
