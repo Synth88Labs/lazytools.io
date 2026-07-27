@@ -245,3 +245,45 @@ export function riceWater(cupsRice: number, typeId: string): RiceResult | null {
   if (!t || cupsRice <= 0) return null;
   return { water: cupsRice * t.waterRatio, yield: cupsRice * t.yieldRatio, minutes: t.minutes };
 }
+
+/* ---------------- Turkey thaw & roast time ---------------- */
+
+export interface TurkeyResult {
+  fridgeThawHours: number;
+  coldWaterHours: number;
+  roastHours: number;
+}
+
+/**
+ * Turkey timings from weight (lb). Fridge thaw ≈ 24 h per 4 lb (USDA/FSIS);
+ * cold-water thaw ≈ 30 min per lb; roast at 325 °F ≈ 13 min/lb unstuffed,
+ * 15 min/lb stuffed, to a safe internal 165 °F.
+ */
+export function turkeyTime(weightLb: number, stuffed: boolean): TurkeyResult | null {
+  if (weightLb <= 0) return null;
+  return {
+    fridgeThawHours: (weightLb / 4) * 24,
+    coldWaterHours: weightLb * 0.5,
+    roastHours: (weightLb * (stuffed ? 15 : 13)) / 60,
+  };
+}
+
+/* ---------------- Sourdough starter feeding ---------------- */
+
+export interface SourdoughResult {
+  flour: number;
+  water: number;
+  total: number;
+  hydration: number;
+}
+
+/**
+ * Sourdough feed at ratio starter:flour:water. For each gram of starter kept,
+ * add `flourRatio` g flour and `waterRatio` g water. Hydration = water ÷ flour.
+ */
+export function sourdoughFeed(starterG: number, flourRatio: number, waterRatio: number): SourdoughResult | null {
+  if (starterG <= 0 || flourRatio <= 0 || waterRatio <= 0) return null;
+  const flour = starterG * flourRatio;
+  const water = starterG * waterRatio;
+  return { flour, water, total: starterG + flour + water, hydration: (water / flour) * 100 };
+}

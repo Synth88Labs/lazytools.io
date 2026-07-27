@@ -210,6 +210,8 @@
   "cooking/rice-water-ratio-calculator",
   "cooking/roast-cooking-time-calculator",
   "cooking/slow-cooker-conversion-calculator",
+  "cooking/sourdough-starter-calculator",
+  "cooking/turkey-cooking-time-calculator",
   "cooking/yeast-converter",
   "dev/base64-encode-decode",
   "dev/eip55-address-checksum",

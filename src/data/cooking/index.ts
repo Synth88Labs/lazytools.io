@@ -4,7 +4,7 @@ export interface CookingToolDef {
   slug: string;
   name: string;
   icon: string;
-  widget: 'grams' | 'measure' | 'butter' | 'oven' | 'scaler' | 'pan' | 'bakers' | 'yeast' | 'coffee' | 'meat' | 'brine' | 'airfryer' | 'roast' | 'slowcooker' | 'rice';
+  widget: 'grams' | 'measure' | 'butter' | 'oven' | 'scaler' | 'pan' | 'bakers' | 'yeast' | 'coffee' | 'meat' | 'brine' | 'airfryer' | 'roast' | 'slowcooker' | 'rice' | 'turkey' | 'sourdough';
   description: string;
   lead: string;
   how: string;
@@ -283,6 +283,42 @@ export const COOKING_TOOLS: CookingToolDef[] = [
       { q: 'Does rinsing rice change the water amount?', a: 'Not the ratio, but rinsing removes surface starch for fluffier, less sticky grains. Drain it well after rinsing so you don\'t add extra water. Sushi rice is an exception where a little stickiness is desirable.' },
     ],
     keywords: ['rice water ratio calculator', 'rice to water ratio', 'how much water for rice', 'water for 1 cup rice', 'brown rice water ratio', 'basmati rice water ratio', 'rice cooking calculator'],
+  },
+  {
+    slug: 'turkey-cooking-time-calculator',
+    name: 'Turkey Cooking Time Calculator',
+    icon: '🦃',
+    widget: 'turkey',
+    description:
+      'Work out how long to thaw and roast your turkey by weight — fridge and cold-water thaw times plus roasting time at 325°F, to a safe 165°F. Free, in your browser.',
+    lead: 'Roast a turkey at 325°F for about 13 minutes per pound unstuffed (15 min/lb stuffed), and thaw it in the fridge about a day for every 4–5 pounds.',
+    how: 'Enter the turkey\'s weight and whether it\'s stuffed. Roasting time is estimated at roughly 13 minutes per pound unstuffed or 15 minutes per pound stuffed at an oven temperature of 325°F. Thawing is shown two ways: in the refrigerator at about 24 hours per 4–5 pounds, or the faster cold-water method (submerged, water changed every 30 minutes) at about 30 minutes per pound.',
+    note: 'These are planning estimates from USDA guidance — actual time varies with your oven, the bird\'s shape and starting temperature. The only reliable doneness test is temperature: the turkey is safely done when a thermometer reads 165°F (74°C) in the thickest part of the breast and the innermost thigh (not touching bone). Let it rest 20–30 minutes before carving. Never thaw a turkey at room temperature.',
+    faqs: [
+      { q: 'How long do I cook a turkey per pound?', a: 'About 13 minutes per pound unstuffed, or 15 minutes per pound stuffed, in a 325°F oven. A 14 lb unstuffed turkey takes roughly 3 hours. Always confirm with a thermometer reading 165°F.' },
+      { q: 'How long does it take to thaw a turkey?', a: 'In the fridge, allow about 24 hours per 4–5 pounds (a 15 lb bird needs 3–4 days). In cold water, about 30 minutes per pound, changing the water every 30 minutes. Never thaw at room temperature.' },
+      { q: 'What temperature should turkey be cooked to?', a: '165°F (74°C), measured in the thickest part of the breast and the innermost part of the thigh and wing, away from bone. Stuffing must also reach 165°F. Temperature — not time — is what tells you it\'s safe.' },
+      { q: 'Does stuffing the turkey change the cooking time?', a: 'Yes — a stuffed turkey takes longer (about 15 min/lb vs 13), and the stuffing itself must reach 165°F, which often means the breast overcooks. Many cooks bake stuffing separately for safety and even cooking.' },
+    ],
+    keywords: ['turkey cooking time calculator', 'turkey cooking time per pound', 'how long to cook a turkey', 'turkey thawing time calculator', 'how long to thaw a turkey', 'turkey roasting time'],
+  },
+  {
+    slug: 'sourdough-starter-calculator',
+    name: 'Sourdough Starter Calculator',
+    icon: '🍞',
+    widget: 'sourdough',
+    description:
+      'Calculate exactly how much flour and water to feed your sourdough starter at any ratio — 1:1:1, 1:2:2, 1:5:5 — plus hydration. Free, in your browser.',
+    lead: 'Feed a sourdough starter at a ratio of starter : flour : water — so 30 g of starter at 1:2:2 needs 60 g flour and 60 g water.',
+    how: 'Enter how much starter you\'re keeping and your feed ratio (parts flour and water per part starter). The calculator multiplies the starter weight by each ratio to give the flour and water to add, the total starter after feeding, and the hydration (water ÷ flour × 100). Equal flour and water gives a 100% hydration starter, the most common kind.',
+    note: 'A higher feed ratio (like 1:5:5 or 1:10:10) dilutes the mature starter more, so it takes longer to rise and peak but can wait longer before it\'s hungry again — useful for feeding once a day or overnight. A lower ratio (1:1:1) peaks quickly, good when you need active starter fast. Discard the excess before feeding to keep the amount manageable, or save it for discard recipes. Weigh ingredients in grams for accuracy.',
+    faqs: [
+      { q: 'How do I feed my sourdough starter?', a: 'Keep a little starter, then add flour and water in your chosen ratio. At 1:2:2, keep 30 g and add 60 g flour and 60 g water. The calculator gives the exact amounts for any starter weight and ratio.' },
+      { q: 'What does a 1:2:2 ratio mean?', a: 'It\'s parts of starter : flour : water. For each part of starter you keep, you add two parts flour and two parts water. So 20 g starter becomes 20 g + 40 g flour + 40 g water = 100 g fed starter.' },
+      { q: 'What ratio should I feed at?', a: 'For regular use, 1:1:1 peaks fast (a few hours); 1:2:2 to 1:5:5 rise more slowly and suit once-a-day feeding; 1:10:10 can stretch overnight or longer. Warmer kitchens ferment faster, so use a higher ratio in summer.' },
+      { q: 'What hydration should my starter be?', a: '100% (equal flour and water by weight) is the standard, giving a thick-batter consistency. Stiffer starters (lower hydration, like 50–60%) ferment more slowly and keep longer; this tool shows the hydration for whatever ratio you enter.' },
+    ],
+    keywords: ['sourdough starter calculator', 'sourdough feeding calculator', 'sourdough starter ratio', 'how to feed sourdough starter', 'sourdough hydration calculator', 'starter feeding ratio'],
   },
 ];
 
