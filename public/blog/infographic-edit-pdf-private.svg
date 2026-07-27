@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-label="Most online PDF editors upload your file to their servers; a browser-based editor keeps the document on your own device.">
+  <rect width="1200" height="700" fill="#f8fafc"/>
+  <text x="600" y="62" text-anchor="middle" font-family="system-ui, sans-serif" font-size="43" font-weight="800" fill="#0f172a">Two ways to edit a PDF online</text>
+  <text x="600" y="104" text-anchor="middle" font-family="system-ui, sans-serif" font-size="25" fill="#475569">The difference is where your document goes — and that’s a privacy decision.</text>
+
+  <!-- Server-based -->
+  <g>
+    <rect x="70" y="150" width="500" height="340" rx="18" fill="#ffffff" stroke="#fecaca" stroke-width="3"/>
+    <text x="100" y="200" font-family="system-ui, sans-serif" font-size="27" font-weight="800" fill="#991b1b">Server-based tool</text>
+    <text x="100" y="246" font-family="system-ui, sans-serif" font-size="22" fill="#334155">1. You upload your PDF</text>
+    <text x="100" y="282" font-family="system-ui, sans-serif" font-size="22" fill="#334155">2. Their server edits it</text>
+    <text x="100" y="318" font-family="system-ui, sans-serif" font-size="22" fill="#334155">3. You download the result</text>
+    <rect x="100" y="350" width="440" height="112" rx="10" fill="#fef2f2" stroke="#fecaca" stroke-width="2"/>
+    <text x="120" y="386" font-family="system-ui, sans-serif" font-size="20" fill="#991b1b">A copy of your contract, statement</text>
+    <text x="120" y="414" font-family="system-ui, sans-serif" font-size="20" fill="#991b1b">or ID now sits on someone else’s</text>
+    <text x="120" y="442" font-family="system-ui, sans-serif" font-size="20" fill="#991b1b">computer — logged, cached, or worse.</text>
+  </g>
+
+  <!-- Browser-based -->
+  <g>
+    <rect x="630" y="150" width="500" height="340" rx="18" fill="#ffffff" stroke="#bbf7d0" stroke-width="3"/>
+    <text x="660" y="200" font-family="system-ui, sans-serif" font-size="27" font-weight="800" fill="#166534">Browser-based tool</text>
+    <text x="660" y="246" font-family="system-ui, sans-serif" font-size="22" fill="#334155">1. You open your PDF</text>
+    <text x="660" y="282" font-family="system-ui, sans-serif" font-size="22" fill="#334155">2. Your browser edits it locally</text>
+    <text x="660" y="318" font-family="system-ui, sans-serif" font-size="22" fill="#334155">3. You save the result</text>
+    <rect x="660" y="350" width="440" height="112" rx="10" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="2"/>
+    <text x="680" y="394" font-family="system-ui, sans-serif" font-size="20" fill="#166534">The file never leaves your device.</text>
+    <text x="680" y="422" font-family="system-ui, sans-serif" font-size="20" fill="#166534">Nothing is uploaded. It even works</text>
+    <text x="680" y="450" font-family="system-ui, sans-serif" font-size="20" fill="#166534">offline once the page has loaded.</text>
+  </g>
+
+  <g>
+    <rect x="70" y="516" width="1060" height="120" rx="16" fill="#eff6ff" stroke="#bfdbfe" stroke-width="2"/>
+    <text x="600" y="560" text-anchor="middle" font-family="system-ui, sans-serif" font-size="23" font-weight="700" fill="#1e3a8a">Modern browsers can do it all locally</text>
+    <text x="600" y="596" text-anchor="middle" font-family="system-ui, sans-serif" font-size="21" fill="#334155">Merge, split, sign, reorder, add page numbers, extract text, n-up — with pdf-lib and pdf.js,</text>
+    <text x="600" y="622" text-anchor="middle" font-family="system-ui, sans-serif" font-size="21" fill="#334155">no server required. For anything private, that’s the safer choice.</text>
+  </g>
+</svg>

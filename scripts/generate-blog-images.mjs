@@ -874,6 +874,13 @@ const POSTS = [
     fact: 'Browser-based = your file never leaves your device',
     icon: '📝',
   },
+  {
+    slug: 'edit-pdf-without-uploading-guide',
+    kicker: 'PDF TOOLS',
+    lines: ['Edit PDFs privately:', 'sign, organize & convert', 'with nothing uploaded'],
+    fact: 'pdf-lib + pdf.js edit locally — no server needed',
+    icon: '🔒',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
