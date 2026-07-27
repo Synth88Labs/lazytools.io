@@ -6,7 +6,7 @@ export interface ImageToolDef {
   icon: string;
   description: string;
   lead: string;
-  widget: 'compress' | 'convert' | 'resize' | 'base64' | 'heic' | 'rotate' | 'circle' | 'split' | 'metadata';
+  widget: 'compress' | 'convert' | 'resize' | 'base64' | 'heic' | 'rotate' | 'circle' | 'split' | 'metadata' | 'annotate';
   how: string;
   note?: string;
   faqs: { q: string; a: string }[];
@@ -182,5 +182,23 @@ export const IMAGE_TOOLS: ImageToolDef[] = [
       { q: 'How do I remove the metadata?', a: 'Use the image metadata remover, which rewrites the photo without the EXIF data. Viewing here shows you what\'s there; the remover takes it out — both entirely in your browser.' },
     ],
     keywords: ['exif viewer', 'image metadata viewer', 'view exif data', 'photo metadata viewer', 'check gps in photo', 'exif data viewer online', 'see photo location'],
+  },
+  {
+    slug: 'annotate-image',
+    name: 'Image & Screenshot Annotator',
+    icon: '🖊️',
+    description:
+      'Mark up screenshots and images with arrows, boxes, text and freehand pen, then download a PNG. Free, private annotator that runs in your browser.',
+    lead: 'Add arrows, boxes, freehand marks and text to a screenshot or photo, in any colour, then export a PNG — all done on your device, nothing uploaded.',
+    widget: 'annotate',
+    how: 'Load an image and draw on it with a set of tools — an arrow for pointing things out, a box to highlight a region, a freehand pen, and text labels — choosing the colour and stroke size. Each mark is drawn onto a canvas layered over your image; when you download, everything is flattened into a single PNG. Undo removes the last mark. It\'s all client-side, so nothing is uploaded.',
+    note: 'Great for bug reports, support tickets, how-to guides and design feedback, where you need to point at something and add a note. Because screenshots often contain private or internal information, keeping the editing local means those images never leave your device. The export keeps the original image resolution.',
+    faqs: [
+      { q: 'How do I add arrows to a screenshot?', a: 'Load your image, pick the Arrow tool and a colour, then click and drag from the start point to where the arrow should point. Add as many as you like, then download the annotated PNG.' },
+      { q: 'Can I add text or highlight boxes?', a: 'Yes — use the Text tool to place a label anywhere, and the Box tool to draw a rectangle around the area you want to highlight. There\'s also a freehand pen for circling or scribbling.' },
+      { q: 'What format does it export?', a: 'A PNG at the original image\'s resolution, with all your annotations flattened onto it. Just click Download PNG.' },
+      { q: 'Are my screenshots uploaded?', a: 'No. All the drawing and exporting happens in your browser with the Canvas API, so internal or sensitive screenshots stay on your device.' },
+    ],
+    keywords: ['annotate image', 'annotate screenshot', 'add arrows to image', 'markup image online', 'screenshot annotation tool', 'draw on image', 'image markup'],
   },
 ];

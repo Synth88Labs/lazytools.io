@@ -31,7 +31,7 @@ are no processing servers. The tool code downloads to *your* device and runs the
 yourself: open DevTools, watch the network tab, or switch off your connection mid-use — everything keeps
 working.
 
-## What's live — 41 categories, 930+ tools, ~1,110 pages
+## What's live — 41 categories, 960+ tools, ~1,140 pages
 
 | Category | Highlights |
 |---|---|

@@ -9,6 +9,7 @@ import ImageTool from '../../components/image/ImageTool.tsx';
 import HeicTool from '../../components/image/HeicTool.tsx';
 import SplitImageTool from '../../components/image/SplitImageTool.tsx';
 import ImageMetadataTool from '../../components/image/ImageMetadataTool.tsx';
+import AnnotateImageTool from '../../components/image/AnnotateImageTool.tsx';
 import { IMAGE_TOOLS, type ImageToolDef } from '../../data/image/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -55,7 +56,7 @@ const schema = [
     </p>
 
     <div class="mt-6">
-      {tool.widget === 'heic' ? <HeicTool client:load /> : tool.widget === 'split' ? <SplitImageTool client:load /> : tool.widget === 'metadata' ? <ImageMetadataTool client:load /> : <ImageTool client:load mode={tool.widget} />}
+      {tool.widget === 'heic' ? <HeicTool client:load /> : tool.widget === 'split' ? <SplitImageTool client:load /> : tool.widget === 'metadata' ? <ImageMetadataTool client:load /> : tool.widget === 'annotate' ? <AnnotateImageTool client:load /> : <ImageTool client:load mode={tool.widget} />}
     </div>
 
     <div class="mt-4">

@@ -6,7 +6,7 @@ export interface PdfToolDef {
   icon: string;
   description: string;
   lead: string;
-  widget: 'merge' | 'split' | 'images-to-pdf' | 'rotate' | 'unlock' | 'protect' | 'accessibility' | 'redact' | 'redact-check' | 'to-images' | 'watermark' | 'numbers' | 'to-text' | 'organize' | 'sign';
+  widget: 'merge' | 'split' | 'images-to-pdf' | 'rotate' | 'unlock' | 'protect' | 'accessibility' | 'redact' | 'redact-check' | 'to-images' | 'watermark' | 'numbers' | 'to-text' | 'organize' | 'sign' | 'nup';
   how: string;
   note?: string;
   faqs: { q: string; a: string }[];
@@ -298,5 +298,23 @@ export const PDF_TOOLS: PdfToolDef[] = [
       { q: 'Is this a legally binding digital signature?', a: 'It adds a visual (image) signature, which is enough for many everyday forms and agreements. It is not a certificate-based cryptographic digital signature; for those you need a dedicated e-signature service with identity verification.' },
     ],
     keywords: ['sign pdf', 'add signature to pdf', 'esign pdf', 'sign pdf online free', 'draw signature on pdf', 'pdf signature', 'electronically sign pdf'],
+  },
+  {
+    slug: 'pdf-n-up',
+    name: 'PDF N-Up (Multiple Pages Per Sheet)',
+    icon: '🗞️',
+    description:
+      'Put 2 or 4 PDF pages on each sheet to save paper or print handouts — pages are scaled and placed in a grid, in your browser, never uploaded.',
+    lead: 'Fit 2 or 4 of your PDF\'s pages onto every printed sheet — the pages are shrunk and arranged in a grid, keeping the text crisp.',
+    widget: 'nup',
+    how: 'The tool takes your pages in order and places them, scaled down, into a grid on each output sheet — two side by side for 2-up, or a two-by-two block for 4-up. Pages are embedded whole (not turned into images) with pdf-lib, so text stays sharp and selectable. The number of output sheets is the page count divided by pages-per-sheet, rounded up. Everything happens locally in your browser.',
+    note: 'N-up (or "multiple pages per sheet") is great for saving paper, printing slide handouts, proofreading a document at a glance, or making booklets. Print the result at 100% / "actual size" (not "fit to page") so the scaling stays correct. This arranges pages in reading order left-to-right, top-to-bottom; it isn\'t saddle-stitch booklet page ordering.',
+    faqs: [
+      { q: 'How do I put multiple pages on one sheet?', a: 'Open your PDF, choose 2 or 4 pages per sheet, and download. The tool scales your pages down and arranges them in a grid on each output page — all in your browser.' },
+      { q: 'Does it keep the text sharp?', a: 'Yes. Pages are embedded as vector content with pdf-lib rather than rasterised, so text stays crisp and selectable even after being scaled down.' },
+      { q: 'How should I print the result?', a: 'Print at 100% or "actual size" rather than "fit to page", so the pages stay at the intended scale. The output sheets are the same size as your original pages.' },
+      { q: 'Is my PDF uploaded?', a: 'No — it\'s read and rebuilt entirely in your browser with pdf-lib, so the document never leaves your device.' },
+    ],
+    keywords: ['pdf n-up', 'multiple pages per sheet pdf', 'pdf 2 pages per sheet', '4 pages per sheet pdf', 'pdf imposition', 'print multiple pdf pages on one page', 'combine pdf pages on one sheet'],
   },
 ];
