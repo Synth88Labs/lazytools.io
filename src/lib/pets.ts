@@ -218,4 +218,41 @@ export function heaterWatts(gallons: number, tempRiseF: number): number | null {
   return gallons * perGal;
 }
 
+/* ---------------- Puppy adult-weight predictor ---------------- */
+
+/**
+ * Percent of adult weight a puppy has typically reached by a given age, by
+ * size class. Interpolated between anchor points (age in weeks → % of adult
+ * weight), based on published breed-size growth curves. Approximate — real
+ * growth varies by breed and individual.
+ */
+const GROWTH: Record<string, [number, number][]> = {
+  small:  [[6, 22], [10, 40], [16, 60], [26, 85], [40, 98], [52, 100]],
+  medium: [[6, 17], [12, 40], [16, 50], [26, 75], [40, 90], [52, 98], [78, 100]],
+  large:  [[6, 12], [16, 40], [26, 65], [40, 80], [52, 90], [78, 98], [104, 100]],
+  giant:  [[6, 10], [16, 35], [26, 55], [40, 68], [52, 80], [78, 92], [104, 100]],
+};
+
+function interpPct(table: [number, number][], ageWeeks: number): number {
+  if (ageWeeks <= table[0][0]) return table[0][1];
+  const last = table[table.length - 1];
+  if (ageWeeks >= last[0]) return last[1];
+  for (let i = 1; i < table.length; i++) {
+    const [a1, p1] = table[i - 1], [a2, p2] = table[i];
+    if (ageWeeks <= a2) return p1 + ((p2 - p1) * (ageWeeks - a1)) / (a2 - a1);
+  }
+  return last[1];
+}
+
+/**
+ * Predict a puppy's adult weight from its current age, current weight and size
+ * class: adult = current weight ÷ (percent of adult weight already reached).
+ */
+export function puppyAdultWeight(currentWeight: number, ageWeeks: number, sizeClass: string): { adult: number; pct: number } | null {
+  const table = GROWTH[sizeClass];
+  if (!table || currentWeight <= 0 || ageWeeks <= 0) return null;
+  const pct = interpPct(table, ageWeeks);
+  return { adult: currentWeight / (pct / 100), pct };
+}
+
 export { L_PER_GAL_US, L_PER_GAL_UK };

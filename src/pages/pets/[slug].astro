@@ -15,6 +15,7 @@ import CrateSizeTool from '../../components/pets/CrateSizeTool.tsx';
 import ChocolateToxicityTool from '../../components/pets/ChocolateToxicityTool.tsx';
 import AquariumStockingTool from '../../components/pets/AquariumStockingTool.tsx';
 import HeaterWattageTool from '../../components/pets/HeaterWattageTool.tsx';
+import PuppyWeightTool from '../../components/pets/PuppyWeightTool.tsx';
 import { PET_TOOLS, type PetToolDef } from '../../data/pets/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -72,6 +73,7 @@ const schema = [
       {tool.widget === 'choctox' && <ChocolateToxicityTool client:load />}
       {tool.widget === 'stocking' && <AquariumStockingTool client:load />}
       {tool.widget === 'heater' && <HeaterWattageTool client:load />}
+      {tool.widget === 'puppyweight' && <PuppyWeightTool client:load />}
     </div>
 
     <div class="mt-4">

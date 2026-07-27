@@ -4,7 +4,7 @@ export interface PetToolDef {
   slug: string;
   name: string;
   icon: string;
-  widget: 'dogage' | 'catage' | 'dogfood' | 'catfood' | 'gestation' | 'aquarium' | 'water' | 'crate' | 'choctox' | 'stocking' | 'heater';
+  widget: 'dogage' | 'catage' | 'dogfood' | 'catfood' | 'gestation' | 'aquarium' | 'water' | 'crate' | 'choctox' | 'stocking' | 'heater' | 'puppyweight';
   description: string;
   lead: string;
   how: string;
@@ -212,6 +212,24 @@ export const PET_TOOLS: PetToolDef[] = [
       { q: 'Can a heater be too powerful?', a: 'An oversized heater can overheat the tank quickly if its thermostat sticks on, which is risky for fish. Match the wattage to the tank rather than massively oversizing, use a reliable thermostatic heater, and always confirm with a separate thermometer.' },
     ],
     keywords: ['aquarium heater size calculator', 'fish tank heater wattage', 'aquarium heater watts', 'what size heater for aquarium', 'heater watts per gallon', 'fish tank heater calculator', 'aquarium heating calculator'],
+  },
+  {
+    slug: 'puppy-weight-calculator',
+    name: 'Puppy Weight Calculator',
+    icon: '🐶',
+    widget: 'puppyweight',
+    description:
+      'Estimate how big your puppy will get as an adult, from its current age, weight and size class. Free growth predictor, in your browser — nothing uploaded.',
+    lead: 'Predict adult weight by dividing your puppy\'s current weight by the fraction of its adult size it has reached so far — which depends on age and breed size.',
+    how: 'Puppies of different sizes grow at different rates: small breeds reach most of their adult weight quickly, while large and giant breeds keep growing for up to two years. The calculator looks up the percentage of adult weight a puppy of your chosen size class has typically reached by its current age, then divides the current weight by that fraction to estimate the adult weight. Pick the size class that matches the expected adult size (or the breed).',
+    note: 'This is an approximation from published breed-size growth curves — real adult size varies with breed, genetics, sex, spay/neuter timing and nutrition, so treat the number as a guide, not a guarantee. Estimates are most reliable from around 12–16 weeks; very young puppies (under 8 weeks) give rougher predictions. For a mixed breed, choose the size class of the larger parent if unsure, and ask your vet whether your puppy is growing at a healthy rate.',
+    faqs: [
+      { q: 'How big will my puppy get?', a: 'Enter its current age, current weight and size class. The calculator estimates the adult weight by scaling up from the fraction of adult size a puppy that age has usually reached. It\'s an estimate — breed and genetics cause real variation.' },
+      { q: 'At what age do puppies stop growing?', a: 'Small breeds finish at about 10–12 months, medium breeds around 12 months, and large and giant breeds keep filling out until 18–24 months. That\'s why the calculator uses size class to scale the prediction.' },
+      { q: 'How accurate is a puppy weight prediction?', a: 'It\'s a reasonable ballpark, most reliable from 12–16 weeks onward, but not exact — individual genetics, sex and nutrition shift the outcome. Use it as a planning guide for crates, food and expectations, not a precise figure.' },
+      { q: 'What size class should I pick for a mixed breed?', a: 'Estimate from the parents if you know them, choosing the larger parent\'s class when unsure. If you don\'t know the parents, your vet can often estimate adult size from paws, frame and growth so far.' },
+    ],
+    keywords: ['puppy weight calculator', 'how big will my puppy get', 'puppy adult weight predictor', 'puppy growth calculator', 'dog size predictor', 'puppy weight predictor'],
   },
 ];
 
