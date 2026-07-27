@@ -12,6 +12,7 @@ import PdfRedactorTool from '../../components/pdf/PdfRedactorTool.tsx';
 import PdfRedactionCheckerTool from '../../components/pdf/PdfRedactionCheckerTool.tsx';
 import PdfToJpgTool from '../../components/pdf/PdfToJpgTool.tsx';
 import PdfToTextTool from '../../components/pdf/PdfToTextTool.tsx';
+import OrganizePdfTool from '../../components/pdf/OrganizePdfTool.tsx';
 import { PDF_TOOLS, type PdfToolDef } from '../../data/pdf/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -70,6 +71,8 @@ const schema = [
         <PdfToJpgTool client:load />
       ) : tool.widget === 'to-text' ? (
         <PdfToTextTool client:load />
+      ) : tool.widget === 'organize' ? (
+        <OrganizePdfTool client:load />
       ) : (
         <PdfTool client:load mode={tool.widget} />
       )}

@@ -441,6 +441,7 @@
   "pdf/add-page-numbers-pdf",
   "pdf/jpg-to-pdf",
   "pdf/merge-pdf",
+  "pdf/organize-pdf",
   "pdf/pdf-to-jpg",
   "pdf/pdf-to-text",
   "pdf/protect-pdf",

@@ -6,7 +6,7 @@ export interface PdfToolDef {
   icon: string;
   description: string;
   lead: string;
-  widget: 'merge' | 'split' | 'images-to-pdf' | 'rotate' | 'unlock' | 'protect' | 'accessibility' | 'redact' | 'redact-check' | 'to-images' | 'watermark' | 'numbers' | 'to-text';
+  widget: 'merge' | 'split' | 'images-to-pdf' | 'rotate' | 'unlock' | 'protect' | 'accessibility' | 'redact' | 'redact-check' | 'to-images' | 'watermark' | 'numbers' | 'to-text' | 'organize';
   how: string;
   note?: string;
   faqs: { q: string; a: string }[];
@@ -262,5 +262,23 @@ export const PDF_TOOLS: PdfToolDef[] = [
       { q: 'Is my document private?', a: 'Completely. The PDF is read in your browser\'s memory with pdf.js and never uploaded, so even sensitive documents stay on your device. It works offline once the page has loaded.' },
     ],
     keywords: ['pdf to text', 'extract text from pdf', 'copy text from pdf', 'pdf to txt', 'get text out of pdf', 'pdf text extractor'],
+  },
+  {
+    slug: 'organize-pdf',
+    name: 'Organize PDF Pages',
+    icon: '🗂️',
+    description:
+      'Reorder, rearrange and delete PDF pages visually, then save a new PDF — all in your browser, nothing uploaded. Free page organizer with thumbnails.',
+    lead: 'See every page as a thumbnail, move them into the order you want or remove the ones you don\'t, then export a fresh PDF — done entirely on your device.',
+    widget: 'organize',
+    how: 'The tool renders each page of your PDF to a thumbnail with pdf.js so you can see what you\'re working with, then lets you reorder pages with the arrow buttons and remove any with the ✕. When you save, pdf-lib copies the pages you kept, in the order you set, into a brand-new PDF that downloads to your device. Because pages are copied rather than re-rendered, the text, links and image quality are preserved.',
+    note: 'Everything happens locally in your browser — the PDF is never uploaded, which matters for contracts, statements and other private documents. This reorders and deletes whole pages; to combine several files use the merge tool, to pull a range into a separate file use split, and to turn pages a quarter-turn use rotate. Very large PDFs take a moment to render all the thumbnails.',
+    faqs: [
+      { q: 'How do I reorder pages in a PDF?', a: 'Open the PDF here to see page thumbnails, use the arrow buttons to move pages into the order you want, then click Save. A new PDF downloads with the pages rearranged — no upload, no sign-up.' },
+      { q: 'How do I delete a page from a PDF?', a: 'Click the ✕ on that page\'s thumbnail to remove it, then save. The exported PDF omits the deleted pages while keeping everything else intact.' },
+      { q: 'Does reorganizing reduce quality?', a: 'No. Pages are copied whole into the new document with pdf-lib, so text stays selectable, links keep working and images aren\'t re-compressed. Only the order and which pages are included change.' },
+      { q: 'Is my PDF uploaded?', a: 'No — it\'s opened, previewed and rewritten entirely in your browser with pdf.js and pdf-lib, so even sensitive documents never leave your device.' },
+    ],
+    keywords: ['organize pdf', 'reorder pdf pages', 'rearrange pdf pages', 'delete pages from pdf', 'pdf page organizer', 'move pdf pages', 'sort pdf pages'],
   },
 ];
