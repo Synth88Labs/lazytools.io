@@ -4,7 +4,7 @@ export interface FitnessToolDef {
   slug: string;
   name: string;
   icon: string;
-  widget: 'pace' | 'paceconv' | 'onerm' | 'hrzone' | 'racepredict' | 'vo2' | 'calories' | 'steps' | 'swim' | 'deficit';
+  widget: 'pace' | 'paceconv' | 'onerm' | 'hrzone' | 'racepredict' | 'vo2' | 'calories' | 'steps' | 'swim' | 'deficit' | 'navybf';
   description: string;
   lead: string;
   how: string;
@@ -193,6 +193,24 @@ export const FITNESS_TOOLS: FitnessToolDef[] = [
       { q: 'Why is my weight loss slower than the calculator predicts?', a: 'The model is simplified. Water and glycogen shifts mask fat loss day to day, and as you get lighter your body burns fewer calories (metabolic adaptation), so the same intake becomes a smaller deficit. Adjust as you go.' },
     ],
     keywords: ['calorie deficit calculator', 'weight loss calorie calculator', 'daily calorie deficit', 'how many calories to lose weight', 'calorie deficit to lose weight', 'weight loss timeline calculator', 'deficit calculator'],
+  },
+  {
+    slug: 'navy-body-fat-calculator',
+    name: 'Navy Body Fat Calculator',
+    icon: '📏',
+    widget: 'navybf',
+    description:
+      'Estimate your body fat percentage with the US Navy tape method — just height, neck and waist (plus hips for women). Free, private, calculated in your browser.',
+    lead: 'The US Navy method estimates body fat from a few tape measurements — neck and waist for men, plus hips for women — using your height as a reference.',
+    how: 'Measure the circumference of your neck and waist (and hips for women) with a tape measure, along with your height. The calculator applies the US Navy (Hodgdon-Beckett) circumference formula, which relates those measurements on a logarithmic scale to body-fat percentage, and places the result in a standard category. All the maths runs in your browser, so your body measurements never leave your device.',
+    note: 'Measure with a snug, level tape: the neck just below the larynx, the waist at the navel, and (for women) the hips at their widest point. The Navy method is a convenient estimate — usually within about 3% of more precise methods — but it can be off for very muscular or very lean builds, since it infers fat from girth alone. It is not medical advice; DEXA or hydrostatic weighing give clinical accuracy.',
+    faqs: [
+      { q: 'How do I calculate body fat with a tape measure?', a: 'Measure your neck and waist (men) or neck, waist and hips (women), plus your height, then enter them here. The US Navy formula converts those circumferences into a body-fat percentage — no scales or calipers needed.' },
+      { q: 'How accurate is the Navy body fat method?', a: 'It\'s typically within about 3 percentage points of methods like DEXA for average builds — good enough for tracking changes over time. It\'s less accurate for very muscular or very lean people because it estimates fat from body measurements alone.' },
+      { q: 'Where exactly do I measure?', a: 'Neck: just below the larynx (Adam\'s apple), tape sloping slightly down at the front. Waist: at the navel for men, at the narrowest point for women. Hips (women): at the widest point. Keep the tape snug but not compressing the skin.' },
+      { q: 'Is my measurement data private?', a: 'Yes — the calculation runs entirely in your browser and nothing is uploaded, so your body measurements stay on your device. It also works offline once loaded.' },
+    ],
+    keywords: ['navy body fat calculator', 'body fat percentage calculator', 'tape measure body fat', 'how to calculate body fat', 'us navy body fat', 'body fat calculator'],
   },
 ];
 

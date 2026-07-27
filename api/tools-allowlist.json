@@ -285,6 +285,7 @@
   "fitness/calorie-deficit-calculator",
   "fitness/calories-burned-calculator",
   "fitness/heart-rate-zone-calculator",
+  "fitness/navy-body-fat-calculator",
   "fitness/one-rep-max-calculator",
   "fitness/pace-converter",
   "fitness/race-time-predictor",

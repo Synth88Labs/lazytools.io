@@ -191,4 +191,32 @@ export function calorieDeficit(amount: number, days: number, unit: 'kg' | 'lb'):
   return { totalDeficit, dailyDeficit, weeklyRate: amount / (days / 7) };
 }
 
+/* ---------------- US Navy body-fat (tape method) ---------------- */
+
+/**
+ * Body-fat % by the US Navy circumference method (Hodgdon-Beckett), metric
+ * form (all measurements in cm):
+ *  men:   495 / (1.0324 − 0.19077·log10(waist−neck) + 0.15456·log10(height)) − 450
+ *  women: 495 / (1.29579 − 0.35004·log10(waist+hip−neck) + 0.22100·log10(height)) − 450
+ */
+export function navyBodyFat(sex: 'male' | 'female', heightCm: number, neckCm: number, waistCm: number, hipCm: number): { bodyFat: number; category: string } | null {
+  if (heightCm <= 0 || neckCm <= 0 || waistCm <= 0) return null;
+  let bf: number;
+  if (sex === 'female') {
+    if (hipCm <= 0) return null;
+    const x = waistCm + hipCm - neckCm;
+    if (x <= 0) return null;
+    bf = 495 / (1.29579 - 0.35004 * Math.log10(x) + 0.22100 * Math.log10(heightCm)) - 450;
+  } else {
+    const x = waistCm - neckCm;
+    if (x <= 0) return null;
+    bf = 495 / (1.0324 - 0.19077 * Math.log10(x) + 0.15456 * Math.log10(heightCm)) - 450;
+  }
+  const cats = sex === 'female'
+    ? [[13, 'Essential fat'], [20, 'Athletes'], [24, 'Fitness'], [31, 'Average'], [Infinity, 'Above average']]
+    : [[5, 'Essential fat'], [13, 'Athletes'], [17, 'Fitness'], [24, 'Average'], [Infinity, 'Above average']];
+  const category = (cats.find(([lim]) => bf <= (lim as number))?.[1] as string) ?? 'Average';
+  return { bodyFat: Math.max(0, bf), category };
+}
+
 export { M_PER_MILE };
