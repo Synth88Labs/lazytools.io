@@ -26,6 +26,40 @@ export default function AsciiArtTool() {
     URL.revokeObjectURL(url);
   }
 
+  function downloadPng() {
+    const lines = output.split('\n');
+    const fs = 16;
+    const lineHeight = fs; // block glyphs connect vertically when leading = font size
+    const pad = 24;
+    const scale = 2;
+    const fontSpec = `${fs}px "Courier New", ui-monospace, monospace`;
+    const measurer = document.createElement('canvas').getContext('2d')!;
+    measurer.font = fontSpec;
+    const textW = Math.ceil(Math.max(1, ...lines.map((l) => measurer.measureText(l).width)));
+    const w = textW + pad * 2;
+    const h = lines.length * lineHeight + pad * 2;
+    const canvas = document.createElement('canvas');
+    canvas.width = w * scale;
+    canvas.height = h * scale;
+    const ctx = canvas.getContext('2d')!;
+    ctx.scale(scale, scale);
+    ctx.fillStyle = '#0f172a';
+    ctx.fillRect(0, 0, w, h);
+    ctx.font = fontSpec;
+    ctx.fillStyle = '#34d399';
+    ctx.textBaseline = 'top';
+    lines.forEach((line, i) => ctx.fillText(line, pad, pad + i * lineHeight));
+    canvas.toBlob((blob) => {
+      if (!blob) return;
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `ascii-art-${font}.png`;
+      a.click();
+      URL.revokeObjectURL(url);
+    }, 'image/png');
+  }
+
   return (
     <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
       <div class="grid gap-4 sm:grid-cols-[1fr_auto] sm:items-end">
@@ -56,7 +90,10 @@ export default function AsciiArtTool() {
 
       <div class="mt-3 flex flex-wrap justify-end gap-2">
         <button type="button" onClick={download} class="rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-brand-400 hover:text-brand-700">
-          ⬇ Download .txt
+          ⬇ .txt
+        </button>
+        <button type="button" onClick={downloadPng} class="rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-brand-400 hover:text-brand-700">
+          ⬇ PNG
         </button>
         <button type="button" onClick={copy} class={`rounded-lg px-4 py-2 text-sm font-semibold text-white transition ${copied ? 'bg-mint-600' : 'bg-brand-600 hover:bg-brand-700'}`}>
           {copied ? '✓ Copied' : 'Copy ASCII art'}
