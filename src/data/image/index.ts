@@ -6,7 +6,7 @@ export interface ImageToolDef {
   icon: string;
   description: string;
   lead: string;
-  widget: 'compress' | 'convert' | 'resize' | 'base64' | 'heic' | 'rotate' | 'circle' | 'split';
+  widget: 'compress' | 'convert' | 'resize' | 'base64' | 'heic' | 'rotate' | 'circle' | 'split' | 'metadata';
   how: string;
   note?: string;
   faqs: { q: string; a: string }[];
@@ -164,5 +164,23 @@ export const IMAGE_TOOLS: ImageToolDef[] = [
       { q: 'Is my image uploaded?', a: 'No. The splitting is done entirely in your browser with the Canvas API, so the image never leaves your device. It works offline once loaded.' },
     ],
     keywords: ['split image', 'image splitter', 'split image into grid', 'instagram grid maker', 'image grid cutter', 'cut image into pieces', 'photo splitter'],
+  },
+  {
+    slug: 'image-metadata-viewer',
+    name: 'Image Metadata Viewer (EXIF)',
+    icon: '🔍',
+    description:
+      'See the hidden EXIF metadata in a photo — camera, settings, date and GPS location — before you share it. Read locally in your browser, never uploaded.',
+    lead: 'View the EXIF data embedded in a photo: the camera and lens, exposure settings, the date it was taken, and — importantly — any GPS coordinates that reveal where it was shot.',
+    widget: 'metadata',
+    how: 'Photos from phones and cameras embed EXIF metadata inside the file: the make and model, aperture, shutter, ISO and focal length, a timestamp, and often the exact GPS location. This viewer reads that data on your device and lays it out, flagging GPS coordinates with a map link so you can see precisely what a picture would reveal. Nothing is uploaded — the image is parsed in your browser.',
+    note: 'GPS location is the big privacy concern: a photo posted straight from your phone can pinpoint your home, workplace or child\'s school. Many social platforms strip EXIF on upload, but files shared by email, message or cloud link usually keep it. If this viewer shows a location or other data you don\'t want to share, remove it first with the metadata remover. Screenshots and some edited or exported images carry little or no EXIF.',
+    faqs: [
+      { q: 'How do I view the EXIF data of a photo?', a: 'Choose the image here and its EXIF metadata — camera, settings, date and any GPS — is displayed, all read locally in your browser. Nothing is uploaded.' },
+      { q: 'Does my photo contain my location?', a: 'If GPS was enabled when it was taken, likely yes — and this viewer will flag the coordinates with a map link. Photos straight from a phone often embed precise location, which is why it\'s worth checking before sharing.' },
+      { q: 'Why does my image show no metadata?', a: 'It was probably stripped already (many apps and social platforms remove EXIF on upload), or it\'s a screenshot or exported format that doesn\'t store much. That\'s good for privacy — there\'s nothing revealing to share.' },
+      { q: 'How do I remove the metadata?', a: 'Use the image metadata remover, which rewrites the photo without the EXIF data. Viewing here shows you what\'s there; the remover takes it out — both entirely in your browser.' },
+    ],
+    keywords: ['exif viewer', 'image metadata viewer', 'view exif data', 'photo metadata viewer', 'check gps in photo', 'exif data viewer online', 'see photo location'],
   },
 ];

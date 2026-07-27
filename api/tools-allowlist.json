@@ -378,6 +378,7 @@
   "image/heic-to-jpg",
   "image/image-compressor",
   "image/image-converter",
+  "image/image-metadata-viewer",
   "image/image-resizer",
   "image/image-to-base64",
   "image/rotate-image",
