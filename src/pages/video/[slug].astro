@@ -7,6 +7,7 @@ import FaqSection from '../../components/FaqSection.astro';
 import RatingWidget from '../../components/RatingWidget.tsx';
 import AudioTool from '../../components/video/AudioTool.tsx';
 import VideoFrameTool from '../../components/video/VideoFrameTool.tsx';
+import AudioMergerTool from '../../components/video/AudioMergerTool.tsx';
 import { AUDIO_TOOLS, type AudioToolDef } from '../../data/video/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -52,7 +53,7 @@ const schema = [
     </p>
 
     <div class="mt-6">
-      {tool.widget === 'frame' ? <VideoFrameTool client:load /> : <AudioTool client:load mode={tool.widget} />}
+      {tool.widget === 'frame' ? <VideoFrameTool client:load /> : tool.widget === 'merge' ? <AudioMergerTool client:load /> : <AudioTool client:load mode={tool.widget} />}
     </div>
 
     <div class="mt-4">

@@ -867,6 +867,13 @@ const POSTS = [
     fact: 'Remove 20% VAT: gross ÷ 1.20 — you divide, not subtract',
     icon: '🧾',
   },
+  {
+    slug: 'extract-text-from-pdf-guide',
+    kicker: 'PDF TOOLS',
+    lines: ['Extract PDF text:', 'digital PDFs give text,', 'scanned ones need OCR'],
+    fact: 'Browser-based = your file never leaves your device',
+    icon: '📝',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

@@ -924,6 +924,7 @@
   "units/weeks-to-days",
   "units/weight",
   "units/yards-to-meters",
+  "video/audio-merger",
   "video/audio-speed-changer",
   "video/audio-to-wav",
   "video/audio-trimmer",

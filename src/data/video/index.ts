@@ -6,7 +6,7 @@ export interface AudioToolDef {
   icon: string;
   description: string;
   lead: string;
-  widget: 'trim' | 'speed' | 'volume' | 'wav' | 'frame';
+  widget: 'trim' | 'speed' | 'volume' | 'wav' | 'frame' | 'merge';
   how: string;
   note?: string;
   faqs: { q: string; a: string }[];
@@ -109,5 +109,23 @@ export const AUDIO_TOOLS: AudioToolDef[] = [
       { q: 'Is my video uploaded?', a: 'No. It’s read from your device as a local object URL and decoded by your browser. Nothing is transmitted, and the tool works offline once the page has loaded.' },
     ],
     keywords: ['extract frame from video', 'video frame extractor', 'video to image', 'screenshot from video', 'video thumbnail grabber', 'save frame as png'],
+  },
+  {
+    slug: 'audio-merger',
+    name: 'Audio Merger (Join Audio Files)',
+    icon: '🎚️',
+    description:
+      'Merge multiple audio files into one — MP3, WAV, OGG, M4A — in any order, and download a single WAV. Runs entirely in your browser; nothing is uploaded.',
+    lead: 'Combine several audio clips end to end: add your files, drag them into order, and download one merged WAV — all processed locally in your browser.',
+    widget: 'merge',
+    how: 'Each file is decoded to raw audio with the Web Audio API, then the clips are played back to back into an offline audio renderer in the order you set, producing one continuous track that is exported as a 16-bit WAV. Because it uses Web Audio rather than a video/ffmpeg engine, it needs no special browser flags and never uploads your files — everything happens on your device.',
+    note: 'Files with different sample rates or channel counts are automatically resampled and matched to the highest quality among them, so mixing a mono voice memo with a stereo track works fine. The output is uncompressed WAV (large but lossless); convert it to MP3 afterwards with the WAV converter if you need a smaller file. Clips join directly with no gap or crossfade.',
+    faqs: [
+      { q: 'How do I merge audio files?', a: 'Add two or more audio files, order them with the up/down arrows, and click "Merge & download WAV". The clips are joined end to end into one track, entirely in your browser.' },
+      { q: 'What formats can I merge?', a: 'Any format your browser can decode — MP3, WAV, OGG, M4A/AAC and usually FLAC. They\'re decoded to raw audio first, so you can mix formats freely. The output is a single WAV file.' },
+      { q: 'Why is the output a WAV and not an MP3?', a: 'WAV is lossless and encodes instantly in the browser without extra libraries. If you need a smaller MP3, run the merged WAV through an MP3 converter afterwards.' },
+      { q: 'Are my audio files uploaded?', a: 'No. Decoding and merging use the Web Audio API on your device, so the files never leave your browser. It works offline once the page has loaded.' },
+    ],
+    keywords: ['audio merger', 'merge audio files', 'combine mp3', 'join audio files', 'audio joiner', 'merge mp3 online', 'concatenate audio'],
   },
 ];

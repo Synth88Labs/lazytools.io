@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-label="A digital PDF has a text layer you can extract instantly; a scanned PDF is images and needs OCR. A browser-based extractor keeps the file on your device.">
+  <rect width="1200" height="700" fill="#f8fafc"/>
+  <text x="600" y="60" text-anchor="middle" font-family="system-ui, sans-serif" font-size="42" font-weight="800" fill="#0f172a">Why some PDFs give text and some don't</text>
+  <text x="600" y="102" text-anchor="middle" font-family="system-ui, sans-serif" font-size="25" fill="#475569">It comes down to whether the pages hold real text or just pictures of text.</text>
+
+  <!-- Digital PDF -->
+  <g>
+    <rect x="70" y="150" width="500" height="330" rx="18" fill="#ffffff" stroke="#bbf7d0" stroke-width="3"/>
+    <text x="100" y="198" font-family="system-ui, sans-serif" font-size="27" font-weight="800" fill="#166534">✅ Digital PDF</text>
+    <text x="100" y="240" font-family="system-ui, sans-serif" font-size="22" fill="#334155">Created by exporting from Word,</text>
+    <text x="100" y="268" font-family="system-ui, sans-serif" font-size="22" fill="#334155">a browser, or design software.</text>
+    <text x="100" y="316" font-family="system-ui, sans-serif" font-size="22" fill="#334155">The words are stored as a real</text>
+    <text x="100" y="344" font-family="system-ui, sans-serif" font-size="22" fill="#334155"><tspan font-weight="700" fill="#166534">text layer</tspan> you can select and copy.</text>
+    <rect x="100" y="380" width="440" height="72" rx="10" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="2"/>
+    <text x="320" y="424" text-anchor="middle" font-family="system-ui, sans-serif" font-size="22" font-weight="700" fill="#166534">→ Text extracts instantly</text>
+  </g>
+
+  <!-- Scanned PDF -->
+  <g>
+    <rect x="630" y="150" width="500" height="330" rx="18" fill="#ffffff" stroke="#fed7aa" stroke-width="3"/>
+    <text x="660" y="198" font-family="system-ui, sans-serif" font-size="27" font-weight="800" fill="#9a3412">📷 Scanned PDF</text>
+    <text x="660" y="240" font-family="system-ui, sans-serif" font-size="22" fill="#334155">Made by a scanner or phone photo.</text>
+    <text x="660" y="268" font-family="system-ui, sans-serif" font-size="22" fill="#334155">Each page is an <tspan font-weight="700" fill="#9a3412">image</tspan> — a picture</text>
+    <text x="660" y="296" font-family="system-ui, sans-serif" font-size="22" fill="#334155">of text, with no text layer.</text>
+    <text x="660" y="344" font-family="system-ui, sans-serif" font-size="22" fill="#334155">Selecting on the page selects nothing.</text>
+    <rect x="660" y="380" width="440" height="72" rx="10" fill="#fff7ed" stroke="#fed7aa" stroke-width="2"/>
+    <text x="880" y="424" text-anchor="middle" font-family="system-ui, sans-serif" font-size="21" font-weight="700" fill="#9a3412">→ Needs OCR to read</text>
+  </g>
+
+  <!-- Privacy footer box -->
+  <g>
+    <rect x="70" y="510" width="1060" height="128" rx="16" fill="#eff6ff" stroke="#bfdbfe" stroke-width="2"/>
+    <text x="600" y="556" text-anchor="middle" font-family="system-ui, sans-serif" font-size="24" font-weight="700" fill="#1e3a8a">🔒 The privacy point</text>
+    <text x="600" y="594" text-anchor="middle" font-family="system-ui, sans-serif" font-size="22" fill="#334155">Most "PDF to text" sites upload your file to their server. A browser-based extractor reads the</text>
+    <text x="600" y="622" text-anchor="middle" font-family="system-ui, sans-serif" font-size="22" fill="#334155">text layer on your own device — so contracts, statements and IDs never leave your computer.</text>
+  </g>
+
+  <text x="600" y="674" text-anchor="middle" font-family="system-ui, sans-serif" font-size="20" fill="#94a3b8">lazytools.io/pdf/pdf-to-text &#183; runs entirely in your browser</text>
+</svg>
