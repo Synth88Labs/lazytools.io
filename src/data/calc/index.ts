@@ -901,6 +901,33 @@ export const CALCULATORS: CalcDef[] = [
     ],
     keywords: ['electricity cost calculator', 'appliance running cost', 'kwh cost calculator', 'cost to run appliance', 'energy cost calculator', 'how much does it cost to run', 'watts to cost'],
   },
+  {
+    slug: 'conception-date-calculator',
+    name: 'Conception Date Calculator',
+    icon: '🗓️',
+    description:
+      'Estimate when you conceived from your due date or last period, with a likely conception window. Calculated privately in your browser — dates never uploaded.',
+    lead: 'Conception happens around ovulation — roughly 266 days (38 weeks) before the due date, or about 14 days after the first day of your last period.',
+    fields: [
+      { id: 'mode', label: 'I know my…', type: 'select', defaultValue: 'due', options: [
+        { value: 'due', label: 'Due date' },
+        { value: 'lmp', label: 'Last period (first day)' },
+      ] },
+      { id: 'knownDate', label: 'That date', type: 'date' },
+    ],
+    computeId: 'conceptionDate',
+    formula:
+      'From a due date: conception ≈ due date − 266 days (pregnancy averages 266 days from conception, or 280 from the last period). From the last period: conception ≈ first day of last period + 14 days, i.e. around ovulation. A few days\' window is shown either side because ovulation timing varies.',
+    example: 'Due date March 1 → estimated conception around June 8 the previous year (266 days earlier), with a window of roughly June 5–10.',
+    note: 'This is a calendar estimate, not a precise or medical determination — actual conception depends on your real ovulation day and cycle, which shift with cycle length, stress and health. It assumes an average 28-day cycle and 280-day pregnancy. For anything that matters legally or medically, an early ultrasound and a clinician are the reliable sources. Your date stays on your device and is never uploaded.',
+    faqs: [
+      { q: 'How do I calculate my conception date?', a: 'If you know your due date, count back about 266 days (38 weeks). If you know the first day of your last period, add about 14 days to reach the likely ovulation and conception date. The calculator does both and shows a window either side.' },
+      { q: 'Why is conception ~266 days before the due date, not 280?', a: 'Because due dates are dated from the last menstrual period, which is about 14 days before conception. Pregnancy is roughly 280 days from the last period but about 266 days from conception itself.' },
+      { q: 'How accurate is a conception date estimate?', a: 'It\'s an approximation. Real conception depends on your actual ovulation day, which varies with cycle length and from month to month. Treat the window as a best estimate, not an exact date.' },
+      { q: 'Is this medical advice?', a: 'No. It\'s a convenience estimate based on average timings. For medical or legal certainty, an early ultrasound and your healthcare provider give accurate dating.' },
+    ],
+    keywords: ['conception date calculator', 'when did i conceive', 'conception calculator', 'date of conception', 'conception date from due date', 'how to calculate conception date'],
+  },
 ];
 
 export function getCalc(slug: string): CalcDef | undefined {

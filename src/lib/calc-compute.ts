@@ -504,6 +504,30 @@ export const COMPUTE: Record<string, (v: Values) => ResultRow[] | null> = {
     ];
   },
 
+  conceptionDate: (v) => {
+    if (!v.knownDate) return null;
+    const d = new Date(v.knownDate + 'T00:00:00');
+    if (isNaN(d.getTime())) return null;
+    const fmtDate = (x: Date) => x.toLocaleDateString('en-US', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' });
+    const add = (base: Date, days: number) => new Date(base.getTime() + days * 86400000);
+    if (v.mode === 'lmp') {
+      // From last menstrual period: conception ≈ LMP + 14 days; due ≈ LMP + 280.
+      const conception = add(d, 14);
+      return [
+        { label: 'Estimated conception date', value: fmtDate(conception), hint: 'about 2 weeks after your last period began (ovulation)' },
+        { label: 'Likely conception window', value: `${fmtDate(add(conception, -3))} → ${fmtDate(add(conception, 2))}`, hint: 'ovulation and fertile days vary by a few days' },
+        { label: 'Estimated due date', value: fmtDate(add(d, 280)), hint: 'last period + 280 days' },
+      ];
+    }
+    // From a due date: conception ≈ due − 266 days; LMP ≈ due − 280.
+    const conception = add(d, -266);
+    return [
+      { label: 'Estimated conception date', value: fmtDate(conception), hint: 'about 266 days (38 weeks) before the due date' },
+      { label: 'Likely conception window', value: `${fmtDate(add(conception, -3))} → ${fmtDate(add(conception, 2))}`, hint: 'conception could be a few days either side' },
+      { label: 'Corresponding last period', value: fmtDate(add(d, -280)), hint: 'due date − 280 days' },
+    ];
+  },
+
   electricityCost: (v) => {
     const power = n(v.power), hours = n(v.hours), rate = n(v.rate);
     if (!Number.isFinite(power) || power < 0 || !Number.isFinite(hours) || hours < 0 || !Number.isFinite(rate) || rate < 0) return null;

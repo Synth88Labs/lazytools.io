@@ -246,6 +246,88 @@ export const DEV: Record<string, (input: string, opts: Opts) => DevResult> = {
       throw new Error('Those bytes are not valid UTF-8 text. Check the hex is correct and complete.');
     }
   },
+
+  jsonToTypescript: (input, opts) => {
+    let data: unknown;
+    try {
+      data = JSON.parse(input);
+    } catch (e) {
+      throw new Error('Invalid JSON — ' + (e as Error).message);
+    }
+    const rootName = (String(opts.rootName ?? 'Root').replace(/[^A-Za-z0-9_$]/g, '') || 'Root');
+    const useInterface = opts.kind !== 'type';
+    const interfaces: string[] = [];
+    const used = new Set<string>();
+
+    const pascal = (s: string): string => {
+      const parts = (s || '').replace(/[^A-Za-z0-9]+/g, ' ').trim().split(' ').filter(Boolean);
+      const name = parts.map((w) => w[0].toUpperCase() + w.slice(1)).join('');
+      return /^[A-Za-z_$]/.test(name) ? name : 'N' + name;
+    };
+    const singular = (s: string): string => s.replace(/ies$/i, 'y').replace(/([^s])s$/i, '$1');
+    const uniqueName = (base: string): string => {
+      let name = pascal(base) || 'Obj';
+      let i = 1;
+      while (used.has(name)) name = pascal(base) + ++i;
+      used.add(name);
+      return name;
+    };
+
+    const typeOf = (value: unknown, keyHint: string): string => {
+      if (value === null) return 'null';
+      if (Array.isArray(value)) return arrayType(value, keyHint) + '[]';
+      switch (typeof value) {
+        case 'string': return 'string';
+        case 'number': return 'number';
+        case 'boolean': return 'boolean';
+        case 'object': return objectType([value as Record<string, unknown>], keyHint);
+        default: return 'any';
+      }
+    };
+    const arrayType = (arr: unknown[], keyHint: string): string => {
+      if (arr.length === 0) return 'any';
+      if (arr.every((x) => x !== null && typeof x === 'object' && !Array.isArray(x))) {
+        return objectType(arr as Record<string, unknown>[], singular(keyHint));
+      }
+      const types = [...new Set(arr.map((x) => typeOf(x, keyHint)))];
+      return types.length === 1 ? types[0] : '(' + types.join(' | ') + ')';
+    };
+    const objectType = (objs: Record<string, unknown>[], keyHint: string, forceName?: string): string => {
+      const name = forceName ?? uniqueName(singular(keyHint));
+      if (forceName) used.add(forceName);
+      const keys = new Map<string, { types: Set<string>; present: number }>();
+      for (const o of objs) for (const k of Object.keys(o)) {
+        if (!keys.has(k)) keys.set(k, { types: new Set(), present: 0 });
+        const e = keys.get(k)!;
+        e.present++;
+        e.types.add(typeOf(o[k], k));
+      }
+      const lines: string[] = [];
+      for (const [k, e] of keys) {
+        const optional = e.present < objs.length ? '?' : '';
+        const t = [...e.types];
+        const type = t.length === 1 ? t[0] : t.join(' | ');
+        const safeKey = /^[A-Za-z_$][A-Za-z0-9_$]*$/.test(k) ? k : JSON.stringify(k);
+        lines.push(`  ${safeKey}${optional}: ${type};`);
+      }
+      const body = lines.length ? `\n${lines.join('\n')}\n` : '\n';
+      interfaces.push(useInterface ? `interface ${name} {${body}}` : `type ${name} = {${body}};`);
+      return name;
+    };
+
+    let rootType: string;
+    if (Array.isArray(data)) rootType = arrayType(data, rootName) + '[]';
+    else if (data !== null && typeof data === 'object') rootType = objectType([data as Record<string, unknown>], rootName, rootName);
+    else rootType = typeOf(data, rootName);
+
+    // Interfaces were pushed deepest-first; reverse so the root type reads top-down.
+    const ordered = interfaces.reverse();
+    const header = Array.isArray(data) || (data !== null && typeof data === 'object' && used.has(rootName))
+      ? ''
+      : `type ${rootName} = ${rootType};\n\n`;
+    const out = (header + ordered.join('\n\n')).trim() || `type ${rootName} = ${rootType};`;
+    return { output: out, info: `${ordered.length} ${useInterface ? 'interface' : 'type'}${ordered.length === 1 ? '' : 's'} generated` };
+  },
 };
 
 const HTTP_CLASS: Record<string, string> = {

@@ -434,6 +434,37 @@ export const DEV_TOOLS: DevToolDef[] = [
     ],
     keywords: ['text to hex', 'hex to text', 'string to hex', 'hex to string', 'text to hexadecimal', 'ascii to hex', 'hex converter'],
   },
+  {
+    slug: 'json-to-typescript',
+    name: 'JSON to TypeScript',
+    icon: '🟦',
+    description:
+      'Convert JSON into TypeScript interfaces (or types) instantly — nested objects, arrays, optional keys and unions inferred. Paste JSON, get typed interfaces. In-browser, private.',
+    lead: 'Paste a JSON object or array and get ready-to-use TypeScript interfaces — nested shapes become their own interfaces, missing keys become optional, and mixed arrays become unions.',
+    widget: 'transform',
+    computeId: 'jsonToTypescript',
+    options: [
+      { id: 'rootName', label: 'Root name', type: 'text', defaultValue: 'Root', placeholder: 'Root' },
+      {
+        id: 'kind', label: 'Output', type: 'select', defaultValue: 'interface',
+        options: [
+          { value: 'interface', label: 'interface' },
+          { value: 'type', label: 'type alias' },
+        ],
+      },
+    ],
+    sample: '{\n  "id": 1,\n  "name": "Ada",\n  "active": true,\n  "roles": ["admin", "user"],\n  "address": { "city": "London", "zip": null },\n  "orders": [{ "sku": "X1", "qty": 2 }, { "sku": "X2", "qty": 3, "gift": true }]\n}',
+    how: 'The generator parses your JSON and walks the structure, inferring a TypeScript type for every value: strings, numbers and booleans map directly; null becomes null; arrays become T[]; and each nested object becomes its own named interface. When an array holds objects, their keys are merged — a key missing from some elements is marked optional (?), and a key with more than one shape becomes a union. Everything runs in your browser, so API responses you paste are never uploaded.',
+    note: 'Names are derived from your keys (an "orders" array of objects yields an Order interface, singularised and PascalCased). Because types are inferred from a sample, they reflect only what that sample contains — an always-present field that is sometimes null will be typed null; widen it by hand if it can also hold other values. Empty arrays infer any[], since there is nothing to infer an element type from.',
+    faqs: [
+      { q: 'How do I convert JSON to a TypeScript interface?', a: 'Paste your JSON and the tool generates interfaces for it, with nested objects broken out into their own named interfaces. Copy the result straight into your .ts file. It runs locally — nothing is sent to a server.' },
+      { q: 'Are optional and union types detected?', a: 'Yes. In an array of objects, a key that is absent from some elements is marked optional with ?, and a key that appears with different value types becomes a union (e.g. string | number).' },
+      { q: 'Can I output type aliases instead of interfaces?', a: 'Yes — switch the Output option to "type alias" to get `type X = { … }` instead of `interface X { … }`. Both describe the same shape; pick whichever your codebase prefers.' },
+      { q: 'Why is a field typed as null or any?', a: 'A field whose only sample value is null is typed null — widen it manually if it can hold other values too. Empty arrays become any[] because there is no element to infer from. Inference reflects the sample you paste, not every possible response.' },
+      { q: 'Is my JSON kept private?', a: 'Yes. Parsing and generation happen entirely in your browser; the JSON you paste (which may be a real API response) never leaves your device.' },
+    ],
+    keywords: ['json to typescript', 'json to interface', 'generate typescript types from json', 'json to ts', 'typescript interface generator', 'json to type'],
+  },
 ];
 
 export function getDevTool(slug: string): DevToolDef | undefined {
