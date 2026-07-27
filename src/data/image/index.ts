@@ -6,7 +6,7 @@ export interface ImageToolDef {
   icon: string;
   description: string;
   lead: string;
-  widget: 'compress' | 'convert' | 'resize' | 'base64' | 'heic' | 'rotate' | 'circle';
+  widget: 'compress' | 'convert' | 'resize' | 'base64' | 'heic' | 'rotate' | 'circle' | 'split';
   how: string;
   note?: string;
   faqs: { q: string; a: string }[];
@@ -146,5 +146,23 @@ export const IMAGE_TOOLS: ImageToolDef[] = [
       { q: 'Is my photo uploaded anywhere?', a: 'No. The masking is done on a canvas inside your browser and the PNG is generated locally, so the image never leaves your device.' },
     ],
     keywords: ['circle crop', 'circle crop image', 'round profile picture', 'crop image into circle', 'circular avatar maker', 'round image png'],
+  },
+  {
+    slug: 'split-image',
+    name: 'Image Splitter (Grid Maker)',
+    icon: '🔲',
+    description:
+      'Split an image into an even grid of tiles — 3×3 for an Instagram grid, carousel strips, or any rows × columns. Download every tile as PNG. In-browser, no upload.',
+    lead: 'Cut any image into a grid: pick rows and columns (or a preset like 3×3 for an Instagram grid), preview the cut lines, and download all the tiles together as a ZIP of numbered PNGs.',
+    widget: 'split',
+    how: 'The splitter draws your image to an off-screen canvas and copies each grid cell into its own tile PNG, then bundles every tile into a single ZIP you download in one click. Tile size is the image width divided by the number of columns, and the height divided by the number of rows. Everything is done in your browser with the Canvas API and JSZip — the image is never uploaded.',
+    note: 'Tiles are numbered by row and column (name_1-1, name_1-2, …) so they stay in order inside the ZIP. For a seamless Instagram 3×3 grid, use a source image with a square or matching aspect ratio; if the dimensions don\'t divide evenly by your grid, each tile uses the floor size and a thin strip at the right/bottom edge may be trimmed.',
+    faqs: [
+      { q: 'How do I split an image into a grid?', a: 'Choose your image, set the rows and columns (or tap the 3×3 preset), and click download — every tile is saved into a single ZIP of numbered PNGs. It all happens locally in your browser.' },
+      { q: 'How do I make an Instagram grid?', a: 'Use the 3×3 preset on a square image. You get nine tiles numbered by position; upload them to Instagram in reverse order (bottom-right first) so they assemble into the full picture on your profile grid.' },
+      { q: 'Why might a tile be slightly cropped?', a: 'If the image width or height doesn\'t divide evenly by your columns or rows, the tiles use the rounded-down size, so a few pixels at the far edge may be left out. Use dimensions divisible by your grid for a perfect split.' },
+      { q: 'Is my image uploaded?', a: 'No. The splitting is done entirely in your browser with the Canvas API, so the image never leaves your device. It works offline once loaded.' },
+    ],
+    keywords: ['split image', 'image splitter', 'split image into grid', 'instagram grid maker', 'image grid cutter', 'cut image into pieces', 'photo splitter'],
   },
 ];

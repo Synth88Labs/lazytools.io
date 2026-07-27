@@ -368,6 +368,7 @@
   "image/image-resizer",
   "image/image-to-base64",
   "image/rotate-image",
+  "image/split-image",
   "math/binomial-expansion",
   "math/circle-calculator",
   "math/completing-the-square",
