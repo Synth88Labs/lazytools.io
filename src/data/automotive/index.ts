@@ -4,7 +4,7 @@ export interface AutoToolDef {
   slug: string;
   name: string;
   icon: string;
-  widget: 'tire' | 'tirecompare' | 'gear' | 'displacement' | 'compression' | 'hp' | 'fueleconomy' | 'offset' | 'evcharge' | 'pwr2wt' | 'stopping' | 'quartermile' | 'fuelcost' | 'fuelrange' | 'tirepressure';
+  widget: 'tire' | 'tirecompare' | 'gear' | 'displacement' | 'compression' | 'hp' | 'fueleconomy' | 'offset' | 'evcharge' | 'pwr2wt' | 'stopping' | 'quartermile' | 'fuelcost' | 'fuelrange' | 'tirepressure' | 'twostroke' | 'tongueweight';
   description: string;
   lead: string;
   how: string;
@@ -283,6 +283,42 @@ export const AUTO_TOOLS: AutoToolDef[] = [
       { q: 'Is a pressure change from temperature a problem?', a: 'It\'s normal, but low pressure isn\'t good — it worsens handling, increases wear on the tire shoulders and cuts fuel economy. Check and adjust with the seasons, and don\'t bleed off the extra pressure that appears when tires are hot from driving.' },
     ],
     keywords: ['tire pressure temperature calculator', 'tyre pressure temperature', 'tire pressure cold weather', 'psi per degree calculator', 'tire pressure drop temperature', 'cold tire pressure calculator', 'temperature tire pressure'],
+  },
+  {
+    slug: 'two-stroke-fuel-mix-calculator',
+    name: 'Two-Stroke Fuel Mix Calculator',
+    icon: '⛽',
+    widget: 'twostroke',
+    description:
+      'Work out exactly how much two-stroke oil to add to your petrol for any ratio — 50:1, 40:1, 32:1, 25:1 and more. In ml and fl oz. Free, in your browser.',
+    lead: 'For a two-stroke mix, oil = fuel ÷ the ratio number — so 5 litres of petrol at 50:1 needs 5000 ÷ 50 = 100 ml of oil.',
+    how: 'A two-stroke (two-cycle) engine burns oil mixed into its petrol for lubrication. The mix ratio is written as fuel:oil — 50:1 means 50 parts petrol to 1 part oil. So the oil you add is simply the fuel volume divided by the ratio number: convert your fuel to millilitres, divide by the ratio, and that\'s the oil in millilitres (also shown in fluid ounces). Enter litres or US gallons and pick the ratio your equipment specifies.',
+    note: 'Always use the exact ratio in your equipment\'s manual — chainsaws, string trimmers, leaf blowers, outboards and dirt bikes vary (commonly 50:1, 40:1 or 32:1), and older or air-cooled engines often need more oil (richer, lower ratio number). Use a quality two-stroke oil, measure the oil accurately, and shake the container to mix before filling. Too little oil risks seizing the engine; too much fouls the plug and smokes.',
+    faqs: [
+      { q: 'How much oil do I put in a 50:1 mix?', a: 'Divide the fuel volume by 50. For 1 litre of petrol that\'s 20 ml of oil; for 1 US gallon it\'s about 2.6 fl oz. The calculator does it for any fuel amount and ratio.' },
+      { q: 'What does a ratio like 40:1 mean?', a: 'It\'s parts of fuel to parts of oil — 40:1 is 40 parts petrol to 1 part two-stroke oil. A smaller second-number ratio (like 32:1) means more oil per litre than 50:1.' },
+      { q: 'What ratio should I use?', a: 'Whatever your engine\'s manufacturer specifies — it\'s in the manual and often on the cap or housing. Don\'t guess: too little oil can destroy the engine. When a range is given, the richer (more oil) end suits heavy or hot running.' },
+      { q: 'Does the oil brand matter?', a: 'Use an oil rated for two-stroke/two-cycle engines (often labelled TC-W3 for marine or JASO FD for air-cooled). Mixing to the right ratio with a poor oil still risks damage.' },
+    ],
+    keywords: ['2 stroke oil mix calculator', 'two stroke fuel mix', '50 to 1 fuel mix', '40:1 mix ratio', 'chainsaw gas oil ratio', 'petrol oil mix calculator', 'two stroke ratio calculator'],
+  },
+  {
+    slug: 'trailer-tongue-weight-calculator',
+    name: 'Trailer Tongue Weight Calculator',
+    icon: '🚚',
+    widget: 'tongueweight',
+    description:
+      'Check your trailer\'s tongue weight as a percentage of loaded weight against the safe 10–15% range, and see the recommended weight range. Free, in your browser.',
+    lead: 'Tongue weight percentage = tongue weight ÷ loaded trailer weight × 100 — and it should land in the 10–15% range for safe, sway-free towing.',
+    how: 'Tongue weight is the downward force the loaded trailer puts on the hitch ball. Divide it by the total loaded trailer weight and multiply by 100 to get the percentage. This tool compares that figure against the recommended 10–15% band for conventional (bumper-pull) trailers and shows the actual weight range that band represents, so you know your target in pounds or kilograms.',
+    note: 'Too little tongue weight (under ~10%) lets the trailer fishtail and sway dangerously; too much (over ~15%) overloads the hitch and lifts weight off the tow vehicle\'s front wheels, hurting steering and braking. Adjust by shifting cargo: move it forward of the axle to add tongue weight, rearward to reduce it. Weigh the tongue with a dedicated tongue-weight scale or a bathroom-scale method, and never exceed your hitch, ball or vehicle tow ratings.',
+    faqs: [
+      { q: 'What percentage should trailer tongue weight be?', a: 'For a conventional bumper-pull trailer, 10–15% of the total loaded trailer weight. Fifth-wheel and gooseneck trailers use a higher range (about 15–25%), but this calculator targets the standard 10–15%.' },
+      { q: 'What happens if tongue weight is too low?', a: 'The trailer becomes prone to swaying and fishtailing at speed, which can cause loss of control. If you\'re under ~10%, move cargo forward, ahead of the trailer axle.' },
+      { q: 'What if tongue weight is too high?', a: 'It overloads the hitch and pushes down the rear of the tow vehicle, lightening the front wheels and degrading steering and braking. Shift some cargo rearward to bring it back into range.' },
+      { q: 'How do I measure tongue weight?', a: 'Use a tongue-weight scale, a truck scale, or the bathroom-scale-and-beam method. Weigh the trailer fully loaded the way you\'ll tow it, since cargo placement changes the number.' },
+    ],
+    keywords: ['tongue weight calculator', 'trailer tongue weight', 'tongue weight percentage', 'towing tongue weight', 'trailer sway tongue weight', 'hitch weight calculator'],
   },
 ];
 

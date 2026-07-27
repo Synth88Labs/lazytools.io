@@ -230,4 +230,34 @@ export function tirePressureAtTemp(coldPsi: number, fromTempF: number, toTempF: 
   return p1abs * (t2 / t1) - atmPsi;
 }
 
+/* ---------------- Two-stroke fuel/oil mix ---------------- */
+
+const ML_PER_US_GAL = 3785.411784;
+const ML_PER_FL_OZ = 29.5735295625;
+
+/**
+ * Oil needed to premix a two-stroke fuel batch at ratio 1:N (N parts fuel to
+ * 1 part oil, e.g. 50:1). oil = fuel ÷ N. Fuel given in litres or US gallons.
+ */
+export function twoStrokeMix(fuel: number, ratioN: number, unit: 'l' | 'gal'): { oilMl: number; oilOz: number; fuelMl: number } | null {
+  if (fuel <= 0 || ratioN <= 0) return null;
+  const fuelMl = unit === 'gal' ? fuel * ML_PER_US_GAL : fuel * 1000;
+  const oilMl = fuelMl / ratioN;
+  return { oilMl, oilOz: oilMl / ML_PER_FL_OZ, fuelMl };
+}
+
+/* ---------------- Trailer tongue weight ---------------- */
+
+/**
+ * Tongue-weight percentage = tongue weight ÷ loaded trailer weight × 100.
+ * The safe range for a conventional trailer is 10–15%; too little causes
+ * sway, too much overloads the hitch and unloads the tow vehicle's steering.
+ */
+export function tongueWeight(trailerWeight: number, tongue: number): { pct: number; lo: number; hi: number; verdict: 'low' | 'ok' | 'high' } | null {
+  if (trailerWeight <= 0 || tongue < 0) return null;
+  const pct = (tongue / trailerWeight) * 100;
+  const verdict = pct < 10 ? 'low' : pct > 15 ? 'high' : 'ok';
+  return { pct, lo: trailerWeight * 0.1, hi: trailerWeight * 0.15, verdict };
+}
+
 export { MM_PER_INCH };

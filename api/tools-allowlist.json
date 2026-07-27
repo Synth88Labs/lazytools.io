@@ -34,6 +34,8 @@
   "automotive/tire-pressure-temperature-calculator",
   "automotive/tire-size-calculator",
   "automotive/tire-size-comparison",
+  "automotive/trailer-tongue-weight-calculator",
+  "automotive/two-stroke-fuel-mix-calculator",
   "automotive/wheel-offset-calculator",
   "biology/dilution-calculator",
   "biology/dna-molecular-weight",
