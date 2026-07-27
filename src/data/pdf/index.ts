@@ -6,7 +6,7 @@ export interface PdfToolDef {
   icon: string;
   description: string;
   lead: string;
-  widget: 'merge' | 'split' | 'images-to-pdf' | 'rotate' | 'unlock' | 'protect' | 'accessibility' | 'redact' | 'redact-check' | 'to-images' | 'watermark' | 'numbers' | 'to-text' | 'organize';
+  widget: 'merge' | 'split' | 'images-to-pdf' | 'rotate' | 'unlock' | 'protect' | 'accessibility' | 'redact' | 'redact-check' | 'to-images' | 'watermark' | 'numbers' | 'to-text' | 'organize' | 'sign';
   how: string;
   note?: string;
   faqs: { q: string; a: string }[];
@@ -280,5 +280,23 @@ export const PDF_TOOLS: PdfToolDef[] = [
       { q: 'Is my PDF uploaded?', a: 'No — it\'s opened, previewed and rewritten entirely in your browser with pdf.js and pdf-lib, so even sensitive documents never leave your device.' },
     ],
     keywords: ['organize pdf', 'reorder pdf pages', 'rearrange pdf pages', 'delete pages from pdf', 'pdf page organizer', 'move pdf pages', 'sort pdf pages'],
+  },
+  {
+    slug: 'sign-pdf',
+    name: 'Sign PDF',
+    icon: '✍️',
+    description:
+      'Add your handwritten signature to a PDF and download it — draw, place it on any page, and sign entirely in your browser. Private, nothing uploaded.',
+    lead: 'Draw your signature, choose the page and corner, and it\'s stamped onto the PDF and downloaded — all on your device, so a private document never leaves your browser.',
+    widget: 'sign',
+    how: 'Open your PDF, draw your signature on the pad with a mouse, trackpad or finger, then pick which page and corner to place it on and how wide it should be. The signature is captured as a transparent image and stamped onto the chosen page with pdf-lib, and the signed PDF downloads straight away. The whole process runs locally in your browser.',
+    note: 'Signing usually means handling exactly the kind of private document you shouldn\'t upload — a contract, form or agreement — which is why this never sends your file anywhere. The signature is flattened onto the page as an image, so it can\'t be moved afterwards. This is a simple visual signature for everyday forms; it is not a cryptographic/digital signature and doesn\'t provide legal certificate-based authentication.',
+    faqs: [
+      { q: 'How do I sign a PDF?', a: 'Open the PDF, draw your signature on the pad, choose the page and corner, and click Sign & download. The signed PDF is created in your browser and downloaded — no account or upload.' },
+      { q: 'Can I sign on my phone?', a: 'Yes — the signature pad accepts finger or stylus input, so you can draw your signature by hand on a touchscreen and place it on the document.' },
+      { q: 'Is my document uploaded to sign it?', a: 'No. The PDF is read and rewritten entirely in your browser with pdf-lib, so contracts and other private documents stay on your device.' },
+      { q: 'Is this a legally binding digital signature?', a: 'It adds a visual (image) signature, which is enough for many everyday forms and agreements. It is not a certificate-based cryptographic digital signature; for those you need a dedicated e-signature service with identity verification.' },
+    ],
+    keywords: ['sign pdf', 'add signature to pdf', 'esign pdf', 'sign pdf online free', 'draw signature on pdf', 'pdf signature', 'electronically sign pdf'],
   },
 ];
