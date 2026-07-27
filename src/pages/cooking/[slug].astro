@@ -13,6 +13,7 @@ import SlowCookerTool from '../../components/cooking/SlowCookerTool.tsx';
 import RiceWaterTool from '../../components/cooking/RiceWaterTool.tsx';
 import TurkeyTimeTool from '../../components/cooking/TurkeyTimeTool.tsx';
 import SourdoughTool from '../../components/cooking/SourdoughTool.tsx';
+import PartyFoodTool from '../../components/cooking/PartyFoodTool.tsx';
 import MeasurementConverterTool from '../../components/cooking/MeasurementConverterTool.tsx';
 import ButterConverterTool from '../../components/cooking/ButterConverterTool.tsx';
 import OvenTempTool from '../../components/cooking/OvenTempTool.tsx';
@@ -76,6 +77,7 @@ const schema = [
       {tool.widget === 'rice' && <RiceWaterTool client:load />}
       {tool.widget === 'turkey' && <TurkeyTimeTool client:load />}
       {tool.widget === 'sourdough' && <SourdoughTool client:load />}
+      {tool.widget === 'party' && <PartyFoodTool client:load />}
       {tool.widget === 'measure' && <MeasurementConverterTool client:load />}
       {tool.widget === 'butter' && <ButterConverterTool client:load />}
       {tool.widget === 'oven' && <OvenTempTool client:load />}

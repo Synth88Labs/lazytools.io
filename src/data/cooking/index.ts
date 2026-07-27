@@ -4,7 +4,7 @@ export interface CookingToolDef {
   slug: string;
   name: string;
   icon: string;
-  widget: 'grams' | 'measure' | 'butter' | 'oven' | 'scaler' | 'pan' | 'bakers' | 'yeast' | 'coffee' | 'meat' | 'brine' | 'airfryer' | 'roast' | 'slowcooker' | 'rice' | 'turkey' | 'sourdough';
+  widget: 'grams' | 'measure' | 'butter' | 'oven' | 'scaler' | 'pan' | 'bakers' | 'yeast' | 'coffee' | 'meat' | 'brine' | 'airfryer' | 'roast' | 'slowcooker' | 'rice' | 'turkey' | 'sourdough' | 'party';
   description: string;
   lead: string;
   how: string;
@@ -319,6 +319,24 @@ export const COOKING_TOOLS: CookingToolDef[] = [
       { q: 'What hydration should my starter be?', a: '100% (equal flour and water by weight) is the standard, giving a thick-batter consistency. Stiffer starters (lower hydration, like 50–60%) ferment more slowly and keep longer; this tool shows the hydration for whatever ratio you enter.' },
     ],
     keywords: ['sourdough starter calculator', 'sourdough feeding calculator', 'sourdough starter ratio', 'how to feed sourdough starter', 'sourdough hydration calculator', 'starter feeding ratio'],
+  },
+  {
+    slug: 'party-food-calculator',
+    name: 'Party Food & Drink Calculator',
+    icon: '🎉',
+    widget: 'party',
+    description:
+      'Work out how much food, drink, ice and alcohol to buy for a party from your guest count and event length. Free planning calculator, in your browser.',
+    lead: 'Party quantities scale with guests and hours — plan on roughly 6 oz of cooked main protein per person, about one drink per person per hour, and 1–1.5 lb of ice each.',
+    how: 'Enter how many guests are coming and how long the event runs, then say whether you\'re serving a full meal and alcohol. The calculator applies common per-guest party-planning amounts — appetizer pieces, main protein, sides, soft and alcoholic drinks, water and ice — and scales them by your numbers to give a shopping list. It uses more finger food when there\'s no sit-down meal.',
+    note: 'These are rules-of-thumb from standard party-planning charts, meant as a shopping starting point rather than exact figures — adjust for your crowd (heartier or lighter eaters, children, dietary restrictions, time of day). Running out is worse than a little extra, so round up for big appetites. If you\'re serving alcohol, always provide generous water and non-alcoholic options and encourage guests to drink responsibly.',
+    faqs: [
+      { q: 'How much food do I need for a party?', a: 'For a full meal, plan about 6 oz of cooked main protein and roughly half a pound of sides per guest, plus appetizers. For a no-meal party, allow more appetizers (about 10–12 pieces per guest). Enter your numbers and the calculator lists the amounts.' },
+      { q: 'How much alcohol for a party?', a: 'A common guide is about one drink per guest for the first hour and half a drink per guest for each hour after. For wine, figure roughly five glasses per bottle. The calculator estimates totals and bottle counts when you enable alcohol.' },
+      { q: 'How much ice do I need?', a: 'About 1 to 1.5 pounds of ice per guest for a few-hour event — more in hot weather or if you\'re icing down drinks in tubs as well as using it in glasses.' },
+      { q: 'How many appetizers per person?', a: 'Around 4–6 pieces per person if a full meal follows, or 10–12 pieces if appetizers are the main food. Multiply by your guest count; the calculator does this based on whether you\'re serving a meal.' },
+    ],
+    keywords: ['party food calculator', 'how much food for a party', 'party drink calculator', 'food per person for a party', 'how much alcohol for a party', 'party planning calculator'],
   },
 ];
 

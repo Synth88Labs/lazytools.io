@@ -287,3 +287,33 @@ export function sourdoughFeed(starterG: number, flourRatio: number, waterRatio: 
   const water = starterG * waterRatio;
   return { flour, water, total: starterG + flour + water, hydration: (water / flour) * 100 };
 }
+
+/* ---------------- Party food & drink quantities ---------------- */
+
+export interface PartyItem { label: string; amount: string; }
+
+/**
+ * Rough party quantities per guest, based on common party-planning charts
+ * (Almanac / Food Network). Amounts scale with guests and event length.
+ */
+export function partyQuantities(guests: number, hours: number, fullMeal: boolean, alcohol: boolean): PartyItem[] | null {
+  if (guests <= 0 || hours <= 0) return null;
+  const c = (x: number) => Math.ceil(x);
+  const items: PartyItem[] = [];
+  items.push({ label: 'Appetizer pieces', amount: `${c(guests * (fullMeal ? 5 : 10))} total` });
+  if (fullMeal) {
+    items.push({ label: 'Main protein (cooked)', amount: `${(guests * 0.375).toFixed(1)} lb (≈6 oz each)` });
+    items.push({ label: 'Side dishes (combined)', amount: `${(guests * 0.5).toFixed(1)} lb` });
+    items.push({ label: 'Salad', amount: `${c(guests)} cups` });
+    items.push({ label: 'Bread / rolls', amount: `${c(guests * 1.5)} pieces` });
+  }
+  items.push({ label: 'Soft drinks / servings', amount: `${c(guests * hours)} drinks` });
+  items.push({ label: 'Water', amount: `${c(guests * 1.5)} bottles` });
+  if (alcohol) {
+    const drinks = guests * (1 + Math.max(0, hours - 1) * 0.5);
+    items.push({ label: 'Alcoholic drinks', amount: `${c(drinks)} total` });
+    items.push({ label: '…as wine (5 glasses/bottle)', amount: `≈ ${c(drinks / 5)} bottles` });
+  }
+  items.push({ label: 'Ice', amount: `${c(guests * 1.5)} lb` });
+  return items;
+}
