@@ -16,7 +16,7 @@ export interface DevToolDef {
   description: string;
   lead: string;
   /** 'transform' uses DevTransformTool; 'hash' uses HashTool; 'llm-tokens' uses LlmTokenCounterTool */
-  widget: 'transform' | 'hash' | 'llm-tokens' | 'eth-units' | 'keccak' | 'eip55';
+  widget: 'transform' | 'hash' | 'llm-tokens' | 'eth-units' | 'keccak' | 'eip55' | 'har';
   computeId?: string;
   options?: DevToolOption[];
   sample?: string;
@@ -464,6 +464,24 @@ export const DEV_TOOLS: DevToolDef[] = [
       { q: 'Is my JSON kept private?', a: 'Yes. Parsing and generation happen entirely in your browser; the JSON you paste (which may be a real API response) never leaves your device.' },
     ],
     keywords: ['json to typescript', 'json to interface', 'generate typescript types from json', 'json to ts', 'typescript interface generator', 'json to type'],
+  },
+  {
+    slug: 'har-viewer',
+    name: 'HAR File Viewer',
+    icon: '🌐',
+    description:
+      'Open and analyse a .har network capture — request waterfall, status, sizes and timings — with a scan for cookies and tokens. Private, in your browser, never uploaded.',
+    lead: 'Drop a HAR file to see every request with its method, status, size and timing — plus a warning for any request that carries cookies, auth headers or token-like parameters.',
+    widget: 'har',
+    how: 'A HAR (HTTP Archive) file is a JSON export of a browser\'s network activity. The viewer parses it in your browser and lists each request — method, status code, URL, transferred size and load time — with totals for the whole capture. It also scans every request and response for sensitive data: Authorization and Cookie headers, API-key headers, and query parameters whose names look like tokens or secrets, flagging the requests that carry them.',
+    note: 'HAR files are a notorious privacy hazard: because they record full requests and responses, they routinely contain live session cookies, bearer tokens and API keys that can be used to impersonate you. That is exactly why this tool parses everything locally and never uploads the file — and why you should scrub or avoid sharing HARs that the scan flags. The table shows up to 500 requests; filter by URL to narrow a large capture.',
+    faqs: [
+      { q: 'How do I open a HAR file?', a: 'Choose the .har file here and it\'s parsed in your browser into a readable table of requests with statuses, sizes and timings. Nothing is uploaded, which matters because HAR files often contain credentials.' },
+      { q: 'How do I create a HAR file?', a: 'In your browser\'s DevTools, open the Network tab, reload the page or reproduce the issue, then right-click the request list and choose "Save all as HAR". That file is what you open here.' },
+      { q: 'Why are HAR files a security risk?', a: 'They capture complete requests and responses, so they frequently include session cookies, authorization tokens and API keys — anyone with the file could reuse those to access your accounts. This viewer flags requests that carry such data so you know what\'s in there.' },
+      { q: 'Is my HAR file uploaded anywhere?', a: 'No. It\'s read and analysed entirely in your browser and never sent to a server, so even a HAR full of tokens stays on your device. It also works offline once loaded.' },
+    ],
+    keywords: ['har viewer', 'har file viewer', 'open har file', 'analyze har', 'har analyzer online', 'read har file'],
   },
 ];
 

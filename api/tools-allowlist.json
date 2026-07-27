@@ -218,6 +218,7 @@
   "dev/base64-encode-decode",
   "dev/eip55-address-checksum",
   "dev/ethereum-unit-converter",
+  "dev/har-viewer",
   "dev/hash-generator",
   "dev/html-entities-encode-decode",
   "dev/http-status-code-lookup",
