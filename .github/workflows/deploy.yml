@@ -34,7 +34,44 @@ jobs:
       - name: Refresh tool ratings from production (fail-safe)
         run: node scripts/fetch-ratings.mjs
       - run: npm run build
-      - name: Deploy dist/ via FTPS
+      # Shared-hosting FTPS occasionally drops the data socket mid-transfer
+      # (write EPIPE), which fails an otherwise-fine deploy. The action keeps a
+      # server-side sync-state file, so a retry only re-sends the unsent files.
+      # Attempts 1–2 are non-fatal; attempt 3 fails the job if it still can't finish.
+      - name: Deploy dist/ via FTPS (attempt 1)
+        id: ftp1
+        continue-on-error: true
+        timeout-minutes: 30
+        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          security: loose
+          local-dir: dist/
+          server-dir: ./
+          dry-run: ${{ inputs.dry-run == true }}
+      - name: Deploy dist/ via FTPS (attempt 2)
+        id: ftp2
+        if: steps.ftp1.outcome == 'failure'
+        continue-on-error: true
+        timeout-minutes: 30
+        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          security: loose
+          local-dir: dist/
+          server-dir: ./
+          dry-run: ${{ inputs.dry-run == true }}
+      - name: Deploy dist/ via FTPS (attempt 3, final)
+        if: steps.ftp1.outcome == 'failure' && steps.ftp2.outcome == 'failure'
+        timeout-minutes: 30
         uses: SamKirkland/FTP-Deploy-Action@v4.4.0
         with:
           server: ${{ secrets.FTP_SERVER }}
