@@ -4,7 +4,7 @@ export interface ElectronicsToolDef {
   slug: string;
   name: string;
   icon: string;
-  widget: 'resistor' | 'led' | 'divider' | 'capcode' | 'awg' | 'rc' | 'timer555' | 'battery' | 'smd' | 'lc' | 'sp-res' | 'sp-cap' | 'ohmslaw' | 'reactance' | 'decibel';
+  widget: 'resistor' | 'led' | 'divider' | 'capcode' | 'awg' | 'rc' | 'timer555' | 'battery' | 'smd' | 'lc' | 'sp-res' | 'sp-cap' | 'ohmslaw' | 'reactance' | 'decibel' | 'vdrop';
   description: string;
   lead: string;
   how: string;
@@ -286,6 +286,24 @@ export const ELECTRONICS_TOOLS: ElectronicsToolDef[] = [
       { q: 'Are decibels absolute or relative?', a: 'Relative by themselves — a decibel is a ratio. Absolute decibel units name a reference: dBm is relative to 1 milliwatt, dBV to 1 volt, dB SPL to the threshold of hearing. This calculator works with the underlying ratios.' },
     ],
     keywords: ['decibel calculator', 'db calculator', 'ratio to db', 'db to ratio', 'power to db calculator', 'voltage gain db', 'decibel gain calculator', '10 log 20 log'],
+  },
+  {
+    slug: 'voltage-drop-calculator',
+    name: 'Voltage Drop Calculator',
+    icon: '📉',
+    widget: 'vdrop',
+    description:
+      'Calculate voltage drop and percentage over a wire run from gauge (AWG), length, current and material — copper or aluminium, DC, single- or three-phase. Free, in your browser.',
+    lead: 'Voltage drop = 2 × current × the wire\'s resistance-per-metre × the one-way run length (√3 instead of 2 for three-phase) — and it should stay under about 3%.',
+    how: 'Every wire has resistance, so some voltage is lost between the source and the load. The calculator takes the resistance per metre of your chosen AWG gauge (higher for aluminium than copper), multiplies by the current and by the total conductor length — twice the one-way run for DC and single-phase (out and back), or √3 times the run for three-phase — to get the volts dropped. It also shows that as a percentage of your system voltage and the voltage actually reaching the load.',
+    note: 'The US National Electrical Code recommends keeping voltage drop under 3% on a branch circuit (and 5% total including the feeder); solar installers often target 2%. Excess drop dims lights, slows motors and wastes energy as heat. To reduce it, use a thicker (lower-gauge) wire, shorten the run, use copper instead of aluminium, or raise the system voltage. This is a design aid — always follow your local electrical code and use a licensed electrician for real installations.',
+    faqs: [
+      { q: 'How do I calculate voltage drop?', a: 'Multiply the current by the wire\'s resistance and by the total conductor length. For DC or single-phase that\'s 2 × current × resistance-per-metre × one-way length; for three-phase use √3 instead of 2. This tool does it from the AWG gauge, length, current and material.' },
+      { q: 'What is an acceptable voltage drop?', a: 'The NEC recommends under 3% on a branch circuit and 5% total; many solar and low-voltage designers aim for 2% or less. The calculator flags when your result exceeds 3%.' },
+      { q: 'How do I reduce voltage drop?', a: 'Use a thicker wire (a lower AWG number), shorten the cable run, switch from aluminium to copper, or run at a higher voltage. Doubling the wire cross-section roughly halves the drop.' },
+      { q: 'Does aluminium wire have more voltage drop?', a: 'Yes — aluminium has about 1.6 times the resistance of copper for the same gauge, so it drops proportionally more voltage. You generally need to go up a couple of gauge sizes to match copper\'s performance.' },
+    ],
+    keywords: ['voltage drop calculator', 'wire voltage drop', 'voltage drop formula', 'nec voltage drop', 'wire size voltage drop', 'cable voltage drop calculator'],
   },
 ];
 

@@ -253,4 +253,22 @@ export const powerRatioFromDb = (db: number) => Math.pow(10, db / 10);
 /** Amplitude ratio from decibels: 10^(dB/20). */
 export const amplitudeRatioFromDb = (db: number) => Math.pow(10, db / 20);
 
+/* ---------------- Voltage drop ---------------- */
+
+/** Aluminium ÷ copper resistivity ratio (≈2.65e-8 / 1.68e-8). */
+const AL_CU_RATIO = 1.61;
+
+/**
+ * Voltage drop over a wire run. One-way length L; DC/single-phase uses the
+ * round-trip factor 2, three-phase uses √3. Drop = factor × I × R/m × L, where
+ * R/m comes from the AWG copper resistance (× the Al/Cu ratio for aluminium).
+ */
+export function voltageDrop(awgN: number, lengthOneWayM: number, current: number, material: 'cu' | 'al', phase: '1' | '3', systemVolts: number): { drop: number; pct: number; atLoad: number } | null {
+  if (lengthOneWayM <= 0 || current < 0 || systemVolts <= 0) return null;
+  const rPerM = (awg(awgN).ohmPerKm / 1000) * (material === 'al' ? AL_CU_RATIO : 1);
+  const factor = phase === '3' ? Math.sqrt(3) : 2;
+  const drop = factor * current * rPerM * lengthOneWayM;
+  return { drop, pct: (drop / systemVolts) * 100, atLoad: systemVolts - drop };
+}
+
 export { CU_RESISTIVITY };

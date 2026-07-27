@@ -244,6 +244,7 @@
   "electronics/series-parallel-resistor-calculator",
   "electronics/smd-resistor-code-calculator",
   "electronics/voltage-divider-calculator",
+  "electronics/voltage-drop-calculator",
   "electronics/wire-gauge-calculator",
   "file/csv-to-json",
   "file/csv-to-markdown-table",

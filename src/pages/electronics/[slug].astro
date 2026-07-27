@@ -20,6 +20,7 @@ import SeriesParallelCapacitanceTool from '../../components/electronics/SeriesPa
 import OhmsLawTool from '../../components/electronics/OhmsLawTool.tsx';
 import ReactanceTool from '../../components/electronics/ReactanceTool.tsx';
 import DecibelTool from '../../components/electronics/DecibelTool.tsx';
+import VoltageDropTool from '../../components/electronics/VoltageDropTool.tsx';
 import { ELECTRONICS_TOOLS, type ElectronicsToolDef } from '../../data/electronics/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -81,6 +82,7 @@ const schema = [
       {tool.widget === 'ohmslaw' && <OhmsLawTool client:load />}
       {tool.widget === 'reactance' && <ReactanceTool client:load />}
       {tool.widget === 'decibel' && <DecibelTool client:load />}
+      {tool.widget === 'vdrop' && <VoltageDropTool client:load />}
     </div>
 
     <div class="mt-4">
