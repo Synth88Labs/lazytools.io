@@ -7,7 +7,8 @@ export interface HomeToolDef {
   widget: 'paint' | 'tile' | 'concrete' | 'mulch' | 'wallpaper'
     | 'gravel' | 'drywall' | 'roofing' | 'lawn' | 'fence' | 'deck' | 'boardfoot'
     | 'stair' | 'stud' | 'btu' | 'ramp' | 'firewood' | 'roofpitch' | 'rebar'
-    | 'brick' | 'excavation' | 'trim' | 'retainingwall' | 'paver';
+    | 'brick' | 'excavation' | 'trim' | 'retainingwall' | 'paver'
+    | 'grout' | 'flooring' | 'poolvolume';
   description: string;
   lead: string;
   how: string;
@@ -451,6 +452,60 @@ HOME_TOOLS.push(
       { q: 'Do I need edge restraints?', a: 'Yes — plastic or metal edge restraints (or a concrete haunch) keep the outer pavers from spreading and the whole field from creeping over time. They’re essential for a lasting installation but aren’t part of this quantity estimate.' },
     ],
     keywords: ['paver calculator', 'patio paver calculator', 'how many pavers do i need', 'paver base calculator', 'brick paver calculator', 'patio calculator', 'pavers per square foot'],
+  },
+  {
+    slug: 'grout-calculator',
+    name: 'Grout Calculator',
+    icon: '🧱',
+    widget: 'grout',
+    description:
+      'Estimate how much tile grout you need from your area, tile size and joint width and depth — in litres and approximate kilograms. Free, in your browser.',
+    lead: 'Grout fills the joints between tiles, so the amount depends on tile size, joint width and joint depth — smaller tiles mean more joints and more grout.',
+    how: 'The calculator works out the total length of grout joints across your area — roughly the area times (tile length + tile width) ÷ (tile length × tile width) — then multiplies by the joint width and joint depth to get a volume. Joint depth is about the thickness of your tile. It reports the grout volume in litres and an approximate dry weight (assuming a cementitious grout at about 1.6 kg per litre).',
+    note: 'Always cross-check against your grout product\'s coverage chart, since coverage varies by brand, tile type and how full the joints are packed. Add roughly 10% for waste, mixing losses and partial tiles at the edges. Mosaic and small tiles use far more grout per square metre than large-format tiles because they have many more joints; very tight (rectified) joints use less.',
+    faqs: [
+      { q: 'How much grout do I need?', a: 'It depends on your area, tile size and joint size. Enter those and the calculator gives the grout volume in litres and an approximate weight. As a rule, smaller tiles and wider or deeper joints need more grout.' },
+      { q: 'What is the joint depth?', a: 'Roughly the thickness of your tile, since the grout fills the gap for the full depth of the tile. Enter your tile\'s thickness in millimetres (commonly 6–10 mm for wall and floor tiles).' },
+      { q: 'Why do small tiles need more grout?', a: 'Because they create far more linear metres of joint per square metre of area. A wall of mosaic tiles has many times the joint length of the same wall in large-format tiles, so it consumes much more grout.' },
+      { q: 'Should I buy extra grout?', a: 'Yes — add about 10% for mixing waste, joints packed fuller than assumed, and cut tiles at edges. Buying a little extra from the same batch also protects against colour variation between bags.' },
+    ],
+    keywords: ['grout calculator', 'how much grout do i need', 'tile grout calculator', 'grout coverage', 'grout estimator', 'grout quantity calculator'],
+  },
+  {
+    slug: 'flooring-calculator',
+    name: 'Flooring Calculator (Boxes Needed)',
+    icon: '🪵',
+    widget: 'flooring',
+    description:
+      'Work out how many boxes of laminate, vinyl plank or hardwood flooring you need for a room, including a waste allowance. Free, in your browser.',
+    lead: 'Boxes needed = your room area plus a waste allowance, divided by the coverage per box, rounded up — so a 20 m² room at 2 m²/box with 10% waste needs 11 boxes.',
+    how: 'The calculator adds your chosen waste percentage to the room area, divides by the coverage printed on each flooring box, and rounds up to whole boxes (you can\'t buy part of a box). It shows the boxes to buy, the area including waste, and the total coverage you\'ll have bought so you can see the spare.',
+    note: 'Add a waste allowance for offcuts and the layout: about 10% for a simple straight lay in a rectangular room, 15% for diagonal or herringbone patterns or rooms with lots of doorways and angles, and up to 20% for very irregular spaces. Keep at least a plank or two spare after fitting for future repairs, and buy from one batch/lot number so the colour matches.',
+    faqs: [
+      { q: 'How many boxes of flooring do I need?', a: 'Divide your room area (plus waste) by the coverage per box and round up. Enter the area, the box coverage from the pack, and a waste percentage, and the calculator gives the number of boxes.' },
+      { q: 'How much waste should I allow for flooring?', a: 'About 10% for a straightforward straight lay, 15% for diagonal or herringbone patterns or rooms with many doorways and angles, and up to 20% for very irregular rooms. More complex layouts create more offcuts.' },
+      { q: 'What is coverage per box?', a: 'The floor area one box of planks covers, printed on the packaging (e.g. 2.2 m² or 24 ft² per box). Enter it in the same unit as your room area.' },
+      { q: 'Should I keep spare flooring?', a: 'Yes — keep at least one or two spare planks after installation for future repairs, ideally from the same batch so any replacement matches the colour and finish.' },
+    ],
+    keywords: ['flooring calculator', 'laminate flooring calculator', 'how many boxes of flooring do i need', 'vinyl plank calculator', 'hardwood flooring calculator', 'flooring boxes calculator'],
+  },
+  {
+    slug: 'pool-volume-calculator',
+    name: 'Pool Volume Calculator',
+    icon: '🏊',
+    widget: 'poolvolume',
+    description:
+      'Calculate your swimming pool\'s water volume in gallons, litres and cubic metres — rectangular, round or oval, using the average depth. Free, in your browser.',
+    lead: 'Pool volume is the surface area times the average depth: rectangular is length × width × depth, and round is π × radius² × depth.',
+    how: 'Choose the shape and enter the dimensions and average depth (in metres or feet). For a rectangular pool the volume is length × width × depth; for a round pool it\'s π × (diameter ÷ 2)² × depth; for an oval it\'s π × (length ÷ 2) × (width ÷ 2) × depth. The result is converted to US gallons, litres and cubic metres.',
+    note: 'Use the average depth: for a pool that slopes from a shallow to a deep end, average the two depths ((shallow + deep) ÷ 2). Knowing the exact volume in gallons is the foundation for dosing every pool chemical correctly — chlorine, shock, algaecide, pH adjusters and stabiliser are all specified per volume of water, so an accurate figure keeps your water balanced and avoids over- or under-dosing.',
+    faqs: [
+      { q: 'How do I calculate pool volume in gallons?', a: 'Multiply the surface area by the average depth to get cubic units, then convert. This tool does it for rectangular, round and oval pools and shows US gallons, litres and cubic metres.' },
+      { q: 'What depth should I use for a sloped pool?', a: 'The average depth — add the shallow-end and deep-end depths and divide by two. Using just the deep end overstates the volume; using the shallow end understates it.' },
+      { q: 'Why do I need to know my pool volume?', a: 'Because pool chemicals are dosed per volume of water. Chlorine, shock, algaecide and pH adjusters all reference gallons or litres, so an accurate volume is essential for correct, safe dosing.' },
+      { q: 'How do I measure a round or oval pool?', a: 'For a round pool, measure the diameter (the full width across the centre). For an oval, measure the longest length and the widest width. Enter those with the average depth.' },
+    ],
+    keywords: ['pool volume calculator', 'pool gallons calculator', 'how many gallons is my pool', 'swimming pool volume', 'pool water volume', 'pool size calculator'],
   },
 );
 

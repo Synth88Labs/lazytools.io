@@ -29,6 +29,9 @@ import LawnCalculator from '../../components/home/LawnCalculator.tsx';
 import FenceCalculator from '../../components/home/FenceCalculator.tsx';
 import DeckCalculator from '../../components/home/DeckCalculator.tsx';
 import BoardFootCalculator from '../../components/home/BoardFootCalculator.tsx';
+import GroutCalculator from '../../components/home/GroutCalculator.tsx';
+import FlooringCalculator from '../../components/home/FlooringCalculator.tsx';
+import PoolVolumeCalculator from '../../components/home/PoolVolumeCalculator.tsx';
 import { HOME_TOOLS, type HomeToolDef } from '../../data/home/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -99,6 +102,9 @@ const schema = [
       {tool.widget === 'fence' && <FenceCalculator client:load />}
       {tool.widget === 'deck' && <DeckCalculator client:load />}
       {tool.widget === 'boardfoot' && <BoardFootCalculator client:load />}
+      {tool.widget === 'grout' && <GroutCalculator client:load />}
+      {tool.widget === 'flooring' && <FlooringCalculator client:load />}
+      {tool.widget === 'poolvolume' && <PoolVolumeCalculator client:load />}
     </div>
 
     <div class="mt-4">

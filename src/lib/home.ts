@@ -72,3 +72,53 @@ export function firewoodCords(lengthFt: number, heightFt: number, depthFt: numbe
   const cubicFeet = lengthFt * heightFt * depthFt;
   return { cubicFeet, cords: cubicFeet / 128, faceCords16: cubicFeet / (8 * 4 * (16 / 12)) };
 }
+
+/* ---------------- Grout estimator ---------------- */
+
+/**
+ * Grout volume to fill the joints of a tiled area. Total joint length per unit
+ * area ≈ area × (tileL + tileW) / (tileL × tileW); volume = jointWidth ×
+ * jointDepth × that length. All tile/joint dims in mm, area in m². Returns
+ * litres and an approximate cementitious-grout weight (~1.6 kg per litre).
+ */
+export function groutVolume(areaM2: number, tileLmm: number, tileWmm: number, jointWmm: number, jointDepthMm: number): { litres: number; kg: number } | null {
+  if (areaM2 <= 0 || tileLmm <= 0 || tileWmm <= 0 || jointWmm <= 0 || jointDepthMm <= 0) return null;
+  const areaMm2 = areaM2 * 1_000_000;
+  const volMm3 = jointWmm * jointDepthMm * areaMm2 * (tileLmm + tileWmm) / (tileLmm * tileWmm);
+  const litres = volMm3 / 1_000_000;
+  return { litres, kg: litres * 1.6 };
+}
+
+/* ---------------- Flooring (planks / boxes) ---------------- */
+
+/**
+ * Boxes of flooring needed for an area, including a waste allowance.
+ * boxes = ceil(area × (1 + waste%) ÷ coverage per box). Area and coverage in
+ * the same unit (ft² or m²).
+ */
+export function flooringBoxes(area: number, boxCoverage: number, wastePct: number): { withWaste: number; boxes: number; totalCoverage: number } | null {
+  if (area <= 0 || boxCoverage <= 0 || wastePct < 0) return null;
+  const withWaste = area * (1 + wastePct / 100);
+  const boxes = Math.ceil(withWaste / boxCoverage);
+  return { withWaste, boxes, totalCoverage: boxes * boxCoverage };
+}
+
+/* ---------------- Pool volume ---------------- */
+
+const M3_TO_US_GAL = 264.172052;
+
+/**
+ * Pool water volume from shape and average depth. Rectangular = L×W×D;
+ * round = π·r²·D; oval = π·(L/2)·(W/2)·D. Dimensions in metres or feet;
+ * returns cubic metres, US gallons and litres.
+ */
+export function poolVolume(shape: 'rect' | 'round' | 'oval', a: number, b: number, avgDepth: number, unit: 'm' | 'ft'): { m3: number; usGal: number; litres: number } | null {
+  if (a <= 0 || avgDepth <= 0 || (shape !== 'round' && b <= 0)) return null;
+  const toM = (x: number) => (unit === 'ft' ? x * 0.3048 : x);
+  const A = toM(a), B = toM(b), D = toM(avgDepth);
+  let m3: number;
+  if (shape === 'round') m3 = Math.PI * (A / 2) ** 2 * D;
+  else if (shape === 'oval') m3 = Math.PI * (A / 2) * (B / 2) * D;
+  else m3 = A * B * D;
+  return { m3, usGal: m3 * M3_TO_US_GAL, litres: m3 * 1000 };
+}
