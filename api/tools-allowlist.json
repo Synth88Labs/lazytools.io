@@ -73,6 +73,7 @@
   "calc/compound-interest-calculator",
   "calc/conception-date-calculator",
   "calc/cost-per-square-foot-calculator",
+  "calc/days-until-date-calculator",
   "calc/dilution-ratio-calculator",
   "calc/discount-calculator",
   "calc/due-date-calculator",

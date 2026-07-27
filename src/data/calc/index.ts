@@ -928,6 +928,29 @@ export const CALCULATORS: CalcDef[] = [
     ],
     keywords: ['conception date calculator', 'when did i conceive', 'conception calculator', 'date of conception', 'conception date from due date', 'how to calculate conception date'],
   },
+  {
+    slug: 'days-until-date-calculator',
+    name: 'Days Until Date Calculator',
+    icon: '⏳',
+    description:
+      'Count how many days until (or since) any date — a holiday, birthday, exam or deadline — with weeks and weekday totals. Free, instant, in your browser.',
+    lead: 'The number of days until a date is simply that date minus today — this counts it for you, along with the number of weeks and weekdays.',
+    fields: [
+      { id: 'target', label: 'Target date', type: 'date' },
+    ],
+    computeId: 'daysUntil',
+    formula:
+      'days = target date − today, counted in whole calendar days. A future date gives a positive countdown; a past date counts up from then. Weeks are the day count ÷ 7, and the weekday figure counts only Monday–Friday between the two dates.',
+    example: 'If today is June 1 and the target is June 15, that\'s 14 days (2 weeks) from now, with 10 weekdays in between.',
+    note: 'Counting is done in whole days from midnight to midnight, so time of day doesn\'t affect the result. The weekday total (Monday–Friday only) is handy for working-day deadlines like shipping, notice periods or project timelines. For a past date, the tool tells you how long ago it was. Everything is computed locally in your browser.',
+    faqs: [
+      { q: 'How many days until a date?', a: 'Enter the target date and the calculator subtracts today to give the number of days until it — or, for a past date, how many days ago it was. It also shows the equivalent in weeks and weekdays.' },
+      { q: 'Does it count weekends?', a: 'The main day count includes every day. The separate "weekdays" figure counts only Monday–Friday between the two dates, which is useful for business or working-day deadlines.' },
+      { q: 'How is "days until" calculated?', a: 'By subtracting today\'s date from the target date and counting whole calendar days. Because it counts midnight to midnight, the time of day doesn\'t change the answer.' },
+      { q: 'Can I count days since a past date?', a: 'Yes — enter a date in the past and the tool shows how many days (and weeks) ago it was, so it works as both a countdown and a "days since" counter.' },
+    ],
+    keywords: ['days until', 'days until date calculator', 'how many days until', 'countdown to date', 'days until countdown', 'days between today and date'],
+  },
 ];
 
 export function getCalc(slug: string): CalcDef | undefined {

@@ -21,6 +21,20 @@ export function fmt(x: number, digits = 2): string {
   return x.toLocaleString('en-US', { maximumFractionDigits: digits, minimumFractionDigits: 0 });
 }
 
+/** Count Mon–Fri days strictly between two dates (order-independent). */
+function countWeekdays(a: Date, b: Date): number {
+  let start = new Date(Math.min(a.getTime(), b.getTime()));
+  const end = new Date(Math.max(a.getTime(), b.getTime()));
+  let n = 0;
+  start = new Date(start.getTime() + 86400000); // exclusive of start day
+  while (start.getTime() <= end.getTime()) {
+    const d = start.getDay();
+    if (d !== 0 && d !== 6) n++;
+    start = new Date(start.getTime() + 86400000);
+  }
+  return n;
+}
+
 export const COMPUTE: Record<string, (v: Values) => ResultRow[] | null> = {
   percentage: (v) => {
     const p = n(v.percent), of = n(v.of);
@@ -525,6 +539,23 @@ export const COMPUTE: Record<string, (v: Values) => ResultRow[] | null> = {
       { label: 'Estimated conception date', value: fmtDate(conception), hint: 'about 266 days (38 weeks) before the due date' },
       { label: 'Likely conception window', value: `${fmtDate(add(conception, -3))} → ${fmtDate(add(conception, 2))}`, hint: 'conception could be a few days either side' },
       { label: 'Corresponding last period', value: fmtDate(add(d, -280)), hint: 'due date − 280 days' },
+    ];
+  },
+
+  daysUntil: (v) => {
+    if (!v.target) return null;
+    const target = new Date(v.target + 'T00:00:00');
+    if (isNaN(target.getTime())) return null;
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const days = Math.round((target.getTime() - today.getTime()) / 86400000);
+    const abs = Math.abs(days);
+    const dir = days < 0 ? 'ago' : days === 0 ? '' : 'from now';
+    const label = days === 0 ? 'That date is today' : `${fmt(abs, 0)} day${abs === 1 ? '' : 's'} ${dir}`;
+    return [
+      { label: 'Days', value: label, hint: target.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) },
+      { label: 'Weeks', value: `${fmt(abs / 7, 1)} weeks ${dir}`.trim(), hint: `${fmt(abs, 0)} ÷ 7` },
+      { label: 'Weekdays (Mon–Fri)', value: `${fmt(countWeekdays(today, target), 0)} weekdays`, hint: 'excludes weekends' },
     ];
   },
 
