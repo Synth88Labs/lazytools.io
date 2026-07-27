@@ -12,6 +12,7 @@ import EthUnitTool from '../../components/dev/EthUnitTool.tsx';
 import KeccakTool from '../../components/dev/KeccakTool.tsx';
 import Eip55Tool from '../../components/dev/Eip55Tool.tsx';
 import HarViewerTool from '../../components/dev/HarViewerTool.tsx';
+import SqlFormatterTool from '../../components/dev/SqlFormatterTool.tsx';
 import { DEV_TOOLS, type DevToolDef } from '../../data/dev/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -64,6 +65,7 @@ const schema = [
       {tool.widget === 'keccak' && <KeccakTool client:load />}
       {tool.widget === 'eip55' && <Eip55Tool client:load />}
       {tool.widget === 'har' && <HarViewerTool client:load />}
+      {tool.widget === 'sqlformat' && <SqlFormatterTool client:load />}
       {tool.widget === 'transform' && (
         <DevTransformTool client:load computeId={tool.computeId!} options={tool.options} sample={tool.sample} />
       )}

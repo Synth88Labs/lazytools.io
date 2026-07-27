@@ -16,7 +16,7 @@ export interface DevToolDef {
   description: string;
   lead: string;
   /** 'transform' uses DevTransformTool; 'hash' uses HashTool; 'llm-tokens' uses LlmTokenCounterTool */
-  widget: 'transform' | 'hash' | 'llm-tokens' | 'eth-units' | 'keccak' | 'eip55' | 'har';
+  widget: 'transform' | 'hash' | 'llm-tokens' | 'eth-units' | 'keccak' | 'eip55' | 'har' | 'sqlformat';
   computeId?: string;
   options?: DevToolOption[];
   sample?: string;
@@ -482,6 +482,24 @@ export const DEV_TOOLS: DevToolDef[] = [
       { q: 'Is my HAR file uploaded anywhere?', a: 'No. It\'s read and analysed entirely in your browser and never sent to a server, so even a HAR full of tokens stays on your device. It also works offline once loaded.' },
     ],
     keywords: ['har viewer', 'har file viewer', 'open har file', 'analyze har', 'har analyzer online', 'read har file'],
+  },
+  {
+    slug: 'sql-formatter',
+    name: 'SQL Formatter',
+    icon: '🗃️',
+    description:
+      'Format and beautify SQL queries with proper indentation and keyword casing, for MySQL, PostgreSQL, SQL Server, BigQuery and more. Private, in your browser.',
+    lead: 'Paste messy or minified SQL and get it pretty-printed with consistent indentation, line breaks and keyword casing — for the database dialect you choose.',
+    widget: 'sqlformat',
+    how: 'The formatter parses your SQL for the chosen dialect and re-prints it with each clause on its own line, nested expressions indented, and keywords cased consistently (upper, lower or preserved). It understands dialect-specific syntax for MySQL, PostgreSQL, SQLite, SQL Server (T-SQL), BigQuery, Snowflake, Spark and standard SQL. Everything runs in your browser, so queries — which can reveal your schema and data — are never uploaded.',
+    note: 'Formatting only changes whitespace and keyword casing; it never alters what your query does. Pick the dialect that matches your database for the most accurate results, especially with vendor-specific functions and syntax. It\'s ideal for tidying up ORM-generated or one-line queries before code review, or making a complex query readable while you debug it.',
+    faqs: [
+      { q: 'How do I format SQL?', a: 'Paste your query, choose the database dialect and keyword casing, and click Format SQL. You get a clean, indented version you can copy — all done locally in your browser.' },
+      { q: 'Does formatting change my query\'s results?', a: 'No. It only adjusts whitespace, line breaks and the letter case of keywords. The logic and results of the query are completely unchanged.' },
+      { q: 'Which SQL dialects are supported?', a: 'Standard SQL plus MySQL, PostgreSQL, SQLite, MariaDB, SQL Server (T-SQL), BigQuery, Snowflake and Spark SQL. Choosing the right one handles dialect-specific syntax correctly.' },
+      { q: 'Is my SQL sent to a server?', a: 'No — the formatting runs entirely in your browser, so your queries and the schema they reveal never leave your device. It works offline once loaded.' },
+    ],
+    keywords: ['sql formatter', 'format sql', 'sql beautifier', 'sql pretty print', 'format sql online', 'sql formatter online', 'beautify sql'],
   },
 ];
 

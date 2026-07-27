@@ -230,6 +230,7 @@
   "dev/number-base-converter",
   "dev/query-string-parser",
   "dev/regex-tester",
+  "dev/sql-formatter",
   "dev/text-to-hex-converter",
   "dev/unicode-escape-converter",
   "dev/url-encode-decode",
