@@ -1,8 +1,8 @@
 ---
 title: "LLM Tokens Explained: What Your Prompts Actually Cost — and Why Claude & Gemini Counts Are Estimates"
-description: "API bills are denominated in tokens, not words. How tokenization works, the cost formula, verified July 2026 pricing for GPT-5.x, Claude and Gemini, why output tokens dominate the bill, and why only OpenAI counts can be exact in a browser."
+description: "API bills are denominated in tokens, not words. How tokenization works, the cost formula, verified July 2026 pricing for GPT-5.6, Claude Opus 5 and Gemini, why output tokens dominate the bill, and why only OpenAI counts can be exact in a browser."
 pubDate: 2026-07-07
-updatedDate: 2026-07-07
+updatedDate: 2026-07-28
 archetype: explainer
 tools: ["/dev/llm-token-counter/"]
 keywords:
@@ -71,18 +71,20 @@ Every mainstream API prices the two directions separately, per million tokens (M
 
 > **cost per request = (input tokens ÷ 1M × input rate) + (output tokens ÷ 1M × output rate)**
 
-Current list prices, **verified 7 July 2026** against the official pricing pages:
+Current list prices, **verified 28 July 2026** against the official pricing pages:
 
 | Model | Input $/MTok | Output $/MTok |
 |---|---|---|
-| GPT-5.5 | $5.00 | $30.00 |
-| GPT-5.4 | $2.50 | $15.00 |
-| GPT-5.4 mini | $0.75 | $4.50 |
+| GPT-5.6 Sol | $5.00 | $30.00 |
+| GPT-5.6 Terra | $2.50 | $15.00 |
+| GPT-5.6 Luna | $1.00 | $6.00 |
 | GPT-5.4 nano | $0.20 | $1.25 |
 | Claude Fable 5 | $10.00 | $50.00 |
+| Claude Opus 5 | $5.00 | $25.00 |
 | Claude Opus 4.8 | $5.00 | $25.00 |
 | Claude Sonnet 5 | $2.00 → **$3.00 from 1 Sept 2026** | $10.00 → **$15.00** |
 | Claude Haiku 4.5 | $1.00 | $5.00 |
+| Gemini 3.6 Flash | $1.50 | $7.50 |
 | Gemini 3.5 Flash | $1.50 | $9.00 |
 | Gemini 3.1 Pro (≤200k) | $2.00 | $12.00 |
 | Gemini 2.5 Flash-Lite | $0.10 | $0.40 |
@@ -148,4 +150,4 @@ labelled estimates where it isn't, and nothing you paste ever leaves your machin
 (model prices, tokenizer note, 4-chars heuristic, Sonnet 5 schedule) ·
 [OpenAI API pricing](https://developers.openai.com/api/docs/pricing) ·
 [Google Gemini API pricing](https://ai.google.dev/gemini-api/docs/pricing) ·
-[gpt-tokenizer library](https://github.com/niieani/gpt-tokenizer). Prices verified 7 July 2026.*
+[gpt-tokenizer library](https://github.com/niieani/gpt-tokenizer). Prices verified 28 July 2026.*
