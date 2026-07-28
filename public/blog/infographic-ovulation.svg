@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-label="Ovulation happens about 14 days before the next period. The fertile window is the 5 days before ovulation plus the day itself.">
+  <rect width="1200" height="700" fill="#f8fafc"/>
+  <text x="600" y="60" text-anchor="middle" font-family="system-ui, sans-serif" font-size="43" font-weight="800" fill="#0f172a">When is the fertile window?</text>
+  <text x="600" y="102" text-anchor="middle" font-family="system-ui, sans-serif" font-size="25" fill="#475569">Ovulation is ~14 days before your next period — not always &#8220;day 14&#8221;.</text>
+
+  <!-- cycle timeline -->
+  <g font-family="system-ui, sans-serif">
+    <line x1="120" y1="300" x2="1080" y2="300" stroke="#cbd5e1" stroke-width="4"/>
+    <!-- day markers -->
+    <text x="120" y="345" text-anchor="middle" font-size="18" fill="#64748b">Day 1</text>
+    <text x="120" y="270" text-anchor="middle" font-size="18" fill="#64748b">Period</text>
+    <circle cx="120" cy="300" r="9" fill="#ef4444"/>
+
+    <!-- fertile window band (day 10-16 for 28-day) -->
+    <rect x="620" y="278" width="240" height="44" rx="10" fill="#bbf7d0" opacity="0.7"/>
+    <text x="740" y="255" text-anchor="middle" font-size="20" font-weight="700" fill="#166534">Fertile window</text>
+    <text x="740" y="360" text-anchor="middle" font-size="18" fill="#166534">~5 days before + day of</text>
+
+    <!-- ovulation marker day 14 -->
+    <circle cx="820" cy="300" r="11" fill="#16a34a"/>
+    <text x="820" y="392" text-anchor="middle" font-size="19" font-weight="700" fill="#166534">Ovulation (~day 14)</text>
+
+    <!-- next period -->
+    <circle cx="1080" cy="300" r="9" fill="#ef4444"/>
+    <text x="1080" y="270" text-anchor="middle" font-size="18" fill="#64748b">Next period</text>
+    <text x="1080" y="345" text-anchor="middle" font-size="18" fill="#64748b">Day 28</text>
+  </g>
+
+  <g>
+    <rect x="120" y="440" width="960" height="180" rx="16" fill="#eff6ff" stroke="#bfdbfe" stroke-width="2"/>
+    <text x="600" y="484" text-anchor="middle" font-family="system-ui, sans-serif" font-size="23" font-weight="700" fill="#1e3a8a">Why the window is ~6 days</text>
+    <text x="600" y="522" text-anchor="middle" font-family="system-ui, sans-serif" font-size="21" fill="#334155">Sperm can survive up to ~5 days; the egg lives about 24 hours after release.</text>
+    <text x="600" y="556" text-anchor="middle" font-family="system-ui, sans-serif" font-size="21" fill="#334155">For a cycle of length C, ovulation is estimated at day C &#8722; 14.</text>
+    <text x="600" y="596" text-anchor="middle" font-family="system-ui, sans-serif" font-size="19" font-style="italic" fill="#64748b">An estimate for regular cycles — not a contraceptive method.</text>
+  </g>
+  <text x="600" y="660" text-anchor="middle" font-family="system-ui, sans-serif" font-size="20" fill="#94a3b8">lazytools.io/calc/ovulation-calculator</text>
+</svg>

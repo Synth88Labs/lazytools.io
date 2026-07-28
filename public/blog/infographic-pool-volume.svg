@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-label="Pool volume: rectangular is length times width times average depth; round is pi times radius squared times depth. Convert cubic metres to US gallons by multiplying by 264.">
+  <rect width="1200" height="700" fill="#f8fafc"/>
+  <text x="600" y="60" text-anchor="middle" font-family="system-ui, sans-serif" font-size="43" font-weight="800" fill="#0f172a">How many gallons is my pool?</text>
+  <text x="600" y="102" text-anchor="middle" font-family="system-ui, sans-serif" font-size="25" fill="#475569">Volume is the surface area times the average depth.</text>
+
+  <g font-family="system-ui, sans-serif">
+    <rect x="90" y="150" width="500" height="200" rx="16" fill="#ffffff" stroke="#bfdbfe" stroke-width="3"/>
+    <text x="120" y="196" font-size="24" font-weight="800" fill="#1e3a8a">Rectangular</text>
+    <text x="120" y="244" font-family="ui-monospace, monospace" font-size="22" fill="#0f172a">length &#215; width &#215; depth</text>
+    <text x="120" y="300" font-size="21" fill="#334155">8 &#215; 4 &#215; 1.5 m = 48 m&#179;</text>
+    <text x="120" y="332" font-size="21" font-weight="700" fill="#166534">&#8594; ~12,680 US gallons</text>
+
+    <rect x="620" y="150" width="500" height="200" rx="16" fill="#ffffff" stroke="#bfdbfe" stroke-width="3"/>
+    <text x="650" y="196" font-size="24" font-weight="800" fill="#1e3a8a">Round</text>
+    <text x="650" y="244" font-family="ui-monospace, monospace" font-size="22" fill="#0f172a">&#960; &#215; radius&#178; &#215; depth</text>
+    <text x="650" y="300" font-size="21" fill="#334155">radius = diameter &#247; 2</text>
+    <text x="650" y="332" font-size="21" fill="#334155">Oval: &#960; &#215; (L&#247;2) &#215; (W&#247;2) &#215; depth</text>
+  </g>
+
+  <g>
+    <rect x="90" y="386" width="1030" height="150" rx="16" fill="#eff6ff" stroke="#bfdbfe" stroke-width="2"/>
+    <text x="605" y="430" text-anchor="middle" font-family="system-ui, sans-serif" font-size="23" font-weight="700" fill="#1e3a8a">Use the AVERAGE depth</text>
+    <text x="605" y="468" text-anchor="middle" font-family="system-ui, sans-serif" font-size="21" fill="#334155">For a sloped pool, average the shallow and deep ends: (shallow + deep) &#247; 2.</text>
+    <text x="605" y="502" text-anchor="middle" font-family="system-ui, sans-serif" font-size="21" fill="#334155">1 m&#179; = 264 US gallons = 1000 litres.</text>
+  </g>
+  <text x="600" y="586" text-anchor="middle" font-family="system-ui, sans-serif" font-size="22" fill="#334155">Knowing the gallons is the basis for dosing chlorine and every pool chemical correctly.</text>
+  <text x="600" y="656" text-anchor="middle" font-family="system-ui, sans-serif" font-size="20" fill="#94a3b8">lazytools.io/home/pool-volume-calculator</text>
+</svg>

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-label="Voltage drop equals 2 times current times resistance per metre times one-way length for DC and single phase; use the square root of 3 for three-phase. Keep it under 3 percent.">
+  <rect width="1200" height="700" fill="#f8fafc"/>
+  <text x="600" y="60" text-anchor="middle" font-family="system-ui, sans-serif" font-size="43" font-weight="800" fill="#0f172a">Voltage drop over a wire run</text>
+  <text x="600" y="102" text-anchor="middle" font-family="system-ui, sans-serif" font-size="25" fill="#475569">Every wire has resistance, so some voltage is lost before it reaches the load.</text>
+
+  <g>
+    <rect x="90" y="150" width="1020" height="130" rx="16" fill="#ffffff" stroke="#bfdbfe" stroke-width="3"/>
+    <text x="600" y="200" text-anchor="middle" font-family="ui-monospace, monospace" font-size="25" font-weight="700" fill="#1e3a8a">drop = factor &#215; current &#215; (resistance/m) &#215; one-way length</text>
+    <text x="600" y="248" text-anchor="middle" font-family="system-ui, sans-serif" font-size="21" fill="#64748b">factor = 2 for DC / single-phase (out and back)&#8195;&#8226;&#8195;&#8730;3 for three-phase</text>
+  </g>
+
+  <g font-family="system-ui, sans-serif">
+    <rect x="150" y="320" width="430" height="200" rx="14" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="2"/>
+    <text x="365" y="366" text-anchor="middle" font-size="24" font-weight="800" fill="#166534">Keep it under 3%</text>
+    <text x="365" y="410" text-anchor="middle" font-size="21" fill="#334155">NEC recommends &lt;3% on a</text>
+    <text x="365" y="440" text-anchor="middle" font-size="21" fill="#334155">branch circuit (5% total).</text>
+    <text x="365" y="484" text-anchor="middle" font-size="21" fill="#334155">Solar installers often aim 2%.</text>
+
+    <rect x="620" y="320" width="430" height="200" rx="14" fill="#eff6ff" stroke="#bfdbfe" stroke-width="2"/>
+    <text x="835" y="366" text-anchor="middle" font-size="24" font-weight="800" fill="#1e3a8a">To reduce it</text>
+    <text x="835" y="410" text-anchor="middle" font-size="21" fill="#334155">&#8226; Thicker wire (lower AWG)</text>
+    <text x="835" y="444" text-anchor="middle" font-size="21" fill="#334155">&#8226; Shorter run</text>
+    <text x="835" y="478" text-anchor="middle" font-size="21" fill="#334155">&#8226; Copper, or higher voltage</text>
+  </g>
+
+  <text x="600" y="580" text-anchor="middle" font-family="system-ui, sans-serif" font-size="22" fill="#334155">Aluminium has ~1.6&#215; the resistance of copper for the same gauge.</text>
+  <text x="600" y="662" text-anchor="middle" font-family="system-ui, sans-serif" font-size="20" fill="#94a3b8">lazytools.io/electronics/voltage-drop-calculator</text>
+</svg>

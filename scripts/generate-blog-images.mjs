@@ -916,6 +916,41 @@ const POSTS = [
     fact: 'Fridge thaw ~24 h per 4–5 lb. Temp beats the clock.',
     icon: '🦃',
   },
+  {
+    slug: 'electricity-cost-of-appliances-guide',
+    kicker: 'CALCULATORS',
+    lines: ['Appliance cost:', 'watts ÷ 1000 × hours', '× price per kWh'],
+    fact: '1500 W heater, 5 h/day @ $0.20 = $1.50/day',
+    icon: '🔌',
+  },
+  {
+    slug: 'ovulation-fertile-window-guide',
+    kicker: 'CALCULATORS',
+    lines: ['Fertile window:', 'ovulation is ~14 days', 'before your next period'],
+    fact: 'The ~6-day window ends on ovulation day',
+    icon: '🌸',
+  },
+  {
+    slug: 'voltage-drop-explained-guide',
+    kicker: 'ELECTRONICS',
+    lines: ['Voltage drop:', '2 × I × R/m × length,', 'keep it under 3%'],
+    fact: 'Fix it: thicker wire, shorter run, copper',
+    icon: '📉',
+  },
+  {
+    slug: 'json-to-typescript-guide',
+    kicker: 'DEVELOPER TOOLS',
+    lines: ['JSON → TypeScript:', 'infer types, nest', 'interfaces, mark optional'],
+    fact: 'Nested objects become their own interface',
+    icon: '🟦',
+  },
+  {
+    slug: 'pool-volume-gallons-guide',
+    kicker: 'HOME & DIY',
+    lines: ['Pool gallons:', 'area × average depth,', 'then convert'],
+    fact: '8×4×1.5 m = 48 m³ ≈ 12,680 US gallons',
+    icon: '🏊',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

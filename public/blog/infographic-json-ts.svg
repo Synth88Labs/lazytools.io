@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-label="JSON on the left maps to TypeScript interfaces on the right: strings become string, numbers become number, nested objects become their own interface, and missing keys become optional.">
+  <rect width="1200" height="700" fill="#f8fafc"/>
+  <text x="600" y="58" text-anchor="middle" font-family="system-ui, sans-serif" font-size="42" font-weight="800" fill="#0f172a">JSON &#8594; TypeScript interfaces</text>
+  <text x="600" y="100" text-anchor="middle" font-family="system-ui, sans-serif" font-size="25" fill="#475569">Each value maps to a type; nested objects become their own interface.</text>
+
+  <!-- JSON -->
+  <g>
+    <rect x="60" y="140" width="520" height="470" rx="14" fill="#0f172a"/>
+    <text x="85" y="178" font-family="ui-monospace, monospace" font-size="20" fill="#94a3b8">JSON</text>
+    <text x="85" y="220" font-family="ui-monospace, monospace" font-size="21" fill="#e2e8f0">{</text>
+    <text x="105" y="252" font-family="ui-monospace, monospace" font-size="21" fill="#7dd3fc">"id"<tspan fill="#e2e8f0">: </tspan><tspan fill="#fca5a5">1</tspan><tspan fill="#e2e8f0">,</tspan></text>
+    <text x="105" y="284" font-family="ui-monospace, monospace" font-size="21" fill="#7dd3fc">"name"<tspan fill="#e2e8f0">: </tspan><tspan fill="#86efac">"Ada"</tspan><tspan fill="#e2e8f0">,</tspan></text>
+    <text x="105" y="316" font-family="ui-monospace, monospace" font-size="21" fill="#7dd3fc">"active"<tspan fill="#e2e8f0">: </tspan><tspan fill="#fca5a5">true</tspan><tspan fill="#e2e8f0">,</tspan></text>
+    <text x="105" y="348" font-family="ui-monospace, monospace" font-size="21" fill="#7dd3fc">"tags"<tspan fill="#e2e8f0">: [</tspan><tspan fill="#86efac">"x"</tspan><tspan fill="#e2e8f0">],</tspan></text>
+    <text x="105" y="380" font-family="ui-monospace, monospace" font-size="21" fill="#7dd3fc">"pet"<tspan fill="#e2e8f0">: {</tspan></text>
+    <text x="125" y="412" font-family="ui-monospace, monospace" font-size="21" fill="#7dd3fc">"kind"<tspan fill="#e2e8f0">: </tspan><tspan fill="#86efac">"cat"</tspan></text>
+    <text x="105" y="444" font-family="ui-monospace, monospace" font-size="21" fill="#e2e8f0">}</text>
+    <text x="85" y="476" font-family="ui-monospace, monospace" font-size="21" fill="#e2e8f0">}</text>
+  </g>
+
+  <text x="600" y="380" text-anchor="middle" font-family="system-ui, sans-serif" font-size="40" fill="#94a3b8">&#8594;</text>
+
+  <!-- TS -->
+  <g>
+    <rect x="620" y="140" width="520" height="470" rx="14" fill="#1e293b"/>
+    <text x="645" y="178" font-family="ui-monospace, monospace" font-size="20" fill="#94a3b8">TypeScript</text>
+    <text x="645" y="220" font-family="ui-monospace, monospace" font-size="21" fill="#c4b5fd">interface <tspan fill="#fcd34d">Root</tspan> <tspan fill="#e2e8f0">{</tspan></text>
+    <text x="665" y="252" font-family="ui-monospace, monospace" font-size="21" fill="#e2e8f0">id: <tspan fill="#7dd3fc">number</tspan>;</text>
+    <text x="665" y="284" font-family="ui-monospace, monospace" font-size="21" fill="#e2e8f0">name: <tspan fill="#7dd3fc">string</tspan>;</text>
+    <text x="665" y="316" font-family="ui-monospace, monospace" font-size="21" fill="#e2e8f0">active: <tspan fill="#7dd3fc">boolean</tspan>;</text>
+    <text x="665" y="348" font-family="ui-monospace, monospace" font-size="21" fill="#e2e8f0">tags: <tspan fill="#7dd3fc">string</tspan>[];</text>
+    <text x="665" y="380" font-family="ui-monospace, monospace" font-size="21" fill="#e2e8f0">pet: <tspan fill="#fcd34d">Pet</tspan>;</text>
+    <text x="645" y="412" font-family="ui-monospace, monospace" font-size="21" fill="#e2e8f0">}</text>
+    <text x="645" y="456" font-family="ui-monospace, monospace" font-size="21" fill="#c4b5fd">interface <tspan fill="#fcd34d">Pet</tspan> <tspan fill="#e2e8f0">{</tspan></text>
+    <text x="665" y="488" font-family="ui-monospace, monospace" font-size="21" fill="#e2e8f0">kind: <tspan fill="#7dd3fc">string</tspan>;</text>
+    <text x="645" y="520" font-family="ui-monospace, monospace" font-size="21" fill="#e2e8f0">}</text>
+  </g>
+
+  <text x="600" y="655" text-anchor="middle" font-family="system-ui, sans-serif" font-size="20" fill="#94a3b8">lazytools.io/dev/json-to-typescript</text>
+</svg>

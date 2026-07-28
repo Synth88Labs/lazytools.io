@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-label="Appliance running cost equals watts divided by 1000, times hours used, times the price per kilowatt-hour.">
+  <rect width="1200" height="700" fill="#f8fafc"/>
+  <text x="600" y="62" text-anchor="middle" font-family="system-ui, sans-serif" font-size="43" font-weight="800" fill="#0f172a">What does it cost to run?</text>
+  <text x="600" y="104" text-anchor="middle" font-family="system-ui, sans-serif" font-size="26" fill="#475569">Electricity is billed in kilowatt-hours: 1000 watts for one hour = 1 kWh.</text>
+
+  <g>
+    <rect x="120" y="150" width="960" height="120" rx="16" fill="#ffffff" stroke="#bfdbfe" stroke-width="3"/>
+    <text x="600" y="205" text-anchor="middle" font-family="ui-monospace, monospace" font-size="27" font-weight="700" fill="#1e3a8a">cost = (watts &#247; 1000) &#215; hours &#215; price per kWh</text>
+    <text x="600" y="246" text-anchor="middle" font-family="system-ui, sans-serif" font-size="21" fill="#64748b">Find the wattage on the label, or watts = volts &#215; amps.</text>
+  </g>
+
+  <g font-family="system-ui, sans-serif">
+    <rect x="150" y="310" width="900" height="230" rx="16" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="2"/>
+    <text x="600" y="356" text-anchor="middle" font-size="25" font-weight="800" fill="#166534">Example: a 1500 W space heater</text>
+    <text x="180" y="408" font-size="23" fill="#334155">Used 5 hours a day at $0.20 per kWh:</text>
+    <text x="180" y="452" font-family="ui-monospace, monospace" font-size="22" fill="#0f172a">(1500 &#247; 1000) &#215; 5 &#215; 0.20 = $1.50 / day</text>
+    <text x="180" y="500" font-family="ui-monospace, monospace" font-size="22" fill="#166534">&#8594; ~$45 / month&#8195;&#8195;~$547 / year</text>
+  </g>
+
+  <text x="600" y="596" text-anchor="middle" font-family="system-ui, sans-serif" font-size="22" fill="#334155">Fridges and ACs cycle on and off — estimate their real on-time, not a full 24 hours.</text>
+  <text x="600" y="662" text-anchor="middle" font-family="system-ui, sans-serif" font-size="20" fill="#94a3b8">lazytools.io/calc/electricity-cost-calculator</text>
+</svg>
