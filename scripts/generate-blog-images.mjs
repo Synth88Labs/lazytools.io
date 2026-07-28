@@ -881,6 +881,41 @@ const POSTS = [
     fact: 'pdf-lib + pdf.js edit locally — no server needed',
     icon: '🔒',
   },
+  {
+    slug: 'two-stroke-fuel-mix-guide',
+    kicker: 'AUTOMOTIVE',
+    lines: ['Two-stroke fuel mix:', 'oil = fuel ÷ the', 'ratio number'],
+    fact: '5 L at 50:1 → 100 ml oil. Lower ratio = more oil.',
+    icon: '⛽',
+  },
+  {
+    slug: 'navy-body-fat-method-guide',
+    kicker: 'FITNESS',
+    lines: ['Body fat from a', 'tape measure: the', 'US Navy method'],
+    fact: 'Men: neck + waist. Women: + hips. Both use height.',
+    icon: '📏',
+  },
+  {
+    slug: 'what-grade-do-i-need-on-my-final-guide',
+    kicker: 'CALCULATORS',
+    lines: ['What do I need', 'on my final? Solve', 'the weighted average'],
+    fact: 'needed = (target − current×(1−w)) ÷ w',
+    icon: '🎯',
+  },
+  {
+    slug: 'how-much-protein-per-day-guide',
+    kicker: 'CALCULATORS',
+    lines: ['How much protein?', 'Set it per kilo of', 'body weight, by goal'],
+    fact: 'Build muscle: 1.6–2.2 g/kg. 70 kg → ~112–154 g/day',
+    icon: '🍗',
+  },
+  {
+    slug: 'turkey-cooking-time-guide',
+    kicker: 'COOKING',
+    lines: ['Turkey timing:', 'roast ~13 min/lb,', 'done at 165°F'],
+    fact: 'Fridge thaw ~24 h per 4–5 lb. Temp beats the clock.',
+    icon: '🦃',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

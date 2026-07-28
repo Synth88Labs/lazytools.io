@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-label="Two-stroke fuel mixing: oil equals fuel divided by the ratio number. At 50 to 1, 5 litres of petrol needs 100 millilitres of oil.">
+  <rect width="1200" height="700" fill="#f8fafc"/>
+  <text x="600" y="62" text-anchor="middle" font-family="system-ui, sans-serif" font-size="44" font-weight="800" fill="#0f172a">Two-stroke mix: one simple rule</text>
+  <text x="600" y="106" text-anchor="middle" font-family="system-ui, sans-serif" font-size="27" fill="#475569">The oil you add is just the fuel volume divided by the ratio number.</text>
+
+  <g>
+    <rect x="150" y="160" width="900" height="150" rx="16" fill="#ffffff" stroke="#bfdbfe" stroke-width="3"/>
+    <text x="600" y="215" text-anchor="middle" font-family="ui-monospace, monospace" font-size="34" font-weight="700" fill="#1e3a8a">oil = fuel &#247; ratio number</text>
+    <text x="600" y="262" text-anchor="middle" font-family="system-ui, sans-serif" font-size="23" fill="#334155">A 50:1 mix is 50 parts petrol to 1 part oil, so oil = fuel &#247; 50.</text>
+    <text x="600" y="292" text-anchor="middle" font-family="system-ui, sans-serif" font-size="21" fill="#64748b">A smaller second number (32:1) means MORE oil per litre than 50:1.</text>
+  </g>
+
+  <!-- three examples -->
+  <g font-family="system-ui, sans-serif">
+    <rect x="90" y="350" width="320" height="220" rx="14" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+    <text x="250" y="392" text-anchor="middle" font-size="26" font-weight="800" fill="#166534">50 : 1</text>
+    <text x="250" y="440" text-anchor="middle" font-size="22" fill="#334155">5 L petrol</text>
+    <text x="250" y="474" text-anchor="middle" font-size="21" fill="#64748b">5000 ml &#247; 50</text>
+    <text x="250" y="524" text-anchor="middle" font-family="ui-monospace, monospace" font-size="30" font-weight="700" fill="#0f172a">100 ml oil</text>
+
+    <rect x="440" y="350" width="320" height="220" rx="14" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+    <text x="600" y="392" text-anchor="middle" font-size="26" font-weight="800" fill="#b45309">40 : 1</text>
+    <text x="600" y="440" text-anchor="middle" font-size="22" fill="#334155">5 L petrol</text>
+    <text x="600" y="474" text-anchor="middle" font-size="21" fill="#64748b">5000 ml &#247; 40</text>
+    <text x="600" y="524" text-anchor="middle" font-family="ui-monospace, monospace" font-size="30" font-weight="700" fill="#0f172a">125 ml oil</text>
+
+    <rect x="790" y="350" width="320" height="220" rx="14" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+    <text x="950" y="392" text-anchor="middle" font-size="26" font-weight="800" fill="#991b1b">32 : 1</text>
+    <text x="950" y="440" text-anchor="middle" font-size="22" fill="#334155">5 L petrol</text>
+    <text x="950" y="474" text-anchor="middle" font-size="21" fill="#64748b">5000 ml &#247; 32</text>
+    <text x="950" y="524" text-anchor="middle" font-family="ui-monospace, monospace" font-size="30" font-weight="700" fill="#0f172a">156 ml oil</text>
+  </g>
+
+  <text x="600" y="628" text-anchor="middle" font-family="system-ui, sans-serif" font-size="22" fill="#334155">Always use the exact ratio your engine\'s manual specifies — too little oil can seize the engine.</text>
+  <text x="600" y="672" text-anchor="middle" font-family="system-ui, sans-serif" font-size="20" fill="#94a3b8">lazytools.io/automotive/two-stroke-fuel-mix-calculator</text>
+</svg>

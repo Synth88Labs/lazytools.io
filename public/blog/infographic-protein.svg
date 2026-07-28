@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-label="Daily protein targets by goal, in grams per kilogram of body weight: general health 0.8, active 1.2 to 1.6, building muscle 1.6 to 2.2, fat loss 1.8 to 2.4.">
+  <rect width="1200" height="700" fill="#f8fafc"/>
+  <text x="600" y="60" text-anchor="middle" font-family="system-ui, sans-serif" font-size="43" font-weight="800" fill="#0f172a">How much protein per day?</text>
+  <text x="600" y="102" text-anchor="middle" font-family="system-ui, sans-serif" font-size="26" fill="#475569">Set it per kilogram of body weight, scaled to your goal.</text>
+
+  <g font-family="system-ui, sans-serif">
+    <!-- rows -->
+    <g>
+      <rect x="120" y="150" width="960" height="80" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+      <text x="150" y="198" font-size="24" font-weight="700" fill="#334155">General health</text>
+      <text x="1050" y="198" text-anchor="end" font-family="ui-monospace, monospace" font-size="26" font-weight="700" fill="#0f172a">0.8 g/kg</text>
+    </g>
+    <g>
+      <rect x="120" y="245" width="960" height="80" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+      <text x="150" y="293" font-size="24" font-weight="700" fill="#334155">Recreationally active</text>
+      <text x="1050" y="293" text-anchor="end" font-family="ui-monospace, monospace" font-size="26" font-weight="700" fill="#0f172a">1.2&#8211;1.6 g/kg</text>
+    </g>
+    <g>
+      <rect x="120" y="340" width="960" height="80" rx="12" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="2"/>
+      <text x="150" y="388" font-size="24" font-weight="700" fill="#166534">Building muscle / strength</text>
+      <text x="1050" y="388" text-anchor="end" font-family="ui-monospace, monospace" font-size="26" font-weight="700" fill="#166534">1.6&#8211;2.2 g/kg</text>
+    </g>
+    <g>
+      <rect x="120" y="435" width="960" height="80" rx="12" fill="#eff6ff" stroke="#bfdbfe" stroke-width="2"/>
+      <text x="150" y="483" font-size="24" font-weight="700" fill="#1e3a8a">Fat loss (keep muscle)</text>
+      <text x="1050" y="483" text-anchor="end" font-family="ui-monospace, monospace" font-size="26" font-weight="700" fill="#1e3a8a">1.8&#8211;2.4 g/kg</text>
+    </g>
+  </g>
+
+  <text x="600" y="570" text-anchor="middle" font-family="system-ui, sans-serif" font-size="23" fill="#334155">Example: a 70 kg lifter &#8594; 70 &#215; 1.6&#8211;2.2 = <tspan font-weight="700" fill="#0f172a">about 112&#8211;154 g/day</tspan></text>
+  <text x="600" y="612" text-anchor="middle" font-family="system-ui, sans-serif" font-size="21" fill="#64748b">Spread across ~3&#8211;4 meals of 20&#8211;40 g. Pounds &#247; 2.2 = kilograms.</text>
+  <text x="600" y="666" text-anchor="middle" font-family="system-ui, sans-serif" font-size="20" fill="#94a3b8">lazytools.io/calc/protein-intake-calculator</text>
+</svg>
