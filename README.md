@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-blue.svg"></a>
+  <a href="LICENSE"><img alt="License: Source-Available" src="https://img.shields.io/badge/license-Source--Available-blue.svg"></a>
   <img alt="Built with Astro" src="https://img.shields.io/badge/built%20with-Astro-ff5d01.svg">
   <img alt="PRs welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg">
   <a href="https://lazytools.io"><img alt="Status: live" src="https://img.shields.io/badge/status-live%20at%20lazytools.io-brightgreen.svg"></a>
@@ -130,9 +130,14 @@ no IP address, no cookie, no user agent, no identifiers. (Standard host access l
 Self-hosting the WASM/model assets means the strict "no third-party requests" promise holds even for
 the ML features — you can verify it in DevTools' network tab.
 
-## Use these tools in your own site
+## Read and learn from the source
 
-The code is MIT-licensed — reuse is the point:
+The full source is public so you can **read, audit, and verify** it — including the promise
+that everything runs in your browser and nothing is uploaded. It's **source-available, not
+open source** ([LICENSE](LICENSE)): small excerpts are fine for personal or educational
+projects, but redistributing it, hosting a copy, running a competing service, or reusing the
+written/blog content isn't — [ask first](mailto:synth88labs@gmail.com) for anything commercial.
+Notable building blocks worth reading:
 
 - **Conversion engine**: [`src/data/units/`](src/data/units/) — self-contained, dependency-free
   TypeScript (exact factors, linear transforms). Copy the folder and call `convert(value, from, to)`.
@@ -151,7 +156,7 @@ The code is MIT-licensed — reuse is the point:
   [`src/lib/face-model.ts`](src/lib/face-model.ts); country specs (each source-cited) live in
   [`src/data/photo/`](src/data/photo/).
 
-Attribution is appreciated (a link to [lazytools.io](https://lazytools.io)) but not required by the license.
+For commercial reuse, redistribution, or reuse of the written/blog content, please ask first: synth88labs@gmail.com.
 
 ## Contributing
 
@@ -161,4 +166,4 @@ and editorially reviewed content — corrections and suggestions via the
 
 ## License & contact
 
-[MIT](LICENSE) © 2026 [Synth88 Labs Inc.](https://synth88.com) · Contact: synth88labs@gmail.com
+[Source-Available License](LICENSE) © 2026 [Synth88 Labs Inc.](https://synth88.com) · Contact: synth88labs@gmail.com

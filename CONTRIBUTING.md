@@ -1,7 +1,8 @@
 # Contributing to LazyTools
 
-Thanks for your interest! LazyTools is MIT-licensed and contributions are welcome — from typo fixes to
-whole new tools.
+Thanks for your interest! LazyTools is **source-available** (see [LICENSE](LICENSE)) and contributions
+are welcome — from typo fixes to whole new tools. By submitting a pull request, you agree your
+contribution is licensed to the project under those terms.
 
 ## Ground rules
 
