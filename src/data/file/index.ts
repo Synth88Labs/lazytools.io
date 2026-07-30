@@ -16,7 +16,7 @@ export interface FileToolDef {
   description: string;
   lead: string;
   /** custom widget instead of the generic text-convert UI */
-  widget?: 'einvoice' | 'ksef-viewer' | 'ksef-validator';
+  widget?: 'einvoice' | 'ksef-viewer' | 'ksef-validator' | 'excel-to-csv' | 'excel-to-json' | 'csv-to-excel';
   computeId?: string;
   options?: FileToolOption[];
   /** sample input preloaded so the tool demonstrates itself */
@@ -385,6 +385,63 @@ export const FILE_TOOLS: FileToolDef[] = [
       { q: 'Is my invoice uploaded?', a: 'No — parsing is local and the tool works offline. Client names, amounts and IBANs stay on your device.' },
     ],
     keywords: ['peppol viewer', 'peppol bis 3.0 viewer', 'belgium e-invoicing 2026', 'open peppol invoice', 'ubl invoice viewer', 'peppol xml reader', 'facturation électronique belgique', 'e-invoicing belgië'],
+  },
+  {
+    slug: 'excel-to-csv',
+    name: 'Excel to CSV Converter',
+    icon: '📊',
+    description:
+      'Convert an Excel spreadsheet (.xlsx/.xls) to CSV in your browser — pick the sheet, copy or download. Never uploaded.',
+    lead: 'Turn an .xlsx or .xls workbook into plain CSV — choose the sheet and download, all on your device.',
+    widget: 'excel-to-csv',
+    accept: '.xlsx,.xls,.csv',
+    how: 'The workbook is parsed in the browser with SheetJS. If it has multiple sheets you pick which one to export; the chosen sheet\'s cells are written out as comma-separated values with quoting where needed, ready to copy or download as a .csv. Formulas are exported as their computed values.',
+    note: 'CSV is the universal format for importing data into databases, analytics tools and scripts — but spreadsheets often live as .xlsx. Converting locally matters because spreadsheets routinely hold financial, HR or customer data you shouldn\'t hand to a random web converter. Only the values are kept — formatting, charts and formulas-as-formulas are dropped, which is expected for CSV.',
+    faqs: [
+      { q: 'How do I convert Excel to CSV?', a: 'Open your .xlsx or .xls file, pick the sheet if there\'s more than one, and copy or download the CSV. It all happens in your browser.' },
+      { q: 'What happens to multiple sheets?', a: 'CSV holds one table, so you choose which sheet to export. Run the tool again for each sheet you need.' },
+      { q: 'Are formulas exported?', a: 'As their calculated values, not the formula text — which is what CSV supports. Formatting, colours and charts are not part of CSV and are dropped.' },
+      { q: 'Is my spreadsheet uploaded?', a: 'No — SheetJS parses it in your browser. Financial and personal data in the file never leaves your device, and it works offline.' },
+    ],
+    keywords: ['excel to csv', 'convert xlsx to csv', 'xlsx to csv', 'excel to csv converter', 'spreadsheet to csv', 'xls to csv'],
+  },
+  {
+    slug: 'excel-to-json',
+    name: 'Excel to JSON Converter',
+    icon: '🧾',
+    description:
+      'Convert an Excel spreadsheet (.xlsx/.xls) to JSON — the first row becomes the keys — in your browser, never uploaded.',
+    lead: 'Turn a spreadsheet into an array of JSON objects, keyed by the header row — pick the sheet, copy or download, locally.',
+    widget: 'excel-to-json',
+    accept: '.xlsx,.xls,.csv',
+    how: 'The workbook is parsed with SheetJS in the browser. The first row of the chosen sheet is treated as the field names, and each subsequent row becomes a JSON object mapping those names to its cell values — producing an array of objects, formatted and ready to copy or download. Numbers and booleans keep their types where the spreadsheet stored them as such.',
+    note: 'JSON is what most APIs, config files and JavaScript code expect, so turning a spreadsheet of data into a JSON array is a common developer task. Doing it in the browser means an internal or customer dataset never touches a third-party server. If your sheet has no header row, the keys will be the first data row — add a header first for meaningful field names.',
+    faqs: [
+      { q: 'How do I convert Excel to JSON?', a: 'Load the .xlsx/.xls file, choose the sheet, and the tool outputs an array of JSON objects keyed by the header row. Copy it or download a .json file.' },
+      { q: 'How are the JSON keys chosen?', a: 'From the first row of the sheet — treat it as your header. Each following row becomes one object mapping those headers to its values.' },
+      { q: 'Do numbers stay numbers?', a: 'Yes where the spreadsheet stored them as numbers or booleans — they\'re emitted as JSON numbers/booleans, not strings. Text cells become strings.' },
+      { q: 'Is my file uploaded?', a: 'No — parsing runs locally with SheetJS. Your data stays in the browser and the tool works offline.' },
+    ],
+    keywords: ['excel to json', 'convert xlsx to json', 'xlsx to json', 'excel to json converter', 'spreadsheet to json', 'xls to json'],
+  },
+  {
+    slug: 'csv-to-excel',
+    name: 'CSV to Excel Converter',
+    icon: '📈',
+    description:
+      'Convert CSV data into a real Excel .xlsx workbook — paste or load a file — in your browser, never uploaded.',
+    lead: 'Turn CSV text or a .csv file into a proper .xlsx spreadsheet that opens cleanly in Excel — all on your device.',
+    widget: 'csv-to-excel',
+    accept: '.csv,text/csv',
+    how: 'The tool parses your CSV (from a file or pasted text) into rows and columns with SheetJS and writes a genuine .xlsx workbook, which downloads ready to open in Excel, Google Sheets or LibreOffice. Unlike simply renaming a .csv to .xlsx, this produces a real spreadsheet file with proper cells and types.',
+    note: 'Opening a raw CSV in Excel can mangle things — leading zeros stripped from IDs, long numbers shown in scientific notation, dates reformatted. Converting to a true .xlsx gives you a clean spreadsheet to work from. It runs entirely in your browser, so the data in the CSV never leaves your device.',
+    faqs: [
+      { q: 'How do I convert CSV to Excel?', a: 'Paste your CSV or load a .csv file, and download a real .xlsx workbook. It opens directly in Excel, Google Sheets or LibreOffice.' },
+      { q: 'Why not just rename the .csv to .xlsx?', a: 'That doesn\'t create a real spreadsheet — Excel would still parse it as text and may mangle IDs, big numbers or dates. This writes a genuine .xlsx file with proper cells.' },
+      { q: 'Does it detect the delimiter?', a: 'It parses standard comma-separated values, including quoted fields containing commas. For other delimiters, convert to commas first or use the CSV tools.' },
+      { q: 'Is my CSV uploaded?', a: 'No — the workbook is built in your browser with SheetJS. The data stays on your device and it works offline.' },
+    ],
+    keywords: ['csv to excel', 'convert csv to xlsx', 'csv to xlsx', 'csv to excel converter', 'csv to spreadsheet', 'make xlsx from csv'],
   },
 ];
 

@@ -2,7 +2,7 @@ import { useState } from 'preact/hooks';
 import { fmtSize } from '../../lib/audio-compute';
 
 interface Props {
-  mode: 'compress' | 'convert' | 'resize' | 'base64' | 'rotate' | 'circle';
+  mode: 'compress' | 'convert' | 'resize' | 'base64' | 'rotate' | 'circle' | 'flip';
 }
 
 export default function ImageTool({ mode }: Props) {
@@ -76,7 +76,7 @@ export default function ImageTool({ mode }: Props) {
         ctx.clip();
         // Centre-crop the source to the square before drawing.
         ctx.drawImage(img, (dims.w - square) / 2, (dims.h - square) / 2, square, square, 0, 0, square, square);
-      } else if (mode === 'rotate') {
+      } else if (mode === 'rotate' || mode === 'flip') {
         ctx.translate(targetW / 2, targetH / 2);
         ctx.rotate((rotation * Math.PI) / 180);
         ctx.scale(flipH ? -1 : 1, flipV ? -1 : 1);
@@ -90,6 +90,7 @@ export default function ImageTool({ mode }: Props) {
         : mode === 'compress' ? 'compressed'
         : mode === 'circle' ? 'circle'
         : mode === 'rotate' ? 'rotated'
+        : mode === 'flip' ? 'flipped'
         : 'converted';
       canvas.toBlob(
         (blob) => {
@@ -193,6 +194,23 @@ export default function ImageTool({ mode }: Props) {
               </div>
             )}
 
+            {mode === 'flip' && (
+              <div class="space-y-3">
+                <span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Flip / mirror</span>
+                <div class="flex flex-wrap gap-4">
+                  <label class="flex items-center gap-2 text-sm font-medium text-slate-700">
+                    <input type="checkbox" checked={flipH} onChange={(e) => setFlipH((e.target as HTMLInputElement).checked)} class="h-4 w-4 rounded border-slate-300 text-brand-600" />
+                    Flip horizontally (mirror left–right)
+                  </label>
+                  <label class="flex items-center gap-2 text-sm font-medium text-slate-700">
+                    <input type="checkbox" checked={flipV} onChange={(e) => setFlipV((e.target as HTMLInputElement).checked)} class="h-4 w-4 rounded border-slate-300 text-brand-600" />
+                    Flip vertically (top–bottom)
+                  </label>
+                </div>
+                {!flipH && !flipV && <p class="text-xs text-slate-500">Tick an axis to mirror the image; the output keeps the same dimensions and format.</p>}
+              </div>
+            )}
+
             {mode === 'circle' && (
               <p class="text-sm text-slate-600">
                 The image is centre-cropped to a square, then masked to a circle. Output is always <strong>PNG</strong>, since the corners need transparency —
@@ -200,7 +218,7 @@ export default function ImageTool({ mode }: Props) {
               </p>
             )}
 
-            {(mode === 'convert' || mode === 'compress' || mode === 'resize' || mode === 'rotate') && (
+            {(mode === 'convert' || mode === 'compress' || mode === 'resize' || mode === 'rotate' || mode === 'flip') && (
               <div class="mt-3">
                 <label for="it-fmt" class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Output format</label>
                 <select id="it-fmt" value={format} onChange={(e) => setFormat((e.target as HTMLSelectElement).value as typeof format)} class={`${inputCls} max-w-xs`}>
@@ -220,7 +238,7 @@ export default function ImageTool({ mode }: Props) {
             )}
 
             <button type="button" onClick={render} class="mt-4 rounded-xl bg-brand-700 px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-brand-800">
-              ⬇ {mode === 'compress' ? 'Compress' : mode === 'resize' ? 'Resize' : mode === 'rotate' ? 'Apply' : mode === 'circle' ? 'Crop to circle' : 'Convert'} &amp; download
+              ⬇ {mode === 'compress' ? 'Compress' : mode === 'resize' ? 'Resize' : mode === 'rotate' ? 'Apply' : mode === 'flip' ? 'Flip' : mode === 'circle' ? 'Crop to circle' : 'Convert'} &amp; download
             </button>
             {outInfo && <p class="mt-2 text-sm font-medium text-mint-700" aria-live="polite">{outInfo}</p>}
           </div>

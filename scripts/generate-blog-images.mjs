@@ -1021,6 +1021,13 @@ const POSTS = [
     fact: '20 m² room ÷ 2 m²/box + 10% waste = 11 boxes',
     icon: '🪵',
   },
+  {
+    slug: 'reduce-image-size-to-kb-guide',
+    kicker: 'IMAGE GUIDE',
+    lines: ['How to reduce', 'image size to KB', '(under 50 KB)'],
+    fact: 'lower JPEG quality, then downscale if needed · 480 KB → 48 KB',
+    icon: '🎯',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

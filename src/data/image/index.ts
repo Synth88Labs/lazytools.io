@@ -6,7 +6,7 @@ export interface ImageToolDef {
   icon: string;
   description: string;
   lead: string;
-  widget: 'compress' | 'convert' | 'resize' | 'base64' | 'heic' | 'rotate' | 'circle' | 'split' | 'metadata' | 'annotate';
+  widget: 'compress' | 'convert' | 'resize' | 'base64' | 'heic' | 'rotate' | 'circle' | 'split' | 'metadata' | 'annotate' | 'flip' | 'crop' | 'resizekb' | 'watermark' | 'favicon' | 'svgpng' | 'b64img' | 'combine';
   how: string;
   note?: string;
   faqs: { q: string; a: string }[];
@@ -200,5 +200,157 @@ export const IMAGE_TOOLS: ImageToolDef[] = [
       { q: 'Are my screenshots uploaded?', a: 'No. All the drawing and exporting happens in your browser with the Canvas API, so internal or sensitive screenshots stay on your device.' },
     ],
     keywords: ['annotate image', 'annotate screenshot', 'add arrows to image', 'markup image online', 'screenshot annotation tool', 'draw on image', 'image markup'],
+  },
+  {
+    slug: 'crop-image',
+    name: 'Crop Image',
+    icon: '✂️',
+    description:
+      'Crop an image to a rectangle or a fixed aspect ratio (1:1, 16:9, 4:3…) and download it at full resolution — in your browser, never uploaded.',
+    lead: 'Drag a crop box or pick an aspect ratio, then download the exact region at full quality — your image never leaves the browser.',
+    widget: 'crop',
+    how: 'Cropping keeps a rectangular region of an image and discards the rest. Drag the crop box, or type an exact X, Y, width and height in pixels, and optionally lock it to a common aspect ratio — 1:1 for avatars, 16:9 for video thumbnails, 4:5 for portrait posts. The tool redraws just that region onto a new canvas at the source resolution and exports it as a PNG, so the pixels you keep are not rescaled or re-compressed.',
+    note: 'Cropping is lossless for the pixels you keep — unlike resizing, it doesn\'t rescale anything, so text and fine detail stay sharp. Aspect presets matter when a platform expects a shape: 1:1 for most profile pictures, 16:9 for YouTube and most video thumbnails, 4:5 for Instagram portrait. Because it all runs on your device, you can crop screenshots of private documents without them ever touching a server.',
+    faqs: [
+      { q: 'How do I crop an image to an exact size?', a: 'Type the width and height (and the X, Y position) in pixels into the numeric fields, or drag the crop box and read the size back. The download is that exact pixel region at full resolution.' },
+      { q: 'Can I crop to a square or 16:9?', a: 'Yes — pick an aspect-ratio preset (1:1, 4:3, 3:2, 16:9, 9:16 and more) and the crop box locks to that shape; resize it and the ratio is maintained. Choose "Free" for an unconstrained crop.' },
+      { q: 'Does cropping reduce image quality?', a: 'No. Cropping removes pixels outside the box but does not rescale the ones inside, and the export is a lossless PNG — so the kept region is pixel-for-pixel identical to the original.' },
+      { q: 'What is the difference between cropping and resizing?', a: 'Cropping cuts out a region and keeps its pixels at full size; resizing rescales the whole image to new dimensions. To make a file smaller for an upload form, use the resize or resize-to-KB tools instead.' },
+      { q: 'Is my image uploaded to crop it?', a: 'No — the crop is drawn with the browser\'s Canvas API on your device. Nothing is transmitted, so even sensitive screenshots stay private and it works offline.' },
+    ],
+    keywords: ['crop image', 'crop image online', 'crop picture', 'crop image to square', 'crop to aspect ratio', 'crop photo', 'image cropper'],
+  },
+  {
+    slug: 'flip-image',
+    name: 'Flip Image (Mirror)',
+    icon: '🔃',
+    description:
+      'Flip or mirror an image horizontally or vertically and download it — same size and quality, processed on your device, never uploaded.',
+    lead: 'Mirror an image left-to-right or top-to-bottom in one click — same dimensions, same quality, done in your browser.',
+    widget: 'flip',
+    how: 'Flipping mirrors the pixels across an axis: a horizontal flip swaps left and right (a true mirror image), a vertical flip swaps top and bottom. The tool redraws the image with the chosen axis reversed on a canvas of the same dimensions, so nothing is scaled or cropped — only reflected — and you can export as JPEG, PNG or WebP.',
+    note: 'Horizontal flip is the common one: it "un-mirrors" selfies (front cameras mirror the preview, so text and faces come out reversed) and builds symmetric layouts. Vertical flip is rarer, mostly for reflections. Flipping is not rotating — a flip reflects the image, a rotation turns it; for quarter-turns use the rotate-image tool.',
+    faqs: [
+      { q: 'How do I mirror an image?', a: 'Load the image and tick "Flip horizontally" to mirror it left-to-right (or "Flip vertically" for top-to-bottom), then download. You can apply both axes at once for a 180° reflection.' },
+      { q: 'Why does my selfie look mirrored?', a: 'Phone front cameras show a mirrored preview so it feels like a mirror, and some save it that way — text and asymmetric details come out reversed. A horizontal flip corrects it.' },
+      { q: 'Is flipping the same as rotating?', a: 'No. Flipping reflects the image across an axis; rotating turns it around its centre. This tool flips; use the rotate-image tool for 90°, 180° or 270° turns.' },
+      { q: 'Does flipping change the file size or quality?', a: 'The dimensions stay identical and it\'s a simple reflection, so there is no quality loss beyond the normal re-encode. Choose PNG for a lossless result or JPEG/WebP for a smaller file.' },
+      { q: 'Is the image uploaded?', a: 'No — the flip is done with the Canvas API in your browser. Your photo never leaves your device and the tool works offline.' },
+    ],
+    keywords: ['flip image', 'mirror image', 'flip image online', 'flip photo horizontally', 'mirror photo', 'flip picture', 'reverse image'],
+  },
+  {
+    slug: 'resize-image-to-kb',
+    name: 'Resize Image to KB (Target File Size)',
+    icon: '🎯',
+    description:
+      'Compress an image to an exact target file size in KB — under 50 KB, 100 KB or 200 KB — for upload forms, in your browser, never uploaded.',
+    lead: 'Need a photo under 50 KB or 100 KB for a form? Enter a target size and the tool compresses to fit — locally, no upload.',
+    widget: 'resizekb',
+    how: 'Many upload forms — passport and visa portals, exam and job applications — cap the file size. The tool hits your target by binary-searching the JPEG or WebP quality: it re-encodes the image at different quality levels to find the highest one that still comes in at or under your target KB, and if even the lowest quality is too big, it progressively reduces the pixel dimensions until it fits. You get the best quality that satisfies the limit.',
+    note: 'A target that\'s too tight for a large photo forces heavy compression or downscaling — if the result looks soft, raise the target a little or crop the image first so there are fewer pixels to fit. JPEG suits photos; WebP is smaller for the same quality but a few older upload forms reject it. The compression happens entirely on your device, so an ID photo for a government portal never passes through anyone else\'s server.',
+    faqs: [
+      { q: 'How do I make an image under 50 KB?', a: 'Load the photo, set the target to 50 KB and choose JPEG, and the tool searches for the quality that lands at or under 50 KB, downscaling the dimensions if needed. It reports the final size and settings.' },
+      { q: 'How is the file size reduced without picking a quality myself?', a: 'It binary-searches the encoder quality for you — encoding at several levels to find the highest quality that still meets your KB target — then downsizes the pixels only if compression alone can\'t reach it.' },
+      { q: 'Why can\'t it hit a very small target?', a: 'A large, detailed photo has a floor below which it can\'t shrink without heavy downscaling. If the tool reports it can\'t reach your target, raise the target, crop the image, or accept the smallest achievable size it shows.' },
+      { q: 'Should I choose JPEG or WebP?', a: 'JPEG is universally accepted by upload forms and best for photos. WebP produces a smaller file at the same quality, but a few older portals reject it — use JPEG if the form is strict.' },
+      { q: 'Is my photo uploaded to resize it?', a: 'No — the encoding runs on your device with the browser\'s image codecs. Your image, often an ID or passport photo, never leaves your browser.' },
+    ],
+    keywords: ['resize image to kb', 'reduce image size to 50kb', 'compress image to 100kb', 'image size reducer for form', 'compress photo to target size', 'reduce image to 20kb', 'passport photo size reducer'],
+  },
+  {
+    slug: 'watermark-image',
+    name: 'Add Watermark to Image',
+    icon: '©️',
+    description:
+      'Add a text watermark (name, ©, DRAFT, website) to an image — with size, colour, opacity, position and diagonal tiling — in your browser, never uploaded.',
+    lead: 'Stamp your name, ©, or "CONFIDENTIAL" across an image — control size, opacity and position, all locally.',
+    widget: 'watermark',
+    how: 'A watermark overlays text on an image so copies can be traced or marked. Type your text, set the font size as a percentage of the image width so it scales to any photo, pick a colour and opacity, and choose a position — a single corner or centre, or a tiled diagonal repeat that covers the whole image and is harder to crop out. The tool draws the text onto a canvas over the image with a live preview, then lets you download the result.',
+    note: 'A tiled, semi-transparent watermark across the middle is far harder to remove than a single small corner mark. For proofs and drafts, "DRAFT" or "CONFIDENTIAL" at low opacity reads clearly without hiding the content. Because everything runs on your device, you can watermark scans of IDs or contracts before sharing them without uploading the originals anywhere.',
+    faqs: [
+      { q: 'How do I add a text watermark to a photo?', a: 'Load the image, type your watermark text, adjust the size, colour and opacity, pick a position or turn on tiling, and download. A live preview shows the result before you save it.' },
+      { q: 'How do I make a watermark hard to remove?', a: 'Use the tiled diagonal mode at moderate opacity so the text repeats across the whole image. A single small corner mark is trivial to crop or clone out; a full-coverage tile is not.' },
+      { q: 'Can I control the transparency?', a: 'Yes — the opacity slider sets how see-through the text is. Around 40–60% is a good balance: visible enough to deter reuse, faint enough not to obscure the content.' },
+      { q: 'Does it keep transparency in PNGs?', a: 'Yes — export as PNG to preserve an alpha channel, or choose JPEG/WebP for a smaller file. The watermark is drawn on top of the original pixels at full resolution.' },
+      { q: 'Is my image uploaded to watermark it?', a: 'No — the text is drawn with the Canvas API in your browser. Sensitive documents and photos stay on your device and the tool works offline.' },
+    ],
+    keywords: ['add watermark to image', 'watermark photo online', 'text watermark', 'watermark image free', 'copyright watermark', 'tile watermark', 'watermark maker'],
+  },
+  {
+    slug: 'favicon-generator',
+    name: 'Favicon Generator',
+    icon: '🌐',
+    description:
+      'Turn one image into a complete favicon set — PNGs, a multi-size favicon.ico, a web manifest and the HTML snippet, zipped — in your browser, never uploaded.',
+    lead: 'One image in, a complete favicon set out: favicon.ico, every PNG size, the manifest and the <link> tags — generated locally.',
+    widget: 'favicon',
+    how: 'A favicon needs several sizes for different devices: 16/32/48 px inside a classic favicon.ico, a 180 px apple-touch-icon for iOS, 192/512 px PNGs for Android and PWAs, plus intermediate sizes. The tool centre-crops your image to a square, renders each size on a canvas, packs 16/32/48 into a real multi-resolution .ico, writes a site.webmanifest and the HTML <link> snippet, and bundles everything into a ZIP — all in the browser.',
+    note: 'Start from a square image at least 512×512 for crisp results at every size; simple, high-contrast marks read best at 16 px, where fine detail disappears. Drop favicon.ico at your site root and paste the generated <link> tags into your <head>. The .ico uses the modern PNG-in-ICO format that every current browser reads. Nothing is uploaded — your logo never leaves your machine.',
+    faqs: [
+      { q: 'How do I create a favicon from an image?', a: 'Upload a square image or logo and the tool renders every required size, builds a multi-resolution favicon.ico, writes the manifest and the HTML <link> tags, and downloads it all as a ZIP. Unzip it into your site and paste in the tags.' },
+      { q: 'What sizes does it generate?', a: 'PNGs at 16, 32, 48, 64, 96, 128, 180, 192 and 512 px, plus a favicon.ico containing the 16, 32 and 48 px versions — covering browser tabs, iOS home screens and Android/PWA icons.' },
+      { q: 'What is favicon.ico and do I still need it?', a: 'It\'s the multi-size icon file browsers request from your site root by default. It\'s still the most compatible fallback, so the tool builds one (using PNG-in-ICO) alongside the modern PNG links.' },
+      { q: 'Where do I put the files and tags?', a: 'Place favicon.ico, the PNGs and site.webmanifest at your site root, then paste the generated <link rel="icon"> and apple-touch-icon tags into the <head> of your HTML. The snippet is included in the ZIP and shown on the page.' },
+      { q: 'Is my logo uploaded?', a: 'No — every size is rendered with the Canvas API and zipped with JSZip in your browser. Your logo never leaves your device, which matters for unreleased brand work.' },
+    ],
+    keywords: ['favicon generator', 'create favicon', 'favicon.ico generator', 'image to favicon', 'favicon from image', 'apple touch icon generator', 'favicon maker'],
+  },
+  {
+    slug: 'svg-to-png',
+    name: 'SVG to PNG Converter',
+    icon: '🖼️',
+    description:
+      'Convert an SVG (file or pasted markup) to a raster PNG at any resolution — with a live preview, in your browser, never uploaded.',
+    lead: 'Rasterise an SVG to a crisp PNG at the size you choose — paste the markup or load a file, all in the browser.',
+    widget: 'svgpng',
+    how: 'An SVG is vector artwork — instructions, not pixels — so many apps, upload forms and thumbnails need it flattened to a raster PNG first. The tool loads your SVG into an image, reads its viewBox or width/height to keep the aspect ratio, and draws it onto a canvas at the output size you set, then exports a lossless PNG. You can pick the width, lock the aspect ratio, and choose a transparent or white background.',
+    note: 'Because SVG is resolution-independent, you can export at any size without blurring — render at 2× or 3× the display size for retina screens. Choose a white background when the target (a JPEG slot, some chat apps, print) doesn\'t handle transparency; keep transparent for overlays and logos. The conversion runs on your device, so unreleased brand artwork never leaves your machine.',
+    faqs: [
+      { q: 'How do I convert an SVG to PNG?', a: 'Load the .svg file or paste the <svg> markup, set the output width (height follows the aspect ratio), pick a background, and download the PNG. A live preview shows the result first.' },
+      { q: 'What size PNG should I export?', a: 'Match the largest size the PNG will be displayed at, and render at 2× for high-density (retina) screens. SVG is vector, so exporting larger never blurs — it just makes a bigger file.' },
+      { q: 'Why is my PNG background black or transparent?', a: 'SVGs are usually transparent. If a target needs a solid background, choose "White"; for overlays and logos keep "Transparent". JPEG has no transparency, which is why flattening to a chosen colour matters.' },
+      { q: 'Does it keep the SVG sharp?', a: 'Yes — it renders the vector directly to the chosen pixel size, so edges are crisp at that resolution. Only if you scale the PNG up afterwards will it soften; export larger instead.' },
+      { q: 'Is my SVG uploaded?', a: 'No — it\'s rendered with the browser\'s Canvas API on your device. Nothing is transmitted and it works offline.' },
+    ],
+    keywords: ['svg to png', 'convert svg to png', 'svg to png converter', 'rasterize svg', 'svg to image', 'export svg as png'],
+  },
+  {
+    slug: 'base64-to-image',
+    name: 'Base64 to Image',
+    icon: '🧩',
+    description:
+      'Decode a Base64 string or data: URL back into a viewable, downloadable image — the reverse of image-to-Base64, in your browser, never uploaded.',
+    lead: 'Paste a Base64 string or data: URL and get the image back — preview it and download it, all locally.',
+    widget: 'b64img',
+    how: 'Base64 encodes binary image bytes as text so they can be embedded in HTML, CSS, JSON or data: URLs. This tool reverses that: paste the Base64 (with or without the data:image/…;base64, prefix) and it detects the format from the decoded bytes, builds a data URL, previews the image, and lets you download the real file. It\'s the inverse of the image-to-Base64 tool.',
+    note: 'If the string starts with data:image/png;base64, it already carries its format; a raw Base64 blob is sniffed from its first bytes (JPEG, PNG, GIF and WebP have distinct signatures). Whitespace and line breaks copied from source code are stripped automatically. Everything is decoded on your device, so a Base64 image pulled from private code or an API response never leaves the browser.',
+    faqs: [
+      { q: 'How do I convert Base64 back to an image?', a: 'Paste the Base64 text or the full data: URL into the box — the tool decodes it, shows a preview, and gives you a Download button to save the real image file.' },
+      { q: 'Do I need the data: URL prefix?', a: 'No. If you include data:image/…;base64, it\'s used directly; if you paste only the raw Base64, the tool detects the image type from the decoded bytes and builds the data URL for you.' },
+      { q: 'Why does it say the Base64 is invalid?', a: 'The text isn\'t decodable image data — often a truncated copy, an extra character, or non-image content. Re-copy the whole string; the tool already strips stray whitespace and newlines.' },
+      { q: 'What image formats are supported?', a: 'The common web formats — PNG, JPEG, GIF and WebP — are detected from their byte signatures. The download keeps the original format and extension.' },
+      { q: 'Is anything uploaded?', a: 'No — decoding happens entirely in your browser, so a Base64 image from private source code or an API stays on your device.' },
+    ],
+    keywords: ['base64 to image', 'base64 decode image', 'data url to image', 'convert base64 to png', 'base64 image decoder', 'base64 to jpg'],
+  },
+  {
+    slug: 'combine-images',
+    name: 'Combine Images',
+    icon: '🧷',
+    description:
+      'Merge several images into one — stacked vertically or side by side — with gap and background control, in your browser, never uploaded.',
+    lead: 'Stitch multiple images into a single one, vertically or horizontally — set the gap and background, all locally.',
+    widget: 'combine',
+    how: 'The tool draws your images onto one canvas in the order you add them: vertically stacked (canvas width = the widest image, height = the sum) or horizontally side by side (height = the tallest, width = the sum). You control the gap between images, the background colour that fills gaps and any alignment letterboxing, and the output format. Images are drawn at their native size, so nothing is rescaled or softened.',
+    note: 'Combining is perfect for stitching a long screenshot from several captures, building a simple before/after pair, or making a photo strip. Because images keep their native size, mismatched widths leave background-coloured margins — crop or resize them to match first if you want flush edges. The whole composition happens on your device; private screenshots are never uploaded.',
+    faqs: [
+      { q: 'How do I merge images into one?', a: 'Select two or more images, choose vertical (stacked) or horizontal (side by side), set an optional gap and background colour, and download the combined image. A live preview updates as you go.' },
+      { q: 'Can I stitch a long screenshot?', a: 'Yes — add the captures in order and choose vertical stacking. Match their widths first (crop or resize) so there are no side margins from the background colour.' },
+      { q: 'Why are there coloured margins around some images?', a: 'They have different widths (or heights, for horizontal). The shorter dimension is padded with the background colour to line up. Resize the images to a common width/height for flush edges.' },
+      { q: 'Does combining reduce quality?', a: 'No — each image is drawn at its native resolution onto the canvas, so there\'s no rescaling. Export as PNG for a lossless result or JPEG for a smaller file.' },
+      { q: 'Are my images uploaded?', a: 'No — the merge is done with the Canvas API in your browser. Nothing is sent anywhere and it works offline.' },
+    ],
+    keywords: ['combine images', 'merge images', 'stitch images together', 'combine photos into one', 'merge images vertically', 'join images side by side', 'image combiner'],
   },
 ];

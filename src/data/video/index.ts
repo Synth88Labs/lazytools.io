@@ -6,7 +6,7 @@ export interface AudioToolDef {
   icon: string;
   description: string;
   lead: string;
-  widget: 'trim' | 'speed' | 'volume' | 'wav' | 'frame' | 'merge';
+  widget: 'trim' | 'speed' | 'volume' | 'wav' | 'frame' | 'merge' | 'srt-vtt' | 'vtt-srt' | 'shift';
   how: string;
   note?: string;
   faqs: { q: string; a: string }[];
@@ -127,5 +127,59 @@ export const AUDIO_TOOLS: AudioToolDef[] = [
       { q: 'Are my audio files uploaded?', a: 'No. Decoding and merging use the Web Audio API on your device, so the files never leave your browser. It works offline once the page has loaded.' },
     ],
     keywords: ['audio merger', 'merge audio files', 'combine mp3', 'join audio files', 'audio joiner', 'merge mp3 online', 'concatenate audio'],
+  },
+  {
+    slug: 'srt-to-vtt',
+    name: 'SRT to VTT Converter',
+    icon: '💬',
+    description:
+      'Convert SubRip (.srt) subtitles to WebVTT (.vtt) for HTML5 video — in your browser, never uploaded.',
+    lead: 'Turn an .srt subtitle file into the .vtt format HTML5 <track> needs — paste or load the file, all locally.',
+    widget: 'srt-vtt',
+    how: 'SRT and WebVTT are both plain-text cue lists, but they differ in three ways: VTT starts with a WEBVTT header, uses a dot before the milliseconds (00:00:01.000) instead of SRT\'s comma (00:00:01,000), and makes the numeric cue indices optional. The tool parses your SRT into cues and rewrites them as valid WebVTT, preserving the timings and text exactly.',
+    note: 'WebVTT is the format the HTML5 <track> element requires for captions and subtitles on web video, which is why SRT files (the most common subtitle format) so often need converting. The conversion is pure text processing done on your device — subtitle files, which can contain unreleased scripts or private transcripts, never leave the browser.',
+    faqs: [
+      { q: 'How do I convert SRT to VTT?', a: 'Load or paste your .srt subtitles and the tool outputs valid WebVTT you can copy or download as a .vtt file. Timings and text are preserved; only the header, millisecond separator and indices change.' },
+      { q: 'Why do I need WebVTT instead of SRT?', a: 'The HTML5 <track> element for captions on web video accepts WebVTT, not SRT. Converting lets you add existing SRT subtitles to a <video> element without re-timing anything.' },
+      { q: 'What actually changes between the formats?', a: 'VTT adds a WEBVTT header line, uses a dot before milliseconds (00:00:01.000 vs 00:00:01,000), and treats cue numbers as optional. The cue times and text stay identical.' },
+      { q: 'Are my subtitle files uploaded?', a: 'No — it\'s pure text conversion in your browser. Scripts and transcripts stay on your device and it works offline.' },
+    ],
+    keywords: ['srt to vtt', 'convert srt to vtt', 'srt to webvtt', 'subtitle converter', 'srt to vtt online', 'vtt converter'],
+  },
+  {
+    slug: 'vtt-to-srt',
+    name: 'VTT to SRT Converter',
+    icon: '🗨️',
+    description:
+      'Convert WebVTT (.vtt) captions to SubRip (.srt) subtitles for players and editors that expect SRT — in your browser, never uploaded.',
+    lead: 'Turn a .vtt caption file into the widely-supported .srt format — paste or load it, all in the browser.',
+    widget: 'vtt-srt',
+    how: 'The tool parses your WebVTT cues — skipping the WEBVTT header and any NOTE or STYLE blocks, and dropping cue settings like alignment that SRT doesn\'t support — then rewrites them as SubRip: numbered cues, with a comma before the milliseconds (00:00:01,000). Timings and caption text are preserved.',
+    note: 'SRT is the most widely supported subtitle format across media players, editors and upload forms, so VTT captions (often extracted from web video) frequently need converting back. Positioning and styling that WebVTT allows have no SRT equivalent and are dropped — plain text and timings carry over. Everything runs on your device.',
+    faqs: [
+      { q: 'How do I convert VTT to SRT?', a: 'Load or paste your .vtt captions and the tool produces numbered SRT cues you can copy or download as .srt. The WEBVTT header, notes and styling are removed; timings and text are kept.' },
+      { q: 'Why convert VTT to SRT?', a: 'SRT is accepted almost everywhere — desktop players like VLC, video editors, and many upload forms — while VTT is mainly a web format. Converting makes web captions usable in those tools.' },
+      { q: 'Is any information lost?', a: 'Only WebVTT-specific extras: the header, NOTE/STYLE blocks, and cue positioning/styling, which SRT has no way to express. The caption text and all timings are preserved exactly.' },
+      { q: 'Are my captions uploaded?', a: 'No — the conversion is done in your browser as plain text. Nothing is transmitted and it works offline.' },
+    ],
+    keywords: ['vtt to srt', 'convert vtt to srt', 'webvtt to srt', 'vtt to subtitle', 'vtt to srt online', 'subtitle converter'],
+  },
+  {
+    slug: 'subtitle-shifter',
+    name: 'Subtitle Shifter (Resync)',
+    icon: '⏱️',
+    description:
+      'Shift subtitle timings forward or back to fix out-of-sync captions — SRT or VTT, in your browser, never uploaded.',
+    lead: 'Captions running early or late? Shift every cue by a set number of seconds to resync — SRT or VTT, all locally.',
+    widget: 'shift',
+    how: 'When subtitles are consistently ahead of or behind the audio, every cue needs moving by the same amount. Enter a shift in seconds — positive to delay the subtitles (they appear later), negative to move them earlier — and the tool adds that offset to every cue\'s start and end time, keeping the text and format (SRT or VTT) unchanged. Times can\'t go below zero, so leading cues clamp to the start.',
+    note: 'This fixes a constant offset — the whole track being a second or two out — not drift, where the gap grows over the film (a frame-rate mismatch, which needs stretching rather than shifting). Work out the offset from one known line: if a caption shows at 00:10 but should be at 00:12, shift by +2 seconds. It\'s pure text math done on your device.',
+    faqs: [
+      { q: 'How do I resync subtitles that are out of sync?', a: 'Load the SRT or VTT, find how many seconds off one line is, and enter that as the shift — positive if the subtitles are early (to delay them), negative if late. Every cue moves by that amount; download the fixed file.' },
+      { q: 'Does it work for both SRT and VTT?', a: 'Yes — it detects the format from the file and keeps it. SRT stays SRT (comma milliseconds, numbered), VTT stays VTT (WEBVTT header, dot milliseconds).' },
+      { q: 'What if the subtitles drift more over time?', a: 'A constant shift only fixes a fixed offset. If the gap grows through the video, that\'s a frame-rate mismatch that needs time-stretching, not shifting — this tool handles the common constant-offset case.' },
+      { q: 'Are my subtitles uploaded?', a: 'No — the shift is calculated in your browser and nothing is sent anywhere. It works offline.' },
+    ],
+    keywords: ['subtitle shifter', 'resync subtitles', 'shift srt timing', 'subtitle delay', 'fix out of sync subtitles', 'adjust subtitle timing', 'srt time shift'],
   },
 ];

@@ -9,6 +9,7 @@ import FileConvertTool from '../../components/file/FileConvertTool.tsx';
 import EInvoiceTool from '../../components/file/EInvoiceTool.tsx';
 import KsefViewerTool from '../../components/file/KsefViewerTool.tsx';
 import KsefValidatorTool from '../../components/file/KsefValidatorTool.tsx';
+import ExcelConvertTool from '../../components/file/ExcelConvertTool.tsx';
 import { FILE_TOOLS, type FileToolDef } from '../../data/file/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -61,6 +62,8 @@ const schema = [
         <KsefViewerTool client:load />
       ) : tool.widget === 'ksef-validator' ? (
         <KsefValidatorTool client:load />
+      ) : (tool.widget === 'excel-to-csv' || tool.widget === 'excel-to-json' || tool.widget === 'csv-to-excel') ? (
+        <ExcelConvertTool client:load mode={tool.widget} />
       ) : (
         <FileConvertTool
           client:load

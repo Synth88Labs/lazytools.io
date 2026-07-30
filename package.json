@@ -34,13 +34,15 @@
     "js-sha3": "^0.9.3",
     "js-yaml": "^5.2.1",
     "jsbarcode": "^3.12.3",
+    "jsqr": "^1.4.0",
     "jszip": "^3.10.1",
     "marked": "^18.0.5",
     "pdf-lib": "^1.17.1",
     "pdfjs-dist": "^6.1.200",
     "preact": "^10.25.0",
     "qrcode": "^1.5.4",
-    "sql-formatter": "^15.8.2"
+    "sql-formatter": "^15.8.2",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.0.0",

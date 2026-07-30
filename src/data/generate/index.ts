@@ -6,7 +6,7 @@ export interface GenToolDef {
   icon: string;
   description: string;
   lead: string;
-  widget: 'password' | 'uuid' | 'qr' | 'random-number' | 'lorem' | 'wifi-qr' | 'vcard-qr' | 'message-qr' | 'barcode' | 'id' | 'passphrase' | 'dice' | 'mac' | 'testcard';
+  widget: 'password' | 'uuid' | 'qr' | 'random-number' | 'lorem' | 'wifi-qr' | 'vcard-qr' | 'message-qr' | 'barcode' | 'id' | 'passphrase' | 'dice' | 'mac' | 'testcard' | 'qr-scan';
   /** for widget:'id' — which tab (v4/v7/ulid/nanoid) the page defaults to */
   variant?: 'v4' | 'v7' | 'ulid' | 'nanoid';
   how: string;
@@ -299,6 +299,28 @@ export const GEN_TOOLS: GenToolDef[] = [
     keywords: ['test credit card generator', 'fake credit card number generator', 'luhn valid card number', 'dummy credit card numbers', 'test card numbers', 'credit card generator for testing', 'valid test card'],
   },
 ];
+
+export const QR_SCANNER: GenToolDef = {
+  slug: 'qr-code-scanner',
+  name: 'QR Code Scanner',
+  icon: '📷',
+  description:
+    'Read a QR code from an image or screenshot and get the text or link it contains — decoded in your browser, never uploaded.',
+  lead: 'Upload or paste a QR code image and instantly read the text or URL inside it — decoded locally, nothing uploaded.',
+  widget: 'qr-scan',
+  how: 'Point the tool at a QR code image — a photo, a screenshot, or a paste from your clipboard — and it draws the image to a canvas, reads the pixels, and decodes the QR with the jsQR library. The encoded content (a URL, Wi-Fi credentials, plain text, a contact card) is shown so you can read or copy it, all without a camera or an upload.',
+  note: 'This is the reader that complements the QR generator: handy when you have a QR as an image but can\'t point a phone at it, or want to inspect what a code contains before trusting it. Treat decoded links with the same caution as any link — a QR is just text, and text can point anywhere. Decoding happens entirely on your device.',
+  faqs: [
+    { q: 'How do I read a QR code from an image?', a: 'Upload the QR image (or paste it from your clipboard) and the tool decodes it in your browser, showing the text or link it contains. No camera or app needed.' },
+    { q: 'Can it scan a QR from a screenshot?', a: 'Yes — any image with a reasonably clear QR works, including screenshots and photos. A tighter crop around the code helps if it isn\'t detected at first.' },
+    { q: 'Is it safe to open the link in a QR code?', a: 'A QR just encodes text, so a link inside one can point anywhere, including to malicious sites. This tool shows you the URL first so you can check it before deciding to open it.' },
+    { q: 'Does it work without a camera?', a: 'Yes — it decodes from an image file or a pasted image, so no camera or permissions are required. It also works offline.' },
+    { q: 'Is my image uploaded to decode it?', a: 'No — the QR is decoded with the jsQR library in your browser. The image never leaves your device.' },
+  ],
+  keywords: ['qr code scanner', 'read qr code from image', 'qr code reader', 'scan qr from screenshot', 'decode qr code', 'qr scanner online', 'qr reader image'],
+};
+
+GEN_TOOLS.push(QR_SCANNER);
 
 export function getGenTool(slug: string): GenToolDef | undefined {
   return GEN_TOOLS.find((t) => t.slug === slug);
