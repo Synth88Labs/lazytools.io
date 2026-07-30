@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-label="How much soil for a raised bed. The formula is soil equals length times width times depth. Worked example: an 8 foot by 4 foot bed filled 1 foot deep equals 32 cubic feet, which is about 906 litres or about 1.2 cubic yards, roughly 18 bags of 50 litres. Keep all three measurements in the same unit, then convert. From lazytools.io slash garden slash raised bed soil calculator.">
+  <defs>
+    <style>
+      .title { font: 800 46px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill: #0f172a; }
+      .sub { font: 600 24px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill: #334155; }
+      .formula { font: 800 40px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill: #166534; }
+      .dim { font: 700 26px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill: #15803d; }
+      .eqbig { font: 800 54px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill: #0f172a; }
+      .unit { font: 700 30px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill: #166534; }
+      .unitlab { font: 600 22px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill: #334155; }
+      .bags { font: 700 26px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill: #15803d; }
+      .foot { font: 600 22px 'Consolas',Menlo,monospace; fill: #f0fdf4; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="700" fill="#f8fafc"/>
+
+  <!-- Heading -->
+  <text x="600" y="72" text-anchor="middle" class="title">How much soil for a raised bed?</text>
+
+  <!-- Formula card -->
+  <rect x="60" y="108" width="1080" height="96" rx="20" fill="#ffffff" stroke="#bfdbfe" stroke-width="2"/>
+  <text x="600" y="170" text-anchor="middle" class="formula">Soil = Length &#215; Width &#215; Depth</text>
+
+  <!-- Worked example: bed diagram (left) -->
+  <g>
+    <!-- 3D-ish box -->
+    <polygon points="230,360 470,360 540,320 300,320" fill="#a16207"/>
+    <polygon points="230,360 470,360 470,480 230,480" fill="#854d0e"/>
+    <polygon points="470,360 540,320 540,440 470,480" fill="#713f12"/>
+    <!-- soil top -->
+    <polygon points="245,354 455,354 515,320 305,320" fill="#166534" opacity="0.85"/>
+    <!-- dimension labels -->
+    <text x="350" y="518" text-anchor="middle" class="dim">Length 8 ft</text>
+    <text x="600" y="410" text-anchor="middle" class="dim">Width 4 ft</text>
+    <text x="150" y="428" text-anchor="middle" class="dim" transform="rotate(-90 150 428)">Depth 1 ft</text>
+  </g>
+
+  <!-- Equation (right) -->
+  <text x="720" y="360" class="eqbig">8 &#215; 4 &#215; 1</text>
+  <text x="720" y="424" class="eqbig">= 32 ft&#179;</text>
+
+  <!-- Conversions row -->
+  <g>
+    <rect x="720" y="452" width="180" height="70" rx="14" fill="#ffffff" stroke="#bfdbfe" stroke-width="2"/>
+    <text x="810" y="490" text-anchor="middle" class="unit">&#8776; 906 L</text>
+    <text x="810" y="512" text-anchor="middle" class="unitlab">litres</text>
+
+    <rect x="912" y="452" width="200" height="70" rx="14" fill="#ffffff" stroke="#bfdbfe" stroke-width="2"/>
+    <text x="1012" y="490" text-anchor="middle" class="unit">&#8776; 1.2 yd&#179;</text>
+    <text x="1012" y="512" text-anchor="middle" class="unitlab">cubic yards</text>
+  </g>
+
+  <!-- bags note -->
+  <rect x="720" y="540" width="392" height="58" rx="14" fill="#dcfce7"/>
+  <text x="916" y="577" text-anchor="middle" class="bags">&#8776; 18 bags of 50 L</text>
+
+  <!-- tip -->
+  <text x="60" y="576" class="sub">Keep all three in the</text>
+  <text x="60" y="606" class="sub">same unit, then convert.</text>
+
+  <!-- Footer -->
+  <rect x="60" y="636" width="1080" height="48" rx="14" fill="#166534"/>
+  <text x="600" y="667" text-anchor="middle" class="foot">lazytools.io/garden/raised-bed-soil-calculator</text>
+</svg>

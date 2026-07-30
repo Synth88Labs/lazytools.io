@@ -1,0 +1,33 @@
+<svg viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="How many boxes of flooring do I need. Boxes equals room area times one plus waste, divided by coverage per box, rounded up. Worked example: 20 square metres times 1.10 divided by 2 square metres equals 11 boxes. Waste guide: straight lay 10 percent, diagonal 15 percent, irregular 20 percent.">
+  <rect width="1200" height="700" fill="#f8fafc"/>
+
+  <!-- Title -->
+  <text x="600" y="72" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="700" fill="#0f172a">How many boxes of flooring do I need?</text>
+
+  <!-- Formula card -->
+  <rect x="80" y="112" width="1040" height="150" rx="16" fill="#ffffff" stroke="#bfdbfe" stroke-width="2"/>
+  <text x="600" y="178" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="700" fill="#0f172a">Boxes = (Area &#215; (1 + waste)) &#247; coverage per box</text>
+  <text x="600" y="228" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" fill="#92400e">then round up &#8594; you can&#8217;t buy part of a box</text>
+
+  <!-- Worked example card -->
+  <rect x="80" y="296" width="1040" height="176" rx="16" fill="#ffffff" stroke="#bfdbfe" stroke-width="2"/>
+  <text x="600" y="352" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" fill="#334155">Worked example</text>
+  <text x="600" y="416" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="46" font-weight="700" fill="#0f172a">20 m&#178; &#215; 1.10 &#247; 2 m&#178; = <tspan fill="#b45309">11 boxes</tspan></text>
+  <text x="600" y="454" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="#334155">22 m&#178; of flooring to buy &#8594; 22 &#247; 2 = 11</text>
+
+  <!-- Waste guide: three cards -->
+  <rect x="80" y="506" width="330" height="120" rx="14" fill="#ffffff" stroke="#bfdbfe" stroke-width="2"/>
+  <text x="245" y="556" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="700" fill="#92400e">10%</text>
+  <text x="245" y="596" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="26" fill="#334155">straight lay</text>
+
+  <rect x="435" y="506" width="330" height="120" rx="14" fill="#ffffff" stroke="#bfdbfe" stroke-width="2"/>
+  <text x="600" y="556" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="700" fill="#92400e">15%</text>
+  <text x="600" y="596" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="26" fill="#334155">diagonal / herringbone</text>
+
+  <rect x="790" y="506" width="330" height="120" rx="14" fill="#ffffff" stroke="#bfdbfe" stroke-width="2"/>
+  <text x="955" y="556" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="700" fill="#92400e">20%</text>
+  <text x="955" y="596" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="26" fill="#334155">irregular room</text>
+
+  <!-- Footer -->
+  <text x="600" y="672" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#334155">lazytools.io/home/flooring-calculator</text>
+</svg>

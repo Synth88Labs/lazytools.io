@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-label="Air conditioner sizing: use about 20 BTU per hour per square foot of floor area. A 300 square foot room needs 300 times 20 equals 6,000 BTU per hour. 12,000 BTU per hour equals 1 ton of cooling. Adjustments: add 10 percent for a sunny room, add 600 BTU per extra person, add 4,000 BTU for a kitchen.">
+  <rect x="0" y="0" width="1200" height="700" fill="#f8fafc"/>
+
+  <!-- Title -->
+  <text x="60" y="80" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="bold" fill="#0f172a">What size air conditioner do I need?</text>
+  <text x="60" y="126" font-family="Arial, Helvetica, sans-serif" font-size="26" fill="#334155">Start from floor area, then adjust.</text>
+
+  <!-- Focal rule card -->
+  <rect x="60" y="160" width="680" height="230" rx="20" fill="#ffffff" stroke="#bfdbfe" stroke-width="3"/>
+  <text x="400" y="240" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="30" fill="#334155">Baseline rule</text>
+  <text x="400" y="316" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="66" font-weight="bold" fill="#1e3a8a">&#8776; 20 BTU/h</text>
+  <text x="400" y="366" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#0284c7">per ft&#178; of floor area</text>
+
+  <!-- Worked example card -->
+  <rect x="760" y="160" width="380" height="230" rx="20" fill="#ffffff" stroke="#bfdbfe" stroke-width="3"/>
+  <text x="950" y="240" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="30" fill="#334155">Worked example</text>
+  <text x="950" y="306" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#0f172a">300 ft&#178; &#8594; 300 &#215; 20</text>
+  <text x="950" y="366" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="48" font-weight="bold" fill="#1e3a8a">6,000 BTU</text>
+
+  <!-- Tons note bar -->
+  <rect x="60" y="420" width="1080" height="86" rx="18" fill="#1e3a8a"/>
+  <text x="600" y="476" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="bold" fill="#ffffff">12,000 BTU/h = 1 ton of cooling</text>
+
+  <!-- Adjustments -->
+  <text x="60" y="566" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="bold" fill="#0f172a">Then adjust:</text>
+
+  <rect x="60" y="588" width="340" height="76" rx="16" fill="#ffffff" stroke="#bfdbfe" stroke-width="3"/>
+  <text x="230" y="636" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="30" fill="#334155">+10% sunny room</text>
+
+  <rect x="430" y="588" width="340" height="76" rx="16" fill="#ffffff" stroke="#bfdbfe" stroke-width="3"/>
+  <text x="600" y="636" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="30" fill="#334155">+600 BTU / person</text>
+
+  <rect x="800" y="588" width="340" height="76" rx="16" fill="#ffffff" stroke="#bfdbfe" stroke-width="3"/>
+  <text x="970" y="636" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="30" fill="#334155">+4,000 BTU kitchen</text>
+
+  <!-- Footer -->
+  <text x="1140" y="690" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="#0284c7">lazytools.io/home/btu-calculator</text>
+</svg>

@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-label="How to calculate GPA. The formula is the sum of grade points times credit hours, divided by the sum of credit hours, on the 4.0 scale. Worked example: an A worth 4.0 in a 3-credit class gives 12 quality points, a B worth 3.0 in a 4-credit class gives 12 quality points, and 12 plus 12 divided by 7 total credits equals a 3.43 GPA. Grade-point mini table: A equals 4.0, B equals 3.0, C equals 2.0, D equals 1.0, F equals 0.">
+  <rect x="0" y="0" width="1200" height="700" fill="#f8fafc"/>
+
+  <!-- Title -->
+  <text x="600" y="70" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="40" font-weight="700" fill="#0f172a">How to Calculate Your GPA</text>
+  <text x="600" y="108" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="24" fill="#334155">A credit-weighted average on the standard US 4.0 scale</text>
+
+  <!-- Formula card -->
+  <rect x="80" y="140" width="1040" height="150" rx="16" fill="#ffffff" stroke="#bfdbfe" stroke-width="2"/>
+  <text x="600" y="205" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="38" font-weight="700" fill="#1e3a8a">GPA = &#931;(grade points &#215; credit hours) &#247; &#931;(credit hours)</text>
+  <text x="600" y="255" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="24" fill="#334155">Multiply each grade by its credits, add them up, divide by total credits</text>
+
+  <!-- Worked example card -->
+  <rect x="80" y="320" width="700" height="300" rx="16" fill="#ffffff" stroke="#bfdbfe" stroke-width="2"/>
+  <text x="110" y="365" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="26" font-weight="700" fill="#0f172a">Worked example</text>
+
+  <text x="110" y="415" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="26" fill="#334155">A (4.0) &#215; 3 credits</text>
+  <text x="470" y="415" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="26" font-weight="700" fill="#1e3a8a">&#8594; 12</text>
+  <text x="110" y="455" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="26" fill="#334155">B (3.0) &#215; 4 credits</text>
+  <text x="470" y="455" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="26" font-weight="700" fill="#1e3a8a">&#8594; 12</text>
+
+  <line x1="110" y1="478" x2="670" y2="478" stroke="#e2e8f0" stroke-width="2"/>
+
+  <text x="110" y="525" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="34" font-weight="700" fill="#0f172a">(12 + 12) &#247; 7</text>
+  <text x="110" y="585" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="44" font-weight="700" fill="#166534">= 3.43 GPA</text>
+
+  <!-- Grade-point mini table card -->
+  <rect x="810" y="320" width="310" height="300" rx="16" fill="#ffffff" stroke="#bfdbfe" stroke-width="2"/>
+  <text x="965" y="365" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="26" font-weight="700" fill="#0f172a">Grade points</text>
+
+  <text x="855" y="415" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="28" fill="#334155">A</text>
+  <text x="1075" y="415" text-anchor="end" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="28" font-weight="700" fill="#1e3a8a">4.0</text>
+  <text x="855" y="455" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="28" fill="#334155">B</text>
+  <text x="1075" y="455" text-anchor="end" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="28" font-weight="700" fill="#1e3a8a">3.0</text>
+  <text x="855" y="495" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="28" fill="#334155">C</text>
+  <text x="1075" y="495" text-anchor="end" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="28" font-weight="700" fill="#1e3a8a">2.0</text>
+  <text x="855" y="535" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="28" fill="#334155">D</text>
+  <text x="1075" y="535" text-anchor="end" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="28" font-weight="700" fill="#1e3a8a">1.0</text>
+  <text x="855" y="575" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="28" fill="#334155">F</text>
+  <text x="1075" y="575" text-anchor="end" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="28" font-weight="700" fill="#1e3a8a">0.0</text>
+
+  <!-- Footer -->
+  <text x="600" y="665" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="24" fill="#1e3a8a">lazytools.io/calc/gpa-calculator</text>
+</svg>

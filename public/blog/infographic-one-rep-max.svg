@@ -1,0 +1,24 @@
+<svg viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The Epley one-rep max formula: 1RM equals weight times one plus reps divided by 30. Worked example: 100 kilograms for 5 reps gives approximately 117 kilograms. Brzycki and Lombardi are the other two formulas, and averaging all three gives the most robust estimate.">
+  <rect width="1200" height="700" fill="#f8fafc"/>
+
+  <!-- Header -->
+  <text x="600" y="78" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="42" font-weight="800" fill="#0f172a">Estimate your one-rep max</text>
+  <text x="600" y="122" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="26" font-weight="500" fill="#334155">from a near-failure set &#8212; no risky max attempt</text>
+
+  <!-- Main formula card -->
+  <rect x="90" y="165" width="1020" height="230" rx="20" fill="#ffffff" stroke="#bfdbfe" stroke-width="3"/>
+  <text x="600" y="222" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="26" font-weight="700" fill="#b91c1c" letter-spacing="2">EPLEY FORMULA</text>
+  <text x="600" y="308" text-anchor="middle" font-family="Consolas, Menlo, monospace" font-size="60" font-weight="800" fill="#0f172a">1RM = weight &#215; (1 + reps &#247; 30)</text>
+  <text x="600" y="362" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="24" font-weight="500" fill="#334155">Take a hard set of about 1&#8211;10 reps, then plug in the weight and reps</text>
+
+  <!-- Worked example card -->
+  <rect x="90" y="425" width="1020" height="150" rx="20" fill="#ffffff" stroke="#bfdbfe" stroke-width="3"/>
+  <text x="600" y="480" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="26" font-weight="700" fill="#1e3a8a" letter-spacing="1">WORKED EXAMPLE</text>
+  <text x="600" y="542" text-anchor="middle" font-family="Consolas, Menlo, monospace" font-size="46" font-weight="800" fill="#0f172a">100 kg &#215; 5 reps &#8594; &#8776; 117 kg</text>
+
+  <!-- Other two formulas note -->
+  <text x="600" y="630" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="24" font-weight="600" fill="#334155">Brzycki &amp; Lombardi are the other two formulas &#8212; average all three for a more robust estimate</text>
+
+  <!-- Footer -->
+  <text x="600" y="676" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="22" font-weight="600" fill="#b91c1c">lazytools.io/fitness/one-rep-max-calculator</text>
+</svg>

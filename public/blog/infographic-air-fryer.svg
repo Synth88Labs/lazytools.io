@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-label="The air fryer conversion rule: lower the oven temperature by about 25 degrees Fahrenheit and cut the cooking time by about 20 percent. Worked example: 400 degrees Fahrenheit for 30 minutes becomes about 375 degrees Fahrenheit for 24 minutes. Sample chart: 350 to 325, 375 to 350, 400 to 375.">
+  <rect width="1200" height="700" fill="#f8fafc"/>
+
+  <!-- Title -->
+  <text x="600" y="72" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="700" fill="#0f172a">Oven &#8594; Air Fryer</text>
+  <text x="600" y="112" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="#334155">The rule of thumb for converting any recipe</text>
+
+  <!-- Focal rule cards -->
+  <g>
+    <rect x="120" y="160" width="440" height="150" rx="18" fill="#ffffff" stroke="#bfdbfe" stroke-width="2"/>
+    <text x="340" y="228" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="64" font-weight="700" fill="#b45309">&#8722;25 °F</text>
+    <text x="340" y="278" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="26" fill="#334155">lower the temperature</text>
+  </g>
+  <g>
+    <rect x="640" y="160" width="440" height="150" rx="18" fill="#ffffff" stroke="#bfdbfe" stroke-width="2"/>
+    <text x="860" y="228" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="64" font-weight="700" fill="#b45309">&#8722;20% time</text>
+    <text x="860" y="278" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="26" fill="#334155">cut the cooking time</text>
+  </g>
+  <text x="600" y="150" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#d97706">Do both &#8212; together</text>
+
+  <!-- Worked example hero -->
+  <g>
+    <rect x="120" y="342" width="960" height="150" rx="18" fill="#0f172a"/>
+    <text x="600" y="392" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#fbbf24">WORKED EXAMPLE</text>
+    <text x="600" y="450" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="700" fill="#ffffff">400 °F / 30 min  &#8594;  ~375 °F / 24 min</text>
+  </g>
+
+  <!-- Mini chart -->
+  <text x="600" y="548" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#334155">Quick chart (oven &#8594; air fryer)</text>
+  <g font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700">
+    <rect x="180" y="566" width="270" height="70" rx="12" fill="#ffffff" stroke="#bfdbfe" stroke-width="2"/>
+    <text x="315" y="610" text-anchor="middle" fill="#0f172a">350 °F &#8594; 325 °F</text>
+    <rect x="465" y="566" width="270" height="70" rx="12" fill="#ffffff" stroke="#bfdbfe" stroke-width="2"/>
+    <text x="600" y="610" text-anchor="middle" fill="#0f172a">375 °F &#8594; 350 °F</text>
+    <rect x="750" y="566" width="270" height="70" rx="12" fill="#ffffff" stroke="#bfdbfe" stroke-width="2"/>
+    <text x="885" y="610" text-anchor="middle" fill="#0f172a">400 °F &#8594; 375 °F</text>
+  </g>
+
+  <!-- Footer -->
+  <text x="600" y="678" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#64748b">lazytools.io/cooking/air-fryer-conversion-calculator</text>
+</svg>

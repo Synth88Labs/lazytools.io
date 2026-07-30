@@ -1,0 +1,46 @@
+<svg viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Annual salary equals hourly rate times hours per week times 52. Worked example: 25 dollars times 40 times 52 equals 52,000 dollars a year. Quick mental shortcut: annual is about hourly times 2,000, so 25 dollars an hour is roughly 50,000 dollars a year. These are gross figures before tax, deductions, and overtime.">
+  <rect width="1200" height="700" fill="#f8fafc"/>
+
+  <!-- Title -->
+  <text x="600" y="72" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="800" fill="#0f172a">Hourly &#8594; yearly salary</text>
+
+  <!-- Formula card -->
+  <g>
+    <rect x="80" y="110" width="1040" height="130" rx="18" fill="#ffffff" stroke="#bfdbfe" stroke-width="2"/>
+    <text x="600" y="165" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" fill="#334155">The one formula</text>
+    <text x="600" y="212" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="800" fill="#1e3a8a">annual = hourly &#215; hours/week &#215; 52</text>
+  </g>
+
+  <!-- Worked example card -->
+  <g>
+    <rect x="80" y="270" width="640" height="200" rx="18" fill="#ffffff" stroke="#bfdbfe" stroke-width="2"/>
+    <text x="110" y="322" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" fill="#334155">Worked example</text>
+    <text x="110" y="380" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="800" fill="#0f172a">$25 &#215; 40 &#215; 52</text>
+    <text x="110" y="440" font-family="Arial, Helvetica, sans-serif" font-size="46" font-weight="800" fill="#166534">= $52,000 / year</text>
+  </g>
+
+  <!-- Shortcut card -->
+  <g>
+    <rect x="750" y="270" width="370" height="200" rx="18" fill="#ffffff" stroke="#bfdbfe" stroke-width="2"/>
+    <text x="770" y="322" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" fill="#334155">Quick shortcut</text>
+    <text x="770" y="378" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="800" fill="#1e3a8a">&#8776; hourly &#215; 2,000</text>
+    <text x="770" y="432" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" fill="#0f172a">$25/hr &#8776; $50k</text>
+  </g>
+
+  <!-- Breakdown strip -->
+  <g>
+    <rect x="80" y="500" width="1040" height="90" rx="18" fill="#ffffff" stroke="#bfdbfe" stroke-width="2"/>
+    <text x="270" y="548" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" fill="#334155">Weekly</text>
+    <text x="270" y="580" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="800" fill="#166534">$1,000</text>
+    <text x="600" y="548" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" fill="#334155">Monthly</text>
+    <text x="600" y="580" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="800" fill="#166534">$4,333</text>
+    <text x="930" y="548" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" fill="#334155">Yearly</text>
+    <text x="930" y="580" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="800" fill="#166534">$52,000</text>
+  </g>
+
+  <!-- Caveat -->
+  <text x="600" y="635" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="600" fill="#334155">Gross pay &#8212; before tax, deductions &amp; overtime. Fewer paid weeks lowers the total.</text>
+
+  <!-- Footer -->
+  <text x="600" y="678" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#1e3a8a">lazytools.io/calc/hourly-to-salary-calculator</text>
+</svg>
