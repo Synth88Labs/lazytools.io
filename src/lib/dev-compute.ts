@@ -1,4 +1,5 @@
 /** Developer-tool transforms — all client-side, standard Web APIs only. */
+import { base32Encode, base32Decode, ibanValidate, isbnInfo, domainToAscii, domainToUnicode } from './dev-encoders';
 
 export interface DevResult {
   output: string;
@@ -34,6 +35,60 @@ const HTML_ESCAPES: [RegExp, string][] = [
 ];
 
 export const DEV: Record<string, (input: string, opts: Opts) => DevResult> = {
+  base32: (input, opts) => {
+    const mode = String(opts.mode ?? 'encode');
+    const hex = String(opts.variant ?? 'standard') === 'hex';
+    try {
+      if (mode === 'encode') {
+        const output = base32Encode(new TextEncoder().encode(input), hex);
+        return { output, info: `${input.length} chars → ${output.length} Base32 chars (RFC 4648${hex ? ' base32hex' : ''})` };
+      }
+      const output = new TextDecoder('utf-8', { fatal: false }).decode(base32Decode(input, hex));
+      return { output, info: 'decoded as UTF-8' };
+    } catch (e) {
+      throw new Error(e instanceof Error ? e.message : 'Not valid Base32 — check for stray characters.');
+    }
+  },
+
+  iban: (input) => {
+    const trimmed = input.trim();
+    if (!trimmed) return { output: '', info: 'Enter an IBAN to validate.' };
+    const r = ibanValidate(trimmed);
+    const lines = [
+      r.valid ? '✓ Valid IBAN' : '✗ Invalid IBAN',
+      `Formatted: ${r.formatted}`,
+      `Country: ${r.country || '—'}`,
+    ];
+    if (r.lengthOk !== null) lines.push(`Length: ${r.lengthOk ? 'correct for this country' : 'wrong for this country'}`);
+    if (r.reason) lines.push(`Reason: ${r.reason}`);
+    return { output: lines.join('\n'), info: r.valid ? 'ISO 13616 mod-97 check passed' : 'ISO 13616 mod-97 check' };
+  },
+
+  isbn: (input) => {
+    const trimmed = input.trim();
+    if (!trimmed) return { output: '', info: 'Enter an ISBN-10 or ISBN-13.' };
+    const r = isbnInfo(trimmed);
+    const lines = [r.valid ? `✓ Valid ${r.type}` : `✗ Invalid${r.type !== 'unknown' ? ' ' + r.type : ' input'}`];
+    if (r.isbn13) lines.push(`ISBN-13: ${r.isbn13}`);
+    if (r.isbn10) lines.push(`ISBN-10: ${r.isbn10}`);
+    if (r.reason) lines.push(`Reason: ${r.reason}`);
+    return { output: lines.join('\n'), info: r.valid ? 'check digit verified' : 'check digit' };
+  },
+
+  punycode: (input, opts) => {
+    const mode = String(opts.mode ?? 'to-ascii');
+    const domain = input.trim();
+    if (!domain) return { output: '', info: 'Enter a domain name.' };
+    try {
+      if (mode === 'to-ascii') {
+        return { output: domainToAscii(domain), info: 'Unicode → ASCII (RFC 3492 / IDNA)' };
+      }
+      return { output: domainToUnicode(domain), info: 'ASCII (xn--) → Unicode' };
+    } catch (e) {
+      throw new Error(e instanceof Error ? e.message : 'Could not convert this domain.');
+    }
+  },
+
   base64: (input, opts) => {
     const mode = String(opts.mode ?? 'encode');
     const urlSafe = Boolean(opts.urlSafe);

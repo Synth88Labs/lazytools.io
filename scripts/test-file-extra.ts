@@ -1,0 +1,13 @@
+import { CONVERT } from '../src/lib/file-compute.ts';
+let p=0,f=0; const ok=(n:string,c:boolean)=>c?p++:(f++,console.error('FAIL',n));
+const t2j = CONVERT.tomlToJson('title = "x"\n[owner]\nname = "Ada"\nage = 36\n', {});
+const o = JSON.parse(t2j.output);
+ok('toml→json parses', o.owner.name==='Ada' && o.owner.age===36 && o.title==='x');
+const j2t = CONVERT.jsonToToml('{"a":1,"b":{"c":"d"}}', {});
+ok('json→toml roundtrips', JSON.parse(CONVERT.tomlToJson(j2t.output,{}).output).b.c==='d');
+let threw=false; try{CONVERT.jsonToToml('[1,2,3]',{});}catch{threw=true;} ok('json→toml rejects top-level array', threw);
+const xf = CONVERT.xmlFormat('<a><b>hi</b><c/></a>', {});
+ok('xml pretty inlines text + indents', xf.output.includes('<b>hi</b>') && /\n {2}<b>/.test(xf.output));
+const xm = CONVERT.xmlFormat('<a>\n  <b>hi</b>\n</a>', {minify:true});
+ok('xml minify', xm.output==='<a><b>hi</b></a>');
+console.log(`${p} passed, ${f} failed`); if(f)process.exit(1);

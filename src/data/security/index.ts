@@ -6,7 +6,7 @@ export interface SecurityToolDef {
   icon: string;
   description: string;
   lead: string;
-  widget: 'metadata' | 'encrypt' | 'strength' | 'file-hash' | 'piiredact';
+  widget: 'metadata' | 'encrypt' | 'strength' | 'file-hash' | 'piiredact' | 'totp';
   how: string;
   note?: string;
   faqs: { q: string; a: string }[];
@@ -108,5 +108,24 @@ export const SECURITY_TOOLS: SecurityToolDef[] = [
       { q: 'What masking styles are there?', a: 'Labels (replace with [EMAIL], [PHONE], etc. — clearest for a human reader), blocks (solid ████ characters), or partial (keep the last four digits, e.g. ••••1234 — useful when you still need to reference the item). Pick whichever suits where the text is going.' },
     ],
     keywords: ['pii redactor', 'redact personal information', 'remove pii from text', 'redact text before chatgpt', 'mask sensitive data', 'anonymize text', 'redact email phone ssn'],
+  },
+  {
+    slug: 'totp-generator',
+    name: 'TOTP Authenticator Code Generator',
+    icon: '🔐',
+    description:
+      'Generate the current TOTP two-factor (2FA) code from a Base32 secret — RFC 6238, live countdown, in your browser. Your secret is never uploaded.',
+    lead: 'Paste a Base32 TOTP secret to see the current 6-digit two-factor code with a live countdown — computed on your device, never sent anywhere.',
+    widget: 'totp',
+    how: 'A TOTP code is an HMAC of the current time step and your shared secret, truncated to 6 (or 8) digits — the exact scheme (RFC 6238) that Google Authenticator, Authy and 1Password use. The tool Base32-decodes your secret, computes the HMAC with the browser\'s Web Crypto API for the current 30-second window, and shows the code with a countdown, refreshing each second. It supports SHA-1 (the default), SHA-256 and SHA-512, 6 or 8 digits, and a verify mode that checks a code against the current and adjacent windows to allow for clock skew.',
+    note: 'A word on trust: this computes codes locally and your secret never leaves the page — you can watch the network tab stay silent, or run it offline. Even so, a TOTP secret is a long-lived credential, so only ever paste one into a tool you trust and control. This is genuinely useful as a backup way to get a code when your phone isn\'t to hand, or to test a 2FA integration you\'re building — not a replacement for keeping the secret safe.',
+    faqs: [
+      { q: 'What is a TOTP code?', a: 'A Time-based One-Time Password (RFC 6238): a 6- or 8-digit code derived from a shared secret and the current time, rotating every 30 seconds. It\'s the second factor apps like Google Authenticator and Authy generate.' },
+      { q: 'Will these codes match Google Authenticator?', a: 'Yes — for the same Base32 secret and settings (algorithm, digits, period), this produces identical codes, because it implements the same RFC 6238 standard. The default SHA-1 / 6 digits / 30 seconds matches almost every service.' },
+      { q: 'Is it safe to paste my 2FA secret here?', a: 'The computation is entirely local — your secret never leaves your browser, and it works offline. That said, a TOTP secret is a sensitive long-lived credential, so only enter one into tools you trust and control, like this open, no-upload page.' },
+      { q: 'What is the countdown for?', a: 'It shows how many seconds remain before the code rotates. Codes are valid for their 30-second window (and usually the adjacent one), so a code with only a second or two left may expire before you can use it — wait for the next one.' },
+      { q: 'Why would I generate TOTP codes on a computer?', a: 'As a backup when your phone isn\'t available, to store a shared team secret you can access without a specific device, or to test a two-factor login you\'re developing. Keep the secret itself protected either way.' },
+    ],
+    keywords: ['totp generator', '2fa code generator', 'authenticator code', 'totp authenticator', 'generate 2fa code', 'rfc 6238', 'otp generator'],
   },
 ];

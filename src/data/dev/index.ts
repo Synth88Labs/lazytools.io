@@ -16,7 +16,7 @@ export interface DevToolDef {
   description: string;
   lead: string;
   /** 'transform' uses DevTransformTool; 'hash' uses HashTool; 'llm-tokens' uses LlmTokenCounterTool */
-  widget: 'transform' | 'hash' | 'llm-tokens' | 'eth-units' | 'keccak' | 'eip55' | 'har' | 'sqlformat';
+  widget: 'transform' | 'hash' | 'llm-tokens' | 'eth-units' | 'keccak' | 'eip55' | 'har' | 'sqlformat' | 'jsondiff';
   computeId?: string;
   options?: DevToolOption[];
   sample?: string;
@@ -500,6 +500,133 @@ export const DEV_TOOLS: DevToolDef[] = [
       { q: 'Is my SQL sent to a server?', a: 'No — the formatting runs entirely in your browser, so your queries and the schema they reveal never leave your device. It works offline once loaded.' },
     ],
     keywords: ['sql formatter', 'format sql', 'sql beautifier', 'sql pretty print', 'format sql online', 'sql formatter online', 'beautify sql'],
+  },
+  {
+    slug: 'base32-encode-decode',
+    name: 'Base32 Encoder / Decoder',
+    icon: '3️⃣',
+    description:
+      'Encode text to Base32 or decode Base32 to text — RFC 4648 standard and base32hex variants. Runs in your browser; nothing is uploaded.',
+    lead: 'Base32 encodes bytes using 32 case-insensitive characters (A–Z, 2–7) — encode or decode instantly, with the base32hex variant.',
+    widget: 'transform',
+    computeId: 'base32',
+    options: [
+      {
+        id: 'mode', label: 'Mode', type: 'select', defaultValue: 'encode',
+        options: [
+          { value: 'encode', label: 'Encode (text → Base32)' },
+          { value: 'decode', label: 'Decode (Base32 → text)' },
+        ],
+      },
+      {
+        id: 'variant', label: 'Alphabet', type: 'select', defaultValue: 'standard',
+        options: [
+          { value: 'standard', label: 'Standard (A–Z, 2–7)' },
+          { value: 'hex', label: 'base32hex (0–9, A–V)' },
+        ],
+      },
+    ],
+    sample: 'foobar',
+    how: 'Encoding groups the UTF-8 bytes into 5-bit chunks and maps each to one of 32 characters — A–Z and 2–7 in the standard alphabet (RFC 4648), padding to a multiple of 8 with =. Base32 is case-insensitive and avoids easily-confused characters (no 0/O or 1/I), which is why it is used where humans type or read the value: TOTP two-factor secrets, some file hashes and identifiers. Decoding accepts either alphabet and tolerates missing padding and whitespace.',
+    note: 'Base32 is encoding, not encryption — it is fully reversible with no secrecy. Compared with Base64 it is ~20% larger (5 bits per character vs 6) but case-insensitive and safer to transcribe by hand or read aloud. If you are working with a two-factor authentication secret, it is Base32 — pair this with the TOTP generator.',
+    faqs: [
+      { q: 'What is Base32 used for?', a: 'Anywhere a value must survive being typed, read aloud or written down: TOTP/2FA secrets, some content hashes and identifiers. Its case-insensitive alphabet (A–Z, 2–7) avoids characters that look alike, unlike Base64.' },
+      { q: 'How is Base32 different from Base64?', a: 'Base32 uses 32 characters (5 bits each) and is case-insensitive; Base64 uses 64 (6 bits) and is case-sensitive. Base32 output is about 20% larger but far easier to transcribe without errors.' },
+      { q: 'What is the base32hex variant?', a: 'An alternative alphabet (0–9 then A–V) defined in RFC 4648 §7 that preserves sort order of the encoded data. Pick it only if your target system specifies it; most uses want the standard alphabet.' },
+      { q: 'Is Base32 encryption?', a: 'No — it is a reversible transport encoding with zero secrecy. Anyone can decode it. Encrypt first if you need confidentiality.' },
+      { q: 'Is my text uploaded?', a: 'No — encoding and decoding run entirely in your browser. Nothing is transmitted and it works offline.' },
+    ],
+    keywords: ['base32 encode', 'base32 decode', 'base32 encoder', 'base32 converter', 'rfc 4648 base32', 'base32hex'],
+  },
+  {
+    slug: 'iban-validator',
+    name: 'IBAN Validator & Formatter',
+    icon: '🏦',
+    description:
+      'Validate an IBAN with the ISO 13616 mod-97 checksum, check the country length, and pretty-print it in groups of four — in your browser, never uploaded.',
+    lead: 'Paste an IBAN to check its ISO 13616 checksum and length and format it correctly — the number never leaves your device.',
+    widget: 'transform',
+    computeId: 'iban',
+    sample: 'GB82 WEST 1234 5698 7654 32',
+    how: 'An IBAN carries its own checksum. The tool moves the first four characters (country code + two check digits) to the end, converts every letter to two digits (A=10 … Z=35), and takes the whole number modulo 97 — a valid IBAN gives a remainder of exactly 1. It also verifies the length against the fixed length for that country (where known) and formats the IBAN in the standard groups of four.',
+    note: 'This checks structure and the check digits only — it confirms an IBAN is well-formed and not mistyped, not that the account exists or is open. That is exactly what you want before saving a payee or sending a payment: catching a transposed digit locally, without sending the account number to a third-party server.',
+    faqs: [
+      { q: 'How is an IBAN validated?', a: 'By the ISO 13616 mod-97 checksum: rearrange so the country code and check digits move to the end, replace letters with numbers (A=10 … Z=35), and compute the whole value modulo 97 — a valid IBAN yields 1. This tool also checks the country-specific length.' },
+      { q: 'Does this confirm the bank account exists?', a: 'No — it validates the format and check digits only, which catches typos and transpositions. Whether the account is real and open can only be confirmed by the bank during a payment.' },
+      { q: 'Why is my IBAN flagged as the wrong length?', a: 'Each country has a fixed IBAN length (Germany 22, UK 22, France 27, and so on). A different length means a digit is missing or extra — re-check the number against your bank statement.' },
+      { q: 'Is my IBAN uploaded anywhere?', a: 'No — the checksum runs in your browser, so the account number stays on your device. It works offline.' },
+    ],
+    keywords: ['iban validator', 'iban checker', 'validate iban', 'iban format', 'iban check digit', 'check iban number'],
+  },
+  {
+    slug: 'isbn-converter',
+    name: 'ISBN-10 ↔ ISBN-13 Converter & Validator',
+    icon: '📚',
+    description:
+      'Validate an ISBN-10 or ISBN-13 check digit and convert between the two formats — in your browser, never uploaded.',
+    lead: 'Paste an ISBN to verify its check digit and convert ISBN-10 ↔ ISBN-13 — computed locally on your device.',
+    widget: 'transform',
+    computeId: 'isbn',
+    sample: '978-0-306-40615-7',
+    how: 'The tool checks the ISBN\'s check digit — ISBN-10 uses a modulo-11 weighted sum (weights 10 down to 1, with X meaning 10), ISBN-13 uses a modulo-10 alternating 1-3 weighting. To convert an ISBN-10 to ISBN-13 it prefixes 978 and recomputes the mod-10 check digit; to go the other way it drops the 978 prefix and recomputes the mod-11 digit. Hyphens and spaces are ignored.',
+    note: 'ISBN-13 has been the standard since 2007; older books carry ISBN-10. The 979-prefixed ISBN-13s have no ISBN-10 equivalent, so those convert one way only. This validates the check digit — it confirms the number is well-formed, not that the book exists in a catalogue.',
+    faqs: [
+      { q: 'How do I convert ISBN-10 to ISBN-13?', a: 'Prefix the first nine digits with 978 and recompute the final check digit using the ISBN-13 (mod-10, alternating 1-3) formula. This tool does it automatically and validates the result.' },
+      { q: 'What does the X in an ISBN-10 mean?', a: 'It is a check digit of 10, written as X because ISBN-10 uses modulo 11 which can produce a value of 10. It only ever appears in the last position.' },
+      { q: 'Why can\'t my ISBN-13 convert to ISBN-10?', a: 'Only 978-prefixed ISBN-13s have an ISBN-10 equivalent. A 979 prefix has no ISBN-10, so the conversion is one-directional for those.' },
+      { q: 'Does this check the book exists?', a: 'No — it validates the check digit and converts formats. It confirms the ISBN is structurally valid and not mistyped, not that it maps to a real title.' },
+      { q: 'Is my input uploaded?', a: 'No — validation and conversion run in your browser and nothing is transmitted.' },
+    ],
+    keywords: ['isbn converter', 'isbn 10 to 13', 'isbn 13 to 10', 'isbn validator', 'isbn check digit', 'convert isbn'],
+  },
+  {
+    slug: 'punycode-converter',
+    name: 'Punycode / IDN Converter',
+    icon: '🌍',
+    description:
+      'Convert internationalised domain names between Unicode and ASCII Punycode (xn--…) — RFC 3492 / IDNA, in your browser, never uploaded.',
+    lead: 'Convert a Unicode domain (münchen.de) to its ASCII xn-- form and back — useful for DNS, email and spotting look-alike domains.',
+    widget: 'transform',
+    computeId: 'punycode',
+    options: [
+      {
+        id: 'mode', label: 'Direction', type: 'select', defaultValue: 'to-ascii',
+        options: [
+          { value: 'to-ascii', label: 'Unicode → ASCII (xn--)' },
+          { value: 'to-unicode', label: 'ASCII (xn--) → Unicode' },
+        ],
+      },
+    ],
+    sample: 'münchen.de',
+    how: 'The Domain Name System only allows ASCII letters, digits and hyphens, so internationalised domain names (IDNs) with accents or non-Latin scripts are encoded with Punycode (RFC 3492): each affected label is transformed into an ASCII string and prefixed with xn--. The tool converts each dot-separated label — münchen.de becomes xn--mnchen-3ya.de — and decodes xn-- labels back to their original Unicode.',
+    note: 'Punycode is also a security tool: attackers register look-alike domains using characters that resemble Latin letters (a Cyrillic "а" for a Latin "a"), and the only reliable way to see the real domain is its xn-- form. Decoding a suspicious xn-- domain here shows what it actually contains, on your device — no lookup, no tracking.',
+    faqs: [
+      { q: 'What is Punycode?', a: 'The ASCII encoding (RFC 3492) that lets internationalised domain names with non-ASCII characters work in the DNS. Each affected label is converted and prefixed with xn--, e.g. münchen → xn--mnchen-3ya.' },
+      { q: 'Why do some domains start with xn--?', a: 'That prefix marks a Punycode-encoded label — the ASCII representation of a domain containing accents or non-Latin characters. Your browser shows the Unicode version but sends the xn-- form to DNS.' },
+      { q: 'How does this help spot phishing?', a: 'Look-alike (homograph) attacks use characters that resemble Latin letters. Decoding the domain\'s xn-- form reveals the real characters, so you can tell a genuine site from an impostor.' },
+      { q: 'Does it convert whole domains or single labels?', a: 'Whole domains — it processes each dot-separated label independently, encoding only those with non-ASCII characters and leaving plain labels (like com) unchanged.' },
+      { q: 'Is my domain uploaded?', a: 'No — the conversion runs locally in your browser with no DNS lookup, so nothing is transmitted.' },
+    ],
+    keywords: ['punycode converter', 'idn converter', 'punycode decode', 'xn-- decoder', 'unicode to punycode', 'internationalized domain name'],
+  },
+  {
+    slug: 'json-diff',
+    name: 'JSON Diff / Compare',
+    icon: '🔀',
+    description:
+      'Compare two JSON documents structurally — see added, removed and changed keys, ignoring formatting and key order. In your browser, never uploaded.',
+    lead: 'Paste two JSON documents to see exactly what changed — a key-aware diff that ignores reformatting and key order.',
+    widget: 'jsondiff',
+    how: 'The tool parses both JSON documents and walks them recursively, comparing by key rather than by line. It reports each difference as added (a key or element only in the second), removed (only in the first) or changed (different values), with the path to each. Because it compares the parsed data, reordering an object\'s keys or reformatting the whitespace is correctly reported as no change — unlike a plain text diff.',
+    note: 'A line-based text diff of two JSON files is noisy: pretty-printing or reordering keys shows up as dozens of false changes. A structural (semantic) diff cuts through that to the differences that actually matter — which is what you want when comparing an API response before and after a change, or two config files. Arrays are compared by position, so element order does matter there.',
+    faqs: [
+      { q: 'How is this different from a normal text diff?', a: 'A text diff compares lines, so reformatting or reordering keys creates false differences. This compares the parsed JSON by key, so only real structural changes — added, removed or changed values — are reported.' },
+      { q: 'Does key order matter?', a: 'No for object keys — {"a":1,"b":2} and {"b":2,"a":1} are identical. Yes for arrays: elements are compared by position, so reordering a list is reported as changes.' },
+      { q: 'What does it show for each difference?', a: 'The path to the value (e.g. user.roles[2]) and whether it was added, removed or changed, with the old and new values for changes. There\'s a plain-text summary you can copy.' },
+      { q: 'What if my JSON is invalid?', a: 'The tool tells you which side failed to parse so you can fix it. Both must be valid JSON before it can compare them.' },
+      { q: 'Is my data uploaded?', a: 'No — both documents are parsed and compared in your browser. Nothing is transmitted, so even sensitive API payloads stay on your device.' },
+    ],
+    keywords: ['json diff', 'compare json', 'json compare', 'json difference', 'diff two json', 'semantic json diff', 'json patch'],
   },
 ];
 

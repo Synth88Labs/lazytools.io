@@ -24,6 +24,7 @@
     "@fontsource/playfair-display": "^5.2.8",
     "@fontsource/roboto": "^5.2.10",
     "@fontsource/roboto-mono": "^5.2.9",
+    "@iarna/toml": "^2.2.5",
     "@jspawn/qpdf-wasm": "^0.0.2",
     "@mediapipe/tasks-vision": "^0.10.35",
     "@remotemerge/nepali-date-converter": "^1.2.0",
@@ -42,6 +43,8 @@
     "preact": "^10.25.0",
     "qrcode": "^1.5.4",
     "sql-formatter": "^15.8.2",
+    "turndown": "^7.2.4",
+    "turndown-plugin-gfm": "^1.0.2",
     "xlsx": "^0.18.5"
   },
   "devDependencies": {

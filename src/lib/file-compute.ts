@@ -5,6 +5,44 @@
  */
 import { load as yamlLoad, dump as yamlDump } from 'js-yaml';
 import { marked } from 'marked';
+import TOML from '@iarna/toml';
+
+/** Collapse only inter-tag whitespace (preserves text content). */
+function minifyXml(xml: string): string {
+  return xml.replace(/>\s+</g, '><').trim();
+}
+
+/** Pure-JS XML pretty-printer: indents by nesting depth, inlines `<tag>text</tag>`. */
+function formatXml(xml: string, indentSize: number): string {
+  const compact = minifyXml(xml);
+  const pad = (d: number) => ' '.repeat(Math.max(0, d) * indentSize);
+  const tokens = compact.match(/<[^>]+>|[^<]+/g) || [];
+  const out: string[] = [];
+  let depth = 0;
+  for (let i = 0; i < tokens.length; i++) {
+    const tok = tokens[i];
+    if (/^<\//.test(tok)) {
+      depth = Math.max(0, depth - 1);
+      out.push(pad(depth) + tok);
+    } else if (/^<[?!]/.test(tok) || /\/>\s*$/.test(tok)) {
+      out.push(pad(depth) + tok); // declaration / comment / self-closing
+    } else if (/^</.test(tok)) {
+      const next = tokens[i + 1];
+      const after = tokens[i + 2];
+      if (next && !/^</.test(next) && after && /^<\//.test(after)) {
+        out.push(pad(depth) + tok + next.trim() + after); // <tag>text</tag> inline
+        i += 2;
+      } else {
+        out.push(pad(depth) + tok);
+        depth++;
+      }
+    } else {
+      const t = tok.trim();
+      if (t) out.push(pad(depth) + t);
+    }
+  }
+  return out.join('\n');
+}
 
 export interface ConvertResult {
   output: string;
@@ -269,5 +307,36 @@ export const CONVERT: Record<string, (input: string, opts: Opts) => ConvertResul
   markdownToHtml: (input) => {
     const output = marked.parse(input, { async: false }) as string;
     return { output, info: 'GitHub-flavored Markdown via marked' };
+  },
+
+  tomlToJson: (input, opts) => {
+    let data: unknown;
+    try {
+      data = TOML.parse(input);
+    } catch (e) {
+      throw new Error(`Invalid TOML: ${e instanceof Error ? e.message : 'parse error'}`);
+    }
+    const indent = Boolean(opts.minify) ? 0 : 2;
+    return { output: JSON.stringify(data, null, indent), info: 'parsed with @iarna/toml (TOML v1.0.0)' };
+  },
+
+  jsonToToml: (input) => {
+    const data = jsonParse(input);
+    if (data === null || typeof data !== 'object' || Array.isArray(data)) {
+      throw new Error('A TOML document must be a JSON object at the top level — not an array, string or number.');
+    }
+    try {
+      return { output: TOML.stringify(data as Record<string, unknown>), info: 'serialized with @iarna/toml' };
+    } catch (e) {
+      throw new Error(`Can't represent this as TOML: ${e instanceof Error ? e.message : 'unsupported value'} (TOML has no null; every key needs a value).`);
+    }
+  },
+
+  xmlFormat: (input, opts) => {
+    if (!input.trim()) return { output: '', info: 'Paste XML to format.' };
+    const minify = Boolean(opts.minify);
+    const indentSize = parseInt(String(opts.indent ?? '2'), 10) || 2;
+    const output = minify ? minifyXml(input) : formatXml(input, indentSize);
+    return { output, info: minify ? 'minified (inter-tag whitespace removed)' : `pretty-printed, ${indentSize}-space indent` };
   },
 };

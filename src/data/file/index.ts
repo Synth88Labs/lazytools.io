@@ -16,7 +16,7 @@ export interface FileToolDef {
   description: string;
   lead: string;
   /** custom widget instead of the generic text-convert UI */
-  widget?: 'einvoice' | 'ksef-viewer' | 'ksef-validator' | 'excel-to-csv' | 'excel-to-json' | 'csv-to-excel';
+  widget?: 'einvoice' | 'ksef-viewer' | 'ksef-validator' | 'excel-to-csv' | 'excel-to-json' | 'csv-to-excel' | 'html-md';
   computeId?: string;
   options?: FileToolOption[];
   /** sample input preloaded so the tool demonstrates itself */
@@ -442,6 +442,100 @@ export const FILE_TOOLS: FileToolDef[] = [
       { q: 'Is my CSV uploaded?', a: 'No — the workbook is built in your browser with SheetJS. The data stays on your device and it works offline.' },
     ],
     keywords: ['csv to excel', 'convert csv to xlsx', 'csv to xlsx', 'csv to excel converter', 'csv to spreadsheet', 'make xlsx from csv'],
+  },
+  {
+    slug: 'toml-to-json',
+    name: 'TOML to JSON Converter',
+    icon: '🧩',
+    description: 'Convert TOML configuration to JSON in your browser — parsed with @iarna/toml (TOML v1.0.0). Never uploaded.',
+    lead: 'Paste TOML (like a Cargo.toml or pyproject.toml) and get equivalent JSON — parsed locally on your device.',
+    widget: undefined,
+    computeId: 'tomlToJson',
+    options: [{ id: 'minify', label: 'Minify (no indentation)', type: 'checkbox' }],
+    sample: 'title = "LazyTools"\n\n[owner]\nname = "Ada"\nreleased = 2026\n\n[deps]\nnames = ["preact", "astro"]',
+    accept: '.toml,text/plain',
+    downloadName: 'data.json',
+    how: 'TOML (Tom\'s Obvious Minimal Language) is a config format built for humans, used by Rust\'s Cargo.toml, Python\'s pyproject.toml and many tools. The converter parses it with the standards-compliant @iarna/toml parser (TOML v1.0.0) into a data structure and serialises that as JSON — tables become objects, arrays stay arrays, and dates and numbers keep their types.',
+    note: 'JSON is what most programs and APIs consume, so converting a TOML config to JSON is handy for tooling and inspection. The conversion runs entirely in your browser, so a config file — which can hold internal names, tokens or paths — never leaves your device.',
+    faqs: [
+      { q: 'How do I convert TOML to JSON?', a: 'Paste your TOML or load a .toml file and the tool outputs equivalent JSON you can copy or download. Tables become objects and arrays stay arrays.' },
+      { q: 'Which TOML version is supported?', a: 'TOML v1.0.0, via the @iarna/toml parser — including tables, arrays of tables, inline tables, and typed values like integers, floats, booleans and dates.' },
+      { q: 'What if my TOML has a syntax error?', a: 'The tool shows the parser\'s error message so you can find and fix the offending line before converting.' },
+      { q: 'Is my config uploaded?', a: 'No — parsing runs locally in your browser, so config contents stay on your device and it works offline.' },
+    ],
+    keywords: ['toml to json', 'convert toml to json', 'toml to json converter', 'parse toml', 'cargo.toml to json', 'pyproject.toml to json'],
+  },
+  {
+    slug: 'json-to-toml',
+    name: 'JSON to TOML Converter',
+    icon: '🧷',
+    description: 'Convert JSON to TOML configuration in your browser — serialised with @iarna/toml. Never uploaded.',
+    lead: 'Paste JSON and get equivalent TOML for a config file — serialised locally, nothing uploaded.',
+    widget: undefined,
+    computeId: 'jsonToToml',
+    sample: '{\n  "title": "LazyTools",\n  "owner": { "name": "Ada", "released": 2026 },\n  "deps": { "names": ["preact", "astro"] }\n}',
+    accept: '.json,application/json',
+    downloadName: 'data.toml',
+    how: 'The tool parses your JSON and serialises it as TOML with the @iarna/toml writer: top-level objects become tables, nested objects become sub-tables, and arrays are written as TOML arrays. The JSON must be an object at the top level, because a TOML document is always a set of key/value pairs.',
+    note: 'TOML is easier for people to read and edit than JSON for configuration, which is why tools are adopting it. Note that TOML has no null value and every key needs a value, so JSON containing null (or a top-level array or string) can\'t be represented — the tool tells you when that happens. It runs entirely in your browser.',
+    faqs: [
+      { q: 'How do I convert JSON to TOML?', a: 'Paste a JSON object or load a .json file and the tool outputs TOML you can copy or download. Objects become tables and arrays become TOML arrays.' },
+      { q: 'Why must the JSON be an object?', a: 'A TOML document is a collection of key/value pairs, so it needs an object at the top level. A top-level array, string or number has no TOML representation.' },
+      { q: 'What about null values?', a: 'TOML has no null and requires every key to have a value, so JSON with null can\'t be converted. Remove or replace null values first; the tool flags this.' },
+      { q: 'Is my JSON uploaded?', a: 'No — the conversion runs locally in your browser and nothing is transmitted.' },
+    ],
+    keywords: ['json to toml', 'convert json to toml', 'json to toml converter', 'make toml from json', 'json to config'],
+  },
+  {
+    slug: 'xml-formatter',
+    name: 'XML Formatter & Minifier',
+    icon: '📐',
+    description: 'Pretty-print or minify XML in your browser — indent by nesting depth or strip whitespace. Never uploaded.',
+    lead: 'Paste messy or minified XML to format it with clean indentation — or minify it — all on your device.',
+    widget: undefined,
+    computeId: 'xmlFormat',
+    options: [
+      {
+        id: 'indent', label: 'Indent', type: 'select', defaultValue: '2',
+        options: [
+          { value: '2', label: '2 spaces' },
+          { value: '4', label: '4 spaces' },
+        ],
+      },
+      { id: 'minify', label: 'Minify instead (remove whitespace between tags)', type: 'checkbox' },
+    ],
+    sample: '<catalog><book id="1"><title>XML Basics</title><author>Ada</author></book><book id="2"><title>Astro</title></book></catalog>',
+    accept: '.xml,text/xml,application/xml',
+    downloadName: 'formatted.xml',
+    how: 'The formatter walks the XML tag by tag, indenting each element by its nesting depth and placing short text nodes inline with their element (<title>XML Basics</title>). Minify mode does the opposite — it removes the whitespace between tags to produce the smallest valid XML, while leaving text content untouched. It works on any well-formed XML, including SVG, RSS, sitemaps and config files.',
+    note: 'This is a formatter, not a converter — the structure and content are unchanged, only the whitespace differs. Pretty-printing makes machine-generated or minified XML readable for debugging; minifying trims transfer size. Everything runs in your browser, so the document never leaves your device.',
+    faqs: [
+      { q: 'How do I format (beautify) XML?', a: 'Paste the XML or load a file and it\'s indented by nesting depth automatically. Choose a 2- or 4-space indent, then copy or download the result.' },
+      { q: 'Can it minify XML too?', a: 'Yes — tick "Minify" and it removes the whitespace between tags to produce the smallest valid XML, without altering any text content.' },
+      { q: 'Does it work on SVG and RSS?', a: 'Yes — SVG, RSS, Atom, sitemaps and config files are all XML, so the formatter handles them like any other well-formed XML document.' },
+      { q: 'Does formatting change my data?', a: 'No — only the whitespace between elements changes. The elements, attributes and text content are preserved exactly.' },
+      { q: 'Is my XML uploaded?', a: 'No — formatting runs entirely in your browser and nothing is transmitted.' },
+    ],
+    keywords: ['xml formatter', 'format xml', 'xml beautifier', 'xml minifier', 'pretty print xml', 'xml formatter online'],
+  },
+  {
+    slug: 'html-to-markdown',
+    name: 'HTML to Markdown Converter',
+    icon: '📝',
+    description: 'Convert HTML into clean Markdown in your browser (the reverse of Markdown-to-HTML), using Turndown. Never uploaded.',
+    lead: 'Paste HTML and get clean Markdown — headings, links, lists, bold and code all converted, locally.',
+    widget: 'html-md',
+    accept: '.html,.htm,text/html',
+    downloadName: 'output.md',
+    how: 'The tool converts HTML to Markdown with Turndown, a well-established client-side library: headings become #, links become [text](url), <strong>/<em> become ** / _, lists become - or numbered items, and <pre>/<code> become fenced code blocks. It\'s the inverse of the Markdown-to-HTML converter — useful for turning web content, rich-text output or pasted HTML into clean Markdown for docs, wikis or READMEs.',
+    note: 'Markdown is far easier to edit and version-control than HTML, so converting pasted or generated HTML back to Markdown is a common writing and documentation task. Turndown keeps the structure and drops presentational cruft. Everything runs in your browser — the HTML, which might be internal content, never leaves your device.',
+    faqs: [
+      { q: 'How do I convert HTML to Markdown?', a: 'Paste your HTML or load a .html file and the tool outputs Markdown you can copy or download. Headings, links, lists, emphasis and code are all converted.' },
+      { q: 'Is this the reverse of the Markdown-to-HTML tool?', a: 'Yes — it takes HTML and produces Markdown, the opposite direction. Round-tripping isn\'t always byte-identical because HTML can express things Markdown can\'t, but structure and content carry over cleanly.' },
+      { q: 'What happens to complex HTML like tables or styles?', a: 'Standard elements convert well; inline styles and non-semantic markup are dropped, since Markdown has no equivalent. Tables convert to Markdown (GitHub-flavoured) where the structure allows.' },
+      { q: 'Is my HTML uploaded?', a: 'No — the conversion runs entirely in your browser with Turndown, so the content stays on your device and it works offline.' },
+    ],
+    keywords: ['html to markdown', 'convert html to markdown', 'html to md', 'html to markdown converter', 'turndown', 'webpage to markdown'],
   },
 ];
 
