@@ -1,0 +1,59 @@
+<svg viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A two-column spreadsheet with a highlighted header row of name and age, with rows Ada 36 and Grace 45, converts via an arrow into a JSON array of two objects mapping name and age to their typed values.">
+  <rect x="0" y="0" width="1200" height="700" fill="#f8fafc"/>
+
+  <!-- Title -->
+  <text x="600" y="70" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="700" fill="#0f172a" text-anchor="middle">Excel &#8594; JSON</text>
+  <text x="600" y="118" font-family="Arial, Helvetica, sans-serif" font-size="30" fill="#1e3a8a" text-anchor="middle">First row = keys &#183; each row = one object</text>
+
+  <!-- Spreadsheet card -->
+  <g>
+    <rect x="70" y="180" width="410" height="340" rx="16" fill="#ffffff" stroke="#bfdbfe" stroke-width="3"/>
+    <text x="275" y="222" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" fill="#0f172a" text-anchor="middle">Spreadsheet</text>
+
+    <!-- Header row (highlighted) -->
+    <rect x="100" y="248" width="175" height="70" fill="#bfdbfe" stroke="#1e3a8a" stroke-width="2"/>
+    <rect x="275" y="248" width="175" height="70" fill="#bfdbfe" stroke="#1e3a8a" stroke-width="2"/>
+    <text x="187" y="293" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="700" fill="#0f172a" text-anchor="middle">name</text>
+    <text x="362" y="293" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="700" fill="#0f172a" text-anchor="middle">age</text>
+
+    <!-- Row 1 -->
+    <rect x="100" y="318" width="175" height="70" fill="#ffffff" stroke="#bfdbfe" stroke-width="2"/>
+    <rect x="275" y="318" width="175" height="70" fill="#ffffff" stroke="#bfdbfe" stroke-width="2"/>
+    <text x="187" y="363" font-family="Arial, Helvetica, sans-serif" font-size="32" fill="#0f172a" text-anchor="middle">Ada</text>
+    <text x="362" y="363" font-family="Arial, Helvetica, sans-serif" font-size="32" fill="#0f172a" text-anchor="middle">36</text>
+
+    <!-- Row 2 -->
+    <rect x="100" y="388" width="175" height="70" fill="#ffffff" stroke="#bfdbfe" stroke-width="2"/>
+    <rect x="275" y="388" width="175" height="70" fill="#ffffff" stroke="#bfdbfe" stroke-width="2"/>
+    <text x="187" y="433" font-family="Arial, Helvetica, sans-serif" font-size="32" fill="#0f172a" text-anchor="middle">Grace</text>
+    <text x="362" y="433" font-family="Arial, Helvetica, sans-serif" font-size="32" fill="#0f172a" text-anchor="middle">45</text>
+
+    <text x="275" y="495" font-family="Arial, Helvetica, sans-serif" font-size="26" fill="#1e3a8a" text-anchor="middle">header row highlighted</text>
+  </g>
+
+  <!-- Arrow -->
+  <g>
+    <line x1="505" y1="350" x2="600" y2="350" stroke="#1e3a8a" stroke-width="10" stroke-linecap="round"/>
+    <polygon points="600,330 640,350 600,370" fill="#1e3a8a"/>
+  </g>
+
+  <!-- JSON card -->
+  <g>
+    <rect x="660" y="180" width="470" height="340" rx="16" fill="#ffffff" stroke="#bfdbfe" stroke-width="3"/>
+    <text x="895" y="222" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" fill="#0f172a" text-anchor="middle">JSON array of objects</text>
+
+    <text font-family="Consolas, 'Courier New', monospace" font-size="30" fill="#166534">
+      <tspan x="695" y="278">[</tspan>
+      <tspan x="725" y="318">{ "name": "Ada",   "age": 36 },</tspan>
+      <tspan x="725" y="358">{ "name": "Grace", "age": 45 }</tspan>
+      <tspan x="695" y="398">]</tspan>
+    </text>
+
+    <text x="695" y="458" font-family="Arial, Helvetica, sans-serif" font-size="26" fill="#0f172a">36 stays a number, not "36"</text>
+    <text x="695" y="494" font-family="Arial, Helvetica, sans-serif" font-size="26" fill="#0f172a">text becomes a string</text>
+  </g>
+
+  <!-- Footer -->
+  <text x="600" y="620" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" fill="#1e3a8a" text-anchor="middle">Runs 100% in your browser &#183; nothing uploaded</text>
+  <text x="600" y="668" font-family="Consolas, 'Courier New', monospace" font-size="28" fill="#0f172a" text-anchor="middle">lazytools.io/file/excel-to-json</text>
+</svg>

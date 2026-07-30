@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-label="How to make a favicon. Start from one square source image at least 512 by 512 pixels. It fans out into the full favicon size set: 16, 32 and 48 pixel images packed inside favicon.ico for browser tabs and bookmarks; a 180 pixel apple-touch-icon for iOS home screens; and 192 and 512 pixel PNGs for Android and Progressive Web Apps. All files sit at your site root alongside site.webmanifest.">
+  <defs>
+    <style>
+      .title { font: 800 40px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill: #0f172a; }
+      .sub { font: 500 24px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill: #334155; }
+      .cardlab { font: 800 34px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill: #1e3a8a; }
+      .size { font: 800 34px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill: #0f172a; }
+      .desc { font: 500 23px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill: #334155; }
+      .foot { font: 700 24px Consolas,Menlo,monospace; fill: #ffffff; }
+      .arrow { font: 800 46px 'Segoe UI',Arial,sans-serif; fill: #1e3a8a; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="700" fill="#f8fafc"/>
+
+  <text x="600" y="56" text-anchor="middle" class="title">How to make a favicon: one image &#8594; every size</text>
+  <text x="600" y="92" text-anchor="middle" class="sub">start square and big, then export the whole set</text>
+
+  <!-- source image -->
+  <g transform="translate(48 150)">
+    <rect width="300" height="400" rx="18" fill="#ffffff" stroke="#bfdbfe" stroke-width="2"/>
+    <rect x="60" y="52" width="180" height="180" rx="16" fill="#1e3a8a"/>
+    <text x="150" y="176" text-anchor="middle" font-family="'Plus Jakarta Sans',Arial,sans-serif" font-size="96" font-weight="800" fill="#ffffff">L</text>
+    <text x="150" y="300" text-anchor="middle" class="cardlab">Source image</text>
+    <text x="150" y="338" text-anchor="middle" class="desc">square, at least</text>
+    <text x="150" y="368" text-anchor="middle" class="size">512 &#215; 512</text>
+  </g>
+
+  <text x="378" y="360" text-anchor="middle" class="arrow">&#8594;</text>
+
+  <!-- favicon.ico -->
+  <g transform="translate(430 150)">
+    <rect width="720" height="120" rx="16" fill="#ffffff" stroke="#bfdbfe" stroke-width="2"/>
+    <text x="28" y="52" class="cardlab">favicon.ico</text>
+    <text x="28" y="92" class="desc">16 &#183; 32 &#183; 48 px packed inside &#8212; tabs &amp; bookmarks</text>
+  </g>
+
+  <!-- apple-touch -->
+  <g transform="translate(430 288)">
+    <rect width="720" height="120" rx="16" fill="#ffffff" stroke="#bfdbfe" stroke-width="2"/>
+    <text x="28" y="52" class="cardlab">apple-touch-icon</text>
+    <text x="28" y="92" class="desc">180 px &#8212; iOS home-screen shortcut</text>
+  </g>
+
+  <!-- PWA / android -->
+  <g transform="translate(430 426)">
+    <rect width="720" height="120" rx="16" fill="#ffffff" stroke="#bfdbfe" stroke-width="2"/>
+    <text x="28" y="52" class="cardlab">Android &amp; PWA</text>
+    <text x="28" y="92" class="desc">192 &amp; 512 px PNG &#8212; home screen &amp; install icon</text>
+  </g>
+
+  <!-- footer -->
+  <g transform="translate(48 588)">
+    <rect width="1104" height="72" rx="16" fill="#1e3a8a"/>
+    <text x="36" y="47" class="foot">all files + site.webmanifest go at your site root</text>
+    <text x="1068" y="47" text-anchor="end" class="foot">lazytools.io/image/favicon-generator</text>
+  </g>
+</svg>

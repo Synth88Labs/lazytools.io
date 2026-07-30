@@ -1028,6 +1028,48 @@ const POSTS = [
     fact: 'lower JPEG quality, then downscale if needed · 480 KB → 48 KB',
     icon: '🎯',
   },
+  {
+    slug: 'how-to-make-a-favicon-guide',
+    kicker: 'WEB DEV GUIDE',
+    lines: ['How to make', 'a favicon from', 'any image'],
+    fact: '16/32/48 in favicon.ico · 180 apple-touch · 192/512 PWA',
+    icon: '🌐',
+  },
+  {
+    slug: 'svg-to-png-guide',
+    kicker: 'DESIGN GUIDE',
+    lines: ['How to convert', 'SVG to PNG', 'at any size'],
+    fact: 'vector → raster · export at 2× for retina, no blur',
+    icon: '🖼️',
+  },
+  {
+    slug: 'excel-to-json-guide',
+    kicker: 'DATA GUIDE',
+    lines: ['How to convert', 'Excel to JSON'],
+    fact: 'first row = keys · each row → a JSON object',
+    icon: '🧾',
+  },
+  {
+    slug: 'srt-to-vtt-guide',
+    kicker: 'SUBTITLES GUIDE',
+    lines: ['SRT to VTT:', 'subtitles for', 'HTML5 video'],
+    fact: 'VTT adds WEBVTT header · comma → dot before ms',
+    icon: '💬',
+  },
+  {
+    slug: 'read-qr-code-from-image-guide',
+    kicker: 'QR GUIDE',
+    lines: ['How to read a', 'QR code from', 'an image'],
+    fact: 'no camera — decode a screenshot or photo locally',
+    icon: '📷',
+  },
+  {
+    slug: 'how-to-crop-an-image-guide',
+    kicker: 'IMAGE GUIDE',
+    lines: ['How to crop', 'an image to any', 'aspect ratio'],
+    fact: '1:1 avatar · 16:9 thumbnail · lossless, no rescale',
+    icon: '✂️',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

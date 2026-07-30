@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-label="An SVG vector mark converts to a PNG raster at a chosen size such as 512 pixels. Because an SVG is resolution-independent you can export at any size without blur, and you should export at 2 times the display size for retina screens.">
+  <rect width="1200" height="700" fill="#f8fafc"/>
+
+  <!-- Title -->
+  <text x="600" y="72" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="44" font-weight="700" fill="#0f172a">SVG (vector) &#8594; PNG (pixels)</text>
+  <text x="600" y="120" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="34" fill="#334155">at the size you choose</text>
+
+  <!-- SVG card -->
+  <g>
+    <rect x="90" y="180" width="380" height="360" rx="20" fill="#ffffff" stroke="#bfdbfe" stroke-width="3"/>
+    <text x="280" y="232" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="36" font-weight="700" fill="#1e3a8a">SVG &#183; vector</text>
+    <!-- smooth vector star mark -->
+    <polygon points="280,268 312,352 402,352 330,404 356,490 280,438 204,490 230,404 158,352 248,352" fill="#1e3a8a"/>
+    <text x="280" y="528" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="34" fill="#334155">scales without blur</text>
+  </g>
+
+  <!-- Arrow -->
+  <g>
+    <line x1="500" y1="360" x2="690" y2="360" stroke="#0f172a" stroke-width="10" stroke-linecap="round"/>
+    <polygon points="690,336 738,360 690,384" fill="#0f172a"/>
+    <text x="614" y="326" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700" fill="#0f172a">render</text>
+  </g>
+
+  <!-- PNG card -->
+  <g>
+    <rect x="730" y="180" width="380" height="360" rx="20" fill="#ffffff" stroke="#bfdbfe" stroke-width="3"/>
+    <text x="920" y="232" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="36" font-weight="700" fill="#1e3a8a">PNG &#183; 512 px</text>
+    <!-- pixel-grid version of the mark -->
+    <g fill="#1e3a8a">
+      <rect x="892" y="272" width="56" height="56"/>
+      <rect x="836" y="328" width="56" height="56"/>
+      <rect x="892" y="328" width="56" height="56"/>
+      <rect x="948" y="328" width="56" height="56"/>
+      <rect x="836" y="384" width="56" height="56"/>
+      <rect x="948" y="384" width="56" height="56"/>
+      <rect x="836" y="440" width="56" height="56"/>
+      <rect x="948" y="440" width="56" height="56"/>
+    </g>
+    <text x="920" y="528" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="34" fill="#334155">lossless &#183; crisp</text>
+  </g>
+
+  <!-- Retina note -->
+  <g>
+    <rect x="290" y="592" width="620" height="72" rx="16" fill="#1e3a8a"/>
+    <text x="600" y="638" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700" fill="#ffffff">Export at 2&#215; for retina screens</text>
+  </g>
+
+  <!-- Footer -->
+  <text x="600" y="692" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="26" fill="#334155">lazytools.io/image/svg-to-png</text>
+</svg>

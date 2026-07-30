@@ -1,0 +1,62 @@
+<svg viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Reading a QR code from an image: an image file containing a QR code is decoded in the browser to reveal the text or URL it holds. A caution reminds you to check the link before opening it.">
+  <rect width="1200" height="700" fill="#f8fafc"/>
+
+  <!-- Title -->
+  <text x="600" y="62" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="42" font-weight="700" fill="#0f172a">Read a QR code from an image</text>
+  <text x="600" y="104" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="26" fill="#334155">No camera, no app &#8212; it decodes in your browser</text>
+
+  <!-- Step 1: Image with QR -->
+  <rect x="60" y="170" width="300" height="300" rx="18" fill="#ffffff" stroke="#bfdbfe" stroke-width="3"/>
+  <text x="210" y="210" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700" fill="#1e3a8a">Image or screenshot</text>
+  <!-- schematic QR: not a real code -->
+  <g fill="#0f172a">
+    <rect x="130" y="240" width="60" height="60"/>
+    <rect x="145" y="255" width="30" height="30" fill="#ffffff"/>
+    <rect x="230" y="240" width="60" height="60"/>
+    <rect x="245" y="255" width="30" height="30" fill="#ffffff"/>
+    <rect x="130" y="340" width="60" height="60"/>
+    <rect x="145" y="355" width="30" height="30" fill="#ffffff"/>
+    <rect x="210" y="240" width="16" height="16"/>
+    <rect x="210" y="272" width="16" height="16"/>
+    <rect x="230" y="320" width="16" height="16"/>
+    <rect x="262" y="320" width="16" height="16"/>
+    <rect x="210" y="352" width="16" height="16"/>
+    <rect x="242" y="352" width="16" height="16"/>
+    <rect x="274" y="352" width="16" height="16"/>
+    <rect x="210" y="384" width="16" height="16"/>
+    <rect x="274" y="384" width="16" height="16"/>
+  </g>
+
+  <!-- Arrow 1 -->
+  <text x="405" y="330" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="60" font-weight="700" fill="#1e3a8a">&#8594;</text>
+
+  <!-- Step 2: Decode in browser -->
+  <rect x="450" y="170" width="300" height="300" rx="18" fill="#ffffff" stroke="#bfdbfe" stroke-width="3"/>
+  <text x="600" y="210" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700" fill="#1e3a8a">Decode locally</text>
+  <circle cx="600" cy="330" r="72" fill="none" stroke="#1e3a8a" stroke-width="10"/>
+  <path d="M600 270 A60 60 0 0 1 660 330" fill="none" stroke="#1e3a8a" stroke-width="14" stroke-linecap="round"/>
+  <text x="600" y="345" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="700" fill="#0f172a">jsQR</text>
+  <text x="600" y="430" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="24" fill="#334155">reads the pixels</text>
+
+  <!-- Arrow 2 -->
+  <text x="795" y="330" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="60" font-weight="700" fill="#1e3a8a">&#8594;</text>
+
+  <!-- Step 3: Revealed text -->
+  <rect x="840" y="170" width="300" height="300" rx="18" fill="#ffffff" stroke="#bfdbfe" stroke-width="3"/>
+  <text x="990" y="210" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700" fill="#1e3a8a">See the content</text>
+  <rect x="870" y="250" width="240" height="54" rx="10" fill="#f8fafc" stroke="#bfdbfe" stroke-width="2"/>
+  <text x="990" y="285" text-anchor="middle" font-family="Consolas, monospace" font-size="24" fill="#0f172a">https://site.com</text>
+  <text x="990" y="350" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="24" fill="#334155">URL &#183; Wi-Fi &#183; vCard</text>
+  <text x="990" y="386" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="24" fill="#334155">email &#183; phone &#183; text</text>
+  <text x="990" y="440" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="24" fill="#334155">read it &amp; copy it</text>
+
+  <!-- Caution banner -->
+  <rect x="60" y="520" width="1080" height="120" rx="16" fill="#ffffff" stroke="#b45309" stroke-width="3"/>
+  <circle cx="130" cy="580" r="34" fill="#b45309"/>
+  <text x="130" y="596" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="46" font-weight="700" fill="#ffffff">!</text>
+  <text x="196" y="570" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700" fill="#b45309">Check the link before opening it</text>
+  <text x="196" y="612" font-family="Segoe UI, Arial, sans-serif" font-size="26" fill="#334155">A QR code is just text &#8212; a link can point anywhere. Read the URL first, then decide.</text>
+
+  <!-- Footer -->
+  <text x="600" y="678" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="600" fill="#1e3a8a">lazytools.io/generate/qr-code-scanner</text>
+</svg>

@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-label="Converting an SRT subtitle cue to WebVTT. The SRT cue has an index line '1', a timestamp '00:00:01,000 --> 00:00:04,000' with a comma before the milliseconds, and the text 'Hello world'. The VTT cue adds a 'WEBVTT' header line at the top, changes the timestamp comma to a dot so it reads '00:00:01.000 --> 00:00:04.000', and the index becomes optional. The timings and the text 'Hello world' are identical in both.">
+  <defs>
+    <style>
+      .h { font: 800 40px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .sub { font: 500 22px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .lab { font: 800 30px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; }
+      .mono { font: 700 25px Consolas, Menlo, monospace; fill: #0f172a; }
+      .note { font: 700 30px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #1e3a8a; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="700" fill="#f8fafc"/>
+
+  <text x="600" y="62" text-anchor="middle" class="h">SRT &#8594; VTT: three changes</text>
+  <text x="600" y="98" text-anchor="middle" class="sub">same timings, same text — for HTML5 &lt;track&gt; captions</text>
+
+  <!-- SRT card -->
+  <g transform="translate(70 140)">
+    <rect width="470" height="290" rx="16" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+    <text x="30" y="52" class="lab" fill="#334155">SRT (.srt)</text>
+    <text x="30" y="118" class="mono" fill="#94a3b8">1</text>
+    <text x="30" y="170" class="mono">00:00:01<tspan fill="#dc2626">,</tspan>000 &#8594; 00:00:04<tspan fill="#dc2626">,</tspan>000</text>
+    <text x="30" y="222" class="mono">Hello world</text>
+    <text x="30" y="270" class="sub" fill="#dc2626">comma before the milliseconds</text>
+  </g>
+
+  <!-- arrow -->
+  <g transform="translate(560 285)">
+    <line x1="0" y1="0" x2="70" y2="0" stroke="#1e3a8a" stroke-width="6"/>
+    <path d="M70 -14 L96 0 L70 14 Z" fill="#1e3a8a"/>
+  </g>
+
+  <!-- VTT card -->
+  <g transform="translate(660 140)">
+    <rect width="470" height="290" rx="16" fill="#ffffff" stroke="#1e3a8a" stroke-width="3"/>
+    <text x="30" y="52" class="lab" fill="#1e3a8a">VTT (.vtt)</text>
+    <text x="30" y="104" class="mono" fill="#1e3a8a">WEBVTT</text>
+    <text x="30" y="170" class="mono">00:00:01<tspan fill="#0ea5e9">.</tspan>000 &#8594; 00:00:04<tspan fill="#0ea5e9">.</tspan>000</text>
+    <text x="30" y="222" class="mono">Hello world</text>
+    <text x="30" y="270" class="sub" fill="#0ea5e9">dot before the milliseconds</text>
+  </g>
+
+  <!-- three changes strip -->
+  <g transform="translate(70 470)">
+    <rect width="340" height="110" rx="14" fill="#ffffff" stroke="#bfdbfe" stroke-width="2"/>
+    <text x="170" y="52" text-anchor="middle" class="note">+ WEBVTT header</text>
+    <text x="170" y="88" text-anchor="middle" class="sub">added at the top</text>
+  </g>
+  <g transform="translate(430 470)">
+    <rect width="340" height="110" rx="14" fill="#ffffff" stroke="#bfdbfe" stroke-width="2"/>
+    <text x="170" y="52" text-anchor="middle" class="note">comma &#8594; dot</text>
+    <text x="170" y="88" text-anchor="middle" class="sub">in every timestamp</text>
+  </g>
+  <g transform="translate(790 470)">
+    <rect width="340" height="110" rx="14" fill="#ffffff" stroke="#bfdbfe" stroke-width="2"/>
+    <text x="170" y="52" text-anchor="middle" class="note">index optional</text>
+    <text x="170" y="88" text-anchor="middle" class="sub">cue numbers dropped</text>
+  </g>
+
+  <!-- footer -->
+  <g transform="translate(70 615)">
+    <rect width="1060" height="52" rx="14" fill="#1e3a8a"/>
+    <text x="530" y="34" text-anchor="middle" font-family="Consolas, Menlo, monospace" font-size="22" fill="#bfdbfe">lazytools.io/video/srt-to-vtt</text>
+  </g>
+</svg>
