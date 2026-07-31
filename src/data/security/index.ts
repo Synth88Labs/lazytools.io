@@ -6,7 +6,7 @@ export interface SecurityToolDef {
   icon: string;
   description: string;
   lead: string;
-  widget: 'metadata' | 'encrypt' | 'strength' | 'file-hash' | 'piiredact' | 'totp';
+  widget: 'metadata' | 'encrypt' | 'strength' | 'file-hash' | 'piiredact' | 'totp' | 'bcrypt';
   how: string;
   note?: string;
   faqs: { q: string; a: string }[];
@@ -127,5 +127,24 @@ export const SECURITY_TOOLS: SecurityToolDef[] = [
       { q: 'Why would I generate TOTP codes on a computer?', a: 'As a backup when your phone isn\'t available, to store a shared team secret you can access without a specific device, or to test a two-factor login you\'re developing. Keep the secret itself protected either way.' },
     ],
     keywords: ['totp generator', '2fa code generator', 'authenticator code', 'totp authenticator', 'generate 2fa code', 'rfc 6238', 'otp generator'],
+  },
+  {
+    slug: 'bcrypt-generator',
+    name: 'Bcrypt Hash Generator & Verifier',
+    icon: '🧂',
+    description:
+      'Hash a password with bcrypt at a chosen cost, or verify a password against an existing bcrypt hash — in your browser, never uploaded.',
+    lead: 'Generate a bcrypt password hash, or check a password against a $2b$ hash — computed locally, the password never leaves your device.',
+    widget: 'bcrypt',
+    how: 'Bcrypt is a deliberately slow password-hashing function with a built-in random salt and a tunable cost factor. The tool runs bcryptjs in your browser: in hash mode it produces a $2b$ hash at the cost you choose; in verify mode it checks a password against an existing hash. Because the salt is random, hashing the same password twice gives different hashes — and both still verify, which is exactly how bcrypt is meant to work.',
+    note: 'Bcrypt is for storing passwords, not for general hashing or checksums — it is intentionally slow so that guessing passwords is expensive, and the cost factor lets you keep it slow as hardware speeds up (each +1 roughly doubles the time). It is not reversible: you never "decrypt" a bcrypt hash, you only verify a candidate password against it. Everything runs on your device, so the password is never transmitted.',
+    faqs: [
+      { q: 'What is bcrypt used for?', a: 'Storing passwords securely. It is a slow, salted, one-way hashing function designed so that even if the hash database leaks, brute-forcing the original passwords is expensive. It\'s not for file checksums or general hashing.' },
+      { q: 'What is the cost factor?', a: 'A number (commonly 10–12) that sets how much work each hash takes — each increment roughly doubles the time. Higher is more resistant to brute-force but slower to compute; pick the highest your server can tolerate.' },
+      { q: 'Why does the same password produce different hashes?', a: 'Bcrypt generates a new random salt each time and stores it inside the hash, so two hashes of the same password differ — yet both verify correctly against that password. This is intended and improves security.' },
+      { q: 'Can I decrypt a bcrypt hash?', a: 'No — bcrypt is one-way. You can\'t recover the password from the hash; you can only check whether a given password matches it, which is what verify mode does.' },
+      { q: 'Is my password uploaded?', a: 'No — hashing and verification run entirely in your browser with bcryptjs. The password and hash never leave your device, and it works offline.' },
+    ],
+    keywords: ['bcrypt generator', 'bcrypt hash', 'bcrypt password hash', 'bcrypt verify', 'generate bcrypt hash', 'bcrypt online', 'password hash generator'],
   },
 ];

@@ -16,7 +16,7 @@ export interface DevToolDef {
   description: string;
   lead: string;
   /** 'transform' uses DevTransformTool; 'hash' uses HashTool; 'llm-tokens' uses LlmTokenCounterTool */
-  widget: 'transform' | 'hash' | 'llm-tokens' | 'eth-units' | 'keccak' | 'eip55' | 'har' | 'sqlformat' | 'jsondiff';
+  widget: 'transform' | 'hash' | 'llm-tokens' | 'eth-units' | 'keccak' | 'eip55' | 'har' | 'sqlformat' | 'jsondiff' | 'hmac' | 'jwtenc';
   computeId?: string;
   options?: DevToolOption[];
   sample?: string;
@@ -627,6 +627,44 @@ export const DEV_TOOLS: DevToolDef[] = [
       { q: 'Is my data uploaded?', a: 'No — both documents are parsed and compared in your browser. Nothing is transmitted, so even sensitive API payloads stay on your device.' },
     ],
     keywords: ['json diff', 'compare json', 'json compare', 'json difference', 'diff two json', 'semantic json diff', 'json patch'],
+  },
+  {
+    slug: 'hmac-generator',
+    name: 'HMAC Generator',
+    icon: '🔏',
+    description:
+      'Generate an HMAC (keyed hash) of a message with a secret key — HMAC-SHA1/256/384/512, hex or base64. In your browser; the key never leaves your device.',
+    lead: 'Sign a message with a secret key to get its HMAC — the keyed hash used to verify webhooks and API requests, computed locally.',
+    widget: 'hmac',
+    how: 'HMAC combines a message with a secret key and a hash function (SHA-1, SHA-256, SHA-384 or SHA-512) to produce a fixed-length signature that only someone with the key can reproduce. The tool computes it with the browser\'s Web Crypto API and shows the result as hexadecimal or base64. Unlike a plain hash, HMAC needs a key — it proves the message came from someone who holds the secret and wasn\'t altered in transit.',
+    note: 'This is exactly how webhook providers sign their payloads: Stripe, GitHub and others HMAC the request body with a secret you share, and you recompute the HMAC on your side to confirm the request is genuine and untampered. HMAC is authentication, not encryption — it doesn\'t hide the message, it proves its origin and integrity. Everything runs on your device, so the secret is never transmitted.',
+    faqs: [
+      { q: 'What is an HMAC?', a: 'A Hash-based Message Authentication Code: a keyed hash of a message that proves it came from someone who knows the secret key and hasn\'t been changed. It uses a standard hash (SHA-256 and friends) combined with the key.' },
+      { q: 'How is HMAC different from a normal hash?', a: 'A plain hash (like SHA-256) needs only the message, so anyone can compute it. HMAC also requires a secret key, so only holders of the key can produce or verify the value — which is what makes it useful for authentication.' },
+      { q: 'How do I verify a webhook signature?', a: 'Take the raw request body and your shared signing secret, compute the HMAC with the algorithm the provider specifies (usually SHA-256), and compare it to the signature header they sent. A match means the request is genuine.' },
+      { q: 'Should the output be hex or base64?', a: 'Whichever your system expects — both represent the same bytes. Many APIs use hex for signatures; some use base64. The tool gives you either.' },
+      { q: 'Is my secret key uploaded?', a: 'No — the HMAC is computed with Web Crypto in your browser. The message and key never leave your device, and it works offline.' },
+    ],
+    keywords: ['hmac generator', 'hmac sha256', 'hmac calculator', 'generate hmac', 'hmac signature', 'webhook signature', 'hmac sha512'],
+  },
+  {
+    slug: 'jwt-encoder',
+    name: 'JWT Encoder / Signer',
+    icon: '🎟️',
+    description:
+      'Build and HMAC-sign a JSON Web Token (JWT) from a payload and secret — HS256/384/512. The companion to the JWT decoder, in your browser, never uploaded.',
+    lead: 'Create a signed JWT from your payload and secret — HS256/384/512, computed locally so the secret never leaves your browser.',
+    widget: 'jwtenc',
+    how: 'A JWT has three parts joined by dots: a header ({"alg","typ"}), your payload of claims, and a signature. The tool base64url-encodes the header and payload, signs "header.payload" with your secret using HMAC (HS256, HS384 or HS512) via Web Crypto, and appends the base64url signature. The result is a token you can drop into an Authorization header or a test — and read back with the JWT decoder.',
+    note: 'This signs with HMAC (HS*) algorithms, which use one shared secret to both sign and verify — ideal for testing, internal services and learning how JWTs are built. Public-key algorithms (RS256, ES256) sign with a private key and verify with a public one; those need key material this tool intentionally doesn\'t handle. Remember a JWT payload is only base64-encoded, not encrypted — never put secrets in it. Everything runs on your device.',
+    faqs: [
+      { q: 'How do I create a JWT?', a: 'Enter your payload as JSON, pick an algorithm (HS256 is standard), and provide the signing secret — the tool outputs the signed three-part token. Header {alg, typ:"JWT"} is generated for you.' },
+      { q: 'What\'s the difference between HS256 and RS256?', a: 'HS256 uses one shared secret for both signing and verifying (HMAC). RS256 uses a private key to sign and a public key to verify. This tool does HS* (shared-secret) signing; RS/ES need key pairs.' },
+      { q: 'Is the JWT payload encrypted?', a: 'No — the header and payload are only base64url-encoded and can be read by anyone with the token. The signature guarantees they weren\'t altered, but it doesn\'t hide them, so never put secrets in a JWT.' },
+      { q: 'How do I read a token back?', a: 'Use the JWT decoder to inspect any token\'s header and payload. This encoder is the reverse — it builds and signs a token from a payload you provide.' },
+      { q: 'Is my secret sent anywhere?', a: 'No — the token is signed with Web Crypto in your browser. The payload and secret never leave your device, and it works offline.' },
+    ],
+    keywords: ['jwt encoder', 'jwt signer', 'create jwt', 'sign jwt', 'generate jwt token', 'jwt hs256', 'make jwt'],
   },
 ];
 
