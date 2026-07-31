@@ -1070,6 +1070,48 @@ const POSTS = [
     fact: '1:1 avatar · 16:9 thumbnail · lossless, no rescale',
     icon: '✂️',
   },
+  {
+    slug: 'how-totp-2fa-works-guide',
+    kicker: 'SECURITY GUIDE',
+    lines: ['How TOTP', 'two-factor codes', 'work'],
+    fact: 'code = truncate(HMAC(secret, time ÷ 30s)) · rotates every 30s',
+    icon: '🔐',
+  },
+  {
+    slug: 'how-to-create-a-jwt-guide',
+    kicker: 'DEVELOPER GUIDE',
+    lines: ['How to create', 'and sign a JWT', '(HS256)'],
+    fact: 'header.payload.signature · sig = HMAC(secret, header.payload)',
+    icon: '🎟️',
+  },
+  {
+    slug: 'what-is-hmac-guide',
+    kicker: 'DEVELOPER GUIDE',
+    lines: ['What is HMAC?', 'A keyed hash that', 'proves origin'],
+    fact: 'HMAC = f(message + secret key + hash) · not encryption',
+    icon: '🔏',
+  },
+  {
+    slug: 'hash-password-with-bcrypt-guide',
+    kicker: 'SECURITY GUIDE',
+    lines: ['How to hash a', 'password with', 'bcrypt'],
+    fact: 'slow + random salt + tunable cost · $2b$10$… · one-way',
+    icon: '🧂',
+  },
+  {
+    slug: 'how-iban-validation-works-guide',
+    kicker: 'DEVELOPER GUIDE',
+    lines: ['How IBAN', 'validation works', '(the mod-97 check)'],
+    fact: 'move first 4 to end → letters to digits → mod 97 = 1',
+    icon: '🏦',
+  },
+  {
+    slug: 'base32-vs-base64-guide',
+    kicker: 'DEVELOPER GUIDE',
+    lines: ['Base32 vs Base64:', 'what is the', 'difference?'],
+    fact: 'Base32: 32 chars, case-insensitive · Base64: 64 chars, compact',
+    icon: '🔤',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

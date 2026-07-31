@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-label="Base32 vs Base64 compared using the input foobar. Base64 output is Zm9vYmFy: 33 percent larger, 64 characters A to Z a to z 0 to 9 plus and slash, case-sensitive. Base32 output is MZXW6YTBOI with equals padding: about 60 percent larger, 32 characters A to Z and 2 to 7, case-insensitive and easy to transcribe.">
+  <defs>
+    <style>
+      .h { font: 800 40px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .sub { font: 600 30px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .card-t { font: 800 44px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #1e3a8a; }
+      .code { font: 700 42px Consolas, Menlo, monospace; fill: #0f172a; }
+      .lab { font: 600 30px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .foot { font: 600 26px Consolas, Menlo, monospace; fill: #ffffff; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="700" fill="#f8fafc"/>
+
+  <text x="600" y="66" text-anchor="middle" class="h">Base32 vs Base64</text>
+
+  <!-- input pill -->
+  <rect x="420" y="92" width="360" height="62" rx="14" fill="#1e3a8a"/>
+  <text x="600" y="134" text-anchor="middle" font-family="Consolas, Menlo, monospace" font-size="34" font-weight="700" fill="#ffffff">input: "foobar"</text>
+  <text x="600" y="196" text-anchor="middle" class="sub">6 bytes &#8594; two encodings</text>
+
+  <!-- Base64 card -->
+  <g transform="translate(60 230)">
+    <rect x="0" y="0" width="520" height="380" rx="20" fill="#ffffff" stroke="#bfdbfe" stroke-width="3"/>
+    <text x="260" y="66" text-anchor="middle" class="card-t">Base64</text>
+    <rect x="30" y="96" width="460" height="70" rx="12" fill="#f8fafc" stroke="#bfdbfe" stroke-width="2"/>
+    <text x="260" y="142" text-anchor="middle" class="code">Zm9vYmFy</text>
+    <text x="260" y="222" text-anchor="middle" class="lab">64 chars: A&#8211;Z a&#8211;z 0&#8211;9 + /</text>
+    <text x="260" y="270" text-anchor="middle" class="lab">6 bits / char</text>
+    <text x="260" y="318" text-anchor="middle" class="lab">case-<tspan font-weight="800" fill="#1e3a8a">sensitive</tspan></text>
+    <text x="260" y="360" text-anchor="middle" font-family="'Plus Jakarta Sans','Segoe UI',Arial,sans-serif" font-size="32" font-weight="800" fill="#1e3a8a">~33% larger &#183; compact</text>
+  </g>
+
+  <!-- Base32 card -->
+  <g transform="translate(620 230)">
+    <rect x="0" y="0" width="520" height="380" rx="20" fill="#ffffff" stroke="#bfdbfe" stroke-width="3"/>
+    <text x="260" y="66" text-anchor="middle" class="card-t">Base32</text>
+    <rect x="30" y="96" width="460" height="70" rx="12" fill="#f8fafc" stroke="#bfdbfe" stroke-width="2"/>
+    <text x="260" y="142" text-anchor="middle" class="code">MZXW6YTBOI======</text>
+    <text x="260" y="222" text-anchor="middle" class="lab">32 chars: A&#8211;Z and 2&#8211;7</text>
+    <text x="260" y="270" text-anchor="middle" class="lab">5 bits / char &#183; = padding</text>
+    <text x="260" y="318" text-anchor="middle" class="lab">case-<tspan font-weight="800" fill="#1e3a8a">insensitive</tspan></text>
+    <text x="260" y="360" text-anchor="middle" font-family="'Plus Jakarta Sans','Segoe UI',Arial,sans-serif" font-size="32" font-weight="800" fill="#1e3a8a">~60% larger &#183; easy to type</text>
+  </g>
+
+  <!-- footer -->
+  <rect x="300" y="636" width="600" height="52" rx="14" fill="#1e3a8a"/>
+  <text x="600" y="671" text-anchor="middle" class="foot">lazytools.io/dev/base32-encode-decode</text>
+</svg>

@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-label="Anatomy of a bcrypt hash: the $2b$ prefix is the version, 10 is the cost factor, the next 22 characters are the random salt, and the rest is the hash — all stored as one string. Slow plus random salt equals safe, one-way password storage.">
+  <rect width="1200" height="700" fill="#f8fafc"/>
+
+  <!-- Title -->
+  <text x="600" y="70" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="44" font-weight="700" fill="#0f172a">Anatomy of a bcrypt hash</text>
+  <text x="600" y="118" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="30" fill="#334155">One string stores the version, cost, salt &amp; hash</text>
+
+  <!-- Segment cards row (centered) -->
+  <!-- version: x 190..330 ; cost: 330..470 ; salt: 470..770 ; hash: 770..1010 -->
+  <g font-family="Consolas, 'Courier New', monospace" font-size="40" font-weight="700">
+    <!-- version -->
+    <rect x="190" y="250" width="140" height="90" rx="10" fill="#ffffff" stroke="#1e3a8a" stroke-width="3"/>
+    <text x="260" y="310" text-anchor="middle" fill="#1e3a8a">$2b$</text>
+    <!-- cost -->
+    <rect x="330" y="250" width="140" height="90" rx="10" fill="#ffffff" stroke="#1e3a8a" stroke-width="3"/>
+    <text x="400" y="310" text-anchor="middle" fill="#0f172a">10$</text>
+    <!-- salt -->
+    <rect x="470" y="250" width="300" height="90" rx="10" fill="#ffffff" stroke="#b45309" stroke-width="3"/>
+    <text x="620" y="310" text-anchor="middle" fill="#b45309">N9qo8uLOickgx2ZMRZoMye</text>
+    <!-- hash -->
+    <rect x="770" y="250" width="240" height="90" rx="10" fill="#bfdbfe" stroke="#1e3a8a" stroke-width="3"/>
+    <text x="890" y="310" text-anchor="middle" fill="#0f172a">IjZAgcfl7p…</text>
+  </g>
+
+  <!-- Connector ticks -->
+  <g stroke="#94a3b8" stroke-width="2">
+    <line x1="260" y1="360" x2="260" y2="400"/>
+    <line x1="400" y1="360" x2="400" y2="400"/>
+    <line x1="620" y1="360" x2="620" y2="400"/>
+    <line x1="890" y1="360" x2="890" y2="400"/>
+  </g>
+
+  <!-- Labels -->
+  <g font-family="Segoe UI, Arial, sans-serif" text-anchor="middle">
+    <text x="260" y="440" font-size="32" font-weight="700" fill="#1e3a8a">VERSION</text>
+    <text x="400" y="440" font-size="32" font-weight="700" fill="#0f172a">COST</text>
+    <text x="400" y="478" font-size="26" fill="#334155">rounds</text>
+    <text x="620" y="440" font-size="32" font-weight="700" fill="#b45309">SALT</text>
+    <text x="620" y="478" font-size="26" fill="#334155">random, 22 chars</text>
+    <text x="890" y="440" font-size="32" font-weight="700" fill="#1e3a8a">HASH</text>
+  </g>
+
+  <!-- Note band -->
+  <rect x="150" y="530" width="900" height="86" rx="14" fill="#ffffff" stroke="#bfdbfe" stroke-width="3"/>
+  <text x="600" y="585" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="32" font-weight="700" fill="#0f172a">slow + random salt = safe password storage &#8226; one-way</text>
+
+  <!-- Footer -->
+  <text x="600" y="665" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="28" fill="#334155">lazytools.io/security/bcrypt-generator</text>
+</svg>

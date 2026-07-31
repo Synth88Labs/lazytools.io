@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-label="HMAC compared with a plain hash. A plain hash is a function of the message only, so anyone can compute it. HMAC is a function of the message plus a secret key plus a hash function, producing a signature that only key-holders can reproduce, giving authentication and integrity.">
+  <defs>
+    <style>
+      .title { font: 800 40px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .head  { font: 800 30px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; }
+      .lab   { font: 700 34px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #1e3a8a; }
+      .note  { font: 600 22px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .chip  { font: 700 26px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #1e3a8a; }
+      .arrow { font: 800 40px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .sig   { font: 700 25px Consolas, Menlo, monospace; fill: #ffffff; }
+      .foot  { font: 600 22px Consolas, Menlo, monospace; fill: #bfdbfe; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="700" fill="#f8fafc"/>
+
+  <text x="600" y="66" text-anchor="middle" class="title">HMAC = a hash with a secret key</text>
+
+  <!-- ===================== PLAIN HASH ROW ===================== -->
+  <g transform="translate(0 108)">
+    <rect x="60" y="0" width="1080" height="212" rx="20" fill="#ffffff" stroke="#bfdbfe" stroke-width="2"/>
+    <text x="96" y="52" class="head" fill="#334155">Plain hash</text>
+    <text x="96" y="88" class="note">f( message ) &#8212; no key, so <tspan font-weight="800" fill="#0f172a">anyone can compute it</tspan></text>
+
+    <!-- message chip -->
+    <rect x="96" y="112" width="300" height="70" rx="14" fill="#eff6ff" stroke="#1e3a8a" stroke-width="2"/>
+    <text x="246" y="156" text-anchor="middle" class="chip">message</text>
+
+    <text x="430" y="160" class="arrow">&#8594;</text>
+
+    <!-- hash chip -->
+    <rect x="486" y="112" width="240" height="70" rx="14" fill="#eff6ff" stroke="#1e3a8a" stroke-width="2"/>
+    <text x="606" y="156" text-anchor="middle" class="chip">SHA-256</text>
+
+    <text x="760" y="160" class="arrow">&#8594;</text>
+
+    <!-- digest -->
+    <rect x="816" y="112" width="288" height="70" rx="14" fill="#334155"/>
+    <text x="960" y="155" text-anchor="middle" class="sig">digest</text>
+  </g>
+
+  <!-- ===================== HMAC ROW ===================== -->
+  <g transform="translate(0 350)">
+    <rect x="60" y="0" width="1080" height="248" rx="20" fill="#ffffff" stroke="#b45309" stroke-width="3"/>
+    <text x="96" y="52" class="head" fill="#b45309">HMAC</text>
+    <text x="96" y="88" class="note">f( message + <tspan font-weight="800" fill="#b45309">secret key</tspan> + hash ) &#8212; only <tspan font-weight="800" fill="#0f172a">key-holders can reproduce it</tspan></text>
+
+    <!-- message chip -->
+    <rect x="96" y="112" width="230" height="70" rx="14" fill="#eff6ff" stroke="#1e3a8a" stroke-width="2"/>
+    <text x="211" y="156" text-anchor="middle" class="chip">message</text>
+
+    <text x="335" y="160" class="arrow" fill="#b45309">+</text>
+
+    <!-- secret key chip (accent) -->
+    <rect x="378" y="112" width="250" height="70" rx="14" fill="#fffbeb" stroke="#b45309" stroke-width="3"/>
+    <text x="503" y="156" text-anchor="middle" class="chip" fill="#b45309">&#128273; secret key</text>
+
+    <text x="638" y="160" class="arrow" fill="#b45309">+</text>
+
+    <!-- hash chip -->
+    <rect x="682" y="112" width="200" height="70" rx="14" fill="#eff6ff" stroke="#1e3a8a" stroke-width="2"/>
+    <text x="782" y="156" text-anchor="middle" class="chip">SHA-256</text>
+
+    <text x="895" y="160" class="arrow">&#8594;</text>
+
+    <!-- signature -->
+    <rect x="946" y="112" width="158" height="70" rx="14" fill="#1e3a8a"/>
+    <text x="1025" y="155" text-anchor="middle" class="sig">signature</text>
+
+    <text x="96" y="222" class="note"><tspan font-weight="800" fill="#15803d">&#10003; authentication + integrity</tspan> &#8212; proves origin, detects tampering (not secrecy)</text>
+  </g>
+
+  <text x="600" y="678" text-anchor="middle" class="foot">lazytools.io/dev/hmac-generator</text>
+</svg>

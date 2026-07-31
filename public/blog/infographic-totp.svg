@@ -1,0 +1,45 @@
+<svg viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="How a TOTP code is built: the code equals truncate of HMAC of the shared secret and the current Unix time divided by a 30-second period. The secret is Base32-encoded. Defaults are SHA-1, 6 digits and a 30-second period. The code rotates every 30 seconds and matches any authenticator app using the same secret.">
+  <rect x="0" y="0" width="1200" height="700" fill="#f8fafc"/>
+
+  <!-- Title -->
+  <text x="600" y="70" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="42" font-weight="700" fill="#0f172a">How a TOTP code is built</text>
+  <text x="600" y="112" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="24" fill="#334155">rotates every 30s &#183; matches your authenticator app</text>
+
+  <!-- Hero formula card -->
+  <rect x="70" y="150" width="1060" height="180" rx="20" fill="#ffffff" stroke="#bfdbfe" stroke-width="2"/>
+  <text x="600" y="215" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="26" font-weight="700" fill="#1e3a8a">TOTP code =</text>
+  <text x="600" y="272" text-anchor="middle" font-family="Consolas, Menlo, monospace" font-size="40" font-weight="700" fill="#0f172a">truncate( HMAC( secret , time &#247; 30s ) )</text>
+  <text x="600" y="308" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="22" fill="#334155">both your app &amp; the server compute the same number &#8212; it is never sent</text>
+
+  <!-- Three input/step cards -->
+  <!-- Secret -->
+  <rect x="70" y="370" width="330" height="180" rx="16" fill="#ffffff" stroke="#bfdbfe" stroke-width="2"/>
+  <text x="235" y="418" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="26" font-weight="700" fill="#1e3a8a">1 &#183; The secret</text>
+  <text x="235" y="458" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="22" fill="#334155">Base32 string from</text>
+  <text x="235" y="486" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="22" fill="#334155">the setup QR code</text>
+  <text x="235" y="522" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#15803d">long-lived &#8212; protect it</text>
+
+  <!-- Time -->
+  <rect x="435" y="370" width="330" height="180" rx="16" fill="#ffffff" stroke="#bfdbfe" stroke-width="2"/>
+  <text x="600" y="418" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="26" font-weight="700" fill="#1e3a8a">2 &#183; The time step</text>
+  <text x="600" y="458" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="22" fill="#334155">Unix time &#247; 30s</text>
+  <text x="600" y="486" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="22" fill="#334155">a counter that ticks</text>
+  <text x="600" y="522" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#0f172a">every 30 seconds</text>
+
+  <!-- Code -->
+  <rect x="800" y="370" width="330" height="180" rx="16" fill="#ffffff" stroke="#bfdbfe" stroke-width="2"/>
+  <text x="965" y="418" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="26" font-weight="700" fill="#1e3a8a">3 &#183; The code</text>
+  <text x="965" y="470" text-anchor="middle" font-family="Consolas, Menlo, monospace" font-size="46" font-weight="700" fill="#0f172a">4 8 2 9 1 5</text>
+  <text x="965" y="512" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="22" fill="#334155">6 digits, gone in 30s</text>
+
+  <!-- Arrows between cards -->
+  <text x="417" y="466" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="34" font-weight="700" fill="#1e3a8a">&#8594;</text>
+  <text x="782" y="466" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="34" font-weight="700" fill="#1e3a8a">&#8594;</text>
+
+  <!-- Defaults strip -->
+  <rect x="70" y="580" width="1060" height="58" rx="14" fill="#ffffff" stroke="#bfdbfe" stroke-width="2"/>
+  <text x="600" y="617" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="24" fill="#334155">Defaults that match almost every service: <tspan font-weight="700" fill="#0f172a">SHA-1 &#183; 6 digits &#183; 30-second period</tspan> (RFC 6238)</text>
+
+  <!-- Footer -->
+  <text x="600" y="678" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#1e3a8a">lazytools.io/security/totp-generator</text>
+</svg>

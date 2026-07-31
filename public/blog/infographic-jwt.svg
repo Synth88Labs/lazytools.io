@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-label="A JWT has three parts joined by dots: a base64url-encoded header (red), a base64url-encoded payload (purple) and a signature (cyan). The signature equals the HMAC of your secret over the header dot payload string, computed with HS256." style="background:#f8fafc">
+  <defs>
+    <style>
+      .h { font: 800 40px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .lab { font: 800 30px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; }
+      .sub { font: 600 22px 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif; fill: #475569; }
+      .mono { font: 700 30px Consolas, Menlo, monospace; }
+      .dot { font: 800 56px Consolas, Menlo, monospace; fill: #0f172a; }
+      .foot { font: 600 24px Consolas, Menlo, monospace; fill: #e2e8f0; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="700" fill="#f8fafc"/>
+
+  <text x="600" y="66" text-anchor="middle" class="h">A JWT has three parts</text>
+  <text x="600" y="104" text-anchor="middle" class="sub">header . payload . signature &#8594; each joined by a dot</text>
+
+  <!-- header card -->
+  <g transform="translate(60 140)">
+    <rect x="0" y="0" width="330" height="200" rx="18" fill="#ffffff" stroke="#b91c1c" stroke-width="3"/>
+    <rect x="0" y="0" width="330" height="54" rx="18" fill="#b91c1c"/>
+    <rect x="0" y="30" width="330" height="24" fill="#b91c1c"/>
+    <text x="165" y="38" text-anchor="middle" class="lab" fill="#ffffff">HEADER</text>
+    <text x="165" y="100" text-anchor="middle" class="mono" fill="#b91c1c">eyJhbGci</text>
+    <text x="165" y="134" text-anchor="middle" class="mono" fill="#b91c1c">OiJIUzI1…</text>
+    <text x="165" y="176" text-anchor="middle" class="sub">base64url JSON</text>
+  </g>
+
+  <text x="410" y="258" text-anchor="middle" class="dot">.</text>
+
+  <!-- payload card -->
+  <g transform="translate(435 140)">
+    <rect x="0" y="0" width="330" height="200" rx="18" fill="#ffffff" stroke="#7c3aed" stroke-width="3"/>
+    <rect x="0" y="0" width="330" height="54" rx="18" fill="#7c3aed"/>
+    <rect x="0" y="30" width="330" height="24" fill="#7c3aed"/>
+    <text x="165" y="38" text-anchor="middle" class="lab" fill="#ffffff">PAYLOAD</text>
+    <text x="165" y="100" text-anchor="middle" class="mono" fill="#7c3aed">eyJzdWIi</text>
+    <text x="165" y="134" text-anchor="middle" class="mono" fill="#7c3aed">OiIxMjM0…</text>
+    <text x="165" y="176" text-anchor="middle" class="sub">claims: sub, exp, iat</text>
+  </g>
+
+  <text x="785" y="258" text-anchor="middle" class="dot">.</text>
+
+  <!-- signature card -->
+  <g transform="translate(810 140)">
+    <rect x="0" y="0" width="330" height="200" rx="18" fill="#ffffff" stroke="#0891b2" stroke-width="3"/>
+    <rect x="0" y="0" width="330" height="54" rx="18" fill="#0891b2"/>
+    <rect x="0" y="30" width="330" height="24" fill="#0891b2"/>
+    <text x="165" y="38" text-anchor="middle" class="lab" fill="#ffffff">SIGNATURE</text>
+    <text x="165" y="100" text-anchor="middle" class="mono" fill="#0891b2">SflKxwRJ</text>
+    <text x="165" y="134" text-anchor="middle" class="mono" fill="#0891b2">SMeKKF2Q…</text>
+    <text x="165" y="176" text-anchor="middle" class="sub">HMAC, base64url</text>
+  </g>
+
+  <!-- signing formula band -->
+  <g transform="translate(60 400)">
+    <rect x="0" y="0" width="1080" height="150" rx="20" fill="#ecfeff" stroke="#0891b2" stroke-width="3"/>
+    <text x="540" y="52" text-anchor="middle" class="lab" fill="#0e7490" font-size="26">How the signature is made (HS256)</text>
+    <text x="540" y="104" text-anchor="middle" class="mono" fill="#0f172a" font-size="27">signature = HMAC( secret , header . payload )</text>
+    <text x="540" y="136" text-anchor="middle" class="sub">one shared secret signs &amp; verifies &#183; header &amp; payload are readable, NOT encrypted</text>
+  </g>
+
+  <!-- footer -->
+  <rect x="60" y="588" width="1080" height="64" rx="16" fill="#0f172a"/>
+  <text x="600" y="629" text-anchor="middle" class="foot">lazytools.io/dev/jwt-encoder &#183; signed in your browser, secret never uploaded</text>
+</svg>
