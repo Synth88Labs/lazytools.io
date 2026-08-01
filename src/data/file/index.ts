@@ -537,6 +537,53 @@ export const FILE_TOOLS: FileToolDef[] = [
     ],
     keywords: ['html to markdown', 'convert html to markdown', 'html to md', 'html to markdown converter', 'turndown', 'webpage to markdown'],
   },
+  {
+    slug: 'jsonl-to-json',
+    name: 'JSONL to JSON Converter',
+    icon: '📄',
+    description:
+      'Convert JSONL / NDJSON (one JSON object per line) into a single JSON array, with exact line-numbered error reporting. In your browser, never uploaded.',
+    lead: 'JSONL puts one JSON value per line — this wraps those lines into a single JSON array you can use anywhere, reporting the exact line of any parse error.',
+    computeId: 'jsonlToJson',
+    options: [
+      { id: 'minify', label: 'Minify (single line, no indentation)', type: 'checkbox' },
+    ],
+    sample: '{"name": "Ada", "role": "Engineer"}\n{"name": "Raj", "role": "Designer"}\n{"name": "Mai", "role": "PM"}',
+    accept: '.jsonl,.ndjson,.txt,application/json',
+    downloadName: 'data.json',
+    how: 'JSONL (also called NDJSON — newline-delimited JSON) stores one independent JSON value per line, which is ideal for streaming and log files but isn\'t itself a valid JSON document. The converter parses each non-empty line on its own, and if a line is malformed it tells you exactly which line number failed, then assembles all the parsed values into a single JSON array — pretty-printed with 2-space indentation, or minified to one line if you choose.',
+    note: 'JSONL is the native format of many data pipelines and machine-learning datasets — OpenAI fine-tuning files, BigQuery exports and log shippers all use it — because you can append and stream records without rewriting the whole file. But most tools and APIs expect a single JSON array, so converting between the two is a routine chore. This runs entirely in your browser, so even sensitive datasets never leave your device.',
+    faqs: [
+      { q: 'What is the difference between JSONL and JSON?', a: 'JSONL (NDJSON) has one JSON value per line with no enclosing brackets or commas, so it streams and appends easily. Regular JSON is a single document — here, an array wrapping all those values. This tool converts JSONL into that array.' },
+      { q: 'What happens if one line is invalid?', a: 'The converter reports the exact line number that failed to parse, so you can fix that record rather than hunting through the whole file.' },
+      { q: 'Does it skip blank lines?', a: 'Yes — empty lines (common at the end of a file) are ignored, so a trailing newline won\'t cause an error.' },
+      { q: 'Can I get minified output?', a: 'Yes — tick "Minify" for a single-line array, or leave it unticked for readable 2-space-indented JSON.' },
+      { q: 'Is my data uploaded?', a: 'No — the conversion runs entirely in your browser and works offline, so even private datasets stay on your device.' },
+    ],
+    keywords: ['jsonl to json', 'ndjson to json', 'jsonl to json array', 'convert jsonl', 'jsonlines to json', 'jsonl converter'],
+  },
+  {
+    slug: 'json-to-jsonl',
+    name: 'JSON to JSONL Converter',
+    icon: '📃',
+    description:
+      'Convert a JSON array into JSONL / NDJSON — one compact JSON object per line — ready for streaming, fine-tuning and log pipelines. In your browser.',
+    lead: 'Turn a JSON array into JSONL: each element becomes one line of compact JSON, the format streaming tools and ML pipelines expect.',
+    computeId: 'jsonToJsonl',
+    sample: '[\n  { "name": "Ada", "role": "Engineer" },\n  { "name": "Raj", "role": "Designer" },\n  { "name": "Mai", "role": "PM" }\n]',
+    accept: '.json,application/json',
+    downloadName: 'data.jsonl',
+    how: 'The converter parses your input as JSON, checks that the top level is an array, and writes each element as its own line of compact (single-line) JSON separated by newlines — the JSONL / NDJSON format. It is the exact inverse of the JSONL-to-JSON tool: an array of N objects becomes N lines. If the input isn\'t a JSON array (for example a single object), it tells you, because JSONL is a list of records by definition.',
+    note: 'JSONL is what many systems want for bulk work: OpenAI and other LLM fine-tuning endpoints take JSONL training files, and data-warehouse loaders and log shippers stream it line by line. Producing it from a normal JSON array is a frequent last step before uploading a dataset. Because everything runs in your browser, training data and exports never leave your device.',
+    faqs: [
+      { q: 'How do I convert a JSON array to JSONL?', a: 'Paste or load a JSON array and the tool writes each element on its own line as compact JSON — that newline-delimited output is JSONL (NDJSON). Copy or download the result.' },
+      { q: 'Why does it require an array?', a: 'JSONL is a sequence of records, so the converter needs a top-level array to know where each record begins and ends. A single object isn\'t a list, so it reports that instead of guessing.' },
+      { q: 'What is JSONL used for?', a: 'Streaming and bulk data: LLM fine-tuning files (OpenAI and others), BigQuery and warehouse loads, and log pipelines all use one-record-per-line JSON so records can be appended and processed independently.' },
+      { q: 'Is the output minified?', a: 'Each line is compact single-line JSON (that\'s the JSONL convention), while the lines themselves are separated by newlines so each record stays on its own row.' },
+      { q: 'Is anything uploaded?', a: 'No — the conversion runs locally in your browser and works offline, so datasets stay private.' },
+    ],
+    keywords: ['json to jsonl', 'json to ndjson', 'json array to jsonl', 'convert json to jsonl', 'make jsonl file', 'jsonl for fine-tuning'],
+  },
 ];
 
 export function getFileTool(slug: string): FileToolDef | undefined {

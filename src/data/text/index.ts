@@ -16,7 +16,7 @@ export interface TextToolDef {
   description: string;
   lead: string;
   /** 'counter' = live stats; 'transform' = input→output; others = custom islands */
-  widget: 'counter' | 'transform' | 'invisible' | 'homoglyph' | 'diff' | 'readability' | 'unicode' | 'frequency' | 'bionic' | 'numwords' | 'upsidedown' | 'linepicker';
+  widget: 'counter' | 'transform' | 'invisible' | 'homoglyph' | 'diff' | 'readability' | 'unicode' | 'frequency' | 'bionic' | 'numwords' | 'upsidedown' | 'linepicker' | 'compare-lists';
   computeId?: string;
   options?: TextToolOption[];
   /** sample text preloaded so the tool demonstrates itself */
@@ -656,6 +656,24 @@ export const TEXT_TOOLS: TextToolDef[] = [
       { q: 'Is my list private?', a: 'Yes — everything runs in your browser and the list is never uploaded. It\'s suitable for private raffles, giveaways and any list you\'d rather not send to a server.' },
     ],
     keywords: ['random line picker', 'random name picker', 'raffle picker', 'pick random from list', 'giveaway winner picker', 'random item selector', 'random line generator'],
+  },
+  {
+    slug: 'compare-two-lists',
+    name: 'Compare Two Lists',
+    icon: '🔀',
+    widget: 'compare-lists',
+    description: 'Compare two lists to find what they share, what is unique to each, and their combined set — instantly, as you type. In your browser, never uploaded.',
+    lead: 'Paste two lists (one item per line) and instantly see what is in both, what is only in each, and the combined unique set.',
+    how: 'Each list is split by line and de-duplicated, then compared as sets: the tool shows the items in both lists (intersection), the items only in List A, the items only in List B, and the union of every unique item across both. Toggle case-sensitivity (so "Apple" and "apple" can count as the same or different) and whitespace trimming. Everything recomputes live as you edit, and each result column has a one-click copy button.',
+    note: 'This is the classic set-difference task — reconciling two email lists, diffing two directories of filenames, finding which SKUs are new this week, or spotting which names dropped off a roster. Unlike a line-by-line text diff (which cares about order and position), this treats each list as an unordered set, so re-sorted lists still compare cleanly. Duplicates inside one list are collapsed before comparing. It all runs in your browser, so even sensitive lists like customer emails never leave your device.',
+    faqs: [
+      { q: 'How do I find items that are in both lists?', a: 'Paste one list on each side, one item per line — the "In both (common)" column shows every item that appears in both lists. It updates as you type.' },
+      { q: 'How is this different from a text diff?', a: 'A diff compares line by line and cares about order and position. This compares the lists as sets, so it finds shared and unique items regardless of order — reordering a list doesn\'t change the result.' },
+      { q: 'Does it handle duplicates?', a: 'Yes — each list is de-duplicated first, so an item repeated within one list is counted once. The comparison is between the distinct items of each list.' },
+      { q: 'Can I make it case-sensitive?', a: 'Yes — by default "Apple" and "apple" are treated as the same; tick "Case-sensitive" to treat them as different. You can also toggle whitespace trimming.' },
+      { q: 'Is my data uploaded?', a: 'No — the comparison runs entirely in your browser and works offline, so private lists (emails, IDs, filenames) stay on your device.' },
+    ],
+    keywords: ['compare two lists', 'list comparison tool', 'find common items in two lists', 'list difference', 'compare lists online', 'set intersection tool', 'diff two lists'],
   },
 ];
 

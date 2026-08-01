@@ -15,6 +15,7 @@ import PdfToTextTool from '../../components/pdf/PdfToTextTool.tsx';
 import OrganizePdfTool from '../../components/pdf/OrganizePdfTool.tsx';
 import SignPdfTool from '../../components/pdf/SignPdfTool.tsx';
 import PdfImpositionTool from '../../components/pdf/PdfImpositionTool.tsx';
+import CompressPdfTool from '../../components/pdf/CompressPdfTool.tsx';
 import { PDF_TOOLS, type PdfToolDef } from '../../data/pdf/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -79,6 +80,8 @@ const schema = [
         <SignPdfTool client:load />
       ) : tool.widget === 'nup' ? (
         <PdfImpositionTool client:load />
+      ) : tool.widget === 'compress' ? (
+        <CompressPdfTool client:load />
       ) : (
         <PdfTool client:load mode={tool.widget} />
       )}

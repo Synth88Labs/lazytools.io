@@ -1,5 +1,6 @@
 /** Developer-tool transforms — all client-side, standard Web APIs only. */
-import { base32Encode, base32Decode, ibanValidate, isbnInfo, domainToAscii, domainToUnicode } from './dev-encoders';
+import { base32Encode, base32Decode, ibanValidate, isbnInfo, domainToAscii, domainToUnicode } from './dev-encoders.ts';
+import { parseIso8601Duration, secondsToIso8601, secondsToHms, secondsToHuman } from './iso-duration.ts';
 
 export interface DevResult {
   output: string;
@@ -35,6 +36,24 @@ const HTML_ESCAPES: [RegExp, string][] = [
 ];
 
 export const DEV: Record<string, (input: string, opts: Opts) => DevResult> = {
+  isoDuration: (input, opts) => {
+    const mode = String(opts.mode ?? 'parse');
+    if (mode === 'parse') {
+      const trimmed = input.trim();
+      if (!trimmed) return { output: '', info: 'Enter an ISO-8601 duration, e.g. PT1H30M.' };
+      const sec = parseIso8601Duration(trimmed);
+      if (sec === null) throw new Error('Not a valid ISO-8601 duration (expected a form like P1DT2H30M or PT45S).');
+      return {
+        output: `${sec} seconds\n${secondsToHms(sec)} (H:MM:SS)\n${secondsToHuman(sec)}`,
+        info: 'ISO-8601 → seconds (years = 365 d, months = 30 d, approximate)',
+      };
+    }
+    // build: seconds → ISO-8601
+    const sec = parseFloat(input.trim());
+    if (!Number.isFinite(sec)) return { output: '', info: 'Enter a number of seconds to build an ISO-8601 duration.' };
+    return { output: secondsToIso8601(sec), info: `${sec} seconds → ISO-8601 duration` };
+  },
+
   base32: (input, opts) => {
     const mode = String(opts.mode ?? 'encode');
     const hex = String(opts.variant ?? 'standard') === 'hex';

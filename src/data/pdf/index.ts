@@ -6,7 +6,7 @@ export interface PdfToolDef {
   icon: string;
   description: string;
   lead: string;
-  widget: 'merge' | 'split' | 'images-to-pdf' | 'rotate' | 'unlock' | 'protect' | 'accessibility' | 'redact' | 'redact-check' | 'to-images' | 'watermark' | 'numbers' | 'to-text' | 'organize' | 'sign' | 'nup';
+  widget: 'merge' | 'split' | 'images-to-pdf' | 'rotate' | 'unlock' | 'protect' | 'accessibility' | 'redact' | 'redact-check' | 'to-images' | 'watermark' | 'numbers' | 'to-text' | 'organize' | 'sign' | 'nup' | 'compress';
   how: string;
   note?: string;
   faqs: { q: string; a: string }[];
@@ -317,5 +317,24 @@ export const PDF_TOOLS: PdfToolDef[] = [
       { q: 'Is my PDF uploaded?', a: 'No — it\'s read and rebuilt entirely in your browser with pdf-lib, so the document never leaves your device.' },
     ],
     keywords: ['pdf n-up', 'multiple pages per sheet pdf', 'pdf 2 pages per sheet', '4 pages per sheet pdf', 'pdf imposition', 'print multiple pdf pages on one page', 'combine pdf pages on one sheet'],
+  },
+  {
+    slug: 'compress-pdf',
+    name: 'Compress PDF',
+    icon: '🗜️',
+    description:
+      'Shrink a PDF losslessly in your browser — recompresses internal data streams with qpdf, keeping text and images at full quality. Never uploaded.',
+    lead: 'Make a PDF smaller without losing quality — qpdf recompresses the file’s internal streams and consolidates objects, all in your browser.',
+    widget: 'compress',
+    how: 'The tool runs qpdf (compiled to WebAssembly) on your PDF entirely inside the browser. It recompresses every internal data stream at zlib’s maximum level and consolidates the file’s objects into compressed object streams — a purely structural, lossless optimization. Text stays selectable, fonts and images are untouched (nothing is rasterized or downsampled), and if the result somehow isn’t smaller the tool keeps your original so you never end up with a larger file.',
+    note: 'This is lossless compression, which is the honest kind: the biggest savings come from PDFs that were exported without optimization (many word-processor and design-tool exports leave streams uncompressed or objects un-consolidated), where reductions of 10–40% are common. A PDF that is mostly high-resolution photographic scans is dominated by image data that is already JPEG-compressed, so lossless optimization can only trim the structural overhead — don’t expect dramatic shrinkage there. Because qpdf runs on your device, confidential documents never leave your browser.',
+    faqs: [
+      { q: 'Does compressing reduce the quality of my PDF?', a: 'No — this is lossless compression. It recompresses the PDF’s internal data streams and reorganizes objects, but text stays selectable and images keep their exact original quality. Nothing is rasterized or downsampled.' },
+      { q: 'How much smaller will my PDF get?', a: 'It depends on the source. PDFs exported without optimization often shrink 10–40%; files that are already optimized, or that are mostly high-res photographic images, shrink much less because their image data is already compressed.' },
+      { q: 'Why didn’t my file get much smaller?', a: 'Either it was already well-optimized, or most of its size is JPEG image data that lossless recompression can’t reduce. In that case the tool tells you and returns the original rather than a larger file. For image-heavy scans, reducing image resolution (a lossy step) would be needed — this tool deliberately doesn’t do that.' },
+      { q: 'Can it compress a password-protected PDF?', a: 'Not directly — encrypted PDFs can’t be processed without the password. Remove the protection first (our Unlock PDF tool does this in-browser), then compress.' },
+      { q: 'Is my PDF uploaded anywhere?', a: 'No — compression runs entirely in your browser using qpdf compiled to WebAssembly. The document never leaves your device and the tool works offline once loaded.' },
+    ],
+    keywords: ['compress pdf', 'reduce pdf size', 'shrink pdf', 'make pdf smaller', 'pdf compressor online free', 'lossless pdf compression', 'optimize pdf'],
   },
 ];

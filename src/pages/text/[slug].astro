@@ -17,6 +17,7 @@ import BionicReadingTool from '../../components/text/BionicReadingTool.tsx';
 import NumberToWordsTool from '../../components/text/NumberToWordsTool.tsx';
 import UpsideDownTool from '../../components/text/UpsideDownTool.tsx';
 import RandomLinePickerTool from '../../components/text/RandomLinePickerTool.tsx';
+import CompareListsTool from '../../components/text/CompareListsTool.tsx';
 import { TEXT_TOOLS, type TextToolDef } from '../../data/text/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -78,6 +79,7 @@ const schema = [
       {tool.widget === 'numwords' && <NumberToWordsTool client:load />}
       {tool.widget === 'upsidedown' && <UpsideDownTool client:load />}
       {tool.widget === 'linepicker' && <RandomLinePickerTool client:load />}
+      {tool.widget === 'compare-lists' && <CompareListsTool client:load />}
     </div>
 
     <div class="mt-4">

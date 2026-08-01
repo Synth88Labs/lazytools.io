@@ -951,6 +951,62 @@ export const CALCULATORS: CalcDef[] = [
     ],
     keywords: ['days until', 'days until date calculator', 'how many days until', 'countdown to date', 'days until countdown', 'days between today and date'],
   },
+  {
+    slug: 'blood-sugar-converter',
+    name: 'Blood Sugar Converter (mg/dL ↔ mmol/L)',
+    icon: '🩸',
+    description:
+      'Convert blood glucose between mg/dL (US) and mmol/L (UK, Canada, most of the world) with the exact 18.0182 factor. Instant, private, in your browser.',
+    lead: 'Blood glucose in mg/dL ÷ 18.0182 gives mmol/L; mmol/L × 18.0182 gives mg/dL — this converts either direction exactly.',
+    fields: [
+      { id: 'value', label: 'Blood glucose reading', type: 'number', placeholder: '140', defaultValue: '140' },
+      { id: 'unit', label: 'Entered unit', type: 'select', defaultValue: 'mgdl', options: [
+        { value: 'mgdl', label: 'mg/dL (US)' },
+        { value: 'mmol', label: 'mmol/L (UK, Canada, EU)' },
+      ] },
+    ],
+    computeId: 'bloodSugar',
+    formula:
+      'mmol/L = mg/dL ÷ 18.0182, and mg/dL = mmol/L × 18.0182. The factor is the molar mass of glucose (180.156 g/mol) divided by 10, because mg/dL and mmol/L differ by both the molar mass and the dL→L (×10) volume unit.',
+    example: '140 mg/dL ÷ 18.0182 = 7.8 mmol/L. Going the other way, 7 mmol/L × 18.0182 = 126 mg/dL.',
+    note: 'Two conventions for the same measurement: the United States, Germany and a few others report glucose in mg/dL, while the UK, Canada, Australia and most of the world use mmol/L. The 18.0182 conversion factor is exact (glucose molar mass ÷ 10), so no accuracy is lost. This tool is for converting units only — it is not medical advice and does not interpret whether a reading is high or low; discuss targets with your clinician.',
+    faqs: [
+      { q: 'How do I convert mg/dL to mmol/L?', a: 'Divide by 18.0182. For example 100 mg/dL ÷ 18.0182 = 5.6 mmol/L. To go back, multiply mmol/L by 18.0182.' },
+      { q: 'Why is the factor 18.0182?', a: 'It is the molar mass of glucose (180.156 g/mol) divided by 10. The ÷10 accounts for mg/dL using decilitres while mmol/L uses litres, and the molar mass converts milligrams to millimoles.' },
+      { q: 'Which countries use which unit?', a: 'The US, Germany, Japan (partly), and a few others use mg/dL; the UK, Canada, Australia, and most of Europe use mmol/L. HbA1c uses different units again.' },
+      { q: 'Is a reading of 7 mmol/L normal?', a: 'This tool only converts units and does not interpret readings — what counts as normal depends on the person, the time of day and whether you have eaten. Always discuss your numbers with a healthcare professional.' },
+      { q: 'Is my reading kept private?', a: 'Yes. The conversion runs entirely in your browser; nothing you type is sent anywhere.' },
+    ],
+    keywords: ['blood sugar converter', 'mg/dl to mmol/l', 'mmol/l to mg/dl', 'glucose unit converter', 'blood glucose conversion'],
+  },
+  {
+    slug: 'hba1c-calculator',
+    name: 'HbA1c Converter (%, IFCC & eAG)',
+    icon: '🧪',
+    description:
+      'Convert HbA1c between NGSP % (DCCT) and IFCC mmol/mol, and estimate average glucose (eAG) in mg/dL and mmol/L. Exact formulas, in your browser.',
+    lead: 'HbA1c in NGSP % and IFCC mmol/mol are linked by IFCC = 10.929 × (% − 2.15); estimated average glucose is eAG = 28.7 × % − 46.7 mg/dL.',
+    fields: [
+      { id: 'value', label: 'HbA1c value', type: 'number', placeholder: '7', defaultValue: '7', step: 0.1 },
+      { id: 'unit', label: 'Entered unit', type: 'select', defaultValue: 'ngsp', options: [
+        { value: 'ngsp', label: 'NGSP / DCCT (%)' },
+        { value: 'ifcc', label: 'IFCC (mmol/mol)' },
+      ] },
+    ],
+    computeId: 'hba1c',
+    formula:
+      'The NGSP percentage and the IFCC value are related by IFCC (mmol/mol) = 10.929 × (NGSP% − 2.15), and the reverse NGSP% = IFCC ÷ 10.929 + 2.15. Estimated average glucose comes from the ADAG study: eAG (mg/dL) = 28.7 × NGSP% − 46.7, then eAG (mmol/L) = eAG (mg/dL) ÷ 18.0182.',
+    example: 'HbA1c 7% → IFCC 53 mmol/mol, and eAG = 28.7 × 7 − 46.7 = 154 mg/dL (8.6 mmol/L).',
+    note: 'Since 2011 labs increasingly report HbA1c in IFCC mmol/mol alongside (or instead of) the older NGSP/DCCT percentage, so converting between the two is a common need. The estimated average glucose (eAG) puts HbA1c on the same scale as a day-to-day glucose meter using the ADAG regression. These are unit conversions and population estimates only — not medical advice, and not a diagnosis. Discuss what your HbA1c means with your clinician.',
+    faqs: [
+      { q: 'How do I convert HbA1c % to mmol/mol?', a: 'Use IFCC = 10.929 × (NGSP% − 2.15). For example 7% gives 10.929 × 4.85 = 53 mmol/mol. To reverse it, NGSP% = mmol/mol ÷ 10.929 + 2.15.' },
+      { q: 'What is eAG (estimated average glucose)?', a: 'A way to express HbA1c on the same scale as a glucose meter. eAG (mg/dL) = 28.7 × HbA1c% − 46.7, from the ADAG study — so 7% ≈ 154 mg/dL or 8.6 mmol/L.' },
+      { q: 'What is the difference between NGSP and IFCC?', a: 'They measure the same glycated haemoglobin but on different scales: NGSP/DCCT reports a percentage (aligned to the original diabetes trials), while IFCC reports mmol of HbA1c per mol of haemoglobin. Many labs now show both.' },
+      { q: 'Does a higher HbA1c always mean the same average glucose?', a: 'eAG is a population average — individual red-cell turnover varies, so two people with the same HbA1c can have somewhat different true average glucose. Treat eAG as an estimate and consult your clinician.' },
+      { q: 'Is anything uploaded?', a: 'No — every calculation runs locally in your browser.' },
+    ],
+    keywords: ['hba1c calculator', 'hba1c to mmol/mol', 'ngsp to ifcc', 'eag calculator', 'a1c to average glucose', 'hba1c converter'],
+  },
 ];
 
 export function getCalc(slug: string): CalcDef | undefined {

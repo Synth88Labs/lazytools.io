@@ -83,6 +83,41 @@ export const COMPUTE: Record<string, (v: Values) => ResultRow[] | null> = {
     ];
   },
 
+  bloodSugar: (v) => {
+    const val = n(v.value);
+    const unit = v.unit || 'mgdl';
+    if (!Number.isFinite(val) || val < 0) return null;
+    const F = 18.0182; // glucose: mg/dL ÷ 18.0182 = mmol/L
+    if (unit === 'mgdl') {
+      return [
+        { label: 'mmol/L', value: fmt(val / F, 1), hint: `${fmt(val, 0)} mg/dL ÷ 18.0182` },
+        { label: 'mg/dL (entered)', value: fmt(val, 0) },
+      ];
+    }
+    return [
+      { label: 'mg/dL', value: fmt(val * F, 0), hint: `${fmt(val, 1)} mmol/L × 18.0182` },
+      { label: 'mmol/L (entered)', value: fmt(val, 1) },
+    ];
+  },
+
+  hba1c: (v) => {
+    const val = n(v.value);
+    const unit = v.unit || 'ngsp';
+    if (!Number.isFinite(val) || val <= 0) return null;
+    // Canonical: NGSP/DCCT percent. IFCC = 10.929 × (NGSP − 2.15).
+    let ngsp: number;
+    if (unit === 'ngsp') ngsp = val;
+    else ngsp = val / 10.929 + 2.15; // from IFCC mmol/mol
+    const ifcc = 10.929 * (ngsp - 2.15);
+    const eagMg = 28.7 * ngsp - 46.7; // ADAG estimated average glucose
+    const eagMmol = eagMg / 18.0182;
+    return [
+      { label: 'NGSP / DCCT', value: `${fmt(ngsp, 1)}%` },
+      { label: 'IFCC', value: `${fmt(ifcc, 0)} mmol/mol` },
+      { label: 'Estimated average glucose (eAG)', value: `${fmt(eagMg, 0)} mg/dL · ${fmt(eagMmol, 1)} mmol/L`, hint: 'ADAG: eAG = 28.7 × A1C − 46.7' },
+    ];
+  },
+
   age: (v) => {
     if (!v.dob) return null;
     const dob = new Date(v.dob + 'T00:00:00');

@@ -16,7 +16,7 @@ export interface DevToolDef {
   description: string;
   lead: string;
   /** 'transform' uses DevTransformTool; 'hash' uses HashTool; 'llm-tokens' uses LlmTokenCounterTool */
-  widget: 'transform' | 'hash' | 'llm-tokens' | 'eth-units' | 'keccak' | 'eip55' | 'har' | 'sqlformat' | 'jsondiff' | 'hmac' | 'jwtenc';
+  widget: 'transform' | 'hash' | 'llm-tokens' | 'eth-units' | 'keccak' | 'eip55' | 'har' | 'sqlformat' | 'jsondiff' | 'hmac' | 'jwtenc' | 'utm';
   computeId?: string;
   options?: DevToolOption[];
   sample?: string;
@@ -665,6 +665,55 @@ export const DEV_TOOLS: DevToolDef[] = [
       { q: 'Is my secret sent anywhere?', a: 'No — the token is signed with Web Crypto in your browser. The payload and secret never leave your device, and it works offline.' },
     ],
     keywords: ['jwt encoder', 'jwt signer', 'create jwt', 'sign jwt', 'generate jwt token', 'jwt hs256', 'make jwt'],
+  },
+  {
+    slug: 'iso-8601-duration-converter',
+    name: 'ISO 8601 Duration Converter',
+    icon: '⏱️',
+    description:
+      'Parse an ISO 8601 duration like PT1H30M into seconds and HH:MM:SS, or build a duration string from seconds. In your browser, nothing uploaded.',
+    lead: 'ISO 8601 durations look like PT1H30M (1 hour 30 minutes) — this converts them to seconds and HH:MM:SS, or turns seconds back into the string.',
+    widget: 'transform',
+    computeId: 'isoDuration',
+    options: [
+      {
+        id: 'mode', label: 'Mode', type: 'select', defaultValue: 'parse',
+        options: [
+          { value: 'parse', label: 'Parse (ISO 8601 → seconds)' },
+          { value: 'build', label: 'Build (seconds → ISO 8601)' },
+        ],
+      },
+    ],
+    sample: 'PT1H30M',
+    how: 'An ISO 8601 duration starts with P (period) and lists years, months, weeks and days, then a T separator before hours, minutes and seconds — so PT1H30M is 1 hour 30 minutes, P1DT2H is 1 day 2 hours, and P1W is one week. Parse mode reads that grammar and reports the total in seconds, HH:MM:SS and a human-readable form. Build mode does the reverse, turning a number of seconds into the shortest equivalent duration string (using days and time components).',
+    note: 'This format appears all over: YouTube’s Data API returns video lengths as ISO 8601 durations (PT4M13S), and it is used in scheduling, XML/JSON schemas and workflow tools. One ambiguity is deliberate: a bare duration has no anchor date, so calendar years and months have no exact length — this tool uses the common convention of 1 year = 365 days and 1 month = 30 days for the Y and M (before the T) components, and is exact for weeks, days, hours, minutes and seconds. Everything runs locally.',
+    faqs: [
+      { q: 'What does PT1H30M mean?', a: 'One hour and thirty minutes. The P starts the duration, the T separates the date part from the time part, and H/M/S are hours, minutes and seconds — so PT1H30M = 5400 seconds.' },
+      { q: 'What is the T in an ISO 8601 duration for?', a: 'It separates date components (years, months, weeks, days) from time components (hours, minutes, seconds). It matters because M means months before the T but minutes after it: P1M is one month, PT1M is one minute.' },
+      { q: 'How are years and months handled?', a: 'A standalone duration has no start date, so Y and M have no fixed length. This converter uses 1 year = 365 days and 1 month = 30 days for those, and is exact for weeks/days/hours/minutes/seconds.' },
+      { q: 'Where are these durations used?', a: 'The YouTube Data API returns video durations in this format (e.g. PT4M13S), and it appears in XML Schema, JSON Schema, scheduling systems and many APIs.' },
+      { q: 'Is my input uploaded?', a: 'No — parsing and formatting run entirely in your browser and work offline.' },
+    ],
+    keywords: ['iso 8601 duration', 'iso 8601 duration converter', 'pt1h30m to seconds', 'parse iso 8601 duration', 'duration to seconds', 'youtube duration converter'],
+  },
+  {
+    slug: 'utm-builder',
+    name: 'UTM Campaign URL Builder',
+    icon: '🎯',
+    description:
+      'Build a tagged campaign URL with utm_source, utm_medium, utm_campaign and more — correctly URL-encoded, copy-ready. In your browser, nothing uploaded.',
+    lead: 'Add utm_source, utm_medium and utm_campaign tags to any link so analytics can attribute the traffic — assembled and encoded correctly, live.',
+    widget: 'utm',
+    how: 'You enter your destination URL and the standard UTM fields — source (where the click comes from), medium (the channel like email or cpc), campaign (the promotion name), plus optional term and content. The tool appends them as query parameters, URL-encoding every value so spaces and symbols are safe, and preserves any parameters already on your URL. An optional lowercase toggle avoids the classic reporting split where "Email" and "email" show up as two different sources.',
+    note: 'UTM parameters are the de-facto standard (originally from Urchin, now used by GA4 and virtually every analytics tool) for tracking which campaigns drive traffic. The two things people get wrong are inconsistent casing — analytics treats utm_source=Facebook and utm_source=facebook as separate sources — and forgetting to encode values, which breaks the link. This builder handles both. It runs entirely in your browser, so your URLs and campaign names are never sent anywhere.',
+    faqs: [
+      { q: 'What are UTM parameters?', a: 'Tags added to a link\'s query string — utm_source, utm_medium, utm_campaign, and optionally utm_term and utm_content — that let analytics tools attribute a visit to a specific source, channel and campaign. GA4 reads them automatically.' },
+      { q: 'Which UTM parameters are required?', a: 'Source, medium and campaign are the three you should always set for meaningful reports. Term and content are optional — term is mainly for paid-search keywords, content for distinguishing two links in the same campaign.' },
+      { q: 'Why does casing matter?', a: 'Analytics treats UTM values as case-sensitive, so utm_source=Newsletter and utm_source=newsletter appear as two different sources and split your data. The lowercase toggle keeps everything consistent.' },
+      { q: 'Does it encode special characters?', a: 'Yes — every value is URL-encoded, so spaces, ampersands and other symbols in a campaign name won\'t break the link. Parameters already on your URL are kept intact.' },
+      { q: 'Is my URL uploaded?', a: 'No — the campaign URL is built entirely in your browser and works offline, so nothing about your links or campaigns is transmitted.' },
+    ],
+    keywords: ['utm builder', 'utm url builder', 'campaign url builder', 'utm parameter generator', 'utm link builder', 'ga4 campaign url', 'utm tag generator'],
   },
 ];
 

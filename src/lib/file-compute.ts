@@ -332,6 +332,28 @@ export const CONVERT: Record<string, (input: string, opts: Opts) => ConvertResul
     }
   },
 
+  jsonlToJson: (input, opts) => {
+    const rows = input.split(/\r?\n/).map((l, i) => ({ l: l.trim(), i })).filter((x) => x.l !== '');
+    const arr: unknown[] = [];
+    for (const { l, i } of rows) {
+      try {
+        arr.push(JSON.parse(l));
+      } catch {
+        throw new Error(`Line ${i + 1} is not valid JSON: ${l.slice(0, 50)}${l.length > 50 ? '…' : ''}`);
+      }
+    }
+    const indent = Boolean(opts.minify) ? 0 : 2;
+    return { output: JSON.stringify(arr, null, indent), info: `${arr.length} line${arr.length === 1 ? '' : 's'} → JSON array` };
+  },
+
+  jsonToJsonl: (input) => {
+    const data = jsonParse(input);
+    if (!Array.isArray(data)) {
+      throw new Error('Input must be a JSON array — each element becomes one line of JSONL/NDJSON.');
+    }
+    return { output: data.map((x) => JSON.stringify(x)).join('\n'), info: `${data.length} item${data.length === 1 ? '' : 's'} → JSONL (one per line)` };
+  },
+
   xmlFormat: (input, opts) => {
     if (!input.trim()) return { output: '', info: 'Paste XML to format.' };
     const minify = Boolean(opts.minify);
