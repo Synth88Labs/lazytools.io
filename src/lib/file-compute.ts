@@ -6,6 +6,7 @@
 import { load as yamlLoad, dump as yamlDump } from 'js-yaml';
 import { marked } from 'marked';
 import TOML from '@iarna/toml';
+import { gpxToGeoJSON, geoJSONToGpx } from './gpx.ts';
 
 /** Collapse only inter-tag whitespace (preserves text content). */
 function minifyXml(xml: string): string {
@@ -360,5 +361,15 @@ export const CONVERT: Record<string, (input: string, opts: Opts) => ConvertResul
     const indentSize = parseInt(String(opts.indent ?? '2'), 10) || 2;
     const output = minify ? minifyXml(input) : formatXml(input, indentSize);
     return { output, info: minify ? 'minified (inter-tag whitespace removed)' : `pretty-printed, ${indentSize}-space indent` };
+  },
+
+  gpxToGeojson: (input) => {
+    const out = gpxToGeoJSON(input);
+    return { output: out, info: 'GPX → GeoJSON FeatureCollection' };
+  },
+
+  geojsonToGpx: (input) => {
+    const out = geoJSONToGpx(input);
+    return { output: out, info: 'GeoJSON → GPX 1.1' };
   },
 };

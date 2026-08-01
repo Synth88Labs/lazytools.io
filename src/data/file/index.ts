@@ -16,7 +16,7 @@ export interface FileToolDef {
   description: string;
   lead: string;
   /** custom widget instead of the generic text-convert UI */
-  widget?: 'einvoice' | 'ksef-viewer' | 'ksef-validator' | 'excel-to-csv' | 'excel-to-json' | 'csv-to-excel' | 'html-md' | 'file-to-base64' | 'base64-to-file';
+  widget?: 'einvoice' | 'ksef-viewer' | 'ksef-validator' | 'excel-to-csv' | 'excel-to-json' | 'csv-to-excel' | 'html-md' | 'file-to-base64' | 'base64-to-file' | 'gpx-stats';
   computeId?: string;
   options?: FileToolOption[];
   /** sample input preloaded so the tool demonstrates itself */
@@ -621,6 +621,70 @@ export const FILE_TOOLS: FileToolDef[] = [
       { q: 'Is my data uploaded?', a: 'No — decoding runs entirely in your browser and the file is generated locally, so nothing is transmitted and it works offline.' },
     ],
     keywords: ['base64 to file', 'base64 to image', 'decode base64 to file', 'data uri to file', 'base64 decoder file', 'base64 to pdf'],
+  },
+  {
+    slug: 'gpx-analyzer',
+    name: 'GPX File Analyzer (Distance, Elevation, Pace)',
+    icon: '🥾',
+    description:
+      'Open a GPX file to see total distance, elevation gain/loss, moving time, average speed and pace — computed in your browser, so your route is never uploaded.',
+    lead: 'Open a GPX track and get its distance, elevation gain/loss, duration, average speed and pace — all calculated locally, so your locations stay private.',
+    widget: 'gpx-stats',
+    accept: '.gpx,application/gpx+xml',
+    how: 'The analyzer reads every track point (<trkpt>) in your GPX file and adds up the great-circle (haversine) distance between consecutive points, the elevation gained and lost, and — if the points carry timestamps — the moving time, average speed and average pace. It works with GPX exported from Strava, Garmin, Komoot, phone apps and GPS watches. Nothing is uploaded: the file is read in your browser.',
+    note: 'GPX files are unusually sensitive — a track literally records where you started and finished, so uploading one to a random website exposes your home, workplace or gym. That is exactly why this runs entirely on your device. A note on accuracy: distance depends on how densely your device logged points (sparse logging cuts corners and reads short), and GPS elevation is noisier than a barometric altimeter, so elevation gain can vary between tools that smooth the data differently. This one sums the raw points without smoothing.',
+    faqs: [
+      { q: 'How is the distance from a GPX file calculated?', a: 'By summing the great-circle (haversine) distance between each pair of consecutive track points. That matches how most GPS platforms compute route distance. Denser point logging gives a more accurate total; sparse logging reads slightly short.' },
+      { q: 'Why does elevation gain differ from my watch or Strava?', a: 'GPS elevation is noisy, and every platform smooths it differently before summing the ups and downs. This tool adds the raw point-to-point changes without smoothing, so it can read higher than apps that filter the data. Barometric altimeters are more accurate than GPS elevation.' },
+      { q: 'Does it need timestamps for speed and pace?', a: 'Yes — average speed and pace come from the time between the first and last track point, so they only appear when your GPX includes <time> values (most recorded activities do; some hand-drawn routes don\'t).' },
+      { q: 'Which apps\' GPX files work?', a: 'Standard GPX 1.0/1.1 from Strava, Garmin Connect, Komoot, Wahoo, phone apps and GPS watches all work, since the tool reads the standard <trkpt> track-point structure.' },
+      { q: 'Is my GPX file uploaded?', a: 'No — it\'s read and analysed entirely in your browser. A GPX track reveals your exact locations, so keeping it on your device is the whole point; the tool also works offline.' },
+    ],
+    keywords: ['gpx analyzer', 'gpx distance calculator', 'gpx elevation gain', 'gpx file viewer', 'gpx stats', 'read gpx file', 'gpx pace calculator'],
+  },
+  {
+    slug: 'gpx-to-geojson',
+    name: 'GPX to GeoJSON Converter',
+    icon: '🗺️',
+    description:
+      'Convert a GPX track into GeoJSON — a LineString for the track and Points for waypoints — ready for Mapbox, Leaflet or any GIS tool. In your browser, never uploaded.',
+    lead: 'Paste or open a GPX file and get GeoJSON — the track as a LineString and waypoints as Points, in [lon, lat] order for web maps.',
+    computeId: 'gpxToGeojson',
+    accept: '.gpx,application/gpx+xml',
+    downloadName: 'track.geojson',
+    sample: '<?xml version="1.0"?>\n<gpx version="1.1" creator="LazyTools">\n  <wpt lat="51.5" lon="-0.1"><name>Start</name></wpt>\n  <trk><trkseg>\n    <trkpt lat="51.5000" lon="-0.1000"><ele>10</ele></trkpt>\n    <trkpt lat="51.5090" lon="-0.1000"><ele>25</ele></trkpt>\n    <trkpt lat="51.5090" lon="-0.0800"><ele>15</ele></trkpt>\n  </trkseg></trk>\n</gpx>',
+    how: 'The converter reads the GPX track points into a single GeoJSON LineString and turns any standalone waypoints (<wpt>) into Point features, all wrapped in a FeatureCollection. Crucially, it writes coordinates in GeoJSON\'s [longitude, latitude] order (the reverse of how GPX and most humans write them), and keeps elevation as the optional third value — so the output drops straight into Mapbox GL, Leaflet, Turf.js, PostGIS or any GIS.',
+    note: 'The lon/lat ordering is the single most common GPX-to-GeoJSON mistake: GPX attributes are lat then lon, but the GeoJSON spec (RFC 7946) mandates [lon, lat]. This tool handles the swap for you, which is why hand-conversions so often plot points in the wrong hemisphere. It converts geometry and waypoint names; rich per-point metadata (heart rate, cadence extensions) isn\'t part of core GeoJSON and is left out. Everything runs locally.',
+    faqs: [
+      { q: 'How do I convert GPX to GeoJSON?', a: 'Paste or open your GPX file and the tool outputs a GeoJSON FeatureCollection — the track as a LineString and waypoints as Points. Copy or download the .geojson result.' },
+      { q: 'Does it get the coordinate order right?', a: 'Yes — GPX uses lat/lon but GeoJSON requires [longitude, latitude]. The converter swaps them automatically, which is the mistake that causes hand-converted points to appear in the wrong place.' },
+      { q: 'What happens to elevation?', a: 'Elevation is preserved as the optional third coordinate value ([lon, lat, ele]), which GeoJSON permits and mapping tools accept.' },
+      { q: 'Can I use the output in Leaflet or Mapbox?', a: 'Yes — the FeatureCollection is standard RFC 7946 GeoJSON, so it works directly in Leaflet, Mapbox GL, Turf.js, PostGIS and other GIS tooling.' },
+      { q: 'Is my GPX uploaded?', a: 'No — the conversion runs entirely in your browser and works offline, so your track and its locations stay on your device.' },
+    ],
+    keywords: ['gpx to geojson', 'convert gpx to geojson', 'gpx to geojson converter', 'gps track to geojson', 'gpx geojson', 'gpx to map'],
+  },
+  {
+    slug: 'geojson-to-gpx',
+    name: 'GeoJSON to GPX Converter',
+    icon: '🧭',
+    description:
+      'Convert GeoJSON (LineString / Points) into a GPX file for Garmin, Strava, Komoot and GPS devices — coordinates re-ordered correctly. In your browser, never uploaded.',
+    lead: 'Paste GeoJSON and get a GPX 1.1 file — LineStrings become tracks and Points become waypoints, ready to load onto a GPS device.',
+    computeId: 'geojsonToGpx',
+    accept: '.geojson,.json,application/geo+json',
+    downloadName: 'route.gpx',
+    sample: '{\n  "type": "FeatureCollection",\n  "features": [\n    { "type": "Feature", "properties": { "name": "Start" }, "geometry": { "type": "Point", "coordinates": [-0.1, 51.5] } },\n    { "type": "Feature", "properties": {}, "geometry": { "type": "LineString", "coordinates": [[-0.1, 51.5, 10], [-0.1, 51.509, 25], [-0.08, 51.509, 15]] } }\n  ]\n}',
+    how: 'The converter reads GeoJSON geometries and writes valid GPX 1.1: LineString (and MultiLineString) features become track segments of <trkpt> points, and Point features become <wpt> waypoints, carrying a name from the feature\'s properties.name. It converts GeoJSON\'s [longitude, latitude] coordinate order back to GPX\'s lat/lon attributes and preserves elevation as <ele> where present.',
+    note: 'This is the inverse of the GPX-to-GeoJSON converter — useful when a route was designed in a web-mapping tool (which speaks GeoJSON) and needs to go onto a Garmin, Wahoo or phone app (which speak GPX). As with the forward direction, the lon/lat vs lat/lon swap is handled for you. Polygon geometries have no natural GPX equivalent and are skipped. Everything runs in your browser.',
+    faqs: [
+      { q: 'How do I convert GeoJSON to GPX?', a: 'Paste or open your GeoJSON and the tool outputs a GPX 1.1 file — LineStrings become tracks and Points become waypoints. Download the .gpx and load it onto your device or app.' },
+      { q: 'Does it fix the coordinate order?', a: 'Yes — GeoJSON stores [longitude, latitude] while GPX uses separate lat and lon attributes. The converter swaps them so the GPX is correct, avoiding the classic wrong-location bug.' },
+      { q: 'What GeoJSON geometries are supported?', a: 'Point (→ waypoint), LineString and MultiLineString (→ track segments). Polygons don\'t map cleanly to a GPS route and are skipped; a feature\'s properties.name is used to label waypoints.' },
+      { q: 'Can I load the result onto a Garmin or Strava?', a: 'Yes — the output is standard GPX 1.1, which Garmin Connect, Strava, Komoot, Wahoo and most GPS apps and devices import directly.' },
+      { q: 'Is my data uploaded?', a: 'No — the conversion runs entirely in your browser and works offline, so your route data never leaves your device.' },
+    ],
+    keywords: ['geojson to gpx', 'convert geojson to gpx', 'geojson to gpx converter', 'geojson to garmin', 'geojson track to gpx', 'route to gpx'],
   },
 ];
 

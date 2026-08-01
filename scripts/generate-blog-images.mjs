@@ -7,6 +7,13 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'gpx-files-explained-distance-elevation-geojson-guide',
+    kicker: 'GPS & MAPPING GUIDE',
+    lines: ['GPX files explained:', 'distance, elevation', '& GeoJSON'],
+    fact: 'sum haversine gaps · GPX lat,lon → GeoJSON [lon,lat]',
+    icon: '🥾',
+  },
+  {
     slug: 'which-statistical-test-should-i-use-guide',
     kicker: 'STATISTICS GUIDE',
     lines: ['Which statistical', 'test should you use?', 'A decision guide'],
