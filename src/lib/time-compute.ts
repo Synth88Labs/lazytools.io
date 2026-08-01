@@ -232,3 +232,82 @@ export function timeBetween(startHHMM: string, endHHMM: string, overnight = fals
   if (diff < 0 || overnight) diff += 1440;
   return { totalMinutes: diff, hours: Math.floor(diff / 60), minutes: diff % 60, decimalHours: diff / 60 };
 }
+
+/* ---------------- Day of year ---------------- */
+
+export function isLeapYear(year: number): boolean {
+  return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
+}
+
+export function daysInYear(year: number): number {
+  return isLeapYear(year) ? 366 : 365;
+}
+
+export interface DayOfYearResult {
+  dayOfYear: number;   // 1-based ordinal (Jan 1 = 1)
+  daysInYear: number;
+  daysRemaining: number; // after this day, to Dec 31 inclusive of Dec 31
+  percentElapsed: number; // 0–100, share of the year completed at end of this day
+  weekday: string;
+}
+/** Ordinal day-of-year for a local Date, plus days remaining and % of year. */
+export function dayOfYear(date: Date): DayOfYearResult {
+  const year = date.getFullYear();
+  const start = new Date(year, 0, 1);
+  const diff = Math.round((date.getTime() - start.getTime()) / 86400000);
+  const doy = diff + 1;
+  const total = daysInYear(year);
+  return {
+    dayOfYear: doy,
+    daysInYear: total,
+    daysRemaining: total - doy,
+    percentElapsed: Math.round((doy / total) * 1000) / 10,
+    weekday: date.toLocaleDateString('en-US', { weekday: 'long' }),
+  };
+}
+
+/* ---------------- Weekday of a date ---------------- */
+
+export interface WeekdayResult {
+  weekday: string;     // e.g. "Monday"
+  isoDow: number;      // 1 = Monday … 7 = Sunday
+  isWeekend: boolean;
+  daysFromToday: number | null; // signed, based on the caller-supplied today (local midnight)
+}
+/** The day of the week for a date, and its signed day-offset from `today`. */
+export function weekdayInfo(date: Date, today?: Date): WeekdayResult {
+  const jsDow = date.getDay(); // 0=Sun..6=Sat
+  const isoDow = jsDow === 0 ? 7 : jsDow;
+  let daysFromToday: number | null = null;
+  if (today) {
+    const a = new Date(date.getFullYear(), date.getMonth(), date.getDate()).getTime();
+    const b = new Date(today.getFullYear(), today.getMonth(), today.getDate()).getTime();
+    daysFromToday = Math.round((a - b) / 86400000);
+  }
+  return {
+    weekday: date.toLocaleDateString('en-US', { weekday: 'long' }),
+    isoDow,
+    isWeekend: jsDow === 0 || jsDow === 6,
+    daysFromToday,
+  };
+}
+
+/* ---------------- Add business days ---------------- */
+
+/**
+ * Add (or subtract, for negative n) `n` business days to a start date, skipping
+ * Saturdays and Sundays. The start day itself is not counted; the result is the
+ * date reached after moving n working days. Returns a local Date.
+ */
+export function addBusinessDays(start: Date, n: number): Date {
+  const d = new Date(start.getFullYear(), start.getMonth(), start.getDate());
+  if (n === 0) return d;
+  const step = n > 0 ? 1 : -1;
+  let remaining = Math.abs(n);
+  while (remaining > 0) {
+    d.setDate(d.getDate() + step);
+    const dow = d.getDay();
+    if (dow !== 0 && dow !== 6) remaining--;
+  }
+  return d;
+}

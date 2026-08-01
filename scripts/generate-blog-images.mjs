@@ -7,6 +7,13 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'day-of-year-ordinal-dates-guide',
+    kicker: 'DATE & TIME GUIDE',
+    lines: ['What day of the', 'year is it? Ordinal', 'dates explained'],
+    fact: 'Jan 1 = day 1 · Mar 1 = day 60 (61 in a leap year)',
+    icon: '📆',
+  },
+  {
     slug: 'generate-sql-inserts-from-json-csv-guide',
     kicker: 'DEVELOPER GUIDE',
     lines: ['Generate SQL', 'INSERTs from', 'JSON or CSV'],

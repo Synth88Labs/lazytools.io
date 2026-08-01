@@ -6,7 +6,7 @@ export interface TimeToolDef {
   icon: string;
   description: string;
   lead: string;
-  widget: 'epoch' | 'age' | 'date-diff' | 'date-add' | 'week-number' | 'timezone' | 'business-days' | 'time-duration';
+  widget: 'epoch' | 'age' | 'date-diff' | 'date-add' | 'week-number' | 'timezone' | 'business-days' | 'time-duration' | 'day-of-year' | 'weekday' | 'add-business-days';
   how: string;
   note?: string;
   faqs: { q: string; a: string }[];
@@ -163,5 +163,62 @@ export const TIME_TOOLS: TimeToolDef[] = [
       { q: 'What if my shift spans more than 24 hours?', a: 'This tool is for a duration within a day or a single overnight crossing. For multi-day spans, use a days-between-dates calculator and add the leftover hours, or track each day separately.' },
     ],
     keywords: ['time duration calculator', 'hours between two times', 'time calculator', 'work hours calculator', 'time card calculator', 'hours and minutes calculator', 'overnight shift hours', 'decimal hours calculator'],
+  },
+  {
+    slug: 'day-of-year-calculator',
+    name: 'Day of the Year Calculator',
+    icon: '📆',
+    description:
+      'Find the day-of-year (ordinal date) for any date — day N of 365 or 366 — plus days remaining and the percentage of the year elapsed. In your browser.',
+    lead: 'Enter a date to get its day-of-year number (Jan 1 = 1), how many days are left in the year, and how much of the year has passed.',
+    widget: 'day-of-year',
+    how: 'The tool counts whole days from January 1 (day 1) to your chosen date to give the ordinal day-of-year, sometimes called the Julian day in everyday (non-astronomical) use. It also reports the days remaining until December 31 and the share of the year elapsed. Leap years are handled automatically, so any date in a leap year counts up to 366.',
+    note: 'The ordinal day-of-year shows up in logistics, manufacturing lot codes, spreadsheets and scientific data, where dates are recorded as “day 213” rather than a calendar date. Note this is the plain ordinal day, not the astronomical Julian Day Number (a continuous count since 4713 BC). Everything is computed locally in your browser.',
+    faqs: [
+      { q: 'What is the day of the year for a date?', a: 'It’s the ordinal count from January 1. For example March 1 is day 60 in a common year and day 61 in a leap year, because February has an extra day.' },
+      { q: 'How many days are in a leap year?', a: '366 — leap years add February 29. A year is a leap year if it’s divisible by 4, except century years, which must be divisible by 400 (so 2000 was a leap year but 1900 was not).' },
+      { q: 'Is this the same as a Julian date?', a: 'In casual use “Julian date” often means exactly this ordinal day-of-year (e.g. day 045). It is not the astronomical Julian Day Number, which is a continuous day count used in astronomy.' },
+      { q: 'How many days are left in the year?', a: 'The tool subtracts the day-of-year from the year’s total (365 or 366) to show the days remaining through December 31, and the percentage of the year that has elapsed.' },
+      { q: 'Is my date uploaded?', a: 'No — the calculation runs entirely in your browser and works offline.' },
+    ],
+    keywords: ['day of year calculator', 'what day of the year is it', 'ordinal date', 'julian date calculator', 'day number of year', 'days left in the year'],
+  },
+  {
+    slug: 'day-of-week-calculator',
+    name: 'Day of the Week Calculator',
+    icon: '🗓️',
+    description:
+      'Find what day of the week any date falls on — past or future — plus whether it’s a weekend and how far it is from today. In your browser, nothing uploaded.',
+    lead: 'Enter any date and instantly see which day of the week it is (or was), whether it’s a weekend, and how many days from today.',
+    widget: 'weekday',
+    how: 'The tool determines the weekday for your date using the proleptic Gregorian calendar, reports whether it’s a weekend (Saturday or Sunday), gives the ISO weekday number (Monday = 1 through Sunday = 7), and — comparing against today — tells you whether it’s in the past or future and by how many days.',
+    note: 'Knowing the weekday of a date is handy for planning events and deadlines, checking a historical or future date, or settling the “what day was I born?” question. The ISO weekday number (Monday = 1) is the convention used by spreadsheets and many programming libraries, which differs from the US convention of Sunday as the first day. It all runs locally in your browser.',
+    faqs: [
+      { q: 'What day of the week was a given date?', a: 'Enter the date and the tool shows the weekday — for example January 1, 2000 was a Saturday. It works for past and future dates alike.' },
+      { q: 'Which day is day 1 of the week?', a: 'This tool reports the ISO weekday number, where Monday = 1 and Sunday = 7 — the convention used by ISO 8601, spreadsheets and most programming libraries. Some US calendars instead treat Sunday as the first day.' },
+      { q: 'Does it tell me if a date is a weekend?', a: 'Yes — it flags Saturday and Sunday as weekend days, which is useful when planning deadlines or deliveries that only count working days.' },
+      { q: 'Is it accurate for very old or far-future dates?', a: 'It uses the proleptic Gregorian calendar (today’s calendar projected backward and forward), which is the standard for date arithmetic. Historical dates that were recorded under the Julian calendar may differ.' },
+      { q: 'Is my date uploaded?', a: 'No — the weekday is computed entirely in your browser and the tool works offline.' },
+    ],
+    keywords: ['day of the week calculator', 'what day of the week', 'what day was i born', 'weekday finder', 'day of week for date', 'what day is a date'],
+  },
+  {
+    slug: 'add-business-days-calculator',
+    name: 'Add Business Days Calculator',
+    icon: '📅',
+    description:
+      'Add or subtract business (working) days to a date, skipping weekends, to find the resulting date — for SLAs, deadlines and delivery estimates. In your browser.',
+    lead: 'Pick a start date and a number of business days to add (or subtract) — the tool skips Saturdays and Sundays and gives the resulting date.',
+    widget: 'add-business-days',
+    how: 'Starting from your date, the tool steps forward one calendar day at a time, counting only Monday–Friday, until it has counted the number of business days you entered; enter a negative number to step backward instead. The start day itself isn’t counted, so “add 1 business day” to a Friday lands on the following Monday.',
+    note: 'This answers the “what date is X working days from now?” question behind service-level agreements, payment terms (net-10 business days), notice periods and shipping estimates. It skips weekends but not public holidays — those vary by country and region, so check your local calendar and subtract any holidays that fall in the range. Unlike a business-days *counter* (which measures the gap between two dates), this projects a new date forward or backward. Everything runs locally.',
+    faqs: [
+      { q: 'How do I add business days to a date?', a: 'Enter the start date and the number of business days to add; the tool skips Saturdays and Sundays and returns the resulting weekday date. Use a negative number to count backward.' },
+      { q: 'Is the start date counted?', a: 'No — counting begins the next day. So adding one business day to a Friday gives the following Monday, and adding one to a Wednesday gives Thursday.' },
+      { q: 'Does it account for public holidays?', a: 'No — it excludes weekends only, because holidays differ by country, region and year. Check your local holiday calendar and subtract any that fall within the range.' },
+      { q: 'What’s the difference from a business-days counter?', a: 'A counter tells you how many working days lie between two dates you already have. This tool does the reverse — it takes a start date and a count, and finds the new date.' },
+      { q: 'Is my data uploaded?', a: 'No — the calculation runs entirely in your browser and works offline.' },
+    ],
+    keywords: ['add business days', 'business days calculator', 'add working days to date', 'sla deadline calculator', 'net business days date', 'working days from today'],
   },
 ];

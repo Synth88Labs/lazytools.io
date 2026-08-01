@@ -13,6 +13,9 @@ import WeekNumberTool from '../../components/time/WeekNumberTool.tsx';
 import TimezoneTool from '../../components/time/TimezoneTool.tsx';
 import BusinessDaysTool from '../../components/time/BusinessDaysTool.tsx';
 import TimeDurationTool from '../../components/time/TimeDurationTool.tsx';
+import DayOfYearTool from '../../components/time/DayOfYearTool.tsx';
+import WeekdayTool from '../../components/time/WeekdayTool.tsx';
+import AddBusinessDaysTool from '../../components/time/AddBusinessDaysTool.tsx';
 import { TIME_TOOLS, type TimeToolDef } from '../../data/time/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -67,6 +70,9 @@ const schema = [
       {tool.widget === 'timezone' && <TimezoneTool client:load />}
       {tool.widget === 'business-days' && <BusinessDaysTool client:load />}
       {tool.widget === 'time-duration' && <TimeDurationTool client:load />}
+      {tool.widget === 'day-of-year' && <DayOfYearTool client:load />}
+      {tool.widget === 'weekday' && <WeekdayTool client:load />}
+      {tool.widget === 'add-business-days' && <AddBusinessDaysTool client:load />}
     </div>
 
     <div class="mt-4">
