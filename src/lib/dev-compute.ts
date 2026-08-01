@@ -2,7 +2,7 @@
 import { base32Encode, base32Decode, ibanValidate, isbnInfo, domainToAscii, domainToUnicode } from './dev-encoders.ts';
 import { parseIso8601Duration, secondsToIso8601, secondsToHms, secondsToHuman } from './iso-duration.ts';
 import { jsonToSchema } from './json-schema-gen.ts';
-import { jsonToGo } from './json-codegen.ts';
+import { jsonToGo, jsonToPython, jsonToRust, jsonToCsharp } from './json-codegen.ts';
 import { parseCurl, curlToFetch } from './curl-parse.ts';
 
 export interface DevResult {
@@ -414,6 +414,21 @@ export const DEV: Record<string, (input: string, opts: Opts) => DevResult> = {
   jsonToGo: (input, opts) => {
     const r = jsonToGo(input, String(opts.rootName ?? 'Root'));
     return { output: r.output, info: `${r.count} struct${r.count === 1 ? '' : 's'} generated` };
+  },
+
+  jsonToPython: (input, opts) => {
+    const r = jsonToPython(input, String(opts.rootName ?? 'Root'));
+    return { output: r.output, info: `${r.count} dataclass${r.count === 1 ? '' : 'es'} generated` };
+  },
+
+  jsonToRust: (input, opts) => {
+    const r = jsonToRust(input, String(opts.rootName ?? 'Root'));
+    return { output: r.output, info: `${r.count} struct${r.count === 1 ? '' : 's'} generated` };
+  },
+
+  jsonToCsharp: (input, opts) => {
+    const r = jsonToCsharp(input, String(opts.rootName ?? 'Root'));
+    return { output: r.output, info: `${r.count} class${r.count === 1 ? '' : 'es'} generated` };
   },
 
   curlToCode: (input, opts) => {

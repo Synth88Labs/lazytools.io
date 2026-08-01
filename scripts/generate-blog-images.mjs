@@ -7,6 +7,13 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'generate-typed-models-from-json-guide',
+    kicker: 'DEVELOPER GUIDE',
+    lines: ['Typed models', 'from JSON: TS, Go,', 'Python, Rust, C#'],
+    fact: 'object → struct · key → typed field · missing → optional',
+    icon: '🧩',
+  },
+  {
     slug: 'curl-to-javascript-fetch-guide',
     kicker: 'DEVELOPER GUIDE',
     lines: ['curl to fetch():', 'the flag-by-flag', 'mapping'],

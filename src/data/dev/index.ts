@@ -784,6 +784,78 @@ export const DEV_TOOLS: DevToolDef[] = [
     ],
     keywords: ['curl to fetch', 'curl to javascript', 'curl to code', 'convert curl command', 'curl to js', 'curl converter'],
   },
+  {
+    slug: 'json-to-python',
+    name: 'JSON to Python Dataclass Converter',
+    icon: '🐍',
+    description:
+      'Convert a JSON sample into Python dataclasses with type hints — nested classes and List/Optional types inferred. In your browser, never uploaded.',
+    lead: 'Paste JSON and get Python @dataclass definitions with type hints — nested objects, lists and optional fields handled for you.',
+    widget: 'transform',
+    computeId: 'jsonToPython',
+    options: [
+      { id: 'rootName', label: 'Root class name', type: 'text', defaultValue: 'Root', placeholder: 'Root' },
+    ],
+    sample: '{\n  "id": 42,\n  "user_name": "ada",\n  "is_active": true,\n  "scores": [10, 20],\n  "profile": { "city": "London" }\n}',
+    how: 'The converter parses your JSON and emits Python @dataclass definitions with PEP 484 type hints. Whole numbers become int, decimals float, booleans bool, strings str, arrays List[...] and nested objects their own dataclass. Fields that are missing from some elements of an array of objects are typed Optional[...]. Classes are emitted deepest-first so each is defined before it is referenced, and the needed imports (dataclass, List, Optional, Any) are included.',
+    note: 'This gives you typed models ready for json parsing, IDE autocompletion and static checkers like mypy in seconds. A couple of things you may refine by hand: a value with no decimals is typed int (widen to float if it can be fractional), and fields that can be null are marked Optional — but you may also want a default of None so the dataclass field is truly optional at construction. It is a scaffold to build on, not a substitute for knowing your data. Everything runs locally in your browser.',
+    faqs: [
+      { q: 'How do I convert JSON to a Python dataclass?', a: 'Paste a JSON sample and the tool outputs @dataclass definitions with type hints. Set the root class name if you like, then copy the code into your project.' },
+      { q: 'Does it add type hints?', a: 'Yes — each field is annotated (int, float, bool, str, List[...], or a nested dataclass), which powers editor autocompletion and type-checkers like mypy. Optional fields are typed Optional[...].' },
+      { q: 'How does it handle nested objects?', a: 'Each nested object becomes its own @dataclass, defined before the class that references it, so the code is valid top-to-bottom. Arrays of objects are merged into a single element dataclass.' },
+      { q: 'Why is a number typed as int?', a: 'Whole numbers infer to int and numbers with a decimal point to float, based on the sample. If a field can be fractional, widen it to float after generating — inference only sees the example you provide.' },
+      { q: 'Is my JSON uploaded?', a: 'No — the conversion runs entirely in your browser and works offline, so your data never leaves your device.' },
+    ],
+    keywords: ['json to python', 'json to dataclass', 'json to python class', 'python dataclass generator', 'json to python dict', 'json to pydantic'],
+  },
+  {
+    slug: 'json-to-rust',
+    name: 'JSON to Rust Struct Converter',
+    icon: '🦀',
+    description:
+      'Convert a JSON sample into Rust structs with serde derives — types, Vec, Option and nested structs inferred. In your browser, never uploaded.',
+    lead: 'Paste JSON and get Rust structs deriving Serialize/Deserialize — types, Vec, nested structs and serde renames handled for you.',
+    widget: 'transform',
+    computeId: 'jsonToRust',
+    options: [
+      { id: 'rootName', label: 'Root struct name', type: 'text', defaultValue: 'Root', placeholder: 'Root' },
+    ],
+    sample: '{\n  "id": 42,\n  "userName": "ada",\n  "isActive": true,\n  "scores": [10, 20],\n  "profile": { "city": "London" }\n}',
+    how: 'The converter parses your JSON and emits Rust structs that derive serde’s Serialize and Deserialize. Whole numbers become i64, decimals f64, booleans bool, strings String, arrays Vec<...> and nested objects their own struct. Field names are converted to snake_case; when that differs from the JSON key (e.g. userName → user_name) a #[serde(rename = "…")] attribute is added so (de)serialization still matches the original key. Optional fields (absent in some array elements) are wrapped in Option<...>.',
+    note: 'This is the boilerplate for deriving typed Rust models from an API in seconds, ready to use with serde_json. Refine as needed: a whole number is typed i64 (use u64/i32 where appropriate), and fields that may be missing are Option<...> — you can also add #[serde(default)] where a sensible default exists. Because parsing is local, nothing about your data leaves the browser.',
+    faqs: [
+      { q: 'How do I convert JSON to a Rust struct?', a: 'Paste a JSON sample and the tool generates Rust structs deriving Serialize and Deserialize. Copy the output and use it with serde_json to parse the same JSON.' },
+      { q: 'Does it handle camelCase JSON keys?', a: 'Yes — field names are converted to Rust’s snake_case convention, and when that differs from the JSON key a #[serde(rename = "originalKey")] attribute is added so deserialization still matches.' },
+      { q: 'What number types does it use?', a: 'Whole numbers become i64 and decimals f64. Adjust to u64, i32 or f32 as your data requires — the tool picks safe defaults from the sample.' },
+      { q: 'How are optional or null fields handled?', a: 'Fields missing from some elements of an array are wrapped in Option<...>. A JSON null is typed Option<serde_json::Value>; tighten it once you know the real type.' },
+      { q: 'Is my JSON uploaded?', a: 'No — generation runs entirely in your browser and works offline, so your data stays on your device.' },
+    ],
+    keywords: ['json to rust', 'json to rust struct', 'rust serde struct generator', 'json to serde', 'rust struct from json', 'json to rust serde'],
+  },
+  {
+    slug: 'json-to-csharp',
+    name: 'JSON to C# Class Converter',
+    icon: '💠',
+    description:
+      'Convert a JSON sample into C# classes with System.Text.Json attributes — types, List and nested classes inferred. In your browser, never uploaded.',
+    lead: 'Paste JSON and get C# classes with properties and JsonPropertyName attributes — nested classes and List types handled for you.',
+    widget: 'transform',
+    computeId: 'jsonToCsharp',
+    options: [
+      { id: 'rootName', label: 'Root class name', type: 'text', defaultValue: 'Root', placeholder: 'Root' },
+    ],
+    sample: '{\n  "id": 42,\n  "user_name": "ada",\n  "is_active": true,\n  "scores": [10, 20],\n  "profile": { "city": "London" }\n}',
+    how: 'The converter parses your JSON and emits C# classes with auto-properties. Whole numbers become int, decimals double, booleans bool, strings string, arrays List<...> and nested objects their own class. Property names are PascalCased (C# convention); when that differs from the JSON key a [JsonPropertyName("original_key")] attribute (System.Text.Json) is added so serialization round-trips correctly. The needed using directives are included.',
+    note: 'This produces model classes ready for System.Text.Json’s JsonSerializer.Deserialize in seconds. Refine to taste: a whole number is typed int (use long or decimal where needed), reference types are non-nullable by default (add ? for nullable fields under nullable reference types), and you can switch the attribute to Newtonsoft’s [JsonProperty] if your project uses Json.NET instead. Everything runs locally in your browser.',
+    faqs: [
+      { q: 'How do I convert JSON to a C# class?', a: 'Paste a JSON sample and the tool generates C# classes with properties. Copy them into your project and deserialize with System.Text.Json’s JsonSerializer.' },
+      { q: 'Does it map snake_case JSON to C# properties?', a: 'Yes — properties are PascalCased (e.g. user_name → UserName) and a [JsonPropertyName("user_name")] attribute is added so System.Text.Json maps them back to the original keys.' },
+      { q: 'Which JSON library are the attributes for?', a: 'System.Text.Json (the built-in .NET serializer), using [JsonPropertyName]. If you use Newtonsoft Json.NET, swap in [JsonProperty("…")] — the property names and types stay the same.' },
+      { q: 'What number types does it use?', a: 'Whole numbers become int and decimals double. For large integers or money values, change to long or decimal after generating — inference goes on the sample only.' },
+      { q: 'Is my JSON uploaded?', a: 'No — the conversion runs entirely in your browser and works offline, so your data never leaves your device.' },
+    ],
+    keywords: ['json to c#', 'json to csharp', 'json to c# class', 'c# class generator', 'json to csharp class', 'system.text.json class'],
+  },
 ];
 
 export function getDevTool(slug: string): DevToolDef | undefined {
