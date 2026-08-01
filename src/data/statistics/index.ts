@@ -4,7 +4,7 @@ export interface StatToolDef {
   slug: string;
   name: string;
   icon: string;
-  widget: 'normal' | 'binomial' | 'ci' | 'sample-size' | 'pvalue' | 'regression' | 'ttest' | 'poisson' | 'chisquare' | 'descriptive' | 'zscore' | 'means' | 'odds';
+  widget: 'normal' | 'binomial' | 'ci' | 'sample-size' | 'pvalue' | 'regression' | 'ttest' | 'poisson' | 'chisquare' | 'descriptive' | 'zscore' | 'means' | 'odds' | 'ztest' | 'effectsize' | 'twoprop';
   description: string;
   lead: string;
   how: string;
@@ -253,6 +253,63 @@ export const STAT_TOOLS: StatToolDef[] = [
       { q: 'What is implied probability in betting?', a: 'The probability that a set of odds corresponds to: 1 ÷ decimal odds, or A ÷ (A + B) for fractional odds. Bookmakers set odds so the implied probabilities sum to more than 100% (the "overround"), which is their margin.' },
     ],
     keywords: ['odds to probability calculator', 'probability to odds calculator', 'odds calculator', 'implied probability calculator', 'decimal odds calculator', 'odds converter', 'probability percentage to odds'],
+  },
+  {
+    slug: 'z-test-calculator',
+    name: 'Z-Test Calculator',
+    icon: '📐',
+    widget: 'ztest',
+    description:
+      'Run a one-sample or two-sample z-test (known population σ) from summary statistics — get the z statistic, exact p-value and a significance verdict. In your browser.',
+    lead: 'Enter your sample mean, known population σ and size to run a z-test — with the z statistic, exact p-value and whether the result is significant.',
+    how: 'The z-test compares a sample mean to a hypothesized value (one-sample) or two sample means to each other (two-sample) when the population standard deviation σ is known. The tool computes the standard error, the z statistic (how many standard errors the observed difference is from zero), and the p-value from the exact standard-normal distribution for a one- or two-tailed test, then compares it to your chosen significance level α.',
+    note: 'The z-test is the right test when σ is genuinely known or the sample is large enough that the sample SD is a reliable stand-in — otherwise the t-test, which accounts for the extra uncertainty of estimating σ, is the correct choice. The two tests converge as the sample grows. A non-significant result is not proof of “no difference”; it only means the evidence is insufficient at your α. Everything runs locally in your browser.',
+    faqs: [
+      { q: 'When should I use a z-test instead of a t-test?', a: 'Use a z-test when the population standard deviation (σ) is known, or the sample is large (often n ≥ 30) so the sample SD reliably estimates σ. Use a t-test when σ is unknown and estimated from a smaller sample — it accounts for that extra uncertainty.' },
+      { q: 'What does the z statistic mean?', a: 'It’s how many standard errors the observed difference lies from the value expected under the null hypothesis. A larger absolute z means the result is further from “no effect,” which corresponds to a smaller p-value.' },
+      { q: 'What is a one-tailed vs two-tailed test?', a: 'A two-tailed test checks for any difference (≠); a one-tailed test checks for a difference in a specific direction (> or <). One-tailed tests have more power in that direction but must be chosen before seeing the data.' },
+      { q: 'Does a significant result prove my hypothesis?', a: 'No — it means the data are unlikely under the null hypothesis at your chosen α, so you reject the null. It doesn’t prove the alternative or measure the effect’s size; pair it with an effect-size measure like Cohen’s d.' },
+      { q: 'Is my data uploaded?', a: 'No — the z statistic and p-value are computed entirely in your browser and the tool works offline.' },
+    ],
+    keywords: ['z-test calculator', 'z test statistic', 'one sample z test', 'two sample z test', 'z test p-value', 'hypothesis test calculator'],
+  },
+  {
+    slug: 'effect-size-calculator',
+    name: "Effect Size Calculator (Cohen's d)",
+    icon: '📏',
+    widget: 'effectsize',
+    description:
+      "Compute Cohen's d effect size between two groups from their means, standard deviations and sizes — with a small/medium/large interpretation. In your browser.",
+    lead: "Enter two groups' means, SDs and sizes to get Cohen's d — the standardized effect size — plus whether it's small, medium or large.",
+    how: "Cohen's d divides the difference between the two group means by their pooled standard deviation, expressing the gap in standard-deviation units. The tool computes the pooled SD from both groups' SDs and sizes, then d, and labels its magnitude using Cohen's conventional benchmarks (about 0.2 small, 0.5 medium, 0.8 large).",
+    note: "Effect size answers the question a p-value can't: not “is there a detectable difference?” but “how big is it?”. Because significance depends on sample size, a trivial difference can be highly significant in a huge study, while a large, important effect can miss significance in a small one — so reporting Cohen's d alongside a test is best practice. The small/medium/large labels are rough guides, not universal truths; a “small” d can matter a great deal in some fields. It all runs locally in your browser.",
+    faqs: [
+      { q: "What is Cohen's d?", a: "A standardized effect size: the difference between two group means divided by their pooled standard deviation. A d of 1.0 means the means differ by one standard deviation. It's independent of sample size, unlike a p-value." },
+      { q: 'What counts as a small, medium or large effect?', a: "Cohen's rules of thumb are roughly 0.2 (small), 0.5 (medium) and 0.8 (large), with values under ~0.2 negligible. These are conventions — interpret the size in the context of your field and what's practically meaningful." },
+      { q: 'Why report effect size as well as a p-value?', a: "Because significance depends on sample size: a tiny, unimportant difference can be significant in a large sample, and a large, important one can be non-significant in a small sample. Effect size measures the magnitude regardless of n." },
+      { q: 'How is the pooled standard deviation calculated?', a: 'It combines both groups’ variances weighted by their degrees of freedom: √[((n₁−1)·SD₁² + (n₂−1)·SD₂²) / (n₁+n₂−2)]. This is the standard denominator for Cohen’s d with two independent groups.' },
+      { q: 'Is my data uploaded?', a: 'No — the calculation runs entirely in your browser and works offline.' },
+    ],
+    keywords: ["cohen's d calculator", 'effect size calculator', 'cohens d', 'standardized effect size', 'effect size from mean and sd', 'small medium large effect'],
+  },
+  {
+    slug: 'ab-test-significance-calculator',
+    name: 'A/B Test Significance Calculator',
+    icon: '🧪',
+    widget: 'twoprop',
+    description:
+      'Check whether the difference between two conversion rates is statistically significant with a two-proportion z-test — the standard A/B test. In your browser.',
+    lead: 'Enter conversions and visitors for each variant to test whether the difference in conversion rate is significant — the A/B-test z-test.',
+    how: 'The tool runs a two-proportion z-test: it computes each variant’s conversion rate, a pooled proportion across both, the standard error, the z statistic and the exact p-value from the standard normal distribution. It compares the p-value to your significance level α and reports whether the observed difference is unlikely to be due to chance.',
+    note: 'This is the significance test behind most A/B testing tools. Two cautions matter: significance depends on sample size, so run the test to a pre-planned sample rather than stopping the moment it turns green (“peeking” inflates false positives); and statistical significance isn’t the same as a difference big enough to matter commercially. The test also assumes independent visitors and enough conversions per group. Everything runs locally, so your experiment data never leaves your browser.',
+    faqs: [
+      { q: 'How do I know if my A/B test result is significant?', a: 'Enter the conversions and total visitors for each variant. The tool computes a two-proportion z-test and a p-value; if the p-value is below your chosen α (commonly 0.05), the difference is statistically significant.' },
+      { q: 'What test does an A/B test use?', a: 'The standard approach for comparing two conversion rates is a two-proportion z-test, which uses a pooled proportion to estimate the standard error. That’s exactly what this calculator runs.' },
+      { q: 'Why shouldn’t I stop the test as soon as it’s significant?', a: 'Repeatedly checking and stopping the moment p < α (“peeking”) greatly inflates the false-positive rate. Decide the sample size in advance and evaluate the result once you reach it, or use a method designed for sequential testing.' },
+      { q: 'Does a significant result mean the change is worth shipping?', a: 'Not necessarily — significance says the difference is unlikely to be chance, not that it’s large. Look at the actual percentage-point lift and whether it justifies the change for your business.' },
+      { q: 'Is my experiment data uploaded?', a: 'No — the z-test runs entirely in your browser and works offline, so your conversion data stays on your device.' },
+    ],
+    keywords: ['ab test calculator', 'a/b test significance calculator', 'two proportion z test', 'conversion rate significance', 'ab test statistical significance', 'split test calculator'],
   },
 ];
 

@@ -4,9 +4,62 @@
  * (goodness-of-fit and independence), and a Poisson probability summary. Built
  * on the exact distribution functions in stats.ts (tCdf, chiSqCdf, poisson*).
  */
-import { tCdf, chiSqCdf, poissonPmf, poissonCdf } from './stats.ts';
+import { tCdf, chiSqCdf, poissonPmf, poissonCdf, normalCdf } from './stats.ts';
 
 export type Tail = 'two' | 'left' | 'right';
+
+/** p-value from a z statistic (standard normal), for the chosen tail. */
+export function zPValue(z: number, tail: Tail): number {
+  if (tail === 'two') return 2 * (1 - normalCdf(Math.abs(z)));
+  if (tail === 'right') return 1 - normalCdf(z);
+  return normalCdf(z); // left
+}
+
+export interface ZTestResult { z: number; p: number; se: number; }
+
+/** One-sample z-test (population σ known): is the sample mean different from μ₀? */
+export function zTestOneSample(mean: number, sigma: number, n: number, mu0: number, tail: Tail = 'two'): ZTestResult | null {
+  if (n < 1 || sigma <= 0) return null;
+  const se = sigma / Math.sqrt(n);
+  const z = (mean - mu0) / se;
+  return { z, p: zPValue(z, tail), se };
+}
+
+/** Two-sample z-test with known population σ's. */
+export function zTestTwoSample(m1: number, sigma1: number, n1: number, m2: number, sigma2: number, n2: number, tail: Tail = 'two'): ZTestResult | null {
+  if (n1 < 1 || n2 < 1 || sigma1 <= 0 || sigma2 <= 0) return null;
+  const se = Math.sqrt((sigma1 * sigma1) / n1 + (sigma2 * sigma2) / n2);
+  if (se === 0) return null;
+  const z = (m1 - m2) / se;
+  return { z, p: zPValue(z, tail), se };
+}
+
+export interface CohensDResult { d: number; pooledSd: number; magnitude: string; }
+
+/** Cohen's d effect size for two independent groups (pooled SD). */
+export function cohensD(m1: number, sd1: number, n1: number, m2: number, sd2: number, n2: number): CohensDResult | null {
+  if (n1 < 2 || n2 < 2 || sd1 < 0 || sd2 < 0) return null;
+  const sp = Math.sqrt(((n1 - 1) * sd1 * sd1 + (n2 - 1) * sd2 * sd2) / (n1 + n2 - 2));
+  if (sp === 0) return null;
+  const d = (m1 - m2) / sp;
+  const a = Math.abs(d);
+  // Cohen's conventional benchmarks.
+  const magnitude = a < 0.2 ? 'negligible' : a < 0.5 ? 'small' : a < 0.8 ? 'medium' : 'large';
+  return { d, pooledSd: sp, magnitude };
+}
+
+export interface TwoPropResult { z: number; p: number; p1: number; p2: number; pooled: number; diff: number; }
+
+/** Two-proportion z-test (e.g. A/B conversion test): x successes of n in each group. */
+export function twoProportionZTest(x1: number, n1: number, x2: number, n2: number, tail: Tail = 'two'): TwoPropResult | null {
+  if (n1 < 1 || n2 < 1 || x1 < 0 || x2 < 0 || x1 > n1 || x2 > n2) return null;
+  const p1 = x1 / n1, p2 = x2 / n2;
+  const pooled = (x1 + x2) / (n1 + n2);
+  const se = Math.sqrt(pooled * (1 - pooled) * (1 / n1 + 1 / n2));
+  if (se === 0) return null;
+  const z = (p1 - p2) / se;
+  return { z, p: zPValue(z, tail), p1, p2, pooled, diff: p1 - p2 };
+}
 
 /** p-value from a t statistic and df, for the chosen tail. */
 export function tPValue(t: number, df: number, tail: Tail): number {

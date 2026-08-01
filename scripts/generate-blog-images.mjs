@@ -7,6 +7,13 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'ab-test-significance-p-values-effect-size-guide',
+    kicker: 'STATISTICS GUIDE',
+    lines: ['Is your A/B test', 'real? Significance,', 'p-values, effect size'],
+    fact: 'small p-value AND a meaningful effect — no peeking',
+    icon: '🧪',
+  },
+  {
     slug: 'day-of-year-ordinal-dates-guide',
     kicker: 'DATE & TIME GUIDE',
     lines: ['What day of the', 'year is it? Ordinal', 'dates explained'],

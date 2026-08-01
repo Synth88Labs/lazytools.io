@@ -18,6 +18,9 @@ import DescriptiveStatsTool from '../../components/statistics/DescriptiveStatsTo
 import ZScoreTool from '../../components/statistics/ZScoreTool.tsx';
 import MeansTool from '../../components/statistics/MeansTool.tsx';
 import OddsTool from '../../components/statistics/OddsTool.tsx';
+import ZTestTool from '../../components/statistics/ZTestTool.tsx';
+import EffectSizeTool from '../../components/statistics/EffectSizeTool.tsx';
+import TwoPropTool from '../../components/statistics/TwoPropTool.tsx';
 import { STAT_TOOLS, type StatToolDef } from '../../data/statistics/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -77,6 +80,9 @@ const schema = [
       {tool.widget === 'zscore' && <ZScoreTool client:load />}
       {tool.widget === 'means' && <MeansTool client:load />}
       {tool.widget === 'odds' && <OddsTool client:load />}
+      {tool.widget === 'ztest' && <ZTestTool client:load />}
+      {tool.widget === 'effectsize' && <EffectSizeTool client:load />}
+      {tool.widget === 'twoprop' && <TwoPropTool client:load />}
     </div>
 
     <div class="mt-4">
