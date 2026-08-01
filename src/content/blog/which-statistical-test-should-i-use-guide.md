@@ -6,7 +6,7 @@ updatedDate: 2026-08-01
 archetype: explainer
 heroImage: /blog/which-statistical-test-should-i-use-guide.png
 heroAlt: "A decision tree for choosing a statistical test based on data type, number of groups and normality"
-tools: ["/statistics/t-test-calculator/", "/statistics/anova-calculator/", "/statistics/mann-whitney-u-test-calculator/", "/statistics/z-test-calculator/", "/statistics/chi-square-test-calculator/"]
+tools: ["/statistics/t-test-calculator/", "/statistics/anova-calculator/", "/statistics/mann-whitney-u-test-calculator/", "/statistics/z-test-calculator/", "/statistics/chi-square-test-calculator/", "/statistics/kruskal-wallis-test-calculator/", "/statistics/wilcoxon-signed-rank-test-calculator/"]
 keywords:
   - which statistical test should i use
   - t-test vs anova
@@ -107,7 +107,8 @@ With 3+ groups, don't run a t-test on every pair — each comparison carries its
 and doing many inflates the overall error rate. [One-way ANOVA](/statistics/anova-calculator/) tests
 all groups at once with a single F test. A significant result says the groups aren't all equal; a
 follow-up **post-hoc test** (e.g. Tukey's HSD) tells you which ones differ. If the groups are clearly
-non-normal, the rank-based **Kruskal-Wallis** test is the non-parametric counterpart.
+non-normal, the rank-based [Kruskal-Wallis test](/statistics/kruskal-wallis-test-calculator/) is the
+non-parametric counterpart.
 
 ## Don't forget effect size
 

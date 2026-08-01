@@ -4,7 +4,7 @@ export interface StatToolDef {
   slug: string;
   name: string;
   icon: string;
-  widget: 'normal' | 'binomial' | 'ci' | 'sample-size' | 'pvalue' | 'regression' | 'ttest' | 'poisson' | 'chisquare' | 'descriptive' | 'zscore' | 'means' | 'odds' | 'ztest' | 'effectsize' | 'twoprop' | 'anova' | 'mannwhitney';
+  widget: 'normal' | 'binomial' | 'ci' | 'sample-size' | 'pvalue' | 'regression' | 'ttest' | 'poisson' | 'chisquare' | 'descriptive' | 'zscore' | 'means' | 'odds' | 'ztest' | 'effectsize' | 'twoprop' | 'anova' | 'mannwhitney' | 'kruskal' | 'wilcoxon';
   description: string;
   lead: string;
   how: string;
@@ -348,6 +348,44 @@ export const STAT_TOOLS: StatToolDef[] = [
       { q: 'Is my data uploaded?', a: 'No — the test runs entirely in your browser and works offline, so your data stays on your device.' },
     ],
     keywords: ['mann-whitney u test calculator', 'wilcoxon rank sum test', 'mann whitney calculator', 'non parametric test calculator', 'u test calculator', 'two sample non parametric'],
+  },
+  {
+    slug: 'kruskal-wallis-test-calculator',
+    name: 'Kruskal-Wallis H Test Calculator',
+    icon: '📊',
+    widget: 'kruskal',
+    description:
+      'Run a Kruskal-Wallis H test — the non-parametric one-way ANOVA — across three or more groups. Get the H statistic, degrees of freedom and p-value. In your browser.',
+    lead: 'Paste your groups (one per line) to run a Kruskal-Wallis test — the rank-based alternative to ANOVA that doesn\'t assume normal data.',
+    how: 'The Kruskal-Wallis test ranks every value across all groups together, sums the ranks within each group, and forms the H statistic from those rank sums. H is compared to a chi-square distribution with k − 1 degrees of freedom (k = number of groups), and the tool applies a tie correction for repeated values. Enter one group per line, values separated by commas or spaces.',
+    note: 'This is the test to reach for when you\'d use one-way ANOVA but the data isn\'t normally distributed — skewed measurements, ordinal ratings or small samples with outliers — because it works on ranks. Like ANOVA, a significant H tells you the groups are not all alike but not which ones differ; a post-hoc procedure such as Dunn\'s test locates the differences. For exactly two groups it reduces to the Mann-Whitney U test. It all runs locally in your browser.',
+    faqs: [
+      { q: 'When should I use the Kruskal-Wallis test?', a: 'When comparing three or more independent groups but the normality assumption of ANOVA is doubtful — skewed data, ordinal scales, small samples or outliers. It\'s the non-parametric alternative to one-way ANOVA and works on ranks.' },
+      { q: 'How does it relate to ANOVA and Mann-Whitney?', a: 'It generalises the Mann-Whitney U test (two groups) to three or more, and it plays the role ANOVA plays for normal data. Use ANOVA when the groups are roughly normal, Kruskal-Wallis when they\'re not.' },
+      { q: 'What does a significant H mean?', a: 'That the groups don\'t all come from the same distribution — at least one differs. It doesn\'t identify which; follow up with a post-hoc test like Dunn\'s test with a multiple-comparison correction.' },
+      { q: 'Does it handle tied values?', a: 'Yes — tied values receive average ranks and the H statistic is adjusted with a tie correction, so repeated numbers are handled correctly.' },
+      { q: 'Is my data uploaded?', a: 'No — the test is computed entirely in your browser and works offline, so your data never leaves your device.' },
+    ],
+    keywords: ['kruskal-wallis test calculator', 'kruskal wallis h test', 'non parametric anova', 'kruskal wallis calculator', 'compare groups non parametric', 'rank based anova'],
+  },
+  {
+    slug: 'wilcoxon-signed-rank-test-calculator',
+    name: 'Wilcoxon Signed-Rank Test Calculator',
+    icon: '🔗',
+    widget: 'wilcoxon',
+    description:
+      'Run a Wilcoxon signed-rank test on paired data — the non-parametric paired t-test. Get the W statistic, z and p-value. In your browser, never uploaded.',
+    lead: 'Paste before/after pairs to run a Wilcoxon signed-rank test — the rank-based alternative to the paired t-test that doesn\'t assume normal differences.',
+    how: 'The test takes each subject\'s pair of measurements, computes the differences, drops any that are exactly zero, and ranks the remaining differences by absolute size (average ranks for ties). It sums the ranks of the positive and negative differences (W⁺ and W⁻), takes the smaller as W, and uses the normal approximation with a tie correction to get a z score and p-value. Enter the two conditions in matching order so each row is one subject\'s pair.',
+    note: 'This is the paired-data counterpart to the Mann-Whitney U test (which is for independent groups). Use it in place of a paired t-test when the paired differences aren\'t normally distributed — before/after measurements, matched subjects, or ordinal ratings. It tests whether the differences are symmetrically distributed around zero. The normal approximation is accurate for moderate-to-large samples; for very small n an exact table is better. Everything runs locally in your browser.',
+    faqs: [
+      { q: 'When should I use the Wilcoxon signed-rank test?', a: 'For paired or repeated measurements (before/after, matched pairs) when the differences aren\'t normally distributed. It\'s the non-parametric alternative to the paired t-test and works on the ranks of the differences.' },
+      { q: 'How is it different from the Mann-Whitney U test?', a: 'Wilcoxon signed-rank is for paired data (two measurements on the same subjects); Mann-Whitney U is for two independent groups. Don\'t mix them up — the pairing is what makes signed-rank appropriate here.' },
+      { q: 'What happens to pairs with no difference?', a: 'Pairs whose two values are equal have a zero difference and are dropped from the test, and the sample size n counts only the non-zero differences. Ties among the absolute differences share average ranks.' },
+      { q: 'What does W represent?', a: 'W is the smaller of the summed positive-rank total (W⁺) and negative-rank total (W⁻). A large imbalance between W⁺ and W⁻ — a small W — indicates the two conditions differ.' },
+      { q: 'Is my data uploaded?', a: 'No — the test runs entirely in your browser and works offline, so your paired data stays on your device.' },
+    ],
+    keywords: ['wilcoxon signed rank test calculator', 'wilcoxon paired test', 'non parametric paired test', 'signed rank test', 'paired wilcoxon calculator', 'before after non parametric test'],
   },
 ];
 

@@ -248,3 +248,73 @@ export function mannWhitneyU(a: number[], b: number[], tail: Tail = 'two'): Mann
   const z = (diff - cc) / sdU;
   return { u, u1, u2, z, p: zPValue(z, tail), n1, n2, rankSum1, meanU, sdU };
 }
+
+/** Average ranks (1-based) of `values`, plus the tie-group sizes. */
+function averageRanks(values: number[]): { ranks: number[]; tieGroups: number[] } {
+  const idx = values.map((v, i) => ({ v, i })).sort((a, b) => a.v - b.v);
+  const ranks = new Array(values.length);
+  const tieGroups: number[] = [];
+  let i = 0;
+  while (i < idx.length) {
+    let j = i;
+    while (j + 1 < idx.length && idx[j + 1].v === idx[i].v) j++;
+    const avg = (i + j) / 2 + 1;
+    for (let t = i; t <= j; t++) ranks[idx[t].i] = avg;
+    if (j > i) tieGroups.push(j - i + 1);
+    i = j + 1;
+  }
+  return { ranks, tieGroups };
+}
+
+/* ---------------- Kruskal-Wallis H test ---------------- */
+
+export interface KruskalResult { h: number; df: number; p: number; nTotal: number; k: number; rankSums: number[]; }
+/** Kruskal-Wallis H test: non-parametric one-way ANOVA across k groups (ranks). */
+export function kruskalWallis(groups: number[][]): KruskalResult | null {
+  const clean = groups.filter((g) => g.length > 0);
+  const k = clean.length;
+  if (k < 2) return null;
+  const flat: number[] = [];
+  const owner: number[] = [];
+  clean.forEach((g, gi) => g.forEach((v) => { flat.push(v); owner.push(gi); }));
+  const N = flat.length;
+  if (N <= k) return null;
+  const { ranks, tieGroups } = averageRanks(flat);
+  const rankSums = new Array(k).fill(0);
+  ranks.forEach((r, i) => { rankSums[owner[i]] += r; });
+  let h = (12 / (N * (N + 1))) * clean.reduce((acc, g, gi) => acc + (rankSums[gi] * rankSums[gi]) / g.length, 0) - 3 * (N + 1);
+  // Tie correction.
+  const tieTerm = tieGroups.reduce((acc, c) => acc + (c * c * c - c), 0);
+  const cFactor = 1 - tieTerm / (N * N * N - N);
+  if (cFactor > 0) h = h / cFactor;
+  const df = k - 1;
+  return { h, df, p: 1 - chiSqCdf(h, df), nTotal: N, k, rankSums };
+}
+
+/* ---------------- Wilcoxon signed-rank test (paired) ---------------- */
+
+export interface WilcoxonResult { w: number; wPlus: number; wMinus: number; z: number; p: number; n: number; meanW: number; sdW: number; }
+/**
+ * Wilcoxon signed-rank test for paired data. Ranks the absolute non-zero
+ * differences (average ranks for ties), sums the positive- and negative-signed
+ * ranks, and uses the normal approximation with a tie correction.
+ */
+export function wilcoxonSignedRank(a: number[], b: number[], tail: Tail = 'two'): WilcoxonResult | null {
+  if (a.length !== b.length || a.length < 1) return null;
+  const diffs = a.map((v, i) => v - b[i]).filter((d) => d !== 0);
+  const n = diffs.length;
+  if (n < 1) return null;
+  const { ranks, tieGroups } = averageRanks(diffs.map(Math.abs));
+  let wPlus = 0, wMinus = 0;
+  diffs.forEach((d, i) => { if (d > 0) wPlus += ranks[i]; else wMinus += ranks[i]; });
+  const w = Math.min(wPlus, wMinus);
+  const meanW = (n * (n + 1)) / 4;
+  const tieTerm = tieGroups.reduce((acc, c) => acc + (c * c * c - c), 0);
+  const varW = (n * (n + 1) * (2 * n + 1)) / 24 - tieTerm / 48;
+  const sdW = Math.sqrt(varW);
+  if (sdW === 0) return null;
+  const diff = wPlus - meanW;
+  const cc = diff === 0 ? 0 : Math.sign(diff) * 0.5;
+  const z = (diff - cc) / sdW;
+  return { w, wPlus, wMinus, z, p: zPValue(z, tail), n, meanW, sdW };
+}
