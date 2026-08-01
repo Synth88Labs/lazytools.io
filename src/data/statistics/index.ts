@@ -4,7 +4,7 @@ export interface StatToolDef {
   slug: string;
   name: string;
   icon: string;
-  widget: 'normal' | 'binomial' | 'ci' | 'sample-size' | 'pvalue' | 'regression' | 'ttest' | 'poisson' | 'chisquare' | 'descriptive' | 'zscore' | 'means' | 'odds' | 'ztest' | 'effectsize' | 'twoprop';
+  widget: 'normal' | 'binomial' | 'ci' | 'sample-size' | 'pvalue' | 'regression' | 'ttest' | 'poisson' | 'chisquare' | 'descriptive' | 'zscore' | 'means' | 'odds' | 'ztest' | 'effectsize' | 'twoprop' | 'anova' | 'mannwhitney';
   description: string;
   lead: string;
   how: string;
@@ -310,6 +310,44 @@ export const STAT_TOOLS: StatToolDef[] = [
       { q: 'Is my experiment data uploaded?', a: 'No — the z-test runs entirely in your browser and works offline, so your conversion data stays on your device.' },
     ],
     keywords: ['ab test calculator', 'a/b test significance calculator', 'two proportion z test', 'conversion rate significance', 'ab test statistical significance', 'split test calculator'],
+  },
+  {
+    slug: 'anova-calculator',
+    name: 'One-Way ANOVA Calculator',
+    icon: '📊',
+    widget: 'anova',
+    description:
+      'Run a one-way ANOVA across three or more groups — get the F statistic, degrees of freedom, exact p-value and a full ANOVA table. In your browser.',
+    lead: 'Paste your groups (one per line) to run a one-way ANOVA — with the F statistic, an SS/df/MS table, exact p-value and a significance verdict.',
+    how: 'One-way ANOVA tests whether the means of three or more groups are all equal. The tool computes the sum of squares between groups (how far the group means sit from the grand mean) and within groups (the spread inside each group), divides each by its degrees of freedom to get mean squares, and forms the F ratio (MS-between ÷ MS-within). The p-value comes from the exact F-distribution. Enter one group per line, values separated by commas or spaces.',
+    note: 'ANOVA generalises the two-sample t-test to more than two groups without inflating the false-positive rate that running many separate t-tests would cause. A significant F only tells you that the groups are not all equal — not which ones differ; for that you run a post-hoc test such as Tukey\'s HSD. It assumes the groups are roughly normal with similar variances; for clearly non-normal data, a rank-based test like Kruskal-Wallis is safer. Everything runs locally in your browser.',
+    faqs: [
+      { q: 'What does a one-way ANOVA test?', a: 'Whether the means of three or more independent groups are all equal. It compares the variation between the group means to the variation within the groups using an F ratio; a large F (small p-value) is evidence the means are not all equal.' },
+      { q: 'Why not just run several t-tests?', a: 'Each t-test carries its own false-positive risk, and running many inflates the overall chance of a spurious "significant" result. ANOVA tests all groups at once at a single significance level, which controls that error rate.' },
+      { q: 'What does the F statistic mean?', a: 'It\'s the ratio of between-group variance to within-group variance. If the group means are similar, F is near 1; the further apart the means are relative to the within-group spread, the larger F and the smaller the p-value.' },
+      { q: 'A significant result — so which groups differ?', a: 'ANOVA doesn\'t say. A significant F means at least one group differs from another; to find out which, run a post-hoc test such as Tukey\'s HSD or pairwise comparisons with a correction.' },
+      { q: 'Is my data uploaded?', a: 'No — the ANOVA is computed entirely in your browser and works offline, so your data never leaves your device.' },
+    ],
+    keywords: ['anova calculator', 'one way anova calculator', 'f test calculator', 'anova f statistic', 'analysis of variance calculator', 'compare three group means'],
+  },
+  {
+    slug: 'mann-whitney-u-test-calculator',
+    name: 'Mann-Whitney U Test Calculator',
+    icon: '🔢',
+    widget: 'mannwhitney',
+    description:
+      'Run a Mann-Whitney U test (Wilcoxon rank-sum) — the non-parametric two-sample test — from two groups of data. Get U, z, and an exact-normal p-value. In your browser.',
+    lead: 'Paste two groups to run a Mann-Whitney U test — the rank-based alternative to the t-test that doesn\'t assume normal data.',
+    how: 'The Mann-Whitney U test ranks all values from both groups together, sums the ranks of each group, and computes the U statistic from those rank sums. The tool uses the normal approximation with a tie correction to get a z score and p-value, and handles tied values with average ranks. Enter each group\'s numbers separated by commas or spaces.',
+    note: 'This is the go-to test when a t-test\'s normality assumption is doubtful — small samples, skewed distributions, ordinal ratings, or data with outliers — because it works on ranks rather than raw values. Strictly it tests whether one group tends to have larger values than the other (stochastic dominance); it\'s often described as comparing medians, which holds when the two distributions have similar shapes. The normal approximation is accurate for moderate-to-large samples; for very small groups an exact U table is more precise. It all runs locally in your browser.',
+    faqs: [
+      { q: 'When should I use a Mann-Whitney U test?', a: 'When comparing two independent groups but the data isn\'t normally distributed — for example skewed measurements, ordinal ratings, small samples, or data with outliers. It\'s the non-parametric alternative to the two-sample t-test.' },
+      { q: 'Is Mann-Whitney the same as the Wilcoxon rank-sum test?', a: 'Yes — they are equivalent tests with different formulations and names. (Don\'t confuse it with the Wilcoxon signed-rank test, which is for paired data.)' },
+      { q: 'Does it compare medians?', a: 'It tests whether values in one group tend to be larger than in the other. When the two distributions have a similar shape, that difference in "typical" value can be read as a difference in medians; when shapes differ, interpret it as stochastic dominance rather than strictly medians.' },
+      { q: 'How are ties handled?', a: 'Tied values receive the average of the ranks they span, and the variance used for the z score includes a tie correction, so repeated values are handled correctly.' },
+      { q: 'Is my data uploaded?', a: 'No — the test runs entirely in your browser and works offline, so your data stays on your device.' },
+    ],
+    keywords: ['mann-whitney u test calculator', 'wilcoxon rank sum test', 'mann whitney calculator', 'non parametric test calculator', 'u test calculator', 'two sample non parametric'],
   },
 ];
 

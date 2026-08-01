@@ -7,6 +7,13 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'which-statistical-test-should-i-use-guide',
+    kicker: 'STATISTICS GUIDE',
+    lines: ['Which statistical', 'test should you use?', 'A decision guide'],
+    fact: 'data type → group count → normality picks the test',
+    icon: '📊',
+  },
+  {
     slug: 'ab-test-significance-p-values-effect-size-guide',
     kicker: 'STATISTICS GUIDE',
     lines: ['Is your A/B test', 'real? Significance,', 'p-values, effect size'],

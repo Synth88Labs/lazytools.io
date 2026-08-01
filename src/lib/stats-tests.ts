@@ -4,7 +4,7 @@
  * (goodness-of-fit and independence), and a Poisson probability summary. Built
  * on the exact distribution functions in stats.ts (tCdf, chiSqCdf, poisson*).
  */
-import { tCdf, chiSqCdf, poissonPmf, poissonCdf, normalCdf } from './stats.ts';
+import { tCdf, chiSqCdf, poissonPmf, poissonCdf, normalCdf, fCdf } from './stats.ts';
 
 export type Tail = 'two' | 'left' | 'right';
 
@@ -171,4 +171,80 @@ export function poissonSummary(lambda: number, k: number): PoissonSummary | null
     variance: lambda,
     sd: Math.sqrt(lambda),
   };
+}
+
+/* ---------------- One-way ANOVA ---------------- */
+
+export interface AnovaResult {
+  f: number; dfBetween: number; dfWithin: number; p: number;
+  ssBetween: number; ssWithin: number; msBetween: number; msWithin: number;
+  grandMean: number; groupMeans: number[]; nTotal: number; k: number;
+}
+/** One-way ANOVA across k groups (k ≥ 2, each with ≥ 1 value, total > k). */
+export function oneWayAnova(groups: number[][]): AnovaResult | null {
+  const clean = groups.filter((g) => g.length > 0);
+  const k = clean.length;
+  if (k < 2) return null;
+  const nTotal = clean.reduce((a, g) => a + g.length, 0);
+  if (nTotal <= k) return null; // need residual df ≥ 1
+  const groupMeans = clean.map((g) => g.reduce((a, b) => a + b, 0) / g.length);
+  const grandMean = clean.flat().reduce((a, b) => a + b, 0) / nTotal;
+  let ssBetween = 0, ssWithin = 0;
+  clean.forEach((g, i) => {
+    ssBetween += g.length * Math.pow(groupMeans[i] - grandMean, 2);
+    for (const x of g) ssWithin += Math.pow(x - groupMeans[i], 2);
+  });
+  const dfBetween = k - 1;
+  const dfWithin = nTotal - k;
+  const msBetween = ssBetween / dfBetween;
+  const msWithin = ssWithin / dfWithin;
+  if (msWithin === 0) return null; // no within-group variance → F undefined
+  const f = msBetween / msWithin;
+  return { f, dfBetween, dfWithin, p: 1 - fCdf(f, dfBetween, dfWithin), ssBetween, ssWithin, msBetween, msWithin, grandMean, groupMeans, nTotal, k };
+}
+
+/* ---------------- Mann-Whitney U (Wilcoxon rank-sum) ---------------- */
+
+export interface MannWhitneyResult {
+  u: number; u1: number; u2: number; z: number; p: number;
+  n1: number; n2: number; rankSum1: number; meanU: number; sdU: number;
+}
+/**
+ * Mann-Whitney U test (a.k.a. Wilcoxon rank-sum), the non-parametric two-sample
+ * test. Uses average ranks for ties and the normal approximation (with a tie
+ * correction) for the p-value — appropriate for moderate-to-large samples.
+ */
+export function mannWhitneyU(a: number[], b: number[], tail: Tail = 'two'): MannWhitneyResult | null {
+  const n1 = a.length, n2 = b.length;
+  if (n1 < 1 || n2 < 1) return null;
+  const all = [...a.map((v) => ({ v, g: 1 })), ...b.map((v) => ({ v, g: 2 }))].sort((x, y) => x.v - y.v);
+  // Average ranks, handling ties.
+  const ranks = new Array(all.length);
+  let i = 0;
+  const tieGroups: number[] = [];
+  while (i < all.length) {
+    let j = i;
+    while (j + 1 < all.length && all[j + 1].v === all[i].v) j++;
+    const avg = (i + j) / 2 + 1; // 1-based average rank
+    for (let t = i; t <= j; t++) ranks[t] = avg;
+    if (j > i) tieGroups.push(j - i + 1);
+    i = j + 1;
+  }
+  let rankSum1 = 0;
+  all.forEach((x, idx) => { if (x.g === 1) rankSum1 += ranks[idx]; });
+  const u1 = rankSum1 - (n1 * (n1 + 1)) / 2;
+  const u2 = n1 * n2 - u1;
+  const u = Math.min(u1, u2);
+  const meanU = (n1 * n2) / 2;
+  const N = n1 + n2;
+  // Variance with tie correction.
+  const tieTerm = tieGroups.reduce((acc, c) => acc + (c * c * c - c), 0);
+  const varU = (n1 * n2 / 12) * ((N + 1) - tieTerm / (N * (N - 1)));
+  const sdU = Math.sqrt(varU);
+  if (sdU === 0) return null;
+  // z with continuity correction toward the mean.
+  const diff = u1 - meanU;
+  const cc = diff === 0 ? 0 : Math.sign(diff) * 0.5;
+  const z = (diff - cc) / sdU;
+  return { u, u1, u2, z, p: zPValue(z, tail), n1, n2, rankSum1, meanU, sdU };
 }

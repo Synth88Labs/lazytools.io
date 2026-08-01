@@ -21,6 +21,8 @@ import OddsTool from '../../components/statistics/OddsTool.tsx';
 import ZTestTool from '../../components/statistics/ZTestTool.tsx';
 import EffectSizeTool from '../../components/statistics/EffectSizeTool.tsx';
 import TwoPropTool from '../../components/statistics/TwoPropTool.tsx';
+import AnovaTool from '../../components/statistics/AnovaTool.tsx';
+import MannWhitneyTool from '../../components/statistics/MannWhitneyTool.tsx';
 import { STAT_TOOLS, type StatToolDef } from '../../data/statistics/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -83,6 +85,8 @@ const schema = [
       {tool.widget === 'ztest' && <ZTestTool client:load />}
       {tool.widget === 'effectsize' && <EffectSizeTool client:load />}
       {tool.widget === 'twoprop' && <TwoPropTool client:load />}
+      {tool.widget === 'anova' && <AnovaTool client:load />}
+      {tool.widget === 'mannwhitney' && <MannWhitneyTool client:load />}
     </div>
 
     <div class="mt-4">
