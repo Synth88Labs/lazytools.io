@@ -715,6 +715,75 @@ export const DEV_TOOLS: DevToolDef[] = [
     ],
     keywords: ['utm builder', 'utm url builder', 'campaign url builder', 'utm parameter generator', 'utm link builder', 'ga4 campaign url', 'utm tag generator'],
   },
+  {
+    slug: 'json-schema-generator',
+    name: 'JSON Schema Generator',
+    icon: '🧬',
+    description:
+      'Generate a JSON Schema (draft-07) from a JSON sample — types, properties and required fields inferred automatically. In your browser, nothing uploaded.',
+    lead: 'Paste a JSON example and get a draft-07 JSON Schema describing it — types, nested objects, arrays and required fields inferred for you.',
+    widget: 'transform',
+    computeId: 'jsonSchema',
+    options: [
+      { id: 'minify', label: 'Minify output (single line)', type: 'checkbox' },
+    ],
+    sample: '{\n  "id": 42,\n  "name": "Ada",\n  "active": true,\n  "roles": ["admin", "editor"],\n  "profile": { "city": "London", "age": 36 }\n}',
+    how: 'The generator parses your JSON sample and walks it to infer a JSON Schema (draft-07). Whole numbers become "integer" and other numbers "number"; strings, booleans, arrays and nested objects are each described in place. For an array of objects it merges the elements into one item schema, marking a property as required only when it appears in every element. Every object lists its always-present keys under "required". The result is valid draft-07 you can drop into validation, an OpenAPI spec, or a form generator.',
+    note: 'A JSON Schema inferred from one example is a strong starting point, not a finished contract — you will usually tighten it by hand: adding formats (date-time, email), min/max constraints, enums, and descriptions, and relaxing "required" where a field is genuinely optional. Because inference sees only the sample you give it, a richer example (covering optional fields and edge cases) produces a better schema. Everything runs locally, so proprietary payloads never leave your browser.',
+    faqs: [
+      { q: 'How do I generate a JSON Schema from JSON?', a: 'Paste a representative JSON example and the tool infers a draft-07 schema — object properties, array item types, and which fields are required. Copy the result and refine it as needed.' },
+      { q: 'Which JSON Schema version does it produce?', a: 'Draft-07, the most widely supported version across validators, OpenAPI tooling and form libraries. The output includes the $schema declaration so validators recognise it.' },
+      { q: 'How does it decide what is "required"?', a: 'For a single object, every key present is marked required. For an array of objects, a property is required only if it appears in all of them — so optional fields (missing from some elements) are left out of "required".' },
+      { q: 'Why should I refine the generated schema?', a: 'Inference only knows the sample you gave it. It can’t guess string formats (email, date-time), numeric ranges, enums, or which fields are truly optional. Treat the output as a scaffold and add those constraints yourself.' },
+      { q: 'Is my JSON uploaded?', a: 'No — parsing and schema generation run entirely in your browser and work offline, so sensitive payloads stay on your device.' },
+    ],
+    keywords: ['json schema generator', 'generate json schema', 'json to json schema', 'json schema draft-07', 'infer json schema', 'json schema from example'],
+  },
+  {
+    slug: 'json-to-go',
+    name: 'JSON to Go Struct Converter',
+    icon: '🐹',
+    description:
+      'Convert a JSON sample into Go struct definitions with json tags — types and nested structs inferred automatically. In your browser, never uploaded.',
+    lead: 'Paste JSON and get Go structs with the right field types and json:"…" tags — nested objects and slices handled for you.',
+    widget: 'transform',
+    computeId: 'jsonToGo',
+    options: [
+      { id: 'rootName', label: 'Root struct name', type: 'text', defaultValue: 'Root', placeholder: 'Root' },
+    ],
+    sample: '{\n  "id": 42,\n  "user_name": "ada",\n  "is_active": true,\n  "scores": [10, 20],\n  "profile": { "city": "London" }\n}',
+    how: 'The converter parses your JSON and emits idiomatic Go struct definitions. Field names are PascalCased (so user_name becomes UserName) while the original key is preserved in a json:"user_name" tag. Types are inferred: whole numbers become int, other numbers float64, booleans bool, strings string, null and empty arrays interface{}, arrays become slices of the element type, and nested objects become their own named structs referenced from the parent.',
+    note: 'This gives you the boilerplate for unmarshalling JSON into typed Go structs in seconds. A couple of things to check by hand: a JSON number with no decimals is typed as int, but if the field can exceed 32-bit or you need decimals you may want int64 or float64; and fields that are sometimes null may need pointer types (*string) or omitempty tags. It’s a fast scaffold you refine, not a substitute for knowing your API. Everything runs locally in your browser.',
+    faqs: [
+      { q: 'How do I convert JSON to a Go struct?', a: 'Paste a JSON sample and the tool generates Go struct definitions with json tags. Set the root struct name if you like, then copy the output straight into your Go file.' },
+      { q: 'Does it keep the original JSON field names?', a: 'Yes — the Go field is PascalCased (as Go requires for exported fields) and the original key is preserved in a json:"original_key" tag, so json.Unmarshal maps correctly.' },
+      { q: 'How are numbers typed?', a: 'Whole numbers become int and numbers with a decimal point become float64. If your values can be large or must always be floating-point, adjust to int64 or float64 after generating — inference can only go on the sample.' },
+      { q: 'What about null or optional fields?', a: 'null and empty arrays are typed as interface{}. For fields that may be absent or null in real data, consider pointer types (e.g. *string) or the omitempty tag, which the tool leaves for you to add deliberately.' },
+      { q: 'Is my JSON uploaded?', a: 'No — the conversion runs entirely in your browser and works offline, so your data never leaves your device.' },
+    ],
+    keywords: ['json to go', 'json to go struct', 'json to golang struct', 'go struct generator', 'json to struct', 'golang json tags'],
+  },
+  {
+    slug: 'curl-to-code',
+    name: 'curl to JavaScript fetch Converter',
+    icon: '🔁',
+    description:
+      'Convert a curl command into an equivalent JavaScript fetch() call — method, headers and body parsed automatically. In your browser, never uploaded.',
+    lead: 'Paste a curl command and get the equivalent JavaScript fetch() call — method, headers, body and basic auth translated for you.',
+    widget: 'transform',
+    computeId: 'curlToCode',
+    sample: `curl -X POST https://api.example.com/login \\\n  -H "Content-Type: application/json" \\\n  -d '{"user":"ada","pass":"secret"}'`,
+    how: 'The converter tokenizes the curl command with a shell-aware parser (honouring single and double quotes, escapes and \\-newline line continuations), then reads the common flags: -X/--request for the method, -H/--header for headers, -d/--data (and its variants) for the body, and -u/--user for HTTP basic auth (turned into an Authorization header). It infers POST when a body is present without an explicit method, adds a default Content-Type for form data, and emits a ready-to-run fetch() call with .then() handlers.',
+    note: 'This handles the flags in the vast majority of copy-pasted curl commands — the ones you get from API docs, browser "Copy as cURL", and Stripe/GitHub examples. A few advanced cases are intentionally out of scope: multipart -F file uploads, cookie jars, and client certificates don’t map cleanly to a one-line fetch and are better handled deliberately. Because the parsing is local, any tokens or secrets in the command never leave your browser.',
+    faqs: [
+      { q: 'How do I convert a curl command to fetch?', a: 'Paste the curl command and the tool outputs an equivalent JavaScript fetch() call, translating the method, headers and body. Copy it straight into your code.' },
+      { q: 'Does it handle the request body and headers?', a: 'Yes — -H/--header become the headers object, and -d/--data (including --data-raw and --data-binary) become the body. Multiple -d flags are joined with & as curl does, and a default Content-Type is added for form data.' },
+      { q: 'What about authentication?', a: 'The -u/--user flag is converted into an Authorization: Basic header (base64-encoded), which is how curl sends basic auth. Bearer tokens passed via -H "Authorization: Bearer …" are carried through unchanged.' },
+      { q: 'Which curl features are not supported?', a: 'Multipart file uploads (-F), cookie jars and client certificates aren’t translated, because they don’t map cleanly onto a single fetch() call. The common flags from API docs and "Copy as cURL" all work.' },
+      { q: 'Is my curl command uploaded?', a: 'No — parsing happens entirely in your browser, so any API keys or tokens in the command stay on your device. The tool works offline.' },
+    ],
+    keywords: ['curl to fetch', 'curl to javascript', 'curl to code', 'convert curl command', 'curl to js', 'curl converter'],
+  },
 ];
 
 export function getDevTool(slug: string): DevToolDef | undefined {

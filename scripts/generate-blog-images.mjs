@@ -7,6 +7,13 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'curl-to-javascript-fetch-guide',
+    kicker: 'DEVELOPER GUIDE',
+    lines: ['curl to fetch():', 'the flag-by-flag', 'mapping'],
+    fact: '-X → method · -H → headers · -d → body · body ⇒ POST',
+    icon: '🔁',
+  },
+  {
     slug: 'file-to-base64-data-uri-guide',
     kicker: 'DEVELOPER GUIDE',
     lines: ['File to Base64', 'data URI:', 'encode & embed'],
