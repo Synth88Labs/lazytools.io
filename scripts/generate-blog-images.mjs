@@ -7,6 +7,20 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'how-to-compress-pdf-without-losing-quality-guide',
+    kicker: 'PDF GUIDE',
+    lines: ['Compress a PDF', 'without losing', 'any quality'],
+    fact: 'lossless recompresses streams · text & images stay exact',
+    icon: '🗜️',
+  },
+  {
+    slug: 'blood-sugar-units-mgdl-mmol-hba1c-guide',
+    kicker: 'HEALTH UNITS GUIDE',
+    lines: ['Blood sugar units:', 'mg/dL, mmol/L,', 'HbA1c & eAG'],
+    fact: 'mmol/L = mg/dL ÷ 18.0182 · eAG = 28.7 × A1C − 46.7',
+    icon: '🩸',
+  },
+  {
     slug: 'what-time-to-go-to-bed-guide',
     kicker: 'SLEEP GUIDE',
     lines: ['What time should', 'you go to bed?', 'Sleep cycle math'],
