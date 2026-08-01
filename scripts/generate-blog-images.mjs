@@ -7,6 +7,13 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'generate-sql-inserts-from-json-csv-guide',
+    kicker: 'DEVELOPER GUIDE',
+    lines: ['Generate SQL', 'INSERTs from', 'JSON or CSV'],
+    fact: "type each value · escape quotes: O'Brien → 'O''Brien'",
+    icon: '🗃️',
+  },
+  {
     slug: 'generate-typed-models-from-json-guide',
     kicker: 'DEVELOPER GUIDE',
     lines: ['Typed models', 'from JSON: TS, Go,', 'Python, Rust, C#'],

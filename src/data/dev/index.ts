@@ -856,6 +856,96 @@ export const DEV_TOOLS: DevToolDef[] = [
     ],
     keywords: ['json to c#', 'json to csharp', 'json to c# class', 'c# class generator', 'json to csharp class', 'system.text.json class'],
   },
+  {
+    slug: 'json-to-sql',
+    name: 'JSON to SQL INSERT Converter',
+    icon: '🗃️',
+    description:
+      'Convert a JSON array of objects into SQL INSERT statements — values typed and escaped automatically. In your browser, never uploaded.',
+    lead: 'Paste a JSON array of objects and get ready-to-run SQL INSERT statements — numbers, booleans and NULLs typed, strings safely quoted.',
+    widget: 'transform',
+    computeId: 'jsonToSql',
+    options: [
+      { id: 'table', label: 'Table name', type: 'text', defaultValue: 'my_table', placeholder: 'my_table' },
+      { id: 'perRow', label: 'One INSERT statement per row (instead of a single multi-row INSERT)', type: 'checkbox' },
+    ],
+    sample: '[\n  { "id": 1, "name": "Ada Lovelace", "active": true },\n  { "id": 2, "name": "O\'Brien", "active": false }\n]',
+    how: 'The tool parses your JSON (an array of objects, or a single object) and builds INSERT statements. The column list is the union of the objects’ keys in first-seen order, and each value is typed and escaped: numbers and booleans become SQL literals (TRUE/FALSE), null and missing keys become NULL, and strings are wrapped in single quotes with embedded quotes doubled (O\'Brien → \'O\'\'Brien\'). By default it emits one compact multi-row INSERT; tick the option for a separate statement per row.',
+    note: 'The single-quote escaping matters: it’s the difference between a clean import and a broken statement (or an injection risk) when your data contains apostrophes. Column and table names are lightly sanitised to safe identifiers. This generates standard ANSI-style INSERTs that work in PostgreSQL, MySQL and SQLite; if your dialect needs backtick-quoted identifiers or a different boolean literal, a quick find-replace adjusts it. Everything runs locally, so the data you paste never leaves your browser.',
+    faqs: [
+      { q: 'How do I convert JSON to SQL INSERT statements?', a: 'Paste a JSON array of objects, set the table name, and the tool outputs INSERT statements with the keys as columns and each object as a row. Copy and run them in your database.' },
+      { q: 'How are values escaped?', a: 'Numbers and booleans become SQL literals, null becomes NULL, and strings are single-quoted with any embedded apostrophe doubled (written as two single quotes) — so apostrophes in your data can’t break the statement.' },
+      { q: 'Can I get one statement per row?', a: 'Yes — by default it produces a single multi-row INSERT (efficient for bulk loads); tick the option to emit a separate INSERT statement for each row instead.' },
+      { q: 'Which SQL databases does it work with?', a: 'It produces standard INSERT syntax that runs in PostgreSQL, MySQL and SQLite. For dialect-specific identifier quoting you may tweak the output, but the values and structure are portable.' },
+      { q: 'Is my data uploaded?', a: 'No — the conversion runs entirely in your browser and works offline, so your data stays on your device.' },
+    ],
+    keywords: ['json to sql', 'json to insert', 'json to sql insert', 'convert json to sql', 'json array to sql', 'generate sql from json'],
+  },
+  {
+    slug: 'csv-to-sql',
+    name: 'CSV to SQL INSERT Converter',
+    icon: '📇',
+    description:
+      'Convert CSV data into SQL INSERT statements — header becomes columns, values typed and escaped. In your browser, never uploaded.',
+    lead: 'Paste CSV (with a header row) and get SQL INSERT statements — the header becomes the columns and each row an INSERT, safely quoted.',
+    widget: 'transform',
+    computeId: 'csvToSql',
+    options: [
+      { id: 'table', label: 'Table name', type: 'text', defaultValue: 'my_table', placeholder: 'my_table' },
+      {
+        id: 'delimiter', label: 'Delimiter', type: 'select', defaultValue: ',',
+        options: [
+          { value: ',', label: 'Comma (,)' },
+          { value: ';', label: 'Semicolon (;)' },
+          { value: 'tab', label: 'Tab (TSV)' },
+          { value: '|', label: 'Pipe (|)' },
+        ],
+      },
+      { id: 'perRow', label: 'One INSERT statement per row (instead of a single multi-row INSERT)', type: 'checkbox' },
+    ],
+    sample: 'id,name,active\n1,Ada Lovelace,true\n2,"Bo, Jr",false',
+    how: 'The tool parses your CSV with a proper RFC 4180 parser (so quoted fields containing commas, quotes or newlines are handled correctly), takes the first row as the column names, and turns each remaining row into an INSERT. Each cell is typed: values that look numeric stay as number literals, true/false become booleans, empty cells become NULL, and everything else is single-quoted with embedded quotes doubled. Choose your delimiter for European CSVs (semicolon), TSV (tab) or pipe-separated data.',
+    note: 'The quoting and RFC 4180 parsing are what separate this from a naive split-on-comma: a name like "Bo, Jr" or an address with a comma won’t shift your columns, and an apostrophe won’t break the SQL. Empty cells map to NULL by default, which is usually what you want for a real import. The output is standard INSERT syntax for PostgreSQL, MySQL and SQLite. It all runs locally, so spreadsheet exports never leave your browser.',
+    faqs: [
+      { q: 'How do I convert CSV to SQL INSERT statements?', a: 'Paste CSV with a header row and set the table name. The header becomes the column list and each row becomes an INSERT with typed, escaped values. Copy and run them.' },
+      { q: 'Does it handle commas and quotes inside fields?', a: 'Yes — it uses a proper RFC 4180 CSV parser, so a quoted field like "Bo, Jr" stays as one value and doubled quotes ("") are decoded, rather than being split on every comma.' },
+      { q: 'What happens to empty cells?', a: 'Empty cells become NULL, which is normally what you want for a database import. Numeric-looking cells become number literals and true/false become booleans; other text is single-quoted and escaped.' },
+      { q: 'Can I use semicolon or tab-separated data?', a: 'Yes — pick the delimiter (comma, semicolon, tab or pipe) to match your export, including European-style semicolon CSVs and TSV files.' },
+      { q: 'Is my CSV uploaded?', a: 'No — parsing and SQL generation run entirely in your browser and work offline, so your data never leaves your device.' },
+    ],
+    keywords: ['csv to sql', 'csv to insert', 'csv to sql insert', 'convert csv to sql', 'csv to sql online', 'generate sql from csv'],
+  },
+  {
+    slug: 'sql-in-clause-generator',
+    name: 'SQL IN Clause Generator',
+    icon: '📋',
+    description:
+      'Turn a list of values (one per line or comma-separated) into a SQL IN (...) clause — numbers and strings quoted correctly. In your browser.',
+    lead: 'Paste a list and get a ready SQL IN (...) clause — strings quoted, numbers left bare, so you can drop it straight into a WHERE.',
+    widget: 'transform',
+    computeId: 'sqlInClause',
+    options: [
+      {
+        id: 'quote', label: 'Quoting', type: 'select', defaultValue: 'auto',
+        options: [
+          { value: 'auto', label: 'Auto (quote non-numbers)' },
+          { value: 'always', label: 'Always quote' },
+          { value: 'never', label: 'Never quote' },
+        ],
+      },
+    ],
+    sample: 'apple\nbanana\ncherry',
+    how: 'Paste your values one per line or comma-separated; the tool trims blanks and builds a parenthesised, comma-joined IN (...) list. In auto mode it leaves plain numbers unquoted and single-quotes everything else (escaping embedded quotes), so you can paste a column of IDs or names copied from a spreadsheet and drop the result straight into WHERE col IN (...). Force quoting on or off when you know the column is all text or all numeric.',
+    note: 'This solves the fiddly, error-prone task of hand-quoting a long list for an IN clause — the kind you copy out of a spreadsheet or a ticket. Auto mode’s number detection means a list of order IDs stays numeric while a list of SKUs gets quoted. Note that very large IN lists can hit database limits (and are often better as a temp table or a join), but for the everyday dozen-or-hundred values this is exactly the shortcut you want. It runs entirely in your browser.',
+    faqs: [
+      { q: 'How do I make a SQL IN clause from a list?', a: 'Paste the values (one per line or comma-separated) and the tool outputs a ready (\'a\', \'b\', \'c\') clause you can put after IN in a WHERE. Numbers are left unquoted in auto mode.' },
+      { q: 'Does it quote strings and leave numbers alone?', a: 'In auto mode, yes — plain numeric values stay bare and everything else is single-quoted with embedded quotes escaped. You can force always-quote or never-quote if your column is uniformly typed.' },
+      { q: 'Can I paste a column from a spreadsheet?', a: 'Yes — values can be separated by new lines or commas, and blank entries are skipped, so pasting a spreadsheet column works directly.' },
+      { q: 'Is there a limit on how many values I can use?', a: 'The tool has no limit, but databases do cap IN-list size (and large lists can be slow). For very long lists, consider a temporary table or a join instead.' },
+      { q: 'Is my list uploaded?', a: 'No — the clause is built entirely in your browser and works offline, so your values never leave your device.' },
+    ],
+    keywords: ['sql in clause generator', 'list to sql in', 'sql in list', 'generate in clause', 'comma separated to sql in', 'sql where in generator'],
+  },
 ];
 
 export function getDevTool(slug: string): DevToolDef | undefined {

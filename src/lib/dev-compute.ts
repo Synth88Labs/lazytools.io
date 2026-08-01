@@ -4,6 +4,7 @@ import { parseIso8601Duration, secondsToIso8601, secondsToHms, secondsToHuman } 
 import { jsonToSchema } from './json-schema-gen.ts';
 import { jsonToGo, jsonToPython, jsonToRust, jsonToCsharp } from './json-codegen.ts';
 import { parseCurl, curlToFetch } from './curl-parse.ts';
+import { jsonToSql, csvToSql, listToInClause } from './sql-gen.ts';
 
 export interface DevResult {
   output: string;
@@ -435,6 +436,23 @@ export const DEV: Record<string, (input: string, opts: Opts) => DevResult> = {
     const parsed = parseCurl(input);
     void opts;
     return { output: curlToFetch(parsed), info: `${parsed.method} ${parsed.url}` };
+  },
+
+  jsonToSql: (input, opts) => {
+    const r = jsonToSql(input, { table: String(opts.table || 'my_table'), multiRow: opts.perRow ? false : true });
+    return { output: r.output, info: `${r.rows} row${r.rows === 1 ? '' : 's'}` };
+  },
+
+  csvToSql: (input, opts) => {
+    const delim = opts.delimiter === 'tab' ? '\t' : opts.delimiter === ';' ? ';' : opts.delimiter === '|' ? '|' : ',';
+    const r = csvToSql(input, { table: String(opts.table || 'my_table'), delimiter: delim, multiRow: opts.perRow ? false : true });
+    return { output: r.output, info: `${r.rows} row${r.rows === 1 ? '' : 's'}` };
+  },
+
+  sqlInClause: (input, opts) => {
+    const q = (opts.quote as 'auto' | 'always' | 'never') || 'auto';
+    const r = listToInClause(input, { quote: q });
+    return { output: r.output, info: `${r.count} value${r.count === 1 ? '' : 's'}` };
   },
 };
 
