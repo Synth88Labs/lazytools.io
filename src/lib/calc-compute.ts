@@ -118,6 +118,57 @@ export const COMPUTE: Record<string, (v: Values) => ResultRow[] | null> = {
     ];
   },
 
+  cholesterol: (v) => {
+    const val = n(v.value);
+    const kind = v.kind || 'chol'; // 'chol' = total/LDL/HDL, 'trig' = triglycerides
+    const unit = v.unit || 'mgdl';
+    if (!Number.isFinite(val) || val < 0) return null;
+    // Divide mg/dL by the factor to get mmol/L. Cholesterol molar mass 386.65 → 38.67;
+    // triglyceride (avg) molar mass ~885.4 → 88.57.
+    const F = kind === 'trig' ? 88.57 : 38.67;
+    if (unit === 'mgdl') {
+      return [
+        { label: 'mmol/L', value: fmt(val / F, 2), hint: `${fmt(val, 0)} mg/dL ÷ ${F}` },
+        { label: 'mg/dL (entered)', value: fmt(val, 0) },
+      ];
+    }
+    return [
+      { label: 'mg/dL', value: fmt(val * F, 0), hint: `${fmt(val, 2)} mmol/L × ${F}` },
+      { label: 'mmol/L (entered)', value: fmt(val, 2) },
+    ];
+  },
+
+  creatinine: (v) => {
+    const val = n(v.value);
+    const unit = v.unit || 'mgdl';
+    if (!Number.isFinite(val) || val < 0) return null;
+    const F = 88.42; // creatinine molar mass 113.12 → 1 mg/dL = 88.42 µmol/L
+    if (unit === 'mgdl') {
+      return [
+        { label: 'µmol/L', value: fmt(val * F, 0), hint: `${fmt(val, 2)} mg/dL × 88.42` },
+        { label: 'mg/dL (entered)', value: fmt(val, 2) },
+      ];
+    }
+    return [
+      { label: 'mg/dL', value: fmt(val / F, 2), hint: `${fmt(val, 0)} µmol/L ÷ 88.42` },
+      { label: 'µmol/L (entered)', value: fmt(val, 0) },
+    ];
+  },
+
+  ivDripRate: (v) => {
+    const volume = n(v.volume); // mL
+    const time = n(v.time); // minutes
+    const drop = n(v.drop); // gtt/mL (drop factor of the set)
+    if (!Number.isFinite(volume) || !Number.isFinite(time) || !Number.isFinite(drop) || volume <= 0 || time <= 0 || drop <= 0) return null;
+    const gttMin = (volume * drop) / time; // drops per minute
+    const mlHr = (volume / time) * 60; // mL per hour
+    return [
+      { label: 'Drip rate', value: `${fmt(gttMin, 0)} gtt/min`, hint: `(${fmt(volume, 0)} mL × ${fmt(drop, 0)} gtt/mL) ÷ ${fmt(time, 0)} min` },
+      { label: 'Drops per 15 seconds', value: `${fmt(gttMin / 4, 0)} gtt`, hint: 'count over 15 s and multiply by 4 to check' },
+      { label: 'Equivalent flow rate', value: `${fmt(mlHr, 1)} mL/hr` },
+    ];
+  },
+
   age: (v) => {
     if (!v.dob) return null;
     const dob = new Date(v.dob + 'T00:00:00');

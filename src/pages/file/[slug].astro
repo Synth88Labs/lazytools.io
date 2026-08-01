@@ -11,6 +11,7 @@ import KsefViewerTool from '../../components/file/KsefViewerTool.tsx';
 import KsefValidatorTool from '../../components/file/KsefValidatorTool.tsx';
 import ExcelConvertTool from '../../components/file/ExcelConvertTool.tsx';
 import HtmlToMarkdownTool from '../../components/file/HtmlToMarkdownTool.tsx';
+import Base64FileTool from '../../components/file/Base64FileTool.tsx';
 import { FILE_TOOLS, type FileToolDef } from '../../data/file/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -67,6 +68,8 @@ const schema = [
         <ExcelConvertTool client:load mode={tool.widget} />
       ) : tool.widget === 'html-md' ? (
         <HtmlToMarkdownTool client:load />
+      ) : (tool.widget === 'file-to-base64' || tool.widget === 'base64-to-file') ? (
+        <Base64FileTool client:load mode={tool.widget} />
       ) : (
         <FileConvertTool
           client:load

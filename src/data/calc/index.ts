@@ -1007,6 +1007,97 @@ export const CALCULATORS: CalcDef[] = [
     ],
     keywords: ['hba1c calculator', 'hba1c to mmol/mol', 'ngsp to ifcc', 'eag calculator', 'a1c to average glucose', 'hba1c converter'],
   },
+  {
+    slug: 'cholesterol-unit-converter',
+    name: 'Cholesterol Converter (mg/dL ↔ mmol/L)',
+    icon: '🫀',
+    description:
+      'Convert cholesterol (total, LDL, HDL) and triglycerides between mg/dL and mmol/L with the exact molar-mass factors. Instant, private, in your browser.',
+    lead: 'Cholesterol in mg/dL ÷ 38.67 gives mmol/L; triglycerides use ÷ 88.57 — this converts either lipid, either direction, exactly.',
+    fields: [
+      { id: 'value', label: 'Lipid value', type: 'number', placeholder: '200', defaultValue: '200' },
+      { id: 'kind', label: 'Which lipid', type: 'select', defaultValue: 'chol', options: [
+        { value: 'chol', label: 'Cholesterol (total, LDL or HDL)' },
+        { value: 'trig', label: 'Triglycerides' },
+      ] },
+      { id: 'unit', label: 'Entered unit', type: 'select', defaultValue: 'mgdl', options: [
+        { value: 'mgdl', label: 'mg/dL (US)' },
+        { value: 'mmol', label: 'mmol/L (UK, Canada, EU)' },
+      ] },
+    ],
+    computeId: 'cholesterol',
+    formula:
+      'For total cholesterol, LDL and HDL: mmol/L = mg/dL ÷ 38.67 (and mg/dL = mmol/L × 38.67), where 38.67 is the molar mass of cholesterol (386.65 g/mol) ÷ 10. Triglycerides have a different molar mass, so they use 88.57 (average triglyceride molar mass ≈ 885.4 g/mol ÷ 10) instead.',
+    example: 'Total cholesterol 200 mg/dL ÷ 38.67 = 5.17 mmol/L. Triglycerides 150 mg/dL ÷ 88.57 = 1.69 mmol/L.',
+    note: 'Cholesterol and triglycerides are reported in mg/dL in the US and mmol/L in the UK, Canada, Australia and most of Europe. The key subtlety is that triglycerides use a different conversion factor (88.57) from cholesterol (38.67), because they are much larger molecules — using the cholesterol factor on triglycerides is a common mistake this tool avoids by asking which lipid you mean. Both factors come from the molecules’ molar masses, so the conversion is exact. This tool converts units only — it is not medical advice and does not interpret whether a value is healthy; discuss your lipid panel with your clinician.',
+    faqs: [
+      { q: 'How do I convert cholesterol from mg/dL to mmol/L?', a: 'Divide by 38.67. For example, a total cholesterol of 193 mg/dL ÷ 38.67 = 5.0 mmol/L. To go back, multiply mmol/L by 38.67. This factor applies to total cholesterol, LDL and HDL.' },
+      { q: 'Why do triglycerides use a different factor?', a: 'Because triglycerides are much larger molecules than cholesterol, with a different molar mass (~885 g/mol vs 387). Their conversion factor is therefore 88.57, not 38.67. Applying the cholesterol factor to triglycerides gives a wrong answer, so this tool asks which lipid you are converting.' },
+      { q: 'Which conversion factor is correct, 38.67 or 38.6?', a: 'Both are rounding of the same value — the molar mass of cholesterol is 386.65 g/mol, so dividing by 10 gives 38.665, usually quoted as 38.67. This tool uses 38.67 for a precise result.' },
+      { q: 'Does a converted number tell me if my cholesterol is high?', a: 'No — this tool only changes units. Whether a value is in a healthy range depends on your overall risk profile and targets, which is a discussion for a healthcare professional, not a unit conversion.' },
+      { q: 'Is my lipid data private?', a: 'Yes — the conversion runs entirely in your browser and nothing you enter is uploaded or stored.' },
+    ],
+    keywords: ['cholesterol converter', 'cholesterol mg/dl to mmol/l', 'ldl mmol/l to mg/dl', 'triglycerides unit converter', 'lipid unit conversion', 'hdl converter'],
+  },
+  {
+    slug: 'creatinine-unit-converter',
+    name: 'Creatinine Converter (mg/dL ↔ µmol/L)',
+    icon: '🧫',
+    description:
+      'Convert serum creatinine between mg/dL and µmol/L with the exact factor of 88.42. Instant, private, runs entirely in your browser.',
+    lead: 'Serum creatinine in mg/dL × 88.42 gives µmol/L; µmol/L ÷ 88.42 gives mg/dL — this converts either direction exactly.',
+    fields: [
+      { id: 'value', label: 'Creatinine value', type: 'number', placeholder: '1', defaultValue: '1', step: 0.1 },
+      { id: 'unit', label: 'Entered unit', type: 'select', defaultValue: 'mgdl', options: [
+        { value: 'mgdl', label: 'mg/dL (US)' },
+        { value: 'umol', label: 'µmol/L (UK, Canada, EU)' },
+      ] },
+    ],
+    computeId: 'creatinine',
+    formula:
+      'µmol/L = mg/dL × 88.42, and mg/dL = µmol/L ÷ 88.42. The factor 88.42 comes from creatinine’s molar mass of 113.12 g/mol: 1 mg/dL is 10 mg/L, which is 10 ÷ 113.12 = 0.0884 mmol/L = 88.42 µmol/L.',
+    example: '1.0 mg/dL × 88.42 = 88 µmol/L, and a lab value of 80 µmol/L ÷ 88.42 = 0.90 mg/dL.',
+    note: 'Serum creatinine is reported in mg/dL in the US and in µmol/L in the UK, Canada, Australia and most of Europe. The exact factor 88.42 is derived from creatinine’s molar mass, so no precision is lost. Note this converts the creatinine concentration only — it does not compute eGFR (kidney function), which additionally requires age and sex. This tool is a unit conversion, not medical advice or a kidney-function assessment; discuss results with your clinician.',
+    faqs: [
+      { q: 'How do I convert creatinine from mg/dL to µmol/L?', a: 'Multiply by 88.42. For example, 1.2 mg/dL × 88.42 = 106 µmol/L. To convert back, divide the µmol/L value by 88.42.' },
+      { q: 'Where does 88.42 come from?', a: 'From creatinine’s molar mass of 113.12 g/mol. One mg/dL equals 10 mg/L, and 10 ÷ 113.12 = 0.0884 mmol/L, which is 88.42 µmol/L — so 1 mg/dL = 88.42 µmol/L.' },
+      { q: 'Does this calculate eGFR or kidney function?', a: 'No. This converts the creatinine number between units only. Estimated GFR (eGFR) needs more inputs such as age and sex and a specific equation (e.g. CKD-EPI); this tool deliberately does just the unit conversion.' },
+      { q: 'Is 88.4 or 88.42 the right factor?', a: 'They are the same value rounded differently. The molar-mass-derived factor is 88.42, which this tool uses; many references round it to 88.4.' },
+      { q: 'Is my data uploaded?', a: 'No — the conversion runs locally in your browser and nothing is transmitted.' },
+    ],
+    keywords: ['creatinine converter', 'creatinine mg/dl to umol/l', 'creatinine umol/l to mg/dl', 'serum creatinine unit converter', 'creatinine unit conversion'],
+  },
+  {
+    slug: 'iv-drip-rate-calculator',
+    name: 'IV Drip Rate Calculator (gtt/min)',
+    icon: '💧',
+    description:
+      'Calculate IV infusion drip rate in drops per minute from volume, time and the giving-set drop factor — plus mL/hr. Instant, in your browser.',
+    lead: 'Drip rate (gtt/min) = volume (mL) × drop factor (gtt/mL) ÷ time (minutes) — this computes it, plus the equivalent mL/hr.',
+    fields: [
+      { id: 'volume', label: 'Volume to infuse', type: 'number', suffix: 'mL', placeholder: '1000', defaultValue: '1000' },
+      { id: 'time', label: 'Infusion time', type: 'number', suffix: 'min', placeholder: '480', defaultValue: '480' },
+      { id: 'drop', label: 'Drop factor (giving set)', type: 'select', defaultValue: '15', options: [
+        { value: '10', label: '10 gtt/mL (macrodrip)' },
+        { value: '15', label: '15 gtt/mL (macrodrip)' },
+        { value: '20', label: '20 gtt/mL (macrodrip)' },
+        { value: '60', label: '60 gtt/mL (microdrip)' },
+      ] },
+    ],
+    computeId: 'ivDripRate',
+    formula:
+      'Drops per minute = (volume in mL × drop factor in gtt/mL) ÷ time in minutes. The drop factor is printed on the IV giving-set packaging (commonly 10, 15 or 20 gtt/mL for macrodrip sets, or 60 gtt/mL for microdrip). The equivalent flow rate in mL/hr = volume ÷ time × 60.',
+    example: '1000 mL over 8 hours (480 min) with a 15 gtt/mL set = (1000 × 15) ÷ 480 = 31 gtt/min, which is 125 mL/hr.',
+    note: 'This is the standard manual gravity-drip formula taught in nursing. The drop factor must match the actual giving set in use — a microdrip set (60 gtt/mL) gives four times the drops of a 15 gtt/mL macrodrip set for the same flow. To check a running line, count the drops over 15 seconds and multiply by four. This calculator is an educational aid and is NOT medical advice: always follow your institution’s protocol, the prescriber’s order and the pump/set instructions, and double-check every infusion independently. Everything is computed locally in your browser.',
+    faqs: [
+      { q: 'How do I calculate IV drip rate in drops per minute?', a: 'Multiply the volume (mL) by the giving-set drop factor (gtt/mL), then divide by the time in minutes. For 1000 mL over 480 minutes with a 15 gtt/mL set: (1000 × 15) ÷ 480 = 31 gtt/min.' },
+      { q: 'What is the drop factor?', a: 'The number of drops that equal one millilitre for a specific IV giving set, printed on its packaging. Macrodrip sets are typically 10, 15 or 20 gtt/mL; microdrip (paediatric) sets are 60 gtt/mL. The right drop factor is essential — using the wrong one changes the answer proportionally.' },
+      { q: 'How do I convert mL/hr to drops per minute?', a: 'Multiply the mL/hr by the drop factor and divide by 60. For example 125 mL/hr with a 15 gtt/mL set = 125 × 15 ÷ 60 = 31 gtt/min. This tool also shows the mL/hr equivalent for you.' },
+      { q: 'How do I check a running drip?', a: 'Count the drops in the drip chamber for 15 seconds and multiply by four to get drops per minute, then compare it with the target this calculator gives. The tool shows the 15-second count for convenience.' },
+      { q: 'Is this a substitute for clinical judgement?', a: 'No. It is an educational calculator, not medical advice. Always follow the prescriber’s order, your institution’s protocol and the device instructions, and verify infusions independently.' },
+    ],
+    keywords: ['iv drip rate calculator', 'drops per minute calculator', 'gtt/min calculator', 'iv flow rate', 'drip rate formula', 'iv infusion rate calculator'],
+  },
 ];
 
 export function getCalc(slug: string): CalcDef | undefined {

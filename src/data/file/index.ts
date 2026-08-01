@@ -16,7 +16,7 @@ export interface FileToolDef {
   description: string;
   lead: string;
   /** custom widget instead of the generic text-convert UI */
-  widget?: 'einvoice' | 'ksef-viewer' | 'ksef-validator' | 'excel-to-csv' | 'excel-to-json' | 'csv-to-excel' | 'html-md';
+  widget?: 'einvoice' | 'ksef-viewer' | 'ksef-validator' | 'excel-to-csv' | 'excel-to-json' | 'csv-to-excel' | 'html-md' | 'file-to-base64' | 'base64-to-file';
   computeId?: string;
   options?: FileToolOption[];
   /** sample input preloaded so the tool demonstrates itself */
@@ -583,6 +583,44 @@ export const FILE_TOOLS: FileToolDef[] = [
       { q: 'Is anything uploaded?', a: 'No — the conversion runs locally in your browser and works offline, so datasets stay private.' },
     ],
     keywords: ['json to jsonl', 'json to ndjson', 'json array to jsonl', 'convert json to jsonl', 'make jsonl file', 'jsonl for fine-tuning'],
+  },
+  {
+    slug: 'file-to-base64',
+    name: 'File to Base64 Encoder',
+    icon: '📥',
+    description:
+      'Convert any file — image, PDF, font — to a Base64 string or a ready-to-embed data URI. Runs entirely in your browser; the file is never uploaded.',
+    lead: 'Turn any file into Base64 text, or a full data URI you can paste straight into CSS or HTML — encoded locally, never uploaded.',
+    widget: 'file-to-base64',
+    how: 'The tool reads your file as raw bytes with the browser’s File API and encodes those bytes into Base64 — the text-safe representation that maps every 3 bytes to 4 characters. Tick "data URI" to wrap it as data:<mime>;base64,<data>, the form you can drop directly into an <img src>, CSS background or JSON field. Encoding is done in chunks so even multi-megabyte files don’t overflow the browser, and nothing is sent anywhere.',
+    note: 'Embedding a small asset as a Base64 data URI saves an HTTP request, which is handy for icons, fonts and tiny images inlined into CSS or HTML email. The trade-off is size: Base64 is about 33% larger than the original bytes and isn’t cached separately, so it’s best for small assets, not large media. Because the file never leaves your browser, it’s safe for private documents too.',
+    faqs: [
+      { q: 'How do I convert a file to Base64?', a: 'Choose the file and the tool outputs its Base64 encoding instantly. Tick "data URI" to also get the data:…;base64,… wrapper you can paste directly into HTML or CSS. Copy the result with one click.' },
+      { q: 'What is a data URI?', a: 'A way to embed a file’s contents inline as text, in the form data:<mime-type>;base64,<encoded-data>. Browsers treat it like a real file, so you can use it as an image source or CSS background without a separate request.' },
+      { q: 'How much bigger does Base64 make my file?', a: 'About 33% larger, because every 3 bytes become 4 text characters. That overhead is why Base64 embedding suits small assets (icons, small images, fonts) rather than large files.' },
+      { q: 'Is there a file size limit?', a: 'The practical limit is your device’s memory, since everything happens locally. Small and medium files encode instantly; very large files use more memory because the whole Base64 string is held in the page.' },
+      { q: 'Is my file uploaded?', a: 'No — the File API reads it in your browser and the encoding happens on your device. The file and its Base64 are never transmitted, so it’s safe for private content and works offline.' },
+    ],
+    keywords: ['file to base64', 'image to base64', 'base64 encode file', 'file to data uri', 'convert file to base64', 'pdf to base64'],
+  },
+  {
+    slug: 'base64-to-file',
+    name: 'Base64 to File Decoder',
+    icon: '📤',
+    description:
+      'Decode a Base64 string or data URI back into the original file and download it — image, PDF, anything. In your browser, nothing uploaded.',
+    lead: 'Paste Base64 text or a full data URI and get the original file back as a download — decoded locally, never uploaded.',
+    widget: 'base64-to-file',
+    how: 'The tool takes your Base64 (raw, or a complete data:<mime>;base64,… URI) and reverses the encoding back into the original bytes, then hands you a download. If you paste a data URI, it reads the MIME type from it automatically; for raw Base64 you choose a file name with the right extension. Whitespace and line breaks in the input are ignored, so pasted blocks work fine.',
+    note: 'This is the inverse of the File-to-Base64 encoder — useful when an API response, config file or email embeds a file as Base64 and you need the real file back. Only standard Base64 (and base64 data URIs) are supported; URL-encoded or other non-base64 data URIs aren’t files in disguise. Everything is decoded in your browser, so sensitive payloads stay on your device.',
+    faqs: [
+      { q: 'How do I convert Base64 back to a file?', a: 'Paste the Base64 text (or a full data: URI), set a file name with the correct extension, and click Decode & download. The tool reconstructs the original bytes and saves them.' },
+      { q: 'Do I need to include the data: prefix?', a: 'No — both work. If you paste a complete data:<mime>;base64,… URI the MIME type is detected automatically; if you paste raw Base64, just give the download a file name with the right extension (e.g. .png, .pdf).' },
+      { q: 'Why does decoding say my input is invalid?', a: 'The text isn’t valid Base64 — usually because characters are missing, extra text was copied in, or it’s a non-base64 (e.g. URL-encoded) data URI. Copy the full, unbroken Base64 and try again.' },
+      { q: 'Does it handle line breaks in the Base64?', a: 'Yes — whitespace and newlines are stripped before decoding, so multi-line Base64 blocks paste in without a problem.' },
+      { q: 'Is my data uploaded?', a: 'No — decoding runs entirely in your browser and the file is generated locally, so nothing is transmitted and it works offline.' },
+    ],
+    keywords: ['base64 to file', 'base64 to image', 'decode base64 to file', 'data uri to file', 'base64 decoder file', 'base64 to pdf'],
   },
 ];
 

@@ -7,6 +7,13 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'file-to-base64-data-uri-guide',
+    kicker: 'DEVELOPER GUIDE',
+    lines: ['File to Base64', 'data URI:', 'encode & embed'],
+    fact: 'data:mime;base64,… · 3 bytes → 4 chars · +33% size',
+    icon: '📥',
+  },
+  {
     slug: 'how-to-compress-pdf-without-losing-quality-guide',
     kicker: 'PDF GUIDE',
     lines: ['Compress a PDF', 'without losing', 'any quality'],
