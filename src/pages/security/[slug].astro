@@ -12,6 +12,7 @@ import FileHashTool from '../../components/security/FileHashTool.tsx';
 import PiiRedactorTool from '../../components/security/PiiRedactorTool.tsx';
 import TotpTool from '../../components/security/TotpTool.tsx';
 import BcryptTool from '../../components/security/BcryptTool.tsx';
+import FileTypeTool from '../../components/security/FileTypeTool.tsx';
 import { SECURITY_TOOLS, type SecurityToolDef } from '../../data/security/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -65,6 +66,7 @@ const schema = [
       {tool.widget === 'piiredact' && <PiiRedactorTool client:load />}
       {tool.widget === 'totp' && <TotpTool client:load />}
       {tool.widget === 'bcrypt' && <BcryptTool client:load />}
+      {tool.widget === 'filetype' && <FileTypeTool client:load />}
     </div>
 
     <div class="mt-4">

@@ -6,7 +6,7 @@ export interface SecurityToolDef {
   icon: string;
   description: string;
   lead: string;
-  widget: 'metadata' | 'encrypt' | 'strength' | 'file-hash' | 'piiredact' | 'totp' | 'bcrypt';
+  widget: 'metadata' | 'encrypt' | 'strength' | 'file-hash' | 'piiredact' | 'totp' | 'bcrypt' | 'filetype';
   how: string;
   note?: string;
   faqs: { q: string; a: string }[];
@@ -146,5 +146,24 @@ export const SECURITY_TOOLS: SecurityToolDef[] = [
       { q: 'Is my password uploaded?', a: 'No — hashing and verification run entirely in your browser with bcryptjs. The password and hash never leave your device, and it works offline.' },
     ],
     keywords: ['bcrypt generator', 'bcrypt hash', 'bcrypt password hash', 'bcrypt verify', 'generate bcrypt hash', 'bcrypt online', 'password hash generator'],
+  },
+  {
+    slug: 'file-type-identifier',
+    name: 'File Type Identifier (Magic Bytes)',
+    icon: '🔬',
+    description:
+      'Identify a file\'s true type from its magic bytes — regardless of its extension — and detect files disguised with the wrong extension. In your browser, never uploaded.',
+    lead: 'Drop in a file to see what it really is from its signature bytes — and get a warning when a file\'s extension doesn\'t match its actual content.',
+    widget: 'filetype',
+    how: 'Almost every binary format begins with a fixed "magic number" — a signature at the start of the file. A PNG always starts with the bytes 89 50 4E 47, a PDF with %PDF, a ZIP (and the Office and EPUB formats built on it) with PK. This tool reads just the first bytes of your file, matches them against a table of well-documented signatures, and reports the real format and MIME type. If you supply the file (so it knows the name), it also compares the detected type to the extension and flags a mismatch. You can also paste the leading bytes as hex.',
+    note: 'The extension on a file is just a label — it can be wrong by accident (a mislabelled download) or changed on purpose to disguise what something is. What actually determines how a file opens is its content, and the magic bytes reveal that. This is a genuine security check: an attachment named invoice.pdf whose bytes are actually a Windows executable is a classic trick. The signature table is a frozen set of published format signatures, so results are exact and don\'t depend on any server. Note that plain-text formats (CSV, JSON, HTML, source code) have no magic number and read as "unrecognized" — that\'s expected, not an error.',
+    faqs: [
+      { q: 'What are magic bytes (a file signature)?', a: 'A fixed sequence of bytes at the very start of a file that identifies its format — like 89 50 4E 47 for PNG or %PDF for a PDF. Programs read these to know how to open a file, independent of its extension.' },
+      { q: 'How do I find a file\'s real type if the extension is wrong?', a: 'Read its magic bytes. This tool does that: drop the file in and it reports the true format from the signature, and warns you when that doesn\'t match the file\'s extension.' },
+      { q: 'Why does it say a .docx or .jar is a ZIP?', a: 'Because they genuinely are ZIP archives underneath — Office documents (docx/xlsx/pptx), JARs and EPUBs are all ZIP containers, so they share the PK signature. The tool lists those possibilities.' },
+      { q: 'Why is my text file "unrecognized"?', a: 'Plain-text formats — CSV, JSON, HTML, XML, source code — have no magic number, so there\'s nothing to match. That\'s expected. Only binary formats carry a signature.' },
+      { q: 'Is my file uploaded?', a: 'No — only the first 512 bytes are read, entirely in your browser, and nothing is transmitted. You can even paste just the leading hex bytes instead of a file.' },
+    ],
+    keywords: ['file type identifier', 'magic bytes checker', 'file signature checker', 'identify file type', 'check file real type', 'file extension spoof detector', 'what type of file is this'],
   },
 ];

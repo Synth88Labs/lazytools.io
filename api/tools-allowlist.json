@@ -649,6 +649,7 @@
   "security/bcrypt-generator",
   "security/file-encryption",
   "security/file-hash-checker",
+  "security/file-type-identifier",
   "security/image-metadata-remover",
   "security/password-strength-checker",
   "security/pii-redactor",

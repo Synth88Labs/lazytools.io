@@ -7,6 +7,13 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'magic-bytes-file-signatures-guide',
+    kicker: 'SECURITY GUIDE',
+    lines: ['Magic bytes: a', 'file’s real type', 'isn’t its extension'],
+    fact: 'PNG = 89 50 4E 47 · rename it, the bytes don’t change',
+    icon: '🔬',
+  },
+  {
     slug: 'ics-and-vcf-files-explained-guide',
     kicker: 'FILE FORMATS GUIDE',
     lines: ['.ics and .vcf', 'explained: calendar', 'events & contacts'],
