@@ -661,6 +661,7 @@
   "productivity/time-blocking-planner",
   "productivity/whiteboard",
   "security/bcrypt-generator",
+  "security/certificate-decoder",
   "security/file-encryption",
   "security/file-hash-checker",
   "security/file-type-identifier",

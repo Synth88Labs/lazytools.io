@@ -6,7 +6,7 @@ export interface SecurityToolDef {
   icon: string;
   description: string;
   lead: string;
-  widget: 'metadata' | 'encrypt' | 'strength' | 'file-hash' | 'piiredact' | 'totp' | 'bcrypt' | 'filetype';
+  widget: 'metadata' | 'encrypt' | 'strength' | 'file-hash' | 'piiredact' | 'totp' | 'bcrypt' | 'filetype' | 'certdecode';
   how: string;
   note?: string;
   faqs: { q: string; a: string }[];
@@ -165,5 +165,25 @@ export const SECURITY_TOOLS: SecurityToolDef[] = [
       { q: 'Is my file uploaded?', a: 'No — only the first 512 bytes are read, entirely in your browser, and nothing is transmitted. You can even paste just the leading hex bytes instead of a file.' },
     ],
     keywords: ['file type identifier', 'magic bytes checker', 'file signature checker', 'identify file type', 'check file real type', 'file extension spoof detector', 'what type of file is this'],
+  },
+  {
+    slug: 'certificate-decoder',
+    name: 'X.509 Certificate Decoder (PEM)',
+    icon: '📜',
+    description:
+      'Decode a PEM / X.509 SSL certificate to read its subject, issuer, validity dates, key, SAN domains and extensions — entirely in your browser, never uploaded.',
+    lead: 'Paste a PEM certificate to see who it\'s for, who issued it, when it expires, its key and its SAN domains — parsed locally on your device.',
+    widget: 'certdecode',
+    how: 'An X.509 certificate is a binary ASN.1/DER structure wrapped in Base64 between -----BEGIN CERTIFICATE----- lines (the PEM format). This tool Base64-decodes the block to raw DER bytes and walks the ASN.1 tree itself — no server, no library upload — to pull out the fields: version and serial number, the signature algorithm, the issuer and subject distinguished names, the notBefore / notAfter validity window, the public-key algorithm and size (RSA bit length or EC curve), and the standard extensions including Subject Alternative Names, key usage, extended key usage and basic constraints. It then compares the validity dates to now and tells you whether the certificate is currently valid, not yet valid, or expired.',
+    note: 'This is handy for checking exactly what a certificate covers — which hostnames are in its SAN list, when it expires, whether it\'s a CA — without trusting an online decoder with it. Certificates are public by design (they\'re sent in the clear during every TLS handshake), so decoding one isn\'t sensitive, but doing it locally means an internal or not-yet-deployed certificate never leaves your machine. It decodes the certificate only; it does not verify the signature, check revocation, or validate the chain to a trusted root — those require the issuer\'s key and live network checks. Paste a single certificate; for a full chain, decode each block in turn.',
+    faqs: [
+      { q: 'How do I decode a PEM certificate?', a: 'Copy the block that starts with -----BEGIN CERTIFICATE----- and ends with -----END CERTIFICATE----- (or load a .pem/.crt file) and paste it in. The tool shows the subject, issuer, validity dates, public key and extensions immediately.' },
+      { q: 'What do notBefore and notAfter mean?', a: 'They are the start and end of the certificate\'s validity window. The certificate is only trusted between those two UTC timestamps; the tool compares them to the current time and labels the certificate valid, not-yet-valid or expired, and shows how many days remain.' },
+      { q: 'What are Subject Alternative Names (SANs)?', a: 'The SAN extension lists every hostname (and sometimes IP) the certificate is valid for. Modern browsers use the SAN list, not the Common Name, to decide whether a certificate matches a site — so if a domain isn\'t in the SAN list, it won\'t be trusted for that domain.' },
+      { q: 'Does this verify the certificate or just decode it?', a: 'It decodes only. It reads and displays the certificate\'s contents but does not check the signature, the revocation status (CRL/OCSP), or whether it chains to a trusted root — those need the issuer\'s public key and network access. Use it to inspect fields, not to prove trust.' },
+      { q: 'Is the certificate uploaded anywhere?', a: 'No — the ASN.1/DER parsing runs entirely in your browser and nothing is transmitted, so even an internal or pre-deployment certificate stays on your device. It works offline too.' },
+      { q: 'Can I paste raw Base64 or DER hex instead of a PEM block?', a: 'Yes. If you paste the Base64 body without the BEGIN/END lines, or the DER bytes as hex, the tool detects the format and decodes it the same way.' },
+    ],
+    keywords: ['certificate decoder', 'x509 decoder', 'pem decoder', 'ssl certificate decoder', 'decode certificate online', 'read pem certificate', 'certificate expiry checker', 'san domains certificate'],
   },
 ];

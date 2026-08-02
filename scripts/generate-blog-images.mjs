@@ -1245,6 +1245,13 @@ const POSTS = [
     fact: 'INI = [sections] · .env = KEY=value · .properties = key:value',
     icon: '🗂️',
   },
+  {
+    slug: 'how-to-read-an-x509-ssl-certificate-guide',
+    kicker: 'SECURITY GUIDE',
+    lines: ['How to read an', 'X.509 SSL', 'certificate'],
+    fact: 'PEM → Base64 → DER → ASN.1: subject · SAN · validity · key',
+    icon: '📜',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
