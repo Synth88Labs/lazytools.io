@@ -20,6 +20,7 @@ import LennyPicker from '../../components/fonts/LennyPicker.tsx';
 import GradientTextTool from '../../components/fonts/GradientTextTool.tsx';
 import MeasureTool from '../../components/fonts/MeasureTool.tsx';
 import AsciiArtTool from '../../components/fonts/AsciiArtTool.tsx';
+import FontInspectorTool from '../../components/fonts/FontInspectorTool.tsx';
 import { FONT_TOOLS, type FontToolDef } from '../../data/fonts/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -81,6 +82,7 @@ const schema = [
       {tool.widget === 'gradient' && <GradientTextTool client:load />}
       {tool.widget === 'measure' && <MeasureTool client:load />}
       {tool.widget === 'ascii' && <AsciiArtTool client:load />}
+      {tool.widget === 'fontinspect' && <FontInspectorTool client:load />}
     </div>
 
     <div class="mt-4">

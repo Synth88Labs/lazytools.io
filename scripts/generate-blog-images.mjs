@@ -1259,6 +1259,13 @@ const POSTS = [
     fact: 'Base64 +33% · Ascii85 +25% (densest) · Base62 URL-safe',
     icon: '🔤',
   },
+  {
+    slug: 'what-is-inside-a-font-file-ttf-otf-metadata-guide',
+    kicker: 'TYPOGRAPHY GUIDE',
+    lines: ['What is inside a', 'font file? TTF/OTF', 'metadata explained'],
+    fact: 'sfnt tables: name · head · maxp · OS/2 (fsType embedding)',
+    icon: '🔤',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

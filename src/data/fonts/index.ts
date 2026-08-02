@@ -6,7 +6,7 @@ export interface FontToolDef {
   icon: string;
   description: string;
   lead: string;
-  widget: 'fancy' | 'pxrem' | 'typescale' | 'lineheight' | 'zalgo' | 'blank' | 'symbols' | 'discord' | 'clamp' | 'repeater' | 'mirror' | 'lenny' | 'gradient' | 'measure' | 'ascii';
+  widget: 'fancy' | 'pxrem' | 'typescale' | 'lineheight' | 'zalgo' | 'blank' | 'symbols' | 'discord' | 'clamp' | 'repeater' | 'mirror' | 'lenny' | 'gradient' | 'measure' | 'ascii' | 'fontinspect';
   /** For 'fancy' widgets — which Unicode styles to show (omit = all). */
   styles?: string[];
   placeholder?: string;
@@ -491,6 +491,25 @@ export const FONT_TOOLS: FontToolDef[] = [
       { q: 'Is it private?', a: 'Yes — the fonts and renderer run entirely in your browser. Nothing you type is uploaded, and it works offline once loaded.' },
     ],
     keywords: ['ascii art generator', 'text to ascii', 'ascii art text', 'figlet', 'big text generator', 'ascii banner', 'ascii text art', 'text to ascii art'],
+  },
+  {
+    slug: 'font-metadata-inspector',
+    name: 'Font Metadata Inspector (TTF / OTF)',
+    icon: '🔤',
+    description:
+      'Inspect a TTF or OTF font file to read its family and style names, version, designer, licence, glyph count and embedding permission — in your browser, never uploaded.',
+    lead: 'Drop a .ttf or .otf font to read its embedded metadata: family, style, version, glyph count, weight and the embedding licence baked into the file.',
+    widget: 'fontinspect',
+    how: 'Every TrueType (.ttf) and OpenType (.otf) font is an "sfnt" file: a directory of named tables. The metadata you care about lives in a few of them — the name table holds the human-readable strings (family, subfamily, full name, version, designer, copyright and licence), head records the units-per-em and creation date, maxp counts the glyphs, and OS/2 stores the weight and width classes plus the fsType embedding permission. This tool reads those tables directly in your browser and lays the fields out for you, and detects whether the outlines are TrueType (a glyf table) or PostScript/CFF (OpenType).',
+    note: 'Handy for identifying an unlabelled font file, checking a font\'s real family and version, or reading the embedding licence (fsType) before you bundle a font into a PDF, app or website — some fonts forbid embedding, and that flag is stored right in the file. It reads uncompressed TTF/OTF (and the first font of a .ttc collection); WOFF and WOFF2 web fonts are compressed and aren\'t parsed here, so convert them to TTF/OTF first. The font is read entirely on your device and never uploaded, which matters for licensed or unreleased fonts. This reports what the font declares — it isn\'t legal advice about how you may use it.',
+    faqs: [
+      { q: 'How do I find a font\'s name and version?', a: 'Drop the .ttf or .otf file in and the tool reads the font\'s name table, showing the family, style, full name and version exactly as the font author stored them. This is the reliable way to identify an unlabelled font file.' },
+      { q: 'Can I check if a font allows embedding?', a: 'Yes — the OS/2 table\'s fsType field records the embedding permission, and the tool translates it into plain English (installable, print & preview only, editable, or restricted/no embedding). Check it before embedding a font in a PDF, app or site.' },
+      { q: 'What is units-per-em and glyph count?', a: 'Units-per-em is the font\'s internal coordinate grid (commonly 1000 for OpenType/CFF or 2048 for TrueType) that all glyph measurements are relative to. The glyph count is how many glyphs the font contains — useful for gauging language and symbol coverage.' },
+      { q: 'Does it work with WOFF or WOFF2 web fonts?', a: 'Not directly — WOFF and WOFF2 wrap the same sfnt tables but compress them (zlib and Brotli respectively), so they can\'t be read without decompression. Convert a web font back to TTF/OTF first, then inspect it here.' },
+      { q: 'Is my font uploaded?', a: 'No — the file is parsed entirely in your browser and nothing is transmitted, so licensed, custom or unreleased fonts stay on your device. It works offline too.' },
+    ],
+    keywords: ['font metadata', 'ttf inspector', 'otf metadata', 'font file info', 'read font name', 'font version checker', 'font embedding permission', 'identify font file'],
   },
 ];
 

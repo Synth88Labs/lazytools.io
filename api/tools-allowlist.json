@@ -360,6 +360,7 @@
   "fonts/discord-colored-text-generator",
   "fonts/emoji-letters-generator",
   "fonts/font-generator",
+  "fonts/font-metadata-inspector",
   "fonts/glitch-text-generator",
   "fonts/invisible-name-generator",
   "fonts/italic-text-generator",
