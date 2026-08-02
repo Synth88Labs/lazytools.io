@@ -7,6 +7,13 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'why-svg-files-are-bloated-optimize-guide',
+    kicker: 'SVG & WEB GUIDE',
+    lines: ['Why SVG files', 'are bloated — and', 'how to optimize them'],
+    fact: 'strip metadata, comments, editor junk → often half the size',
+    icon: '🧹',
+  },
+  {
     slug: 'image-dpi-explained-300-dpi-guide',
     kicker: 'IMAGE & PRINT GUIDE',
     lines: ['DPI explained:', 'set 300 DPI without', 'losing quality'],

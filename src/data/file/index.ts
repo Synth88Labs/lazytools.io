@@ -16,7 +16,7 @@ export interface FileToolDef {
   description: string;
   lead: string;
   /** custom widget instead of the generic text-convert UI */
-  widget?: 'einvoice' | 'ksef-viewer' | 'ksef-validator' | 'excel-to-csv' | 'excel-to-json' | 'csv-to-excel' | 'html-md' | 'file-to-base64' | 'base64-to-file' | 'gpx-stats';
+  widget?: 'einvoice' | 'ksef-viewer' | 'ksef-validator' | 'excel-to-csv' | 'excel-to-json' | 'csv-to-excel' | 'html-md' | 'file-to-base64' | 'base64-to-file' | 'gpx-stats' | 'zip-extract';
   computeId?: string;
   options?: FileToolOption[];
   /** sample input preloaded so the tool demonstrates itself */
@@ -729,6 +729,60 @@ export const FILE_TOOLS: FileToolDef[] = [
       { q: 'Is my data uploaded?', a: 'No — the conversion runs entirely in your browser and works offline, so your contact list stays on your device.' },
     ],
     keywords: ['csv to vcf', 'csv to vcard', 'convert csv to vcf', 'excel contacts to vcf', 'spreadsheet to vcard', 'csv to vcf converter'],
+  },
+  {
+    slug: 'svg-optimizer',
+    name: 'SVG Optimizer & Minifier',
+    icon: '🧹',
+    description:
+      'Clean and minify SVG files — strip editor cruft, comments, metadata and whitespace, optionally rounding coordinates — without changing how the image looks. In your browser.',
+    lead: 'Paste or open an SVG and get a smaller, cleaner version — editor junk, comments and metadata removed and whitespace collapsed, with the image unchanged.',
+    computeId: 'svgOptimize',
+    accept: '.svg,image/svg+xml',
+    downloadName: 'optimized.svg',
+    options: [
+      {
+        id: 'precision', label: 'Round coordinates to', type: 'select', defaultValue: 'off',
+        options: [
+          { value: 'off', label: 'Don\'t round (safest)' },
+          { value: '3', label: '3 decimals' },
+          { value: '2', label: '2 decimals' },
+          { value: '1', label: '1 decimal' },
+        ],
+      },
+      { id: 'keepComments', label: 'Keep comments', type: 'checkbox' },
+    ],
+    sample: '<?xml version="1.0" encoding="UTF-8"?>\n<!-- Generator: Illustrator -->\n<svg xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="24" height="24" viewBox="0 0 24 24">\n  <title>icon</title>\n  <metadata>editor data</metadata>\n  <path d="M4 4 L20 20" inkscape:label="line" fill="none" stroke="#000"/>\n</svg>',
+    how: 'The optimizer strips the parts of an SVG that don\'t affect rendering but bloat the file: the XML declaration and DOCTYPE, comments, <metadata>/<title>/<desc> blocks, and the editor-specific elements and attributes that Illustrator, Inkscape and Figma add (inkscape:, sodipodi: namespaces and the like). It then collapses the whitespace between and inside tags. You can optionally round coordinate numbers to fewer decimals for extra savings. It deliberately does not restructure paths or merge shapes, so the visible image is identical.',
+    note: 'Editor exports are often 2–5× larger than they need to be, mostly from metadata and needless precision — this trims that safely, which matters when SVGs are inlined into HTML/CSS or shipped in an icon set. The conservative default (no coordinate rounding) guarantees a pixel-identical result; rounding to 2–3 decimals usually saves more with no visible change, but check the preview on very small or very precise artwork. For heavy path-level optimization, a full SVGO pipeline goes further; this covers the safe 80%. Everything runs in your browser — your artwork is never uploaded.',
+    faqs: [
+      { q: 'How do I minify an SVG?', a: 'Paste or open the SVG and the tool removes comments, metadata and editor cruft and collapses whitespace, giving a smaller file with the same appearance. Copy or download the result, and see the bytes saved.' },
+      { q: 'Will optimizing change how my SVG looks?', a: 'No — with the default settings it only removes non-visual data (metadata, comments, editor attributes) and whitespace, so the rendered image is identical. Optional coordinate rounding can save more; it\'s off by default to guarantee no change.' },
+      { q: 'What is all that inkscape: and sodipodi: stuff?', a: 'Editor-specific bookkeeping that Inkscape (and similarly Illustrator/Figma) embed — canvas guides, layer labels, versions. Browsers ignore it, so removing it shrinks the file with no downside.' },
+      { q: 'Is this the same as SVGO?', a: 'It does the safe, high-value part of what SVGO does — stripping metadata and whitespace — without SVGO\'s deeper path rewriting. That keeps results predictable and pixel-identical; for maximum compression a full SVGO run can go further.' },
+      { q: 'Is my SVG uploaded?', a: 'No — optimization runs entirely in your browser and works offline, so your artwork never leaves your device.' },
+    ],
+    keywords: ['svg optimizer', 'minify svg', 'svg minifier', 'optimize svg', 'compress svg', 'clean svg', 'reduce svg size'],
+  },
+  {
+    slug: 'zip-extractor',
+    name: 'ZIP Extractor (Open ZIP Online)',
+    icon: '🗜️',
+    description:
+      'Open a ZIP file in your browser to see what\'s inside and save individual files — no unzip software, nothing uploaded. Works with standard ZIP archives.',
+    lead: 'Open a .zip to list its contents and pull out any file — right in your browser, with no software to install and nothing uploaded.',
+    widget: 'zip-extract',
+    accept: '.zip,application/zip',
+    how: 'The tool reads the ZIP\'s directory with JSZip and lists every file inside — path and uncompressed size — then lets you save any single file with one click. Everything happens in your browser: the archive is decompressed locally and never sent anywhere. It handles standard ZIP archives from any tool (Windows, macOS, Linux, build outputs, downloads).',
+    note: 'This is the "I just need one file out of this ZIP and don\'t want to install anything" tool — useful on a locked-down work machine, a phone, or when a download is a ZIP you\'d rather peek into before trusting. Because it runs on your device, even sensitive archives stay private. Two limits by design: password-protected (encrypted) ZIPs aren\'t supported, and other archive formats — RAR, 7z, tar.gz — use different compression and won\'t open here.',
+    faqs: [
+      { q: 'How do I open a ZIP file without software?', a: 'Choose the .zip here and it lists everything inside; click Save on any file to extract it. It runs entirely in your browser, so there\'s nothing to install and the archive isn\'t uploaded.' },
+      { q: 'Can I extract just one file from a ZIP?', a: 'Yes — that\'s the point. The tool shows every file in the archive and lets you save them individually, so you don\'t have to unzip the whole thing.' },
+      { q: 'Does it work with password-protected ZIPs?', a: 'No — encrypted ZIP archives aren\'t supported, because they need the password to decrypt each file. Remove the encryption in your zip tool first, or use one that prompts for the password.' },
+      { q: 'What about RAR or 7z files?', a: 'This tool handles standard ZIP archives only. RAR, 7z and tar.gz use different formats and compression, so they won\'t open here.' },
+      { q: 'Is my archive uploaded?', a: 'No — the ZIP is read and decompressed entirely in your browser with JSZip, so its contents never leave your device, and it works offline.' },
+    ],
+    keywords: ['zip extractor', 'open zip online', 'unzip online', 'extract zip', 'zip viewer', 'open zip without software', 'extract file from zip'],
   },
 ];
 

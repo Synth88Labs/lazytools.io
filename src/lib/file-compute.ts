@@ -8,6 +8,7 @@ import { marked } from 'marked';
 import TOML from '@iarna/toml';
 import { gpxToGeoJSON, geoJSONToGpx } from './gpx.ts';
 import { vcardsToCsv, csvToVcards } from './vcard.ts';
+import { optimizeSvg } from './svg-optimize.ts';
 
 /** Collapse only inter-tag whitespace (preserves text content). */
 function minifyXml(xml: string): string {
@@ -382,5 +383,14 @@ export const CONVERT: Record<string, (input: string, opts: Opts) => ConvertResul
   csvToVcard: (input) => {
     const r = csvToVcards(input);
     return { output: r.output, info: `${r.count} row${r.count === 1 ? '' : 's'} → vCard` };
+  },
+
+  svgOptimize: (input, opts) => {
+    const precisionOpt = String(opts.precision ?? 'off');
+    const r = optimizeSvg(input, {
+      removeComments: opts.keepComments !== true,
+      roundPrecision: precisionOpt === 'off' ? 0 : parseInt(precisionOpt, 10) || 0,
+    });
+    return { output: r.output, info: `${r.originalBytes.toLocaleString()} → ${r.optimizedBytes.toLocaleString()} bytes · saved ${r.savedPercent}%` };
   },
 };

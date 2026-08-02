@@ -13,6 +13,7 @@ import ExcelConvertTool from '../../components/file/ExcelConvertTool.tsx';
 import HtmlToMarkdownTool from '../../components/file/HtmlToMarkdownTool.tsx';
 import Base64FileTool from '../../components/file/Base64FileTool.tsx';
 import GpxStatsTool from '../../components/file/GpxStatsTool.tsx';
+import ZipExtractorTool from '../../components/file/ZipExtractorTool.tsx';
 import { FILE_TOOLS, type FileToolDef } from '../../data/file/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -73,6 +74,8 @@ const schema = [
         <Base64FileTool client:load mode={tool.widget} />
       ) : tool.widget === 'gpx-stats' ? (
         <GpxStatsTool client:load />
+      ) : tool.widget === 'zip-extract' ? (
+        <ZipExtractorTool client:load />
       ) : (
         <FileConvertTool
           client:load
