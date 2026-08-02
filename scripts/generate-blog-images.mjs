@@ -1231,6 +1231,13 @@ const POSTS = [
     fact: 'Base32: 32 chars, case-insensitive · Base64: 64 chars, compact',
     icon: '🔤',
   },
+  {
+    slug: 'what-is-a-snowflake-id-discord-twitter-guide',
+    kicker: 'DEVELOPER GUIDE',
+    lines: ['What is a', 'Snowflake ID?', '(and how to decode it)'],
+    fact: '64 bits = 41-bit timestamp · 10-bit machine · 12-bit sequence',
+    icon: '❄️',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

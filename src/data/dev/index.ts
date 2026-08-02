@@ -16,7 +16,7 @@ export interface DevToolDef {
   description: string;
   lead: string;
   /** 'transform' uses DevTransformTool; 'hash' uses HashTool; 'llm-tokens' uses LlmTokenCounterTool */
-  widget: 'transform' | 'hash' | 'llm-tokens' | 'eth-units' | 'keccak' | 'eip55' | 'har' | 'sqlformat' | 'jsondiff' | 'hmac' | 'jwtenc' | 'utm' | 'barcodeval' | 'imeival';
+  widget: 'transform' | 'hash' | 'llm-tokens' | 'eth-units' | 'keccak' | 'eip55' | 'har' | 'sqlformat' | 'jsondiff' | 'hmac' | 'jwtenc' | 'utm' | 'barcodeval' | 'imeival' | 'snowflake' | 'checksum';
   computeId?: string;
   options?: DevToolOption[];
   sample?: string;
@@ -985,6 +985,46 @@ export const DEV_TOOLS: DevToolDef[] = [
       { q: 'Is my IMEI or card number uploaded?', a: 'No — the check runs entirely in your browser and nothing is transmitted, which matters for these sensitive identifiers. It also works offline.' },
     ],
     keywords: ['imei validator', 'imei checker', 'luhn algorithm validator', 'luhn check', 'validate credit card number format', 'imei check digit', 'mod 10 validator'],
+  },
+  {
+    slug: 'snowflake-id-decoder',
+    name: 'Snowflake ID Decoder',
+    icon: '❄️',
+    description:
+      'Decode a Discord, Twitter/X, Instagram or custom Snowflake ID into its creation timestamp, worker/process and sequence — in your browser.',
+    lead: 'Paste a Snowflake ID and pick the service to see exactly when it was created, plus the machine and sequence bits packed inside.',
+    widget: 'snowflake',
+    how: 'A Snowflake is a 64-bit ID that many platforms mint instead of a random UUID, and it is not random at all — the top 41 bits are a millisecond timestamp counted from the service\'s own epoch (Discord uses 2015-01-01, Twitter/X uses 2010-11-04, Instagram uses 2011-08-24). Below that sit machine bits (Discord splits its 10 into a 5-bit worker and 5-bit process) and a 12-bit per-millisecond sequence counter. This tool reads the ID as a BigInt, adds the chosen epoch back onto the timestamp bits to recover the exact creation instant, and unpacks the remaining fields — so you can tell when a Discord message, tweet or post was created straight from its ID.',
+    note: 'Pick the correct service first: the same 64-bit number decodes to a completely different date under a different epoch, so a Discord ID read with the Twitter epoch will look decades off. For anything outside the presets, enter the epoch in milliseconds directly. The decoded worker and process IDs identify the generating server, not a user, and the sequence is only meaningful within a single millisecond. Everything runs locally in your browser — nothing about the ID is transmitted.',
+    faqs: [
+      { q: 'How do I get the timestamp from a Discord ID?', a: 'Paste the ID and leave the service on Discord. The tool shifts the ID right by 22 bits to isolate the timestamp, adds the Discord epoch (1420070400000 ms, i.e. 2015-01-01), and shows the exact UTC creation time of that user, message or channel.' },
+      { q: 'Why do I have to choose the service?', a: 'Each platform counts its timestamp from a different starting point (epoch). The bits are identical, but the epoch you add back determines the real date — so a Discord ID decoded with the Twitter epoch will be wrong by about four years. Choosing the service applies the right epoch.' },
+      { q: 'What are the worker and process IDs?', a: 'They identify which server and worker generated the ID, so two IDs created in the same millisecond on different machines still differ. Discord splits its 10 machine bits into a 5-bit worker and a 5-bit process; they describe infrastructure, not the user or content.' },
+      { q: 'Can I decode Twitter/X or Instagram IDs too?', a: 'Yes — select Twitter/X or Instagram from the list to apply their epochs (2010-11-04 and 2011-08-24). You can also enter a custom epoch in milliseconds for any other Snowflake-style scheme, including a raw Unix-epoch variant.' },
+      { q: 'Is a decoded timestamp exact?', a: 'The timestamp is stored to the millisecond and is recovered exactly, so the creation time is precise. It reflects when the ID was minted (message sent, account created, etc.), which is effectively the object\'s creation time on that platform.' },
+      { q: 'Is the ID sent anywhere?', a: 'No — decoding is pure arithmetic done entirely in your browser with BigInt, so nothing is uploaded and it works offline.' },
+    ],
+    keywords: ['snowflake id decoder', 'discord id to timestamp', 'discord snowflake decoder', 'twitter id timestamp', 'snowflake timestamp', 'decode discord id', 'snowflake id to date'],
+  },
+  {
+    slug: 'crc32-checksum-calculator',
+    name: 'CRC-32 & Adler-32 Checksum Calculator',
+    icon: '🔢',
+    description:
+      'Compute the CRC-32 and Adler-32 checksum of text or a file to verify it is uncorrupted — entirely in your browser.',
+    lead: 'Type text or drop a file to get its CRC-32 (the ZIP/PNG checksum) and Adler-32 (zlib) values in hex and decimal.',
+    widget: 'checksum',
+    how: 'CRC-32 and Adler-32 are fast, non-cryptographic checksums that condense any amount of data into a single 32-bit fingerprint used to detect accidental corruption. CRC-32 (the ISO-HDLC variant) is the exact checksum stored inside ZIP archive entries and PNG chunks, so it is the one to match when validating those formats; Adler-32 is the lighter checksum zlib uses. This tool reads your text as UTF-8 bytes (or reads a file locally), runs both algorithms, and reports each result in uppercase hex and decimal. If two copies of a file produce the same CRC-32, they are byte-identical.',
+    note: 'These are integrity checksums, not security hashes: they are excellent at catching random corruption from a bad transfer or disk error, but they are trivial to forge deliberately and different inputs can be made to collide, so never use them to verify authenticity or store passwords — use SHA-256 for that. The standard CRC-32 check value for the ASCII string "123456789" is CBF43926, which you can use to confirm the implementation. Text is hashed as UTF-8, so accented characters count as multiple bytes. Everything runs in your browser; files are never uploaded.',
+    faqs: [
+      { q: 'What is a CRC-32 checksum used for?', a: 'To detect accidental changes to data. ZIP archives and PNG images store a CRC-32 of their contents so software can confirm nothing got corrupted in transit or on disk. Recomputing the CRC-32 and comparing it to the stored value tells you whether the data is intact.' },
+      { q: 'What is the difference between CRC-32 and Adler-32?', a: 'Both are 32-bit integrity checksums, but CRC-32 is a cyclic redundancy check (used by ZIP and PNG) while Adler-32 is a simpler running-sum checksum used by zlib. Adler-32 is a touch faster to compute but slightly weaker at catching short errors; this tool shows both.' },
+      { q: 'Can I use CRC-32 to check a password or for security?', a: 'No. CRC-32 and Adler-32 are not cryptographic — they are easy to reverse and to collide on purpose, so they offer no security. Use them only to catch accidental corruption; for passwords or authenticity, use a cryptographic hash like SHA-256.' },
+      { q: 'How do I verify two files are identical?', a: 'Compute the CRC-32 of each file and compare. Matching CRC-32 values mean the files are almost certainly identical; for absolute certainty against deliberate tampering, compare a cryptographic hash instead.' },
+      { q: 'What is the CRC-32 of "123456789"?', a: 'CBF43926. That is the standard published check value for the CRC-32/ISO-HDLC algorithm, so you can type that string to confirm the calculator matches the reference.' },
+      { q: 'Is my file uploaded to compute the checksum?', a: 'No — the file is read and checksummed entirely in your browser, so nothing leaves your device and it works offline.' },
+    ],
+    keywords: ['crc32 calculator', 'crc-32 checksum', 'adler-32 calculator', 'checksum calculator', 'file crc32 online', 'crc32 hash', 'compute crc32 of text'],
   },
 ];
 
