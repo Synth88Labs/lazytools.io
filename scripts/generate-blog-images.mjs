@@ -1252,6 +1252,13 @@ const POSTS = [
     fact: 'PEM → Base64 → DER → ASN.1: subject · SAN · validity · key',
     icon: '📜',
   },
+  {
+    slug: 'base64-ascii85-base62-encoding-comparison-guide',
+    kicker: 'DEVELOPER GUIDE',
+    lines: ['Base64 vs Ascii85', 'vs Base62: which', 'encoding to use'],
+    fact: 'Base64 +33% · Ascii85 +25% (densest) · Base62 URL-safe',
+    icon: '🔤',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

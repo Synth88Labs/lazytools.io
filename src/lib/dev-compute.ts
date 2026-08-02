@@ -1,5 +1,6 @@
 /** Developer-tool transforms — all client-side, standard Web APIs only. */
 import { base32Encode, base32Decode, ibanValidate, isbnInfo, domainToAscii, domainToUnicode } from './dev-encoders.ts';
+import { ascii85Encode, ascii85Decode, base62Encode, base62Decode } from './base-x.ts';
 import { parseIso8601Duration, secondsToIso8601, secondsToHms, secondsToHuman } from './iso-duration.ts';
 import { jsonToSchema } from './json-schema-gen.ts';
 import { jsonToGo, jsonToPython, jsonToRust, jsonToCsharp } from './json-codegen.ts';
@@ -70,6 +71,35 @@ export const DEV: Record<string, (input: string, opts: Opts) => DevResult> = {
       return { output, info: 'decoded as UTF-8' };
     } catch (e) {
       throw new Error(e instanceof Error ? e.message : 'Not valid Base32 — check for stray characters.');
+    }
+  },
+
+  ascii85: (input, opts) => {
+    const mode = String(opts.mode ?? 'encode');
+    const delimiters = Boolean(opts.delimiters);
+    try {
+      if (mode === 'encode') {
+        const output = ascii85Encode(new TextEncoder().encode(input), delimiters);
+        return { output, info: `${input.length} chars → ${output.length} Ascii85 chars (Adobe variant)` };
+      }
+      const output = new TextDecoder('utf-8', { fatal: false }).decode(ascii85Decode(input));
+      return { output, info: 'decoded as UTF-8 (Adobe Ascii85)' };
+    } catch (e) {
+      throw new Error(e instanceof Error ? e.message : 'Not valid Ascii85 — check for stray characters.');
+    }
+  },
+
+  base62: (input, opts) => {
+    const mode = String(opts.mode ?? 'encode');
+    try {
+      if (mode === 'encode') {
+        const output = base62Encode(new TextEncoder().encode(input));
+        return { output, info: `${input.length} chars → ${output.length} Base62 chars (0–9 A–Z a–z)` };
+      }
+      const output = new TextDecoder('utf-8', { fatal: false }).decode(base62Decode(input.trim()));
+      return { output, info: 'decoded as UTF-8 (Base62)' };
+    } catch (e) {
+      throw new Error(e instanceof Error ? e.message : 'Not valid Base62 — use only 0–9, A–Z and a–z.');
     }
   },
 

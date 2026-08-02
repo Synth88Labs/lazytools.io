@@ -539,6 +539,69 @@ export const DEV_TOOLS: DevToolDef[] = [
     keywords: ['base32 encode', 'base32 decode', 'base32 encoder', 'base32 converter', 'rfc 4648 base32', 'base32hex'],
   },
   {
+    slug: 'ascii85-encode-decode',
+    name: 'Ascii85 Encoder / Decoder',
+    icon: '🅰️',
+    description:
+      'Encode text to Ascii85 (base85) or decode it back — the Adobe/PDF variant, ~7% denser than Base64. Runs in your browser; nothing is uploaded.',
+    lead: 'Ascii85 packs 4 bytes into 5 printable characters, making it more compact than Base64 — encode or decode instantly, with optional <~ ~> delimiters.',
+    widget: 'transform',
+    computeId: 'ascii85',
+    options: [
+      {
+        id: 'mode', label: 'Mode', type: 'select', defaultValue: 'encode',
+        options: [
+          { value: 'encode', label: 'Encode (text → Ascii85)' },
+          { value: 'decode', label: 'Decode (Ascii85 → text)' },
+        ],
+      },
+      { id: 'delimiters', label: 'Wrap in <~ ~> (Adobe delimiters)', type: 'checkbox' },
+    ],
+    sample: 'Man is distinguished',
+    how: 'Ascii85 (also called base85) encodes each group of 4 bytes as 5 printable ASCII characters from "!" to "u". Because it uses 85 symbols instead of Base64\'s 64, it fits more information per character — the output is about 7% smaller than the equivalent Base64. This is the Adobe variant used inside PDF and PostScript: a group of four zero bytes is abbreviated to a single "z", and the stream can optionally be wrapped in <~ … ~> markers. Decoding reverses it, tolerating whitespace, the z shortcut and the delimiters.',
+    note: 'Ascii85 is a transport encoding, not encryption — it is fully reversible and offers no secrecy. Choose it over Base64 when density matters and the output only needs to survive as printable ASCII (as in PDF streams). Note the Adobe variant here differs from Z85 (the ZeroMQ variant), which uses a different alphabet and no z shortcut; they are not interchangeable. Everything runs in your browser and works offline.',
+    faqs: [
+      { q: 'What is Ascii85 (base85)?', a: 'A binary-to-text encoding that maps every 4 bytes to 5 printable ASCII characters. It is denser than Base64 (which maps 3 bytes to 4 characters), so the encoded text is roughly 7% shorter. It is the encoding used inside PDF and PostScript files.' },
+      { q: 'How is Ascii85 different from Base64?', a: 'Base64 uses 64 symbols and expands data by about 33%; Ascii85 uses 85 symbols and expands it by only about 25%, so it is more compact. Base64 is far more widely supported, though — use Ascii85 when you specifically need density or are working with PDF/PostScript.' },
+      { q: 'What do the <~ and ~> markers mean?', a: 'They are the Adobe delimiters that mark the start and end of an Ascii85 stream. They are optional here — tick the box to add them on encode; on decode they are stripped automatically if present.' },
+      { q: 'Why does a run of zeros become "z"?', a: 'The Adobe variant abbreviates a full group of four zero bytes as the single letter z, saving space. The decoder expands z back into four zero bytes. This shortcut only applies to complete zero groups, not partial ones.' },
+      { q: 'Is Ascii85 the same as Z85?', a: 'No. Z85 (used by ZeroMQ) is a different base85 encoding with its own alphabet chosen to be safe in source code, and it has no z shortcut. This tool implements the Adobe/PDF variant; do not mix the two.' },
+      { q: 'Is my text uploaded?', a: 'No — encoding and decoding happen entirely in your browser, nothing is transmitted, and it works offline.' },
+    ],
+    keywords: ['ascii85 encode', 'ascii85 decode', 'base85 encoder', 'ascii85 converter', 'adobe ascii85', 'pdf ascii85', 'base85 online'],
+  },
+  {
+    slug: 'base62-encode-decode',
+    name: 'Base62 Encoder / Decoder',
+    icon: '6️⃣',
+    description:
+      'Encode text or bytes to Base62 (0–9, A–Z, a–z) or decode it back — the compact, padding-free alphabet used for short IDs and URLs. In your browser.',
+    lead: 'Base62 uses only letters and digits (no +, / or =), making it safe for URLs and short IDs — encode or decode instantly.',
+    widget: 'transform',
+    computeId: 'base62',
+    options: [
+      {
+        id: 'mode', label: 'Mode', type: 'select', defaultValue: 'encode',
+        options: [
+          { value: 'encode', label: 'Encode (text → Base62)' },
+          { value: 'decode', label: 'Decode (Base62 → text)' },
+        ],
+      },
+    ],
+    sample: 'hello world',
+    how: 'Base62 represents data using the 62 alphanumeric characters 0–9, A–Z and a–z — and nothing else. The tool treats your input\'s bytes as one big number and re-expresses it in base 62 (the same big-integer scheme Base58 uses), with leading zero bytes preserved as leading "0" characters so the value round-trips exactly. Because it avoids +, / and = — the characters in Base64 that need escaping in URLs — Base62 output can be dropped straight into a URL, filename or identifier without encoding.',
+    note: 'Base62 is a transport encoding, not encryption — it is fully reversible and keeps no secret. It is popular for short URLs, database IDs and slugs precisely because it is URL-safe and padding-free, at the cost of being a little larger than Base64. Note there is no single official Base62 standard for arbitrary bytes, so a value encoded here uses the common big-integer (Base58-style) method with the 0–9A–Za–z alphabet; another library using a different alphabet order won\'t match. Everything runs locally in your browser.',
+    faqs: [
+      { q: 'What is Base62?', a: 'A binary-to-text encoding that uses only the 62 alphanumeric characters (0–9, A–Z, a–z). It has no padding and no symbols, which makes the output safe to use directly in URLs, filenames and identifiers.' },
+      { q: 'How is Base62 different from Base64?', a: 'Base64 uses 64 characters including + and / (and = for padding), which must be escaped in URLs. Base62 drops those three, using only letters and digits, so it is URL-safe with no padding — but its output is slightly longer because it carries fewer bits per character.' },
+      { q: 'What is Base62 used for?', a: 'Short URLs, database and object IDs, and slugs. Services that turn a numeric ID into a short code (like a URL shortener) typically use Base62 because the result is compact and safe to put in a link.' },
+      { q: 'Why might my Base62 not match another tool?', a: 'There is no single official Base62 standard for encoding arbitrary bytes, so tools can differ in alphabet order or method. This tool uses the widely-used big-integer scheme (as Base58 does) with the alphabet 0–9, then A–Z, then a–z. Decode with the same convention it was encoded in.' },
+      { q: 'Is Base62 encryption?', a: 'No — it is a reversible encoding with no secrecy; anyone can decode it. Encrypt the data first if you need confidentiality.' },
+      { q: 'Is my text uploaded?', a: 'No — the encoding and decoding run entirely in your browser and nothing is transmitted. It works offline too.' },
+    ],
+    keywords: ['base62 encode', 'base62 decode', 'base62 encoder', 'base62 converter', 'base62 online', 'url safe encoding', 'short id encoding'],
+  },
+  {
     slug: 'iban-validator',
     name: 'IBAN Validator & Formatter',
     icon: '🏦',
