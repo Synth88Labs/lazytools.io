@@ -7,6 +7,13 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'zip-unzip-files-in-browser-guide',
+    kicker: 'FILE TOOLS GUIDE',
+    lines: ['Zip and unzip files', 'in your browser —', 'no software, no upload'],
+    fact: 'ZIP bundles + optionally compresses · media barely shrinks',
+    icon: '📦',
+  },
+  {
     slug: 'why-svg-files-are-bloated-optimize-guide',
     kicker: 'SVG & WEB GUIDE',
     lines: ['Why SVG files', 'are bloated — and', 'how to optimize them'],

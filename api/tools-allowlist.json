@@ -274,6 +274,7 @@
   "electronics/voltage-drop-calculator",
   "electronics/wire-gauge-calculator",
   "file/base64-to-file",
+  "file/create-zip",
   "file/csv-to-excel",
   "file/csv-to-json",
   "file/csv-to-markdown-table",

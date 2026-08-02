@@ -16,7 +16,7 @@ export interface FileToolDef {
   description: string;
   lead: string;
   /** custom widget instead of the generic text-convert UI */
-  widget?: 'einvoice' | 'ksef-viewer' | 'ksef-validator' | 'excel-to-csv' | 'excel-to-json' | 'csv-to-excel' | 'html-md' | 'file-to-base64' | 'base64-to-file' | 'gpx-stats' | 'zip-extract';
+  widget?: 'einvoice' | 'ksef-viewer' | 'ksef-validator' | 'excel-to-csv' | 'excel-to-json' | 'csv-to-excel' | 'html-md' | 'file-to-base64' | 'base64-to-file' | 'gpx-stats' | 'zip-extract' | 'zip-create';
   computeId?: string;
   options?: FileToolOption[];
   /** sample input preloaded so the tool demonstrates itself */
@@ -783,6 +783,26 @@ export const FILE_TOOLS: FileToolDef[] = [
       { q: 'Is my archive uploaded?', a: 'No — the ZIP is read and decompressed entirely in your browser with JSZip, so its contents never leave your device, and it works offline.' },
     ],
     keywords: ['zip extractor', 'open zip online', 'unzip online', 'extract zip', 'zip viewer', 'open zip without software', 'extract file from zip'],
+  },
+  {
+    slug: 'create-zip',
+    name: 'Create ZIP (Zip Files Online)',
+    icon: '📦',
+    description:
+      'Bundle multiple files into a single ZIP archive in your browser — for email, backup or one-file uploads. No software, nothing uploaded.',
+    lead: 'Add your files and download them as one .zip — built entirely in your browser, so nothing is uploaded.',
+    widget: 'zip-create',
+    accept: '*',
+    how: 'Pick any files (select several at once, or keep adding), optionally rename the archive and choose whether to compress, then click Create ZIP. The tool packs everything into a standard .zip with JSZip — using DEFLATE compression by default — and hands you the file to download. It all happens on your device; the files are never sent anywhere.',
+    note: 'Handy whenever something wants a single file instead of many — emailing a batch of documents, submitting one attachment to a portal, or bundling images to share. Compression helps a lot with text, code, CSV and documents; files that are already compressed (JPEG, PNG, MP4, MP3) won\'t shrink much, so you can untick compression to store them as-is and build the archive faster. The result is a normal ZIP that opens on Windows, macOS, Linux and phones. Because it runs locally, even confidential files stay on your device.',
+    faqs: [
+      { q: 'How do I zip files online?', a: 'Choose your files (you can select many at once or add more in stages), then click Create ZIP and download the archive. It\'s created in your browser, so there\'s nothing to install and nothing is uploaded.' },
+      { q: 'Can I add files from different folders?', a: 'Yes — add them in batches; each selection appends to the list. Remove any file with the ✕ before creating the ZIP. Files are stored by name at the archive root.' },
+      { q: 'Should I turn compression on or off?', a: 'Leave DEFLATE compression on for text, documents, CSV and code — it shrinks them noticeably. For already-compressed files (JPEG, PNG, MP4, MP3) it barely helps, so turning it off just stores them as-is and builds faster.' },
+      { q: 'Is there a size limit?', a: 'The limit is your device\'s memory, since everything happens locally. Many small-to-medium files are no problem; very large files use more memory because the whole archive is built in the browser.' },
+      { q: 'Are my files uploaded?', a: 'No — the ZIP is assembled entirely in your browser with JSZip, so your files never leave your device, and it works offline.' },
+    ],
+    keywords: ['create zip', 'zip files online', 'make a zip file', 'zip online', 'compress files to zip', 'combine files into zip', 'zip creator'],
   },
 ];
 
