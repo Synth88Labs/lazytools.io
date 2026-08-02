@@ -6,7 +6,7 @@ export interface ImageToolDef {
   icon: string;
   description: string;
   lead: string;
-  widget: 'compress' | 'convert' | 'resize' | 'base64' | 'heic' | 'rotate' | 'circle' | 'split' | 'metadata' | 'annotate' | 'flip' | 'crop' | 'resizekb' | 'watermark' | 'favicon' | 'svgpng' | 'b64img' | 'combine';
+  widget: 'compress' | 'convert' | 'resize' | 'base64' | 'heic' | 'rotate' | 'circle' | 'split' | 'metadata' | 'annotate' | 'flip' | 'crop' | 'resizekb' | 'watermark' | 'favicon' | 'svgpng' | 'b64img' | 'combine' | 'dpi';
   how: string;
   note?: string;
   faqs: { q: string; a: string }[];
@@ -352,5 +352,24 @@ export const IMAGE_TOOLS: ImageToolDef[] = [
       { q: 'Are my images uploaded?', a: 'No — the merge is done with the Canvas API in your browser. Nothing is sent anywhere and it works offline.' },
     ],
     keywords: ['combine images', 'merge images', 'stitch images together', 'combine photos into one', 'merge images vertically', 'join images side by side', 'image combiner'],
+  },
+  {
+    slug: 'change-image-dpi',
+    name: 'Change Image DPI (300 DPI Converter)',
+    icon: '🖨️',
+    description:
+      'Set a PNG or JPEG to 300 DPI (or any value) by editing the density metadata directly — no resampling, so the pixels and quality are untouched. In your browser.',
+    lead: 'Set your PNG or JPEG to 300 DPI (or any value) for printing — this edits the DPI metadata only, so the image quality is never changed.',
+    widget: 'dpi',
+    how: 'DPI (dots per inch) is a metadata tag that tells a printer how large to render an image; it has no effect on how the file looks on screen. This tool reads and rewrites that tag directly in the file — the pHYs chunk in a PNG or the JFIF density fields in a JPEG — without re-encoding the image, so not a single pixel changes. Drop in a PNG or JPEG, see its current DPI, pick a preset (72, 96, 150, 200, 300, 600) or type any value, and download the copy.',
+    note: 'This solves a specific, maddening problem: a print shop, print-on-demand service or exam/visa portal demands “300 DPI”, but your image is tagged 72. Crucially, most tools labelled “convert to 300 DPI” actually *resample* the image (adding or dropping pixels, softening it) — that’s the wrong fix when the requirement is really about the metadata tag. This one changes only the tag, losslessly. The catch to understand: DPI plus pixel dimensions together determine the physical print size. 300 DPI on a 300×300-pixel image prints at just 1×1 inch; to print a 4×6&quot; photo at 300 DPI you need 1200×1800 pixels. Setting the tag doesn’t add detail that isn’t there. Everything runs in your browser.',
+    faqs: [
+      { q: 'How do I change an image to 300 DPI?', a: 'Open your PNG or JPEG, click the 300 preset (or type a value), and download. The tool writes 300 into the file’s density metadata without touching the pixels, so quality is unchanged.' },
+      { q: 'Does changing DPI reduce image quality?', a: 'No — this edits only the metadata tag, with no resampling or re-encoding, so the image is byte-for-byte identical except for the DPI value. That’s different from “resize to 300 DPI” tools, which resample and can soften the image.' },
+      { q: 'Does higher DPI make my image look better on screen?', a: 'No. On screen an image is shown by its pixels; DPI is ignored. DPI only matters for printing, where it sets how large those pixels are placed on paper.' },
+      { q: 'Why does my 300 DPI image still print small (or blurry)?', a: 'Because print size = pixels ÷ DPI. If the image doesn’t have enough pixels, 300 DPI prints small; stretching it larger is what looks blurry. For a 4×6-inch print at 300 DPI you need 1200×1800 pixels — setting the tag can’t add detail that isn’t in the pixels.' },
+      { q: 'Is my image uploaded?', a: 'No — the DPI is changed entirely in your browser by editing the file’s bytes, so the image never leaves your device.' },
+    ],
+    keywords: ['change image dpi', 'convert to 300 dpi', '300 dpi converter', 'set image dpi', 'change dpi of image', 'jpeg dpi changer', 'png dpi', 'increase dpi'],
   },
 ];

@@ -417,6 +417,7 @@
   "home/wheelchair-ramp-calculator",
   "image/annotate-image",
   "image/base64-to-image",
+  "image/change-image-dpi",
   "image/circle-crop-image",
   "image/combine-images",
   "image/crop-image",

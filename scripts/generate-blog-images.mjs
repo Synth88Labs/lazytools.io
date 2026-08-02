@@ -7,6 +7,13 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'image-dpi-explained-300-dpi-guide',
+    kicker: 'IMAGE & PRINT GUIDE',
+    lines: ['DPI explained:', 'set 300 DPI without', 'losing quality'],
+    fact: 'DPI is a print tag · print size = pixels ÷ DPI',
+    icon: '🖨️',
+  },
+  {
     slug: 'magic-bytes-file-signatures-guide',
     kicker: 'SECURITY GUIDE',
     lines: ['Magic bytes: a', 'file’s real type', 'isn’t its extension'],
