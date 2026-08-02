@@ -9,6 +9,10 @@ import TOML from '@iarna/toml';
 import { gpxToGeoJSON, geoJSONToGpx } from './gpx.ts';
 import { vcardsToCsv, csvToVcards } from './vcard.ts';
 import { optimizeSvg } from './svg-optimize.ts';
+import {
+  parseIni, stringifyIni, parseEnv, stringifyEnv,
+  parseProperties, stringifyProperties, requireObject,
+} from './config-formats.ts';
 
 /** Collapse only inter-tag whitespace (preserves text content). */
 function minifyXml(xml: string): string {
@@ -333,6 +337,39 @@ export const CONVERT: Record<string, (input: string, opts: Opts) => ConvertResul
     } catch (e) {
       throw new Error(`Can't represent this as TOML: ${e instanceof Error ? e.message : 'unsupported value'} (TOML has no null; every key needs a value).`);
     }
+  },
+
+  iniToJson: (input, opts) => {
+    const data = parseIni(input);
+    const indent = Boolean(opts.minify) ? 0 : 2;
+    return { output: JSON.stringify(data, null, indent), info: 'INI sections → nested objects' };
+  },
+
+  jsonToIni: (input) => {
+    const data = requireObject(jsonParse(input), 'INI');
+    return { output: stringifyIni(data), info: 'top-level objects → [sections]' };
+  },
+
+  envToJson: (input, opts) => {
+    const data = parseEnv(input);
+    const indent = Boolean(opts.minify) ? 0 : 2;
+    return { output: JSON.stringify(data, null, indent), info: `${Object.keys(data).length} variable(s)` };
+  },
+
+  jsonToEnv: (input) => {
+    const data = requireObject(jsonParse(input), '.env');
+    return { output: stringifyEnv(data), info: 'flat keys → KEY=value lines' };
+  },
+
+  propertiesToJson: (input, opts) => {
+    const data = parseProperties(input);
+    const indent = Boolean(opts.minify) ? 0 : 2;
+    return { output: JSON.stringify(data, null, indent), info: `${Object.keys(data).length} propert${Object.keys(data).length === 1 ? 'y' : 'ies'}` };
+  },
+
+  jsonToProperties: (input) => {
+    const data = requireObject(jsonParse(input), '.properties');
+    return { output: stringifyProperties(data), info: 'flat keys → key=value lines' };
   },
 
   jsonlToJson: (input, opts) => {

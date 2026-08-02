@@ -1238,6 +1238,13 @@ const POSTS = [
     fact: '64 bits = 41-bit timestamp · 10-bit machine · 12-bit sequence',
     icon: '❄️',
   },
+  {
+    slug: 'ini-env-properties-config-formats-explained-guide',
+    kicker: 'DEVELOPER GUIDE',
+    lines: ['INI vs .env vs', '.properties: config', 'formats explained'],
+    fact: 'INI = [sections] · .env = KEY=value · .properties = key:value',
+    icon: '🗂️',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
