@@ -751,6 +751,7 @@
   "time/zones/pst-to-cst",
   "time/zones/pst-to-gmt",
   "time/zones/pst-to-jst",
+  "travel/coordinate-converter",
   "travel/flight-distance-calculator",
   "travel/flight-time-calculator",
   "travel/jet-lag-calculator",

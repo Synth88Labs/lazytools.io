@@ -15,6 +15,7 @@ import BudgetTool from '../../components/travel/BudgetTool.tsx';
 import LuggageTool from '../../components/travel/LuggageTool.tsx';
 import TimeZoneConverterTool from '../../components/travel/TimeZoneConverterTool.tsx';
 import SpeedDistanceTimeTool from '../../components/travel/SpeedDistanceTimeTool.tsx';
+import CoordinateConverterTool from '../../components/travel/CoordinateConverterTool.tsx';
 import { TRAVEL_TOOLS, type TravelToolDef } from '../../data/travel/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -71,6 +72,7 @@ const schema = [
       {tool.widget === 'luggage' && <LuggageTool client:load />}
       {tool.widget === 'timezone' && <TimeZoneConverterTool client:load />}
       {tool.widget === 'sdt' && <SpeedDistanceTimeTool client:load />}
+      {tool.widget === 'coords' && <CoordinateConverterTool client:load />}
     </div>
 
     <div class="mt-4">

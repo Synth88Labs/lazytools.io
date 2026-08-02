@@ -4,7 +4,7 @@ export interface TravelToolDef {
   slug: string;
   name: string;
   icon: string;
-  widget: 'distance' | 'flighttime' | 'layover' | 'jetlag' | 'tip' | 'roadtrip' | 'budget' | 'luggage' | 'timezone' | 'sdt';
+  widget: 'distance' | 'flighttime' | 'layover' | 'jetlag' | 'tip' | 'roadtrip' | 'budget' | 'luggage' | 'timezone' | 'sdt' | 'coords';
   description: string;
   lead: string;
   how: string;
@@ -193,6 +193,25 @@ export const TRAVEL_TOOLS: TravelToolDef[] = [
       { q: 'What units should I use?', a: 'Keep them consistent: kilometres with km/h, or miles with mph, and time in hours (use decimals — 1.5 for an hour and a half). The km/mi toggle sets the distance and speed units together so they always match.' },
     ],
     keywords: ['speed distance time calculator', 'travel time calculator', 'average speed calculator', 'distance calculator speed time', 'how long will my drive take', 'journey time calculator', 'time from speed and distance'],
+  },
+  {
+    slug: 'coordinate-converter',
+    name: 'GPS Coordinate Converter (DD, DMS, UTM, MGRS, Geohash)',
+    icon: '🧭',
+    description:
+      'Convert GPS coordinates between decimal degrees, DMS, DDM, UTM, MGRS and geohash — WGS-84, sub-metre accurate. Runs in your browser; your location is never sent anywhere.',
+    lead: 'Enter a latitude and longitude in any format and get it in decimal degrees, DMS, DDM, UTM, MGRS and geohash — or decode a geohash back to coordinates.',
+    widget: 'coords',
+    how: 'Type a latitude and longitude (as decimal degrees like 51.5074, or DMS like 51°30′26″N, or degrees-decimal-minutes) and the tool shows the same point in every common format at once: decimal degrees, DMS, DDM, UTM, MGRS and geohash. UTM and MGRS use the Karney Transverse Mercator series on the WGS-84 ellipsoid — accurate to well under a millimetre — with correct grid zones including the Norway/Svalbard exceptions. Switch to geohash mode to decode a geohash string back to a point.',
+    note: 'These formats all describe the same location in different languages: decimal degrees for software and maps, DMS for navigation and aviation, UTM/MGRS for surveying, the military and search-and-rescue, and geohash for databases and proximity lookups. UTM and MGRS are defined between 80°S and 84°N (the poles use UPS instead), and a geohash of length 11 pins a spot to roughly a metre. Everything is computed locally, which matters because a coordinate is a precise real-world location — often someone’s home or a field position.',
+    faqs: [
+      { q: 'How do I convert latitude/longitude to UTM or MGRS?', a: 'Enter the lat/lon (in decimal degrees or DMS) and the tool outputs the UTM zone/easting/northing and the MGRS grid reference automatically, using the standard WGS-84 Transverse Mercator projection.' },
+      { q: 'What’s the difference between DD, DMS and DDM?', a: 'They’re three ways to write the same angle. DD is a single decimal (51.5074°); DMS splits it into degrees, minutes and seconds (51°30′26″); DDM uses degrees and decimal minutes (51°30.44′). GPS software prefers DD; navigation and aviation often use DMS or DDM.' },
+      { q: 'What is a geohash?', a: 'A short text string that encodes a latitude/longitude into a single token, where nearby places share a prefix — handy for databases and proximity searches. Longer geohashes are more precise; length 11 is about one metre. This tool encodes to and decodes from geohash.' },
+      { q: 'How accurate is the UTM/MGRS conversion?', a: 'It uses Karney’s Transverse Mercator series, accurate to sub-millimetre across each zone — far beyond GPS precision. UTM/MGRS apply between 80°S and 84°N; beyond that the polar UPS system is used instead.' },
+      { q: 'Is my location uploaded?', a: 'No — every conversion runs in your browser and works offline, so the coordinates you enter (which pinpoint a real place) never leave your device.' },
+    ],
+    keywords: ['coordinate converter', 'gps coordinate converter', 'lat long to utm', 'dms to decimal degrees', 'latitude longitude converter', 'mgrs converter', 'utm to lat long', 'geohash converter'],
   },
 ];
 

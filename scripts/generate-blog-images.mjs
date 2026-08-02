@@ -7,6 +7,13 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'gps-coordinate-formats-explained-guide',
+    kicker: 'GPS & MAPPING GUIDE',
+    lines: ['GPS coordinate', 'formats: DD, DMS,', 'UTM, MGRS, geohash'],
+    fact: 'DD↔DMS = arithmetic · ↔UTM/MGRS = map projection',
+    icon: '🧭',
+  },
+  {
     slug: 'zip-unzip-files-in-browser-guide',
     kicker: 'FILE TOOLS GUIDE',
     lines: ['Zip and unzip files', 'in your browser —', 'no software, no upload'],
