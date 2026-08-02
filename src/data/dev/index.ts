@@ -16,7 +16,7 @@ export interface DevToolDef {
   description: string;
   lead: string;
   /** 'transform' uses DevTransformTool; 'hash' uses HashTool; 'llm-tokens' uses LlmTokenCounterTool */
-  widget: 'transform' | 'hash' | 'llm-tokens' | 'eth-units' | 'keccak' | 'eip55' | 'har' | 'sqlformat' | 'jsondiff' | 'hmac' | 'jwtenc' | 'utm';
+  widget: 'transform' | 'hash' | 'llm-tokens' | 'eth-units' | 'keccak' | 'eip55' | 'har' | 'sqlformat' | 'jsondiff' | 'hmac' | 'jwtenc' | 'utm' | 'barcodeval' | 'imeival';
   computeId?: string;
   options?: DevToolOption[];
   sample?: string;
@@ -945,6 +945,46 @@ export const DEV_TOOLS: DevToolDef[] = [
       { q: 'Is my list uploaded?', a: 'No — the clause is built entirely in your browser and works offline, so your values never leave your device.' },
     ],
     keywords: ['sql in clause generator', 'list to sql in', 'sql in list', 'generate in clause', 'comma separated to sql in', 'sql where in generator'],
+  },
+  {
+    slug: 'barcode-check-digit-validator',
+    name: 'Barcode Check Digit Validator (EAN, UPC, ISBN, ISSN)',
+    icon: '📊',
+    description:
+      'Validate an EAN-13, UPC-A, EAN-8, GTIN-14, ISBN-10/13 or ISSN by its check digit — or find the missing check digit. In your browser, nothing uploaded.',
+    lead: 'Paste a barcode, ISBN or ISSN and instantly see whether its check digit is correct — or enter the digits without it to get the complete number.',
+    widget: 'barcodeval',
+    how: 'Every retail barcode and book/serial number ends in a check digit calculated from all the preceding digits by a fixed formula: EAN/UPC/GTIN use the GS1 mod-10 scheme (weights of 3 and 1), while ISBN-10 and ISSN use a mod-11 scheme (which is why their last character can be an X). This tool detects the format from the length, recomputes the check digit, and tells you whether the one in your number matches. Enter the digits without the final check digit and it returns the complete, valid barcode instead.',
+    note: 'The check digit exists to catch data-entry mistakes: it detects every single-digit error and most adjacent transpositions (swapping two neighbouring digits), which are the most common typing slips. A failing check almost always means the number was mistyped or misread — though a passing check only proves the number is well-formed, not that the product, book or journal actually exists. This validates GTIN-8/12/13/14, ISBN-10/13 and ISSN; it doesn\'t decode what the barcode refers to. Everything runs in your browser.',
+    faqs: [
+      { q: 'What is a barcode check digit?', a: 'The final digit of a barcode, calculated from all the others by a fixed formula. Scanners recompute it and compare — if it doesn\'t match, the scan is rejected as a misread. It\'s a built-in error-detection digit, not part of the product identity.' },
+      { q: 'How is the EAN-13 / UPC check digit calculated?', a: 'Using the GS1 mod-10 method: from the right, multiply the data digits alternately by 3 and 1, sum them, and the check digit is whatever makes that total a multiple of 10. This tool shows the expected value so you can see if yours matches.' },
+      { q: 'Why do some ISBNs and ISSNs end in X?', a: 'ISBN-10 and ISSN use a mod-11 check, so the check value can be 10 — written as the single character X. ISBN-13 (which is an EAN-13) uses mod-10, so its check digit is always 0–9.' },
+      { q: 'Can I find a missing check digit?', a: 'Yes — enter the barcode\'s data digits without the final check digit (e.g. 12 digits for an EAN-13) and the tool appends the correct check digit to give you the complete number.' },
+      { q: 'Does a valid check digit mean the product exists?', a: 'No. The check digit only confirms the number is internally consistent (not mistyped). It says nothing about whether the barcode is assigned to a real product — only the brand owner\'s GS1 registration does that.' },
+      { q: 'Is my data uploaded?', a: 'No — validation runs entirely in your browser and works offline.' },
+    ],
+    keywords: ['barcode validator', 'check digit calculator', 'ean-13 check digit', 'upc check digit', 'isbn validator', 'gtin check digit', 'barcode check digit calculator'],
+  },
+  {
+    slug: 'imei-luhn-validator',
+    name: 'IMEI & Luhn Validator',
+    icon: '📱',
+    description:
+      'Check whether an IMEI or any Luhn-based number (credit-card format, ID numbers) has a valid checksum, and see the IMEI\'s TAC and serial. In your browser.',
+    lead: 'Paste a 15-digit IMEI to verify its checksum and see its TAC and serial — or check any number against the Luhn algorithm.',
+    widget: 'imeival',
+    how: 'The Luhn algorithm (a.k.a. the mod-10 algorithm) guards IMEIs, bank-card numbers and many ID numbers: starting from the right, every second digit is doubled (subtracting 9 if the result exceeds 9), all digits are summed, and a valid number\'s total is a multiple of 10. IMEI mode checks the 15-digit number, confirms the trailing check digit, and splits it into the TAC (Type Allocation Code, which identifies the device model) and the serial. Luhn mode checks any number and, if it fails, tells you which check digit would make it valid.',
+    note: 'This verifies structure, not existence: a passing checksum means the digits are internally consistent — enough to catch a typo or a transposed pair — but it does not prove the IMEI belongs to a real phone or that a card number is active. (That\'s exactly why the Luhn check is a first-line format filter, not a validation of the account.) It checks the standard 15-digit IMEI; the 16-digit IMEISV, which adds a software-version field, isn\'t covered. Everything is computed locally in your browser — useful because these are sensitive identifiers.',
+    faqs: [
+      { q: 'How do I check if an IMEI is valid?', a: 'Enter the 15-digit IMEI. The tool runs the Luhn checksum on it and confirms whether the final check digit is correct, and it shows the TAC and serial. A valid checksum means the number is well-formed — not that a specific phone exists.' },
+      { q: 'What is the Luhn algorithm?', a: 'A simple checksum (the mod-10 algorithm) that catches most typos: double every second digit from the right, subtract 9 from any result over 9, sum everything, and a valid number totals a multiple of 10. It\'s used by credit cards, IMEIs and many ID schemes.' },
+      { q: 'Does a valid Luhn checksum mean a card number is real?', a: 'No. Luhn only checks that the digits are internally consistent — it catches mistyped numbers. It says nothing about whether the card is issued, active or has funds; only the card network and bank know that.' },
+      { q: 'What are the TAC and serial in an IMEI?', a: 'The first 8 digits are the TAC (Type Allocation Code), which identifies the device brand and model; the next 6 are a unique serial for that model; the 15th is the Luhn check digit. This tool splits them out for you.' },
+      { q: 'Can I check numbers other than IMEIs?', a: 'Yes — switch to Luhn mode to test any Luhn-based number, such as a credit-card-format number or an ID that uses the same checksum. The tool reports pass/fail and the correct check digit.' },
+      { q: 'Is my IMEI or card number uploaded?', a: 'No — the check runs entirely in your browser and nothing is transmitted, which matters for these sensitive identifiers. It also works offline.' },
+    ],
+    keywords: ['imei validator', 'imei checker', 'luhn algorithm validator', 'luhn check', 'validate credit card number format', 'imei check digit', 'mod 10 validator'],
   },
 ];
 

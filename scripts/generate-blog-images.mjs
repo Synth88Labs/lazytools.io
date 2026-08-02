@@ -7,6 +7,13 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'check-digits-explained-barcodes-luhn-guide',
+    kicker: 'DATA & IDENTIFIERS GUIDE',
+    lines: ['Check digits: how', 'barcodes and cards', 'catch typos'],
+    fact: 'last digit = checksum of the rest · valid ≠ real',
+    icon: '📊',
+  },
+  {
     slug: 'gps-coordinate-formats-explained-guide',
     kicker: 'GPS & MAPPING GUIDE',
     lines: ['GPS coordinate', 'formats: DD, DMS,', 'UTM, MGRS, geohash'],

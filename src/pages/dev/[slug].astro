@@ -17,6 +17,8 @@ import JsonDiffTool from '../../components/dev/JsonDiffTool.tsx';
 import HmacTool from '../../components/dev/HmacTool.tsx';
 import JwtEncoderTool from '../../components/dev/JwtEncoderTool.tsx';
 import UtmBuilderTool from '../../components/dev/UtmBuilderTool.tsx';
+import BarcodeValidatorTool from '../../components/dev/BarcodeValidatorTool.tsx';
+import ImeiValidatorTool from '../../components/dev/ImeiValidatorTool.tsx';
 import { DEV_TOOLS, type DevToolDef } from '../../data/dev/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -74,6 +76,8 @@ const schema = [
       {tool.widget === 'hmac' && <HmacTool client:load />}
       {tool.widget === 'jwtenc' && <JwtEncoderTool client:load />}
       {tool.widget === 'utm' && <UtmBuilderTool client:load />}
+      {tool.widget === 'barcodeval' && <BarcodeValidatorTool client:load />}
+      {tool.widget === 'imeival' && <ImeiValidatorTool client:load />}
       {tool.widget === 'transform' && (
         <DevTransformTool client:load computeId={tool.computeId!} options={tool.options} sample={tool.sample} />
       )}
