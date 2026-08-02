@@ -686,6 +686,50 @@ export const FILE_TOOLS: FileToolDef[] = [
     ],
     keywords: ['geojson to gpx', 'convert geojson to gpx', 'geojson to gpx converter', 'geojson to garmin', 'geojson track to gpx', 'route to gpx'],
   },
+  {
+    slug: 'vcf-to-csv',
+    name: 'vCard (VCF) to CSV Converter',
+    icon: '👤',
+    description:
+      'Convert a vCard (.vcf) contacts file to CSV — names, emails, phones and organizations as spreadsheet columns. In your browser, contacts never uploaded.',
+    lead: 'Paste or open a .vcf file and get a clean CSV of your contacts — one row each, with name, email, phone and organization columns.',
+    computeId: 'vcardToCsv',
+    accept: '.vcf,text/vcard',
+    downloadName: 'contacts.csv',
+    sample: 'BEGIN:VCARD\nVERSION:3.0\nFN:Ada Lovelace\nN:Lovelace;Ada;;;\nEMAIL;TYPE=INTERNET:ada@example.com\nTEL;TYPE=CELL:+1-555-0100\nORG:Analytical Engines\nTITLE:Mathematician\nEND:VCARD\nBEGIN:VCARD\nVERSION:3.0\nFN:Bo Chen\nN:Chen;Bo;;;\nEMAIL:bo@example.org\nEND:VCARD',
+    how: 'The converter parses every vCard in the file (each contact starts with BEGIN:VCARD) and pulls out the common fields — full name, first and last name, email, phone, organization and title — into a CSV row per contact, with a header line. It correctly unfolds wrapped lines and decodes vCard escaping, so names with commas or accents come through intact, ready for Excel, Google Sheets, a CRM import, or a mail-merge.',
+    note: 'A .vcf export from your phone or address book is one long text blob that spreadsheets can’t read directly — this turns it into a table. It’s the export half of contact migration (moving from iPhone/Android/Outlook into a CRM or spreadsheet). Contacts are sensitive personal data — other people’s names, numbers and addresses — which is exactly why this runs entirely in your browser rather than uploading your address book to a server.',
+    faqs: [
+      { q: 'How do I convert a VCF file to CSV?', a: 'Open or paste your .vcf file and the tool outputs a CSV with one row per contact and columns for name, email, phone and organization. Download it and open in Excel or Google Sheets.' },
+      { q: 'Does it handle a .vcf with many contacts?', a: 'Yes — a single .vcf often contains hundreds of vCards (each starting with BEGIN:VCARD). The converter reads them all and writes one CSV row each.' },
+      { q: 'What fields are exported?', a: 'Full name, first name, last name, email, phone, organization and title — the fields most tools need for import. It takes the first email and phone when a contact has several.' },
+      { q: 'Are contacts with commas or accents handled correctly?', a: 'Yes — vCard escaping is decoded and CSV values are quoted where needed, so a name like “Doe, Jane” or an accented name stays intact in the CSV.' },
+      { q: 'Are my contacts uploaded?', a: 'No — parsing runs entirely in your browser, so your address book never leaves your device. That matters because it contains other people’s personal data.' },
+    ],
+    keywords: ['vcf to csv', 'vcard to csv', 'convert vcf to csv', 'contacts vcf to excel', 'vcard to spreadsheet', 'vcf to csv converter'],
+  },
+  {
+    slug: 'csv-to-vcf',
+    name: 'CSV to vCard (VCF) Converter',
+    icon: '📇',
+    description:
+      'Convert a CSV of contacts into a vCard (.vcf) file ready to import into iPhone, Android, Outlook or Google Contacts. In your browser, never uploaded.',
+    lead: 'Paste or open a CSV of contacts and get a .vcf file — one vCard per row — that imports straight into your phone or address book.',
+    computeId: 'csvToVcard',
+    accept: '.csv,text/csv',
+    downloadName: 'contacts.vcf',
+    sample: 'First Name,Last Name,Email,Phone,Company,Title\nAda,Lovelace,ada@example.com,+1-555-0100,Analytical Engines,Mathematician\nBo,Chen,bo@example.org,,Independent,',
+    how: 'The converter reads your CSV header to find the name, email, phone, organization and title columns (matching common variations like “First Name”, “E-mail” or “Company”), then writes one vCard (version 3.0) per row into a single .vcf file. It builds the structured N and FN name properties, escapes special characters, and produces a file you can import into iPhone, Android, Outlook or Google Contacts.',
+    note: 'This is the import half of contact migration — turning a spreadsheet (or an export from another system) into the .vcf that phones and address books accept. Column names are matched flexibly, but a header row is required so the tool knows which column is which. Rows with no name and no email are skipped. Because it runs locally, the contact list you’re importing — often a whole company or personal address book — never touches a server.',
+    faqs: [
+      { q: 'How do I convert CSV to a VCF file?', a: 'Paste or open a CSV with a header row and the tool generates a .vcf with one vCard per contact. Download it and import into your phone or address book app.' },
+      { q: 'What column names does it recognise?', a: 'Common ones and their variants: full name (or first/last name), email, phone (or mobile/tel), organization (or company) and title (or role). The header row tells the tool which column is which.' },
+      { q: 'Which apps can import the .vcf?', a: 'iPhone (Contacts), Android, Outlook, Google Contacts and most address-book apps import standard vCard 3.0 files directly.' },
+      { q: 'Do I need both a first and last name column?', a: 'No — a single full-name column works too. If you provide separate first and last name columns, the tool builds both the display name and the structured name from them.' },
+      { q: 'Is my data uploaded?', a: 'No — the conversion runs entirely in your browser and works offline, so your contact list stays on your device.' },
+    ],
+    keywords: ['csv to vcf', 'csv to vcard', 'convert csv to vcf', 'excel contacts to vcf', 'spreadsheet to vcard', 'csv to vcf converter'],
+  },
 ];
 
 export function getFileTool(slug: string): FileToolDef | undefined {

@@ -7,6 +7,7 @@ import { load as yamlLoad, dump as yamlDump } from 'js-yaml';
 import { marked } from 'marked';
 import TOML from '@iarna/toml';
 import { gpxToGeoJSON, geoJSONToGpx } from './gpx.ts';
+import { vcardsToCsv, csvToVcards } from './vcard.ts';
 
 /** Collapse only inter-tag whitespace (preserves text content). */
 function minifyXml(xml: string): string {
@@ -371,5 +372,15 @@ export const CONVERT: Record<string, (input: string, opts: Opts) => ConvertResul
   geojsonToGpx: (input) => {
     const out = geoJSONToGpx(input);
     return { output: out, info: 'GeoJSON → GPX 1.1' };
+  },
+
+  vcardToCsv: (input) => {
+    const r = vcardsToCsv(input);
+    return { output: r.output, info: `${r.count} contact${r.count === 1 ? '' : 's'} → CSV` };
+  },
+
+  csvToVcard: (input) => {
+    const r = csvToVcards(input);
+    return { output: r.output, info: `${r.count} row${r.count === 1 ? '' : 's'} → vCard` };
   },
 };

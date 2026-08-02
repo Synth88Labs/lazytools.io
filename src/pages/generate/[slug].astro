@@ -19,6 +19,7 @@ import DiceRollerTool from '../../components/generate/DiceRollerTool.tsx';
 import MacAddressTool from '../../components/generate/MacAddressTool.tsx';
 import TestCardTool from '../../components/generate/TestCardTool.tsx';
 import QrScannerTool from '../../components/generate/QrScannerTool.tsx';
+import IcsGenTool from '../../components/generate/IcsGenTool.tsx';
 import { GEN_TOOLS, type GenToolDef } from '../../data/generate/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -79,6 +80,7 @@ const schema = [
       {tool.widget === 'mac' && <MacAddressTool client:load />}
       {tool.widget === 'testcard' && <TestCardTool client:load />}
       {tool.widget === 'qr-scan' && <QrScannerTool client:load />}
+      {tool.widget === 'ics' && <IcsGenTool client:load />}
     </div>
 
     <div class="mt-4">

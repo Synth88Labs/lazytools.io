@@ -6,7 +6,7 @@ export interface GenToolDef {
   icon: string;
   description: string;
   lead: string;
-  widget: 'password' | 'uuid' | 'qr' | 'random-number' | 'lorem' | 'wifi-qr' | 'vcard-qr' | 'message-qr' | 'barcode' | 'id' | 'passphrase' | 'dice' | 'mac' | 'testcard' | 'qr-scan';
+  widget: 'password' | 'uuid' | 'qr' | 'random-number' | 'lorem' | 'wifi-qr' | 'vcard-qr' | 'message-qr' | 'barcode' | 'id' | 'passphrase' | 'dice' | 'mac' | 'testcard' | 'qr-scan' | 'ics';
   /** for widget:'id' — which tab (v4/v7/ulid/nanoid) the page defaults to */
   variant?: 'v4' | 'v7' | 'ulid' | 'nanoid';
   how: string;
@@ -297,6 +297,25 @@ export const GEN_TOOLS: GenToolDef[] = [
       { q: 'Should I use these with Stripe or PayPal?', a: 'For those, use the official test card numbers in the provider\'s documentation with their sandbox/test mode — they trigger specific test behaviours. These generic Luhn-valid numbers are best for testing your own form\'s format validation.' },
     ],
     keywords: ['test credit card generator', 'fake credit card number generator', 'luhn valid card number', 'dummy credit card numbers', 'test card numbers', 'credit card generator for testing', 'valid test card'],
+  },
+  {
+    slug: 'ics-calendar-event-generator',
+    name: 'ICS Calendar Event Generator (.ics)',
+    icon: '📅',
+    description:
+      'Create an .ics calendar file from event details — title, time, location, recurrence — that opens in Apple Calendar, Google Calendar and Outlook. In your browser.',
+    lead: 'Fill in your event details and download a standard .ics file that adds the event to Apple Calendar, Google Calendar, Outlook or any calendar app.',
+    widget: 'ics',
+    how: 'You enter the event fields — title, start and end (or an all-day date), location, description, URL and an optional repeat rule — and the tool assembles a valid RFC 5545 iCalendar (.ics) file. It handles the parts that are easy to get wrong by hand: escaping special characters (commas, semicolons, backslashes and line breaks) in text fields, folding lines longer than 75 characters, formatting the dates correctly, and writing an RRULE for recurring events. Download the .ics or copy it, then open or attach it.',
+    note: 'An .ics file is the universal “add to calendar” format — the attachment behind those buttons in event emails and invites. Times here are written as “floating” local times (no timezone), so the event appears at the same clock time in whatever calendar opens it, which is what you want for a simple event or an emailed invite; a fixed-timezone event (e.g. a webinar at 3pm New York) needs explicit VTIMEZONE handling this generator keeps deliberately simple. For an all-day event the end date is written exclusively per the spec (the tool adds a day for you). Everything is built in your browser — no account, no upload.',
+    faqs: [
+      { q: 'What is an .ics file?', a: 'A plain-text iCalendar file (RFC 5545) describing an event — title, time, location and so on. It’s the standard format every calendar app understands, and it’s what “Add to calendar” buttons and email invites attach.' },
+      { q: 'Will the .ics work in Google Calendar, Apple Calendar and Outlook?', a: 'Yes — it’s standard RFC 5545, which all major calendar apps import. Download the file and open it (or attach it to an email) and the app offers to add the event.' },
+      { q: 'How do I make the event repeat?', a: 'Choose a repeat interval (daily, weekly, monthly or yearly) and optionally a number of occurrences. The tool writes the corresponding RRULE, which calendar apps expand into the repeating series.' },
+      { q: 'How are timezones handled?', a: 'Timed events are written as “floating” local times with no timezone, so they appear at the same clock time wherever they’re opened — ideal for simple events and emailed invites. Events that must stay fixed to a specific timezone need extra VTIMEZONE data beyond this generator’s scope.' },
+      { q: 'Is my event data uploaded?', a: 'No — the .ics file is generated entirely in your browser, so your event details (which can include private meeting links and locations) never leave your device.' },
+    ],
+    keywords: ['ics generator', 'ics file generator', 'add to calendar link generator', 'create ics file', 'calendar event generator', 'ical file generator', 'ics event maker'],
   },
 ];
 

@@ -7,6 +7,13 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'ics-and-vcf-files-explained-guide',
+    kicker: 'FILE FORMATS GUIDE',
+    lines: ['.ics and .vcf', 'explained: calendar', 'events & contacts'],
+    fact: 'escape , ; \\ · fold >75 chars · all-day DTEND is exclusive',
+    icon: '📅',
+  },
+  {
     slug: 'gpx-files-explained-distance-elevation-geojson-guide',
     kicker: 'GPS & MAPPING GUIDE',
     lines: ['GPX files explained:', 'distance, elevation', '& GeoJSON'],
