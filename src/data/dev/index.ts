@@ -16,7 +16,7 @@ export interface DevToolDef {
   description: string;
   lead: string;
   /** 'transform' uses DevTransformTool; 'hash' uses HashTool; 'llm-tokens' uses LlmTokenCounterTool */
-  widget: 'transform' | 'hash' | 'llm-tokens' | 'eth-units' | 'keccak' | 'eip55' | 'har' | 'sqlformat' | 'jsondiff' | 'hmac' | 'jwtenc' | 'utm' | 'barcodeval' | 'imeival' | 'snowflake' | 'checksum' | 'protobuf' | 'cbor' | 'ieee754';
+  widget: 'transform' | 'hash' | 'llm-tokens' | 'eth-units' | 'keccak' | 'eip55' | 'har' | 'sqlformat' | 'jsondiff' | 'hmac' | 'jwtenc' | 'utm' | 'barcodeval' | 'imeival' | 'snowflake' | 'checksum' | 'protobuf' | 'cbor' | 'ieee754' | 'emailheaders';
   computeId?: string;
   options?: DevToolOption[];
   sample?: string;
@@ -1178,6 +1178,26 @@ export const DEV_TOOLS: DevToolDef[] = [
       { q: 'Is anything uploaded?', a: 'No — all the conversion runs in your browser, with single and double computed byte-exactly. Nothing is transmitted and it works offline.' },
     ],
     keywords: ['ieee 754 converter', 'floating point converter', 'float to hex', 'ieee 754 calculator', 'float to binary', 'double precision converter', 'hex to float', '0.1 floating point'],
+  },
+  {
+    slug: 'email-header-analyzer',
+    name: 'Email Header Analyzer',
+    icon: '📧',
+    description:
+      'Paste an email\'s headers to trace its delivery path hop by hop with per-server delays, and read the SPF/DKIM/DMARC results — all in your browser, never uploaded.',
+    lead: 'Paste the full email headers to see the delivery route, the delay at each mail server, and the SPF, DKIM and DMARC results the receiver recorded.',
+    widget: 'emailheaders',
+    how: 'Every mail server that handles a message stamps a "Received" header on top, so the headers hold a full record of the delivery path — newest hop first. This tool unfolds the headers, reads each Received line to work out which server passed the message to which, parses the timestamps and computes the delay at each hop (a big delay often points to greylisting or a backed-up queue). It also surfaces the authentication results the receiving server already wrote into the Authentication-Results header — SPF, DKIM and DMARC — plus the key identity headers (From, Return-Path, Message-ID, the DKIM signing domain, and the sending program). It parses everything in your browser; nothing is uploaded.',
+    note: 'Important scope: this reads the results that mail servers recorded in the headers — it does not perform live DNS lookups, so it cannot independently re-check SPF, DKIM or DMARC against the sender\'s current DNS records. That "SPF: pass" comes from the receiving server at delivery time, which is exactly what you want when investigating a message after the fact. Headers can be forged before the first trusted hop, so trust the Received chain only from your own infrastructure inward. Because email headers can contain names, addresses and internal hostnames, doing this locally keeps that information on your device rather than pasting it into a third-party service.',
+    faqs: [
+      { q: 'How do I read an email\'s headers?', a: 'In Gmail use "Show original", in Outlook "View" → message source, in Apple Mail "View → Message → Raw Source". Copy everything from the top down to the blank line before the body and paste it in — the tool does the rest.' },
+      { q: 'What does the delivery path / hop delay tell me?', a: 'Each Received header is one mail server handing the message onward. The tool orders them oldest-to-newest and shows the time gap between hops. Most hops are near-instant; a delay of minutes usually means greylisting or a queue backlog at that server.' },
+      { q: 'Does this verify SPF, DKIM and DMARC?', a: 'No — it shows the SPF/DKIM/DMARC results that the receiving mail server already recorded in the Authentication-Results header at delivery time. It does not do live DNS lookups, so it can\'t re-verify them now; that would require a server. For investigating a received message, the recorded result is the relevant one.' },
+      { q: 'Can email headers be faked?', a: 'The lower Received headers (added before the message reached a server you trust) can be forged by a sender. Only the headers added by your own trusted infrastructure are reliable, so read the chain from your servers inward. From and Reply-To are trivially spoofable — that\'s what SPF/DKIM/DMARC exist to catch.' },
+      { q: 'What is the DKIM signing domain (d=)?', a: 'The DKIM-Signature header\'s d= tag is the domain that cryptographically signed the message, and s= is the selector used to find its public key. If DKIM passed, it proves the message really came from that domain — which may differ from the visible From address.' },
+      { q: 'Are my headers uploaded?', a: 'No — the analysis runs entirely in your browser and nothing is transmitted, so the addresses and internal hostnames in the headers stay on your device. It works offline too.' },
+    ],
+    keywords: ['email header analyzer', 'analyze email headers', 'email header trace', 'received header delay', 'spf dkim dmarc checker', 'trace email route', 'email header parser', 'message header analyzer'],
   },
 ];
 

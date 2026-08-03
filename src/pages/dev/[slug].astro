@@ -24,6 +24,7 @@ import ChecksumTool from '../../components/dev/ChecksumTool.tsx';
 import ProtobufDecoderTool from '../../components/dev/ProtobufDecoderTool.tsx';
 import CborDecoderTool from '../../components/dev/CborDecoderTool.tsx';
 import Ieee754Tool from '../../components/dev/Ieee754Tool.tsx';
+import EmailHeaderTool from '../../components/dev/EmailHeaderTool.tsx';
 import { DEV_TOOLS, type DevToolDef } from '../../data/dev/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -88,6 +89,7 @@ const schema = [
       {tool.widget === 'protobuf' && <ProtobufDecoderTool client:load />}
       {tool.widget === 'cbor' && <CborDecoderTool client:load />}
       {tool.widget === 'ieee754' && <Ieee754Tool client:load />}
+      {tool.widget === 'emailheaders' && <EmailHeaderTool client:load />}
       {tool.widget === 'transform' && (
         <DevTransformTool client:load computeId={tool.computeId!} options={tool.options} sample={tool.sample} />
       )}

@@ -231,6 +231,7 @@
   "dev/csv-to-sql",
   "dev/curl-to-code",
   "dev/eip55-address-checksum",
+  "dev/email-header-analyzer",
   "dev/ethereum-unit-converter",
   "dev/har-viewer",
   "dev/hash-generator",

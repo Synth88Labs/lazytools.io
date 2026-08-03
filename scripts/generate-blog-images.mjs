@@ -1308,6 +1308,13 @@ const POSTS = [
     fact: 'float = sign · exponent (biased) · mantissa → nearest binary',
     icon: '🔬',
   },
+  {
+    slug: 'how-to-read-email-headers-trace-a-message-guide',
+    kicker: 'SECURITY GUIDE',
+    lines: ['How to read email', 'headers & trace a', 'message\'s path'],
+    fact: 'Received hops (newest first) · SPF · DKIM · DMARC',
+    icon: '📧',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
