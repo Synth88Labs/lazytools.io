@@ -1280,6 +1280,13 @@ const POSTS = [
     fact: 'ID3v2 at start · ID3v1 128 bytes at end · UTF-8/16 frames',
     icon: '🎵',
   },
+  {
+    slug: 'what-is-an-epub-file-inside-the-format-guide',
+    kicker: 'EBOOK GUIDE',
+    lines: ['What is an EPUB', 'file? Inside the', 'e-book format'],
+    fact: 'EPUB = ZIP + container.xml → OPF (Dublin Core metadata)',
+    icon: '📖',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

@@ -15,6 +15,7 @@ import Base64FileTool from '../../components/file/Base64FileTool.tsx';
 import GpxStatsTool from '../../components/file/GpxStatsTool.tsx';
 import ZipExtractorTool from '../../components/file/ZipExtractorTool.tsx';
 import ZipCreatorTool from '../../components/file/ZipCreatorTool.tsx';
+import EpubMetaTool from '../../components/file/EpubMetaTool.tsx';
 import { FILE_TOOLS, type FileToolDef } from '../../data/file/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -79,6 +80,8 @@ const schema = [
         <ZipExtractorTool client:load />
       ) : tool.widget === 'zip-create' ? (
         <ZipCreatorTool client:load />
+      ) : tool.widget === 'epub-meta' ? (
+        <EpubMetaTool client:load />
       ) : (
         <FileConvertTool
           client:load

@@ -16,7 +16,7 @@ export interface FileToolDef {
   description: string;
   lead: string;
   /** custom widget instead of the generic text-convert UI */
-  widget?: 'einvoice' | 'ksef-viewer' | 'ksef-validator' | 'excel-to-csv' | 'excel-to-json' | 'csv-to-excel' | 'html-md' | 'file-to-base64' | 'base64-to-file' | 'gpx-stats' | 'zip-extract' | 'zip-create';
+  widget?: 'einvoice' | 'ksef-viewer' | 'ksef-validator' | 'excel-to-csv' | 'excel-to-json' | 'csv-to-excel' | 'html-md' | 'file-to-base64' | 'base64-to-file' | 'gpx-stats' | 'zip-extract' | 'zip-create' | 'epub-meta';
   computeId?: string;
   options?: FileToolOption[];
   /** sample input preloaded so the tool demonstrates itself */
@@ -938,6 +938,26 @@ export const FILE_TOOLS: FileToolDef[] = [
       { q: 'Are my files uploaded?', a: 'No — the ZIP is assembled entirely in your browser with JSZip, so your files never leave your device, and it works offline.' },
     ],
     keywords: ['create zip', 'zip files online', 'make a zip file', 'zip online', 'compress files to zip', 'combine files into zip', 'zip creator'],
+  },
+  {
+    slug: 'epub-metadata-viewer',
+    name: 'EPUB Metadata Viewer',
+    icon: '📖',
+    description:
+      'Read an EPUB e-book\'s metadata — title, author, series, publisher, ISBN, language and subjects — from its OPF package. In your browser, never uploaded.',
+    lead: 'Drop an .epub to read its title, author, series, publisher, ISBN, language, subjects and description — parsed locally from the book.',
+    widget: 'epub-meta',
+    accept: '.epub,application/epub+zip',
+    how: 'An EPUB is a ZIP archive with a set structure: a file at META-INF/container.xml points to the book\'s OPF "package document", and that OPF holds the metadata in Dublin Core elements — dc:title, dc:creator (author), dc:language, dc:identifier, dc:publisher, dc:date, dc:subject and dc:description. This tool opens the EPUB in your browser with JSZip, follows the container to the OPF, and reads those fields, decoding the correct text and pulling out the ISBN when the identifier contains one. It also reports the EPUB version, the number of documents in the reading order (roughly the chapter count), and whether a cover is present, including Calibre series information when the book has it.',
+    note: 'This is handy for checking how an e-book is catalogued before importing it into a library, confirming the author and series are set correctly, or finding a book\'s ISBN. It reads standard EPUB 2 and EPUB 3 files; DRM-protected books (from some stores) are encrypted and can\'t be read. It shows the metadata that\'s stored in the book — it doesn\'t edit it — and the whole file is parsed on your device, so your library stays private.',
+    faqs: [
+      { q: 'How do I see an EPUB\'s title, author and ISBN?', a: 'Drop the .epub file in and the tool reads the book\'s OPF package, listing the title, author(s), publisher, publication date, language, subjects and — when the identifier is an ISBN — the ISBN itself. Nothing is uploaded.' },
+      { q: 'What metadata does an EPUB store?', a: 'EPUBs use Dublin Core fields in their OPF file: title, creator (author), contributor, language, identifier, publisher, date, subject (genre/keywords), description and rights. EPUB 3 and Calibre also add series ("collection") information, which this tool surfaces.' },
+      { q: 'Can it read the series and reading order?', a: 'Yes — it shows the series name and position when present (from EPUB 3 collection refinements or Calibre tags), and it counts the documents in the spine, which corresponds roughly to the number of chapters or sections in the reading order.' },
+      { q: 'Does it work on DRM-protected e-books?', a: 'No. Books with DRM (from some commercial stores) are encrypted, so their metadata can\'t be read without the store\'s decryption. DRM-free EPUB 2 and EPUB 3 files — the common case for personal and public-domain books — work fine.' },
+      { q: 'Is my e-book uploaded?', a: 'No — the EPUB is opened and parsed entirely in your browser with JSZip, so the book never leaves your device, and it works offline.' },
+    ],
+    keywords: ['epub metadata', 'epub metadata viewer', 'read epub metadata', 'epub info', 'view epub author', 'epub isbn', 'ebook metadata reader', 'opf metadata'],
   },
 ];
 
