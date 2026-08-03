@@ -1315,6 +1315,13 @@ const POSTS = [
     fact: 'Received hops (newest first) · SPF · DKIM · DMARC',
     icon: '📧',
   },
+  {
+    slug: 'what-is-inside-a-torrent-file-info-hash-guide',
+    kicker: 'DEVELOPER GUIDE',
+    lines: ['What\'s inside a', '.torrent file? The', 'info-hash explained'],
+    fact: 'bencode dict · info-hash = SHA-1(info) · magnet:?xt=btih:',
+    icon: '🧲',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

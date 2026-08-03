@@ -319,6 +319,7 @@
   "file/properties-to-json",
   "file/svg-optimizer",
   "file/toml-to-json",
+  "file/torrent-file-viewer",
   "file/vcf-to-csv",
   "file/xml-formatter",
   "file/xml-to-json",

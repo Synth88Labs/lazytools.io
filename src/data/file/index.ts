@@ -16,7 +16,7 @@ export interface FileToolDef {
   description: string;
   lead: string;
   /** custom widget instead of the generic text-convert UI */
-  widget?: 'einvoice' | 'ksef-viewer' | 'ksef-validator' | 'excel-to-csv' | 'excel-to-json' | 'csv-to-excel' | 'html-md' | 'file-to-base64' | 'base64-to-file' | 'gpx-stats' | 'zip-extract' | 'zip-create' | 'epub-meta';
+  widget?: 'einvoice' | 'ksef-viewer' | 'ksef-validator' | 'excel-to-csv' | 'excel-to-json' | 'csv-to-excel' | 'html-md' | 'file-to-base64' | 'base64-to-file' | 'gpx-stats' | 'zip-extract' | 'zip-create' | 'epub-meta' | 'torrent';
   computeId?: string;
   options?: FileToolOption[];
   /** sample input preloaded so the tool demonstrates itself */
@@ -958,6 +958,27 @@ export const FILE_TOOLS: FileToolDef[] = [
       { q: 'Is my e-book uploaded?', a: 'No — the EPUB is opened and parsed entirely in your browser with JSZip, so the book never leaves your device, and it works offline.' },
     ],
     keywords: ['epub metadata', 'epub metadata viewer', 'read epub metadata', 'epub info', 'view epub author', 'epub isbn', 'ebook metadata reader', 'opf metadata'],
+  },
+  {
+    slug: 'torrent-file-viewer',
+    name: 'Torrent File Viewer (Info-Hash)',
+    icon: '🧲',
+    description:
+      'Inspect a .torrent file to see its name, file list, size, trackers and info-hash — and build the magnet link. In your browser; nothing is uploaded and no download starts.',
+    lead: 'Drop a .torrent to read what\'s inside it — files, size, piece length, trackers — and compute its info-hash and magnet link, all locally.',
+    widget: 'torrent',
+    accept: '.torrent,application/x-bittorrent',
+    how: 'A .torrent file is a "bencoded" dictionary (BitTorrent\'s simple binary format) describing what a torrent contains — not the data itself. This tool decodes the bencode in your browser to read the torrent name, the full file list with sizes, the total size, the piece length and piece count, the tracker URLs, and metadata like the creation date and comment. It also computes the info-hash: the SHA-1 of the exact bencoded bytes of the torrent\'s "info" dictionary. That 40-character hash is what uniquely identifies a torrent across the network and forms the core of a magnet link, which the tool assembles for you. Nothing is downloaded — it only reads the metadata.',
+    note: 'This is handy for checking exactly what a .torrent will fetch before you open it in a client, confirming a file list, or getting a torrent\'s info-hash or magnet link. Reading a .torrent does not connect to any tracker or peer and starts no download — it just parses the file. Everything happens on your device, so the .torrent (which can reveal what you intend to download) is never uploaded. The tool reads classic v1 torrents; the newer BitTorrent v2 format uses a different structure.',
+    faqs: [
+      { q: 'What is a torrent info-hash?', a: 'The info-hash is the SHA-1 of the bencoded "info" dictionary inside a .torrent file — a 40-character hex fingerprint that uniquely identifies the torrent on the BitTorrent network. It\'s what trackers and peers use to match you with others sharing the same content, and it\'s the xt= value in a magnet link.' },
+      { q: 'Can I see what files a .torrent contains without downloading?', a: 'Yes — this tool decodes the .torrent\'s metadata and lists every file and its size without connecting to anything or starting a download. It only reads the description of the torrent, not the data.' },
+      { q: 'How do I get a magnet link from a .torrent file?', a: 'A magnet link is built from the info-hash (magnet:?xt=urn:btih:<hash>) plus the name and trackers. This tool computes the info-hash and assembles a ready-to-copy magnet link for you.' },
+      { q: 'Does opening a .torrent here start a download?', a: 'No. This tool only parses the .torrent file\'s metadata in your browser; it never contacts a tracker or peer and downloads nothing. To actually download the content you\'d open the file (or the magnet link) in a BitTorrent client.' },
+      { q: 'What does the "private" flag mean?', a: 'A private torrent sets a flag telling clients not to use DHT, PEX or other peer-discovery methods — peers come only from the torrent\'s tracker. It\'s common on private trackers. The tool shows whether the flag is set.' },
+      { q: 'Is my .torrent uploaded?', a: 'No — the file is decoded entirely in your browser and nothing is transmitted, so what you\'re inspecting stays on your device. It works offline too.' },
+    ],
+    keywords: ['torrent file viewer', 'torrent info hash', 'read torrent file', 'torrent to magnet', 'view torrent contents', 'bencode viewer', 'torrent metadata', 'what is in a torrent'],
   },
 ];
 
