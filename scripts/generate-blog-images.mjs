@@ -1287,6 +1287,13 @@ const POSTS = [
     fact: 'EPUB = ZIP + container.xml → OPF (Dublin Core metadata)',
     icon: '📖',
   },
+  {
+    slug: 'how-to-decode-protobuf-without-proto-guide',
+    kicker: 'DEVELOPER GUIDE',
+    lines: ['How to decode', 'protobuf without', 'the .proto schema'],
+    fact: 'tag = (field << 3) | wire type · varint · len · i32 · i64',
+    icon: '🧬',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

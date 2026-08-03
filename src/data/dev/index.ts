@@ -16,7 +16,7 @@ export interface DevToolDef {
   description: string;
   lead: string;
   /** 'transform' uses DevTransformTool; 'hash' uses HashTool; 'llm-tokens' uses LlmTokenCounterTool */
-  widget: 'transform' | 'hash' | 'llm-tokens' | 'eth-units' | 'keccak' | 'eip55' | 'har' | 'sqlformat' | 'jsondiff' | 'hmac' | 'jwtenc' | 'utm' | 'barcodeval' | 'imeival' | 'snowflake' | 'checksum';
+  widget: 'transform' | 'hash' | 'llm-tokens' | 'eth-units' | 'keccak' | 'eip55' | 'har' | 'sqlformat' | 'jsondiff' | 'hmac' | 'jwtenc' | 'utm' | 'barcodeval' | 'imeival' | 'snowflake' | 'checksum' | 'protobuf';
   computeId?: string;
   options?: DevToolOption[];
   sample?: string;
@@ -1118,6 +1118,26 @@ export const DEV_TOOLS: DevToolDef[] = [
       { q: 'Is my file uploaded to compute the checksum?', a: 'No — the file is read and checksummed entirely in your browser, so nothing leaves your device and it works offline.' },
     ],
     keywords: ['crc32 calculator', 'crc-32 checksum', 'adler-32 calculator', 'checksum calculator', 'file crc32 online', 'crc32 hash', 'compute crc32 of text'],
+  },
+  {
+    slug: 'protobuf-decoder',
+    name: 'Protobuf Decoder (decode_raw)',
+    icon: '🧬',
+    description:
+      'Decode a Protocol Buffers message from hex or base64 without a .proto schema — see every field number, wire type and value, like protoc --decode_raw. In your browser.',
+    lead: 'Paste protobuf bytes (hex or base64) to decode the message into its fields — numbers, wire types and values, with nested messages expanded.',
+    widget: 'protobuf',
+    how: 'Protocol Buffers encode each field as a varint "tag" that packs the field number and a wire type, followed by the value. Because that structure is self-describing, you can decode a message without its .proto schema — exactly what protoc --decode_raw does. This tool reads the bytes (hex or base64), walks the fields, and for each shows the field number, the wire type (varint, 64-bit, 32-bit or length-delimited) and the plausible readings of the value: a varint as unsigned, zigzag-signed and boolean; fixed 32/64-bit as integer, float/double and hex; and a length-delimited field as a nested message when its bytes parse cleanly, otherwise as a UTF-8 string or raw bytes. It uses BigInt so 64-bit values stay exact.',
+    note: 'What a schema-less decode cannot recover is the field names and the exact declared types — protobuf does not store them in the message, so field 1 is "1", not "userId", and a length-delimited field could be a string, bytes or a sub-message. The tool makes the standard best-guess (nested message first, then string) just like decode_raw; treat the readings as candidates, not certainties. This is genuinely useful for inspecting an API response, a gRPC payload or a COSE/WebAuthn structure when you don\'t have the .proto handy. Everything is decoded in your browser, so the payload — which may be sensitive — is never uploaded.',
+    faqs: [
+      { q: 'Can I decode protobuf without the .proto file?', a: 'Yes — that\'s exactly what this does. The wire format encodes each field\'s number and type, so the structure and values decode without a schema. You just won\'t get the human-readable field names or the exact declared types, which aren\'t stored in the message.' },
+      { q: 'What is protoc --decode_raw?', a: 'A protobuf command that dumps an unknown message\'s fields by number and wire type without a schema. This tool is a browser equivalent: paste the bytes as hex or base64 and get the same field-by-field breakdown, with nested messages expanded.' },
+      { q: 'Why is a field shown as a number instead of a name?', a: 'Because protobuf messages carry only field numbers on the wire, not names — names live in the .proto schema, which isn\'t transmitted. Without that schema, field 1 can only be shown as "1". Match the numbers to your .proto to recover the meaning.' },
+      { q: 'How do I know if a value is a string or a nested message?', a: 'Length-delimited fields (wire type 2) can be strings, raw bytes or embedded messages, and the wire format doesn\'t distinguish them. The tool tries to parse the bytes as a nested message first (as decode_raw does) and falls back to a UTF-8 string or hex — so the reading is a best guess.' },
+      { q: 'Can I paste base64 as well as hex?', a: 'Yes — paste the message as spaced or unspaced hex (with or without 0x), or as standard/URL-safe base64. The tool detects the format and decodes it the same way.' },
+      { q: 'Is my payload uploaded?', a: 'No — decoding runs entirely in your browser with no network calls, so an API or gRPC payload never leaves your device. It works offline too.' },
+    ],
+    keywords: ['protobuf decoder', 'protobuf decode online', 'decode_raw', 'protobuf wire format', 'decode protobuf without proto', 'protobuf hex decoder', 'grpc payload decoder'],
   },
 ];
 

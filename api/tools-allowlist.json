@@ -254,6 +254,7 @@
   "dev/keccak-256-generator",
   "dev/llm-token-counter",
   "dev/number-base-converter",
+  "dev/protobuf-decoder",
   "dev/punycode-converter",
   "dev/query-string-parser",
   "dev/regex-tester",
