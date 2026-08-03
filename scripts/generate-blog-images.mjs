@@ -1294,6 +1294,13 @@ const POSTS = [
     fact: 'tag = (field << 3) | wire type · varint · len · i32 · i64',
     icon: '🧬',
   },
+  {
+    slug: 'what-is-cbor-binary-json-explained-guide',
+    kicker: 'DEVELOPER GUIDE',
+    lines: ['What is CBOR?', 'Binary JSON for', 'passkeys & IoT'],
+    fact: 'RFC 8949 · 1 byte = major type + info · h\'..\' · tags · floats',
+    icon: '📦',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

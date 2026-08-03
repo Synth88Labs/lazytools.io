@@ -16,7 +16,7 @@ export interface DevToolDef {
   description: string;
   lead: string;
   /** 'transform' uses DevTransformTool; 'hash' uses HashTool; 'llm-tokens' uses LlmTokenCounterTool */
-  widget: 'transform' | 'hash' | 'llm-tokens' | 'eth-units' | 'keccak' | 'eip55' | 'har' | 'sqlformat' | 'jsondiff' | 'hmac' | 'jwtenc' | 'utm' | 'barcodeval' | 'imeival' | 'snowflake' | 'checksum' | 'protobuf';
+  widget: 'transform' | 'hash' | 'llm-tokens' | 'eth-units' | 'keccak' | 'eip55' | 'har' | 'sqlformat' | 'jsondiff' | 'hmac' | 'jwtenc' | 'utm' | 'barcodeval' | 'imeival' | 'snowflake' | 'checksum' | 'protobuf' | 'cbor';
   computeId?: string;
   options?: DevToolOption[];
   sample?: string;
@@ -1138,6 +1138,26 @@ export const DEV_TOOLS: DevToolDef[] = [
       { q: 'Is my payload uploaded?', a: 'No — decoding runs entirely in your browser with no network calls, so an API or gRPC payload never leaves your device. It works offline too.' },
     ],
     keywords: ['protobuf decoder', 'protobuf decode online', 'decode_raw', 'protobuf wire format', 'decode protobuf without proto', 'protobuf hex decoder', 'grpc payload decoder'],
+  },
+  {
+    slug: 'cbor-decoder',
+    name: 'CBOR Decoder & Diagnostic Viewer',
+    icon: '📦',
+    description:
+      'Decode a CBOR (RFC 8949) message from hex or base64 into readable diagnostic notation and a typed structure tree — the format behind passkeys/WebAuthn. In your browser.',
+    lead: 'Paste CBOR bytes (hex or base64) to see the decoded value as diagnostic notation and a typed tree — integers, strings, arrays, maps, tags and floats.',
+    widget: 'cbor',
+    how: 'CBOR (Concise Binary Object Representation, RFC 8949) is a compact binary data format — think of it as binary JSON with a few extra types. Every item starts with one byte that encodes a major type (unsigned int, negative int, byte string, text string, array, map, tag, or float/simple value) and a length or value. This tool reads the bytes (hex or base64) and decodes the whole structure into the RFC\'s diagnostic notation — a JSON-like text where byte strings are written h\'…\', tags as N(value) and floats with a decimal point — alongside a typed tree you can scan. It handles definite and indefinite lengths, tags, simple values (true/false/null), and half, single and double-precision floats, using BigInt so 64-bit integers stay exact.',
+    note: 'CBOR is everywhere in modern security and IoT: it is the encoding inside WebAuthn/passkey attestation and COSE-signed objects, and it is used by many constrained-device and IoT protocols. Decoding a message is the quick way to see what a passkey response or a signed token actually contains. This is a decoder, not a validator — it shows the structure faithfully but does not check signatures or a schema — and everything runs in your browser, so a potentially sensitive payload is never uploaded.',
+    faqs: [
+      { q: 'What is CBOR?', a: 'CBOR (Concise Binary Object Representation) is a compact binary serialization format defined in RFC 8949 — essentially a binary, more efficient cousin of JSON that also supports byte strings, tags and exact integers. It is widely used where small size and fast parsing matter, such as WebAuthn/passkeys and IoT.' },
+      { q: 'What is CBOR diagnostic notation?', a: 'A human-readable text form of a CBOR value defined by the RFC: it looks like JSON but writes byte strings as h\'0102\', tags as N(content), and floats with a decimal point (1.0, 1.5). This tool outputs it so you can read a binary CBOR message at a glance.' },
+      { q: 'Can I decode a WebAuthn or passkey response with this?', a: 'Yes — WebAuthn attestation objects and COSE keys are CBOR, so pasting the raw bytes (as hex or base64) decodes the structure into readable form. Note it shows the contents; it does not verify the attestation signature.' },
+      { q: 'Does it handle all CBOR types?', a: 'It decodes all the major types — unsigned and negative integers (exact to 64 bits via BigInt), byte and text strings, arrays, maps, tags, and simple/float values including half-precision — plus indefinite-length strings, arrays and maps.' },
+      { q: 'Is CBOR the same as MessagePack?', a: 'They\'re similar compact binary formats, but not the same — different byte encodings and type sets. This tool decodes CBOR (RFC 8949); a MessagePack blob won\'t decode correctly here.' },
+      { q: 'Is my data uploaded?', a: 'No — the message is decoded entirely in your browser and nothing is transmitted, so sensitive payloads stay on your device. It works offline too.' },
+    ],
+    keywords: ['cbor decoder', 'cbor decode online', 'cbor diagnostic notation', 'rfc 8949', 'decode cbor hex', 'webauthn cbor decoder', 'cose decoder', 'cbor viewer'],
   },
 ];
 

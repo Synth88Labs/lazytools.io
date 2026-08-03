@@ -22,6 +22,7 @@ import ImeiValidatorTool from '../../components/dev/ImeiValidatorTool.tsx';
 import SnowflakeDecoderTool from '../../components/dev/SnowflakeDecoderTool.tsx';
 import ChecksumTool from '../../components/dev/ChecksumTool.tsx';
 import ProtobufDecoderTool from '../../components/dev/ProtobufDecoderTool.tsx';
+import CborDecoderTool from '../../components/dev/CborDecoderTool.tsx';
 import { DEV_TOOLS, type DevToolDef } from '../../data/dev/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -84,6 +85,7 @@ const schema = [
       {tool.widget === 'snowflake' && <SnowflakeDecoderTool client:load />}
       {tool.widget === 'checksum' && <ChecksumTool client:load />}
       {tool.widget === 'protobuf' && <ProtobufDecoderTool client:load />}
+      {tool.widget === 'cbor' && <CborDecoderTool client:load />}
       {tool.widget === 'transform' && (
         <DevTransformTool client:load computeId={tool.computeId!} options={tool.options} sample={tool.sample} />
       )}

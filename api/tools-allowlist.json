@@ -226,6 +226,7 @@
   "dev/base58-encode-decode",
   "dev/base62-encode-decode",
   "dev/base64-encode-decode",
+  "dev/cbor-decoder",
   "dev/crc32-checksum-calculator",
   "dev/csv-to-sql",
   "dev/curl-to-code",
