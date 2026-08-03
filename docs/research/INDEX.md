@@ -374,3 +374,24 @@ One line per item ever surfaced. Format: `- [status] name — date first seen, l
 - [watchlist] JWK↔PEM key converter — 2026-08-02, [L] — Web Crypto deterministic for public keys; risk = invites pasting private keys (security-honesty); public-key-only with hard warning or defer.
 - [watchlist] Multihash/IPFS CID inspector — 2026-08-02, [L] — decode CIDv0/v1 multibase/multicodec/multihash; niche, park with web3 cluster.
 </content>
+
+## Novel client-side tools wave-3 — scanned 2026-08-03. See 2026-08-03-novel-tools-wave3.md
+
+- [note] 2026-08-03 wave-3 — after 08-01/08-02 waves shipped (coords/barcode/IMEI/Snowflake/CRC/config/cert/font-WAV-MP3-EPUB metadata), targeted binary wire-format decoders w/ RFC test vectors, byte-exact number reps, privacy inspectors, and a geo cluster extending the shipped GPS converter. All client-side incumbents exist (baseline) → edge = exact working + honest scope + clusters. 12 dedup-verified candidates.
+- [opportunity] Protobuf wire-format decoder (no .proto) — 2026-08-03, 21/25 [B] — /dev/protobuf-decoder; hex/base64→(field#,wire-type,value) tree; verify vs protoc --decode_raw; scope: no field names w/o schema; privacy (API/COSE/WebAuthn payloads)
+- [opportunity] CBOR decoder / diagnostic-notation viewer — 2026-08-03, 21/25 [B] — /dev/cbor-decoder; RFC 8949 Appendix A = ready fixture table; DRIVER passkeys/WebAuthn+COSE adoption; fold MessagePack as tab
+- [opportunity] IEEE 754 floating-point converter — 2026-08-03, 21/25 [B] — /dev/ieee-754-converter; half/single/double bits+hex+sign/exp/mantissa+rounding error; DataView round-trip fixture; number-base-converter is integer-only
+- [opportunity] Email header analyzer (.eml/raw) — 2026-08-03, 20/25 [L] — /dev/email-header-analyzer; Received-hop timeline+delays, read existing Authentication-Results; PARSE-ONLY no live DNS SPF/DKIM/DMARC (server); DRIVER sender-auth enforcement; strong privacy
+- [opportunity] .torrent file inspector (bencode) — 2026-08-03, 19/25 [B] — /file/torrent-file-viewer; announce/file-tree/piece-length + info-hash=SHA-1(bencoded info); verify bencode round-trip; privacy
+- [opportunity] WKT<->GeoJSON (+WKB) converter — 2026-08-03, 19/25 [L] — /file/wkt-to-geojson (+geojson-to-wkt); OGC WKT<->RFC 7946; round-trip fixtures vs wellknown/@terraformer; extends geo/GPS vein
+- [opportunity] MP4/ISOBMFF box (atom) inspector — 2026-08-03, 19/25 [B] — /file/mp4-box-inspector; box tree type/size/offset + parsed fields; HN id=33754693 pain; binary+privacy
+- [opportunity] PNG chunk inspector — 2026-08-03, 19/25 [B] — /image/png-chunk-viewer; IHDR/tEXt/zTXt/iTXt/pHYs/gAMA + per-chunk CRC-32 verify (reuse shipped CRC engine); hidden-metadata privacy
+- [opportunity] FLAC metadata (Vorbis comment) editor — 2026-08-03, 19/25 [B] — /file/flac-tag-editor; rewrite Vorbis block, audio bytes bit-identical; COMPLETES audio-metadata trio (MP3/ID3+WAV/AIFF built)
+- [opportunity] Google encoded polyline codec — 2026-08-03, 18/25 [L] — /file/polyline-decoder(+encode); documented Google algo; verify vs @mapbox/polyline; geo cluster w/ WKT+GPS
+- [opportunity] Bitwise / two's-complement calculator — 2026-08-03, 17/25 [L] — /dev/bitwise-calculator; BigInt AND/OR/XOR/NOT/shifts/rotate + signed 8/16/32/64-bit; gap~2 (crowded), carries on demand+fit
+- [opportunity] JWK thumbprint calculator (RFC 7638) — 2026-08-03, 17/25 [L] — /dev/jwk-thumbprint; canonical-JSON->SHA-256->base64url; RFC 7638 3.1 worked example fixture; public-key-only, flag private members
+- [watchlist] MessagePack decoder — 2026-08-03, [B] — fold as tab on CBOR tool; standalone only w/ keyword proof
+- [watchlist] Quoted-printable encoder/decoder (RFC 2045) — 2026-08-03, [L] — cheap companion to email-header tool
+- [watchlist] Base45 (RFC 9285) — 2026-08-03, [L] — spec-exact but narrow (EU DCC/QR); park
+- [watchlist] BLAKE2b/BLAKE3 hash — 2026-08-03, [B] — reference vectors + growing adoption but needs wasm + crowded; extend hash-generator, not a page
+- [watchlist] TAR archive inspector — 2026-08-03, [B] — USTAR spec-clean, pairs w/ ZIP tools; thinner demand
