@@ -1273,6 +1273,13 @@ const POSTS = [
     fact: '44.1 kHz · 16-bit · RIFF chunks: fmt + data → duration',
     icon: '🎧',
   },
+  {
+    slug: 'id3-tags-explained-how-mp3-metadata-works-guide',
+    kicker: 'AUDIO GUIDE',
+    lines: ['ID3 tags explained:', 'how MP3 metadata', 'actually works'],
+    fact: 'ID3v2 at start · ID3v1 128 bytes at end · UTF-8/16 frames',
+    icon: '🎵',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

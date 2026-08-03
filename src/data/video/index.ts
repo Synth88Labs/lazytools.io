@@ -6,7 +6,7 @@ export interface AudioToolDef {
   icon: string;
   description: string;
   lead: string;
-  widget: 'trim' | 'speed' | 'volume' | 'wav' | 'frame' | 'merge' | 'srt-vtt' | 'vtt-srt' | 'shift' | 'audioinspect';
+  widget: 'trim' | 'speed' | 'volume' | 'wav' | 'frame' | 'merge' | 'srt-vtt' | 'vtt-srt' | 'shift' | 'audioinspect' | 'id3';
   how: string;
   note?: string;
   faqs: { q: string; a: string }[];
@@ -200,5 +200,25 @@ export const AUDIO_TOOLS: AudioToolDef[] = [
       { q: 'Is my audio uploaded?', a: 'No — only the header chunks are read, entirely in your browser, and nothing is transmitted. It works offline, and large files are read instantly because the samples are never loaded.' },
     ],
     keywords: ['wav inspector', 'aiff inspector', 'wav sample rate checker', 'check wav bit depth', 'audio file info', 'wav header reader', 'wav metadata', 'aiff sample rate'],
+  },
+  {
+    slug: 'mp3-tag-reader',
+    name: 'MP3 Tag Reader (ID3)',
+    icon: '🎵',
+    description:
+      'Read an MP3\'s ID3 tags — title, artist, album, year, genre, track — plus its bitrate, sample rate and duration. In your browser, never uploaded.',
+    lead: 'Drop an .mp3 to read its ID3 tags (title, artist, album, genre…) and audio details like bitrate, sample rate and length — all locally.',
+    widget: 'id3',
+    how: 'An MP3\'s metadata lives in ID3 tags. The tool reads the ID3v2 tag at the start of the file (versions 2.2, 2.3 and 2.4) — decoding each text frame in its declared character set, whether Latin-1, UTF-16 or UTF-8 — and falls back to the older 128-byte ID3v1 tag at the end of the file if there\'s no ID3v2. It resolves numeric genre codes (like "(17)") to their names, notes whether cover art is embedded, and then reads the first MPEG audio frame header to report the MPEG version, layer, bitrate, sample rate and channel mode. If the file has a Xing/Info VBR header it uses the frame count for an exact duration; otherwise it estimates from the constant bitrate.',
+    note: 'Useful for checking exactly how a track is tagged before importing it into a library, spotting missing or mojibake (wrongly-encoded) fields, or confirming a file\'s real bitrate and sample rate. It reads MP3 (MPEG-1/2 Layer III) tags and headers; it doesn\'t read tags in other formats like FLAC (Vorbis comments) or M4A/AAC (MP4 atoms), which store metadata differently. This is a reader, not an editor — it shows the tags without changing them — and everything is parsed on your device, so the file is never uploaded.',
+    faqs: [
+      { q: 'How do I see an MP3\'s title, artist and album?', a: 'Drop the .mp3 in and the tool reads its ID3 tags, listing the title, artist, album, year, genre, track number and any other text frames it finds. Copy them or just check they\'re correct before importing the file.' },
+      { q: 'What is the difference between ID3v1 and ID3v2?', a: 'ID3v1 is an old, fixed 128-byte block at the end of the file with room for only short title/artist/album/year/comment/genre fields. ID3v2 sits at the start, is extensible, supports long Unicode text and cover art, and is what modern software writes. This tool reads both, preferring ID3v2.' },
+      { q: 'Can it tell me an MP3\'s bitrate and sample rate?', a: 'Yes — it parses the first MPEG audio frame header to report the MPEG version, layer, bitrate, sample rate and channel mode, and computes the duration (using the Xing/Info VBR header when present for an exact figure).' },
+      { q: 'Why do some tags show garbled characters elsewhere but not here?', a: 'Because ID3 text can be stored in several character encodings (Latin-1, UTF-16, UTF-8) and some players guess wrong. This reader decodes each frame using the encoding byte the tag declares, so accented and non-Latin text shows correctly.' },
+      { q: 'Does it read FLAC, M4A or WAV tags?', a: 'No — those use different metadata systems (Vorbis comments, MP4 atoms, RIFF chunks). This tool is specifically for MP3/ID3. For WAV and AIFF, use the WAV/AIFF Inspector instead.' },
+      { q: 'Is my MP3 uploaded?', a: 'No — the tags and headers are parsed entirely in your browser and nothing is transmitted, so your music stays on your device. It works offline too.' },
+    ],
+    keywords: ['mp3 tag reader', 'id3 tag reader', 'read mp3 metadata', 'mp3 metadata viewer', 'id3v2 reader', 'mp3 bitrate checker', 'view mp3 tags', 'mp3 info'],
   },
 ];
