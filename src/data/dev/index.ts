@@ -571,6 +571,36 @@ export const DEV_TOOLS: DevToolDef[] = [
     keywords: ['ascii85 encode', 'ascii85 decode', 'base85 encoder', 'ascii85 converter', 'adobe ascii85', 'pdf ascii85', 'base85 online'],
   },
   {
+    slug: 'base58-encode-decode',
+    name: 'Base58 Encoder / Decoder',
+    icon: '🅱️',
+    description:
+      'Encode text or bytes to Base58 (the Bitcoin / IPFS alphabet) or decode it back — no 0, O, I or l, so it\'s safe to read and type. In your browser.',
+    lead: 'Base58 uses 58 characters with the look-alikes (0, O, I, l) removed — the encoding behind Bitcoin addresses and IPFS hashes. Encode or decode instantly.',
+    widget: 'transform',
+    computeId: 'base58',
+    options: [
+      {
+        id: 'mode', label: 'Mode', type: 'select', defaultValue: 'encode',
+        options: [
+          { value: 'encode', label: 'Encode (text → Base58)' },
+          { value: 'decode', label: 'Decode (Base58 → text)' },
+        ],
+      },
+    ],
+    sample: 'Hello World!',
+    how: 'Base58 encodes data using 58 characters — the digits and letters with the four easily-confused ones removed: no 0 (zero), O (capital o), I (capital i) or l (lowercase L). The tool treats the input\'s bytes as one big number and re-expresses it in base 58 (the same big-integer scheme as Base62), preserving leading zero bytes as leading "1" characters so the value round-trips exactly. This is the encoding behind Bitcoin addresses, IPFS content hashes and many other identifiers, chosen because the result is compact and can be read aloud or copied by hand with little risk of error.',
+    note: 'This is plain Base58 (encoding, not encryption) with the Bitcoin/IPFS alphabet — it is fully reversible and keeps no secret. Note it is not Base58Check: it does not add or verify the 4-byte checksum and version byte that a full Bitcoin address uses, so use it for raw Base58 data, not for validating an address. Everything runs in your browser and works offline.',
+    faqs: [
+      { q: 'What is Base58?', a: 'A binary-to-text encoding that uses 58 characters — the alphanumerics minus 0, O, I and l, which are easy to mistake for one another. It is the encoding used for Bitcoin addresses, IPFS hashes and similar identifiers, where a human might read or type the value.' },
+      { q: 'Why does Base58 leave out 0, O, I and l?', a: 'To prevent transcription mistakes. Zero and capital O look alike, as do capital I and lowercase l, so removing them makes a Base58 string far safer to copy by hand, read aloud or print than Base64 or hex.' },
+      { q: 'Is this Base58 or Base58Check?', a: 'This is plain Base58. Base58Check (used for full Bitcoin addresses) wraps the data with a version byte and a 4-byte double-SHA-256 checksum before encoding. This tool encodes and decodes the raw Base58 alphabet without that checksum layer.' },
+      { q: 'How is Base58 different from Base64?', a: 'Base64 uses 64 characters including +, / and = and is more compact, but those symbols are awkward in URLs and error-prone to type. Base58 drops the confusable and punctuation characters for safer human handling, at the cost of slightly longer output.' },
+      { q: 'Is my text uploaded?', a: 'No — encoding and decoding run entirely in your browser and nothing is transmitted. It works offline.' },
+    ],
+    keywords: ['base58 encode', 'base58 decode', 'base58 encoder', 'base58 converter', 'bitcoin base58', 'base58 online', 'base58 alphabet'],
+  },
+  {
     slug: 'base62-encode-decode',
     name: 'Base62 Encoder / Decoder',
     icon: '6️⃣',

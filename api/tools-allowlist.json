@@ -223,6 +223,7 @@
   "dev/ascii85-encode-decode",
   "dev/barcode-check-digit-validator",
   "dev/base32-encode-decode",
+  "dev/base58-encode-decode",
   "dev/base62-encode-decode",
   "dev/base64-encode-decode",
   "dev/crc32-checksum-calculator",

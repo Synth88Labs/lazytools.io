@@ -1,6 +1,6 @@
 /** Developer-tool transforms — all client-side, standard Web APIs only. */
 import { base32Encode, base32Decode, ibanValidate, isbnInfo, domainToAscii, domainToUnicode } from './dev-encoders.ts';
-import { ascii85Encode, ascii85Decode, base62Encode, base62Decode } from './base-x.ts';
+import { ascii85Encode, ascii85Decode, base62Encode, base62Decode, base58Encode, base58Decode } from './base-x.ts';
 import { parseIso8601Duration, secondsToIso8601, secondsToHms, secondsToHuman } from './iso-duration.ts';
 import { jsonToSchema } from './json-schema-gen.ts';
 import { jsonToGo, jsonToPython, jsonToRust, jsonToCsharp } from './json-codegen.ts';
@@ -100,6 +100,20 @@ export const DEV: Record<string, (input: string, opts: Opts) => DevResult> = {
       return { output, info: 'decoded as UTF-8 (Base62)' };
     } catch (e) {
       throw new Error(e instanceof Error ? e.message : 'Not valid Base62 — use only 0–9, A–Z and a–z.');
+    }
+  },
+
+  base58: (input, opts) => {
+    const mode = String(opts.mode ?? 'encode');
+    try {
+      if (mode === 'encode') {
+        const output = base58Encode(new TextEncoder().encode(input));
+        return { output, info: `${input.length} chars → ${output.length} Base58 chars (Bitcoin alphabet)` };
+      }
+      const output = new TextDecoder('utf-8', { fatal: false }).decode(base58Decode(input.trim()));
+      return { output, info: 'decoded as UTF-8 (Base58)' };
+    } catch (e) {
+      throw new Error(e instanceof Error ? e.message : 'Not valid Base58 — the alphabet excludes 0, O, I and l.');
     }
   },
 

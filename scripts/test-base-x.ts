@@ -1,4 +1,4 @@
-import { ascii85Encode, ascii85Decode, base62Encode, base62Decode } from '../src/lib/base-x.ts';
+import { ascii85Encode, ascii85Decode, base62Encode, base62Decode, base58Encode, base58Decode } from '../src/lib/base-x.ts';
 
 let pass = 0, fail = 0;
 function ok(name: string, cond: boolean) { if (cond) pass++; else { fail++; console.error('FAIL:', name); } }
@@ -51,6 +51,26 @@ for (let t = 0; t < 200; t++) {
 }
 let bthrew = false; try { base62Decode('abc$'); } catch { bthrew = true; }
 ok('b62 rejects bad char', bthrew);
+
+// ---- Base58 (Bitcoin alphabet) ----
+ok('b58 "Hello World!"', base58Encode(enc('Hello World!')) === '2NEpo7TZRRrLZSi2U');
+ok('b58 leading zeros → 1s', base58Encode(new Uint8Array([0, 0, 0, 4, 5])) === '111' + base58Encode(new Uint8Array([4, 5])));
+ok('b58 all zeros', base58Encode(new Uint8Array([0, 0, 0])) === '111');
+ok('b58 empty', base58Encode(new Uint8Array(0)) === '');
+ok('b58 excludes 0OIl', !/[0OIl]/.test(base58Encode(enc('The quick brown fox'))));
+for (const s of ['', 'a', 'bitcoin', 'Ünïcödé ✓', '\x00\x01\x02\xff']) {
+  ok(`b58 round-trip "${s}"`, dec(base58Decode(base58Encode(enc(s)))) === s);
+}
+// fuzz round-trips
+let seed58 = 987654321;
+for (let t = 0; t < 100; t++) {
+  const len = (seed58 % 32) + 1;
+  const arr = new Uint8Array(len);
+  for (let i = 0; i < len; i++) { seed58 = (seed58 * 1103515245 + 12345) & 0x7fffffff; arr[i] = seed58 & 0xff; }
+  ok(`b58 fuzz #${t}`, JSON.stringify([...base58Decode(base58Encode(arr))]) === JSON.stringify([...arr]));
+}
+let b58threw = false; try { base58Decode('0OIl'); } catch { b58threw = true; }
+ok('b58 rejects look-alikes', b58threw);
 
 console.log(`\n${pass} passed, ${fail} failed`);
 if (fail > 0) process.exit(1);
