@@ -1301,6 +1301,13 @@ const POSTS = [
     fact: 'RFC 8949 · 1 byte = major type + info · h\'..\' · tags · floats',
     icon: '📦',
   },
+  {
+    slug: 'why-01-plus-02-isnt-03-ieee-754-explained-guide',
+    kicker: 'DEVELOPER GUIDE',
+    lines: ['Why 0.1 + 0.2', 'isn\'t 0.3: IEEE', '754 floats explained'],
+    fact: 'float = sign · exponent (biased) · mantissa → nearest binary',
+    icon: '🔬',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

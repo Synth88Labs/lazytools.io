@@ -238,6 +238,7 @@
   "dev/html-entities-encode-decode",
   "dev/http-status-code-lookup",
   "dev/iban-validator",
+  "dev/ieee-754-converter",
   "dev/imei-luhn-validator",
   "dev/isbn-converter",
   "dev/iso-8601-duration-converter",

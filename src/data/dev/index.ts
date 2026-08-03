@@ -16,7 +16,7 @@ export interface DevToolDef {
   description: string;
   lead: string;
   /** 'transform' uses DevTransformTool; 'hash' uses HashTool; 'llm-tokens' uses LlmTokenCounterTool */
-  widget: 'transform' | 'hash' | 'llm-tokens' | 'eth-units' | 'keccak' | 'eip55' | 'har' | 'sqlformat' | 'jsondiff' | 'hmac' | 'jwtenc' | 'utm' | 'barcodeval' | 'imeival' | 'snowflake' | 'checksum' | 'protobuf' | 'cbor';
+  widget: 'transform' | 'hash' | 'llm-tokens' | 'eth-units' | 'keccak' | 'eip55' | 'har' | 'sqlformat' | 'jsondiff' | 'hmac' | 'jwtenc' | 'utm' | 'barcodeval' | 'imeival' | 'snowflake' | 'checksum' | 'protobuf' | 'cbor' | 'ieee754';
   computeId?: string;
   options?: DevToolOption[];
   sample?: string;
@@ -1158,6 +1158,26 @@ export const DEV_TOOLS: DevToolDef[] = [
       { q: 'Is my data uploaded?', a: 'No — the message is decoded entirely in your browser and nothing is transmitted, so sensitive payloads stay on your device. It works offline too.' },
     ],
     keywords: ['cbor decoder', 'cbor decode online', 'cbor diagnostic notation', 'rfc 8949', 'decode cbor hex', 'webauthn cbor decoder', 'cose decoder', 'cbor viewer'],
+  },
+  {
+    slug: 'ieee-754-converter',
+    name: 'IEEE 754 Floating-Point Converter',
+    icon: '🔬',
+    description:
+      'Convert a decimal number to its IEEE 754 half, single and double bit patterns — sign, exponent, mantissa, hex and the rounding error — or decode raw bits. In your browser.',
+    lead: 'See exactly how a number is stored as a float: the sign, exponent and mantissa bits for 16-, 32- and 64-bit IEEE 754, plus the rounding error.',
+    widget: 'ieee754',
+    how: 'IEEE 754 stores a floating-point number as three fields packed into a fixed number of bits: a sign bit, a biased exponent, and a mantissa (fraction). This tool takes a decimal number and shows all three standard sizes — binary16 (half), binary32 (single) and binary64 (double) — breaking out each field in binary and hex, the biased and unbiased exponent, the exact value that actually gets stored, and the rounding error versus what you typed. It works both ways: switch to decode mode and paste a raw bit pattern (hex or binary) to recover the value and its fields. Single and double precision are computed byte-exactly with a DataView, and half precision is checked against an exact round-trip so it is never off by a bit.',
+    note: 'This is the tool that finally explains why 0.1 + 0.2 isn\'t exactly 0.3: most decimal fractions can\'t be represented exactly in binary floating point, so they\'re rounded to the nearest representable value — and the "error" field shows that gap. It also makes subnormals, the exponent bias, and the special encodings for infinity and NaN concrete. Everything is computed in your browser with no rounding of its own beyond what the format itself does.',
+    faqs: [
+      { q: 'How is a number stored in IEEE 754?', a: 'As three bit-fields: a sign bit (0 positive, 1 negative), a biased exponent that scales the value by a power of two, and a mantissa (the fraction bits). For single precision that\'s 1 + 8 + 23 bits; for double it\'s 1 + 11 + 52. The tool shows each field for half, single and double.' },
+      { q: 'Why isn\'t 0.1 exactly 0.1 in floating point?', a: '0.1 has no exact binary representation — like 1/3 in decimal, it repeats forever in binary — so it\'s rounded to the nearest value the format can store. The stored value is very slightly off, which the tool shows as the rounding error. Accumulating those tiny errors is why 0.1 + 0.2 ≠ 0.3 exactly.' },
+      { q: 'What is the exponent bias?', a: 'The exponent field stores the real exponent plus a fixed bias so it can represent negative exponents without a sign: 127 for single, 1023 for double, 15 for half. The tool shows both the raw (biased) exponent and the actual unbiased value it represents.' },
+      { q: 'Can I decode a hex float back to a number?', a: 'Yes — switch to "Bits → number", pick the width (16/32/64), and paste the hex or binary bit pattern. The tool decodes it to the exact stored value and shows the sign, exponent and mantissa fields.' },
+      { q: 'What are subnormal numbers, infinity and NaN?', a: 'When the exponent field is all zeros the number is subnormal (very close to zero, with reduced precision); when it\'s all ones the value is infinity (mantissa zero) or NaN (mantissa non-zero). The tool labels each of these categories so you can see how they\'re encoded.' },
+      { q: 'Is anything uploaded?', a: 'No — all the conversion runs in your browser, with single and double computed byte-exactly. Nothing is transmitted and it works offline.' },
+    ],
+    keywords: ['ieee 754 converter', 'floating point converter', 'float to hex', 'ieee 754 calculator', 'float to binary', 'double precision converter', 'hex to float', '0.1 floating point'],
   },
 ];
 
