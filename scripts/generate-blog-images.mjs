@@ -1266,6 +1266,13 @@ const POSTS = [
     fact: 'sfnt tables: name · head · maxp · OS/2 (fsType embedding)',
     icon: '🔤',
   },
+  {
+    slug: 'wav-file-format-sample-rate-bit-depth-explained-guide',
+    kicker: 'AUDIO GUIDE',
+    lines: ['Sample rate & bit', 'depth explained (and', 'the WAV file format)'],
+    fact: '44.1 kHz · 16-bit · RIFF chunks: fmt + data → duration',
+    icon: '🎧',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

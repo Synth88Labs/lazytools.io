@@ -6,7 +6,7 @@ export interface AudioToolDef {
   icon: string;
   description: string;
   lead: string;
-  widget: 'trim' | 'speed' | 'volume' | 'wav' | 'frame' | 'merge' | 'srt-vtt' | 'vtt-srt' | 'shift';
+  widget: 'trim' | 'speed' | 'volume' | 'wav' | 'frame' | 'merge' | 'srt-vtt' | 'vtt-srt' | 'shift' | 'audioinspect';
   how: string;
   note?: string;
   faqs: { q: string; a: string }[];
@@ -181,5 +181,24 @@ export const AUDIO_TOOLS: AudioToolDef[] = [
       { q: 'Are my subtitles uploaded?', a: 'No — the shift is calculated in your browser and nothing is sent anywhere. It works offline.' },
     ],
     keywords: ['subtitle shifter', 'resync subtitles', 'shift srt timing', 'subtitle delay', 'fix out of sync subtitles', 'adjust subtitle timing', 'srt time shift'],
+  },
+  {
+    slug: 'wav-aiff-inspector',
+    name: 'WAV / AIFF Audio Inspector',
+    icon: '🎧',
+    description:
+      'Inspect a WAV or AIFF audio file to read its sample rate, bit depth, channels, codec and exact duration from the header — in your browser, never uploaded.',
+    lead: 'Drop a .wav or .aiff file to instantly read its sample rate, bit depth, channel count, codec and length — straight from the file header.',
+    widget: 'audioinspect',
+    how: 'WAV and AIFF are chunk-based container formats: a WAV is a RIFF file whose "fmt " chunk holds the audio format and whose "data" chunk holds the samples, while an AIFF wraps a "COMM" chunk with the same facts. This tool reads those header chunks — nothing else — to report the sample rate, bit depth, number of channels, the codec (PCM, IEEE float, A-law, and so on), the byte rate/bitrate, and the exact duration computed from the data size and format. It also lists any embedded INFO or NAME tags. Because it only parses the header, it is instant even on a large file and never touches the audio samples.',
+    note: 'This reads the technical specs baked into the file, which is exactly what you need when checking whether a recording is 44.1 kHz or 48 kHz, 16-bit or 24-bit, mono or stereo — before mastering, submitting to a service, or converting. It handles uncompressed WAV and AIFF/AIFF-C (including the 80-bit extended sample-rate field AIFF uses); it does not read compressed formats like MP3, FLAC or AAC, whose headers work differently. Everything is parsed on your device, so unreleased recordings never leave your machine.',
+    faqs: [
+      { q: 'How do I check a WAV file\'s sample rate and bit depth?', a: 'Drop the .wav file in and the tool reads its "fmt " chunk, showing the sample rate (e.g. 44100 Hz), bit depth (e.g. 16-bit), channel count and codec instantly — no playback or re-encoding needed.' },
+      { q: 'How is the duration calculated?', a: 'From the header, not by decoding audio. For WAV it divides the "data" chunk size by the block align and sample rate; for AIFF it divides the number of sample frames by the sample rate. That gives an exact length in seconds without reading the samples.' },
+      { q: 'Does it support AIFF as well as WAV?', a: 'Yes — it reads AIFF and AIFF-C, including the unusual 80-bit extended-precision floating-point field AIFF uses to store the sample rate, and it names the AIFF-C codec (NONE, sowt, fl32, and so on).' },
+      { q: 'Can it read MP3 or FLAC files?', a: 'No — this tool is for uncompressed PCM containers (WAV and AIFF). MP3, FLAC, AAC and similar formats use different header structures and frame-based layouts, so they aren\'t parsed here.' },
+      { q: 'Is my audio uploaded?', a: 'No — only the header chunks are read, entirely in your browser, and nothing is transmitted. It works offline, and large files are read instantly because the samples are never loaded.' },
+    ],
+    keywords: ['wav inspector', 'aiff inspector', 'wav sample rate checker', 'check wav bit depth', 'audio file info', 'wav header reader', 'wav metadata', 'aiff sample rate'],
   },
 ];

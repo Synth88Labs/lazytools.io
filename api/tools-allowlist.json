@@ -1035,6 +1035,7 @@
   "video/subtitle-shifter",
   "video/video-frame-extractor",
   "video/vtt-to-srt",
+  "video/wav-aiff-inspector",
   "weather/absolute-humidity-calculator",
   "weather/beaufort-scale-calculator",
   "weather/cloud-base-calculator",
