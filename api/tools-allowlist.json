@@ -317,6 +317,7 @@
   "file/ksef-viewer",
   "file/markdown-to-html",
   "file/peppol-bis-viewer",
+  "file/polyline-encoder-decoder",
   "file/properties-to-json",
   "file/svg-optimizer",
   "file/toml-to-json",

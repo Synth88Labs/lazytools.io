@@ -16,7 +16,7 @@ export interface FileToolDef {
   description: string;
   lead: string;
   /** custom widget instead of the generic text-convert UI */
-  widget?: 'einvoice' | 'ksef-viewer' | 'ksef-validator' | 'excel-to-csv' | 'excel-to-json' | 'csv-to-excel' | 'html-md' | 'file-to-base64' | 'base64-to-file' | 'gpx-stats' | 'zip-extract' | 'zip-create' | 'epub-meta' | 'torrent';
+  widget?: 'einvoice' | 'ksef-viewer' | 'ksef-validator' | 'excel-to-csv' | 'excel-to-json' | 'csv-to-excel' | 'html-md' | 'file-to-base64' | 'base64-to-file' | 'gpx-stats' | 'zip-extract' | 'zip-create' | 'epub-meta' | 'torrent' | 'polyline';
   computeId?: string;
   options?: FileToolOption[];
   /** sample input preloaded so the tool demonstrates itself */
@@ -979,6 +979,26 @@ export const FILE_TOOLS: FileToolDef[] = [
       { q: 'Is my .torrent uploaded?', a: 'No — the file is decoded entirely in your browser and nothing is transmitted, so what you\'re inspecting stays on your device. It works offline too.' },
     ],
     keywords: ['torrent file viewer', 'torrent info hash', 'read torrent file', 'torrent to magnet', 'view torrent contents', 'bencode viewer', 'torrent metadata', 'what is in a torrent'],
+  },
+  {
+    slug: 'polyline-encoder-decoder',
+    name: 'Google Polyline Encoder / Decoder',
+    icon: '📍',
+    description:
+      'Encode coordinates into a Google-encoded polyline, or decode one back to latitude/longitude points and GeoJSON. In your browser, never uploaded.',
+    lead: 'Decode a Google Maps polyline string into coordinates (and GeoJSON), or encode a list of lat/lng points into one — with precision 5 or 6.',
+    widget: 'polyline',
+    how: 'Google\'s Encoded Polyline Algorithm squeezes a list of latitude/longitude points into a short ASCII string — the compact form the Google Maps Directions API returns for a route. Each point is stored as the difference from the previous one, scaled by 10^precision (5 by default), zig-zag encoded to handle negatives, and split into base-32 chunks written as printable characters. This tool implements that algorithm exactly, both ways: paste an encoded string to decode it into coordinates and a GeoJSON LineString, or paste a list of "lat, lng" points to encode them. Choose precision 6 for the higher-precision variant some services (and OSRM/Valhalla) use.',
+    note: 'One thing to watch: a polyline stores coordinates in latitude, longitude order — the opposite of GeoJSON, which uses longitude, latitude. This tool keeps that straight, showing decoded points as lat/lng and emitting correctly-ordered GeoJSON. Precision must match how the string was created — decoding a precision-6 polyline as precision 5 puts the points in the wrong place — so if a route looks off by a factor of ten, switch the precision. Everything is computed on your device; no coordinates are uploaded.',
+    faqs: [
+      { q: 'What is a Google encoded polyline?', a: 'A compact ASCII string that represents a series of latitude/longitude points, defined by Google\'s Encoded Polyline Algorithm. It\'s what the Google Maps Directions API returns for a route\'s path, and it\'s widely supported by mapping libraries because it\'s much shorter than a list of raw coordinates.' },
+      { q: 'How do I decode a polyline to coordinates?', a: 'Paste the encoded string into the decoder and it outputs the list of latitude/longitude points, plus a GeoJSON LineString you can drop into a map. Make sure the precision matches how it was encoded (5 for Google\'s default).' },
+      { q: 'What is the difference between precision 5 and 6?', a: 'Precision is how many decimal places of latitude/longitude are preserved: precision 5 (Google\'s default) keeps about 1-metre resolution, precision 6 keeps about 10 cm and is used by some routing engines like OSRM and Valhalla. The two aren\'t interchangeable — decode with the same precision the string was encoded at.' },
+      { q: 'Why are my decoded points in the wrong place?', a: 'Usually a precision mismatch (try switching between 5 and 6), or a latitude/longitude order mix-up. Polylines are latitude-first; GeoJSON and many map APIs are longitude-first. This tool labels the order to avoid the confusion.' },
+      { q: 'Does it output GeoJSON?', a: 'Yes — decoding produces a GeoJSON LineString with the coordinates correctly reordered to longitude, latitude, ready to paste into Leaflet, Mapbox or any GeoJSON tool.' },
+      { q: 'Are my coordinates uploaded?', a: 'No — encoding and decoding run entirely in your browser and nothing is transmitted, so location data stays on your device. It works offline too.' },
+    ],
+    keywords: ['polyline decoder', 'google polyline encoder', 'encode polyline', 'decode polyline', 'polyline to coordinates', 'polyline to geojson', 'encoded polyline algorithm', 'google maps polyline'],
   },
   {
     slug: 'wkt-to-geojson',

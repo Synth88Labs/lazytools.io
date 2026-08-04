@@ -1336,6 +1336,13 @@ const POSTS = [
     fact: 'signature + chunks (length · type · data · CRC-32)',
     icon: '🧩',
   },
+  {
+    slug: 'google-encoded-polyline-algorithm-explained-guide',
+    kicker: 'MAPPING GUIDE',
+    lines: ['How Google\'s', 'encoded polyline', 'algorithm works'],
+    fact: 'delta · ×1e5 · zig-zag · base-32 chunks + 63 → ASCII',
+    icon: '📍',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
