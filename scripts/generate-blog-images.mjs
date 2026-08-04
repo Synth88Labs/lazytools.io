@@ -1329,6 +1329,13 @@ const POSTS = [
     fact: 'POINT (30 10) ⇄ {"type":"Point","coordinates":[30,10]} · X Y order',
     icon: '🗺️',
   },
+  {
+    slug: 'png-file-structure-chunks-crc-explained-guide',
+    kicker: 'DEVELOPER GUIDE',
+    lines: ['Inside a PNG file:', 'chunks, CRCs and', 'hidden metadata'],
+    fact: 'signature + chunks (length · type · data · CRC-32)',
+    icon: '🧩',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

@@ -6,7 +6,7 @@ export interface ImageToolDef {
   icon: string;
   description: string;
   lead: string;
-  widget: 'compress' | 'convert' | 'resize' | 'base64' | 'heic' | 'rotate' | 'circle' | 'split' | 'metadata' | 'annotate' | 'flip' | 'crop' | 'resizekb' | 'watermark' | 'favicon' | 'svgpng' | 'b64img' | 'combine' | 'dpi';
+  widget: 'compress' | 'convert' | 'resize' | 'base64' | 'heic' | 'rotate' | 'circle' | 'split' | 'metadata' | 'annotate' | 'flip' | 'crop' | 'resizekb' | 'watermark' | 'favicon' | 'svgpng' | 'b64img' | 'combine' | 'dpi' | 'pngchunks';
   how: string;
   note?: string;
   faqs: { q: string; a: string }[];
@@ -371,5 +371,25 @@ export const IMAGE_TOOLS: ImageToolDef[] = [
       { q: 'Is my image uploaded?', a: 'No — the DPI is changed entirely in your browser by editing the file’s bytes, so the image never leaves your device.' },
     ],
     keywords: ['change image dpi', 'convert to 300 dpi', '300 dpi converter', 'set image dpi', 'change dpi of image', 'jpeg dpi changer', 'png dpi', 'increase dpi'],
+  },
+  {
+    slug: 'png-chunk-viewer',
+    name: 'PNG Chunk Viewer & CRC Checker',
+    icon: '🧩',
+    description:
+      'Inspect a PNG\'s internal chunks — dimensions, color type, text metadata and DPI — and verify each chunk\'s CRC-32 to catch corruption. In your browser, never uploaded.',
+    lead: 'Drop a PNG to see its chunk structure (IHDR, pHYs, tEXt and more), read its hidden text metadata, and check every chunk\'s CRC for corruption.',
+    widget: 'pngchunks',
+    how: 'A PNG file is a signature followed by a sequence of "chunks", each with a length, a four-letter type, its data, and a CRC-32 checksum. This tool walks that structure and decodes the ones that matter: IHDR (width, height, bit depth and color type), pHYs (physical resolution / DPI), tEXt and iTXt (embedded text metadata like Software, Author or a comment), gAMA, sRGB, tIME, the palette, and the image-data chunks. Critically, it recomputes each chunk\'s CRC-32 from its bytes and compares it to the checksum stored in the file, flagging any mismatch — which is exactly how a PNG decoder detects corruption.',
+    note: 'This is useful for debugging a PNG that won\'t open, checking what metadata (and which software) is embedded in an image, confirming a file\'s true dimensions and color type, or spotting a corrupted or tampered chunk via a failing CRC. It reads uncompressed chunk metadata; the compressed pixel data (IDAT) and compressed text (zTXt) aren\'t decompressed, just measured. Everything is parsed in your browser, so the image — and any metadata it carries — never leaves your device.',
+    faqs: [
+      { q: 'What are PNG chunks?', a: 'A PNG is built from chunks: each has a length, a four-letter type (like IHDR, IDAT, tEXt), its data, and a CRC-32. Chunks with an uppercase first letter are "critical" (needed to display the image); lowercase ones are "ancillary" (optional metadata). This tool lists them all and decodes the common ones.' },
+      { q: 'How does the CRC check detect corruption?', a: 'Every PNG chunk stores a CRC-32 computed over its type and data. This tool recomputes that CRC from the bytes and compares it to the stored value. A mismatch means the chunk\'s bytes were altered or corrupted — the same check a PNG decoder uses to reject a broken file.' },
+      { q: 'Can I see what metadata is hidden in a PNG?', a: 'Yes — tEXt and iTXt chunks hold text metadata such as the software that created the image, an author, a description or a comment. The tool decodes the uncompressed ones and shows the keyword and value, so you can see what a PNG is carrying.' },
+      { q: 'What do bit depth and color type mean?', a: 'They come from the IHDR chunk. Bit depth is bits per channel (often 8); color type says whether the image is grayscale, truecolor (RGB), indexed (palette), or has an alpha channel (RGBA). Together they define how the pixels are stored.' },
+      { q: 'Does it change the PNG?', a: 'No — this is a read-only inspector. It parses and verifies the file without modifying it, and to change a PNG\'s DPI specifically, use the dedicated Change Image DPI tool.' },
+      { q: 'Is my image uploaded?', a: 'No — the PNG is parsed entirely in your browser and nothing is transmitted, so the image and its metadata stay on your device. It works offline too.' },
+    ],
+    keywords: ['png chunk viewer', 'png chunk inspector', 'png crc checker', 'png metadata viewer', 'read png chunks', 'png ihdr', 'inspect png file', 'png corruption check'],
   },
 ];

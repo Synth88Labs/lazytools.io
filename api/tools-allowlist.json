@@ -454,6 +454,7 @@
   "image/image-metadata-viewer",
   "image/image-resizer",
   "image/image-to-base64",
+  "image/png-chunk-viewer",
   "image/resize-image-to-kb",
   "image/rotate-image",
   "image/split-image",

@@ -18,6 +18,7 @@ import SvgToPngTool from '../../components/image/SvgToPngTool.tsx';
 import Base64ToImageTool from '../../components/image/Base64ToImageTool.tsx';
 import CombineImagesTool from '../../components/image/CombineImagesTool.tsx';
 import ImageDpiTool from '../../components/image/ImageDpiTool.tsx';
+import PngChunkTool from '../../components/image/PngChunkTool.tsx';
 import { IMAGE_TOOLS, type ImageToolDef } from '../../data/image/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -64,7 +65,7 @@ const schema = [
     </p>
 
     <div class="mt-6">
-      {tool.widget === 'heic' ? <HeicTool client:load /> : tool.widget === 'split' ? <SplitImageTool client:load /> : tool.widget === 'metadata' ? <ImageMetadataTool client:load /> : tool.widget === 'annotate' ? <AnnotateImageTool client:load /> : tool.widget === 'crop' ? <CropImageTool client:load /> : tool.widget === 'resizekb' ? <ResizeToKbTool client:load /> : tool.widget === 'watermark' ? <WatermarkImageTool client:load /> : tool.widget === 'favicon' ? <FaviconGeneratorTool client:load /> : tool.widget === 'svgpng' ? <SvgToPngTool client:load /> : tool.widget === 'b64img' ? <Base64ToImageTool client:load /> : tool.widget === 'combine' ? <CombineImagesTool client:load /> : tool.widget === 'dpi' ? <ImageDpiTool client:load /> : <ImageTool client:load mode={tool.widget} />}
+      {tool.widget === 'heic' ? <HeicTool client:load /> : tool.widget === 'split' ? <SplitImageTool client:load /> : tool.widget === 'metadata' ? <ImageMetadataTool client:load /> : tool.widget === 'annotate' ? <AnnotateImageTool client:load /> : tool.widget === 'crop' ? <CropImageTool client:load /> : tool.widget === 'resizekb' ? <ResizeToKbTool client:load /> : tool.widget === 'watermark' ? <WatermarkImageTool client:load /> : tool.widget === 'favicon' ? <FaviconGeneratorTool client:load /> : tool.widget === 'svgpng' ? <SvgToPngTool client:load /> : tool.widget === 'b64img' ? <Base64ToImageTool client:load /> : tool.widget === 'combine' ? <CombineImagesTool client:load /> : tool.widget === 'dpi' ? <ImageDpiTool client:load /> : tool.widget === 'pngchunks' ? <PngChunkTool client:load /> : <ImageTool client:load mode={tool.widget} />}
     </div>
 
     <div class="mt-4">
