@@ -1322,6 +1322,13 @@ const POSTS = [
     fact: 'bencode dict · info-hash = SHA-1(info) · magnet:?xt=btih:',
     icon: '🧲',
   },
+  {
+    slug: 'wkt-vs-geojson-geometry-formats-explained-guide',
+    kicker: 'MAPPING GUIDE',
+    lines: ['WKT vs GeoJSON:', 'two ways to write', 'a geometry'],
+    fact: 'POINT (30 10) ⇄ {"type":"Point","coordinates":[30,10]} · X Y order',
+    icon: '🗺️',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

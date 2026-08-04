@@ -13,6 +13,7 @@ import {
   parseIni, stringifyIni, parseEnv, stringifyEnv,
   parseProperties, stringifyProperties, requireObject,
 } from './config-formats.ts';
+import { wktToGeoJSON, geoJSONToWkt } from './wkt.ts';
 
 /** Collapse only inter-tag whitespace (preserves text content). */
 function minifyXml(xml: string): string {
@@ -337,6 +338,24 @@ export const CONVERT: Record<string, (input: string, opts: Opts) => ConvertResul
     } catch (e) {
       throw new Error(`Can't represent this as TOML: ${e instanceof Error ? e.message : 'unsupported value'} (TOML has no null; every key needs a value).`);
     }
+  },
+
+  wktToGeojson: (input, opts) => {
+    const trimmed = input.trim();
+    if (!trimmed) return { output: '', info: 'Paste a WKT geometry, e.g. POINT (30 10).' };
+    let geo;
+    try { geo = wktToGeoJSON(trimmed); }
+    catch (e) { throw new Error(e instanceof Error ? e.message : 'Invalid WKT'); }
+    const indent = Boolean(opts.minify) ? 0 : 2;
+    return { output: JSON.stringify(geo, null, indent), info: `${geo.type} → GeoJSON (RFC 7946)` };
+  },
+
+  geojsonToWkt: (input) => {
+    let data: unknown;
+    try { data = JSON.parse(input); }
+    catch (e) { throw new Error(`Invalid JSON: ${e instanceof Error ? e.message : 'parse error'}`); }
+    try { return { output: geoJSONToWkt(data), info: 'GeoJSON geometry → OGC WKT' }; }
+    catch (e) { throw new Error(e instanceof Error ? e.message : 'Could not convert to WKT'); }
   },
 
   iniToJson: (input, opts) => {

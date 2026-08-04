@@ -980,6 +980,51 @@ export const FILE_TOOLS: FileToolDef[] = [
     ],
     keywords: ['torrent file viewer', 'torrent info hash', 'read torrent file', 'torrent to magnet', 'view torrent contents', 'bencode viewer', 'torrent metadata', 'what is in a torrent'],
   },
+  {
+    slug: 'wkt-to-geojson',
+    name: 'WKT to GeoJSON Converter',
+    icon: '🗺️',
+    description:
+      'Convert OGC Well-Known Text (WKT) geometry to GeoJSON (RFC 7946) — points, lines, polygons and their multi-variants. In your browser, never uploaded.',
+    lead: 'Paste a WKT geometry like POINT (30 10) or POLYGON ((…)) and get equivalent GeoJSON — parsed locally on your device.',
+    computeId: 'wktToGeojson',
+    options: [{ id: 'minify', label: 'Minify (no indentation)', type: 'checkbox' }],
+    sample: 'POLYGON ((30 10, 40 40, 20 40, 10 20, 30 10))',
+    accept: '.wkt,.txt,text/plain',
+    downloadName: 'geometry.geojson',
+    how: 'WKT (Well-Known Text) is the OGC\'s human-readable way to write a geometry — POINT, LINESTRING, POLYGON, their MULTI* forms and GEOMETRYCOLLECTION — and GeoJSON (RFC 7946) is the JSON form used across web mapping (Leaflet, Mapbox, OpenLayers, PostGIS exports). This converter parses the WKT and emits the matching GeoJSON geometry object, preserving coordinate order — both formats write X Y, i.e. longitude then latitude, so no axis flipping is needed. It handles polygon holes (inner rings), the two MULTIPOINT spellings, EMPTY geometries, and optional Z (elevation) values.',
+    note: 'Use this to drop a geometry from a database or a spatial query straight into a web map or a GeoJSON tool. It converts a single geometry (or a GEOMETRYCOLLECTION); it does not attach feature properties, since WKT carries geometry only — wrap the result in a GeoJSON Feature yourself if you need attributes. Everything is parsed in your browser, so location data — which can be sensitive — never leaves your device.',
+    faqs: [
+      { q: 'How do I convert WKT to GeoJSON?', a: 'Paste the WKT geometry (or load a .wkt file) and the tool outputs the equivalent GeoJSON geometry object you can copy or download. POINT becomes a Point, POLYGON becomes a Polygon with its rings, and so on.' },
+      { q: 'Does it keep longitude/latitude order correct?', a: 'Yes — both WKT and GeoJSON use X Y order (longitude then latitude), so coordinates map across directly with no swapping. This is unlike some GPS formats, which use latitude first.' },
+      { q: 'Are polygon holes and multi-geometries supported?', a: 'Yes. Polygon inner rings (holes) are preserved as additional coordinate rings, and MultiPoint, MultiLineString, MultiPolygon and GeometryCollection all convert to their GeoJSON equivalents.' },
+      { q: 'What about feature properties?', a: 'WKT stores geometry only — no attributes — so the output is a GeoJSON geometry, not a Feature. If you need properties, wrap the geometry in a Feature object with your own properties.' },
+      { q: 'Is my geometry uploaded?', a: 'No — parsing runs entirely in your browser, so coordinates stay on your device and it works offline.' },
+    ],
+    keywords: ['wkt to geojson', 'convert wkt to geojson', 'well known text to geojson', 'wkt geojson converter', 'ogc wkt to geojson', 'wkt parser'],
+  },
+  {
+    slug: 'geojson-to-wkt',
+    name: 'GeoJSON to WKT Converter',
+    icon: '🧭',
+    description:
+      'Convert GeoJSON geometry to OGC Well-Known Text (WKT) — for PostGIS, spatial SQL and databases. Runs in your browser; nothing is uploaded.',
+    lead: 'Paste a GeoJSON geometry (or Feature) and get OGC WKT like POLYGON ((…)) — ready for PostGIS or a spatial query, converted locally.',
+    computeId: 'geojsonToWkt',
+    sample: '{\n  "type": "Polygon",\n  "coordinates": [[[30, 10], [40, 40], [20, 40], [10, 20], [30, 10]]]\n}',
+    accept: '.geojson,.json,application/geo+json,application/json',
+    downloadName: 'geometry.wkt',
+    how: 'The tool parses your GeoJSON and serialises the geometry as OGC Well-Known Text — the format spatial databases and SQL functions (PostGIS ST_GeomFromText, spatial indexes, many GIS tools) expect. It accepts a bare geometry, a Feature (it uses the Feature\'s geometry), or a FeatureCollection (emitted as a GEOMETRYCOLLECTION), and it preserves X Y (longitude latitude) order and polygon holes. Point, LineString, Polygon and their Multi* variants are all supported.',
+    note: 'This is the inverse of the WKT-to-GeoJSON tool and is handy when you have GeoJSON from a web map but need to insert it into a spatial database or pass it to a WKT-based function. Note that WKT represents geometry only, so any Feature properties are dropped in the conversion — the geometry is what carries over. It runs entirely in your browser, keeping location data on your device.',
+    faqs: [
+      { q: 'How do I convert GeoJSON to WKT?', a: 'Paste a GeoJSON geometry, Feature or FeatureCollection (or load a .geojson file) and the tool outputs the equivalent WKT you can copy or download — for example a Polygon becomes POLYGON ((…)).' },
+      { q: 'Can I paste a Feature or FeatureCollection?', a: 'Yes — a Feature is converted using its geometry, and a FeatureCollection becomes a GEOMETRYCOLLECTION of the features\' geometries. A bare geometry object works too.' },
+      { q: 'Is this the format PostGIS uses?', a: 'Yes — WKT is what functions like ST_GeomFromText(\'POINT(30 10)\') expect, so this output drops straight into PostGIS and other spatial-SQL databases. Add the SRID separately if your column requires one.' },
+      { q: 'What happens to my Feature\'s properties?', a: 'They\'re dropped, because WKT encodes geometry only — there\'s nowhere to put attributes. Keep the properties separately (e.g. in the database row) alongside the WKT geometry.' },
+      { q: 'Is my GeoJSON uploaded?', a: 'No — the conversion runs locally in your browser and nothing is transmitted.' },
+    ],
+    keywords: ['geojson to wkt', 'convert geojson to wkt', 'geojson to well known text', 'geojson wkt converter', 'geojson to postgis', 'geojson to sql geometry'],
+  },
 ];
 
 export function getFileTool(slug: string): FileToolDef | undefined {
