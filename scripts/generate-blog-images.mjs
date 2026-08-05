@@ -1343,6 +1343,13 @@ const POSTS = [
     fact: 'delta · ×1e5 · zig-zag · base-32 chunks + 63 → ASCII',
     icon: '📍',
   },
+  {
+    slug: 'what-is-a-jwk-thumbprint-rfc-7638-guide',
+    kicker: 'SECURITY GUIDE',
+    lines: ['What is a JWK', 'thumbprint? Key IDs', 'the RFC 7638 way'],
+    fact: 'required members · sorted · no whitespace · SHA-256 · base64url',
+    icon: '🔑',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

@@ -252,6 +252,7 @@
   "dev/json-to-rust",
   "dev/json-to-sql",
   "dev/json-to-typescript",
+  "dev/jwk-thumbprint",
   "dev/jwt-decoder",
   "dev/jwt-encoder",
   "dev/keccak-256-generator",

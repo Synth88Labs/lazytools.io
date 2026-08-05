@@ -16,7 +16,7 @@ export interface DevToolDef {
   description: string;
   lead: string;
   /** 'transform' uses DevTransformTool; 'hash' uses HashTool; 'llm-tokens' uses LlmTokenCounterTool */
-  widget: 'transform' | 'hash' | 'llm-tokens' | 'eth-units' | 'keccak' | 'eip55' | 'har' | 'sqlformat' | 'jsondiff' | 'hmac' | 'jwtenc' | 'utm' | 'barcodeval' | 'imeival' | 'snowflake' | 'checksum' | 'protobuf' | 'cbor' | 'ieee754' | 'emailheaders';
+  widget: 'transform' | 'hash' | 'llm-tokens' | 'eth-units' | 'keccak' | 'eip55' | 'har' | 'sqlformat' | 'jsondiff' | 'hmac' | 'jwtenc' | 'utm' | 'barcodeval' | 'imeival' | 'snowflake' | 'checksum' | 'protobuf' | 'cbor' | 'ieee754' | 'emailheaders' | 'jwkthumb';
   computeId?: string;
   options?: DevToolOption[];
   sample?: string;
@@ -1198,6 +1198,26 @@ export const DEV_TOOLS: DevToolDef[] = [
       { q: 'Are my headers uploaded?', a: 'No — the analysis runs entirely in your browser and nothing is transmitted, so the addresses and internal hostnames in the headers stay on your device. It works offline too.' },
     ],
     keywords: ['email header analyzer', 'analyze email headers', 'email header trace', 'received header delay', 'spf dkim dmarc checker', 'trace email route', 'email header parser', 'message header analyzer'],
+  },
+  {
+    slug: 'jwk-thumbprint',
+    name: 'JWK Thumbprint Calculator (RFC 7638)',
+    icon: '🔑',
+    description:
+      'Compute the RFC 7638 thumbprint of a JSON Web Key — a stable SHA-256 identifier used as a kid — plus the RFC 9278 thumbprint URI. In your browser, never uploaded.',
+    lead: 'Paste a JWK to get its RFC 7638 thumbprint and thumbprint URI — the canonical, stable fingerprint of the key.',
+    widget: 'jwkthumb',
+    how: 'A JWK thumbprint (RFC 7638) is a reproducible fingerprint of a JSON Web Key. The algorithm is precise: take only the key\'s required members (for RSA that\'s e, kty, n; for EC crv, kty, x, y; for OKP crv, kty, x; for oct k, kty), put them in lexicographic order in a JSON object with no whitespace, hash the UTF-8 bytes with SHA-256, and base64url-encode the result. This tool does exactly that — showing the canonical JSON it hashed so you can see the input — and also builds the RFC 9278 "thumbprint URI" (urn:ietf:params:oauth:jwk-thumbprint:sha-256:…). Because only the required public members are hashed, the same thumbprint is produced whether you supply the public or the private JWK of a key pair, which is why it works as a stable key identifier.',
+    note: 'Thumbprints are commonly used as the key ID (kid) in JWKS endpoints, for OAuth/OIDC key matching, and in DPoP and other JOSE flows. A word on safety: the thumbprint uses public members only, so pasting a private JWK doesn\'t leak the private parts into the hash — but you still shouldn\'t paste a real private key into any tool you don\'t control. This one runs entirely in your browser and uploads nothing, and it flags when the JWK you pasted contains private-key members. SHA-256 is the standard; other hashes are offered for interoperability but only SHA-256 is universally expected.',
+    faqs: [
+      { q: 'What is a JWK thumbprint?', a: 'A stable, reproducible fingerprint of a JSON Web Key defined by RFC 7638. It hashes the key\'s required members (in a canonical order, as compact JSON) with SHA-256 and base64url-encodes the digest. Anyone computing it from the same key gets the same value, so it works as a key identifier.' },
+      { q: 'What is a JWK thumbprint used for?', a: 'Most often as the key ID (kid) in a JWKS (JSON Web Key Set), so a token\'s header can point at the exact key that signed it. It\'s also used in OAuth/OIDC key matching, DPoP proof-of-possession, and anywhere you need a canonical name for a key.' },
+      { q: 'Does the private key change the thumbprint?', a: 'No — RFC 7638 hashes only the required public members (e/n for RSA, crv/x/y for EC, and so on), never the private parts. So the public and private JWK of the same key pair produce the identical thumbprint, which is exactly what makes it a reliable identifier.' },
+      { q: 'What is the thumbprint URI (RFC 9278)?', a: 'RFC 9278 defines a URI form of the thumbprint: urn:ietf:params:oauth:jwk-thumbprint:sha-256:<thumbprint>. It\'s a standard way to reference a key by its thumbprint in protocols, and this tool generates it alongside the raw thumbprint.' },
+      { q: 'Which hash should I use?', a: 'SHA-256 — it\'s the default in RFC 7638 and what virtually all implementations expect. The tool offers SHA-384/512 (and SHA-1 for legacy interop) for completeness, but use SHA-256 unless a specific system requires otherwise.' },
+      { q: 'Is my key uploaded?', a: 'No — the thumbprint is computed entirely in your browser with the built-in Web Crypto API, so the JWK never leaves your device. Still, avoid pasting real private keys into any online tool as a matter of habit.' },
+    ],
+    keywords: ['jwk thumbprint', 'rfc 7638', 'jwk thumbprint calculator', 'jwk kid', 'compute jwk thumbprint', 'json web key thumbprint', 'jwk fingerprint', 'jwk thumbprint uri'],
   },
 ];
 
