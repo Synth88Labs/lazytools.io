@@ -1350,6 +1350,13 @@ const POSTS = [
     fact: 'required members · sorted · no whitespace · SHA-256 · base64url',
     icon: '🔑',
   },
+  {
+    slug: 'flac-vs-mp3-wav-audio-metadata-explained-guide',
+    kicker: 'AUDIO GUIDE',
+    lines: ['FLAC, MP3 & WAV:', 'three formats, three', 'ways to store tags'],
+    fact: 'FLAC = Vorbis comments · MP3 = ID3 · WAV = RIFF chunks',
+    icon: '🎼',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

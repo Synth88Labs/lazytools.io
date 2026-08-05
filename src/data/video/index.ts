@@ -6,7 +6,7 @@ export interface AudioToolDef {
   icon: string;
   description: string;
   lead: string;
-  widget: 'trim' | 'speed' | 'volume' | 'wav' | 'frame' | 'merge' | 'srt-vtt' | 'vtt-srt' | 'shift' | 'audioinspect' | 'id3';
+  widget: 'trim' | 'speed' | 'volume' | 'wav' | 'frame' | 'merge' | 'srt-vtt' | 'vtt-srt' | 'shift' | 'audioinspect' | 'id3' | 'flac';
   how: string;
   note?: string;
   faqs: { q: string; a: string }[];
@@ -220,5 +220,25 @@ export const AUDIO_TOOLS: AudioToolDef[] = [
       { q: 'Is my MP3 uploaded?', a: 'No — the tags and headers are parsed entirely in your browser and nothing is transmitted, so your music stays on your device. It works offline too.' },
     ],
     keywords: ['mp3 tag reader', 'id3 tag reader', 'read mp3 metadata', 'mp3 metadata viewer', 'id3v2 reader', 'mp3 bitrate checker', 'view mp3 tags', 'mp3 info'],
+  },
+  {
+    slug: 'flac-metadata-viewer',
+    name: 'FLAC Metadata Viewer',
+    icon: '🎼',
+    description:
+      'Inspect a FLAC file to read its sample rate, bit depth, channels and exact duration, plus its Vorbis comment tags (title, artist, album). In your browser, never uploaded.',
+    lead: 'Drop a .flac file to read its audio specs (sample rate, bit depth, duration) and its Vorbis comment tags — title, artist, album and more.',
+    widget: 'flac',
+    how: 'A FLAC file starts with a "fLaC" marker followed by a series of metadata blocks, and this tool reads the two that matter. The STREAMINFO block packs the sample rate, channel count, bit depth and total sample count into a few bytes — from which the exact duration is computed — plus an MD5 of the decoded audio. The VORBIS_COMMENT block holds the tags as KEY=value pairs (TITLE, ARTIST, ALBUM, DATE, TRACKNUMBER and any others) along with the encoder\'s vendor string. It also notes whether cover art (a PICTURE block) is embedded. Because it reads only the metadata blocks and never decodes the compressed audio, it\'s instant even on a large lossless file.',
+    note: 'This is handy for checking a FLAC\'s real resolution — whether it\'s genuine 24-bit/96 kHz "hi-res" or just CD-quality 16-bit/44.1 kHz — and for confirming its tags before importing into a library. FLAC uses Vorbis comments for tags, which are different from MP3\'s ID3 and WAV\'s RIFF chunks, so it needs its own reader (for those, use the MP3 Tag Reader and the WAV/AIFF Inspector). It reads tags; it doesn\'t change them. Everything is parsed on your device, so your music stays private.',
+    faqs: [
+      { q: 'How do I check a FLAC\'s sample rate and bit depth?', a: 'Drop the .flac file in and the tool reads its STREAMINFO block, showing the sample rate (e.g. 44100 Hz), bit depth (e.g. 16- or 24-bit), channel count and exact duration instantly — no decoding needed.' },
+      { q: 'Is my FLAC really hi-res?', a: 'The bit depth and sample rate from STREAMINFO tell you. True "hi-res" is typically 24-bit and 88.2 kHz or higher; a file that\'s 16-bit/44.1 kHz is CD quality regardless of how it was labelled. This tool shows the actual stored values so you can tell.' },
+      { q: 'What are Vorbis comments?', a: 'They\'re FLAC\'s tagging system — simple KEY=value text pairs like TITLE=…, ARTIST=…, ALBUM=…, DATE=…. Unlike MP3\'s fixed ID3 frames, Vorbis comment keys are free-form, so a FLAC can carry any tag a tagger writes. The tool lists them all.' },
+      { q: 'What is the audio MD5 in a FLAC?', a: 'STREAMINFO stores an MD5 checksum of the raw decoded audio. FLAC decoders use it to verify that decoding reproduced the original samples exactly, which is how FLAC guarantees it\'s lossless. The tool displays it for reference.' },
+      { q: 'Does it read MP3 or WAV tags too?', a: 'No — this is specifically for FLAC, which uses Vorbis comments. MP3 uses ID3 tags and WAV/AIFF use RIFF chunks, which are different formats; use the dedicated MP3 Tag Reader or WAV/AIFF Inspector for those.' },
+      { q: 'Is my file uploaded?', a: 'No — only the metadata blocks are read, entirely in your browser, and nothing is transmitted. It works offline, and large files are read instantly because the audio is never decoded.' },
+    ],
+    keywords: ['flac metadata viewer', 'flac tag reader', 'read flac metadata', 'flac sample rate checker', 'flac bit depth', 'vorbis comment reader', 'flac info', 'is my flac hi-res'],
   },
 ];
