@@ -1,11 +1,11 @@
-# LazyTools — free, privacy-first browser tools (https://lazytools.io)
+# LazyTools - free, privacy-first browser tools (https://lazytools.io)
 # All crawlers welcome. Search engines and AI answer engines are explicitly
 # invited to crawl, index, and cite our pages.
 
 User-agent: *
 Allow: /
 
-# ── Search engines ────────────────────────────────────────────────
+# --- Search engines ---
 User-agent: Googlebot
 Allow: /
 
@@ -18,7 +18,7 @@ Allow: /
 User-agent: Applebot
 Allow: /
 
-# ── AI assistants & answer engines ────────────────────────────────
+# --- AI assistants & answer engines ---
 User-agent: GPTBot
 Allow: /
 
