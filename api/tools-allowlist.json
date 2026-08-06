@@ -317,6 +317,7 @@
   "file/ksef-validator",
   "file/ksef-viewer",
   "file/markdown-to-html",
+  "file/mp4-box-viewer",
   "file/peppol-bis-viewer",
   "file/polyline-encoder-decoder",
   "file/properties-to-json",

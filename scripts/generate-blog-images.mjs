@@ -1357,6 +1357,13 @@ const POSTS = [
     fact: 'FLAC = Vorbis comments · MP3 = ID3 · WAV = RIFF chunks',
     icon: '🎼',
   },
+  {
+    slug: 'what-is-inside-an-mp4-file-boxes-atoms-guide',
+    kicker: 'VIDEO GUIDE',
+    lines: ['Inside an MP4 file:', 'boxes, atoms and', 'the moov problem'],
+    fact: 'ftyp · moov (metadata) · mdat (media) · box = size + type',
+    icon: '🎬',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

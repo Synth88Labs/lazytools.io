@@ -16,7 +16,7 @@ export interface FileToolDef {
   description: string;
   lead: string;
   /** custom widget instead of the generic text-convert UI */
-  widget?: 'einvoice' | 'ksef-viewer' | 'ksef-validator' | 'excel-to-csv' | 'excel-to-json' | 'csv-to-excel' | 'html-md' | 'file-to-base64' | 'base64-to-file' | 'gpx-stats' | 'zip-extract' | 'zip-create' | 'epub-meta' | 'torrent' | 'polyline';
+  widget?: 'einvoice' | 'ksef-viewer' | 'ksef-validator' | 'excel-to-csv' | 'excel-to-json' | 'csv-to-excel' | 'html-md' | 'file-to-base64' | 'base64-to-file' | 'gpx-stats' | 'zip-extract' | 'zip-create' | 'epub-meta' | 'torrent' | 'polyline' | 'mp4box';
   computeId?: string;
   options?: FileToolOption[];
   /** sample input preloaded so the tool demonstrates itself */
@@ -999,6 +999,27 @@ export const FILE_TOOLS: FileToolDef[] = [
       { q: 'Are my coordinates uploaded?', a: 'No — encoding and decoding run entirely in your browser and nothing is transmitted, so location data stays on your device. It works offline too.' },
     ],
     keywords: ['polyline decoder', 'google polyline encoder', 'encode polyline', 'decode polyline', 'polyline to coordinates', 'polyline to geojson', 'encoded polyline algorithm', 'google maps polyline'],
+  },
+  {
+    slug: 'mp4-box-viewer',
+    name: 'MP4 / MOV Box (Atom) Viewer',
+    icon: '🎬',
+    description:
+      'Inspect the box (atom) structure of an MP4, MOV, M4A or HEIF file — the ftyp/moov/trak tree with sizes, plus brand, duration and track types. In your browser, never uploaded.',
+    lead: 'Drop an MP4/MOV/M4A file to see its internal box (atom) tree, brand, duration and track types — the fast way to see why a video won\'t play.',
+    widget: 'mp4box',
+    accept: '.mp4,.m4a,.m4v,.mov,.heic,.heif',
+    how: 'MP4 and its relatives (MOV, M4A, M4V, HEIF) all use the ISO Base Media File Format, which stores everything in nested "boxes" (also called atoms). Each box has a size, a four-character type, and either data or more boxes. This tool walks that tree in your browser and shows every box with its type, size and byte offset — the ftyp brand box, the moov movie header and its trak/mdia/minf hierarchy, and so on — while decoding the useful headers: the major brand and compatible brands from ftyp, the duration and timescale from mvhd, and each track\'s handler type (video, audio, subtitle) from hdlr. Only the header region is read, not the media samples, so it\'s fast even on a large video.',
+    note: 'This is the go-to when a video won\'t play or an app rejects it: the box tree quickly reveals whether the moov (metadata) box is present and where it sits — a moov at the very end is why some MP4s won\'t start streaming until fully downloaded ("fast start" moves it to the front), and a missing or truncated moov usually means a broken recording. It also shows what tracks a file contains and its container brand. It parses the standard box structure of ISOBMFF files; it doesn\'t decode the audio or video. Everything is read on your device, so the file is never uploaded.',
+    faqs: [
+      { q: 'What are MP4 boxes or atoms?', a: 'They\'re the building blocks of an MP4/MOV file: nested containers each with a size and a four-letter type (ftyp, moov, trak, mdat…). "Box" is the MP4 term and "atom" the older QuickTime term for the same thing. The file is a tree of them, which this tool displays.' },
+      { q: 'Why won\'t my MP4 play, and can this help?', a: 'Often because the moov box (which holds the metadata a player needs) is missing, truncated, or at the end of the file. This viewer shows whether moov is present and where — a moov at the end means the file needs "fast start" optimization, and a missing moov usually means a broken or incomplete recording.' },
+      { q: 'What is the ftyp brand?', a: 'The ftyp box declares the file\'s "brand" — a code like isom, mp42 or qt   — plus compatible brands, telling players what specification the file follows. The tool decodes the major brand and the compatible list so you can see exactly what kind of MP4/MOV it is.' },
+      { q: 'Does it work on MOV, M4A and HEIF too?', a: 'Yes — QuickTime MOV, M4A audio, M4V video and HEIF/HEIC images all use the same ISO Base Media box structure, so the viewer reads them the same way and shows their box trees and track types.' },
+      { q: 'Does it decode the video?', a: 'No — it reads only the box structure and header fields, never the compressed audio or video. That\'s why it\'s instant even on large files and why it can\'t play or transcode anything; it\'s a structural inspector.' },
+      { q: 'Is my file uploaded?', a: 'No — only the file\'s header region is read, entirely in your browser, and nothing is transmitted. It works offline too.' },
+    ],
+    keywords: ['mp4 box viewer', 'mp4 atom inspector', 'isobmff viewer', 'mov atom viewer', 'mp4 structure', 'why won\'t my mp4 play', 'moov atom', 'mp4 metadata inspector'],
   },
   {
     slug: 'wkt-to-geojson',

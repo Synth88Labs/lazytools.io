@@ -18,6 +18,7 @@ import ZipCreatorTool from '../../components/file/ZipCreatorTool.tsx';
 import EpubMetaTool from '../../components/file/EpubMetaTool.tsx';
 import TorrentInspectorTool from '../../components/file/TorrentInspectorTool.tsx';
 import PolylineTool from '../../components/file/PolylineTool.tsx';
+import Mp4BoxTool from '../../components/file/Mp4BoxTool.tsx';
 import { FILE_TOOLS, type FileToolDef } from '../../data/file/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -88,6 +89,8 @@ const schema = [
         <TorrentInspectorTool client:load />
       ) : tool.widget === 'polyline' ? (
         <PolylineTool client:load />
+      ) : tool.widget === 'mp4box' ? (
+        <Mp4BoxTool client:load />
       ) : (
         <FileConvertTool
           client:load
