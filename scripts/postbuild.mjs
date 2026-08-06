@@ -7,7 +7,7 @@
  *    (The SQLite DB itself is created server-side and never touched by deploys.)
  * 4. Generate dist/llms.txt from the registry so it never drifts from the site.
  */
-import { copyFile, mkdir, writeFile } from 'node:fs/promises';
+import { copyFile, mkdir, writeFile, readFile, readdir } from 'node:fs/promises';
 import buildLlms from './generate-llms.mjs';
 import { allPairs as zonePairs } from '../src/data/time/zones.ts';
 import { QUANTITIES, allPairs } from '../src/data/units/index.ts';
@@ -52,8 +52,52 @@ import { PRINTING3D_TOOLS } from '../src/data/printing3d/index.ts';
 import { SOLAR_TOOLS } from '../src/data/solar/index.ts';
 import { BREWING_TOOLS } from '../src/data/brewing/index.ts';
 
-await copyFile(new URL('../dist/sitemap-index.xml', import.meta.url), new URL('../dist/sitemap.xml', import.meta.url));
-console.log('postbuild: dist/sitemap.xml created (copy of sitemap-index.xml)');
+// ── Sitemap: inject <lastmod> so search engines can prioritise recrawls ──
+// Blog posts get their real updated/published date from frontmatter; every
+// other page gets the build date (the static site is regenerated each deploy).
+const SITE = 'https://lazytools.io';
+const BUILD_DATE = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
+
+// Map every blog URL → its last-modified date (updatedDate ?? pubDate).
+const blogDates = new Map();
+try {
+  const blogDir = new URL('../src/content/blog/', import.meta.url);
+  for (const f of await readdir(blogDir)) {
+    if (!f.endsWith('.md')) continue;
+    const src = await readFile(new URL(f, blogDir), 'utf8');
+    const fm = src.slice(0, src.indexOf('\n---', 3));
+    const updated = fm.match(/^updatedDate:\s*["']?(\d{4}-\d{2}-\d{2})/m)?.[1];
+    const pub = fm.match(/^pubDate:\s*["']?(\d{4}-\d{2}-\d{2})/m)?.[1];
+    const date = updated || pub;
+    if (date) blogDates.set(`${SITE}/blog/${f.replace(/\.md$/, '')}/`, date);
+  }
+} catch (e) {
+  console.warn('postbuild: could not read blog dates for sitemap lastmod —', e.message);
+}
+
+const lastmodFor = (loc) => blogDates.get(loc) || BUILD_DATE;
+
+// Add <lastmod> to each <url> in every per-URL sitemap file (sitemap-0.xml …).
+const distDir = new URL('../dist/', import.meta.url);
+let stamped = 0;
+for (const f of await readdir(distDir)) {
+  if (!/^sitemap-\d+\.xml$/.test(f)) continue;
+  const path = new URL(f, distDir);
+  let xml = await readFile(path, 'utf8');
+  xml = xml.replace(/<url><loc>(.*?)<\/loc>/g, (_m, loc) => {
+    stamped++;
+    return `<url><loc>${loc}</loc><lastmod>${lastmodFor(loc)}</lastmod>`;
+  });
+  await writeFile(path, xml);
+}
+console.log(`postbuild: sitemap lastmod stamped on ${stamped} URLs (${blogDates.size} blog dates, build ${BUILD_DATE})`);
+
+// Give the sitemap index a lastmod too, then expose it as /sitemap.xml.
+let indexXml = await readFile(new URL('../dist/sitemap-index.xml', import.meta.url), 'utf8');
+indexXml = indexXml.replace(/(<loc>[^<]*<\/loc>)(?!<lastmod>)/g, `$1<lastmod>${BUILD_DATE}</lastmod>`);
+await writeFile(new URL('../dist/sitemap-index.xml', import.meta.url), indexXml);
+await writeFile(new URL('../dist/sitemap.xml', import.meta.url), indexXml);
+console.log('postbuild: dist/sitemap.xml created (sitemap index with lastmod)');
 
 const slugs = [
   ...allPairs().map((p) => `units/${p.slug}`),

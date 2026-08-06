@@ -1,10 +1,24 @@
-# LazyTools - free, privacy-first browser tools
-# All crawlers welcome. AI assistants and search engines are explicitly invited.
+# LazyTools — free, privacy-first browser tools (https://lazytools.io)
+# All crawlers welcome. Search engines and AI answer engines are explicitly
+# invited to crawl, index, and cite our pages.
 
 User-agent: *
 Allow: /
 
-# AI assistants & answer engines - explicitly welcome to crawl, cite, and train
+# ── Search engines ────────────────────────────────────────────────
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+# ── AI assistants & answer engines ────────────────────────────────
 User-agent: GPTBot
 Allow: /
 
@@ -20,10 +34,32 @@ Allow: /
 User-agent: Claude-User
 Allow: /
 
+User-agent: Claude-SearchBot
+Allow: /
+
 User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
 Allow: /
 
 User-agent: Google-Extended
 Allow: /
 
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+# Sitemap index (lists every canonical page, with last-modified dates)
 Sitemap: https://lazytools.io/sitemap.xml
