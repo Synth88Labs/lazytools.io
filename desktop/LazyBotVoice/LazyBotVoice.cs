@@ -43,7 +43,15 @@ class Kuroop
     static SpeechRecognitionEngine Rec;
     static Grammar CmdGrammar, DictGrammar;
 
-    static readonly string[] Wake = { "hey kuroop", "hi kuroop", "hello kuroop", "okay kuroop", "kuroop", "hey kurup", "hey karoop", "hey kuru", "hey group" };
+    // Many spellings so the offline recognizer can match the invented name "Kuroop".
+    static readonly string[] Wake = {
+        "hey kuroop", "hi kuroop", "hello kuroop", "okay kuroop", "ok kuroop", "yo kuroop",
+        "kuroop", "kuru", "kuroob", "karoop", "curoop", "koroop", "kaloop", "kuroopa", "kurup", "crew loop",
+        "hey kurup", "hey karoop", "hey kuru", "hey koroop", "hey curoop", "hey group", "hey crew", "hey kuroopa",
+        "wake up", "computer"
+    };
+    static readonly float WAKE_CONF = ReadWakeConf();
+    static float ReadWakeConf() { float v; string s = Environment.GetEnvironmentVariable("KUROOP_WAKE_CONF"); return (s != null && float.TryParse(s, out v)) ? v : 0.35f; }
     static readonly string[] Sleep = { "go to sleep", "goodbye", "never mind", "that's all", "stand by", "sleep now" };
 
     [DllImport("kernel32.dll")] static extern IntPtr GetConsoleWindow();
@@ -93,8 +101,10 @@ class Kuroop
             ApplyGrammarState();
             Rec.SetInputToDefaultAudioDevice();
             Rec.SpeechRecognized += OnSpeech;
+            Rec.SpeechRecognitionRejected += (s, e) => { if (!Active) Console.WriteLine("[mic] ...heard a sound but couldn't make out words (try speaking closer/clearer)."); };
+            Rec.AudioLevelUpdated += (s, e) => { }; // keeps the audio pipe active
             Rec.RecognizeAsync(RecognizeMode.Multiple);
-            Console.WriteLine("[mic] Listening for the wake word...\n");
+            Console.WriteLine("[mic] Listening for the wake word... (I'll print what I hear below)\n");
         }
         catch (Exception ex)
         {
@@ -135,7 +145,9 @@ class Kuroop
 
         if (!Active)
         {
-            if (Matches(t, Wake) && c >= 0.55f) { Console.WriteLine("\n[heard] " + raw); Activate(); }
+            Console.WriteLine("[mic] heard: \"" + raw + "\"  (confidence " + c.ToString("0.00") + ")");
+            if (Matches(t, Wake) && c >= WAKE_CONF) Activate();
+            else Console.WriteLine("      (say \"Hey Kuroop\" to wake me — or just type 'hey kuroop' below)");
             return;
         }
 
