@@ -1345,11 +1345,11 @@
   "runs": [
     {
       "date": "2026-08-22",
-      "tools": 10,
-      "avg": 87,
-      "issues": 33,
-      "opened": 6,
-      "resolved": 1,
+      "tools": 6,
+      "avg": 86,
+      "issues": 21,
+      "opened": 0,
+      "resolved": 0,
       "challenged": 0
     }
   ],
@@ -1371,14 +1371,14 @@
     "daily": [
       {
         "date": "2026-08-22",
-        "auditor": 5,
+        "auditor": 3.5,
         "fixer": 5
       }
     ],
     "weekly": [
       {
         "week": "2026-W34",
-        "auditor": 5,
+        "auditor": 3.5,
         "fixer": 5,
         "days": 1
       }
@@ -1403,11 +1403,11 @@
       "kpis": {
         "auditedTotal": 11,
         "catalogue": 1071,
-        "lastAvg": 87
+        "lastAvg": 86
       },
       "score": {
-        "daily": 5,
-        "weekly": 5
+        "daily": 3.5,
+        "weekly": 3.5
       }
     },
     "fixer": {
