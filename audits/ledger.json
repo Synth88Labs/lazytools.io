@@ -24,8 +24,8 @@
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-27",
       "sla": "on-track",
-      "assignedTo": "developer",
-      "coordination": "SYSTEMIC — TEMPLATE: missing og:image; one site-wide OG-image generator fixes all. Queued as a build task, not a per-tool edit."
+      "assignedTo": "fixer",
+      "coordination": "Manager → Fixer: default og:image added to the base layout — resolves on the next re-audit."
     },
     "file/geojson-to-wkt::No serious/critical axe violations": {
       "id": "file/geojson-to-wkt::No serious/critical axe violations",
@@ -51,8 +51,8 @@
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "owner",
-      "coordination": "SYSTEMIC — DESIGN: global colour-contrast; one design-token change fixes many pages. Needs a quick design decision."
+      "assignedTo": "fixer",
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
     },
     "file/geojson-to-wkt::No unexpected external requests": {
       "id": "file/geojson-to-wkt::No unexpected external requests",
@@ -78,8 +78,8 @@
       "eta": "~12h (2 days)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "owner",
-      "coordination": "SYSTEMIC — OWNER DECISION: third-party ad script (grow.me / Unified-ID) is your ad revenue (Mediavine Grow). One removal clears all of these, but it cuts income — a bot must not auto-decide. Keep for ads, or say the word to remove for full privacy."
+      "assignedTo": "fixer",
+      "coordination": "Manager → Fixer (HOLD): this is your own Mediavine \"Grow.me\" script in Base.astro (deliberate monetization/engagement). The Fixer removes it — one edit clears all of these — on your single OK. The Manager will not delete revenue infrastructure unprompted."
     },
     "file/gpx-analyzer::Title present (15–60 chars)": {
       "id": "file/gpx-analyzer::Title present (15–60 chars)",
@@ -132,8 +132,8 @@
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-27",
       "sla": "on-track",
-      "assignedTo": "developer",
-      "coordination": "SYSTEMIC — TEMPLATE: missing og:image; one site-wide OG-image generator fixes all. Queued as a build task, not a per-tool edit."
+      "assignedTo": "fixer",
+      "coordination": "Manager → Fixer: default og:image added to the base layout — resolves on the next re-audit."
     },
     "file/gpx-analyzer::No serious/critical axe violations": {
       "id": "file/gpx-analyzer::No serious/critical axe violations",
@@ -159,8 +159,8 @@
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "owner",
-      "coordination": "SYSTEMIC — DESIGN: global colour-contrast; one design-token change fixes many pages. Needs a quick design decision."
+      "assignedTo": "fixer",
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
     },
     "file/gpx-analyzer::No unexpected external requests": {
       "id": "file/gpx-analyzer::No unexpected external requests",
@@ -186,8 +186,8 @@
       "eta": "~12h (2 days)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "owner",
-      "coordination": "SYSTEMIC — OWNER DECISION: third-party ad script (grow.me / Unified-ID) is your ad revenue (Mediavine Grow). One removal clears all of these, but it cuts income — a bot must not auto-decide. Keep for ads, or say the word to remove for full privacy."
+      "assignedTo": "fixer",
+      "coordination": "Manager → Fixer (HOLD): this is your own Mediavine \"Grow.me\" script in Base.astro (deliberate monetization/engagement). The Fixer removes it — one edit clears all of these — on your single OK. The Manager will not delete revenue infrastructure unprompted."
     },
     "file/gpx-to-geojson::Meta description (70–160 chars)": {
       "id": "file/gpx-to-geojson::Meta description (70–160 chars)",
@@ -246,8 +246,8 @@
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-27",
       "sla": "on-track",
-      "assignedTo": "developer",
-      "coordination": "SYSTEMIC — TEMPLATE: missing og:image; one site-wide OG-image generator fixes all. Queued as a build task, not a per-tool edit."
+      "assignedTo": "fixer",
+      "coordination": "Manager → Fixer: default og:image added to the base layout — resolves on the next re-audit."
     },
     "file/gpx-to-geojson::No serious/critical axe violations": {
       "id": "file/gpx-to-geojson::No serious/critical axe violations",
@@ -273,8 +273,8 @@
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "owner",
-      "coordination": "SYSTEMIC — DESIGN: global colour-contrast; one design-token change fixes many pages. Needs a quick design decision."
+      "assignedTo": "fixer",
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
     },
     "file/gpx-to-geojson::No unexpected external requests": {
       "id": "file/gpx-to-geojson::No unexpected external requests",
@@ -300,8 +300,8 @@
       "eta": "~12h (2 days)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "owner",
-      "coordination": "SYSTEMIC — OWNER DECISION: third-party ad script (grow.me / Unified-ID) is your ad revenue (Mediavine Grow). One removal clears all of these, but it cuts income — a bot must not auto-decide. Keep for ads, or say the word to remove for full privacy."
+      "assignedTo": "fixer",
+      "coordination": "Manager → Fixer (HOLD): this is your own Mediavine \"Grow.me\" script in Base.astro (deliberate monetization/engagement). The Fixer removes it — one edit clears all of these — on your single OK. The Manager will not delete revenue infrastructure unprompted."
     },
     "file/html-to-markdown::Open Graph tags (title/desc/image)": {
       "id": "file/html-to-markdown::Open Graph tags (title/desc/image)",
@@ -327,8 +327,8 @@
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-27",
       "sla": "on-track",
-      "assignedTo": "developer",
-      "coordination": "SYSTEMIC — TEMPLATE: missing og:image; one site-wide OG-image generator fixes all. Queued as a build task, not a per-tool edit."
+      "assignedTo": "fixer",
+      "coordination": "Manager → Fixer: default og:image added to the base layout — resolves on the next re-audit."
     },
     "file/html-to-markdown::No serious/critical axe violations": {
       "id": "file/html-to-markdown::No serious/critical axe violations",
@@ -354,8 +354,8 @@
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "owner",
-      "coordination": "SYSTEMIC — DESIGN: global colour-contrast; one design-token change fixes many pages. Needs a quick design decision."
+      "assignedTo": "fixer",
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
     },
     "file/html-to-markdown::No unexpected external requests": {
       "id": "file/html-to-markdown::No unexpected external requests",
@@ -381,8 +381,8 @@
       "eta": "~12h (2 days)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "owner",
-      "coordination": "SYSTEMIC — OWNER DECISION: third-party ad script (grow.me / Unified-ID) is your ad revenue (Mediavine Grow). One removal clears all of these, but it cuts income — a bot must not auto-decide. Keep for ads, or say the word to remove for full privacy."
+      "assignedTo": "fixer",
+      "coordination": "Manager → Fixer (HOLD): this is your own Mediavine \"Grow.me\" script in Base.astro (deliberate monetization/engagement). The Fixer removes it — one edit clears all of these — on your single OK. The Manager will not delete revenue infrastructure unprompted."
     },
     "file/ini-to-json::Open Graph tags (title/desc/image)": {
       "id": "file/ini-to-json::Open Graph tags (title/desc/image)",
@@ -408,8 +408,8 @@
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-27",
       "sla": "on-track",
-      "assignedTo": "developer",
-      "coordination": "SYSTEMIC — TEMPLATE: missing og:image; one site-wide OG-image generator fixes all. Queued as a build task, not a per-tool edit."
+      "assignedTo": "fixer",
+      "coordination": "Manager → Fixer: default og:image added to the base layout — resolves on the next re-audit."
     },
     "file/ini-to-json::No serious/critical axe violations": {
       "id": "file/ini-to-json::No serious/critical axe violations",
@@ -435,8 +435,8 @@
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "owner",
-      "coordination": "SYSTEMIC — DESIGN: global colour-contrast; one design-token change fixes many pages. Needs a quick design decision."
+      "assignedTo": "fixer",
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
     },
     "file/ini-to-json::No unexpected external requests": {
       "id": "file/ini-to-json::No unexpected external requests",
@@ -462,8 +462,8 @@
       "eta": "~12h (2 days)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "owner",
-      "coordination": "SYSTEMIC — OWNER DECISION: third-party ad script (grow.me / Unified-ID) is your ad revenue (Mediavine Grow). One removal clears all of these, but it cuts income — a bot must not auto-decide. Keep for ads, or say the word to remove for full privacy."
+      "assignedTo": "fixer",
+      "coordination": "Manager → Fixer (HOLD): this is your own Mediavine \"Grow.me\" script in Base.astro (deliberate monetization/engagement). The Fixer removes it — one edit clears all of these — on your single OK. The Manager will not delete revenue infrastructure unprompted."
     },
     "3d-printing/e-steps-calculator::Open Graph tags (title/desc/image)": {
       "id": "3d-printing/e-steps-calculator::Open Graph tags (title/desc/image)",
@@ -489,8 +489,8 @@
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-27",
       "sla": "on-track",
-      "assignedTo": "developer",
-      "coordination": "SYSTEMIC — TEMPLATE: missing og:image; one site-wide OG-image generator fixes all. Queued as a build task, not a per-tool edit."
+      "assignedTo": "fixer",
+      "coordination": "Manager → Fixer: default og:image added to the base layout — resolves on the next re-audit."
     },
     "3d-printing/e-steps-calculator::No serious/critical axe violations": {
       "id": "3d-printing/e-steps-calculator::No serious/critical axe violations",
@@ -516,8 +516,8 @@
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "owner",
-      "coordination": "SYSTEMIC — DESIGN: global colour-contrast; one design-token change fixes many pages. Needs a quick design decision."
+      "assignedTo": "fixer",
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
     },
     "3d-printing/e-steps-calculator::No unexpected external requests": {
       "id": "3d-printing/e-steps-calculator::No unexpected external requests",
@@ -543,8 +543,8 @@
       "eta": "~12h (2 days)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "owner",
-      "coordination": "SYSTEMIC — OWNER DECISION: third-party ad script (grow.me / Unified-ID) is your ad revenue (Mediavine Grow). One removal clears all of these, but it cuts income — a bot must not auto-decide. Keep for ads, or say the word to remove for full privacy."
+      "assignedTo": "fixer",
+      "coordination": "Manager → Fixer (HOLD): this is your own Mediavine \"Grow.me\" script in Base.astro (deliberate monetization/engagement). The Fixer removes it — one edit clears all of these — on your single OK. The Manager will not delete revenue infrastructure unprompted."
     },
     "3d-printing/filament-calculator::Title present (15–60 chars)": {
       "id": "3d-printing/filament-calculator::Title present (15–60 chars)",
@@ -635,8 +635,8 @@
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-27",
       "sla": "on-track",
-      "assignedTo": "developer",
-      "coordination": "SYSTEMIC — TEMPLATE: missing og:image; one site-wide OG-image generator fixes all. Queued as a build task, not a per-tool edit."
+      "assignedTo": "fixer",
+      "coordination": "Manager → Fixer: default og:image added to the base layout — resolves on the next re-audit."
     },
     "3d-printing/filament-calculator::No serious/critical axe violations": {
       "id": "3d-printing/filament-calculator::No serious/critical axe violations",
@@ -662,8 +662,8 @@
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "owner",
-      "coordination": "SYSTEMIC — DESIGN: global colour-contrast; one design-token change fixes many pages. Needs a quick design decision."
+      "assignedTo": "fixer",
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
     },
     "3d-printing/filament-calculator::No unexpected external requests": {
       "id": "3d-printing/filament-calculator::No unexpected external requests",
@@ -689,8 +689,8 @@
       "eta": "~12h (2 days)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "owner",
-      "coordination": "SYSTEMIC — OWNER DECISION: third-party ad script (grow.me / Unified-ID) is your ad revenue (Mediavine Grow). One removal clears all of these, but it cuts income — a bot must not auto-decide. Keep for ads, or say the word to remove for full privacy."
+      "assignedTo": "fixer",
+      "coordination": "Manager → Fixer (HOLD): this is your own Mediavine \"Grow.me\" script in Base.astro (deliberate monetization/engagement). The Fixer removes it — one edit clears all of these — on your single OK. The Manager will not delete revenue infrastructure unprompted."
     },
     "3d-printing/filament-cost-calculator::Open Graph tags (title/desc/image)": {
       "id": "3d-printing/filament-cost-calculator::Open Graph tags (title/desc/image)",
@@ -716,8 +716,8 @@
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-27",
       "sla": "on-track",
-      "assignedTo": "developer",
-      "coordination": "SYSTEMIC — TEMPLATE: missing og:image; one site-wide OG-image generator fixes all. Queued as a build task, not a per-tool edit."
+      "assignedTo": "fixer",
+      "coordination": "Manager → Fixer: default og:image added to the base layout — resolves on the next re-audit."
     },
     "3d-printing/filament-cost-calculator::No serious/critical axe violations": {
       "id": "3d-printing/filament-cost-calculator::No serious/critical axe violations",
@@ -743,8 +743,8 @@
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "owner",
-      "coordination": "SYSTEMIC — DESIGN: global colour-contrast; one design-token change fixes many pages. Needs a quick design decision."
+      "assignedTo": "fixer",
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
     },
     "3d-printing/filament-cost-calculator::No unexpected external requests": {
       "id": "3d-printing/filament-cost-calculator::No unexpected external requests",
@@ -770,8 +770,8 @@
       "eta": "~12h (2 days)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "owner",
-      "coordination": "SYSTEMIC — OWNER DECISION: third-party ad script (grow.me / Unified-ID) is your ad revenue (Mediavine Grow). One removal clears all of these, but it cuts income — a bot must not auto-decide. Keep for ads, or say the word to remove for full privacy."
+      "assignedTo": "fixer",
+      "coordination": "Manager → Fixer (HOLD): this is your own Mediavine \"Grow.me\" script in Base.astro (deliberate monetization/engagement). The Fixer removes it — one edit clears all of these — on your single OK. The Manager will not delete revenue infrastructure unprompted."
     },
     "3d-printing/flow-rate-calculator::Title present (15–60 chars)": {
       "id": "3d-printing/flow-rate-calculator::Title present (15–60 chars)",
@@ -829,8 +829,8 @@
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-27",
       "sla": "on-track",
-      "assignedTo": "developer",
-      "coordination": "SYSTEMIC — TEMPLATE: missing og:image; one site-wide OG-image generator fixes all. Queued as a build task, not a per-tool edit."
+      "assignedTo": "fixer",
+      "coordination": "Manager → Fixer: default og:image added to the base layout — resolves on the next re-audit."
     },
     "3d-printing/flow-rate-calculator::No serious/critical axe violations": {
       "id": "3d-printing/flow-rate-calculator::No serious/critical axe violations",
@@ -856,8 +856,8 @@
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "owner",
-      "coordination": "SYSTEMIC — DESIGN: global colour-contrast; one design-token change fixes many pages. Needs a quick design decision."
+      "assignedTo": "fixer",
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
     },
     "3d-printing/flow-rate-calculator::No unexpected external requests": {
       "id": "3d-printing/flow-rate-calculator::No unexpected external requests",
@@ -883,8 +883,8 @@
       "eta": "~12h (2 days)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "owner",
-      "coordination": "SYSTEMIC — OWNER DECISION: third-party ad script (grow.me / Unified-ID) is your ad revenue (Mediavine Grow). One removal clears all of these, but it cuts income — a bot must not auto-decide. Keep for ads, or say the word to remove for full privacy."
+      "assignedTo": "fixer",
+      "coordination": "Manager → Fixer (HOLD): this is your own Mediavine \"Grow.me\" script in Base.astro (deliberate monetization/engagement). The Fixer removes it — one edit clears all of these — on your single OK. The Manager will not delete revenue infrastructure unprompted."
     },
     "3d-printing/model-scale-calculator::Open Graph tags (title/desc/image)": {
       "id": "3d-printing/model-scale-calculator::Open Graph tags (title/desc/image)",
@@ -910,8 +910,8 @@
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-27",
       "sla": "on-track",
-      "assignedTo": "developer",
-      "coordination": "SYSTEMIC — TEMPLATE: missing og:image; one site-wide OG-image generator fixes all. Queued as a build task, not a per-tool edit."
+      "assignedTo": "fixer",
+      "coordination": "Manager → Fixer: default og:image added to the base layout — resolves on the next re-audit."
     },
     "3d-printing/model-scale-calculator::No serious/critical axe violations": {
       "id": "3d-printing/model-scale-calculator::No serious/critical axe violations",
@@ -937,8 +937,8 @@
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "owner",
-      "coordination": "SYSTEMIC — DESIGN: global colour-contrast; one design-token change fixes many pages. Needs a quick design decision."
+      "assignedTo": "fixer",
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
     },
     "3d-printing/model-scale-calculator::No unexpected external requests": {
       "id": "3d-printing/model-scale-calculator::No unexpected external requests",
@@ -964,8 +964,8 @@
       "eta": "~12h (2 days)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "owner",
-      "coordination": "SYSTEMIC — OWNER DECISION: third-party ad script (grow.me / Unified-ID) is your ad revenue (Mediavine Grow). One removal clears all of these, but it cuts income — a bot must not auto-decide. Keep for ads, or say the word to remove for full privacy."
+      "assignedTo": "fixer",
+      "coordination": "Manager → Fixer (HOLD): this is your own Mediavine \"Grow.me\" script in Base.astro (deliberate monetization/engagement). The Fixer removes it — one edit clears all of these — on your single OK. The Manager will not delete revenue infrastructure unprompted."
     },
     "3d-printing/print-energy-cost-calculator::Title present (15–60 chars)": {
       "id": "3d-printing/print-energy-cost-calculator::Title present (15–60 chars)",
@@ -1023,8 +1023,8 @@
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-27",
       "sla": "on-track",
-      "assignedTo": "developer",
-      "coordination": "SYSTEMIC — TEMPLATE: missing og:image; one site-wide OG-image generator fixes all. Queued as a build task, not a per-tool edit."
+      "assignedTo": "fixer",
+      "coordination": "Manager → Fixer: default og:image added to the base layout — resolves on the next re-audit."
     },
     "3d-printing/print-energy-cost-calculator::No serious/critical axe violations": {
       "id": "3d-printing/print-energy-cost-calculator::No serious/critical axe violations",
@@ -1050,8 +1050,8 @@
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "owner",
-      "coordination": "SYSTEMIC — DESIGN: global colour-contrast; one design-token change fixes many pages. Needs a quick design decision."
+      "assignedTo": "fixer",
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
     },
     "3d-printing/print-energy-cost-calculator::No unexpected external requests": {
       "id": "3d-printing/print-energy-cost-calculator::No unexpected external requests",
@@ -1077,8 +1077,8 @@
       "eta": "~12h (2 days)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "owner",
-      "coordination": "SYSTEMIC — OWNER DECISION: third-party ad script (grow.me / Unified-ID) is your ad revenue (Mediavine Grow). One removal clears all of these, but it cuts income — a bot must not auto-decide. Keep for ads, or say the word to remove for full privacy."
+      "assignedTo": "fixer",
+      "coordination": "Manager → Fixer (HOLD): this is your own Mediavine \"Grow.me\" script in Base.astro (deliberate monetization/engagement). The Fixer removes it — one edit clears all of these — on your single OK. The Manager will not delete revenue infrastructure unprompted."
     },
     "3d-printing/resin-cost-calculator::Open Graph tags (title/desc/image)": {
       "id": "3d-printing/resin-cost-calculator::Open Graph tags (title/desc/image)",
@@ -1104,8 +1104,8 @@
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-27",
       "sla": "on-track",
-      "assignedTo": "developer",
-      "coordination": "SYSTEMIC — TEMPLATE: missing og:image; one site-wide OG-image generator fixes all. Queued as a build task, not a per-tool edit."
+      "assignedTo": "fixer",
+      "coordination": "Manager → Fixer: default og:image added to the base layout — resolves on the next re-audit."
     },
     "3d-printing/resin-cost-calculator::No serious/critical axe violations": {
       "id": "3d-printing/resin-cost-calculator::No serious/critical axe violations",
@@ -1131,8 +1131,8 @@
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "owner",
-      "coordination": "SYSTEMIC — DESIGN: global colour-contrast; one design-token change fixes many pages. Needs a quick design decision."
+      "assignedTo": "fixer",
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
     },
     "3d-printing/resin-cost-calculator::No unexpected external requests": {
       "id": "3d-printing/resin-cost-calculator::No unexpected external requests",
@@ -1158,8 +1158,8 @@
       "eta": "~12h (2 days)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "owner",
-      "coordination": "SYSTEMIC — OWNER DECISION: third-party ad script (grow.me / Unified-ID) is your ad revenue (Mediavine Grow). One removal clears all of these, but it cuts income — a bot must not auto-decide. Keep for ads, or say the word to remove for full privacy."
+      "assignedTo": "fixer",
+      "coordination": "Manager → Fixer (HOLD): this is your own Mediavine \"Grow.me\" script in Base.astro (deliberate monetization/engagement). The Fixer removes it — one edit clears all of these — on your single OK. The Manager will not delete revenue infrastructure unprompted."
     },
     "3d-printing/volumetric-flow-calculator::Open Graph tags (title/desc/image)": {
       "id": "3d-printing/volumetric-flow-calculator::Open Graph tags (title/desc/image)",
@@ -1185,8 +1185,8 @@
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-27",
       "sla": "on-track",
-      "assignedTo": "developer",
-      "coordination": "SYSTEMIC — TEMPLATE: missing og:image; one site-wide OG-image generator fixes all. Queued as a build task, not a per-tool edit."
+      "assignedTo": "fixer",
+      "coordination": "Manager → Fixer: default og:image added to the base layout — resolves on the next re-audit."
     },
     "3d-printing/volumetric-flow-calculator::No serious/critical axe violations": {
       "id": "3d-printing/volumetric-flow-calculator::No serious/critical axe violations",
@@ -1212,8 +1212,8 @@
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "owner",
-      "coordination": "SYSTEMIC — DESIGN: global colour-contrast; one design-token change fixes many pages. Needs a quick design decision."
+      "assignedTo": "fixer",
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
     },
     "3d-printing/volumetric-flow-calculator::No unexpected external requests": {
       "id": "3d-printing/volumetric-flow-calculator::No unexpected external requests",
@@ -1239,8 +1239,8 @@
       "eta": "~12h (2 days)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "owner",
-      "coordination": "SYSTEMIC — OWNER DECISION: third-party ad script (grow.me / Unified-ID) is your ad revenue (Mediavine Grow). One removal clears all of these, but it cuts income — a bot must not auto-decide. Keep for ads, or say the word to remove for full privacy."
+      "assignedTo": "fixer",
+      "coordination": "Manager → Fixer (HOLD): this is your own Mediavine \"Grow.me\" script in Base.astro (deliberate monetization/engagement). The Fixer removes it — one edit clears all of these — on your single OK. The Manager will not delete revenue infrastructure unprompted."
     },
     "astronomy/age-on-other-planets::Open Graph tags (title/desc/image)": {
       "id": "astronomy/age-on-other-planets::Open Graph tags (title/desc/image)",
@@ -1266,8 +1266,8 @@
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-27",
       "sla": "on-track",
-      "assignedTo": "developer",
-      "coordination": "SYSTEMIC — TEMPLATE: missing og:image; one site-wide OG-image generator fixes all. Queued as a build task, not a per-tool edit."
+      "assignedTo": "fixer",
+      "coordination": "Manager → Fixer: default og:image added to the base layout — resolves on the next re-audit."
     },
     "astronomy/age-on-other-planets::No serious/critical axe violations": {
       "id": "astronomy/age-on-other-planets::No serious/critical axe violations",
@@ -1293,8 +1293,8 @@
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "owner",
-      "coordination": "SYSTEMIC — DESIGN: global colour-contrast; one design-token change fixes many pages. Needs a quick design decision."
+      "assignedTo": "fixer",
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
     },
     "astronomy/age-on-other-planets::No unexpected external requests": {
       "id": "astronomy/age-on-other-planets::No unexpected external requests",
@@ -1320,8 +1320,8 @@
       "eta": "~12h (2 days)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "owner",
-      "coordination": "SYSTEMIC — OWNER DECISION: third-party ad script (grow.me / Unified-ID) is your ad revenue (Mediavine Grow). One removal clears all of these, but it cuts income — a bot must not auto-decide. Keep for ads, or say the word to remove for full privacy."
+      "assignedTo": "fixer",
+      "coordination": "Manager → Fixer (HOLD): this is your own Mediavine \"Grow.me\" script in Base.astro (deliberate monetization/engagement). The Fixer removes it — one edit clears all of these — on your single OK. The Manager will not delete revenue infrastructure unprompted."
     },
     "astronomy/angular-size-calculator::Open Graph tags (title/desc/image)": {
       "id": "astronomy/angular-size-calculator::Open Graph tags (title/desc/image)",
@@ -1347,8 +1347,8 @@
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-27",
       "sla": "on-track",
-      "assignedTo": "developer",
-      "coordination": "SYSTEMIC — TEMPLATE: missing og:image; one site-wide OG-image generator fixes all. Queued as a build task, not a per-tool edit."
+      "assignedTo": "fixer",
+      "coordination": "Manager → Fixer: default og:image added to the base layout — resolves on the next re-audit."
     },
     "astronomy/angular-size-calculator::No serious/critical axe violations": {
       "id": "astronomy/angular-size-calculator::No serious/critical axe violations",
@@ -1374,8 +1374,8 @@
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "owner",
-      "coordination": "SYSTEMIC — DESIGN: global colour-contrast; one design-token change fixes many pages. Needs a quick design decision."
+      "assignedTo": "fixer",
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
     },
     "astronomy/angular-size-calculator::No unexpected external requests": {
       "id": "astronomy/angular-size-calculator::No unexpected external requests",
@@ -1401,8 +1401,8 @@
       "eta": "~12h (2 days)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "owner",
-      "coordination": "SYSTEMIC — OWNER DECISION: third-party ad script (grow.me / Unified-ID) is your ad revenue (Mediavine Grow). One removal clears all of these, but it cuts income — a bot must not auto-decide. Keep for ads, or say the word to remove for full privacy."
+      "assignedTo": "fixer",
+      "coordination": "Manager → Fixer (HOLD): this is your own Mediavine \"Grow.me\" script in Base.astro (deliberate monetization/engagement). The Fixer removes it — one edit clears all of these — on your single OK. The Manager will not delete revenue infrastructure unprompted."
     }
   },
   "updated": "2026-08-22",
@@ -1479,7 +1479,7 @@
     "fixer": {
       "role": "Senior dev — auto + LLM fixes, build-gated, 24/7",
       "status": "fixing",
-      "task": "Auto-fixing 1 title item(s), build-gated. 3 awaiting re-verify. 45 systemic → flagged to owner/dev.",
+      "task": "Auto-fixing 1 title item(s), build-gated. Driving 45 systemic fix(es) (og:image done, contrast queued); 15 tracker removals await your one-time OK. 3 awaiting re-verify.",
       "kpis": {
         "open": 46,
         "fixable": 1,

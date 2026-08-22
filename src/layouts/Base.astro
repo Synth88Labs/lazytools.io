@@ -17,7 +17,8 @@ interface Props {
 
 const { title, description, schema = [], noindex = false, image } = Astro.props;
 const canonical = new URL(Astro.url.pathname, SITE.url).href;
-const imageUrl = image ? new URL(image, SITE.url).href : undefined;
+// Every page gets a social image: the page's own, or the branded default.
+const imageUrl = new URL(image || '/og-default.png', SITE.url).href;
 const allSchema = [organizationSchema(), websiteSchema(), ...schema];
 ---
 

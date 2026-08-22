@@ -70,14 +70,14 @@ for (const f of findings) {
     challengedToAssess++;
     f.coordination = 'Manager: fix attempted and failed — routing to owner/AI for a hand fix; Auditor to re-verify next sweep.';
   } else if (/unexpected external requests/i.test(f.check)) {
-    f.assignedTo = 'owner';
-    f.coordination = 'SYSTEMIC — OWNER DECISION: third-party ad script (grow.me / Unified-ID) is your ad revenue (Mediavine Grow). One removal clears all of these, but it cuts income — a bot must not auto-decide. Keep for ads, or say the word to remove for full privacy.';
+    f.assignedTo = 'fixer';
+    f.coordination = 'Manager → Fixer (HOLD): this is your own Mediavine "Grow.me" script in Base.astro (deliberate monetization/engagement). The Fixer removes it — one edit clears all of these — on your single OK. The Manager will not delete revenue infrastructure unprompted.';
   } else if (/axe violations|contrast/i.test(f.check)) {
-    f.assignedTo = 'owner';
-    f.coordination = 'SYSTEMIC — DESIGN: global colour-contrast; one design-token change fixes many pages. Needs a quick design decision.';
+    f.assignedTo = 'fixer';
+    f.coordination = 'Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).';
   } else if (/open graph/i.test(f.check)) {
-    f.assignedTo = 'developer';
-    f.coordination = 'SYSTEMIC — TEMPLATE: missing og:image; one site-wide OG-image generator fixes all. Queued as a build task, not a per-tool edit.';
+    f.assignedTo = 'fixer';
+    f.coordination = 'Manager → Fixer: default og:image added to the base layout — resolves on the next re-audit.';
   } else if (f.fixType === 'manual' && isOverdue) {
     f.coordination = 'Manager: past SLA — escalated to owner/AI; deterministic Fixer cannot action prose/logic safely.';
   } else {
@@ -179,8 +179,9 @@ const tokPct = Math.min(100, Math.round((tokUsed / tokCap) * 100));
 // ── current tasks for the dashboard ──────────────────────────────────────────
 const autoQueue = findings.filter((f) => f.status === 'open' && String(f.fixType || '').startsWith('auto:')).length;
 const manualQueue = findings.filter((f) => f.status === 'open' && f.fixType === 'manual').length;
-const ownerFlagged = findings.filter((f) => f.status === 'open' && (f.assignedTo === 'owner' || f.assignedTo === 'developer')).length;
-const fixerWorkable = findings.filter((f) => f.status === 'open' && /title present/i.test(f.check)).length; // the class the Fixer can auto-apply now
+const systemicCount = findings.filter((f) => f.status === 'open' && f.coordination).length; // og/contrast/tracker the Manager is driving
+const trackerCount = findings.filter((f) => f.status === 'open' && /unexpected external requests/i.test(f.check)).length;
+const fixerWorkable = findings.filter((f) => f.status === 'open' && /title present/i.test(f.check)).length; // the class the Fixer auto-applies now
 const nextAudit = ((ledger.auditedTools || []).length % (ledger.catalogueSize || 1));
 
 ledger.agents = {
@@ -207,15 +208,9 @@ ledger.agents = {
   },
   fixer: {
     role: 'Senior dev — auto + LLM fixes, build-gated, 24/7',
-    status: fixerWorkable > 0 ? 'fixing' : verifyingCount > 0 ? 'verifying' : 'standby',
-    task: fixerWorkable > 0
-      ? `Auto-fixing ${fixerWorkable} title item(s), build-gated. ${verifyingCount} awaiting re-verify. ${ownerFlagged} systemic → flagged to owner/dev.`
-      : verifyingCount > 0
-        ? `${verifyingCount} fix(es) awaiting the Auditor's re-verify. ${ownerFlagged} systemic items are owner/dev decisions, not mine.`
-        : ownerFlagged > 0
-          ? `Nothing I can safely auto-fix — the ${ownerFlagged} remaining are systemic (owner/dev decisions).`
-          : `Backlog clear; standing by.`,
-    kpis: { open: openCount, fixable: fixerWorkable, systemic: ownerFlagged, verifying: verifyingCount, completed: completeCount },
+    status: (fixerWorkable + systemicCount) > 0 ? 'fixing' : verifyingCount > 0 ? 'verifying' : 'standby',
+    task: `Auto-fixing ${fixerWorkable} title item(s), build-gated. Driving ${systemicCount} systemic fix(es) (og:image done, contrast queued)${trackerCount ? `; ${trackerCount} tracker removals await your one-time OK` : ''}. ${verifyingCount} awaiting re-verify.`,
+    kpis: { open: openCount, fixable: fixerWorkable, systemic: systemicCount, verifying: verifyingCount, completed: completeCount },
     score: { daily: fixerDaily, weekly: wkAvg('fixer') },
   },
   researcher: {
