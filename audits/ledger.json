@@ -462,7 +462,7 @@
       "severity": "high",
       "detail": "164 chars",
       "fixType": "auto:trim-meta-description",
-      "status": "verifying",
+      "status": "complete",
       "firstSeen": "2026-08-22",
       "lastSeen": "2026-08-22",
       "attempts": 0,
@@ -476,9 +476,15 @@
           "date": "2026-08-22",
           "event": "auto-fixed",
           "note": "shortened meta description 164→156 chars"
+        },
+        {
+          "date": "2026-08-22",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
-      "fixedOn": "2026-08-22"
+      "fixedOn": "2026-08-22",
+      "resolvedOn": "2026-08-22"
     },
     "3d-printing/filament-calculator::Open Graph tags (title/desc/image)": {
       "id": "3d-printing/filament-calculator::Open Graph tags (title/desc/image)",
@@ -962,16 +968,142 @@
           "note": "GET faves.grow.me, GET api.grow.me, POST some.growplow.events, GET cdn.prod.uidapi.com"
         }
       ]
+    },
+    "astronomy/age-on-other-planets::Open Graph tags (title/desc/image)": {
+      "id": "astronomy/age-on-other-planets::Open Graph tags (title/desc/image)",
+      "tool": "astronomy/age-on-other-planets",
+      "url": "https://lazytools.io/astronomy/age-on-other-planets/",
+      "category": "seo",
+      "check": "Open Graph tags (title/desc/image)",
+      "severity": "medium",
+      "detail": "2/3 present",
+      "fixType": "manual",
+      "status": "open",
+      "firstSeen": "2026-08-22",
+      "lastSeen": "2026-08-22",
+      "attempts": 0,
+      "history": [
+        {
+          "date": "2026-08-22",
+          "event": "opened",
+          "note": "2/3 present"
+        }
+      ]
+    },
+    "astronomy/age-on-other-planets::No serious/critical axe violations": {
+      "id": "astronomy/age-on-other-planets::No serious/critical axe violations",
+      "tool": "astronomy/age-on-other-planets",
+      "url": "https://lazytools.io/astronomy/age-on-other-planets/",
+      "category": "accessibility",
+      "check": "No serious/critical axe violations",
+      "severity": "high",
+      "detail": "color-contrast (2)",
+      "fixType": "manual",
+      "status": "open",
+      "firstSeen": "2026-08-22",
+      "lastSeen": "2026-08-22",
+      "attempts": 0,
+      "history": [
+        {
+          "date": "2026-08-22",
+          "event": "opened",
+          "note": "color-contrast (2)"
+        }
+      ]
+    },
+    "astronomy/age-on-other-planets::No unexpected external requests": {
+      "id": "astronomy/age-on-other-planets::No unexpected external requests",
+      "tool": "astronomy/age-on-other-planets",
+      "url": "https://lazytools.io/astronomy/age-on-other-planets/",
+      "category": "privacy",
+      "check": "No unexpected external requests",
+      "severity": "high",
+      "detail": "GET faves.grow.me, GET api.grow.me, POST some.growplow.events, GET cdn.prod.uidapi.com",
+      "fixType": "manual",
+      "status": "open",
+      "firstSeen": "2026-08-22",
+      "lastSeen": "2026-08-22",
+      "attempts": 0,
+      "history": [
+        {
+          "date": "2026-08-22",
+          "event": "opened",
+          "note": "GET faves.grow.me, GET api.grow.me, POST some.growplow.events, GET cdn.prod.uidapi.com"
+        }
+      ]
+    },
+    "astronomy/angular-size-calculator::Open Graph tags (title/desc/image)": {
+      "id": "astronomy/angular-size-calculator::Open Graph tags (title/desc/image)",
+      "tool": "astronomy/angular-size-calculator",
+      "url": "https://lazytools.io/astronomy/angular-size-calculator/",
+      "category": "seo",
+      "check": "Open Graph tags (title/desc/image)",
+      "severity": "medium",
+      "detail": "2/3 present",
+      "fixType": "manual",
+      "status": "open",
+      "firstSeen": "2026-08-22",
+      "lastSeen": "2026-08-22",
+      "attempts": 0,
+      "history": [
+        {
+          "date": "2026-08-22",
+          "event": "opened",
+          "note": "2/3 present"
+        }
+      ]
+    },
+    "astronomy/angular-size-calculator::No serious/critical axe violations": {
+      "id": "astronomy/angular-size-calculator::No serious/critical axe violations",
+      "tool": "astronomy/angular-size-calculator",
+      "url": "https://lazytools.io/astronomy/angular-size-calculator/",
+      "category": "accessibility",
+      "check": "No serious/critical axe violations",
+      "severity": "high",
+      "detail": "color-contrast (1)",
+      "fixType": "manual",
+      "status": "open",
+      "firstSeen": "2026-08-22",
+      "lastSeen": "2026-08-22",
+      "attempts": 0,
+      "history": [
+        {
+          "date": "2026-08-22",
+          "event": "opened",
+          "note": "color-contrast (1)"
+        }
+      ]
+    },
+    "astronomy/angular-size-calculator::No unexpected external requests": {
+      "id": "astronomy/angular-size-calculator::No unexpected external requests",
+      "tool": "astronomy/angular-size-calculator",
+      "url": "https://lazytools.io/astronomy/angular-size-calculator/",
+      "category": "privacy",
+      "check": "No unexpected external requests",
+      "severity": "high",
+      "detail": "GET faves.grow.me, GET api.grow.me, POST some.growplow.events, GET cdn.prod.uidapi.com",
+      "fixType": "manual",
+      "status": "open",
+      "firstSeen": "2026-08-22",
+      "lastSeen": "2026-08-22",
+      "attempts": 0,
+      "history": [
+        {
+          "date": "2026-08-22",
+          "event": "opened",
+          "note": "GET faves.grow.me, GET api.grow.me, POST some.growplow.events, GET cdn.prod.uidapi.com"
+        }
+      ]
     }
   },
   "updated": "2026-08-22",
   "runs": [
     {
       "date": "2026-08-22",
-      "tools": 9,
-      "avg": 86,
-      "issues": 31,
-      "opened": 28,
+      "tools": 10,
+      "avg": 87,
+      "issues": 33,
+      "opened": 6,
       "resolved": 1,
       "challenged": 0
     }
@@ -985,7 +1117,9 @@
     "3d-printing/print-energy-cost-calculator",
     "3d-printing/resin-cost-calculator",
     "3d-printing/volumetric-flow-calculator",
-    "file/gpx-to-geojson"
+    "file/gpx-to-geojson",
+    "astronomy/age-on-other-planets",
+    "astronomy/angular-size-calculator"
   ],
   "catalogueSize": 1071
 }

@@ -1,8 +1,8 @@
 # Open recommendations (need human or AI judgement)
 
-_Updated 2026-08-22. These findings can't be safely auto-fixed by the token-free Fixer bot (they need written content or code changes). 43 open._
+_Updated 2026-08-22. These findings can't be safely auto-fixed by the token-free Fixer bot (they need written content or code changes). 49 open._
 
-## high (30)
+## high (34)
 
 - **file/geojson-to-wkt** — accessibility: No serious/critical axe violations — color-contrast (1)  
   <https://lazytools.io/file/geojson-to-wkt/> · first seen 2026-08-22
@@ -64,8 +64,16 @@ _Updated 2026-08-22. These findings can't be safely auto-fixed by the token-free
   <https://lazytools.io/3d-printing/volumetric-flow-calculator/> · first seen 2026-08-22
 - **3d-printing/volumetric-flow-calculator** — privacy: No unexpected external requests — GET faves.grow.me, GET api.grow.me, POST some.growplow.events, GET cdn.prod.uidapi.com  
   <https://lazytools.io/3d-printing/volumetric-flow-calculator/> · first seen 2026-08-22
+- **astronomy/age-on-other-planets** — accessibility: No serious/critical axe violations — color-contrast (2)  
+  <https://lazytools.io/astronomy/age-on-other-planets/> · first seen 2026-08-22
+- **astronomy/age-on-other-planets** — privacy: No unexpected external requests — GET faves.grow.me, GET api.grow.me, POST some.growplow.events, GET cdn.prod.uidapi.com  
+  <https://lazytools.io/astronomy/age-on-other-planets/> · first seen 2026-08-22
+- **astronomy/angular-size-calculator** — accessibility: No serious/critical axe violations — color-contrast (1)  
+  <https://lazytools.io/astronomy/angular-size-calculator/> · first seen 2026-08-22
+- **astronomy/angular-size-calculator** — privacy: No unexpected external requests — GET faves.grow.me, GET api.grow.me, POST some.growplow.events, GET cdn.prod.uidapi.com  
+  <https://lazytools.io/astronomy/angular-size-calculator/> · first seen 2026-08-22
 
-## medium (13)
+## medium (15)
 
 - **file/geojson-to-wkt** — seo: Open Graph tags (title/desc/image) — 2/3 present  
   <https://lazytools.io/file/geojson-to-wkt/> · first seen 2026-08-22
@@ -93,4 +101,8 @@ _Updated 2026-08-22. These findings can't be safely auto-fixed by the token-free
   <https://lazytools.io/3d-printing/resin-cost-calculator/> · first seen 2026-08-22
 - **3d-printing/volumetric-flow-calculator** — seo: Open Graph tags (title/desc/image) — 2/3 present  
   <https://lazytools.io/3d-printing/volumetric-flow-calculator/> · first seen 2026-08-22
+- **astronomy/age-on-other-planets** — seo: Open Graph tags (title/desc/image) — 2/3 present  
+  <https://lazytools.io/astronomy/age-on-other-planets/> · first seen 2026-08-22
+- **astronomy/angular-size-calculator** — seo: Open Graph tags (title/desc/image) — 2/3 present  
+  <https://lazytools.io/astronomy/angular-size-calculator/> · first seen 2026-08-22
 
