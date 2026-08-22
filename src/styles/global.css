@@ -208,3 +208,13 @@ body {
 .callout.cite .co-label {
   @apply text-slate-600;
 }
+
+/* WCAG AA: Tailwind's slate-400 (#90a1b9) fails 4.5:1 as small text on white.
+   The two-class selector out-specifies the single-class utility, so this fixes
+   the flagged small-muted text site-wide without affecting larger slate-400 use. */
+.text-xs.text-slate-400,
+.text-\[10px\].text-slate-400,
+.text-\[11px\].text-slate-400,
+.text-sm.text-slate-400 {
+  color: #55637a;
+}

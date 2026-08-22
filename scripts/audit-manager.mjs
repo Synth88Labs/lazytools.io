@@ -209,7 +209,9 @@ ledger.agents = {
   fixer: {
     role: 'Senior dev — auto + LLM fixes, build-gated, 24/7',
     status: (fixerWorkable + systemicCount) > 0 ? 'fixing' : verifyingCount > 0 ? 'verifying' : 'standby',
-    task: `Auto-fixing ${fixerWorkable} title item(s), build-gated. Driving ${systemicCount} systemic fix(es) (og:image done, contrast queued)${trackerCount ? `; ${trackerCount} tracker removals await your one-time OK` : ''}. ${verifyingCount} awaiting re-verify.`,
+    task: (fixerWorkable + systemicCount + verifyingCount) === 0
+      ? `Backlog clear — all findings resolved. Standing by for the next audit.`
+      : `Auto-fixing ${fixerWorkable} title item(s), build-gated. Driving ${systemicCount} systemic fix(es)${trackerCount ? `; ${trackerCount} tracker removals await your one-time OK` : ''}. ${verifyingCount} awaiting re-verify.`,
     kpis: { open: openCount, fixable: fixerWorkable, systemic: systemicCount, verifying: verifyingCount, completed: completeCount },
     score: { daily: fixerDaily, weekly: wkAvg('fixer') },
   },

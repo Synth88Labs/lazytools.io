@@ -759,7 +759,7 @@ export const FILE_TOOLS: FileToolDef[] = [
   },
   {
     slug: 'gpx-analyzer',
-    name: 'GPX File Analyzer (Distance, Elevation, Pace)',
+    name: 'GPX Analyzer (Elevation & Pace)',
     icon: '🥾',
     description:
       'Open a GPX file to see total distance, elevation gain/loss, moving time, average speed and pace — computed in your browser, so your route is never uploaded.',

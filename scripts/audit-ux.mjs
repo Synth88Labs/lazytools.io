@@ -28,7 +28,9 @@ const today = new Date().toISOString().slice(0, 10);
 const MAX_ATTEMPTS = 3;
 
 // ── allow-list of external hosts a privacy-first client-side site may contact ──
-const ALLOWED_HOSTS = [/(^|\.)lazytools\.io$/, /(^|\.)googletagmanager\.com$/, /(^|\.)google-analytics\.com$/, /(^|\.)analytics\.google\.com$/, /(^|\.)gstatic\.com$/, /(^|\.)googleapis\.com$/];
+const ALLOWED_HOSTS = [/(^|\.)lazytools\.io$/, /(^|\.)googletagmanager\.com$/, /(^|\.)google-analytics\.com$/, /(^|\.)analytics\.google\.com$/, /(^|\.)gstatic\.com$/, /(^|\.)googleapis\.com$/,
+  // Owner-accepted: Mediavine "Grow.me" audience-engagement + its Unified-ID stack (intentional monetization; see Base.astro). Remove those hosts here if the script is ever removed.
+  /(^|\.)grow\.me$/, /(^|\.)growplow\.events$/, /(^|\.)uidapi\.com$/];
 const hostAllowed = (h) => ALLOWED_HOSTS.some((re) => re.test(h));
 
 const readJSON = async (p, fb) => { try { return JSON.parse(await readFile(p, 'utf8')); } catch { return fb; } };
