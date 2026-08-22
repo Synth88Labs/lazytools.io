@@ -25,6 +25,7 @@ import OkrTool from '../../components/productivity/OkrTool.tsx';
 import ChecklistTool from '../../components/productivity/ChecklistTool.tsx';
 import RetroTool from '../../components/productivity/RetroTool.tsx';
 import EyeRestTool from '../../components/productivity/EyeRestTool.tsx';
+import WheelPickerTool from '../../components/productivity/WheelPickerTool.tsx';
 import { PRODUCTIVITY_TOOLS, type ProductivityToolDef } from '../../data/productivity/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -91,6 +92,7 @@ const schema = [
       {tool.widget === 'checklist' && <ChecklistTool client:load />}
       {tool.widget === 'retro' && <RetroTool client:load />}
       {tool.widget === 'eye-rest' && <EyeRestTool client:load />}
+      {tool.widget === 'wheel' && <WheelPickerTool client:load />}
     </div>
 
     <div class="mt-4">

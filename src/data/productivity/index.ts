@@ -6,7 +6,7 @@ export interface ProductivityToolDef {
   icon: string;
   description: string;
   lead: string;
-  widget: 'pomodoro' | 'countdown' | 'meeting-cost' | 'eisenhower' | 'habit' | 'kanban' | 'mindmap' | 'gantt' | 'decision-matrix' | 'rice' | 'swot' | 'pros-cons' | 'flowchart' | 'whiteboard' | 'time-blocking' | 'okr' | 'checklist' | 'retro' | 'eye-rest' | 'swimlane';
+  widget: 'pomodoro' | 'countdown' | 'meeting-cost' | 'eisenhower' | 'habit' | 'kanban' | 'mindmap' | 'gantt' | 'decision-matrix' | 'rice' | 'swot' | 'pros-cons' | 'flowchart' | 'whiteboard' | 'time-blocking' | 'okr' | 'checklist' | 'retro' | 'eye-rest' | 'swimlane' | 'wheel';
   how: string;
   note?: string;
   faqs: { q: string; a: string }[];
@@ -393,5 +393,25 @@ export const PRODUCTIVITY_TOOLS: ProductivityToolDef[] = [
       { q: 'Is my diagram private, and can I export it?', a: 'It is stored only in your browser and never uploaded. Export it as a PNG or PDF image to share or print, or as JSON to re-import later or move it between your own devices.' },
     ],
     keywords: ['swimlane diagram maker', 'swimlane maker', 'cross functional flowchart', 'swim lane diagram', 'process mapping tool', 'swimlane flowchart', 'swimlane diagram online'],
+  },
+  {
+    slug: 'random-name-picker-wheel',
+    name: 'Random Name Picker (Spin the Wheel)',
+    icon: '🎡',
+    description:
+      'Paste a list of names and spin a wheel to pick a fair random winner — for classrooms, giveaways and raffles. Remove-winner mode for draws without repeats. In your browser, never uploaded.',
+    lead: 'Enter names or options, spin the wheel, and get a fair random winner — with a remove-winner mode for raffles. Runs entirely on your device.',
+    widget: 'wheel',
+    how: 'Type or paste one entry per line — names, options, prizes, chores — and the wheel draws a coloured segment for each. When you spin, the tool first chooses a uniformly random entry, then rotates the wheel so that exact segment lands under the pointer, so the winner shown is always the one the wheel actually points at (no rounding surprises). Turn on “remove the winner” to draw without replacement, which is what you want for raffles, secret-santa order or picking a sequence of winners. The list stays in the text box so you can edit it any time.',
+    note: 'This is a genuinely fair random picker: every remaining entry has an equal chance on each spin, and removing winners keeps subsequent draws fair over the shrinking pool. It is handy for teachers cold-calling students, choosing a giveaway winner on a livestream, deciding whose turn it is, or breaking a tie. Everything — the list and the randomness — runs in your browser with nothing uploaded, so it works offline and keeps names private, which matters when the list is a class roster or customer entries. For a plain number instead of a name, use the Random Number Generator; for a quick yes/no, the Dice Roller.',
+    faqs: [
+      { q: 'How do I use the random name picker?', a: 'Paste your names or options, one per line, then click Spin the wheel (or the wheel itself). It spins and lands on a randomly chosen entry, which is shown as the winner. Edit the list any time to add or remove entries.' },
+      { q: 'Is the pick actually random and fair?', a: 'Yes — each spin chooses uniformly at random among the current entries, so every remaining name has an equal chance. The wheel then animates to the chosen segment, so what you see is exactly what was picked.' },
+      { q: 'Can I run a raffle without repeat winners?', a: 'Turn on “remove the winner after each spin”. After each spin you can remove the winner and keep spinning, so you draw a sequence of distinct winners — ideal for raffles, prize draws or setting an order.' },
+      { q: 'How many entries can the wheel hold?', a: 'As many as you like — the segments get thinner and labels are trimmed as the list grows, but the pick stays fair. For very long lists the wheel is still fair even if individual labels are hard to read.' },
+      { q: 'Is my list of names uploaded anywhere?', a: 'No — the entries and the random draw run entirely in your browser. Nothing is sent to a server, so a class roster or customer list stays private, and the tool works offline.' },
+      { q: 'What is the difference from the Random Number Generator?', a: 'This picks a random item from your own list of names or options and shows it on a spinning wheel; the Random Number Generator returns a random number in a range. Use the wheel for names/choices, the generator for numbers.' },
+    ],
+    keywords: ['random name picker', 'wheel of names', 'spin the wheel', 'random picker wheel', 'raffle picker', 'name picker wheel', 'decision wheel', 'random winner picker'],
   },
 ];

@@ -1364,6 +1364,13 @@ const POSTS = [
     fact: 'ftyp · moov (metadata) · mdat (media) · box = size + type',
     icon: '🎬',
   },
+  {
+    slug: 'how-to-pick-a-fair-random-winner-guide',
+    kicker: 'PRODUCTIVITY GUIDE',
+    lines: ['How to pick a fair', 'random winner (names,', 'raffles & giveaways)'],
+    fact: 'uniform pick · spin to the chosen segment · draw without replacement',
+    icon: '🎡',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
