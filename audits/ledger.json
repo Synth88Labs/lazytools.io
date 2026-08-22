@@ -19,7 +19,12 @@
           "event": "opened",
           "note": "2/3 present"
         }
-      ]
+      ],
+      "effortHours": 4,
+      "eta": "~4h (1 day)",
+      "dueBy": "2026-08-27",
+      "sla": "on-track",
+      "assignedTo": "fixer"
     },
     "file/geojson-to-wkt::No serious/critical axe violations": {
       "id": "file/geojson-to-wkt::No serious/critical axe violations",
@@ -40,7 +45,12 @@
           "event": "opened",
           "note": "color-contrast (1)"
         }
-      ]
+      ],
+      "effortHours": 6,
+      "eta": "~6h (1 day)",
+      "dueBy": "2026-08-24",
+      "sla": "on-track",
+      "assignedTo": "fixer"
     },
     "file/geojson-to-wkt::No unexpected external requests": {
       "id": "file/geojson-to-wkt::No unexpected external requests",
@@ -61,7 +71,12 @@
           "event": "opened",
           "note": "GET faves.grow.me, GET api.grow.me, POST some.growplow.events, GET cdn.prod.uidapi.com"
         }
-      ]
+      ],
+      "effortHours": 12,
+      "eta": "~12h (2 days)",
+      "dueBy": "2026-08-24",
+      "sla": "on-track",
+      "assignedTo": "fixer"
     },
     "file/gpx-analyzer::Title present (15–60 chars)": {
       "id": "file/gpx-analyzer::Title present (15–60 chars)",
@@ -82,7 +97,12 @@
           "event": "opened",
           "note": "74 chars: \"GPX File Analyzer (Distance, Elevation, Pace) — Fr\""
         }
-      ]
+      ],
+      "effortHours": 4,
+      "eta": "~4h (1 day)",
+      "dueBy": "2026-08-24",
+      "sla": "on-track",
+      "assignedTo": "fixer"
     },
     "file/gpx-analyzer::Open Graph tags (title/desc/image)": {
       "id": "file/gpx-analyzer::Open Graph tags (title/desc/image)",
@@ -103,7 +123,12 @@
           "event": "opened",
           "note": "2/3 present"
         }
-      ]
+      ],
+      "effortHours": 4,
+      "eta": "~4h (1 day)",
+      "dueBy": "2026-08-27",
+      "sla": "on-track",
+      "assignedTo": "fixer"
     },
     "file/gpx-analyzer::No serious/critical axe violations": {
       "id": "file/gpx-analyzer::No serious/critical axe violations",
@@ -124,7 +149,12 @@
           "event": "opened",
           "note": "color-contrast (1)"
         }
-      ]
+      ],
+      "effortHours": 6,
+      "eta": "~6h (1 day)",
+      "dueBy": "2026-08-24",
+      "sla": "on-track",
+      "assignedTo": "fixer"
     },
     "file/gpx-analyzer::No unexpected external requests": {
       "id": "file/gpx-analyzer::No unexpected external requests",
@@ -145,7 +175,12 @@
           "event": "opened",
           "note": "GET faves.grow.me, GET api.grow.me, POST some.growplow.events, GET cdn.prod.uidapi.com"
         }
-      ]
+      ],
+      "effortHours": 12,
+      "eta": "~12h (2 days)",
+      "dueBy": "2026-08-24",
+      "sla": "on-track",
+      "assignedTo": "fixer"
     },
     "file/gpx-to-geojson::Meta description (70–160 chars)": {
       "id": "file/gpx-to-geojson::Meta description (70–160 chars)",
@@ -199,7 +234,12 @@
           "event": "opened",
           "note": "2/3 present"
         }
-      ]
+      ],
+      "effortHours": 4,
+      "eta": "~4h (1 day)",
+      "dueBy": "2026-08-27",
+      "sla": "on-track",
+      "assignedTo": "fixer"
     },
     "file/gpx-to-geojson::No serious/critical axe violations": {
       "id": "file/gpx-to-geojson::No serious/critical axe violations",
@@ -220,7 +260,12 @@
           "event": "opened",
           "note": "color-contrast (1)"
         }
-      ]
+      ],
+      "effortHours": 6,
+      "eta": "~6h (1 day)",
+      "dueBy": "2026-08-24",
+      "sla": "on-track",
+      "assignedTo": "fixer"
     },
     "file/gpx-to-geojson::No unexpected external requests": {
       "id": "file/gpx-to-geojson::No unexpected external requests",
@@ -241,7 +286,12 @@
           "event": "opened",
           "note": "GET faves.grow.me, GET api.grow.me, POST some.growplow.events, GET cdn.prod.uidapi.com"
         }
-      ]
+      ],
+      "effortHours": 12,
+      "eta": "~12h (2 days)",
+      "dueBy": "2026-08-24",
+      "sla": "on-track",
+      "assignedTo": "fixer"
     },
     "file/html-to-markdown::Open Graph tags (title/desc/image)": {
       "id": "file/html-to-markdown::Open Graph tags (title/desc/image)",
@@ -262,7 +312,12 @@
           "event": "opened",
           "note": "2/3 present"
         }
-      ]
+      ],
+      "effortHours": 4,
+      "eta": "~4h (1 day)",
+      "dueBy": "2026-08-27",
+      "sla": "on-track",
+      "assignedTo": "fixer"
     },
     "file/html-to-markdown::No serious/critical axe violations": {
       "id": "file/html-to-markdown::No serious/critical axe violations",
@@ -283,7 +338,12 @@
           "event": "opened",
           "note": "color-contrast (1)"
         }
-      ]
+      ],
+      "effortHours": 6,
+      "eta": "~6h (1 day)",
+      "dueBy": "2026-08-24",
+      "sla": "on-track",
+      "assignedTo": "fixer"
     },
     "file/html-to-markdown::No unexpected external requests": {
       "id": "file/html-to-markdown::No unexpected external requests",
@@ -304,7 +364,12 @@
           "event": "opened",
           "note": "GET faves.grow.me, GET api.grow.me, POST some.growplow.events, GET cdn.prod.uidapi.com"
         }
-      ]
+      ],
+      "effortHours": 12,
+      "eta": "~12h (2 days)",
+      "dueBy": "2026-08-24",
+      "sla": "on-track",
+      "assignedTo": "fixer"
     },
     "file/ini-to-json::Open Graph tags (title/desc/image)": {
       "id": "file/ini-to-json::Open Graph tags (title/desc/image)",
@@ -325,7 +390,12 @@
           "event": "opened",
           "note": "2/3 present"
         }
-      ]
+      ],
+      "effortHours": 4,
+      "eta": "~4h (1 day)",
+      "dueBy": "2026-08-27",
+      "sla": "on-track",
+      "assignedTo": "fixer"
     },
     "file/ini-to-json::No serious/critical axe violations": {
       "id": "file/ini-to-json::No serious/critical axe violations",
@@ -346,7 +416,12 @@
           "event": "opened",
           "note": "color-contrast (1)"
         }
-      ]
+      ],
+      "effortHours": 6,
+      "eta": "~6h (1 day)",
+      "dueBy": "2026-08-24",
+      "sla": "on-track",
+      "assignedTo": "fixer"
     },
     "file/ini-to-json::No unexpected external requests": {
       "id": "file/ini-to-json::No unexpected external requests",
@@ -367,7 +442,12 @@
           "event": "opened",
           "note": "GET faves.grow.me, GET api.grow.me, POST some.growplow.events, GET cdn.prod.uidapi.com"
         }
-      ]
+      ],
+      "effortHours": 12,
+      "eta": "~12h (2 days)",
+      "dueBy": "2026-08-24",
+      "sla": "on-track",
+      "assignedTo": "fixer"
     },
     "3d-printing/e-steps-calculator::Open Graph tags (title/desc/image)": {
       "id": "3d-printing/e-steps-calculator::Open Graph tags (title/desc/image)",
@@ -388,7 +468,12 @@
           "event": "opened",
           "note": "2/3 present"
         }
-      ]
+      ],
+      "effortHours": 4,
+      "eta": "~4h (1 day)",
+      "dueBy": "2026-08-27",
+      "sla": "on-track",
+      "assignedTo": "fixer"
     },
     "3d-printing/e-steps-calculator::No serious/critical axe violations": {
       "id": "3d-printing/e-steps-calculator::No serious/critical axe violations",
@@ -409,7 +494,12 @@
           "event": "opened",
           "note": "color-contrast (1)"
         }
-      ]
+      ],
+      "effortHours": 6,
+      "eta": "~6h (1 day)",
+      "dueBy": "2026-08-24",
+      "sla": "on-track",
+      "assignedTo": "fixer"
     },
     "3d-printing/e-steps-calculator::No unexpected external requests": {
       "id": "3d-printing/e-steps-calculator::No unexpected external requests",
@@ -430,7 +520,12 @@
           "event": "opened",
           "note": "GET faves.grow.me, GET api.grow.me, POST some.growplow.events, GET cdn.prod.uidapi.com"
         }
-      ]
+      ],
+      "effortHours": 12,
+      "eta": "~12h (2 days)",
+      "dueBy": "2026-08-24",
+      "sla": "on-track",
+      "assignedTo": "fixer"
     },
     "3d-printing/filament-calculator::Title present (15–60 chars)": {
       "id": "3d-printing/filament-calculator::Title present (15–60 chars)",
@@ -451,7 +546,12 @@
           "event": "opened",
           "note": "64 chars: \"Filament Weight & Length Calculator — Free & Priva\""
         }
-      ]
+      ],
+      "effortHours": 4,
+      "eta": "~4h (1 day)",
+      "dueBy": "2026-08-24",
+      "sla": "on-track",
+      "assignedTo": "fixer"
     },
     "3d-printing/filament-calculator::Meta description (70–160 chars)": {
       "id": "3d-printing/filament-calculator::Meta description (70–160 chars)",
@@ -505,7 +605,12 @@
           "event": "opened",
           "note": "2/3 present"
         }
-      ]
+      ],
+      "effortHours": 4,
+      "eta": "~4h (1 day)",
+      "dueBy": "2026-08-27",
+      "sla": "on-track",
+      "assignedTo": "fixer"
     },
     "3d-printing/filament-calculator::No serious/critical axe violations": {
       "id": "3d-printing/filament-calculator::No serious/critical axe violations",
@@ -526,7 +631,12 @@
           "event": "opened",
           "note": "color-contrast (1)"
         }
-      ]
+      ],
+      "effortHours": 6,
+      "eta": "~6h (1 day)",
+      "dueBy": "2026-08-24",
+      "sla": "on-track",
+      "assignedTo": "fixer"
     },
     "3d-printing/filament-calculator::No unexpected external requests": {
       "id": "3d-printing/filament-calculator::No unexpected external requests",
@@ -547,7 +657,12 @@
           "event": "opened",
           "note": "GET faves.grow.me, GET api.grow.me, POST some.growplow.events, GET cdn.prod.uidapi.com"
         }
-      ]
+      ],
+      "effortHours": 12,
+      "eta": "~12h (2 days)",
+      "dueBy": "2026-08-24",
+      "sla": "on-track",
+      "assignedTo": "fixer"
     },
     "3d-printing/filament-cost-calculator::Open Graph tags (title/desc/image)": {
       "id": "3d-printing/filament-cost-calculator::Open Graph tags (title/desc/image)",
@@ -568,7 +683,12 @@
           "event": "opened",
           "note": "2/3 present"
         }
-      ]
+      ],
+      "effortHours": 4,
+      "eta": "~4h (1 day)",
+      "dueBy": "2026-08-27",
+      "sla": "on-track",
+      "assignedTo": "fixer"
     },
     "3d-printing/filament-cost-calculator::No serious/critical axe violations": {
       "id": "3d-printing/filament-cost-calculator::No serious/critical axe violations",
@@ -589,7 +709,12 @@
           "event": "opened",
           "note": "color-contrast (1)"
         }
-      ]
+      ],
+      "effortHours": 6,
+      "eta": "~6h (1 day)",
+      "dueBy": "2026-08-24",
+      "sla": "on-track",
+      "assignedTo": "fixer"
     },
     "3d-printing/filament-cost-calculator::No unexpected external requests": {
       "id": "3d-printing/filament-cost-calculator::No unexpected external requests",
@@ -610,7 +735,12 @@
           "event": "opened",
           "note": "GET faves.grow.me, GET api.grow.me, POST some.growplow.events, GET cdn.prod.uidapi.com"
         }
-      ]
+      ],
+      "effortHours": 12,
+      "eta": "~12h (2 days)",
+      "dueBy": "2026-08-24",
+      "sla": "on-track",
+      "assignedTo": "fixer"
     },
     "3d-printing/flow-rate-calculator::Title present (15–60 chars)": {
       "id": "3d-printing/flow-rate-calculator::Title present (15–60 chars)",
@@ -631,7 +761,12 @@
           "event": "opened",
           "note": "72 chars: \"Flow Rate / Extrusion Multiplier Calculator — Free\""
         }
-      ]
+      ],
+      "effortHours": 4,
+      "eta": "~4h (1 day)",
+      "dueBy": "2026-08-24",
+      "sla": "on-track",
+      "assignedTo": "fixer"
     },
     "3d-printing/flow-rate-calculator::Open Graph tags (title/desc/image)": {
       "id": "3d-printing/flow-rate-calculator::Open Graph tags (title/desc/image)",
@@ -652,7 +787,12 @@
           "event": "opened",
           "note": "2/3 present"
         }
-      ]
+      ],
+      "effortHours": 4,
+      "eta": "~4h (1 day)",
+      "dueBy": "2026-08-27",
+      "sla": "on-track",
+      "assignedTo": "fixer"
     },
     "3d-printing/flow-rate-calculator::No serious/critical axe violations": {
       "id": "3d-printing/flow-rate-calculator::No serious/critical axe violations",
@@ -673,7 +813,12 @@
           "event": "opened",
           "note": "color-contrast (1)"
         }
-      ]
+      ],
+      "effortHours": 6,
+      "eta": "~6h (1 day)",
+      "dueBy": "2026-08-24",
+      "sla": "on-track",
+      "assignedTo": "fixer"
     },
     "3d-printing/flow-rate-calculator::No unexpected external requests": {
       "id": "3d-printing/flow-rate-calculator::No unexpected external requests",
@@ -694,7 +839,12 @@
           "event": "opened",
           "note": "GET faves.grow.me, GET api.grow.me, POST some.growplow.events, GET cdn.prod.uidapi.com"
         }
-      ]
+      ],
+      "effortHours": 12,
+      "eta": "~12h (2 days)",
+      "dueBy": "2026-08-24",
+      "sla": "on-track",
+      "assignedTo": "fixer"
     },
     "3d-printing/model-scale-calculator::Open Graph tags (title/desc/image)": {
       "id": "3d-printing/model-scale-calculator::Open Graph tags (title/desc/image)",
@@ -715,7 +865,12 @@
           "event": "opened",
           "note": "2/3 present"
         }
-      ]
+      ],
+      "effortHours": 4,
+      "eta": "~4h (1 day)",
+      "dueBy": "2026-08-27",
+      "sla": "on-track",
+      "assignedTo": "fixer"
     },
     "3d-printing/model-scale-calculator::No serious/critical axe violations": {
       "id": "3d-printing/model-scale-calculator::No serious/critical axe violations",
@@ -736,7 +891,12 @@
           "event": "opened",
           "note": "color-contrast (4)"
         }
-      ]
+      ],
+      "effortHours": 6,
+      "eta": "~6h (1 day)",
+      "dueBy": "2026-08-24",
+      "sla": "on-track",
+      "assignedTo": "fixer"
     },
     "3d-printing/model-scale-calculator::No unexpected external requests": {
       "id": "3d-printing/model-scale-calculator::No unexpected external requests",
@@ -757,7 +917,12 @@
           "event": "opened",
           "note": "GET faves.grow.me, GET api.grow.me, POST some.growplow.events, GET cdn.prod.uidapi.com"
         }
-      ]
+      ],
+      "effortHours": 12,
+      "eta": "~12h (2 days)",
+      "dueBy": "2026-08-24",
+      "sla": "on-track",
+      "assignedTo": "fixer"
     },
     "3d-printing/print-energy-cost-calculator::Title present (15–60 chars)": {
       "id": "3d-printing/print-energy-cost-calculator::Title present (15–60 chars)",
@@ -778,7 +943,12 @@
           "event": "opened",
           "note": "62 chars: \"Print Electricity Cost Calculator — Free & Private\""
         }
-      ]
+      ],
+      "effortHours": 4,
+      "eta": "~4h (1 day)",
+      "dueBy": "2026-08-24",
+      "sla": "on-track",
+      "assignedTo": "fixer"
     },
     "3d-printing/print-energy-cost-calculator::Open Graph tags (title/desc/image)": {
       "id": "3d-printing/print-energy-cost-calculator::Open Graph tags (title/desc/image)",
@@ -799,7 +969,12 @@
           "event": "opened",
           "note": "2/3 present"
         }
-      ]
+      ],
+      "effortHours": 4,
+      "eta": "~4h (1 day)",
+      "dueBy": "2026-08-27",
+      "sla": "on-track",
+      "assignedTo": "fixer"
     },
     "3d-printing/print-energy-cost-calculator::No serious/critical axe violations": {
       "id": "3d-printing/print-energy-cost-calculator::No serious/critical axe violations",
@@ -820,7 +995,12 @@
           "event": "opened",
           "note": "color-contrast (1)"
         }
-      ]
+      ],
+      "effortHours": 6,
+      "eta": "~6h (1 day)",
+      "dueBy": "2026-08-24",
+      "sla": "on-track",
+      "assignedTo": "fixer"
     },
     "3d-printing/print-energy-cost-calculator::No unexpected external requests": {
       "id": "3d-printing/print-energy-cost-calculator::No unexpected external requests",
@@ -841,7 +1021,12 @@
           "event": "opened",
           "note": "GET faves.grow.me, GET api.grow.me, POST some.growplow.events, GET cdn.prod.uidapi.com"
         }
-      ]
+      ],
+      "effortHours": 12,
+      "eta": "~12h (2 days)",
+      "dueBy": "2026-08-24",
+      "sla": "on-track",
+      "assignedTo": "fixer"
     },
     "3d-printing/resin-cost-calculator::Open Graph tags (title/desc/image)": {
       "id": "3d-printing/resin-cost-calculator::Open Graph tags (title/desc/image)",
@@ -862,7 +1047,12 @@
           "event": "opened",
           "note": "2/3 present"
         }
-      ]
+      ],
+      "effortHours": 4,
+      "eta": "~4h (1 day)",
+      "dueBy": "2026-08-27",
+      "sla": "on-track",
+      "assignedTo": "fixer"
     },
     "3d-printing/resin-cost-calculator::No serious/critical axe violations": {
       "id": "3d-printing/resin-cost-calculator::No serious/critical axe violations",
@@ -883,7 +1073,12 @@
           "event": "opened",
           "note": "color-contrast (1)"
         }
-      ]
+      ],
+      "effortHours": 6,
+      "eta": "~6h (1 day)",
+      "dueBy": "2026-08-24",
+      "sla": "on-track",
+      "assignedTo": "fixer"
     },
     "3d-printing/resin-cost-calculator::No unexpected external requests": {
       "id": "3d-printing/resin-cost-calculator::No unexpected external requests",
@@ -904,7 +1099,12 @@
           "event": "opened",
           "note": "GET faves.grow.me, GET api.grow.me, POST some.growplow.events, GET cdn.prod.uidapi.com"
         }
-      ]
+      ],
+      "effortHours": 12,
+      "eta": "~12h (2 days)",
+      "dueBy": "2026-08-24",
+      "sla": "on-track",
+      "assignedTo": "fixer"
     },
     "3d-printing/volumetric-flow-calculator::Open Graph tags (title/desc/image)": {
       "id": "3d-printing/volumetric-flow-calculator::Open Graph tags (title/desc/image)",
@@ -925,7 +1125,12 @@
           "event": "opened",
           "note": "2/3 present"
         }
-      ]
+      ],
+      "effortHours": 4,
+      "eta": "~4h (1 day)",
+      "dueBy": "2026-08-27",
+      "sla": "on-track",
+      "assignedTo": "fixer"
     },
     "3d-printing/volumetric-flow-calculator::No serious/critical axe violations": {
       "id": "3d-printing/volumetric-flow-calculator::No serious/critical axe violations",
@@ -946,7 +1151,12 @@
           "event": "opened",
           "note": "color-contrast (1)"
         }
-      ]
+      ],
+      "effortHours": 6,
+      "eta": "~6h (1 day)",
+      "dueBy": "2026-08-24",
+      "sla": "on-track",
+      "assignedTo": "fixer"
     },
     "3d-printing/volumetric-flow-calculator::No unexpected external requests": {
       "id": "3d-printing/volumetric-flow-calculator::No unexpected external requests",
@@ -967,7 +1177,12 @@
           "event": "opened",
           "note": "GET faves.grow.me, GET api.grow.me, POST some.growplow.events, GET cdn.prod.uidapi.com"
         }
-      ]
+      ],
+      "effortHours": 12,
+      "eta": "~12h (2 days)",
+      "dueBy": "2026-08-24",
+      "sla": "on-track",
+      "assignedTo": "fixer"
     },
     "astronomy/age-on-other-planets::Open Graph tags (title/desc/image)": {
       "id": "astronomy/age-on-other-planets::Open Graph tags (title/desc/image)",
@@ -988,7 +1203,12 @@
           "event": "opened",
           "note": "2/3 present"
         }
-      ]
+      ],
+      "effortHours": 4,
+      "eta": "~4h (1 day)",
+      "dueBy": "2026-08-27",
+      "sla": "on-track",
+      "assignedTo": "fixer"
     },
     "astronomy/age-on-other-planets::No serious/critical axe violations": {
       "id": "astronomy/age-on-other-planets::No serious/critical axe violations",
@@ -1009,7 +1229,12 @@
           "event": "opened",
           "note": "color-contrast (2)"
         }
-      ]
+      ],
+      "effortHours": 6,
+      "eta": "~6h (1 day)",
+      "dueBy": "2026-08-24",
+      "sla": "on-track",
+      "assignedTo": "fixer"
     },
     "astronomy/age-on-other-planets::No unexpected external requests": {
       "id": "astronomy/age-on-other-planets::No unexpected external requests",
@@ -1030,7 +1255,12 @@
           "event": "opened",
           "note": "GET faves.grow.me, GET api.grow.me, POST some.growplow.events, GET cdn.prod.uidapi.com"
         }
-      ]
+      ],
+      "effortHours": 12,
+      "eta": "~12h (2 days)",
+      "dueBy": "2026-08-24",
+      "sla": "on-track",
+      "assignedTo": "fixer"
     },
     "astronomy/angular-size-calculator::Open Graph tags (title/desc/image)": {
       "id": "astronomy/angular-size-calculator::Open Graph tags (title/desc/image)",
@@ -1051,7 +1281,12 @@
           "event": "opened",
           "note": "2/3 present"
         }
-      ]
+      ],
+      "effortHours": 4,
+      "eta": "~4h (1 day)",
+      "dueBy": "2026-08-27",
+      "sla": "on-track",
+      "assignedTo": "fixer"
     },
     "astronomy/angular-size-calculator::No serious/critical axe violations": {
       "id": "astronomy/angular-size-calculator::No serious/critical axe violations",
@@ -1072,7 +1307,12 @@
           "event": "opened",
           "note": "color-contrast (1)"
         }
-      ]
+      ],
+      "effortHours": 6,
+      "eta": "~6h (1 day)",
+      "dueBy": "2026-08-24",
+      "sla": "on-track",
+      "assignedTo": "fixer"
     },
     "astronomy/angular-size-calculator::No unexpected external requests": {
       "id": "astronomy/angular-size-calculator::No unexpected external requests",
@@ -1093,7 +1333,12 @@
           "event": "opened",
           "note": "GET faves.grow.me, GET api.grow.me, POST some.growplow.events, GET cdn.prod.uidapi.com"
         }
-      ]
+      ],
+      "effortHours": 12,
+      "eta": "~12h (2 days)",
+      "dueBy": "2026-08-24",
+      "sla": "on-track",
+      "assignedTo": "fixer"
     }
   },
   "updated": "2026-08-22",
@@ -1121,5 +1366,66 @@
     "astronomy/age-on-other-planets",
     "astronomy/angular-size-calculator"
   ],
-  "catalogueSize": 1071
+  "catalogueSize": 1071,
+  "scores": {
+    "daily": [
+      {
+        "date": "2026-08-22",
+        "auditor": 5,
+        "fixer": 5
+      }
+    ],
+    "weekly": [
+      {
+        "week": "2026-W34",
+        "auditor": 5,
+        "fixer": 5,
+        "days": 1
+      }
+    ]
+  },
+  "agents": {
+    "manager": {
+      "role": "Governance — SLAs, timelines, assessment, ratings",
+      "status": "nominal",
+      "task": "All recommendations within SLA. Monitoring.",
+      "kpis": {
+        "overdue": 0,
+        "onTrack": 49,
+        "slaPct": 100,
+        "challengedToAssess": 0
+      }
+    },
+    "auditor": {
+      "role": "Truth — detect, verify, close findings",
+      "status": "sweeping",
+      "task": "Sweeping the next 10 tools from index 11 of 1071.",
+      "kpis": {
+        "auditedTotal": 11,
+        "catalogue": 1071,
+        "lastAvg": 87
+      },
+      "score": {
+        "daily": 5,
+        "weekly": 5
+      }
+    },
+    "fixer": {
+      "role": "Execution — safe auto-fixes, compile the rest",
+      "status": "standby",
+      "task": "No auto-fixable work; 49 manual item(s) compiled for owner/AI.",
+      "kpis": {
+        "open": 49,
+        "verifying": 0,
+        "completed": 2,
+        "slaPct": 100,
+        "appliedToday": 2,
+        "completedToday": 2
+      },
+      "score": {
+        "daily": 5,
+        "weekly": 5
+      }
+    }
+  }
 }

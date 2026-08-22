@@ -76,6 +76,7 @@ class Kuroop
                 "findings", "issues", "problems", "bugs", "score", "quality", "average score",
                 "how many tools", "how many are built", "how far are we", "how many left", "how much is left", "to target", "build progress",
                 "coverage", "how many audited", "privacy", "trackers", "any trackers",
+                "team", "the team", "performance", "ratings", "how is the team", "how are the bots", "manager", "who is working on what",
                 "challenged", "anything stuck", "what needs me",
                 "open the dashboard", "show me the dashboard", "load the dashboard", "open dashboard", "show dashboard",
                 "log a task", "add a task", "remind me", "note this", "tell claude", "send to claude",
@@ -191,6 +192,8 @@ class Kuroop
             // (if configured) rather than letting a stray keyword hit a canned report.
             else if (BrainKey() != null && WordCount(t) > 6)
                 TryBrain(raw);
+            else if (Has(t, "team") || Has(t, "performance") || Has(t, "rating") || Has(t, "manager") || Has(t, "who is working") || Has(t, "how are the bots") || Has(t, "out of 5") || Has(t, "out of five"))
+                TeamReport();
             else if (Has(t, "health") || Has(t, "how are we") || Has(t, "healthy"))
                 HealthReport();
             else if (Has(t, "privacy") || Has(t, "tracker"))
@@ -307,6 +310,22 @@ class Kuroop
         sb.Append("audit_coverage=" + s.Audited + "/" + s.Catalogue + " tools\n");
         if (s.HasRun) sb.Append("latest_run date=" + s.RunDate + " tools_audited=" + s.RunTools + " avg_score=" + s.RunAvg + "% issues=" + s.RunIssues + "\n");
         sb.Append("findings open=" + s.Open + " (high=" + s.High + " medium=" + s.Medium + " low=" + s.Low + ") verifying=" + s.Verifying + " complete=" + s.Complete + " challenged=" + s.Challenged + " privacy_open=" + s.Privacy + "\n");
+        // three-agent team (Manager/Auditor/Fixer) + Manager's ratings
+        Dictionary<string, object> agents = Get(root, "agents") as Dictionary<string, object>;
+        if (agents != null)
+        {
+            sb.Append("team (Manager governs; rates Auditor & Fixer out of 5):\n");
+            string[] names = { "manager", "auditor", "fixer" };
+            foreach (string nm in names)
+            {
+                Dictionary<string, object> a = Get(agents, nm) as Dictionary<string, object>;
+                if (a == null) continue;
+                sb.Append("- " + nm + ": status=" + Str(a, "status") + "; task=" + Str(a, "task"));
+                Dictionary<string, object> sc = Get(a, "score") as Dictionary<string, object>;
+                if (sc != null) sb.Append("; score_daily=" + Str(sc, "daily") + " score_weekly=" + Str(sc, "weekly"));
+                sb.Append("\n");
+            }
+        }
         // top open findings for grounding
         Dictionary<string, object> findings = Get(root, "findings") as Dictionary<string, object>;
         if (findings != null)
@@ -443,6 +462,41 @@ class Kuroop
         if (s.Privacy > 0) Speak(s.Privacy + " privacy " + (s.Privacy == 1 ? "finding is" : "findings are") + " open, sir - most are the third party ad tracker flagged on tool pages. I'd recommend clearing it.");
         else Speak("No open privacy findings, sir. All clear.");
     }
+
+    static void TeamReport()
+    {
+        Dictionary<string, object> root = Fetch(); if (root == null) return;
+        Dictionary<string, object> agents = Get(root, "agents") as Dictionary<string, object>;
+        Dictionary<string, object> mgr = agents != null ? Get(agents, "manager") as Dictionary<string, object> : null;
+        Dictionary<string, object> aud = agents != null ? Get(agents, "auditor") as Dictionary<string, object> : null;
+        Dictionary<string, object> fix = agents != null ? Get(agents, "fixer") as Dictionary<string, object> : null;
+        if (aud == null || fix == null) { Speak("The team ratings aren't available yet, sir - the Manager runs after each audit."); return; }
+
+        double aD = ScoreOf(aud, "daily"), aW = ScoreOf(aud, "weekly");
+        double fD = ScoreOf(fix, "daily"), fW = ScoreOf(fix, "weekly");
+        StringBuilder sb = new StringBuilder();
+        sb.Append("The Manager's ratings, sir. The Auditor scores " + Num(aD) + " out of 5 today, " + Num(aW) + " this week. The Fixer scores " + Num(fD) + " today, " + Num(fW) + " this week. ");
+        string aT = Str(aud, "task"); if (aT.Length > 0) sb.Append("The Auditor is " + Lower1(aT) + " ");
+        string fT = Str(fix, "task"); if (fT.Length > 0) sb.Append("The Fixer: " + fT + " ");
+        if (mgr != null)
+        {
+            Dictionary<string, object> k = Get(mgr, "kpis") as Dictionary<string, object>;
+            int od = k != null ? Int(k, "overdue") : 0;
+            if (od > 0) sb.Append("The Manager is reconciling " + od + " overdue " + (od == 1 ? "item" : "items") + ".");
+            else sb.Append("The Manager reports everything within SLA.");
+        }
+        Speak(sb.ToString());
+    }
+
+    static double ScoreOf(Dictionary<string, object> agent, string which)
+    {
+        Dictionary<string, object> sc = Get(agent, "score") as Dictionary<string, object>;
+        if (sc == null) return 0;
+        object v = Get(sc, which); if (v == null) return 0;
+        try { return Convert.ToDouble(v, CultureInfo.InvariantCulture); } catch { return 0; }
+    }
+    static string Num(double d) { return d.ToString("0.#", CultureInfo.InvariantCulture); }
+    static string Lower1(string s) { return s.Length > 0 ? char.ToLowerInvariant(s[0]) + s.Substring(1) : s; }
 
     static void ChallengedReport()
     {

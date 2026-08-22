@@ -1,8 +1,9 @@
 # Autonomous audit-and-fix system
 
-Two cooperating bots keep the live tools healthy, running entirely in GitHub
-Actions with **no LLM / no Claude tokens** and no external services beyond
-optional email. All state and output live in git (public).
+Three cooperating agents keep the live tools healthy, running entirely in GitHub
+Actions with **no LLM / no Claude tokens** and no external services. All state
+and output live in git (public), and Kuroop (the desktop voice assistant) reads
+it aloud on request.
 
 - **Bot 1 — Auditor** (`scripts/audit-ux.mjs`): every day, audits 10 rotating
   tools **plus** any tool a fix is awaiting verification on, against the **live**
@@ -11,12 +12,54 @@ optional email. All state and output live in git (public).
   to the auditor's open findings, gated by a full production build (reverts if
   the build breaks), and compiles everything it can't safely touch into
   `audits/recommendations.md` with reasoning.
+- **Bot 3 — Manager** (`scripts/audit-manager.mjs`): governs the operation —
+  estimates effort/ETA per recommendation, sets SLAs and due dates, reconciles
+  timelines, assesses items the Fixer can't do (coordinating a common ground
+  with the Auditor), and **rates the Auditor and Fixer daily + weekly out of 5**.
 - **The loop**: Fixer marks a fix `verifying` → next day the Auditor re-tests the
   live tool → `complete` if it now passes, or `challenged` (with reasoning) if it
-  still fails after 3 attempts.
+  still fails after 3 attempts. The Manager tracks every item against its SLA and
+  escalates overdue/challenged work.
+
+## Segregation of duties (no overlap, no conflict)
+
+Each agent owns one lane and writes only its own fields, so they never collide:
+
+| Agent | Owns | Writes | Never does |
+|---|---|---|---|
+| **Auditor** | the **truth** — what's actually wrong | finding lifecycle (`open`/`verifying`/`complete`/`challenged`), run coverage | edit source; score anyone |
+| **Fixer** | **execution** — safe changes | source fixes (build-gated), `verifying`, `recommendations.md` | judge the Auditor; change SLAs or ratings |
+| **Manager** | **governance** — timelines & assessment | `eta`/`effortHours`/`dueBy`/`assignedTo`/`sla`/`coordination` on findings, `agents`, `scores` | change a finding's technical status; edit source |
+
+**Conflict resolution.** When the Fixer can't action a recommendation (manual
+work, or a build-gate revert → `challenged`), the Manager records a
+`coordination` note reconciling what the Auditor requires with what the Fixer can
+feasibly do, and routes it (owner/AI for prose & logic, owner decision for
+third-party scripts). The Auditor re-verifies once addressed. The Manager is
+accountable for every recommendation reaching a timely resolution.
+
+### Effort, SLA & ETA model (deterministic)
+
+Effort per finding by type: `auto:*` = 2h; else by dimension (seo 4h, a11y 6h,
+content 8h, io 8h, functionality 10h, privacy 12h, perf 5h, mobile 4h). SLA by
+severity from `firstSeen`: critical 1d, high 2d, medium 5d, low 10d. `dueBy` =
+firstSeen + SLA; anything past due while still open is `overdue`.
+
+### Performance rating (out of 5, deterministic)
+
+- **Auditor** — coverage momentum (tools swept vs the 10/day target),
+  diligence (issues opened + resolved), and verification activity.
+- **Fixer** — throughput (auto-fixes applied), completions
+  (`verifying → complete`), SLA adherence of the open backlog, minus a penalty
+  for overdue items and any build-gate revert.
+
+Daily scores are stored in `ledger.scores.daily`; the weekly figure is the
+rolling average over the current ISO week (`ledger.scores.weekly`).
 
 Orchestrated by `.github/workflows/audit.yml` (daily 06:17 UTC + manual). Results
-are committed back to `audits/`; the report is emailed if mail secrets are set.
+are committed back to `audits/`. Progress lives in `audits/dashboard.html` (the
+visual **command deck** — three agent panels, ETAs, ratings) and its markdown
+twin `audits/DASHBOARD.md`.
 
 Rotation covers the whole catalogue (~1,070 tools, 10/day) about every 107 days,
 then cycles — so every tool is re-audited on a rolling basis and regressions are

@@ -1,35 +1,33 @@
 /**
- * Bot dashboard generator — writes a single self-contained audits/dashboard.html
- * that visualises everything the two autonomous bots are doing, plus the build
- * pipeline toward the tool target. Regenerated on every bot run (called at the
- * end of the Fixer) and committed to git, so the raw.githack link is always
- * current. 100% self-contained: inline CSS + server-rendered inline SVG charts,
- * no external requests, no JS dependency (works with scripts disabled).
+ * Command-deck dashboard generator — writes a single self-contained
+ * audits/dashboard.html visualising the three autonomous agents (Manager,
+ * Auditor, Fixer): what each is working on, per-task ETAs, open issues,
+ * SLA reconciliation, and Manager's daily/weekly performance ratings — plus
+ * the build pipeline toward the tool target.
  *
- * Run standalone:  node scripts/gen-dashboard.mjs
+ * Regenerated on every bot run (called at the end of the Manager). 100%
+ * self-contained: inline CSS + server-rendered inline SVG, no external
+ * requests, no JS dependency. Future-tech HUD aesthetic.
  */
 import { readFile, writeFile } from 'node:fs/promises';
 
 const ROOT = new URL('../', import.meta.url);
-const BUILD_TARGET = Number(process.env.BUILD_TARGET || 1500); // tools goal (memory: lazytools-build-backlog)
-
-const esc = (s) =>
-  String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+const BUILD_TARGET = Number(process.env.BUILD_TARGET || 1500);
+const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 const ledger = JSON.parse(await readFile(new URL('audits/ledger.json', ROOT), 'utf8'));
 ledger.findings ||= {};
 let slugs = [];
 try { slugs = JSON.parse(await readFile(new URL('api/tools-allowlist.json', ROOT), 'utf8')); } catch {}
 
-// ── aggregate ──────────────────────────────────────────────────────────────
 const all = Object.values(ledger.findings);
 const by = (s) => all.filter((f) => f.status === s);
-const complete = by('complete');
-const openAll = by('open');
-const verifying = [...by('verifying'), ...by('fixed')];
-const challenged = by('challenged');
+const complete = by('complete'), openAll = by('open'), verifying = [...by('verifying'), ...by('fixed')], challenged = by('challenged');
+const active = all.filter((f) => ['open', 'verifying', 'fixed', 'challenged'].includes(f.status));
 const runs = ledger.runs || [];
 const last = runs[runs.length - 1] || {};
+const scores = ledger.scores || { daily: [], weekly: [] };
+const agents = ledger.agents || {};
 
 const toolCount = slugs.length || ledger.catalogueSize || 0;
 const audited = (ledger.auditedTools || []).length;
@@ -38,316 +36,321 @@ const auditPct = Math.round((audited / catalogue) * 100);
 const buildPct = Math.min(100, Math.round((toolCount / BUILD_TARGET) * 100));
 const remaining = Math.max(0, BUILD_TARGET - toolCount);
 
-// per-category tool counts (build pipeline)
-const catCount = {};
-for (const s of slugs) { const c = s.split('/')[0]; catCount[c] = (catCount[c] || 0) + 1; }
-const topCats = Object.entries(catCount).sort((a, b) => b[1] - a[1]).slice(0, 12);
-
-// open findings by severity + audit category
 const sevRank = { critical: 4, high: 3, medium: 2, low: 1 };
 const sevCount = { high: 0, medium: 0, low: 0 };
 for (const f of openAll) { const k = f.severity === 'critical' ? 'high' : (f.severity || 'low'); sevCount[k] = (sevCount[k] || 0) + 1; }
 const catFindings = {};
 for (const f of openAll) catFindings[f.category || 'other'] = (catFindings[f.category || 'other'] || 0) + 1;
-const catFindingRows = Object.entries(catFindings).sort((a, b) => b[1] - a[1]);
+const catRows = Object.entries(catFindings).sort((a, b) => b[1] - a[1]);
+const overdue = active.filter((f) => f.sla === 'overdue').length;
+const onTrack = active.length - overdue;
+const slaPct = active.length ? Math.round((onTrack / active.length) * 100) : 100;
 
-const resolvedTotal = complete.length;
-const recent = (arr, key) => arr.slice().sort((a, b) => String(b[key] || '').localeCompare(String(a[key] || ''))).slice(0, 6);
+// ── palette / helpers ────────────────────────────────────────────────────────
+const CY = '#22d3ee', MG = '#e879f9', LI = '#a3e635', AM = '#fbbf24', RD = '#fb7185', VI = '#818cf8';
+const CATPAL = [CY, MG, LI, AM, RD, VI, '#2dd4bf', '#f472b6', '#38bdf8', '#c084fc'];
 
-// ── SVG helpers ──────────────────────────────────────────────────────────────
-const COL = {
-  accent: '#6366f1', accent2: '#8b5cf6', green: '#22c55e', amber: '#f59e0b',
-  red: '#ef4444', blue: '#3b82f6', slate: '#64748b', teal: '#14b8a6',
-};
-const CATPAL = ['#6366f1', '#8b5cf6', '#0ea5e9', '#14b8a6', '#22c55e', '#eab308', '#f59e0b', '#ef4444', '#ec4899', '#64748b', '#3b82f6', '#a855f7'];
-
-// donut chart from [{label,value,color}]
-function donut(segs, { size = 150, thickness = 22, center } = {}) {
+function stars(v) {
+  v = Number(v) || 0; const full = Math.round(v);
+  let out = '';
+  for (let i = 1; i <= 5; i++) out += `<span class="st ${i <= full ? 'on' : ''}">★</span>`;
+  return `<span class="stars">${out}</span><span class="stv">${v.toFixed(1)}</span>`;
+}
+function ring(pct, label, sub, color) {
+  const r = 54, c = 2 * Math.PI * r, len = (pct / 100) * c;
+  return `<svg viewBox="0 0 140 140" class="ring" role="img" aria-label="${esc(label)} ${pct}%">
+    <circle cx="70" cy="70" r="${r}" class="ring-track"/>
+    <circle cx="70" cy="70" r="${r}" fill="none" stroke="${color}" stroke-width="10" stroke-linecap="round"
+      stroke-dasharray="${len.toFixed(1)} ${(c - len).toFixed(1)}" transform="rotate(-90 70 70)" filter="url(#glow)"/>
+    <text x="70" y="66" text-anchor="middle" class="ring-num">${pct}%</text>
+    <text x="70" y="86" text-anchor="middle" class="ring-cap">${esc(sub)}</text>
+  </svg>`;
+}
+function donut(segs, center) {
+  const size = 150, th = 20, r = (size - th) / 2, c = 2 * Math.PI * r, cx = size / 2;
   const total = segs.reduce((a, s) => a + s.value, 0) || 1;
-  const r = (size - thickness) / 2;
-  const c = 2 * Math.PI * r;
-  const cx = size / 2;
   let off = 0;
-  const rings = segs
-    .filter((s) => s.value > 0)
-    .map((s) => {
-      const len = (s.value / total) * c;
-      const el = `<circle cx="${cx}" cy="${cx}" r="${r}" fill="none" stroke="${s.color}" stroke-width="${thickness}" stroke-dasharray="${len.toFixed(2)} ${(c - len).toFixed(2)}" stroke-dashoffset="${(-off).toFixed(2)}" transform="rotate(-90 ${cx} ${cx})"><title>${esc(s.label)}: ${s.value}</title></circle>`;
-      off += len;
-      return el;
-    })
-    .join('');
-  const mid = center ?? String(total);
-  return `<svg viewBox="0 0 ${size} ${size}" class="donut" role="img" aria-label="${esc(segs.map((s) => `${s.label} ${s.value}`).join(', '))}">
-    <circle cx="${cx}" cy="${cx}" r="${r}" fill="none" stroke="var(--track)" stroke-width="${thickness}"/>
-    ${rings}
-    <text x="${cx}" y="${cx - 2}" text-anchor="middle" class="donut-num">${esc(mid)}</text>
-    <text x="${cx}" y="${cx + 16}" text-anchor="middle" class="donut-cap">open</text>
-  </svg>`;
+  const rings = segs.filter((s) => s.value > 0).map((s) => {
+    const len = (s.value / total) * c;
+    const el = `<circle cx="${cx}" cy="${cx}" r="${r}" fill="none" stroke="${s.color}" stroke-width="${th}" stroke-dasharray="${len.toFixed(2)} ${(c - len).toFixed(2)}" stroke-dashoffset="${(-off).toFixed(2)}" transform="rotate(-90 ${cx} ${cx})" filter="url(#glow)"><title>${esc(s.label)}: ${s.value}</title></circle>`;
+    off += len; return el;
+  }).join('');
+  return `<svg viewBox="0 0 ${size} ${size}" class="donut"><circle cx="${cx}" cy="${cx}" r="${r}" class="ring-track" stroke-width="${th}"/>${rings}<text x="${cx}" y="${cx - 1}" text-anchor="middle" class="donut-num">${esc(center)}</text><text x="${cx}" y="${cx + 16}" text-anchor="middle" class="ring-cap">OPEN</text></svg>`;
 }
-
-// horizontal bar list from [{label,value,color?}]
-function hbars(rows, { max, unit = '' } = {}) {
+function hbars(rows, max) {
   const m = max ?? Math.max(1, ...rows.map((r) => r.value));
-  return `<div class="hbars">${rows
-    .map((r, i) => {
-      const w = Math.max(2, Math.round((r.value / m) * 100));
-      const col = r.color || CATPAL[i % CATPAL.length];
-      return `<div class="hbar"><span class="hbar-l">${esc(r.label)}</span><span class="hbar-track"><span class="hbar-fill" style="width:${w}%;background:${col}"></span></span><span class="hbar-v">${esc(r.value)}${unit}</span></div>`;
-    })
-    .join('')}</div>`;
+  return `<div class="hbars">${rows.map((r, i) => {
+    const w = Math.max(3, Math.round((r.value / m) * 100)); const col = r.color || CATPAL[i % CATPAL.length];
+    return `<div class="hbar"><span class="hbar-l">${esc(r.label)}</span><span class="hbar-track"><span class="hbar-fill" style="width:${w}%;background:${col};box-shadow:0 0 10px ${col}"></span></span><span class="hbar-v">${esc(r.value)}</span></div>`;
+  }).join('')}</div>`;
+}
+// dual-line performance chart (auditor vs fixer, 0-5)
+function perfChart(daily) {
+  if (!daily || !daily.length) return `<p class="muted">No performance history yet — Manager records daily scores each run.</p>`;
+  const W = 760, H = 210, P = 34;
+  const xs = (i) => daily.length === 1 ? W / 2 : P + (i * (W - 2 * P)) / (daily.length - 1);
+  const ys = (v) => H - P - (v / 5) * (H - 2 * P);
+  const path = (key) => daily.map((r, i) => `${i ? 'L' : 'M'}${xs(i).toFixed(1)} ${ys(r[key] || 0).toFixed(1)}`).join(' ');
+  const dots = (key, col) => daily.map((r, i) => `<circle cx="${xs(i).toFixed(1)}" cy="${ys(r[key] || 0).toFixed(1)}" r="3.5" fill="${col}" filter="url(#glow)"><title>${esc(r.date)} ${key}: ${r[key]}</title></circle>`).join('');
+  const grid = [0, 1, 2, 3, 4, 5].map((g) => { const y = ys(g); return `<line x1="${P}" y1="${y}" x2="${W - P}" y2="${y}" class="grid"/><text x="${P - 6}" y="${y + 3}" text-anchor="end" class="axis">${g}</text>`; }).join('');
+  const labels = daily.filter((_, i) => daily.length <= 8 || i % Math.ceil(daily.length / 8) === 0 || i === daily.length - 1)
+    .map((r) => { const i = daily.indexOf(r); return `<text x="${xs(i).toFixed(1)}" y="${H - P + 16}" text-anchor="middle" class="axis">${esc(r.date.slice(5))}</text>`; }).join('');
+  return `<svg viewBox="0 0 ${W} ${H}" class="wide">${grid}
+    <path d="${path('auditor')}" fill="none" stroke="${CY}" stroke-width="2.4" filter="url(#glow)"/>
+    <path d="${path('fixer')}" fill="none" stroke="${LI}" stroke-width="2.4" filter="url(#glow)"/>
+    ${dots('auditor', CY)}${dots('fixer', LI)}${labels}</svg>
+    <div class="lgnd"><span><i style="background:${CY}"></i>Auditor</span><span><i style="background:${LI}"></i>Fixer</span></div>`;
+}
+// ETA gantt-style bars for in-flight recommendations
+function etaBars() {
+  const items = active.filter((f) => f.effortHours).sort((a, b) => (String(a.dueBy) < String(b.dueBy) ? -1 : 1)).slice(0, 12);
+  if (!items.length) return `<p class="muted">No active recommendations.</p>`;
+  const maxH = Math.max(12, ...items.map((f) => f.effortHours || 0));
+  return `<div class="gantt">${items.map((f) => {
+    const w = Math.max(8, Math.round(((f.effortHours || 2) / maxH) * 100));
+    const col = f.sla === 'overdue' ? RD : f.assignedTo === 'manager' ? MG : CY;
+    return `<div class="grow">
+      <span class="gl" title="${esc(f.tool)}: ${esc(f.check)}">${esc(f.tool.split('/').pop())} · ${esc(f.check)}</span>
+      <span class="gtrack"><span class="gfill" style="width:${w}%;background:${col};box-shadow:0 0 10px ${col}"></span></span>
+      <span class="geta">${esc(f.eta)}</span>
+      <span class="gdue ${f.sla === 'overdue' ? 'od' : ''}">${esc(f.dueBy)}</span>
+      <span class="gwho who-${esc(f.assignedTo)}">${esc(f.assignedTo)}</span>
+    </div>`;
+  }).join('')}</div>`;
 }
 
-// area+line trend from runs (avg 0-100)
-function trend(rs) {
-  if (!rs.length) return `<p class="muted">No runs recorded yet — the first daily run will populate this trend.</p>`;
-  const W = 720, H = 200, P = 34;
-  const pts = rs.map((r, i) => {
-    const x = rs.length === 1 ? W / 2 : P + (i * (W - 2 * P)) / (rs.length - 1);
-    const y = H - P - ((r.avg || 0) / 100) * (H - 2 * P);
-    return { x, y, r };
-  });
-  const line = pts.map((p, i) => `${i ? 'L' : 'M'}${p.x.toFixed(1)} ${p.y.toFixed(1)}`).join(' ');
-  const area = `${line} L${pts[pts.length - 1].x.toFixed(1)} ${H - P} L${pts[0].x.toFixed(1)} ${H - P} Z`;
-  const grid = [0, 25, 50, 75, 100]
-    .map((g) => { const y = H - P - (g / 100) * (H - 2 * P); return `<line x1="${P}" y1="${y}" x2="${W - P}" y2="${y}" class="grid"/><text x="${P - 6}" y="${y + 3}" text-anchor="end" class="axis">${g}</text>`; })
-    .join('');
-  const dots = pts
-    .map((p) => `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="4" fill="${COL.accent}"><title>${esc(p.r.date)}: ${p.r.avg}% (${p.r.tools} tools, ${p.r.issues} issues)</title></circle>`)
-    .join('');
-  const labels = pts
-    .filter((_, i) => rs.length <= 8 || i % Math.ceil(rs.length / 8) === 0 || i === pts.length - 1)
-    .map((p) => `<text x="${p.x.toFixed(1)}" y="${H - P + 16}" text-anchor="middle" class="axis">${esc(p.r.date.slice(5))}</text>`)
-    .join('');
-  return `<svg viewBox="0 0 ${W} ${H}" class="trend" role="img" aria-label="Average audit score over time">
-    <defs><linearGradient id="tg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${COL.accent}" stop-opacity="0.28"/><stop offset="1" stop-color="${COL.accent}" stop-opacity="0"/></linearGradient></defs>
-    ${grid}
-    ${pts.length > 1 ? `<path d="${area}" fill="url(#tg)"/>` : ''}
-    ${pts.length > 1 ? `<path d="${line}" fill="none" stroke="${COL.accent}" stroke-width="2.5" stroke-linejoin="round"/>` : ''}
-    ${dots}${labels}
-  </svg>`;
+function agentCard(key, glyph, accent, a) {
+  a = a || {}; const sc = a.score || {};
+  const kp = a.kpis || {};
+  const chips = Object.entries(kp).map(([k, v]) => `<span class="chip">${esc(k)}<b>${esc(v)}</b></span>`).join('');
+  const ratingBlock = (key.toLowerCase() === 'manager')
+    ? `<div class="rate mgr">RATES THE TEAM ▸</div>`
+    : `<div class="rate"><span class="rlab">daily</span>${stars(sc.daily)}</div><div class="rate"><span class="rlab">weekly</span>${stars(sc.weekly)}</div>`;
+  return `<div class="agent" style="--ac:${accent}">
+    <div class="ahead"><span class="glyph">${glyph}</span><div><div class="aname">${esc(key)}</div><div class="arole">${esc(a.role || '')}</div></div>
+      <span class="led"><i></i>${esc(a.status || 'idle')}</span></div>
+    <div class="atask"><span class="now">NOW</span>${esc(a.task || '—')}</div>
+    <div class="chips">${chips}</div>
+    <div class="rates">${ratingBlock}</div>
+  </div>`;
 }
 
-// progress bar
-const bar = (pct, color) => `<span class="pbar"><span class="pbar-fill" style="width:${Math.min(100, pct)}%;background:${color}"></span></span>`;
-
-const sevColor = (s) => (s === 'high' || s === 'critical' ? COL.red : s === 'medium' ? COL.amber : COL.slate);
-const fixIcon = (f) => (String(f.fixType || '').startsWith('auto:') ? '🤖 auto' : '✍️ manual');
-
-// ── lists ────────────────────────────────────────────────────────────────────
-const challengedHTML = challenged.length
-  ? challenged.slice(0, 10).map((f) => `<li><a href="${esc(f.url)}" target="_blank" rel="noopener"><b>${esc(f.tool)}</b></a> — ${esc(f.check)}<span class="reason">${esc(f.history?.slice(-1)[0]?.note || f.detail)}</span></li>`).join('')
-  : `<li class="muted">Nothing challenged — every attempted fix has verified. 🎉</li>`;
-const verifyHTML = verifying.length
-  ? verifying.slice(0, 10).map((f) => `<li><b>${esc(f.tool)}</b> — ${esc(f.check)} <span class="tag">fixed ${esc(f.fixedOn || '?')}</span></li>`).join('')
-  : `<li class="muted">Queue empty.</li>`;
-const doneHTML = complete.length
-  ? recent(complete, 'resolvedOn').map((f) => `<li><b>${esc(f.tool)}</b> — ${esc(f.check)} <span class="tag done">done ${esc(f.resolvedOn || '?')}</span></li>`).join('')
-  : `<li class="muted">None yet.</li>`;
-
-const topOpen = openAll.slice().sort((a, b) => (sevRank[b.severity] || 0) - (sevRank[a.severity] || 0)).slice(0, 18);
-const topOpenHTML = topOpen.length
-  ? topOpen.map((f) => `<tr>
-      <td><span class="sev" style="background:${sevColor(f.severity)}">${esc(f.severity)}</span></td>
-      <td><a href="${esc(f.url)}" target="_blank" rel="noopener">${esc(f.tool)}</a></td>
-      <td>${esc(f.check)}</td>
-      <td class="nowrap">${fixIcon(f)}</td>
-      <td class="detail">${esc(f.detail)}</td></tr>`).join('')
-  : `<tr><td colspan="5" class="muted">No open findings. 🎉</td></tr>`;
+const sevColor = (s) => (s === 'high' || s === 'critical' ? RD : s === 'medium' ? AM : VI);
+const topOpen = openAll.slice().sort((a, b) => (sevRank[b.severity] || 0) - (sevRank[a.severity] || 0)).slice(0, 16);
+const coordItems = active.filter((f) => f.coordination).slice(0, 10);
 
 // ── page ─────────────────────────────────────────────────────────────────────
-const kpi = (num, label, sub) => `<div class="kpi"><div class="kpi-n">${num}</div><div class="kpi-l">${label}</div>${sub ? `<div class="kpi-s">${sub}</div>` : ''}</div>`;
-
-const html = `<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
+const html = `<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
 <meta name="robots" content="noindex, nofollow"/>
-<title>🤖 LazyTools Bot Control Room</title>
+<title>◤ KUROOP Command Deck ◢</title>
 <style>
-  :root{
-    --bg:#f6f7fb; --panel:#ffffff; --ink:#0f172a; --muted:#64748b; --line:#e2e8f0;
-    --track:#eef1f6; --accent:#6366f1; --shadow:0 1px 3px rgba(15,23,42,.06),0 1px 2px rgba(15,23,42,.04);
-  }
-  @media (prefers-color-scheme: dark){
-    :root{ --bg:#0b1120; --panel:#111a2e; --ink:#e8edf6; --muted:#94a3b8; --line:#1f2b45;
-      --track:#1a2438; --shadow:0 1px 3px rgba(0,0,0,.4); }
-  }
   *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
-  .wrap{max-width:1080px;margin:0 auto;padding:28px 20px 64px}
-  header.top{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 14px;margin-bottom:6px}
-  header.top h1{font-size:26px;margin:0;letter-spacing:-.5px}
-  .stamp{color:var(--muted);font-size:13px}
-  .lead{color:var(--muted);margin:2px 0 22px;max-width:70ch}
+  :root{--cy:${CY};--mg:${MG};--li:${LI};--am:${AM};--rd:${RD};--ink:#dbeafe;--mut:#7d8db3;--line:rgba(120,160,220,.16);--glass:rgba(12,20,38,.55)}
+  html,body{margin:0}
+  body{background:
+      radial-gradient(1200px 600px at 15% -10%, rgba(34,211,238,.10), transparent 60%),
+      radial-gradient(1000px 500px at 100% 0%, rgba(232,121,249,.08), transparent 55%),
+      linear-gradient(180deg,#05070f,#070b16 60%,#04060d);
+    color:var(--ink);font:14px/1.5 ui-sans-serif,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;min-height:100vh}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.35;
+    background-image:linear-gradient(rgba(120,160,220,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(120,160,220,.05) 1px,transparent 1px);
+    background-size:40px 40px}
+  .wrap{position:relative;z-index:1;max-width:1140px;margin:0 auto;padding:26px 18px 70px}
+  .mono{font-family:ui-monospace,"Cascadia Mono",Consolas,monospace}
+  .muted{color:var(--mut)}
+  /* header */
+  .hud{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;margin-bottom:6px}
+  .hud h1{margin:0;font-size:24px;letter-spacing:4px;font-weight:700;text-transform:uppercase;
+    background:linear-gradient(90deg,var(--cy),var(--mg));-webkit-background-clip:text;background-clip:text;color:transparent;
+    text-shadow:0 0 26px rgba(34,211,238,.25)}
+  .sub{color:var(--mut);letter-spacing:2px;text-transform:uppercase;font-size:11px}
+  .hstat{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
+  .pill{font-family:ui-monospace,Consolas,monospace;font-size:11px;letter-spacing:1px;padding:5px 11px;border:1px solid var(--line);border-radius:20px;background:var(--glass);color:var(--ink)}
+  .pill b{color:var(--cy)}
+  .ok{color:var(--li)}.warn{color:var(--am)}.bad{color:var(--rd)}
+  /* panels */
   .grid{display:grid;gap:16px}
-  .kpis{grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin-bottom:18px}
-  .kpi{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:var(--shadow)}
-  .kpi-n{font-size:30px;font-weight:700;letter-spacing:-1px;font-variant-numeric:tabular-nums}
-  .kpi-l{font-size:12px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);margin-top:2px}
-  .kpi-s{font-size:12.5px;color:var(--muted);margin-top:6px}
-  .cols{grid-template-columns:1fr 1fr}
-  .cols3{grid-template-columns:1.2fr 1fr 1fr}
-  @media (max-width:760px){.cols,.cols3{grid-template-columns:1fr}}
-  .panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px 20px;box-shadow:var(--shadow)}
-  .panel h2{font-size:15px;margin:0 0 14px;letter-spacing:.2px}
-  .panel h2 .em{color:var(--muted);font-weight:500;font-size:13px}
-  .pbar{display:block;height:10px;border-radius:6px;background:var(--track);overflow:hidden;margin:6px 0}
+  .cols3{grid-template-columns:repeat(3,1fr)}
+  .cols2{grid-template-columns:1fr 1fr}
+  .col-2-1{grid-template-columns:1.3fr .7fr}
+  @media(max-width:820px){.cols3,.cols2,.col-2-1{grid-template-columns:1fr}}
+  .panel{position:relative;background:var(--glass);border:1px solid var(--line);border-radius:16px;padding:18px;
+    backdrop-filter:blur(8px);box-shadow:0 0 0 1px rgba(0,0,0,.2),0 18px 40px -20px rgba(0,0,0,.8)}
+  .panel::before,.panel::after{content:"";position:absolute;width:14px;height:14px;border:2px solid var(--cy);opacity:.5}
+  .panel::before{top:8px;left:8px;border-right:0;border-bottom:0}
+  .panel::after{bottom:8px;right:8px;border-left:0;border-top:0}
+  h2.t{margin:0 0 14px;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--mut);font-weight:700}
+  h2.t b{color:var(--cy)}
+  section{margin-top:16px}
+  /* agent cards */
+  .agent{position:relative;background:linear-gradient(180deg,rgba(255,255,255,.03),transparent);border:1px solid var(--line);border-top:2px solid var(--ac);border-radius:14px;padding:15px;overflow:hidden}
+  .agent::after{content:"";position:absolute;inset:0;background:radial-gradient(120px 60px at 90% 0,var(--ac),transparent 70%);opacity:.12;pointer-events:none}
+  .ahead{display:flex;align-items:center;gap:11px}
+  .glyph{width:40px;height:40px;flex:none;display:grid;place-items:center;border-radius:11px;background:rgba(255,255,255,.04);border:1px solid var(--line);font-size:20px;filter:drop-shadow(0 0 8px var(--ac))}
+  .aname{font-weight:700;letter-spacing:2px;text-transform:uppercase;font-size:14px;color:#fff}
+  .arole{font-size:11px;color:var(--mut)}
+  .led{margin-left:auto;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--ac);display:flex;align-items:center;gap:6px}
+  .led i{width:8px;height:8px;border-radius:50%;background:var(--ac);box-shadow:0 0 10px var(--ac);animation:pulse 1.8s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+  .atask{margin:12px 0 10px;font-size:13px;line-height:1.45;min-height:38px}
+  .now{display:inline-block;font-size:9px;letter-spacing:1.5px;color:#04060d;background:var(--ac);padding:1px 6px;border-radius:4px;margin-right:8px;vertical-align:middle;font-weight:800}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+  .chip{font-family:ui-monospace,Consolas,monospace;font-size:10.5px;color:var(--mut);border:1px solid var(--line);border-radius:6px;padding:3px 7px}
+  .chip b{color:var(--ink);margin-left:5px}
+  .rates{display:flex;gap:16px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:11px}
+  .rate{display:flex;align-items:center;gap:6px}
+  .rlab{font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--mut)}
+  .rate.mgr{color:var(--mg);font-size:11px;letter-spacing:2px;font-weight:700}
+  .stars .st{color:#2b3652;font-size:14px}
+  .stars .st.on{color:var(--am);text-shadow:0 0 8px rgba(251,191,36,.6)}
+  .stv{margin-left:5px;font-family:ui-monospace,Consolas,monospace;font-size:12px;color:var(--ink)}
+  /* rings/charts */
+  .ring{width:140px;height:140px}
+  .ring-track{fill:none;stroke:rgba(120,160,220,.12)}
+  .ring-num{fill:#fff;font-size:26px;font-weight:700;font-family:ui-monospace,Consolas,monospace}
+  .ring-cap{fill:var(--mut);font-size:9px;letter-spacing:1.5px}
+  .donut{width:150px;height:150px}
+  .donut-num{fill:#fff;font-size:30px;font-weight:700;font-family:ui-monospace,Consolas,monospace}
+  .flexrow{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+  .pbar{display:block;height:9px;border-radius:6px;background:rgba(120,160,220,.12);overflow:hidden;margin:8px 0}
   .pbar-fill{display:block;height:100%;border-radius:6px}
-  .prow{display:flex;justify-content:space-between;align-items:baseline;font-size:13.5px;margin-top:12px}
-  .prow b{font-size:15px;font-variant-numeric:tabular-nums}
-  .goalnum{font-size:22px;font-weight:700;font-variant-numeric:tabular-nums}
-  .donut-wrap{display:flex;gap:16px;align-items:center}
-  .donut{width:150px;height:150px;flex:none}
-  .donut-num{font-size:30px;font-weight:700;fill:var(--ink)}
-  .donut-cap{font-size:11px;fill:var(--muted);text-transform:uppercase;letter-spacing:.5px}
-  .legend{display:flex;flex-direction:column;gap:7px;font-size:13.5px}
-  .legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:8px;vertical-align:middle}
-  .legend b{font-variant-numeric:tabular-nums}
-  .hbars{display:flex;flex-direction:column;gap:9px}
-  .hbar{display:grid;grid-template-columns:120px 1fr 44px;align-items:center;gap:10px;font-size:13px}
-  .hbar-l{color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .hbar-track{background:var(--track);border-radius:6px;height:9px;overflow:hidden}
+  .prow{display:flex;justify-content:space-between;font-size:12.5px;margin-top:6px}
+  .prow b{font-family:ui-monospace,Consolas,monospace}
+  .wide{width:100%;height:auto}
+  line.grid{stroke:var(--line)}
+  text.axis{fill:var(--mut);font-size:10px;font-family:ui-monospace,Consolas,monospace}
+  .lgnd{display:flex;gap:16px;justify-content:center;font-size:12px;color:var(--mut);margin-top:6px}
+  .lgnd i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:6px;vertical-align:middle}
+  .hbars{display:flex;flex-direction:column;gap:8px}
+  .hbar{display:grid;grid-template-columns:104px 1fr 30px;align-items:center;gap:10px;font-size:12px}
+  .hbar-l{color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-transform:capitalize}
+  .hbar-track{background:rgba(120,160,220,.12);border-radius:6px;height:8px;overflow:hidden}
   .hbar-fill{display:block;height:100%;border-radius:6px}
-  .hbar-v{text-align:right;font-variant-numeric:tabular-nums;color:var(--muted)}
-  .trend{width:100%;height:auto}
-  .grid line.grid, .grid{stroke:var(--line)}
-  line.grid{stroke:var(--line);stroke-width:1}
-  text.axis{fill:var(--muted);font-size:11px}
-  ul.list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;font-size:13.5px}
-  ul.list li{padding-bottom:8px;border-bottom:1px solid var(--line)}
-  ul.list li:last-child{border:0;padding-bottom:0}
-  ul.list a{color:var(--accent);text-decoration:none}
-  ul.list a:hover{text-decoration:underline}
-  .reason{display:block;color:var(--muted);font-size:12.5px;margin-top:2px}
-  .tag{font-size:11px;color:var(--muted);background:var(--track);padding:1px 7px;border-radius:20px;margin-left:4px}
-  .tag.done{color:#0a7a3f}
-  @media (prefers-color-scheme: dark){.tag.done{color:#4ade80}}
-  table{width:100%;border-collapse:collapse;font-size:13px}
-  th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
-  th{font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted)}
-  td a{color:var(--accent);text-decoration:none}
+  .hbar-v{text-align:right;font-family:ui-monospace,Consolas,monospace;color:var(--ink)}
+  /* gantt */
+  .gantt{display:flex;flex-direction:column;gap:8px}
+  .grow{display:grid;grid-template-columns:1fr 90px 70px 84px 66px;align-items:center;gap:10px;font-size:12px}
+  .gl{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--ink)}
+  .gtrack{background:rgba(120,160,220,.12);border-radius:5px;height:9px;overflow:hidden}
+  .gfill{display:block;height:100%;border-radius:5px}
+  .grow{grid-template-columns:220px 1fr 78px 74px}
+  @media(max-width:820px){.grow{grid-template-columns:130px 1fr 60px 64px}}
+  .geta{font-family:ui-monospace,Consolas,monospace;color:var(--mut);font-size:11px;text-align:right}
+  .gdue{font-family:ui-monospace,Consolas,monospace;font-size:11px;color:var(--cy);text-align:right}
+  .gdue.od{color:var(--rd)}
+  .gwho{display:none}
+  /* table */
+  table{width:100%;border-collapse:collapse;font-size:12.5px}
+  th,td{text-align:left;padding:8px 9px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--mut)}
+  td a{color:var(--cy);text-decoration:none}
   td a:hover{text-decoration:underline}
-  td.detail{color:var(--muted)}
-  td.nowrap{white-space:nowrap}
-  .sev{color:#fff;font-size:11px;padding:2px 8px;border-radius:20px;text-transform:capitalize;white-space:nowrap}
-  .funnel{display:flex;flex-wrap:wrap;gap:8px}
-  .fstep{flex:1;min-width:120px;background:var(--track);border-radius:12px;padding:12px 14px}
-  .fstep .n{font-size:24px;font-weight:700;font-variant-numeric:tabular-nums}
-  .fstep .l{font-size:12px;color:var(--muted)}
-  .muted{color:var(--muted)}
-  footer{margin-top:26px;color:var(--muted);font-size:12.5px;text-align:center;line-height:1.9}
-  footer a{color:var(--accent);text-decoration:none}
-  section{margin-bottom:16px}
-</style>
-</head>
-<body>
+  .sev{color:#04060d;font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;text-transform:capitalize}
+  .who{font-size:10px;letter-spacing:.5px;text-transform:uppercase;padding:2px 7px;border-radius:20px;border:1px solid var(--line)}
+  .who-fixer{color:var(--li)}.who-manager{color:var(--mg)}.who-auditor{color:var(--cy)}
+  ul.list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px;font-size:12.5px}
+  ul.list li{padding-bottom:9px;border-bottom:1px solid var(--line)}
+  ul.list li:last-child{border:0}
+  ul.list b{color:#fff}
+  footer{margin-top:26px;text-align:center;color:var(--mut);font-size:11px;letter-spacing:.5px;line-height:2}
+  footer a{color:var(--cy);text-decoration:none}
+</style></head>
+<body><svg width="0" height="0"><defs><filter id="glow"><feGaussianBlur stdDeviation="2.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs></svg>
 <div class="wrap">
-  <header class="top">
-    <h1>🤖 LazyTools Bot Control Room</h1>
-    <span class="stamp">updated ${esc(ledger.updated || last.date || '')}</span>
-  </header>
-  <p class="lead">A single always-current view of the two autonomous, token-free bots — the <b>Auditor</b> (tests live tools) and the <b>Fixer</b> (applies safe fixes) — plus the build pipeline toward the ${BUILD_TARGET.toLocaleString()}-tool target. Regenerated on every bot run; charts are self-contained (no external requests).</p>
 
-  <div class="grid kpis">
-    ${kpi(`${toolCount.toLocaleString()}<span class="muted" style="font-size:16px">/${BUILD_TARGET.toLocaleString()}</span>`, 'Tools built', `${buildPct}% of target · ${remaining.toLocaleString()} to go`)}
-    ${kpi(`${last.avg ?? '—'}%`, 'Latest avg score', `over ${last.tools ?? 0} tools`)}
-    ${kpi(openAll.length, 'Open findings', `${sevCount.high || 0} high priority`)}
-    ${kpi(verifying.length, 'Awaiting verify', 're-tested next run')}
-    ${kpi(resolvedTotal, 'Resolved', 'fixed &amp; confirmed')}
-    ${kpi(challenged.length, 'Challenged', challenged.length ? 'need attention' : 'all clear')}
+  <div class="hud">
+    <h1>◤ Kuroop Command Deck ◢</h1>
+    <span class="hstat">
+      <span class="pill">SYS <b class="${overdue ? 'warn' : 'ok'}">${overdue ? 'RECONCILING' : 'NOMINAL'}</b></span>
+      <span class="pill">SLA <b class="${slaPct >= 80 ? 'ok' : 'warn'}">${slaPct}%</b></span>
+      <span class="pill mono">${esc(ledger.updated || last.date || '')}</span>
+    </span>
   </div>
+  <div class="sub">LazyTools · autonomous operations · Manager ▸ Auditor ▸ Fixer · reported by Kuroop</div>
 
-  <section class="grid cols">
+  <section class="grid cols3">
+    ${agentCard('Manager', '🧭', MG, agents.manager)}
+    ${agentCard('Auditor', '🛰️', CY, agents.auditor)}
+    ${agentCard('Fixer', '🛠️', LI, agents.fixer)}
+  </section>
+
+  <section class="grid col-2-1">
     <div class="panel">
-      <h2>🏗️ Build pipeline <span class="em">— toward ${BUILD_TARGET.toLocaleString()} tools</span></h2>
-      <div class="prow"><span>Tools built</span><b>${toolCount.toLocaleString()} / ${BUILD_TARGET.toLocaleString()}</b></div>
-      ${bar(buildPct, COL.accent)}
-      <div class="prow"><span class="muted">${buildPct}% complete</span><span class="muted">${remaining.toLocaleString()} remaining</span></div>
-      <div class="prow" style="margin-top:16px"><span>Audit coverage</span><b>${audited} / ${catalogue} tools</b></div>
-      ${bar(auditPct, COL.teal)}
-      <div class="prow"><span class="muted">${auditPct}% audited</span><span class="muted">~10/day rolling sweep</span></div>
+      <h2 class="t">Team performance <b>· out of 5 ·</b> Manager's rating</h2>
+      ${perfChart(scores.daily)}
     </div>
     <div class="panel">
-      <h2>📚 Tools by category <span class="em">— top ${topCats.length}</span></h2>
-      ${hbars(topCats.map(([label, value], i) => ({ label, value, color: CATPAL[i % CATPAL.length] })))}
+      <h2 class="t">Build pipeline</h2>
+      <div class="flexrow" style="justify-content:center">${ring(buildPct, 'build', `${toolCount}/${BUILD_TARGET}`, MG)}</div>
+      <div class="prow"><span class="muted">Tools built</span><b>${toolCount} / ${BUILD_TARGET}</b></div>
+      <div class="prow"><span class="muted">Remaining</span><b>${remaining}</b></div>
+      <div class="prow" style="margin-top:8px"><span class="muted">Audit coverage</span><b>${audited}/${catalogue}</b></div>
+      <div class="pbar"><span class="pbar-fill" style="width:${auditPct}%;background:${CY};box-shadow:0 0 10px ${CY}"></span></div>
     </div>
   </section>
 
   <section class="panel">
-    <h2>📈 Audit score trend <span class="em">— average quality score per run</span></h2>
-    ${trend(runs)}
+    <h2 class="t">Recommendation ETAs <b>· ${active.length} active ·</b> ${overdue} overdue</h2>
+    ${etaBars()}
   </section>
 
   <section class="grid cols3">
     <div class="panel">
-      <h2>🔬 Open findings by severity</h2>
-      <div class="donut-wrap">
-        ${donut([
-          { label: 'High', value: sevCount.high || 0, color: COL.red },
-          { label: 'Medium', value: sevCount.medium || 0, color: COL.amber },
-          { label: 'Low', value: sevCount.low || 0, color: COL.slate },
-        ], { center: String(openAll.length) })}
-        <div class="legend">
-          <span><i style="background:${COL.red}"></i>High <b>${sevCount.high || 0}</b></span>
-          <span><i style="background:${COL.amber}"></i>Medium <b>${sevCount.medium || 0}</b></span>
-          <span><i style="background:${COL.slate}"></i>Low <b>${sevCount.low || 0}</b></span>
+      <h2 class="t">Open by severity</h2>
+      <div class="flexrow">
+        ${donut([{ label: 'High', value: sevCount.high || 0, color: RD }, { label: 'Medium', value: sevCount.medium || 0, color: AM }, { label: 'Low', value: sevCount.low || 0, color: VI }], String(openAll.length))}
+        <div class="lgnd" style="flex-direction:column;align-items:flex-start;gap:6px">
+          <span><i style="background:${RD}"></i>High ${sevCount.high || 0}</span>
+          <span><i style="background:${AM}"></i>Medium ${sevCount.medium || 0}</span>
+          <span><i style="background:${VI}"></i>Low ${sevCount.low || 0}</span>
         </div>
       </div>
     </div>
     <div class="panel">
-      <h2>🗂️ By audit dimension</h2>
-      ${catFindingRows.length ? hbars(catFindingRows.map(([label, value]) => ({ label, value }))) : '<p class="muted">No open findings.</p>'}
+      <h2 class="t">By dimension</h2>
+      ${catRows.length ? hbars(catRows.map(([label, value]) => ({ label, value }))) : '<p class="muted">None.</p>'}
     </div>
     <div class="panel">
-      <h2>🔁 Fix lifecycle</h2>
-      <div class="funnel">
-        <div class="fstep"><div class="n">${openAll.length}</div><div class="l">🟡 Open</div></div>
-        <div class="fstep"><div class="n">${verifying.length}</div><div class="l">🔧 Verifying</div></div>
-        <div class="fstep"><div class="n">${resolvedTotal}</div><div class="l">✅ Complete</div></div>
-        <div class="fstep"><div class="n">${challenged.length}</div><div class="l">⚠️ Challenged</div></div>
-      </div>
-      <p class="muted" style="font-size:12.5px;margin:12px 0 0">Fixer applies a safe change → <b>Verifying</b>; next day the Auditor re-tests live → <b>Complete</b>, or <b>Challenged</b> with a reason after repeated failure.</p>
+      <h2 class="t">Lifecycle</h2>
+      ${hbars([
+        { label: 'open', value: openAll.length, color: AM },
+        { label: 'verifying', value: verifying.length, color: CY },
+        { label: 'complete', value: complete.length, color: LI },
+        { label: 'challenged', value: challenged.length, color: RD },
+      ])}
+      <div class="prow" style="margin-top:12px"><span class="muted">On-track / overdue</span><b>${onTrack} / ${overdue}</b></div>
     </div>
   </section>
 
-  <section class="grid cols">
-    <div class="panel">
-      <h2>⚠️ Challenged — need a human/AI</h2>
-      <ul class="list">${challengedHTML}</ul>
-    </div>
-    <div class="panel">
-      <h2>🔧 Fixed, awaiting verification</h2>
-      <ul class="list">${verifyHTML}</ul>
-      <h2 style="margin-top:18px">✅ Recently completed</h2>
-      <ul class="list">${doneHTML}</ul>
-    </div>
-  </section>
+  ${coordItems.length ? `<section class="panel">
+    <h2 class="t">Coordination log <b>· Manager ⇄ Auditor ⇄ Fixer</b></h2>
+    <ul class="list">${coordItems.map((f) => `<li><b>${esc(f.tool)}</b> — ${esc(f.check)}<br/><span class="muted">${esc(f.coordination)}</span></li>`).join('')}</ul>
+  </section>` : ''}
 
   <section class="panel">
-    <h2>🟡 Top open findings <span class="em">— ${openAll.length} total, highest severity first</span></h2>
-    <div style="overflow-x:auto">
-    <table>
-      <thead><tr><th>Sev</th><th>Tool</th><th>Finding</th><th>Fix</th><th>Detail</th></tr></thead>
-      <tbody>${topOpenHTML}</tbody>
-    </table>
-    </div>
+    <h2 class="t">Top open findings <b>· ${openAll.length} total</b></h2>
+    <div style="overflow-x:auto"><table>
+      <thead><tr><th>Sev</th><th>Tool</th><th>Finding</th><th>Owner</th><th>ETA</th><th>Due</th></tr></thead>
+      <tbody>${topOpen.length ? topOpen.map((f) => `<tr>
+        <td><span class="sev" style="background:${sevColor(f.severity)}">${esc(f.severity)}</span></td>
+        <td><a href="${esc(f.url)}" target="_blank" rel="noopener">${esc(f.tool)}</a></td>
+        <td>${esc(f.check)}</td>
+        <td><span class="who who-${esc(f.assignedTo || 'fixer')}">${esc(f.assignedTo || 'fixer')}</span></td>
+        <td class="mono muted">${esc(f.eta || '')}</td>
+        <td class="mono ${f.sla === 'overdue' ? 'bad' : 'muted'}">${esc(f.dueBy || '')}</td></tr>`).join('') : '<tr><td colspan="6" class="muted">No open findings.</td></tr>'}</tbody>
+    </table></div>
   </section>
 
   <footer>
-    Two autonomous bots · token-free · runs daily in GitHub Actions.<br/>
-    <a href="https://github.com/Synth88Labs/lazytools.io/blob/main/audits/DASHBOARD.md">markdown dashboard</a> ·
-    <a href="https://github.com/Synth88Labs/lazytools.io/tree/main/audits/reports">daily reports</a> ·
-    <a href="https://github.com/Synth88Labs/lazytools.io/blob/main/audits/recommendations.md">recommendations</a> ·
+    Three autonomous agents · token-free · runs daily in GitHub Actions · reported aloud by Kuroop.<br/>
+    <a href="https://github.com/Synth88Labs/lazytools.io/blob/main/audits/DASHBOARD.md">markdown</a> ·
+    <a href="https://github.com/Synth88Labs/lazytools.io/tree/main/audits/reports">reports</a> ·
     <a href="https://github.com/Synth88Labs/lazytools.io/blob/main/audits/ledger.json">ledger</a> ·
     <a href="https://github.com/Synth88Labs/lazytools.io/blob/main/docs/AUDIT-SYSTEM.md">how it works</a><br/>
-    Self-contained page — no trackers, no external requests. Not indexed.
+    Self-contained HUD — no trackers, no external requests. Not indexed.
   </footer>
-</div>
-</body>
-</html>
-`;
+</div></body></html>`;
 
 await writeFile(new URL('audits/dashboard.html', ROOT), html);
-console.log(`dashboard.html written — ${toolCount}/${BUILD_TARGET} tools, ${openAll.length} open, ${runs.length} run(s).`);
+console.log(`dashboard.html (command deck) — ${toolCount}/${BUILD_TARGET} tools, ${openAll.length} open, ${active.length} active, ${overdue} overdue.`);

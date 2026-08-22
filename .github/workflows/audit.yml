@@ -60,6 +60,10 @@ jobs:
         id: fix
         run: node scripts/audit-fix.mjs
 
+      - name: Bot 3 — manage (governance, ETAs, ratings)
+        id: manage
+        run: node scripts/audit-manager.mjs
+
       - name: Commit results
         run: |
           git config user.name  "lazytools-audit-bot"
@@ -93,6 +97,7 @@ jobs:
         run: |
           echo "### ${{ steps.audit.outputs.subject }}" >> "$GITHUB_STEP_SUMMARY"
           echo "" >> "$GITHUB_STEP_SUMMARY"
-          echo "${{ steps.fix.outputs.fix_summary }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "- ${{ steps.fix.outputs.fix_summary }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "- ${{ steps.manage.outputs.manager_summary }}" >> "$GITHUB_STEP_SUMMARY"
           echo "" >> "$GITHUB_STEP_SUMMARY"
-          echo "Progress dashboard: \`audits/DASHBOARD.md\` · report: \`${{ steps.audit.outputs.report }}\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "Command deck: \`audits/dashboard.html\` · markdown: \`audits/DASHBOARD.md\` · report: \`${{ steps.audit.outputs.report }}\`" >> "$GITHUB_STEP_SUMMARY"
