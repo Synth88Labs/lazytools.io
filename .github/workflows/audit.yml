@@ -10,8 +10,9 @@
 #   Verification: the next day's Auditor re-tests "verifying" tools and marks
 #     each complete, or logs a challenge with reasoning.
 #
-# Results are committed back to the repo (public). To also email the report, set
-# repo secrets MAIL_USERNAME, MAIL_PASSWORD (Gmail App Password), AUDIT_EMAIL_TO.
+# Everything is committed back to the repo (public). See progress any time in
+# audits/DASHBOARD.md (always-current), audits/reports/<date>.md, the ledger, and
+# the run's job summary on the Actions page. No email — the git files are the record.
 name: Daily UX Audit & Fix
 
 on:
@@ -37,8 +38,6 @@ concurrency:
 jobs:
   audit-fix:
     runs-on: ubuntu-latest
-    env:
-      MAIL_ENABLED: ${{ secrets.MAIL_USERNAME != '' && secrets.MAIL_PASSWORD != '' && secrets.AUDIT_EMAIL_TO != '' }}
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v5
@@ -86,23 +85,14 @@ jobs:
           name: audit-report
           path: |
             audit-report.html
-            audits/reports/
+            audits/
           if-no-files-found: warn
 
-      - name: Email report
-        if: ${{ always() && env.MAIL_ENABLED == 'true' }}
-        uses: dawidd6/action-send-mail@v4
-        with:
-          server_address: smtp.gmail.com
-          server_port: 465
-          secure: true
-          username: ${{ secrets.MAIL_USERNAME }}
-          password: ${{ secrets.MAIL_PASSWORD }}
-          subject: ${{ steps.audit.outputs.subject || 'LazyTools daily audit' }}
-          to: ${{ secrets.AUDIT_EMAIL_TO }}
-          from: LazyTools Auditor <${{ secrets.MAIL_USERNAME }}>
-          html_body: file://audit-report.html
-
-      - name: Email not configured
-        if: ${{ always() && env.MAIL_ENABLED != 'true' }}
-        run: echo "::notice title=Email skipped::Add MAIL_USERNAME, MAIL_PASSWORD (Gmail App Password) and AUDIT_EMAIL_TO secrets to receive the report. Results are committed under audits/ and uploaded as an artifact."
+      - name: Summary
+        if: always()
+        run: |
+          echo "### ${{ steps.audit.outputs.subject }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "${{ steps.fix.outputs.fix_summary }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "Progress dashboard: \`audits/DASHBOARD.md\` · report: \`${{ steps.audit.outputs.report }}\`" >> "$GITHUB_STEP_SUMMARY"

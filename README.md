@@ -105,9 +105,9 @@ Claude tokens** — see [`docs/AUDIT-SYSTEM.md`](docs/AUDIT-SYSTEM.md) for the f
 - **The loop:** the next day's Auditor re-tests fixed tools → `complete` if resolved, or `challenged`
   (with reasoning) after 3 failed attempts.
 
-Orchestrated by `.github/workflows/audit.yml` (daily 06:17 UTC + manual run). Results are committed under
-`audits/` (public). To also email the report, add repo secrets `MAIL_USERNAME`, `MAIL_PASSWORD` (Gmail
-**App Password**) and `AUDIT_EMAIL_TO`.
+Orchestrated by `.github/workflows/audit.yml` (daily 06:17 UTC + manual run). Everything is committed
+under `audits/` (public) — glance at [`audits/DASHBOARD.md`](audits/DASHBOARD.md) for an always-current
+view (scores, coverage, what was fixed, what's open/challenged). No email; the git files are the record.
 
 ## Tech & models
 

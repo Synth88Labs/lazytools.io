@@ -145,10 +145,16 @@ safe, testable transformations are identified.
 - **Locally:** `AUDIT_COUNT=5 AUDIT_OFFSET=0 node scripts/audit-ux.mjs` then
   `node scripts/audit-fix.mjs` (needs `npx playwright install chromium`).
 
-## Optional email
+## Where to see progress
 
-Set three repo secrets (Settings → Secrets and variables → Actions):
-`MAIL_USERNAME` (a Gmail address), `MAIL_PASSWORD` (a Gmail **App Password**,
-with 2-Step Verification on — not your login password), `AUDIT_EMAIL_TO` (the
-recipient). Without them the run still commits results and uploads the report as
-an artifact.
+No email — everything is in git (public), so you can glance at it any time:
+
+- **`audits/DASHBOARD.md`** — always-current single view: completed / open /
+  awaiting-verification / challenged counts, catalogue coverage, a score trend
+  over recent runs, what was just fixed, what's challenged, and the top open
+  findings. Regenerated every run.
+- **`audits/reports/<date>.md`** — that day's full audit; **`-fixes.md`** — that
+  day's fixes.
+- **`audits/recommendations.md`** — the open manual to-do list.
+- Each run also prints a **job summary** on its GitHub Actions run page and
+  uploads the report as an artifact.

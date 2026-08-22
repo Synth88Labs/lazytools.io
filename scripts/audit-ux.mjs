@@ -213,6 +213,17 @@ for (const t of audited) {
   }
 }
 ledger.updated = today;
+ledger.runs = (ledger.runs || []).filter((r) => r.date !== today);
+ledger.runs.push({
+  date: today,
+  tools: audited.length,
+  avg: Math.round(audited.reduce((a, r) => a + r.score, 0) / (audited.length || 1)),
+  issues: audited.reduce((a, r) => a + r.checks.filter((c) => !c.pass).length, 0),
+  opened, resolved, challenged,
+});
+ledger.runs = ledger.runs.slice(-90);
+ledger.auditedTools = [...new Set([...(ledger.auditedTools || []), ...audited.map((t) => t.slug)])];
+ledger.catalogueSize = N;
 await mkdir(new URL('audits/reports/', ROOT), { recursive: true });
 await writeFile(LEDGER_PATH, JSON.stringify(ledger, null, 2) + '\n');
 
