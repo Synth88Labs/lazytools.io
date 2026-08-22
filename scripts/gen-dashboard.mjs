@@ -132,8 +132,8 @@ function agentCard(key, glyph, accent, a) {
     ? `<div class="rate mgr">RATES THE TEAM ▸</div>`
     : `<div class="rate"><span class="rlab">daily</span>${stars(sc.daily)}</div><div class="rate"><span class="rlab">weekly</span>${stars(sc.weekly)}</div>`;
   return `<div class="agent" style="--ac:${accent}">
-    <div class="ahead"><span class="glyph">${glyph}</span><div><div class="aname">${esc(key)}</div><div class="arole">${esc(a.role || '')}</div></div>
-      <span class="led"><i></i>${esc(a.status || 'idle')}</span></div>
+    <div class="ahead"><span class="glyph">${glyph}</span><div class="ainfo"><div class="aname">${esc(key)}</div><div class="arole">${esc(a.role || '')}</div></div></div>
+    <div class="astatus"><span class="led"><i></i>${esc(a.status || 'idle')}</span></div>
     <div class="atask"><span class="now">NOW</span>${esc(a.task || '—')}</div>
     <div class="chips">${chips}</div>
     <div class="rates">${ratingBlock}</div>
@@ -148,6 +148,7 @@ const coordItems = active.filter((f) => f.coordination).slice(0, 10);
 const html = `<!doctype html><html lang="en"><head>
 <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
 <meta name="robots" content="noindex, nofollow"/>
+<meta http-equiv="refresh" content="1800"/>
 <title>◤ KUROOP Command Deck ◢</title>
 <style>
   *{box-sizing:border-box}
@@ -196,10 +197,12 @@ const html = `<!doctype html><html lang="en"><head>
   .agent::after{content:"";position:absolute;inset:0;background:radial-gradient(120px 60px at 90% 0,var(--ac),transparent 70%);opacity:.12;pointer-events:none}
   .ahead{display:flex;align-items:center;gap:11px}
   .glyph{width:40px;height:40px;flex:none;display:grid;place-items:center;border-radius:11px;background:rgba(255,255,255,.04);border:1px solid var(--line);font-size:20px;filter:drop-shadow(0 0 8px var(--ac))}
-  .aname{font-weight:700;letter-spacing:2px;text-transform:uppercase;font-size:14px;color:#fff}
-  .arole{font-size:11px;color:var(--mut)}
-  .led{margin-left:auto;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--ac);display:flex;align-items:center;gap:6px}
-  .led i{width:8px;height:8px;border-radius:50%;background:var(--ac);box-shadow:0 0 10px var(--ac);animation:pulse 1.8s infinite}
+  .ainfo{min-width:0;flex:1}
+  .aname{font-weight:700;letter-spacing:2px;text-transform:uppercase;font-size:14px;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .arole{font-size:11px;color:var(--mut);line-height:1.35}
+  .astatus{margin-top:11px}
+  .led{display:inline-flex;align-items:center;gap:6px;max-width:100%;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--ac);border:1px solid var(--line);border-radius:20px;padding:3px 10px;background:rgba(255,255,255,.03)}
+  .led i{width:8px;height:8px;flex:none;border-radius:50%;background:var(--ac);box-shadow:0 0 10px var(--ac);animation:pulse 1.8s infinite}
   @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
   .atask{margin:12px 0 10px;font-size:13px;line-height:1.45;min-height:38px}
   .now{display:inline-block;font-size:9px;letter-spacing:1.5px;color:#04060d;background:var(--ac);padding:1px 6px;border-radius:4px;margin-right:8px;vertical-align:middle;font-weight:800}
@@ -279,6 +282,7 @@ const html = `<!doctype html><html lang="en"><head>
       <span class="pill">SYS <b class="${overdue ? 'warn' : 'ok'}">${overdue ? 'RECONCILING' : 'NOMINAL'}</b></span>
       <span class="pill">SLA <b class="${slaPct >= 80 ? 'ok' : 'warn'}">${slaPct}%</b></span>
       <span class="pill mono">${esc(ledger.updated || last.date || '')}</span>
+      <span class="pill" title="auto-refreshes every 30 minutes">⟳ 30m</span>
     </span>
   </div>
   <div class="sub">LazyTools · autonomous operations · Manager ▸ Auditor ▸ Fixer ▸ Researcher ▸ Developer · reported by Kuroop</div>
@@ -382,9 +386,11 @@ const html = `<!doctype html><html lang="en"><head>
     <a href="https://github.com/Synth88Labs/lazytools.io/tree/main/audits/reports">reports</a> ·
     <a href="https://github.com/Synth88Labs/lazytools.io/blob/main/audits/ledger.json">ledger</a> ·
     <a href="https://github.com/Synth88Labs/lazytools.io/blob/main/docs/AUDIT-SYSTEM.md">how it works</a><br/>
-    Self-contained HUD — no trackers, no external requests. Not indexed.
+    Self-contained HUD — no trackers, no external requests. Not indexed. · auto-refreshes every 30 min.
   </footer>
-</div></body></html>`;
+</div>
+<script>setTimeout(function(){location.reload(true);},1800000);</script>
+</body></html>`;
 
 await writeFile(new URL('audits/dashboard.html', ROOT), html);
 console.log(`dashboard.html (command deck) — ${toolCount}/${BUILD_TARGET} tools, ${openAll.length} open, ${active.length} active, ${overdue} overdue.`);
