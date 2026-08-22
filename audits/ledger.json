@@ -1477,15 +1477,15 @@
       }
     },
     "fixer": {
-      "role": "Senior dev — auto + LLM manual fixes, 24/7",
+      "role": "Senior dev — auto + LLM fixes, build-gated, 24/7",
       "status": "fixing",
-      "task": "Working 46 manual item(s) with the LLM fixer (build-gated proposals).",
+      "task": "Auto-fixing 1 title item(s), build-gated. 3 awaiting re-verify. 45 systemic → flagged to owner/dev.",
       "kpis": {
         "open": 46,
-        "manual": 46,
+        "fixable": 1,
+        "systemic": 45,
         "verifying": 3,
-        "completed": 2,
-        "slaPct": 100
+        "completed": 2
       },
       "score": {
         "daily": 5,

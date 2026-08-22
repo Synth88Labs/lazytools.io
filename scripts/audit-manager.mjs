@@ -179,6 +179,8 @@ const tokPct = Math.min(100, Math.round((tokUsed / tokCap) * 100));
 // ── current tasks for the dashboard ──────────────────────────────────────────
 const autoQueue = findings.filter((f) => f.status === 'open' && String(f.fixType || '').startsWith('auto:')).length;
 const manualQueue = findings.filter((f) => f.status === 'open' && f.fixType === 'manual').length;
+const ownerFlagged = findings.filter((f) => f.status === 'open' && (f.assignedTo === 'owner' || f.assignedTo === 'developer')).length;
+const fixerWorkable = findings.filter((f) => f.status === 'open' && /title present/i.test(f.check)).length; // the class the Fixer can auto-apply now
 const nextAudit = ((ledger.auditedTools || []).length % (ledger.catalogueSize || 1));
 
 ledger.agents = {
@@ -204,14 +206,16 @@ ledger.agents = {
     score: { daily: auditorDaily, weekly: wkAvg('auditor') },
   },
   fixer: {
-    role: 'Senior dev — auto + LLM manual fixes, 24/7',
-    status: (autoQueue + manualQueue) > 0 ? 'fixing' : challengedCount > 0 ? 'blocked' : 'standby',
-    task: autoQueue > 0
-      ? `Applying ${autoQueue} deterministic fix(es) + working the ${manualQueue} manual item(s) (build-gated).`
-      : manualQueue > 0
-        ? `Working ${manualQueue} manual item(s) with the LLM fixer (build-gated proposals).`
-        : `Backlog clear; standing by.`,
-    kpis: { open: openCount, manual: manualQueue, verifying: verifyingCount, completed: completeCount, slaPct },
+    role: 'Senior dev — auto + LLM fixes, build-gated, 24/7',
+    status: fixerWorkable > 0 ? 'fixing' : verifyingCount > 0 ? 'verifying' : 'standby',
+    task: fixerWorkable > 0
+      ? `Auto-fixing ${fixerWorkable} title item(s), build-gated. ${verifyingCount} awaiting re-verify. ${ownerFlagged} systemic → flagged to owner/dev.`
+      : verifyingCount > 0
+        ? `${verifyingCount} fix(es) awaiting the Auditor's re-verify. ${ownerFlagged} systemic items are owner/dev decisions, not mine.`
+        : ownerFlagged > 0
+          ? `Nothing I can safely auto-fix — the ${ownerFlagged} remaining are systemic (owner/dev decisions).`
+          : `Backlog clear; standing by.`,
+    kpis: { open: openCount, fixable: fixerWorkable, systemic: ownerFlagged, verifying: verifyingCount, completed: completeCount },
     score: { daily: fixerDaily, weekly: wkAvg('fixer') },
   },
   researcher: {
