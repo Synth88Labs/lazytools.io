@@ -1371,6 +1371,13 @@ const POSTS = [
     fact: 'uniform pick · spin to the chosen segment · draw without replacement',
     icon: '🎡',
   },
+  {
+    slug: 'online-notepad-that-saves-locally-guide',
+    kicker: 'PRODUCTIVITY GUIDE',
+    lines: ['A notepad that', 'saves in your browser', '(not the cloud)'],
+    fact: 'localStorage · autosave · offline · nothing uploaded',
+    icon: '📝',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

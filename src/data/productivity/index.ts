@@ -6,7 +6,7 @@ export interface ProductivityToolDef {
   icon: string;
   description: string;
   lead: string;
-  widget: 'pomodoro' | 'countdown' | 'meeting-cost' | 'eisenhower' | 'habit' | 'kanban' | 'mindmap' | 'gantt' | 'decision-matrix' | 'rice' | 'swot' | 'pros-cons' | 'flowchart' | 'whiteboard' | 'time-blocking' | 'okr' | 'checklist' | 'retro' | 'eye-rest' | 'swimlane' | 'wheel';
+  widget: 'pomodoro' | 'countdown' | 'meeting-cost' | 'eisenhower' | 'habit' | 'kanban' | 'mindmap' | 'gantt' | 'decision-matrix' | 'rice' | 'swot' | 'pros-cons' | 'flowchart' | 'whiteboard' | 'time-blocking' | 'okr' | 'checklist' | 'retro' | 'eye-rest' | 'swimlane' | 'wheel' | 'notepad';
   how: string;
   note?: string;
   faqs: { q: string; a: string }[];
@@ -413,5 +413,25 @@ export const PRODUCTIVITY_TOOLS: ProductivityToolDef[] = [
       { q: 'What is the difference from the Random Number Generator?', a: 'This picks a random item from your own list of names or options and shows it on a spinning wheel; the Random Number Generator returns a random number in a range. Use the wheel for names/choices, the generator for numbers.' },
     ],
     keywords: ['random name picker', 'wheel of names', 'spin the wheel', 'random picker wheel', 'raffle picker', 'name picker wheel', 'decision wheel', 'random winner picker'],
+  },
+  {
+    slug: 'online-notepad',
+    name: 'Online Notepad',
+    icon: '📝',
+    description:
+      'A free online notepad that autosaves to your browser as you type — no account, nothing uploaded. Live word count, download as .txt, works offline.',
+    lead: 'Type a quick note and it saves itself in your browser — reopen the page and it\'s still here. No sign-up, nothing uploaded, works offline.',
+    widget: 'notepad',
+    how: 'This is a plain, distraction-free writing space that saves to your browser\'s local storage a fraction of a second after you stop typing — so if you close the tab or reload the page, your note is still there when you come back. It shows a live word, character and line count plus an estimated reading time, and lets you download the note as a .txt file or copy the whole thing out. There is no login and no server: the text lives only in this browser on this device.',
+    note: 'It is the fastest way to jot something down without opening a document app or trusting a note to a cloud service — a scratchpad for a phone number, a draft message, a code snippet or a to-do list. Because it saves locally, two things follow: it keeps working with no internet, and the note is genuinely private (it never leaves your device). The flip side is that the note is tied to this browser — clearing your browsing data, switching browsers, or opening it on another device won\'t show it, so download the .txt if you need to keep or move something important. For structured lists try the Checklist Maker; for a canvas, the Whiteboard.',
+    faqs: [
+      { q: 'Does the online notepad save automatically?', a: 'Yes — it saves to your browser\'s local storage shortly after you stop typing, and shows a “Saved” indicator. Reopen the page in the same browser and your note is restored. There\'s no save button to remember and no account needed.' },
+      { q: 'Is my note private / is anything uploaded?', a: 'Nothing is uploaded. The text is stored only in your browser on your device, so it never reaches a server. That also means it works offline, and no one else can see it.' },
+      { q: 'Where is my note actually stored?', a: 'In this browser\'s localStorage, tied to this site and this device. It is not in the cloud. To keep a copy or move it elsewhere, use the Download .txt button.' },
+      { q: 'Will my note still be there tomorrow?', a: 'Yes, as long as you use the same browser and don\'t clear its site data. Clearing browsing data, using private/incognito mode, or a different browser/device will start a fresh note — so download important notes.' },
+      { q: 'Can I download or copy my note?', a: 'Yes — download it as a .txt file, or copy the entire note to your clipboard with one click, any time.' },
+      { q: 'Is there a word count?', a: 'Yes — it shows a live count of words, characters (with and without spaces) and lines, plus an estimated reading time, updating as you type.' },
+    ],
+    keywords: ['online notepad', 'notepad online', 'free online notepad', 'web notepad', 'online notes', 'quick notes', 'scratchpad online', 'notepad autosave'],
   },
 ];
