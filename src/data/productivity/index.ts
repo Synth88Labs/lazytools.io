@@ -6,7 +6,7 @@ export interface ProductivityToolDef {
   icon: string;
   description: string;
   lead: string;
-  widget: 'pomodoro' | 'countdown' | 'meeting-cost' | 'eisenhower' | 'habit' | 'kanban' | 'mindmap' | 'gantt' | 'decision-matrix' | 'rice' | 'swot' | 'pros-cons' | 'flowchart' | 'whiteboard' | 'time-blocking' | 'okr' | 'checklist' | 'retro' | 'eye-rest' | 'swimlane' | 'wheel' | 'notepad';
+  widget: 'pomodoro' | 'countdown' | 'meeting-cost' | 'eisenhower' | 'habit' | 'kanban' | 'mindmap' | 'gantt' | 'decision-matrix' | 'rice' | 'swot' | 'pros-cons' | 'flowchart' | 'whiteboard' | 'time-blocking' | 'okr' | 'checklist' | 'retro' | 'eye-rest' | 'swimlane' | 'wheel' | 'notepad' | 'device-test';
   how: string;
   note?: string;
   faqs: { q: string; a: string }[];
@@ -433,5 +433,25 @@ export const PRODUCTIVITY_TOOLS: ProductivityToolDef[] = [
       { q: 'Is there a word count?', a: 'Yes — it shows a live count of words, characters (with and without spaces) and lines, plus an estimated reading time, updating as you type.' },
     ],
     keywords: ['online notepad', 'notepad online', 'free online notepad', 'web notepad', 'online notes', 'quick notes', 'scratchpad online', 'notepad autosave'],
+  },
+  {
+    slug: 'webcam-microphone-test',
+    name: 'Webcam & Microphone Test',
+    icon: '📷',
+    description:
+      'Test your webcam and microphone in your browser before a call or recording — live preview, camera resolution and a real-time mic level meter. Nothing is recorded or uploaded.',
+    lead: 'Check that your camera and mic work before a meeting: see a live preview and your resolution, and watch the mic meter react as you speak. All on your device.',
+    widget: 'device-test',
+    how: 'The tool uses your browser\'s built-in camera and microphone access (getUserMedia). Click Start camera and the browser asks permission, then shows a live preview of your webcam along with the resolution and aspect ratio it\'s delivering. Click Start mic and it reads the audio input through the Web Audio API and draws a real-time level meter, so you can see the bars move as you speak. The camera feed is only ever shown on the page and the audio is only analysed for the meter — nothing is captured to a file, and access ends the instant you press Stop or leave the page.',
+    note: 'This is the quick pre-flight check before a video call, interview, webinar or recording: confirm the right camera is active, that its resolution is what you expect, and that your microphone is actually picking up sound (the classic "you\'re on mute" / "we can\'t hear you" fix). It needs you to grant camera/microphone permission in the browser, and it must be used over HTTPS — which this site is. Crucially, unlike many "webcam test" sites, nothing here is recorded, saved or sent anywhere; the streams stay on your device and are released when you stop. If a device doesn\'t appear, it may be in use by another app (close Zoom/Teams and retry).',
+    faqs: [
+      { q: 'How do I test my webcam?', a: 'Click Start camera and allow access when the browser asks. You\'ll see a live preview and the camera\'s resolution and aspect ratio. If nothing appears, check the permission prompt, make sure no other app is using the camera, and that you\'re on https.' },
+      { q: 'How do I test my microphone?', a: 'Click Start mic, allow access, and speak — the level meter\'s bars will rise and fall with your voice. If the bars stay flat, your mic may be muted, set to the wrong device, or blocked by permissions.' },
+      { q: 'Is my camera or microphone recorded or uploaded?', a: 'No. The video is only displayed on this page and the audio is only measured to draw the meter — nothing is written to a file or sent to any server. Access stops the moment you click Stop or leave the page.' },
+      { q: 'Why does it ask for permission?', a: 'Browsers require your explicit permission before any site can use the camera or microphone, and only over a secure (https) connection. Granting it here only lets the preview and meter run locally; revoke it any time in your browser\'s site settings.' },
+      { q: 'The camera or mic won\'t start — what\'s wrong?', a: 'The most common causes are a denied permission, another app already using the device (close Zoom, Teams, Meet, etc.), or no device connected. The tool shows a specific message for each so you know which to fix.' },
+      { q: 'Does it work on my phone?', a: 'Yes — it works in mobile browsers too, and will use the device\'s camera and microphone after you grant permission. You can test a front or rear camera depending on what the browser selects.' },
+    ],
+    keywords: ['webcam test', 'microphone test', 'mic test', 'camera test', 'test my webcam', 'test my microphone', 'webcam mic check', 'online camera test'],
   },
 ];

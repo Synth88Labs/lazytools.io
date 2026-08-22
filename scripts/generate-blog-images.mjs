@@ -1378,6 +1378,13 @@ const POSTS = [
     fact: 'localStorage · autosave · offline · nothing uploaded',
     icon: '📝',
   },
+  {
+    slug: 'test-webcam-and-mic-before-a-call-guide',
+    kicker: 'PRODUCTIVITY GUIDE',
+    lines: ['Test your webcam &', 'mic before a call', '(privately)'],
+    fact: 'getUserMedia · live preview + level meter · nothing recorded',
+    icon: '📷',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
