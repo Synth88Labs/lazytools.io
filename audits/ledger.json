@@ -1,4 +1,368 @@
 {
-  "findings": {},
-  "updated": null
+  "findings": {
+    "file/geojson-to-wkt::Open Graph tags (title/desc/image)": {
+      "id": "file/geojson-to-wkt::Open Graph tags (title/desc/image)",
+      "tool": "file/geojson-to-wkt",
+      "url": "https://lazytools.io/file/geojson-to-wkt/",
+      "category": "seo",
+      "check": "Open Graph tags (title/desc/image)",
+      "severity": "medium",
+      "detail": "2/3 present",
+      "fixType": "manual",
+      "status": "open",
+      "firstSeen": "2026-08-22",
+      "lastSeen": "2026-08-22",
+      "attempts": 0,
+      "history": [
+        {
+          "date": "2026-08-22",
+          "event": "opened",
+          "note": "2/3 present"
+        }
+      ]
+    },
+    "file/geojson-to-wkt::No serious/critical axe violations": {
+      "id": "file/geojson-to-wkt::No serious/critical axe violations",
+      "tool": "file/geojson-to-wkt",
+      "url": "https://lazytools.io/file/geojson-to-wkt/",
+      "category": "accessibility",
+      "check": "No serious/critical axe violations",
+      "severity": "high",
+      "detail": "color-contrast (1)",
+      "fixType": "manual",
+      "status": "open",
+      "firstSeen": "2026-08-22",
+      "lastSeen": "2026-08-22",
+      "attempts": 0,
+      "history": [
+        {
+          "date": "2026-08-22",
+          "event": "opened",
+          "note": "color-contrast (1)"
+        }
+      ]
+    },
+    "file/geojson-to-wkt::No unexpected external requests": {
+      "id": "file/geojson-to-wkt::No unexpected external requests",
+      "tool": "file/geojson-to-wkt",
+      "url": "https://lazytools.io/file/geojson-to-wkt/",
+      "category": "privacy",
+      "check": "No unexpected external requests",
+      "severity": "high",
+      "detail": "GET faves.grow.me, GET api.grow.me, POST some.growplow.events, GET cdn.prod.uidapi.com",
+      "fixType": "manual",
+      "status": "open",
+      "firstSeen": "2026-08-22",
+      "lastSeen": "2026-08-22",
+      "attempts": 0,
+      "history": [
+        {
+          "date": "2026-08-22",
+          "event": "opened",
+          "note": "GET faves.grow.me, GET api.grow.me, POST some.growplow.events, GET cdn.prod.uidapi.com"
+        }
+      ]
+    },
+    "file/gpx-analyzer::Title present (15–60 chars)": {
+      "id": "file/gpx-analyzer::Title present (15–60 chars)",
+      "tool": "file/gpx-analyzer",
+      "url": "https://lazytools.io/file/gpx-analyzer/",
+      "category": "seo",
+      "check": "Title present (15–60 chars)",
+      "severity": "high",
+      "detail": "74 chars: \"GPX File Analyzer (Distance, Elevation, Pace) — Fr\"",
+      "fixType": "manual",
+      "status": "open",
+      "firstSeen": "2026-08-22",
+      "lastSeen": "2026-08-22",
+      "attempts": 0,
+      "history": [
+        {
+          "date": "2026-08-22",
+          "event": "opened",
+          "note": "74 chars: \"GPX File Analyzer (Distance, Elevation, Pace) — Fr\""
+        }
+      ]
+    },
+    "file/gpx-analyzer::Open Graph tags (title/desc/image)": {
+      "id": "file/gpx-analyzer::Open Graph tags (title/desc/image)",
+      "tool": "file/gpx-analyzer",
+      "url": "https://lazytools.io/file/gpx-analyzer/",
+      "category": "seo",
+      "check": "Open Graph tags (title/desc/image)",
+      "severity": "medium",
+      "detail": "2/3 present",
+      "fixType": "manual",
+      "status": "open",
+      "firstSeen": "2026-08-22",
+      "lastSeen": "2026-08-22",
+      "attempts": 0,
+      "history": [
+        {
+          "date": "2026-08-22",
+          "event": "opened",
+          "note": "2/3 present"
+        }
+      ]
+    },
+    "file/gpx-analyzer::No serious/critical axe violations": {
+      "id": "file/gpx-analyzer::No serious/critical axe violations",
+      "tool": "file/gpx-analyzer",
+      "url": "https://lazytools.io/file/gpx-analyzer/",
+      "category": "accessibility",
+      "check": "No serious/critical axe violations",
+      "severity": "high",
+      "detail": "color-contrast (1)",
+      "fixType": "manual",
+      "status": "open",
+      "firstSeen": "2026-08-22",
+      "lastSeen": "2026-08-22",
+      "attempts": 0,
+      "history": [
+        {
+          "date": "2026-08-22",
+          "event": "opened",
+          "note": "color-contrast (1)"
+        }
+      ]
+    },
+    "file/gpx-analyzer::No unexpected external requests": {
+      "id": "file/gpx-analyzer::No unexpected external requests",
+      "tool": "file/gpx-analyzer",
+      "url": "https://lazytools.io/file/gpx-analyzer/",
+      "category": "privacy",
+      "check": "No unexpected external requests",
+      "severity": "high",
+      "detail": "GET faves.grow.me, GET api.grow.me, POST some.growplow.events, GET cdn.prod.uidapi.com",
+      "fixType": "manual",
+      "status": "open",
+      "firstSeen": "2026-08-22",
+      "lastSeen": "2026-08-22",
+      "attempts": 0,
+      "history": [
+        {
+          "date": "2026-08-22",
+          "event": "opened",
+          "note": "GET faves.grow.me, GET api.grow.me, POST some.growplow.events, GET cdn.prod.uidapi.com"
+        }
+      ]
+    },
+    "file/gpx-to-geojson::Meta description (70–160 chars)": {
+      "id": "file/gpx-to-geojson::Meta description (70–160 chars)",
+      "tool": "file/gpx-to-geojson",
+      "url": "https://lazytools.io/file/gpx-to-geojson/",
+      "category": "seo",
+      "check": "Meta description (70–160 chars)",
+      "severity": "high",
+      "detail": "164 chars",
+      "fixType": "auto:trim-meta-description",
+      "status": "verifying",
+      "firstSeen": "2026-08-22",
+      "lastSeen": "2026-08-22",
+      "attempts": 0,
+      "history": [
+        {
+          "date": "2026-08-22",
+          "event": "opened",
+          "note": "164 chars"
+        },
+        {
+          "date": "2026-08-22",
+          "event": "auto-fixed",
+          "note": "shortened meta description 164→155 chars"
+        }
+      ],
+      "fixedOn": "2026-08-22"
+    },
+    "file/gpx-to-geojson::Open Graph tags (title/desc/image)": {
+      "id": "file/gpx-to-geojson::Open Graph tags (title/desc/image)",
+      "tool": "file/gpx-to-geojson",
+      "url": "https://lazytools.io/file/gpx-to-geojson/",
+      "category": "seo",
+      "check": "Open Graph tags (title/desc/image)",
+      "severity": "medium",
+      "detail": "2/3 present",
+      "fixType": "manual",
+      "status": "open",
+      "firstSeen": "2026-08-22",
+      "lastSeen": "2026-08-22",
+      "attempts": 0,
+      "history": [
+        {
+          "date": "2026-08-22",
+          "event": "opened",
+          "note": "2/3 present"
+        }
+      ]
+    },
+    "file/gpx-to-geojson::No serious/critical axe violations": {
+      "id": "file/gpx-to-geojson::No serious/critical axe violations",
+      "tool": "file/gpx-to-geojson",
+      "url": "https://lazytools.io/file/gpx-to-geojson/",
+      "category": "accessibility",
+      "check": "No serious/critical axe violations",
+      "severity": "high",
+      "detail": "color-contrast (1)",
+      "fixType": "manual",
+      "status": "open",
+      "firstSeen": "2026-08-22",
+      "lastSeen": "2026-08-22",
+      "attempts": 0,
+      "history": [
+        {
+          "date": "2026-08-22",
+          "event": "opened",
+          "note": "color-contrast (1)"
+        }
+      ]
+    },
+    "file/gpx-to-geojson::No unexpected external requests": {
+      "id": "file/gpx-to-geojson::No unexpected external requests",
+      "tool": "file/gpx-to-geojson",
+      "url": "https://lazytools.io/file/gpx-to-geojson/",
+      "category": "privacy",
+      "check": "No unexpected external requests",
+      "severity": "high",
+      "detail": "GET faves.grow.me, GET api.grow.me, POST some.growplow.events, GET cdn.prod.uidapi.com",
+      "fixType": "manual",
+      "status": "open",
+      "firstSeen": "2026-08-22",
+      "lastSeen": "2026-08-22",
+      "attempts": 0,
+      "history": [
+        {
+          "date": "2026-08-22",
+          "event": "opened",
+          "note": "GET faves.grow.me, GET api.grow.me, POST some.growplow.events, GET cdn.prod.uidapi.com"
+        }
+      ]
+    },
+    "file/html-to-markdown::Open Graph tags (title/desc/image)": {
+      "id": "file/html-to-markdown::Open Graph tags (title/desc/image)",
+      "tool": "file/html-to-markdown",
+      "url": "https://lazytools.io/file/html-to-markdown/",
+      "category": "seo",
+      "check": "Open Graph tags (title/desc/image)",
+      "severity": "medium",
+      "detail": "2/3 present",
+      "fixType": "manual",
+      "status": "open",
+      "firstSeen": "2026-08-22",
+      "lastSeen": "2026-08-22",
+      "attempts": 0,
+      "history": [
+        {
+          "date": "2026-08-22",
+          "event": "opened",
+          "note": "2/3 present"
+        }
+      ]
+    },
+    "file/html-to-markdown::No serious/critical axe violations": {
+      "id": "file/html-to-markdown::No serious/critical axe violations",
+      "tool": "file/html-to-markdown",
+      "url": "https://lazytools.io/file/html-to-markdown/",
+      "category": "accessibility",
+      "check": "No serious/critical axe violations",
+      "severity": "high",
+      "detail": "color-contrast (1)",
+      "fixType": "manual",
+      "status": "open",
+      "firstSeen": "2026-08-22",
+      "lastSeen": "2026-08-22",
+      "attempts": 0,
+      "history": [
+        {
+          "date": "2026-08-22",
+          "event": "opened",
+          "note": "color-contrast (1)"
+        }
+      ]
+    },
+    "file/html-to-markdown::No unexpected external requests": {
+      "id": "file/html-to-markdown::No unexpected external requests",
+      "tool": "file/html-to-markdown",
+      "url": "https://lazytools.io/file/html-to-markdown/",
+      "category": "privacy",
+      "check": "No unexpected external requests",
+      "severity": "high",
+      "detail": "GET faves.grow.me, GET api.grow.me, POST some.growplow.events, GET cdn.prod.uidapi.com",
+      "fixType": "manual",
+      "status": "open",
+      "firstSeen": "2026-08-22",
+      "lastSeen": "2026-08-22",
+      "attempts": 0,
+      "history": [
+        {
+          "date": "2026-08-22",
+          "event": "opened",
+          "note": "GET faves.grow.me, GET api.grow.me, POST some.growplow.events, GET cdn.prod.uidapi.com"
+        }
+      ]
+    },
+    "file/ini-to-json::Open Graph tags (title/desc/image)": {
+      "id": "file/ini-to-json::Open Graph tags (title/desc/image)",
+      "tool": "file/ini-to-json",
+      "url": "https://lazytools.io/file/ini-to-json/",
+      "category": "seo",
+      "check": "Open Graph tags (title/desc/image)",
+      "severity": "medium",
+      "detail": "2/3 present",
+      "fixType": "manual",
+      "status": "open",
+      "firstSeen": "2026-08-22",
+      "lastSeen": "2026-08-22",
+      "attempts": 0,
+      "history": [
+        {
+          "date": "2026-08-22",
+          "event": "opened",
+          "note": "2/3 present"
+        }
+      ]
+    },
+    "file/ini-to-json::No serious/critical axe violations": {
+      "id": "file/ini-to-json::No serious/critical axe violations",
+      "tool": "file/ini-to-json",
+      "url": "https://lazytools.io/file/ini-to-json/",
+      "category": "accessibility",
+      "check": "No serious/critical axe violations",
+      "severity": "high",
+      "detail": "color-contrast (1)",
+      "fixType": "manual",
+      "status": "open",
+      "firstSeen": "2026-08-22",
+      "lastSeen": "2026-08-22",
+      "attempts": 0,
+      "history": [
+        {
+          "date": "2026-08-22",
+          "event": "opened",
+          "note": "color-contrast (1)"
+        }
+      ]
+    },
+    "file/ini-to-json::No unexpected external requests": {
+      "id": "file/ini-to-json::No unexpected external requests",
+      "tool": "file/ini-to-json",
+      "url": "https://lazytools.io/file/ini-to-json/",
+      "category": "privacy",
+      "check": "No unexpected external requests",
+      "severity": "high",
+      "detail": "GET faves.grow.me, GET api.grow.me, POST some.growplow.events, GET cdn.prod.uidapi.com",
+      "fixType": "manual",
+      "status": "open",
+      "firstSeen": "2026-08-22",
+      "lastSeen": "2026-08-22",
+      "attempts": 0,
+      "history": [
+        {
+          "date": "2026-08-22",
+          "event": "opened",
+          "note": "GET faves.grow.me, GET api.grow.me, POST some.growplow.events, GET cdn.prod.uidapi.com"
+        }
+      ]
+    }
+  },
+  "updated": "2026-08-22"
 }

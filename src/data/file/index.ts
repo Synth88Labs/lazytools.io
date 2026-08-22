@@ -782,7 +782,7 @@ export const FILE_TOOLS: FileToolDef[] = [
     name: 'GPX to GeoJSON Converter',
     icon: '🗺️',
     description:
-      'Convert a GPX track into GeoJSON — a LineString for the track and Points for waypoints — ready for Mapbox, Leaflet or any GIS tool. In your browser, never uploaded.',
+      'Convert a GPX track into GeoJSON — a LineString for the track and Points for waypoints — ready for Mapbox, Leaflet or any GIS tool. In your browser, never…',
     lead: 'Paste or open a GPX file and get GeoJSON — the track as a LineString and waypoints as Points, in [lon, lat] order for web maps.',
     computeId: 'gpxToGeojson',
     accept: '.gpx,application/gpx+xml',
