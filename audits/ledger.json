@@ -1346,9 +1346,9 @@
   "runs": [
     {
       "date": "2026-08-22",
-      "tools": 6,
+      "tools": 4,
       "avg": 86,
-      "issues": 21,
+      "issues": 14,
       "opened": 0,
       "resolved": 0,
       "challenged": 0
@@ -1372,14 +1372,14 @@
     "daily": [
       {
         "date": "2026-08-22",
-        "auditor": 3.5,
+        "auditor": 3.3,
         "fixer": 5
       }
     ],
     "weekly": [
       {
         "week": "2026-W34",
-        "auditor": 3.5,
+        "auditor": 3.3,
         "fixer": 5,
         "days": 1
       }
@@ -1409,8 +1409,8 @@
         "lastAvg": 86
       },
       "score": {
-        "daily": 3.5,
-        "weekly": 3.5
+        "daily": 3.3,
+        "weekly": 3.3
       }
     },
     "fixer": {
