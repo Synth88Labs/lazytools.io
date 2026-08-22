@@ -30,7 +30,7 @@ using System.Web.Script.Serialization;
 class Kuroop
 {
     const string LEDGER_URL = "https://raw.githubusercontent.com/Synth88Labs/lazytools.io/main/audits/ledger.json";
-    const string DASHBOARD_URL = "https://raw.githack.com/Synth88Labs/lazytools.io/main/audits/dashboard.html";
+    const string DASHBOARD_URL = "https://htmlpreview.github.io/?https://github.com/Synth88Labs/lazytools.io/blob/main/audits/dashboard.html";
     const string ANTHROPIC_URL = "https://api.anthropic.com/v1/messages";
     const int BUILD_TARGET = 1500;
     const string REPO_INBOX = @"C:\Users\rupak\OneDrive\Desktop\Claude Code Projects\LazyTools\desktop\LazyBotVoice\tasks-inbox.md";

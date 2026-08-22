@@ -4,11 +4,13 @@ Autonomous, token-free audit-and-fix output for lazytools.io. Generated daily by
 GitHub Actions (`.github/workflows/audit.yml`). Full spec:
 [`docs/AUDIT-SYSTEM.md`](../docs/AUDIT-SYSTEM.md).
 
-- **`dashboard.html`** — the **visual** control room: charts for the build
-  pipeline, audit score trend, findings by severity/dimension, and the fix
-  lifecycle. Self-contained (no external requests), regenerated every run. View
-  it rendered at
-  <https://raw.githack.com/Synth88Labs/lazytools.io/main/audits/dashboard.html>.
+- **`dashboard.html`** — the **command deck**: a future-tech HUD showing all
+  three agents (Manager / Auditor / Fixer) with live tasks, star ratings, the
+  recommendation-ETA timeline, build pipeline, and findings charts.
+  Self-contained (no external requests), regenerated every run. View it rendered
+  (fresh from git):
+  <https://htmlpreview.github.io/?https://github.com/Synth88Labs/lazytools.io/blob/main/audits/dashboard.html>
+  (githack also works but its CDN can lag a push by a few minutes).
 - **`DASHBOARD.md`** — the same progress as plain markdown (renders inline on
   GitHub): counts, coverage, score trend, recent fixes, challenges, top open
   findings.
