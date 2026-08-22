@@ -179,6 +179,10 @@ else {
 dash += `---\nFull detail: [today's report](reports/${today}.md) · [recommendations](recommendations.md) · [ledger](ledger.json) · [how it works](../docs/AUDIT-SYSTEM.md)\n`;
 await writeFile(new URL('audits/DASHBOARD.md', ROOT), dash);
 
+// ── visual dashboard (self-contained audits/dashboard.html) — never blocks the fixer ──
+try { execSync('node scripts/gen-dashboard.mjs', { cwd: new URL('../', import.meta.url), stdio: 'inherit' }); }
+catch (e) { console.error('dashboard.html generation failed (non-fatal):', e.message); }
+
 const summary = `Fixer: applied ${buildOk ? applied.length : 0}, skipped ${skipped.length}, ${manual.length} manual recs. Build ${changed ? 'ok' : (applied.length ? 'reverted' : 'unchanged')}.`;
 console.log(summary);
 if (process.env.GITHUB_OUTPUT) await appendFile(process.env.GITHUB_OUTPUT, `changed=${changed}\nfix_summary=${summary}\n`);

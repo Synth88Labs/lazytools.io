@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="robots" content="noindex, nofollow"/>
+<title>🤖 LazyTools Bot Control Room</title>
+<style>
+  :root{
+    --bg:#f6f7fb; --panel:#ffffff; --ink:#0f172a; --muted:#64748b; --line:#e2e8f0;
+    --track:#eef1f6; --accent:#6366f1; --shadow:0 1px 3px rgba(15,23,42,.06),0 1px 2px rgba(15,23,42,.04);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#0b1120; --panel:#111a2e; --ink:#e8edf6; --muted:#94a3b8; --line:#1f2b45;
+      --track:#1a2438; --shadow:0 1px 3px rgba(0,0,0,.4); }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1080px;margin:0 auto;padding:28px 20px 64px}
+  header.top{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 14px;margin-bottom:6px}
+  header.top h1{font-size:26px;margin:0;letter-spacing:-.5px}
+  .stamp{color:var(--muted);font-size:13px}
+  .lead{color:var(--muted);margin:2px 0 22px;max-width:70ch}
+  .grid{display:grid;gap:16px}
+  .kpis{grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin-bottom:18px}
+  .kpi{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:var(--shadow)}
+  .kpi-n{font-size:30px;font-weight:700;letter-spacing:-1px;font-variant-numeric:tabular-nums}
+  .kpi-l{font-size:12px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);margin-top:2px}
+  .kpi-s{font-size:12.5px;color:var(--muted);margin-top:6px}
+  .cols{grid-template-columns:1fr 1fr}
+  .cols3{grid-template-columns:1.2fr 1fr 1fr}
+  @media (max-width:760px){.cols,.cols3{grid-template-columns:1fr}}
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px 20px;box-shadow:var(--shadow)}
+  .panel h2{font-size:15px;margin:0 0 14px;letter-spacing:.2px}
+  .panel h2 .em{color:var(--muted);font-weight:500;font-size:13px}
+  .pbar{display:block;height:10px;border-radius:6px;background:var(--track);overflow:hidden;margin:6px 0}
+  .pbar-fill{display:block;height:100%;border-radius:6px}
+  .prow{display:flex;justify-content:space-between;align-items:baseline;font-size:13.5px;margin-top:12px}
+  .prow b{font-size:15px;font-variant-numeric:tabular-nums}
+  .goalnum{font-size:22px;font-weight:700;font-variant-numeric:tabular-nums}
+  .donut-wrap{display:flex;gap:16px;align-items:center}
+  .donut{width:150px;height:150px;flex:none}
+  .donut-num{font-size:30px;font-weight:700;fill:var(--ink)}
+  .donut-cap{font-size:11px;fill:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+  .legend{display:flex;flex-direction:column;gap:7px;font-size:13.5px}
+  .legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:8px;vertical-align:middle}
+  .legend b{font-variant-numeric:tabular-nums}
+  .hbars{display:flex;flex-direction:column;gap:9px}
+  .hbar{display:grid;grid-template-columns:120px 1fr 44px;align-items:center;gap:10px;font-size:13px}
+  .hbar-l{color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .hbar-track{background:var(--track);border-radius:6px;height:9px;overflow:hidden}
+  .hbar-fill{display:block;height:100%;border-radius:6px}
+  .hbar-v{text-align:right;font-variant-numeric:tabular-nums;color:var(--muted)}
+  .trend{width:100%;height:auto}
+  .grid line.grid, .grid{stroke:var(--line)}
+  line.grid{stroke:var(--line);stroke-width:1}
+  text.axis{fill:var(--muted);font-size:11px}
+  ul.list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;font-size:13.5px}
+  ul.list li{padding-bottom:8px;border-bottom:1px solid var(--line)}
+  ul.list li:last-child{border:0;padding-bottom:0}
+  ul.list a{color:var(--accent);text-decoration:none}
+  ul.list a:hover{text-decoration:underline}
+  .reason{display:block;color:var(--muted);font-size:12.5px;margin-top:2px}
+  .tag{font-size:11px;color:var(--muted);background:var(--track);padding:1px 7px;border-radius:20px;margin-left:4px}
+  .tag.done{color:#0a7a3f}
+  @media (prefers-color-scheme: dark){.tag.done{color:#4ade80}}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted)}
+  td a{color:var(--accent);text-decoration:none}
+  td a:hover{text-decoration:underline}
+  td.detail{color:var(--muted)}
+  td.nowrap{white-space:nowrap}
+  .sev{color:#fff;font-size:11px;padding:2px 8px;border-radius:20px;text-transform:capitalize;white-space:nowrap}
+  .funnel{display:flex;flex-wrap:wrap;gap:8px}
+  .fstep{flex:1;min-width:120px;background:var(--track);border-radius:12px;padding:12px 14px}
+  .fstep .n{font-size:24px;font-weight:700;font-variant-numeric:tabular-nums}
+  .fstep .l{font-size:12px;color:var(--muted)}
+  .muted{color:var(--muted)}
+  footer{margin-top:26px;color:var(--muted);font-size:12.5px;text-align:center;line-height:1.9}
+  footer a{color:var(--accent);text-decoration:none}
+  section{margin-bottom:16px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <h1>🤖 LazyTools Bot Control Room</h1>
+    <span class="stamp">updated 2026-08-22</span>
+  </header>
+  <p class="lead">A single always-current view of the two autonomous, token-free bots — the <b>Auditor</b> (tests live tools) and the <b>Fixer</b> (applies safe fixes) — plus the build pipeline toward the 1,500-tool target. Regenerated on every bot run; charts are self-contained (no external requests).</p>
+
+  <div class="grid kpis">
+    <div class="kpi"><div class="kpi-n">1,071<span class="muted" style="font-size:16px">/1,500</span></div><div class="kpi-l">Tools built</div><div class="kpi-s">71% of target · 429 to go</div></div>
+    <div class="kpi"><div class="kpi-n">87%</div><div class="kpi-l">Latest avg score</div><div class="kpi-s">over 10 tools</div></div>
+    <div class="kpi"><div class="kpi-n">49</div><div class="kpi-l">Open findings</div><div class="kpi-s">34 high priority</div></div>
+    <div class="kpi"><div class="kpi-n">0</div><div class="kpi-l">Awaiting verify</div><div class="kpi-s">re-tested next run</div></div>
+    <div class="kpi"><div class="kpi-n">2</div><div class="kpi-l">Resolved</div><div class="kpi-s">fixed &amp; confirmed</div></div>
+    <div class="kpi"><div class="kpi-n">0</div><div class="kpi-l">Challenged</div><div class="kpi-s">all clear</div></div>
+  </div>
+
+  <section class="grid cols">
+    <div class="panel">
+      <h2>🏗️ Build pipeline <span class="em">— toward 1,500 tools</span></h2>
+      <div class="prow"><span>Tools built</span><b>1,071 / 1,500</b></div>
+      <span class="pbar"><span class="pbar-fill" style="width:71%;background:#6366f1"></span></span>
+      <div class="prow"><span class="muted">71% complete</span><span class="muted">429 remaining</span></div>
+      <div class="prow" style="margin-top:16px"><span>Audit coverage</span><b>11 / 1071 tools</b></div>
+      <span class="pbar"><span class="pbar-fill" style="width:1%;background:#14b8a6"></span></span>
+      <div class="prow"><span class="muted">1% audited</span><span class="muted">~10/day rolling sweep</span></div>
+    </div>
+    <div class="panel">
+      <h2>📚 Tools by category <span class="em">— top 12</span></h2>
+      <div class="hbars"><div class="hbar"><span class="hbar-l">units</span><span class="hbar-track"><span class="hbar-fill" style="width:100%;background:#6366f1"></span></span><span class="hbar-v">250</span></div><div class="hbar"><span class="hbar-l">photo</span><span class="hbar-track"><span class="hbar-fill" style="width:23%;background:#8b5cf6"></span></span><span class="hbar-v">57</span></div><div class="hbar"><span class="hbar-l">dev</span><span class="hbar-track"><span class="hbar-fill" style="width:20%;background:#0ea5e9"></span></span><span class="hbar-v">49</span></div><div class="hbar"><span class="hbar-l">file</span><span class="hbar-track"><span class="hbar-fill" style="width:18%;background:#14b8a6"></span></span><span class="hbar-v">45</span></div><div class="hbar"><span class="hbar-l">calc</span><span class="hbar-track"><span class="hbar-fill" style="width:17%;background:#22c55e"></span></span><span class="hbar-v">42</span></div><div class="hbar"><span class="hbar-l">physics</span><span class="hbar-track"><span class="hbar-fill" style="width:16%;background:#eab308"></span></span><span class="hbar-v">41</span></div><div class="hbar"><span class="hbar-l">chemistry</span><span class="hbar-track"><span class="hbar-fill" style="width:16%;background:#f59e0b"></span></span><span class="hbar-v">40</span></div><div class="hbar"><span class="hbar-l">math</span><span class="hbar-track"><span class="hbar-fill" style="width:12%;background:#ef4444"></span></span><span class="hbar-v">31</span></div><div class="hbar"><span class="hbar-l">time</span><span class="hbar-track"><span class="hbar-fill" style="width:12%;background:#ec4899"></span></span><span class="hbar-v">30</span></div><div class="hbar"><span class="hbar-l">color</span><span class="hbar-track"><span class="hbar-fill" style="width:12%;background:#64748b"></span></span><span class="hbar-v">29</span></div><div class="hbar"><span class="hbar-l">text</span><span class="hbar-track"><span class="hbar-fill" style="width:11%;background:#3b82f6"></span></span><span class="hbar-v">28</span></div><div class="hbar"><span class="hbar-l">home</span><span class="hbar-track"><span class="hbar-fill" style="width:11%;background:#a855f7"></span></span><span class="hbar-v">27</span></div></div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>📈 Audit score trend <span class="em">— average quality score per run</span></h2>
+    <svg viewBox="0 0 720 200" class="trend" role="img" aria-label="Average audit score over time">
+    <defs><linearGradient id="tg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6366f1" stop-opacity="0.28"/><stop offset="1" stop-color="#6366f1" stop-opacity="0"/></linearGradient></defs>
+    <line x1="34" y1="166" x2="686" y2="166" class="grid"/><text x="28" y="169" text-anchor="end" class="axis">0</text><line x1="34" y1="133" x2="686" y2="133" class="grid"/><text x="28" y="136" text-anchor="end" class="axis">25</text><line x1="34" y1="100" x2="686" y2="100" class="grid"/><text x="28" y="103" text-anchor="end" class="axis">50</text><line x1="34" y1="67" x2="686" y2="67" class="grid"/><text x="28" y="70" text-anchor="end" class="axis">75</text><line x1="34" y1="34" x2="686" y2="34" class="grid"/><text x="28" y="37" text-anchor="end" class="axis">100</text>
+    
+    
+    <circle cx="360.0" cy="51.2" r="4" fill="#6366f1"><title>2026-08-22: 87% (10 tools, 33 issues)</title></circle><text x="360.0" y="182" text-anchor="middle" class="axis">08-22</text>
+  </svg>
+  </section>
+
+  <section class="grid cols3">
+    <div class="panel">
+      <h2>🔬 Open findings by severity</h2>
+      <div class="donut-wrap">
+        <svg viewBox="0 0 150 150" class="donut" role="img" aria-label="High 34, Medium 15, Low 0">
+    <circle cx="75" cy="75" r="64" fill="none" stroke="var(--track)" stroke-width="22"/>
+    <circle cx="75" cy="75" r="64" fill="none" stroke="#ef4444" stroke-width="22" stroke-dasharray="279.02 123.10" stroke-dashoffset="0.00" transform="rotate(-90 75 75)"><title>High: 34</title></circle><circle cx="75" cy="75" r="64" fill="none" stroke="#f59e0b" stroke-width="22" stroke-dasharray="123.10 279.02" stroke-dashoffset="-279.02" transform="rotate(-90 75 75)"><title>Medium: 15</title></circle>
+    <text x="75" y="73" text-anchor="middle" class="donut-num">49</text>
+    <text x="75" y="91" text-anchor="middle" class="donut-cap">open</text>
+  </svg>
+        <div class="legend">
+          <span><i style="background:#ef4444"></i>High <b>34</b></span>
+          <span><i style="background:#f59e0b"></i>Medium <b>15</b></span>
+          <span><i style="background:#64748b"></i>Low <b>0</b></span>
+        </div>
+      </div>
+    </div>
+    <div class="panel">
+      <h2>🗂️ By audit dimension</h2>
+      <div class="hbars"><div class="hbar"><span class="hbar-l">seo</span><span class="hbar-track"><span class="hbar-fill" style="width:100%;background:#6366f1"></span></span><span class="hbar-v">19</span></div><div class="hbar"><span class="hbar-l">accessibility</span><span class="hbar-track"><span class="hbar-fill" style="width:79%;background:#8b5cf6"></span></span><span class="hbar-v">15</span></div><div class="hbar"><span class="hbar-l">privacy</span><span class="hbar-track"><span class="hbar-fill" style="width:79%;background:#0ea5e9"></span></span><span class="hbar-v">15</span></div></div>
+    </div>
+    <div class="panel">
+      <h2>🔁 Fix lifecycle</h2>
+      <div class="funnel">
+        <div class="fstep"><div class="n">49</div><div class="l">🟡 Open</div></div>
+        <div class="fstep"><div class="n">0</div><div class="l">🔧 Verifying</div></div>
+        <div class="fstep"><div class="n">2</div><div class="l">✅ Complete</div></div>
+        <div class="fstep"><div class="n">0</div><div class="l">⚠️ Challenged</div></div>
+      </div>
+      <p class="muted" style="font-size:12.5px;margin:12px 0 0">Fixer applies a safe change → <b>Verifying</b>; next day the Auditor re-tests live → <b>Complete</b>, or <b>Challenged</b> with a reason after repeated failure.</p>
+    </div>
+  </section>
+
+  <section class="grid cols">
+    <div class="panel">
+      <h2>⚠️ Challenged — need a human/AI</h2>
+      <ul class="list"><li class="muted">Nothing challenged — every attempted fix has verified. 🎉</li></ul>
+    </div>
+    <div class="panel">
+      <h2>🔧 Fixed, awaiting verification</h2>
+      <ul class="list"><li class="muted">Queue empty.</li></ul>
+      <h2 style="margin-top:18px">✅ Recently completed</h2>
+      <ul class="list"><li><b>file/gpx-to-geojson</b> — Meta description (70–160 chars) <span class="tag done">done 2026-08-22</span></li><li><b>3d-printing/filament-calculator</b> — Meta description (70–160 chars) <span class="tag done">done 2026-08-22</span></li></ul>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>🟡 Top open findings <span class="em">— 49 total, highest severity first</span></h2>
+    <div style="overflow-x:auto">
+    <table>
+      <thead><tr><th>Sev</th><th>Tool</th><th>Finding</th><th>Fix</th><th>Detail</th></tr></thead>
+      <tbody><tr>
+      <td><span class="sev" style="background:#ef4444">high</span></td>
+      <td><a href="https://lazytools.io/file/geojson-to-wkt/" target="_blank" rel="noopener">file/geojson-to-wkt</a></td>
+      <td>No serious/critical axe violations</td>
+      <td class="nowrap">✍️ manual</td>
+      <td class="detail">color-contrast (1)</td></tr><tr>
+      <td><span class="sev" style="background:#ef4444">high</span></td>
+      <td><a href="https://lazytools.io/file/geojson-to-wkt/" target="_blank" rel="noopener">file/geojson-to-wkt</a></td>
+      <td>No unexpected external requests</td>
+      <td class="nowrap">✍️ manual</td>
+      <td class="detail">GET faves.grow.me, GET api.grow.me, POST some.growplow.events, GET cdn.prod.uidapi.com</td></tr><tr>
+      <td><span class="sev" style="background:#ef4444">high</span></td>
+      <td><a href="https://lazytools.io/file/gpx-analyzer/" target="_blank" rel="noopener">file/gpx-analyzer</a></td>
+      <td>Title present (15–60 chars)</td>
+      <td class="nowrap">✍️ manual</td>
+      <td class="detail">74 chars: &quot;GPX File Analyzer (Distance, Elevation, Pace) — Fr&quot;</td></tr><tr>
+      <td><span class="sev" style="background:#ef4444">high</span></td>
+      <td><a href="https://lazytools.io/file/gpx-analyzer/" target="_blank" rel="noopener">file/gpx-analyzer</a></td>
+      <td>No serious/critical axe violations</td>
+      <td class="nowrap">✍️ manual</td>
+      <td class="detail">color-contrast (1)</td></tr><tr>
+      <td><span class="sev" style="background:#ef4444">high</span></td>
+      <td><a href="https://lazytools.io/file/gpx-analyzer/" target="_blank" rel="noopener">file/gpx-analyzer</a></td>
+      <td>No unexpected external requests</td>
+      <td class="nowrap">✍️ manual</td>
+      <td class="detail">GET faves.grow.me, GET api.grow.me, POST some.growplow.events, GET cdn.prod.uidapi.com</td></tr><tr>
+      <td><span class="sev" style="background:#ef4444">high</span></td>
+      <td><a href="https://lazytools.io/file/gpx-to-geojson/" target="_blank" rel="noopener">file/gpx-to-geojson</a></td>
+      <td>No serious/critical axe violations</td>
+      <td class="nowrap">✍️ manual</td>
+      <td class="detail">color-contrast (1)</td></tr><tr>
+      <td><span class="sev" style="background:#ef4444">high</span></td>
+      <td><a href="https://lazytools.io/file/gpx-to-geojson/" target="_blank" rel="noopener">file/gpx-to-geojson</a></td>
+      <td>No unexpected external requests</td>
+      <td class="nowrap">✍️ manual</td>
+      <td class="detail">GET faves.grow.me, GET api.grow.me, POST some.growplow.events, GET cdn.prod.uidapi.com</td></tr><tr>
+      <td><span class="sev" style="background:#ef4444">high</span></td>
+      <td><a href="https://lazytools.io/file/html-to-markdown/" target="_blank" rel="noopener">file/html-to-markdown</a></td>
+      <td>No serious/critical axe violations</td>
+      <td class="nowrap">✍️ manual</td>
+      <td class="detail">color-contrast (1)</td></tr><tr>
+      <td><span class="sev" style="background:#ef4444">high</span></td>
+      <td><a href="https://lazytools.io/file/html-to-markdown/" target="_blank" rel="noopener">file/html-to-markdown</a></td>
+      <td>No unexpected external requests</td>
+      <td class="nowrap">✍️ manual</td>
+      <td class="detail">GET faves.grow.me, GET api.grow.me, POST some.growplow.events, GET cdn.prod.uidapi.com</td></tr><tr>
+      <td><span class="sev" style="background:#ef4444">high</span></td>
+      <td><a href="https://lazytools.io/file/ini-to-json/" target="_blank" rel="noopener">file/ini-to-json</a></td>
+      <td>No serious/critical axe violations</td>
+      <td class="nowrap">✍️ manual</td>
+      <td class="detail">color-contrast (1)</td></tr><tr>
+      <td><span class="sev" style="background:#ef4444">high</span></td>
+      <td><a href="https://lazytools.io/file/ini-to-json/" target="_blank" rel="noopener">file/ini-to-json</a></td>
+      <td>No unexpected external requests</td>
+      <td class="nowrap">✍️ manual</td>
+      <td class="detail">GET faves.grow.me, GET api.grow.me, POST some.growplow.events, GET cdn.prod.uidapi.com</td></tr><tr>
+      <td><span class="sev" style="background:#ef4444">high</span></td>
+      <td><a href="https://lazytools.io/3d-printing/e-steps-calculator/" target="_blank" rel="noopener">3d-printing/e-steps-calculator</a></td>
+      <td>No serious/critical axe violations</td>
+      <td class="nowrap">✍️ manual</td>
+      <td class="detail">color-contrast (1)</td></tr><tr>
+      <td><span class="sev" style="background:#ef4444">high</span></td>
+      <td><a href="https://lazytools.io/3d-printing/e-steps-calculator/" target="_blank" rel="noopener">3d-printing/e-steps-calculator</a></td>
+      <td>No unexpected external requests</td>
+      <td class="nowrap">✍️ manual</td>
+      <td class="detail">GET faves.grow.me, GET api.grow.me, POST some.growplow.events, GET cdn.prod.uidapi.com</td></tr><tr>
+      <td><span class="sev" style="background:#ef4444">high</span></td>
+      <td><a href="https://lazytools.io/3d-printing/filament-calculator/" target="_blank" rel="noopener">3d-printing/filament-calculator</a></td>
+      <td>Title present (15–60 chars)</td>
+      <td class="nowrap">✍️ manual</td>
+      <td class="detail">64 chars: &quot;Filament Weight &amp; Length Calculator — Free &amp; Priva&quot;</td></tr><tr>
+      <td><span class="sev" style="background:#ef4444">high</span></td>
+      <td><a href="https://lazytools.io/3d-printing/filament-calculator/" target="_blank" rel="noopener">3d-printing/filament-calculator</a></td>
+      <td>No serious/critical axe violations</td>
+      <td class="nowrap">✍️ manual</td>
+      <td class="detail">color-contrast (1)</td></tr><tr>
+      <td><span class="sev" style="background:#ef4444">high</span></td>
+      <td><a href="https://lazytools.io/3d-printing/filament-calculator/" target="_blank" rel="noopener">3d-printing/filament-calculator</a></td>
+      <td>No unexpected external requests</td>
+      <td class="nowrap">✍️ manual</td>
+      <td class="detail">GET faves.grow.me, GET api.grow.me, POST some.growplow.events, GET cdn.prod.uidapi.com</td></tr><tr>
+      <td><span class="sev" style="background:#ef4444">high</span></td>
+      <td><a href="https://lazytools.io/3d-printing/filament-cost-calculator/" target="_blank" rel="noopener">3d-printing/filament-cost-calculator</a></td>
+      <td>No serious/critical axe violations</td>
+      <td class="nowrap">✍️ manual</td>
+      <td class="detail">color-contrast (1)</td></tr><tr>
+      <td><span class="sev" style="background:#ef4444">high</span></td>
+      <td><a href="https://lazytools.io/3d-printing/filament-cost-calculator/" target="_blank" rel="noopener">3d-printing/filament-cost-calculator</a></td>
+      <td>No unexpected external requests</td>
+      <td class="nowrap">✍️ manual</td>
+      <td class="detail">GET faves.grow.me, GET api.grow.me, POST some.growplow.events, GET cdn.prod.uidapi.com</td></tr></tbody>
+    </table>
+    </div>
+  </section>
+
+  <footer>
+    Two autonomous bots · token-free · runs daily in GitHub Actions.<br/>
+    <a href="https://github.com/Synth88Labs/lazytools.io/blob/main/audits/DASHBOARD.md">markdown dashboard</a> ·
+    <a href="https://github.com/Synth88Labs/lazytools.io/tree/main/audits/reports">daily reports</a> ·
+    <a href="https://github.com/Synth88Labs/lazytools.io/blob/main/audits/recommendations.md">recommendations</a> ·
+    <a href="https://github.com/Synth88Labs/lazytools.io/blob/main/audits/ledger.json">ledger</a> ·
+    <a href="https://github.com/Synth88Labs/lazytools.io/blob/main/docs/AUDIT-SYSTEM.md">how it works</a><br/>
+    Self-contained page — no trackers, no external requests. Not indexed.
+  </footer>
+</div>
+</body>
+</html>
