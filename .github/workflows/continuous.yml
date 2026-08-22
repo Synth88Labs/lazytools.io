@@ -1,0 +1,51 @@
+# "24/7" senior Fixer — chips away at the manual-fix backlog on a frequent
+# schedule (GitHub Actions can't run truly continuously; this approximates it).
+# Drafts best-practice fix proposals for manual findings, then the Manager
+# reconciles and updates the dashboard. Token-budgeted (Manager throttles when
+# the daily cap is hit). Needs ANTHROPIC_API_KEY; skips cleanly without it.
+name: Continuous Fixer
+
+on:
+  schedule:
+    - cron: '30 */6 * * *'   # every 6 hours
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: audit-fix
+  cancel-in-progress: false
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+
+      - name: Senior Fixer — draft manual fixes (budgeted)
+        id: fixllm
+        run: node scripts/agent-fixer-llm.mjs
+
+      - name: Manager — reconcile + dashboard
+        id: manage
+        run: node scripts/audit-manager.mjs
+
+      - name: Commit results
+        run: |
+          git config user.name  "lazytools-audit-bot"
+          git config user.email "audit-bot@users.noreply.github.com"
+          git add audits
+          if git diff --cached --quiet; then
+            echo "No changes."
+          else
+            git commit -m "fixer(${{ github.run_number }}): ${{ steps.fixllm.outputs.fixes_drafted || 0 }} manual fix draft(s)"
+            git push
+          fi

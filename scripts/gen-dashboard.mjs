@@ -28,6 +28,11 @@ const runs = ledger.runs || [];
 const last = runs[runs.length - 1] || {};
 const scores = ledger.scores || { daily: [], weekly: [] };
 const agents = ledger.agents || {};
+const research = ledger.research || { items: [] };
+const mKpis = (agents.manager && agents.manager.kpis) || {};
+const tokUsed = mKpis.tokensToday || 0, tokCap = mKpis.tokenCap || 400000, tokCost = mKpis.costUsd || 0;
+const tokPct = Math.min(100, Math.round((tokUsed / tokCap) * 100));
+const tokCalls = ((ledger.tokens && ledger.tokens.daily) || []).reduce((a, d) => (d.date === ledger.updated ? a + (d.calls || 0) : a), 0);
 
 const toolCount = slugs.length || ledger.catalogueSize || 0;
 const audited = (ledger.auditedTools || []).length;
@@ -173,6 +178,9 @@ const html = `<!doctype html><html lang="en"><head>
   .grid{display:grid;gap:16px}
   .cols3{grid-template-columns:repeat(3,1fr)}
   .cols2{grid-template-columns:1fr 1fr}
+  .roster{display:grid;gap:16px;grid-template-columns:repeat(5,1fr)}
+  @media(max-width:1000px){.roster{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:520px){.roster{grid-template-columns:1fr}}
   .col-2-1{grid-template-columns:1.3fr .7fr}
   @media(max-width:820px){.cols3,.cols2,.col-2-1{grid-template-columns:1fr}}
   .panel{position:relative;background:var(--glass);border:1px solid var(--line);border-radius:16px;padding:18px;
@@ -228,6 +236,12 @@ const html = `<!doctype html><html lang="en"><head>
   .hbar-track{background:rgba(120,160,220,.12);border-radius:6px;height:8px;overflow:hidden}
   .hbar-fill{display:block;height:100%;border-radius:6px}
   .hbar-v{text-align:right;font-family:ui-monospace,Consolas,monospace;color:var(--ink)}
+  .rrow{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:10px;font-size:12.5px;padding:6px 0;border-bottom:1px solid var(--line)}
+  .rrow:last-child{border:0}
+  .rname{color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .rbadge{font-size:9.5px;letter-spacing:.5px;text-transform:uppercase;border:1px solid;border-radius:20px;padding:2px 8px}
+  .rrate{font-family:ui-monospace,Consolas,monospace;color:var(--am);font-size:12px}
+  .goalnum{font-family:ui-monospace,Consolas,monospace;font-weight:700}
   /* gantt */
   .gantt{display:flex;flex-direction:column;gap:8px}
   .grow{display:grid;grid-template-columns:1fr 90px 70px 84px 66px;align-items:center;gap:10px;font-size:12px}
@@ -267,12 +281,14 @@ const html = `<!doctype html><html lang="en"><head>
       <span class="pill mono">${esc(ledger.updated || last.date || '')}</span>
     </span>
   </div>
-  <div class="sub">LazyTools · autonomous operations · Manager ▸ Auditor ▸ Fixer · reported by Kuroop</div>
+  <div class="sub">LazyTools · autonomous operations · Manager ▸ Auditor ▸ Fixer ▸ Researcher ▸ Developer · reported by Kuroop</div>
 
-  <section class="grid cols3">
+  <section class="roster">
     ${agentCard('Manager', '🧭', MG, agents.manager)}
     ${agentCard('Auditor', '🛰️', CY, agents.auditor)}
     ${agentCard('Fixer', '🛠️', LI, agents.fixer)}
+    ${agentCard('Researcher', '🔬', AM, agents.researcher)}
+    ${agentCard('Developer', '🧑‍💻', VI, agents.developer)}
   </section>
 
   <section class="grid col-2-1">
@@ -287,6 +303,24 @@ const html = `<!doctype html><html lang="en"><head>
       <div class="prow"><span class="muted">Remaining</span><b>${remaining}</b></div>
       <div class="prow" style="margin-top:8px"><span class="muted">Audit coverage</span><b>${audited}/${catalogue}</b></div>
       <div class="pbar"><span class="pbar-fill" style="width:${auditPct}%;background:${CY};box-shadow:0 0 10px ${CY}"></span></div>
+    </div>
+  </section>
+
+  <section class="grid col-2-1">
+    <div class="panel">
+      <h2 class="t">Research pipeline <b>· Manager-rated</b></h2>
+      ${research.items && research.items.length ? `<div class="hbars">${research.items.slice().sort((a, b) => (b.managerRating || 0) - (a.managerRating || 0)).slice(0, 8).map((it) => {
+        const rt = it.managerRating || 0; const col = it.status === 'approved' ? LI : it.status === 'built' ? CY : '#5b6784';
+        return `<div class="rrow"><span class="rname" title="${esc(it.slug)}">${esc(it.name)}</span><span class="rbadge" style="color:${col};border-color:${col}">${esc(it.status || 'proposed')}</span><span class="rrate">${rt}/5</span></div>`;
+      }).join('')}</div><p class="muted" style="font-size:11px;margin-top:10px">Researcher proposes weekly → Manager rates → ≥4 enters the Developer's build queue.</p>` : '<p class="muted">No research this cycle — the Researcher runs weekly.</p>'}
+    </div>
+    <div class="panel">
+      <h2 class="t">Token governance <b>· Manager</b></h2>
+      <div class="goalnum" style="font-size:30px;color:${tokPct >= 90 ? RD : tokPct >= 70 ? AM : CY}">${tokUsed.toLocaleString()}</div>
+      <div class="prow"><span class="muted">of ${tokCap.toLocaleString()} daily cap</span><span class="muted">${tokPct}%</span></div>
+      <div class="pbar"><span class="pbar-fill" style="width:${tokPct}%;background:${tokPct >= 90 ? RD : tokPct >= 70 ? AM : CY};box-shadow:0 0 10px ${CY}"></span></div>
+      <div class="prow" style="margin-top:10px"><span class="muted">Est. cost today</span><b>$${tokCost}</b></div>
+      <div class="prow"><span class="muted">LLM calls today</span><b>${tokCalls}</b></div>
     </div>
   </section>
 

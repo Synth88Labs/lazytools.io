@@ -77,6 +77,8 @@ class Kuroop
                 "how many tools", "how many are built", "how far are we", "how many left", "how much is left", "to target", "build progress",
                 "coverage", "how many audited", "privacy", "trackers", "any trackers",
                 "team", "the team", "performance", "ratings", "how is the team", "how are the bots", "manager", "who is working on what",
+                "research", "researcher", "new tools", "new ideas", "what are we building", "build queue", "developer",
+                "tokens", "token usage", "budget", "spend", "how much are we spending",
                 "challenged", "anything stuck", "what needs me",
                 "open the dashboard", "show me the dashboard", "load the dashboard", "open dashboard", "show dashboard",
                 "log a task", "add a task", "remind me", "note this", "tell claude", "send to claude",
@@ -194,6 +196,10 @@ class Kuroop
                 TryBrain(raw);
             else if (Has(t, "team") || Has(t, "performance") || Has(t, "rating") || Has(t, "manager") || Has(t, "who is working") || Has(t, "how are the bots") || Has(t, "out of 5") || Has(t, "out of five"))
                 TeamReport();
+            else if (Has(t, "token") || Has(t, "budget") || Has(t, "spend") || Has(t, "spending") || Has(t, "cost"))
+                TokenReport();
+            else if (Has(t, "research") || Has(t, "new tool") || Has(t, "new idea") || Has(t, "developer") || Has(t, "build queue") || Has(t, "what are we building"))
+                ResearchReport();
             else if (Has(t, "health") || Has(t, "how are we") || Has(t, "healthy"))
                 HealthReport();
             else if (Has(t, "privacy") || Has(t, "tracker"))
@@ -232,7 +238,7 @@ class Kuroop
         try
         {
             string model = Environment.GetEnvironmentVariable("KUROOP_MODEL");
-            if (string.IsNullOrEmpty(model)) model = "claude-opus-5";
+            if (string.IsNullOrEmpty(model)) model = "claude-haiku-4-5"; // fast + cheap for quick spoken Q&A
 
             JavaScriptSerializer js = new JavaScriptSerializer();
             Dictionary<string, object> body = new Dictionary<string, object>();
@@ -485,6 +491,47 @@ class Kuroop
             if (od > 0) sb.Append("The Manager is reconciling " + od + " overdue " + (od == 1 ? "item" : "items") + ".");
             else sb.Append("The Manager reports everything within SLA.");
         }
+        Speak(sb.ToString());
+    }
+
+    static void ResearchReport()
+    {
+        Dictionary<string, object> root = Fetch(); if (root == null) return;
+        Dictionary<string, object> research = Get(root, "research") as Dictionary<string, object>;
+        object[] items = research != null ? Get(research, "items") as object[] : null;
+        if (items == null || items.Length == 0) { Speak("No research this cycle yet, sir - the Researcher runs weekly."); return; }
+        int approved = 0, proposals = 0; double sum = 0; int rated = 0;
+        var names = new List<string>();
+        foreach (object o in items)
+        {
+            Dictionary<string, object> it = o as Dictionary<string, object>; if (it == null) continue;
+            string st = Str(it, "status");
+            if (st == "approved" || st == "proposed-build") { approved++; if (names.Count < 3) names.Add(Str(it, "name")); }
+            if (st == "proposed-build") proposals++;
+            object mr = Get(it, "managerRating"); if (mr != null) { try { sum += Convert.ToDouble(mr, CultureInfo.InvariantCulture); rated++; } catch { } }
+        }
+        double avg = rated > 0 ? sum / rated : 0;
+        StringBuilder sb = new StringBuilder();
+        sb.Append("The Researcher proposed " + items.Length + " new tool ideas, sir. The Manager approved " + approved + ", averaging " + Num(avg) + " out of 5. ");
+        if (names.Count > 0) sb.Append("Top picks: " + string.Join(", ", names.ToArray()) + ". ");
+        if (proposals > 0) sb.Append("The Developer has drafted " + proposals + " build " + (proposals == 1 ? "proposal" : "proposals") + " for review.");
+        else sb.Append("The Developer builds the approved ones weekly.");
+        Speak(sb.ToString());
+    }
+
+    static void TokenReport()
+    {
+        Dictionary<string, object> root = Fetch(); if (root == null) return;
+        Dictionary<string, object> agents = Get(root, "agents") as Dictionary<string, object>;
+        Dictionary<string, object> mgr = agents != null ? Get(agents, "manager") as Dictionary<string, object> : null;
+        Dictionary<string, object> k = mgr != null ? Get(mgr, "kpis") as Dictionary<string, object> : null;
+        if (k == null) { Speak("Token usage isn't available yet, sir."); return; }
+        int used = Int(k, "tokensToday"), cap = Int(k, "tokenCap");
+        double cost = 0; object c = Get(k, "costUsd"); if (c != null) { try { cost = Convert.ToDouble(c, CultureInfo.InvariantCulture); } catch { } }
+        int pct = cap > 0 ? (int)Math.Round((double)used * 100.0 / cap) : 0;
+        StringBuilder sb = new StringBuilder();
+        sb.Append("Today the agents have used " + used.ToString("N0", CultureInfo.InvariantCulture) + " tokens, sir - about " + pct + " percent of the " + cap.ToString("N0", CultureInfo.InvariantCulture) + " daily budget, roughly " + cost.ToString("0.00", CultureInfo.InvariantCulture) + " dollars. ");
+        sb.Append(used >= cap ? "The Manager has throttled the LLM agents until reset." : "Well within budget.");
         Speak(sb.ToString());
     }
 

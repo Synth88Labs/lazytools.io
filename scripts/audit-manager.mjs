@@ -140,20 +140,52 @@ ledger.scores.weekly = (ledger.scores.weekly || []).filter((r) => r.week !== wk)
 ledger.scores.weekly.push({ week: wk, auditor: wkAvg('auditor'), fixer: wkAvg('fixer'), days: wkDaily.length });
 ledger.scores.weekly = ledger.scores.weekly.slice(-26);
 
+// ── review & rate the Researcher's recommendations (Manager's weekly job) ─────
+const research = ledger.research || { items: [] };
+const rateRec = (it) => {
+  if (it.privacyFit === false) return 1;
+  let r = Number(it.impact) || 3;
+  r += ({ high: 0.6, medium: 0, low: -0.6 })[it.searchDemand] || 0;
+  r += ({ low: 0.5, medium: 0, high: -0.5 })[it.competition] || 0;
+  r += ({ S: 0.3, M: 0, L: -0.3 })[it.effort] || 0;
+  return Math.max(1, Math.min(5, round1(r)));
+};
+let researchAvg = 0;
+if (research.items && research.items.length) {
+  for (const it of research.items) {
+    it.managerRating = rateRec(it);
+    if (!['built', 'proposed-build'].includes(it.status)) it.status = it.managerRating >= 4 ? 'approved' : 'backlog';
+  }
+  researchAvg = round1(research.items.reduce((a, it) => a + it.managerRating, 0) / research.items.length);
+  ledger.research = research;
+}
+const approvedTools = (research.items || []).filter((it) => it.status === 'approved');
+const builtTools = (research.items || []).filter((it) => it.status === 'built');
+
+// ── token governance (Manager monitors spend) ────────────────────────────────
+const tokToday = (ledger.tokens?.daily || []).find((d) => d.date === today) || { input: 0, output: 0, calls: 0 };
+const tokUsed = tokToday.input + tokToday.output;
+const tokCap = Number(process.env.TOKEN_DAILY_CAP || 400000);
+const tokCostUsd = Math.round(((tokToday.input / 1e6) * 3 + (tokToday.output / 1e6) * 15) * 100) / 100;
+const tokPct = Math.min(100, Math.round((tokUsed / tokCap) * 100));
+
 // ── current tasks for the dashboard ──────────────────────────────────────────
 const autoQueue = findings.filter((f) => f.status === 'open' && String(f.fixType || '').startsWith('auto:')).length;
+const manualQueue = findings.filter((f) => f.status === 'open' && f.fixType === 'manual').length;
 const nextAudit = ((ledger.auditedTools || []).length % (ledger.catalogueSize || 1));
-const rating = (v) => ({ value: v, stars: v });
 
 ledger.agents = {
   manager: {
-    role: 'Governance — SLAs, timelines, assessment, ratings',
-    status: overdue > 0 || challengedToAssess > 0 ? 'reconciling' : 'nominal',
-    task: challengedToAssess > 0
-      ? `Assessing ${challengedToAssess} challenged item(s) with Auditor + Fixer; reconciling ${overdue} overdue.`
-      : overdue > 0 ? `Reconciling ${overdue} overdue recommendation(s) against SLA.`
-        : 'All recommendations within SLA. Monitoring.',
-    kpis: { overdue, onTrack, slaPct, challengedToAssess },
+    role: 'Governance — SLAs, ratings, token budget',
+    status: tokUsed >= tokCap ? 'throttling' : overdue > 0 || challengedToAssess > 0 ? 'reconciling' : 'nominal',
+    task: tokUsed >= tokCap
+      ? `Token budget reached (${tokUsed}/${tokCap}) — throttling LLM agents until reset.`
+      : research.items && research.items.length
+        ? `Reviewed ${research.items.length} research idea(s) (avg ${researchAvg}/5); approved ${approvedTools.length}. Tokens ${tokUsed}/${tokCap}.`
+        : challengedToAssess > 0
+          ? `Assessing ${challengedToAssess} challenged item(s); reconciling ${overdue} overdue. Tokens ${tokUsed}/${tokCap}.`
+          : `All within SLA. Monitoring. Tokens ${tokUsed}/${tokCap}.`,
+    kpis: { overdue, onTrack, slaPct, tokensToday: tokUsed, tokenCap: tokCap, costUsd: tokCostUsd },
   },
   auditor: {
     role: 'Truth — detect, verify, close findings',
@@ -165,13 +197,33 @@ ledger.agents = {
     score: { daily: auditorDaily, weekly: wkAvg('auditor') },
   },
   fixer: {
-    role: 'Execution — safe auto-fixes, compile the rest',
-    status: autoQueue > 0 ? 'fixing' : challengedCount > 0 ? 'blocked' : 'standby',
+    role: 'Senior dev — auto + LLM manual fixes, 24/7',
+    status: (autoQueue + manualQueue) > 0 ? 'fixing' : challengedCount > 0 ? 'blocked' : 'standby',
     task: autoQueue > 0
-      ? `Applying ${autoQueue} auto-fix(es) next run (build-gated).`
-      : `No auto-fixable work; ${openCount} manual item(s) compiled for owner/AI.`,
-    kpis: { open: openCount, verifying: verifyingCount, completed: completeCount, slaPct, appliedToday, completedToday },
+      ? `Applying ${autoQueue} deterministic fix(es) + working the ${manualQueue} manual item(s) (build-gated).`
+      : manualQueue > 0
+        ? `Working ${manualQueue} manual item(s) with the LLM fixer (build-gated proposals).`
+        : `Backlog clear; standing by.`,
+    kpis: { open: openCount, manual: manualQueue, verifying: verifyingCount, completed: completeCount, slaPct },
     score: { daily: fixerDaily, weekly: wkAvg('fixer') },
+  },
+  researcher: {
+    role: 'Discovery — weekly research for new tools',
+    status: (research.items || []).length ? 'reported' : 'standby',
+    task: (research.items || []).length
+      ? `${research.items.length} idea(s) proposed ${research.generatedOn || ''}; Manager approved ${approvedTools.length}.`
+      : 'Next weekly research pending.',
+    kpis: { proposed: (research.items || []).length, approved: approvedTools.length, avgRating: researchAvg },
+    score: { daily: researchAvg, weekly: researchAvg }, // Manager rates the researcher = quality of its ideas
+  },
+  developer: {
+    role: 'Full-stack — weekly, builds approved tools',
+    status: approvedTools.length ? 'queued' : 'standby',
+    task: approvedTools.length
+      ? `${approvedTools.length} approved tool(s) queued: ${approvedTools.slice(0, 3).map((a) => a.name).join(', ')}${approvedTools.length > 3 ? '…' : ''}.`
+      : 'No approved tools in the build queue.',
+    kpis: { queued: approvedTools.length, built: builtTools.length },
+    score: { daily: builtTools.length ? 5 : approvedTools.length ? 3 : 0, weekly: builtTools.length ? 5 : approvedTools.length ? 3 : 0 },
   },
 };
 ledger.updated = today;
@@ -197,7 +249,15 @@ if (coord.length) {
   for (const f of coord) md += `- **${f.tool}** — ${f.check}: ${f.coordination}\n`;
   md += `\n`;
 }
-md += `---\n_Segregation of duties: Auditor finds & verifies · Fixer executes safe fixes · Manager estimates, reconciles & rates. See docs/AUDIT-SYSTEM.md._\n`;
+if (research.items && research.items.length) {
+  md += `### 🔬 Researcher review — rated ${research.items.length} idea(s), avg ${stars(researchAvg)} ${researchAvg}/5\n\n`;
+  md += `| Rating | Tool | Category | Decision |\n|---|---|---|---|\n`;
+  for (const it of research.items.slice().sort((a, b) => (b.managerRating || 0) - (a.managerRating || 0)))
+    md += `| ${it.managerRating}/5 | **${it.name}** \`${it.slug}\` | ${it.category} | ${it.status === 'built' ? '✅ built' : it.status === 'approved' ? '👍 approved → dev queue' : '📋 backlog'} |\n`;
+  md += `\n`;
+}
+md += `### 🔢 Token governance\n\nToday: **${tokUsed.toLocaleString()}** / ${tokCap.toLocaleString()} tokens (${tokPct}%) · ~$${tokCostUsd} · ${tokToday.calls || 0} call(s)${tokUsed >= tokCap ? ' · **budget reached — LLM agents throttled**' : ''}.\n\n`;
+md += `---\n_Segregation of duties: Auditor finds & verifies · Fixer executes fixes (auto + LLM) · Researcher proposes tools · Developer builds approved tools · Manager estimates, reconciles, rates & guards the token budget. See docs/AUDIT-SYSTEM.md._\n`;
 await writeFile(new URL(`audits/reports/${today}-manager.md`, ROOT), md);
 
 // ── regenerate the visual command-deck dashboard with governance data ────────

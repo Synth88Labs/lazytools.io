@@ -1,25 +1,49 @@
 # Autonomous audit-and-fix system
 
-Three cooperating agents keep the live tools healthy, running entirely in GitHub
-Actions with **no LLM / no Claude tokens** and no external services. All state
-and output live in git (public), and Kuroop (the desktop voice assistant) reads
-it aloud on request.
+**Five cooperating agents** run the operation in GitHub Actions. The core loop
+(Auditor + deterministic Fixer + Manager) is **token-free**; three capabilities
+use Claude (the senior Fixer for manual items, the Researcher, the Core
+Developer) and are **optional** — they only run when an `ANTHROPIC_API_KEY` repo
+secret is set, and skip cleanly otherwise. All state and output live in git
+(public); Kuroop (the desktop voice assistant) reads it aloud on request.
 
-- **Bot 1 — Auditor** (`scripts/audit-ux.mjs`): every day, audits 10 rotating
-  tools **plus** any tool a fix is awaiting verification on, against the **live**
-  site with headless Chromium + axe-core.
-- **Bot 2 — Fixer** (`scripts/audit-fix.mjs`): applies safe, deterministic fixes
-  to the auditor's open findings, gated by a full production build (reverts if
-  the build breaks), and compiles everything it can't safely touch into
-  `audits/recommendations.md` with reasoning.
-- **Bot 3 — Manager** (`scripts/audit-manager.mjs`): governs the operation —
-  estimates effort/ETA per recommendation, sets SLAs and due dates, reconciles
-  timelines, assesses items the Fixer can't do (coordinating a common ground
-  with the Auditor), and **rates the Auditor and Fixer daily + weekly out of 5**.
+- **Auditor** (`scripts/audit-ux.mjs`, daily, token-free): audits 10 rotating
+  tools **plus** any awaiting verification, against the **live** site with
+  headless Chromium + axe-core.
+- **Fixer** (`scripts/audit-fix.mjs` deterministic + `scripts/agent-fixer-llm.mjs`
+  LLM): the deterministic pass applies safe build-gated auto-fixes; the LLM pass
+  is a senior full-stack dev that drafts best-practice fixes for **manual**
+  findings (content, SEO copy, accessibility) as reviewable proposals.
+- **Manager** (`scripts/audit-manager.mjs`, token-free): estimates effort/ETA,
+  sets SLAs/due dates, reconciles timelines, assesses challenged items, **rates
+  every agent daily + weekly out of 5**, rates the Researcher's ideas, and
+  **guards the daily token budget**.
+- **Researcher** (`scripts/agent-researcher.mjs`, weekly, LLM): understands the
+  catalogue + mission and proposes new privacy-first tools, deduped against the
+  catalogue, reported to the Manager for rating.
+- **Core Developer** (`scripts/agent-developer.mjs`, weekly, LLM): turns the
+  Manager-approved ideas into complete, build-ready implementation **proposals**
+  (code + test + editorial) for owner review.
 - **The loop**: Fixer marks a fix `verifying` → next day the Auditor re-tests the
-  live tool → `complete` if it now passes, or `challenged` (with reasoning) if it
-  still fails after 3 attempts. The Manager tracks every item against its SLA and
-  escalates overdue/challenged work.
+  live tool → `complete`, or `challenged` after 3 attempts. Manager tracks every
+  item against its SLA and escalates overdue/challenged work.
+
+## LLM agents, safety & token governance
+
+- **Never auto-changes a live page.** The LLM Fixer and Developer write
+  **proposals** to `audits/fix-queue/` and `audits/dev-queue/` for owner review;
+  they never commit to `src/` or deploy. A monetised, SEO-sensitive site is only
+  ever changed through the normal reviewed build. Risky categories
+  (functionality logic, third-party/privacy scripts) are deliberately skipped.
+- **Cadence**: `audit.yml` daily (Auditor + Fixer + Manager); `continuous.yml`
+  every 6h (senior Fixer chips the manual backlog — approximating "always on");
+  `research.yml` weekly (Researcher → Manager rating → Developer proposals).
+- **Token governance**: every Claude call logs its usage into `ledger.tokens`.
+  The Manager reports daily spend + estimated cost and enforces a daily cap
+  (`TOKEN_DAILY_CAP`, default 400k); when it's hit, the LLM agents self-throttle
+  and skip until reset. Kuroop can report spend on request ("token usage").
+- **Model/cost**: agents default to `claude-sonnet-5` for quality; Kuroop's voice
+  brain uses `claude-haiku-4-5` for fast/cheap Q&A. Override per agent via env.
 
 ## Segregation of duties (no overlap, no conflict)
 

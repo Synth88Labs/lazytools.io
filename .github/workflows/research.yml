@@ -1,0 +1,65 @@
+# Weekly discovery + build-proposal loop (LLM-powered).
+#   Researcher -> proposes new tools -> Manager rates -> Core Developer drafts
+#   build-ready proposals for the approved ones (owner reviews, then merges).
+# Needs the ANTHROPIC_API_KEY repo secret; skips cleanly if it's absent.
+name: Weekly Research & Build
+
+on:
+  schedule:
+    - cron: '0 5 * * 1'      # Mondays 05:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: audit-fix           # share the lane with the daily loop (no ledger races)
+  cancel-in-progress: false
+
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+
+      - name: Researcher — propose new tools
+        id: research
+        run: node scripts/agent-researcher.mjs
+
+      - name: Manager — rate the research
+        run: node scripts/audit-manager.mjs
+
+      - name: Core Developer — draft build proposals for approved tools
+        id: dev
+        run: node scripts/agent-developer.mjs
+
+      - name: Manager — reconcile (dashboard, ratings, budget)
+        id: manage
+        run: node scripts/audit-manager.mjs
+
+      - name: Commit results
+        run: |
+          git config user.name  "lazytools-audit-bot"
+          git config user.email "audit-bot@users.noreply.github.com"
+          git add audits
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "research(${{ github.run_number }}): ${{ steps.research.outputs.research_count || 0 }} idea(s), ${{ steps.dev.outputs.dev_built || 0 }} build proposal(s)"
+            git push
+          fi
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "### Weekly research & build" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Researcher proposed: ${{ steps.research.outputs.research_count || 0 }} idea(s)" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Developer drafted: ${{ steps.dev.outputs.dev_built || 0 }} proposal(s) (audits/dev-queue/)" >> "$GITHUB_STEP_SUMMARY"
+          echo "- ${{ steps.manage.outputs.manager_summary }}" >> "$GITHUB_STEP_SUMMARY"

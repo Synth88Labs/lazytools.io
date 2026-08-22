@@ -102,7 +102,8 @@
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "fixProposal": "2026-08-22"
     },
     "file/gpx-analyzer::Open Graph tags (title/desc/image)": {
       "id": "file/gpx-analyzer::Open Graph tags (title/desc/image)",
@@ -1386,14 +1387,16 @@
   },
   "agents": {
     "manager": {
-      "role": "Governance — SLAs, timelines, assessment, ratings",
+      "role": "Governance — SLAs, ratings, token budget",
       "status": "nominal",
-      "task": "All recommendations within SLA. Monitoring.",
+      "task": "Reviewed 8 research idea(s) (avg 4/5); approved 4. Tokens 60568/400000.",
       "kpis": {
         "overdue": 0,
         "onTrack": 49,
         "slaPct": 100,
-        "challengedToAssess": 0
+        "tokensToday": 60568,
+        "tokenCap": 400000,
+        "costUsd": 0.58
       }
     },
     "auditor": {
@@ -1411,21 +1414,194 @@
       }
     },
     "fixer": {
-      "role": "Execution — safe auto-fixes, compile the rest",
-      "status": "standby",
-      "task": "No auto-fixable work; 49 manual item(s) compiled for owner/AI.",
+      "role": "Senior dev — auto + LLM manual fixes, 24/7",
+      "status": "fixing",
+      "task": "Working 49 manual item(s) with the LLM fixer (build-gated proposals).",
       "kpis": {
         "open": 49,
+        "manual": 49,
         "verifying": 0,
         "completed": 2,
-        "slaPct": 100,
-        "appliedToday": 2,
-        "completedToday": 2
+        "slaPct": 100
       },
       "score": {
         "daily": 5,
         "weekly": 5
       }
+    },
+    "researcher": {
+      "role": "Discovery — weekly research for new tools",
+      "status": "reported",
+      "task": "8 idea(s) proposed 2026-08-22; Manager approved 4.",
+      "kpis": {
+        "proposed": 8,
+        "approved": 4,
+        "avgRating": 4
+      },
+      "score": {
+        "daily": 4,
+        "weekly": 4
+      }
+    },
+    "developer": {
+      "role": "Full-stack — weekly, builds approved tools",
+      "status": "queued",
+      "task": "4 approved tool(s) queued: Scatter Plot Maker, Paper Size Converter, Circle of Fifths Generator….",
+      "kpis": {
+        "queued": 4,
+        "built": 0
+      },
+      "score": {
+        "daily": 3,
+        "weekly": 3
+      }
     }
+  },
+  "tokens": {
+    "daily": [
+      {
+        "date": "2026-08-22",
+        "input": 27155,
+        "output": 33413,
+        "calls": 6,
+        "byAgent": {
+          "researcher": 40300,
+          "developer": 19384,
+          "fixer": 884
+        }
+      }
+    ],
+    "total": {
+      "input": 27155,
+      "output": 33413,
+      "calls": 6
+    }
+  },
+  "research": {
+    "generatedOn": "2026-08-22",
+    "model": "claude-sonnet-5",
+    "items": [
+      {
+        "name": "MTU Calculator",
+        "slug": "network/mtu-calculator",
+        "category": "network",
+        "description": "Calculates optimal MTU and MSS values for different network types (Ethernet, PPPoE, VPN, IPv6 tunnels) based on overhead bytes.",
+        "whyValuable": "Network admins and gamers troubleshoot latency and fragmentation issues by finding the right MTU size, a recurring technical need with no simple existing calculator in the catalogue.",
+        "searchDemand": "medium",
+        "competition": "low",
+        "effort": "S",
+        "privacyFit": true,
+        "impact": 3,
+        "status": "backlog",
+        "managerRating": 3.8,
+        "proposedOn": "2026-08-22"
+      },
+      {
+        "name": "CSR Generator",
+        "slug": "security/csr-generator",
+        "category": "security",
+        "description": "Generates a Certificate Signing Request and matching private key (RSA/ECDSA) entirely in-browser for SSL certificate applications.",
+        "whyValuable": "Developers and sysadmins regularly need CSRs for SSL setup and currently rely on OpenSSL CLI or third-party servers, so a trustworthy client-side generator fills a real, recurring technical gap.",
+        "searchDemand": "high",
+        "competition": "medium",
+        "effort": "M",
+        "privacyFit": true,
+        "impact": 4,
+        "status": "proposed-build",
+        "managerRating": 4.6,
+        "proposedOn": "2026-08-22",
+        "proposalOn": "2026-08-22"
+      },
+      {
+        "name": "Fiscal Quarter Calculator",
+        "slug": "calendar/fiscal-quarter-calculator",
+        "category": "calendar",
+        "description": "Converts any calendar date into its fiscal quarter and week based on a custom fiscal year start month.",
+        "whyValuable": "Finance and accounting teams frequently need to map dates to non-standard fiscal calendars, and this durable business utility is missing from the calendar category.",
+        "searchDemand": "medium",
+        "competition": "low",
+        "effort": "S",
+        "privacyFit": true,
+        "impact": 3,
+        "status": "backlog",
+        "managerRating": 3.8,
+        "proposedOn": "2026-08-22"
+      },
+      {
+        "name": "Scatter Plot Maker",
+        "slug": "charts/scatter-plot-maker",
+        "category": "charts",
+        "description": "Creates a downloadable scatter plot with optional trendline from pasted or CSV-uploaded X/Y data.",
+        "whyValuable": "Scatter plots are one of the most common chart types for showing correlation, and the charts category currently lacks this fundamental visualization while offering 6 other chart types.",
+        "searchDemand": "medium",
+        "competition": "medium",
+        "effort": "M",
+        "privacyFit": true,
+        "impact": 4,
+        "status": "approved",
+        "managerRating": 4,
+        "proposedOn": "2026-08-22"
+      },
+      {
+        "name": "Paper Size Converter",
+        "slug": "size/paper-size-converter",
+        "category": "size",
+        "description": "Converts between international paper sizes (A-series, B-series, Letter, Legal, Tabloid) with dimensions in mm, cm, and inches.",
+        "whyValuable": "Anyone printing, designing, or shipping documents internationally regularly needs to reconcile ISO vs US paper standards, a simple but high-frequency lookup missing from the size category.",
+        "searchDemand": "high",
+        "competition": "low",
+        "effort": "S",
+        "privacyFit": true,
+        "impact": 3,
+        "status": "approved",
+        "managerRating": 4.4,
+        "proposedOn": "2026-08-22"
+      },
+      {
+        "name": "Audio Waveform Generator",
+        "slug": "video/waveform-generator",
+        "category": "video",
+        "description": "Renders a visual waveform image or SVG from an uploaded audio file using the Web Audio API, with customizable colors and export options.",
+        "whyValuable": "Podcasters and musicians need waveform visuals for thumbnails, video backgrounds, and album art, and this is a distinct visual-output need not covered by the existing audio inspection tools.",
+        "searchDemand": "medium",
+        "competition": "medium",
+        "effort": "M",
+        "privacyFit": true,
+        "impact": 3,
+        "status": "backlog",
+        "managerRating": 3,
+        "proposedOn": "2026-08-22"
+      },
+      {
+        "name": "Circle of Fifths Generator",
+        "slug": "music/circle-of-fifths-generator",
+        "category": "music",
+        "description": "Interactive circle of fifths diagram showing key signatures, relative minors, and chord relationships for any selected key.",
+        "whyValuable": "It's one of the most searched-for music theory reference tools among musicians and students, and the existing music category lacks any key-relationship visualization despite having key-signature and chord-scale tools.",
+        "searchDemand": "high",
+        "competition": "medium",
+        "effort": "M",
+        "privacyFit": true,
+        "impact": 4,
+        "status": "approved",
+        "managerRating": 4.6,
+        "proposedOn": "2026-08-22"
+      },
+      {
+        "name": "Mortgage Refinance Calculator",
+        "slug": "finance/mortgage-refinance-calculator",
+        "category": "finance",
+        "description": "Compares your current mortgage to a new refinance offer, calculating monthly savings, break-even point, and total interest difference.",
+        "whyValuable": "Refinancing decisions are high-stakes and searched constantly during rate-change cycles, and this is distinct from the existing generic mortgage-calculator which doesn't handle comparison/break-even scenarios.",
+        "searchDemand": "high",
+        "competition": "high",
+        "effort": "M",
+        "privacyFit": true,
+        "impact": 4,
+        "status": "approved",
+        "managerRating": 4.1,
+        "proposedOn": "2026-08-22"
+      }
+    ]
   }
 }

@@ -38,6 +38,9 @@ concurrency:
 jobs:
   audit-fix:
     runs-on: ubuntu-latest
+    env:
+      # Powers the LLM agents (senior Fixer). Unset -> those steps skip cleanly.
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v5
@@ -59,6 +62,10 @@ jobs:
       - name: Bot 2 — fix (safe, build-gated)
         id: fix
         run: node scripts/audit-fix.mjs
+
+      - name: Bot 2b — senior fixer (manual items, LLM; skips without key)
+        id: fixllm
+        run: node scripts/agent-fixer-llm.mjs
 
       - name: Bot 3 — manage (governance, ETAs, ratings)
         id: manage

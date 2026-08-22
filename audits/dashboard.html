@@ -31,6 +31,9 @@
   .grid{display:grid;gap:16px}
   .cols3{grid-template-columns:repeat(3,1fr)}
   .cols2{grid-template-columns:1fr 1fr}
+  .roster{display:grid;gap:16px;grid-template-columns:repeat(5,1fr)}
+  @media(max-width:1000px){.roster{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:520px){.roster{grid-template-columns:1fr}}
   .col-2-1{grid-template-columns:1.3fr .7fr}
   @media(max-width:820px){.cols3,.cols2,.col-2-1{grid-template-columns:1fr}}
   .panel{position:relative;background:var(--glass);border:1px solid var(--line);border-radius:16px;padding:18px;
@@ -86,6 +89,12 @@
   .hbar-track{background:rgba(120,160,220,.12);border-radius:6px;height:8px;overflow:hidden}
   .hbar-fill{display:block;height:100%;border-radius:6px}
   .hbar-v{text-align:right;font-family:ui-monospace,Consolas,monospace;color:var(--ink)}
+  .rrow{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:10px;font-size:12.5px;padding:6px 0;border-bottom:1px solid var(--line)}
+  .rrow:last-child{border:0}
+  .rname{color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .rbadge{font-size:9.5px;letter-spacing:.5px;text-transform:uppercase;border:1px solid;border-radius:20px;padding:2px 8px}
+  .rrate{font-family:ui-monospace,Consolas,monospace;color:var(--am);font-size:12px}
+  .goalnum{font-family:ui-monospace,Consolas,monospace;font-weight:700}
   /* gantt */
   .gantt{display:flex;flex-direction:column;gap:8px}
   .grow{display:grid;grid-template-columns:1fr 90px 70px 84px 66px;align-items:center;gap:10px;font-size:12px}
@@ -125,14 +134,14 @@
       <span class="pill mono">2026-08-22</span>
     </span>
   </div>
-  <div class="sub">LazyTools · autonomous operations · Manager ▸ Auditor ▸ Fixer · reported by Kuroop</div>
+  <div class="sub">LazyTools · autonomous operations · Manager ▸ Auditor ▸ Fixer ▸ Researcher ▸ Developer · reported by Kuroop</div>
 
-  <section class="grid cols3">
+  <section class="roster">
     <div class="agent" style="--ac:#e879f9">
-    <div class="ahead"><span class="glyph">🧭</span><div><div class="aname">Manager</div><div class="arole">Governance — SLAs, timelines, assessment, ratings</div></div>
+    <div class="ahead"><span class="glyph">🧭</span><div><div class="aname">Manager</div><div class="arole">Governance — SLAs, ratings, token budget</div></div>
       <span class="led"><i></i>nominal</span></div>
-    <div class="atask"><span class="now">NOW</span>All recommendations within SLA. Monitoring.</div>
-    <div class="chips"><span class="chip">overdue<b>0</b></span><span class="chip">onTrack<b>49</b></span><span class="chip">slaPct<b>100</b></span><span class="chip">challengedToAssess<b>0</b></span></div>
+    <div class="atask"><span class="now">NOW</span>Reviewed 8 research idea(s) (avg 4/5); approved 4. Tokens 60568/400000.</div>
+    <div class="chips"><span class="chip">overdue<b>0</b></span><span class="chip">onTrack<b>49</b></span><span class="chip">slaPct<b>100</b></span><span class="chip">tokensToday<b>60568</b></span><span class="chip">tokenCap<b>400000</b></span><span class="chip">costUsd<b>0.58</b></span></div>
     <div class="rates"><div class="rate mgr">RATES THE TEAM ▸</div></div>
   </div>
     <div class="agent" style="--ac:#22d3ee">
@@ -143,11 +152,25 @@
     <div class="rates"><div class="rate"><span class="rlab">daily</span><span class="stars"><span class="st on">★</span><span class="st on">★</span><span class="st on">★</span><span class="st on">★</span><span class="st ">★</span></span><span class="stv">3.5</span></div><div class="rate"><span class="rlab">weekly</span><span class="stars"><span class="st on">★</span><span class="st on">★</span><span class="st on">★</span><span class="st on">★</span><span class="st ">★</span></span><span class="stv">3.5</span></div></div>
   </div>
     <div class="agent" style="--ac:#a3e635">
-    <div class="ahead"><span class="glyph">🛠️</span><div><div class="aname">Fixer</div><div class="arole">Execution — safe auto-fixes, compile the rest</div></div>
-      <span class="led"><i></i>standby</span></div>
-    <div class="atask"><span class="now">NOW</span>No auto-fixable work; 49 manual item(s) compiled for owner/AI.</div>
-    <div class="chips"><span class="chip">open<b>49</b></span><span class="chip">verifying<b>0</b></span><span class="chip">completed<b>2</b></span><span class="chip">slaPct<b>100</b></span><span class="chip">appliedToday<b>2</b></span><span class="chip">completedToday<b>2</b></span></div>
+    <div class="ahead"><span class="glyph">🛠️</span><div><div class="aname">Fixer</div><div class="arole">Senior dev — auto + LLM manual fixes, 24/7</div></div>
+      <span class="led"><i></i>fixing</span></div>
+    <div class="atask"><span class="now">NOW</span>Working 49 manual item(s) with the LLM fixer (build-gated proposals).</div>
+    <div class="chips"><span class="chip">open<b>49</b></span><span class="chip">manual<b>49</b></span><span class="chip">verifying<b>0</b></span><span class="chip">completed<b>2</b></span><span class="chip">slaPct<b>100</b></span></div>
     <div class="rates"><div class="rate"><span class="rlab">daily</span><span class="stars"><span class="st on">★</span><span class="st on">★</span><span class="st on">★</span><span class="st on">★</span><span class="st on">★</span></span><span class="stv">5.0</span></div><div class="rate"><span class="rlab">weekly</span><span class="stars"><span class="st on">★</span><span class="st on">★</span><span class="st on">★</span><span class="st on">★</span><span class="st on">★</span></span><span class="stv">5.0</span></div></div>
+  </div>
+    <div class="agent" style="--ac:#fbbf24">
+    <div class="ahead"><span class="glyph">🔬</span><div><div class="aname">Researcher</div><div class="arole">Discovery — weekly research for new tools</div></div>
+      <span class="led"><i></i>reported</span></div>
+    <div class="atask"><span class="now">NOW</span>8 idea(s) proposed 2026-08-22; Manager approved 4.</div>
+    <div class="chips"><span class="chip">proposed<b>8</b></span><span class="chip">approved<b>4</b></span><span class="chip">avgRating<b>4</b></span></div>
+    <div class="rates"><div class="rate"><span class="rlab">daily</span><span class="stars"><span class="st on">★</span><span class="st on">★</span><span class="st on">★</span><span class="st on">★</span><span class="st ">★</span></span><span class="stv">4.0</span></div><div class="rate"><span class="rlab">weekly</span><span class="stars"><span class="st on">★</span><span class="st on">★</span><span class="st on">★</span><span class="st on">★</span><span class="st ">★</span></span><span class="stv">4.0</span></div></div>
+  </div>
+    <div class="agent" style="--ac:#818cf8">
+    <div class="ahead"><span class="glyph">🧑‍💻</span><div><div class="aname">Developer</div><div class="arole">Full-stack — weekly, builds approved tools</div></div>
+      <span class="led"><i></i>queued</span></div>
+    <div class="atask"><span class="now">NOW</span>4 approved tool(s) queued: Scatter Plot Maker, Paper Size Converter, Circle of Fifths Generator….</div>
+    <div class="chips"><span class="chip">queued<b>4</b></span><span class="chip">built<b>0</b></span></div>
+    <div class="rates"><div class="rate"><span class="rlab">daily</span><span class="stars"><span class="st on">★</span><span class="st on">★</span><span class="st on">★</span><span class="st ">★</span><span class="st ">★</span></span><span class="stv">3.0</span></div><div class="rate"><span class="rlab">weekly</span><span class="stars"><span class="st on">★</span><span class="st on">★</span><span class="st on">★</span><span class="st ">★</span><span class="st ">★</span></span><span class="stv">3.0</span></div></div>
   </div>
   </section>
 
@@ -173,6 +196,21 @@
       <div class="prow"><span class="muted">Remaining</span><b>429</b></div>
       <div class="prow" style="margin-top:8px"><span class="muted">Audit coverage</span><b>11/1071</b></div>
       <div class="pbar"><span class="pbar-fill" style="width:1%;background:#22d3ee;box-shadow:0 0 10px #22d3ee"></span></div>
+    </div>
+  </section>
+
+  <section class="grid col-2-1">
+    <div class="panel">
+      <h2 class="t">Research pipeline <b>· Manager-rated</b></h2>
+      <div class="hbars"><div class="rrow"><span class="rname" title="security/csr-generator">CSR Generator</span><span class="rbadge" style="color:#5b6784;border-color:#5b6784">proposed-build</span><span class="rrate">4.6/5</span></div><div class="rrow"><span class="rname" title="music/circle-of-fifths-generator">Circle of Fifths Generator</span><span class="rbadge" style="color:#a3e635;border-color:#a3e635">approved</span><span class="rrate">4.6/5</span></div><div class="rrow"><span class="rname" title="size/paper-size-converter">Paper Size Converter</span><span class="rbadge" style="color:#a3e635;border-color:#a3e635">approved</span><span class="rrate">4.4/5</span></div><div class="rrow"><span class="rname" title="finance/mortgage-refinance-calculator">Mortgage Refinance Calculator</span><span class="rbadge" style="color:#a3e635;border-color:#a3e635">approved</span><span class="rrate">4.1/5</span></div><div class="rrow"><span class="rname" title="charts/scatter-plot-maker">Scatter Plot Maker</span><span class="rbadge" style="color:#a3e635;border-color:#a3e635">approved</span><span class="rrate">4/5</span></div><div class="rrow"><span class="rname" title="network/mtu-calculator">MTU Calculator</span><span class="rbadge" style="color:#5b6784;border-color:#5b6784">backlog</span><span class="rrate">3.8/5</span></div><div class="rrow"><span class="rname" title="calendar/fiscal-quarter-calculator">Fiscal Quarter Calculator</span><span class="rbadge" style="color:#5b6784;border-color:#5b6784">backlog</span><span class="rrate">3.8/5</span></div><div class="rrow"><span class="rname" title="video/waveform-generator">Audio Waveform Generator</span><span class="rbadge" style="color:#5b6784;border-color:#5b6784">backlog</span><span class="rrate">3/5</span></div></div><p class="muted" style="font-size:11px;margin-top:10px">Researcher proposes weekly → Manager rates → ≥4 enters the Developer's build queue.</p>
+    </div>
+    <div class="panel">
+      <h2 class="t">Token governance <b>· Manager</b></h2>
+      <div class="goalnum" style="font-size:30px;color:#22d3ee">60,568</div>
+      <div class="prow"><span class="muted">of 4,00,000 daily cap</span><span class="muted">15%</span></div>
+      <div class="pbar"><span class="pbar-fill" style="width:15%;background:#22d3ee;box-shadow:0 0 10px #22d3ee"></span></div>
+      <div class="prow" style="margin-top:10px"><span class="muted">Est. cost today</span><b>$0.58</b></div>
+      <div class="prow"><span class="muted">LLM calls today</span><b>6</b></div>
     </div>
   </section>
 
