@@ -16,7 +16,7 @@ export interface TextToolDef {
   description: string;
   lead: string;
   /** 'counter' = live stats; 'transform' = input→output; others = custom islands */
-  widget: 'counter' | 'transform' | 'invisible' | 'homoglyph' | 'diff' | 'readability' | 'unicode' | 'frequency' | 'bionic' | 'numwords' | 'upsidedown' | 'linepicker' | 'compare-lists';
+  widget: 'counter' | 'transform' | 'invisible' | 'homoglyph' | 'diff' | 'readability' | 'unicode' | 'frequency' | 'bionic' | 'numwords' | 'upsidedown' | 'linepicker' | 'compare-lists' | 'tts';
   computeId?: string;
   options?: TextToolOption[];
   /** sample text preloaded so the tool demonstrates itself */
@@ -674,6 +674,26 @@ export const TEXT_TOOLS: TextToolDef[] = [
       { q: 'Is my data uploaded?', a: 'No — the comparison runs entirely in your browser and works offline, so private lists (emails, IDs, filenames) stay on your device.' },
     ],
     keywords: ['compare two lists', 'list comparison tool', 'find common items in two lists', 'list difference', 'compare lists online', 'set intersection tool', 'diff two lists'],
+  },
+  {
+    slug: 'text-to-speech',
+    name: 'Text to Speech',
+    icon: '🔊',
+    widget: 'tts',
+    description:
+      'Turn text into natural speech and read it aloud in your browser — pick a voice and language, adjust speed and pitch. Uses your device\'s built-in voices; text isn\'t uploaded.',
+    lead: 'Paste any text and have it read aloud with your device\'s voices — choose the voice, language, speed and pitch, then play, pause or stop.',
+    how: 'The tool uses your browser\'s built-in speech synthesis (the same engine your operating system uses for accessibility) to read your text aloud. Pick from the voices installed on your device — usually several languages and accents — and adjust the speaking rate, pitch and volume. Press play to hear it, pause and resume mid-sentence, or stop. Because the speech is generated locally by your browser and OS, your text is not sent anywhere by this tool.',
+    note: 'This is handy for proofreading (hearing a draft catches errors your eyes skip), for accessibility, for learning pronunciation in another language, or for listening to an article while doing something else. The set of voices comes from your operating system and browser, so what you see varies by device — Windows, macOS, iOS, Android and each browser ship different voices, and you can add more in your OS settings. Note that browsers don\'t provide a way to save this speech as an audio file, so the tool plays the audio rather than downloading it.',
+    faqs: [
+      { q: 'How do I convert text to speech?', a: 'Paste or type your text, choose a voice and language, set the speed and pitch, and press Play. The text is read aloud immediately using your device\'s voices. You can pause, resume or stop at any time.' },
+      { q: 'Is my text uploaded or stored?', a: 'No — the speech is generated locally by your browser and operating system, so this tool does not upload or store your text. It works without sending your words to a server.' },
+      { q: 'Why are the available voices different on my device?', a: 'The voices come from your operating system and browser, not from this site, so the list depends on your setup. You can install additional language voices in your OS settings (Windows, macOS, iOS and Android all support this) and they\'ll appear here.' },
+      { q: 'Can I download the speech as an MP3?', a: 'Not from this tool — browsers expose speech synthesis for playback but don\'t provide a way to capture it to an audio file. Use it to listen and proofread; for a saved recording you\'d need dedicated software.' },
+      { q: 'What can I use text to speech for?', a: 'Proofreading by ear, accessibility, hearing how a word or sentence is pronounced (including in other languages), or listening to text hands-free. Adjust the speed for skimming or careful listening.' },
+      { q: 'Which browsers support it?', a: 'Current versions of Chrome, Edge, Safari and Firefox all support in-browser speech synthesis. The number and quality of voices varies by browser and operating system.' },
+    ],
+    keywords: ['text to speech', 'tts', 'read text aloud', 'text to speech online', 'text reader', 'speak text', 'read aloud tool', 'text to voice'],
   },
 ];
 

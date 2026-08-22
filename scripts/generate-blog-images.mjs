@@ -1385,6 +1385,13 @@ const POSTS = [
     fact: 'getUserMedia · live preview + level meter · nothing recorded',
     icon: '📷',
   },
+  {
+    slug: 'browser-text-to-speech-explained-guide',
+    kicker: 'ACCESSIBILITY GUIDE',
+    lines: ['Text to speech in', 'your browser (no', 'upload, no account)'],
+    fact: 'speechSynthesis · local OS voices · rate · pitch · offline',
+    icon: '🔊',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

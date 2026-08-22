@@ -1,0 +1,80 @@
+import { useEffect, useRef, useState } from 'preact/hooks';
+
+export default function TextToSpeechTool() {
+  const [text, setText] = useState('Hello! This is your text read aloud, right here in your browser. Adjust the voice, speed and pitch, then press play.');
+  const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
+  const [voiceURI, setVoiceURI] = useState('');
+  const [rate, setRate] = useState(1);
+  const [pitch, setPitch] = useState(1);
+  const [volume, setVolume] = useState(1);
+  const [state, setState] = useState<'idle' | 'playing' | 'paused'>('idle');
+  const supported = typeof window !== 'undefined' && 'speechSynthesis' in window;
+  const utterRef = useRef<SpeechSynthesisUtterance | null>(null);
+
+  useEffect(() => {
+    if (!supported) return;
+    const load = () => {
+      const v = window.speechSynthesis.getVoices();
+      if (v.length) { setVoices(v); setVoiceURI((cur) => cur || (v.find((x) => x.default) ?? v.find((x) => x.lang.startsWith('en')) ?? v[0])!.voiceURI); }
+    };
+    load();
+    window.speechSynthesis.onvoiceschanged = load;
+    return () => { window.speechSynthesis.cancel(); window.speechSynthesis.onvoiceschanged = null; };
+  }, []);
+
+  function play() {
+    if (!supported || !text.trim()) return;
+    window.speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    const v = voices.find((x) => x.voiceURI === voiceURI);
+    if (v) { u.voice = v; u.lang = v.lang; }
+    u.rate = rate; u.pitch = pitch; u.volume = volume;
+    u.onend = () => setState('idle');
+    u.onerror = () => setState('idle');
+    utterRef.current = u;
+    setState('playing');
+    window.speechSynthesis.speak(u);
+  }
+  function pause() { window.speechSynthesis.pause(); setState('paused'); }
+  function resume() { window.speechSynthesis.resume(); setState('playing'); }
+  function stop() { window.speechSynthesis.cancel(); setState('idle'); }
+
+  const inp = 'w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200';
+  const grouped = voices.slice().sort((a, b) => a.lang.localeCompare(b.lang) || a.name.localeCompare(b.name));
+
+  if (!supported) {
+    return <div class="rounded-2xl border border-slate-200 bg-slate-50 p-6 text-sm text-slate-600">Your browser doesn’t support speech synthesis. Try the latest Chrome, Edge, Safari or Firefox.</div>;
+  }
+
+  return (
+    <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
+      <label class="block"><span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Text to read aloud</span>
+        <textarea rows={5} class={inp} value={text} onInput={(e) => setText((e.target as HTMLTextAreaElement).value)} placeholder="Type or paste text…" />
+      </label>
+
+      <div class="mt-3 grid gap-3 sm:grid-cols-2">
+        <label class="text-sm text-slate-600">Voice
+          <select class={`${inp} mt-1`} value={voiceURI} onChange={(e) => setVoiceURI((e.target as HTMLSelectElement).value)}>
+            {grouped.length === 0 && <option>Loading voices…</option>}
+            {grouped.map((v) => <option value={v.voiceURI}>{v.name} — {v.lang}{v.default ? ' (default)' : ''}</option>)}
+          </select>
+        </label>
+        <div class="grid grid-cols-3 gap-3">
+          {([['Speed', rate, setRate, 0.5, 2], ['Pitch', pitch, setPitch, 0, 2], ['Volume', volume, setVolume, 0, 1]] as const).map(([label, val, set, min, max]) => (
+            <label class="text-xs text-slate-600">{label} <span class="font-mono text-slate-800">{(val as number).toFixed(1)}</span>
+              <input type="range" min={min} max={max} step="0.1" value={val as number} onInput={(e) => (set as (n: number) => void)(parseFloat((e.target as HTMLInputElement).value))} class="mt-1 w-full" />
+            </label>
+          ))}
+        </div>
+      </div>
+
+      <div class="mt-4 flex flex-wrap gap-2">
+        {state !== 'playing' && <button onClick={state === 'paused' ? resume : play} class="rounded-xl bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-700">{state === 'paused' ? '▶ Resume' : '▶ Play'}</button>}
+        {state === 'playing' && <button onClick={pause} class="rounded-xl bg-amber-500 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-amber-600">⏸ Pause</button>}
+        <button onClick={stop} disabled={state === 'idle'} class="rounded-xl bg-slate-200 px-5 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-300 disabled:opacity-50">⏹ Stop</button>
+      </div>
+
+      <p class="mt-4 text-xs text-slate-500">Reads your text aloud using the voices built into your device and browser — pick a voice and language, and tune the speed, pitch and volume. The text is spoken locally by your browser and is not uploaded by this tool. The available voices depend on your operating system and browser, so the list varies by device. 🔒 Runs in your browser.</p>
+    </div>
+  );
+}

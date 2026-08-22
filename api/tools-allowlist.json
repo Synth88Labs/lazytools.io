@@ -746,6 +746,7 @@
   "text/strip-html-tags",
   "text/text-cleaner",
   "text/text-diff",
+  "text/text-to-speech",
   "text/unicode-character-inspector",
   "text/unicode-normalizer",
   "text/upside-down-text",
