@@ -16,7 +16,7 @@ export interface Printing3dToolDef {
 export const PRINTING3D_TOOLS: Printing3dToolDef[] = [
   {
     slug: 'filament-calculator',
-    name: 'Filament Weight & Length Calculator',
+    name: 'Filament Weight Calculator',
     icon: '🧵',
     widget: 'filament',
     description: 'Convert 3D-printer filament between weight, length and volume by material and diameter. Know how much a print uses, or how much is left on a spool. In your…',
@@ -52,7 +52,7 @@ export const PRINTING3D_TOOLS: Printing3dToolDef[] = [
   },
   {
     slug: 'print-energy-cost-calculator',
-    name: 'Print Electricity Cost Calculator',
+    name: 'Print Electricity Calculator',
     icon: '⚡',
     widget: 'energy',
     description: 'Estimate the electricity cost of a 3D print from the printer\'s power draw, the print time and your electricity rate. In your browser.',
@@ -106,7 +106,7 @@ export const PRINTING3D_TOOLS: Printing3dToolDef[] = [
   },
   {
     slug: 'flow-rate-calculator',
-    name: 'Flow Rate / Extrusion Multiplier Calculator',
+    name: 'Flow Rate Calculator',
     icon: '🎚️',
     widget: 'flow',
     description: 'Calibrate your 3D printer\'s flow rate (extrusion multiplier) from a measured single-wall thickness. In your browser.',

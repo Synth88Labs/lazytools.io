@@ -24,7 +24,8 @@
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-27",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "developer",
+      "coordination": "SYSTEMIC — TEMPLATE: missing og:image; one site-wide OG-image generator fixes all. Queued as a build task, not a per-tool edit."
     },
     "file/geojson-to-wkt::No serious/critical axe violations": {
       "id": "file/geojson-to-wkt::No serious/critical axe violations",
@@ -50,7 +51,8 @@
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "owner",
+      "coordination": "SYSTEMIC — DESIGN: global colour-contrast; one design-token change fixes many pages. Needs a quick design decision."
     },
     "file/geojson-to-wkt::No unexpected external requests": {
       "id": "file/geojson-to-wkt::No unexpected external requests",
@@ -76,7 +78,8 @@
       "eta": "~12h (2 days)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "owner",
+      "coordination": "SYSTEMIC — OWNER DECISION: third-party ad script (grow.me / Unified-ID) is your ad revenue (Mediavine Grow). One removal clears all of these, but it cuts income — a bot must not auto-decide. Keep for ads, or say the word to remove for full privacy."
     },
     "file/gpx-analyzer::Title present (15–60 chars)": {
       "id": "file/gpx-analyzer::Title present (15–60 chars)",
@@ -129,7 +132,8 @@
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-27",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "developer",
+      "coordination": "SYSTEMIC — TEMPLATE: missing og:image; one site-wide OG-image generator fixes all. Queued as a build task, not a per-tool edit."
     },
     "file/gpx-analyzer::No serious/critical axe violations": {
       "id": "file/gpx-analyzer::No serious/critical axe violations",
@@ -155,7 +159,8 @@
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "owner",
+      "coordination": "SYSTEMIC — DESIGN: global colour-contrast; one design-token change fixes many pages. Needs a quick design decision."
     },
     "file/gpx-analyzer::No unexpected external requests": {
       "id": "file/gpx-analyzer::No unexpected external requests",
@@ -181,7 +186,8 @@
       "eta": "~12h (2 days)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "owner",
+      "coordination": "SYSTEMIC — OWNER DECISION: third-party ad script (grow.me / Unified-ID) is your ad revenue (Mediavine Grow). One removal clears all of these, but it cuts income — a bot must not auto-decide. Keep for ads, or say the word to remove for full privacy."
     },
     "file/gpx-to-geojson::Meta description (70–160 chars)": {
       "id": "file/gpx-to-geojson::Meta description (70–160 chars)",
@@ -240,7 +246,8 @@
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-27",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "developer",
+      "coordination": "SYSTEMIC — TEMPLATE: missing og:image; one site-wide OG-image generator fixes all. Queued as a build task, not a per-tool edit."
     },
     "file/gpx-to-geojson::No serious/critical axe violations": {
       "id": "file/gpx-to-geojson::No serious/critical axe violations",
@@ -266,7 +273,8 @@
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "owner",
+      "coordination": "SYSTEMIC — DESIGN: global colour-contrast; one design-token change fixes many pages. Needs a quick design decision."
     },
     "file/gpx-to-geojson::No unexpected external requests": {
       "id": "file/gpx-to-geojson::No unexpected external requests",
@@ -292,7 +300,8 @@
       "eta": "~12h (2 days)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "owner",
+      "coordination": "SYSTEMIC — OWNER DECISION: third-party ad script (grow.me / Unified-ID) is your ad revenue (Mediavine Grow). One removal clears all of these, but it cuts income — a bot must not auto-decide. Keep for ads, or say the word to remove for full privacy."
     },
     "file/html-to-markdown::Open Graph tags (title/desc/image)": {
       "id": "file/html-to-markdown::Open Graph tags (title/desc/image)",
@@ -318,7 +327,8 @@
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-27",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "developer",
+      "coordination": "SYSTEMIC — TEMPLATE: missing og:image; one site-wide OG-image generator fixes all. Queued as a build task, not a per-tool edit."
     },
     "file/html-to-markdown::No serious/critical axe violations": {
       "id": "file/html-to-markdown::No serious/critical axe violations",
@@ -344,7 +354,8 @@
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "owner",
+      "coordination": "SYSTEMIC — DESIGN: global colour-contrast; one design-token change fixes many pages. Needs a quick design decision."
     },
     "file/html-to-markdown::No unexpected external requests": {
       "id": "file/html-to-markdown::No unexpected external requests",
@@ -370,7 +381,8 @@
       "eta": "~12h (2 days)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "owner",
+      "coordination": "SYSTEMIC — OWNER DECISION: third-party ad script (grow.me / Unified-ID) is your ad revenue (Mediavine Grow). One removal clears all of these, but it cuts income — a bot must not auto-decide. Keep for ads, or say the word to remove for full privacy."
     },
     "file/ini-to-json::Open Graph tags (title/desc/image)": {
       "id": "file/ini-to-json::Open Graph tags (title/desc/image)",
@@ -396,7 +408,8 @@
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-27",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "developer",
+      "coordination": "SYSTEMIC — TEMPLATE: missing og:image; one site-wide OG-image generator fixes all. Queued as a build task, not a per-tool edit."
     },
     "file/ini-to-json::No serious/critical axe violations": {
       "id": "file/ini-to-json::No serious/critical axe violations",
@@ -422,7 +435,8 @@
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "owner",
+      "coordination": "SYSTEMIC — DESIGN: global colour-contrast; one design-token change fixes many pages. Needs a quick design decision."
     },
     "file/ini-to-json::No unexpected external requests": {
       "id": "file/ini-to-json::No unexpected external requests",
@@ -448,7 +462,8 @@
       "eta": "~12h (2 days)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "owner",
+      "coordination": "SYSTEMIC — OWNER DECISION: third-party ad script (grow.me / Unified-ID) is your ad revenue (Mediavine Grow). One removal clears all of these, but it cuts income — a bot must not auto-decide. Keep for ads, or say the word to remove for full privacy."
     },
     "3d-printing/e-steps-calculator::Open Graph tags (title/desc/image)": {
       "id": "3d-printing/e-steps-calculator::Open Graph tags (title/desc/image)",
@@ -474,7 +489,8 @@
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-27",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "developer",
+      "coordination": "SYSTEMIC — TEMPLATE: missing og:image; one site-wide OG-image generator fixes all. Queued as a build task, not a per-tool edit."
     },
     "3d-printing/e-steps-calculator::No serious/critical axe violations": {
       "id": "3d-printing/e-steps-calculator::No serious/critical axe violations",
@@ -500,7 +516,8 @@
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "owner",
+      "coordination": "SYSTEMIC — DESIGN: global colour-contrast; one design-token change fixes many pages. Needs a quick design decision."
     },
     "3d-printing/e-steps-calculator::No unexpected external requests": {
       "id": "3d-printing/e-steps-calculator::No unexpected external requests",
@@ -526,7 +543,8 @@
       "eta": "~12h (2 days)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "owner",
+      "coordination": "SYSTEMIC — OWNER DECISION: third-party ad script (grow.me / Unified-ID) is your ad revenue (Mediavine Grow). One removal clears all of these, but it cuts income — a bot must not auto-decide. Keep for ads, or say the word to remove for full privacy."
     },
     "3d-printing/filament-calculator::Title present (15–60 chars)": {
       "id": "3d-printing/filament-calculator::Title present (15–60 chars)",
@@ -537,7 +555,7 @@
       "severity": "high",
       "detail": "64 chars: \"Filament Weight & Length Calculator — Free & Priva\"",
       "fixType": "manual",
-      "status": "open",
+      "status": "verifying",
       "firstSeen": "2026-08-22",
       "lastSeen": "2026-08-22",
       "attempts": 0,
@@ -546,13 +564,19 @@
           "date": "2026-08-22",
           "event": "opened",
           "note": "64 chars: \"Filament Weight & Length Calculator — Free & Priva\""
+        },
+        {
+          "date": "2026-08-22",
+          "event": "llm-fixed",
+          "note": "Filament Weight & Length Calculator… → Filament Weight Calculator…"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "fixedOn": "2026-08-22"
     },
     "3d-printing/filament-calculator::Meta description (70–160 chars)": {
       "id": "3d-printing/filament-calculator::Meta description (70–160 chars)",
@@ -611,7 +635,8 @@
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-27",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "developer",
+      "coordination": "SYSTEMIC — TEMPLATE: missing og:image; one site-wide OG-image generator fixes all. Queued as a build task, not a per-tool edit."
     },
     "3d-printing/filament-calculator::No serious/critical axe violations": {
       "id": "3d-printing/filament-calculator::No serious/critical axe violations",
@@ -637,7 +662,8 @@
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "owner",
+      "coordination": "SYSTEMIC — DESIGN: global colour-contrast; one design-token change fixes many pages. Needs a quick design decision."
     },
     "3d-printing/filament-calculator::No unexpected external requests": {
       "id": "3d-printing/filament-calculator::No unexpected external requests",
@@ -663,7 +689,8 @@
       "eta": "~12h (2 days)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "owner",
+      "coordination": "SYSTEMIC — OWNER DECISION: third-party ad script (grow.me / Unified-ID) is your ad revenue (Mediavine Grow). One removal clears all of these, but it cuts income — a bot must not auto-decide. Keep for ads, or say the word to remove for full privacy."
     },
     "3d-printing/filament-cost-calculator::Open Graph tags (title/desc/image)": {
       "id": "3d-printing/filament-cost-calculator::Open Graph tags (title/desc/image)",
@@ -689,7 +716,8 @@
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-27",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "developer",
+      "coordination": "SYSTEMIC — TEMPLATE: missing og:image; one site-wide OG-image generator fixes all. Queued as a build task, not a per-tool edit."
     },
     "3d-printing/filament-cost-calculator::No serious/critical axe violations": {
       "id": "3d-printing/filament-cost-calculator::No serious/critical axe violations",
@@ -715,7 +743,8 @@
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "owner",
+      "coordination": "SYSTEMIC — DESIGN: global colour-contrast; one design-token change fixes many pages. Needs a quick design decision."
     },
     "3d-printing/filament-cost-calculator::No unexpected external requests": {
       "id": "3d-printing/filament-cost-calculator::No unexpected external requests",
@@ -741,7 +770,8 @@
       "eta": "~12h (2 days)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "owner",
+      "coordination": "SYSTEMIC — OWNER DECISION: third-party ad script (grow.me / Unified-ID) is your ad revenue (Mediavine Grow). One removal clears all of these, but it cuts income — a bot must not auto-decide. Keep for ads, or say the word to remove for full privacy."
     },
     "3d-printing/flow-rate-calculator::Title present (15–60 chars)": {
       "id": "3d-printing/flow-rate-calculator::Title present (15–60 chars)",
@@ -752,7 +782,7 @@
       "severity": "high",
       "detail": "72 chars: \"Flow Rate / Extrusion Multiplier Calculator — Free\"",
       "fixType": "manual",
-      "status": "open",
+      "status": "verifying",
       "firstSeen": "2026-08-22",
       "lastSeen": "2026-08-22",
       "attempts": 0,
@@ -761,13 +791,19 @@
           "date": "2026-08-22",
           "event": "opened",
           "note": "72 chars: \"Flow Rate / Extrusion Multiplier Calculator — Free\""
+        },
+        {
+          "date": "2026-08-22",
+          "event": "llm-fixed",
+          "note": "name: 'Flow Rate / Extrusion Multiplier … → name: 'Flow Rate Calculator',…"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "fixedOn": "2026-08-22"
     },
     "3d-printing/flow-rate-calculator::Open Graph tags (title/desc/image)": {
       "id": "3d-printing/flow-rate-calculator::Open Graph tags (title/desc/image)",
@@ -793,7 +829,8 @@
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-27",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "developer",
+      "coordination": "SYSTEMIC — TEMPLATE: missing og:image; one site-wide OG-image generator fixes all. Queued as a build task, not a per-tool edit."
     },
     "3d-printing/flow-rate-calculator::No serious/critical axe violations": {
       "id": "3d-printing/flow-rate-calculator::No serious/critical axe violations",
@@ -819,7 +856,8 @@
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "owner",
+      "coordination": "SYSTEMIC — DESIGN: global colour-contrast; one design-token change fixes many pages. Needs a quick design decision."
     },
     "3d-printing/flow-rate-calculator::No unexpected external requests": {
       "id": "3d-printing/flow-rate-calculator::No unexpected external requests",
@@ -845,7 +883,8 @@
       "eta": "~12h (2 days)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "owner",
+      "coordination": "SYSTEMIC — OWNER DECISION: third-party ad script (grow.me / Unified-ID) is your ad revenue (Mediavine Grow). One removal clears all of these, but it cuts income — a bot must not auto-decide. Keep for ads, or say the word to remove for full privacy."
     },
     "3d-printing/model-scale-calculator::Open Graph tags (title/desc/image)": {
       "id": "3d-printing/model-scale-calculator::Open Graph tags (title/desc/image)",
@@ -871,7 +910,8 @@
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-27",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "developer",
+      "coordination": "SYSTEMIC — TEMPLATE: missing og:image; one site-wide OG-image generator fixes all. Queued as a build task, not a per-tool edit."
     },
     "3d-printing/model-scale-calculator::No serious/critical axe violations": {
       "id": "3d-printing/model-scale-calculator::No serious/critical axe violations",
@@ -897,7 +937,8 @@
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "owner",
+      "coordination": "SYSTEMIC — DESIGN: global colour-contrast; one design-token change fixes many pages. Needs a quick design decision."
     },
     "3d-printing/model-scale-calculator::No unexpected external requests": {
       "id": "3d-printing/model-scale-calculator::No unexpected external requests",
@@ -923,7 +964,8 @@
       "eta": "~12h (2 days)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "owner",
+      "coordination": "SYSTEMIC — OWNER DECISION: third-party ad script (grow.me / Unified-ID) is your ad revenue (Mediavine Grow). One removal clears all of these, but it cuts income — a bot must not auto-decide. Keep for ads, or say the word to remove for full privacy."
     },
     "3d-printing/print-energy-cost-calculator::Title present (15–60 chars)": {
       "id": "3d-printing/print-energy-cost-calculator::Title present (15–60 chars)",
@@ -934,7 +976,7 @@
       "severity": "high",
       "detail": "62 chars: \"Print Electricity Cost Calculator — Free & Private\"",
       "fixType": "manual",
-      "status": "open",
+      "status": "verifying",
       "firstSeen": "2026-08-22",
       "lastSeen": "2026-08-22",
       "attempts": 0,
@@ -943,13 +985,19 @@
           "date": "2026-08-22",
           "event": "opened",
           "note": "62 chars: \"Print Electricity Cost Calculator — Free & Private\""
+        },
+        {
+          "date": "2026-08-22",
+          "event": "llm-fixed",
+          "note": "name: 'Print Electricity Cost Calculator… → name: 'Print Electricity Calculator',…"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "fixedOn": "2026-08-22"
     },
     "3d-printing/print-energy-cost-calculator::Open Graph tags (title/desc/image)": {
       "id": "3d-printing/print-energy-cost-calculator::Open Graph tags (title/desc/image)",
@@ -975,7 +1023,8 @@
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-27",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "developer",
+      "coordination": "SYSTEMIC — TEMPLATE: missing og:image; one site-wide OG-image generator fixes all. Queued as a build task, not a per-tool edit."
     },
     "3d-printing/print-energy-cost-calculator::No serious/critical axe violations": {
       "id": "3d-printing/print-energy-cost-calculator::No serious/critical axe violations",
@@ -1001,7 +1050,8 @@
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "owner",
+      "coordination": "SYSTEMIC — DESIGN: global colour-contrast; one design-token change fixes many pages. Needs a quick design decision."
     },
     "3d-printing/print-energy-cost-calculator::No unexpected external requests": {
       "id": "3d-printing/print-energy-cost-calculator::No unexpected external requests",
@@ -1027,7 +1077,8 @@
       "eta": "~12h (2 days)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "owner",
+      "coordination": "SYSTEMIC — OWNER DECISION: third-party ad script (grow.me / Unified-ID) is your ad revenue (Mediavine Grow). One removal clears all of these, but it cuts income — a bot must not auto-decide. Keep for ads, or say the word to remove for full privacy."
     },
     "3d-printing/resin-cost-calculator::Open Graph tags (title/desc/image)": {
       "id": "3d-printing/resin-cost-calculator::Open Graph tags (title/desc/image)",
@@ -1053,7 +1104,8 @@
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-27",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "developer",
+      "coordination": "SYSTEMIC — TEMPLATE: missing og:image; one site-wide OG-image generator fixes all. Queued as a build task, not a per-tool edit."
     },
     "3d-printing/resin-cost-calculator::No serious/critical axe violations": {
       "id": "3d-printing/resin-cost-calculator::No serious/critical axe violations",
@@ -1079,7 +1131,8 @@
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "owner",
+      "coordination": "SYSTEMIC — DESIGN: global colour-contrast; one design-token change fixes many pages. Needs a quick design decision."
     },
     "3d-printing/resin-cost-calculator::No unexpected external requests": {
       "id": "3d-printing/resin-cost-calculator::No unexpected external requests",
@@ -1105,7 +1158,8 @@
       "eta": "~12h (2 days)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "owner",
+      "coordination": "SYSTEMIC — OWNER DECISION: third-party ad script (grow.me / Unified-ID) is your ad revenue (Mediavine Grow). One removal clears all of these, but it cuts income — a bot must not auto-decide. Keep for ads, or say the word to remove for full privacy."
     },
     "3d-printing/volumetric-flow-calculator::Open Graph tags (title/desc/image)": {
       "id": "3d-printing/volumetric-flow-calculator::Open Graph tags (title/desc/image)",
@@ -1131,7 +1185,8 @@
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-27",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "developer",
+      "coordination": "SYSTEMIC — TEMPLATE: missing og:image; one site-wide OG-image generator fixes all. Queued as a build task, not a per-tool edit."
     },
     "3d-printing/volumetric-flow-calculator::No serious/critical axe violations": {
       "id": "3d-printing/volumetric-flow-calculator::No serious/critical axe violations",
@@ -1157,7 +1212,8 @@
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "owner",
+      "coordination": "SYSTEMIC — DESIGN: global colour-contrast; one design-token change fixes many pages. Needs a quick design decision."
     },
     "3d-printing/volumetric-flow-calculator::No unexpected external requests": {
       "id": "3d-printing/volumetric-flow-calculator::No unexpected external requests",
@@ -1183,7 +1239,8 @@
       "eta": "~12h (2 days)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "owner",
+      "coordination": "SYSTEMIC — OWNER DECISION: third-party ad script (grow.me / Unified-ID) is your ad revenue (Mediavine Grow). One removal clears all of these, but it cuts income — a bot must not auto-decide. Keep for ads, or say the word to remove for full privacy."
     },
     "astronomy/age-on-other-planets::Open Graph tags (title/desc/image)": {
       "id": "astronomy/age-on-other-planets::Open Graph tags (title/desc/image)",
@@ -1209,7 +1266,8 @@
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-27",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "developer",
+      "coordination": "SYSTEMIC — TEMPLATE: missing og:image; one site-wide OG-image generator fixes all. Queued as a build task, not a per-tool edit."
     },
     "astronomy/age-on-other-planets::No serious/critical axe violations": {
       "id": "astronomy/age-on-other-planets::No serious/critical axe violations",
@@ -1235,7 +1293,8 @@
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "owner",
+      "coordination": "SYSTEMIC — DESIGN: global colour-contrast; one design-token change fixes many pages. Needs a quick design decision."
     },
     "astronomy/age-on-other-planets::No unexpected external requests": {
       "id": "astronomy/age-on-other-planets::No unexpected external requests",
@@ -1261,7 +1320,8 @@
       "eta": "~12h (2 days)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "owner",
+      "coordination": "SYSTEMIC — OWNER DECISION: third-party ad script (grow.me / Unified-ID) is your ad revenue (Mediavine Grow). One removal clears all of these, but it cuts income — a bot must not auto-decide. Keep for ads, or say the word to remove for full privacy."
     },
     "astronomy/angular-size-calculator::Open Graph tags (title/desc/image)": {
       "id": "astronomy/angular-size-calculator::Open Graph tags (title/desc/image)",
@@ -1287,7 +1347,8 @@
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-27",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "developer",
+      "coordination": "SYSTEMIC — TEMPLATE: missing og:image; one site-wide OG-image generator fixes all. Queued as a build task, not a per-tool edit."
     },
     "astronomy/angular-size-calculator::No serious/critical axe violations": {
       "id": "astronomy/angular-size-calculator::No serious/critical axe violations",
@@ -1313,7 +1374,8 @@
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "owner",
+      "coordination": "SYSTEMIC — DESIGN: global colour-contrast; one design-token change fixes many pages. Needs a quick design decision."
     },
     "astronomy/angular-size-calculator::No unexpected external requests": {
       "id": "astronomy/angular-size-calculator::No unexpected external requests",
@@ -1339,7 +1401,8 @@
       "eta": "~12h (2 days)",
       "dueBy": "2026-08-24",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "owner",
+      "coordination": "SYSTEMIC — OWNER DECISION: third-party ad script (grow.me / Unified-ID) is your ad revenue (Mediavine Grow). One removal clears all of these, but it cuts income — a bot must not auto-decide. Keep for ads, or say the word to remove for full privacy."
     }
   },
   "updated": "2026-08-22",
@@ -1389,20 +1452,20 @@
     "manager": {
       "role": "Governance — SLAs, ratings, token budget",
       "status": "nominal",
-      "task": "Reviewed 8 research idea(s) (avg 4/5); approved 4. Tokens 60568/400000.",
+      "task": "Reviewed 8 research idea(s) (avg 4/5); approved 4. Tokens 64400/400000.",
       "kpis": {
         "overdue": 0,
         "onTrack": 49,
         "slaPct": 100,
-        "tokensToday": 60568,
+        "tokensToday": 64400,
         "tokenCap": 400000,
-        "costUsd": 0.58
+        "costUsd": 0.61
       }
     },
     "auditor": {
       "role": "Truth — detect, verify, close findings",
-      "status": "sweeping",
-      "task": "Sweeping the next 10 tools from index 11 of 1071.",
+      "status": "verifying",
+      "task": "Re-verifying 3 fixed tool(s); next 10-tool sweep from index 11.",
       "kpis": {
         "auditedTotal": 11,
         "catalogue": 1071,
@@ -1416,11 +1479,11 @@
     "fixer": {
       "role": "Senior dev — auto + LLM manual fixes, 24/7",
       "status": "fixing",
-      "task": "Working 49 manual item(s) with the LLM fixer (build-gated proposals).",
+      "task": "Working 46 manual item(s) with the LLM fixer (build-gated proposals).",
       "kpis": {
-        "open": 49,
-        "manual": 49,
-        "verifying": 0,
+        "open": 46,
+        "manual": 46,
+        "verifying": 3,
         "completed": 2,
         "slaPct": 100
       },
@@ -1461,20 +1524,20 @@
     "daily": [
       {
         "date": "2026-08-22",
-        "input": 27155,
-        "output": 33413,
-        "calls": 6,
+        "input": 29809,
+        "output": 34591,
+        "calls": 9,
         "byAgent": {
           "researcher": 40300,
           "developer": 19384,
-          "fixer": 884
+          "fixer": 4716
         }
       }
     ],
     "total": {
-      "input": 27155,
-      "output": 33413,
-      "calls": 6
+      "input": 29809,
+      "output": 34591,
+      "calls": 9
     }
   },
   "research": {

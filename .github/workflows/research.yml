@@ -33,14 +33,7 @@ jobs:
         id: research
         run: node scripts/agent-researcher.mjs
 
-      - name: Manager — rate the research
-        run: node scripts/audit-manager.mjs
-
-      - name: Core Developer — draft build proposals for approved tools
-        id: dev
-        run: node scripts/agent-developer.mjs
-
-      - name: Manager — reconcile (dashboard, ratings, budget)
+      - name: Manager — rate the research (approved -> Developer queue)
         id: manage
         run: node scripts/audit-manager.mjs
 
@@ -52,14 +45,14 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else
-            git commit -m "research(${{ github.run_number }}): ${{ steps.research.outputs.research_count || 0 }} idea(s), ${{ steps.dev.outputs.dev_built || 0 }} build proposal(s)"
+            git commit -m "research(${{ github.run_number }}): ${{ steps.research.outputs.research_count || 0 }} new idea(s)"
             git push
           fi
 
       - name: Summary
         if: always()
         run: |
-          echo "### Weekly research & build" >> "$GITHUB_STEP_SUMMARY"
-          echo "- Researcher proposed: ${{ steps.research.outputs.research_count || 0 }} idea(s)" >> "$GITHUB_STEP_SUMMARY"
-          echo "- Developer drafted: ${{ steps.dev.outputs.dev_built || 0 }} proposal(s) (audits/dev-queue/)" >> "$GITHUB_STEP_SUMMARY"
+          echo "### Weekly research" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Researcher proposed: ${{ steps.research.outputs.research_count || 0 }} idea(s); Manager rated them." >> "$GITHUB_STEP_SUMMARY"
+          echo "- Approved ideas enter the Developer's queue (built in the continuous loop)." >> "$GITHUB_STEP_SUMMARY"
           echo "- ${{ steps.manage.outputs.manager_summary }}" >> "$GITHUB_STEP_SUMMARY"

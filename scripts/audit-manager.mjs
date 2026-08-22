@@ -68,9 +68,16 @@ for (const f of findings) {
   // reconciling Auditor (what's required) with Fixer (what's feasible).
   if (f.status === 'challenged') {
     challengedToAssess++;
-    f.coordination = f.category === 'privacy'
-      ? 'Manager: needs an owner decision (remove third-party script). Auditor to re-verify once the tag is gone.'
-      : 'Manager: beyond safe auto-fix — routing to owner/AI for a hand fix; Auditor to re-verify next sweep.';
+    f.coordination = 'Manager: fix attempted and failed — routing to owner/AI for a hand fix; Auditor to re-verify next sweep.';
+  } else if (/unexpected external requests/i.test(f.check)) {
+    f.assignedTo = 'owner';
+    f.coordination = 'SYSTEMIC — OWNER DECISION: third-party ad script (grow.me / Unified-ID) is your ad revenue (Mediavine Grow). One removal clears all of these, but it cuts income — a bot must not auto-decide. Keep for ads, or say the word to remove for full privacy.';
+  } else if (/axe violations|contrast/i.test(f.check)) {
+    f.assignedTo = 'owner';
+    f.coordination = 'SYSTEMIC — DESIGN: global colour-contrast; one design-token change fixes many pages. Needs a quick design decision.';
+  } else if (/open graph/i.test(f.check)) {
+    f.assignedTo = 'developer';
+    f.coordination = 'SYSTEMIC — TEMPLATE: missing og:image; one site-wide OG-image generator fixes all. Queued as a build task, not a per-tool edit.';
   } else if (f.fixType === 'manual' && isOverdue) {
     f.coordination = 'Manager: past SLA — escalated to owner/AI; deterministic Fixer cannot action prose/logic safely.';
   } else {

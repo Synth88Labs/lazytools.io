@@ -1,38 +1,46 @@
-# "24/7" senior Fixer — chips away at the manual-fix backlog on a frequent
-# schedule (GitHub Actions can't run truly continuously; this approximates it).
-# Drafts best-practice fix proposals for manual findings, then the Manager
-# reconciles and updates the dashboard. Token-budgeted (Manager throttles when
-# the daily cap is hit). Needs ANTHROPIC_API_KEY; skips cleanly without it.
-name: Continuous Fixer
+# Continuous loop — Fixer + Developer + Manager "work all the time".
+# GitHub Actions can't run truly nonstop, so this fires frequently (every 3h)
+# and each run does a bounded, token-budgeted slice of work:
+#   • Senior Fixer  — applies build-gated fixes to safe manual findings
+#   • Developer     — drafts build-ready proposals for Manager-approved tools
+#   • Manager       — reconciles SLAs, rates, guards the token budget, dashboard
+# Needs ANTHROPIC_API_KEY; skips the LLM steps cleanly without it.
+name: Continuous Dev & Fix
 
 on:
   schedule:
-    - cron: '30 */6 * * *'   # every 6 hours
+    - cron: '20 */3 * * *'   # every 3 hours
   workflow_dispatch:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
-  group: audit-fix
+  group: audit-fix           # one lane — never races the daily/weekly loops
   cancel-in-progress: false
 
 jobs:
-  fix:
+  loop:
     runs-on: ubuntu-latest
     env:
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
     steps:
       - uses: actions/checkout@v5
+        with: { fetch-depth: 0 }
       - uses: actions/setup-node@v5
         with:
           node-version: 22
           cache: npm
       - run: npm ci
 
-      - name: Senior Fixer — draft manual fixes (budgeted)
+      - name: Fixer — apply build-gated manual fixes
         id: fixllm
         run: node scripts/agent-fixer-llm.mjs
+
+      - name: Developer — draft proposals for approved tools
+        id: dev
+        run: node scripts/agent-developer.mjs
 
       - name: Manager — reconcile + dashboard
         id: manage
@@ -42,10 +50,16 @@ jobs:
         run: |
           git config user.name  "lazytools-audit-bot"
           git config user.email "audit-bot@users.noreply.github.com"
-          git add audits
+          git add audits src
           if git diff --cached --quiet; then
             echo "No changes."
           else
-            git commit -m "fixer(${{ github.run_number }}): ${{ steps.fixllm.outputs.fixes_drafted || 0 }} manual fix draft(s)"
+            git commit -m "loop(${{ github.run_number }}): ${{ steps.fixllm.outputs.fixes_applied || 0 }} fix(es), ${{ steps.dev.outputs.dev_built || 0 }} proposal(s)"
             git push
           fi
+
+      - name: Deploy if the Fixer changed the site
+        if: ${{ steps.fixllm.outputs.changed == 'true' }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run deploy.yml
