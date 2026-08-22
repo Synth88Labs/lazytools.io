@@ -2,16 +2,17 @@
  * Kuroop - a Jarvis-style voice assistant for LazyTools.io.
  *
  * Wake word: say "Hey Kuroop". He wakes, pops onto your desktop, and greets
- * you. Then ask (or type) anything about the site - status, health, score,
- * how many tools are left to the target, privacy, findings - and he reads the
- * LIVE audit ledger from GitHub and speaks the answer. He can also open the
- * visual dashboard, and log a task back into the repo for Claude Code to pick
- * up in chat.
+ * you. Then ask (or type) anything about the site. Common questions are
+ * answered instantly by an offline intent engine; anything else is passed to
+ * a Claude brain (Anthropic Messages API) that reasons over the live data -
+ * so you can genuinely "ask him anything".
  *
- * Offline speech (Windows System.Speech) - no API keys, no installs. The only
- * network calls are fetching the public ledger JSON and opening the dashboard.
+ * Speech is offline (Windows System.Speech). The Claude brain is optional and
+ * only used for questions the offline engine doesn't recognise; it needs an
+ * API key in the ANTHROPIC_API_KEY environment variable (or
+ * %LOCALAPPDATA%\Kuroop\apikey.txt). The key is NEVER stored in the repo.
+ *
  * Built for .NET Framework 4 (C# 5) so it runs on any Windows with zero deps.
- *
  * Args:  --active  start awake (skip the wake word).
  */
 using System;
@@ -30,8 +31,8 @@ class Kuroop
 {
     const string LEDGER_URL = "https://raw.githubusercontent.com/Synth88Labs/lazytools.io/main/audits/ledger.json";
     const string DASHBOARD_URL = "https://raw.githack.com/Synth88Labs/lazytools.io/main/audits/dashboard.html";
+    const string ANTHROPIC_URL = "https://api.anthropic.com/v1/messages";
     const int BUILD_TARGET = 1500;
-    // Where spoken tasks are logged for Claude Code to read in chat.
     const string REPO_INBOX = @"C:\Users\rupak\OneDrive\Desktop\Claude Code Projects\LazyTools\desktop\LazyBotVoice\tasks-inbox.md";
 
     static readonly SpeechSynthesizer Tts = new SpeechSynthesizer();
@@ -61,6 +62,7 @@ class Kuroop
         foreach (string a in args) if (a != null && a.ToLowerInvariant().Contains("active")) startActive = true;
 
         Banner();
+        Console.WriteLine(BrainKey() != null ? "[brain] Claude brain: ENABLED (fallback for free-form questions)\n" : "[brain] Claude brain: off (set ANTHROPIC_API_KEY to enable free-form Q&A)\n");
 
         try
         {
@@ -71,11 +73,9 @@ class Kuroop
             phrases.AddRange(new string[] {
                 "status", "update", "daily update", "give me an update", "summary", "report", "briefing",
                 "health", "website health", "how are we doing", "how is the website", "are we healthy",
-                "findings", "issues", "problems", "bugs",
-                "score", "quality", "average score",
+                "findings", "issues", "problems", "bugs", "score", "quality", "average score",
                 "how many tools", "how many are built", "how far are we", "how many left", "how much is left", "to target", "build progress",
-                "coverage", "how many audited",
-                "privacy", "trackers", "any trackers",
+                "coverage", "how many audited", "privacy", "trackers", "any trackers",
                 "challenged", "anything stuck", "what needs me",
                 "open the dashboard", "show me the dashboard", "load the dashboard", "open dashboard", "show dashboard",
                 "log a task", "add a task", "remind me", "note this", "tell claude", "send to claude",
@@ -85,9 +85,9 @@ class Kuroop
             gb.Culture = new CultureInfo("en-US");
             CmdGrammar = new Grammar(gb);
             DictGrammar = new DictationGrammar();
-            DictGrammar.Enabled = false;
             Rec.LoadGrammar(CmdGrammar);
             Rec.LoadGrammar(DictGrammar);
+            ApplyGrammarState();
             Rec.SetInputToDefaultAudioDevice();
             Rec.SpeechRecognized += OnSpeech;
             Rec.RecognizeAsync(RecognizeMode.Multiple);
@@ -109,24 +109,37 @@ class Kuroop
         }
     }
 
+    // When awake, use free-form dictation so you can ask anything; the offline
+    // engine still catches common intents, and the rest goes to the Claude brain.
+    static void ApplyGrammarState()
+    {
+        try
+        {
+            if (CmdGrammar != null) CmdGrammar.Enabled = !Capturing;
+            if (DictGrammar != null) DictGrammar.Enabled = Active; // free speech only while awake
+        }
+        catch { }
+    }
+
     static void OnSpeech(object sender, SpeechRecognizedEventArgs e)
     {
         if (e.Result == null) return;
-        string t = e.Result.Text.ToLowerInvariant();
+        string raw = e.Result.Text;
+        string t = raw.ToLowerInvariant();
         float c = e.Result.Confidence;
 
-        if (Capturing) { FinishCapture(e.Result.Text); return; }
+        if (Capturing) { FinishCapture(raw); return; }
 
         if (!Active)
         {
-            if (Matches(t, Wake) && c >= 0.55f) { Console.WriteLine("\n[heard] " + e.Result.Text); Activate(); }
+            if (Matches(t, Wake) && c >= 0.55f) { Console.WriteLine("\n[heard] " + raw); Activate(); }
             return;
         }
 
-        if (c < 0.5f) return;
-        Console.WriteLine("\n[heard] " + e.Result.Text);
+        if (c < 0.35f) return; // dictation confidence runs lower than grammar
+        Console.WriteLine("\n[heard] " + raw);
         if (Matches(t, Sleep)) GoToSleep();
-        else HandleIntent(t);
+        else HandleIntent(t, raw);
     }
 
     static void RouteTyped(string line)
@@ -136,18 +149,17 @@ class Kuroop
         if (t.Length == 0) return;
         if (Capturing) { FinishCapture(raw); return; }
         if (Matches(t, Wake)) { Activate(); return; }
-        if (!Active) Active = true;
-        // typed shortcut: "task: buy milk" logs directly
+        if (!Active) { Active = true; ApplyGrammarState(); }
         if (t.StartsWith("task:") || t.StartsWith("task ") || t.StartsWith("remind me")) { LogTask(StripLead(raw)); return; }
         if (Matches(t, Sleep)) { GoToSleep(); return; }
-        HandleIntent(t);
+        HandleIntent(t, raw);
     }
 
     static void Activate()
     {
         lock (Gate)
         {
-            Active = true;
+            Active = true; ApplyGrammarState();
             try { IntPtr h = GetConsoleWindow(); if (h != IntPtr.Zero) { ShowWindow(h, SW_RESTORE); SetForegroundWindow(h); } } catch { }
             Speak("At your service. Kuroop online. How may I help?");
         }
@@ -158,26 +170,27 @@ class Kuroop
         lock (Gate)
         {
             Speak("Very good. I'll be listening for, Hey Kuroop.");
-            Active = false;
+            Active = false; ApplyGrammarState();
         }
     }
 
-    // ---- intent router (broad, so it answers whatever you ask about the site) ----
-    static void HandleIntent(string t)
+    // ---- intent router: offline fast-paths, then Claude brain fallback ------
+    static void HandleIntent(string t, string raw)
     {
         lock (Gate)
         {
             if (Has(t, "exit") || Has(t, "quit") || Has(t, "shut down") || Has(t, "power down"))
-            {
-                Speak("Powering down. Goodbye for now, sir.");
-                Environment.Exit(0);
-            }
+            { Speak("Powering down. Goodbye for now, sir."); Environment.Exit(0); }
             else if (Has(t, "help") || Has(t, "what can you do"))
-                Speak("Ask me for status, health, the quality score, build progress, privacy, findings, or what needs your attention. I can open the dashboard, or log a task for Claude. Say go to sleep for standby, or exit to close me.");
-            else if (Has(t, "dashboard") || Has(t, "load the page") || Has(t, "show me the"))
+                Speak("Ask me anything about the site - status, health, the quality score, build progress, privacy, findings, or what needs your attention. I can open the dashboard, or log a task for Claude. Say go to sleep for standby, or exit to close me.");
+            else if (Has(t, "dashboard") || Has(t, "load the page"))
                 OpenDashboard();
             else if (Has(t, "log a task") || Has(t, "add a task") || Has(t, "remind") || Has(t, "note this") || Has(t, "tell claude") || Has(t, "send to claude"))
                 BeginCapture();
+            // A longer, sentence-like question wants reasoning: send it to the brain
+            // (if configured) rather than letting a stray keyword hit a canned report.
+            else if (BrainKey() != null && WordCount(t) > 6)
+                TryBrain(raw);
             else if (Has(t, "health") || Has(t, "how are we") || Has(t, "healthy"))
                 HealthReport();
             else if (Has(t, "privacy") || Has(t, "tracker"))
@@ -186,7 +199,7 @@ class Kuroop
                 ScoreReport();
             else if (Has(t, "coverage") || Has(t, "audited"))
                 CoverageReport();
-            else if (Has(t, "challenged") || Has(t, "stuck") || Has(t, "needs me") || Has(t, "attention"))
+            else if (Has(t, "challenged") || Has(t, "stuck") || Has(t, "needs me"))
                 ChallengedReport();
             else if (Has(t, "how many tool") || Has(t, "how far") || Has(t, "left") || Has(t, "to target") || Has(t, "build") || Has(t, "remaining") || Has(t, "progress"))
                 BuildReport();
@@ -195,22 +208,132 @@ class Kuroop
             else if (Has(t, "status") || Has(t, "update") || Has(t, "summary") || Has(t, "report") || Has(t, "brief"))
                 StatusReport();
             else
-                Speak("I'm afraid I didn't catch that. You can ask for status, health, the score, build progress, privacy, findings, the dashboard, or to log a task.");
+                TryBrain(raw); // anything else -> Claude reasons over the live data
         }
+    }
+
+    // ---- Claude brain (optional, for free-form questions) -------------------
+    static void TryBrain(string question)
+    {
+        string key = BrainKey();
+        if (key == null)
+        {
+            Speak("I'm afraid I didn't catch a known command, sir. To let me answer free-form questions, enable my Claude brain by setting the ANTHROPIC underscore API underscore KEY. For now, try status, health, build progress, privacy, findings, or the dashboard.");
+            return;
+        }
+        Dictionary<string, object> root = Fetch();
+        if (root == null) return;
+        Stats s = Compute(root);
+        string context = BrainContext(root, s);
+        Console.WriteLine("[brain] thinking...");
+        try
+        {
+            string model = Environment.GetEnvironmentVariable("KUROOP_MODEL");
+            if (string.IsNullOrEmpty(model)) model = "claude-opus-5";
+
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            Dictionary<string, object> body = new Dictionary<string, object>();
+            body["model"] = model;
+            body["max_tokens"] = 400;
+            body["system"] = "You are Kuroop, a concise Jarvis-style voice assistant for the LazyTools.io website. Answer the user's spoken question using ONLY the live status data provided. Reply in 1 to 3 short sentences, conversational and suitable to be spoken aloud; occasionally address the user as 'sir'. Do not use lists, markdown, or emoji. If the data doesn't contain the answer, say so briefly.";
+            List<object> msgs = new List<object>();
+            Dictionary<string, object> um = new Dictionary<string, object>();
+            um["role"] = "user";
+            um["content"] = "Live LazyTools status data:\n" + context + "\n\nQuestion: " + question;
+            msgs.Add(um);
+            body["messages"] = msgs;
+            string payload = js.Serialize(body);
+
+            using (WebClient wc = new WebClient())
+            {
+                wc.Encoding = Encoding.UTF8;
+                wc.Headers.Add("x-api-key", key);
+                wc.Headers.Add("anthropic-version", "2023-06-01");
+                wc.Headers.Add("content-type", "application/json");
+                string resp = wc.UploadString(ANTHROPIC_URL, "POST", payload);
+                Dictionary<string, object> rj = js.DeserializeObject(resp) as Dictionary<string, object>;
+                string answer = ExtractText(rj);
+                if (answer.Length == 0) answer = "I couldn't form an answer, sir.";
+                Speak(answer);
+            }
+        }
+        catch (WebException wex)
+        {
+            string detail = ReadError(wex);
+            Speak("My Claude brain returned an error. " + detail);
+        }
+        catch (Exception ex)
+        {
+            Speak("My Claude brain hit a problem. " + ex.Message);
+        }
+    }
+
+    static string ExtractText(Dictionary<string, object> rj)
+    {
+        StringBuilder sb = new StringBuilder();
+        object[] content = Get(rj, "content") as object[];
+        if (content != null)
+            foreach (object c in content)
+            {
+                Dictionary<string, object> blk = c as Dictionary<string, object>;
+                if (blk != null && Str(blk, "type") == "text") sb.Append(Str(blk, "text"));
+            }
+        return sb.ToString().Trim();
+    }
+
+    static string ReadError(WebException wex)
+    {
+        try
+        {
+            if (wex.Response != null)
+                using (StreamReader r = new StreamReader(wex.Response.GetResponseStream()))
+                {
+                    string body = r.ReadToEnd();
+                    if (body.IndexOf("authentication", StringComparison.OrdinalIgnoreCase) >= 0 || body.IndexOf("401") >= 0)
+                        return "The API key looks invalid.";
+                    if (body.IndexOf("credit", StringComparison.OrdinalIgnoreCase) >= 0 || body.IndexOf("billing", StringComparison.OrdinalIgnoreCase) >= 0)
+                        return "There may be a billing or credit issue on the account.";
+                    return "Please check the key and your connection.";
+                }
+        }
+        catch { }
+        return wex.Message;
+    }
+
+    static string BrainContext(Dictionary<string, object> root, Stats s)
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.Append("catalogue_tools=" + s.Catalogue + "; build_target=" + BUILD_TARGET + "; build_percent=" + s.BuildPct + "; tools_remaining=" + Math.Max(0, BUILD_TARGET - s.Catalogue) + "\n");
+        sb.Append("audit_coverage=" + s.Audited + "/" + s.Catalogue + " tools\n");
+        if (s.HasRun) sb.Append("latest_run date=" + s.RunDate + " tools_audited=" + s.RunTools + " avg_score=" + s.RunAvg + "% issues=" + s.RunIssues + "\n");
+        sb.Append("findings open=" + s.Open + " (high=" + s.High + " medium=" + s.Medium + " low=" + s.Low + ") verifying=" + s.Verifying + " complete=" + s.Complete + " challenged=" + s.Challenged + " privacy_open=" + s.Privacy + "\n");
+        // top open findings for grounding
+        Dictionary<string, object> findings = Get(root, "findings") as Dictionary<string, object>;
+        if (findings != null)
+        {
+            sb.Append("top_open_findings:\n");
+            int n = 0;
+            foreach (object v in findings.Values)
+            {
+                Dictionary<string, object> f = v as Dictionary<string, object>;
+                if (f == null || Str(f, "status") != "open") continue;
+                sb.Append("- " + Str(f, "tool") + " | " + Str(f, "category") + " | " + Str(f, "severity") + " | " + Str(f, "check") + (Str(f, "detail").Length > 0 ? (" | " + Str(f, "detail")) : "") + "\n");
+                if (++n >= 25) break;
+            }
+        }
+        return sb.ToString();
     }
 
     // ---- task relay to Claude Code chat -------------------------------------
     static void BeginCapture()
     {
-        Capturing = true;
-        try { if (DictGrammar != null) DictGrammar.Enabled = true; if (CmdGrammar != null) CmdGrammar.Enabled = false; } catch { }
+        Capturing = true; ApplyGrammarState();
         Speak("Go ahead - what's the task?");
     }
 
     static void FinishCapture(string text)
     {
-        Capturing = false;
-        try { if (DictGrammar != null) DictGrammar.Enabled = false; if (CmdGrammar != null) CmdGrammar.Enabled = true; } catch { }
+        Capturing = false; ApplyGrammarState();
         if (text == null || text.Trim().Length == 0) { Speak("No task captured."); return; }
         LogTask(text.Trim());
     }
@@ -220,11 +343,7 @@ class Kuroop
         string stamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture);
         string line = "- [ ] " + stamp + " - " + task + Environment.NewLine;
         bool ok = TryAppend(REPO_INBOX, line);
-        if (!ok)
-        {
-            string local = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "tasks-inbox.md");
-            ok = TryAppend(local, line);
-        }
+        if (!ok) ok = TryAppend(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "tasks-inbox.md"), line);
         if (ok) Speak("Logged. I've noted the task for Claude - ask Claude to check the task inbox in chat and it'll pick it up.");
         else Speak("I couldn't write the task file, sir.");
     }
@@ -411,10 +530,24 @@ class Kuroop
     }
 
     // ---- helpers -------------------------------------------------------------
+    static string BrainKey()
+    {
+        string k = Environment.GetEnvironmentVariable("ANTHROPIC_API_KEY");
+        if (!string.IsNullOrEmpty(k)) return k.Trim();
+        try
+        {
+            string f = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Kuroop", "apikey.txt");
+            if (File.Exists(f)) { string v = File.ReadAllText(f).Trim(); if (v.Length > 0) return v; }
+        }
+        catch { }
+        return null;
+    }
+
     static object Get(Dictionary<string, object> d, string k) { object v; return (d != null && d.TryGetValue(k, out v)) ? v : null; }
     static string Str(Dictionary<string, object> d, string k) { object v = Get(d, k); return v == null ? "" : v.ToString(); }
     static int Int(Dictionary<string, object> d, string k) { object v = Get(d, k); if (v == null) return 0; try { return Convert.ToInt32(v, CultureInfo.InvariantCulture); } catch { return 0; } }
     static bool Has(string h, string n) { return h.IndexOf(n, StringComparison.Ordinal) >= 0; }
+    static int WordCount(string t) { return t.Split(new char[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries).Length; }
     static bool Matches(string t, string[] set) { foreach (string p in set) if (t.IndexOf(p, StringComparison.Ordinal) >= 0) return true; return false; }
     static string StripLead(string raw)
     {
@@ -438,10 +571,8 @@ class Kuroop
         try
         {
             foreach (InstalledVoice iv in Tts.GetInstalledVoices())
-            {
                 if (iv.Enabled && iv.VoiceInfo != null && iv.VoiceInfo.Name.IndexOf("David", StringComparison.OrdinalIgnoreCase) >= 0)
                 { Tts.SelectVoice(iv.VoiceInfo.Name); return; }
-            }
         }
         catch { }
     }
@@ -455,10 +586,11 @@ class Kuroop
         Console.WriteLine("=================================================");
         Console.WriteLine("   K U R O O P   -   wake word: \"Hey Kuroop\"");
         Console.WriteLine("=================================================");
-        Console.WriteLine("Ask: status | health | score | build progress |");
-        Console.WriteLine("     privacy | findings | coverage | dashboard |");
-        Console.WriteLine("     log a task    (\"go to sleep\" / \"exit\")");
-        Console.WriteLine("You can also type any of these below.");
+        Console.WriteLine("Ask anything about the site (voice or type):");
+        Console.WriteLine("  status | health | score | build progress |");
+        Console.WriteLine("  privacy | findings | coverage | dashboard |");
+        Console.WriteLine("  log a task   ...or any free-form question.");
+        Console.WriteLine("  (\"go to sleep\" / \"exit\")");
         Console.WriteLine();
     }
 }

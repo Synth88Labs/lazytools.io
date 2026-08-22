@@ -26,6 +26,27 @@ Say **"Hey Kuroop"** to wake him, then ask (or type) any of:
 You can also **type** any command in the window (handy without a mic). Typed
 shortcut: `task: <something>` logs a task directly.
 
+## Ask him anything (optional Claude brain)
+
+Common questions are answered instantly offline. Anything the offline engine
+doesn't recognise — free-form or reasoning questions like *"which category is
+dragging our score down?"* — is passed to a **Claude brain** that reasons over
+the live data. This is optional and needs an Anthropic API key:
+
+```powershell
+# set once (new terminals/logins pick it up):
+setx ANTHROPIC_API_KEY "sk-ant-..."
+```
+
+Or drop the key in `%LOCALAPPDATA%\Kuroop\apikey.txt`. The key is read from your
+environment and is **never** stored in the repo. Only the fallback questions use
+tokens; the offline answers stay free. Optional model override (defaults to
+`claude-opus-5`):
+
+```powershell
+setx KUROOP_MODEL "claude-haiku-4-5"   # faster/cheaper for quick Q&A
+```
+
 ## Task relay → Claude Code
 
 When you say **"log a task"** (or type `task: …`), Kuroop appends it to
