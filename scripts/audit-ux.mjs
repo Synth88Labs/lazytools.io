@@ -1,44 +1,75 @@
 /**
- * Daily UX auditor. Rotates through every tool page (10/day by default) and runs
- * a headless-browser user-experience audit against the LIVE site: does the page
- * load, does the interactive tool hydrate, are there console errors or broken
- * images, is it labelled for accessibility, does it fit a phone screen, is it
- * fast. Writes audit-report.html and prints a summary; exits 0 so the workflow
- * always emails the result.
+ * BOT 1 — the Auditor. Runs daily, token-free, in GitHub Actions.
+ *
+ * Audits the LIVE tools across functionality, input/output, SEO/metadata,
+ * content quality, accessibility, performance, mobile and privacy (see the full
+ * spec in docs/AUDIT-SYSTEM.md). Each run audits the day's rotation of 10 tools
+ * PLUS any tools that Bot 2 (the Fixer) marked "verifying" — so a fix applied
+ * yesterday is re-tested today and either marked complete or logged as a
+ * challenge with reasoning.
+ *
+ * State is a git-tracked JSON ledger (audits/ledger.json) shared with Bot 2.
+ * Reports are written to audits/reports/<date>.md. Everything is public.
  *
  * Env: AUDIT_SITE (default https://lazytools.io), AUDIT_COUNT (default 10),
- *      AUDIT_OFFSET (override the rotation start; default = day-based).
+ *      AUDIT_OFFSET (override rotation start), AUDIT_MAX_VERIFY (default 12).
  */
 import { chromium } from 'playwright';
-import { readFile, writeFile } from 'node:fs/promises';
+import AxeBuilder from '@axe-core/playwright';
+import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { appendFile } from 'node:fs/promises';
 
+const ROOT = new URL('../', import.meta.url);
 const SITE = (process.env.AUDIT_SITE || 'https://lazytools.io').replace(/\/$/, '');
 const COUNT = Math.max(1, Number(process.env.AUDIT_COUNT || 10));
+const MAX_VERIFY = Number(process.env.AUDIT_MAX_VERIFY || 12);
+const LEDGER_PATH = new URL('audits/ledger.json', ROOT);
+const today = new Date().toISOString().slice(0, 10);
+const MAX_ATTEMPTS = 3;
 
-const slugs = JSON.parse(await readFile(new URL('../api/tools-allowlist.json', import.meta.url), 'utf8'));
+// ── allow-list of external hosts a privacy-first client-side site may contact ──
+const ALLOWED_HOSTS = [/(^|\.)lazytools\.io$/, /(^|\.)googletagmanager\.com$/, /(^|\.)google-analytics\.com$/, /(^|\.)analytics\.google\.com$/, /(^|\.)gstatic\.com$/, /(^|\.)googleapis\.com$/];
+const hostAllowed = (h) => ALLOWED_HOSTS.some((re) => re.test(h));
+
+const readJSON = async (p, fb) => { try { return JSON.parse(await readFile(p, 'utf8')); } catch { return fb; } };
+
+const ledger = await readJSON(LEDGER_PATH, { findings: {}, updated: null });
+ledger.findings ||= {};
+
+const slugs = JSON.parse(await readFile(new URL('api/tools-allowlist.json', ROOT), 'utf8'));
 const N = slugs.length;
 const dayIndex = Math.floor(Date.now() / 86400000);
-const start = process.env.AUDIT_OFFSET !== undefined ? Number(process.env.AUDIT_OFFSET) % N : (dayIndex * COUNT) % N;
-const todays = Array.from({ length: Math.min(COUNT, N) }, (_, i) => slugs[(start + i) % N]);
+const start = process.env.AUDIT_OFFSET !== undefined ? ((Number(process.env.AUDIT_OFFSET) % N) + N) % N : (dayIndex * COUNT) % N;
+const rotation = Array.from({ length: Math.min(COUNT, N) }, (_, i) => slugs[(start + i) % N]);
 
-const chk = (name, pass, detail = '', weight = 1) => ({ name, pass: !!pass, detail: String(detail), weight });
+// tools awaiting verification (Bot 2 fixed them) — re-audit these too
+const verifySet = Object.values(ledger.findings)
+  .filter((f) => f.status === 'verifying' || f.status === 'fixed')
+  .map((f) => f.tool);
+const toAudit = [...new Set([...rotation, ...[...new Set(verifySet)].slice(0, MAX_VERIFY)])];
+
+const sev = { critical: 4, high: 3, medium: 2, low: 1 };
+const SAFE_CLICK = /\b(convert|generate|calculate|compute|run|encode|decode|format|parse|pick|spin|analy[sz]e|check|validate|count|create|make|build|shuffle)\b/i;
+const UNSAFE_CLICK = /\b(start|record|camera|mic|download|clear|delete|remove|reset|copy|share|upload|open|choose|file|stop)\b/i;
+
+/** One check result. fixType 'auto:<fixer>' means Bot 2 can fix it deterministically. */
+const C = (category, check, severity, pass, detail = '', fixType = 'manual') => ({ category, check, severity, pass: !!pass, detail: String(detail), fixType });
 
 const browser = await chromium.launch();
-const results = [];
+const audited = [];
 
-for (const slug of todays) {
+for (const slug of toAudit) {
   const url = `${SITE}/${slug}/`;
-  const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 }, userAgent: 'LazyToolsUXAuditor/1.0 (+https://lazytools.io)' });
+  const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 }, userAgent: 'LazyToolsAuditBot/1.0 (+https://lazytools.io)' });
   const page = await ctx.newPage();
-  const consoleErrors = [];
-  const pageErrors = [];
-  page.on('console', (m) => { if (m.type() === 'error') consoleErrors.push(m.text()); });
-  page.on('pageerror', (e) => pageErrors.push(String(e)));
-  page.on('requestfailed', (r) => { const f = r.failure(); if (f && !/net::ERR_ABORTED/.test(f.errorText)) consoleErrors.push(`request failed: ${r.url()} (${f.errorText})`); });
+  const consoleErrors = [], pageErrors = [], badRequests = [], externalPosts = [];
+  page.on('console', (m) => { if (m.type() === 'error') consoleErrors.push(m.text().slice(0, 200)); });
+  page.on('pageerror', (e) => pageErrors.push(String(e).slice(0, 200)));
+  page.on('requestfailed', (r) => { const f = r.failure(); if (f && !/ERR_ABORTED/.test(f.errorText)) badRequests.push(`${r.url().slice(0, 80)} (${f.errorText})`); });
+  page.on('request', (r) => { try { const h = new URL(r.url()).hostname; if (!hostAllowed(h)) { const m = r.method(); if (m !== 'GET' || r.postData()) externalPosts.push(`${m} ${h}`); else externalPosts.push(`GET ${h}`); } } catch {} });
 
   const checks = [];
-  let status = 0, loadMs = 0;
+  let status = 0, loadMs = 0, ok = true;
   try {
     const t0 = Date.now();
     const resp = await page.goto(url, { waitUntil: 'load', timeout: 30000 });
@@ -50,107 +81,185 @@ for (const slug of todays) {
       const main = document.querySelector('main') || document.body;
       const controls = main.querySelectorAll('input:not([type=hidden]),button,select,textarea,canvas,[contenteditable="true"],a[download]');
       const imgs = [...document.querySelectorAll('img')];
-      const brokenImgs = imgs.filter((i) => i.complete && i.naturalWidth === 0).length;
-      const unlabelled = [...main.querySelectorAll('input:not([type=hidden]),select,textarea')].filter((el) => {
-        const id = el.getAttribute('id');
-        const forLabel = id && document.querySelector(`label[for="${CSS.escape(id)}"]`);
-        const wrapped = el.closest('label');
-        const aria = el.getAttribute('aria-label') || el.getAttribute('aria-labelledby') || el.getAttribute('placeholder') || el.getAttribute('title');
-        return !(forLabel || wrapped || aria);
-      }).length;
-      const unnamedBtns = [...main.querySelectorAll('button')].filter((b) => !((b.textContent || '').trim() || b.getAttribute('aria-label') || b.getAttribute('title'))).length;
-      const imgsNoAlt = imgs.filter((i) => i.getAttribute('alt') === null).length;
+      const jsonld = [...document.querySelectorAll('script[type="application/ld+json"]')].map((s) => { try { return JSON.parse(s.textContent); } catch { return null; } }).filter(Boolean).flatMap((x) => Array.isArray(x) ? x : [x]);
+      const types = jsonld.flatMap((x) => (x['@graph'] ? x['@graph'] : [x])).map((x) => x['@type']).flat();
+      const bodyText = (main.innerText || '').replace(/\s+/g, ' ').trim();
       return {
         title: (document.title || '').trim(),
-        h1: (document.querySelector('h1')?.textContent || '').trim(),
+        h1s: [...document.querySelectorAll('h1')].map((h) => (h.textContent || '').trim()).filter(Boolean),
         metaDesc: (document.querySelector('meta[name="description"]')?.getAttribute('content') || '').trim(),
-        canonical: !!document.querySelector('link[rel="canonical"]'),
+        canonical: document.querySelector('link[rel="canonical"]')?.getAttribute('href') || '',
+        og: ['og:title', 'og:description', 'og:image'].filter((p) => document.querySelector(`meta[property="${p}"]`)).length,
+        htmlLang: document.documentElement.getAttribute('lang') || '',
+        robotsNoindex: /noindex/i.test(document.querySelector('meta[name="robots"]')?.getAttribute('content') || ''),
+        viewport: !!document.querySelector('meta[name="viewport"]'),
         controls: controls.length,
-        brokenImgs, unlabelled, unnamedBtns, imgsNoAlt,
+        brokenImgs: imgs.filter((i) => i.complete && i.naturalWidth === 0).length,
+        imgsNoAlt: imgs.filter((i) => i.getAttribute('alt') === null).length,
+        jsonldTypes: types,
+        faqCount: (jsonld.find((x) => x['@type'] === 'FAQPage')?.mainEntity || []).length,
+        wordCount: bodyText.split(' ').filter(Boolean).length,
+        placeholder: /\b(lorem ipsum|coming soon|todo|tbd|placeholder text)\b/i.test(bodyText),
       };
     });
 
-    // mobile horizontal-overflow check
+    // ── Functionality smoke: does interacting produce output / not throw? ──
+    const beforeErr = consoleErrors.length + pageErrors.length;
+    const outBefore = await page.evaluate(() => (document.querySelector('main')?.innerText || '').length);
+    let clicked = 0;
+    try {
+      const btns = await page.$$('main button');
+      for (const b of btns.slice(0, 6)) {
+        const label = (await b.innerText().catch(() => '')) || '';
+        if (SAFE_CLICK.test(label) && !UNSAFE_CLICK.test(label)) { await b.click({ timeout: 2000 }).catch(() => {}); clicked++; await page.waitForTimeout(250); }
+      }
+    } catch {}
+    await page.waitForTimeout(400);
+    const outAfter = await page.evaluate(() => (document.querySelector('main')?.innerText || '').length);
+    const interactErr = (consoleErrors.length + pageErrors.length) > beforeErr;
+
+    // mobile overflow
     await page.setViewportSize({ width: 375, height: 812 });
     await page.waitForTimeout(400);
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+    await page.setViewportSize({ width: 1280, height: 900 });
 
-    checks.push(chk('Loads (HTTP 200)', status === 200, `status ${status}`, 3));
-    checks.push(chk('No JS errors', consoleErrors.length === 0 && pageErrors.length === 0, [...pageErrors, ...consoleErrors].slice(0, 4).join('  |  '), 3));
-    checks.push(chk('Interactive tool present', d.controls > 0, `${d.controls} controls`, 3));
-    checks.push(chk('Has <title>', !!d.title, d.title.slice(0, 60)));
-    checks.push(chk('Has <h1>', !!d.h1, d.h1.slice(0, 60)));
-    checks.push(chk('Has meta description', !!d.metaDesc));
-    checks.push(chk('Has canonical link', d.canonical));
-    checks.push(chk('No broken images', d.brokenImgs === 0, `${d.brokenImgs} broken`, 2));
-    checks.push(chk('Form fields labelled (a11y)', d.unlabelled === 0, `${d.unlabelled} unlabelled`, 2));
-    checks.push(chk('Buttons have names (a11y)', d.unnamedBtns === 0, `${d.unnamedBtns} unnamed`, 2));
-    checks.push(chk('Images have alt (a11y)', d.imgsNoAlt === 0, `${d.imgsNoAlt} missing alt`));
-    checks.push(chk('No horizontal scroll on mobile', overflow <= 2, `${overflow}px overflow`, 2));
-    checks.push(chk('Loads under 6s', loadMs > 0 && loadMs < 6000, `${loadMs} ms`));
+    // axe-core accessibility (serious+critical only, to stay actionable)
+    let axeViolations = [];
+    try {
+      const res = await new AxeBuilder({ page }).options({ resultTypes: ['violations'] }).analyze();
+      axeViolations = res.violations.filter((v) => v.impact === 'serious' || v.impact === 'critical').map((v) => `${v.id} (${v.nodes.length})`);
+    } catch {}
+
+    // ── record checks ──
+    // A. Health / functionality / I-O
+    checks.push(C('functionality', 'Page loads (HTTP 200)', 'critical', status === 200, `status ${status}`));
+    checks.push(C('functionality', 'No JavaScript errors', 'critical', pageErrors.length === 0 && consoleErrors.length === 0, [...pageErrors, ...consoleErrors].slice(0, 4).join('  |  ')));
+    checks.push(C('functionality', 'No failed resource requests', 'high', badRequests.length === 0, badRequests.slice(0, 3).join('  |  ')));
+    checks.push(C('functionality', 'Interactive tool hydrates', 'critical', d.controls > 0, `${d.controls} controls in <main>`));
+    checks.push(C('functionality', 'Actions run without error', 'critical', !interactErr, interactErr ? 'a click threw an error' : `${clicked} action(s) clicked cleanly`));
+    checks.push(C('output', 'Produces output for its input', 'high', outAfter >= outBefore && outAfter > 40, `output text length ${outAfter}`));
+    // B. SEO / metadata
+    checks.push(C('seo', 'Title present (15–60 chars)', 'high', d.title.length >= 15 && d.title.length <= 60, `${d.title.length} chars: "${d.title.slice(0, 50)}"`, (d.title.length > 60 ? 'manual' : 'manual')));
+    checks.push(C('seo', 'Meta description (70–160 chars)', 'high', d.metaDesc.length >= 70 && d.metaDesc.length <= 160, `${d.metaDesc.length} chars`, d.metaDesc.length > 160 ? 'auto:trim-meta-description' : 'manual'));
+    checks.push(C('seo', 'Exactly one <h1>', 'high', d.h1s.length === 1, `${d.h1s.length} h1 tags`));
+    checks.push(C('seo', 'Canonical link present', 'medium', !!d.canonical, d.canonical.slice(0, 60)));
+    checks.push(C('seo', 'Open Graph tags (title/desc/image)', 'medium', d.og === 3, `${d.og}/3 present`));
+    checks.push(C('seo', 'Structured data (JSON-LD)', 'medium', d.jsonldTypes.length > 0, d.jsonldTypes.join(', ').slice(0, 60)));
+    checks.push(C('seo', 'html lang set', 'low', !!d.htmlLang, d.htmlLang));
+    checks.push(C('seo', 'Not accidentally noindex', 'high', !d.robotsNoindex, d.robotsNoindex ? 'noindex present!' : ''));
+    // C. Content quality
+    checks.push(C('content', 'Enough unique content (≥200 words)', 'medium', d.wordCount >= 200, `${d.wordCount} words`));
+    checks.push(C('content', 'Has FAQ (≥3 questions)', 'medium', d.faqCount >= 3, `${d.faqCount} FAQs`));
+    checks.push(C('content', 'No placeholder text', 'high', !d.placeholder, d.placeholder ? 'lorem/TODO/coming-soon found' : ''));
+    // D. Accessibility
+    checks.push(C('accessibility', 'No serious/critical axe violations', 'high', axeViolations.length === 0, axeViolations.slice(0, 5).join(', ')));
+    checks.push(C('accessibility', 'All images have alt', 'medium', d.imgsNoAlt === 0, `${d.imgsNoAlt} missing alt`));
+    checks.push(C('accessibility', 'No broken images', 'medium', d.brokenImgs === 0, `${d.brokenImgs} broken`));
+    // E. Mobile / performance
+    checks.push(C('mobile', 'No horizontal scroll on mobile', 'high', overflow <= 2, `${overflow}px overflow at 375px`));
+    checks.push(C('mobile', 'Viewport meta present', 'low', d.viewport));
+    checks.push(C('performance', 'Loads under 6s', 'medium', loadMs > 0 && loadMs < 6000, `${loadMs} ms`));
+    // F. Privacy (brand-critical)
+    checks.push(C('privacy', 'No unexpected external requests', 'high', externalPosts.length === 0, [...new Set(externalPosts)].slice(0, 4).join(', ')));
   } catch (e) {
-    checks.push(chk('Loads', false, String(e).slice(0, 200), 3));
+    ok = false;
+    checks.push(C('functionality', 'Page loads (HTTP 200)', 'critical', false, String(e).slice(0, 180)));
   }
   await ctx.close();
 
-  const totW = checks.reduce((a, c) => a + c.weight, 0) || 1;
-  const gotW = checks.reduce((a, c) => a + (c.pass ? c.weight : 0), 0);
+  const totW = checks.reduce((a, c) => a + sev[c.severity], 0) || 1;
+  const gotW = checks.reduce((a, c) => a + (c.pass ? sev[c.severity] : 0), 0);
   const score = Math.round((gotW / totW) * 100);
-  results.push({ slug, url, status, loadMs, score, checks });
-  console.log(`  ${score.toString().padStart(3)}%  ${slug}  ${checks.filter((c) => !c.pass).map((c) => c.name).join(', ') || 'clean'}`);
+  audited.push({ slug, url, status, loadMs, score, checks, ok });
+  console.log(`  ${String(score).padStart(3)}%  ${slug}  —  ${checks.filter((c) => !c.pass).length} issue(s)`);
 }
 await browser.close();
 
-results.sort((a, b) => a.score - b.score);
-const avg = Math.round(results.reduce((a, r) => a + r.score, 0) / results.length);
-const issues = results.reduce((a, r) => a + r.checks.filter((c) => !c.pass).length, 0);
-const failing = results.filter((r) => r.score < 100).length;
-const today = new Date(dayIndex * 86400000).toISOString().slice(0, 10);
-const subject = `LazyTools UX audit ${today} — avg ${avg}%, ${issues} issue${issues === 1 ? '' : 's'} across ${results.length} tools`;
+// ── update the ledger (lifecycle) ──
+let opened = 0, resolved = 0, challenged = 0;
+for (const t of audited) {
+  const failing = new Map(t.checks.filter((c) => !c.pass).map((c) => [`${t.slug}::${c.check}`, c]));
+  // resolve findings that now pass
+  for (const [id, f] of Object.entries(ledger.findings)) {
+    if (f.tool !== t.slug) continue;
+    if (['complete', 'wontfix'].includes(f.status)) continue;
+    if (!failing.has(id)) {
+      f.status = 'complete'; f.resolvedOn = today; f.lastSeen = today;
+      (f.history ||= []).push({ date: today, event: 'verified-pass', note: 'check now passes' });
+      resolved++;
+    } else {
+      f.lastSeen = today;
+      if (f.status === 'verifying' || f.status === 'fixed') {
+        f.attempts = (f.attempts || 0) + 1;
+        if (f.attempts >= MAX_ATTEMPTS) {
+          f.status = 'challenged';
+          (f.history ||= []).push({ date: today, event: 'challenged', note: `still failing after ${f.attempts} fix attempt(s): ${failing.get(id).detail}` });
+          challenged++;
+        } else {
+          (f.history ||= []).push({ date: today, event: 're-audit-still-failing', note: `attempt ${f.attempts}` });
+        }
+      }
+    }
+  }
+  // create new findings
+  for (const [id, c] of failing) {
+    if (!ledger.findings[id]) {
+      ledger.findings[id] = { id, tool: t.slug, url: t.url, category: c.category, check: c.check, severity: c.severity, detail: c.detail, fixType: c.fixType, status: 'open', firstSeen: today, lastSeen: today, attempts: 0, history: [{ date: today, event: 'opened', note: c.detail }] };
+      opened++;
+    } else {
+      ledger.findings[id].detail = c.detail; ledger.findings[id].lastSeen = today; ledger.findings[id].fixType = c.fixType;
+    }
+  }
+}
+ledger.updated = today;
+await mkdir(new URL('audits/reports/', ROOT), { recursive: true });
+await writeFile(LEDGER_PATH, JSON.stringify(ledger, null, 2) + '\n');
 
-// ---- HTML report ----
-const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-const scoreColor = (s) => (s >= 100 ? '#16a34a' : s >= 80 ? '#ca8a04' : '#dc2626');
-const rows = results.map((r) => {
-  const fails = r.checks.filter((c) => !c.pass);
-  const detail = fails.length
-    ? '<ul style="margin:6px 0 0;padding-left:18px;color:#b91c1c">' + fails.map((c) => `<li><b>${esc(c.name)}</b>${c.detail ? ` — ${esc(c.detail)}` : ''}</li>`).join('') + '</ul>'
-    : '<span style="color:#16a34a">All checks passed</span>';
-  return `<tr>
-    <td style="padding:10px;border-bottom:1px solid #e5e7eb;vertical-align:top">
-      <a href="${esc(r.url)}" style="color:#2563eb;text-decoration:none;font-weight:600">${esc(r.slug)}</a>
-      <div style="color:#64748b;font-size:12px">${r.status} · ${r.loadMs} ms</div>
-    </td>
-    <td style="padding:10px;border-bottom:1px solid #e5e7eb;text-align:center;vertical-align:top">
-      <span style="display:inline-block;min-width:52px;padding:4px 8px;border-radius:8px;color:#fff;font-weight:700;background:${scoreColor(r.score)}">${r.score}%</span>
-    </td>
-    <td style="padding:10px;border-bottom:1px solid #e5e7eb;font-size:13px;vertical-align:top">${detail}</td>
-  </tr>`;
+// ── daily report ──
+const openF = Object.values(ledger.findings).filter((f) => f.status === 'open');
+const verifyingF = Object.values(ledger.findings).filter((f) => ['verifying', 'fixed'].includes(f.status));
+const challengedF = Object.values(ledger.findings).filter((f) => f.status === 'challenged');
+const avg = Math.round(audited.reduce((a, r) => a + r.score, 0) / (audited.length || 1));
+const totalIssues = audited.reduce((a, r) => a + r.checks.filter((c) => !c.pass).length, 0);
+const subject = `LazyTools audit ${today} — avg ${avg}%, ${totalIssues} issue(s) on ${audited.length} tools; ${openF.length} open, ${challengedF.length} challenged`;
+
+const esc = (s) => String(s).replace(/\|/g, '\\|');
+let md = `# UX & functionality audit — ${today}\n\n`;
+md += `Auditor bot (headless Chromium + axe-core), live site. Rotation ${start}–${(start + rotation.length - 1) % N} of ${N} tools (full cycle ~${Math.ceil(N / COUNT)} days) plus ${audited.length - rotation.length} re-verified.\n\n`;
+md += `**Average score ${avg}%** · ${totalIssues} issues this run · ledger: ${openF.length} open · ${verifyingF.length} awaiting verification · ${challengedF.length} challenged · ${Object.values(ledger.findings).filter((f) => f.status === 'complete').length} completed all-time.\n\n`;
+md += `## Tools audited today\n\n| Score | Tool | Failing checks |\n|---|---|---|\n`;
+for (const t of [...audited].sort((a, b) => a.score - b.score)) {
+  const fails = t.checks.filter((c) => !c.pass);
+  md += `| ${t.score}% | [${t.slug}](${t.url}) | ${fails.length ? fails.map((c) => `${c.check}${c.detail ? ` (${esc(c.detail)})` : ''}`).join('; ') : '✅ clean'} |\n`;
+}
+md += `\n## Open findings for Bot 2 (the Fixer)\n\n`;
+if (openF.length === 0) md += `_None open._\n`;
+else {
+  md += `| Severity | Tool | Finding | Fixable | Detail |\n|---|---|---|---|---|\n`;
+  for (const f of openF.sort((a, b) => sev[b.severity] - sev[a.severity]).slice(0, 60)) {
+    md += `| ${f.severity} | ${f.tool} | ${f.check} | ${f.fixType.startsWith('auto:') ? '🤖 auto' : '✍️ manual'} | ${esc(f.detail)} |\n`;
+  }
+}
+if (challengedF.length) {
+  md += `\n## ⚠️ Challenged (fix attempted, still failing)\n\n`;
+  for (const f of challengedF) md += `- **${f.tool}** — ${f.check}: ${esc(f.history?.slice(-1)[0]?.note || f.detail)}\n`;
+}
+await writeFile(new URL(`audits/reports/${today}.md`, ROOT), md);
+
+// ── email-friendly HTML report ──
+const eh = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const col = (s) => (s >= 90 ? '#16a34a' : s >= 75 ? '#ca8a04' : '#dc2626');
+const trs = [...audited].sort((a, b) => a.score - b.score).map((t) => {
+  const fails = t.checks.filter((c) => !c.pass);
+  const detail = fails.length ? '<ul style="margin:4px 0 0;padding-left:16px;color:#b91c1c;font-size:12px">' + fails.map((c) => `<li>${eh(c.check)}${c.detail ? ` — ${eh(c.detail)}` : ''}</li>`).join('') + '</ul>' : '<span style="color:#16a34a">clean</span>';
+  return `<tr><td style="padding:9px;border-bottom:1px solid #e5e7eb;vertical-align:top"><a href="${eh(t.url)}" style="color:#2563eb;text-decoration:none;font-weight:600">${eh(t.slug)}</a><div style="color:#64748b;font-size:12px">${t.status} · ${t.loadMs} ms</div></td><td style="padding:9px;border-bottom:1px solid #e5e7eb;text-align:center;vertical-align:top"><span style="display:inline-block;padding:3px 8px;border-radius:8px;color:#fff;font-weight:700;background:${col(t.score)}">${t.score}%</span></td><td style="padding:9px;border-bottom:1px solid #e5e7eb;vertical-align:top">${detail}</td></tr>`;
 }).join('');
+const html = `<!doctype html><html><body style="margin:0;background:#f8fafc;font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:#0f172a"><div style="max-width:780px;margin:0 auto;padding:22px"><h1 style="margin:0 0 4px;font-size:19px">🔍 LazyTools daily audit — ${today}</h1><p style="margin:0 0 14px;color:#475569">Avg <b style="color:${col(avg)}">${avg}%</b> across ${audited.length} tools · ${openF.length} open findings · ${verifyingF.length} awaiting verification · ${challengedF.length} challenged · ${Object.values(ledger.findings).filter((f) => f.status === 'complete').length} completed all-time.</p><table style="width:100%;border-collapse:collapse;background:#fff;border:1px solid #e5e7eb;border-radius:12px;overflow:hidden"><thead><tr style="background:#f1f5f9;text-align:left;font-size:12px;text-transform:uppercase;color:#64748b"><th style="padding:9px">Tool</th><th style="padding:9px;text-align:center">Score</th><th style="padding:9px">Findings (worst first)</th></tr></thead><tbody>${trs}</tbody></table><p style="margin:14px 0 0;color:#94a3b8;font-size:12px">Full ledger &amp; history in the repo under <code>audits/</code>. Fixer bot auto-resolves safe issues (build-gated) and logs the rest to <code>recommendations.md</code>. Automated — reply if a finding looks wrong.</p></div></body></html>`;
+await writeFile(new URL('audit-report.html', ROOT), html);
 
-const cycleDays = Math.ceil(N / COUNT);
-const html = `<!doctype html><html><body style="margin:0;background:#f8fafc;font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#0f172a">
-<div style="max-width:760px;margin:0 auto;padding:24px">
-  <h1 style="margin:0 0 4px;font-size:20px">🔍 LazyTools daily UX audit</h1>
-  <p style="margin:0 0 16px;color:#475569">${esc(today)} · audited ${results.length} of ${N} tools (rotation ${start}–${(start + results.length - 1) % N}; full cycle ~${cycleDays} days)</p>
-  <div style="display:flex;gap:10px;margin-bottom:18px">
-    <div style="flex:1;background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:14px;text-align:center"><div style="font-size:24px;font-weight:800;color:${scoreColor(avg)}">${avg}%</div><div style="color:#64748b;font-size:12px">avg score</div></div>
-    <div style="flex:1;background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:14px;text-align:center"><div style="font-size:24px;font-weight:800">${failing}</div><div style="color:#64748b;font-size:12px">tools with issues</div></div>
-    <div style="flex:1;background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:14px;text-align:center"><div style="font-size:24px;font-weight:800">${issues}</div><div style="color:#64748b;font-size:12px">total issues</div></div>
-  </div>
-  <table style="width:100%;border-collapse:collapse;background:#fff;border:1px solid #e5e7eb;border-radius:12px;overflow:hidden">
-    <thead><tr style="background:#f1f5f9;text-align:left;font-size:12px;text-transform:uppercase;color:#64748b">
-      <th style="padding:10px">Tool</th><th style="padding:10px;text-align:center">Score</th><th style="padding:10px">Findings (worst first)</th>
-    </tr></thead>
-    <tbody>${rows}</tbody>
-  </table>
-  <p style="margin:18px 0 0;color:#94a3b8;font-size:12px">Checks: HTTP 200, no JS/console errors, interactive tool hydrates, title/h1/meta/canonical, no broken images, form-field + button + image accessibility, no mobile horizontal scroll, load under 6s. Audited on the live site with headless Chromium (Playwright). Automated — reply if a finding looks wrong.</p>
-</div></body></html>`;
-
-await writeFile(new URL('../audit-report.html', import.meta.url), html);
 console.log(`\n${subject}`);
-console.log(`report: audit-report.html`);
-
 if (process.env.GITHUB_OUTPUT) {
   await appendFile(process.env.GITHUB_OUTPUT, `subject=${subject}\n`);
+  await appendFile(process.env.GITHUB_OUTPUT, `report=audits/reports/${today}.md\n`);
 }

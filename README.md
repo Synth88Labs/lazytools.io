@@ -90,17 +90,24 @@ npm run dev      # dev server at localhost:4321
 npm run build    # static site → dist/ (~1,050 pages)
 ```
 
-## Automated daily UX audit
+## Autonomous daily audit-and-fix
 
-A scheduled GitHub Actions workflow (`.github/workflows/audit.yml`) runs a headless-Chromium
-user-experience audit of the **live** tools every day — 10 tools per run, rotating through the whole
-catalogue (~107 days per full cycle). Each tool is checked for: HTTP 200, no JS/console errors, the
-interactive widget hydrating, title/`h1`/meta-description/canonical, no broken images, accessible form
-fields / buttons / images, no horizontal scroll on mobile, and load time under 6 s. It produces an HTML
-report (`scripts/audit-ux.mjs`), uploads it as a build artifact, and — if email secrets are set — emails
-it. To enable the email, add three repo secrets: `MAIL_USERNAME` (a Gmail address), `MAIL_PASSWORD` (a
-Gmail **App Password**), and `AUDIT_EMAIL_TO` (the recipient). Run it on demand from the Actions tab
-("Daily UX Audit" → Run workflow).
+Two cooperating bots keep the live tools healthy, running entirely in GitHub Actions with **no LLM / no
+Claude tokens** — see [`docs/AUDIT-SYSTEM.md`](docs/AUDIT-SYSTEM.md) for the full spec.
+
+- **Bot 1 — Auditor** (`scripts/audit-ux.mjs`) audits 10 rotating tools/day (plus any awaiting
+  verification) on the **live** site with headless Chromium + axe-core, across functionality,
+  input→output, SEO/metadata, content quality, accessibility, performance, mobile and privacy. It writes
+  a git-tracked ledger (`audits/ledger.json`) and a dated report.
+- **Bot 2 — Fixer** (`scripts/audit-fix.mjs`) applies **safe, deterministic** fixes to open findings —
+  gated by a full build that reverts on failure — marks them `verifying`, and compiles everything that
+  needs human/AI judgement into `audits/recommendations.md` with reasoning.
+- **The loop:** the next day's Auditor re-tests fixed tools → `complete` if resolved, or `challenged`
+  (with reasoning) after 3 failed attempts.
+
+Orchestrated by `.github/workflows/audit.yml` (daily 06:17 UTC + manual run). Results are committed under
+`audits/` (public). To also email the report, add repo secrets `MAIL_USERNAME`, `MAIL_PASSWORD` (Gmail
+**App Password**) and `AUDIT_EMAIL_TO`.
 
 ## Tech & models
 
