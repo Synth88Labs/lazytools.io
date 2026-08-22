@@ -1,74 +1,57 @@
-# Kuroop — voice assistant for LazyTools.io
+# Kuroop — background voice assistant for LazyTools.io
 
-A tiny, Jarvis-style Windows voice assistant. Say **"Hey Kuroop"** and ask about
-the site — he reads the **live** audit ledger from GitHub and speaks the answer.
-Offline speech (Windows `System.Speech`), no API keys, no installs; the only
-network calls are fetching the public ledger JSON and opening the dashboard.
+A Jarvis-style Windows **tray app** that runs quietly in the background and
+reports live LazyTools status from the git ledger. Offline speech
+(Windows `System.Speech`); optional Claude brain for free-form questions.
 
-## Use it
+## Run it
 
-Say **"Hey Kuroop"** to wake him, then ask (or type) any of:
+Double-click **`Kuroop.exe`**. It starts **in the system tray** (no window) and
+shows a "Running in the tray" balloon. Summon it three ways:
 
-| Ask… | Kuroop tells you |
-|---|---|
-| **status** / update / briefing | today's run: tools checked, avg score, issues, open/fixed/challenged, build progress |
-| **health** / how are we doing | overall health rating + high-priority + privacy flags |
-| **score** / quality | latest average quality score |
-| **build progress** / how many left | tools built vs the 1,500 target, how many to go |
-| **coverage** / how many audited | rolling audit coverage |
-| **privacy** / trackers | open privacy findings |
-| **findings** / issues | open findings by severity + top area |
-| **what needs me** / challenged | anything stuck that needs a human |
-| **open the dashboard** | opens the visual control room in your browser |
-| **log a task** (then speak it) | writes it to `tasks-inbox.md` for Claude Code |
-| **go to sleep** / **exit** | standby / close |
+- **Global hotkey `Ctrl+Alt+K`** — 100% reliable, works from anywhere.
+- **Say "Hey Kuroop"** — offline wake word (best-effort; invented names are hard
+  for offline recognition, so the hotkey is the sure thing).
+- **Double-click the tray icon.**
 
-You can also **type** any command in the window (handy without a mic). Typed
-shortcut: `task: <something>` logs a task directly.
+Then ask by **voice**, **type** in the box, or click a **button**:
+Status · Health · Team · Research · Tokens · Build · Privacy · **📊 Dashboard**.
+The Dashboard button opens the live command deck in a **chromeless in-app
+window** (via Edge app-mode). Closing the window hides Kuroop back to the tray;
+right-click the tray icon → **Quit** to exit.
 
 ## Ask him anything (optional Claude brain)
 
-Common questions are answered instantly offline. Anything the offline engine
-doesn't recognise — free-form or reasoning questions like *"which category is
-dragging our score down?"* — is passed to a **Claude brain** that reasons over
-the live data. This is optional and needs an Anthropic API key:
+Common questions are answered instantly offline. Free-form questions go to a
+Claude brain that reasons over the live data. Set a key (never stored in the
+repo):
 
 ```powershell
-# set once (new terminals/logins pick it up):
 setx ANTHROPIC_API_KEY "sk-ant-..."
 ```
 
-Or drop the key in `%LOCALAPPDATA%\Kuroop\apikey.txt`. The key is read from your
-environment and is **never** stored in the repo. Only the fallback questions use
-tokens; the offline answers stay free. Optional model override (defaults to
-`claude-opus-5`):
-
-```powershell
-setx KUROOP_MODEL "claude-haiku-4-5"   # faster/cheaper for quick Q&A
-```
-
-## Task relay → Claude Code
-
-When you say **"log a task"** (or type `task: …`), Kuroop appends it to
-`tasks-inbox.md`. In your Claude Code chat, say **"check the task inbox"** and
-Claude will read the open items and action them.
+Or drop it in `%LOCALAPPDATA%\Kuroop\apikey.txt`. Model defaults to
+`claude-haiku-4-5` (override `KUROOP_MODEL`).
 
 ## Build
 
 ```powershell
-./build.ps1        # produces Kuroop.exe (uses the built-in .NET Framework compiler)
+./build-app.ps1      # background tray app (WinForms) -> Kuroop.exe
 ```
 
-## Start at login (wake word always available)
+(`build.ps1` builds the older console version; the app uses `build-app.ps1`.)
+
+## Start at login (always in the tray)
 
 ```powershell
-./install-autostart.ps1     # copies to %LOCALAPPDATA%\Kuroop and adds a Startup shortcut
+./install-autostart.ps1     # copies to %LOCALAPPDATA%\Kuroop + Startup shortcut
 ./uninstall-autostart.ps1   # removes it
 ```
 
 ## Notes
 
-- The wake-word listener keeps the microphone open locally; recognition is
-  fully on-device (no audio leaves the machine).
-- Built for .NET Framework 4 / C# 5 so it runs on any Windows 10/11 with zero
-  dependencies.
+- Wake-word confidence gate is tunable via `KUROOP_WAKE_CONF` (default 0.35).
+- Speech recognition is fully on-device; nothing leaves the machine except
+  fetching the public ledger and (if enabled) Claude API calls.
+- Built for .NET Framework 4 / C# 5 (compiles with the built-in `csc`), so it
+  runs on any Windows 10/11 with zero dependencies.

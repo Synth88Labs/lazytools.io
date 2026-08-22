@@ -4,7 +4,7 @@
 $ErrorActionPreference = 'Stop'
 $here = Split-Path -Parent $MyInvocation.MyCommand.Path
 $src  = Join-Path $here 'Kuroop.exe'
-if (-not (Test-Path $src)) { & (Join-Path $here 'build.ps1') }
+if (-not (Test-Path $src)) { & (Join-Path $here 'build-app.ps1') }
 
 $dest = Join-Path $env:LOCALAPPDATA 'Kuroop'
 New-Item -ItemType Directory -Force -Path $dest | Out-Null
