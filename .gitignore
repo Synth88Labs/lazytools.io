@@ -6,3 +6,4 @@ dist/
 
 # server-side credentials — created on the host, never committed
 api/config.php
+audit-report.html

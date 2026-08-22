@@ -90,6 +90,18 @@ npm run dev      # dev server at localhost:4321
 npm run build    # static site → dist/ (~1,050 pages)
 ```
 
+## Automated daily UX audit
+
+A scheduled GitHub Actions workflow (`.github/workflows/audit.yml`) runs a headless-Chromium
+user-experience audit of the **live** tools every day — 10 tools per run, rotating through the whole
+catalogue (~107 days per full cycle). Each tool is checked for: HTTP 200, no JS/console errors, the
+interactive widget hydrating, title/`h1`/meta-description/canonical, no broken images, accessible form
+fields / buttons / images, no horizontal scroll on mobile, and load time under 6 s. It produces an HTML
+report (`scripts/audit-ux.mjs`), uploads it as a build artifact, and — if email secrets are set — emails
+it. To enable the email, add three repo secrets: `MAIL_USERNAME` (a Gmail address), `MAIL_PASSWORD` (a
+Gmail **App Password**), and `AUDIT_EMAIL_TO` (the recipient). Run it on demand from the Actions tab
+("Daily UX Audit" → Run workflow).
+
 ## Tech & models
 
 **Framework.** [Astro](https://astro.build) with 100% static output (`output: 'static'`), interactive
