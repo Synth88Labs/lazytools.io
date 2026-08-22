@@ -5,6 +5,7 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import PrivacyStrip from '../../components/PrivacyStrip.astro';
 import FaqSection from '../../components/FaqSection.astro';
 import RatingWidget from '../../components/RatingWidget.tsx';
+import PaperSizeTool from '../../components/size/PaperSizeTool.tsx';
 import RingSizeTool from '../../components/size/RingSizeTool.tsx';
 import ShoeSizeTool from '../../components/size/ShoeSizeTool.tsx';
 import BraSizeTool from '../../components/size/BraSizeTool.tsx';
@@ -72,6 +73,7 @@ const schema = [
     </p>
 
     <div class="mt-6">
+      {slug === 'paper-size-converter' && <PaperSizeTool client:load />}
       {slug === 'ring-size-converter' && <RingSizeTool client:load />}
       {slug === 'shoe-size-converter' && <ShoeSizeTool client:load />}
       {slug === 'bra-size-converter' && <BraSizeTool client:load />}

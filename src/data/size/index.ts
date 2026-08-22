@@ -15,6 +15,30 @@ export interface SizeToolDef {
 
 export const SIZE_TOOLS: SizeToolDef[] = [
   {
+    slug: 'paper-size-converter',
+    name: 'Paper Size Converter',
+    icon: '📄',
+    description:
+      'Convert paper sizes between ISO (A4, A3, B5…), US (Letter, Legal, Tabloid), ANSI and Architectural — in mm, cm, inches, points and pixels at any DPI. 100% in your browser.',
+    lead: 'A4 is 210 × 297 mm; US Letter is 215.9 × 279.4 mm — close, but not interchangeable, which is why a document laid out for one clips or leaves margins on the other.',
+    measureSteps: [
+      'Pick a paper size — ISO A/B/C, a North American size (Letter, Legal, Tabloid), ANSI or Architectural.',
+      'Choose portrait or landscape; the width and height swap accordingly.',
+      'Set the DPI if you need pixels — 96 for screen/CSS, 300 for print-quality artwork, 600 for fine print.',
+      'Read the exact size in millimetres, centimetres, inches, PostScript points and pixels, plus the full reference chart below.',
+    ],
+    note:
+      'ISO 216 sizes (A and B series) all share a 1:√2 aspect ratio, so halving any sheet gives the next size down — an A4 folded in half is exactly A5. North American sizes (Letter, Legal, Tabloid) do not follow that ratio, so scaling between ISO and US paper always changes the proportions slightly. Pixel dimensions depend entirely on DPI: an A4 is 794 × 1123 px at 96 DPI but 2480 × 3508 px at 300 DPI.',
+    faqs: [
+      { q: 'What is the size of A4 paper?', a: 'A4 is 210 × 297 mm (21.0 × 29.7 cm, or 8.27 × 11.69 inches). At 96 DPI that is 794 × 1123 pixels; at 300 DPI it is 2480 × 3508 pixels.' },
+      { q: 'Is A4 the same as US Letter?', a: 'No. A4 is 210 × 297 mm and US Letter is 215.9 × 279.4 mm (8.5 × 11 in). Letter is slightly wider and shorter, so a design made for one will not fit the other perfectly.' },
+      { q: 'How do ISO paper sizes relate to each other?', a: 'Every ISO A (and B) size has a 1:√2 ratio, so cutting a sheet in half along its long side gives the next smaller size: A0 → A1 → A2 … A4 → A5. Each step halves the area.' },
+      { q: 'How many pixels is a paper size?', a: 'Pixels = inches × DPI. Choose your DPI in the tool: 96 for on-screen/CSS, 150 for drafts, 300 for print, 600 for fine print. The tool computes the exact pixel dimensions for the selected size and orientation.' },
+      { q: 'What are ANSI and Architectural paper sizes?', a: 'ANSI (A–E) and Architectural (Arch A–E) are US large-format standards used for engineering and architecture drawings. ANSI A equals US Letter; each larger letter roughly doubles the area, like the ISO system.' },
+    ],
+    keywords: ['paper size', 'a4 size', 'a4 in inches', 'a4 pixels', 'letter vs a4', 'paper dimensions', 'ansi paper sizes', 'a3 a5 size'],
+  },
+  {
     slug: 'ring-size-converter',
     name: 'Ring Size Converter',
     icon: '💍',

@@ -692,6 +692,7 @@
   "size/clothing-size-converter",
   "size/hat-size-converter",
   "size/kids-shoe-size-converter",
+  "size/paper-size-converter",
   "size/ring-size-converter",
   "size/shoe-size-converter",
   "solar/appliance-energy-cost-calculator",
