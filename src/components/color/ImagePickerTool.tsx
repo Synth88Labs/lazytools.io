@@ -112,25 +112,27 @@ export default function ImagePickerTool() {
         )}
       </div>
 
-      {loaded ? (
-        <div class="mt-4 grid gap-4 lg:grid-cols-[1fr_auto]">
-          <div>
-            <p class="mb-1 text-xs font-semibold uppercase tracking-wide text-slate-500">Click the image to pick a color</p>
-            <canvas ref={canvas} onClick={onCanvasClick} class="w-full cursor-crosshair rounded-lg ring-1 ring-slate-200" />
-          </div>
-          {picked && (
-            <div class="rounded-xl bg-white p-4 text-center ring-2 ring-brand-200 lg:w-48">
-              <div class="mx-auto h-20 w-20 rounded-lg ring-1 ring-slate-300" style={`background:${rgbToHex(picked)}`} />
-              <p class="mt-2 font-mono text-lg font-bold text-slate-900">{rgbToHex(picked)}</p>
-              <p class="font-mono text-xs text-slate-500">rgb({picked.r}, {picked.g}, {picked.b})</p>
-              <p class="font-mono text-xs text-slate-500">{(() => { const { h, s, l } = rgbToHsl(picked); return `hsl(${h}, ${s}%, ${l}%)`; })()}</p>
-              <button onClick={() => navigator.clipboard?.writeText(rgbToHex(picked))} class="mt-2 rounded-lg bg-brand-600 px-3 py-1.5 text-xs font-semibold text-white hover:bg-brand-700">Copy HEX</button>
-            </div>
-          )}
-        </div>
-      ) : (
+      {!loaded && (
         <p class="mt-4 text-sm text-slate-500">Choose an image to pick colors from it and extract its dominant palette. {hasEyeDropper ? 'Or use “Pick from screen” to sample any pixel on your display.' : ''} Nothing is uploaded.</p>
       )}
+
+      {/* The canvas stays mounted (hidden until an image loads) so its ref is
+          always available for drawing and pixel sampling. */}
+      <div class={`mt-4 grid gap-4 lg:grid-cols-[1fr_auto] ${loaded ? '' : 'hidden'}`}>
+        <div>
+          <p class="mb-1 text-xs font-semibold uppercase tracking-wide text-slate-500">Click the image to pick a color</p>
+          <canvas ref={canvas} onClick={onCanvasClick} class="w-full max-w-full cursor-crosshair rounded-lg ring-1 ring-slate-200" />
+        </div>
+        {picked && (
+          <div class="rounded-xl bg-white p-4 text-center ring-2 ring-brand-200 lg:w-48">
+            <div class="mx-auto h-20 w-20 rounded-lg ring-1 ring-slate-300" style={`background:${rgbToHex(picked)}`} />
+            <p class="mt-2 font-mono text-lg font-bold text-slate-900">{rgbToHex(picked)}</p>
+            <p class="font-mono text-xs text-slate-500">rgb({picked.r}, {picked.g}, {picked.b})</p>
+            <p class="font-mono text-xs text-slate-500">{(() => { const { h, s, l } = rgbToHsl(picked); return `hsl(${h}, ${s}%, ${l}%)`; })()}</p>
+            <button onClick={() => navigator.clipboard?.writeText(rgbToHex(picked))} class="mt-2 rounded-lg bg-brand-600 px-3 py-1.5 text-xs font-semibold text-white hover:bg-brand-700">Copy HEX</button>
+          </div>
+        )}
+      </div>
 
       {palette.length > 0 && (
         <div class="mt-5">

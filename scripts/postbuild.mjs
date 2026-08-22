@@ -75,7 +75,43 @@ try {
   console.warn('postbuild: could not read blog dates for sitemap lastmod —', e.message);
 }
 
-const lastmodFor = (loc) => blogDates.get(loc) || BUILD_DATE;
+// Per-section last-modified dates from git: each tool page's date is the last
+// commit that touched its category's data file. This varies the sitemap
+// lastmod across sections (and over time) instead of one uniform build date.
+const PREFIX_FILE = {
+  units: 'src/data/units/index.ts', calc: 'src/data/calc/index.ts', size: 'src/data/size/index.ts',
+  text: 'src/data/text/index.ts', color: 'src/data/color/index.ts', file: 'src/data/file/index.ts',
+  dev: 'src/data/dev/index.ts', generate: 'src/data/generate/index.ts', time: 'src/data/time/index.ts',
+  security: 'src/data/security/index.ts', image: 'src/data/image/index.ts', pdf: 'src/data/pdf/index.ts',
+  video: 'src/data/video/index.ts', calendar: 'src/data/calendar/index.ts', charts: 'src/data/charts/index.ts',
+  fonts: 'src/data/fonts/index.ts', cipher: 'src/data/cipher/index.ts', productivity: 'src/data/productivity/index.ts',
+  network: 'src/data/network/index.ts', math: 'src/data/math/index.ts', photo: 'src/data/photo/index.ts',
+  biology: 'src/data/biology/index.ts', statistics: 'src/data/statistics/index.ts', chemistry: 'src/data/chemistry/index.ts',
+  physics: 'src/data/physics/index.ts', home: 'src/data/home/index.ts', finance: 'src/data/finance/index.ts',
+  cooking: 'src/data/cooking/index.ts', automotive: 'src/data/automotive/index.ts', fitness: 'src/data/fitness/index.ts',
+  pets: 'src/data/pets/index.ts', garden: 'src/data/garden/index.ts', music: 'src/data/music/index.ts',
+  weather: 'src/data/weather/index.ts', astronomy: 'src/data/astronomy/index.ts', photography: 'src/data/photography/index.ts',
+  electronics: 'src/data/electronics/index.ts', travel: 'src/data/travel/index.ts', '3d-printing': 'src/data/printing3d/index.ts',
+  solar: 'src/data/solar/index.ts', brewing: 'src/data/brewing/index.ts',
+};
+const { execSync } = await import('node:child_process');
+const rootDir = new URL('../', import.meta.url);
+const gitDate = (file) => {
+  try {
+    const d = execSync(`git log -1 --format=%cs -- "${file}"`, { cwd: rootDir, stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim();
+    return /^\d{4}-\d{2}-\d{2}$/.test(d) ? d : BUILD_DATE;
+  } catch { return BUILD_DATE; }
+};
+const prefixDate = new Map(Object.entries(PREFIX_FILE).map(([p, f]) => [p, gitDate(f)]));
+const distinctDates = new Set([...prefixDate.values(), ...blogDates.values(), BUILD_DATE]).size;
+
+const lastmodFor = (loc) => {
+  const path = loc.slice(SITE.length).replace(/^\/|\/$/g, ''); // '' | 'color/foo' | 'blog/x' | 'color'
+  if (path === '') return BUILD_DATE;                          // homepage
+  if (path.startsWith('blog/')) return blogDates.get(loc) || BUILD_DATE;
+  const seg = path.split('/')[0];
+  return prefixDate.get(seg) || BUILD_DATE;                    // category tools + index; else build date
+};
 
 // Add <lastmod> to each <url> in every per-URL sitemap file (sitemap-0.xml …).
 const distDir = new URL('../dist/', import.meta.url);
@@ -90,7 +126,7 @@ for (const f of await readdir(distDir)) {
   });
   await writeFile(path, xml);
 }
-console.log(`postbuild: sitemap lastmod stamped on ${stamped} URLs (${blogDates.size} blog dates, build ${BUILD_DATE})`);
+console.log(`postbuild: sitemap lastmod stamped on ${stamped} URLs (${distinctDates} distinct dates: ${blogDates.size} blog + ${prefixDate.size} sections + build ${BUILD_DATE})`);
 
 // Give the sitemap index a lastmod too, then expose it as /sitemap.xml.
 let indexXml = await readFile(new URL('../dist/sitemap-index.xml', import.meta.url), 'utf8');
