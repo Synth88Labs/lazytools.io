@@ -19,7 +19,7 @@ export const PRINTING3D_TOOLS: Printing3dToolDef[] = [
     name: 'Filament Weight & Length Calculator',
     icon: '🧵',
     widget: 'filament',
-    description: 'Convert 3D-printer filament between weight, length and volume by material and diameter. Know how much a print uses, or how much is left on a spool. In your browser.',
+    description: 'Convert 3D-printer filament between weight, length and volume by material and diameter. Know how much a print uses, or how much is left on a spool. In your…',
     lead: 'Enter a weight or a length, pick your material and diameter, and get the filament\'s weight, length and volume.',
     how: 'Filament is a uniform plastic cylinder, so its weight, length and volume are locked together by geometry. The cross-section area is π·(d/2)² for diameter d; multiply by length for volume, and by the material\'s density for weight. The tool converts either way — weight to length or length to weight — using the density of your chosen material (PLA, PETG, ABS and more) and the standard 1.75 mm or 2.85 mm diameter.',
     note: 'A 1 kg spool of PLA (density 1.24 g/cm³) in 1.75 mm holds about 335 m; the same weight in a less-dense plastic like ABS is longer, and in thick 2.85 mm filament it\'s much shorter. Densities vary a little between brands and colours, so for a precise figure use the value on your spool\'s datasheet.',
