@@ -21,8 +21,8 @@ faqs:
     a: "With a local (on-device) voice, yes — the audio is generated on your machine by your operating system's voices, so your text isn't uploaded. The exception is Chrome's built-in 'Google' voices, which are network voices: choosing one sends your text to Google. Pick a voice marked local (localService) to keep everything on your device."
   - q: "Why are the voices different on each device?"
     a: "The voices come from your operating system and browser, not from the website. Windows, macOS, iOS, Android and each browser ship different sets, so the list you see depends on your setup. You can install extra language voices in your OS settings and they'll show up in the tool."
-  - q: "Can I download the speech as an MP3?"
-    a: "Not from the browser's built-in speech engine — it's designed for playback, not for saving to a file, so there's no way to export an MP3 directly. Use in-browser TTS to listen and proofread; if you need a saved audio file, that requires dedicated software or a (non-private) cloud service."
+  - q: "Can I download the speech as an audio file?"
+    a: "The natural OS voices are playback-only — the Web Speech API never exposes their audio, so they can't be saved. The LazyTools Text to Speech tool works around this with a Download WAV button that uses a small offline speech engine running in your browser to generate a real WAV file on your device (nothing uploaded). That download voice is more robotic than the playback voices, but it gives you a genuine audio file."
   - q: "What is text-to-speech good for?"
     a: "Proofreading (hearing a draft surfaces errors you read past), accessibility for people who find listening easier than reading, learning pronunciation in another language, and hands-free listening to articles or notes. Adjusting the rate lets you skim quickly or follow along carefully."
   - q: "Which browsers support it?"
@@ -43,7 +43,7 @@ draft: false
 - **One caveat:** Chrome's built-in **"Google" voices are network voices** — choosing one sends your text to Google. Prefer a voice marked **local** for full privacy.
 - **The voice list differs everywhere** because voices come from your OS, not the website — and you can **install more** in OS settings.
 - **Great for** proofreading, accessibility, pronunciation and hands-free listening; adjust **rate/pitch** to suit.
-- **The one limit:** it's built for **playback, not capture** — there's no built-in MP3 export.
+- **Downloads:** OS voices can't be saved (playback-only), but the tool's **Download WAV** uses an offline in-browser engine to produce a real file — robotic, but private and downloadable.
 
 </aside>
 
@@ -89,9 +89,11 @@ The upside: you can **install more language voices** in your operating system's 
 - **Skimming vs. studying** — raise the rate to 1.3–1.6× to power through an article, or slow it to follow along.
 - **Punctuate for pauses** — commas and periods shape the phrasing, so well-punctuated text reads more naturally.
 
-## The one limit: no MP3 export
+## Downloading audio: two different voices
 
-The browser's speech engine is built for **playback, not capture**, so there's no built-in way to save the result as an audio file. In-browser TTS is for *listening* — proofing a document, hearing a message, following an article. If you specifically need a downloadable MP3 you'll need dedicated software or a cloud service (and you give up the privacy that made the browser version appealing).
+The browser's OS voices are built for **playback, not capture** — the Web Speech API never hands their audio to JavaScript, so those natural voices genuinely can't be saved to a file. But that isn't the end of the story. To offer a real download without giving up privacy, the [Text to Speech](/text/text-to-speech/) tool includes a **Download WAV** button powered by a small **offline speech engine (eSpeak-NG/meSpeak) compiled to run in your browser**. Unlike the Web Speech API, that engine produces the audio samples in JavaScript, so it can build a WAV file and hand it to you — all **on your device, nothing uploaded**.
+
+The trade-off is voice quality: the downloadable offline voice sounds more **robotic** than the natural OS voices you hear on Play. So the tool uses the best of both — natural voices for listening, the offline engine for a genuine downloadable file. The engine (about 1&nbsp;MB) loads only the first time you click download, so it never slows down normal use.
 
 ## Listen to any text, privately
 
