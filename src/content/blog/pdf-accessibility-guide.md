@@ -64,6 +64,14 @@ transition arrangements running to 2030.
 Which raises the practical question this guide answers: *what does "accessible" mean for a PDF,
 concretely, and how do you check?*
 
+It helps to know how the law actually names the target. The EAA is a directive, so it sets
+outcomes rather than a file-format checklist; the technical detail lives in the European
+harmonised standard **EN 301 549**, which in turn leans on **WCAG 2.1 Level AA** for content and
+on **PDF/UA** for the document format itself. So when someone says a PDF must be "EAA compliant,"
+the operational translation is: tagged, structured, and conformant to those standards. Nobody is
+going to hand-inspect your invoices — but the six foundations below are exactly what a regulator,
+an auditor, or an angry customer's screen reader will expose first.
+
 ## What a screen reader actually needs
 
 <figure>
@@ -87,8 +95,11 @@ readers skim — a 40-page report with no H1–H6 tags is a wall of undifferenti
 ## The machine/human split
 
 The PDF accessibility standard — **PDF/UA** (ISO 14289), tested via the
-[Matterhorn Protocol](https://pdfa.org/resource/the-matterhorn-protocol-1-1/)'s 31 checkpoints —
-divides cleanly into conditions software can verify and conditions requiring judgment:
+[Matterhorn Protocol](https://pdfa.org/resource/the-matterhorn-protocol-1-1/)'s 31 checkpoints,
+which expand into 136 individual failure conditions — divides cleanly into conditions software can
+verify and conditions requiring judgment. The Protocol itself flags each failure condition as
+machine-checkable or human-only, which is precisely why no tool can rubber-stamp a document on its
+own:
 
 | Machine-checkable (automate) | Judgment (human review) |
 |---|---|
@@ -114,6 +125,38 @@ server to analyse it. The documents that need accessibility checks — bank stat
 internal reports — are usually the ones that shouldn't be uploaded anywhere. A browser-local
 checker covers the triage column on any OS, offline, with the file staying in memory on your
 device.
+
+## A worked triage: one invoice, sixty seconds
+
+Suppose you drop a customer invoice — `Invoice_2026_0642.pdf`, exported straight from an accounting
+package — into a browser checker. A realistic result looks like this:
+
+- **Tagged?** No. The accounting tool printed to PDF without a structure tree.
+- **Language?** Absent. There is no `/Lang` entry in the catalog.
+- **Title?** Present but useless — it reads `Microsoft Print to PDF`, not "Invoice 0642".
+- **Text layer?** Yes. The numbers and line items are real, selectable text, not a scan.
+- **Alt text?** The company logo is an untagged image with no alternative description.
+- **Headings?** None. "Invoice", "Bill To", "Totals" are all styled as ordinary paragraphs.
+
+That is five of the six foundations failing on a document that *looks* immaculate on screen. A
+screen-reader user would hear an unnamed file, in the wrong pronunciation, read as one undifferentiated
+run of text with a logo announced as "image" and no way to jump to the total. None of those failures
+is subtle once you know to look — and every one of them is fixable in the export step rather than in
+the finished PDF.
+
+## From failure to fix, at a glance
+
+Each machine-detectable failure maps to a concrete, source-side remedy. This is the reference to
+keep next to the checker output:
+
+| Failure the checker finds | What a screen reader does | Where you fix it |
+|---|---|---|
+| Not tagged | Guesses structure from layout; usually scrambles it | Re-export with "tagged PDF" / accessibility enabled |
+| No text layer (scan) | Reads nothing — silent pages | Run OCR, then tag |
+| No `/Lang` | Wrong pronunciation engine | Set document language in the authoring tool |
+| Missing / filename title | Announces the file name | Fill the Title field; enable **DisplayDocTitle** |
+| No alt text on figures | Says "image" or skips it | Add alt text to meaningful images; mark decorative ones as artifacts |
+| No headings | No way to skim; wall of text | Apply real heading styles (H1–H6) before export |
 
 ## Fixing what the checks find
 

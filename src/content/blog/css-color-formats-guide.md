@@ -69,7 +69,10 @@ how they *write* those numbers:
 
 ## HEX ↔ RGB: the base-16 mechanics
 
-A HEX code is three two-digit base-16 numbers glued together. Converting by hand:
+A HEX code is three two-digit base-16 numbers glued together. Each channel spans one byte — 0 to 255,
+or `00` to `ff` in base-16 — so a six-digit HEX carries exactly the same information as three decimal
+channels, no more and no less. There are 256 × 256 × 256 ≈ 16.7 million distinct opaque colors either
+way. Converting by hand:
 
 1. Split `#1d87f1` into pairs: `1d`, `87`, `f1`.
 2. Each pair: first digit × 16 + second digit, where a–f mean 10–15.
@@ -80,8 +83,34 @@ with a leading zero**: rgb(0, 10, 200) is `#000ac8`, not `#0ac8` (the most commo
 [HEX to RGB](/color/hex-to-rgb/) and [RGB to HEX](/color/rgb-to-hex/) tools do both directions with a
 live swatch.
 
+A few HEX pairs are worth memorizing, because they anchor everything in between:
+
+| Decimal | HEX pair | Meaning |
+|---|---|---|
+| 0 | `00` | channel fully off |
+| 128 | `80` | roughly half |
+| 153 | `99` | the `9` in a 3-digit shorthand |
+| 204 | `cc` | the `c` in a 3-digit shorthand |
+| 255 | `ff` | channel fully on |
+
+That last row explains the pure primaries and neutrals at a glance: `#ff0000` is red, `#000000` is
+black, `#ffffff` is white, and any code with three equal pairs (`#808080`, `#333333`) is a gray.
+
 **Transparency** works in both dialects: `rgba(29, 135, 241, 0.5)` or the 8-digit HEX `#1d87f180`
-(80₁₆ = 128, half of 255) — identical results, universal browser support.
+(80₁₆ = 128, half of 255) — identical results, universal support across current browsers. The alpha pair
+is just a fourth channel converted the same way (round `opacity × 255`, then write it in base-16):
+
+| Opacity | Alpha byte | HEX pair |
+|---|---|---|
+| 100% | 255 | `ff` |
+| 75% | 191 | `bf` |
+| 50% | 128 | `80` |
+| 25% | 64 | `40` |
+| 10% | 26 | `1a` |
+| 0% | 0 | `00` |
+
+So `#1d87f1bf` is the same blue at 75% opacity. If you would rather not memorize the byte math, the
+[color converter](/color/color-converter/) shows the alpha pair as you drag an opacity slider.
 
 ## HSL: the format you adjust in
 
@@ -98,6 +127,25 @@ the logic behind the [shades & tints generator](/color/color-shades-generator/),
 for you. For blending two arbitrary colors instead, the [color mixer](/color/color-mixer/) interpolates
 the RGB channels — with the counterintuitive footnote that screen-mixing blue + yellow gives gray, not
 green (light is additive; paint is subtractive).
+
+One caveat that trips people up: HSL lightness is **not** perceptual brightness. `hsl(60, 100%, 50%)`
+(yellow) and `hsl(240, 100%, 50%)` (blue) share the same L value, yet the yellow looks far brighter to
+the eye. That gap is exactly why newer CSS color spaces such as `oklch()` exist — but for the everyday
+job of "same hue, a few steps lighter or darker," HSL remains the fastest tool to reason in.
+
+## A full worked conversion, end to end
+
+To see the three notations line up, take one color all the way through. Start from HSL and land on HEX:
+
+1. **Target:** `hsl(210, 88%, 53%)` — a hue of 210° (blue), high saturation, just above mid-lightness.
+2. **HSL → RGB** yields roughly R 29, G 135, B 241. (The arithmetic is a chroma-and-offset formula; the
+   [converter](/color/color-converter/) runs it instantly, but the point is that the output is a
+   deterministic set of 0–255 channels.)
+3. **RGB → HEX:** 29 ÷ 16 = 1 r 13 → `1d`; 135 ÷ 16 = 8 r 7 → `87`; 241 ÷ 16 = 15 r 1 → `f1`. Glue
+   them: `#1d87f1`.
+
+Every step is reversible and lossless within the RGB gamut — the same pixel, re-labeled. Only the trip
+into CMYK below breaks that guarantee.
 
 ## CMYK: why print never quite matches
 

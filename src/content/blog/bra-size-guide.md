@@ -86,6 +86,33 @@ So "34E" means different bras in London and New York. The safe method — and wh
 <p><span class="co-label">📌 Citable fact</span> Bra band sizes convert exactly between systems (US 34 = EU 75 = FR 90 = IT 3), but cup letters diverge above D: the sixth cup step is DDD in US sizing, E in UK sizing and F in EU sizing. Correct conversion counts cup steps rather than matching letters.</p>
 </div>
 
+## A conversion, worked end to end
+
+Suppose you measure a 34-inch band and a 39-inch bust. The difference is 5 inches, which is
+the fifth cup step. Now convert each part on its own scale:
+
+- **Band:** 34 inches → EU 75 → FR/ES 90 → IT 3 → AU 12.
+- **Cup:** the fifth step is **DD** in the US ladder, **DD** in the UK ladder and **E** in the
+  EU ladder.
+
+Reassembled, one bra carries four labels: **US 34DD, UK 34DD, EU 75E, FR 90E**. The label looks
+wildly different in Paris and New York, yet the garment is identical. That is the whole trap — and
+the reason the safe move is always to convert band and cup separately, then read the letter off the
+destination ladder rather than copying it across.
+
+For quick reference, here are five popular sizes carried through the main systems:
+
+| US | UK | EU | FR | Bust − band |
+|---|---|---|---|---|
+| 32C | 32C | 70C | 85C | 3 in (~7.5 cm) |
+| 34B | 34B | 75B | 90B | 2 in (~5 cm) |
+| 34DD | 34DD | 75E | 90E | 5 in (~12.5 cm) |
+| 36D | 36D | 80D | 95D | 4 in (~10 cm) |
+| 38DDD | 38E | 85F | 100F | 6 in (~15 cm) |
+
+Read each row left to right and notice the band digits and the cup letter move on *separate* tracks:
+the band scales by unit, the cup by ladder position.
+
 ## Sister sizes: the fix for "almost fits"
 
 Because cups are relative to bands, the same **cup volume** exists at several sizes. Move one band
@@ -120,6 +147,24 @@ exactly the case sister sizing untangles.
 
 Body measurements are personal data — this tool processes them entirely on your device, transmitting
 nothing.
+
+## Why the band matters more than the letter
+
+It is tempting to treat the cup letter as the important half of the size, but fit is driven by the
+band. The band is the anchor that carries the weight; the cup only shapes what sits on top of it. A
+useful mental model is the "scoop test" after putting a bra on: lean forward, settle everything into
+the cups, then stand and check three things.
+
+- **Band level and firm.** It should run parallel to the floor and stay put when you raise your
+  arms. If it rides up your back, it is too loose — that is a band problem, not a strap problem.
+- **Cup fully filled, not spilling.** Overflow at the top edge means one cup step up; wrinkling or
+  empty fabric means one step down.
+- **Straps as helpers, not lifters.** Straps that dig in are compensating for a band that is not
+  doing its share. Loosen them and try a smaller, firmer band instead.
+
+Because cup letters are relative, changing the band almost always changes the letter you need — which
+is exactly why sister sizing works. Move to a firmer band and the *same body* now needs a larger-looking
+cup letter, even though the physical cup volume has not changed at all.
 
 ## Common conversion mistakes
 

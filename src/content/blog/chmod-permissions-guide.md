@@ -59,32 +59,92 @@ with a simple trick: read is worth 4, write 2, execute 1, and each digit is what
 <figcaption>Every chmod number is read+write+execute, summed per user class.</figcaption>
 </figure>
 
-So the digit tells you the permissions at a glance:
+So each digit tells you the permissions at a glance — there are only eight possible values, one for
+every combination of the three bits:
 
-| Digit | Bits | Meaning |
-|---|---|---|
-| 7 | 4+2+1 | rwx — read, write, execute |
-| 6 | 4+2 | rw- — read, write |
-| 5 | 4+1 | r-x — read, execute |
-| 4 | 4 | r-- — read only |
-| 0 | — | --- — no access |
+| Digit | Bits | Symbolic | Meaning |
+|---|---|---|---|
+| 7 | 4+2+1 | rwx | read, write, execute |
+| 6 | 4+2 | rw- | read, write |
+| 5 | 4+1 | r-x | read, execute |
+| 4 | 4 | r-- | read only |
+| 3 | 2+1 | -wx | write, execute |
+| 2 | 2 | -w- | write only |
+| 1 | 1 | --x | execute only |
+| 0 | — | --- | no access |
 
 Read `chmod 755` left to right: owner `7` (rwx), group `5` (r-x), others `5` (r-x) → `-rwxr-xr-x`,
 which is exactly what `ls -l` prints. The [calculator](/network/chmod-calculator/) converts both
 ways live — tick the boxes to get the number, or type the number to light up the boxes.
 
+## Reading an `ls -l` line
+
+The permission string at the start of `ls -l` is the same information in symbolic form. Take a
+typical listing:
+
+```
+-rwxr-xr-x  1 alice  staff  8432  Jul 10 09:14  deploy.sh
+drwxr-x---  2 alice  staff   128  Jul 10 09:10  private/
+```
+
+The very first character is the **file type**, not a permission: `-` for a regular file, `d` for a
+directory, `l` for a symbolic link. After that come three groups of three — owner, group, others.
+So `deploy.sh` is `rwx` / `r-x` / `r-x`, which is mode `755`, and `private/` is `rwx` / `r-x` /
+`---`, which is mode `750`. Reading the string back into a number is just adding up 4-2-1 in each
+group.
+
 ## The values you'll actually type
 
-In practice a handful of modes cover almost everything:
+In practice a handful of modes cover almost everything. Keep this reference table nearby:
 
-- **`644` (rw-r--r--)** — ordinary files: documents, images, HTML, config. Owner can edit; everyone
-  can read; nobody executes. The sensible default for content.
-- **`755` (rwxr-xr-x)** — directories and executables. Owner has full control; others can read and
-  execute. **Directories need the execute bit** — on a directory, "execute" means *permission to
-  enter it and access what's inside*, not "run it as a program".
-- **`600` (rw-------)** — private files. Only the owner can read or write; nobody else sees it. This
-  is mandatory for **SSH private keys** — `ssh` refuses to use a key file that others can read.
-- **`700` (rwx------)** — a private directory, entering and listing restricted to the owner.
+| Mode | Symbolic | Typical use |
+|---|---|---|
+| `644` | rw-r--r-- | Ordinary files: documents, images, HTML, config |
+| `755` | rwxr-xr-x | Directories and executables others may run |
+| `600` | rw------- | Private files — SSH keys, secrets, `.env` |
+| `700` | rwx------ | Private directory only the owner may enter |
+| `640` | rw-r----- | File the owner edits and the group reads |
+| `775` | rwxrwxr-x | Shared directory a group can write into |
+| `777` | rwxrwxrwx | World-writable — almost always a mistake |
+
+A little more on the everyday ones:
+
+- **`644` (rw-r--r--)** — the sensible default for content. Owner can edit; everyone can read; nobody
+  executes.
+- **`755` (rwxr-xr-x)** — directories and executables. **Directories need the execute bit** — on a
+  directory, "execute" means *permission to enter it and reach what's inside*, not "run it as a
+  program". A directory that is `644` can be listed but not entered, which usually looks like a
+  "Permission denied" that makes no sense until you remember this.
+- **`600` (rw-------)** — only the owner can read or write. This is effectively mandatory for **SSH
+  private keys** — `ssh` refuses to use a key file that group or others can read, and will print a
+  loud "UNPROTECTED PRIVATE KEY FILE" warning.
+- **`700` (rwx------)** — a private directory, entering and listing restricted to the owner; the
+  standard mode for `~/.ssh`.
+
+## Symbolic mode: change one bit without touching the rest
+
+Numeric mode sets all nine bits at once. Often you just want to *add* or *remove* one permission and
+leave the others alone — that's what symbolic mode is for. It reads as *who* + *operator* + *what*:
+
+- **Who:** `u` = owner (user), `g` = group, `o` = others, `a` = all three.
+- **Operator:** `+` adds, `-` removes, `=` sets exactly.
+- **What:** `r`, `w`, `x`.
+
+Some worked examples:
+
+```
+chmod u+x deploy.sh      # make it executable for the owner only
+chmod +x deploy.sh       # add execute for everyone (a is implied)
+chmod go-w report.txt    # remove write from group and others
+chmod a+r notes.md       # everyone can read
+chmod u=rw,go=r file     # set 644 exactly, in words
+chmod -R o-rwx private/   # recursively strip all "others" access
+```
+
+The `=` form is the one to reach for when you want a known end state regardless of what was set
+before. Note that `-R` recurses into directories — handy, but the same execute bit that a directory
+needs is meaningless on a plain file, so blanket recursive `+x` is a common mistake. When in doubt,
+build the exact mode in the [chmod calculator](/network/chmod-calculator/) and copy the numeric form.
 
 ## Why `chmod 777` is a red flag
 
@@ -118,6 +178,26 @@ These are powerful and occasionally dangerous (a setuid-root binary with a bug i
 escalation), so use them deliberately. The [chmod calculator](/network/chmod-calculator/) includes
 the special bits and shows how, say, `4755` differs from `755` in the symbolic string (the `x`
 becomes `s`).
+
+## Where new files get their permissions: umask
+
+You rarely `chmod` a brand-new file to `644` — it usually arrives that way already. That default
+comes from the **umask**, a mask that *subtracts* permission bits from a base value when a file or
+directory is created. The typical base is `666` for files and `777` for directories (execute is
+never granted automatically to a new file), and the umask clears bits from it.
+
+With the common `umask 022`, a new file starts at `666` minus the masked bits, landing on `644`,
+and a new directory lands on `755`:
+
+| umask | New files | New directories | Effect |
+|---|---|---|---|
+| `022` | 644 | 755 | Group/others can read, not write (default) |
+| `002` | 664 | 775 | Group can also write — shared team setups |
+| `077` | 600 | 700 | Nothing for group or others — most private |
+
+Check yours by running `umask` on its own; it is a per-session setting, so this is where "why does
+every file come out group-readable?" is usually answered — not with a `chmod` on each file, but by
+adjusting the umask.
 
 ## Quick summary
 

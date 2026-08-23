@@ -69,6 +69,23 @@ Work it for a 30-year-old man, 75 kg, 175 cm: 750 + 1093.75 − 150 + 5 = **1,69
 complete rest. If you think in pounds and inches, the [calculator](/calc/tdee-calculator/) converts
 (1 lb = 0.4536 kg, 1 in = 2.54 cm) before applying the formula, so you don't have to.
 
+### Why Mifflin–St Jeor, and how the alternatives compare
+
+It isn't the only resting-energy equation, but for the general population it's the one that lands
+closest to the calories a metabolic chamber actually measures. The others are still in use, and
+knowing what each one needs as input explains why two calculators can disagree:
+
+| Formula | Year | Inputs it uses | Best for |
+|---|---|---|---|
+| Mifflin–St Jeor | 1990 | Weight, height, age, sex | The default for most people |
+| Harris–Benedict (revised) | 1984 | Weight, height, age, sex | Older tools; tends to read a bit high |
+| Katch–McArdle | — | Lean body mass (needs body-fat %) | Lean, well-trained people who know their body fat |
+
+Mifflin–St Jeor and Harris–Benedict use the same four inputs but different coefficients, so they can
+part ways by roughly 100–200 calories. Katch–McArdle skips height and sex entirely and works from lean
+mass, which makes it sharper for a muscular athlete but useless unless you have a reliable body-fat
+measurement. When you don't, Mifflin–St Jeor is the safe pick.
+
 ## Step 2 — scale it to your life with an activity factor
 
 Almost nobody spends the day at rest, so BMR alone understates your needs. Multiply by an **activity
@@ -88,6 +105,28 @@ the calories that keep his weight steady.
 The single most common mistake here is over-rating yourself. A gym session three times a week on top
 of a desk job is *light-to-moderate*, not *active*. When you're between two levels, choose the lower
 one: it's easier to add food later than to explain why a too-generous estimate stalled your progress.
+
+To see how much the factor matters, keep our example man's BMR of 1,699 fixed and slide the multiplier
+across the range:
+
+| Activity level | Factor | TDEE (1,699 × factor) |
+|---|---|---|
+| Sedentary | 1.2 | ≈ 2,039 kcal |
+| Light | 1.375 | ≈ 2,336 kcal |
+| Moderate | 1.55 | ≈ 2,633 kcal |
+| Active | 1.725 | ≈ 2,931 kcal |
+| Very active | 1.9 | ≈ 3,228 kcal |
+
+The gap between "sedentary" and "very active" is nearly 1,200 calories for the *same body* — which is
+exactly why guessing your activity level wrong swamps every other rounding error in the formula.
+
+### A second example, worked for a woman
+
+Take a 40-year-old woman, 65 kg, 165 cm, who does light exercise a couple of times a week. Her BMR is
+10 × 65 + 6.25 × 165 − 5 × 40 − 161 = 650 + 1031.25 − 200 − 161 = **1,320 calories** at rest. At the
+light factor of 1.375, her TDEE is 1,320 × 1.375 ≈ **1,815 calories a day** — her maintenance line. The
+female constant (−161 instead of +5) is the only thing that changes; everything else is the same
+machinery.
 
 ## Step 3 — turn TDEE into a goal
 

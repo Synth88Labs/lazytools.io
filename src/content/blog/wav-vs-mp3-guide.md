@@ -66,9 +66,14 @@ perceive get discarded before encoding. At 128–192 kbps that's roughly a **90%
 at 256–320 kbps, controlled listening tests show most listeners can't reliably distinguish the
 result from the original.
 
-**FLAC** sits between: genuinely lossless like WAV but compressed like a ZIP, typically 40–60% of
-WAV size. If you're archiving originals, FLAC is the efficient choice; WAV wins on universal
-compatibility.
+**FLAC** sits between: genuinely lossless like WAV but compressed like a ZIP, typically 50–60% of
+WAV size on music. If you're archiving originals, FLAC is the efficient choice; WAV wins on
+universal compatibility — every audio editor, DAW and browser reads it without a codec.
+
+The key mental split is *master* versus *delivery*. A WAV (or FLAC) is a master: nothing has been
+thrown away, so you can edit, remix and re-export it as many times as you like. An MP3 is a
+delivery copy: small, convenient, and permanently missing whatever the encoder decided you
+wouldn't miss. You keep the master and hand out the copy — you never work the other way around.
 
 <figure>
 <img src="/blog/infographic-wav-mp3.svg" alt="Infographic: one minute of stereo audio as WAV is about 10 MB storing every sample, as 192 kbps MP3 about 1.4 MB after psychoacoustic discards; a one-way arrow shows WAV converting to MP3 with permanent loss, and MP3 converting back to WAV recovering nothing — the file grows but the quality stays degraded" width="1200" height="620" loading="lazy" />
@@ -90,6 +95,44 @@ That middle row is why MP3→WAV is never a quality upgrade — and the bottom r
 sometimes the *right move*: once decoded to WAV, you can edit and re-save endlessly with zero
 further loss, then encode to MP3 exactly once at the end. Generation loss is the enemy; WAV is
 the safe workbench.
+
+## What bitrate actually buys you
+
+For lossy formats, the single number that governs quality is the **bitrate** — how many kilobits
+per second the encoder is allowed to spend. More bits means fewer forced discards and fewer
+artifacts. Bitrate also *is* the file size: kilobits per second, converted to bytes and multiplied
+by duration, gives you the file directly, so you can predict sizes without opening anything.
+
+| MP3 bitrate | Size per minute | Typical use | Quality notes |
+|---|---|---|---|
+| 96 kbps | ~0.7 MB | speech, podcasts | fine for voice, weak on music |
+| 128 kbps | ~0.9 MB | streaming baseline | audible artifacts on cymbals/reverb |
+| 192 kbps | ~1.4 MB | general music | good; hard to fault casually |
+| 256 kbps | ~1.9 MB | high-quality delivery | transparent to most listeners |
+| 320 kbps | ~2.4 MB | MP3 ceiling | maximum MP3 fidelity |
+| WAV (16-bit/44.1 kHz) | ~10.1 MB | masters, editing | lossless, every sample stored |
+
+The classic low-bitrate giveaway is a "swishy" or "underwater" quality on cymbals, applause and
+reverb tails — dense, noise-like high-frequency content is the hardest thing for a psychoacoustic
+model to fake cheaply. Constant bitrate (CBR) spends the same budget on every frame; variable
+bitrate (VBR) spends more on complex passages and less on simple ones, usually giving better
+quality per megabyte. For spoken word, 96–128 kbps is plenty; for music you care about, 256 kbps
+and up is the safe zone.
+
+## A worked example: sizing before you convert
+
+Say you have a 45-minute lecture recording as a 128 kbps MP3 and a transcription tool that only
+accepts WAV. Two numbers decide your plan:
+
+- **The MP3 today:** 128 kbps ≈ 0.9 MB/min × 45 ≈ **41 MB**.
+- **The full WAV:** ~10.1 MB/min × 45 ≈ **454 MB** — an eleven-fold jump, storing the *same*
+  already-lossy audio sample-for-sample.
+
+If the tool needs the whole lecture, you accept the 454 MB WAV; converting doesn't recover
+anything, but it gives the tool the uncompressed input it demands. If you only need the ten-minute
+Q&A at the end, [trim](/video/audio-trimmer/) first: ten minutes of WAV is ~101 MB, not 454. The
+arithmetic is fixed — `sample rate × bytes per sample × channels × seconds` — so there are no
+surprises once you know the inputs.
 
 ## What the browser can (and can't) do
 

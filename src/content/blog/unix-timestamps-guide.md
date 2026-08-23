@@ -106,6 +106,34 @@ arithmetic is the right tool, not seconds: the
 [days between dates calculator](/time/days-between-dates/) and
 [age calculator](/time/age-calculator/) do that walk correctly across leap years.
 
+A concrete worked example: an event starts at `1783238400` and ends at `1783263300`. Subtracting
+gives `24900` seconds; divide by 3600 and you get 6 hours 55 minutes — no timezone lookup, no
+calendar library, just integer math. That is exactly why logs, billing systems and rate limiters
+store instants as epoch seconds.
+
+## Generating a timestamp in every language
+
+The unit a language hands you is the single most useful thing to memorise, because it decides
+whether you multiply or divide before comparing values. Almost every mainstream language exposes a
+"now" call; only JavaScript, Java and a handful of others default to milliseconds.
+
+| Language / tool | "Now" call | Unit returned |
+|---|---|---|
+| Shell (`date`) | `date +%s` | seconds (integer) |
+| Python | `time.time()` | seconds (float) |
+| JavaScript | `Date.now()` | milliseconds |
+| Java | `System.currentTimeMillis()` | milliseconds |
+| Java (java.time) | `Instant.now().getEpochSecond()` | seconds |
+| Go | `time.Now().Unix()` | seconds |
+| Ruby | `Time.now.to_i` | seconds |
+| PHP | `time()` | seconds |
+| PostgreSQL | `extract(epoch from now())` | seconds (float) |
+| MySQL | `UNIX_TIMESTAMP()` | seconds |
+
+When two of these meet across an API boundary — a JavaScript front end posting `Date.now()` to a
+Python back end that assumes seconds — you get the 1970 bug on the server or a far-future date in the
+UI. Deciding the unit once per interface, and naming it in the field, removes the entire class.
+
 ## The year 2038, precisely
 
 Early systems stored Unix time in a **signed 32-bit integer**, whose maximum is 2,147,483,647. That
@@ -116,7 +144,8 @@ The fix has long existed — store time in 64 bits, good for ~292 billion years 
 systems, languages and databases use it. The residual risk lives in embedded devices, old file
 formats and 32-bit fields in legacy protocols. It's the same genre of problem as Y2K: boring where
 maintained, sharp where forgotten. (JavaScript, incidentally, was never at risk: its millisecond
-count is an IEEE double, exact for ±285,000 years around 1970.)
+count is an IEEE double, and the language caps the valid `Date` range at ±100,000,000 days from the
+epoch — roughly ±273,000 years — every millisecond of which is represented exactly.)
 
 ## Storage advice that prevents whole bug classes
 

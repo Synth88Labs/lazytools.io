@@ -63,11 +63,34 @@ dates that matter:
 | **1 September 2027** | SMEs & micro-enterprises | Must **issue** e-invoices |
 
 The receive obligation is the one that catches people: it applies to everyone on day one. Invoices
-flow through certified platforms (*plateformes agréées*, the operators formerly called PDP), not by
-email attachment — and the accepted structured formats are the EN 16931 trio:
+flow through certified platforms (*plateformes agréées*, the operators previously described as PDP),
+not by email attachment — and the accepted structured formats are the EN 16931 trio:
 **Factur-X, UBL and CII**, per the
 [EU Commission's country profile](https://ec.europa.eu/digital-building-blocks/sites/spaces/DIGITAL/pages/467108885/eInvoicing+in+France).
 Factur-X, the format designed in France, is the one most small businesses will actually see.
+
+Alongside the invoice flow, the reform introduces **e-reporting**: businesses transmit certain
+transaction and payment data (for B2C sales and cross-border B2B, which fall outside the domestic
+e-invoicing circuit) to the tax administration. E-invoicing and e-reporting are two halves of the
+same anti-fraud programme — the underlying goal is to give the *Direction générale des Finances
+publiques* a structured, near-real-time view of VAT. That is why the **structured data**, not the
+printed page, is what the whole system is built on.
+
+### The three accepted syntaxes
+
+All three permitted formats express the same EN 16931 semantic model; they differ only in how the
+data is serialised and packaged. Understanding which is which helps when a supplier sends something
+that does not look like the Factur-X PDF you expected:
+
+| Format | Underlying syntax | Human-readable layer? | Where you'll meet it |
+|---|---|---|---|
+| **Factur-X** | UN/CEFACT CII (XML) | Yes — embedded in a PDF/A-3 | Default for French SMEs; identical to German ZUGFeRD 2.x |
+| **UBL** | OASIS UBL 2.1 (XML) | No — pure XML | Common via Peppol and in public-sector Chorus Pro flows |
+| **CII** | UN/CEFACT CII (XML) | No — pure XML | The same syntax as Factur-X, but without the PDF wrapper |
+
+Factur-X is the only one of the three that carries its own human-readable rendering, which is
+exactly why it dominates among smaller firms: you can forward it, print it, or archive it like an
+ordinary PDF, and the machine-readable invoice rides along inside.
 
 ## Anatomy of a Factur-X file: one PDF, two invoices
 
@@ -107,6 +130,43 @@ consumes the XML, the line detail simply isn't there. The
 [Factur-X viewer](/file/facturx-viewer/) reads the guideline URN, names the profile, and flags
 MINIMUM/BASIC WL files explicitly, so you know what you actually received.
 
+The profile isn't a label you have to trust blindly — it is written into the XML as a *guideline
+identifier* (the `GuidelineSpecifiedDocumentContextParameter` element in CII). Each profile has its
+own distinctive URN, so a viewer can read it directly rather than inferring the profile from the
+data present:
+
+| Profile | Guideline URN (identifier) fragment |
+|---|---|
+| MINIMUM | `…factur-x.eu:1p0:minimum` |
+| BASIC WL | `…factur-x.eu:1p0:basicwl` |
+| BASIC | `…en16931:2017#compliant#…factur-x.eu:1p0:basic` |
+| EN 16931 (Comfort) | `urn:cen.eu:en16931:2017` |
+| EXTENDED | `…en16931:2017#conformant#…factur-x.eu:1p0:extended` |
+
+Notice that only BASIC and above reference `en16931:2017` — MINIMUM and BASIC WL sit *below* the
+European norm and are, strictly, not complete EN 16931 invoices. That is the single most useful
+thing a viewer tells you at a glance.
+
+### A worked example
+
+Say a supplier sends you a PDF that renders as a normal invoice for €1,200 plus €240 VAT. Opened in
+a viewer, its embedded XML might begin like this (abridged CII):
+
+```xml
+<rsm:ExchangedDocumentContext>
+  <ram:GuidelineSpecifiedDocumentContextParameter>
+    <ram:ID>urn:factur-x.eu:1p0:minimum</ram:ID>
+  </ram:GuidelineSpecifiedDocumentContextParameter>
+</rsm:ExchangedDocumentContext>
+```
+
+The `minimum` URN is the tell: this file carries the seller, buyer, invoice number, date, the VAT
+total and the grand total — but **no `IncludedSupplyChainTradeLineItem` elements at all**. The four
+line items you can see printed on the PDF exist only as pixels. If your bookkeeping imports the XML,
+you would need to key those lines in by hand, or ask the supplier to re-issue at BASIC or above. A
+viewer that names the profile up front turns that from a nasty month-end surprise into a two-second
+check on receipt.
+
 ## Reading one without accounting software
 
 The receive obligation doesn't come with a software obligation. To read a Factur-X invoice you
@@ -125,6 +185,27 @@ viewers" are lead-generation funnels for ERP suites that log every upload. Local
 privacy question moot. (The same viewer reads German XRechnung and ZUGFeRD files, and Peppol BIS
 invoices — the [general e-invoice viewer](/file/e-invoice-viewer/) is the same engine with a
 Germany-focused guide.)
+
+## The same file works across the border
+
+Because Factur-X and Germany's ZUGFeRD 2.x are the *identical* technical standard under two names,
+a Factur-X invoice is already a valid German e-invoice and vice versa — a genuine convenience for
+firms trading between the two countries. Germany's own B2B mandate is phasing in on a parallel
+track: since 1 January 2025 every German business has had to be able to **receive** structured
+e-invoices, with issuing obligations following in stages through 2027–2028. The formats overlap
+almost completely:
+
+| File type | Country of origin | Structure | Read by the same viewer? |
+|---|---|---|---|
+| Factur-X | France | PDF/A-3 + CII XML | Yes |
+| ZUGFeRD 2.x | Germany | PDF/A-3 + CII XML (same spec) | Yes |
+| XRechnung | Germany (public sector) | Pure CII or UBL XML | Yes |
+| Peppol BIS Billing 3.0 | EU (Peppol network) | UBL XML | Yes |
+
+The practical upshot: one local viewer that understands the shared EN 16931 model handles almost
+everything you are likely to receive, whichever side of the Rhine it came from. The
+[general e-invoice viewer](/file/e-invoice-viewer/) is the same parsing engine as the Factur-X tool,
+with a Germany-oriented guide for XRechnung and ZUGFeRD files.
 
 ## What to do before September
 

@@ -53,9 +53,11 @@ draft: false
 
 ## The globe problem
 
-You cannot flatten a sphere onto a rectangle without stretching it somewhere — a fact of geometry, not a flaw in any particular map. The familiar Mercator-style world map keeps compass directions tidy but pays for it by stretching everything toward the poles: Greenland looks as big as Africa, though Africa is about fourteen times larger.
+You cannot flatten a sphere onto a rectangle without stretching it somewhere — a fact of geometry, not a flaw in any particular map. The familiar Mercator-style world map keeps compass directions tidy but pays for it by stretching everything toward the poles: Greenland looks as big as Africa, though Africa is roughly fourteen times larger by area.
 
-That same stretching is why a flight path looks curved. The route hasn't changed — the map has pulled the high-latitude middle of the journey sideways, so the genuinely-shortest path ends up drawn as an arc bending toward the pole.
+That same stretching is why a flight path looks curved. The route hasn't changed — the map has pulled the high-latitude middle of the journey sideways, so the genuinely-shortest path ends up drawn as an arc bending toward the pole. Switch to a globe, or to a projection centred on your route (an azimuthal or gnomonic one), and the same path snaps back to a straight line. On a **gnomonic** projection every great circle is drawn dead straight — which is precisely why navigators historically used gnomonic charts to plot the shortest course, then transferred it onto a Mercator chart to steer by.
+
+The takeaway: "curved" and "straight" are properties of the *map*, not of the journey. The Earth doesn't know which projection you're looking at.
 
 ## What a great circle actually is
 
@@ -63,7 +65,20 @@ A **great circle** is any circle drawn on the globe whose centre coincides with 
 
 The equator is a great circle, and so is every line of longitude (each pairs with the one on the far side of the planet to make a full circle through both poles). Lines of latitude, though — apart from the equator — are *not* great circles, which is exactly why flying "straight east" along a latitude line isn't the shortest way east.
 
-For any two points on the globe, there's one great circle passing through them, and the shorter arc of it is the shortest possible path between them. That's the route aircraft aim to fly.
+For any two points on the globe, there's one great circle passing through them (unless they're exactly antipodal, in which case *infinitely* many pass through — every route from the North Pole to the South Pole is equally short). The shorter arc of that circle is the shortest possible path between the two points. That's the route aircraft aim to fly.
+
+A great circle also has a property that surprises people: **its bearing changes constantly along the way**. Set off from New York toward London and your initial heading is about 51° (northeast); by the time you approach London you're heading closer to due east, around 100°. A route that held a *fixed* compass bearing the whole way — a **rhumb line** — would trace a different, gently spiralling path that is longer. That trade-off is worth a closer look.
+
+## Great circle versus rhumb line
+
+Before satellite navigation, sailors often preferred a rhumb line: holding one compass heading is far easier than continually adjusting course. It costs extra distance, and the penalty grows the longer and more poleward the trip. Over a short hop the two paths are almost identical; over an ocean at high latitude they diverge sharply.
+
+| Path type | What it is | Bearing | Distance | When it's used |
+| --- | --- | --- | --- | --- |
+| **Great circle** | Shortest arc over the sphere | Changes continuously | Shortest possible | Long-haul flights, modern navigation |
+| **Rhumb line (loxodrome)** | Constant compass heading | Fixed the whole way | Longer than great circle | Simple manual steering, short legs |
+
+For New York to London the great circle runs about 5,540 km; a rhumb line between the same two airports is only modestly longer, because both cities sit at similar latitudes. Push the endpoints toward the poles, or make the east–west gap larger, and the gap between the two paths widens quickly.
 
 ## How the distance is calculated
 
@@ -74,9 +89,40 @@ a = sin²(Δφ/2) + cos φ₁ · cos φ₂ · sin²(Δλ/2)
 d = R · 2 · atan2(√a, √(1−a))
 ```
 
-Here `Δφ` and `Δλ` are the differences in latitude and longitude, and `R` is the Earth's mean radius, **6,371 km**. The result `d` is the great-circle distance. For New York (JFK) to London (LHR) it comes out at about **5,540 km (3,442 miles)**, on an initial bearing of roughly 51° — northeast, which is why the route heads up over the Atlantic.
+Here `Δφ` and `Δλ` are the differences in latitude and longitude, `φ₁` and `φ₂` are the two latitudes, and `R` is the Earth's mean radius, **6,371 km**. The result `d` is the great-circle distance. For New York (JFK) to London (LHR) it comes out at about **5,540 km (3,442 miles)**, on an initial bearing of roughly 51° — northeast, which is why the route heads up over the Atlantic.
 
-The haversine assumes a perfectly round Earth. The real planet is very slightly flattened, so the answer is within about half a percent of the true figure — irrelevant for planning a trip, though survey work uses more elaborate ellipsoidal methods.
+### A worked example
+
+Take JFK at latitude 40.64°N, longitude 73.78°W, and Heathrow at 51.47°N, 0.46°W. The differences are Δφ ≈ 10.83° and Δλ ≈ 73.32°. Feed those (converted to radians) into the haversine expression and the intermediate value `a` works out to roughly 0.189; the angular distance `2·atan2(√a, √(1−a))` is about 0.869 radians. Multiply by R = 6,371 km and you get **≈ 5,540 km**. That single angle-times-radius step is the whole trick: haversine's job is just to turn two lat/long pairs into that central angle reliably, even for points very close together where a naïve cosine formula loses precision.
+
+### Why not just use the cosine rule?
+
+The older **spherical law of cosines** gives the same great-circle answer in one line. It's mathematically fine but numerically fragile: for two points only metres apart, rounding error in the cosine can spit out nonsense. Haversine was popularised precisely because it stays accurate at small distances. For the last word in precision on the real, slightly-squashed Earth, geodesists use **Vincenty's** formulae or the more robust **Karney** algorithm on the WGS-84 ellipsoid.
+
+| Method | Earth model | Typical accuracy | Best for |
+| --- | --- | --- | --- |
+| Law of cosines | Sphere | Good, but poor for short distances | Quick back-of-envelope |
+| **Haversine** | Sphere | Within ~0.5% of true distance | Travel, mapping, everyday use |
+| Vincenty | Ellipsoid (WGS-84) | Sub-metre | Surveying, geodesy |
+| Karney (geodesics) | Ellipsoid (WGS-84) | Sub-millimetre, always converges | Reference-grade computation |
+
+The haversine assumes a perfectly round Earth. The real planet is very slightly flattened — the equatorial radius is about 21 km larger than the polar radius — so the spherical answer sits within roughly half a percent of the true figure. That's irrelevant for planning a trip: on the New York–London route, half a percent is about 25 km, a rounding error next to the detours real flights already make.
+
+## Routes that look wrong but aren't
+
+The clearest proof that great circles are real is the set of routes that look absurd on a wall map yet are genuinely shortest. Flights between the northern United States and East Asia arc up toward the Arctic because, for cities that far north, the great circle passes near the pole. Chicago to Beijing crossing close to the North Pole isn't a scenic detour — flattened onto a rectangular map, the shortest path simply *has* to bow that far north.
+
+Here are a few well-known long-haul pairs and their approximate great-circle distances, to show how quickly "as the crow flies" adds up over a round planet:
+
+| Route | Approx. great-circle distance | Notes |
+| --- | --- | --- |
+| New York → London | ~5,540 km (~3,440 mi) | Classic transatlantic; bends north over Canada |
+| Los Angeles → Tokyo | ~8,800 km (~5,460 mi) | Follows the northern Pacific rim |
+| Chicago → Beijing | ~10,600 km (~6,590 mi) | Passes close to the North Pole |
+| Dubai → New York | ~11,000 km (~6,840 mi) | Arcs high over the North Atlantic |
+| Sydney → Los Angeles | ~12,050 km (~7,490 mi) | Long southern-to-northern Pacific crossing |
+
+Distances are rounded and vary slightly with the exact airports used, but each one is the shortest path a sphere allows — not the straight line a flat map would tempt you to draw.
 
 ## Why the real flight is a bit longer
 

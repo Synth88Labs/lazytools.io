@@ -84,6 +84,26 @@ Names work too in the month and day-of-week fields (`JAN`, `MON`), though number
 The [parser](/network/cron-expression-parser/) expands any combination and states the schedule in
 plain English so you don't have to decode it in your head.
 
+## Reading an expression step by step
+
+The reliable way to read any crontab line is to take the five fields strictly left to right and
+resolve each one before moving on. Take `*/10 8-18 * * 1-5`:
+
+| Field | Value | Reads as |
+|---|---|---|
+| Minute | `*/10` | every 10th minute — :00, :10, :20, :30, :40, :50 |
+| Hour | `8-18` | hours 8 through 18 (08:00–18:00) |
+| Day of month | `*` | every day |
+| Month | `*` | every month |
+| Day of week | `1-5` | Monday through Friday |
+
+Put together, that job runs **every 10 minutes from 08:00 to 18:00 on weekdays** — 66 firings per
+weekday (11 hours × 6 per hour). Two details catch people out. First, `8-18` is inclusive on both
+ends, so the last hour that matches is 18:00, and the final run of the day is 18:50, not 18:00.
+Second, because the minute field is a step from `*`, the sequence is anchored at :00 — `*/10`
+means 0, 10, 20…, not "10 minutes after the job last ran." Steps always count from the bottom of the
+field's range unless you pin the start yourself, as in `5/10` (5, 15, 25, …).
+
 ## Common schedules
 
 | Expression | Meaning | Shortcut |
@@ -128,8 +148,40 @@ server's zone (or set `CRON_TZ` where supported), and remember the parser shows 
 browser's timezone, which is a deliberate contrast to highlight.
 
 **Seconds.** Classic Unix cron has no seconds field — the finest granularity is one minute. Some
-schedulers (Quartz, some CI systems) add a leading seconds field for six fields total; standard
-crontab, GitHub Actions and most Linux cron use the five-field form described here.
+schedulers add a leading seconds field for six fields total; standard crontab, GitHub Actions and
+most Linux cron use the five-field form described here.
+
+## Not all "cron" is the same cron
+
+The five-field syntax is the common core, but several popular schedulers extend or reinterpret it.
+When you copy an expression from one system into another, check which dialect you're in — the same
+string can mean different things:
+
+| System | Fields | Day-of-week values | Notes |
+|---|---|---|---|
+| Vixie / standard Unix cron | 5 | 0–7 (0 and 7 = Sunday) | The form in this guide; supports `@daily` shortcuts and `CRON_TZ` |
+| GitHub Actions | 5 | 0–6 (0 = Sunday) | Same 5-field syntax; always runs in **UTC**, no `@` shortcuts |
+| Quartz (Java) | 6–7 | 1–7 (1 = Sunday), or names | Leading seconds field, optional trailing year, and uses `?` for day-of-month/day-of-week |
+| AWS EventBridge | 6 | 1–7 or SUN–SAT | Adds a year field and requires `?` in one of the day fields — the two can't both be `*` |
+
+The recurring theme is the day-of-week numbering. Standard cron counts Sunday as both 0 and 7;
+Quartz and EventBridge count Sunday as 1. So `0 0 * * 1` is **Monday** in standard cron but the same
+weekday-position expression can be **Sunday** in a Quartz-style scheduler. If a "weekly" job fires a
+day off, dialect mismatch is the first thing to check.
+
+## How to test before you deploy
+
+Because a wrong cron line often fails silently — the job just runs at the wrong time or too often —
+verify the expression before it reaches production rather than waiting to see what happens:
+
+- **Preview the next runs.** Paste the expression into the
+  [cron expression parser](/network/cron-expression-parser/) and read back the plain-English meaning
+  plus the next several fire times. If those timestamps don't match your intent, the expression is
+  wrong regardless of how it looks.
+- **Watch for the OR-trap.** If both day fields are set, the preview will show extra runs — that's
+  the day-of-month/day-of-week rule surfacing before it bites you.
+- **Confirm the timezone.** Match the parser's timezone note against the server's actual zone; a
+  correct expression in the wrong zone is still a wrong schedule.
 
 ## Quick summary
 

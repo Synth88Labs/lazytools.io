@@ -47,6 +47,8 @@ A two-stroke (or "two-cycle") engine has no separate oil sump — it's lubricate
 
 The lower the second-number ratio (32:1 vs 50:1), the **more oil** goes in per litre of fuel. That trips people up: 32:1 sounds "smaller" but it's actually a richer, oilier mix than 50:1.
 
+Because a two-stroke fires on every crankshaft revolution and draws its fuel/air charge through the crankcase, the oil suspended in the petrol is what coats the crank bearings, piston skirt and cylinder wall before it burns. There is no dipstick and no oil filter to fall back on — the ratio you pour is the only lubrication the engine gets. That is why the number matters far more than on a four-stroke, and why "close enough" is not a safe attitude when measuring.
+
 ## The formula
 
 To find the oil for any amount of fuel:
@@ -69,6 +71,20 @@ Convert the fuel to millilitres first (or use the [two-stroke fuel mix calculato
 | **25:1** | 40 ml | 200 ml | ≈ 5.1 fl oz |
 | **16:1** | 63 ml | 313 ml | ≈ 8.0 fl oz |
 
+## A worked example, start to finish
+
+Say your chainsaw manual specifies **50:1** and you want to fill a 2-litre fuel can:
+
+1. Convert the fuel to millilitres: 2 litres = 2000 ml.
+2. Divide by the ratio number: 2000 ÷ 50 = **40 ml of oil**.
+3. Pour roughly half the petrol into a clean, approved fuel can.
+4. Add the measured 40 ml of two-stroke oil.
+5. Top up with the rest of the petrol, cap the can, and shake it for 10–15 seconds so the oil disperses evenly.
+
+If the same saw called for **40:1** instead, you would need 2000 ÷ 40 = **50 ml** — just 10 ml more, but skipping it leaves the mix noticeably lean. That small margin is exactly why measuring by eye is a bad idea: a 10 ml error on a 2-litre batch shifts you a whole ratio band.
+
+For odd container sizes, awkward gallons, or a straight ml-and-fluid-ounce readout, the [two-stroke fuel mix calculator](/automotive/two-stroke-fuel-mix-calculator/) does the arithmetic for you and removes the rounding guesswork.
+
 ## Which ratio should you use?
 
 **Whatever your engine's manufacturer specifies — never guess.** The correct ratio is in the owner's manual and often printed on the fuel cap or housing. Common cases:
@@ -78,6 +94,19 @@ Convert the fuel to millilitres first (or use the [two-stroke fuel mix calculato
 - When a range or "up to" is given, the richer (more oil) end suits heavy, hot or wide-open-throttle running.
 
 Getting it wrong is expensive: too little oil is the fast route to a seized piston, while far too much causes heavy smoke, plug fouling and carbon build-up.
+
+## Choosing the right two-stroke oil
+
+The ratio is only half the job — the oil itself has to match the engine. Air-cooled garden and power equipment is rated under the Japanese JASO standard, while water-cooled marine outboards use the American NMMA TC-W3 standard. They are not interchangeable, and the higher grades are formulated to burn cleaner and leave less deposit.
+
+| Oil grade | Typical use | Notes |
+| --- | --- | --- |
+| **JASO FB** | Older/basic air-cooled tools | Minimum performance; more smoke and deposits |
+| **JASO FC / FD** | Modern chainsaws, trimmers, blowers | Low-smoke, low-deposit; **FD** is the cleanest-burning JASO grade |
+| **TC-W3 (NMMA)** | Water-cooled marine outboards | Formulated for marine engines; do **not** use in air-cooled tools |
+| **Car engine oil** | None | Not designed to burn in the combustion chamber — will foul and damage |
+
+When in doubt, match the grade named in your manual. A modern low-smoke synthetic in the correct JASO or TC-W3 grade is a safe default for the equipment it is designed for.
 
 ## Mixing tips that matter
 

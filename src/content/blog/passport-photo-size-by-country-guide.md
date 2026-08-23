@@ -97,6 +97,43 @@ Most passport photo questions come down to which of three groups your country is
 *(Plus Pakistan, Thailand, Philippines, Mexico, Brazil, South Africa and more in the
 [Photo Size Maker](/photo/). Each page links its official government source and a "last verified" date.)*
 
+## Head size matters as much as photo size
+
+A common mistake is to get the outer dimensions right but the *face* wrong. Every standard also
+specifies how much of the frame your head must fill — measured from the bottom of the chin to the top
+of the head (the crown), not the top of your hair.
+
+- **ICAO 35×45 mm:** the head (chin to crown) should be roughly **32–36 mm** tall, so your face fills
+  about **70–80%** of the frame, centred with a small margin above the hair.
+- **US 2×2 inch:** the head should be **1 to 1⅜ inches (about 25–35 mm)** tall, and your eyes should
+  sit **1⅛ to 1⅜ inches (about 28–35 mm)** from the bottom of the photo.
+
+That is why you cannot simply resize a US photo to 35×45 mm and call it done — the head-to-frame ratio
+is different, so the face ends up too small or too large for the target country. Cropping to the head
+guides, not just the outer size, is what actually passes.
+
+| Standard | Photo size | Head height (chin→crown) | Head as % of frame |
+|---|---|---|---|
+| ICAO (UK, Schengen, most of world) | 35×45 mm | ~32–36 mm | ~70–80% |
+| United States | 2×2 in (51×51 mm) | ~25–35 mm | ~50–69% |
+| Canada | 50×70 mm | ~31–36 mm | face measured chin→crown |
+
+## Print size and pixels: a worked example
+
+Physical millimetres and upload pixels are two sides of the same photo — they are linked by
+resolution (DPI, dots per inch). Most print standards assume **300 DPI** or higher.
+
+Take the ICAO **35×45 mm** photo. Converting to inches (÷ 25.4) gives about 1.378 × 1.772 in. At
+300 DPI that is roughly **413 × 531 pixels**; at 600 DPI it doubles to about **826 × 1063 pixels** —
+which is why the UK online portal asks for at least 600 × 750 px.
+
+The US **2×2 inch** photo is cleaner: 2 in × 300 DPI = exactly **600 × 600 pixels**, which is the
+floor of the accepted 600–1200 px range. Print at 600 DPI and you land at 1200 × 1200 — the ceiling.
+
+The practical rule: pick your country, and the tool exports at the right pixel dimensions *and*
+embeds the correct print resolution, so the same file works whether the office prints it or a portal
+ingests it.
+
 ## Background colour: the rejection trap
 
 Getting the size right isn't enough — **background colour** is one of the most common reasons a photo
@@ -118,6 +155,23 @@ file-size limits — for example the US (600–1200 px), the UK (≥600×750 px,
 (630×810 px, ≤250 KB), Singapore (400×514 px) and Saudi Arabia's e-Visa (200×200 px, 5–100 KB). Each
 country page lists the exact numbers and the tool exports to them, embedding the correct print
 resolution.
+
+## Before you submit: a five-point check
+
+Most rejections come down to the same handful of issues. Run through these before you print or upload:
+
+1. **Size** — exact millimetres or inches for *your* country, not a generic 35×45 assumption.
+2. **Head height** — chin-to-crown within the target range, face centred, small margin above the hair.
+3. **Background** — uniform and the right colour (white is common, but France/Germany forbid it, the
+   UK wants light grey/cream, and Indonesia's citizen passport uses red).
+4. **Expression and pose** — neutral face, mouth closed, eyes open and clearly visible, looking
+   straight at the camera; no shadows on the face or wall behind you.
+5. **File format** — the pixel dimensions and file-size window your portal specifies (many want JPEG
+   under a fixed kilobyte cap).
+
+Glasses are increasingly discouraged and are outright banned for many passports (the UK and the US now
+ask you to remove them), and head coverings are only allowed for religious or medical reasons and must
+not cast shadows or hide the face.
 
 ## Quick summary
 

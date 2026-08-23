@@ -65,6 +65,14 @@ like equal visual changes, which HEX and HSL never guaranteed. `#1d87f1` is `okl
 Paste any color into the [OKLCH color picker](/color/oklch-color-picker/) to see all three, alongside
 OKLAB, LAB, LCH, HWB and the HEX/RGB forms.
 
+### Reading a value at a glance
+
+Take `oklch(62.3% 0.183 253.6)`. The `62.3%` tells you it is a touch lighter than mid-grey. The `0.183`
+chroma says it is moderately vivid — not neon, not muted. The `253.6` hue lands in the blue arc. Change
+just the first number to `40%` and you get the *same blue*, only darker; change only the hue to `30` and
+you get an orange of the *same lightness and vividness*. That independence is the whole point: each
+channel moves one visual property and leaves the others alone, which HEX and RGB never let you do.
+
 ## Why not just use HSL?
 
 HSL has an *L* too, so why switch? Because HSL's lightness is a lie. A `hsl(60, 100%, 50%)` yellow is
@@ -72,10 +80,26 @@ blindingly bright, while `hsl(240, 100%, 50%)` blue is dark — same "50%", wild
 lightness. Build a UI's shade scale in HSL and the steps look uneven; rotate the hue and some colors
 jump in brightness.
 
-OKLCH is built on the **OKLab** color space, which was designed so that equal numeric distances match
-equal perceived distances. Hold L and C constant, sweep the hue, and every color stays the same
-lightness. That is exactly what you want for **design tokens**: a `500` shade that reads as the same
-weight across your entire palette.
+OKLCH is built on the **OKLab** color space, published by Björn Ottosson in 2020 and designed so that
+equal numeric distances match equal perceived distances. Hold L and C constant, sweep the hue, and every
+color stays the same lightness. That is exactly what you want for **design tokens**: a `500` shade that
+reads as the same weight across your entire palette.
+
+Here is how the three common ways of writing a color compare on the things that matter when you are
+building a UI:
+
+| Property | HEX / RGB | HSL | OKLCH |
+| --- | --- | --- | --- |
+| Perceptually uniform lightness | No | No | Yes |
+| Change one visual property in isolation | No | Partly | Yes |
+| Predictable shade ramps (50–950) | No | Uneven | Even |
+| Hue rotation keeps brightness | No | No | Yes |
+| Human-readable | Not really | Somewhat | Yes |
+| Can describe wide-gamut (P3) colors | No | No | Yes |
+| Universal fallback / legacy support | Yes | Yes | Needs a fallback |
+
+The takeaway: HEX is the safe lowest common denominator, HSL *feels* intuitive but its lightness lies,
+and OKLCH is the one that behaves the way a designer expects.
 
 ## How to convert HEX to OKLCH
 
@@ -107,12 +131,53 @@ input and always returns a displayable fallback.
 }
 ```
 
+The two-declaration pattern works because CSS ignores any property value it does not understand: a browser
+without `oklch()` keeps the HEX, a browser with it takes the second line. No `@supports` query needed.
+
+## Browser support in one line
+
+The `oklch()` function shipped across the major engines a while ago: Chrome and Edge from version 111,
+Safari from 15.4, and Firefox from 113. In practice that covers the large majority of users — commonly
+cited figures put it in the low-to-mid 90s percent range, and the share keeps climbing as older browsers
+age out. The remaining slice is exactly what the HEX fallback above is for, so you lose nothing by
+adopting OKLCH today.
+
+## Worked example: a shade ramp
+
+The perceptual evenness pays off most when you build a `50`–`950` scale. In OKLCH you keep the hue fixed,
+keep chroma roughly constant (dialing it down slightly at the extremes so pale and dark ends do not clip),
+and step the lightness in even amounts. Because lightness is perceptual, even steps *look* even:
+
+```css
+:root {
+  --blue-100: oklch(92% 0.05 253);
+  --blue-300: oklch(78% 0.12 253);
+  --blue-500: oklch(62% 0.18 253); /* the base */
+  --blue-700: oklch(46% 0.15 253);
+  --blue-900: oklch(30% 0.09 253);
+}
+```
+
+Every swatch shares hue `253`, so the family reads as one color; only the lightness marches down in
+regular increments. Try the same thing by hand in HEX and you will spend an afternoon nudging channels and
+still end up with a `700` that looks muddy next to its neighbours.
+
 ## Where it pays off
 
-Once colors are in OKLCH, the perceptual evenness makes two everyday jobs easy: building lightness ramps
-(step L in equal amounts for a clean `50`–`950` scale) and rotating hues for
-[color harmonies](/color/color-harmony-generator/) that stay balanced. It is the reason Tailwind 4 moved
-its default palette to OKLCH.
+Beyond ramps, the even lightness makes hue rotation reliable. Rotate the hue for a set of
+[color harmonies](/color/color-harmony-generator/) — complementary, triadic, analogous — and every result
+stays the same visual weight, so no single accent shouts louder than the rest. This is the reason Tailwind
+CSS 4 moved its default palette to OKLCH, and why design-system teams increasingly define tokens in it and
+export HEX only for the legacy layer.
+
+A few practical habits keep OKLCH work smooth:
+
+- **Anchor on lightness first.** Decide how light each step should be, then add chroma and hue. Lightness
+  is the channel your eye judges hardest.
+- **Ease chroma at the ends.** Very light and very dark colors cannot hold much chroma before they clip,
+  so taper it toward `50` and `950`.
+- **Keep the HEX fallback generated, not hand-typed.** Let the converter produce it so the two values
+  always match.
 
 ## Quick summary
 

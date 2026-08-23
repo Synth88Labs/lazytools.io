@@ -63,6 +63,16 @@ year. From roughly mid-April (Nepali new year) to the end of December, the BS ye
 the AD year; from January to mid-April it's **56** ahead. That partial-year offset is the first thing
 that makes casual "just add 57" conversions unreliable.
 
+Seeing the two windows side by side makes the rule concrete:
+
+| Gregorian window | BS year is ahead by | Example |
+|---|---|---|
+| 1 Jan → ~mid-April (before new year) | **56 years** | 1 Feb 2024 AD → falls in 2080 BS |
+| ~mid-April → 31 Dec (after new year) | **57 years** | 1 Aug 2024 AD → falls in 2081 BS |
+
+So a single AD calendar year straddles two BS years, and a single BS year straddles two AD years —
+which is exactly why a flat "+57" gets roughly a third of dates wrong.
+
 ## Why the months don't have fixed lengths
 
 Here's the part that surprises people used to the Gregorian calendar. Bikram Sambat is a **solar**
@@ -115,6 +125,49 @@ after — which is why their Gregorian dates move each year.
 A worked anchor to sanity-check any converter: **1 Baishakh 2081 BS = 13 April 2024 AD** (a Saturday,
 Nepali New Year 2081). Everything runs in your browser from the embedded calendar table — nothing you
 enter is uploaded, and it works offline.
+
+### A step-by-step BS → AD example
+
+Suppose you have a Nepali document dated **15 Kartik 2081 BS** and need the English date for a form.
+You can't get there by arithmetic alone — you have to walk the calendar table:
+
+1. Start from the anchor **1 Baishakh 2081 = 13 April 2024**.
+2. Add the *actual* lengths of the intervening months for the year 2081, not a guessed 30. Baishakh
+   through Ashwin (months 1–6) are the six months before Kartik; their lengths that year come straight
+   from the almanac, each somewhere in the 29–32 range.
+3. Then add the 14 days from 1 Kartik to 15 Kartik.
+
+A converter does all three steps for you in one lookup and returns the Gregorian date and weekday.
+The takeaway isn't the specific answer — it's *why* you needed the table: skip step 2's real month
+lengths and you can be off by several days by the time you reach Kartik.
+
+### Reading a full BS date
+
+A Bikram Sambat date is written in the order **year – month – day**, e.g. *2081/07/15* for 15 Kartik
+2081. Watch two traps when converting:
+
+- **Month numbering starts at Baishakh, not January.** Kartik is month **7** in BS, even though it
+  overlaps October/November. Feeding a converter "month 10" for Kartik is a classic error.
+- **The weekday still matters.** Nepali dates carry a *bar* (weekday), and a good converter returns it
+  so you can cross-check against the original document.
+
+## Where Bikram Sambat actually shows up
+
+For anyone dealing with Nepal, BS isn't a curiosity — it's the default date on most official life. You
+meet it in:
+
+- **Government and legal paperwork** — citizenship certificates, land deeds, court dates and licences
+  are issued in BS, so verifying someone's date of birth against an AD passport means converting.
+- **The national fiscal year** — Nepal budgets and reports taxes on the Shrawan-to-Ashadh year, so
+  financial deadlines rarely line up with a Gregorian quarter.
+- **Festivals and holidays** — Dashain, Tihar, Holi and others are set on the BS (or lunar) calendar,
+  which is why their AD dates drift each year and why planning a trip needs a conversion.
+- **Newspapers, birthdays and everyday scheduling** — most people in Nepal think of their birthday in
+  BS, so "what's that in English?" is an everyday question.
+
+Because Nepal is one of the few countries whose *civil* calendar is neither Gregorian nor a pure lunar
+system, off-the-shelf date libraries usually can't help — which is the whole reason a dedicated
+[Nepali date converter](/calendar/bikram-sambat-converter/) exists.
 
 ## Common BS ⇄ AD mistakes
 

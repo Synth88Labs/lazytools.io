@@ -62,6 +62,12 @@ personal productivity — a focus timer, prioritising today's tasks, tracking a 
 workout — is solo, and doesn't need a server at all. Handing that data to the cloud is a cost with
 no matching benefit.
 
+The exposure is easy to underestimate because it accrues quietly. Every cloud tool you adopt adds one
+more account, one more privacy policy that can change, and one more copy of your data somewhere you
+don't control. A single focus timer isn't a threat model — but years of task lists, notes and
+calendars spread across half a dozen services add up to a detailed portrait of your working life that
+you never chose to assemble deliberately.
+
 ## The local-first alternative
 
 "Local-first" tools flip the model: the app runs in your browser and your data lives on **your**
@@ -74,6 +80,23 @@ upload. The upsides are concrete:
   open.
 - **You own your data.** A one-click JSON export gives you a file you control; import it anywhere.
   No lock-in, no export-restricted "free tier."
+
+Laid side by side, the two models diverge on almost every axis that matters for solo work:
+
+| What matters | Cloud app (Notion, Todoist, Asana) | Local-first browser tool |
+| --- | --- | --- |
+| Where your data lives | Company servers, tied to an account | Your device's browser storage |
+| Sign-up required | Yes (email, usually a password) | No |
+| Works offline | Partially, if it has a sync client | Yes, fully, once the page loads |
+| Breach exposure | Central database is a target | No server, no account to compromise |
+| Cross-device sync | Automatic | Manual export/import |
+| Team collaboration | Yes, real-time | No — single-user by design |
+| Cost model | Free tier + paid upgrades | Free, no tier gates |
+| Data portability | Depends on export features | You hold the JSON file |
+
+Read the table as a decision aid, not a scoreboard: the cloud column wins on sync and collaboration,
+the local column wins on privacy, speed and ownership. Neither is universally "better" — they answer
+different questions.
 
 <figure>
 <img src="/blog/infographic-local-productivity.svg" alt="Infographic contrasting cloud productivity apps — where tasks, notes and habits travel to a company server behind an account and can be analysed or breached — with local-first browser tools where data stays in the device's local storage, needs no account, works offline, and is moved between devices by exporting and importing a JSON file the user controls" width="1200" height="640" loading="lazy" />
@@ -114,6 +137,43 @@ browser and exports to JSON. The ones to start with:
 
 More are on the way — a mind map builder, Gantt chart maker, Kanban board, flowchart builder, and
 decision tools like a weighted decision matrix and RICE prioritisation — all built the same way.
+
+## Two worked examples
+
+Abstract benefits are easy to nod along to and hard to feel. Here are two concrete ones.
+
+**A Pomodoro morning.** The technique, devised by Francesco Cirillo in the late 1980s, uses a fixed
+work-then-break rhythm — classically 25 minutes of focus followed by a 5-minute break, with a longer
+break after four intervals. Run four of those cycles before lunch and the arithmetic is simple: four
+× 25 minutes is 100 minutes of protected, single-task focus, wrapped in 15 minutes of short breaks
+and one longer rest. The point isn't the exact numbers — shorten the work block to 20 minutes or
+stretch it to 50 if that suits you — it's that the timer, and the day's session count it keeps,
+turn "I did some work" into a figure you can actually see. None of that count needs to leave your
+tab.
+
+**Costing a recurring meeting.** Say a standing weekly meeting has six attendees whose average
+fully-loaded cost is roughly $75 an hour. One hour is 6 × $75 = $450 per meeting. Held every week
+across a working year of about 48 weeks (allowing for holidays), that single recurring block runs to
+roughly $21,600 a year — before anyone counts the context-switching cost of stopping other work to
+attend. Type those numbers into the [meeting cost calculator](/productivity/meeting-cost-calculator/)
+and the live meter does the multiplication in real time; watching it tick upward during the meeting
+itself is what tends to shorten agendas or cut the invite list. Adjust the rate and headcount to your
+own team — the figure moves fast.
+
+## A simple weekly routine
+
+You don't need all five tools at once. A workable starting rhythm:
+
+| When | Tool | What you do |
+| --- | --- | --- |
+| Monday morning | Eisenhower Matrix | Sort the week's tasks into Do / Schedule / Delegate / Delete |
+| Each work block | Pomodoro Timer | Run focused intervals on the "Do" and "Schedule" items |
+| Before any recurring meeting | Meeting Cost Calculator | Sanity-check whether the meeting earns its cost |
+| Every evening | Habit Tracker | Tick the one or two habits you're building |
+| Friday | JSON export | Back up anything you'd hate to lose to a file you keep |
+
+The Friday export is the habit that makes the whole approach safe: because the data lives only on
+your device, a downloaded backup is your insurance against a cleared browser or a dead laptop.
 
 ## Common questions, briefly
 

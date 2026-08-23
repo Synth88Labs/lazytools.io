@@ -39,12 +39,23 @@ draft: false
 
 ## What you measure
 
-The method (formally the Hodgdon-Beckett equation) works because fat tends to accumulate around the waist, so waist circumference relative to neck and height is a decent proxy for body-fat percentage.
+The method (developed by researchers Hodgdon and Beckett at the Naval Health Research Center in the 1980s) works because body fat tends to accumulate around the midsection. That makes waist circumference — read against the leaner reference points of the neck and your height — a surprisingly good proxy for overall body-fat percentage.
 
 - **Men:** neck, waist, and height. The result is driven by **waist minus neck**.
 - **Women:** neck, waist, hips, and height. The result is driven by **waist plus hips minus neck**.
 
 Enter those into the [Navy body-fat calculator](/fitness/navy-body-fat-calculator/) (in cm or inches) and it returns your estimated body-fat percentage and category.
+
+Here is the full list of what each person needs, so nothing is missed on measurement day:
+
+| Measurement | Men | Women | Where to place the tape |
+| --- | --- | --- | --- |
+| Height | Yes | Yes | Standing straight, no shoes |
+| Neck | Yes | Yes | Just below the larynx |
+| Waist | Yes | Yes | Navel (men) / narrowest point (women) |
+| Hips | No | Yes | Widest point of the buttocks |
+
+The reason women add a third circumference is that the female fat distribution pattern (more storage around the hips and thighs) is not captured by a waist-and-neck reading alone, so the equation needs the hip measurement to stay accurate.
 
 ## How to measure correctly
 
@@ -71,11 +82,37 @@ Body-fat percentage is often grouped into these bands (American Council on Exerc
 
 Women carry more essential fat than men for normal physiological function, which is why the healthy ranges differ.
 
+## A worked example
+
+Suppose a man is 178 cm tall (about 5 ft 10 in), with a neck of 38 cm and a waist of 90 cm at the navel. The engine of the calculation is the gap between his waist and neck — here **90 − 38 = 52 cm** — read against his height. A larger waist-minus-neck gap, for a given height, pushes the estimate up; a leaner waist pulls it down. Plugging those numbers into the [Navy body-fat calculator](/fitness/navy-body-fat-calculator/) returns roughly 20%, which sits in the "average" band in the table above.
+
+Now change one thing: trim the waist to 84 cm while everything else stays the same. The gap drops to 46 cm and the estimate falls by about four points into the mid-teens — the "fitness" band. That sensitivity is exactly why the waist reading deserves the most care: a centimetre or two of sloppy tape placement moves the result more than any other input.
+
+For a woman, the same logic applies but with hips added: the driver is **waist + hips − neck**. A woman who is 165 cm tall with a 32 cm neck, 74 cm waist and 98 cm hips has a driver of **74 + 98 − 32 = 140 cm**, which the formula reads against her height to return roughly 28% — the "average" band for women. Shrinking the waist while hips and neck hold steady lowers the estimate.
+
 ## How accurate is it?
 
 For people of average build, the Navy method usually lands **within about 3 percentage points** of gold-standard methods like DEXA or hydrostatic weighing — good enough to track progress over weeks and months. Its weakness is that it infers fat from body measurements alone, so it can **overestimate** for very muscular people (a thick waist that's muscle, not fat) and **misjudge** very lean or unusual body shapes. Consistency matters more than a single reading: measure the same way each time and watch the trend.
 
 Because it relies on your waist measurement, it also doubles as a rough health signal — a rising waist circumference is itself linked to metabolic risk, independent of the exact body-fat figure.
+
+## How it compares to other methods
+
+No at-home method matches a laboratory scan, but they differ a lot in cost, convenience and what throws them off. The tape method's appeal is that it is free, repeatable and immune to the hydration swings that plague electrical methods.
+
+| Method | Cost | Convenience | Main weakness |
+| --- | --- | --- | --- |
+| Navy tape method | Free | Do it anywhere | Sensitive to tape placement; assumes typical fat distribution |
+| Bioelectrical impedance (smart scale) | Low | Very quick | Swings with hydration, food and time of day |
+| Skinfold calipers | Low | Needs practice | Technique-dependent; hard to self-measure the back |
+| DEXA scan | High | Clinic visit | Cost and access; small dose of radiation |
+| Hydrostatic weighing | High | Specialist facility | Requires full submersion; limited availability |
+
+The practical takeaway: pick one method and stick with it. Comparing a caliper reading one month to a smart-scale reading the next tells you almost nothing, because the errors point in different directions. Measured the same way each time, the tape method is one of the most repeatable options on this list — which is precisely what you want when the goal is tracking a trend rather than pinning down a single true number.
+
+## When to be cautious with the result
+
+Treat the estimate as a ballpark, not a verdict, if you are very muscular, very lean, pregnant, or have a body shape that differs from the population the formula was built on. Bodybuilders in particular tend to see inflated readings because a large, muscular waist looks like fat to a tape that cannot tell the two apart. In those cases the trend over time is still useful even when the absolute number is off.
 
 ## FAQ
 

@@ -70,6 +70,22 @@ Search by name (partial matching — "spoti" finds Spotify), or **reverse-search
 `#e50914` and it surfaces Netflix. Click any swatch to copy the code. It all runs in your browser —
 nothing you look up is logged.
 
+A hex code is only one way to name a color, and the format you need depends on where the color is
+going: CSS and design apps want hex, print workflows lean on CMYK, and accessibility or theming work
+is easier in HSL. Drop any brand value into the [Color Converter](/color/color-converter/) to see
+the same color across formats:
+
+| Format | Netflix red | Best for |
+|---|---|---|
+| Hex | `#e50914` | CSS, HTML, most design tools |
+| RGB | `rgb(229, 9, 20)` | canvas, image editing, code |
+| HSL | `hsl(357, 92%, 47%)` | tweaking lightness/saturation, theming |
+
+RGB and HSL above are the exact algebraic conversions of `#e50914`, so they describe the identical
+color — only the notation changes. (CMYK is the one exception: there's no single "correct" CMYK for a
+screen color because it depends on the printer and paper, which is exactly why on-brand print work
+starts from the brand's own spec, not a web hex.)
+
 ## The legal question everyone actually has
 
 <figure>
@@ -114,6 +130,41 @@ Since the test is confusion, the everyday rule is simple:
 Notice that in every "problem" case, the issue isn't the hex code — it's the impersonation. Having
 `#e50914` in your CSS is not a Netflix problem; building "Netflox" with Netflix's red, wordmark and
 layout is.
+
+## The short list of colors that really are protected
+
+Registered color trademarks are rare, and each one is tied to a **specific product category**. A
+color trademark for insulation says nothing about your app, your poster, or your website. A handful
+of the best-documented examples:
+
+| Color | Owner | Product category |
+|---|---|---|
+| Robin's-egg blue | Tiffany & Co. | jewelry boxes and bags |
+| Brown ("Pullman Brown") | UPS | delivery vehicles and uniforms |
+| Magenta | Deutsche Telekom / T-Mobile | telecommunications |
+| Green-gold | Qualitex | dry-cleaning press pads |
+| Red lacquered sole | Christian Louboutin | high-fashion footwear |
+| Pink | Owens Corning | fiberglass building insulation |
+
+The pattern is the point. Louboutin's red sole was upheld as a valid trademark, but a U.S. appeals
+court narrowed it in its 2012 dispute with Yves Saint Laurent: the protection covers a red sole that
+*contrasts* with the rest of the shoe, not an all-red shoe. Even the strongest color marks are
+hemmed in tightly. Outside that narrow lane, the same hue is free.
+
+## Worked example: matching a button without breaking it
+
+Say you're adding a "Continue with Spotify" button and want it on-brand. You grab Spotify green
+`#1db954` and set white text on it. Before shipping, run the pair through the
+[Contrast Checker](/color/contrast-checker/), which scores color pairs against the WCAG guidelines
+used across the web. Those guidelines ask for a contrast ratio of at least **4.5:1** for normal-size
+text and **3:1** for large or bold text (roughly 18pt and up).
+
+White text on a mid-tone green like `#1db954` tends to land in a gray zone — comfortable for large
+button labels, but marginal for small print. The fix is the same one Spotify itself uses: pair the
+green with near-black text or reserve white for larger, bolder labels. This is why grabbing a single
+brand hex and dropping it into your UI can quietly fail accessibility: the brand color was designed
+to sit inside a full system of foreground and background tones, not to carry every job alone. Check
+the pairing, don't assume it.
 
 ## Colors are a palette, and palettes change
 

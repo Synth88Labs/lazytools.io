@@ -83,6 +83,15 @@ where P is the loan ($300,000), r is the monthly rate (0.005), and n is the numb
 Plug those in and M ≈ **$1,798.65**. The [mortgage calculator](/calc/mortgage-calculator/) computes
 this and then walks the schedule forward month by month.
 
+This is what "amortizing" means, and it's the opposite of an *interest-only* loan. With
+interest-only, you'd pay $1,500 every month and the balance would never move — you'd still owe the
+full $300,000 at the end. The extra ~$299 in an amortizing payment is precisely the amount that
+starts, slowly, to retire the debt. Note too that this figure covers only **principal and interest**
+(often written "P&I"). A real mortgage payment usually also bundles property taxes, homeowners
+insurance, and — if your down payment is under 20% — private mortgage insurance (PMI) into an escrow
+account. Those are real costs, but they're separate from the amortization math and don't change how
+the interest/principal split behaves.
+
 ## Watching the split flip
 
 Because principal reduces the balance, next month's interest is charged on a slightly smaller number,
@@ -110,6 +119,35 @@ you borrow a large sum for 30 years. Two levers cut it hard:
   slashing total interest — at the cost of a higher monthly payment.
 - **A lower rate.** Even a fraction of a percent moves the total by tens of thousands over 30 years.
 
+### How much the rate alone moves the total
+
+Holding the loan and term fixed at $300,000 over 30 years, a single percentage point of rate swings
+the lifetime interest by roughly $70,000:
+
+| Rate (30-yr) | Monthly P&I | Total interest | Total paid |
+|---|---|---|---|
+| 5% | $1,610 | ≈ $280,000 | ≈ $580,000 |
+| 6% | $1,799 | ≈ $347,500 | ≈ $647,500 |
+| 7% | $1,996 | ≈ $418,500 | ≈ $718,500 |
+
+That's why shaving even a quarter-point at closing, or refinancing when rates drop, is worth real
+effort — the difference compounds over hundreds of payments.
+
+### How much the term alone moves the total
+
+Now hold the rate at 6% and change only the length of the loan:
+
+| Term | Monthly P&I | Total interest | Total paid |
+|---|---|---|---|
+| 30 years | $1,799 | ≈ $347,500 | ≈ $647,500 |
+| 15 years | $2,532 | ≈ $155,700 | ≈ $455,700 |
+
+The 15-year payment is about 41% higher, but it eliminates more than half the total interest —
+roughly $192,000 in this example — because you're borrowing the same money for half as long. In
+practice 15-year loans also tend to carry a somewhat lower rate than 30-year loans, which widens the
+gap further. The trade-off is cash-flow flexibility: the 30-year's lower required payment is easier
+to sustain if your income dips.
+
 Compare them yourself by changing the term and rate in the calculator and watching the *total
 interest* line — the same tool applies to a car loan too, via the
 [auto loan calculator](/calc/auto-loan-calculator/).
@@ -118,13 +156,24 @@ interest* line — the same tool applies to a car loan too, via the
 
 Here's the lever most people miss. Because interest is charged on the balance, **every extra dollar of
 principal you pay permanently deletes all the future interest that dollar would ever have generated.**
-An extra $200 a month on our example loan doesn't just pay off $200 faster — it removes years of
-compounding interest on that money, cutting the term by several years and saving tens of thousands.
+
+Take our example loan and add just **$200 a month** on top of the $1,799 payment. That $200 doesn't
+merely pay off $200 of the house faster — it removes all the interest that $200 would have accrued for
+the rest of the term. The result on a $300,000 / 6% / 30-year loan:
+
+- The loan is paid off in about **279 months (~23¼ years)** instead of 360 — roughly **6¾ years early**.
+- Total interest drops from ~$347,500 to about **$256,500** — a saving near **$91,000** for $200 a month.
 
 And it's most powerful *early*, when the balance (and therefore the interest being charged) is
-largest. The [mortgage calculator](/calc/mortgage-calculator/) has an **extra-per-month** field that
-shows the exact new payoff date and how many months you'd save — and you can export the full schedule
-to CSV to plan against it. Everything runs in your browser; none of your figures leave your device.
+largest. A dollar of extra principal in year one erases far more future interest than the same dollar
+in year 25, when little interest is left to cancel. The [mortgage calculator](/calc/mortgage-calculator/)
+has an **extra-per-month** field that shows the exact new payoff date and how many months you'd save —
+and you can export the full schedule to CSV to plan against it. Everything runs in your browser; none
+of your figures leave your device.
+
+One caveat worth checking before you start: make sure extra payments are applied to *principal*, not
+prepaid toward next month's bill, and confirm your loan has no prepayment penalty. Most conventional
+mortgages don't, but it's worth a one-line question to your servicer.
 
 ## Quick summary
 

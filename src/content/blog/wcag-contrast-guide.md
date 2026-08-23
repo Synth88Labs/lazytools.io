@@ -59,9 +59,19 @@ The ratio is then:
 
 **ratio = (L_lighter + 0.05) ÷ (L_darker + 0.05)**
 
-That yields 1:1 for identical colors and 21:1 for black on white. Hue barely matters — a saturated red
-and a saturated blue can have *terrible* contrast with each other if their brightness is similar,
-which is why "it looks colorful" is not the same as "it's readable."
+That yields 1:1 for identical colors and 21:1 for black on white. The `+ 0.05` term models a small
+amount of ambient screen glare, so even two near-black colors never divide down to a wildly high
+ratio. Hue barely matters — a saturated red and a saturated blue can have *terrible* contrast with
+each other if their brightness is similar, which is why "it looks colorful" is not the same as
+"it's readable."
+
+The channels are **linearized** before weighting: each sRGB value (0–1) below 0.03928 is divided by
+12.92, and everything above is raised through `((v + 0.055) ÷ 1.055) ^ 2.4`. That step undoes the
+gamma curve your monitor applies, so the luminance reflects real emitted light rather than the stored
+pixel value. You never have to do this by hand — the [contrast checker](/color/contrast-checker/) runs
+the exact WCAG formula on every keystroke — but knowing the mechanism explains the results that feel
+counter-intuitive, like a "bright" yellow (#ffd400) landing near **1.4:1** on white while a "dark"
+navy clears 12:1.
 
 <figure>
 <img src="/blog/infographic-contrast-scale.svg" alt="Infographic: the WCAG contrast scale from 1:1 to 21:1 with markers at 3:1 (AA large text and UI), 4.5:1 (AA normal text — the legal reference) and 7:1 (AAA), plus a passing 8.6:1 text sample beside a failing 1.7:1 sample" width="1200" height="620" loading="lazy" />
@@ -97,6 +107,41 @@ AA is the line to clear; AAA is credit, not obligation.
 large headlines, fails for body text. The fix wasn't changing the brand: buttons and links use the
 darker `#166fde`/`#185ab4` shades of the same hue, which clear 4.5:1. That exact pattern — bright for
 graphics, darkened for text — solves most "brand color fails" cases.
+
+### Reading the four verdicts
+
+A checker returns four results because "pass" depends on both the level and the text size. The same
+pair can pass three tests and fail the one that matters for your body copy, so read all four rather
+than the headline number:
+
+| Ratio | AA normal (4.5:1) | AA large (3:1) | AAA normal (7:1) | AAA large (4.5:1) |
+|---|---|---|---|---|
+| 2.8:1 | fail | fail | fail | fail |
+| 3.5:1 | fail | **pass** | fail | fail |
+| 4.6:1 | **pass** | **pass** | fail | **pass** |
+| 7.2:1 | **pass** | **pass** | **pass** | **pass** |
+
+The practical takeaway: a 4.6:1 pair is fine for a headline *and* body text at AA, but if you promised
+AAA on small labels you still fall short. Decide your target level once, then hold every real pair to
+it.
+
+## How dark does gray need to be?
+
+Gray-on-white is where most contrast failures hide, so it helps to memorise a few anchor points. All
+values below are measured against pure white (#ffffff):
+
+| Text color on white | Ratio | Verdict |
+|---|---|---|
+| `#000000` (black) | 21:1 | passes everything |
+| `#767676` | 4.54:1 | lightest gray that passes AA normal text |
+| `#949494` | ~3.0:1 | large text / UI only — fails AA body text |
+| `#999999` | 2.85:1 | fails all text thresholds |
+| `#cccccc` | ~1.6:1 | decorative only |
+
+So `#767676` is the effective floor for small gray text on a white page. Anything lighter — the popular
+`#999` placeholder gray included — reads fine on your monitor but fails the standard the moment the
+page meets sunlight, a cheap panel, or an older reader. When you need it lighter than `#767676` for
+visual hierarchy, size the text up to the large-text threshold instead, where 3:1 is the bar.
 
 ## Fixing failures without redesigning
 

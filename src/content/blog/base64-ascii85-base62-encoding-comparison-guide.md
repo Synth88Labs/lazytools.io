@@ -55,6 +55,12 @@ entirely. A binary-to-text encoding sidesteps that by re-expressing the bytes us
 "safe" printable characters. The price is size: you always get *more* characters out than bytes in. How
 much more, and which characters, is exactly what separates these three.
 
+The reason there is *any* overhead comes down to counting. A raw byte carries 8 bits and can take any of
+256 values, but a "safe" printable character draws from a much smaller pool. Base64's 64 symbols carry
+only 6 bits each, so it takes 4 characters to express the 24 bits in 3 bytes. Fewer symbols means fewer
+bits per character, which means more characters per byte — that single fact drives every difference
+below.
+
 ## The three at a glance
 
 | | Base64 | Ascii85 | Base62 |
@@ -123,6 +129,49 @@ larger than Base64, but the payoff is zero URL headaches.
 **Use it when** the value lives in a link, a path, or a short ID — the classic URL-shortener case. One
 caveat: there's no single official Base62 standard for arbitrary bytes, so two libraries can disagree on
 alphabet order — decode with the same convention you encoded with.
+
+## How much do they actually cost?
+
+Overhead percentages are easy to quote and easy to misjudge, so it helps to see them in whole
+characters. The table below encodes the same payloads with each scheme. Base64 figures include `=`
+padding; Ascii85 figures use the raw stream without `<~ … ~>` markers; Base62 is a big-integer estimate,
+since its exact length varies slightly with the leading byte values.
+
+| Input size | Base64 | Ascii85 | Base62 (approx) |
+|---|---|---|---|
+| 1 byte | 4 chars | 2 chars | 2 chars |
+| 3 bytes | 4 chars | 4 chars | ~5 chars |
+| 16 bytes | 24 chars | 20 chars | ~22 chars |
+| 1,024 bytes | 1,368 chars | 1,280 chars | ~1,376 chars |
+
+A few things stand out. For very small inputs Base64's rounding-up to a multiple of four is punishing —
+a single byte still costs four characters — whereas Ascii85 lets a partial group shrink to just one more
+character than the bytes it holds. At kilobyte scale the ratios settle into their steady-state overheads:
+Ascii85 stays the leanest, Base64 sits about a third larger than the input, and Base62 lands a hair above
+Base64. If you are encoding megabytes, that gap between Ascii85 and Base64 is real bandwidth; if you are
+encoding a 16-byte token, it rounds away to almost nothing and other factors should decide.
+
+## URL-safe Base64: the fourth option
+
+Before you reach for Base62 purely to survive a URL, know that standard Base64 has a URL-safe sibling.
+Defined alongside the base encodings in RFC 4648, it keeps the 3-bytes-to-4-characters math and the whole
+Base64 toolchain, but swaps the two troublesome symbols: `+` becomes `-` and `/` becomes `_`. Padding is
+often dropped as well, since the decoder can infer length. JSON Web Tokens use exactly this variant, which
+is why a JWT drops cleanly into an `Authorization` header or a query string.
+
+| | Standard Base64 | URL-safe Base64 | Base62 |
+|---|---|---|---|
+| **Char 62** | `+` | `-` | (n/a) |
+| **Char 63** | `/` | `_` | (n/a) |
+| **Padding** | `=` | usually omitted | none |
+| **Overhead** | ~33% | ~33% | ~35% |
+| **Reuses Base64 code?** | — | Yes | No |
+
+So the choice in a URL is really Base62 versus URL-safe Base64. Base62 gives you a strictly
+alphanumeric string — handy when even `-` and `_` are awkward, such as in a value a human will read aloud
+or double-click to select. URL-safe Base64 gives you the same near-universal library support as ordinary
+Base64 at identical size. When both ends are your own code and you already have a Base64 library, the
+URL-safe variant is usually the lower-friction pick.
 
 ## Quick decision guide
 

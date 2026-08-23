@@ -64,10 +64,30 @@ and cameras fill them generously. The main blocks:
 | **IPTC** | captions, keywords, copyright, credit | Low–medium (deliberate) |
 | **ICC profile** | color space definition | None — keep it |
 
-EXIF (the *Exchangeable image file format*, standardized by the Japanese camera-industry body CIPA)
-is what phones write automatically. The GPS tags are the sensitive part: a modern phone's fix is
-accurate to roughly **5 meters** in open sky, and it's written into every photo while location
-access is granted to the camera.
+EXIF (the *Exchangeable image file format*, standardized as DC-008 by the Japanese camera-industry
+body CIPA) is what phones write automatically. The GPS tags are the sensitive part: a modern phone's
+fix is accurate to roughly **5 meters** in open sky, and it's written into every photo while
+location access is granted to the camera.
+
+### Reading the coordinates yourself
+
+The GPS tags aren't a mystery — they're plain numbers anyone can look up. EXIF stores latitude and
+longitude in degrees, minutes and seconds (DMS), plus a reference letter for the hemisphere. A tag
+that reads `37° 25' 19.07" N, 122° 5' 6.24" W` converts to roughly `37.4220, -122.0851` in decimal
+degrees, and pasting that pair into any map service drops a pin on the exact spot. There's no
+decoding skill involved — that's the point. Whoever receives your file receives a map link.
+
+How much a fractional degree is worth in the real world is easy to underestimate:
+
+| Decimal places kept | Ground precision | What it resolves |
+|---|---|---|
+| 2 (e.g. 37.42) | ~1.1 km | A town or district |
+| 3 (37.422) | ~110 m | A city block |
+| 4 (37.4220) | ~11 m | A single building |
+| 5 (37.42200) | ~1.1 m | A doorway or parked car |
+
+Phones routinely write five or six decimal places. That is why "it's only GPS data" understates the
+risk: the format's resolution comfortably exceeds a house-sized target.
 
 <figure>
 <img src="/blog/infographic-exif.svg" alt="Infographic: a photo file shown as pixels plus hidden metadata segments — EXIF with device and timestamp, GPS tags with coordinates accurate to about 5 meters, XMP editing history; below, which sharing channels strip metadata (major social platforms) versus which pass the original file through (email, cloud drive links, marketplaces, forums)" width="1200" height="620" loading="lazy" />
@@ -88,6 +108,20 @@ The channels that typically transmit your original file byte-for-byte, EXIF and 
 - **Messaging apps when you send "as file/document"** instead of as a compressed photo
 
 The rule of thumb: if the image arrives at full original quality, assume the metadata arrived too.
+Here's how the common channels compare:
+
+| Channel | What the recipient gets | Metadata risk |
+|---|---|---|
+| Major social feeds (Instagram, Facebook, X) | Re-encoded, resized copy | **Low** — most metadata dropped on upload |
+| Messaging app, "send as photo" | Compressed copy | Low — usually re-encoded |
+| Messaging app, "send as file/document" | Your exact original bytes | **High** |
+| Email attachment | Your exact original bytes | **High** |
+| Cloud-drive share link | Your exact original file | **High** |
+| Marketplace / classified listing | Depends on the platform's re-processing | Medium–high |
+| Personal blog or small forum upload | Often the untouched original | Medium–high |
+
+The lesson isn't "social media is safe and everything else is dangerous" — it's that *re-encoding*
+is what strips metadata. Any channel that hands over your original file hands over everything in it.
 
 ## Checking and stripping in two minutes
 
@@ -104,6 +138,28 @@ browser, which you can verify by disconnecting from the internet. Sending a priv
 re-compresses it once; at the default high quality the change isn't visible, and the
 [image compressor](/image/image-compressor/) exists when you *want* to shrink the file at the same
 time.
+
+## Beyond GPS: the quieter signals
+
+Location is the headline, but EXIF leaks more than coordinates. The **exact capture timestamp**,
+down to the second, lets anyone reconstruct a timeline — post three photos across an afternoon and
+you've published your movements for that afternoon. The **device make and model** is a soft
+fingerprint: photos from the same phone share it, quietly linking an anonymous marketplace listing
+to a photo you posted under your real name elsewhere. Some cameras even embed a **serial number** in
+the maker-notes.
+
+There's also the **embedded thumbnail**. EXIF stores a small preview image so galleries can load
+fast, and historically some editors cropped or blurred the main image without regenerating that
+thumbnail — leaving the *original, un-cropped* scene visible to anyone who extracted it. A full
+metadata strip removes the stale thumbnail along with everything else, which is a good reason to
+re-encode rather than hand-edit tags one by one.
+
+A worked example ties it together. Say you list a bike for sale and attach four photos straight from
+your phone. Individually they're "just a bike." Together, their EXIF says: same device model across
+all four (so they're all yours), taken within a ten-minute window last Tuesday evening, at GPS
+coordinates that resolve to your driveway. A buyer — or anyone scraping the listing — now knows your
+address, that you own the item, and roughly when you're home. Stripping the four files before upload
+removes every one of those signals at once.
 
 ## Prevention beats cleanup
 

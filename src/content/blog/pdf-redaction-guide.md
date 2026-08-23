@@ -52,19 +52,28 @@ Both run locally: the [redaction checker](/pdf/redaction-checker/) and the
 
 ## The failure, mechanically
 
-A PDF page is a content stream — text, fonts, images, vector drawing commands — plus optional
-annotations layered on top. When someone "redacts" by drawing a filled rectangle (in a viewer's
-comment tools, or even a shape burned into the page), two things are still true of the file:
+A PDF is not a picture of a page. It is a set of instructions — a *content stream* of text objects,
+font references, images and vector drawing commands — plus optional *annotations* layered on top.
+The viewer reads those instructions and paints the result. Crucially, the appearance you see and
+the data the file stores are two separate things. When someone "redacts" by drawing a filled
+rectangle — in a viewer's comment tools, with a highlighter, or even as a shape merged into the
+page — they add one more drawing instruction. They remove nothing. Two things stay true of the
+file:
 
-1. **The text object is still there.** Select-across-the-box and copy, run text extraction, open
-   the file in any PDF library — the "hidden" content comes straight out. Search engines and
-   e-discovery software read it too.
-2. **If the box is an annotation, it's removable.** Annotations are editable by design; deleting
-   the rectangle in any editor reveals the page exactly as it was.
+1. **The text object is still there.** Select across the box and copy, run text extraction, or open
+   the file in any PDF library, and the "hidden" content comes straight out. The rectangle is
+   painted *after* the text in draw order, so it sits on top visually while the characters remain in
+   the stream underneath. Search engines, e-discovery platforms and screen readers all read the
+   text, not the box.
+2. **If the box is an annotation, it's removable.** Annotations are editable by design — that is the
+   whole point of comment and markup layers. Deleting the rectangle in any editor, or simply
+   flattening it the wrong way, reveals the page exactly as it was.
 
-And two leaks have nothing to do with the pages at all: **document metadata** (author, title, the
-software used, creation dates — awkward in anonymous filings) and **embedded attachments**, which
-travel with the PDF completely untouched by page-level redaction.
+And two leaks have nothing to do with the visible page at all. **Document metadata** — the author,
+title, the software that produced the file, creation and modification dates stored in the Info
+dictionary and XMP packet — travels untouched, which is awkward when the filing is supposed to be
+anonymous. So do **embedded attachments and file-level objects**: a PDF can carry other files inside
+it, and page-level boxes never reach them.
 
 <figure>
 <img src="/blog/infographic-pdf-redaction.svg" alt="Infographic: a black box drawn over text is cosmetic — copy-paste still reads the content and the annotation can be deleted; real redaction flattens pages to images with the boxes burned in so nothing can be un-hidden; recent failures include the December 2025 Epstein files and a study of roughly 40,000 published PDFs where most redacted documents still contained hidden content; the ten-second verification is extracting the final file's text and searching for the redacted term" width="1200" height="640" loading="lazy" />
@@ -79,9 +88,27 @@ a [forensic case study](https://pdfa.org/a-case-study-in-pdf-forensics-the-epste
 through exactly what the files still contained. And systematic
 [research across roughly 40,000 published agency PDFs](https://www.argeliuslabs.com/deep-research-on-pdf-redaction-failures-and-security-risks-exploits-and-best-practices/)
 found that the **majority of "redacted" documents still carried the hidden content** in some
-recoverable form. Courts, government agencies and law firms — organizations with professional
+recoverable form. And it is not new. One of the most widely cited examples is a 2019 US federal
+court filing by Paul Manafort's legal team, where the "redacted" passages could be read simply by
+copying the blacked-out text and pasting it elsewhere — a lawyer's error that made national news the
+same day it was filed. Courts, government agencies and law firms — organizations with professional
 tooling — keep making this mistake, because the failed and the real redaction *look identical on
 screen*.
+
+### Why the same method can pass or fail
+
+The confusion is that "black box" is not one technique. It is at least three, and only one of them
+is safe:
+
+| Method | What actually happens to the text | Recoverable by copy/extract? | Output searchable? |
+| --- | --- | --- | --- |
+| Highlight or comment annotation | Nothing — a note layer sits on top | Yes (and the box is deletable) | Yes |
+| Drawn shape merged into the page | Nothing — a fill command paints over it | Yes | Yes |
+| True redaction (content stream rewrite) | Characters removed and re-flowed out | No | Yes |
+| Flatten to image (rasterize) | Page re-rendered to pixels; text gone | No | No (until OCR) |
+
+The first two are the ones that leak. The last two genuinely remove the content — they differ only
+in whether the result keeps a text layer.
 
 ## Redacting for real: destroy, don't cover
 
@@ -101,6 +128,16 @@ exports as a flat ~144 DPI image in a brand-new document, assembled entirely in 
 The honest trade-off: the result behaves like a scan — not searchable, not selectable, and
 invisible to screen readers until you OCR it (safely: OCR can only read what's visible). For
 documents where certainty matters more than searchability, that's the right trade.
+
+### A worked example
+
+Say you need to release a two-page contract but hide one counterparty's bank details. The wrong
+workflow is to open it in a viewer, drop black rectangles over the IBAN and account name, and export
+"with markup." The rectangles render; the export looks clean; the account number is still one
+copy-paste away. The right workflow: draw the same boxes in a rasterizing redactor, export, and you
+now hold a two-page document made of two flat images. Open that output and try to select the IBAN —
+there is nothing to select, because page two is a picture of a page, not a page. Then confirm it,
+which is the step almost everyone skips.
 
 ## The ten-second verification everyone skips
 

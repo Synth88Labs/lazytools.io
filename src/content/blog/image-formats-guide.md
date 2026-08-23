@@ -70,6 +70,14 @@ a lossless mode covers graphics, and both support transparency. Supported by eve
 browser; its residual weakness is older desktop software and the occasional upload form that
 rejects it.
 
+The reason each format wins its niche comes down to what its compression assumes:
+
+| Format | Introduced | Compression | Transparency | Best at | Weak at |
+|---|---|---|---|---|---|
+| **JPEG** | early 1990s | lossy (DCT) | none | photographs | text, sharp edges, alpha |
+| **PNG** | mid-1990s | lossless (DEFLATE) | full alpha | graphics, text, screenshots | photographs (huge files) |
+| **WebP** | 2010 | lossy *and* lossless | full alpha | almost everything on the web | old software, some upload forms |
+
 <figure>
 <img src="/blog/infographic-image-formats.svg" alt="Infographic: decision guide for image formats — photographs go to JPEG or WebP, screenshots and text go to PNG, transparency requires PNG or WebP; below, the size workflow showing a 4000-pixel 8 MB photo resized to 1200 pixels then compressed at quality 80 ending around 0.3 MB, a 96% reduction" width="1200" height="640" loading="lazy" />
 <figcaption>Pick by content type — then let resize + compress do the heavy lifting.</figcaption>
@@ -85,6 +93,31 @@ rejects it.
 | Logo/icon with transparency | **PNG** (or WebP) | JPEG can't do alpha at all |
 | Diagram, chart, flat-color art | **PNG** | flat runs compress losslessly and small |
 | Photo that needs transparency | **WebP** | the only good lossy + alpha combo |
+
+## How lossy compression actually works
+
+Understanding *why* JPEG and WebP shrink photos so well — and why they mangle text — makes the
+format choice obvious rather than something to memorize.
+
+Both formats split the image into small blocks and transform each one into frequencies (a
+discrete cosine transform, in JPEG's case): a few numbers describing broad tone plus many
+describing fine detail. The human eye is far more sensitive to brightness than to subtle color
+shifts and barely notices the highest-frequency detail, so the encoder throws away the parts you
+won't miss and keeps the rest. A photo of a face has smooth gradients everywhere, so almost
+everything discarded is genuinely invisible. **The quality slider is just a dial on how
+aggressively that detail gets discarded.**
+
+Text and logos break this bet completely. A crisp black letter on white is nothing *but*
+high-frequency detail — the exact thing the encoder is tuned to delete. The result is the fuzzy
+grey "mosquito noise" you see around type in a JPEG screenshot. PNG's lossless approach instead
+finds repeated runs of identical color (a solid background, a flat button) and stores them as
+short instructions, so a screenshot with large flat areas compresses to a small file *and* stays
+pixel-perfect.
+
+Two practical consequences follow. First, JPEG and WebP also throw away color resolution through
+*chroma subsampling* — another reason thin colored text and red-on-black graphics look muddy in
+those formats. Second, because the discarded detail is gone for good, every re-save compounds the
+loss, which is why the conversion rules below matter.
 
 ## The 90% workflow: resize, then compress
 
@@ -106,6 +139,31 @@ actually displayed — and it uploads, loads and emails ten times faster.
 The order matters: compressing first then resizing throws away quality twice. And both steps
 re-encode through the canvas, which strips EXIF metadata as a side effect — a privacy bonus
 covered in the [photo metadata guide](/blog/exif-metadata-guide/).
+
+### What each quality setting is actually for
+
+The quality number isn't a percentage of anything you can see — it's an encoder setting, and the
+same value behaves slightly differently across formats. As a practical guide for photographs:
+
+| Quality | Looks like | Use it for |
+|---|---|---|
+| **90–100** | visually lossless, large files | editing masters, print, images you'll re-export |
+| **80–90** | no visible loss at normal viewing | hero images, product shots, anything prominent |
+| **70–80** | the everyday sweet spot | most web images, blog photos, thumbnails at 2× |
+| **60–70** | faint artifacts in gradients and fine detail | large galleries where total page weight matters |
+| **below 60** | visible blocking and banding | avoid for photos; acceptable only for tiny previews |
+
+Walk the slider *down* from 85 rather than up from 50 — the first few steps cost almost nothing in
+appearance but a lot in file size, and you stop the moment quality visibly dips.
+
+### One format beyond WebP: AVIF
+
+If you control the destination and want to go further, **AVIF** (built on the AV1 video codec)
+often beats WebP again at the same visual quality, especially on detailed photos and gradients. It
+supports transparency and both lossy and lossless modes. The trade-offs are that encoding is
+slower and browser support, while now broad across current Chrome, Firefox and Safari, is a step
+behind WebP's near-universal reach. Treat it as the aggressive option for your own site once WebP
+is already in place, not as a safe universal export.
 
 ## Conversion rules that prevent ruined images
 

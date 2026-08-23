@@ -77,6 +77,26 @@ Most of the time you're not cropping to a random shape; you're cropping to fit a
 
 A quick way to decide: square (1:1) for anything that shows up as a small circle or tile, 16:9 for anything that plays like a video, and the tall ratios (4:5, 9:16) for phone-first, vertical feeds.
 
+## Working out the crop dimensions
+
+An aspect ratio is just width divided by height, so any ratio gives you the height from the width (or the reverse) with one multiplication. For a target ratio of `W:H`, the height of your crop box is `width × H ÷ W`.
+
+Say you want a 16:9 crop and you've decided the box should be 1280 pixels wide. The height is `1280 × 9 ÷ 16 = 720`. Type width 1280 and height 720 and you have an exact 16:9 region — the same math that makes 1920×1080 and 3840×2160 all "16:9." A few common results:
+
+| Ratio | If width is | Height comes out | Typical use |
+| --- | --- | --- | --- |
+| 1:1 | 1080 | 1080 | Square avatar |
+| 16:9 | 1280 | 720 | HD thumbnail |
+| 16:9 | 1920 | 1080 | Full-HD banner |
+| 4:5 | 1080 | 1350 | Instagram portrait |
+| 9:16 | 1080 | 1920 | Story / reel |
+
+There's a ceiling, though: your crop can never be larger than the source. If a 4000×3000 photo needs to become a square, the biggest square you can take is 3000×3000 (limited by the shorter side), and you slide that box left or right to choose what stays in frame. Locking the ratio in the tool handles this for you — it simply won't let the box grow past the edges of the image — but it's worth knowing why a square crop of a wide photo "loses" the sides: there is no pixel data out there to keep.
+
+## A worked example: a clean YouTube thumbnail
+
+Suppose you have a 4032×3024 phone screenshot (a 4:3 shape) and you want a 16:9 thumbnail. Because 16:9 is wider than 4:3, the full width fits but the height has to shrink. At the full 4032-pixel width, a 16:9 box is `4032 × 9 ÷ 16 = 2268` pixels tall. So you lock the box to 16:9, let it span the whole width, and drag it up or down over the 3024-pixel-tall image to pick which 2268-pixel band you keep — usually centred on the subject. Export, and you get a 4032×2268 PNG that drops straight into a 16:9 slot with no letterboxing and no stretching.
+
 ## Cropping vs resizing (they're not the same)
 
 This trips people up constantly, so it's worth being clear:
