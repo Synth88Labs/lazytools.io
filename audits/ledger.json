@@ -1666,7 +1666,7 @@
     "manager": {
       "role": "Governance — SLAs, ratings, token budget",
       "status": "nominal",
-      "task": "Reviewed 8 research idea(s) (avg 4/5); approved 3. Tokens 0/400000.",
+      "task": "Reviewed 8 research idea(s) (avg 4/5); approved 2. Tokens 0/400000.",
       "kpis": {
         "overdue": 0,
         "onTrack": 0,
@@ -1709,10 +1709,10 @@
     "researcher": {
       "role": "Discovery — weekly research for new tools",
       "status": "reported",
-      "task": "8 idea(s) proposed 2026-08-22; Manager approved 3.",
+      "task": "8 idea(s) proposed 2026-08-22; Manager approved 2.",
       "kpis": {
         "proposed": 8,
-        "approved": 3,
+        "approved": 2,
         "avgRating": 4
       },
       "score": {
@@ -1723,10 +1723,10 @@
     "developer": {
       "role": "Full-stack — weekly, builds approved tools",
       "status": "queued",
-      "task": "3 approved tool(s) queued: Scatter Plot Maker, Circle of Fifths Generator, Mortgage Refinance Calculator.",
+      "task": "2 approved tool(s) queued: Scatter Plot Maker, Circle of Fifths Generator.",
       "kpis": {
-        "queued": 3,
-        "built": 1
+        "queued": 2,
+        "built": 2
       },
       "score": {
         "daily": 5,
@@ -1876,9 +1876,10 @@
         "effort": "M",
         "privacyFit": true,
         "impact": 4,
-        "status": "approved",
+        "status": "built",
         "managerRating": 4.1,
-        "proposedOn": "2026-08-22"
+        "proposedOn": "2026-08-22",
+        "builtOn": "2026-08-23"
       }
     ]
   }

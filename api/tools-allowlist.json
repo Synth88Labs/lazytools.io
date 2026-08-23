@@ -345,6 +345,7 @@
   "finance/leverage-ratios-calculator",
   "finance/liquidity-ratios-calculator",
   "finance/loan-payoff-calculator",
+  "finance/mortgage-refinance-calculator",
   "finance/npv-irr-calculator",
   "finance/profitability-ratios-calculator",
   "finance/retirement-calculator",
