@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="1200" height="700" font-family="Segoe UI, Arial, sans-serif">
+  <rect width="1200" height="700" fill="#f8fafc"/>
+  <line x1="600" y1="60" x2="600" y2="640" stroke="#e2e8f0" stroke-width="2"/>
+
+  <!-- Panel 1: A4 vs Letter overlay -->
+  <text x="60" y="70" font-size="30" font-weight="700" fill="#0f172a">A4 vs US Letter</text>
+  <text x="60" y="100" font-size="18" fill="#64748b">Aligned at the top-left corner — the edges never match.</text>
+
+  <!-- A4 (blue): 210x297 mm scaled x1.2 = 252 x 356 -->
+  <rect x="140" y="150" width="252" height="356" fill="#1d87f1" fill-opacity="0.10" stroke="#1d87f1" stroke-width="3"/>
+  <!-- Letter (amber): 215.9x279.4 mm scaled = 259 x 335 -->
+  <rect x="140" y="150" width="259" height="335" fill="none" stroke="#d97706" stroke-width="3" stroke-dasharray="8 5"/>
+
+  <text x="150" y="180" font-size="19" font-weight="700" fill="#1d87f1">A4</text>
+  <text x="150" y="204" font-size="15" fill="#334155">210 x 297 mm</text>
+  <text x="410" y="330" font-size="19" font-weight="700" fill="#b45309">Letter</text>
+  <text x="410" y="354" font-size="15" fill="#334155">215.9 x</text>
+  <text x="410" y="374" font-size="15" fill="#334155">279.4 mm</text>
+
+  <!-- difference callouts -->
+  <text x="150" y="545" font-size="16" fill="#b45309">Letter is ~6 mm wider  ·  ~18 mm shorter</text>
+
+  <!-- Panel 2: ISO halving -->
+  <text x="640" y="70" font-size="30" font-weight="700" fill="#0f172a">One ratio: 1 to root-2</text>
+  <text x="640" y="100" font-size="18" fill="#64748b">Fold any A sheet in half to get the next size.</text>
+
+  <!-- A4 rect -->
+  <rect x="700" y="150" width="252" height="356" fill="#eef6ff" stroke="#1d87f1" stroke-width="3"/>
+  <!-- top half shaded as A5 -->
+  <rect x="700" y="150" width="252" height="178" fill="#1d87f1" fill-opacity="0.14"/>
+  <line x1="700" y1="328" x2="952" y2="328" stroke="#1d87f1" stroke-width="2" stroke-dasharray="7 5"/>
+
+  <text x="712" y="185" font-size="18" font-weight="700" fill="#1d87f1">A5</text>
+  <text x="712" y="208" font-size="14" fill="#334155">148 x 210 mm</text>
+  <text x="712" y="420" font-size="22" font-weight="700" fill="#0f172a">A4</text>
+  <text x="712" y="446" font-size="15" fill="#334155">210 x 297 mm</text>
+
+  <text x="700" y="545" font-size="16" fill="#334155">A4 folded once = A5  ·  A5 folded = A6  ·  each step halves the area</text>
+
+  <text x="60" y="620" font-size="16" fill="#94a3b8">Pixels = inches x DPI  ·  Points = inches x 72  ·  lazytools.io/size/paper-size-converter</text>
+</svg>

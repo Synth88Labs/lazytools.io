@@ -7,6 +7,20 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'paper-sizes-a4-letter-explained-guide',
+    kicker: 'PAPER & PRINT GUIDE',
+    lines: ['Paper sizes:', 'A4 vs Letter in', 'mm, inches, pixels'],
+    fact: 'A4 = 210x297 mm · Letter = 8.5x11 in · not the same',
+    icon: '📄',
+  },
+  {
+    slug: 'mortgage-refinance-break-even-guide',
+    kicker: 'MORTGAGE & FINANCE GUIDE',
+    lines: ['Is refinancing', 'worth it? Find your', 'break-even point'],
+    fact: 'break-even = closing costs divided by monthly saving',
+    icon: '🏠',
+  },
+  {
     slug: 'check-digits-explained-barcodes-luhn-guide',
     kicker: 'DATA & IDENTIFIERS GUIDE',
     lines: ['Check digits: how', 'barcodes and cards', 'catch typos'],
