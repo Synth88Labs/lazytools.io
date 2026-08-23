@@ -2,7 +2,7 @@
 title: "Z-Score to P-Value: How to Read the Normal Distribution"
 description: "A p-value is the tail area of the normal curve beyond your z-score. z = 1.96 gives a two-tailed p of 0.05; z = 1.645 a one-tailed p of 0.05. How the conversion works, one- versus two-tailed, and why a table is coarser than the exact erf calculation."
 pubDate: 2026-07-11
-updatedDate: 2026-07-11
+updatedDate: 2026-08-23
 archetype: explainer
 tools: ["/statistics/normal-distribution-calculator/", "/statistics/p-value-calculator/", "/statistics/confidence-interval-calculator/"]
 keywords:
@@ -75,6 +75,30 @@ Because the normal curve is symmetric, the two-tailed p-value is exactly double 
 That is why one significance level, 0.05, maps to two different critical z-scores: **1.645** if you are
 testing in one direction, **1.96** if you are testing in both.
 
+A quick way to see it: a z of 2.0 puts about 2.28% of the area in the upper tail. If your hypothesis
+only asks "is it bigger?", that 2.28% is your whole p-value. If it asks "is it different in either
+direction?", you also count the symmetric 2.28% in the lower tail, giving about 4.55%. Same z, same
+curve — the tail rule you pick doubles or halves the answer.
+
+## A z-score to tail-area reference
+
+The table below reads left to right: pick a z, read the one-tailed area beyond it, then double it for the
+two-tailed p-value. These are the exact tail areas of the standard normal distribution, rounded.
+
+| z-score | One-tailed p — P(Z > z) | Two-tailed p — 2 × P(Z > \|z\|) |
+|---|---|---|
+| 1.000 | 0.1587 | 0.3173 |
+| 1.282 | 0.1000 | 0.2000 |
+| 1.645 | 0.0500 | 0.1000 |
+| 1.960 | 0.0250 | 0.0500 |
+| 2.000 | 0.0228 | 0.0455 |
+| 2.326 | 0.0100 | 0.0200 |
+| 2.576 | 0.0050 | 0.0100 |
+| 3.000 | 0.00135 | 0.0027 |
+
+Notice the two rows that anchor most textbooks: z = 1.645 gives a one-tailed p of 0.05, and z = 1.96
+gives a two-tailed p of 0.05. They are the *same* significance level applied to different tail rules.
+
 ## The values worth memorising
 
 | Confidence | α | Two-tailed z | One-tailed z |
@@ -86,6 +110,26 @@ testing in one direction, **1.96** if you are testing in both.
 Read it either way: a z of 1.96 gives a two-tailed p of 0.05, and a 95% confidence interval uses that
 same 1.96. The [confidence interval calculator](/statistics/confidence-interval-calculator/) uses these
 identical critical values to build an interval around an estimate.
+
+## A worked example, start to finish
+
+Suppose a standardised test has a known population mean of μ = 100 and standard deviation σ = 15. You
+give it to a class of n = 25 students and their average score is 106. Is that class meaningfully above
+average, or just normal sampling wobble?
+
+1. **Find the standard error of the mean.** The sample mean varies less than a single score: SE = σ / √n
+   = 15 / √25 = 15 / 5 = **3**.
+2. **Compute the z-score of the sample mean.** z = (x̄ − μ) / SE = (106 − 100) / 3 = **2.0**.
+3. **Convert to a p-value.** A z of 2.0 leaves about 0.0228 in the upper tail. If you had a directional
+   hypothesis ("this class scores higher"), the one-tailed p is **≈ 0.023**. If you were simply testing
+   for any difference, the two-tailed p is 2 × 0.0228 = **≈ 0.046**.
+4. **Decide.** Against the conventional α = 0.05, both p-values fall below the threshold, so you would
+   reject the null hypothesis of "no difference" — the gap is larger than chance comfortably explains.
+
+The only judgement call is step 3's tail choice, and you should make it *before* seeing the data. Had the
+average been 104 instead, z would be (104 − 100) / 3 ≈ 1.33, a two-tailed p of about 0.18 — not
+significant. Small shifts in the statistic move you across the threshold, which is exactly why the exact
+area matters more than a rounded lookup.
 
 ## Why a table is not enough
 
@@ -108,6 +152,22 @@ level α** — the threshold you set *before* looking at the data, conventionall
 A small p-value means your statistic sits far out in the tail — the kind of value that would rarely occur
 by chance alone. It does **not** measure the size or importance of an effect, only how surprising the
 data would be if the null hypothesis were true.
+
+## Common misreadings to avoid
+
+The z-to-p conversion is arithmetic, but the interpretation is where people slip. A few worth keeping
+straight:
+
+- **A p-value is not the probability the null hypothesis is true.** It is the probability of data at
+  least this extreme *assuming* the null is true — a subtle but important reversal. A p of 0.03 does not
+  mean "3% chance there is no effect."
+- **"Not significant" is not "no effect."** A p above α means the data did not clear your evidence bar,
+  often because the sample was small, not because the true effect is zero.
+- **A tiny p-value does not mean a big effect.** With a large enough sample, a trivial difference can
+  produce a large z and a minuscule p. Report an effect size or confidence interval alongside it.
+- **The z-to-p link assumes a valid z.** The conversion only makes sense if the sampling distribution is
+  approximately normal — reasonable for large samples or known-variance means, less so for small samples
+  where a t-distribution fits better.
 
 ## Quick summary
 

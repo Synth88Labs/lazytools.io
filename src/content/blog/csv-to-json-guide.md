@@ -2,7 +2,7 @@
 title: "CSV to JSON Without the Traps: Quotes, Commas, Semicolons and Typed Values"
 description: "Converting CSV to JSON fails in predictable ways: commas inside quoted fields, semicolon Excel exports, and numbers arriving as strings. How the conversion actually works, both directions, with fixes for every trap."
 pubDate: 2026-07-05
-updatedDate: 2026-07-05
+updatedDate: 2026-08-23
 archetype: how-to
 tools: ["/file/csv-to-json/", "/file/json-to-csv/", "/file/csv-to-markdown-table/", "/file/json-formatter/"]
 keywords:
@@ -76,6 +76,22 @@ its "CSV" export separates fields with `;` instead. The
 overrides it for stubborn files (tabs and pipes included — spreadsheet copy-paste arrives
 tab-separated).
 
+Four delimiters cover almost everything you will meet in the wild. The name "CSV" is a
+misnomer half the time — the file is really "character-separated values", and knowing which
+character saves the guesswork:
+
+| Delimiter | Character | Where it comes from | Tell-tale sign |
+|-----------|-----------|---------------------|----------------|
+| Comma | `,` | The RFC 4180 default; US/UK Excel, most APIs and databases | The common case; breaks only on quoted commas |
+| Semicolon | `;` | Excel in comma-decimal locales (Germany, France, Spain, Brazil…) | Whole file collapses into one JSON key |
+| Tab (TSV) | `\t` | Copy-paste out of a spreadsheet; many scientific exports | Values look space-separated but split cleanly on tab |
+| Pipe | vertical bar | Legacy data feeds, log exports, some ETL tools | Chosen precisely because data rarely contains a pipe |
+
+Auto-detection works by counting candidate delimiters per line and picking the one whose count
+is both high and consistent across rows — a semicolon file has one comma but nine semicolons per
+line, so the winner is obvious. When rows are ragged or the sample is tiny, set the delimiter by
+hand rather than trusting the guess.
+
 ## Trap 2 — quoted fields and embedded commas
 
 `"Doe, Jane",Engineer,true` is a three-field row. Splitting on commas yields four broken fields — the
@@ -88,8 +104,23 @@ tool demonstrates the case on load.
 `"42"` and `42` are different JSON values, and downstream code cares. Good conversion coerces
 numbers, `true`/`false` and `null` into real types. **The exception is deliberate:** digit strings of
 16+ characters (credit cards, phone numbers, snowflake IDs) stay strings, because JSON numbers ride on
-64-bit floats — `9007199254740993` would silently round. If your IDs come back altered by any tool,
-this is why.
+64-bit floats — anything past `9007199254740991` (JavaScript's `Number.MAX_SAFE_INTEGER`) can no
+longer be represented exactly, so `9007199254740993` rounds to `9007199254740992`. If your IDs come
+back altered by any tool, this is why.
+
+Here is how a well-behaved converter classifies each raw cell:
+
+| CSV cell | JSON output | Type | Why |
+|----------|-------------|------|-----|
+| `42` | `42` | number | Plain integer, safely inside the 64-bit range |
+| `3.14` | `3.14` | number | Decimal point, parses as a float |
+| `true` / `false` | `true` / `false` | boolean | Literal booleans, not the strings `"true"`/`"false"` |
+| `` (empty) | `null` or `""` | null / string | Empty cell — many converters map to `null`; pick per your schema |
+| `007` | `"007"` | string | Leading zero is meaningful, so it stays text |
+| `4165551234567890` | `"4165551234567890"` | string | 16 digits — kept as text to protect precision |
+
+The leading-zero rule is the same instinct as the long-ID rule: coercing `007` to the number `7`
+throws away information the source deliberately encoded, so a cautious converter leaves it alone.
 
 ## Going the other way: JSON → CSV
 
@@ -102,9 +133,28 @@ The [JSON to CSV converter](/file/json-to-csv/) needs an **array** at the top le
 4. Shipping to European Excel? Choose the semicolon delimiter and **download** the file (downloading
    preserves UTF-8; copy-paste through the clipboard is where accents get garbled).
 
-**Worked example:** a 3-record API response with keys `{id, name, meta:{...}}` converts to a 4-column
-CSV (`id, name, meta` + one row each), with `meta` as a JSON string cell — paste it back through
-CSV-to-JSON and the structure round-trips.
+**Worked example.** Start with this CSV — note the quoted comma and the boolean:
+
+```
+name,role,active
+"Doe, Jane",Engineer,true
+Ravi Patel,Designer,false
+```
+
+Quote-aware parsing plus type coercion produces exactly this JSON:
+
+```json
+[
+  { "name": "Doe, Jane", "role": "Engineer", "active": true },
+  { "name": "Ravi Patel", "role": "Designer", "active": false }
+]
+```
+
+`Doe, Jane` stayed one field, and `active` became a real boolean rather than the string `"true"`.
+Now push a nested response back the other way: three records shaped `{id, name, meta:{…}}` convert to
+a 4-column CSV (`id, name, meta` + one row each), with each `meta` object serialized into a single
+JSON-string cell. Paste that CSV back through CSV-to-JSON and the structure round-trips intact — the
+embed-as-string rule is what makes the loop lossless.
 
 ## The quick-check habit
 

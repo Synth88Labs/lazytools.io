@@ -2,7 +2,7 @@
 title: "JSON vs YAML vs XML: Which Data Format for Which Job"
 description: "APIs speak JSON, humans edit YAML, legacy systems demand XML. How the three formats differ, when each wins, the Norway problem, and how to convert between them without losing data."
 pubDate: 2026-07-05
-updatedDate: 2026-07-05
+updatedDate: 2026-08-23
 archetype: explainer
 tools: ["/file/json-formatter/", "/file/json-to-yaml/", "/file/yaml-to-json/", "/file/xml-to-json/", "/file/json-to-xml/", "/file/markdown-to-html/"]
 keywords:
@@ -66,6 +66,66 @@ The formats' own specifications live at [json.org](https://www.json.org/),
 | Structure via | braces/brackets | indentation | tags |
 | Typical home | APIs, storage | CI, Kubernetes, compose | SOAP, RSS, Office files |
 | Failure mode | trailing commas | invisible indentation bugs | verbosity |
+
+## The same data, spelled out
+
+To make the differences concrete, here is one small record — a server entry with a name, a port and a
+flag — written in each format. Reading them side by side is the fastest way to internalize what each
+syntax costs and buys.
+
+JSON is punctuation-driven:
+
+```json
+{
+  "server": {
+    "name": "web-01",
+    "port": 8080,
+    "enabled": true
+  }
+}
+```
+
+YAML drops the braces and quotes, and adds a comment machines never see:
+
+```yaml
+server:
+  name: web-01
+  port: 8080      # HTTP listener
+  enabled: true
+```
+
+XML wraps every value in a named tag (or, equivalently, hangs it off an attribute):
+
+```xml
+<config>
+  <server name="web-01">
+    <port>8080</port>
+    <enabled>true</enabled>
+  </server>
+</config>
+```
+
+Same three values, three philosophies: JSON optimizes for a parser, YAML for the person editing at
+2 a.m., XML for a document that must validate against a schema years later.
+
+## How a value maps across the three
+
+The subtle part of any conversion is how a single scalar is *typed*. JSON's type is fixed by its
+punctuation; YAML infers a type from the bare text; XML treats everything as a string until a schema
+says otherwise. That mismatch is where round-trips quietly change meaning.
+
+| Source text | JSON reads it as | YAML reads it as | XML reads it as |
+|---|---|---|---|
+| `8080` | number | number | text `"8080"` |
+| `true` | boolean | boolean | text `"true"` |
+| `"8080"` | string | string | text `"8080"` |
+| `no` | (must be quoted) | boolean `false` (1.1) | text `"no"` |
+| `null` / empty | null | null | empty element |
+| `1.20` | number `1.2` | number `1.2` (trailing zero lost) | text `"1.20"` preserved |
+
+The practical takeaway: if a value must survive verbatim — a zip code with a leading zero, a version
+string, a country code — quote it in JSON and YAML, or you may get back a number that dropped the
+zero. XML preserves the text but loses the *type*, which is the opposite failure.
 
 ## When JSON wins
 

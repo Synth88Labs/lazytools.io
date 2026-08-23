@@ -2,7 +2,7 @@
 title: "Markup vs Margin: Same Profit, Two Very Different Percentages"
 description: "Buy for $60, sell for $100: that's a 66.7% markup but a 40% margin — the same $40 profit measured against cost vs against price. Why markup is always bigger, how to convert between them, and the pricing mistake that quietly eats your profit."
 pubDate: 2026-07-10
-updatedDate: 2026-07-10
+updatedDate: 2026-08-23
 archetype: explainer
 tools: ["/calc/markup-margin-calculator/", "/calc/sales-tax-calculator/"]
 keywords:
@@ -90,6 +90,40 @@ Check it: a 66.7% markup → 0.667 ÷ 1.667 = **40% margin.** A 50% margin → 0
 That second one is worth remembering as a sanity anchor: *doubling your money is a 100% markup but only
 a 50% margin.*
 
+It helps to keep a few common pairings in your head so a number never surprises you. Notice how the two
+figures start out close for small markups and then drift far apart as the markup climbs — because the
+bigger the profit, the more the two denominators (cost vs. price) diverge:
+
+| Markup | Margin | Price on $60 cost |
+|---|---|---|
+| 15% | ≈13.0% | $69.00 |
+| 25% | 20.0% | $75.00 |
+| 33.3% | 25.0% | $80.00 |
+| 50% | 33.3% | $90.00 |
+| 66.7% | 40.0% | $100.00 |
+| 100% | 50.0% | $120.00 |
+| 150% | 60.0% | $150.00 |
+| 200% | 66.7% | $180.00 |
+
+A margin can never reach 100% (you would have to sell at an infinite price relative to cost), but a
+markup has no ceiling — a $1 item sold for $10 is a 900% markup and a 90% margin. That asymmetry is the
+whole story in one line.
+
+## Which one should you actually use?
+
+Neither is "more correct" — they answer different business questions, and mature operations track both:
+
+- **Markup is a pricing lever.** It starts from what you paid and asks "how much do I add?" That is how
+  buyers, wholesalers, and anyone working up from a supplier invoice tends to think. Category markup
+  rules ("we key everything at 2×") are quick to apply on the floor.
+- **Margin is a performance measure.** It starts from revenue and asks "how much did I keep?" Income
+  statements, gross-profit targets, and investor comparisons are all expressed as margins, because
+  margin is directly comparable across products with wildly different costs.
+
+The friction appears at the handoff: the buying side sets prices in markup, the finance side reports
+results in margin, and unless someone converts cleanly between the two, targets get missed. That is
+exactly the gap the next section is about.
+
 ## The mistake that quietly eats profit
 
 Here's where real money leaks. Say your business runs on **40% margins** and you're pricing a new item
@@ -98,10 +132,23 @@ that cost you $60. If you absent-mindedly apply a **40% markup** instead:
 - Wrong (40% markup): $60 × 1.40 = **$84** → that's only a **28.6% margin**
 - Right (40% margin): $60 ÷ 0.60 = **$100** → a true **40% margin**
 
-You'd have underpriced by $16 on a single item — and believed you hit your target. Across a full
-catalogue, confusing markup for margin can wipe out a third of the profit you planned for. The fix is
-simply to be explicit about which basis a percentage refers to, and to let the calculator show both so
-the gap is impossible to miss.
+You'd have underpriced by $16 on a single item — and believed you hit your target. To see why that
+matters at scale, price a three-item order both ways. Say each product cost $60 and you plan to sell one
+unit of each:
+
+| Item | Cost | "40% markup" price | True 40% margin price | Profit gap |
+|---|---|---|---|---|
+| A | $60 | $84.00 | $100.00 | $16.00 |
+| B | $60 | $84.00 | $100.00 | $16.00 |
+| C | $60 | $84.00 | $100.00 | $16.00 |
+| **Total** | **$180** | **$252.00** | **$300.00** | **$48.00** |
+
+The mislabelled prices bring in $72 of gross profit ($252 − $180); the correct margin prices bring in
+$120 ($300 − $180). You collected only 60% of the profit you budgeted — a full 40% shortfall — purely
+from applying the right number against the wrong base. Across hundreds of SKUs that error compounds into
+a serious hole, and because every individual price still *looks* reasonable, it rarely gets caught by
+eye. The fix is simply to be explicit about which basis a percentage refers to, and to let the
+calculator show both figures side by side so the gap is impossible to miss.
 
 ## A note on tax and the "keep" figure
 

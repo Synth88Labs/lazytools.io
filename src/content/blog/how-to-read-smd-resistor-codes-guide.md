@@ -2,7 +2,7 @@
 title: "How to Read SMD Resistor Codes (103, 4700, 01C and R47)"
 description: "Surface-mount resistors print a tiny number instead of color bands — and the rules aren't obvious. Here's how to decode 3-digit, 4-digit, EIA-96 and R-notation markings, why 470 means 47 ohms, and how to read the zero-ohm jumper."
 pubDate: 2026-07-12
-updatedDate: 2026-07-12
+updatedDate: 2026-08-23
 archetype: explainer
 tools: ["/electronics/smd-resistor-code-calculator/", "/electronics/resistor-color-code-calculator/", "/electronics/lc-resonant-frequency-calculator/"]
 keywords:
@@ -70,7 +70,7 @@ Precision **1% resistors** need more resolution than two figures allow, so they 
 - `4700` &#8594; `470` + 0 zeros = **470 &#937;**
 - `1000` &#8594; `100` + 0 zeros = **100 &#937;**
 
-Same idea as the 3-digit code, one more figure of precision.
+Same idea as the 3-digit code, one more figure of precision. The catch is that a 4-digit and a 3-digit code can look alike out of context: `4700` on a 1% part is **470 &#937;**, but a lone `470` on a general-purpose part is **47 &#937;**. When the ambiguity matters, the tolerance (marked on the reel or datasheet, not the body) tells you which system applies — 1% and tighter parts use the 4-digit scheme.
 
 ## R-notation for small values
 
@@ -96,7 +96,47 @@ So `01C` = 100 &times; 100 = **10 k&#937;**, and `68X` = 499 &times; 0.1 = **49.
 
 ## The zero-ohm jumper
 
-A code of **`0`, `00` or `000`** isn't a resistance at all — it's a **zero-ohm resistor**, a wire link in resistor form. Boards use them to hop one track over another, or to leave a spot where a real value can be fitted later.
+A code of **`0`, `00` or `000`** isn't a resistance at all — it's a **zero-ohm resistor**, a wire link in resistor form. Boards use them to hop one track over another, or to leave a spot where a real value can be fitted later. A zero-ohm link isn't perfectly resistance-free — datasheets typically spec a maximum around a few tens of milliohms and a current rating — but for signal routing it behaves as a plain wire.
+
+## A quick decision flow
+
+When you're staring at a code and not sure which system it belongs to, work through it in this order:
+
+1. **Is it `0`, `00` or `000`?** Zero-ohm jumper. Done.
+2. **Is there an `R` sitting where a decimal point would go** (`R47`, `4R7`, `47R0`)? R-notation — drop the `R` in as a decimal and read the digits straight off.
+3. **Is there a letter that isn't `R`-as-decimal**, with two digits in front (`01C`, `68X`)? EIA-96 — the two digits index the E96 table, the letter multiplies.
+4. **All digits?** Count them: **three digits** is the common two-figures-plus-zeros scheme; **four digits** is the three-figures-plus-zeros 1% scheme.
+
+The only genuinely tricky case is telling a 3-digit `4R7`-style code apart from a same-length all-digit one, and the `R` makes that obvious. Everything else falls out of the digit count.
+
+## Worked example: decode `2R2`, `331` and `49R9`
+
+- **`2R2`** — an `R` between two digits, so it's R-notation: **2.2 &#937;**.
+- **`331`** — three digits, no letter: two figures (`33`) plus one zero = **330 &#937;**. Note it is *not* 331 &#937;.
+- **`49R9`** — the `R` is the decimal point, giving **49.9 &#937;**, a common 1% value.
+
+The recurring lesson: the last all-digit position is almost always a *multiplier*, not a value digit, so `331` is 330 &#937; and `470` is 47 &#937;.
+
+## Common codes at a glance
+
+A short reference spanning the four systems for values you'll meet constantly:
+
+| Resistance | 3-digit | 4-digit (1%) | R-notation | EIA-96 |
+|---|---|---|---|---|
+| 4.7 &#937; | — | — | `4R7` | — |
+| 47 &#937; | `470` | — | `47R0` | — |
+| 100 &#937; | `101` | `1000` | — | `01A` |
+| 1 k&#937; | `102` | `1001` | — | `01B` |
+| 4.7 k&#937; | `472` | `4701` | — | — |
+| 10 k&#937; | `103` | `1002` | — | `01C` |
+| 100 k&#937; | `104` | `1003` | — | `01D` |
+| 1 M&#937; | `105` | `1004` | — | `01E` |
+
+Dashes mark combinations that system doesn't naturally express — sub-10-&#937; values fall to R-notation, and EIA-96 only covers standard E96 figures.
+
+## Why some chips have no marking at all
+
+Very small packages simply run out of room. Parts in the **0402** (roughly 1.0 &times; 0.5 mm) case and smaller are frequently left **unmarked**, and 0201 and 01005 sizes essentially always are. If a resistor carries no printed code, you can't decode it from the body — identify it from the board's bill of materials or by measuring it with a multimeter across the desoldered part. Marked codes live mostly on **0603, 0805 and 1206** and larger cases, where there's space for the three or four characters.
 
 ## Reading it without the arithmetic
 

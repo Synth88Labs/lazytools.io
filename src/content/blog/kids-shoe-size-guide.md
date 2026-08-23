@@ -2,7 +2,7 @@
 title: "Kids' Shoe Sizes by Age: US, UK, EU Charts — and the 13C-to-1Y Mystery"
 description: "US kids' sizes run 2C–13.5C then restart at 1Y (which is BIGGER). Get the full chart with ages and cm, the measuring method, growing-room rules, and the youth-to-women's trick."
 pubDate: 2026-07-05
-updatedDate: 2026-07-05
+updatedDate: 2026-08-23
 archetype: how-to
 tools: ["/size/kids-shoe-size-converter/"]
 keywords:
@@ -73,10 +73,27 @@ The [converter](/size/kids-shoe-size-converter/) carries every half-step and the
 
 ## Why the restart exists
 
-The C and Y scales are one continuous barleycorn ladder wearing two labels — a leftover from English
-sizing history, where children's sizes counted up from a tiny hand-span zero and simply rolled over at
+The C and Y scales are one continuous **barleycorn ladder** wearing two labels — a leftover from English
+sizing history, where children's sizes counted up from a tiny zero and simply rolled over at
 13. Nobody designed it; everyone inherited it. **EU sizing has no restart** (a big kid just wears EU 33
 after 32), and **UK kids' sizes** shadow the US scale one step lower, rolling over the same way.
+
+The barleycorn is the old English unit behind all of this: **one shoe size equals one-third of an inch
+(≈8.5 mm)**, and a half size is one-sixth of an inch (≈4.2 mm). That is why the whole ladder feels so
+granular — each step forward is only a few millimetres of foot length, which is exactly why measuring in
+centimetres beats guessing. The EU scale uses a different unit, the **Paris point** of two-thirds of a
+centimetre (≈6.7 mm per size), and counts continuously from tiny toddler numbers up into adult sizes with
+no rollover at all — arguably the cleaner system, and the reason a single EU number (say 32) is often the
+least ambiguous way to specify a child's size across brands.
+
+### A worked conversion
+
+Suppose you measure a child's longest foot at **19.0 cm**. Add the standard ~0.8 cm of growing room and
+you are fitting for about **19.8 cm** of internal length. On the chart that lands right at the restart:
+it is **1Y** in US sizing — *not* 13C, even though "13" is the bigger-looking number. In other systems the
+same foot is roughly **UK 13** and **EU 32**. Feed the raw 19.0 cm into the
+[kids' shoe size converter](/size/kids-shoe-size-converter/) and it applies the growing-room rule and the
+rollover for you, so you never have to remember which side of the 13C-to-1Y seam you are on.
 
 <div class="callout cite">
 <p><span class="co-label">📌 Citable fact</span> US children's shoe sizes run 0C–13.5C ("child") and then restart at 1Y–7Y ("youth"); 1Y (≈19.7 cm foot) is one step larger than 13.5C. Women's US sizes correspond to youth sizes plus ≈1.5 — a 5Y equals about a women's 6.5.</p>
@@ -100,11 +117,42 @@ normal range spans roughly **three full sizes**. Growth is also uneven — spurt
 months, then quiet stretches. The cm measurement plus growing room sidesteps all of it, and prevents
 both the "outgrown in three weeks" purchase and the flopping oversized one that ruins gait.
 
+## Signs the current pair is outgrown
+
+Children rarely say a shoe is too small — they adapt, then start tripping or refusing to walk. Check for
+these instead:
+
+- **Red marks or indentations** across the top of the foot or around the heel after the shoe comes off.
+- **The big toe pressing the front** — with the child standing, feel for the toe; less than ~3 mm of room
+  means it's time.
+- **Curled or clawed toes**, or the child folding them under inside the shoe.
+- **Heel slippage the wrong way** — a shoe that was snug now slides because the foot has shifted forward
+  to find room.
+- **Rapid, patternless wear** on one edge of the sole, a sign the gait has changed to compensate.
+
+Because feet can gain **half a size in a single season** before age four, a pair that fit perfectly at
+purchase can be tight in eight to ten weeks — which is why the re-measure interval matters more than the
+size on the box.
+
 ## The youth-to-women's trick
 
 Because youth sizes reach 7Y (≈ women's 8.5), anyone wearing women's ≤ 8.5 can often buy the *same
 sneaker model* in big-kid sizing at a substantially lower price: **women's size − 1.5 = youth size**
-(a women's 7.5 → 6Y). Width is the caveat — youth lasts run narrower.
+(a women's 7.5 → 6Y). The relationship works because the youth and men's scales share the same length at
+the top of the range, and women's US sizes run about 1.5 steps above men's. It is an approximation, not a
+guarantee — brands vary by up to half a size — so treat the table below as a starting point and check the
+cm length whenever the maker publishes it.
+
+| Youth (US) | ≈ Women's US | ≈ Foot (cm) |
+|---|---|---|
+| 4Y | 5.5 | 22.5 |
+| 5Y | 6.5 | 23.3 |
+| 6Y | 7.5 | 24.1 |
+| 7Y | 8.5 | 25.0 |
+
+Width is the real caveat: youth lasts are generally cut **narrower** than women's, so a foot that is at
+all wide may fit the length but pinch across the ball. If a shoe comes in width options, that alone can
+decide whether the kids'-price version actually works for an adult foot.
 
 ## Common mistakes
 

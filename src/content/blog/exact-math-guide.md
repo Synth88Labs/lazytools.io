@@ -2,7 +2,7 @@
 title: "0.1 + 0.2 ≠ 0.3: Why Most Calculators Quietly Round — and What Exact Arithmetic Looks Like"
 description: "Every ordinary calculator computes in floating point, which silently rounds past ~15 digits, turns 1/3 + 2/3 into 0.9999999999999999, and overflows at 171!. How exact rational and big-integer arithmetic avoids all of it — and when the difference actually matters."
 pubDate: 2026-07-09
-updatedDate: 2026-07-09
+updatedDate: 2026-08-23
 archetype: explainer
 tools: ["/math/fraction-calculator/", "/math/quadratic-equation-solver/", "/math/permutations-combinations/", "/math/decimal-to-fraction/", "/math/gcd-lcm-calculator/"]
 keywords:
@@ -91,6 +91,40 @@ Three representation choices remove the rounding entirely:
    6.216991 is a shadow of it. The [quadratic solver](/math/quadratic-equation-solver/) extracts
    square factors (√72 → 6√2) and reduces the whole expression, handing you the exact form your
    homework's next line actually needs — decimals alongside for practical use.
+
+## A worked example: adding two fractions exactly
+
+Watch what a rational engine does with `1/6 + 1/10` — a sum that floating point renders as
+`0.26666666666666666`, an endless 6 chopped off at the fifteenth digit.
+
+1. **Find a common denominator.** The least common multiple of 6 and 10 is 30, so rewrite the
+   fractions over 30: 1/6 becomes 5/30, and 1/10 becomes 3/30.
+2. **Add the numerators.** 5/30 + 3/30 = 8/30.
+3. **Reduce.** The greatest common divisor of 8 and 30 is 2, so divide both by 2 to get **4/15**.
+
+The final answer, 4/15, is exact and complete — no digit was ever discarded, because no decimal was
+ever formed. The [fraction calculator](/math/fraction-calculator/) performs exactly these steps and
+shows each one; the LCM in step 1 and the GCD in step 3 are the same routines the
+[GCD/LCM calculator](/math/gcd-lcm-calculator/) exposes on their own. Ask a float for 4/15 and you
+get 0.2666…7 rounded; the rational form keeps the truth and lets you convert to a decimal only if and
+when you actually want one.
+
+## How numbers are stored — a reference
+
+The rounding problem is entirely a consequence of the storage format. Each representation trades
+something for something else:
+
+| Representation | Stores | Exact? | Cost / limit |
+|---|---|---|---|
+| 64-bit float (IEEE 754 double) | sign, 52-bit fraction, 11-bit exponent | No — ~15–17 significant digits | Fixed 8 bytes; fast; silent rounding and overflow |
+| Arbitrary-precision integer (BigInt) | the whole integer, digit-exact | Yes, for integers | Memory grows with the number; slower for huge values |
+| Rational (pair of BigInts) | numerator ÷ denominator | Yes, for any fraction | Two integers per value; must reduce to stay small |
+| Symbolic radical | e.g. 6√2 kept unevaluated | Yes, for that form | Needs algebra rules; not a plain number until evaluated |
+
+A float is a fixed-width approximation optimized for speed; the exact types spend memory and a little
+time to guarantee the answer. For a physics measurement the float wins and the difference is
+invisible. For homework, money, or a 300-digit factorial, the exact types are the only ones that give
+a correct result at all.
 
 ## When it matters (and when it doesn't)
 

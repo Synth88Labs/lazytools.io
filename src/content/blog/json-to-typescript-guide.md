@@ -2,7 +2,7 @@
 title: "How to Convert JSON to TypeScript Interfaces"
 description: "To turn JSON into TypeScript, map each value to a type — strings to string, numbers to number, nested objects to their own interface, and keys missing from some array items to optional. Here's how inference works and how to do it instantly."
 pubDate: 2026-07-28
-updatedDate: 2026-07-28
+updatedDate: 2026-08-23
 archetype: explainer
 heroImage: /blog/json-to-typescript-guide.png
 heroAlt: "JSON values mapped to TypeScript interface fields, with nested objects becoming their own interface."
@@ -13,6 +13,7 @@ keywords:
   - generate typescript types from json
   - json to ts
   - typescript interface generator
+
 draft: false
 ---
 
@@ -36,16 +37,27 @@ draft: false
 <figcaption>Each JSON value maps to a type; nested objects become their own interface.</figcaption>
 </figure>
 
+## Why hand-typing API responses is a losing game
+
+Writing interfaces by hand for a real API response is slow and error-prone. A single endpoint can return dozens of fields, several levels of nesting, and arrays whose elements do not all share the same keys. Miss one optional field and TypeScript will happily let an `undefined` slip through until it crashes at runtime. Inference from a concrete sample removes the guesswork: the shape you paste *is* the contract, so the generated types match the data exactly rather than matching what you remembered the data to be.
+
+JSON has only six value kinds — string, number, boolean, null, array, and object — and TypeScript has a natural home for each. That small, fixed mapping is what makes reliable automatic conversion possible.
+
 ## How the conversion works
 
-A generator parses your JSON and walks it recursively, choosing a TypeScript type for each value:
+A generator parses your JSON and walks it recursively, choosing a TypeScript type for each value. The core rules are a direct one-to-one mapping:
 
-- `"Ada"` → `string`
-- `42` → `number`
-- `true` → `boolean`
-- `null` → `null`
-- `["x", "y"]` → `string[]`
-- `{ "kind": "cat" }` → a new interface (say `Pet`), referenced as `pet: Pet`
+| JSON value | Example | TypeScript type |
+| --- | --- | --- |
+| String | `"Ada"` | `string` |
+| Number (int or float) | `42`, `3.14` | `number` |
+| Boolean | `true` | `boolean` |
+| Null | `null` | `null` |
+| Array of one type | `["x", "y"]` | `string[]` |
+| Array of objects | `[{…}, {…}]` | `Thing[]` + a `Thing` interface |
+| Object | `{ "kind": "cat" }` | a new named interface, referenced by field |
+
+Note that JSON has no integer/float distinction and no date type: `42` and `3.14` both become `number`, and an ISO date string like `"2026-08-23"` becomes plain `string` — TypeScript cannot tell a date from any other string at the type level, so you narrow those by hand if it matters.
 
 So this JSON:
 
@@ -90,6 +102,57 @@ interface Order {
 
 This is exactly what you want for real API data, where optional fields are common.
 
+## A fuller worked example
+
+Real responses nest arrays inside objects inside arrays. Take a small order payload:
+
+```json
+{
+  "orderId": "A-1001",
+  "customer": { "name": "Ada", "vip": true },
+  "items": [
+    { "sku": "X1", "qty": 2 },
+    { "sku": "X2", "qty": 1, "giftWrap": true }
+  ]
+}
+```
+
+A generator produces a named interface for every distinct object shape and wires them together:
+
+```ts
+interface Root {
+  orderId: string;
+  customer: Customer;
+  items: Item[];
+}
+
+interface Customer {
+  name: string;
+  vip: boolean;
+}
+
+interface Item {
+  sku: string;
+  qty: number;
+  giftWrap?: boolean;
+}
+```
+
+Notice three things at once: `customer` became its own `Customer` interface, `items` became `Item[]` from a single merged `Item` shape, and `giftWrap` is optional because it appears in only one of the two items. That is the whole value of inference in one example — you would have had to spot the missing key yourself.
+
+## interface vs type alias
+
+Most generators let you emit either an `interface` or a `type` alias, and for a plain object shape the two are interchangeable. The differences only matter at the edges:
+
+| Aspect | `interface` | `type` alias |
+| --- | --- | --- |
+| Object shapes | Yes | Yes |
+| Declaration merging | Supported | Not supported |
+| Unions / intersections at top level | No | Yes (`type Id = string \| number`) |
+| Extending | `extends` | `&` intersection |
+
+A common convention is to prefer `interface` for object models and reach for `type` when you need a union, a tuple, or a mapped type. Pick whichever matches your codebase's existing style — consistency matters more than the choice itself.
+
 ## The limits of inference
 
 Types are only as good as the **sample** you paste:
@@ -99,6 +162,8 @@ Types are only as good as the **sample** you paste:
 - The generator can't know about fields that never appear in your sample.
 
 Treat the output as a strong starting point, then adjust nullable and union types to match the real API contract.
+
+A practical habit: paste the **largest, most complete** sample you have — ideally one that exercises optional fields and every variant. The more the sample resembles the full range of real responses, the fewer manual fixes you make afterward. If your API documents nullable fields, reconcile the generated `null` types against that documentation rather than trusting a single lucky response.
 
 ## Do it privately
 

@@ -2,7 +2,7 @@
 title: "How to Make a Favicon (Every Size You Need)"
 description: "Make a favicon the right way: start from one square image, export favicon.ico plus every PNG size, and add the link tags. Free, in your browser."
 pubDate: 2026-07-28
-updatedDate: 2026-07-28
+updatedDate: 2026-08-23
 archetype: how-to
 heroImage: /blog/how-to-make-a-favicon-guide.png
 heroAlt: "One square source image fanning out into the full favicon size set: 16, 32 and 48 px inside favicon.ico, a 180 px apple-touch-icon, and 192 and 512 px PNGs for Android and PWAs"
@@ -73,6 +73,23 @@ favicon.ico is the multi-resolution icon file browsers request from your site's 
 
 The old .ico format was its own bitmap encoding. The modern form is **PNG-in-ICO**: real PNG images (typically 16, 32 and 48 px) packed inside the .ico container. Every current browser reads it, and it produces smaller, sharper files than the legacy encoding. So favicon.ico has not gone away — it has quietly modernized.
 
+## Which favicon format for which job
+
+You will see three image formats in a modern favicon setup, and each earns its place. An SVG favicon scales to any size from one small vector file and can even respond to dark mode, but it needs a raster fallback because not every context renders it. PNG covers the fixed-size icons that phones and app installers expect. ICO remains the universal default. The practical answer is not "pick one" — it is to ship ICO plus PNG, and add SVG on top if you have a clean vector mark.
+
+| Format | Best for | Scales cleanly | Fallback needed |
+| --- | --- | --- | --- |
+| favicon.ico | Default browser request, older clients | Fixed sizes only (16/32/48) | It *is* the fallback |
+| PNG | apple-touch-icon, Android, PWA install | No — one file per size | Covered by the ICO |
+| SVG | Crisp tabs at any DPI, dark-mode variants | Yes — one vector file | Yes — pair with ICO/PNG |
+
+If you add an SVG icon, reference it alongside the others and keep `sizes="any"` on the ICO link so browsers that prefer the vector still fall back gracefully:
+
+```html
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" href="/favicon.ico" sizes="any">
+```
+
 ## The HTML link tags to add
 
 The link tags tell browsers and devices which icon to use where. Add these inside the `<head>` of your pages:
@@ -86,6 +103,48 @@ The link tags tell browsers and devices which icon to use where. Add these insid
 ```
 
 Put favicon.ico, the PNGs and site.webmanifest at your **site root** — the top-level folder served at `/`. The manifest is where the 192 and 512 px PNGs are declared for Android and PWA installs, which is why it earns its own link.
+
+A minimal `site.webmanifest` that wires up the two large PNGs looks like this:
+
+```json
+{
+  "icons": [
+    { "src": "/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/android-chrome-512x512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
+```
+
+## A worked example, start to finish
+
+Say you have a logo that is a bold letter "L" in a solid circle. Here is the whole path from that one file to a working favicon:
+
+1. **Square and enlarge the source.** Export or [resize the logo to 512x512](/image/image-resizer/) with the mark centred. If it started as a vector, [rasterize the SVG to a 512 px PNG](/image/svg-to-png/) first so the downscaler has real pixels.
+2. **Generate the set.** Drop that PNG into the [favicon generator](/image/favicon-generator/). It center-crops to square, renders 16, 32, 48, 180, 192 and 512 px, packs the small three into favicon.ico, and writes site.webmanifest plus the link snippet.
+3. **Unpack at the root.** Download the zip and copy favicon.ico, the PNGs and site.webmanifest into the folder served at `/`.
+4. **Paste the tags.** Add the five `<link>` lines into your `<head>` (the generator hands you the exact snippet).
+5. **Verify.** Load your site, then request `/favicon.ico` directly in the address bar to confirm the file is where the browser expects it.
+
+That is the entire job. The only decision that needs a human is step one — everything after it is mechanical, which is exactly what a generator is for.
+
+## Design so it reads at 16 px
+
+A favicon spends most of its life at 16 or 32 pixels wide. At that scale, fine detail is not just lost — it turns to mush. Design accordingly:
+
+- **One idea per icon.** A single letter, a simple monogram or one bold shape survives the shrink. A full wordmark or a detailed illustration does not.
+- **High contrast.** The mark needs to separate from both light and dark browser chrome. Thin outlines vanish; solid fills hold.
+- **Generous padding.** Leave a little breathing room inside the square so the mark is not clipped by the tab's rounded corners.
+- **Test at true size.** Zoom your 16 px export to 100% and judge it there, not scaled up. If you cannot tell what it is, neither can a visitor.
+
+A common trick for busy logos: make a *simplified* favicon — just the emblem, not the full lockup — and keep the detailed version for larger placements.
+
+## Test that it actually works
+
+Browsers cache favicons aggressively, which is why a "broken" favicon is often just a stale one. To confirm a real result:
+
+- **Hard-refresh** or open the page in a private window so the old icon is not served from cache.
+- **Request `/favicon.ico` directly** to prove the file exists at the root.
+- **Check a phone.** Add the site to an iOS home screen to confirm the 180 px apple-touch-icon, and install it as a PWA on Android to confirm the 192 and 512 px PNGs and manifest.
 
 ## Common mistakes
 

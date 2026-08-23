@@ -2,7 +2,7 @@
 title: "Readability Scores Explained: Flesch Reading Ease, Grade Level, and How to Improve Them"
 description: "Flesch Reading Ease scores text 0–100 (higher is easier); Flesch-Kincaid, Gunning Fog, SMOG, Coleman-Liau and ARI give a US grade level. What the scores mean, the formulas behind them, what to aim for, and how shorter sentences and simpler words move the numbers."
 pubDate: 2026-07-11
-updatedDate: 2026-07-11
+updatedDate: 2026-08-23
 archetype: explainer
 tools: ["/text/readability-checker/", "/text/word-counter/"]
 keywords:
@@ -67,6 +67,20 @@ writing lands low. Rough bands: 90–100 is very easy (5th grade), 60–70 is st
 (grade 8–9), 30–50 is difficult (college), and below 30 is very difficult. For most audiences, **aim
 for 60 or above.**
 
+### A worked example
+
+Take these two short sentences: *"Readability formulas are simple. They count your sentences, words,
+and syllables, then apply fixed math."* That is **15 words in 2 sentences** (7.5 words per sentence)
+and **27 syllables** (1.8 syllables per word). Plug those into the formula:
+
+> 206.835 − 1.015 × 7.5 − 84.6 × 1.8 = 206.835 − 7.61 − 152.28 ≈ **47**
+
+A 47 lands in the "difficult" band — dragged down by heavy words like *readability* and *syllables*,
+each carrying several syllables. Feed the same counts into Flesch-Kincaid — 0.39 × 7.5 + 11.8 × 1.8 −
+15.59 ≈ **grade 8.6** — and you see why looking at more than one number helps: on a short, word-dense
+sample the two Flesch measures can point at slightly different reading levels even though they share the
+same inputs.
+
 ## The five grade-level formulas
 
 The other indices report a **US school grade** instead of an ease score. They exist because each looks
@@ -81,6 +95,22 @@ at slightly different features:
 They can disagree by a grade or two on the same text, which is exactly why the
 [readability checker](/text/readability-checker/) shows all of them plus the average — a more robust
 read than any single number.
+
+### The six formulas side by side
+
+| Formula | Output | Key inputs | Often used for |
+| --- | --- | --- | --- |
+| Flesch Reading Ease | 0–100 (higher = easier) | words/sentence, syllables/word | General plain-language checks |
+| Flesch-Kincaid Grade | US grade level | words/sentence, syllables/word | US government and military docs |
+| Gunning Fog | Years of education | words/sentence, % of 3+ syllable words | Business and professional writing |
+| SMOG | US grade level | count of polysyllabic words | Healthcare and patient materials |
+| Coleman-Liau | US grade level | letters/word, sentences/word | Automated scoring (no syllable count) |
+| ARI | US grade level | characters/word, words/sentence | Real-time and computer scoring |
+
+Coleman-Liau and ARI deliberately avoid counting syllables — they use letters or characters instead,
+which a computer can tally without a pronunciation dictionary. That makes them robust on unusual words
+(brand names, code, jargon) where syllable estimation is shakiest, but slightly less sensitive to the
+"heavy word" effect the Flesch formulas capture.
 
 ## What actually drives the numbers
 
@@ -105,6 +135,31 @@ That's good news, because it means you can improve *all* the scores with the sam
 
 One caution: readability scores measure *structural* difficulty, not meaning, tone or flow. A text can
 score "easy" and still be badly written — treat the number as a signal, not a verdict.
+
+### What to aim for by content type
+
+There is no universal "right" score — the target depends on who is reading. These are widely-recommended
+starting points, not hard rules:
+
+| Content type | Flesch Reading Ease | Rough grade level |
+| --- | --- | --- |
+| Children's material | 80–100 | Grade 6 or below |
+| General web and marketing copy | 60–70 | Grade 8–9 |
+| News and consumer journalism | 50–65 | Grade 8–11 |
+| Technical documentation | 30–50 | College |
+| Academic, legal, and scientific | Below 30 | Graduate |
+
+The pattern to notice: mainstream, wide-audience writing clusters around **grade 8–9**, which is why
+"aim for 60+ Reading Ease" is such a common piece of advice. Specialist writing scores lower not because
+it is worse, but because it uses longer terms its readers already know.
+
+### A quick before-and-after
+
+Watch one sentence move the numbers. *"The utilisation of overly elaborate terminology frequently
+diminishes comprehension"* is 8 words but syllable-dense, and reads at a college-plus level. Rewrite it
+as *"Big words often make writing harder to understand"* — 8 words, far fewer syllables — and Reading
+Ease climbs sharply while every grade-level index drops. Same idea, same length, easier to read. That is
+the whole game: swap heavy words for light ones and split long sentences.
 
 ## Why a formula beats asking an AI
 

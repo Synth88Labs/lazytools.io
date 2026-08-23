@@ -2,7 +2,7 @@
 title: "How Many Miles Is a 5K, 10K, Half and Full Marathon? (+ Pace Charts)"
 description: "A 5K is 3.11 miles, a 10K is 6.21, a half marathon 13.11 and a marathon 26.22 miles (42.195 km). Get finish-time pace charts, treadmill speed conversions and the 1908 story behind 42.195."
 pubDate: 2026-07-04
-updatedDate: 2026-07-04
+updatedDate: 2026-08-23
 archetype: explainer
 tools: ["/units/km-to-miles/", "/units/miles-to-km/", "/units/kmh-to-mph/"]
 keywords:
@@ -98,6 +98,34 @@ US runners think in minutes per mile; most of the world in minutes per kilometer
 Reference points: the marathon world records sit near **2:00–2:10** (a scarcely believable ~2:52/km);
 a 4-hour marathon — the most common amateur goal — is 5:41/km (9:09/mile); most beginner 5K plans
 target the 30–40 minute band.
+
+### Worked example: turn a treadmill pace into a race prediction
+
+Say the gym treadmill is set to **10 km/h** and it feels sustainable. Convert step by step:
+
+1. **Speed to pace:** 60 ÷ 10 = **6:00 min/km**. In imperial, 10 × 0.621 = **6.2 mph**, and 6:00 × 1.609 = **9:39 min/mile**.
+2. **Pace to 5K:** 6:00 × 5 = **30:00**. That is squarely in the beginner band above.
+3. **Pace to 10K (naïve):** 6:00 × 10 = **1:00:00** — but real races slow slightly over distance, so treat this as a floor, not a promise.
+
+The naïve "pace × distance" math is exact for a *steady* effort, which is what a treadmill gives you.
+Outdoors, fatigue, hills and heat mean your longer-race pace usually drifts a few percent slower than
+your short-race pace — one reason race-predictor formulas exist rather than simple multiplication.
+
+## Typical finish times by experience level
+
+Finish times vary enormously with training, age and terrain, so treat the bands below as rough
+orientation rather than targets. They line up with the pace rows in the table above.
+
+| Level | 5K | 10K | Half marathon | Marathon |
+|---|---|---|---|---|
+| New runner (run-walk) | 35–45 min | 70–90 min | 2:30–3:00 | 5:30–6:30 |
+| Regular recreational | 25–32 min | 52–65 min | 1:55–2:20 | 4:00–4:45 |
+| Experienced club runner | 19–23 min | 40–48 min | 1:30–1:45 | 3:10–3:45 |
+| Competitive amateur | under 18 min | under 38 min | under 1:25 | under 3:00 |
+
+A widely used sanity check: a well-paced 10K takes a bit more than double a fresh 5K time — not exactly
+double, because you can't hold 5K intensity for twice the distance. The same logic scales up: a marathon
+is far more than "two half marathons" in effort, even though it is exactly two in distance.
 
 ## Treadmill settings: km/h, mph and pace
 

@@ -2,7 +2,7 @@
 title: "How to Predict Restriction Digest Fragment Sizes"
 description: "A restriction digest cuts DNA into fragments — and you can predict their sizes from the sequence before you run the gel. Here's how cut positions become fragment sizes, why linear and circular DNA differ, and what the prediction can't tell you."
 pubDate: 2026-07-12
-updatedDate: 2026-07-12
+updatedDate: 2026-08-23
 archetype: explainer
 tools: ["/biology/restriction-enzyme-digest/", "/biology/reverse-complement/", "/biology/protein-isoelectric-point/"]
 keywords:
@@ -57,6 +57,18 @@ A restriction enzyme binds a specific short **recognition sequence** and cuts th
 
 Some enzymes have recognition sites with ambiguity: HinfI cuts `GANTC`, where `N` is any base. A good calculator expands those IUPAC codes so `GAATC`, `GACTC`, `GAGTC` and `GATTC` all count as sites.
 
+### How often does an enzyme cut?
+
+Before you even scan the sequence, the *length* of the recognition site tells you roughly how many cuts to expect. If the four bases occurred at random and in equal proportions, a specific site of length *n* would appear on average once every 4ⁿ bases. That gives a useful rule of thumb:
+
+| Recognition length | Example enzyme | Average spacing | Cuts in a ~5 kb plasmid |
+| --- | --- | --- | --- |
+| 4 bp | HinfI (`GANTC`) | ~256 bp | ~20 |
+| 6 bp | EcoRI (`GAATTC`) | ~4,096 bp | ~1 |
+| 8 bp | NotI (`GCGGCCGC`) | ~65,536 bp | usually 0 |
+
+That is why 6-bp cutters are the workhorses of routine cloning — they cut a typical plasmid a small, manageable number of times — while 8-bp "rare cutters" like NotI are prized for slicing large genomes into a few big pieces. Real sequences are never perfectly random (GC-content and codon bias skew the odds), so treat these as expectations, not promises: always scan the actual sequence.
+
 ## Step 2: the gaps between cuts are the fragments
 
 Once you have the cut positions sorted along the sequence, the fragments are simply the **distances between consecutive cuts**. Take a 54 bp fragment cut at positions 1, 7, 13 and 43:
@@ -78,9 +90,31 @@ This is the part people trip over. The **same cut positions** give a different n
 
 So a plasmid that shows one band after a digest has a single site for that enzyme — a handy way to linearise a vector. Toggle "circular" in the tool when your DNA is a plasmid.
 
+### A worked circular example
+
+Say a 5,000 bp plasmid has EcoRI sites at positions 500 and 3,000. Two cuts on a circle give **two** fragments: from 500 to 3,000 is 2,500 bp, and the piece that wraps around from 3,000 back to 500 (past the origin) is the remaining 2,500 bp. If you had (incorrectly) treated it as linear, you would have predicted three bands — 500, 2,500 and 2,000 bp — and the gel would not match. The topology toggle is the single most common source of a "wrong" prediction.
+
 ## Sticky ends vs blunt ends
 
-Whether an enzyme leaves a **sticky** or **blunt** end depends on *where* within the site it cuts each strand. EcoRI cuts off-centre and leaves a four-base 5′ `AATT` overhang; any two EcoRI fragments have complementary overhangs and can be ligated together, which is what makes sticky-end cloning directional and efficient. SmaI cuts straight across the middle and leaves a blunt end — ligatable to any other blunt end, but with no overhang to enforce orientation.
+Whether an enzyme leaves a **sticky** or **blunt** end depends on *where* within the site it cuts each strand. EcoRI cuts off-centre and leaves a four-base 5′ `AATT` overhang; any two EcoRI fragments have complementary overhangs and can be ligated together, which is what makes sticky-end cloning directional and efficient. SmaI cuts straight across the middle and leaves a blunt end — ligatable to any other blunt end, but with no overhang to enforce orientation. Enzymes such as PstI and KpnI cut past the centre on the other strand and leave a 3′ overhang instead.
+
+Here are a few common enzymes and the ends they leave (`^` marks the top-strand cut):
+
+| Enzyme | Recognition | Cut | End type |
+| --- | --- | --- | --- |
+| EcoRI | `GAATTC` | `G^AATTC` | 5′ overhang (AATT) |
+| BamHI | `GGATCC` | `G^GATCC` | 5′ overhang (GATC) |
+| HindIII | `AAGCTT` | `A^AGCTT` | 5′ overhang (AGCT) |
+| PstI | `CTGCAG` | `CTGCA^G` | 3′ overhang (TGCA) |
+| KpnI | `GGTACC` | `GGTAC^C` | 3′ overhang (GTAC) |
+| SmaI | `CCCGGG` | `CCC^GGG` | blunt |
+| EcoRV | `GATATC` | `GAT^ATC` | blunt |
+
+Overhang compatibility matters for cloning but **not** for predicting fragment sizes — a 5′ overhang and a blunt cut at the same position produce the same band on a gel. The overhang only becomes relevant when you ligate.
+
+## Double digests: pool the cut positions
+
+Cutting with two enzymes at once just means combining their site lists. Suppose a 3,000 bp linear fragment has one EcoRI site at position 1,000 and one BamHI site at position 2,200. Pool the cuts — 1,000 and 2,200 — and the linear molecule (two cuts, so three fragments) yields **1,000 bp**, **1,200 bp** and **800 bp**, summing back to 3,000. Double digests are the backbone of restriction mapping because each added enzyme multiplies the information in the banding pattern. The catch is entirely in the wet lab: both enzymes must be active in one shared buffer, or you run them sequentially with a clean-up step in between.
 
 ## What the prediction can't tell you
 

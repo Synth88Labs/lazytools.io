@@ -2,7 +2,7 @@
 title: "Significant Figures: The Rules, the Ambiguous Cases, and How to Round Correctly"
 description: "How many significant figures does 0.004560 have? Why is 1200 ambiguous? The four sig-fig rules explained digit by digit, how to round to N significant figures (including the 9.99 carry case), and why the rules exist at all."
 pubDate: 2026-07-10
-updatedDate: 2026-07-10
+updatedDate: 2026-08-23
 archetype: explainer
 tools: ["/math/significant-figures/", "/math/scientific-notation/", "/math/decimal-to-fraction/"]
 keywords:
@@ -85,6 +85,21 @@ is four. If you ever need to communicate that a trailing zero *is* meaningful, w
 [scientific notation](/math/scientific-notation/) — that's what the format is for. (The
 sig-fig calculator flags bare-integer trailing zeros as ambiguous rather than pretending to know.)
 
+## Exact numbers have unlimited significant figures
+
+One category sits outside the four rules entirely: **exact numbers**. These are quantities that
+carry no measurement uncertainty at all, so they never limit the precision of a result.
+
+- **Counted objects.** If you count 24 students in a room, that 24 is exact — there is no "24.0 give
+  or take." It behaves as if it had infinitely many significant figures.
+- **Defined conversion factors.** The relationships `1 m = 100 cm`, `1 in = 2.54 cm`, and
+  `1 min = 60 s` are definitions, not measurements. The 100, the 2.54, and the 60 are exact.
+- **Integers in formulas.** The `2` in `2πr` or the `4` in the area of a triangle formula is a pure
+  mathematical constant, not a measured value.
+
+The practical upshot: when you divide a measured mass by a counted number of items, the count does
+not drag your answer down to fewer significant figures. Only the *measured* inputs set the limit.
+
 ## Rounding to N significant figures
 
 Rounding to significant figures works like ordinary rounding, but you count from the first
@@ -107,6 +122,13 @@ second `9` up, which **carries** — `9.9 → 10`, not `9.9`. Exact digit-string
 [tool](/math/significant-figures/) uses) handles the carry correctly where naive float rounding can
 drift.
 
+There is one subtlety when the digit you drop is *exactly* 5 with nothing after it. Most schools
+teach **round half up** (always round the 5 up), which is simple and predictable. Some scientific and
+computing contexts prefer **round half to even** (also called banker's rounding): round to make the
+kept digit even, so `2.5` and `3.5` both round to a nearest-even result. Round-half-to-even avoids a
+slight upward bias when you round many values, which is why it is the IEEE-754 default for floating
+point. For everyday work, round half up is fine — just pick one convention and apply it consistently.
+
 ## Why the rules exist
 
 Significant figures aren't arbitrary bookkeeping — they encode **measurement precision**. A ruler
@@ -120,6 +142,29 @@ Two quick operational rules follow:
 - **Multiplication/division:** the result keeps the *fewest significant figures* of any input.
 - **Addition/subtraction:** the result keeps the *fewest decimal places* of any input (a different
   rule — it's about decimal position, not sig-fig count).
+
+### A worked calculation
+
+Say you measure a density: mass `4.50 g` (three sig figs) divided by volume `1.2 mL` (two sig figs).
+The raw quotient is `3.75 g/mL`, but the multiplication/division rule caps the answer at the fewest
+input sig figs — two — so you report **`3.8 g/mL`**. Carrying the full `3.75` through any further
+steps and rounding only at the very end avoids compounding rounding error; you round the *final*
+reported value, not every intermediate one.
+
+Contrast that with addition. Add lengths `12.11 cm` (two decimal places) and `1.1 cm` (one decimal
+place). The sum is `13.21 cm`, but the addition rule keeps the fewest decimal places — one — so you
+report **`13.2 cm`**. Notice the two rules can give different answers on the same digits, which is
+exactly why they are stated separately.
+
+## Common mistakes at a glance
+
+| Mistake | Wrong | Right | Why |
+|---|---|---|---|
+| Counting leading zeros | `0.0056` has 4 s.f. | 2 s.f. | Leading zeros only place the decimal |
+| Dropping a significant trailing zero | `100.0` has 3 s.f. | 4 s.f. | The decimal point makes them count |
+| Assuming `1200` is exact | `1200` has 4 s.f. | ambiguous | A bare integer can't say |
+| Missing the rounding carry | `9.99` → `9.9` at 2 s.f. | `10` | The carry ripples left |
+| Mixing the two operation rules | using sig-fig count for a sum | use decimal places | Addition tracks position, not count |
 
 ## Quick summary
 

@@ -142,6 +142,39 @@ The table below summarises what survives the trip across the wire and what does 
 These blind spots are a property of the format, not a limitation of any particular tool —
 `protoc --decode_raw` has exactly the same ones.
 
+## Signed integers and the zigzag trick
+
+The one varint reading that trips people up is a signed value. Protobuf offers `sint32`/`sint64` types
+that store negatives compactly using **zigzag** encoding, which maps small-magnitude numbers — positive
+or negative — to small unsigned varints: `0 → 0`, `-1 → 1`, `1 → 2`, `-2 → 3`, `2 → 4`, and so on. The
+round-trip formula for decoding is `value = (n >> 1) ^ -(n & 1)`, where `n` is the raw varint.
+
+So if a schema-less decode shows a field as the plain varint `3` and the number looks nonsensical as a
+count or ID, try the zigzag reading: `(3 >> 1) ^ -(3 & 1)` = `1 ^ -1` = **-2**. Without the `.proto` you
+can't know whether the author declared that field `int32` (in which case it really is 3) or `sint32` (in
+which case it's -2) — the wire bytes are identical either way. A good decoder simply shows you both
+candidate interpretations and lets you pick using context. Note that a plain negative `int32` is *not*
+zigzagged: it is stored as a full-width 10-byte varint, so a suspiciously long varint is itself a hint
+that you're looking at a negative signed value.
+
+## protoc --decode_raw vs a browser decoder
+
+Both approaches read the same self-describing bytes and produce the same field-number/wire-type/value
+breakdown — the difference is entirely in ergonomics and where the data goes:
+
+| | `protoc --decode_raw` | Browser-based decoder |
+|---|---|---|
+| Install required | Yes — the protobuf compiler toolchain | None — runs in the page |
+| Input format | Raw bytes on stdin | Paste hex or base64 |
+| Where bytes go | Stay local (CLI) | Stay local (client-side) |
+| Nested message expansion | Yes | Yes |
+| Signed/zigzag alternatives | Shows one reading | Often shows both readings |
+| Best for | Scripting, CI, piping captures | One-off inspection, no setup |
+
+If you already have `protoc` installed, piping a captured body into `protoc --decode_raw` is quick. If you
+don't — or you're on a locked-down machine, or you just want to paste a base64 string and read it — a
+client-side web decoder gets you the same answer with nothing to install and nothing uploaded.
+
 ## A practical workflow
 
 When a payload lands in front of you with no schema, a repeatable order of operations helps:

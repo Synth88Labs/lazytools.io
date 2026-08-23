@@ -2,7 +2,7 @@
 title: "How to Merge, Split and Rotate PDFs Without Uploading Them Anywhere"
 description: "PDF tools are where people upload their most sensitive documents — contracts, IDs, tax forms. How browser-based merging and splitting works, why it's lossless, and the workflows for the four most common PDF fixes."
 pubDate: 2026-07-05
-updatedDate: 2026-07-05
+updatedDate: 2026-08-23
 archetype: how-to
 tools: ["/pdf/merge-pdf/", "/pdf/split-pdf/", "/pdf/jpg-to-pdf/", "/pdf/rotate-pdf/"]
 keywords:
@@ -57,10 +57,24 @@ verification, bank statements for applications, medical results, employment cont
 online PDF merger — just upload your files" means *those* files, on someone else's server,
 governed by a privacy policy nobody read, retained for however long their disk cleanup runs.
 
-There's no technical reason for it. The PDF format is a documented standard (ISO 32000), and
-open-source libraries like [pdf-lib](https://pdf-lib.js.org) parse and rebuild it entirely in
-JavaScript — meaning entirely in *your browser*. The upload exists for the site's benefit, not
-the operation's.
+There's no technical reason for it. The PDF format is a documented, published standard (ISO 32000,
+originally derived from Adobe's specification), and open-source libraries like
+[pdf-lib](https://pdf-lib.js.org) parse and rebuild it entirely in JavaScript — meaning entirely in
+*your browser*. The upload exists for the site's benefit, not the operation's.
+
+The difference isn't philosophical; it changes exactly what happens to your file:
+
+| | Upload-based tool | Browser-based tool |
+|---|---|---|
+| Where the file goes | Transmitted to a remote server | Stays in your browser's memory |
+| Who can read it in transit | Anyone the server trusts, plus the server itself | Nobody — it is never sent |
+| Retention | Depends on an unread policy | Deleted when you close the tab |
+| Works offline | No | Yes — the proof it never uploads |
+| Speed on a big file | Limited by your upload bandwidth | Limited only by your CPU |
+
+That last row is the honest test. If a tool genuinely processes locally, it keeps working with your
+Wi-Fi switched off — because there is nothing to send. If it stalls the moment you disconnect, the
+file was leaving your device.
 
 <figure>
 <img src="/blog/infographic-pdf-local.svg" alt="Infographic comparing upload-based PDF tools — where a contract travels to an unknown server, is processed and retained under an unread privacy policy — with browser-based processing where the file is parsed, pages are copied structurally and the result downloads, all inside the user's device; plus the four operations: merge, split, rotate, images to PDF" width="1200" height="620" loading="lazy" />
@@ -107,6 +121,41 @@ adds an attribute. Nothing is rasterized, so:
 
 The one operation that *is* generative: images-to-PDF creates new page objects around your
 images — but embeds the image bytes themselves unmodified.
+
+## A worked example: assembling a rental application
+
+Say a letting agent asks for a single PDF containing, in order: a filled application form, your
+photo ID, and last month's bank statement — and the portal caps uploads at 10 MB. Here is the whole
+job, start to finish, without a byte leaving your laptop:
+
+1. **Photograph the ID.** Two phone photos (front and back) at roughly 5 MB each.
+2. **Turn the photos into a PDF.** Open [images-to-PDF](/pdf/jpg-to-pdf/), add both JPGs in order,
+   download `id.pdf` — a two-page file that looks exactly like your photos.
+3. **Extract the statement page you actually need.** Your bank export is 12 pages; the agent wants
+   only the summary page. Open [split PDF](/pdf/split-pdf/), enter range `1`, and download a
+   one-page `statement.pdf`. The original 12-page file is untouched.
+4. **Merge in order.** Open [merge PDF](/pdf/merge-pdf/), add `application-form.pdf`, `id.pdf`, then
+   `statement.pdf`, confirm that list order, and download the combined file.
+5. **Check the size.** If the two ID photos pushed the total over 10 MB, run them through the
+   [image compressor](/image/image-compressor/) first and rebuild — a phone photo of a document
+   usually survives heavy compression with no readability loss.
+
+Every step above runs in your browser. The finished application PDF is the first time the documents
+travel anywhere — and then only to the recipient you chose, not to a PDF-tool middleman.
+
+## Choosing the right operation
+
+The four tools overlap less than people assume. A quick map of intent to tool:
+
+| You want to… | Use | Lossless? |
+|---|---|---|
+| Combine files into one document | [merge](/pdf/merge-pdf/) | Yes |
+| Pull out or drop specific pages | [split](/pdf/split-pdf/) | Yes |
+| Fix a sideways or upside-down scan | [rotate](/pdf/rotate-pdf/) | Yes |
+| Make a PDF from photos or images | [images-to-PDF](/pdf/jpg-to-pdf/) | Images embedded as-is |
+| Shrink an oversized file | [image compressor](/image/image-compressor/) then rebuild | No — lossy by design |
+
+Reach for compression only when a size cap forces it; the other four preserve the document exactly.
 
 ## Common PDF mistakes
 

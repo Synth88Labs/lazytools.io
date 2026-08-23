@@ -2,7 +2,7 @@
 title: "Shoe Size Conversion: US, UK, EU and cm — and Why Brands Never Quite Agree"
 description: "A US men's 9 is UK 8, EU 42.5 and 26.5 cm — usually. Get the men's and women's charts, the barleycorn/Paris-point history behind the chaos, and the foot-measuring method that beats every chart."
 pubDate: 2026-07-04
-updatedDate: 2026-07-04
+updatedDate: 2026-08-23
 archetype: explainer
 tools: ["/size/shoe-size-converter/"]
 keywords:
@@ -94,6 +94,32 @@ one that measures the actual foot.
 
 Half sizes and the interactive lookup live on the [converter page](/size/shoe-size-converter/).
 
+Read the tables by foot length first, then by size number. The centimeter column is the only one that
+means the same thing everywhere; the US, UK and EU columns are three different labels for that same
+physical length. If you already know your foot length, you can skip the size numbers entirely and buy
+against the cm figure — which is exactly what the ISO Mondopoint approach (and Japanese sizing) does.
+
+## Converting women's to men's (and back)
+
+Unisex sneakers, and a lot of "men's" trail and running models, are only cut in men's sizing — so
+women shopping those lines need the cross-walk. In US athletic footwear the working rule is **women's
+size ≈ men's size + 1.5**. Subtract 1.5 to go the other way. UK sizing is largely unisex, so a UK
+number often transfers directly; EU is one scale but brands may still label "men's" and "women's"
+ranges that overlap.
+
+| US women's | US men's | UK | EU | Foot (cm) |
+|---|---|---|---|---|
+| 7.5 | 6 | 5 | 38.5 | 24.0 |
+| 8.5 | 7 | 6 | 40 | 24.8 |
+| 9.5 | 8 | 7 | 41 | 25.7 |
+| 10.5 | 9 | 8 | 42.5 | 26.5 |
+| 11.5 | 10 | 9 | 44 | 27.3 |
+
+Worked example: a woman who normally wears a **US women's 9.5** and wants a men's-only running shoe
+drops to a **US men's 8** (9.5 − 1.5). If the brand only lists UK, that's a **UK 7**; if only EU,
+about a **41**. Because the +1.5 rule is a convention rather than a law, confirm against foot length
+(~25.7 cm here) whenever the brand publishes a cm chart.
+
 ## Measure your foot: the two-minute method that beats every chart
 
 1. Late in the day (feet swell), stand on a sheet of paper with your **heel against a wall**, wearing
@@ -104,6 +130,25 @@ Half sizes and the interactive lookup live on the [converter page](/size/shoe-si
 4. Enter the cm in the converter. Buying running shoes? Add ~0.5 cm of room.
 
 Standing matters: feet lengthen under body weight by several millimeters versus sitting.
+
+## The conversion math, worked out
+
+You can reproduce the charts from two facts. UK and US sizes advance by one barleycorn (1/3 inch ≈
+0.847 cm) of length per full size; EU sizes advance by one Paris point (2/3 cm ≈ 0.667 cm) per full
+size. Because the EU step is the *smaller* of the two, EU numbers climb faster than US numbers for the
+same growth in foot length — one US size is worth roughly 1.27 EU sizes. That is why a US-to-EU line
+jumps by a full EU size in one place and a half size in the next, and why no single multiplier converts
+cleanly.
+
+- **US men's 9 → EU:** anchor at US 9 = EU 42.5, then each US size up adds a little over one EU size.
+  US 10 lands on EU 44, US 11 on EU 45 — the gaps alternate because 0.85 cm doesn't divide evenly into
+  EU's step.
+- **US men's 9 → cm:** 26.5 cm on the standard chart. Add ~0.85 cm per size: US 10 ≈ 27.3 cm, US 8 ≈
+  25.7 cm. These match the men's table above, which is the point — the cm column is the backbone the
+  other three columns hang from.
+- **Half sizes:** a US half size is about 0.42 cm of length — barely more than an eighth of an inch.
+  That is small enough that a brand's last shape can easily swamp it, which is why "I'm between sizes"
+  is so common.
 
 ## Why brands never quite agree
 

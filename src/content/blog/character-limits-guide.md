@@ -2,7 +2,7 @@
 title: "Character Limits Cheat Sheet: X/Twitter, SMS, Google, Instagram and More"
 description: "X allows 280 characters (URLs count as 23), one SMS is 160, Google shows ~60 of a title and ~158 of a meta description. The full limits table, the emoji trap, and how to count reliably."
 pubDate: 2026-07-05
-updatedDate: 2026-07-05
+updatedDate: 2026-08-23
 archetype: explainer
 tools: ["/text/character-counter/", "/text/word-counter/"]
 keywords:
@@ -86,6 +86,31 @@ marketing blast can double the invoice.
 whether the link is 15 characters or 200. Budget 280 − 23 = 257 for your words per link, and remember
 most emoji cost 2.
 
+## Why a "character" isn't one thing
+
+The word *character* hides three different units, and platforms disagree on which one they count.
+That disagreement is the single biggest reason your own tally and the platform's tally drift apart.
+
+| Unit | What it counts | Where it shows up |
+|---|---|---|
+| Byte | Raw storage (1 byte in GSM-7, up to 4 in UTF-8) | SMS segments, some database fields |
+| Code point | One Unicode value | Most "character count" APIs, older counters |
+| Grapheme cluster | One *visible* symbol a reader perceives | X, modern JavaScript counters, human intuition |
+
+A single emoji makes the gap obvious. Take the family emoji 👨‍👩‍👧‍👦: a reader sees **one** symbol
+(one grapheme cluster), but it is built from four people joined by invisible zero-width joiners —
+**seven** code points, and **25 bytes** in UTF-8. Paste it into a naive counter and you might see 7 or
+11; X shows it as a small handful; your reader sees one. Skin-tone modifiers and flag emoji behave the
+same way. This is why the [character counter](/text/character-counter/) counts by grapheme cluster —
+the unit that matches what people actually read on screen — while still surfacing the raw code-point
+number for fields that police it.
+
+Accented letters carry a subtler version of the same trap. The letter "é" can be a single pre-composed
+code point (U+00E9) or an "e" followed by a separate combining accent (two code points that render as
+one glyph). Text copied from a word processor often uses the two-code-point form, so a name like
+"José" that looks like four letters can register as five. Normalizing the text collapses that
+difference; a good counter does it for you.
+
 ## How to draft against a limit (the workflow)
 
 1. Write freely first — editing down beats padding out.
@@ -98,6 +123,28 @@ most emoji cost 2.
 
 For word-based limits (essays, abstracts, ad copy word caps), the
 [word counter](/text/word-counter/) tracks words, sentences and reading time the same way.
+
+## Two worked examples
+
+**Budgeting an X post with a link and an emoji.** Say you want to post: a headline, a link to your
+article, and a 🎉 to close. X gives you 280. The link — however long the real URL is — is billed at a
+flat 23 through the t.co wrapper. The 🎉 costs 2. That leaves 280 − 23 − 2 = **255 characters** for
+your words plus spacing around them. Write to 255, not 280, and the composer will never bounce you.
+
+**Costing an SMS campaign.** You draft a 158-character promo — comfortably "one SMS." Then you add a
+single 🎉 for warmth. That one emoji forces the whole message from GSM-7 into UCS-2, where a single
+segment holds only 70 characters. Your 159-character message now spans **three** UCS-2 segments (67
+characters each after headers), so a bulk-SMS provider bills it as three messages instead of one — a
+3× cost jump from one emoji. Swapping the emoji for the word "Thanks!" keeps it in GSM-7 and on a
+single segment.
+
+| Draft | Encoding | Segments | Billed as |
+|---|---|---|---|
+| 158 plain characters | GSM-7 | 1 (up to 160) | 1 message |
+| 158 characters + 1 emoji | UCS-2 | 3 (67 each) | 3 messages |
+
+The lesson in both cases is the same: the *visible* length is not the *billed* or *enforced* length.
+Count against the platform's real arithmetic, not the character tally your eye gives you.
 
 ## Writing short: what actually helps
 

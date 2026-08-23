@@ -2,7 +2,7 @@
 title: "The Runner's Math: Pace, Race Times and Heart-Rate Zones Explained"
 description: "Three formulas cover almost all of running math: pace = time ÷ distance, Riegel's race predictor (t2 = t1 × (d2/d1)^1.06), and heart-rate zones from your max HR. What each means, worked examples, and how to use them to train and race smarter."
 pubDate: 2026-07-11
-updatedDate: 2026-07-11
+updatedDate: 2026-08-23
 archetype: explainer
 tools: ["/fitness/running-pace-calculator/", "/fitness/race-time-predictor/", "/fitness/heart-rate-zone-calculator/", "/fitness/vo2-max-calculator/"]
 keywords:
@@ -57,7 +57,18 @@ draft: false
 
 `50:00 ÷ 10 km = 5:00 per km` (about 8:03 per mile, or 12 km/h).
 
-The real power is running it *backwards* to find a **goal pace**. Want a sub-4-hour marathon? Divide 4:00:00 by 42.195 km and you get **5:41 per km** (9:09 per mile) — the pace you'd need to hold for all 42 km. Now you have a concrete number to practise in training. The [running pace calculator](/fitness/running-pace-calculator/) does this in both directions, and the [pace converter](/fitness/pace-converter/) switches between min/km, min/mile and treadmill speeds.
+The real power is running it *backwards* to find a **goal pace**. Want a sub-4-hour marathon? Divide 4:00:00 by 42.195 km and you get **5:41 per km** (9:09 per mile) — the pace you'd need to hold for all 42.195 km. Now you have a concrete number to practise in training. The [running pace calculator](/fitness/running-pace-calculator/) does this in both directions, and the [pace converter](/fitness/pace-converter/) switches between min/km, min/mile and treadmill speeds.
+
+The one thing that trips people up is unit conversion, because a treadmill shows km/h, a race sign shows miles, and your watch might show either. One mile is **1.609 km**, so a pace in min/km multiplied by 1.609 gives min/mile. Here is a quick reference you can eyeball mid-run:
+
+| Pace (min/km) | Pace (min/mile) | Speed (km/h) | Roughly |
+|---|---|---|---|
+| 4:00 | 6:26 | 15.0 | Fast 10K racing |
+| 5:00 | 8:03 | 12.0 | Solid tempo effort |
+| 6:00 | 9:39 | 10.0 | Steady long-run pace |
+| 7:00 | 11:16 | 8.6 | Easy / recovery jog |
+
+A useful sanity check: **speed in km/h = 60 ÷ pace-in-min/km**. Running 5:00/km means 60 ÷ 5 = 12 km/h — exactly what the treadmill should read.
 
 ## 2. Race prediction: the Riegel formula
 
@@ -77,6 +88,8 @@ Take a **25:00 5K**. Riegel predicts:
 
 So a 25-minute 5K runner has roughly **four-hour-marathon** potential. The big caveat: predictions assume you've done the **training for the target distance**. A marathon predicted from a 5K is only realistic if you've built the endurance with long runs — otherwise the real time is slower. The [race time predictor](/fitness/race-time-predictor/) builds this whole table from one result.
 
+**Why the exponent is 1.06 and where it breaks down.** Riegel derived the value 1.06 by fitting the formula to a broad set of world-class and everyday race records; it is an average of how much humans slow as distance grows. Because it is an average, the further your prediction distance is from your input distance, the less it holds. Predicting a 10K from a 5K (a 2× jump) is very reliable; predicting a marathon from a 5K (an 8× jump) is far more speculative, since the marathon adds fuelling, glycogen depletion and heat management that a 5K never tests. The rule of thumb: **predict from the closest race you have.** A recent half-marathon predicts a marathon far better than a 5K does. If your predictions consistently overshoot at long distances, your personal exponent is above 1.06 — a signal that endurance, not speed, is your limiter.
+
 ## 3. Heart-rate zones: training at the right intensity
 
 Running the right *effort* matters as much as the right pace, and heart rate is how you measure effort. First estimate your **maximum heart rate**. The old rule is 220 − age, but the **Tanaka formula is more accurate**:
@@ -95,9 +108,38 @@ Then your training zones are percentage bands of that maximum:
 
 The counterintuitive part for many runners: **most of your running should be easy (Zone 1–2)**, with only a small share of hard Zone 4–5 work. Piling on moderate-hard efforts every day is the classic mistake. If you enter your **resting heart rate**, the [heart-rate zone calculator](/fitness/heart-rate-zone-calculator/) switches to the **Karvonen method** — target = (max − rest) × intensity + rest — which personalises the bands to your own heart-rate reserve.
 
+Worked example: a 30-year-old with a resting HR of 55 bpm. Estimated max is 208 − 0.7 × 30 = **187 bpm**, so their reserve is 187 − 55 = 132 bpm. A "70% Karvonen" target is 0.70 × 132 + 55 = **147 bpm** — notably higher than a plain 70%-of-max figure of 131 bpm, because Karvonen anchors intensity to the range you actually train across rather than to zero. The two methods disagree most for very fit people with low resting rates, which is exactly why entering a resting HR is worth the extra field.
+
+Which max-HR formula should you trust? They diverge more than most runners expect:
+
+| Formula | Equation | Best for | Age-40 estimate |
+|---|---|---|---|
+| Classic | 220 − age | Rough, historical default | 180 bpm |
+| Tanaka | 208 − 0.7 × age | General adult accuracy | 180 bpm |
+| Gulati | 206 − 0.88 × age | Derived on women | 171 bpm |
+
+At age 40 the classic and Tanaka formulas happen to agree, but Tanaka tracks better at the young and old ends of the range. All of them are population averages: an individual's true maximum can sit **roughly 10–12 bpm** either side of the estimate, so a value measured in a hard effort or a lab test always beats a formula when you have one.
+
+## 4. VO2 max: your aerobic ceiling
+
+Where pace measures output and heart rate measures effort, **VO2 max** measures capacity — the maximum volume of oxygen your body can use per minute, in millilitres per kilogram of bodyweight per minute (ml/kg/min). It sets the ceiling all your other numbers push against. You don't need a lab: the **Cooper 12-minute run test** estimates it from how far you can run flat-out in 12 minutes.
+
+> **VO2 max ≈ (distance in metres − 504.9) ÷ 44.73**
+
+Run 2,400 m in 12 minutes and the estimate is (2400 − 504.9) ÷ 44.73 ≈ **42 ml/kg/min** — a good recreational figure. Because the number is population-calibrated, treat it as a fitness *tracker* rather than an exact physiological reading: watching it climb over a training block tells you the training is working. The [VO2 max calculator](/fitness/vo2-max-calculator/) runs this test and cross-checks it against typical ranges for your age and sex.
+
 ## Putting it together
 
-These three tools work as a system: use the **race predictor** to set a realistic goal time, the **pace calculator** to turn that into a training pace, and the **heart-rate zones** to run your easy days genuinely easy so you're fresh for the hard ones. Add the [VO2 max calculator](/fitness/vo2-max-calculator/) to track your aerobic fitness over time, and you can see progress in numbers — all computed privately in your browser.
+These formulas work as a system, and it's easiest to see when you chain them. Say you just ran a **22:00 5K** and want to target a half marathon. Feed it to the **race predictor** and Riegel returns roughly **1:41** for the half. Hand that goal to the **pace calculator**: 1:41:00 ÷ 21.0975 km ≈ **4:47 per km** (7:42/mile) — the race pace to rehearse in tempo sessions. Then set your **heart-rate zones** so those tempo efforts land in Zone 3–4 while your recovery and long runs stay in Zone 1–2, keeping legs fresh for the days that matter. Finally, retest your **VO2 max** every few weeks to confirm the aerobic ceiling is rising rather than flat.
+
+Use the four tools together and you have a full loop — a goal, a pace, an intensity plan and a progress metric:
+
+- **[Race time predictor](/fitness/race-time-predictor/)** → a realistic goal time from a recent result.
+- **[Running pace calculator](/fitness/running-pace-calculator/)** → that goal converted into a per-km/per-mile pace.
+- **[Heart-rate zone calculator](/fitness/heart-rate-zone-calculator/)** → the effort bands that keep easy days easy.
+- **[VO2 max calculator](/fitness/vo2-max-calculator/)** → a number to watch trend upward over a training block.
+
+Every calculation runs privately in your browser — no account, no upload, no data leaving your device — so you can plan an entire season from a single stopwatch reading.
 
 ---
 
