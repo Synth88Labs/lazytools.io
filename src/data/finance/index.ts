@@ -7,7 +7,7 @@ export interface FinanceToolDef {
   widget: 'compound' | 'debt' | 'savings' | 'loan' | 'creditcard' | 'cagr' | 'rule72' | 'roi' | 'breakeven' | 'aprapy'
     | 'liquidityratios' | 'leverageratios' | 'coverageratios' | 'profitabilityratios' | 'efficiencyratios' | 'valuationratios'
     | 'affordability' | 'retirement' | 'budget'
-    | 'dti' | 'inflation' | 'npvirr';
+    | 'dti' | 'inflation' | 'npvirr' | 'refinance';
   description: string;
   lead: string;
   how: string;
@@ -17,6 +17,24 @@ export interface FinanceToolDef {
 }
 
 export const FIN_TOOLS: FinanceToolDef[] = [
+  {
+    slug: 'mortgage-refinance-calculator',
+    name: 'Mortgage Refinance Calculator',
+    icon: '🏠',
+    widget: 'refinance',
+    description: 'See if refinancing your mortgage is worth it: compare your current payment to a new rate, find the break-even month on closing costs, and the lifetime cost difference. Free, in-browser.',
+    lead: 'Enter your balance, current rate and years left, then the new rate, term and closing costs — you get the new payment, the monthly saving, and how many months it takes to recoup the closing costs.',
+    how: 'Both payments use the standard amortization formula, M = P·i / (1 − (1+i)⁻ⁿ), where P is the balance, i the monthly rate (APR ÷ 12) and n the number of months. The monthly saving is the current payment minus the new one; the break-even point is your closing costs divided by that monthly saving. The lifetime difference compares the total of all remaining current payments against the total of the new loan plus closing costs — important because a longer new term can lower the monthly payment while costing more overall.',
+    note: 'A lower monthly payment from a longer term is not the same as saving money — always check the lifetime difference, and remember refinancing resets the clock. This tool ignores taxes, PMI and points, and is educational information, not financial advice.',
+    faqs: [
+      { q: 'When is it worth refinancing a mortgage?', a: 'A common rule of thumb is that refinancing makes sense if you can lower your rate meaningfully and stay in the home past the break-even point — the month when accumulated monthly savings equal the closing costs. This tool shows that break-even month directly.' },
+      { q: 'How is the refinance break-even calculated?', a: 'Break-even months = closing costs ÷ monthly savings. If your closing costs are $4,500 and you save $250/month, you break even in 18 months; refinancing pays off if you keep the loan longer than that.' },
+      { q: 'Does a lower monthly payment always save money?', a: 'No. Extending the term (e.g. from 27 years left to a new 30-year loan) lowers the monthly payment but can increase total interest paid. The "lifetime difference" figure captures this so you see the true cost.' },
+      { q: 'What costs does refinancing involve?', a: 'Typically application, appraisal, title, origination and other lender fees — often 2–5% of the loan. Enter your total as the closing costs; the calculator uses it for the break-even and lifetime comparison.' },
+      { q: 'Is my financial data sent anywhere?', a: 'No. Every number stays in your browser — nothing is uploaded, logged or stored, and the page works offline.' },
+    ],
+    keywords: ['mortgage refinance calculator', 'refinance break even calculator', 'should i refinance', 'refinance savings calculator', 'refinance closing costs', 'mortgage refi calculator', 'break even refinance'],
+  },
   {
     slug: 'compound-interest-calculator',
     name: 'Compound Interest Calculator',

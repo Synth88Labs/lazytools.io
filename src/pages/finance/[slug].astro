@@ -6,6 +6,7 @@ import PrivacyStrip from '../../components/PrivacyStrip.astro';
 import FaqSection from '../../components/FaqSection.astro';
 import RatingWidget from '../../components/RatingWidget.tsx';
 import CompoundInterestTool from '../../components/finance/CompoundInterestTool.tsx';
+import RefinanceTool from '../../components/finance/RefinanceTool.tsx';
 import LiquidityRatiosTool from '../../components/finance/LiquidityRatiosTool.tsx';
 import LeverageRatiosTool from '../../components/finance/LeverageRatiosTool.tsx';
 import CoverageRatiosTool from '../../components/finance/CoverageRatiosTool.tsx';
@@ -74,6 +75,7 @@ const schema = [
 
     <div class="mt-6">
       {tool.widget === 'compound' && <CompoundInterestTool client:load />}
+      {tool.widget === 'refinance' && <RefinanceTool client:load />}
       {tool.widget === 'debt' && <DebtPayoffTool client:load />}
       {tool.widget === 'savings' && <SavingsGoalTool client:load />}
       {tool.widget === 'loan' && <LoanPayoffTool client:load />}
