@@ -2,9 +2,10 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "lazytools-preview",
+      "name": "lazytools-dev",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "preview"],
+      "runtimeArgs": ["run", "dev"],
+      "autoPort": true,
       "port": 4321
     }
   ]

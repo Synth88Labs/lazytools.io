@@ -7,6 +7,8 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   site: 'https://lazytools.io',
   trailingSlash: 'always',
+  // Bind dev/preview to the port the harness assigns (falls back to 4321 locally).
+  server: { port: process.env.PORT ? Number(process.env.PORT) : 4321, host: true },
   integrations: [
     preact(),
     sitemap({
