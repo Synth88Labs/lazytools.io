@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="1200" height="700" font-family="Segoe UI, Arial, sans-serif">
+  <rect width="1200" height="700" fill="#f8fafc"/>
+  <text x="600" y="58" text-anchor="middle" font-size="30" font-weight="700" fill="#0f172a">How your browser reads text aloud</text>
+
+  <!-- flow boxes -->
+  <g>
+    <rect x="70" y="150" width="230" height="120" rx="12" fill="#fff" stroke="#cbd5e1" stroke-width="2"/>
+    <text x="185" y="200" text-anchor="middle" font-size="20" font-weight="700" fill="#0f172a">Your text</text>
+    <text x="185" y="228" text-anchor="middle" font-size="14" fill="#64748b">pasted in the tool</text>
+  </g>
+  <line x1="300" y1="210" x2="360" y2="210" stroke="#1d87f1" stroke-width="3" marker-end="url(#a)"/>
+
+  <g>
+    <rect x="360" y="150" width="250" height="120" rx="12" fill="#eef6ff" stroke="#1d87f1" stroke-width="2"/>
+    <text x="485" y="196" text-anchor="middle" font-size="18" font-weight="700" fill="#1d87f1">Web Speech API</text>
+    <text x="485" y="222" text-anchor="middle" font-size="14" fill="#334155">speech synthesis,</text>
+    <text x="485" y="242" text-anchor="middle" font-size="14" fill="#334155">built into the browser</text>
+  </g>
+  <line x1="610" y1="210" x2="670" y2="210" stroke="#1d87f1" stroke-width="3" marker-end="url(#a)"/>
+
+  <g>
+    <rect x="670" y="150" width="250" height="120" rx="12" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+    <text x="795" y="196" text-anchor="middle" font-size="18" font-weight="700" fill="#15803d">Your OS voices</text>
+    <text x="795" y="222" text-anchor="middle" font-size="14" fill="#166534">audio made on-device</text>
+    <text x="795" y="242" text-anchor="middle" font-size="14" fill="#166534">nothing uploaded</text>
+  </g>
+  <line x1="920" y1="210" x2="980" y2="210" stroke="#16a34a" stroke-width="3" marker-end="url(#ag)"/>
+
+  <!-- speaker -->
+  <g transform="translate(1000,175)">
+    <path d="M10 25 L35 25 L60 5 L60 65 L35 45 L10 45 Z" fill="#15803d"/>
+    <path d="M74 20 Q88 35 74 50" stroke="#15803d" stroke-width="4" fill="none"/>
+    <path d="M84 8 Q108 35 84 62" stroke="#15803d" stroke-width="4" fill="none"/>
+    <text x="55" y="95" text-anchor="middle" font-size="14" fill="#166534">plays aloud</text>
+  </g>
+
+  <!-- privacy banner -->
+  <rect x="70" y="330" width="850" height="60" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="90" y="367" font-size="17" fill="#15803d">Local voices generate the audio on your machine — private, offline, no account.</text>
+
+  <!-- exception callout -->
+  <rect x="70" y="430" width="1060" height="120" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+  <text x="94" y="470" font-size="19" font-weight="700" fill="#b45309">One exception: Chrome's "Google" voices</text>
+  <text x="94" y="500" font-size="16" fill="#334155">These are network voices (localService = false) — choosing one sends your text to Google's servers to</text>
+  <text x="94" y="524" font-size="16" fill="#334155">make the audio. For full privacy, pick a voice marked local. Everything else stays on your device.</text>
+
+  <text x="600" y="620" text-anchor="middle" font-size="15" fill="#94a3b8">lazytools.io/text/text-to-speech</text>
+  <defs>
+    <marker id="a" markerWidth="10" markerHeight="10" refX="6" refY="5" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#1d87f1"/></marker>
+    <marker id="ag" markerWidth="10" markerHeight="10" refX="6" refY="5" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#16a34a"/></marker>
+  </defs>
+</svg>
