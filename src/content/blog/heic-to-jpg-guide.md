@@ -78,6 +78,32 @@ licensing into every web browser and operating system has been a legal and finan
 contrast, the formats that "just work" — JPEG, PNG, and increasingly WebP — are royalty-free, so
 platforms can support them universally. HEIC's technical merit ran straight into a licensing wall.
 
+## HEIC vs JPEG vs PNG vs WebP
+
+It helps to see where HEIC sits among the formats you actually have to choose between. The two that
+matter for compatibility are JPEG (universal, lossy) and PNG (universal, lossless); WebP is the
+modern royalty-free middle ground that browsers now support everywhere.
+
+| Format | Compression | File size | Opens everywhere? | Best for |
+|---|---|---|---|---|
+| **HEIC** | HEVC, lossy | Smallest (~half of JPEG) | No — Apple-centric | Storing photos on an iPhone |
+| **JPEG** | DCT, lossy | Moderate | Yes | Sharing, uploading, printing photos |
+| **PNG** | Deflate, lossless | Largest for photos | Yes | Graphics, screenshots, exact copies |
+| **WebP** | VP8/VP8L, both | Small | Yes (modern browsers) | Web images where you control the page |
+
+The pattern is that HEIC trades compatibility for size, and JPEG trades size for compatibility. For
+a file that has to leave the Apple ecosystem, that trade almost always favours JPEG — the extra
+megabyte is cheaper than a photo nobody can open.
+
+### A worked example
+
+A single 12-megapixel iPhone photo captured as HEIC is typically **around 1.5 to 2 MB**. Saved as
+JPEG at high quality, the same shot is often **roughly 3 to 4 MB** — the doubling Apple's storage
+saving depends on. Now scale that up: a library of 4,000 photos is on the order of **7 GB in HEIC
+versus around 14 GB in JPEG**. On a 128 GB phone that difference is the whole reason HEIC exists.
+But for the handful of photos you email or upload in a given week, converting a few files to JPEG
+costs a trivial amount of space and removes the "won't open" problem entirely.
+
 <figure>
 <img src="/blog/infographic-heic.svg" alt="Infographic: an iPhone captures a photo as HEIC using HEVC compression at about half the size of JPEG; the file opens on Apple devices but fails on Windows without a codec, in web browsers, in many Android apps and on upload forms — the cause labeled as HEVC patent licensing; converting to JPG makes it open everywhere at a small size increase" width="1200" height="620" loading="lazy" />
 <figcaption>Great compression, walled compatibility — and the one-step way out.</figcaption>
@@ -105,7 +131,19 @@ it works with your internet switched off after the first load.
   pixel-exactness for editing.
 
 If the resulting JPG is still large, run it through the
-[image compressor](/image/image-compressor/) — also local — to size it for email or the web.
+[image compressor](/image/image-compressor/) — also local — to size it for email or the web. If you
+need a format other than JPG or PNG, the [image converter](/image/image-converter/) handles the
+rest, again without an upload.
+
+### Does converting cost quality?
+
+Only marginally, and usually invisibly. HEIC and JPEG are both **lossy** formats, so decoding the
+HEIC and re-encoding it as JPEG runs the pixels through a second lossy pass — a small amount of
+detail is discarded. In practice, at **JPEG quality 85 or higher** that loss is not visually
+detectable on a normal photo, and it never compounds unless you repeatedly re-save the same file.
+If you genuinely need a pixel-exact working copy — for editing or archiving — choose PNG, which
+re-encodes the already-decoded image losslessly at the cost of a much larger file. For simply
+viewing, sharing, or printing, JPEG at high quality is the correct default.
 
 ## Stop the problem at the source
 

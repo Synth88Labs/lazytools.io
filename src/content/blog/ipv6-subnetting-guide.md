@@ -109,6 +109,27 @@ Two working rules keep plans sane:
    topology instead of rationing scraps — the [IPv6 subnet calculator](/network/ipv6-subnet-calculator/)
    shows exactly how many /64s each choice yields.
 
+## A worked example: carving up a /48
+
+Say a campus is assigned `2001:db8:abcd::/48`. That leaves 16 subnet bits — four hex digits —
+between the prefix and the fixed /64. Instead of allocating those 65,536 LANs one at a time,
+split the digits by meaning. A common scheme dedicates the first nibble to the site or building
+and the remaining three to networks within it:
+
+| Field | Hex digits | Example value | Meaning |
+|---|---|---|---|
+| Global prefix | — | `2001:db8:abcd` | Assigned to the campus (/48) |
+| Building | 1 | `1` | Building 1 of up to 16 |
+| VLAN / purpose | 3 | `020` | Network 0x020 inside the building |
+| Interface ID | — | `::/64` | 64 host bits, filled by SLAAC |
+
+That yields addresses such as `2001:db8:abcd:1020::/64` for one LAN. Building 2's matching network
+is `2001:db8:abcd:2020::/64` — you change a single readable character. Because every boundary sits
+on a nibble, the prefixes stay legible, reverse-DNS zones delegate cleanly, and firewall rules can
+match a whole building with one summarized prefix like `2001:db8:abcd:1000::/52`. Compare that to
+the IPv4 equivalent, where fitting the same structure into a private /16 means juggling
+variable-length masks and constantly re-checking usable-host counts.
+
 ## The habits to unlearn from IPv4
 
 **Conserving addresses.** IPv4 scarcity trained everyone to squeeze: /30s on links, /28s for
@@ -126,6 +147,16 @@ the same address. Scripts that grep logs or diff ACLs against configs break on t
 [RFC 5952](https://datatracker.ietf.org/doc/html/rfc5952) defines one canonical form — lowercase,
 longest zero-run compressed to `::` — and the
 [expand/compress tool](/network/ipv6-expand-compress/) normalizes whole lists either way in one paste.
+
+Side by side, the mindset shift is easy to summarize:
+
+| Question | IPv4 answer | IPv6 answer |
+|---|---|---|
+| What's the LAN size? | Whatever you can spare (/24, /28, /30…) | Always a /64 |
+| What do you count? | Usable hosts per subnet | Subnets between your prefix and /64 |
+| How do you get more room? | Beg for space, reuse RFC 1918, apply VLSM | Ask for a shorter prefix (/56, /48) |
+| Where does inbound security live? | Often NAT plus a firewall | A stateful firewall alone |
+| Text form of an address | One obvious form | Many spellings; normalize to RFC 5952 |
 
 ## What stays the same
 

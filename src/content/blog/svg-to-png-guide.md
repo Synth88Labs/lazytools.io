@@ -64,6 +64,26 @@ signatures, and many document workflows expect a PNG. Rasterizing — turning th
 gives you a file those places accept, while you keep the SVG as the master you can re-export from
 whenever you need a different size.
 
+There's also a security angle. Because an SVG is code, some platforms strip or block it to avoid
+embedded scripts and external references. A PNG is inert image data, so it sails through filters that
+reject vectors. That's another reason so many upload paths — avatars, cover images, marketplace
+listings — quietly demand a raster format even when a vector would look nicer.
+
+## SVG vs PNG at a glance
+
+The two formats aren't competitors so much as different stages of the same pipeline: design in the
+vector, ship the raster.
+
+| Property | SVG (vector) | PNG (raster) |
+|---|---|---|
+| What it stores | Drawing instructions | A fixed grid of pixels |
+| Scaling | Any size, no blur | Fixed; enlarging softens it |
+| Transparency | Yes | Yes (alpha channel) |
+| Compression | Lossless (text) | Lossless |
+| Animation | Yes (SMIL/CSS) | No (that's APNG) |
+| Broad app support | Patchy | Nearly universal |
+| Best for | Master artwork, logos, icons | Uploads, thumbnails, exports |
+
 ## How to convert SVG to PNG
 
 The conversion is a short, well-defined sequence, and it's exactly what a browser tool automates:
@@ -93,6 +113,35 @@ soft. Export at **2×** (or **3×**) the display size and let the screen show it
 dimensions — it stays crisp. A logo meant to appear 200px wide? Export it 400px wide. The rule of
 thumb: **when in doubt, export larger** — you can always scale a PNG down cleanly, but scaling one up
 softens it.
+
+Here's how that plays out for common targets. Pick the row that matches where the image lives, then
+export at the pixel size for the density you're targeting:
+
+| Where it appears | Display size | Export at 2× | Export at 3× |
+|---|---|---|---|
+| Favicon / small UI icon | 32×32 | 64×64 | 96×96 |
+| Email-signature logo | 150×50 | 300×100 | 450×150 |
+| In-article hero mark | 200×200 | 400×400 | 600×600 |
+| App icon (store listing) | 512×512 | 1024×1024 | — |
+
+For fixed-spec targets like app-store icons, follow the exact dimensions the platform documents
+rather than a multiplier — those slots already expect the full-resolution asset. The 2×/3× rule is
+for artwork that will be *displayed* smaller than it's exported.
+
+## A worked example
+
+Say you've designed a logo in an SVG with `viewBox="0 0 300 100"` — a 3:1 aspect ratio — and you need
+it as a 600-pixel-wide PNG for a website header on retina screens (where it'll actually show at
+300px). You set the width to **600**; because you keep the aspect ratio, the height follows
+automatically to **200** (600 ÷ 3). The tool draws the vector onto a 600×200 canvas and exports a
+lossless PNG. Displayed at 300×100 on a 2× screen, every edge stays sharp because the file carries
+twice the pixels the layout asks for.
+
+Now suppose the same logo is going into a printed flyer at 2 inches wide. Print typically targets
+**300 dots per inch**, so 2 inches × 300 = **600 pixels** wide — the same export, but arrived at from
+the physical size instead of a screen multiplier. And because print usually flattens transparency,
+you'd set a **white background** before exporting so the transparent areas don't turn black on the
+press.
 
 ## Transparent vs white background
 

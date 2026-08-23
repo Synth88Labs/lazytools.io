@@ -49,6 +49,21 @@ draft: false
 <figcaption>Each family answers a different question — and only some have a universal "healthy" line.</figcaption>
 </figure>
 
+## The one-page map of all six families
+
+Before the detail, here's the whole landscape on a single line each — the question it answers, the headline ratios, and whether a rule-of-thumb benchmark travels across industries or you have to compare to peers.
+
+| Family | Question it answers | Headline ratios | Universal benchmark? |
+| --- | --- | --- | --- |
+| Liquidity | Can it pay bills due within a year? | Current, quick, cash ratio | Mostly yes (with sector exceptions) |
+| Leverage | How much of the business is debt-funded? | Debt-to-equity, debt ratio | No — heavily industry-dependent |
+| Coverage | Can earnings actually service that debt? | Interest coverage, DSCR | Yes — lender rules of thumb |
+| Profitability | How much profit per dollar of sales/assets? | Margins, ROA, ROE | No — compare to peers |
+| Efficiency | How hard do the assets work? | Turnover ratios, DSO, cash cycle | No — compare to peers |
+| Valuation | Is the stock cheap or expensive? | P/E, P/B, EV/EBITDA, yield | No — compare to peers and growth |
+
+Notice the pattern: only **liquidity and coverage** carry benchmarks that mean roughly the same thing everywhere, because they map to survival and to what a lender will accept. The other four are relative measures — a number is only "good" next to a comparable company. Keep that split in mind as you read on.
+
 ## 1. Liquidity — can it pay the short-term bills?
 
 Liquidity ratios test whether a company can cover obligations due within a year from its short-term resources.
@@ -57,6 +72,8 @@ Liquidity ratios test whether a company can cover obligations due within a year 
 - **Quick (acid-test) ratio** strips out inventory (the slowest asset to sell) — **1 or more** means the firm can pay its bills without a fire sale of stock.
 - **Cash ratio** counts only cash and equivalents; **0.2 or higher** is generally comfortable.
 - **Net working capital** = current assets − current liabilities, the cushion in dollars.
+
+**Worked example.** A retailer has $600,000 of current assets ($200,000 of it inventory) against $400,000 of current liabilities. Current ratio = 600 ÷ 400 = **1.5** — comfortable. Quick ratio strips the inventory: (600 − 200) ÷ 400 = **1.0** — it can still meet its bills without selling a single item off the shelf. Those two numbers together tell a fuller story than either alone: solvent on paper, and not dangerously dependent on shifting stock.
 
 These are among the more **universal** ratios, but context still matters — a current ratio below 1 is normal for a supermarket that sells inventory before paying suppliers. [Try the liquidity ratios calculator](/finance/liquidity-ratios-calculator/).
 
@@ -78,6 +95,8 @@ Leverage shows *how much* debt; coverage shows whether it's *affordable*. These 
 - **Debt service coverage ratio (DSCR)** = net operating income ÷ total debt payments. Lenders typically want **≥1.25×**; below 1 means operations can't cover the debt.
 - **Fixed-charge coverage** adds leases and other fixed obligations, with covenant floors often around **1.2–1.25×**.
 
+**Worked example.** A firm earns $500,000 of EBIT and pays $100,000 of interest. Interest coverage = 500 ÷ 100 = **5×** — earnings could fall by roughly 80% before interest became unaffordable, which is why lenders sleep at 5× and worry below ~1.5×. The same company generating $250,000 of net operating income against $200,000 of annual debt payments has a DSCR of 250 ÷ 200 = **1.25×** — right at the line most lenders draw. Coverage ratios are so consistent precisely because they encode what creditors are willing to fund.
+
 [Coverage ratios calculator](/finance/coverage-ratios-calculator/).
 
 ## 4. Profitability — how much profit from each dollar?
@@ -87,7 +106,9 @@ Profitability ratios measure how much profit a company wrings from sales, assets
 - **Gross / operating / net margin** — profit after direct costs, after operating costs, and after everything.
 - **Return on assets (ROA)** = net income ÷ assets; **Return on equity (ROE)** = net income ÷ equity.
 
-Here there is **no universal "good" number** — software nets 20–30%+ while grocery nets 2–6%, and asset-light firms post far higher returns than utilities. Judge against **industry peers and the company's own trend**, and remember a high ROE can be driven by leverage rather than efficiency. [Profitability ratios calculator](/finance/profitability-ratios-calculator/).
+Here there is **no universal "good" number** — software nets 20–30%+ while grocery nets 2–6%, and asset-light firms post far higher returns than utilities. Judge against **industry peers and the company's own trend**, and remember a high ROE can be driven by leverage rather than efficiency.
+
+That last point is worth unpacking. The **DuPont breakdown** splits ROE into three levers: net margin × asset turnover × equity multiplier. Two companies can both post a 20% ROE, but one earns it from fat margins and light debt while the other earns it from thin margins amplified by heavy borrowing. The headline number is identical; the risk is not. This is exactly why a profitability ratio must be read alongside the leverage family rather than in isolation. [Profitability ratios calculator](/finance/profitability-ratios-calculator/).
 
 ## 5. Efficiency — how hard do the assets work?
 

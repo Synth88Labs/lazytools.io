@@ -102,6 +102,24 @@ the group number of valence electrons), while nonmetals on the right *gain* elec
 (charge = group electrons − 8). The transition metals in the middle break this neat rule because their
 d-electrons let them adopt several charges — iron can be Fe²⁺ or Fe³⁺, copper Cu⁺ or Cu²⁺.
 
+## The transition metals in the middle
+
+The wide central block (groups 3–12) is where the tidy main-group logic loosens. Here the **d-orbitals**
+are filling, and because the outer s-electrons and the near-outer d-electrons are close in energy, these
+elements can lose different numbers of electrons in different compounds. That single fact explains most of
+what makes transition metals distinctive:
+
+- **Variable oxidation states.** Manganese alone runs from +2 to +7, which is why permanganate (MnO₄⁻,
+  manganese as +7) is such a strong oxidiser.
+- **Coloured compounds.** Partly filled d-orbitals absorb visible light, so copper(II) salts look blue and
+  chromium compounds run from green to orange depending on their state.
+- **Catalytic behaviour.** Iron in the Haber process and platinum in a catalytic converter both rely on
+  the flexible bonding those loose d-electrons allow.
+
+If you want the exact filling order for any of them, the
+[electron-configuration calculator](/chemistry/electron-configuration-calculator/) spells it out,
+including the familiar half-filled and filled-shell exceptions at chromium and copper.
+
 ## The four blocks
 
 The table is split into blocks by which orbital is filling:
@@ -131,6 +149,30 @@ So the most reactive nonmetals huddle top-right, the most reactive metals bottom
 gases sit in the far-right column. Recolour the [periodic table](/chemistry/periodic-table/) by
 electronegativity to see the trend as a heat-map.
 
+It helps to see the two directions side by side. Every major trend either rises *toward* fluorine
+(top-right) or *away* from it (bottom-left):
+
+| Property | Direction it increases | Why |
+|---|---|---|
+| Atomic radius | Down and to the left | New shells add distance; extra nuclear charge across a row pulls electrons in |
+| Ionisation energy | Up and to the right | Smaller atoms hold outer electrons more tightly |
+| Electronegativity | Up and to the right | A small, highly charged nucleus pulls harder on shared electrons |
+| Metallic character | Down and to the left | Loosely held outer electrons are given up easily |
+
+### A worked example: why is sodium bigger than chlorine?
+
+Sodium and chlorine sit in the **same period (3)**, so they have the same number of electron shells — yet
+a sodium atom is markedly larger. Reading the trends explains it. Moving from sodium (11 protons) across
+to chlorine (17 protons), each step adds a proton to the nucleus while the new electrons pile into the
+*same* third shell. The growing positive charge pulls that shell inward, so the atom shrinks as you go
+right. By chlorine the nucleus is tugging hard: chlorine is small and its high electronegativity lets it
+strip an electron from sodium outright. That is the same left-to-right contraction that makes the
+top-right corner the home of the small, electron-hungry nonmetals.
+
+Now drop *down* a group instead. Fluorine and chlorine are both group 17 halogens, but chlorine sits one
+period lower with an extra filled shell, making it the larger atom. That is exactly why fluorine, higher
+up and smaller, is the more electronegative and more aggressively reactive of the two.
+
 ## Metals, nonmetals and the staircase
 
 Draw the diagonal "staircase" from boron down to astatine: **metals** are to its left (most of the
@@ -142,6 +184,34 @@ antimony, tellurium — sit right along the line, sharing properties of both.
 The **lanthanides (57–71)** and **actinides (89–103)** are the f-block. Slotted into their true position
 the table would be 32 columns wide, so by convention they're lifted out and shown below to keep it
 readable. They still belong between groups 2 and 3 of periods 6 and 7.
+
+## Reading an element you have never met
+
+Put the pieces together and you can size up an unfamiliar element from its position alone. Take
+**selenium (Se)**, atomic number 34, sitting in **group 16, period 4**:
+
+- *Group 16* (chalcogens) → six valence electrons → it tends to gain two to form **Se²⁻**, and it should
+  behave like a heavier, less reactive cousin of oxygen and sulfur directly above it.
+- *Period 4, p-block* → it is filling the 4p subshell, so it is a nonmetal but sits low enough that it
+  edges toward metalloid character — consistent with its semiconductor uses.
+- *Trends* → being lower and further left than fluorine, it is larger and less electronegative than the
+  lighter nonmetals, so its bonds are more covalent and less ionic.
+
+You reached all of that without looking up a single measured property. The two other numbers you often
+need for real calculations — an element's atomic mass, and the mass of a whole formula — come straight off
+the same grid; the [molar-mass calculator](/chemistry/molar-mass-calculator/) adds them up for any formula
+you type, turning a position on the table into grams per mole.
+
+## Common mistakes when reading the table
+
+A few habits trip people up:
+
+- **Using the group-number shortcut on the transition block.** Reading valence electrons off the group
+  number works for main-group elements only; the d-block does not follow it.
+- **Reading hydrogen as an alkali metal.** Hydrogen sits in group 1 by electron count (1s¹) but is a
+  nonmetal and behaves nothing like sodium — many tables float it apart for that reason.
+- **Treating the staircase as a hard border.** The metal/nonmetal line is a gradient; the metalloids on it
+  genuinely share both sets of properties rather than falling cleanly on one side.
 
 ## Quick summary
 

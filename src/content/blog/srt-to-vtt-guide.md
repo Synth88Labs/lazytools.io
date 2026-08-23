@@ -85,7 +85,48 @@ Hello world
 
 That is it. The text `Hello world` is untouched, and the cue still starts at one second and ends at four. For a whole file you repeat the timestamp fix on every line that contains `-->`, which is tedious by hand and easy to get wrong — one missed comma and the browser rejects the cue.
 
+A real file has many cues stacked one after another, separated by blank lines. The same three edits apply to the whole file — the header goes on once at the very top, and the comma-to-dot fix repeats on every timestamp line. Here is a two-cue SRT and the VTT it becomes:
+
+```srt
+1
+00:00:01,000 --> 00:00:04,000
+Hello world
+
+2
+00:00:05,500 --> 00:00:08,200
+Second line of dialogue
+```
+
+```vtt
+WEBVTT
+
+00:00:01.000 --> 00:00:04.000
+Hello world
+
+00:00:05.500 --> 00:00:08.200
+Second line of dialogue
+```
+
+Notice that only the header and the two timestamp lines changed. The blank line between cues, the wording and the ordering are all identical. That is the whole job — but with dozens or hundreds of cues, a hand edit will eventually leave one comma behind, and one bad timestamp is enough for a browser to drop that cue silently.
+
 The [SRT to VTT converter](/video/srt-to-vtt/) does the entire file in one step, in your browser, so nothing is uploaded. If you ever need to go the other direction — say a desktop player only wants SubRip — the [VTT to SRT converter](/video/vtt-to-srt/) reverses the process.
+
+## Encoding and formatting details that bite
+
+Two things trip people up beyond the three obvious edits, and both come down to how the text itself is stored.
+
+The first is character encoding. WebVTT files must be encoded as UTF-8 — that is fixed by the format, not optional. SRT has no official specification, so an SRT file exported by an older desktop tool can arrive in a legacy encoding like Windows-1252. If accented characters (é, ñ, ü) or non-Latin scripts show up as mojibake after conversion, the source SRT was almost certainly not UTF-8. Re-saving the SRT as UTF-8 before converting fixes it. A WebVTT file may optionally start with a byte-order mark, but it is not required.
+
+The second is inline text styling. Both formats let you mark up cue text, but they do not use the same tags. Basic emphasis carries over cleanly, while a few SRT-only tags have no WebVTT equivalent and are simply ignored by the browser:
+
+| Inline tag | In SRT | In WebVTT |
+| --- | --- | --- |
+| `<b>` bold, `<i>` italic, `<u>` underline | supported | supported |
+| `<font color="...">` | common in SRT | not supported — use a `STYLE` block instead |
+| `<c.classname>` voice/class span | not available | supported |
+| `<v Speaker>` voice tag | not available | supported |
+
+For the vast majority of subtitle files — plain text with the odd italic — none of this matters and the conversion is lossless. It only surfaces if your SRT leans on coloured `<font>` tags, which WebVTT expects you to handle through a `STYLE` block near the top of the file instead.
 
 ## Add the subtitles to your HTML5 video
 
@@ -98,7 +139,17 @@ Once you have a `.vtt` file, you attach it to a video with a `<track>` element n
 </video>
 ```
 
-The `kind` tells the browser what the file is (`subtitles` for a translation, `captions` for same-language captions that also note sounds). `srclang` is the language code, and `label` is the human-readable name shown in the player's captions menu. Point `src` at your converted `.vtt` file and the subtitles appear in the built-in controls.
+The `kind` tells the browser what the file is. It accepts several values, and picking the right one changes how the browser treats the track:
+
+| `kind` value | What it is for |
+| --- | --- |
+| `subtitles` | Translated dialogue for viewers who do not understand the language |
+| `captions` | Same-language text including sound effects and speaker cues, for deaf and hard-of-hearing viewers |
+| `descriptions` | Text descriptions of the video for audio synthesis (accessibility) |
+| `chapters` | Chapter titles used for navigating the timeline |
+| `metadata` | Cues used by scripts, not shown to the viewer |
+
+For ordinary captions and subtitles you will only ever use the first two. `srclang` is the language code (for example `en`, `es`, `fr`), and `label` is the human-readable name shown in the player's captions menu. Point `src` at your converted `.vtt` file and the subtitles appear in the built-in controls.
 
 You can add more than one `<track>` — one per language — and mark a preferred one with the `default` attribute so it shows automatically. Each still points at its own `.vtt` file with its own `srclang` and `label`, which is why getting the conversion and the language codes right for every file matters once you go beyond a single caption track.
 

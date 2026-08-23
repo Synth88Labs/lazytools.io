@@ -105,6 +105,27 @@ must break, the pomodoro is **void**: don't count a fragmented block; start a fr
 **One task per pomodoro.** If a task is huge, a pomodoro is a slice of it; if tiny tasks abound, batch
 several into one pomodoro. The unit is the 25 minutes, not the task.
 
+## A worked example: one focused morning
+
+Abstract rules click into place once you see a real cycle. Say you sit down at 9:00 with a report to
+write, a few emails to answer, and a slide to fix:
+
+| Time | Block | What you do |
+|---|---|---|
+| 9:00–9:25 | Pomodoro 1 | Draft the report's outline and first section — nothing else |
+| 9:25–9:30 | Short break | Stand, stretch, refill water; no screens |
+| 9:30–9:55 | Pomodoro 2 | Keep drafting; a "check Slack" urge gets jotted on a note, not acted on |
+| 9:55–10:00 | Short break | Look out the window, rest your eyes |
+| 10:00–10:25 | Pomodoro 3 | Batch the small tasks — the three emails and the slide fix |
+| 10:25–10:30 | Short break | Walk to another room and back |
+| 10:30–10:55 | Pomodoro 4 | Polish and finish the report |
+| 10:55–11:20 | Long break | Real rest — a proper coffee, a walk, a chat |
+
+By 11:20 you have four completed pomodoros logged and a finished report. Notice two things: the Slack
+urge in Pomodoro 2 was parked as an *internal* distraction rather than obeyed, and the fiddly small
+jobs were batched into a single block instead of scattered across the morning. That is the technique
+working as designed — not four random hours, but four countable, protected units of attention.
+
 ## Tuning it to you
 
 The classic 25/5 is a default, not a law. Match the rhythm to your attention and the work:
@@ -118,6 +139,24 @@ The classic 25/5 is a default, not a law. Match the rhythm to your attention and
 
 The [timer](/productivity/pomodoro-timer/) lets you set any focus length, break lengths, and how many
 sprints trigger the long break — so you can find your rhythm and keep it.
+
+## How Pomodoro compares to other focus methods
+
+Pomodoro is one of several ways to structure a working day, and they solve slightly different
+problems. It helps to see where it sits:
+
+| Method | Core unit | Best for | Weak spot |
+|---|---|---|---|
+| **Pomodoro** | 25-min focus + 5-min break | Beating procrastination and pacing a day | The bell can interrupt genuine flow |
+| **Time blocking** | Named blocks on a calendar | Deciding *what* to do and *when* | Says nothing about within-block focus |
+| **Flowtime** | Focus until you naturally stop, then rest | Deep, immersive work | Little structure; easy to skip breaks |
+| **52/17** | 52-min focus + 17-min break | People who like longer runs at a task | Long blocks can still invite fatigue |
+
+The key insight: these are not rivals. **Time blocking chooses the work; Pomodoro (or Flowtime) governs
+how you execute inside a block.** A common pairing is to lay out the day with the
+[time-blocking planner](/productivity/time-blocking-planner/), then run each block as one or two
+pomodoros. The 52/17 pattern is simply a longer Pomodoro variant — the same rhythm of protected focus
+and real rest, tuned for people who dislike frequent interruptions.
 
 ## When Pomodoro isn't the right tool
 

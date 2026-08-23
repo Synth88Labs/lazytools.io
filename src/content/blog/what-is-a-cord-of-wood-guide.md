@@ -38,9 +38,22 @@ draft: false
 
 ## The full cord: the only real standard
 
-A **cord** is a unit of volume for stacked firewood, standardized at **128 cubic feet**. The classic arrangement is 4 feet high, 4 feet deep, and 8 feet long (4 × 4 × 8 = 128), but any tightly stacked pile totalling 128 cubic feet is a cord. In the US, the cord is the legally defined firewood measure, and many states prohibit selling firewood by vague terms like "truckload" or "pile".
+A **cord** is a unit of volume for stacked firewood, standardized at **128 cubic feet**. The classic arrangement is 4 feet high, 4 feet deep, and 8 feet long (4 × 4 × 8 = 128), but any tightly stacked pile totalling 128 cubic feet is a cord. In the US, the cord is the legally defined firewood measure — it appears in the National Institute of Standards and Technology (NIST) Handbook 130 model regulations that most states adopt — and many states prohibit advertising firewood by vague terms like "truckload," "pile," or "face cord" without also stating the amount.
 
-The key phrase is *tightly stacked*. A cord is a stacked measure that includes the unavoidable air gaps between split logs — but a wood pile **thrown** loosely into a truck bed holds far more air and far less actual wood than the same apparent volume stacked. Always measure, or have delivered wood stacked, before you judge the amount.
+The key phrase is *tightly stacked*. A cord is a stacked measure that includes the unavoidable air gaps between split logs — but a wood pile **thrown** loosely into a truck bed holds far more air and far less actual wood than the same apparent volume stacked. The same wood that stacks into 128 cubic feet will occupy noticeably more space when dumped loose, so a truck bed that *looks* full is not proof of a cord. Always measure, or have delivered wood stacked, before you judge the amount.
+
+### Why the standard stack isn't the only cord
+
+Because a cord is defined by volume, the 4 × 4 × 8 shape is just the most convenient way to reach 128 cubic feet — it is not required. Any of these stacked dimensions is exactly one full cord:
+
+| Height × Depth × Length | Cubic feet | Cords |
+| --- | --- | --- |
+| 4 ft × 4 ft × 8 ft | 128 | 1 |
+| 2 ft × 4 ft × 16 ft | 128 | 1 |
+| 4 ft × 2 ft × 16 ft | 128 | 1 |
+| 8 ft × 4 ft × 4 ft | 128 | 1 |
+
+This is why measuring your own stack works no matter how it's shaped: multiply the three dimensions in feet and divide by 128.
 
 ## The face cord (rick): where people get shorted
 
@@ -63,6 +76,31 @@ So if someone advertises a "cord" but delivers a **face cord** of 16-inch wood, 
 
 For example, a stack 8 ft long × 4 ft high × 2 ft deep is 64 cubic feet — exactly **half a cord**. Our [firewood cord calculator](/home/firewood-cord-calculator/) does this instantly and also shows the face-cord equivalent, so you can check a delivery against what you paid for.
 
+### A worked example
+
+Say a seller delivers wood and stacks it against your fence. You measure it as **7 ft long × 4 ft high × 1.5 ft deep** (the logs are cut to about 18 inches).
+
+- Volume = 7 × 4 × 1.5 = **42 cubic feet**
+- Full cords = 42 ÷ 128 = **0.33 cords**, i.e. about a third of a cord.
+
+That is essentially one face cord of 18-inch wood. If the ad said "a cord" and the price matched a full cord, you received roughly a third of what you paid for. The math is the same every time: **length × height × depth ÷ 128**, all in feet. Convert inches to feet by dividing by 12 — so 18-inch logs are 18 ÷ 12 = 1.5 ft deep.
+
+## How much heat is in a cord?
+
+A cord is a measure of *volume*, not energy, and different species pack very different amounts of wood — and therefore heat — into the same 128 cubic feet. Dense hardwoods like oak and hickory hold far more usable heat per cord than light softwoods like pine. The figures below are **approximate**, drawn from university forestry-extension firewood charts, and assume properly seasoned (dry) wood; treat them as ballpark rankings rather than exact numbers, since heat output varies with species, moisture, and how completely the wood burns.
+
+| Species (seasoned) | Relative density | Approx. heat per cord (million BTU) |
+| --- | --- | --- |
+| Shagbark hickory | Very high | ~27–28 |
+| White oak | High | ~26–29 |
+| Sugar maple | High | ~24 |
+| White ash | Medium-high | ~23–24 |
+| Paper birch | Medium | ~20 |
+| Douglas fir | Medium (softwood) | ~20–21 |
+| Eastern white pine | Low (softwood) | ~15–16 |
+
+The practical takeaway: a cord of oak or hickory can deliver close to twice the heat of a cord of white pine, so a cheaper cord of softwood is not always the better deal once you account for how often you'll be reloading the stove.
+
 ## Buying firewood without getting burned
 
 - **Get the price per *full* cord** in writing, and the log length.
@@ -70,6 +108,25 @@ For example, a stack 8 ft long × 4 ft high × 2 ft deep is 64 cubic feet — ex
 - Prefer wood sold by the cord or fraction of a cord over "ricks", "truckloads" or "piles".
 - **Stack before you accept** if you can, or measure the stacked wood on arrival.
 - Remember seasoning: green (unseasoned) wood is heavier and burns poorly; a cord is a volume, not a moisture guarantee.
+
+## Seasoning: a cord is volume, not dryness
+
+The cord tells you *how much* wood you got, but not how well it will burn. Freshly cut "green" wood can be 50% or more water by weight, and wet wood wastes energy boiling off that moisture instead of heating your room, while producing more smoke and creosote. Well-seasoned firewood is typically dried to around 20% moisture content or less, which usually takes **six months to a year or more** of air-drying, split and stacked off the ground under cover. Signs of seasoned wood include checked (cracked) ends, a lighter weight, a hollow sound when two pieces are knocked together, and bark that peels easily. Buying a "cord" of green wood in autumn often means it won't be ready to burn well until the following season.
+
+## A quick glossary of firewood terms
+
+Sellers use a lot of informal words for the same shapes. Here's how they map to real volume:
+
+| Term | What it usually means | Standard volume? |
+| --- | --- | --- |
+| Full cord | 128 cubic feet, stacked | Yes |
+| Face cord / rick | 4 ft × 8 ft face, one log deep | No — depends on log length |
+| Half cord | 64 cubic feet, stacked | Yes (half of a cord) |
+| Quarter cord | 32 cubic feet, stacked | Yes (quarter of a cord) |
+| Truckload / pile | Whatever fits the truck | No |
+| Bush cord | Another name for a full cord (Canada) | Yes (= 128 ft³) |
+
+Only the fractions of a **full cord** are precise. Any time a seller uses "rick," "truckload," or "face cord," convert it back to cubic feet or a fraction of a full cord before comparing prices.
 
 ## Frequently asked questions
 

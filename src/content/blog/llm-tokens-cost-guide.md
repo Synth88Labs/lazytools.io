@@ -60,6 +60,34 @@ vocabulary — common words become single tokens, rarer ones split into pieces
 all tokenize differently — sometimes dramatically so — which is why estimating from word counts is
 fine for napkin math and dangerous for budgets.
 
+The tokenizer is not a word splitter. It is trained on a corpus and learns a vocabulary of the most
+statistically frequent byte sequences — so a common word like `the` is a single token, while a
+domain term, a rare surname, an emoji or a run of digits fractures into several. Two texts of
+identical length can therefore carry very different token counts, and the model is billed for tokens,
+not for anything a human would count by eye.
+
+### Words, characters, tokens: a working reference
+
+For rough English prose, these conversions hold well enough for a first estimate. Treat every figure
+as a heuristic, not a guarantee — the further your text drifts from ordinary English, the more it
+under- or over-counts.
+
+| You have | Rough token estimate (English) | Notes |
+|---|---|---|
+| 1 word | ~1.33 tokens | ¾ of a word per token |
+| 100 words | ~133 tokens | a short paragraph |
+| 1,000 words | ~1,300–1,400 tokens | a long blog section |
+| 1 character | ~0.25 tokens | 4 chars per token |
+| 1 page (~500 words) | ~650–700 tokens | double-spaced prose |
+| This whole article | a few thousand tokens | still well under any modern context window |
+
+Content type shifts these numbers noticeably. Source code and JSON tend to tokenize *heavier* per
+character than prose — brackets, indentation, operators and camelCase identifiers all break into
+extra pieces. Text in non-Latin scripts (Chinese, Japanese, Arabic, Hindi) and heavily accented
+languages usually costs more tokens per equivalent meaning than English, because those characters
+are under-represented in the vocabulary. Long numbers and hashes are among the worst offenders. When
+any of that dominates your prompt, stop estimating and count with a real tokenizer.
+
 <figure>
 <img src="/blog/infographic-llm-tokens.svg" alt="Infographic: text splits into sub-word tokens at roughly 4 characters per token; API cost equals input tokens times input rate plus output tokens times output rate; OpenAI counts can be exact in the browser because the o200k tokenizer is published, while Claude and Gemini counts are estimates — and Anthropic's newer models produce approximately 30% more tokens for the same text" width="1200" height="640" loading="lazy" />
 <figcaption>The mechanics on top; the honesty question at the bottom.</figcaption>
@@ -101,6 +129,32 @@ month: model choice is a 10× lever before any prompt engineering happens.
 
 Notice the output column: **5–6× the input rate everywhere**. Trimming a verbose system prompt
 saves pennies; capping reply length (`max_tokens`) saves real money.
+
+### Why output is the expensive half
+
+The asymmetry is not arbitrary. Reading your prompt is a single forward pass over the input — the
+model ingests all those tokens roughly in parallel. Generating a reply is *sequential*: the model
+produces one token, appends it, and runs the whole computation again to produce the next, hundreds
+or thousands of times over. Every provider prices that extra work into the output rate, which is why
+it lands at several times the input rate across OpenAI, Anthropic and Google alike.
+
+The practical lesson is counter-intuitive. Teams often obsess over shrinking prompts while letting
+the model ramble. But a 4,000-token prompt that yields a 200-token answer is cheap; a 400-token
+prompt that yields a 2,000-token answer costs far more. Before micro-optimising your instructions,
+set a sensible `max_tokens`, ask for terse output, and — where the API supports it — reuse cached
+context so repeated input isn't billed at full price.
+
+### Two levers that beat prompt-trimming
+
+Most vendors expose two discounts that move bills more than wording ever will:
+
+- **Batch processing.** Non-urgent jobs submitted through a batch API are commonly billed at around
+  half the standard rate. If a workload can tolerate minutes of latency instead of seconds, that is
+  a large saving for zero quality loss.
+- **Prompt caching.** When a long, stable prefix (a big system prompt, a document, a few-shot block)
+  is reused across many requests, cached input reads are billed at a steep discount — a large
+  fraction off the normal input rate. The exact figures vary by provider and tier, so confirm them
+  on the official pricing page before you model a budget around them.
 
 ## The honesty problem: exact vs. estimated counts
 
