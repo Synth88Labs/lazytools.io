@@ -104,13 +104,19 @@ const clamp = (x) => Math.max(1, Math.min(5, x));
 const round1 = (x) => Math.round(x * 10) / 10;
 
 // Auditor rubric (out of 5): coverage momentum, diligence, verification.
+// Rewards doing the job well — full daily coverage, a healthy site under its
+// watch, and verifying fixes — NOT merely "how many problems exist". A thorough
+// audit of a clean site earns full marks; the score drops for a missed quota,
+// health regressions, or fixes left unverified.
 function scoreAuditor() {
   let s = 3.0;
   const tools = runIsToday ? (lastRun.tools || 0) : 0;
-  s += tools >= 10 ? 0.8 : tools * 0.08;
-  const activity = (runIsToday ? (lastRun.opened || 0) + (lastRun.resolved || 0) : 0);
-  s += activity >= 5 ? 0.6 : activity * 0.12;
-  if (runIsToday && (lastRun.resolved || 0) > 0) s += 0.6;
+  s += tools >= 10 ? 1.0 : tools * 0.1;                              // coverage: hit the daily quota
+  const avg = runIsToday ? (lastRun.avg || 0) : 0;
+  s += avg >= 95 ? 0.7 : avg >= 85 ? 0.5 : avg >= 75 ? 0.3 : avg >= 60 ? 0.1 : 0; // site health it maintains
+  const pending = findings.filter((f) => ['verifying', 'fixed'].includes(f.status)).length;
+  const resolvedToday = runIsToday ? (lastRun.resolved || 0) : 0;
+  s += (resolvedToday > 0 || pending === 0) ? 0.3 : 0;              // verified fixes, or nothing left hanging
   return round1(clamp(s));
 }
 // Fixer rubric (out of 5): throughput, completions, SLA adherence, overdue penalty.

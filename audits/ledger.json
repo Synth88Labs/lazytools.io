@@ -1649,14 +1649,14 @@
       },
       {
         "date": "2026-08-23",
-        "auditor": 3.8,
+        "auditor": 5,
         "fixer": 4
       }
     ],
     "weekly": [
       {
         "week": "2026-W34",
-        "auditor": 3.6,
+        "auditor": 4.2,
         "fixer": 4.5,
         "days": 2
       }
@@ -1686,8 +1686,8 @@
         "lastAvg": 100
       },
       "score": {
-        "daily": 3.8,
-        "weekly": 3.6
+        "daily": 5,
+        "weekly": 4.2
       }
     },
     "fixer": {
