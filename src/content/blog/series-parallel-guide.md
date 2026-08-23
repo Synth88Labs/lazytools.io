@@ -2,7 +2,7 @@
 title: "Series vs Parallel: Resistors and Capacitors (and Why They're Opposite)"
 description: "Resistors in series add; in parallel their reciprocals add (total below the smallest). Capacitors do the exact reverse. The rules, the reason, a memory aid, and worked examples — so you never mix them up again."
 pubDate: 2026-07-11
-updatedDate: 2026-07-11
+updatedDate: 2026-08-23
 archetype: explainer
 tools: ["/physics/series-parallel-resistor-calculator/", "/physics/capacitor-calculator/", "/physics/ohms-law-calculator/"]
 keywords:
@@ -16,7 +16,7 @@ heroImage: /blog/series-parallel-guide.png
 heroAlt: "Series and parallel rules for resistors and capacitors, side by side"
 faqs:
   - q: "How do resistors combine in series and parallel?"
-    a: "In series they add: R_total = R₁ + R₂ + …. In parallel, their reciprocals add: 1/R_total = 1/R₁ + 1/R₂ + …, so the total is always less than the smallest resistor. For 100, 220 and 330 Ω: series = 650 Ω, parallel ≈ 58.2 Ω."
+    a: "In series they add: R_total = R₁ + R₂ + …. In parallel, their reciprocals add: 1/R_total = 1/R₁ + 1/R₂ + …, so the total is always less than the smallest resistor. For 100, 220 and 330 Ω: series = 650 Ω, parallel ≈ 56.9 Ω."
   - q: "How do capacitors combine in series and parallel?"
     a: "The opposite of resistors. In parallel capacitors add: C_total = C₁ + C₂ + …. In series their reciprocals add: 1/C_total = 1/C₁ + 1/C₂ + …, giving a total smaller than the smallest capacitor."
   - q: "Why are capacitor rules the reverse of resistor rules?"
@@ -53,22 +53,44 @@ opposite**. Get the pattern once and you never have to re-derive it.
 <figcaption>The reciprocal rule shows up in both — just swapped between series and parallel.</figcaption>
 </figure>
 
+## The four rules at a glance
+
+Before the reasoning, here is every rule in one place. Notice that only two *kinds* of maths appear —
+plain addition and reciprocal addition — and each component uses each kind exactly once, just swapped
+between the two arrangements.
+
+| Arrangement | Resistors | Capacitors | Total ends up… |
+|---|---|---|---|
+| **Series** | `R = R₁ + R₂ + …` | `1/C = 1/C₁ + 1/C₂ + …` | R: bigger · C: below the smallest |
+| **Parallel** | `1/R = 1/R₁ + 1/R₂ + …` | `C = C₁ + C₂ + …` | R: below the smallest · C: bigger |
+
+The diagonal symmetry is the whole point: the resistor-series box and the capacitor-parallel box hold the
+same formula, and so do the other two. Learn one component and you already know the other.
+
 ## Resistors
 
 **In series**, current flows through each resistor in turn, so their oppositions stack up:
 
 > `R_total = R₁ + R₂ + R₃ + …`
 
-Three resistors of 100, 220 and 330 Ω in series give **650 Ω**.
+Three resistors of 100, 220 and 330 Ω in series give **650 Ω**. Series values simply pile on, so the
+total is always *larger* than any single resistor — handy when you need a value you don't have in your
+parts bin (two 1 kΩ resistors in series make 2 kΩ).
 
 **In parallel**, current splits between branches, giving it more ways through, so the total *drops*:
 
 > `1/R_total = 1/R₁ + 1/R₂ + 1/R₃ + …`
 
 The same three resistors in parallel give about **58.2 Ω** — less than the 100 Ω smallest. That's the
-tell-tale sign of a parallel combination: **the total is always below the smallest resistor.** The
+tell-tale sign of a parallel combination: **the total is always below the smallest resistor.** Two useful
+shortcuts fall out of the formula:
+
+- **Two resistors in parallel:** `R = (R₁ × R₂) / (R₁ + R₂)` — the "product over sum" rule.
+- **Equal resistors in parallel:** `n` copies of `R` give `R / n`. Ten 100 Ω resistors in parallel = 10 Ω.
+
+So 100 Ω and 220 Ω in parallel work out to `(100 × 220) / 320 ≈ 68.75 Ω`. The
 [series & parallel resistor calculator](/physics/series-parallel-resistor-calculator/) adds up as many
-as you like.
+as you like and applies these shortcuts automatically.
 
 ## Capacitors — the reverse
 
@@ -76,11 +98,17 @@ Capacitors flip both rules. **In parallel** they simply add (like series resisto
 
 > `C_total = C₁ + C₂ + …`
 
+Three capacitors of 10, 22 and 47 µF in parallel give **79 µF** — bigger than any single one.
+
 **In series** their reciprocals add (like parallel resistors), so the total is smaller than the smallest:
 
 > `1/C_total = 1/C₁ + 1/C₂ + …`
 
-The [capacitor calculator](/physics/capacitor-calculator/) uses these reversed rules.
+Two 10 µF capacitors in series give 5 µF (the same `n` copies → `C / n` shortcut, and the product-over-sum
+trick for two). Why bother putting capacitors in series when it *loses* capacitance? Because the applied
+voltage divides across them, so a series string can withstand a higher total voltage than any single part
+is rated for — a common trick in high-voltage supplies. The
+[capacitor calculator](/physics/capacitor-calculator/) uses these reversed rules.
 
 ## Why the reversal?
 
@@ -95,7 +123,7 @@ It comes down to what each component *is*:
 Same maths (add values, or add reciprocals), opposite pairing. Hence the memory aid: **whatever a resistor
 does in series, a capacitor does in parallel.**
 
-## Mixed circuits
+## A worked mixed example
 
 Real circuits mix both. The method is always the same:
 
@@ -103,8 +131,35 @@ Real circuits mix both. The method is always the same:
 2. Replace it with its single equivalent value.
 3. Repeat until one value is left.
 
-Compute each group with the calculator and combine step by step. (For the voltage, current and power
-around those resistors, the [Ohm's-law wheel](/physics/ohms-law-calculator/) finishes the job.)
+Take three resistors: a 220 Ω and a 330 Ω sitting in parallel, and that pair wired in series with a
+100 Ω resistor.
+
+- **Step 1 — the parallel pair.** `(220 × 330) / (220 + 330) = 72,600 / 550 = 132 Ω`. As expected, below the
+  smaller branch (220 Ω).
+- **Step 2 — add the series resistor.** `132 + 100 = 232 Ω` total.
+
+If a 12 V supply drives the whole thing, the current is `I = V / R = 12 / 232 ≈ 51.7 mA`. That same current
+flows through the 100 Ω resistor (it's in series), dropping `0.0517 × 100 ≈ 5.17 V` across it and leaving
+about 6.83 V across the parallel pair. For the voltage, current and power around each resistor, the
+[Ohm's-law wheel](/physics/ohms-law-calculator/) finishes the job.
+
+Capacitor networks reduce the same way — just swap which arrangement adds and which takes reciprocals.
+
+## Common mistakes to avoid
+
+- **Forgetting the final reciprocal.** `1/R_total = 1/R₁ + 1/R₂` gives you `1/R_total`, not `R_total`. You
+  still have to flip the result. Skipping that flip is the single most common parallel-resistor error.
+- **Reusing resistor rules for capacitors.** They are mirror images, not the same. If a capacitor total
+  comes out *bigger* in series, you've applied the wrong rule.
+- **Mixing units.** Combine like with like — all ohms, or all farads (or all microfarads) — before adding.
+- **Assuming parallel always means "smaller current."** Parallel *resistance* is smaller, which for a fixed
+  voltage means *more* total current is drawn, not less.
+
+## Quick sanity checks
+
+Two five-second tests catch most slips: a **parallel resistor** total must be smaller than the smallest
+branch, and a **series capacitor** total must be smaller than the smallest capacitor. If your answer breaks
+either rule, you've swapped a formula.
 
 ## Quick summary
 

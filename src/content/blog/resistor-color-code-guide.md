@@ -2,7 +2,7 @@
 title: "How to Read a Resistor Color Code (Bands to Ohms)"
 description: "A resistor's colored bands are a compact code: the first two are digits, the next is a ×10ⁿ multiplier, and the last is tolerance. Learn the color values, how to tell which end to start from, and how 4, 5 and 6-band resistors differ — with a worked example."
 pubDate: 2026-07-12
-updatedDate: 2026-07-12
+updatedDate: 2026-08-23
 archetype: explainer
 tools: ["/electronics/resistor-color-code-calculator/", "/electronics/led-resistor-calculator/", "/electronics/capacitor-code-calculator/"]
 keywords:
@@ -70,6 +70,8 @@ The heart of it is a single mapping from color to digit, easy to remember once a
 
 Plus two fractional multipliers for small resistors: **Gold ×0.1** and **Silver ×0.01**.
 
+A quick way to lock the sequence into memory is to notice that after black (0) the colors follow the order of a rainbow — red, orange, yellow, green, blue, violet — bracketed by brown at the bottom and grey then white at the top. Many people learn it with a mnemonic; the exact wording matters less than reciting it until the color-to-digit jump is automatic. Once it is, the whole reading process is just "digit, digit, count the zeros, check the tolerance."
+
 ## Reading a 4-band resistor
 
 The classic resistor has four bands. Reading from the grouped end:
@@ -81,13 +83,60 @@ The classic resistor has four bands. Reading from the grouped end:
 
 So **Brown-Black-Red-Gold** is: `1` (brown), `0` (black), `×100` (red) → **1000 Ω = 1 kΩ**, at **±5%** (gold). A 1 kΩ ±5% resistor is guaranteed to fall between 950 Ω and 1,050 Ω.
 
+### A few more worked examples
+
+Working through several codes makes the pattern stick. In each case, read the first two colors as digits, treat the third as the number of zeros to append, and the fourth as the tolerance.
+
+| Bands | Digits | Multiplier | Value | Tolerance |
+|---|---|---|---|---|
+| Yellow-Violet-Brown-Gold | 4, 7 | ×10 | 470 Ω | ±5% |
+| Brown-Black-Orange-Gold | 1, 0 | ×1 k | 10 kΩ | ±5% |
+| Red-Red-Red-Silver | 2, 2 | ×100 | 2.2 kΩ | ±10% |
+| Green-Blue-Yellow-Gold | 5, 6 | ×10 k | 560 kΩ | ±5% |
+| Brown-Black-Gold-Gold | 1, 0 | ×0.1 | 1.0 Ω | ±5% |
+
+The last row shows the fractional multiplier in action: a gold third band means "multiply by 0.1," so brown-black gives `10`, then `10 × 0.1 = 1.0 Ω`. That example is worth pausing on, because a gold or silver band in the *third* position is easy to misread as tolerance. Position, not just color, decides what a band means.
+
 ## Which end do I start from?
 
 This is the one thing beginners get wrong. Read from the end where the bands are **grouped closest together**; the **tolerance band** is slightly separated and comes last. If you can't tell, the tolerance band is usually the odd one out — a gold or silver band, or the one with a visible gap before it. Read a resistor backwards and you'll get a wildly different (and wrong) value, so it's worth checking.
 
+Two quick sanity checks help when a resistor is genuinely ambiguous. First, a resistor's first digit band is never black, because a value can't start with a leading zero — so if one end starts with black, you're reading from the wrong end. Second, if you get a value that isn't a standard part (see the common-values note below), you've probably reversed it. When both ends look plausible, measure it with a multimeter and let the number settle the argument.
+
+## What the tolerance band tells you
+
+Tolerance is the manufacturer's promise about how close the real resistance is to the printed value. It does not mean the part is "off" — it means any resistor in that batch could sit anywhere inside the guaranteed window. The tighter the tolerance, the more the manufacturer sorted and tested, and the more you pay.
+
+| Tolerance color | Tolerance | Typical use |
+|---|---|---|
+| Silver | ±10% | Non-critical, older parts |
+| Gold | ±5% | General-purpose hobby and consumer |
+| Brown | ±1% | Precision, most modern 5-band parts |
+| Red | ±2% | Precision |
+| Green | ±0.5% | High precision |
+| Blue | ±0.25% | High precision |
+| Violet | ±0.1% | Reference / measurement |
+| (no band) | ±20% | Legacy, now rare |
+
+For a **1 kΩ** resistor, that spread is concrete: at ±5% the true value lives between **950 Ω and 1,050 Ω**, but at ±1% it is pinned to **990 Ω to 1,010 Ω**. For most digital, lighting, and pull-up work the wider tolerance is invisible. For voltage dividers, filters, and timing networks, the tighter band earns its cost.
+
 ## 5-band and 6-band resistors
 
 Precision resistors add bands. A **5-band** resistor has **three digit bands** before the multiplier, giving an extra significant figure (so a value like 4.7 kΩ can be marked exactly), usually at a tight ±1% tolerance. A **6-band** resistor adds one more: a **temperature coefficient**, in parts per million per °C, telling you how much the resistance drifts as it heats up — important for precision analog and measurement circuits.
+
+Reading a 5-band part is the same routine with one extra digit. **Brown-Green-Black-Red-Brown** is `1`, `5`, `0` for the digits, `×100` for the multiplier, so `150 × 100 = 15,000 Ω = 15 kΩ`, at ±1% (brown). Note how the same physical value can appear as either a 4-band or 5-band part — the 5-band version just carries the extra significant figure the tighter tolerance implies.
+
+The band-count differences line up like this:
+
+| Bands | Layout | Typical tolerance | Extra info |
+|---|---|---|---|
+| 4-band | digit, digit, multiplier, tolerance | ±5% / ±10% | — |
+| 5-band | digit, digit, digit, multiplier, tolerance | ±1% | Extra significant figure |
+| 6-band | digit, digit, digit, multiplier, tolerance, tempco | ±1% or tighter | Temperature coefficient (ppm/°C) |
+
+## Common values you'll actually meet
+
+Resistors aren't made in every possible value — they come in standardized "E-series" steps chosen so that, allowing for tolerance, the ranges tile the number line without big gaps. The ±5% E24 series and ±10% E12 series cover most hobby needs. That's why values like 220 Ω, 330 Ω, 470 Ω, 1 kΩ, 2.2 kΩ, 4.7 kΩ and 10 kΩ turn up again and again: they're standard steps, repeated across every decade by shifting the multiplier band. If you decode a resistor and land on an oddball number like 1.37 kΩ from a 4-band part, it's a strong hint you read the bands in the wrong order.
 
 ## Just read it for me
 

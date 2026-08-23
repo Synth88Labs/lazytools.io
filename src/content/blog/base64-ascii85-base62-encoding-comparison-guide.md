@@ -2,7 +2,7 @@
 title: "Base64 vs Ascii85 vs Base62: Which Binary-to-Text Encoding Should You Use?"
 description: "Base64, Ascii85 and Base62 all turn binary data into text, but they trade size against URL-safety differently. Here's how each works, how much overhead it adds, and when to reach for which — with encoders that run in your browser."
 pubDate: 2026-08-02
-updatedDate: 2026-08-02
+updatedDate: 2026-08-23
 archetype: explainer
 heroImage: /blog/base64-ascii85-base62-encoding-comparison-guide.png
 heroAlt: "Comparison of Base64, Ascii85 and Base62 encodings showing their alphabets, overhead and typical uses"
@@ -36,6 +36,17 @@ one and you either waste bytes or end up percent-escaping characters in a URL. H
 when to use it, with encoders for [Base64](/dev/base64-encode-decode/),
 [Ascii85](/dev/ascii85-encode-decode/) and [Base62](/dev/base62-encode-decode/).
 
+<aside class="key-takeaways">
+
+**Key takeaways**
+
+- All three are reversible transport encodings, not encryption — they make binary safe to carry through text channels, adding size in exchange.
+- Ascii85 is the densest (~25% overhead), Base64 the most universal (~33%), and Base62 the only one that is URL-safe out of the box.
+- Base64 expands 3 bytes into 4 characters; Ascii85 packs 4 bytes into 5; Base62 treats the whole input as one big number and re-expresses it.
+- Reach for Base62 in URLs, filenames and short IDs; Ascii85 in PDF/PostScript or when you control both ends; Base64 everywhere else.
+
+</aside>
+
 ## Why encode binary as text?
 
 Email bodies, JSON strings, URLs, XML and source files are all built for text. Drop raw binary bytes
@@ -62,6 +73,18 @@ input, rounded up to a multiple of 4 with `=` padding. It's everywhere — email
 payloads, `data:` URIs, JWTs. Its weakness is the URL: `+`, `/` and `=` all have special meaning in URLs
 and must be escaped, which is why a "URL-safe Base64" variant (swapping `+/` for `-_`) exists.
 
+The mechanics are worth seeing once. Take the three bytes of `Man` — `01001101 01100001 01101110`.
+Line those 24 bits up and slice them into four 6-bit groups instead of three 8-bit ones:
+
+```
+Man → 010011 010110 000101 101110 → 19 22 5 46 → TWFu
+```
+
+Each 6-bit group (0–63) indexes into the alphabet `A–Z a–z 0–9 + /`, giving `TWFu`. When the input
+isn't a clean multiple of 3 bytes, the last group is padded with zero bits and the output is topped up
+with one or two `=` signs so the length is always a multiple of 4. That padding is the reason a single
+byte of input still costs four characters of output.
+
 **Use it when** you want maximum compatibility and the destination isn't a URL.
 
 ## Ascii85: the compact one
@@ -75,8 +98,16 @@ and the stream can be wrapped in `<~ … ~>` markers.
 "Man " → 9jqo^        (4 bytes → 5 chars)
 ```
 
+Under the hood, Ascii85 takes each group of 4 bytes, reads it as a single 32-bit number, and writes that
+number in base 85 as 5 digits — each digit offset from the `!` character. Because 85⁵ (just over 4.4
+billion) comfortably exceeds 2³² (about 4.29 billion), five base-85 digits are always enough to represent
+four bytes, and no more are needed. That tighter packing is where the ~25% overhead comes from versus
+Base64's ~33%.
+
 **Use it when** density matters and you control both ends — especially PDF/PostScript work. Watch out:
-Adobe Ascii85 is **not** the same as Z85 (the ZeroMQ variant), which uses a different alphabet.
+Adobe Ascii85 is **not** the same as Z85 (the ZeroMQ variant), which uses a different alphabet, nor the
+same as RFC 1924's base-85 scheme for IPv6 addresses. If you mix variants, decoding silently produces
+garbage rather than an error, so always pair an encoder and decoder from the same family.
 
 ## Base62: the URL-safe one
 

@@ -2,7 +2,7 @@
 title: "When to Start Seeds: Timing Your Whole Garden to the Last Frost"
 description: "One date runs the whole vegetable garden: your average last spring frost. Start tomatoes indoors ~7 weeks before it, sow peas 5 weeks before, plant beans after it. How frost-relative timing works, a crop-by-crop guide, and how to turn it into real dates."
 pubDate: 2026-07-12
-updatedDate: 2026-07-12
+updatedDate: 2026-08-23
 archetype: explainer
 tools: ["/garden/planting-date-calculator/", "/garden/plant-spacing-calculator/", "/garden/seed-spacing-calculator/"]
 keywords:
@@ -70,9 +70,36 @@ Starting indoors gives slow crops a head start so they mature before autumn. Cou
 
 Don't start *too* early: a tomato seedling started 12 weeks out becomes a root-bound, leggy plant stuck on a windowsill waiting for the weather. Matching the start date to the transplant date keeps plants stocky and healthy.
 
+## A worked example
+
+Suppose your average last spring frost is **1 May**. Working the offsets from the table gives a concrete sowing calendar with no guesswork:
+
+| Task | Offset | Date (last frost = 1 May) |
+|---|---|---|
+| Start onions indoors | ~10 weeks before | late February |
+| Start peppers indoors | ~8 weeks before | early March |
+| Start tomatoes indoors | ~7 weeks before | mid-March |
+| Sow peas & spinach outdoors | ~5 weeks before | late March |
+| Start brassicas indoors | ~5 weeks before | late March |
+| Direct-sow beans, corn, squash | at/after frost | early May |
+| Transplant tomatoes outdoors | ~1 week after | second week of May |
+| Transplant peppers outdoors | ~2 weeks after | mid-May |
+
+Shift the frost date and every row shifts with it — that is the whole point of frost-relative timing. A gardener whose last frost falls on 15 April simply slides the same calendar two weeks earlier; one at 20 May slides it later. The offsets stay put.
+
 ## Counting forward: sowing outdoors
 
 Many crops skip the indoor stage entirely. **Cool-season** direct sowing happens *before* the frost — peas and spinach about 4–6 weeks before, lettuce a few weeks before. **Warm-season** direct sowing waits until *after* it — beans, corn, squash and cucumbers at or just after the last frost, when the soil has warmed. Root crops (carrots, beets) and legumes (peas, beans) are almost always direct-sown because they resent having their roots disturbed by transplanting.
+
+For warm-season direct sowing, soil temperature matters more than the calendar. Beans and squash germinate slowly and may rot in cold, wet ground even after the frost date has passed; corn is similar. If spring is running cold, waiting an extra week for the soil to warm usually beats sowing on the nominal date. A cheap soil thermometer removes the guesswork — most warm-season seeds want soil above roughly 16 °C (60 °F) to germinate reliably.
+
+## Hardening off before transplanting
+
+Indoor-raised seedlings have never met wind, direct sun or cool nights, and moving them straight outdoors can shock or scorch them. **Hardening off** bridges that gap: over about 7–10 days, set the seedlings outside for a lengthening spell each day — starting with an hour or two in shade and building up to a full day and eventually an overnight — before they go into the ground. Skipping this step is one of the most common reasons healthy-looking seedlings stall or bleach after transplanting. Build the hardening-off window into your plan so the seedlings are ready exactly when their transplant date arrives, not a week after.
+
+## Warm-season crops: read the nights, not just the frost date
+
+The last frost date marks when a killing frost becomes unlikely — but tender crops care about cold nights too, not only actual frost. Tomatoes, peppers and cucumbers stall when nights sit in single digits Celsius even without frost, so the "~1–2 weeks after frost" offsets in the table build in a buffer for exactly that. In a cold spring, wait for settled warm nights rather than rushing plants out on the calendar date; a plant held back a week catches up fast, while one chilled early may sulk for a month.
 
 ## Turn the offsets into real dates
 

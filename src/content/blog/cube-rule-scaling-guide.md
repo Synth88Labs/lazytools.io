@@ -2,7 +2,7 @@
 title: "Why a Bigger 3D Print Uses So Much More Filament: The Cube Rule"
 description: "Scaling a model to 200% doesn't use twice the filament — it uses eight times. That surprise trips up almost everyone new to 3D printing. Here's the simple cube rule behind it, why print time balloons the same way, and how to plan a resize."
 pubDate: 2026-07-12
-updatedDate: 2026-07-12
+updatedDate: 2026-08-23
 archetype: explainer
 tools: ["/3d-printing/model-scale-calculator/", "/3d-printing/filament-calculator/", "/3d-printing/filament-cost-calculator/"]
 keywords:
@@ -51,9 +51,11 @@ draft: false
 
 ## Why one dimension of "bigger" is really three
 
-When you scale a model, you don't stretch it in one direction — you grow it in **all three** at once: longer, wider *and* taller. Each of those multiplies by the same factor, so the space inside multiplies three times over.
+When you scale a model, you don't stretch it in one direction — you grow it in **all three** at once: longer, wider *and* taller. The slider in your slicer says one number, but that number is applied to every axis simultaneously. Each of those axes multiplies by the same factor, so the space enclosed multiplies three times over.
 
 Double the size, and you get 2 × 2 × 2 = **8** times the volume. Triple it and it's 3 × 3 × 3 = **27**. That's the whole rule: the **volume factor is the cube of the linear scale factor**. Since the filament in a print (and the time to lay it down) is essentially proportional to volume, both follow the cube too.
+
+A helpful mental picture: imagine the small model built from a single unit cube. To make a model twice as tall, twice as wide and twice as deep, you need to stack unit cubes 2 wide, 2 deep and 2 high — that's eight of them, not two. The infographic above shows exactly this. The outside looks "twice as big," but you are filling eight times the interior.
 
 ## The numbers you'll actually hit
 
@@ -67,11 +69,35 @@ Double the size, and you get 2 × 2 × 2 = **8** times the volume. Triple it and
 | 200% | ×2 | **×8** |
 | 300% | ×3 | ×27 |
 
-Notice how fast it runs away. Going from 100% to 125% — a change that barely looks different — nearly **doubles** the material. That's why "let's just make it a bit bigger" is such a filament trap.
+Notice how fast it runs away. Going from 100% to 125% — a change that barely looks different on screen — nearly **doubles** the material. That's why "let's just make it a bit bigger" is such a filament trap: the eye reads linear size, but the spool pays for volume.
+
+## Surface area follows a *square* rule, not a cube
+
+There is a companion rule worth knowing. While volume (and therefore filament and time) scales with the cube, **surface area scales with the square** of the linear factor. Double the size and the outer skin only quadruples (2² = 4), while the inside octuples (2³ = 8).
+
+That mismatch explains a few things printers notice:
+
+- **Paint, primer and coating** track surface area, so they grow far more slowly than filament does when you scale up.
+- **Big prints feel "hollow" for their weight** relative to how imposing they look, because so much of the added volume is interior infill rather than shell.
+- **Cooling and warping behaviour changes** as parts get larger, since the ratio of skin to mass keeps shifting. This is the same square-cube principle engineers and biologists use to reason about why large structures can't simply be scaled-up copies of small ones.
+
+## Worked example: a 60 mm figurine at 180%
+
+Say your slicer reports the original 60 mm-tall model as **28 g** of filament and a **4 h 30 m** print. You want it at 180%.
+
+1. **Scale factor:** 180 ÷ 100 = **1.8**.
+2. **New height:** 60 mm × 1.8 = **108 mm** (each other dimension grows 1.8× too).
+3. **Volume multiplier:** 1.8³ = 1.8 × 1.8 × 1.8 ≈ **5.83**.
+4. **New filament:** 28 g × 5.83 ≈ **163 g** — well over half a standard 250 g coil, from what looked like a modest bump.
+5. **New time:** 4.5 h × 5.83 ≈ **26 h** — an overnight-plus print instead of an afternoon.
+
+That is the value of doing the cube in your head before you commit: a "slightly larger" figurine just turned into a two-day, most-of-a-spool job.
 
 ## It cuts the other way too
 
-The cube rule is also why **test prints are scaled down**. Printing a model at 50% to check it fits or looks right costs about an eighth of the filament and a fraction of the time — a cheap way to catch a problem before committing to the full-size print. Calibration objects and minis lean on the same maths.
+The cube rule is also why **test prints are scaled down**. Printing a model at 50% to check it fits, that overhangs behave, or that a joint clicks together costs about an eighth of the filament and a fraction of the time — a cheap way to catch a problem before committing to the full-size print. Calibration objects, draft minis and fit-check dry runs all lean on the same maths.
+
+There is a limit, of course: shrink too far and fine detail drops below what your nozzle and layer height can resolve, and thin walls can vanish. Scaling down is a material-saver, not a magnifier — the geometry gets cheaper, but the features have to stay printable.
 
 ## How to plan a resize
 
@@ -79,11 +105,25 @@ If your slicer told you the original print was, say, 40 g and 5 hours, you can p
 
 - **Work out the factor:** desired scale ÷ 100, then cube it. For 150%: 1.5³ ≈ 3.4.
 - **Multiply:** 40 g → ~136 g, and 5 h → ~17 h.
+- **Check the spool and the bed:** 136 g may not leave enough on a partly-used coil, and a 150%-taller model may no longer fit your build volume.
 - **Re-slice to confirm:** infill, walls and supports don't scale as a perfect cube, so the slicer's number is the exact one — but the cube estimate gets you within range instantly.
+
+### What the cube rule does *not* capture
+
+The estimate is a starting point, and a good one, but a few printed-part realities pull the true number slightly off a clean cube:
+
+| Factor | Effect on the estimate |
+|---|---|
+| **Wall count / perimeters** | Fixed-width walls are a larger *share* of a small print and a smaller share of a big one, so tiny prints use proportionally more, large prints slightly less |
+| **Infill percentage** | Infill fills interior volume, so it broadly follows the cube — but changing the infill % when you resize breaks the comparison |
+| **Supports** | Support material can grow faster than the model itself for tall or overhang-heavy scale-ups |
+| **Layer height** | Keeping the same layer height on a taller print adds proportionally more layers, nudging time upward |
+
+For most practical planning these are second-order — the cube rule still lands you close. Re-slice when you need the exact grams for a tight spool or a paid job.
 
 ## Do the maths in your browser
 
-The [model scale calculator](/3d-printing/model-scale-calculator/) turns a scale percentage into the new dimensions and the material/time multiplier, and includes a fit-to-bed helper that finds the largest scale that still fits your printer. Pair it with the [filament calculator](/3d-printing/filament-calculator/) to convert weight and length, and the [filament cost calculator](/3d-printing/filament-cost-calculator/) to price the resized print. Like every LazyTools tool, they run entirely in your browser — nothing uploaded.
+The [model scale calculator](/3d-printing/model-scale-calculator/) turns a scale percentage into the new dimensions and the material/time multiplier, and includes a fit-to-bed helper that finds the largest scale that still fits your printer. Pair it with the [filament calculator](/3d-printing/filament-calculator/) to convert weight and length, and the [filament cost calculator](/3d-printing/filament-cost-calculator/) to price the resized print before you start it. Like every LazyTools tool, they run entirely in your browser — nothing uploaded, nothing stored.
 
 ---
 

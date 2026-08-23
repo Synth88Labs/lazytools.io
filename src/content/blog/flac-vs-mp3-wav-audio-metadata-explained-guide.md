@@ -2,7 +2,7 @@
 title: "FLAC vs MP3 vs WAV: Three Formats, Three Ways to Store Tags"
 description: "FLAC, MP3 and WAV all hold audio, but each stores its title/artist metadata differently — Vorbis comments, ID3, and RIFF chunks. Here's how each works, how to tell if a FLAC is really hi-res, and how to inspect any of them in your browser."
 pubDate: 2026-08-04
-updatedDate: 2026-08-04
+updatedDate: 2026-08-23
 archetype: explainer
 heroImage: /blog/flac-vs-mp3-wav-audio-metadata-explained-guide.png
 heroAlt: "FLAC storing Vorbis comments, MP3 storing ID3 tags and WAV storing RIFF chunks, side by side"
@@ -31,24 +31,42 @@ draft: false
 ---
 
 **FLAC, MP3 and WAV all store sound — but ask each one "what's the title and artist?" and they answer in
-three completely different formats.** Knowing which is which explains why a tag editor for one won't touch
-another, and how to check whether that "hi-res" FLAC really is. Here's the rundown, with inspectors for
-[FLAC](/video/flac-metadata-viewer/), [MP3](/video/mp3-tag-reader/) and
+three completely different formats.** FLAC keeps its tags as Vorbis comments, MP3 uses ID3 frames, and WAV
+tucks them into a RIFF chunk. Knowing which is which explains why a tag editor built for one format won't
+touch another, and how to check whether that "hi-res" FLAC really lives up to the label. Here's the
+rundown, with inspectors for [FLAC](/video/flac-metadata-viewer/), [MP3](/video/mp3-tag-reader/) and
 [WAV](/video/wav-aiff-inspector/).
+
+<aside class="key-takeaways">
+
+**Key takeaways**
+
+- The three formats hold the same *kind* of information (title, artist, album) but in incompatible byte
+  layouts — Vorbis comments, ID3 frames and RIFF chunks — so each needs its own reader.
+- FLAC and WAV are both lossless; FLAC compresses to roughly half the size and tags far more richly, while
+  WAV stays uncompressed with weaker tagging.
+- Whether a FLAC is genuinely hi-res is answered by its STREAMINFO block, which stores the true bit depth
+  and sample rate — not by the filename.
+- All three keep metadata in documented headers, so a browser-based inspector can read them without
+  decoding the audio or uploading the file.
+
+</aside>
 
 ## Same job, three tagging systems
 
-The audio itself is encoded differently in each format, but the interesting difference here is where the
-*metadata* lives:
+The audio itself is encoded differently in each format — FLAC and WAV are lossless, MP3 is lossy — but the
+interesting difference here is where the *metadata* lives and how it is laid out on disk:
 
-| Format | Audio | Tags stored as |
-|---|---|---|
-| **FLAC** | Lossless compressed | **Vorbis comments** (KEY=value block) |
-| **MP3** | Lossy compressed | **ID3** tags (ID3v2 at start, ID3v1 at end) |
-| **WAV** | Uncompressed PCM | **RIFF** LIST/INFO chunk |
+| Format | Audio | Tags stored as | Where in the file | Custom fields? |
+|---|---|---|---|---|
+| **FLAC** | Lossless compressed | **Vorbis comments** (`KEY=value` block) | Metadata block near the start | Yes — free-form keys |
+| **MP3** | Lossy compressed | **ID3** tags (ID3v2 + ID3v1) | ID3v2 at start, ID3v1 at end | Limited — mostly fixed frames |
+| **WAV** | Uncompressed PCM | **RIFF** `LIST`/`INFO` chunk | An `INFO` sub-chunk | Rarely — thin support |
 
-They carry similar fields — title, artist, album, year — but the byte layouts share nothing, which is why
-each format needs its own parser.
+They carry similar fields — title, artist, album, year — but the byte layouts share nothing. A `TITLE=`
+line in a FLAC, a `TIT2` frame in an MP3 and an `INAM` entry in a WAV all mean "song title," yet a parser
+written for one has no idea how to find the others. That is the whole reason a single "universal" tag
+editor has to bundle three separate code paths under the hood.
 
 ## FLAC: Vorbis comments + STREAMINFO
 
@@ -60,7 +78,19 @@ A FLAC file opens with a `fLaC` marker and a series of **metadata blocks**. Two 
   vendor string.
 
 Because Vorbis comment keys aren't a fixed list (unlike ID3), FLAC tagging is flexible — any field a
-tagger invents is valid.
+tagger invents is valid. A typical block might read:
+
+```
+TITLE=Clair de Lune
+ARTIST=Claude Debussy
+ALBUM=Suite bergamasque
+DATE=1905
+REPLAYGAIN_TRACK_GAIN=-6.42 dB
+```
+
+Every line is plain UTF-8 text, which is why Vorbis comments handle any language and any custom field
+(like the ReplayGain loudness values above) without special encoding rules. Album art, when present, lives
+in a separate `PICTURE` metadata block rather than inside the comment text.
 
 ## The "is it really hi-res?" check
 
@@ -70,22 +100,79 @@ matter what the filename or store page claimed. Since the bit depth and sample r
 STREAMINFO, a quick look at the [FLAC Metadata Viewer](/video/flac-metadata-viewer/) tells you the real
 resolution instead of the marketing one.
 
-## MP3 and WAV, briefly
+Here is how common resolutions read out, and roughly what each one means:
 
-- **MP3** uses **ID3**: a rich ID3v2 block at the start (long Unicode fields, cover art) and a legacy
-  128-byte ID3v1 at the end. Its bitrate and sample rate come from the MPEG frame header, not the tag.
-- **WAV** is a **RIFF** container; its specs live in the `fmt ` chunk and any tags in a `LIST`/`INFO`
-  chunk. Tagging is weaker and less consistently supported than FLAC's.
+| STREAMINFO reports | Common name | Hi-res? |
+|---|---|---|
+| 16-bit / 44.1 kHz | CD quality | No |
+| 16-bit / 48 kHz | DVD/streaming baseline | No |
+| 24-bit / 48 kHz | Studio / broadcast | Borderline |
+| 24-bit / 96 kHz | Hi-res | Yes |
+| 24-bit / 192 kHz | Hi-res | Yes |
 
-(Each has its own inspector — [MP3](/video/mp3-tag-reader/) and [WAV/AIFF](/video/wav-aiff-inspector/) —
-because, again, the formats don't share a tagging scheme.)
+A worked example: suppose you buy an album advertised as "24-bit / 96 kHz FLAC." You open one track in the
+viewer and STREAMINFO shows **16 bits per sample** and a **44,100 Hz** sample rate. That file was almost
+certainly *upsampled* from a CD-quality master — padding the numbers on the outside can't recreate detail
+that was never captured. The stored values are the ground truth, so the check takes seconds and settles
+the argument. (Bear in mind that a genuine 24/96 STREAMINFO confirms the *container's* resolution, not that
+the recording actually holds that much musical detail — but a 16/44.1 readout on a "hi-res" purchase is a
+clear red flag.)
+
+## MP3: ID3 tags
+
+MP3 stores its tags with **ID3**, and there are two versions living in the same file:
+
+- **ID3v2** sits at the *start* of the file. It's the modern, capable one — Unicode text frames with
+  four-character IDs (`TIT2` for title, `TPE1` for artist, `TALB` for album), embedded cover art in an
+  `APIC` frame, and effectively no length limit on text.
+- **ID3v1** is a fixed **128-byte** block at the very *end* of the file, kept for backward compatibility.
+  It crams title, artist, album, year and comment into fixed-width fields, which is why old players
+  truncate long names.
+
+Crucially, the *audio* specs — bitrate and sample rate — are not in the ID3 tag at all. They come from the
+MPEG frame header inside the audio stream itself. So if you want to know an MP3's real bitrate, the
+[MP3 Tag Reader](/video/mp3-tag-reader/) reads the frame header, not just the tag someone typed in.
+
+## WAV: RIFF chunks
+
+WAV is a **RIFF** container — a file split into labelled "chunks." Two matter for our purposes:
+
+- The **`fmt `** chunk holds the technical facts: sample rate, bit depth, channel count and the PCM
+  encoding.
+- Tags, when present, sit in a **`LIST`** chunk of type **`INFO`**, using four-character codes like `INAM`
+  (name/title), `IART` (artist) and `ICRD` (creation date).
+
+RIFF `INFO` tagging is real but thin: the standard set of fields is small, support across editors is
+inconsistent, and there's no universally agreed home for cover art. That's the practical reason WAV files
+in a big library so often show up with blank or partial metadata — the format simply wasn't designed with
+rich tagging in mind. The [WAV/AIFF Inspector](/video/wav-aiff-inspector/) surfaces whatever chunks are
+actually there.
 
 ## FLAC vs WAV: both lossless, one smarter
 
 Both FLAC and WAV are **lossless** — bit-for-bit identical to the source. The difference is that FLAC
 **compresses** (typically to about half the size) and **tags richly**, while WAV stores raw PCM (bigger)
-with weak tagging. For a library you want to keep and organize, FLAC is usually the better lossless
-choice; WAV shines in editing workflows where uncompressed simplicity matters.
+with weak tagging. Decompressing a FLAC gives you exactly the same samples the WAV would have held; the
+saving is pure packaging, not quality. For a library you want to keep and organize, FLAC is usually the
+better lossless choice; WAV shines in editing and production workflows where uncompressed simplicity, wide
+tool support and zero decode step matter more than disk space.
+
+A rough way to decide:
+
+- **Archiving or ripping a music collection?** FLAC — smaller files, real tags, and the MD5 integrity
+  check below.
+- **Recording, editing, or handing audio to a DAW or video tool?** WAV — universally readable and never
+  needs decoding.
+- **Sharing casually where size matters most and perfect fidelity doesn't?** Neither — that's MP3's job.
+
+## The one guarantee only FLAC gives you
+
+FLAC's STREAMINFO block carries something the others don't: an **MD5 checksum of the decoded audio
+samples**. When a decoder unpacks the file, it can hash the result and compare it against that stored
+value. If they match, the audio was reproduced exactly — that's the mathematical proof behind the word
+"lossless." If they don't, the file is corrupted or was tagged as FLAC without genuinely being one. It's a
+data-integrity check, not a tag, and it's why serious archivists lean on FLAC: a viewer can flag a bad rip
+long before your ears would.
 
 ## Inspect any of them privately
 
@@ -93,4 +180,6 @@ All three keep their metadata in documented headers, so you can read it without 
 uploading anything. The [FLAC Metadata Viewer](/video/flac-metadata-viewer/) shows a FLAC's sample rate,
 bit depth, duration, Vorbis tags and audio MD5; the [MP3 Tag Reader](/video/mp3-tag-reader/) and
 [WAV/AIFF Inspector](/video/wav-aiff-inspector/) do the same for their formats — each parsing the file
-entirely in your browser, so your music never leaves your device.
+entirely in your browser, so your music never leaves your device. Whether you're verifying a "hi-res"
+purchase, hunting down why a track shows the wrong artist, or auditing a whole library before importing it,
+reading the header directly beats trusting the filename every time.

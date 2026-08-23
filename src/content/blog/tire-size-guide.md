@@ -2,7 +2,7 @@
 title: "How to Read a Tire Size: 225/45R17 Decoded"
 description: "A tire size like 225/45R17 packs four facts into one code: section width in millimetres (225), aspect ratio as a percentage (45), radial construction (R), and rim diameter in inches (17). What each part means, how to find the real overall diameter, and why part is metric and part is inches."
 pubDate: 2026-07-11
-updatedDate: 2026-07-11
+updatedDate: 2026-08-23
 archetype: explainer
 tools: ["/automotive/tire-size-calculator/", "/automotive/tire-size-comparison/", "/automotive/gear-ratio-calculator/"]
 keywords:
@@ -59,7 +59,9 @@ draft: false
 
 **Construction (R).** R for **radial**, the standard for virtually all modern passenger tires. You'll occasionally see **ZR** (associated with high speed ratings) or, on classic vehicles, **D** or **B** for bias-ply.
 
-**Rim diameter (17).** The wheel diameter the tire fits, in **inches**. This is the metric-and-imperial mash-up that trips people up — the width and sidewall are millimetres, but the rim stays in inches.
+**Rim diameter (17).** The wheel diameter the tire fits, in **inches**. This is the metric-and-imperial mash-up that trips people up — the width and sidewall are millimetres, but the rim stays in inches. It is also the one number that has to match your wheel exactly: a 17-inch tire will not seat on an 18-inch rim, no matter how the other figures line up.
+
+A quick sense-check helps here. Two tires can share the same rim size yet be very different tires. A **225/45R17** and a **225/50R17** both fit a 17-inch wheel and are both 225 mm wide, but the second has a taller sidewall (112.5 mm versus 101.25 mm), so it stands about 22 mm taller overall. The rim number tells you what wheel the tire bolts to; it says nothing on its own about how tall the finished tire is.
 
 ## The number that isn't written on the tire: overall diameter
 
@@ -73,13 +75,55 @@ For 225/45R17, converting the rim to millimetres:
 
 There are two sidewalls — one at the top, one at the bottom — which is why the sidewall height is doubled. From the diameter you can also get the circumference (π × diameter) and the revolutions per mile, which is what gearing and speedometer calculations actually use.
 
+### A reference table you can read at a glance
+
+Because the aspect ratio is a percentage, sizes that look wildly different can end up nearly the same height. The table below decodes a handful of common sizes with the exact formula above — notice how the overall diameter barely moves across the first four even as the rim grows from 15 to 18 inches. That near-constant diameter is exactly what a good fitment aims for.
+
+| Tire size | Width (mm) | Sidewall height (mm) | Overall diameter |
+|-----------|-----------:|---------------------:|-----------------:|
+| 195/65R15 | 195 | 126.8 | 634.5 mm (25.0″) |
+| 205/55R16 | 205 | 112.8 | 631.9 mm (24.9″) |
+| 225/45R17 | 225 | 101.3 | 634.3 mm (25.0″) |
+| 225/40R18 | 225 | 90.0 | 637.2 mm (25.1″) |
+| 235/35R19 | 235 | 82.3 | 647.1 mm (25.5″) |
+
+Read down the "sidewall height" column and you can see the trade every low-profile buyer is making: the taller wheel eats the sidewall. A 15-inch tire here carries a 127 mm cushion of rubber; the 19-inch version has barely 82 mm. Less sidewall means sharper steering response but a firmer ride and more exposure to pothole damage.
+
 ## Why the overall diameter matters for fitment
 
 Your speedometer and odometer are calibrated to the original tire's diameter. Fit a taller tire and you travel farther per revolution, so you're actually going **faster** than the speedometer shows and your odometer under-counts. A shorter tire does the reverse. The common guideline is to keep any size change within about **±3% of the original overall diameter** — beyond that the errors grow and you risk clearance or gearing problems.
 
-This is also the idea behind **plus-sizing**: fitting a larger-diameter *wheel* with a lower-profile tire (say 225/45R17 → 245/40R18) while keeping the overall *diameter* about the same. The look changes; the rolling diameter shouldn't.
+This is also the idea behind **plus-sizing**: fitting a larger-diameter *wheel* with a lower-profile tire while keeping the overall *diameter* about the same. The look changes; the rolling diameter shouldn't.
 
-The [tire size calculator](/automotive/tire-size-calculator/) decodes any size into its real dimensions, and the [tire size comparison tool](/automotive/tire-size-comparison/) puts two sizes side by side and shows the exact speedometer error from switching — all in your browser, nothing uploaded.
+### A worked plus-sizing example
+
+Say the car came on **205/55R16** and you want the sharper look of a 17-inch wheel. Work it in three steps:
+
+1. **Find the original diameter.** 16 × 25.4 + 2 × (205 × 0.55) = 406.4 + 225.5 = **631.9 mm**.
+2. **Pick a candidate on the bigger rim.** Try **225/45R17**: 17 × 25.4 + 2 × (225 × 0.45) = 431.8 + 202.5 = **634.3 mm**.
+3. **Check the change.** (634.3 − 631.9) ÷ 631.9 = **+0.38%** — comfortably inside the ±3% guideline, so the speedometer error is negligible and clearance stays close to stock.
+
+That is why 205/55R16 → 225/45R17 is such a common "plus-one" upgrade: it drops the profile and widens the tread while leaving the rolling diameter almost untouched.
+
+## The rest of the sidewall: load index and speed rating
+
+The size code is usually followed by two more markings — for example **225/45R17 91V**. The **91** is the *load index* (a coded maximum load per tire) and the **V** is the *speed rating* (the maximum sustained speed the tire is certified for). These are safety limits, so when you change size you should match or exceed the original figures, which are listed on the same door-jamb placard as the size.
+
+| Speed symbol | Max speed |
+|:------------:|----------:|
+| T | 190 km/h (118 mph) |
+| H | 210 km/h (130 mph) |
+| V | 240 km/h (149 mph) |
+| W | 270 km/h (168 mph) |
+| Y | 300 km/h (186 mph) |
+
+A few common load-index values: **91** corresponds to about 615 kg per tire, **95** to about 690 kg, and **100** to about 800 kg. Multiply by four for a rough sense of the tire set's rated capacity, but always defer to the vehicle placard rather than fitting to the maximum a tire can theoretically carry.
+
+## Match the placard, not the old tire
+
+The number moulded on your current sidewall is only what *happens* to be fitted — a previous owner or shop may have changed it. The size the manufacturer intended lives on the **placard inside the driver's door jamb** (and in the owner's manual), along with the correct load index, speed rating and inflation pressures. When in doubt, that placard is the authority.
+
+The [tire size calculator](/automotive/tire-size-calculator/) decodes any size into its real dimensions — sidewall height, overall diameter, circumference and revolutions per mile — and the [tire size comparison tool](/automotive/tire-size-comparison/) puts two sizes side by side and shows the exact speedometer error from switching. Both run entirely in your browser, with nothing uploaded.
 
 ---
 

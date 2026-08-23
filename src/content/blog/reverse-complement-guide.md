@@ -2,7 +2,7 @@
 title: "Reverse Complement of DNA: The Rule, the Steps, and Why Direction Matters"
 description: "The reverse complement of ATGC is GCAT — complement each base (A↔T, G↔C), then reverse to read 5′→3′. Why it's not the same as the complement, how translation and transcription differ, and why you shouldn't paste sequences into a chatbot."
 pubDate: 2026-07-10
-updatedDate: 2026-07-10
+updatedDate: 2026-08-23
 archetype: explainer
 tools: ["/biology/reverse-complement/", "/biology/gc-content-tm/", "/biology/dna-molecular-weight/"]
 keywords:
@@ -63,7 +63,35 @@ These get mixed up constantly, so it's worth being precise:
 - **Reverse complement** — do that, then reverse the string: `ATGC` → `TACG` → `GCAT`.
 
 The base-pairing rules are fixed: **A pairs with T, G pairs with C** (and in RNA, A pairs with **U**).
-Those never change, which is why the answer is exact and never goes out of date.
+Those never change, which is why the answer is exact and never goes out of date. Here is the full
+pairing reference in one place:
+
+| Base | Name | DNA partner | RNA partner |
+| --- | --- | --- | --- |
+| A | Adenine | T | U |
+| T | Thymine | A | — (DNA only) |
+| U | Uracil | — (RNA only) | A |
+| G | Guanine | C | C |
+| C | Cytosine | G | G |
+
+Notice that G and C behave identically in DNA and RNA; only the A partner changes (T in DNA, U in RNA).
+That single swap is the only thing that differs when you reverse-complement RNA instead of DNA.
+
+### A worked example, base by base
+
+Take the strand `5′-ATGGCAT-3′`. The two-step recipe is easiest to see when you write the complement
+directly under each base and then read the bottom row backwards:
+
+```
+5′  A  T  G  G  C  A  T  3′   (original, read left→right)
+    |  |  |  |  |  |  |
+3′  T  A  C  C  G  T  A  5′   (complement in place)
+```
+
+The bottom strand is the complement, but it is written 3′→5′. To express it the normal way — 5′→3′ —
+read it right to left: `ATGCCAT`. That string, `ATGCCAT`, is the reverse complement of `ATGGCAT`.
+Palindromic-looking sequences are a good gut-check: the reverse complement of `GAATTC` (the EcoRI site)
+is `GAATTC` again, which is exactly why many restriction sites read the same on both strands.
 
 ## Why you almost always want the *reverse* one
 
@@ -73,6 +101,27 @@ and you want the *bottom* strand written the normal way (5′→3′), you must 
 direction. That flip is the reversal. It's why designing a reverse primer, or finding what the
 opposite strand actually reads, needs the reverse complement — the plain complement would be written
 backwards.
+
+A few concrete places this bites people:
+
+- **PCR reverse primers.** A reverse primer anneals to the top strand but is itself written 5′→3′, so
+  you take the reverse complement of the 3′ end of your target region, not the plain complement.
+- **Reading the antisense strand.** When a gene sits on the minus strand of a reference genome, the
+  coding sequence you care about is the reverse complement of what the plus-strand coordinates show.
+- **Checking a synthesis order.** Vendors return oligos 5′→3′; confirming that two oligos anneal means
+  checking that one is the reverse complement of the other, not merely the complement.
+
+To make the distinction unmistakable, here is the same short input through both operations:
+
+| Input (5′→3′) | Complement (in place) | Reverse complement (5′→3′) |
+| --- | --- | --- |
+| `ATGC` | `TACG` | `GCAT` |
+| `AATTC` | `TTAAG` | `GAATT` |
+| `GGGAAA` | `CCCTTT` | `TTTCCC` |
+| `ATGGCAT` | `TACCGTA` | `ATGCCAT` |
+
+The middle column is almost never what you want on its own — it is only an intermediate step. The right
+column is the strand as it would actually be written and ordered.
 
 ## Transcription and translation, briefly
 
@@ -84,6 +133,27 @@ The [sequence tool](/biology/reverse-complement/) also does the two other everyd
   reading frame (+1, +2, +3) and the protein is read until a stop.
 
 The genetic code is a fixed 64-codon table, so translation — like the complement — is deterministic.
+Because a codon is three bases, a strand has three possible reading frames in each direction, and the
+reverse complement supplies the other three. Shifting the start point changes every codon downstream:
+
+| Sequence `ATGGCATAA` | Frame | Codons | Reads as |
+| --- | --- | --- | --- |
+| forward | +1 | `ATG · GCA · TAA` | Met · Ala · **stop** |
+| forward | +2 | `TGG · CAT` | Trp · His |
+| forward | +3 | `GGC · ATA` | Gly · Ile |
+
+Only frame +1 here begins with a start codon and ends cleanly at a stop, which is why finding the right
+open reading frame matters before you trust a translation. The [sequence tool](/biology/reverse-complement/)
+shows all frames at once so you can pick the one that opens with `ATG` and closes on a stop.
+
+### Where each operation is used
+
+| Operation | What it does | Typical use |
+| --- | --- | --- |
+| Complement | Pairs each base in place | Intermediate step; rarely the final answer |
+| Reverse complement | Complement + reverse | Reverse primers, antisense strand, oligo annealing |
+| Transcription | T → U | Deriving the mRNA from a coding strand |
+| Translation | Codons → amino acids | Predicting the protein an ORF encodes |
 
 ## Why not just ask a chatbot?
 

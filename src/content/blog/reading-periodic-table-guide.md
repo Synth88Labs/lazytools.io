@@ -2,7 +2,7 @@
 title: "How to Read the Periodic Table: Groups, Periods, Blocks and Trends"
 description: "The periodic table is organised so position predicts behaviour: columns (groups) share chemistry, rows (periods) count electron shells, and blocks show which orbital fills. How to read it, plus the key trends — electronegativity, atomic radius and reactivity."
 pubDate: 2026-07-11
-updatedDate: 2026-07-11
+updatedDate: 2026-08-23
 archetype: explainer
 tools: ["/chemistry/periodic-table/", "/chemistry/electron-configuration-calculator/", "/chemistry/molar-mass-calculator/"]
 keywords:
@@ -65,6 +65,42 @@ electrons fill the same principal shell until it's full — then a new period (a
 
 Click any element in the [interactive periodic table](/chemistry/periodic-table/) to see its group,
 period, block and electron configuration for yourself.
+
+### A worked example: reading sodium's coordinates
+
+Take **sodium (Na)**. It sits in **group 1, period 3**. Those two coordinates already tell you almost
+everything:
+
+- *Group 1* → one valence electron → it readily loses that electron to form a **+1 ion (Na⁺)** and is a
+  soft, very reactive metal, just like lithium above it and potassium below it.
+- *Period 3* → it is filling its **third** principal shell, so its configuration is 1s² 2s² 2p⁶ 3s¹ — one
+  lone electron sitting in a new outer shell.
+
+Compare it with **chlorine (Cl)** in **group 17, period 3**. Chlorine needs just one more electron to
+complete its outer shell, so it grabs one to form **Cl⁻**. Put the two together and the position alone
+predicts the product: Na⁺ and Cl⁻ attract into ordinary table salt, **NaCl**. You read the chemistry
+straight off the grid without memorising a single reaction.
+
+## The main groups at a glance
+
+The "main-group" elements (the s- and p-blocks) are the easiest to reason about because valence electrons
+map directly onto the group number. This reference table covers the columns you meet most often:
+
+| Group | Common name | Valence electrons | Typical ion | Behaviour |
+|---|---|---|---|---|
+| 1 | Alkali metals | 1 | +1 | Soft, very reactive metals |
+| 2 | Alkaline earth metals | 2 | +2 | Reactive metals, harder than group 1 |
+| 13 | Boron group | 3 | +3 | Mixed metal/metalloid character |
+| 14 | Carbon group | 4 | ±4 | Forms covalent networks and chains |
+| 15 | Pnictogens | 5 | −3 | Nonmetal to metal down the column |
+| 16 | Chalcogens | 6 | −2 | Oxygen family, mostly nonmetals |
+| 17 | Halogens | 7 | −1 | Reactive nonmetals, form salts |
+| 18 | Noble gases | 8 (2 for He) | none | Full shells, essentially inert |
+
+Notice how the ion charge tracks the group: metals on the left *lose* electrons (positive charge equal to
+the group number of valence electrons), while nonmetals on the right *gain* electrons to reach eight
+(charge = group electrons − 8). The transition metals in the middle break this neat rule because their
+d-electrons let them adopt several charges — iron can be Fe²⁺ or Fe³⁺, copper Cu⁺ or Cu²⁺.
 
 ## The four blocks
 

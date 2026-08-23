@@ -2,7 +2,7 @@
 title: "Sample Rate, Bit Depth and the WAV File Format Explained"
 description: "44.1 kHz, 16-bit, stereo — what do a WAV file's specs actually mean, and where are they stored? Here's how sample rate and bit depth work, how the RIFF/WAVE format lays them out, and how to read any WAV or AIFF file's header in your browser."
 pubDate: 2026-08-03
-updatedDate: 2026-08-03
+updatedDate: 2026-08-23
 archetype: explainer
 heroImage: /blog/wav-file-format-sample-rate-bit-depth-explained-guide.png
 heroAlt: "A WAV file's RIFF structure with the fmt chunk holding sample rate and bit depth and the data chunk holding samples"
@@ -36,6 +36,18 @@ container that stores them) makes it obvious why a WAV is the size it is and how
 the breakdown, plus how to read any file's header with the
 [WAV / AIFF Inspector](/video/wav-aiff-inspector/).
 
+<aside class="key-takeaways">
+
+**Key takeaways**
+
+- **Sample rate** (in hertz) is how often the waveform is measured per second; by the Nyquist theorem it can capture frequencies up to half its value, so 44.1 kHz covers human hearing.
+- **Bit depth** is how many bits store each sample; it sets dynamic range, not pitch or loudness — 16-bit gives ~96 dB, 24-bit gives ~144 dB.
+- A **WAV** is a RIFF container of chunks: the `fmt ` chunk holds the specs and the `data` chunk holds the samples, so metadata is readable without decoding.
+- File size and duration follow directly from the specs: **bytes/sec = sample rate × channels × (bit depth ÷ 8)**.
+- **AIFF** carries the same facts but is big-endian and stores the sample rate as an 80-bit extended float.
+
+</aside>
+
 ## Sample rate: how often the sound is measured
 
 Digitising sound means measuring the waveform's height many times per second. Each measurement is a
@@ -46,8 +58,26 @@ Digitising sound means measuring the waveform's height many times per second. Ea
 - **96 kHz / 192 kHz** — high-resolution recording.
 
 Why 44.1 kHz specifically? The **Nyquist theorem** says a sample rate can faithfully capture
-frequencies up to *half* its value. Human hearing tops out around 20 kHz, and 44.1 kHz / 2 = 22.05 kHz
-covers it with a little room for filtering. Higher rates mainly help during production, not playback.
+frequencies up to *half* its value — the **Nyquist frequency**. Human hearing tops out around 20 kHz,
+and 44.1 kHz / 2 = 22.05 kHz covers it with a little room for the anti-aliasing filter to roll off
+cleanly. The odd-looking 44,100 figure is a historical artefact: it fit neatly onto the video tape
+recorders used to master the first digital audio, and it stuck as the CD standard. Higher rates mainly
+help during production, not playback.
+
+Here's how the common rates line up with what they're used for and the highest frequency each can
+represent:
+
+| Sample rate | Nyquist limit | Typical use |
+|---|---|---|
+| 8 kHz | 4 kHz | Telephone / voice |
+| 44.1 kHz | 22.05 kHz | CD, streaming, music delivery |
+| 48 kHz | 24 kHz | Video, film, broadcast |
+| 96 kHz | 48 kHz | High-resolution recording |
+| 192 kHz | 96 kHz | Studio mastering, archival |
+
+Recording above 48 kHz doesn't make audible frequencies "sound better" on its own — the extra range sits
+above hearing — but it gives processing like pitch-shifting and steep filtering more room to work before
+artefacts creep into the audible band.
 
 ## Bit depth: how precisely each sample is stored
 
@@ -58,8 +88,24 @@ before noise or clipping):
 - **16-bit** → ~96 dB dynamic range (CD quality).
 - **24-bit** → ~144 dB, the extra headroom engineers want while recording and mixing.
 
-Bit depth doesn't change pitch or "loudness" — it changes precision. The rule of thumb: **record and mix
-at 24-bit, deliver at 16-bit.**
+Bit depth doesn't change pitch or "loudness" — it changes precision. Each extra bit doubles the number of
+levels available and adds roughly **6 dB** of dynamic range: 16 bits give 65,536 possible levels, while
+24 bits give over 16 million. That deeper "floor" is why engineers record at 24-bit — you can set levels
+conservatively to avoid clipping and still keep the quiet detail well above the quantisation noise. The
+rule of thumb: **record and mix at 24-bit, deliver at 16-bit.**
+
+A quick reference for the common depths:
+
+| Bit depth | Levels per sample | Approx. dynamic range | Where it's used |
+|---|---|---|---|
+| 8-bit | 256 | ~48 dB | Legacy / retro, gritty samples |
+| 16-bit | 65,536 | ~96 dB | CD, streaming delivery |
+| 24-bit | 16,777,216 | ~144 dB | Recording, mixing, mastering |
+| 32-bit float | — | practically unclippable | DAW internal processing, field recorders |
+
+**32-bit float** is a special case: instead of fixed steps it stores each sample as a floating-point
+number, so levels that would "clip" in a fixed-point file can be pulled back down later without damage.
+It's a working format, not a delivery one — you still export to 16- or 24-bit at the end.
 
 ## Putting it together: file size and duration
 
@@ -70,6 +116,23 @@ Sample rate and bit depth directly determine the data rate of uncompressed audio
 For 44.1 kHz, 16-bit, stereo that's **44,100 × 2 × 2 = 176,400 bytes/sec** (~1.4 Mbit/s). Divide the
 audio data size by that and you get the exact duration — no decoding required. It's also why uncompressed
 audio is big: about **10 MB per minute** at CD quality.
+
+**Worked example.** Say a WAV's `data` chunk is 30,870,000 bytes. First find the byte rate from its
+`fmt ` chunk — 44.1 kHz, 16-bit, stereo gives 176,400 bytes/sec. Then 30,870,000 ÷ 176,400 = **175
+seconds**, or 2 minutes 55 seconds. No player, no decoder — just two numbers pulled straight from the
+header.
+
+Switching the specs scales the size predictably. The same three-minute stereo recording weighs:
+
+| Specs | Byte rate | Size of a 3-minute file |
+|---|---|---|
+| 44.1 kHz / 16-bit | 176,400 B/s | ~30.3 MB |
+| 48 kHz / 24-bit | 288,000 B/s | ~49.4 MB |
+| 96 kHz / 24-bit | 576,000 B/s | ~98.9 MB |
+
+Doubling the sample rate or bumping the bit depth from 16 to 24 doesn't touch the audible content much —
+but it does grow the file in direct proportion, which is exactly why delivery formats settle back to
+44.1 kHz / 16-bit.
 
 ## Where the specs live: the WAV (RIFF) format
 

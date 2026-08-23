@@ -2,7 +2,7 @@
 title: "How .ics and .vcf Files Work: Calendar Events and Contacts Explained"
 description: "The .ics behind every 'Add to Calendar' button and the .vcf behind every saved contact are just text files — but escaping, line-folding and the exclusive all-day end date trip everyone up. Here's how both work, done privately in your browser."
 pubDate: 2026-08-02
-updatedDate: 2026-08-02
+updatedDate: 2026-08-23
 archetype: explainer
 heroImage: /blog/ics-and-vcf-files-explained-guide.png
 heroAlt: "How an .ics calendar event and a .vcf contact file are structured, and how vCards convert to a CSV table"
@@ -38,6 +38,17 @@ notorious *exclusive* all-day end date. Here's how each works, with a browser-ba
 [ICS generator](/generate/ics-calendar-event-generator/) and
 [VCF↔CSV converters](/file/vcf-to-csv/) that keep your data on your device.
 
+<aside class="key-takeaways">
+
+**Key takeaways**
+
+- An `.ics` file is an iCalendar event (RFC 5545); a `.vcf` file is a vCard contact (RFC 6350). Both are plain UTF-8 text that every major calendar and address-book app can read.
+- Three things break hand-written `.ics` files: unescaped special characters, lines longer than 75 octets that aren't folded, and the all-day `DTEND` being *exclusive* (the day after the event ends).
+- vCards and CSVs carry the same contact fields in different layouts, so converting between them is the standard way to move address books between phones, spreadsheets and CRMs.
+- Because both formats hold private data — meeting links, home addresses, other people's phone numbers — generating and converting them in your browser keeps that data off anyone else's server.
+
+</aside>
+
 ## The .ics calendar file
 
 Open one and you'll see a nested, line-based structure:
@@ -60,7 +71,26 @@ END:VCALENDAR
 
 An event is a `VEVENT` block with a start (`DTSTART`), usually an end (`DTEND`), a `SUMMARY` (the
 title), and optional `LOCATION`, `DESCRIPTION` and a repeat rule (`RRULE`). Save that as `.ics` and any
-calendar app offers to add it.
+calendar app offers to add it. The wrapping `VCALENDAR` container carries the `VERSION` (always `2.0`
+for iCalendar) and a `PRODID` that names the software that wrote the file.
+
+Here are the fields you'll meet most often:
+
+| Property  | What it holds                          | Example                          |
+|-----------|----------------------------------------|----------------------------------|
+| `UID`     | A unique ID so updates replace, not duplicate | `abc123@lazytools.io`     |
+| `DTSTAMP` | When the file was created (UTC)        | `20240101T000000Z`               |
+| `DTSTART` | Event start                            | `20240603T093000`                |
+| `DTEND`   | Event end (exclusive for all-day)      | `20240603T103000`                |
+| `SUMMARY` | The event title                        | `Team Sync`                      |
+| `LOCATION`| Where it happens                       | `Room 4`                         |
+| `RRULE`   | Repeat pattern                         | `FREQ=WEEKLY;COUNT=5`            |
+
+A few subtleties are worth knowing. A time like `20240603T093000` with no trailing `Z` is *floating*
+local time — it happens at 9:30 on whatever clock the viewer's device shows. Append `Z`
+(`20240603T093000Z`) and it's fixed to UTC; add a `TZID` parameter and it's pinned to a named zone.
+The `RRULE` in the example above (`FREQ=WEEKLY;COUNT=5`) produces five weekly occurrences; swap `COUNT`
+for `UNTIL=20240930T000000Z` to repeat until a date instead.
 
 ### The three things hand-writing gets wrong
 
@@ -122,6 +152,25 @@ END:VCARD
 `FN` is the display name; `N` is the *structured* name (`Last;First;Middle;Prefix;Suffix`); `EMAIL` and
 `TEL` can repeat with type parameters. One `.vcf` file can hold one contact or your entire address
 book, stacked block after block.
+
+Two version numbers dominate in the wild. vCard 3.0 (RFC 2426) is what most phones export today and is
+the safest for broad compatibility; vCard 4.0 (RFC 6350) is the current standard and adds cleaner
+handling of things like time zones and multiple addresses. The `TYPE` parameter labels each value —
+`TEL;TYPE=CELL`, `EMAIL;TYPE=WORK`, `ADR;TYPE=HOME` — so an app knows which number is the mobile and
+which address is home. Common properties beyond name and contact details include `ORG` (organization),
+`TITLE` (job title), `ADR` (a structured postal address), `BDAY` (birthday), `URL` and `NOTE`.
+
+The two formats are close cousins — both descend from the same 1990s vCard/vCalendar lineage, so they
+share the escaping and line-folding rules while describing very different things:
+
+| Aspect        | `.ics` (iCalendar)              | `.vcf` (vCard)                   |
+|---------------|---------------------------------|----------------------------------|
+| Standard      | RFC 5545                        | RFC 6350 (v4), RFC 2426 (v3)     |
+| Describes     | Calendar events, to-dos        | People and organizations         |
+| Top container | `BEGIN:VCALENDAR`               | `BEGIN:VCARD`                    |
+| Repeats as    | `VEVENT` blocks                 | `VCARD` blocks                   |
+| Common apps   | Apple/Google Calendar, Outlook  | iPhone, Android, Google Contacts |
+| Classic gotcha| Exclusive all-day `DTEND`       | `FN` vs structured `N` mismatch  |
 
 ### VCF ↔ CSV: contact migration
 

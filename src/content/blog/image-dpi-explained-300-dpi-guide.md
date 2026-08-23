@@ -2,7 +2,7 @@
 title: "DPI Explained: How to Set an Image to 300 DPI Without Losing Quality"
 description: "DPI is just a metadata tag for printers — it changes nothing on screen, and 'convert to 300 DPI' tools that resample your image are doing the wrong thing. Here's what DPI really is and how to set it losslessly in your browser."
 pubDate: 2026-08-02
-updatedDate: 2026-08-02
+updatedDate: 2026-08-23
 archetype: explainer
 heroImage: /blog/image-dpi-explained-300-dpi-guide.png
 heroAlt: "How DPI relates to pixels and print size, and why setting the DPI tag is different from resampling"
@@ -36,6 +36,22 @@ printer how big to print an image — it changes nothing on screen, and the popu
 tools that *resample* your pixels are solving the wrong problem.** When a print shop or exam portal
 demands "300 DPI", they almost always mean the tag, and you can set it **losslessly** — without
 touching a single pixel — with the [Change Image DPI tool](/image/change-image-dpi/), in your browser.
+
+<aside class="key-takeaways">
+
+**Key takeaways**
+
+- DPI is a print-time metadata tag, not a picture property — on screen it does nothing, because screens draw an image pixel-for-pixel.
+- The whole relationship fits one formula: **print size (inches) = pixels ÷ DPI**.
+- "Set the DPI tag" and "resample to a DPI" are different operations: the first is lossless, the second re-draws your pixels and usually softens them.
+- When a print shop, visa portal, or exam site asks for "300 DPI", they almost always want the file *tagged* 300 — not resampled.
+- A higher DPI number never adds detail; only more pixels in the original can do that.
+
+</aside>
+
+## DPI, PPI, and why the word is confusing
+
+Before the details, one bit of vocabulary. Strictly speaking, **PPI** (pixels per inch) describes a digital image, while **DPI** (dots per inch) describes the tiny ink dots a printer physically lays down. In everyday use — and in almost every "300 DPI" request you'll get from a portal or print shop — the two words are used interchangeably to mean the same metadata number: *how many of the image's pixels map onto one inch of paper*. This article uses "DPI" throughout because that's the word the tools, the upload forms, and the print operators use. Just know that when a designer says PPI and a print shop says DPI, in this context they mean the same thing.
 
 ## DPI is about paper, not pixels
 
@@ -81,6 +97,32 @@ say 300. Resampling to get there can add pixels that soften the image — the op
 The [Change Image DPI tool](/image/change-image-dpi/) writes only the tag: PNG's `pHYs` chunk or JPEG's
 JFIF density field, no re-encoding.
 
+### Where the tag actually lives
+
+It helps to know the number is a real, tiny field inside the file — not a mysterious quality setting:
+
+| Format | Where DPI is stored | How density is expressed |
+|---|---|---|
+| JPEG | JFIF header (density units + X/Y density) | dots per inch, or dots per cm |
+| PNG | `pHYs` chunk | pixels per metre (converted to/from DPI) |
+| TIFF | `XResolution` / `YResolution` tags | value plus a resolution-unit tag |
+
+In every case it's a handful of bytes. Rewriting them changes the *declared* print density and nothing else — the pixel grid is copied across untouched. That's why a genuine tag-only edit is lossless: the picture data is identical, only the label changed. A file with no density field at all is perfectly valid; software then falls back to a default, usually 72 DPI (older macOS/web convention) or 96 DPI (Windows), which is why an "untagged" photo can look like it "became" 72 DPI when you open it somewhere else.
+
+## How many pixels for a sharp print?
+
+Because print size = pixels ÷ DPI, you can rearrange it to answer the practical question — *how many pixels do I need?* — as **pixels = print size × DPI**. Multiply the inches you want to print by the DPI the shop wants, on each side. Here's that math worked out for common photo and document sizes at 300 DPI, with the more forgiving 150 DPI shown for comparison:
+
+| Print size | Pixels needed at 300 DPI | Pixels at 150 DPI |
+|---|---|---|
+| 2 × 2 in (passport photo) | 600 × 600 | 300 × 300 |
+| 4 × 6 in (standard photo) | 1200 × 1800 | 600 × 900 |
+| 5 × 7 in | 1500 × 2100 | 750 × 1050 |
+| 8 × 10 in | 2400 × 3000 | 1200 × 1500 |
+| A4 (8.27 × 11.69 in) | ~2480 × 3508 | ~1240 × 1754 |
+
+Read the table the other way and it becomes a quick sanity check: if your camera or scan gives you 1200 × 1800 pixels, you have exactly enough for a crisp 4 × 6 at 300 DPI — and no more. Want an 8 × 10 from those same pixels and you'd be down around 150 DPI, which is fine for a poster viewed at arm's length but soft for a photo held in the hand. Viewing distance matters: billboards are often printed well under 100 DPI because nobody stands an inch away.
+
 ## Why "I set 300 DPI but it's still small/blurry"
 
 Back to the equation: **print size = pixels ÷ DPI.**
@@ -92,6 +134,10 @@ Back to the equation: **print size = pixels ÷ DPI.**
 
 Setting the DPI tag can't invent detail. If you truly need more print size *and* sharpness, you need
 more pixels (a higher-resolution original), not a bigger number in the tag.
+
+## When each approach is actually right
+
+Neither operation is "bad" — they solve different problems. Reach for a **tag-only change** when the pixels are already fine and some form, portal, or print operator simply refuses a file unless its metadata reads 300: passport and visa photo uploads, exam-board document submissions, print-on-demand covers, and stock-library ingestion all commonly gate on the number. Reach for **resampling** only when you have a deliberate reason to change the pixel count itself — for example shrinking a huge camera file to fit a strict upload limit, or enlarging artwork knowing it will soften. If you're not sure which one a request wants, assume the tag: it's reversible, lossless, and takes a second. You can always resample later if it turns out real pixel dimensions were required.
 
 ## How to set DPI losslessly
 
