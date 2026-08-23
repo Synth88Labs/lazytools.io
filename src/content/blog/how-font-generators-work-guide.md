@@ -14,6 +14,17 @@ keywords:
   - fancy text generator how it works
   - why do bio fonts work
   - unicode fonts accessibility
+faqs:
+  - q: "Are Instagram and TikTok 'fonts' real fonts?"
+    a: "No. They are not fonts at all. A font generator swaps each letter for a different Unicode character that already looks bold, italic or cursive, so nothing is downloaded or installed."
+  - q: "Why do these styled letters survive copy-paste into any app?"
+    a: "Because the style is baked into the characters themselves, not into a font file or CSS. The look-alike Unicode characters live inside the text, so they travel with it wherever you paste."
+  - q: "Where do the styled characters come from?"
+    a: "Most come from the Mathematical Alphanumeric Symbols block (U+1D400 to U+1D7FF), which contains ready-made bold, italic, script, fraktur, double-struck, sans-serif and monospace alphabets and digits."
+  - q: "Are Unicode fonts bad for accessibility?"
+    a: "They carry an accessibility cost. A screen reader reads the character's real name, such as 'mathematical bold small h', instead of 'h'. Keep names and key facts in plain text so they stay readable."
+  - q: "Why do some letters fall back to plain text?"
+    a: "Not every character exists in every style, and some platforms strip certain characters. When a match is missing or removed, that letter shows up in its plain form instead."
 draft: false
 ---
 

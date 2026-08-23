@@ -14,6 +14,19 @@ keywords:
   - why is it muggy
   - relative humidity explained
   - dew point 65
+faqs:
+  - q: "What is the difference between dew point and relative humidity?"
+    a: "Dew point is the temperature at which air becomes saturated, an absolute measure of moisture content. Relative humidity is the percentage of moisture relative to what the air could hold at its current temperature, so it changes as temperature changes even when the moisture does not."
+  - q: "Why does 100% humidity sometimes feel dry?"
+    a: "Because relative humidity is relative to temperature. At 30 degrees Fahrenheit, saturated air at 100% RH contains very little actual water vapour, so it feels crisp. Warm air at 50% RH can hold far more water in absolute terms and feels much muggier."
+  - q: "What dew point is uncomfortable?"
+    a: "Above about 60 degrees Fahrenheit (16 degrees Celsius) starts to feel sticky, 65 degrees is clearly muggy, and above 70 degrees (21 degrees Celsius) is oppressive. Dew points of 55 degrees and below are generally comfortable."
+  - q: "Why does high humidity make heat dangerous?"
+    a: "Your body cools by evaporating sweat. When the air already holds a lot of moisture, sweat evaporates poorly, so that cooling mechanism fails. This is why heat index and wet-bulb temperature, which account for humidity, describe heat risk far better than air temperature alone."
+  - q: "Can dew point be higher than the temperature?"
+    a: "No. Dew point can equal the air temperature (saturation, 100% relative humidity) but not exceed it. When air cools to its dew point you get condensation such as fog, dew, or clouds."
+  - q: "Should I use relative humidity indoors?"
+    a: "Yes. Indoors the temperature is controlled and RH is the useful measure. Around 30 to 50% is a common target for comfort, and RH is what governs mould risk and the wellbeing of wood, paper, and instruments."
 draft: false
 ---
 

@@ -14,6 +14,19 @@ keywords:
   - why is my tpms light on
   - cold tire pressure
   - check tire pressure when cold
+faqs:
+  - q: "How much tire pressure do you lose in cold weather?"
+    a: "Tires lose roughly 1 PSI for every 10°F the ambient temperature drops, which is about 2% of total pressure per 10°F. So a 30°F overnight drop costs about 3 PSI on a typical passenger tire."
+  - q: "Why does my TPMS light come on in the morning when it's cold?"
+    a: "A Tire Pressure Monitoring System warns at roughly 25% below the placard pressure. A tire that was already slightly low can drop past that threshold overnight as the air cools, so the light comes on with no leak or puncture involved."
+  - q: "Should I overinflate my tires to compensate for winter cold?"
+    a: "No. The fix is to add air back to the door-placard specification, not to overinflate in anticipation of the cold. Overinflating reduces grip and even tread wear."
+  - q: "What does 'check tire pressure when cold' actually mean?"
+    a: "It means checking when the tires themselves are cold, not when the weather is cold. Check after the car has been parked 3+ hours or first thing in the morning, before driving heats the tires and raises the reading."
+  - q: "Where do I find the correct tire pressure for my car?"
+    a: "Use the placard on the driver's door jamb, which lists the vehicle's recommended cold pressure. Never use the number moulded on the tire sidewall — that is the tire's maximum, not the recommended setting."
+  - q: "How often should I check my tire pressure in winter?"
+    a: "Check monthly under normal conditions, and weekly during hard cold snaps or before a long trip, since large temperature swings can shift pressure by several PSI."
 draft: false
 ---
 

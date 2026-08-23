@@ -14,6 +14,17 @@ keywords:
   - does crop factor change aperture
   - micro four thirds crop factor
   - full frame equivalent
+faqs:
+  - q: "What is crop factor?"
+    a: "Crop factor is the ratio between the diagonal of 35mm film (36 x 24 mm, about 43.3 mm) and the diagonal of your camera's sensor. A smaller sensor captures a smaller portion of the image the lens projects, so the picture is cropped."
+  - q: "Does a 50mm lens become a 75mm on APS-C?"
+    a: "No. The lens's actual focal length never changes; a 50mm stays 50mm. On a 1.5x APS-C sensor it simply frames like a 75mm would on full frame, because the smaller sensor sees a narrower field of view."
+  - q: "Does crop factor change the aperture or exposure?"
+    a: "No. For exposure, f/1.8 is f/1.8 on any sensor. Settings like f/4, 1/200 s, ISO 400 give the same brightness on every format. The lens gathers light the same way regardless of the sensor behind it."
+  - q: "What are the common crop factors?"
+    a: "Full frame is 1.0x, APS-C is about 1.5x (Nikon, Sony, Fuji, Pentax) or 1.6x (Canon), Micro Four Thirds is 2.0x, and 1-inch type is about 2.7x."
+  - q: "Where is aperture multiplication by crop factor actually real?"
+    a: "Only for depth of field, not brightness. The equivalent aperture for depth-of-field comparison equals the f-number times the crop factor, so f/2.8 on a 1.5x sensor gives depth of field like f/4.2 on full frame."
 draft: false
 ---
 

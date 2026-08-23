@@ -14,6 +14,17 @@ keywords:
   - wire size voltage drop
   - nec voltage drop
 
+faqs:
+  - q: "What is voltage drop?"
+    a: "Voltage drop is the voltage lost to a wire's resistance over the length of the run. Pushing current through a resistance loses some voltage (Ohm's law, V = I × R), so over a long cable carrying significant current the loss adds up."
+  - q: "What is the formula for voltage drop?"
+    a: "drop = factor × current × resistance-per-metre × one-way length. The factor is 2 for DC and single-phase (the current travels out and back along both conductors) and √3 for three-phase, which shares the return across phases."
+  - q: "How much voltage drop is acceptable?"
+    a: "The US National Electrical Code recommends keeping voltage drop under 3% on a branch circuit, and under 5% total including the feeder. Solar installations often target a tighter 2%."
+  - q: "How do I reduce excessive voltage drop?"
+    a: "Use a thicker wire (a lower AWG number), shorten the run, switch from aluminium to copper, or use a higher supply voltage. Long runs and high current are the two things that push voltage drop up fastest."
+  - q: "Does aluminium wire drop more voltage than copper?"
+    a: "Yes. Aluminium has about 1.6 times the resistance of copper for the same gauge, so an aluminium conductor drops more voltage than a copper one of the same size over the same run."
 draft: false
 ---
 

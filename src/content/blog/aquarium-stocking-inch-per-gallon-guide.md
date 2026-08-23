@@ -14,6 +14,19 @@ keywords:
   - aquarium bioload
   - overstocked aquarium
   - fish tank stocking rule
+faqs:
+  - q: "Is the 1 inch per gallon rule accurate?"
+    a: "No. It counts a fish's length, but waste production scales with body mass, which grows roughly with the cube of length. Ten 1-inch tetras and one 10-inch fish are both '10 inches of fish' but produce vastly different loads."
+  - q: "Why does doubling a fish's length not just double its waste?"
+    a: "Because mass grows with roughly the cube of length. Doubling the length of a similarly shaped fish gives about 8 times the body volume and mass, so far more than double the waste."
+  - q: "What actually limits how many fish I can keep?"
+    a: "The real ceilings are bioload versus your filter's capacity, surface area for oxygen exchange, and each species' space and territory needs, not simply the number of gallons."
+  - q: "Should I stock based on the size of the fish in the shop?"
+    a: "No. Always stock for the adult size of the species, checked before purchase. Many fish are sold as juveniles and grow far larger, so a common pleco sold at 2 inches can exceed a foot."
+  - q: "Does tank shape matter for stocking, not just volume?"
+    a: "Yes. Surface area drives oxygen exchange, so a wide, shallow tank supports more fish than a tall, narrow tank of the same volume."
+  - q: "Why do schooling fish need to be bought in groups?"
+    a: "Schooling species are stressed and unhealthy when kept alone, so they are typically bought in blocks of six or more rather than singly, which affects how you plan your stocking."
 draft: false
 ---
 

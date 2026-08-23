@@ -14,6 +14,17 @@ keywords:
   - synodic month 29.5 days
   - dark side of the moon myth
   - 8 phases of the moon
+faqs:
+  - q: "What causes the phases of the Moon?"
+    a: "Phases come from the changing angle between the Sun, Earth and Moon, which changes how much of the Moon's permanently sunlit half is turned toward us. They are not caused by Earth's shadow."
+  - q: "How long is the full cycle of Moon phases?"
+    a: "The synodic month is about 29.5 days (roughly 29.53). It is longer than the 27.3-day orbit because the Earth is also moving around the Sun, so the Moon has to travel a bit further to line up the same way again."
+  - q: "What is the difference between waxing and waning?"
+    a: "Waxing means the lit portion is growing, from new moon toward full. Waning means it is shrinking, from full moon back toward new."
+  - q: "Is there really a dark side of the Moon?"
+    a: "No. The far side gets exactly as much sunlight as the near side; at new moon the far side is the fully lit one. We always see the same face because the Moon is tidally locked, rotating once per orbit."
+  - q: "Why is a quarter moon shaped like a half disc?"
+    a: "The name 'quarter' refers to the Moon being a quarter of the way through its cycle, not to how much of the disc is lit. At first and third quarter we see about 50% of the disc illuminated."
 draft: false
 ---
 

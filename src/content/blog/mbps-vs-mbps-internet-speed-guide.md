@@ -14,6 +14,17 @@ keywords:
   - why is my download slow
   - internet speed vs download speed
   - how fast is 100 mbps
+faqs:
+  - q: "What is the difference between Mbps and MB/s?"
+    a: "Mbps is megabits per second (lowercase b), the unit ISPs use to advertise connection speed. MB/s is megabytes per second (uppercase B), the unit browsers and download managers use. Since there are 8 bits in a byte, they differ by a factor of 8."
+  - q: "How do I convert Mbps to MB/s?"
+    a: "Divide the megabit figure by 8. For example, 100 Mbps divided by 8 equals 12.5 MB/s. To go the other way, from MB/s to Mbps, multiply by 8."
+  - q: "How fast is a 100 Mbps connection in MB/s?"
+    a: "About 12.5 MB/s at the theoretical maximum. In practice, real-world speeds typically run 10 to 20 percent slower due to overhead, so you may see closer to 10 to 11 MB/s."
+  - q: "Why is my download so much slower than my internet plan?"
+    a: "Usually nothing is wrong. Your plan is quoted in megabits while your download manager shows megabytes, and there are 8 bits in a byte. A 100 Mbps plan downloads at about 12.5 MB/s, which only looks slow because the two figures use different units."
+  - q: "How long does it take to download a 1 GB file on 100 Mbps?"
+    a: "About 80 seconds, not 10. At 100 Mbps you get roughly 12.5 MB/s, so a 1 GB (1000 MB) file takes around 80 seconds at the theoretical maximum, and a little longer in real-world conditions."
 draft: false
 ---
 

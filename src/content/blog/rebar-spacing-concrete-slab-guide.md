@@ -14,6 +14,17 @@ keywords:
   - concrete cover rebar
   - "#4 rebar spacing"
   - rebar grid calculator
+faqs:
+  - q: "What spacing should rebar be in a residential concrete slab?"
+    a: "A typical residential slab uses #4 bar on a 12 to 18 inch grid, with 18 inches generally treated as the maximum spacing for flatwork. Driveways and garage floors that carry vehicle loads sit at the tighter end, around 12 to 16 inches with #4 or #5 bar."
+  - q: "How do I calculate how many rebar pieces I need?"
+    a: "For each direction, bars = the ceiling of (side minus twice the cover, divided by spacing) plus 1. The plus 1 accounts for the fencepost problem, since five bays between bars still means six bars."
+  - q: "How much concrete cover should rebar have?"
+    a: "About 3 inches of cover from every edge is common for residential slabs. Cover is what stops the steel from rusting and spalling the concrete, so it matters more than people often assume."
+  - q: "How much does a #4 rebar weigh per foot?"
+    a: "A #4 bar is 1/2 inch in diameter and weighs 0.668 pounds per foot. A #3 bar is 3/8 inch in diameter and weighs 0.376 pounds per foot."
+  - q: "How long should a rebar lap splice be?"
+    a: "The common 40 times bar-diameter rule of thumb is generally shorter than the values ACI 318 actually requires, so it should be treated as a rough estimate. Check your local code, as lap length depends on bar size, concrete strength and conditions."
 draft: false
 ---
 

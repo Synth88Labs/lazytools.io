@@ -14,6 +14,19 @@ keywords:
   - process mapping
   - swimlane vs flowchart
   - bpmn lanes vs pools
+faqs:
+  - q: "What is a swimlane diagram?"
+    a: "A swimlane diagram is a process flowchart divided into lanes, where each lane represents one role, team, department or system. Every step sits in the lane of whoever performs it, so the diagram shows who is responsible and makes every hand-off between roles a visible cross-lane arrow."
+  - q: "What is another name for a swimlane diagram?"
+    a: "It is also called a cross-functional flowchart or a Rummler-Brache diagram. All three terms describe the same thing: a flowchart partitioned into lanes by responsible role."
+  - q: "Should swimlanes be horizontal or vertical?"
+    a: "Either works. Horizontal lanes are most common in English documentation because the process reads left to right along a timeline. Vertical lanes suit processes with many steps per role or documents printed in portrait. Pick one and stay consistent across a set of diagrams."
+  - q: "How do you build a swimlane diagram?"
+    a: "Fix the start and end points first, name lanes by role rather than by person, keep it to three to seven lanes, use standard shapes, and map what actually happens rather than the official policy. Then count the cross-lane hand-offs to find which ones can be removed."
+  - q: "When should I use a plain flowchart instead of a swimlane?"
+    a: "Use a plain flowchart when the whole process stays inside one role, or when the branching logic rather than the ownership is what you are working out. A swimlane with only one lane is just a flowchart with extra lines."
+  - q: "Can I make a swimlane diagram in the browser without installing software?"
+    a: "Yes. LazyTools' swimlane diagram maker runs entirely in your browser: add a lane per role, drop in steps, drag them between lanes, connect them to draw the flow, and export to PNG, PDF or JSON with no upload or sign-up."
 draft: false
 ---
 

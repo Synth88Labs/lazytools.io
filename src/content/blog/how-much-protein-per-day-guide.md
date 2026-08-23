@@ -14,6 +14,20 @@ keywords:
   - protein per kg body weight
   - daily protein for muscle
 
+faqs:
+  - q: "How much protein should I eat per day?"
+    a: "It depends on your goal and body weight. Roughly 0.8 g per kg of body weight for general health, 1.2-1.6 g/kg if you're active, and 1.6-2.2 g/kg when building muscle. For a 70 kg person building muscle that's about 112-154 grams a day."
+  - q: "How do I convert my weight from pounds to kilograms?"
+    a: "Divide your weight in pounds by 2.2. For example, a 154 lb person weighs 70 kg. Then multiply your kg weight by the g/kg factor for your goal to get your daily protein target."
+  - q: "Is 0.8 g/kg enough protein?"
+    a: "That figure is the U.S. RDA, the minimum estimated to prevent deficiency in most sedentary adults. It is a floor, not a target for people who train, are dieting, or are trying to build muscle, who generally need more."
+  - q: "Do I need more protein when losing weight?"
+    a: "Yes. In a calorie deficit, higher protein (around 1.8-2.4 g/kg) helps preserve lean muscle while you lose fat, and protein is the most filling macronutrient, which helps manage hunger."
+  - q: "Should I spread protein across the day?"
+    a: "Spreading roughly 20-40 g across 3-4 meals supports muscle building more effectively than one large serving. Eating past about 2.2 g/kg total offers little added benefit for most people."
+  - q: "Should I base protein on total body weight or goal weight?"
+    a: "If you carry significant excess weight, basing the calculation on total body weight can overshoot, since fat mass needs far less protein than muscle. Many practitioners scale to a goal weight or lean body mass instead."
+
 draft: false
 ---
 

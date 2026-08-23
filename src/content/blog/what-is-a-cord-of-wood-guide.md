@@ -14,6 +14,17 @@ keywords:
   - cord of wood dimensions
   - face cord meaning
   - firewood measurement
+faqs:
+  - q: "How many cubic feet are in a full cord of wood?"
+    a: "A full cord is exactly 128 cubic feet of tightly stacked wood, most commonly arranged as a pile 4 feet high, 4 feet deep, and 8 feet long (4 x 4 x 8 = 128)."
+  - q: "What is the difference between a full cord and a face cord?"
+    a: "A full cord is a fixed 128 cubic feet. A face cord (also called a rick) shares the 4-foot-high by 8-foot-long face but is only one log deep, so its volume depends on log length. For 16-inch logs, a face cord is about one-third of a full cord."
+  - q: "Is a face cord a legal or standard measurement?"
+    a: "No. Only the full cord (128 cubic feet) is legally defined in most US states through the NIST Handbook 130 model regulations. Terms like face cord, rick, truckload, and pile are not standard volume units, so ask for the price per full cord in writing."
+  - q: "How do I measure a firewood delivery to check for a short cord?"
+    a: "Stack the wood tightly, measure its height, depth, and length in feet, multiply the three together, and divide by 128 to get the number of cords. Always measure the wood stacked, not thrown loose, because loose piles hold far more air."
+  - q: "Why does thrown firewood look like more than a stacked cord?"
+    a: "A cord is a stacked measure that includes only the small air gaps between split logs. Wood dumped loosely into a truck bed traps much more air, so the same 128 cubic feet of stacked wood takes up noticeably more space when thrown, making a full-looking truck bed no proof of a cord."
 draft: false
 ---
 

@@ -14,6 +14,17 @@ keywords:
   - dog ate chocolate
   - chocolate poisoning dogs
   - is chocolate bad for dogs
+faqs:
+  - q: "How much chocolate is toxic to a dog?"
+    a: "It depends on the theobromine dose relative to your dog's body weight, not a fixed amount. Signs can appear from around 20 mg/kg, serious heart and nerve effects from 40 to 60 mg/kg, and doses over roughly 100 mg/kg can be fatal."
+  - q: "What makes chocolate poisonous to dogs?"
+    a: "Chocolate contains theobromine, a caffeine-like methylxanthine. Dogs break it down very slowly (half-life around 17.5 hours), so it builds up and overstimulates the heart and nervous system at high enough doses."
+  - q: "Which chocolate is most dangerous for dogs?"
+    a: "Darker chocolate is deadlier because it holds more theobromine. Baking chocolate and cocoa powder have the most, dark chocolate is high, milk chocolate far less, and white chocolate has almost none."
+  - q: "My dog ate chocolate but seems fine. Should I still worry?"
+    a: "Yes. Because theobromine clears slowly, symptoms can be delayed for hours, so a dog that seems fine now can still be at risk. Call your vet or a pet poison helpline right away rather than waiting for signs."
+  - q: "Who should I call if my dog ate chocolate?"
+    a: "Contact your vet or a pet poison-control service immediately. In the US, the ASPCA Animal Poison Control Center is 888-426-4435; in the UK, Animal PoisonLine is 01202 509000."
 draft: false
 ---
 

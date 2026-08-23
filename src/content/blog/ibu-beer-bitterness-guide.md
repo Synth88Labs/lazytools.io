@@ -14,6 +14,19 @@ keywords:
   - hop utilization
   - BU GU ratio
   - perceived bitterness beer
+faqs:
+  - q: "What does IBU actually measure?"
+    a: "IBU (International Bitterness Units) measures the concentration of dissolved iso-alpha acids in finished beer, expressed in milligrams per litre. It is a chemical measurement, not a direct score of how bitter the beer tastes."
+  - q: "Why doesn't a 60 IBU beer taste twice as bitter as a 30 IBU beer?"
+    a: "Perceived bitterness depends on more than iso-alpha acid concentration. Malt sweetness pushes back against bitterness on the palate, so a high-gravity 60 IBU beer can taste sweeter and more balanced than a dry 30 IBU one."
+  - q: "What is the BU:GU ratio and why does it matter?"
+    a: "BU:GU is bitterness units divided by gravity units, and it predicts balance better than IBU alone. As a rough guide, below 0.5 is malt-forward, 0.5 to 0.8 is balanced, and above 0.8 is hop-forward."
+  - q: "Why do late hop and dry-hop additions add so little bitterness?"
+    a: "Bitterness comes from isomerising alpha acids into iso-alpha acids, which needs prolonged heat. Late boil, flameout and whirlpool additions contribute mostly aroma oils, and dry hopping adds essentially no IBU because there is no heat to drive isomerisation."
+  - q: "Why does a high-gravity beer need more hops for the same IBU?"
+    a: "Higher wort gravity lowers hop utilisation. In the Tinseth formula this is captured by the bigness factor, so a strong IPA converts a smaller fraction of its alpha acids and needs more hops to reach the same measured IBU."
+  - q: "What is the Tinseth formula?"
+    a: "Glenn Tinseth's 1997 model estimates IBU as utilisation times (alpha acid percent times grams times 1000) divided by (litres times 100), where utilisation combines a bigness factor for wort gravity and a boil-time factor. It is the homebrewing standard for predicting bitterness."
 draft: false
 ---
 

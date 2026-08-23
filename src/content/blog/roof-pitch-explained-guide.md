@@ -14,6 +14,19 @@ keywords:
   - minimum roof pitch for shingles
   - walkable roof pitch
   - roof pitch chart
+faqs:
+  - q: "What is a 4/12 roof pitch in degrees?"
+    a: "A 4/12 pitch rises 4 inches for every 12 inches of horizontal run, which equals arctan(4 ÷ 12) = 18.4 degrees. Its slope is 33.3 percent."
+  - q: "How do I convert roof pitch to degrees?"
+    a: "Take the arctangent of rise divided by run: angle = arctan(rise ÷ 12). For example, 6/12 is arctan(6 ÷ 12) = 26.6 degrees and 12/12 is arctan(12 ÷ 12) = 45 degrees."
+  - q: "What roof pitch is safe to walk on?"
+    a: "Roofs up to about 4/12 are generally considered walkable with proper footwear. Anything steeper usually calls for fall protection."
+  - q: "What is the minimum roof pitch for asphalt shingles?"
+    a: "Asphalt shingles can go as low as 2/12, but only with doubled underlayment. The normal minimum for standard installation is 4/12."
+  - q: "What counts as a low-slope roof?"
+    a: "Anything below about 3/12 is considered low-slope territory, where membrane roofing typically replaces shingles."
+  - q: "Why is the run in a roof pitch always 12?"
+    a: "The 12 is a convention rather than a measurement. Fixing the run at 12 inches lets a single number describe the whole slope, and it matches the 12-inch run built into carpenters' squares and rafter tables."
 draft: false
 ---
 

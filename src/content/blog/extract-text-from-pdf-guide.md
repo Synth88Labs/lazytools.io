@@ -14,6 +14,17 @@ keywords:
   - how to get text out of a pdf
   - pdf text extraction
   - extract pdf text without uploading
+faqs:
+  - q: "Why does my PDF return no text when I try to extract it?"
+    a: "It is almost certainly a scanned PDF, where each page is stored as an image rather than real text. There is no text layer to read, so extraction returns nothing until you run OCR on it first."
+  - q: "How do I tell if a PDF is digital or scanned?"
+    a: "Open it and try to drag-select a sentence. If individual words highlight, it is a digital PDF and the text will extract. If the whole page highlights like a picture or nothing selects, it is scanned and needs OCR."
+  - q: "Is my PDF uploaded to a server when I extract its text?"
+    a: "Not with a browser-based extractor. The tool reads the file on your device using the same pdf.js engine your browser uses to display PDFs, so the file never leaves your computer. Many other 'PDF to text' websites do upload your file."
+  - q: "What is OCR and when do I need it?"
+    a: "OCR (optical character recognition) is a separate process that recognises letter shapes in an image and turns them back into text. You need it for scanned PDFs and photos of documents, which have no text layer to extract directly."
+  - q: "Will extracted text keep the original layout of tables and columns?"
+    a: "Not always. Simple documents extract cleanly, but complex layouts like multi-column pages or tables may not come out in perfect reading order, since extraction reconstructs lines from the position of each text fragment on the page."
 draft: false
 ---
 

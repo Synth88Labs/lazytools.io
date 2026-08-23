@@ -14,6 +14,19 @@ keywords:
   - reverse vat calculator
   - vat calculation formula
   - gst calculation
+faqs:
+  - q: "How do I add VAT to a price?"
+    a: "Multiply the net (ex-VAT) price by 1 plus the rate as a decimal. At a 20% rate, multiply by 1.20 — so £50 excluding VAT becomes £50 x 1.20 = £60 including VAT."
+  - q: "How do I remove VAT from a gross price?"
+    a: "Divide the VAT-inclusive price by 1 plus the rate — you divide, you do not subtract the percentage. At 20%, £60 including VAT is £60 / 1.20 = £50 excluding VAT."
+  - q: "Why can't I just subtract 20% to remove VAT?"
+    a: "Because the 20% was originally added to the smaller net figure, not the larger gross figure. Subtracting 20% of £60 removes £12 (giving £48), but the real net is £50 — the £10 of VAT is 20% of £50 yet only 16.67% of the £60 gross."
+  - q: "How do I work out the VAT amount contained in a price?"
+    a: "When adding, the VAT is the net price times the rate (net x 0.20 at 20%). When removing, it is the gross minus the recovered net — for example £240 / 1.20 = £200, so the VAT was £240 - £200 = £40."
+  - q: "Is GST calculated the same way as VAT?"
+    a: "Yes. VAT and GST work identically as a percentage-based tax on the net price — only the name and the rate differ by country. The same add (multiply) and remove (divide) formulas apply."
+  - q: "Which VAT rate should I use in the calculation?"
+    a: "Use the current official rate for your country and product category, since rates and reduced-rate categories change over time. This guide's worked examples use 20%, but always confirm the applicable rate before relying on a figure."
 draft: false
 ---
 

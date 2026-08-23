@@ -14,6 +14,19 @@ keywords:
   - json to ts
   - typescript interface generator
 
+faqs:
+  - q: "How do I convert JSON to a TypeScript interface?"
+    a: "Infer a type for every value: strings become string, numbers number, booleans boolean, arrays T[], and each nested object becomes its own named interface. A generator walks the JSON structure and writes these interfaces for you automatically."
+  - q: "How are JSON arrays converted to TypeScript types?"
+    a: "An array of a single type becomes T[] (for example ['x','y'] becomes string[]). An array of objects becomes its own interface plus a Thing[] reference, so the shared shape of the elements is typed once and reused."
+  - q: "What happens to a key that is missing from some array items?"
+    a: "A key that appears in some array elements but not others is marked optional with a ? so TypeScript knows the value may be undefined. This prevents an undefined value from slipping through at runtime."
+  - q: "How does JSON to TypeScript handle dates and integers?"
+    a: "JSON has no date type and no integer/float distinction, so 42 and 3.14 both become number, and an ISO date string like '2026-08-23' becomes plain string. TypeScript cannot tell a date from any other string at the type level, so narrow those by hand if it matters."
+  - q: "What is a union type in a generated interface?"
+    a: "When the same key appears with more than one type across your sample, the generator produces a union such as string | number so the field accepts either value accurately."
+  - q: "Is my JSON uploaded to a server when I convert it?"
+    a: "No. The LazyTools JSON-to-TypeScript generator runs entirely in your browser, so the JSON you paste is parsed locally and never sent to a server."
 draft: false
 ---
 

@@ -14,6 +14,19 @@ keywords:
   - jet lag light exposure
   - one day per time zone
   - how to get over jet lag
+faqs:
+  - q: "How long does jet lag last on average?"
+    a: "Left alone, it takes roughly one day per time zone crossed when flying west, and about 1.5 days per time zone when flying east. A six-zone westward trip resolves in about six days; the same six zones eastward can take eight to ten."
+  - q: "Why is jet lag worse flying east than west?"
+    a: "For most people the body clock naturally runs slightly longer than 24 hours, so flying west (a phase delay, staying up later) works with your biology, while flying east (a phase advance, sleeping earlier) fights it. The brain's master clock also adjusts more sluggishly to eastward shifts."
+  - q: "Can a shorter eastward trip take longer to recover from than a longer westward one?"
+    a: "Yes. Because direction matters more than distance, a smaller eastward shift can outlast a larger westward one — for example, five zones east can take longer to recover from than seven zones west."
+  - q: "What is the fastest way to get over jet lag?"
+    a: "Correctly timed light exposure is the strongest lever and can shift your clock roughly two to three time zones per day. Flying east, get morning light and avoid evening light; flying west, avoid morning light and get evening light."
+  - q: "Should I bother adjusting for a short trip?"
+    a: "For trips under about three days, many people are better off staying on home time rather than adapting to the destination and then having to readjust when they return."
+  - q: "Is jet lag advice a substitute for medical guidance?"
+    a: "No. This is general information, not medical advice. Talk to a clinician before using sleep medication or melatonin, or if jet lag seriously disrupts your health."
 draft: false
 ---
 

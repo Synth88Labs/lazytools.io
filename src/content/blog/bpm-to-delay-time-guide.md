@@ -14,6 +14,17 @@ keywords:
   - dotted eighth delay
   - reverb pre-delay tempo
   - tempo sync delay
+faqs:
+  - q: "What is the formula for BPM to delay time?"
+    a: "Quarter-note delay time in milliseconds equals 60,000 divided by BPM. The 60,000 comes from the number of milliseconds in a minute, since BPM means beats per minute."
+  - q: "What is the delay time at 120 BPM?"
+    a: "At 120 BPM a quarter note is 500 ms (60,000 divided by 120). An eighth note is 250 ms, a sixteenth is 125 ms, and a dotted eighth is 375 ms."
+  - q: "How do I calculate a dotted eighth delay?"
+    a: "A dotted note is 1.5 times its base value, so a dotted eighth delay equals 45,000 divided by BPM. At 120 BPM that is 375 ms. It is the classic rhythmic-echo delay setting in pop production."
+  - q: "How do I get eighth, sixteenth, and triplet delay times?"
+    a: "Start from the quarter note (60,000 divided by BPM), then scale it: halve it for an eighth, quarter it for a sixteenth, double it for a half note, multiply by 1.5 for dotted, and by two-thirds for triplets."
+  - q: "Why should I sync delay time to tempo?"
+    a: "Tempo-synced delay times land with the groove so echoes reinforce the rhythm, while arbitrary times blur it. The same tempo-based values also work for reverb pre-delay, sidechain release, tremolo and gate rates."
 draft: false
 ---
 

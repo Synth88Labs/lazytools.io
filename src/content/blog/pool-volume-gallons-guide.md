@@ -14,6 +14,20 @@ keywords:
   - swimming pool volume
   - pool water volume
 
+faqs:
+  - q: "How do I calculate how many gallons my pool holds?"
+    a: "Multiply the surface area by the average depth to get the volume, then convert. For a rectangular pool that is length x width x average depth; for a round pool it is pi x radius squared x average depth. Convert cubic feet to US gallons by multiplying by 7.48, or cubic metres by 264.2."
+  - q: "How many gallons is a typical 8 x 4 metre pool?"
+    a: "An 8 x 4 metre pool averaging 1.5 m deep holds 48 cubic metres, which is about 12,680 US gallons (roughly 48,000 litres)."
+  - q: "What average depth should I use for a sloped pool?"
+    a: "Use the average of the shallow-end and deep-end depths: (shallow depth + deep depth) divided by 2. A pool that is 1 m at the shallow end and 2 m at the deep end has an average depth of 1.5 m."
+  - q: "How do I convert cubic feet to gallons?"
+    a: "Multiply cubic feet by 7.48 to get US gallons. Many pool guides round this to 7.5 for quick mental arithmetic, which is close enough for chemical dosing."
+  - q: "Why do I need to know my pool's volume?"
+    a: "The volume in gallons is the basis for every pool chemical dose, including chlorine and shock. Getting the volume right is what keeps your chlorine, pH and shock treatments accurate."
+  - q: "How do I calculate the volume of a round pool?"
+    a: "Use pi x radius squared x average depth, where the radius is the diameter divided by 2. For example, a 24 ft diameter pool with a uniform 4 ft depth has a radius of 12 ft, an area of about 452.4 square feet, and a volume of about 1,810 cubic feet, or roughly 13,540 US gallons."
+
 draft: false
 ---
 

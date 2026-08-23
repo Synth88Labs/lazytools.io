@@ -14,6 +14,19 @@ keywords:
   - international layover time
   - safe connection time
   - missed connection
+faqs:
+  - q: "Is a 1 hour layover enough time?"
+    a: "For a domestic-to-domestic connection on a single ticket it can work, but it is tight. A realistic minimum is 60 to 90 minutes domestically, so a 1 hour layover leaves little margin if your inbound flight is delayed."
+  - q: "What is minimum connection time (MCT)?"
+    a: "MCT is the shortest gap an airline's reservation system will let you book between two flights at a given airport. It reflects measured walking time under ideal conditions with an on-time inbound flight. It is a feasibility floor, not a recommendation."
+  - q: "How much layover time do I need for an international connection?"
+    a: "Plan for 2 to 3 hours for international connections, and allow even more when you have to clear immigration or customs. An international-to-domestic connection with immigration realistically needs about 2.5 to 3 hours."
+  - q: "Does it matter if my flights are on one ticket or separate tickets?"
+    a: "Yes, this matters more than the clock. On a single ticket the airline is responsible for rebooking you if you misconnect. On separate tickets you own the loss, so allow 3 hours or more between separately ticketed flights."
+  - q: "What is the most common reason people miss a connection?"
+    a: "A delayed inbound flight, not a slow walk through the airport. A late arriving first flight is the single most common cause of a missed connection, which is why a tight but legal connection is riskier than it looks."
+  - q: "When should I add extra layover time beyond the minimum?"
+    a: "Add time for clearing customs or immigration, changing terminals, collecting and rechecking bags, and navigating large hub airports. Any of these can easily consume the buffer an MCT-legal connection assumes you have."
 draft: false
 ---
 

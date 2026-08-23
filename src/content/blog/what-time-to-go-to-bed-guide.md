@@ -16,6 +16,19 @@ keywords:
   - why do i wake up groggy
   - 90 minute sleep cycle
   - sleep cycle calculator
+faqs:
+  - q: "What time should I go to bed to wake up at 6 AM?"
+    a: "Around 10:15 PM. That gives you five 90-minute sleep cycles (7.5 hours) plus roughly 15 minutes to fall asleep, so your alarm lands at the end of a cycle rather than the middle of one."
+  - q: "How long is one sleep cycle?"
+    a: "A sleep cycle averages about 90 minutes, moving from light sleep down into deep sleep, up into REM, and back. Most people repeat this four to six times a night."
+  - q: "Why do I wake up groggy even after 8 hours of sleep?"
+    a: "That heavy, groggy feeling is sleep inertia, which happens when your alarm pulls you out of deep sleep mid-cycle. A well-timed 7.5 hours that ends at a cycle boundary can feel better than a badly-timed 8.5 hours."
+  - q: "How much sleep do I need by age?"
+    a: "Adults 18 to 64 generally need 7 to 9 hours, teens need 8 to 10, and older adults typically need 7 to 8. These are general ranges rather than strict rules."
+  - q: "How do I calculate my ideal bedtime?"
+    a: "Count back from your wake-up time in 90-minute blocks, then add about 15 minutes to fall asleep. For example, five cycles is 7.5 hours plus 15 minutes. The sleep calculator does this in both directions automatically."
+  - q: "Is 7.5 hours of sleep really better than 8?"
+    a: "It can be, because a round number of hours matters less than waking between cycles. Waking at a cycle boundary in light sleep leaves you clearer-headed than waking mid-cycle from deep sleep."
 draft: false
 ---
 

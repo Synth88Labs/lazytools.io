@@ -14,6 +14,19 @@ keywords:
   - telescope focal length eyepiece
   - exit pupil telescope
   - what magnification to see planets
+faqs:
+  - q: "How do I calculate telescope magnification?"
+    a: "Divide the telescope's focal length by the eyepiece focal length, both in millimetres. A 1,000 mm telescope with a 10 mm eyepiece gives 100x. The telescope's focal length is fixed, so you change power by swapping eyepieces."
+  - q: "What is the maximum useful magnification of a telescope?"
+    a: "Roughly 50x per inch of aperture, or about 2x per millimetre. A 4-inch (100 mm) telescope tops out near 200x. Beyond that you get 'empty magnification' — a larger, dimmer, blurrier image with no extra detail."
+  - q: "Why is the '600x' printed on a beginner telescope box misleading?"
+    a: "Because magnification is limited by aperture, not the eyepiece. A 60 mm scope has an honest ceiling around 120x. At 600x its image is too dim, the field of view too small to find anything, and the mount too shaky to hold a target."
+  - q: "What is exit pupil and why does it matter?"
+    a: "Exit pupil equals aperture divided by magnification, in millimetres — the width of the light beam leaving the eyepiece. Too large (over roughly 5–7 mm) wastes aperture; too small makes the image dim and reveals floaters in your eye."
+  - q: "What magnification should I use to see planets?"
+    a: "Experienced planetary observers often use just 20–30x per inch of aperture rather than the maximum, because atmospheric turbulence usually limits sharpness. For a 4-inch scope that is roughly 80–120x."
+  - q: "Does a Barlow lens increase magnification?"
+    a: "Yes. A Barlow lens (typically 2x) multiplies the effective magnification of any eyepiece it is paired with, so a 2x Barlow with a 10 mm eyepiece behaves like a 5 mm eyepiece. It is a cheap way to fill gaps in an eyepiece set."
 draft: false
 ---
 

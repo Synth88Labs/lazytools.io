@@ -14,6 +14,19 @@ keywords:
   - square footage of an l-shaped room
   - how to measure square feet
   - square feet to square meters
+faqs:
+  - q: "How do you calculate the square footage of a room?"
+    a: "Measure the length and width of the room in feet, then multiply them together. A room that is 12 feet by 10 feet is 12 x 10 = 120 square feet."
+  - q: "How do I find the square footage of an L-shaped room?"
+    a: "Split the floor plan into separate rectangles, calculate each rectangle's area, then add them together. For example, a 12 x 8 ft rectangle (96 sq ft) plus a 4 x 6 ft rectangle (24 sq ft) totals 120 sq ft."
+  - q: "How do I convert square feet to square metres?"
+    a: "Multiply the square footage by 0.0929. So 120 square feet is about 11.15 square metres. To go the other way, multiply square metres by 10.764."
+  - q: "How do I calculate square footage when measurements include inches?"
+    a: "Convert the inches to a decimal by dividing by 12, then multiply as normal. A wall that is 12 ft 6 in becomes 12 + (6 / 12) = 12.5 ft."
+  - q: "How much waste should I add when buying flooring?"
+    a: "Add roughly 5 to 10 percent on top of the bare square footage to allow for cuts, offcuts and mistakes before you buy."
+  - q: "How do you calculate the area of a circular or triangular space?"
+    a: "For a circle, use pi x radius squared (a 10 ft diameter gives about 78.5 sq ft). For a triangle, use one half x base x height."
 draft: false
 ---
 

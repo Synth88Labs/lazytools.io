@@ -14,6 +14,20 @@ keywords:
   - watts to cost
   - appliance running cost
 
+faqs:
+  - q: "What is the formula for an appliance's running cost?"
+    a: "Cost = (watts divided by 1000) times hours of use times your price per kWh. The first part gives the energy in kilowatt-hours, and multiplying by your rate turns it into money."
+  - q: "How much does a 1500-watt space heater cost to run?"
+    a: "Used 5 hours a day at $0.20/kWh it costs 1.5 x 5 x 0.20 = $1.50 a day, which works out to roughly $45 a month or about $547 a year. Change the hours and your own rate to match your situation."
+  - q: "Where do I find an appliance's wattage?"
+    a: "Look on the rating label, usually on the back or base, or in the manual, where it is given in watts. If only volts and amps are listed, multiply them: watts = volts x amps."
+  - q: "Why do I divide watts by 1000?"
+    a: "Bills are priced per kilowatt-hour, and a kilowatt is 1000 watts. Dividing watts by 1000 converts to kilowatts before multiplying by hours, otherwise your answer would be 1000 times too big."
+  - q: "Why do fridges and air conditioners cost less than the maths suggests?"
+    a: "They cycle on and off rather than running continuously, so their nameplate wattage is not drawn for a full 24 hours. Use their average on-time or the annual kWh figure on the energy label instead of assuming constant use."
+  - q: "Does this calculation work in any currency?"
+    a: "Yes. The maths is currency-agnostic; just enter your electricity rate in whatever units your bill uses and the result comes out in that same currency."
+
 draft: false
 ---
 

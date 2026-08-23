@@ -13,6 +13,19 @@ keywords:
   - when do i ovulate
   - most fertile days
   - fertile window calculator
+faqs:
+  - q: "When is my fertile window?"
+    a: "Your fertile window is roughly the 6 days ending on ovulation day, i.e. the 5 days before ovulation plus ovulation day itself. Since ovulation is about 14 days before your next period, you can estimate the window by counting back from your next expected period."
+  - q: "Is ovulation always on day 14?"
+    a: "No. Day 14 only applies to a regular 28-day cycle. Ovulation is better estimated as day C minus 14 for a cycle of length C, so a longer cycle pushes ovulation later and a shorter cycle earlier."
+  - q: "Why is the fertile window about 6 days long?"
+    a: "Sperm can survive in the reproductive tract for up to about 5 days, and the egg lives roughly 24 hours after release. Combined, that gives a window of about 6 days ending on ovulation day."
+  - q: "Why count back 14 days from the next period instead of forward from the last one?"
+    a: "The luteal phase (ovulation to next period) is fairly constant at around 12 to 14 days, while the follicular phase varies. Counting backward from your next expected period uses the more consistent part of the cycle, giving a better estimate."
+  - q: "Can the calendar method be used as birth control?"
+    a: "No. The calendar method is only a rough estimate for people with regular cycles and is not a precise or medical determination. It should not be relied on as a form of birth control."
+  - q: "What do I need to estimate my ovulation day?"
+    a: "You need the first day of your last period and your typical cycle length. From those, ovulation is estimated at day C minus 14, and the ovulation calculator runs this arithmetic and marks the fertile window and next expected period for you."
 draft: false
 ---
 

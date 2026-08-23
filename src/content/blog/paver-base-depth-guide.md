@@ -14,6 +14,19 @@ keywords:
   - paver patio base
   - bedding sand pavers
   - paver edge restraint
+faqs:
+  - q: "How deep should a paver base be?"
+    a: "For patios and walkways, use 4-6 inches of compacted gravel plus 1 inch of bedding sand. Driveways need 8-12 inches of gravel because vehicle loads roughly double the requirement. Go deeper on clay or poor-draining soil and in hard-frost climates."
+  - q: "How thick should the bedding sand layer be under pavers?"
+    a: "One inch, screeded uniformly. Sand is a levelling layer, not a base, so it must never be thicker. Thick sand is the most common cause of a wavy patio, because deep and shallow areas consolidate at different rates."
+  - q: "Why should gravel be compacted in thin lifts?"
+    a: "A plate compactor only densifies material a few inches down. If you dump a full 6 inches and compact once, you get a firm crust over loose stone that settles unevenly under load. Adding gravel in 2-3 inch lifts and compacting each one produces a uniformly dense base."
+  - q: "What kind of gravel is best for a paver base?"
+    a: "A well-graded crushed aggregate containing a range of sizes down to fines, sold as road base, crusher run, or MOT Type 1. The fines lock the larger stone together when compacted. Uniform single-size clean gravel with no fines will not form a rigid base."
+  - q: "Do I need edge restraint around pavers?"
+    a: "Yes. Without it the outer pavers gradually push outward under traffic, joints open, bedding sand escapes, and the field spreads. Spike plastic or metal edge restraint into the compacted base rather than into the sand."
+  - q: "How much slope does a paver patio need?"
+    a: "About 1/4 inch per foot, a 2% fall, running away from the house. Build the slope into the excavation and base layers so the gravel and sand stay uniform in thickness, rather than creating fall by varying the sand depth."
 draft: false
 ---
 

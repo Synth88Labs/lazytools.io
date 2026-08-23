@@ -13,7 +13,17 @@ keywords:
   - turkey cooking time per pound
   - how long to thaw a turkey
   - turkey thawing time
-
+faqs:
+  - q: "How long does it take to cook a turkey per pound?"
+    a: "At a steady 325°F oven, plan on about 13 minutes per pound for an unstuffed turkey and about 15 minutes per pound if it is stuffed. These are estimates, so start checking the temperature about 45 minutes before the clock says it is done."
+  - q: "What temperature means a turkey is fully cooked?"
+    a: "A turkey is safely done when a thermometer reads 165°F (74°C) in the thickest part of the breast and the innermost thigh. Temperature, not time, is the only reliable doneness test."
+  - q: "How long does it take to thaw a turkey in the refrigerator?"
+    a: "Allow about 24 hours in the fridge for every 4 to 5 pounds. A 15-pound bird therefore needs roughly 3 to 4 days, so move it from the freezer to the refrigerator several days ahead."
+  - q: "Can I thaw a turkey faster than in the fridge?"
+    a: "Yes. Cold-water thawing takes about 30 minutes per pound with the water changed every 30 minutes, so a 15-pound turkey thaws in about 7.5 hours. It is faster but more hands-on. Never thaw a turkey at room temperature."
+  - q: "How long should a turkey rest after roasting?"
+    a: "Let the cooked bird rest 20 to 30 minutes before carving. Resting lets the juices redistribute, and a rested turkey holds heat well while side dishes finish."
 draft: false
 ---
 

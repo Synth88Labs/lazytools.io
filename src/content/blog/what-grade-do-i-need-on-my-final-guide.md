@@ -13,6 +13,19 @@ keywords:
   - grade needed on final exam
   - final exam grade formula
   - what do i need on my final
+faqs:
+  - q: "How do I calculate what I need on my final?"
+    a: "Use needed = (target − current × (1 − w)) ÷ w, where w is the final's weight as a decimal. Enter your current grade, target, and the final's weight into the calculator and it solves it and tells you if it's achievable."
+  - q: "What if it says I need more than 100%?"
+    a: "Then your target can't be reached from the final alone — you'd need extra credit or a lower goal. Try entering a lower target to find the best grade that's still attainable."
+  - q: "What does the weight of the final mean?"
+    a: "It's the percentage of your overall course grade that the final exam counts for, entered as a decimal (a final worth 30% is 0.30). Your other work covers the remaining 70%."
+  - q: "Does my current grade include the final?"
+    a: "No — enter your grade on all the work you've done so far, not counting the final. The final is the remaining portion the formula solves for."
+  - q: "Can I already have passed no matter what?"
+    a: "Yes. If the formula returns zero or a negative number, your current grade is high enough that even a 0% on the final still meets your target."
+  - q: "Is this the same as a test grade calculator?"
+    a: "No. A test grade calculator tells you the percentage for a test you've already taken. This tool answers the forward-looking question of what score you still need on the final to reach your goal."
 draft: false
 ---
 

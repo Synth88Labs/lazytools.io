@@ -14,6 +14,19 @@ keywords:
   - aspect ratio calculator
   - resize without stretching
   - social media aspect ratios
+faqs:
+  - q: "What does 16:9 actually mean?"
+    a: "It means the frame is 16 units wide for every 9 units tall, where a unit is just a shared scale factor. 1280x720, 1920x1080 and 3840x2160 are all 16:9 because each keeps that same width-to-height proportion regardless of pixel size."
+  - q: "How do I find the other dimension for a given aspect ratio?"
+    a: "Cross-multiply. New height equals new width times H divided by W, and new width equals new height times W divided by H. At 16:9 a width of 1280 gives a height of 1280 x 9 / 16 = 720."
+  - q: "How do I turn a pixel resolution into an aspect ratio?"
+    a: "Divide both the width and height by their greatest common divisor (GCD), the largest number that divides both evenly. For example 1920x1080 has a GCD of 120, so it reduces to 16:9."
+  - q: "Why does my image stretch when I resize it?"
+    a: "Stretching happens when the new width and height do not match the original proportion, so the shape is distorted. Keep the aspect ratio locked when resizing so both dimensions scale together and the image stays undistorted."
+  - q: "Which aspect ratio should I use for social media?"
+    a: "Use 9:16 for Reels, TikTok and Stories, 1:1 or 4:5 for feed posts, and 16:9 for landscape video and screens. 4:3 suits slides and older TV formats."
+  - q: "Does scaling an image up to the same ratio add detail?"
+    a: "No. Enlarging to the same aspect ratio only stretches the existing pixels to a bigger size; it does not create new detail. The picture keeps its shape but can look softer or blockier."
 draft: false
 ---
 

@@ -14,6 +14,17 @@ keywords:
   - edit pdf in browser
   - pdf editor no upload
   - offline pdf tools
+faqs:
+  - q: "Can I edit a PDF without uploading it to a server?"
+    a: "Yes. Modern browsers can sign, merge, split, reorder, number and extract text from PDFs entirely on your device, so the file is never transmitted to a server. The edits happen in your browser's memory and the result is saved straight back to your device."
+  - q: "How does browser-based PDF editing keep my file private?"
+    a: "The file is read into your browser's memory, changed there, and saved back out without ever being sent to a server. Because no copy is transmitted or stored remotely, there is nothing on someone else's computer to leak, log, cache or retain."
+  - q: "How can I tell if an online PDF editor is uploading my file?"
+    a: "The quick test: if a tool makes you wait while it 'uploads' and 'processes' your document, the file has left your device to be handled on a server. A truly local editor works instantly and even functions with your network disconnected."
+  - q: "What PDF tasks can I do locally in the browser?"
+    a: "Common edits all run locally: signing, reordering or deleting pages, extracting text, fitting multiple pages per sheet, plus merging, splitting, rotating, and adding page numbers or watermarks."
+  - q: "Does editing a PDF in the browser work offline?"
+    a: "Yes. Since the processing happens on your own device rather than a server, local PDF editing works even with your network disconnected, and it has no file-size upload limits or processing queues."
 draft: false
 ---
 

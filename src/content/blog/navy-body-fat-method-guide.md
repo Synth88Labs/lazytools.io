@@ -14,6 +14,17 @@ keywords:
   - body fat percentage calculator
   - us navy body fat
   - measure body fat at home
+faqs:
+  - q: "What measurements does the US Navy body-fat method need?"
+    a: "Men measure their neck, waist and height; women measure their neck, waist, hips and height. Those circumferences are entered into the Navy formula, which returns an estimated body-fat percentage with no scales or calipers required."
+  - q: "How accurate is the Navy body-fat method?"
+    a: "For people of average build it usually lands within about 3 percentage points of gold-standard methods like DEXA or hydrostatic weighing. It is less accurate for very muscular or very lean people because it infers fat from body measurements rather than measuring it directly."
+  - q: "Where exactly do I place the tape to measure my waist?"
+    a: "For men, measure horizontally at the level of the navel. For women, measure at the narrowest point of the torso. Keep the tape snug and level, stand relaxed, and do not suck in your stomach or hold your breath."
+  - q: "Why are the healthy body-fat ranges different for men and women?"
+    a: "Women's bodies require more essential fat for normal hormonal and reproductive function, so a healthy body-fat percentage is naturally higher for women than for men. This is why the category bands differ between the two."
+  - q: "Can I measure in inches instead of centimetres?"
+    a: "Yes. The Navy body-fat calculator accepts either centimetres or inches and converts internally. Just be consistent and use the same unit for all of your measurements."
 draft: false
 ---
 

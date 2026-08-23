@@ -14,6 +14,17 @@ keywords:
   - when to use a pie chart
   - choosing the right chart
   - data visualization chart types
+faqs:
+  - q: "What chart type should I use for my data?"
+    a: "Start from the question you're answering, not the data you have. To compare separate categories use a bar chart, to show change over time use a line chart, and to show slices of one total use a pie chart. If none fit, consider a funnel, radar or waterfall chart."
+  - q: "Should I use a bar chart or a pie chart?"
+    a: "Prefer a bar chart for precise comparison. People judge length far more accurately than angle or area, so bars let readers rank values reliably, while pie slices are hard to compare. Reserve pie charts for showing a few parts of one meaningful total, ideally about five slices or fewer."
+  - q: "When should I use a line chart instead of a bar chart?"
+    a: "Use a line chart when your data follows an ordered sequence, usually time, and you want the trend itself to be the subject. The connected line emphasises change and direction. Bar charts are better when the categories are independent and have no natural order."
+  - q: "What is the default chart type when I am unsure?"
+    a: "A bar chart is the safest default. It is the most versatile and the easiest to read accurately because bar length is the simplest visual quantity to compare, so it is almost always a defensible choice."
+  - q: "When should I use a funnel, radar or waterfall chart?"
+    a: "Use a funnel chart for sequential stages where each stage is a subset of the one above, such as conversion drop-off. Use a radar chart to compare several attributes measured on a similar scale. Use a waterfall chart to explain how a starting value became an ending value through gains and losses."
 draft: false
 ---
 

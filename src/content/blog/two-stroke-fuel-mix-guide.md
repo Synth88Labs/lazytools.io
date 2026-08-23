@@ -14,6 +14,19 @@ keywords:
   - two stroke oil ratio
   - how to mix 2 stroke fuel
   - chainsaw fuel mix
+faqs:
+  - q: "How much oil do I add for a 50:1 two-stroke mix?"
+    a: "Divide the petrol volume by 50. That works out to 20 ml of oil per litre, 100 ml per 5 litres, or about 2.6 fl oz per US gallon."
+  - q: "Is a 40:1 mix more oil than 50:1?"
+    a: "Yes. 40:1 uses 25 ml of oil per litre versus 20 ml at 50:1. The lower the second number, the more oil per litre, so 32:1 is richer still at about 31 ml per litre."
+  - q: "What happens if I put too much oil in two-stroke fuel?"
+    a: "The engine smokes heavily, the spark plug fouls, and carbon builds up on the piston and exhaust port. It runs poorly, but a slightly oil-rich mix rarely causes immediate damage, unlike too little oil."
+  - q: "What happens if there is not enough oil in the mix?"
+    a: "The engine loses lubrication and can overheat and seize, often ruining the piston and cylinder. This is the dangerous mistake, which is why you should never run straight petrol or a too-lean mix."
+  - q: "Can I use car engine oil in two-stroke fuel?"
+    a: "No. Use oil formulated specifically for two-stroke engines. Regular motor oil does not burn cleanly in the combustion chamber and will not lubricate correctly, risking damage."
+  - q: "How long does mixed two-stroke fuel last?"
+    a: "Use it within about 30 days. Mixed fuel, especially with ethanol-blended petrol, degrades and can gum up the carburettor. Mix small batches and store fuel in a sealed, approved container out of sunlight."
 draft: false
 ---
 
