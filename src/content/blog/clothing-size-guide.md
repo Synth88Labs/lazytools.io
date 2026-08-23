@@ -2,7 +2,7 @@
 title: "Women's Clothing Size Conversion: US, UK, EU, IT Charts — and Why Vanity Sizing Broke Them"
 description: "A US 8 is a UK 12, EU 38, FR 40, IT 44 and JP 13. Get the full conversion chart, the fixed offsets behind it, and why a 1975 size 12 became today's size 6."
 pubDate: 2026-07-05
-updatedDate: 2026-07-05
+updatedDate: 2026-08-23
 archetype: explainer
 tools: ["/size/clothing-size-converter/"]
 keywords:
@@ -64,6 +64,15 @@ what the numbers *mean* — which has been drifting for fifty years.
 Every column is the US number plus a constant — which is why one known size unlocks all of them in the
 [converter](/size/clothing-size-converter/) (the full chart runs US 0–20).
 
+### A worked example
+
+Say a French label reads **40**. France sits two above the German/EU number, so subtract 2 to reach the
+EU baseline of 38, then subtract the 30-point EU offset: **US 8**. From there every other column is one
+addition away — UK 12 (US + 4), IT 44 (US + 36), JP 13 (US + 5). One label, converted once, resolves the
+whole row. The arithmetic never changes; only the starting country does. That is the entire logic the
+converter automates — you enter any single number, pick its system, and it back-solves the US baseline
+and rebuilds every other label from it.
+
 <figure>
 <img src="/blog/infographic-dress-sizes.svg" alt="Infographic: one dress with six size labels — US 8, UK 12, EU 38, FR 40, IT 44, JP 13 — the fixed offsets between systems, and the vanity sizing note that a 1975 US 12 fits like a modern US 6-8" width="1200" height="620" loading="lazy" />
 <figcaption>Same garment, six labels — and a fifty-year drift underneath all of them.</figcaption>
@@ -91,6 +100,27 @@ garments with smaller numbers as average bodies changed, because smaller numbers
 Two practical consequences: vintage shopping requires measuring, never trusting the label; and two
 current-season garments in "the same size" can differ by a full size between brands, since there is no
 binding standard — the old US standard was withdrawn in 1983 and never replaced.
+
+## What a size number is supposed to stand for
+
+A dress size is shorthand for three body measurements: **bust, natural waist and hip.** Because no
+binding standard survives, the exact centimeters behind each number vary from brand to brand — but the
+*ballpark* is stable enough to be useful, and it is the layer the label arithmetic sits on top of. The
+table below shows typical values for common US sizes; treat them as a starting reference, not gospel, and
+always defer to the specific brand's chart for a fitted purchase.
+
+| US | Bust (in / cm) | Waist (in / cm) | Hip (in / cm) |
+|---|---|---|---|
+| 4 | 34 / 86 | 26½ / 67 | 37 / 94 |
+| 8 | 36 / 91 | 28½ / 72 | 39 / 99 |
+| 12 | 38 / 97 | 30½ / 77 | 41 / 104 |
+| 16 | 41 / 104 | 33½ / 85 | 44 / 112 |
+
+Two people who both call themselves "a US 8" can differ by an inch or more in any single measurement,
+which is exactly why the number alone is a rough sort and the tape is the tiebreaker. To measure: run the
+tape around the fullest part of the bust, the narrowest part of the natural waist, and the widest part of
+the hips — level all the way round, snug but not compressing. If you land between two rows on the brand's
+chart, size to your **largest** measurement and adjust the fit from there.
 
 ## How to actually buy the right size abroad
 

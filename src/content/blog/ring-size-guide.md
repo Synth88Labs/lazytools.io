@@ -2,7 +2,7 @@
 title: "How to Measure Your Ring Size at Home (US, UK, EU Charts Included)"
 description: "Measure your ring size with a strip of paper in two minutes: circumference in mm IS your EU size, and US 7 = UK N = EU 54.4. Full conversion chart, secret-sizing tips for proposals, and the mistakes to avoid."
 pubDate: 2026-07-04
-updatedDate: 2026-07-04
+updatedDate: 2026-08-23
 archetype: how-to
 tools: ["/size/ring-size-converter/"]
 keywords:
@@ -59,9 +59,19 @@ Every system labels the same physical thing — the ring's inner size:
 | UK / Australia | letters A–Z, half sizes | N |
 | Jewelers' mm | inner diameter | 17.3 mm |
 
-The scales lock together arithmetically: each half US size = one UK letter = ~1.28 mm of circumference.
-That's why a single paper-strip measurement resolves everything — the
+The scales lock together arithmetically. One full US size is about 0.83 mm of inner diameter, so a
+half US size ≈ 0.4 mm of diameter ≈ **1.3 mm of circumference** — and that half-step is also almost
+exactly one UK letter. That's why a single paper-strip measurement resolves everything: the
 [converter](/size/ring-size-converter/) accepts circumference, diameter, US or UK and returns the rest.
+
+### A worked example
+
+Say your paper strip reads **54 mm** where it overlaps. Because EU/ISO size *is* the circumference,
+you are an **EU 54** on the nose. To get the diameter, divide by π: 54 ÷ 3.1416 ≈ **17.2 mm**. On the
+chart that lands you at **US 7 / UK N**. Now suppose you measured on a cold morning and got 52.5 mm
+instead — that's roughly a size and a quarter smaller (about **US 6¼**), which is exactly why timing
+matters. Averaging a warm-evening reading with a cool-morning reading gets you closer to the size the
+ring will actually feel like most of the time.
 
 ## Measuring at home: the paper strip method
 
@@ -102,6 +112,43 @@ trace the inner circle.
 | 12 | X | 67.2 | 21.4 |
 
 The [full chart with half sizes](/size/ring-size-converter/) covers US 3–13.
+
+## Band width and comfort fit
+
+Two rings that share a nominal size can feel completely different because of **width** and **profile**.
+A wide band presses against more of your finger, so it grips more and slides over the knuckle less
+easily. A common jeweler's rule is to add roughly **half a size for every ~2 mm of extra width** beyond
+a thin (2 mm) band — a 6 mm band typically wants about half a size up, and a chunky 8 mm band closer to
+a full size.
+
+Profile matters too. A **comfort-fit** (domed interior) band slips on more easily and generally fits
+about a quarter to half a size looser than a **standard-fit** (flat interior) band of the same marked
+size, so if you sized yourself on a flat sizer, nudge down slightly when buying comfort fit.
+
+| Band width | Interior profile | Adjustment vs. a thin flat band |
+|---|---|---|
+| 2 mm | Standard (flat) | baseline |
+| 4 mm | Standard (flat) | +¼ size |
+| 6 mm | Standard (flat) | +½ size |
+| 8 mm | Standard (flat) | +½ to +1 size |
+| Any | Comfort (domed) | about ¼–½ size looser than flat |
+
+## When you're between two sizes
+
+If your measurement falls between two sizes, **round up**. A ring that is a touch loose can be sized
+down or fitted with a small sizing bead or bar; a ring that won't clear the knuckle is a daily
+frustration and risks getting stuck. Most solid metal bands (gold, platinum, silver) can be resized up
+or down by one to two sizes at a jeweler. Bands that **cannot** be easily resized include full
+eternity rings set all the way around, tension settings, and rings in tungsten, titanium, or ceramic —
+for those, getting the size right the first time is essential, so measure on more than one day.
+
+## A note on other countries
+
+The US, UK/Australia, and EU/ISO systems above cover most of the world, but a few markets number rings
+differently — Japan and China, for example, use their own numeric scales. When in doubt, the safest
+common language is the **inner circumference in millimeters**: it is unambiguous everywhere and is the
+basis of the ISO 8653 standard, so a jeweler in any country can work from it. The
+[converter](/size/ring-size-converter/) always shows the millimeter value alongside each named size.
 
 ## Common ring-sizing mistakes
 

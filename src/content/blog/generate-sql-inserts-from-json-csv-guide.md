@@ -2,7 +2,7 @@
 title: "How to Generate SQL INSERTs from JSON or CSV (Safely)"
 description: "Turning JSON or CSV into SQL INSERT statements is mechanical — but the value typing and quote escaping are where it breaks. Here's how to do it correctly, plus a browser tool that never uploads your data."
 pubDate: 2026-08-01
-updatedDate: 2026-08-01
+updatedDate: 2026-08-23
 archetype: explainer
 heroImage: /blog/generate-sql-inserts-from-json-csv-guide.png
 heroAlt: "JSON and CSV data converting to SQL INSERT statements with typed, escaped values"
@@ -37,6 +37,18 @@ correctly, and escaping single quotes in strings.** Get those right and you can 
 or a spreadsheet in seconds. The [JSON to SQL](/dev/json-to-sql/) and [CSV to SQL](/dev/csv-to-sql/)
 converters handle both in your browser, and the [SQL IN Clause Generator](/dev/sql-in-clause-generator/)
 covers the related "paste a list into a `WHERE`" case.
+
+<aside class="key-takeaways">
+
+**Key takeaways**
+
+- JSON keys (or CSV headers) become columns; each object (or CSV line) becomes a row — the mapping itself is trivial.
+- The two rules that decide whether the script runs: type every value (numbers and booleans bare, empty/`null` as `NULL`, everything else single-quoted) and escape embedded single quotes by doubling them (`''`).
+- CSV adds a parsing trap — commas and newlines *inside* quoted fields — so a correct converter follows RFC 4180 instead of naive `split(',')`.
+- Generated `INSERT`s are for migrations, seeding, and one-off imports; for untrusted runtime input use parameterised queries, never string-built SQL.
+- LazyTools' converters run entirely client-side, so pasted database dumps never leave your browser and work offline.
+
+</aside>
 
 ## The mapping
 
@@ -79,6 +91,23 @@ That doubling (`''` = one literal `'`) is standard ANSI SQL and works in Postgre
 It's also the difference between a script that imports cleanly and one that fails halfway — or, with
 untrusted input, a SQL injection.
 
+Here is the full typing decision, from source value to the literal that lands in the statement:
+
+| Source value | SQL literal | Note |
+|---|---|---|
+| `42`, `3.5`, `-7` | `42`, `3.5`, `-7` | Numeric — no quotes |
+| `true` / `false` (JSON boolean) | `TRUE` / `FALSE` | Postgres native; MySQL maps to `1`/`0` |
+| `null` (JSON) or empty CSV cell | `NULL` | Not the string `'NULL'` and not `''` |
+| `"Ada"` | `'Ada'` | Ordinary string, single-quoted |
+| `"O'Brien"` | `'O''Brien'` | Embedded quote doubled |
+| `"line1\nline2"` | `'line1\nline2'` | Newline kept inside the literal |
+
+Two subtleties worth calling out. First, `NULL` and the empty string `''` are *not* the same in SQL:
+a genuinely missing value should become `NULL`, while a deliberately blank text field stays `''`. If
+your source can't distinguish them, decide the rule up front. Second, boolean handling is dialect
+dependent — PostgreSQL accepts `TRUE`/`FALSE` literally, whereas older MySQL treats them as aliases for
+`1`/`0`, so the safest portable output for a boolean column is often just `1` or `0`.
+
 <figure class="my-8">
 <svg viewBox="0 0 1200 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="JSON and CSV both map to INSERT statements; values are typed and single quotes are doubled" style="width:100%;height:auto;background:#f8fafc;border-radius:16px">
   <text x="600" y="54" text-anchor="middle" font-family="system-ui,sans-serif" font-size="36" font-weight="800" fill="#0f172a">Data → typed, escaped INSERT</text>
@@ -110,12 +139,48 @@ quoted fields, escaped quotes (`""`), and even newlines inside quotes — so `"B
 That's why [CSV to SQL](/dev/csv-to-sql/) parses properly rather than `split(',')`, and why it also
 lets you pick a delimiter for semicolon (European) or tab-separated data.
 
+## A worked example, end to end
+
+Take this small JSON export, which deliberately hits every tricky case — a number, a boolean, an
+apostrophe, a genuine null, and a blank string:
+
+```json
+[
+  {"id": 1, "name": "Ada",     "active": true,  "notes": "founder"},
+  {"id": 2, "name": "O'Brien", "active": false, "notes": null},
+  {"id": 3, "name": "Bo, Jr",  "active": true,  "notes": ""}
+]
+```
+
+Applying the mapping and the two rules produces:
+
+```sql
+INSERT INTO users (id, name, active, notes) VALUES
+(1, 'Ada', TRUE, 'founder'),
+(2, 'O''Brien', FALSE, NULL),
+(3, 'Bo, Jr', TRUE, '');
+```
+
+Notice what each row demonstrates: row 1 quotes strings but leaves the number and boolean bare; row 2
+doubles the apostrophe in `O''Brien` and turns JSON `null` into the keyword `NULL` (unquoted); row 3
+keeps the comma inside `'Bo, Jr'` as data and preserves the empty string as `''` rather than collapsing
+it to `NULL`. Feed the identical data in CSV form (`id,name,active,notes` as the header) and you get the
+same statement — only the column source changes.
+
 ## One row per statement, or one big INSERT?
 
 Two valid shapes, and it's a real choice:
 
 - **Multi-row** (`VALUES (…),(…),(…);`) — fewer statements, faster bulk loads. The default.
 - **One INSERT per row** — easier to diff in version control, comment out, or run selectively.
+
+For very large loads there is a practical ceiling: a single multi-row statement can bump into engine
+limits — MySQL's `max_allowed_packet`, for instance — so tens of thousands of rows are usually split
+into batches of a few hundred to a few thousand rows each. That keeps every statement well under the
+limit while still avoiding the per-statement overhead of one `INSERT` per row. If you are loading
+millions of rows, a purpose-built path such as PostgreSQL's `COPY` or MySQL's `LOAD DATA` will beat any
+generated `INSERT` script; the converters here are aimed at the small-to-medium seed, migration, and
+fixture files that make up the vast majority of day-to-day jobs.
 
 ## The related case: a SQL IN clause
 

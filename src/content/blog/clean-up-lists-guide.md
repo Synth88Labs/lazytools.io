@@ -2,7 +2,7 @@
 title: "How to Clean Up Any Messy List: Dedupe, Sort and Fix Broken Text in 4 Steps"
 description: "The repeatable pipeline for messy pasted data: fix broken line breaks, remove duplicates (with the invisible-spaces trap), natural-sort, and pattern-fix with find & replace — each step one click."
 pubDate: 2026-07-05
-updatedDate: 2026-07-05
+updatedDate: 2026-08-23
 archetype: how-to
 tools: ["/text/remove-duplicate-lines/", "/text/sort-lines/", "/text/remove-line-breaks/", "/text/find-and-replace/", "/text/extract-email-addresses/", "/text/reverse-text/"]
 keywords:
@@ -56,6 +56,18 @@ below.
 <figcaption>Nine messy lines in, four clean lines out — every step is one tool, one click.</figcaption>
 </figure>
 
+The order matters more than it looks. Each step assumes the one before it already ran: dedupe assumes
+"one line = one entry," and sort assumes duplicates are already gone so it isn't ordering noise. Run
+them out of order and you'll spend more time undoing than cleaning. Here's the whole pipeline on one
+screen, so you can see which tool owns which problem before you start pasting.
+
+| Step | Problem it fixes | Tool | Key setting |
+| --- | --- | --- | --- |
+| 1. Structure | Broken lines, blank rows, CSV blobs | [remove line breaks](/text/remove-line-breaks/) / [find & replace](/text/find-and-replace/) | "remove empty lines only" |
+| 2. Dedupe | Repeated entries, near-duplicates | [remove duplicate lines](/text/remove-duplicate-lines/) | ignore case + ignore spaces |
+| 3. Sort | Random or char-sorted order | [sort lines](/text/sort-lines/) | natural order (default) |
+| 4. Pattern-fix | Stray prefixes, old domains, name order | [find & replace](/text/find-and-replace/) | regex mode when needed |
+
 ## Step 1 — Fix the structure ([remove line breaks](/text/remove-line-breaks/))
 
 Messy data usually arrives structurally broken before it's logically broken: PDF copies hard-wrap
@@ -84,10 +96,23 @@ sign-ups, found in one paste. For pulling addresses out of unstructured text fir
 ## Step 3 — Sort ([sort lines](/text/sort-lines/))
 
 A→Z with **natural ordering** is the default — `item 2` lands before `item 10`, `v1.9` before `v1.10`,
-because embedded numbers compare by value rather than character-by-character. Other orders when you
-need them: by length (shortest/longest first — useful for keyword lists), reversed (newest-first
-exports → chronological, also available as line-reverse in [reverse text](/text/reverse-text/)), and
-unbiased random shuffle (fair orderings, raffle draws).
+because embedded numbers compare by value rather than character-by-character. The difference is easiest
+to see side by side: plain character sort walks left to right and stops at the first difference, so
+`item 10` sorts before `item 2` because the character `1` comes before `2` in the code point order.
+Natural sort reads the run of digits as one number and compares `2` against `10`.
+
+| Order | What it does | Good for |
+| --- | --- | --- |
+| Natural (default) | Numbers compare by value: `2` before `10` | Versions, numbered items, filenames |
+| Plain A→Z | Character-by-character | Pure text with no embedded numbers |
+| By length | Shortest or longest line first | Keyword lists, spotting outliers |
+| Reversed | Flips current order top-to-bottom | Newest-first exports → chronological |
+| Random shuffle | Unbiased reordering | Fair draws, raffles, sampling |
+
+Reversing is also available as a standalone line flip in [reverse text](/text/reverse-text/) when you
+only want to invert order without re-sorting. One caution on random shuffle: a *fair* shuffle needs an
+unbiased algorithm (the Fisher–Yates method is the standard one) — naive "sort by random key" schemes
+skew toward some orderings, which matters if the draw has to be defensible.
 
 ## Step 4 — Pattern-fix the leftovers ([find & replace](/text/find-and-replace/))
 
@@ -96,6 +121,41 @@ is a find & replace job. The replacement count is the safety net: 0 means your s
 an unexpectedly large count warns you before pasting the result anywhere important. Regex mode covers
 the patterned cases: `\d+` matches any number, capture groups reorder (`(\w+), (\w+)` → `$2 $1` turns
 "Doe, Jane" into "Jane Doe").
+
+## A full run, start to finish
+
+To see the four steps interact, take a realistic mess — a conference sign-up sheet somebody pasted out
+of an email thread:
+
+```
+Jane Doe, jane@old-corp.com
+bob@example.com
+Bob@example.com
+priya@example.com
+priya@example.com 
+Sam, sam@example.com
+
+Jane Doe, jane@old-corp.com
+```
+
+**Step 1 (structure):** the two `Name, email` rows aren't comparable to the bare-email rows, and there's
+a blank separator line. Run "remove empty lines only," then in find & replace strip the name prefix with
+the regex `^[^,]+, ` → empty. Every line is now just an address.
+
+**Step 2 (dedupe):** paste into remove duplicate lines. `bob@example.com` and `Bob@example.com` only
+merge with **ignore case** on; `priya@example.com ` (trailing space) only merges with **ignore spaces**
+on. With both enabled the counter reports the two Jane rows plus these near-duplicates removed — four
+unique addresses survive.
+
+**Step 3 (sort):** A→Z natural order gives `bob`, `jane`, `priya`, `sam`. Nothing here has embedded
+numbers, so plain and natural agree — but leaving natural on costs nothing and protects you the moment a
+`user2@` and `user10@` appear.
+
+**Step 4 (pattern-fix):** the address still points at `old-corp.com`. Find `@old-corp.com`, replace with
+`@newco.com`; the replacement count (1) confirms exactly one line changed before you trust the result.
+
+Four passes, four clicks, and the counters at every step tell you what moved — no guessing whether the
+tool "got everything."
 
 ## Common list-cleanup mistakes
 

@@ -2,7 +2,7 @@
 title: "Accessible Color: Contrast Ratios and Color Blindness, Explained"
 description: "Accessible color rests on two things: enough contrast (WCAG AA needs 4.5:1 for text, 3:1 for large text) and not relying on color alone (~1 in 12 men are color-blind). How the ratios work, what deuteranopia/protanopia/tritanopia change, and how to fix a failing color."
 pubDate: 2026-07-11
-updatedDate: 2026-07-11
+updatedDate: 2026-08-23
 archetype: explainer
 tools: ["/color/accessible-color-generator/", "/color/color-blindness-simulator/", "/color/contrast-checker/"]
 keywords:
@@ -64,9 +64,38 @@ Contrast is a **ratio** between the relative luminance of the text and its backg
 | AA | 4.5:1 | 3:1 |
 | AAA | 7:1 | 4.5:1 |
 
-AA is the level referenced by most accessibility law (the European Accessibility Act, the ADA, Section
-508). Check any pair with the [contrast checker](/color/contrast-checker/); check a whole palette at once
-with the [contrast grid](/color/contrast-grid/).
+AA is the level referenced by most accessibility law and policy — the European Accessibility Act, the
+ADA, and Section 508 all point at WCAG 2 Level AA. Check any pair with the
+[contrast checker](/color/contrast-checker/); check a whole palette at once with the
+[contrast grid](/color/contrast-grid/).
+
+### How the ratio is actually computed
+
+The number is not a guess — it comes from *relative luminance*, a weighted measure of how much light a
+color emits. Each of the sRGB channels is normalized to 0–1, linearized to undo gamma encoding, then
+combined as `L = 0.2126·R + 0.7152·G + 0.0722·B`. The green weight is the largest because the eye is most
+sensitive to green. The contrast ratio between two colors is then:
+
+```
+(L_lighter + 0.05) / (L_darker + 0.05)
+```
+
+The `0.05` term models ambient light reflecting off the screen, which is why the scale tops out at 21:1
+rather than infinity even for pure black on pure white.
+
+**A worked example.** Take a medium gray `#767676` on a white background. White has a luminance of 1.0.
+The gray works out to a luminance of about 0.18, so the ratio is `(1.0 + 0.05) / (0.18 + 0.05) ≈ 4.54:1`.
+That clears 4.5:1 for normal text — barely. Lighten the gray one more step to `#808080` and it drops below
+4.5:1 and fails. This is why "it looks fine to me" is unreliable: a single step in lightness can move a
+color across the threshold, and the difference is invisible on a good monitor in a dark room.
+
+### Beyond text: non-text contrast
+
+Contrast is not only about letters. WCAG 2.1 added success criterion **1.4.11 Non-text Contrast**, which
+requires a **3:1** ratio for the parts of a UI you need to *see to operate* — button outlines, form-field
+borders, toggle states, focus rings — and for the meaningful parts of graphics like chart lines. A pale
+gray input border on a white card may look elegant but fails this rule, leaving low-vision users unable to
+find the field. When you audit a screen, check icons and controls, not just body copy.
 
 ### Fixing a color that fails
 
@@ -86,6 +115,21 @@ main forms:
   can nearly vanish.
 - **Tritanopia** — blue-weak, rare. Blues and greens, and yellows and pinks, become hard to separate.
 
+Each dichromacy has a milder "anomalous" cousin — deuteranomaly, protanomaly, tritanomaly — where the cone
+is present but shifted rather than missing. Anomalous forms are more common than full dichromacy but cause
+the same category of confusion, just less severely.
+
+| Type | Cone affected | Confuses | Prevalence |
+|---|---|---|---|
+| Deuteranopia / -anomaly | Green (M) | Red ↔ green, brown ↔ orange | Most common |
+| Protanopia / -anomaly | Red (L) | Red ↔ green; reds look darker | Common |
+| Tritanopia / -anomaly | Blue (S) | Blue ↔ green, yellow ↔ pink | Rare |
+| Achromatopsia | All / none | Everything (sees only lightness) | Very rare |
+
+The two red-green types together account for the large majority of color-vision deficiency, which is why
+the red/green pairing — used everywhere for pass/fail, buy/sell, and up/down — is the single riskiest
+design choice.
+
 The way to catch problems is to **simulate** your interface under each type and look for two colors that
 collapse into the same appearance. The [color blindness simulator](/color/color-blindness-simulator/)
 does this for an uploaded screenshot *or* a pasted palette (the design-system case), entirely on your
@@ -98,6 +142,26 @@ device.
 If red means "error" and green means "ok", add a symbol (✕ / ✓), a label, or a shape. Charts should use
 patterns or direct labels, not just a color legend. Do that, and the design works for everyone —
 color-blind or not, on a cheap display or in bright sunlight.
+
+## A practical workflow
+
+You do not need to redesign around accessibility; you fold a few checks into the work you already do:
+
+1. **Set your text pairs first.** Pick body and heading colors against their real backgrounds and confirm
+   each clears its target — 4.5:1 for normal, 3:1 for large. Do this before you commit to a palette, not
+   after, because retrofitting contrast usually means changing brand colors.
+2. **Check the controls, not just the copy.** Run button borders, input outlines, and focus rings against
+   the 3:1 non-text bar so keyboard users can see where they are.
+3. **Simulate the whole screen.** View a real screenshot under deuteranopia and protanopia and hunt for two
+   colors that merge — the classic failure is a status chip where "paid" and "overdue" become the same
+   swatch.
+4. **Add the redundant cue.** Anywhere color carries meaning, attach an icon, label, or shape so the signal
+   survives when the color does not.
+5. **Re-run after every palette change.** A single tweak to a brand color can quietly break a pair you
+   already passed.
+
+This order matters: contrast is a hard numeric gate you can automate, while the color-alone rule is a
+judgment call you make per component. Automate the first, review the second.
 
 ## WCAG 2 vs APCA
 

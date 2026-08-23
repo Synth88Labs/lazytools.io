@@ -2,7 +2,7 @@
 title: "Hat Sizes Decoded: Why 7⅛ Means Your Head's Diameter (Charts + Measuring Guide)"
 description: "Fitted hat sizes are head circumference in inches ÷ π. Measure your head in 30 seconds, convert 52–64 cm to US/UK fitted and S–XXL sizes, and learn the fedora-era logic behind the eighths."
 pubDate: 2026-07-05
-updatedDate: 2026-07-05
+updatedDate: 2026-08-23
 archetype: explainer
 tools: ["/size/hat-size-converter/"]
 keywords:
@@ -90,14 +90,54 @@ measurement: it means "your head is about 7⅜ inches across."
 Full 52–64 cm table on the [converter page](/size/hat-size-converter/). Adult heads average ~56–57 cm,
 which is why "M" is every shop's first sell-out.
 
+## Three worked examples
+
+Reading the formula off a real measurement makes it stick. In each case the only arithmetic is
+"inches ÷ π," and the eighth-inch step is whatever fraction lands nearest.
+
+- **Alex measures 54.5 cm.** That's 54.5 ÷ 2.54 = 21.5 in, and 21.5 ÷ π = 6.83 — nearest eighth
+  **6⅞**, letter band **S**. Sitting near the top of the S band, a stretch-fit S/M cap works but runs
+  snug; a true fitted 6⅞ is cleaner.
+- **Priya measures 57 cm.** 57 ÷ 2.54 = 22.4 in, ÷ π = 7.14 → **7⅛**, a solid **M**. This is the single
+  most common adult result, which is exactly why medium sells out first.
+- **Marcus measures 60.5 cm.** 60.5 ÷ 2.54 = 23.8 in, ÷ π = 7.58. That rounds up to **7⅝** and an
+  **XL** — and since he's between 7½ and 7⅝, the size-up rule says take the 7⅝.
+
+Notice that a 6 cm spread of real heads (54.5 → 60.5) only moves the fitted number by about ¾ of an
+inch. Hat sizes change slowly, which is why an eighth-inch resolution is enough to fit almost everyone.
+
 ## Fitted vs adjustable vs stretch
 
-- **Fitted** (dress hats, New Era 59FIFTY): exact eighths sizing — this is where the chart matters.
-- **Adjustable** (snapbacks, dad caps): one size spans ~55–60 cm; the chart only matters at the extremes.
-- **Stretch-fit** (S/M, L/XL flexfit): two-band sizing; if you're at a band's top edge, take the larger.
+Not every hat uses the eighths scale. How closely the chart matters depends on the closure:
+
+| Construction | Examples | How it's sized | Does the chart matter? |
+|---|---|---|---|
+| Fitted | Dress hats, New Era 59FIFTY | Exact eighths (6⅞–8) | Yes — measure and match |
+| Adjustable | Snapbacks, dad caps, strapbacks | One size, wide range | Only at the extremes |
+| Stretch-fit | S/M, L/XL flexfit | Two elastic bands | Yes — pick your band |
+| Elastic / knit | Beanies, one-size | Stretches to fit | Rarely |
+
+- **Fitted** caps and dress hats hold their shape, so the eighth-inch number is the whole game.
+- **Adjustable** snapbacks and dad caps span roughly a small-to-large range on one shell; only very
+  small or very large heads run out of adjustment.
+- **Stretch-fit** flexfit caps use two elastic bands (commonly S/M and L/XL). If your measurement lands
+  at the top edge of a band, take the larger band — elastic that's stretched to its limit loosens fast.
 
 Material note: wool felt and leather sweatbands **shrink** modestly with sweat and rain — the classic
 reason hatters say size up and pad with sizing tape rather than buy tight.
+
+## Growing heads, kids, and re-checking your size
+
+A child's head grows quickly, so kids' hat sizes are usually given straight in centimeters (or as
+age bands) rather than eighth-inch fitted numbers — a fitted size bought a season ahead won't stay
+right for long. For a growing child, measure fresh each time and lean toward adjustable closures.
+
+Adult heads are stable but not fixed. Your effective hat size can drift by close to a centimeter from
+things that have nothing to do with your skull: a heavier or lighter hairstyle, a fresh haircut, or
+even a hat's own liner packing down over years of wear. If a hat that once fit now sits loose or tight,
+re-measure before assuming the hat changed — often it's the hair, or the sweatband that has softened.
+When you land exactly between two eighths, the same rule applies as everywhere else in hat sizing:
+take the larger number and snug it with a strip of sizing foam if needed.
 
 ## Common hat-size mistakes
 

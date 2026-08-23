@@ -2,7 +2,7 @@
 title: "How to Convert a PDF to JPG Without Uploading It"
 description: "Most 'PDF to JPG' sites upload your document to their servers to do the conversion — a problem when it's a contract, a bank statement or an ID. Here's how to convert PDF pages to images entirely in your browser, and how to choose JPG vs PNG and the right resolution."
 pubDate: 2026-07-12
-updatedDate: 2026-07-12
+updatedDate: 2026-08-23
 archetype: explainer
 tools: ["/pdf/pdf-to-jpg/", "/pdf/jpg-to-pdf/", "/image/image-compressor/"]
 keywords:
@@ -53,34 +53,61 @@ draft: false
 
 The big-name PDF sites (iLovePDF, Smallpdf, Adobe's online tools and the rest) do the conversion **on their servers**: you upload the PDF, they render it and send images back. For a meme or a blank form, fine. For a **signed contract, a bank statement, a passport scan or a medical record**, you've just handed a copy to a third party — where it may be cached, logged or retained per their policy. Once it's uploaded, you can't take it back.
 
+Most of these services do say they delete files after a set window (often an hour or so), and that's usually true. But "we delete it later" is a very different guarantee from "it was never sent anywhere." Deletion depends on the operator keeping their promise, on their backups not retaining a copy, and on the transfer itself not being intercepted or logged along the way. The stronger position is to never create the second copy in the first place.
+
 The good news: turning a PDF page into an image is **pure rendering** — the exact thing your browser already does to *display* a PDF. There's no reason it has to leave your device.
 
 ## Converting in the browser
 
-A client-side converter uses a PDF rendering engine (the same open-source **pdf.js** that powers in-browser PDF viewing) to draw each page onto a canvas, then exports that canvas as a JPG or PNG. It all happens locally in JavaScript — **no upload, works offline**.
+A client-side converter uses a PDF rendering engine (the same open-source **pdf.js**, maintained by Mozilla, that powers in-browser PDF viewing) to draw each page onto an HTML `<canvas>`, then exports that canvas as a JPG or PNG. It all happens locally in JavaScript — **no upload, and it keeps working even with your network disconnected**, which is a quick way to prove nothing is being sent.
 
-The [PDF to JPG tool](/pdf/pdf-to-jpg/) does exactly this: open a PDF, pick your format and resolution, and each page becomes an image you can download individually or all at once. The file never touches a server. (Going the other way — stitching images *into* a PDF — is the [JPG to PDF tool](/pdf/jpg-to-pdf/).)
+The [PDF to JPG tool](/pdf/pdf-to-jpg/) does exactly this: open a PDF, pick your format and resolution, and each page becomes an image you can download individually or all at once (a multi-page PDF is typically zipped for a single download). The file never touches a server. Going the other way — stitching images *into* a single PDF — is the [JPG to PDF tool](/pdf/jpg-to-pdf/).
 
-## JPG or PNG?
+### A quick sanity check
 
-- **JPG** uses lossy compression: **smaller files**, and perfectly good for photographic pages or scanned documents where a little softness doesn't matter. You can trade quality for size.
-- **PNG** is **lossless**: it keeps text edges, thin lines and diagrams **crisp**, but the files are bigger.
+Want to confirm the claim rather than take it on faith? Load the converter page, then turn off Wi-Fi or unplug the network and run a conversion. If it still produces your images, the work is happening on your own machine. A server-based tool would simply fail at that point.
 
-Rule of thumb: **PNG when crispness matters** (text-heavy pages, tables, technical drawings), **JPG when file size matters** (photos, quick previews, email attachments).
+## JPG or PNG? A side-by-side
+
+Both formats produce a flat raster image; the difference is how they compress it.
+
+| | **JPG** | **PNG** |
+|---|---|---|
+| Compression | Lossy (discards fine detail) | Lossless (pixel-perfect) |
+| File size | Smaller, adjustable via quality | Larger |
+| Text & sharp edges | Can show soft "halos" around letters | Stays crisp |
+| Photos & scans | Excellent | Fine, but larger for no gain |
+| Transparency | Not supported | Supported |
+| Best for | Photos, scanned pages, email, quick previews | Text pages, tables, diagrams, line art, screenshots |
+
+Rule of thumb: **PNG when crispness matters** (text-heavy pages, tables, technical drawings), **JPG when file size matters** (photographic pages, quick previews, attachments you want to keep small). JPG's compression is tuned for smooth gradients like photographs; it struggles with the hard black-on-white edges of text, which is exactly where PNG shines.
 
 ## Choosing the resolution
 
-Resolution is the sharpness–size trade-off:
+Resolution is the sharpness-versus-size trade-off. A PDF page is defined in **points**, where 1 point equals 1/72 inch, so rendering a page at "72 dpi" reproduces it at its natural on-screen size, and doubling to 144 dpi doubles the pixels along each edge (roughly four times the total pixel count and file size).
 
-- **72 dpi** — fine for quick on-screen viewing.
-- **144 dpi** — good general quality for most uses.
-- **216 dpi (or higher)** — for printing, or to keep the text on a **scanned** document readable.
+Here is what that works out to for a standard **A4 page** (8.27 × 11.69 inches):
 
-Zooming in later won't add detail that wasn't captured, so if you might print or crop, render high.
+| Resolution | Approx. pixels (A4) | Good for |
+|---|---|---|
+| 72 dpi | ~595 × 842 | Quick on-screen viewing, thumbnails |
+| 144 dpi | ~1190 × 1684 | General-purpose, most web and slide uses |
+| 216 dpi | ~1785 × 2525 | Sharp text, larger previews |
+| 300 dpi | ~2480 × 3508 | Printing and archiving scanned documents |
+
+US **Letter** pages (8.5 × 11 inches) come out slightly wider and shorter — about 2550 × 3300 pixels at 300 dpi. 300 dpi is the long-standing benchmark for print because it comfortably exceeds what the eye resolves at normal reading distance.
+
+The key limitation: **zooming in later won't add detail that wasn't captured.** If there's any chance you'll print the image or crop into a small region of it, render high from the start — you can always shrink a large image, but you can't recover detail you never rendered.
+
+### Worked example: a two-page contract for e-signature
+
+Say you need to email one page of a signed agreement as an image. Choose **PNG** so the signature and clause text stay crisp, and render at **144 dpi** — sharp enough to read comfortably on any screen, without ballooning the attachment. That single A4 page lands around 1190 × 1684 pixels, which most mail clients send without complaint. If the recipient will *print* it for their files, step up to **216 or 300 dpi** instead and accept the larger file.
 
 ## One thing to remember
 
-Converting a page to an image **turns the text into pixels**. The result looks identical but is no longer selectable, searchable or editable — it's a picture. If you need the words back as text, that requires **OCR** (optical character recognition), a separate step. For sharing a page as an image, that's exactly what you want; just don't expect to copy-paste text out of the result.
+Converting a page to an image **turns the text into pixels**. The result looks identical but is no longer selectable, searchable or editable — it's a picture. If you need the words back as text, that requires **OCR** (optical character recognition), a separate step. For sharing a page as an image, that's exactly what you want; just don't expect to copy-paste text out of the result, and don't rely on it being findable by a document search later.
+
+There's a privacy angle here too: because the output is flat pixels, it won't carry any hidden PDF layers, form-field values, or comment metadata that were tucked into the original. What you see in the image is genuinely all that's there — which can be reassuring when you're sharing a single page and want to be sure nothing rides along invisibly.
 
 Need to shrink the images afterward? Run them through the [image compressor](/image/image-compressor/) — also entirely in your browser. Every LazyTools file tool works this way on purpose: the document you're converting is the one that should never be uploaded.
 

@@ -2,7 +2,7 @@
 title: "The SUVAT Equations: Solve Any Constant-Acceleration Problem"
 description: "The five SUVAT kinematic equations link displacement, initial and final velocity, acceleration and time. Know any three and you can find the other two. How to pick the right equation, worked examples, and why they only work for constant acceleration."
 pubDate: 2026-07-11
-updatedDate: 2026-07-11
+updatedDate: 2026-08-23
 archetype: explainer
 tools: ["/physics/kinematic-equations-calculator/", "/physics/projectile-motion-calculator/", "/physics/free-fall-calculator/"]
 keywords:
@@ -85,13 +85,48 @@ No guessing — the missing-variable rule points straight to the equation. The
 [SUVAT calculator](/physics/kinematic-equations-calculator/) does this selection for you: enter any three
 values and it solves the rest.
 
+## A quick reference: which equation for which question
+
+Once you internalise the "missing variable" idea, most textbook problems fall into a handful of shapes.
+This table maps a common question to the variable you can ignore and the equation it points to:
+
+| The question you're asked | Variable not involved | Equation to reach for |
+|---|---|---|
+| How far did it travel in a given time? | v (final velocity) | `s = ut + ½at²` |
+| How fast is it going after a given time? | s (displacement) | `v = u + at` |
+| How fast is it going after a given distance? | t (time) | `v² = u² + 2as` |
+| How long to cover a distance at known start/end speeds? | a (acceleration) | `s = ½(u + v)t` |
+| How far did it travel, knowing only the final speed? | u (initial velocity) | `s = vt − ½at²` |
+
+The last row is the one students forget exists. If a problem hands you the *final* velocity but not the
+initial one, `s = vt − ½at²` saves you from solving two equations at once.
+
+## Two more worked examples
+
+**Braking distance.** A cyclist travelling at `u = 8 m/s` brakes at `a = −2 m/s²` until stopping
+(`v = 0`). How far do they travel while stopping?
+
+- Known: u, v, a. Want: s. Not involved: **t**.
+- The equation missing t is `v² = u² + 2as`.
+- `0² = 8² + 2 × (−2) × s` → `0 = 64 − 4s` → `s = 16 m`.
+
+**Two-stage journey.** A train starts from rest, accelerates at `a = 0.5 m/s²` for `t = 20 s`, then
+holds that speed. What is its speed at the end of the acceleration phase, and how far has it gone?
+
+- Speed: known u, a, t; want v; missing s → use `v = u + at` = `0 + 0.5 × 20 = 10 m/s`.
+- Distance: known u, a, t; want s; missing v → use `s = ut + ½at²` = `0 + ½ × 0.5 × 20² = 100 m`.
+
+Notice that both parts of the same problem used a different equation, each chosen by the missing-variable
+rule. That's the pattern to trust.
+
 ## The square-root one to watch
 
 `v² = u² + 2as` is the equation with no time in it — perfect for "how fast after this distance"
 questions. But it hides a trap: solving for `v` (or `u`) needs a **square root**, and taking a root gives
 **two answers**, `+` and `−`. Physically that's an object passing a point moving forwards or backwards.
-Pick the sign that matches your chosen positive direction. (This is also exactly the algebra that
-AI chatbots are documented to get wrong — a deterministic solver won't.)
+Pick the sign that matches your chosen positive direction — the other root is often the object's velocity
+at the same height on the *way up* versus the *way down*, which is a real answer, just not the one the
+question asked for.
 
 ## SUVAT and gravity
 
@@ -106,6 +141,36 @@ Vertical motion under gravity is a SUVAT problem because gravity gives a **const
 
 Just be consistent with signs: if you call *up* positive, then `g` is `−9.8` and downward displacement is
 negative.
+
+**Worked example — dropped stone.** You drop a stone into a well and it hits the water after `t = 2 s`.
+How deep is the well (ignoring air resistance)? Take *down* as positive, so `u = 0`, `a = g ≈ 9.8 m/s²`,
+`t = 2 s`, want s, missing v → `s = ut + ½at² = 0 + ½ × 9.8 × 2² ≈ 19.6 m`. The same setup with *up* as
+positive gives `s ≈ −19.6 m` — the same depth, just signed to say "below the start point."
+
+## Where the five equations come from
+
+You don't have to memorise all five as unrelated facts. Two are definitions and the rest follow:
+
+- `v = u + at` is just the definition of constant acceleration — velocity changes by `a` every second.
+- `s = ½(u + v)t` is the average-velocity idea: with a straight-line velocity graph, the average speed is
+  the midpoint `½(u + v)`, and distance is average speed times time.
+- Substituting `v = u + at` into `s = ½(u + v)t` and simplifying gives `s = ut + ½at²`.
+- Doing the same substitution the other way gives `s = vt − ½at²`.
+- Eliminating `t` between the first two produces the time-free `v² = u² + 2as`.
+
+Seeing them as one family — not five to rote-learn — makes it obvious why "know any three" is enough:
+three independent values pin down the straight-line velocity graph completely, and everything else is read
+off it.
+
+## Common mistakes to avoid
+
+| Mistake | Fix |
+|---|---|
+| Mixing up units (km with m, minutes with seconds) | Convert everything to SI (metres, seconds) before substituting. |
+| Getting signs inconsistent | Pick one positive direction at the start and apply it to u, v, a and s throughout. |
+| Using SUVAT when acceleration isn't constant | Check the scenario first; changing acceleration needs calculus. |
+| Forgetting `a` is negative when decelerating | A slowing object has acceleration opposite to its motion. |
+| Taking only the `+` square root automatically | Consider whether the `−` root is the physically relevant answer. |
 
 ## When SUVAT doesn't work
 

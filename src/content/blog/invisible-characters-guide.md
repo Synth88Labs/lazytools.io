@@ -2,7 +2,7 @@
 title: "Invisible Characters in Text: Zero-Width Spaces, Hidden Watermarks, and How to Remove Them"
 description: "A zero-width space (U+200B) is invisible on screen but real in the bytes — it breaks search, code and CSV parsing, and tag characters (U+E0000–E007F) can invisibly watermark AI text. What the hidden characters are, why they matter, and how to detect and strip them."
 pubDate: 2026-07-11
-updatedDate: 2026-07-11
+updatedDate: 2026-08-23
 archetype: explainer
 tools: ["/text/invisible-character-detector/", "/text/text-cleaner/", "/text/unicode-character-inspector/"]
 keywords:
@@ -69,6 +69,27 @@ The usual suspects fall into a few groups:
 - **Tag characters (U+E0000–E007F) and variation selectors** — increasingly used to **invisibly
   watermark AI-generated text** by encoding a hidden fingerprint.
 
+### A quick reference table
+
+The characters you are most likely to run into, what they look like, and what they do:
+
+| Character | Code point | Renders as | Typical problem it causes |
+| --- | --- | --- | --- |
+| Zero-width space | U+200B | Nothing | Breaks exact search, keyword and identifier matching |
+| Zero-width non-joiner | U+200C | Nothing | Splits a "word" that looks whole |
+| Zero-width joiner | U+200D | Nothing (joins glyphs) | Alters emoji sequences; confuses tokenizers |
+| Word joiner | U+2060 | Nothing | Same as ZWSP but harder to spot in old tools |
+| Non-breaking space | U+00A0 | A space | Breaks CSV parsing, `trim()`, number parsing |
+| Narrow no-break space | U+202F | A thin space | Sneaks into copied numbers and dates |
+| Ideographic space | U+3000 | A wide space | Pasted from CJK sources; fails whitespace checks |
+| Byte-order mark | U+FEFF | Nothing | Corrupts the first CSV field or first line of code |
+| Right-to-left override | U+202E | Nothing | Reverses displayed order to disguise filenames |
+| Tag characters | U+E0000–E007F | Nothing | Carry hidden watermark or smuggled payloads |
+
+Code points are shown in the standard Unicode `U+` notation. The names come from the Unicode
+Standard; the "typical problem" column reflects common text-processing experience rather than any single
+specification.
+
 ## Why they matter
 
 These characters cause bugs that are infuriating precisely because *the text looks correct*:
@@ -79,6 +100,41 @@ These characters cause bugs that are infuriating precisely because *the text loo
 - **Spreadsheets misparse.** A non-breaking space breaks a number into text, or splits a CSV field.
 - **Text gets fingerprinted.** Watermark tag characters travel with copy-pasted text and can identify
   where it came from — a privacy consideration when you paste AI output into your own work.
+
+### A worked example
+
+Suppose you copy a coupon code from a web page into your checkout form and it keeps getting rejected. On
+screen it reads `SAVE20`, exactly what the page advertised. But the page author wrapped the code in
+styling that left a zero-width space between the letters, so the real string is:
+
+```
+S A V E 2 0   →   S·A·V·E·2·0   (a U+200B sits after the E)
+```
+
+Your eyes see six characters; the server compares seven code points and finds no match. The same failure
+mode explains a whole family of "but it looks identical" bugs:
+
+- A spreadsheet column of prices copied from a report imports as **text**, not numbers, because each
+  value is padded with a non-breaking space (U+00A0). Sums return `0` or an error.
+- A JSON file refuses to parse because a byte-order mark (U+FEFF) sits before the opening brace.
+- A Python or JavaScript file throws a syntax error on a line that looks perfectly normal, because an
+  invisible character crept into an identifier during a copy-paste.
+
+In every case the fix is the same: reveal the code points, then strip or convert them.
+
+## Where these characters come from
+
+Invisible characters rarely arrive on purpose. Common sources include:
+
+- **Copy-paste from rich sources** — web pages, PDFs, Word documents and chat apps often carry
+  non-breaking spaces, narrow spaces and BOMs into whatever you paste them into.
+- **Exports and encodings** — a file saved as "UTF-8 with BOM" prepends U+FEFF; some CSV exporters emit
+  non-breaking spaces as thousands separators.
+- **Deliberate obfuscation** — a bidirectional override (U+202E) placed inside a filename can flip the
+  display order of the characters after it, so an executable named to end in "exe.jpg" can appear to end
+  in a harmless image extension.
+- **Watermarking and payload smuggling** — tag characters and variation selectors can encode a hidden
+  fingerprint, or even a whole hidden message, that rides invisibly inside otherwise normal text.
 
 ## Why a chatbot can't help here
 

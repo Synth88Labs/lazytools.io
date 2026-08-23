@@ -2,7 +2,7 @@
 title: "Blood Sugar Units Explained: mg/dL, mmol/L, HbA1c and eAG"
 description: "mg/dL and mmol/L are the same glucose measured on two scales — divide mg/dL by 18.0182 to get mmol/L. HbA1c has its own two scales (% and mmol/mol) plus an estimated average glucose. Here's how they all connect. Converts in your browser."
 pubDate: 2026-08-01
-updatedDate: 2026-08-01
+updatedDate: 2026-08-23
 archetype: explainer
 heroImage: /blog/blood-sugar-units-mgdl-mmol-hba1c-guide.png
 heroAlt: "How blood sugar units relate — mg/dL to mmol/L by dividing by 18.0182, and HbA1c percent to IFCC mmol/mol and estimated average glucose"
@@ -40,6 +40,18 @@ familiar meter reading. This guide connects all four so a number in one system s
 Convert instantly with the [Blood Sugar Converter](/calc/blood-sugar-converter/) and the
 [HbA1c Converter](/calc/hba1c-calculator/) — both run locally in your browser.
 
+<aside class="key-takeaways">
+
+**Key takeaways**
+
+- **mg/dL and mmol/L are the same glucose**, one measured as mass and one as molecules — bridge them with the single fixed factor **18.0182** (÷ to get mmol/L, × to go back).
+- **HbA1c is a different quantity**: the share of your haemoglobin that is glycated, reflecting your *average* glucose over roughly the past 2–3 months rather than a single moment.
+- HbA1c also has **two scales** — the older percentage (NGSP/DCCT) and the newer IFCC **mmol/mol** — linked by **IFCC = 10.929 × (% − 2.15)**.
+- **Estimated average glucose (eAG)** translates an HbA1c back onto the meter scale with **28.7 × % − 46.7** (mg/dL), so a 7% result maps to about 154 mg/dL (8.6 mmol/L).
+- Every conversion here is deterministic arithmetic; the numbers are exact, but what any value *means* for you is a clinical question, not a calculator one.
+
+</aside>
+
 > These tools and this article explain unit conversions only. They are **not medical advice** and
 > can't tell you whether a value is high, low or normal for you — that depends on your circumstances
 > and is a question for a healthcare professional.
@@ -58,8 +70,16 @@ They differ by a single fixed factor:
 
 > **mmol/L = mg/dL ÷ 18.0182**  ·  **mg/dL = mmol/L × 18.0182**
 
-That 18.0182 isn't arbitrary. Glucose has a molar mass of **180.156 g/mol**; dividing by 10 to convert
-between decilitres and litres gives 18.0182. Because it's exact, no precision is lost either way.
+That 18.0182 isn't arbitrary. It comes from glucose's molar mass — roughly **180 g/mol** — combined with
+the decilitre-to-litre step (a factor of 10). Two unit differences collapse into one number, so the
+conversion is a clean, reversible constant with no rounding baked in. Some references round it to a flat
+**18**, which shifts a reading by well under 1% — fine for a mental estimate, but the tools use the full
+18.0182 so a round-trip lands back where it started.
+
+**Worked example.** A UK lab reports a fasting glucose of **5.4 mmol/L**. Multiply by 18.0182 →
+**97 mg/dL** — squarely in the normal fasting range on the US scale. Going the other way, a US reading of
+**126 mg/dL** ÷ 18.0182 = **7.0 mmol/L**, the number most guidelines cite as the fasting threshold for
+diabetes. Same blood, two vocabularies.
 
 | mg/dL | mmol/L |
 |---|---|
@@ -148,6 +168,37 @@ Then divide by 18.0182 for mmol/L. So an HbA1c of 7% ≈ **154 mg/dL (8.6 mmol/L
 
 eAG is a *population average*: two people with the same HbA1c can have somewhat different true average
 glucose because red-cell turnover varies. Treat it as a helpful translation, not a personal guarantee.
+
+## Reference ranges for context
+
+Conversions only tell you the *number*, not what it signifies. For orientation, the table below shows the
+broad categories the American Diabetes Association uses, on every scale at once. These are general
+diagnostic thresholds — a clinician interprets them alongside your history, symptoms and repeat testing,
+and some conditions (pregnancy, anaemia, certain haemoglobin variants) shift how the numbers behave.
+
+| Category | Fasting glucose (mg/dL) | Fasting glucose (mmol/L) | HbA1c (%) | HbA1c (mmol/mol) |
+|---|---|---|---|---|
+| Normal | below 100 | below 5.6 | below 5.7 | below 39 |
+| Prediabetes | 100–125 | 5.6–6.9 | 5.7–6.4 | 39–46 |
+| Diabetes range | 126 or above | 7.0 or above | 6.5 or above | 48 or above |
+
+The point of lining the scales up like this is that a single result — say **6.5%** — is simultaneously
+**48 mmol/mol** on the IFCC scale and an eAG of about **140 mg/dL (7.8 mmol/L)**. None of those are
+different findings; they're the same fact in four dialects.
+
+## Where the conversions trip people up
+
+A few recurring snags are worth naming:
+
+- **Mixing up the two "mmol" units.** Glucose is reported in **mmol/L**; HbA1c on the IFCC scale is
+  **mmol/mol**. They look similar but measure completely different things — never convert one into the
+  other directly.
+- **Applying 18.0182 to HbA1c.** The glucose factor only bridges mg/dL and mmol/L. To move an HbA1c
+  percentage onto a glucose scale you must go through eAG first, then apply 18.0182 if you want mmol/L.
+- **Over-reading small differences.** Because HbA1c reflects a months-long average, a change from 6.9%
+  to 7.0% is within normal measurement noise, not a meaningful jump. eAG inherits that same fuzziness.
+- **Rounding drift.** Rounding mg/dL to a whole number before converting, then rounding again, can shift
+  the last digit. Converting from the raw value in one step — which the calculators do — avoids it.
 
 ## Putting it together
 

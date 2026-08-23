@@ -2,7 +2,7 @@
 title: "How Many People Do You Need to Survey? Sample Size Explained"
 description: "The sample size for a proportion is n = z²·p(1−p) / E². At 95% confidence with a ±5% margin you need 385 responses — whether your population is 20,000 or 20 million. Why p = 0.5 is the safe choice, why halving the margin quadruples n, and when population size matters."
 pubDate: 2026-07-11
-updatedDate: 2026-07-11
+updatedDate: 2026-08-23
 archetype: explainer
 tools: ["/statistics/sample-size-calculator/", "/statistics/confidence-interval-calculator/", "/statistics/normal-distribution-calculator/"]
 keywords:
@@ -92,6 +92,24 @@ important intuition to carry into planning: a modestly tighter estimate can cost
 responses. The [sample-size calculator](/statistics/sample-size-calculator/) lets you slide the margin
 and watch n move before you commit a budget.
 
+## The confidence level changes z — and n
+
+The other dial is the **confidence level**, which sets z. Higher confidence means you want to be more
+certain the true value falls inside your ± band, so z grows and the sample grows with z². The critical
+values below are the standard two-sided ones you will see quoted everywhere; the sample sizes assume the
+worst-case p = 0.5 and a fixed ±5% margin.
+
+| Confidence level | Critical value z | Responses needed (±5%, p = 0.5) |
+|---|---|---|
+| 90% | 1.645 | 271 |
+| 95% | 1.960 | 385 |
+| 99% | 2.576 | 664 |
+
+Moving from 95% to 99% confidence — a jump that sounds small — pushes the sample from 385 to 664, about
+70% more responses, for the same margin. Most consumer and business surveys settle on 95% precisely
+because it balances rigour against cost; 90% is common for quick internal reads, and 99% is reserved for
+higher-stakes work such as medical or safety research.
+
 ## The counter-intuitive part: population size
 
 Most people assume surveying a country needs a far bigger sample than surveying a company. It doesn't.
@@ -100,6 +118,36 @@ sampling 20,000 people or 20 million. Population size only enters through the **
 correction**, which *reduces* the required sample when it would otherwise be a large fraction of a small
 group. Surveying 500 people about a 600-member club? The correction meaningfully lowers n. Surveying a
 city? It changes nothing worth noting.
+
+The correction is `n_adj = n / (1 + (n − 1) / N)`, where n is the basic (infinite-population) number and
+N is your population. For a 600-member club at 95%/±5%:
+
+> n_adj = 385 / (1 + (385 − 1) / 600) = 385 / 1.64 ≈ **235**
+
+So you would need roughly 235 of the 600 members, not 385 — a real saving. Run the same correction for a
+city of 600,000 and the divisor is essentially 1, so n stays at 385. As a rule of thumb, the correction
+only earns its keep once your sample would exceed about 5% of the population.
+
+## How many people to actually invite
+
+The formula gives **completed responses**, not invitations. Real surveys have a response rate well below
+100%, so divide your target n by the expected response rate to size the invite list:
+
+> invites ≈ n / response rate
+
+If you need 385 completes and expect a 30% response rate, plan to reach about 385 / 0.30 ≈ **1,283**
+people. Under-inviting is the most common reason a survey lands with a wider margin than promised — you
+budgeted for the completes but not for the no-shows. Build the buffer in from the start.
+
+## Common mistakes to avoid
+
+- **Reporting a tighter margin than your completes support.** If only 300 people finished, your true
+  margin is wider than the ±5% you designed for; recompute it from the responses you actually got.
+- **Forgetting subgroups.** A sample of 385 gives ±5% for the *whole* group, but a slice of 40 respondents
+  (say, one age band) carries a much larger margin. Size up if you need to report on subgroups.
+- **Confusing response count with representativeness.** A large sample that over-represents one segment is
+  biased, not accurate. Sample size controls *precision*; sampling method controls *bias*. They are
+  separate problems, and no amount of extra responses fixes a skewed frame.
 
 ## From sample size to confidence interval
 

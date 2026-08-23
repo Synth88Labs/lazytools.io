@@ -2,7 +2,7 @@
 title: "How Much Do I Need? Estimating Paint, Tile, Concrete and Mulch"
 description: "Every home-project estimate is either an area job (paint, tiles) or a volume job (concrete, mulch). Area = length × width; volume = area × depth. The formulas, sensible coverage and waste allowances, and how to turn them into cans, tiles, bags and rolls."
 pubDate: 2026-07-11
-updatedDate: 2026-07-11
+updatedDate: 2026-08-23
 archetype: explainer
 tools: ["/home/paint-calculator/", "/home/tile-calculator/", "/home/concrete-calculator/", "/home/mulch-soil-calculator/"]
 keywords:
@@ -53,6 +53,30 @@ it's a **volume** job. Get that straight and the rest is arithmetic (plus a sens
 <figcaption>Decide area or volume first — everything else follows.</figcaption>
 </figure>
 
+The distinction sounds trivial, but it's where most over- and under-buying starts. Buy paint by the
+square metre when the job is really a volume (say, filling a planter with soil) and you'll be wildly out.
+So before any arithmetic, ask a single question: **am I covering a surface, or filling a space?** Surfaces
+— walls, floors, splashbacks — are two-dimensional and priced by area. Spaces — slabs, beds, trenches,
+post holes — are three-dimensional and priced by volume. Everything downstream is the same three steps:
+measure, apply the right formula, then convert the raw number into the units the shop actually sells.
+
+### Quick reference
+
+The messy part is rarely the geometry — it's converting a raw area or volume into cans, boxes and bags.
+Coverage and yield vary by product, so always check the label, but these typical figures are enough to
+plan and budget:
+
+| Material | Job type | Formula | Typical coverage / yield | Waste to add |
+| --- | --- | --- | --- | --- |
+| Paint | Area | area × coats ÷ coverage | ≈ 10–12 m²/L (350–400 sq ft/gal) per coat | Round to whole cans + touch-up |
+| Tiles / flooring | Area | area ÷ tile size | 1 tile = its own footprint | 10% straight, 15–20% diagonal/herringbone |
+| Wallpaper | Area | wall area ÷ usable roll area | Standard roll ≈ 5 m² usable | 10–15% for pattern repeat |
+| Concrete | Volume | L × W × thickness | 20 kg pre-mix bag ≈ 0.01 m³ | 5–10% settling/spills |
+| Mulch / soil | Volume | area × depth | Sold by m³, yd³ or by the bag | Round up (compaction) |
+
+A handy conversion to memorise: **1 cubic yard ≈ 0.76 m³**, and **1 m³ ≈ 1.31 cubic yards** — useful
+because bulk landscaping materials are often quoted in yards even where everything else is metric.
+
 ## Paint (area)
 
 Paint covers walls, so start with **wall area**: `2 × (length + width) × height`. Subtract the doors and
@@ -96,6 +120,38 @@ Mulch and topsoil are spread to a **depth**, so it's **area × depth**:
 A 10 m² bed at 7.5 cm deep is **0.75 m³** (about a cubic yard). Keep mulch **5–8 cm (2–3 in)** deep to
 suppress weeds without smothering plants. The [mulch & soil calculator](/home/mulch-soil-calculator/)
 shows cubic metres, cubic yards and bags — and past about a cubic metre, bulk delivery wins on price.
+
+## Worked example: a small garden makeover
+
+Real projects mix area and volume jobs, so it helps to run one end to end. Say you're refreshing a
+3 × 4 m courtyard: a concrete slab, a tiled feature strip, a fresh coat on the boundary wall, and a
+mulched border.
+
+1. **Slab** — a 3 × 4 m base at 100 mm deep is `3 × 4 × 0.1 = 1.2 m³`. That's past the ~1 m³ point where
+   bags stop making sense, so this is a **ready-mix delivery** job, not a stack of pre-mix bags.
+2. **Tiled strip** — a 4 × 0.5 m band is 2 m². With 30 × 30 cm tiles (0.09 m² each) that's
+   `2 ÷ 0.09 = 23 tiles`, plus 10% ≈ **26 tiles**.
+3. **Wall paint** — one 4 m wall, 2 m high, is 8 m². Two coats at 11 m²/L is
+   `8 × 2 ÷ 11 ≈ 1.5 L` — buy a **2.5 L tin** and keep the rest for touch-ups.
+4. **Mulch border** — a 6 m² border at 7.5 cm deep is `6 × 0.075 = 0.45 m³`. Under a cubic metre, so
+   **bags or a small bulk bag** both work.
+
+Notice how each line uses one of just two formulas. The only project-specific judgement is the waste
+margin and the bag-versus-bulk cut-off.
+
+## Common estimating mistakes
+
+- **Mixing units mid-calculation.** Measuring width in metres but thickness in millimetres gives an
+  answer 1,000× wrong. Convert everything to one unit *first* — metres and cubic metres, or feet and
+  cubic feet.
+- **Forgetting the second coat.** Paint coverage on the tin is *per coat*. Two coats doubles the paint;
+  bare plaster or a strong colour change can need three.
+- **Ignoring the pattern repeat.** Patterned wallpaper and diagonal tiling waste more offcuts than plain
+  layouts — bump the waste allowance, not just the base area.
+- **Rounding down.** Always round *up* to whole cans, boxes and bags. Running short means a second trip,
+  a possible batch mismatch, or a cold joint in a concrete pour.
+- **Not subtracting large openings.** For paint, deduct doors and picture windows; for flooring, deduct
+  a kitchen island's footprint. Small openings you can leave in as built-in waste allowance.
 
 ## The golden rule: add a little
 

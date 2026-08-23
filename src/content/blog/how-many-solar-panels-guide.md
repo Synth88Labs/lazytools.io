@@ -2,7 +2,7 @@
 title: "How Many Solar Panels Do I Need? A Simple Way to Size a System"
 description: "The answer isn't a fixed number — it depends on how much energy you use and how much sun you get. Here's the simple three-step method to size a solar array, with a worked example and the margin to add for real-world conditions."
 pubDate: 2026-07-12
-updatedDate: 2026-07-12
+updatedDate: 2026-08-23
 archetype: explainer
 tools: ["/solar/solar-panel-output-calculator/", "/solar/off-grid-load-calculator/", "/solar/solar-battery-bank-calculator/"]
 keywords:
@@ -77,9 +77,44 @@ Then divide your usage by that:
 
 `10 kWh/day ÷ 1.44 kWh = 6.9 → round up to 7 panels`
 
+## How the answer shifts with sun and panel size
+
+The two levers that move the count most are your **peak sun hours** and the **wattage of the panel** you choose. The table below runs the same 10 kWh/day home through a range of both, using the 0.8 efficiency factor and rounding up to whole panels. Notice how a sunny site can need roughly half the panels of a cloudy one for the identical load.
+
+| Peak sun hours | 350 W panels | 400 W panels | 450 W panels |
+| --- | --- | --- | --- |
+| 3.0 (cloudy climate) | 12 | 11 | 10 |
+| 4.5 (temperate) | 8 | 7 | 7 |
+| 5.5 (sunny) | 7 | 6 | 6 |
+| 6.5 (desert) | 6 | 5 | 5 |
+
+A few things fall out of this. Higher-wattage panels cut the count but rarely change your roof area much, because a 450 W panel is physically larger than a 350 W one — you are mostly trading panel *count* for panel *size*, not saving space. And the swing from 3.0 to 6.5 sun hours more than halves the array, which is why plugging in *your* location matters far more than any rule of thumb.
+
+## Turning panels into system size (kW)
+
+Installers and permits usually talk in **kilowatts (kW)** of nameplate capacity, not panel count. Converting is easy: multiply the number of panels by their wattage, then divide by 1,000.
+
+`7 panels × 400 W = 2,800 W = 2.8 kW`
+
+That is the DC nameplate — the lab rating before real-world losses. So a modest all-electric home wanting to offset most of its 10 kWh/day might land near a 3 kW array, while a larger household at 30 kWh/day in the same climate scales to roughly 9–10 kW. This is also the number that drives cost, since residential solar is commonly priced per watt or per kW installed.
+
 ## Don't forget the margin
 
 That 7 is the bare minimum for *average* conditions. Real life has cloudy weeks, low winter sun, hot panels (which are less efficient) and gradual ageing (~0.5% a year). Adding roughly **25%** — so 8 or 9 panels here — keeps the lights on when conditions are poor. Off-grid systems also need a [battery bank](/solar/solar-battery-bank-calculator/) sized to carry you through the sunless hours and cloudy days; that's a separate calculation from the panel count.
+
+## Grid-tied vs off-grid: same formula, different inputs
+
+The three-step method is identical for both, but two inputs change and it is worth being explicit about them.
+
+| | Grid-tied home | Off-grid cabin/van |
+| --- | --- | --- |
+| Daily kWh source | Utility bill (monthly ÷ 30) | Built up appliance-by-appliance |
+| Peak sun hours to use | Annual average is fine | Your **worst month** |
+| Margin | ~25% for losses/ageing | 25%+ **plus** battery autonomy |
+| Batteries | Optional — grid is your storage | Required, sized separately |
+| Over-production | Exported / net-metered | Wasted once batteries are full |
+
+For a grid connection, the grid absorbs your surplus on sunny days and covers you at night, so sizing to the annual average and adding a modest loss margin is reasonable. Off-grid there is no backstop: if December gives you a third of June's sun and your batteries run flat, the lights simply go out. That is why off-grid arrays are sized on the worst month and paired with a battery bank rated for a few days of autonomy.
 
 ## Work out your own numbers
 

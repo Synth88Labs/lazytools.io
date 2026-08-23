@@ -2,7 +2,7 @@
 title: "Why You Always See Space in the Past: Light Travel Time Explained"
 description: "Light is fast but not instant, and space is vast — so every time you look up, you see the past. The Sun as it was 8 minutes ago, the nearest star 4 years ago, distant galaxies millions of years back. How light travel time works, and what a light-year really is."
 pubDate: 2026-07-12
-updatedDate: 2026-07-12
+updatedDate: 2026-08-23
 archetype: explainer
 tools: ["/astronomy/light-travel-time-calculator/", "/astronomy/parallax-distance-calculator/", "/astronomy/angular-size-calculator/"]
 keywords:
@@ -55,13 +55,54 @@ We treat light as instant on Earth because it crosses a room in a few billionths
 <figcaption>How long ago the light left — from 1.3 seconds to 2.5 million years.</figcaption>
 </figure>
 
-Across the solar system the lag grows: **Jupiter** is about **43 light-minutes** away, **Neptune** around **4 light-hours**. It's why controlling a Mars rover is so awkward — a command takes several minutes to arrive, and its reply several more, so real-time driving is impossible. The [light travel time calculator](/astronomy/light-travel-time-calculator/) works out the delay for any distance.
+Across the solar system the lag grows: **Jupiter** is about **43 light-minutes** away on average, **Neptune** around **4 light-hours**. It's why controlling a Mars rover is so awkward — depending on where the two planets are in their orbits, a command takes roughly 4 to 24 minutes to arrive, and its reply just as long to return. Real-time driving is impossible, so rovers run on pre-loaded instructions and drive themselves between check-ins. The [light travel time calculator](/astronomy/light-travel-time-calculator/) works out the delay for any distance.
+
+## A ladder of light-delays
+
+The single most useful way to feel this is to line up familiar objects and see how the delay stretches from nanoseconds to billions of years. The table below uses standard astronomical distances; planet figures are rough averages because the gaps change as everything orbits.
+
+| Object | Approx. distance | Light travel time | You see it as it was |
+| --- | --- | --- | --- |
+| Your phone (arm's length) | ~0.3 m | ~1 nanosecond | a billionth of a second ago |
+| The Moon | 384,400 km | 1.3 seconds | 1.3 seconds ago |
+| The Sun | 149.6 million km (1 AU) | 8 min 20 s | ~8 minutes ago |
+| Jupiter | ~5.2 AU | ~43 minutes | ~43 minutes ago |
+| Neptune | ~30 AU | ~4 hours | ~4 hours ago |
+| Proxima Centauri | 4.24 light-years | 4.24 years | over 4 years ago |
+| Sirius | 8.6 light-years | 8.6 years | ~9 years ago |
+| Betelgeuse | ~550 light-years* | ~550 years | centuries ago |
+| Andromeda galaxy | 2.5 million light-years | 2.5 million years | before modern humans existed |
+| Cosmic microwave background | ~13.8 billion ly | 13.8 billion years | near the Big Bang |
+
+*Betelgeuse's distance is genuinely uncertain — published estimates range over roughly 500–700 light-years — so treat it as a ballpark, not a precise figure.
 
 ## What a light-year really means
 
 Beyond the solar system the numbers explode, so astronomers switch units. A **light-year** is not a time — it's the *distance* light covers in a year, about **9.46 trillion kilometres**. Saying a star is "100 light-years away" is therefore also saying its light is 100 years old: you see it as it was a century ago.
 
 The **nearest star**, Proxima Centauri, is **4.24 light-years** away, so its light is over four years old when it reaches us. The bright stars of familiar constellations are tens to hundreds of light-years off. And the faint smudge of the **Andromeda galaxy** — the most distant thing visible to the unaided eye — is **2.5 million light-years** away, so you're seeing light that set out before our species existed.
+
+## Work it out yourself
+
+The maths behind every row of that table is just one idea: **time = distance ÷ speed**. Because light's speed is fixed, distance and travel time are two ways of saying the same thing.
+
+Take the Sun. Its distance is about 149,600,000 km, and light moves at 299,792 km/s:
+
+- 149,600,000 ÷ 299,792 ≈ **499 seconds**, which is 8 minutes and 19 seconds — the "8 minutes" you always hear.
+
+To build the light-year, run the multiplication the other way — speed times time:
+
+- 299,792.458 km/s × 31,557,600 seconds in a year ≈ **9.46 trillion km**.
+
+That's why a distance and an "age of the light" are interchangeable. If a supernova flares 100 light-years away, its light is 100 years old, and the explosion really happened around the time of the First World War. The [light travel time calculator](/astronomy/light-travel-time-calculator/) does this arithmetic for any distance you type in, in kilometres, AU or light-years.
+
+## Why the delay matters on Earth, too
+
+This isn't only a stargazing curiosity — the finite speed of light is engineered around every day:
+
+- **GPS** satellites broadcast the exact time they sent each signal. Your receiver works out where you are by measuring how long those signals took to arrive. A timing error of a millionth of a second translates to a positioning error of about 300 metres, so the system corrects for light-speed delay meticulously.
+- **Deep-space missions** like the Voyager probes sit light-hours away. A single "are you okay?" round-trip now takes well over a day, so nothing about their operation can be interactive.
+- **Global networks** feel it as latency. Light in glass fibre travels slower than in vacuum, so a signal crossing an ocean and back carries an unavoidable delay of tens of milliseconds — enough for traders and gamers to care about.
 
 ## You might be looking at a ghost
 
