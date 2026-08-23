@@ -1456,11 +1456,11 @@
       "category": "accessibility",
       "check": "No serious/critical axe violations",
       "severity": "high",
-      "detail": "color-contrast (2)",
+      "detail": "color-contrast (1)",
       "fixType": "manual",
       "status": "complete",
       "firstSeen": "2026-08-22",
-      "lastSeen": "2026-08-22",
+      "lastSeen": "2026-08-23",
       "attempts": 0,
       "history": [
         {
@@ -1605,13 +1605,22 @@
       "resolvedOn": "2026-08-22"
     }
   },
-  "updated": "2026-08-22",
+  "updated": "2026-08-23",
   "runs": [
     {
       "date": "2026-08-22",
       "tools": 4,
       "avg": 86,
       "issues": 14,
+      "opened": 0,
+      "resolved": 0,
+      "challenged": 0
+    },
+    {
+      "date": "2026-08-23",
+      "tools": 10,
+      "avg": 100,
+      "issues": 1,
       "opened": 0,
       "resolved": 0,
       "challenged": 0
@@ -1630,21 +1639,26 @@
     "astronomy/age-on-other-planets",
     "astronomy/angular-size-calculator"
   ],
-  "catalogueSize": 1071,
+  "catalogueSize": 1072,
   "scores": {
     "daily": [
       {
         "date": "2026-08-22",
         "auditor": 3.3,
         "fixer": 5
+      },
+      {
+        "date": "2026-08-23",
+        "auditor": 3.8,
+        "fixer": 4
       }
     ],
     "weekly": [
       {
         "week": "2026-W34",
-        "auditor": 3.3,
-        "fixer": 5,
-        "days": 1
+        "auditor": 3.6,
+        "fixer": 4.5,
+        "days": 2
       }
     ]
   },
@@ -1652,28 +1666,28 @@
     "manager": {
       "role": "Governance — SLAs, ratings, token budget",
       "status": "nominal",
-      "task": "Reviewed 8 research idea(s) (avg 4/5); approved 3. Tokens 64400/400000.",
+      "task": "Reviewed 8 research idea(s) (avg 4/5); approved 3. Tokens 0/400000.",
       "kpis": {
         "overdue": 0,
         "onTrack": 0,
         "slaPct": 100,
-        "tokensToday": 64400,
+        "tokensToday": 0,
         "tokenCap": 400000,
-        "costUsd": 0.61
+        "costUsd": 0
       }
     },
     "auditor": {
       "role": "Truth — detect, verify, close findings",
       "status": "sweeping",
-      "task": "Sweeping the next 10 tools from index 11 of 1071.",
+      "task": "Sweeping the next 10 tools from index 11 of 1072.",
       "kpis": {
         "auditedTotal": 11,
-        "catalogue": 1071,
-        "lastAvg": 86
+        "catalogue": 1072,
+        "lastAvg": 100
       },
       "score": {
-        "daily": 3.3,
-        "weekly": 3.3
+        "daily": 3.8,
+        "weekly": 3.6
       }
     },
     "fixer": {
@@ -1688,8 +1702,8 @@
         "completed": 51
       },
       "score": {
-        "daily": 5,
-        "weekly": 5
+        "daily": 4,
+        "weekly": 4.5
       }
     },
     "researcher": {
