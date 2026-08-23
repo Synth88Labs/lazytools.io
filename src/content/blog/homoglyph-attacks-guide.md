@@ -2,7 +2,7 @@
 title: "Homoglyph Attacks: How Lookalike Characters Spoof Domains and Brands"
 description: "“pаypal.com” with a Cyrillic а looks identical to the real thing but is a different address. How homoglyph (IDN homograph) attacks use confusable Unicode characters for phishing, why mixed scripts are the giveaway, and how to detect them."
 pubDate: 2026-07-11
-updatedDate: 2026-07-11
+updatedDate: 2026-08-23
 archetype: explainer
 tools: ["/text/homoglyph-detector/", "/text/unicode-character-inspector/", "/text/invisible-character-detector/"]
 keywords:
@@ -57,55 +57,134 @@ only reliable defence is to check the underlying code points. Do that instantly 
 
 ## What a homoglyph is
 
-Unicode contains many characters that look (nearly) identical but live in different scripts. The
-Cyrillic alphabet alone supplies convincing stand-ins for a, e, o, p, c, y and x; Greek adds ο, ν, α
-and more; and the full-width Latin block gives Ａ, Ｅ, Ｏ. Because a well-designed font draws them the
-same, **“аpple”, “раypal” and “gооgle” can each be written with a foreign letter hiding in plain
-sight.** Unicode even publishes a "confusables" list precisely so software can catch them.
+A homoglyph is a character that is drawn (nearly) identically to another but has a different Unicode
+code point — usually because it belongs to a different writing system. Unicode encodes dozens of
+scripts, and several of them contain letters whose shapes overlap with the Latin alphabet. The Cyrillic
+block alone supplies convincing stand-ins for **a, e, o, p, c, y** and **x**; Greek contributes ο, ν, α
+and ρ; and the full-width Latin block (used for East Asian typesetting) gives Ａ, Ｅ, Ｏ. Because a
+well-designed font draws each pair with the same glyph, **"аpple", "раypal" and "gооgle" can each be
+written with a foreign letter hiding in plain sight.**
+
+The word "homoglyph" comes from *homo-* (same) and *glyph* (drawn shape): same shape, different
+identity. It is worth separating three closely related ideas:
+
+- **Homoglyph** — same rendered shape, different code point (Cyrillic а vs Latin a).
+- **Confusable** — Unicode's formal term for characters likely to be mistaken for one another. Unicode
+  Technical Standard #39 ships a machine-readable *confusables* table so software can map each lookalike
+  to a canonical form.
+- **IDN homograph attack** — the specific use of confusables inside an Internationalised Domain Name to
+  register a lookalike web address.
+
+### A reference table of common confusables
+
+The pairs below are the ones attackers reach for most, because their shapes are essentially
+indistinguishable in common fonts. The code points are the load-bearing detail — they are what a
+detector actually compares.
+
+| Looks like | Latin (code point) | Impostor | Impostor script & code point |
+|------------|--------------------|----------|------------------------------|
+| a | a (U+0061) | а | Cyrillic а (U+0430) |
+| e | e (U+0065) | е | Cyrillic е (U+0435) |
+| o | o (U+006F) | о | Cyrillic о (U+043E) |
+| o | o (U+006F) | ο | Greek omicron (U+03BF) |
+| p | p (U+0070) | р | Cyrillic er (U+0440) |
+| c | c (U+0063) | с | Cyrillic es (U+0441) |
+| y | y (U+0079) | у | Cyrillic u (U+0443) |
+| x | x (U+0078) | х | Cyrillic ha (U+0445) |
+| A | A (U+0041) | Ａ | Full-width A (U+FF21) |
+
+Notice that a single Latin letter can have impostors from *more than one* script — Latin "o" is
+imitated by both Cyrillic о (U+043E) and Greek omicron (U+03BF). That is why detection works on the
+code point, never the shape.
 
 ## Why it's dangerous
 
-Substituting one lookalike character lets an attacker imitate a trusted name:
+Substituting one lookalike character lets an attacker imitate a trusted name in any context where humans
+read text and trust what they see:
 
-- **Domains (IDN homograph attacks).** A registered domain like “pаypal.com” resolves to the
-  attacker's server while looking like the real brand — the basis of many phishing pages.
-- **Email and display names.** A "From" name or address with a swapped character sails past a quick
-  glance.
-- **Brand and username impersonation.** Social handles and package names use homoglyphs to pass as the
-  real thing.
+- **Domains (IDN homograph attacks).** A registered domain like "pаypal.com" can resolve to the
+  attacker's server while looking like the real brand — the basis of many phishing pages. The
+  best-known proof of concept was security researcher Xudong Zheng's 2017 demonstration, in which an
+  all-Cyrillic string rendered as "apple.com" in the address bar of then-current browsers and served
+  from a domain the researcher controlled.
+- **Email and display names.** A "From" name or address with a single swapped character sails past a
+  quick glance, and the recipient replies to — or trusts a request from — an address that is not who it
+  appears to be.
+- **Brand and username impersonation.** Social handles, npm/PyPI package names and org names use
+  homoglyphs to pass as the real thing; a lookalike package name is a known supply-chain trick.
 
-Modern browsers fight back by showing **punycode** (an `xn--…` form) for suspicious mixed-script
-domains, but homoglyphs still turn up in links, names and pasted text where no such warning appears.
+Consider a worked example. Suppose you receive a link to `secure-lοgin.example`. To the eye it reads
+"secure-login", but the third letter of "login" is a Greek omicron (U+03BF), not a Latin o (U+006F).
+Encoded for DNS, an internationalised label like that is transformed into an ASCII-compatible
+**punycode** form beginning with the `xn--` prefix (the encoding is defined in RFC 3492). The two
+labels — the pretty one you read and the `xn--` one the network resolves — are not the same string,
+which is exactly how the destination can differ from the brand you thought you clicked.
+
+## Browser defences, and their limits
+
+Modern browsers fight IDN homographs with heuristics rather than a blanket ban. In broad terms, a
+browser will display the friendly Unicode form when a label looks safe, but fall back to the raw
+`xn--…` punycode when a label mixes scripts in suspicious ways or matches known confusable patterns —
+so a spoofed domain often reveals itself as gibberish in the address bar. The exact rules differ between
+Chrome, Firefox and Safari and have tightened over the years.
+
+That defence only covers the address bar. Homoglyphs still turn up in places no browser vets for you:
+
+| Where you see it | Does the browser warn you? |
+|------------------|----------------------------|
+| Domain in the address bar | Often — may show `xn--…` punycode |
+| Link *text* in an email or page | No — only the shape is shown |
+| Email "From" / display name | No |
+| Social handle or username | No |
+| Copy-pasted brand name in a document | No |
+
+Wherever the answer is "no", the only reliable check is to inspect the code points yourself.
 
 ## The giveaway: mixed scripts
 
 Here's the tell that catches almost every homoglyph: **legitimate words are written in a single
-script.** An English word is all Latin letters; a Russian word is all Cyrillic. So when a single word
-contains *both* — a Latin "p" next to a Cyrillic "а" — something has been substituted. The
-[homoglyph detector](/text/homoglyph-detector/) flags exactly this "mixed scripts" condition and lists
-each offending character with its code point and the ASCII letter it imitates.
+script.** An English word is all Latin letters; a Russian word is all Cyrillic; a Greek word is all
+Greek. So when a *single word* contains letters from two scripts — a Latin "p" next to a Cyrillic "а" —
+something has almost certainly been substituted, because no natural language writes one word that way.
+
+This is why "mixed-script detection" is the workhorse of a good checker. It does not need to guess
+intent or maintain a blocklist of brands; it simply asks, "does this one token draw from more than one
+writing system?" and flags it if so. Genuine multilingual text keeps its scripts in separate words, so
+the false-positive rate on ordinary content is low. The
+[homoglyph detector](/text/homoglyph-detector/) flags exactly this condition and lists each offending
+character with its code point and the ASCII letter it imitates.
 
 ## How to check text for homoglyphs
 
 1. Paste the suspicious text — a link, an email address, a brand name — into the
    [homoglyph detector](/text/homoglyph-detector/).
 2. It lists every lookalike character, its script (Cyrillic, Greek, full-width…) and the ASCII letter
-   it mimics, and warns if scripts are mixed.
-3. It shows an **ASCII-normalised** version so you can see the "real" intended string.
+   it mimics, and warns if scripts are mixed within a single token.
+3. It shows an **ASCII-normalised** version so you can read the "real" intended string and compare it
+   with what you expected.
 
-For a deeper look at exactly what a string contains — code points, categories and bytes — pair it with
-the [Unicode character inspector](/text/unicode-character-inspector/), and check the same text for
-[invisible characters](/text/invisible-character-detector/), the other half of the text-forensics
-toolkit. Everything runs in your browser, so pasting a suspicious link never sends it anywhere.
+For a deeper look at exactly what a string contains — code points, categories and byte encodings — pair
+it with the [Unicode character inspector](/text/unicode-character-inspector/), and check the same text
+for [invisible characters](/text/invisible-character-detector/) such as zero-width spaces, the other
+half of the text-forensics toolkit. Everything runs in your browser, so pasting a suspicious link never
+sends it anywhere.
+
+A few habits make this second nature: never trust link *text* — hover or inspect the real target;
+be suspicious of any address that arrived unexpectedly and pushes urgency; and when a name matters
+(a login page, a payment, a package you're about to install), take the extra second to paste it into a
+checker rather than relying on your eyes.
 
 ## Quick summary
 
 Homoglyphs are characters from other scripts (Cyrillic а, Greek ο, full-width Ａ) that look identical to
 ASCII letters, and swapping one in lets attackers spoof domains, emails and brands — an IDN homograph
-attack. Your eyes can't tell them apart, but the substitution always shows up as **mixed scripts** in
-the underlying code points. Check any suspicious text with the
+attack when it happens inside a web address. Your eyes cannot tell the pairs apart because they are the
+same shape, but the substitution always shows up as **mixed scripts** in the underlying code points.
+Browsers help by exposing punycode in the address bar, yet link text, display names and pasted strings
+go unchecked. Run any suspicious text through the
 [homoglyph detector](/text/homoglyph-detector/) — instantly, and privately.
 
 *Sources: [Unicode Technical Standard #39, Security Mechanisms (confusables)](https://www.unicode.org/reports/tr39/) ·
-IDN homograph attack (general security literature). Educational information — not a substitute for
-your organisation's security controls.*
+[RFC 3492, Punycode](https://www.rfc-editor.org/rfc/rfc3492) · IDN homograph attack (general security
+literature; Xudong Zheng's 2017 proof of concept). Educational information — not a substitute for your
+organisation's security controls.*

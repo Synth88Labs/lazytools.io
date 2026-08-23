@@ -2,7 +2,7 @@
 title: "Magic Bytes: How to Tell a File's Real Type (Not Its Extension)"
 description: "A file's extension is just a label — its real type is written in its first few bytes, the 'magic number'. Here's how file signatures work, why a .pdf can secretly be an .exe, and how to check, all in your browser."
 pubDate: 2026-08-02
-updatedDate: 2026-08-02
+updatedDate: 2026-08-23
 archetype: explainer
 heroImage: /blog/magic-bytes-file-signatures-guide.png
 heroAlt: "How magic bytes identify a file's true type regardless of its extension, and how an extension mismatch is detected"
@@ -37,6 +37,18 @@ called the "magic number" or file signature.** A PNG always starts with `89 50 4
 change. Knowing this lets you find a file's true type, and catch a file wearing the wrong extension.
 Check any file's signature with the [File Type Identifier](/security/file-type-identifier/), which
 reads only the leading bytes, in your browser.
+
+<aside class="key-takeaways">
+
+**Key takeaways**
+
+- The file extension is just text in the filename; the real format is encoded in the file's first bytes — the "magic number" or signature.
+- Renaming a file never changes its bytes, so a `.pdf` can secretly be a PNG, a ZIP, or an executable — a mismatch worth catching.
+- Programs and the Unix `file` command identify formats by matching these leading bytes against a signature database, not by trusting the name.
+- Some signatures share bytes (docx, jar and apk are all ZIP) or sit at an offset (MP4, TAR), so a good checker reports the family and the caveat.
+- Reading the first bytes never executes a file — the [File Type Identifier](/security/file-type-identifier/) does it on the first 512 bytes locally, so nothing is uploaded.
+
+</aside>
 
 ## The extension lies; the bytes don't
 
@@ -90,6 +102,55 @@ Checking the signature turns "trust the name" into "verify the content." An exte
 always malicious — plenty of downloads are just mislabelled — but it's a flag worth seeing, because
 what opens a file is its content, never its name.
 
+## How software actually reads a signature
+
+The idea is old. The Unix `file` command has identified formats by content since the early 1970s, and
+it still ships on essentially every macOS and Linux system today. It works by consulting a "magic"
+database: a long list of rules that say *at this offset, look for these bytes; if they match, report
+this type.* Your browser, your OS thumbnail generator, antivirus scanners and upload validators all do
+a version of the same thing.
+
+The word "magic" here just means a value with no meaning except "this marks the start of a known
+thing." Many signatures are also human-readable on purpose. Open a PDF in a text editor and the very
+first characters are literally `%PDF-1.7`; a ZIP starts with `PK`, the initials of Phil Katz, who
+created the format. Others are deliberately binary — PNG's leading `89` byte is chosen so that a
+transfer tool that strips the high bit will visibly corrupt the file rather than pass a broken copy
+through silently.
+
+## Read the bytes yourself: a worked example
+
+You don't need special software to see a signature. Any hex viewer — or the identifier tool — shows
+the first row of bytes. Say a download called `report.pdf` won't open and you dump its first eight
+bytes:
+
+```
+50 4B 03 04 14 00 06 00
+```
+
+Those opening bytes are `PK` (`50 4B`). This isn't a PDF at all — it's a **ZIP-family** file. Given the
+`.pdf` name that's suspicious, but ZIP is also the container under `.docx`, so the honest verdict is
+"ZIP archive; could be an Office document or a plain ZIP renamed to `.pdf`." Contrast a healthy PDF,
+whose first bytes read `25 50 44 46 2D 31 2E` — `%PDF-1.` — matching both the signature and the name.
+
+The rule of thumb: compare what the **first bytes** claim against what the **extension** claims. Agree,
+and you can trust the label. Disagree, and the bytes win.
+
+## A wider signature reference
+
+Beyond the common formats above, here are more signatures you'll meet in the wild:
+
+| Format | First bytes (hex) | Notes |
+|---|---|---|
+| BMP image | `42 4D` | ASCII `BM` |
+| 7-Zip archive | `37 7A BC AF 27 1C` | |
+| RAR archive | `52 61 72 21 1A 07` | ASCII `Rar!` |
+| Java class file | `CA FE BA BE` | reads as "cafebabe" |
+| Legacy Office (`.doc`, `.xls`, `.ppt`) | `D0 CF 11 E0 A1 B1 1A E1` | OLE compound file |
+| WebP image | `52 49 46 46` … `57 45 42 50` | `RIFF` header, `WEBP` tag at offset 8 |
+| WAV audio | `52 49 46 46` … `57 41 56 45` | `RIFF` header, `WAVE` tag at offset 8 |
+| MP4 video | `66 74 79 70` at offset 4 | `ftyp` box, not at byte 0 |
+| Zstandard | `28 B5 2F FD` | |
+
 ## The nuances worth knowing
 
 - **Some formats share a signature.** `.docx`, `.xlsx`, `.pptx`, `.jar`, `.epub` and `.apk` are all ZIP
@@ -98,7 +159,24 @@ what opens a file is its content, never its name.
   offset 4, and TAR's `ustar` marker is way in at offset 257. Container formats like WAV and WebP share
   a `RIFF` header and are told apart by a second tag at offset 8.
 - **Text files have no magic number.** CSV, JSON, HTML, XML and source code are just text — there's no
-  fixed binary header to match, so they read as "unrecognized." That's correct, not a failure.
+  fixed binary header to match, so they read as "unrecognized." That's correct, not a failure. (One
+  quirk: a UTF-8 byte-order mark, `EF BB BF`, sometimes leads a text file, but it marks the *encoding*,
+  not the format.)
+- **A signature confirms the header, not the whole file.** Matching bytes tell you a file *begins* like
+  a PNG; they don't prove the rest is a valid, uncorrupted image. And because a signature is only a few
+  bytes, it can be forged — a hand-crafted file can carry a real PDF header and still hide other data
+  after it. Signatures are a strong first filter, not a guarantee of safety.
+
+## What magic bytes can't tell you
+
+A signature answers "what format is this?" — not "is this file safe?" or "is it complete?" A malicious
+document can be a perfectly valid PDF or DOCX whose *content* (a script, a macro, a malformed object)
+is the problem, and its magic bytes will look flawless. Likewise, a file truncated mid-download keeps
+its original header, so it still identifies correctly even though it won't open.
+
+Treat the signature as one honest data point among several. It reliably tells you when a name is
+lying, and it reliably names a binary format — that alone catches a large share of disguised
+attachments and mislabelled downloads. Pair it with common sense about where a file came from.
 
 ## Check a file without uploading it
 

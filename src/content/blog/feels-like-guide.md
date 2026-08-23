@@ -2,7 +2,7 @@
 title: "Why 'Feels Like' Isn't the Temperature: Heat Index, Wind Chill and Wet-Bulb"
 description: "The thermometer only tells half the story. In humid heat, sweat can't evaporate — the heat index. In cold wind, heat is stripped away — the wind chill. And the wet-bulb temperature sets the hard limit on how much the body can cool at all. What each means and when it matters."
 pubDate: 2026-07-12
-updatedDate: 2026-07-12
+updatedDate: 2026-08-23
 archetype: explainer
 tools: ["/weather/feels-like-temperature/", "/weather/heat-index-calculator/", "/weather/wind-chill-calculator/", "/weather/wet-bulb-temperature/"]
 keywords:
@@ -53,23 +53,54 @@ draft: false
 
 ## When it's hot: humidity and the heat index
 
-Your body's main cooling system is sweat evaporating off your skin. But evaporation only works if the air can accept more moisture — and **humid air already holds a lot**. So when it's humid, sweat just sits there, cooling fails, and the same temperature feels much hotter. That's the **[heat index](/weather/heat-index-calculator/)**: 90°F at 70% humidity feels like about **106°F**, squarely in the National Weather Service "danger" zone. The heat index (from the NWS Rothfusz formula) is what tells you a humid 90°F day is genuinely more dangerous than a dry one.
+Your body's main cooling system is sweat evaporating off your skin. Evaporation carries away heat — but it only works if the surrounding air can accept more moisture, and **humid air already holds a lot**. When the humidity is high, sweat beads up and lingers instead of evaporating, cooling stalls, and the same air temperature feels much hotter. That's the **[heat index](/weather/heat-index-calculator/)**: an "apparent temperature" that combines the air temperature with the relative humidity.
+
+Consider a worked example. At **90°F with 70% relative humidity**, the heat index is roughly **106°F** — squarely in the National Weather Service (NWS) "danger" band, where heat cramps and heat exhaustion are likely with prolonged exposure. Drop the humidity to a dry 30% at the same 90°F and the heat index falls back to around 85°F, well below the air temperature itself. Same thermometer reading, radically different risk. The heat index comes from the NWS Rothfusz regression, which was fitted to a detailed model of the human body's heat balance and is defined for shade conditions.
+
+Here is roughly how the apparent temperature climbs with humidity at a fixed 90°F:
+
+| Relative humidity | Heat index at 90°F | NWS risk category |
+|---|---|---|
+| 30% | ~85°F | Caution |
+| 50% | ~96°F | Extreme caution |
+| 70% | ~106°F | Danger |
+| 85% | ~117°F | Danger |
+
+*Values are approximate; the NWS heat-index chart and formula are the authority for exact figures.*
 
 ## When it's cold: wind and the wind chill
 
-In the cold the mechanism reverses. Your body warms a thin boundary layer of air right against your skin — and **wind blows it away**, forcing you to keep reheating fresh cold air, so heat drains faster. The **[wind chill](/weather/wind-chill-calculator/)** captures this: 20°F with a 15 mph wind feels like about **6°F**, and exposed skin can get frostbite far quicker than the still-air temperature suggests. The modern formula (adopted by the NWS in 2001) is based on a model of heat loss from a human face.
+In the cold the mechanism reverses. Your body warms a thin boundary layer of air right against your skin — and **wind blows it away**, forcing you to keep reheating fresh cold air, so heat drains faster. The **[wind chill](/weather/wind-chill-calculator/)** captures this. A concrete case: **20°F with a 15 mph wind feels like about 6°F**, and exposed skin can reach frostbite far quicker than the still-air temperature alone would suggest.
 
-Put those together and you get the single **[feels-like temperature](/weather/feels-like-temperature/)** your weather app shows: heat index when warm, wind chill when cold, and the plain temperature in between.
+The modern formula was adopted by the U.S. NWS (and Environment Canada) in 2001, replacing an older 1940s index that overstated the effect. It models heat loss from an exposed human face at a typical walking pace, and is defined for air temperatures at or below **50°F (10°C)** with wind above about **3 mph**. Note that wind chill only affects living tissue that is generating heat — it cannot cool an object below the actual air temperature, so it never freezes your car's radiator faster than the real temperature would.
+
+Put the two together and you get the single **[feels-like temperature](/weather/feels-like-temperature/)** your weather app shows: heat index when it's warm, wind chill when it's cold, and the plain air temperature in the mild range between them.
 
 ## The hard limit: wet-bulb temperature
 
-Here's the sobering part. Both the heat index and wind chill are about *comfort and perception*. The **[wet-bulb temperature](/weather/wet-bulb-temperature/)** is about *physics and survival*. It's the lowest temperature you could reach by evaporating water into the air — literally a thermometer wrapped in a wet cloth. It sets the absolute floor on how cool sweating can make you.
+Here's the sobering part. Both the heat index and the wind chill are about *comfort and perception*. The **[wet-bulb temperature](/weather/wet-bulb-temperature/)** is about *physics and survival*. It is the lowest temperature that a parcel of air can be cooled to by evaporating water into it — literally the reading of a thermometer wrapped in a wet cloth and ventilated. It sets the absolute floor on how cool sweating can ever make you.
 
-When the wet-bulb temperature climbs, that floor rises. At a sustained wet-bulb of **35°C (95°F)**, sweat can no longer cool you *even sitting still in the shade* — your core temperature rises regardless, and prolonged exposure is fatal. That's why scientists watch the wet-bulb, not the thermometer, when assessing extreme humid heatwaves. Real danger begins well below 35°C during exertion. (Our calculator uses Stull's 2011 formula, valid at sea level.)
+When humidity rises, that floor rises with it. At a sustained wet-bulb of **35°C (95°F)**, sweat can no longer shed heat *even for a healthy person sitting still in full shade with unlimited water* — core temperature climbs regardless, and prolonged exposure becomes fatal. This 35°C threshold was proposed in a widely cited 2010 study by Sherwood and Huber, and it is why climate scientists track the wet-bulb, not the dry thermometer, when assessing extreme humid heatwaves. Crucially, real danger begins **well below** 35°C: during physical exertion, or for the elderly and those with heart conditions, wet-bulb values in the high 20s°C can already be life-threatening. Our calculator uses Stull's 2011 approximation, which is accurate for typical sea-level conditions.
+
+## How the three measures compare
+
+The same day can be described by more than one of these numbers — the trick is knowing which one answers your question.
+
+| | Heat index | Wind chill | Wet-bulb temperature |
+|---|---|---|---|
+| **Driven by** | Temperature + humidity | Temperature + wind | Temperature + humidity |
+| **Applies when** | ~80°F (27°C) and up | ~50°F (10°C) and below | Any time; matters most in humid heat |
+| **Tells you** | How hot it feels | How cold it feels | Physical limit of sweat cooling |
+| **Nature** | Perceived comfort | Perceived comfort | Hard physical limit |
+| **Assumes shade?** | Yes | Yes | Yes |
+
+Because both the heat index and the wind chill assume shade, direct sun is the one big factor none of them include. Standing in full sunlight can feel up to about **15°F (8°C)** hotter than the heat index reads — so on a bright day, treat the number as a floor, not a ceiling.
 
 ## Why it matters
 
-Knowing *which* number applies helps you make the right call. In a humid heatwave, the **heat index** and **wet-bulb** tell you when to stop exercising and find air conditioning. On a windy winter day, the **wind chill** tells you to cover exposed skin. And remembering that none of them count the sun means a bright day is always a bit worse than the number. All of these run privately in your browser from the values you enter — no forecast feed, no upload.
+Knowing *which* number applies helps you make the right call. In a humid heatwave, the **heat index** and **wet-bulb** tell you when to stop exercising, hydrate, and find air conditioning — and the wet-bulb is the better guide as the heat turns genuinely dangerous. On a windy winter day, the **wind chill** tells you how fast exposed skin can freeze and to cover up. And remembering that none of them count the sun means a bright day is always a bit worse than the headline figure suggests.
+
+All four of our calculators — [feels-like](/weather/feels-like-temperature/), [heat index](/weather/heat-index-calculator/), [wind chill](/weather/wind-chill-calculator/) and [wet-bulb](/weather/wet-bulb-temperature/) — run entirely in your browser from the values you type in. Nothing is uploaded, no location is requested, and there is no forecast feed to phone home to.
 
 ---
 

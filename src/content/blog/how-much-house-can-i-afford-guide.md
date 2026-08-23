@@ -2,7 +2,7 @@
 title: "How Much House Can You Afford? The 28/36 Rule Explained"
 description: "Lenders don't ask what you want to spend — they check two ratios against your income. Here's how the 28/36 rule works, how to turn it into a real home-price ceiling, and why the number it gives is a limit, not a target."
 pubDate: 2026-07-12
-updatedDate: 2026-07-12
+updatedDate: 2026-08-23
 archetype: explainer
 tools: ["/finance/home-affordability-calculator/", "/calc/mortgage-calculator/", "/finance/budget-calculator/"]
 keywords:
@@ -76,6 +76,42 @@ The $2,240 is a *payment*, not a price. To get the price:
 3. **Add your down payment.** Home price = affordable loan + down payment.
 
 The [home affordability calculator](/finance/home-affordability-calculator/) does all of this — enter your income, debts, down payment and rate and it returns the home price, loan and monthly payment you qualify for, and tells you which ratio is limiting you. Then the [mortgage calculator](/calc/mortgage-calculator/) breaks the actual payment down with a full amortization schedule.
+
+## Why the interest rate moves your ceiling so much
+
+Step 2 above hides the single biggest variable: the interest rate. Because a fixed payment buys less loan as rates rise, the *same* monthly budget can swing tens of thousands of dollars in purchasing power. Here is roughly how much loan a **$1,800/month** principal-and-interest payment supports on a **30-year** fixed loan at different rates (figures are approximate and rounded):
+
+| Interest rate | Loan supported by $1,800/mo P&I |
+| --- | --- |
+| 5% | ~$335,000 |
+| 6% | ~$300,000 |
+| 7% | ~$271,000 |
+| 8% | ~$245,000 |
+
+The gap between 5% and 8% is roughly **$90,000** of borrowing power on the *identical* payment. This is why affordability answers go stale quickly, and why you should re-run the numbers at the rate you can actually lock — not the rate from a headline six months ago. It is also the case for a larger down payment or a longer term: both lower the monthly cost of a given price, though a longer term means more total interest over the life of the loan.
+
+## A quick income-to-price sanity check
+
+Before you touch a calculator, the front-end limit alone gives you a fast ceiling on the *payment*. Multiply gross monthly income by 0.28:
+
+| Gross annual income | Gross monthly | Max housing payment (28%) |
+| --- | --- | --- |
+| $60,000 | $5,000 | $1,400 |
+| $90,000 | $7,500 | $2,100 |
+| $120,000 | $10,000 | $2,800 |
+| $150,000 | $12,500 | $3,500 |
+
+These are the *housing* budgets, taxes and insurance included — not loan amounts. The common shorthand that buyers land around **3–4× gross annual income** in home price is a byproduct of these ratios at typical rates and down payments; it is a useful gut-check, but it breaks down at the extremes (very high rates push it toward 3×, very low rates and big down payments can stretch it past 4×). Treat the multiple as a rough compass, not the map.
+
+## What the ratios leave out
+
+Being under 28/36 gets you in the door, but underwriting weighs more than two ratios:
+
+- **Credit score.** A stronger score earns a lower rate, which — per the table above — directly raises how much house the same payment buys.
+- **Cash reserves.** Lenders like to see months of payments in savings after closing; thin reserves can shrink your approval even at a clean DTI.
+- **Down payment and PMI.** Under 20% down usually adds private mortgage insurance, raising the monthly payment and eating into your 28% room.
+- **Loan type.** Some government-backed programs allow higher back-end ratios than 36% with compensating factors, so 28/36 is a baseline, not a hard wall.
+- **The costs that never touch the loan.** Closing costs, moving, maintenance and utilities all land outside the ratios but very much inside your budget.
 
 ## A ceiling, not a target
 

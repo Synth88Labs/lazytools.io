@@ -2,7 +2,7 @@
 title: "C1V1 = C2V2: How to Calculate Any Dilution (with Serial Dilutions)"
 description: "The dilution equation C1V1 = C2V2 conserves solute, so the stock volume you need is V1 = C2V2/C1. To make 100 mL of 1× from a 10× stock: 10 mL stock + 90 mL diluent. How to solve for any unknown, plan a serial dilution, and why units cancel."
 pubDate: 2026-07-10
-updatedDate: 2026-07-10
+updatedDate: 2026-08-23
 archetype: explainer
 tools: ["/biology/dilution-calculator/", "/biology/molarity-calculator/"]
 keywords:
@@ -62,11 +62,25 @@ moles, whatever) is the same before and after. Amount = concentration × volume,
 
 > **C₁ × V₁ = C₂ × V₂**
 
-where 1 is the concentrated stock and 2 is the diluted final solution. That's the whole idea. To find
-any one value, rearrange for it — most often you know the stock concentration (C₁), the concentration
-you want (C₂) and the final volume (V₂), and you're solving for how much stock to use:
+where 1 is the concentrated stock and 2 is the diluted final solution. That's the whole idea, and it
+follows directly from conservation of mass: dilution rearranges the same solute into a larger volume,
+so concentration falls in exact proportion to how much you spread it out. Nothing is created or
+destroyed, so the two products must be equal.
+
+To find any one value, rearrange for it. Most often you know the stock concentration (C₁), the
+concentration you want (C₂) and the final volume (V₂), and you're solving for how much stock to use:
 
 > **V₁ = C₂ × V₂ / C₁**
+
+But the equation solves for whichever variable you're missing. The table below shows the four
+rearrangements — pick the row for the value you don't know.
+
+| Unknown | You know | Rearranged formula | In words |
+|---|---|---|---|
+| **V₁** (stock volume) | C₁, C₂, V₂ | V₁ = C₂V₂ / C₁ | How much stock to measure |
+| **C₂** (final conc.) | C₁, V₁, V₂ | C₂ = C₁V₁ / V₂ | How dilute you'll end up |
+| **V₂** (final volume) | C₁, V₁, C₂ | V₂ = C₁V₁ / C₂ | How far to top up |
+| **C₁** (stock conc.) | C₂, V₂, V₁ | C₁ = C₂V₂ / V₁ | How strong the stock must be |
 
 ## A worked example
 
@@ -80,6 +94,27 @@ So: measure 10 mL of the 10× stock, add 90 mL of diluent, and you have 100 mL o
 [dilution calculator](/biology/dilution-calculator/) solves for whichever value you leave blank, so you
 never have to rearrange by hand.
 
+Note the order of operations that matters at the bench: add the stock to a partially filled container,
+then bring the total *up to* the final volume — do not add the full diluent volume and then the stock.
+V₂ is the final total volume, not the volume of diluent added. The diluent you add is V₂ − V₁, which
+here happens to be 90 mL only because volumes are additive for dilute aqueous solutions; for
+concentrated stocks or non-ideal mixtures, measuring to the final mark is the reliable approach.
+
+## Three quick examples in real units
+
+The same three-step method — plug in, rearrange, subtract for diluent — works regardless of the
+concentration unit:
+
+- **Molarity.** You have a 1 M NaCl stock and need 50 mL of 0.15 M saline. V₁ = (0.15 × 50) / 1 =
+  **7.5 mL** of stock, topped up to 50 mL with water.
+- **Mass concentration.** From a 10 mg/mL antibiotic stock you want 20 mL at 50 µg/mL. Convert to
+  shared units first — 50 µg/mL = 0.05 mg/mL — then V₁ = (0.05 × 20) / 10 = **0.1 mL (100 µL)**.
+- **Percent solution.** To make 500 mL of 0.5% agarose from a 2% stock: V₁ = (0.5 × 500) / 2 =
+  **125 mL** of stock plus 375 mL of buffer.
+
+The middle example shows the one place errors creep in: mismatched units. Convert *before* you divide,
+not after.
+
 ## Why the units don't matter (as long as they're consistent)
 
 Because concentration appears on *both* sides, the units cancel. Use molarity, mg/mL, µg/mL or % — the
@@ -87,6 +122,11 @@ equation doesn't care, provided both concentrations share a unit and both volume
 also why this is `M₁V₁ = M₂V₂` when the concentration happens to be molarity: same equation, one
 specific unit. And it's why the tool needs no compound database and never goes stale — the maths is
 exact for whatever units you use.
+
+One caution: C₁V₁ = C₂V₂ assumes the concentration unit is linear in the amount of solute, which is
+true for molarity, mass/volume and % w/v. It is not designed for pH or other logarithmic scales, and
+% w/w (by mass) mixes cleanly only when you also account for density — for routine lab work with w/v
+and molar stocks you rarely hit those edges.
 
 ## Serial dilutions and the dilution factor
 
@@ -97,11 +137,34 @@ step by step:
 - 1:10, then 1:10 again → 1:100, then again → 1:1000, and so on.
 
 Each step's **dilution factor** is final volume ÷ sample volume, and the *cumulative* factor is the
-product of the steps. The [dilution calculator's](/biology/dilution-calculator/) serial-dilution
-planner lays out the transfer volume, diluent volume and cumulative fold-dilution for every tube — the
-recipe you actually pipette. Once you have a target concentration, the
-[molarity calculator](/biology/molarity-calculator/) tells you how much to weigh out for the stock in
-the first place.
+product of the steps. A worked 10-fold series makes this concrete: transfer 100 µL from each tube into
+900 µL of diluent, mix, then repeat.
+
+| Tube | Transfer in | Diluent | Step factor | Cumulative factor | Concentration (from 1 M) |
+|---|---|---|---|---|---|
+| A | 100 µL stock | 900 µL | 10× | 10× | 0.1 M |
+| B | 100 µL of A | 900 µL | 10× | 100× | 0.01 M |
+| C | 100 µL of B | 900 µL | 10× | 1000× | 0.001 M |
+| D | 100 µL of C | 900 µL | 10× | 10 000× | 0.0001 M |
+
+The cumulative factor multiplies (10 × 10 × 10 …), which is why four easy 10× steps reach a
+10 000-fold dilution that would be impractical to pipette in one shot. The
+[dilution calculator's](/biology/dilution-calculator/) serial-dilution planner lays out the transfer
+volume, diluent volume and cumulative fold-dilution for every tube — the recipe you actually pipette.
+Once you have a target concentration, the [molarity calculator](/biology/molarity-calculator/) tells
+you how much to weigh out for the stock in the first place.
+
+## Common mistakes to avoid
+
+- **Treating V₂ as the diluent volume.** V₂ is the final *total* volume. The diluent you add is
+  V₂ − V₁, so measure up to the mark rather than adding V₂ of solvent to the stock.
+- **Mixing units across a side.** Both concentrations must share a unit and both volumes must share a
+  unit. Convert µg/mL to mg/mL, or mL to L, before you calculate.
+- **Skipping the mix step in a serial dilution.** Each tube must be thoroughly mixed before you draw
+  the next transfer, or the cumulative factor drifts and later tubes read high.
+- **Carrying pipetting error down the chain.** In a serial dilution every step compounds, so a small
+  volume error in an early tube is amplified in the most dilute tubes — use the largest practical
+  transfer volume and a calibrated pipette for the first steps.
 
 ## Quick summary
 

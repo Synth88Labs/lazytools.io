@@ -2,7 +2,7 @@
 title: "What's Inside a Font File? TTF and OTF Metadata Explained"
 description: "A .ttf or .otf font is an sfnt file — a directory of tables holding the family name, version, glyph outlines and even an embedding licence. Here's what each key table stores and how to read a font's metadata in your browser."
 pubDate: 2026-08-02
-updatedDate: 2026-08-02
+updatedDate: 2026-08-23
 archetype: explainer
 heroImage: /blog/what-is-inside-a-font-file-ttf-otf-metadata-guide.png
 heroAlt: "A font file's sfnt table directory pointing to the name, head, maxp and OS/2 tables and the fields they hold"
@@ -32,17 +32,37 @@ draft: false
 
 **A `.ttf` or `.otf` font isn't one blob — it's a small filesystem.** Under the hood it's an *sfnt*
 file: a directory of named tables, each holding one kind of information, from the glyph outlines to the
-family name to a licence flag that says whether you're even allowed to embed it. Here's what the key
-tables store, and how to read them with the [Font Metadata Inspector](/fonts/font-metadata-inspector/).
+family name to a licence flag that says whether you're even allowed to embed it. Read the `name` table
+and you know exactly what font you have; read the `OS/2` table and you know whether you're allowed to
+ship it. Here's what the key tables store, and how to read them with the
+[Font Metadata Inspector](/fonts/font-metadata-inspector/).
+
+<aside class="key-takeaways">
+
+**Key takeaways**
+
+- A TTF/OTF file is an **sfnt container**: an offset table, a directory of named 4-character tables, then the table data — read like a tiny filesystem.
+- The **`name` table** is the authoritative source of a font's family, style, version and copyright — far more reliable than the filename.
+- **`fsType`** in the `OS/2` table declares embedding permission (installable, preview/print, editable, or restricted); apps are expected to honour it.
+- **TTF vs OTF** is about outline format — `glyf` (quadratic TrueType) versus `CFF ` (cubic PostScript) — not about the metadata, which is shared.
+- WOFF/WOFF2 wrap the *same* tables but compress them, so convert web fonts to TTF/OTF before inspecting.
+
+</aside>
 
 ## The sfnt container: a directory of tables
 
-Every TrueType and OpenType font starts with an **offset table** that says how many tables the font
-contains, followed by a **table directory** — one record per table giving its 4-character tag, its
-location and its length. To read any piece of a font, you look up the tag in the directory and jump to
+Every TrueType and OpenType font starts with an **offset table** (also called the *sfnt header*) that
+begins with a version tag and says how many tables the font contains. It's followed by a **table
+directory** — one record per table giving its 4-character tag, a checksum, its offset from the start of
+the file, and its length. To read any piece of a font, you look up the tag in the directory and jump to
 that offset. It's the same idea as a ZIP's central directory, just for font data.
 
-A typical font has 15–25 tables. A handful carry the metadata people actually ask about:
+That first version tag also tells you the outline flavour at a glance: `0x00010000` (often shown as
+`1.0`) or the tag `true` signals TrueType outlines, while the ASCII tag `OTTO` signals PostScript/CFF
+outlines. A `ttcf` tag instead marks a **TrueType Collection** (`.ttc`) — several fonts sharing tables
+in one file, common for CJK families where the glyph data is large.
+
+A typical font has on the order of 15–25 tables. A handful carry the metadata people actually ask about:
 
 | Table | Tag | What it holds |
 |---|---|---|
@@ -54,43 +74,104 @@ A typical font has 15–25 tables. A handful carry the metadata people actually 
 
 ## The `name` table: who the font says it is
 
-The `name` table is a list of strings, each tagged with a **name ID**. The ones you'll recognise:
+The `name` table is a list of strings, each tagged with a **name ID** that says what the string means.
+The standard IDs you'll run into most often:
 
-- **1 — Family** and **2 — Subfamily** (e.g. "Helvetica" / "Bold")
-- **4 — Full name** ("Helvetica Bold")
-- **5 — Version** ("Version 2.10")
-- **6 — PostScript name**, **9 — Designer**, **0 — Copyright**, **13 — Licence**
+| Name ID | Meaning | Example |
+|---|---|---|
+| 0 | Copyright notice | "© 2001 The Font Foundry" |
+| 1 | Font family | "Helvetica" |
+| 2 | Font subfamily (style) | "Bold" |
+| 3 | Unique identifier | internal build string |
+| 4 | Full font name | "Helvetica Bold" |
+| 5 | Version string | "Version 2.10" |
+| 6 | PostScript name | "Helvetica-Bold" |
+| 9 | Designer | "Max Miedinger" |
+| 13 | Licence description | usage terms in plain text |
+| 14 | Licence info URL | link to the full licence |
+| 16 / 17 | Typographic family / subfamily | grouping for large families |
 
-The same string can appear multiple times for different platforms (Windows vs Mac) and languages, which
-is why a good reader prefers the Windows/English record and de-duplicates. This table is the definitive
-answer to "what font is this file?" — far more reliable than the filename.
+IDs 1 and 2 are the *four-style* family and style that older software understands (Regular, Bold,
+Italic, Bold Italic); IDs 16 and 17 exist so a big family with weights like Light, Semibold and Black
+can group correctly in modern menus. The same string can also appear multiple times for different
+platforms (Windows vs Macintosh) and languages, which is why a good reader prefers the Windows/English
+record and de-duplicates. This table is the definitive answer to "what font is this file?" — far more
+reliable than the filename, which anyone can rename.
+
+Worked example: you're handed a file called `helv-b.ttf`. The filename suggests Helvetica Bold, but the
+`name` table might read family "Nimbus Sans", subfamily "Bold", version "Version 1.05", copyright "URW".
+Now you know it's actually a Nimbus Sans clone, not the file you were promised — a distinction that
+matters for licensing.
 
 ## `head`, `maxp` and OS/2: the technical facts
 
 - **`head`** stores **units-per-em** (the coordinate grid — usually 2048 for TrueType, 1000 for
-  OpenType/CFF) and the font's creation and modification dates, counted in seconds from 1 January 1904.
+  OpenType/CFF) and the font's creation and modification dates, counted in seconds since midnight,
+  1 January 1904 (the same epoch classic Mac software used). It also holds the global bounding box that
+  encloses every glyph.
 - **`maxp`** gives the **glyph count**, a quick gauge of how much language and symbol coverage a font has.
-- **`OS/2`** holds the **weight class** (100–900, where 400 is Regular and 700 Bold), the **width class**,
-  and the **fsType** embedding flag.
+  A basic Latin face may carry a few hundred glyphs; a font covering many scripts or a full CJK set can
+  run into the tens of thousands.
+- **`OS/2`** holds the **weight class** (100–900, where 400 is Regular/Normal and 700 Bold), the
+  **width class** (1–9, where 5 is Medium/Normal), the Unicode and code-page coverage bitmaps, and the
+  **fsType** embedding flag.
+
+Units-per-em is worth dwelling on because it confuses people. It is *not* the size the font renders at —
+that's your point size. It's the resolution of the internal grid every outline is drawn on. A glyph
+stem that's 82 units wide means 82/2048 of the em at 2048 upm, or 40/1000 of the em at 1000 upm; both
+render identically at a given point size. TrueType tooling favours a power of two (2048) because its
+grid-fitting maths is cleaner there, while PostScript/CFF fonts stick with 1000 for historical reasons.
 
 ### fsType: the licence flag baked into the file
 
-`fsType` is easy to overlook but important. It encodes whether the font may be embedded in a document:
+`fsType` is easy to overlook but important. It's a bit-field in `OS/2` that encodes whether — and how —
+the font may be embedded in a document:
 
-- **0** — Installable: no embedding restriction.
-- **Preview & print** or **Editable** — embedding allowed with limits.
-- **Restricted (bit 1 set)** — no embedding permitted at all.
+| fsType meaning | What it permits |
+|---|---|
+| Installable (value 0) | No embedding restriction at all |
+| Restricted (bit 1 set) | No embedding permitted |
+| Preview & Print (bit 2) | Embed for viewing/printing only, not editing |
+| Editable (bit 3) | Embed and allow document editing |
 
-PDF writers and presentation apps are expected to respect it, so if you're bundling a font into a
-document, app or website, it's worth checking this flag first. (It reflects what the font *declares* —
-it isn't a substitute for reading the actual licence.)
+Two further bits can accompany the above: *No subsetting* (only the whole font may be embedded) and
+*Bitmap embedding only* (only bitmap data, not the outlines). PDF writers and presentation apps are
+expected to read this field and refuse to embed a restricted font, so if you're bundling a font into a
+document, app or website, it's worth checking first. One caveat: `fsType` reflects only what the font
+*declares in the file* — it is not a legal contract, and it isn't a substitute for reading the actual
+foundry licence, which may be more or less permissive than the flag suggests.
 
 ## TTF vs OTF: it's about the outlines
 
 Both formats share everything above; they differ in **how glyph shapes are stored**. A `glyf` table
-means **TrueType** outlines (quadratic curves); a `CFF ` table means **PostScript/CFF** outlines (cubic
-curves), which is what people usually mean by an OpenType `.otf`. The inspector reports which one a font
-uses, so you can tell a TrueType-flavoured font from a PostScript-flavoured one at a glance.
+(with its companion `loca` index) means **TrueType** outlines built from quadratic Bézier curves; a
+`CFF ` table (note the trailing space in the tag) means **PostScript/CFF** outlines built from cubic
+Bézier curves, which is what people usually mean by an OpenType `.otf`. Because OpenType is a superset
+that absorbed TrueType, a `.ttf` is technically an OpenType font too — the extension is a convention,
+not a hard rule, and the outline table is the real tell.
+
+In practice the two flavours differ in ways you may notice: TrueType hinting (in the `prep`, `fpgm` and
+`cvt ` tables) gives fine control over rendering at small sizes on screen, while CFF fonts tend to be a
+touch smaller on disk and were long favoured for print. Variable fonts add a `fvar` table describing
+their design axes (weight, width, optical size and more) on top of either outline type. The inspector
+reports which outline table a font carries, so you can tell a TrueType-flavoured font from a
+PostScript-flavoured one at a glance.
+
+## A quick tour of the tables you'll see
+
+Beyond the metadata tables, most fonts carry the machinery that makes them render and lay out text.
+You don't usually read these by hand, but recognising the tags helps:
+
+| Tag | Role |
+|---|---|
+| `cmap` | Maps character codes (Unicode) to glyph indices |
+| `hmtx` / `hhea` | Horizontal metrics — advance widths and side bearings |
+| `post` | PostScript glyph names and italic angle |
+| `GSUB` / `GPOS` | OpenType layout: ligatures, kerning, alternates |
+| `kern` | Legacy kerning pairs (older fonts) |
+
+Seeing `GSUB`/`GPOS` tells you a font has real OpenType features (ligatures, small caps, tabular
+figures); their absence suggests a simpler or older font.
 
 ## Read a font's metadata privately
 

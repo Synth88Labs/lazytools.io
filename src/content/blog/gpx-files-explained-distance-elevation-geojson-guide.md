@@ -2,7 +2,7 @@
 title: "GPX Files Explained: Distance, Elevation and Converting to GeoJSON"
 description: "A GPX file is just XML listing GPS track points — but it reveals exactly where you live and train. Here's how distance and elevation are calculated from it, the lat/lon trap when converting to GeoJSON, and why to do it in your browser."
 pubDate: 2026-08-01
-updatedDate: 2026-08-01
+updatedDate: 2026-08-23
 archetype: explainer
 heroImage: /blog/gpx-files-explained-distance-elevation-geojson-guide.png
 heroAlt: "How a GPX track's points become distance and elevation stats, and how coordinates flip when converting to GeoJSON"
@@ -38,6 +38,18 @@ GPX track quietly reveals exactly where you live.** Here's how it all works, don
 the [GPX Analyzer](/file/gpx-analyzer/), [GPX→GeoJSON](/file/gpx-to-geojson/) and
 [GeoJSON→GPX](/file/geojson-to-gpx/) tools.
 
+<aside class="key-takeaways">
+
+**Key takeaways**
+
+- A GPX file is plain XML: an ordered list of track points, each with latitude, longitude, and usually elevation and a timestamp.
+- Distance is the sum of haversine gaps between consecutive points; elevation gain is the sum of upward changes only.
+- Denser point logging reads more accurately; sparse logging cuts corners and reads short. Elevation is noisier than distance.
+- GPX stores latitude before longitude, but GeoJSON (RFC 7946) requires `[longitude, latitude]` — the reverse. Forget the swap and every point lands in the wrong place.
+- A GPX track's first and last points often mark your home, so convert and analyse it in your browser rather than uploading it.
+
+</aside>
+
 ## What's inside a GPX file
 
 Open one in a text editor and you'll see plain XML:
@@ -54,6 +66,25 @@ marked location. Each point carries a latitude and longitude, usually an elevati
 often a timestamp. That's the whole format — which is why every GPS app can read every other app's
 export.
 
+The full document has a little more scaffolding. A `<gpx>` root element wraps everything and declares a
+version (1.1 is the current schema) and the software that created it. Inside, a track (`<trk>`) can be
+split into one or more segments (`<trkseg>`) — a new segment usually marks a gap where GPS signal
+dropped, so tools should not draw a straight line across it. Two other element types round out the
+format:
+
+| Element | XML tag | What it represents |
+| --- | --- | --- |
+| Track point | `<trkpt>` | One recorded position along a continuous path |
+| Track segment | `<trkseg>` | A contiguous run of track points (a new one signals a signal gap) |
+| Waypoint | `<wpt>` | A single named point of interest, independent of any track |
+| Route | `<rte>` / `<rtept>` | A planned turn-by-turn path, not a recorded one |
+
+The distinction between a **track** (where you actually went, logged automatically) and a **route**
+(where you plan to go, often just a handful of turn points) matters when you convert: a dense track
+becomes a detailed line, while a sparse route becomes a coarse one. Coordinates are always in the WGS 84
+datum — the same reference frame GPS itself uses — so no reprojection is needed when moving to GeoJSON,
+which also assumes WGS 84.
+
 ## How distance and elevation are computed
 
 **Distance** is the sum of the straight-line (great-circle) distance between each consecutive pair of
@@ -65,7 +96,22 @@ downward ones). So a rolling route can have hundreds of metres of gain even if s
 the same height.
 
 **Speed and pace** need the timestamps: divide total distance by the time from the first to the last
-point.
+point. *Moving* speed goes further and drops the paused segments — the stretches where consecutive
+points barely change over several seconds — so it reads faster than the raw start-to-finish average.
+
+### A worked example
+
+Say three consecutive points read 25 m, 31 m, and 28 m of elevation. The gain is the sum of the
+positive steps only: 31 − 25 = +6 m, then 28 − 31 = −3 m (ignored for gain, counted as loss). So this
+tiny stretch contributes **6 m of gain and 3 m of loss**, even though the net change is just +3 m. Now
+repeat that over 4,000 logged points on a rolling route and you can accumulate several hundred metres of
+gain on a loop that starts and ends at the same altitude. That is exactly why "elevation gain" is
+almost always much larger than the difference between your highest and lowest points.
+
+Distance works the same way by accumulation. Two points a few metres apart contribute a few metres to
+the total; there is no single "distance" attached to any one point. The haversine formula treats each
+hop as an arc on a sphere of roughly 6,371 km radius (Earth's mean radius), which is accurate to well
+under a metre at the scale of consecutive GPS samples.
 
 <figure class="my-8">
 <svg viewBox="0 0 1200 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="GPX points sum into distance and elevation; converting to GeoJSON swaps lat/lon order" style="width:100%;height:auto;background:#f8fafc;border-radius:16px">
@@ -115,9 +161,52 @@ If you take one thing away: **GPX writes latitude then longitude; GeoJSON (RFC 7
 point plots in the wrong place, frequently the wrong hemisphere. It's the single most common
 GPX↔GeoJSON bug.
 
+The reason the two formats disagree is historical. GPX inherited the "latitude, longitude" ordering
+people say out loud ("fifty-one north, zero west"). GeoJSON, standardised as RFC 7946 in 2016,
+deliberately fixed coordinates as `[x, y]` — and on a map *x* is longitude (east-west) and *y* is
+latitude (north-south). Both are internally consistent; they just disagree, and the numbers look
+identical, so a copy-paste error is silent until you see your London ride plotted somewhere off the
+coast of Africa.
+
+Once converted, a track becomes a GeoJSON `LineString` and each waypoint a `Point`, all wrapped in a
+`FeatureCollection`:
+
+```json
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [[-0.1000, 51.5090], [-0.1002, 51.5094]]
+      },
+      "properties": {}
+    }
+  ]
+}
+```
+
+Note the `[lon, lat]` pairs. GeoJSON has no dedicated slot for elevation the way GPX does, but the spec
+allows an optional third number in each coordinate — `[lon, lat, elevation]` — so a good converter can
+preserve altitude there rather than dropping it.
+
 Convert cleanly in both directions — [GPX→GeoJSON](/file/gpx-to-geojson/) for web maps (Mapbox,
 Leaflet, Turf.js, PostGIS) and [GeoJSON→GPX](/file/geojson-to-gpx/) to load a web-designed route onto a
 Garmin or phone — and the swap is handled for you.
+
+### Which format for which job
+
+| Task | Use GPX | Use GeoJSON |
+| --- | --- | --- |
+| Load a route onto a Garmin, Wahoo or phone app | Yes | No |
+| Draw a track on a Leaflet or Mapbox web map | No | Yes |
+| Analyse geometry with Turf.js or store in PostGIS | No | Yes |
+| Share a recorded ride with another athlete | Yes | Rarely |
+| Keep per-point timestamps and heart-rate extensions | Yes | Limited |
+
+In short: GPX is the lingua franca of *devices*, GeoJSON is the lingua franca of *web maps and spatial
+tooling*. Converting between them is routine — the only real hazard is the coordinate order.
 
 ## Why GPX privacy matters
 

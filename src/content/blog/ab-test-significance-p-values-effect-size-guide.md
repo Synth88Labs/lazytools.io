@@ -2,7 +2,7 @@
 title: "Is Your A/B Test Result Real? Significance, p-values and Effect Size"
 description: "A green 'winner' isn't enough — a real result needs a small p-value AND a meaningful effect size, from an honest test. Here's how the two-proportion z-test, p-values and Cohen's d fit together, with calculators that run in your browser."
 pubDate: 2026-08-01
-updatedDate: 2026-08-01
+updatedDate: 2026-08-23
 archetype: explainer
 heroImage: /blog/ab-test-significance-p-values-effect-size-guide.png
 heroAlt: "How A/B test significance works — conversion rates, a z-test p-value, and effect size together"
@@ -38,6 +38,18 @@ changes that don't actually help. Here's how significance, p-values and effect s
 the [A/B Test Significance Calculator](/statistics/ab-test-significance-calculator/),
 [Z-Test Calculator](/statistics/z-test-calculator/) and
 [Effect Size Calculator](/statistics/effect-size-calculator/) to run the numbers in your browser.
+
+<aside class="key-takeaways">
+
+**Key takeaways**
+
+- Statistical significance answers one narrow question — "is this difference unlikely to be random?" — not "is this change worth shipping?"
+- A trustworthy A/B result needs three things: a small p-value, an effect size big enough to matter commercially, and a test whose sample size was fixed in advance.
+- The p-value is *not* the probability your variant is better and *not* the size of the lift — it is computed under the assumption that the variants are identical.
+- Proportion-based A/B tests use a two-proportion z-test; comparing average values from smaller samples calls for a t-test instead.
+- "Peeking" — stopping the moment the dashboard turns green — inflates false positives, so decide when you will look before you start.
+
+</aside>
 
 ## Step 1: is the difference beyond chance? (the z-test)
 
@@ -79,6 +91,25 @@ there were no real difference," so you reject the idea of no difference.
 </svg>
 </figure>
 
+### A worked example you can check by hand
+
+Suppose each variant gets **200 visitors**. Variant A converts **40** of them (20%) and variant B
+converts **60** (30%). To run the two-proportion z-test:
+
+1. **Pool the rates.** Combined conversion is (40 + 60) / (200 + 200) = 100 / 400 = **0.25**.
+2. **Standard error.** SE = √[ 0.25 × 0.75 × (1/200 + 1/200) ] = √0.001875 ≈ **0.0433**.
+3. **z statistic.** z = (0.30 − 0.20) / 0.0433 ≈ **2.31** — the two rates sit about 2.3 standard
+   errors apart.
+4. **p-value.** A z of 2.31 corresponds to a two-sided **p ≈ 0.021**, comfortably below the usual
+   α = 0.05.
+
+So this test *is* statistically significant: a 10-point gap this large would show up only about 2% of
+the time if the variants were truly identical. Halve the traffic to 100 visitors per side and the same
+20%-vs-30% split gives z ≈ 1.63 and p ≈ 0.10 — the identical lift is no longer significant, purely
+because the sample is smaller. That sensitivity to sample size is exactly why the next two steps
+matter. The [A/B Test Significance Calculator](/statistics/ab-test-significance-calculator/) does all
+four steps for you.
+
 ## Step 2: what the p-value is *not*
 
 Two misreadings cause most bad decisions:
@@ -98,6 +129,19 @@ significance entirely. That's why significance alone is a trap.
 d](/statistics/effect-size-calculator/) expresses the gap in pooled-standard-deviation units (≈0.2
 small, 0.5 medium, 0.8 large). For an A/B test, the plain **percentage-point lift** is the effect that
 matters — read it next to the p-value, never instead of it.
+
+Cohen's original benchmarks are rules of thumb, not laws; a "small" effect can be hugely valuable at
+scale, and a "large" one can be irrelevant if it moves a metric nobody cares about. Use them as a
+starting sense of magnitude, then judge against your own context:
+
+| Cohen's d | Conventional label | Rough overlap of the two groups |
+|---|---|---|
+| ~0.2 | small | distributions overlap heavily |
+| ~0.5 | medium | a difference visible to the naked eye |
+| ~0.8 | large | clearly separated distributions |
+
+The practical habit is to pair every p-value with the effect it came from. "Significant, +0.1 points"
+and "significant, +10 points" are wildly different business decisions even though both cleared α.
 
 ## z-test vs t-test: which one?
 
@@ -126,6 +170,18 @@ A result you can trust clears all three bars:
 1. **A z-test p-value below α** — the difference is unlikely to be chance.
 2. **A meaningful effect** — the lift is big enough to be worth it.
 3. **An honest test** — pre-set sample size, no peeking.
+
+Because significance and effect size are independent, a finished test lands in one of four places —
+and only one of them is a clear ship:
+
+| | Effect is large | Effect is trivial |
+|---|---|---|
+| **p < α (significant)** | Ship it — real *and* worthwhile | Real but likely not worth the cost of the change |
+| **p ≥ α (not significant)** | Promising — you may be underpowered; gather more data | No evidence of a useful difference |
+
+The bottom-right and top-right cells are where teams waste the most effort: shipping changes that are
+"significant" but move nothing, or chasing a flat result that was never going to pay off. Reading
+p-value and effect size together keeps you out of both traps.
 
 Run each check locally with the [A/B Test Significance
 Calculator](/statistics/ab-test-significance-calculator/), the

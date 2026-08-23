@@ -2,7 +2,7 @@
 title: "Oxidation Numbers: The Rules and How to Assign Them"
 description: "Oxidation numbers follow a short priority list of rules — group 1 is +1, oxygen is −2, hydrogen is +1 — and the last unknown falls out by making everything sum to the overall charge. The rules in order, worked examples like KMnO₄ → Mn +7, and the exceptions."
 pubDate: 2026-07-11
-updatedDate: 2026-07-11
+updatedDate: 2026-08-23
 archetype: explainer
 tools: ["/chemistry/oxidation-number-calculator/", "/chemistry/periodic-table/", "/chemistry/chemical-equation-balancer/"]
 keywords:
@@ -64,6 +64,13 @@ The rules are a **priority list** — when two could apply, the higher one wins:
 6. **Oxygen is −2** — except in peroxides (−1) and with fluorine (+2).
 7. **The oxidation numbers sum to the overall charge** (0 for a neutral compound; the ion's charge otherwise).
 
+The reason the list is ordered this way comes down to **electronegativity**. An oxidation number is what
+an atom's charge *would* be if every bond were split and both shared electrons handed to the more
+electronegative partner. Fluorine is the most electronegative element, so it never loses that tug-of-war —
+which is why it sits high on the list and is *always* −1 in compounds. Oxygen is second only to fluorine,
+so it wins against nearly everything else and defaults to −2; the handful of times it doesn't (peroxides,
+superoxides, bonds to fluorine) are exactly the cases where its partner is as electronegative or more.
+
 ## The trick: solve the last one by balancing
 
 Rule 7 is the workhorse. Once every element with a rule is fixed, the remaining element is whatever makes
@@ -78,27 +85,57 @@ No memorising manganese's oxidation states — it drops out of the balance. The
 [oxidation number calculator](/chemistry/oxidation-number-calculator/) does exactly this: it applies the
 rules and solves the unknown for you.
 
+### A repeatable four-step method
+
+Every problem reduces to the same procedure:
+
+1. **Write the total charge** the atoms must sum to — 0 for a neutral formula, or the ion's charge.
+2. **Assign every atom that has a rule** (group 1, group 2, F, then H, then O), multiplying by how many
+   of each atom appears.
+3. **Let the unknown element be _x_** and write one equation: fixed contributions + _x_ = total charge.
+4. **Solve for _x_.** If two atoms of the unknown share the leftover, divide by that count.
+
 ### More worked examples
 
-| Compound | Fixed | Solve | Answer |
+| Compound / ion | Fixed contributions | Equation | Answer |
 |---|---|---|---|
-| H₂SO₄ | H = +1, O = −2 | S | **+6** |
-| K₂Cr₂O₇ | K = +1, O = −2 | Cr (×2) | **+6** each |
-| HNO₃ | H = +1, O = −2 | N | **+5** |
-| Fe₂O₃ | O = −2 | Fe (×2) | **+3** each |
+| H₂SO₄ | 2(+1) + 4(−2) = −6 | −6 + S = 0 | S = **+6** |
+| K₂Cr₂O₇ | 2(+1) + 7(−2) = −12 | −12 + 2·Cr = 0 | Cr = **+6** each |
+| HNO₃ | (+1) + 3(−2) = −5 | −5 + N = 0 | N = **+5** |
+| Fe₂O₃ | 3(−2) = −6 | −6 + 2·Fe = 0 | Fe = **+3** each |
+| SO₄²⁻ | 4(−2) = −8 | −8 + S = −2 | S = **+6** |
+| Cr₂O₇²⁻ | 7(−2) = −14 | −14 + 2·Cr = −2 | Cr = **+6** each |
+| ClO⁻ | (−2) | −2 + Cl = −1 | Cl = **+1** |
 
-For **polyatomic ions**, set the overall charge to the ion's charge instead of 0 — e.g. in the sulfate
-ion SO₄²⁻, `S + 4(−2) = −2` gives S = +6.
+For **polyatomic ions**, the only change is step 1: set the target sum to the ion's charge instead of 0.
+In the sulfate ion SO₄²⁻, `S + 4(−2) = −2` gives S = +6 — the same sulfur value it has inside neutral
+H₂SO₄, which is a useful sanity check.
+
+### When the answer is a fraction
+
+Oxidation numbers are a bookkeeping average, so they can come out fractional when identical atoms sit in
+different environments. In **magnetite, Fe₃O₄**, balancing gives `3·Fe + 4(−2) = 0`, so the *average*
+iron is **+8/3** — the crystal actually contains a 1:2 mix of Fe²⁺ and Fe³⁺, and the fraction is their
+mean. Likewise the average sulfur in **thiosulfate, S₂O₃²⁻**, works out to **+2**, even though the two
+sulfur atoms are genuinely different. A fractional result is a signal, not a mistake.
 
 ## Mind the exceptions
 
-Three cases break the default rules:
+A short table covers essentially every case where the defaults are overridden:
 
-- **Peroxides** — oxygen is **−1** (as in hydrogen peroxide, H₂O₂).
-- **Metal hydrides** — hydrogen is **−1** (as in NaH, CaH₂).
-- **Oxygen difluoride, OF₂** — oxygen is **+2**, because fluorine is more electronegative.
+| Situation | Element | Value | Example |
+|---|---|---|---|
+| Peroxide | O | **−1** | H₂O₂, Na₂O₂ |
+| Superoxide | O | **−½** | KO₂ |
+| Oxygen bonded to fluorine | O | **+2** | OF₂ |
+| Metal hydride | H | **−1** | NaH, CaH₂ |
+| Halogen with O or a lighter halogen | Cl, Br, I | **positive** | ClO⁻ (Cl +1), HClO₄ (Cl +7) |
 
-When you spot a peroxide or a metal hydride, override the default before balancing.
+The pattern is consistent: the defaults assume the usual electronegativity ordering, and the exceptions
+are precisely the compounds where that ordering is reversed. Oxygen only goes positive against fluorine;
+hydrogen only goes negative against a metal; chlorine only goes positive against oxygen or fluorine. When
+you spot a peroxide, a metal hydride, or a halogen paired with oxygen, override the default *before* you
+balance.
 
 ## Why bother?
 
@@ -106,6 +143,20 @@ Oxidation numbers are how chemists **track electron transfer**. If an element's 
 it was **oxidised** (lost electrons); if it goes down, it was **reduced** (gained electrons). That's the
 foundation of balancing redox reactions — the same reactions the
 [equation balancer](/chemistry/chemical-equation-balancer/) handles — and of electrochemistry.
+
+A quick worked case: in the reaction of iron with copper(II) sulfate, iron goes from **0** (free metal)
+to **+2** in FeSO₄, while copper goes from **+2** in CuSO₄ down to **0** as it plates out. Iron's rise
+means it was oxidised; copper's fall means it was reduced. The two changes are equal and opposite (+2 up,
+2 electrons handed over; +2 down, 2 electrons received), which is exactly the balance the half-reaction
+method exploits.
+
+One caution worth keeping straight: an oxidation number is **not** the same as an atom's real charge. It
+is a deliberate fiction that pretends every bond is fully ionic so electrons can be counted cleanly. The
+two happen to coincide for monatomic ions — Na⁺ really does carry a +1 charge and an oxidation number of
++1 — but for atoms inside covalent molecules they diverge. Carbon in methane, CH₄, has an oxidation number
+of −4 yet carries almost no real charge, because its bonds to hydrogen are nearly nonpolar. Treat the
+number as an accounting tool, not a measurement. If you want the periodic-table context for who wins these
+electronegativity contests, the [periodic table](/chemistry/periodic-table/) lays out the trends.
 
 ## Quick summary
 

@@ -2,7 +2,7 @@
 title: "camelCase vs snake_case vs kebab-case: Which Naming Case Goes Where"
 description: "JavaScript uses camelCase, Python snake_case, URLs and CSS kebab-case, classes PascalCase, constants CONSTANT_CASE. The full convention map, why URLs prefer hyphens, and how to convert between them."
 pubDate: 2026-07-05
-updatedDate: 2026-07-05
+updatedDate: 2026-08-23
 archetype: explainer
 tools: ["/text/case-converter/", "/text/slug-generator/"]
 keywords:
@@ -87,6 +87,45 @@ recommends hyphens over underscores because hyphens are treated as word separato
 can join words. `/my-blue-widget/` reads as three words; `/my_blue_widget/` may read as one. That's why the
 [slug generator](/text/slug-generator/) defaults to hyphens.
 
+## A language-by-language cheat sheet
+
+Most of the confusion comes from switching languages mid-project. Each language's style guide fixes a
+default for each *role* — a variable is cased differently from a class, which is cased differently from a
+constant. This table collapses the guidance from the major style guides into one place:
+
+| Language | Variables / functions | Types / classes | Constants |
+|---|---|---|---|
+| JavaScript / TypeScript | `camelCase` | `PascalCase` | `CONSTANT_CASE` |
+| Python (PEP 8) | `snake_case` | `PascalCase` | `CONSTANT_CASE` |
+| Java | `camelCase` | `PascalCase` | `CONSTANT_CASE` |
+| C# | `PascalCase` (methods, properties) | `PascalCase` | `PascalCase` |
+| Go | `camelCase` (unexported), `PascalCase` (exported) | `PascalCase` | `PascalCase` |
+| Rust | `snake_case` | `PascalCase` | `CONSTANT_CASE` |
+| Ruby | `snake_case` | `PascalCase` | `CONSTANT_CASE` |
+| SQL (common) | `snake_case` | — | — |
+| CSS / HTML | `kebab-case` | — | — |
+
+A few rows surprise people. In **C#**, even public methods and properties are PascalCase — there's no
+camelCase for members, which trips up developers arriving from Java. In **Go**, casing is not cosmetic: a
+leading capital letter is what *exports* an identifier from its package, so `PascalCase` versus `camelCase`
+changes visibility, not just style. And Go leans on `MixedCaps` rather than underscores throughout, even
+for what other languages would write as `CONSTANT_CASE`.
+
+## Handling acronyms and numbers
+
+The single messiest corner of casing is acronyms. Is it `parseJSON`, `parseJson`, `ParseHTMLDocument`, or
+`ParseHtmlDocument`? There is no universal answer, but there is a dominant modern practice: **treat an
+acronym as an ordinary word** and case only its first letter. So `Html`, `Url`, `Id`, and `Json` — giving
+`parseHtmlDocument`, `userId`, `apiUrl`. Microsoft's .NET guidelines codify exactly this: acronyms of three
+or more letters use only an initial capital.
+
+The reason is mechanical, not aesthetic. Runs of capitals break automatic case conversion. A splitter that
+turns `HTMLParser` into words has to guess where `HTML` ends and `Parser` begins, and most guess wrong at
+least some of the time — `HTMLParser` can split as `HTML Parser` or `HTM LParser` depending on the rule.
+Writing `HtmlParser` removes the ambiguity: every capital is a clean word boundary. Numbers are easier —
+keep them attached to the word they modify (`utf8Decode`, `oauth2Token`) and let the converter treat the
+digit run as part of the preceding token.
+
 ## Converting between cases (without retyping)
 
 The [case converter](/text/case-converter/) splits input on spaces, hyphens, underscores **and existing
@@ -99,6 +138,23 @@ capital-letter boundaries** — so conversions work in every direction:
 
 **Worked example** — migrating a JS config to environment variables: `apiBaseUrl` → CONSTANT_CASE →
 `API_BASE_URL`. One paste, one click, no typos.
+
+The trick that makes round-trips reliable is the split step. Every conversion is really two phases: *break
+the identifier into words*, then *re-join them in the target style*. Breaking is where casing tools earn
+their keep, because the input can arrive in any of the five styles:
+
+| Input | Detected boundaries | Words |
+|---|---|---|
+| `userLoginCount` | capital-letter transitions | user · login · count |
+| `user_login_count` | underscores | user · login · count |
+| `user-login-count` | hyphens | user · login · count |
+| `USER_LOGIN_COUNT` | underscores | user · login · count |
+| `Blog Post Title` | spaces | blog · post · title |
+
+Because all five reduce to the same word list, any input case converts cleanly to any output case — the
+target style just decides the joiner (nothing, `_`, `-`, or a space) and which letters get capitalised.
+That is why you can round-trip `userLoginCount → user_login_count → user-login-count → USER_LOGIN_COUNT`
+and land back where you started without losing a word boundary.
 
 ## Common naming-case mistakes
 

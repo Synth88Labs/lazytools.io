@@ -2,7 +2,7 @@
 title: "What Day of the Year Is It? Ordinal Dates and Leap Years Explained"
 description: "The day-of-year is the ordinal count from January 1 — day 60 is March 1 in a common year, day 61 in a leap year. Here's how ordinal dates, leap years and business-day math work, with tools that run in your browser."
 pubDate: 2026-08-01
-updatedDate: 2026-08-01
+updatedDate: 2026-08-23
 archetype: explainer
 heroImage: /blog/day-of-year-ordinal-dates-guide.png
 heroAlt: "How the day-of-year ordinal count works across a common year and a leap year"
@@ -39,6 +39,18 @@ codes, leap-year handling, and working out weekdays and business-day deadlines. 
 [Day of the Week Calculator](/time/day-of-week-calculator/) and
 [Add Business Days Calculator](/time/add-business-days-calculator/) do each of these in your browser.
 
+<aside class="key-takeaways">
+
+**Key takeaways**
+
+- The day-of-year is the ordinal count from January 1 (day 1) to December 31 (day 365, or 366 in a leap year).
+- From March onward, a leap year adds one to every date's number because February 29 sits ahead of it.
+- The leap-year rule: divisible by 4, but century years must also be divisible by 400 — so 2000 counted, 1900 and 2100 do not.
+- "Julian date" in business usually means the ordinal day-of-year, not the astronomer's Julian Day Number.
+- Weekday lookups and business-day deadlines are the same date arithmetic in a different shape — and all of it runs in your browser.
+
+</aside>
+
 ## Ordinal dates: counting from January 1
 
 An **ordinal date** replaces "month and day" with a single number: how many days into the year you
@@ -54,6 +66,37 @@ are. January 1 is day 1; the count climbs to 365 (or 366) on December 31. The pi
 
 Everything from March onward shifts by one day in a leap year, because February 29 slots in ahead of
 it.
+
+## A quick way to compute it by hand
+
+You don't need to count 365 boxes. Add the number of days in every month *before* the one you're in,
+then add the day of the month. The month offsets are just running totals, and they only change after
+February in a leap year:
+
+| Month | Days before it (common) | Days before it (leap) |
+|---|---|---|
+| January | 0 | 0 |
+| February | 31 | 31 |
+| March | 59 | 60 |
+| April | 90 | 91 |
+| May | 120 | 121 |
+| June | 151 | 152 |
+| July | 181 | 182 |
+| August | 212 | 213 |
+| September | 243 | 244 |
+| October | 273 | 274 |
+| November | 304 | 305 |
+| December | 334 | 335 |
+
+**Worked example.** What's the day-of-year for October 15, 2025? 2025 is a common year (not divisible
+by 4), so use the common column: October's offset is 273, plus 15, which gives **day 288**. In the leap
+year 2024 the same date would be 274 + 15 = **day 289**, one higher because February 29 came first.
+
+**Reverse example.** Given day 100 of 2025, which date is it? Scan the common column for the largest
+offset below 100 — that's March (59) versus April (90). April 90 fits, and 100 − 90 = 10, so day 100 is
+**April 10**. In a leap year the same day-100 lands on April 9, because every March-onward offset is one
+larger. The [Day of the Year Calculator](/time/day-of-year-calculator/) does both directions instantly,
+but the table is handy when you want to sanity-check a lot code by eye.
 
 <figure class="my-8">
 <svg viewBox="0 0 1200 430" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The day-of-year count shifts by one from March onward in a leap year" style="width:100%;height:auto;background:#f8fafc;border-radius:16px">
@@ -112,6 +155,31 @@ Two related questions fall out of the same date arithmetic:
   to a date means stepping forward and counting only weekdays — the basis of SLAs, net-terms payments
   and delivery estimates. The [Add Business Days Calculator](/time/add-business-days-calculator/) does
   this (it skips weekends; subtract public holidays yourself, since those vary by country).
+
+**Worked example.** A contract says payment is due "10 business days after invoice," and the invoice is
+dated Friday, October 3, 2025. Counting only weekdays: the following Monday (Oct 6) is business day 1,
+and stepping forward through two full work weeks lands day 10 on **Friday, October 17** — a plain
+14-calendar-day gap that happens to contain two weekends. Note the convention question: does the start
+date count as day 0 or day 1? Most "add N business days" logic treats the start date as day 0 and begins
+counting the next working day, which is what the calculator assumes. If a public holiday falls inside
+that window, the true due date slides one working day later, so always cross-check against the relevant
+holiday calendar.
+
+## Where ordinal dates actually show up
+
+The day-of-year isn't just a curiosity. A few places it turns up in practice:
+
+- **Manufacturing and food lot codes.** A stamp like `5288` often reads as year digit 5, day-of-year
+  288 — mid-October — letting a line print a compact date without a full calendar.
+- **Spreadsheets and data pipelines.** Grouping records by ordinal day makes year-over-year comparisons
+  line up cleanly, and many systems store or export a padded day-of-year field.
+- **Aviation and logistics.** Ordinal "Julian" dates are common on shipping labels and flight paperwork
+  because they sort numerically and avoid month-name ambiguity between regions.
+- **Scientific and agricultural records.** Day-of-year is a natural x-axis for seasonal data such as
+  growing-degree days or daily observations.
+
+In every case the underlying number is the same ordinal count — which is why one small idea covers so
+much ground.
 
 ## Why do this in the browser?
 

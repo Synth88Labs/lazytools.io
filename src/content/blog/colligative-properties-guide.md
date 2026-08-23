@@ -2,7 +2,7 @@
 title: "Colligative Properties: Why Salt Melts Ice and Antifreeze Works"
 description: "Colligative properties depend on the number of dissolved particles, not their identity. Freezing-point depression (ΔTf = i·Kf·m) and boiling-point elevation (ΔTb = i·Kb·m), the van't Hoff factor, and why 1 molal NaCl drops water's freezing point by 3.72 °C."
 pubDate: 2026-07-11
-updatedDate: 2026-07-11
+updatedDate: 2026-08-23
 archetype: explainer
 tools: ["/chemistry/freezing-point-depression-calculator/", "/chemistry/boiling-point-elevation-calculator/", "/chemistry/molarity-calculator/"]
 keywords:
@@ -88,7 +88,9 @@ Kf (cryoscopic) and Kb (ebullioscopic) depend only on the **solvent**. For water
 
 Because Kf is ~3.6× larger than Kb, dissolving something drops the freezing point far more than it raises
 the boiling point — which is why de-icing is dramatic but "salt makes water boil hotter" is a barely
-measurable ~1 °C at kitchen concentrations.
+measurable ~1 °C at kitchen concentrations. Every solvent has its own pair of constants: benzene, for
+example, has a much larger Kf (about 5.1 °C·kg/mol), which is why chemists historically used freezing-point
+depression in benzene to measure the molar mass of unknown compounds.
 
 ## Molality, not molarity
 
@@ -106,6 +108,67 @@ calculations span from freezing to boiling. Convert to molality first (the
 So the water now freezes at **−3.72 °C** instead of 0 °C. The same solution boils at 100 + (2 × 0.512 × 1)
 = **101.02 °C**. That asymmetry — a big freezing drop, a small boiling rise — is colligative behaviour in
 one sentence.
+
+### A second example: CaCl₂ vs sugar
+
+Say you dissolve 0.5 mol of calcium chloride in 1 kg of water. CaCl₂ splits into three ions (i = 3), so:
+
+> ΔTf = 3 × 1.86 × 0.5 = **2.79 °C**
+
+Now compare 0.5 mol of table sugar (sucrose, i = 1) in the same kilogram of water:
+
+> ΔTf = 1 × 1.86 × 0.5 = **0.93 °C**
+
+Identical mole count, identical solvent — but the ionic solute depresses the freezing point three times
+as much because it releases three times as many particles. This is the whole reason road crews reach for
+calcium chloride when it gets truly cold: at the same weight it puts far more particles into the melt-water.
+
+## The other two colligative properties
+
+Freezing-point depression and boiling-point elevation get the headlines, but the family has four members,
+all driven by the same particle-counting logic.
+
+- **Vapour-pressure lowering.** Adding a non-volatile solute lowers the solvent's vapour pressure. Raoult's
+  law describes the ideal case: the solution's vapour pressure equals the solvent's mole fraction times the
+  pure solvent's vapour pressure. This lowering is actually the root cause of both boiling-point elevation
+  and freezing-point depression.
+- **Osmotic pressure.** The pressure needed to stop solvent flowing across a semipermeable membrane into a
+  solution: `π = i · M · R · T`, with M the molarity, R = 0.08206 L·atm/(mol·K), and T in kelvin. Osmotic
+  pressure is enormous even for dilute solutions, which is why it governs biology — cell turgor, IV-fluid
+  tonicity, and how a salted slug loses water.
+
+| Property | Formula | Direction |
+|---|---|---|
+| Freezing-point depression | ΔTf = i·Kf·m | freezing point falls |
+| Boiling-point elevation | ΔTb = i·Kb·m | boiling point rises |
+| Vapour-pressure lowering | ΔP = X_solute·P° (ideal) | vapour pressure falls |
+| Osmotic pressure | π = i·M·R·T | pressure builds across a membrane |
+
+## Real solutions fall short of the ideal i
+
+The whole-number van't Hoff factor is the *ideal* value, assuming every ion floats free. In real solutions,
+especially concentrated ones, oppositely charged ions briefly pair up, so they behave as slightly fewer than
+the ideal count. Measured freezing-point data for dilute NaCl, for instance, gives an effective i a little
+below 2 rather than exactly 2. For most back-of-the-envelope work the integer is fine, and calculators use
+it by default — just know that the real depression is usually a touch smaller than the ideal formula predicts,
+and the gap grows as concentration rises.
+
+## Choosing a de-icer
+
+De-icers are ranked by how cold they stay effective, which comes straight from i and how soluble they are.
+A rough field guide:
+
+| De-icer | Ideal i | Notes |
+|---|---|---|
+| Sodium chloride (NaCl) | 2 | Cheapest; loses bite below roughly −7 to −9 °C in practice |
+| Magnesium chloride (MgCl₂) | 3 | Works colder than NaCl; attracts moisture |
+| Calcium chloride (CaCl₂) | 3 | Effective to much lower temperatures; releases heat as it dissolves |
+| Potassium chloride (KCl) | 2 | Gentler on plants; weaker than NaCl per unit mass |
+| Urea (CO(NH₂)₂) | 1 | Non-ionic, non-corrosive, but a weak de-icer for its weight |
+
+The pattern is exactly what the equations predict: more particles per formula unit (higher i) plus high
+solubility means a lower usable temperature. Calcium chloride wins on cold performance partly because it
+dissolves exothermically, warming the ice it lands on and jump-starting the melt.
 
 ## Quick summary
 

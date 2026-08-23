@@ -2,7 +2,7 @@
 title: "How to Calculate ABV: Original Gravity, Final Gravity and Alcohol"
 description: "Your beer's alcohol content is hiding in two hydrometer readings. Here's what original and final gravity mean, the simple formula that turns them into ABV, when to reach for the more accurate one, and the mistakes that throw the number off."
 pubDate: 2026-07-12
-updatedDate: 2026-07-12
+updatedDate: 2026-08-23
 archetype: explainer
 tools: ["/brewing/abv-calculator/", "/brewing/hydrometer-temperature-correction/", "/brewing/refractometer-calculator/"]
 keywords:
@@ -62,6 +62,8 @@ When yeast ferments, it eats that sugar and produces alcohol and CO₂. Alcohol 
 
 You need both, because ABV comes from the *difference*. Forget the OG and you're left estimating from the recipe.
 
+A quick reality check on what these numbers look like for a healthy ferment: OG sits well above 1.000 because the wort is loaded with sugar, and FG lands only a little above 1.000 once the yeast has done its work. If your FG is still close to your OG after a couple of weeks, fermentation stalled — that's a yeast or temperature problem, not a maths one.
+
 ## The formula
 
 Once you have both:
@@ -86,11 +88,41 @@ ABV = [76.08 × (OG − FG) / (1.775 − OG)] × (FG / 0.794)
 
 It accounts for the non-linear relationship at high gravity. The [ABV calculator](/brewing/abv-calculator/) shows both side by side, so you can see how much they diverge for your beer (they agree closely for session beers and separate for big ones).
 
+## How the two formulas compare across styles
+
+The table below runs a handful of common beer strengths through both equations. The figures are illustrative gravities for each style, not fixed values — your recipe will differ — but they show the pattern clearly: the two formulas track each other for light beers and drift apart as gravity climbs.
+
+| Style (illustrative) | OG | FG | Simple × 131.25 | Michael Hall |
+|---|---|---|---|---|
+| Session lager | 1.035 | 1.008 | 3.5% | 3.5% |
+| Standard pale ale | 1.050 | 1.012 | 5.0% | 5.1% |
+| IPA | 1.065 | 1.012 | 7.0% | 7.2% |
+| Imperial stout | 1.090 | 1.022 | 8.9% | 9.7% |
+
+For the pale ale the gap is a rounding error; for the imperial stout it's nearly a full percentage point. That's why the simple formula is fine for everyday brewing but worth double-checking on anything big — an extra 0.8% ABV is the difference between what your label says and what your guests actually feel.
+
+## Attenuation: the other number in the gravity drop
+
+The same two readings tell you how *far* the yeast fermented, which brewers call **apparent attenuation**:
+
+```
+Apparent attenuation % = (OG − FG) / (OG − 1) × 100
+```
+
+For OG 1.050 and FG 1.010 that's 0.040 / 0.050 = **80%**. Most ale yeasts finish somewhere in the 70–80% range, so 80% is a clean, complete ferment. A low number (say 60%) is a red flag that fermentation stalled or the wort was full of unfermentable sugars — either way, your ABV will come in below what the recipe promised. It's called *apparent* attenuation because the alcohol in the finished beer skews the hydrometer slightly; the true figure is a touch lower, but apparent attenuation is what brewers track day to day.
+
+## ABV vs ABW, and the Plato scale
+
+Two conversions trip people up:
+
+- **ABV vs ABW.** Alcohol by volume is the standard on beer labels. Alcohol by weight (ABW) is smaller for the same beer because ethanol is lighter than water — as a rough rule, ABW is about four-fifths of ABV. A 5.0% ABV beer is roughly 4% ABW. If a number looks surprisingly low, check which one you're reading.
+- **Plato / Brix instead of gravity.** Some brewers and most of the commercial world measure sugar in degrees Plato (°P) or Brix rather than specific gravity. They describe the same wort; a rough conversion is that four gravity "points" (e.g. 1.048 → 48 points) is close to one degree Plato near normal beer strengths, though the relationship isn't perfectly linear. Convert to specific gravity first, then apply the ABV formula — don't feed Plato numbers straight into it.
+
 ## The mistakes that throw it off
 
 The formula is simple; the measurement is where it goes wrong:
 
-- **Temperature.** Hydrometers are calibrated at one temperature (often 20 °C / 68 °F). A warm sample reads low. Either cool the sample or use a [temperature correction](/brewing/hydrometer-temperature-correction/).
+- **Temperature.** Hydrometers are calibrated at one temperature — commonly 20 °C / 68 °F, though some older instruments use 15.6 °C / 60 °F, so check yours. A warm sample is less dense and reads low; a cold sample reads high. Either bring the sample to the calibration temperature or use a [temperature correction](/brewing/hydrometer-temperature-correction/). The error is small when you're a few degrees off, but grows fast if you read a hot sample straight off the boil.
 - **Using a refractometer for FG.** Alcohol bends light differently from sugar, so a refractometer reads final gravity too high once fermentation has started. You must apply a [refractometer correction](/brewing/refractometer-calculator/).
 - **Reading FG too early.** If fermentation hasn't finished, FG is still falling and your ABV will be understated. Confirm with two stable readings a few days apart.
 

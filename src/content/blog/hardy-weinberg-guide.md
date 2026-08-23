@@ -2,7 +2,7 @@
 title: "Hardy–Weinberg Equilibrium: Allele Frequencies, p²+2pq+q², and the χ² Test"
 description: "Hardy–Weinberg predicts genotype frequencies from allele frequencies: p²+2pq+q²=1. Find p and q from genotype counts (p = (2·AA+Aa)/2N), compute expected counts, and test for equilibrium with a chi-square goodness-of-fit — with a worked example."
 pubDate: 2026-07-10
-updatedDate: 2026-07-10
+updatedDate: 2026-08-23
 archetype: explainer
 tools: ["/biology/hardy-weinberg/", "/biology/punnett-square/"]
 keywords:
@@ -73,8 +73,14 @@ If the population is at equilibrium, the genotype frequencies come straight from
 - **2pq** — heterozygous (Aa)
 - **q²** — homozygous recessive (aa)
 
-These sum to 1 because (p + q)² = p² + 2pq + q² = 1. Multiply each by N to get *expected counts*. For our
-example: p²·N ≈ 294, 2pq·N ≈ 496, q²·N ≈ 209.
+These sum to 1 because (p + q)² = p² + 2pq + q² = 1. Multiply each frequency by N to get *expected
+counts*. With p = 0.5425 and q = 0.4575:
+
+- p²·N = 0.5425² × 1000 ≈ **294.3** homozygous dominant
+- 2pq·N = 2 × 0.5425 × 0.4575 × 1000 ≈ **496.4** heterozygous
+- q²·N = 0.4575² × 1000 ≈ **209.3** homozygous recessive
+
+Notice the expected counts add back to 1000 — a quick sanity check that you haven't dropped a term.
 
 ## Step 3 — test with chi-square
 
@@ -83,11 +89,31 @@ goodness-of-fit test:
 
 > **χ² = Σ (observed − expected)² / expected**
 
-with **1 degree of freedom** (three genotype classes, minus one for the total, minus one for the
-estimated allele frequency). Our example gives a small χ² (≈ 0.22) and a p-value around 0.6 — well
-above 0.05 — so the population is **consistent with Hardy–Weinberg equilibrium**. A p-value at or below
-0.05 would signal a **significant departure**. The [Hardy–Weinberg calculator](/biology/hardy-weinberg/)
-runs this test and gives the plain-English verdict.
+with **1 degree of freedom** (three genotype classes, minus one for the fixed total, minus one for the
+allele frequency estimated from the data). Working the sum term by term makes the test concrete:
+
+| Genotype | Observed | Expected | (O − E)² / E |
+|---|---:|---:|---:|
+| AA (homozygous dominant) | 298 | 294.3 | 0.047 |
+| Aa (heterozygous) | 489 | 496.4 | 0.110 |
+| aa (homozygous recessive) | 213 | 209.3 | 0.065 |
+| **Total** | **1000** | **1000** | **χ² ≈ 0.22** |
+
+A χ² of about 0.22 on 1 degree of freedom corresponds to a p-value near 0.64 — far above 0.05 — so the
+population is **consistent with Hardy–Weinberg equilibrium**. The comparison point is the χ² critical
+value for 1 df at the 5 % level, which is **3.841**: any χ² below that keeps you in "no significant
+departure" territory, and a value above it (p ≤ 0.05) signals a **significant departure**. Here 0.22 is
+nowhere near 3.841. The [Hardy–Weinberg calculator](/biology/hardy-weinberg/) runs this test and gives
+the plain-English verdict.
+
+## Frequencies versus counts — don't mix them
+
+The single most common error is testing on *frequencies* instead of *counts*. The χ² statistic depends
+on sample size: 30 % versus 33 % is trivial in a sample of 30 and overwhelming in a sample of 30,000.
+Always feed the test whole-number expected and observed **counts** (frequency × N), never proportions.
+The same logic explains why a locus can *look* off yet pass the test in a small sample, and why huge
+samples flag departures that are biologically tiny — a large N gives the test the power to notice small
+deviations.
 
 ## What a departure means
 
@@ -102,7 +128,33 @@ model's assumptions is being violated:
 - **Genetic drift** — random change in a small population.
 
 The test doesn't tell you *which* — it tells you that the simple no-evolution model doesn't fit, which
-is the starting point for asking why.
+is the starting point for asking why. Each assumption maps to one force it rules out:
+
+| Assumption | Force it excludes | What breaks it |
+|---|---|---|
+| No selection | Natural selection | Some genotypes survive or reproduce better |
+| Random mating | Non-random mating | Inbreeding, assortative mating (raises homozygotes) |
+| No migration | Gene flow | Alleles entering or leaving the population |
+| No mutation | Mutation | New alleles arising at the locus |
+| Infinite population | Genetic drift | Random sampling change in a small population |
+
+In practice, over a single generation mutation and migration are usually too slow to move frequencies
+much, so a real-world departure most often points to **selection or non-random mating** (or, in genetics
+labs, to genotyping error — a departure at one locus is a classic quality-control red flag).
+
+## Where the principle actually gets used
+
+Hardy–Weinberg is not just a classroom exercise. Because it links the *visible* recessive frequency (q²)
+to the *hidden* carrier frequency (2pq), it lets you estimate how common carriers of a recessive
+condition are from disease incidence alone. If a recessive disorder appears in roughly 1 in 2,500 births,
+then q² ≈ 1/2,500, so q ≈ 0.02, p ≈ 0.98, and the carrier frequency 2pq ≈ 0.039 — about **1 in 25 people
+carry the allele without being affected**. That single calculation is the backbone of genetic-counseling
+risk estimates.
+
+The equilibrium is also the null model behind population-genetics quality control: genotyping platforms
+routinely run a Hardy–Weinberg test at every locus, because a strong departure at one marker (and not its
+neighbours) usually signals a technical artefact rather than real biology. And in forensic DNA work, the
+same p²/2pq/q² frequencies feed the match-probability calculations that turn a profile into a statistic.
 
 ## Quick summary
 

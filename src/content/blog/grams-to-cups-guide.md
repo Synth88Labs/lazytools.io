@@ -2,7 +2,7 @@
 title: "Grams to Cups: Why a Cup of Flour Isn't a Cup of Sugar"
 description: "A cup measures volume, but grams measure weight — so one cup weighs a different number of grams for every ingredient: about 120 g of flour, 198 g of sugar, 336 g of honey. Why there's no single grams-per-cup number, and why weighing beats scooping."
 pubDate: 2026-07-11
-updatedDate: 2026-07-11
+updatedDate: 2026-08-23
 archetype: explainer
 tools: ["/cooking/grams-to-cups-converter/", "/cooking/cooking-measurement-converter/", "/cooking/butter-converter/"]
 keywords:
@@ -73,6 +73,36 @@ Using King Arthur Baking's Ingredient Weight Chart (the US baking standard), per
 
 Notice how flour and powdered sugar land near 113–120 g (light, airy), while granulated sugar, butter and water cluster around 200–227 g, and honey — a dense liquid — tops 330 g. Same cup, wildly different weights.
 
+## Worked examples: converting a real recipe
+
+The rule is simple: **grams = cups × (grams per cup for that ingredient)**. The catch is that you have to use the right per-cup weight for each line. Take a basic cookie recipe calling for 2 cups flour, 1 cup granulated sugar, ½ cup packed brown sugar and 1 cup butter:
+
+- **2 cups flour** → 2 × 120 = **240 g**
+- **1 cup granulated sugar** → 1 × 198 = **198 g**
+- **½ cup packed brown sugar** → 0.5 × 213 = **107 g** (round to 106–107 g)
+- **1 cup butter** → 1 × 226 = **226 g** (two US sticks)
+
+Going the other way is just as easy — divide grams by the per-cup weight. If a European recipe lists **250 g of flour**, that's 250 ÷ 120 ≈ **2.08 cups**, or about 2 cups plus 1 tablespoon. This is exactly the kind of arithmetic the [grams to cups converter](/cooking/grams-to-cups-converter/) handles instantly, ingredient by ingredient, so you never apply flour's number to sugar by mistake.
+
+## A quick cups-to-grams reference
+
+For the ingredients bakers reach for most, here are common recipe amounts already worked out (US cup, King Arthur weights, rounded to the nearest gram):
+
+| Ingredient | ¼ cup | ⅓ cup | ½ cup | 1 cup |
+|---|---|---|---|---|
+| All-purpose flour | 30 g | 40 g | 60 g | 120 g |
+| Granulated sugar | 50 g | 66 g | 99 g | 198 g |
+| Brown sugar (packed) | 53 g | 71 g | 107 g | 213 g |
+| Butter | 57 g | 75 g | 113 g | 226 g |
+| Water / milk | 57 g | 76 g | 113 g | 227 g |
+| Honey | 84 g | 112 g | 168 g | 336 g |
+
+These are linear, so scaling is trivial: 1½ cups of flour is simply 120 + 60 = 180 g. Fractional cups of butter are especially handy because US butter is sold in sticks, and one stick is ½ cup — so ½ cup butter = 113 g = one stick, and 1 cup = 226 g = two sticks.
+
+## Why liquids trip people up
+
+There's a second confusion hiding in the word "cup." Water is the one ingredient whose volume and weight nearly coincide: 236.6 mL of water weighs about 237 g at room temperature. Baking charts, including King Arthur's, often list a cup of water or milk as **227 g** instead — because they equate one cup with 8 ounces *by weight* (8 × 28.35 g ≈ 227 g), a rounding convention rather than a true volume-to-weight match. Either way, that near-equivalence only holds for water. Milk is slightly denser; cooking oil is *less* dense (roughly 0.92 g/mL), so a cup of oil weighs less than a cup of water; and honey, a concentrated sugar syrup, is close to 1.4 times as dense as water — which is why it tops the chart at 336 g. Fluid ounces measure volume, not weight, so never assume a fluid-ounce figure equals the same number of grams.
+
 ## Why weighing beats scooping
 
 Flour is the troublemaker. Scoop it straight from the bag and you compress it; a "cup" measured that way can weigh 140 g or more instead of 120 g — over 15% extra, enough to make a cake dry or a cookie tough. Spoon it into the cup and level it and you get closer to 120 g, but it's still inconsistent from person to person.
@@ -81,7 +111,15 @@ A kitchen scale removes all of that: 120 g of flour is 120 g every time, regardl
 
 ## The cup that isn't a cup
 
-One more trap: not all cups are equal. The **US customary cup is 236.6 mL**, but the **metric cup** used in Australia, New Zealand and much of Europe is **250 mL** — about 6% larger. Older UK recipes sometimes used a different cup again. Gram-per-cup charts (including the one above) almost always mean the US cup, so if you're measuring with a 250 mL metric cup, you'll scoop slightly more. For the amounts in baking, that 6% can be the difference between success and a flop — another reason to switch to grams.
+One more trap: not all cups are equal. The **US customary cup is 236.6 mL**, but the **metric cup** used in Australia, New Zealand and much of Europe is **250 mL** — about 6% larger. There's even a separate US "legal" cup of 240 mL used on nutrition labels. Here's how the common standards compare:
+
+| Cup standard | Volume | Vs US customary |
+|---|---|---|
+| US customary | 236.6 mL | — |
+| US legal (labeling) | 240 mL | +1.4% |
+| Metric (AU/NZ/EU) | 250 mL | +5.7% |
+
+Gram-per-cup charts (including the one above) almost always mean the US customary cup, so if you're measuring with a 250 mL metric cup, you'll scoop nearly 6% more of everything. For the amounts in baking, that gap can be the difference between success and a flop — another reason to switch to grams, which mean the same thing in every country.
 
 The [grams to cups converter](/cooking/grams-to-cups-converter/) is ingredient-aware: pick flour, sugar, honey or any of two dozen common ingredients and it converts using the *correct* weight for that item, in either direction, right in your browser — nothing uploaded.
 

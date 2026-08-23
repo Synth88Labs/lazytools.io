@@ -2,7 +2,7 @@
 title: "Generate Typed Models from JSON: TypeScript, Go, Python, Rust & C#"
 description: "Turn a JSON sample into typed models in any language — the same shape maps to a TypeScript interface, a Go struct, a Python dataclass, a Rust serde struct, or a C# class. Here's how the mapping works and where to refine it. Runs in your browser, never uploaded."
 pubDate: 2026-08-01
-updatedDate: 2026-08-01
+updatedDate: 2026-08-23
 archetype: explainer
 heroImage: /blog/generate-typed-models-from-json-guide.png
 heroAlt: "One JSON sample mapping to typed models in TypeScript, Go, Python, Rust and C#"
@@ -38,6 +38,18 @@ interface, a Go struct, a Python dataclass, a Rust serde struct, or a C# class f
 job with different syntax. Paste your JSON into the converter for your language —
 [TypeScript](/dev/json-to-typescript/), [Go](/dev/json-to-go/), [Python](/dev/json-to-python/),
 [Rust](/dev/json-to-rust/) or [C#](/dev/json-to-csharp/) — and it runs entirely in your browser.
+
+<aside class="key-takeaways">
+
+**Key takeaways**
+
+- One JSON shape maps to a typed model in every language: object → type, key → typed field, nested object → nested type, array → typed list.
+- Because JSON has a single number type, converters guess `int` from whole numbers and a float type from decimals — widen these by hand when the data can exceed the guess.
+- A field is only marked optional when your sample proves it can be absent, so feed the tool a representative example that actually includes the optional fields.
+- Go, Rust and C# rename fields to their own casing but attach a tag/attribute (`json:"…"`, `#[serde(rename=…)]`, `[JsonPropertyName("…")]`) so serialization still round-trips.
+- Inference can't see dates, emails, enums or numeric ranges — treat the output as a scaffold and tighten it afterward.
+
+</aside>
 
 ## The same shape, five languages
 
@@ -106,6 +118,85 @@ Same shape in, idiomatic types out.
 </svg>
 </figure>
 
+## A worked example, side by side
+
+Take the same object again:
+
+```json
+{ "id": 42, "user_name": "ada", "is_active": true, "scores": [10, 20] }
+```
+
+Here is what each converter emits. The syntax differs, but the *shape* — four fields, one of them a
+list of integers — is identical everywhere.
+
+**TypeScript**
+
+```ts
+interface Root {
+  id: number;
+  user_name: string;
+  is_active: boolean;
+  scores: number[];
+}
+```
+
+**Go** (note the tags preserving the snake_case keys):
+
+```go
+type Root struct {
+    ID       int    `json:"id"`
+    UserName string `json:"user_name"`
+    IsActive bool   `json:"is_active"`
+    Scores   []int  `json:"scores"`
+}
+```
+
+**Python**
+
+```python
+from dataclasses import dataclass
+from typing import List
+
+@dataclass
+class Root:
+    id: int
+    user_name: str
+    is_active: bool
+    scores: List[int]
+```
+
+**Rust** (serde derives so it can (de)serialize):
+
+```rust
+use serde::{Deserialize, Serialize};
+
+#[derive(Serialize, Deserialize)]
+struct Root {
+    id: i64,
+    user_name: String,
+    is_active: bool,
+    scores: Vec<i64>,
+}
+```
+
+**C#** (with `System.Text.Json`, add `[JsonPropertyName]` where the property casing diverges from the key):
+
+```csharp
+using System.Collections.Generic;
+using System.Text.Json.Serialization;
+
+public class Root
+{
+    [JsonPropertyName("id")]        public int Id { get; set; }
+    [JsonPropertyName("user_name")] public string UserName { get; set; }
+    [JsonPropertyName("is_active")] public bool IsActive { get; set; }
+    [JsonPropertyName("scores")]    public List<int> Scores { get; set; }
+}
+```
+
+Five files, one mental model. Once you internalise the mapping, switching languages is a change of
+syntax, not of thinking.
+
 ## Naming: keeping the JSON key
 
 Languages disagree on casing. Go and C# want `PascalCase` fields; Rust wants `snake_case`. When the
@@ -133,6 +224,21 @@ Here `id` is in every element (required) but `nickname` is not (optional). Conve
 `Optional[...]` in Python, `Option<...>` in Rust, and nullable/`?` fields elsewhere. Feeding the
 converter a **representative** sample — one that includes the optional fields — is what makes this
 accurate.
+
+Each language spells "this might be absent" differently. When you review the output, this is the
+column to sanity-check:
+
+| Language | Optional field | Idiomatic default handling |
+|---|---|---|
+| TypeScript | `nickname?: string` | `undefined` when the key is missing |
+| Go | `Nickname *string` + `json:"nickname,omitempty"` | `nil` pointer distinguishes absent from empty |
+| Python | `nickname: Optional[str] = None` | dataclass default of `None` |
+| Rust | `nickname: Option<String>` | serde reads a missing key as `None` automatically |
+| C# | `string? Nickname` | `null` reference (nullable reference types enabled) |
+
+A subtle point: in JSON, "the key is missing" and "the key is present but `null`" are two different
+states. Go pointers and Rust's `Option` can tell them apart; a plain nullable often cannot. If that
+distinction matters to your API, decide it deliberately rather than accepting the inferred default.
 
 ## Where to refine the output
 

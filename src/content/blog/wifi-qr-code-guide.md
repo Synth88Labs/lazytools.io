@@ -2,7 +2,7 @@
 title: "WiFi QR Codes: How They Work, the WIFI: Format, and How to Make One Safely"
 description: "A WiFi QR code encodes the string WIFI:T:WPA;S:network;P:password;; — scan it and a phone joins the network with no typing. How the format works, why special characters must be escaped, and why encoding it directly (not via a tracking redirect) matters."
 pubDate: 2026-07-11
-updatedDate: 2026-07-11
+updatedDate: 2026-08-23
 archetype: explainer
 tools: ["/generate/wifi-qr-code-generator/", "/generate/vcard-qr-code-generator/", "/generate/qr-code-generator/"]
 keywords:
@@ -54,7 +54,8 @@ redirect, and the code works forever. Make one privately with the
 <figcaption>One plain-text string, read natively by the phone camera.</figcaption>
 </figure>
 
-A WiFi QR code is nothing exotic — it's a QR code whose content is a short, structured string:
+A WiFi QR code is nothing exotic — it's an ordinary QR code (the same ISO/IEC 18004 barcode you see on
+posters and packaging) whose *content* happens to be a short, structured string:
 
 > `WIFI:T:WPA;S:MyNetwork;P:mypassword;H:false;;`
 
@@ -64,8 +65,38 @@ A WiFi QR code is nothing exotic — it's a QR code whose content is a short, st
 - **P** — the password (omit for `nopass`).
 - **H** — optional; `true` for a hidden network.
 
-The two semicolons at the end close the record. Phones from iOS 11 and Android 10 onward recognise this
-format and, when the camera sees it, offer to join the network.
+The record opens with the literal prefix `WIFI:` and each field is a `KEY:value` pair separated by a
+semicolon; the two semicolons at the end close the record. Field order isn't strictly fixed, but the
+`T;S;P` order above is what almost every scanner expects, so it's the safe default. Phones running
+recent versions of iOS and Android recognise this format and, when the camera sees it, offer to join the
+network with a single tap.
+
+### The three security types, side by side
+
+The `T` field is the one people most often set wrong. Here's what each value means and when to use it:
+
+| `T` value | Router security | Use it when | Password field |
+| --- | --- | --- | --- |
+| `WPA` | WPA, WPA2 or WPA3 | Almost every modern home or office network | Required |
+| `WEP` | Legacy WEP | Only very old hardware — WEP is insecure, replace the router if you can | Required |
+| `nopass` | Open (no encryption) | Genuinely open networks with no password | Omit the `P` field |
+
+The most common mistake is picking `WEP` because it "sounds older and simpler." Unless your router is
+genuinely from the WEP era, choose `WPA` — it covers WPA2 and WPA3 too, since the QR scheme never got
+separate keywords for the newer generations.
+
+## Scan-to-join: which phones, and how
+
+On a modern phone the flow is: open the camera, point it at the code, wait for the notification banner,
+tap it, confirm **Join**. No third-party app, no typing.
+
+- **iPhone** — the built-in Camera app has read WiFi QR codes since iOS 11 (2017). Point the camera and a
+  "Join network …?" banner drops down.
+- **Android** — support is more fragmented, but from Android 10 (2019) onward the stock camera or the
+  Wi-Fi settings screen can both scan a WiFi QR and offer to connect.
+
+If a phone is older than that, or runs a heavily customised camera app, the fix is any dedicated
+QR-scanner app — the code itself is standard, so anything that reads the `WIFI:` string will work.
 
 ## The detail most tools get wrong: escaping
 
@@ -74,6 +105,19 @@ backslash**, or the string breaks. For a password like `p;ass:word`, the correct
 `P:p\;ass\:word`. Get this wrong and the code either fails to scan or joins with the wrong password —
 which is maddening to debug because the QR *looks* fine. The
 [WiFi QR generator](/generate/wifi-qr-code-generator/) escapes these automatically.
+
+### A worked example
+
+Say your network is called `Cafe;Corner` and the password is `Flat White, 4:30`. Both contain reserved
+characters — a semicolon in the name, and a comma and colon in the password. Encoded correctly, the
+string becomes:
+
+> `WIFI:T:WPA;S:Cafe\;Corner;P:Flat White\, 4\:30;;`
+
+Notice the backslashes before the `;`, the `,` and the `:` — but *not* before the space, which needs no
+escaping. Skip any one of those backslashes and a scanner will either read the fields incorrectly
+(splitting the SSID at the semicolon) or join with a mangled password. This is precisely the kind of edit
+you don't want to make by hand, which is why a generator that escapes for you is worth using.
 
 ## Is it safe?
 
@@ -98,6 +142,32 @@ Encoding the `WIFI:` string *directly* into the code avoids all of that: there's
 to track, and the code can't expire. That's how the
 [WiFi QR generator](/generate/wifi-qr-code-generator/) works — and the same principle applies to the
 [vCard contact QR](/generate/vcard-qr-code-generator/) and the other data-type QR tools.
+
+## Printing and display: making the code actually scan
+
+A directly-encoded WiFi code holds every character of your credentials, so a long, complex password
+produces a *denser* QR with more little modules packed in. Two practical rules follow from that:
+
+- **Give it size and contrast.** Print it dark-on-light, keep the quiet zone (the white margin around the
+  code) clear, and don't shrink a dense code so small that phone cameras can't resolve the modules. As a
+  rough guide, a code on a table tent or lobby sign wants to be a few centimetres across at minimum.
+- **Mind error correction.** QR codes carry redundancy at one of four levels — roughly 7%, 15%, 25% and
+  30% of the code recoverable if damaged (levels L, M, Q and H). Higher correction survives smudges and a
+  centred logo, but adds modules and makes the code denser. Medium is a sensible default; only reach for
+  the highest level if the code will be printed small or handled roughly.
+
+If a code won't scan, the usual culprits are a too-small print, poor contrast, a missing quiet zone, or a
+mis-escaped special character — check those before assuming the network itself is the problem.
+
+## A quick troubleshooting checklist
+
+| Symptom | Likely cause | Fix |
+| --- | --- | --- |
+| Camera never shows a "Join" prompt | Old OS, or a camera app that doesn't parse WiFi codes | Use a dedicated QR-scanner app |
+| Joins but with the wrong password | Unescaped `\ ; , : "` in the password | Re-encode with the special characters escaped |
+| SSID looks truncated | Semicolon in the network name wasn't escaped | Escape it as `\;` |
+| Code scans as a URL, not a network | The generator used a tracking redirect | Use a tool that encodes the `WIFI:` string directly |
+| Won't scan at all | Too small, low contrast, or no quiet margin | Print larger, darker, with a clear white border |
 
 ## Quick summary
 

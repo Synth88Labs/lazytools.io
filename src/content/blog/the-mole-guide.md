@@ -2,7 +2,7 @@
 title: "The Mole Explained: Converting Grams, Moles and Molecules"
 description: "The mole is the hub of chemistry calculations: moles = mass ÷ molar mass, and particles = moles × Avogadro's number (6.022×10²³). How to convert between grams, moles and molecules, why one mole equals the molar mass in grams, and how it drives stoichiometry."
 pubDate: 2026-07-11
-updatedDate: 2026-07-11
+updatedDate: 2026-08-23
 archetype: explainer
 tools: ["/chemistry/mole-calculator/", "/chemistry/molar-mass-calculator/", "/chemistry/stoichiometry-calculator/"]
 keywords:
@@ -63,6 +63,20 @@ You never convert grams directly to molecules — you always pass through moles.
 [mole calculator](/chemistry/mole-calculator/) does all three at once: type a formula, enter any one of
 mass, moles or particles, and read the other two.
 
+Here are the four moves laid out as a reference. Notice each pair is a simple inverse — divide one way,
+multiply the other:
+
+| From | To | Operation | Formula |
+|------|------|------|------|
+| Grams | Moles | divide by molar mass | `n = m ÷ M` |
+| Moles | Grams | multiply by molar mass | `m = n × M` |
+| Moles | Particles | multiply by Avogadro's number | `N = n × Nₐ` |
+| Particles | Moles | divide by Avogadro's number | `n = N ÷ Nₐ` |
+
+Here `n` is moles, `m` is mass in grams, `M` is molar mass in g/mol, `N` is the particle count, and
+`Nₐ = 6.022×10²³ mol⁻¹`. Any grams-to-particles (or particles-to-grams) question is just two of these
+moves chained together, with moles in the middle.
+
 ## Why one mole = the molar mass in grams
 
 This is the clever part of the definition. The **molar mass** in grams per mole is numerically equal to
@@ -76,7 +90,24 @@ That correspondence is what lets you count particles with a balance: weigh out t
 and you have exactly one mole — 6.022×10²³ molecules. Get the molar mass for any formula with the
 [molar mass calculator](/chemistry/molar-mass-calculator/).
 
-## Worked example
+### A reference table of one mole
+
+To make the idea concrete, here is what one mole looks like for a few everyday substances. In every row
+the *particle count is identical* — only the mass on the balance changes, because that depends on the
+molar mass:
+
+| Substance | Formula | Molar mass (g/mol) | Mass of 1 mole | Particles in 1 mole |
+|------|------|------|------|------|
+| Carbon-12 | C | 12 (exact) | 12 g | 6.022×10²³ atoms |
+| Water | H₂O | 18.015 | 18.015 g | 6.022×10²³ molecules |
+| Table salt | NaCl | 58.44 | 58.44 g | 6.022×10²³ formula units |
+| Carbon dioxide | CO₂ | 44.01 | 44.01 g | 6.022×10²³ molecules |
+| Glucose | C₆H₁₂O₆ | 180.16 | 180.16 g | 6.022×10²³ molecules |
+
+The molar masses are the sum of the standard atomic weights of the constituent atoms, so small rounding
+differences between sources are normal in the last digit or two.
+
+## Worked example: grams to molecules
 
 How many molecules are in **36.03 g of water**?
 
@@ -84,6 +115,26 @@ How many molecules are in **36.03 g of water**?
 2. **Moles → molecules:** 2 mol × 6.022×10²³ = **1.204×10²⁴ molecules**.
 
 Two steps, always through moles.
+
+## Worked example: the other direction
+
+Now run it backwards. You have **3.011×10²³ molecules of carbon dioxide** — what do they weigh?
+
+1. **Particles → moles:** 3.011×10²³ ÷ 6.022×10²³ = **0.5 mol**.
+2. **Moles → grams:** 0.5 mol × 44.01 g/mol = **22.0 g**.
+
+Same hub, same two moves, just applied in reverse. If you are ever unsure which way to divide, sanity-check
+the size of the answer: half a mole of anything should weigh half its molar mass, and it does.
+
+## A note on molar volume for gases
+
+Gases add a convenient shortcut. Under the same temperature and pressure, equal volumes of any ideal gas
+contain equal numbers of molecules (Avogadro's law), so one mole of an ideal gas occupies the same volume
+regardless of what the gas is. At **0 °C and 1 atm** that volume is about **22.4 L per mole**; at 25 °C
+and 1 atm it is closer to 24.5 L per mole. Because different bodies define "standard conditions"
+differently, always confirm which temperature and pressure a given 22.4 L (or 22.7 L) figure assumes
+before you rely on it. For a gas, then, volume becomes a fourth spoke on the same hub — divide the volume
+by the molar volume to reach moles, and continue as usual.
 
 ## Avogadro's number
 
@@ -99,6 +150,23 @@ ratios. In `N₂ + 3 H₂ → 2 NH₃`, one mole of N₂ reacts with three of H�
 6 g. So every reaction calculation runs: **mass → moles → (mole ratio) → moles → mass**. Skip the mole
 step and the arithmetic is wrong. The [stoichiometry calculator](/chemistry/stoichiometry-calculator/)
 automates exactly this, including finding the limiting reagent.
+
+As a quick worked case: how much ammonia forms from 28 g of nitrogen (with hydrogen in excess)? 28 g of
+N₂ is 1 mol; the 1:2 ratio of N₂ to NH₃ gives 2 mol of NH₃; and 2 mol × 17.03 g/mol is about **34 g** of
+ammonia. The mole ratio does the real work in the middle step — mass alone can never tell you that.
+
+## Common mistakes to avoid
+
+A few errors trip people up again and again:
+
+- **Converting grams straight to molecules.** There is no direct conversion; you must pass through moles.
+- **Using coefficients as mass ratios.** Balanced-equation numbers are *mole* ratios, not gram ratios.
+- **Forgetting diatomic elements.** Elemental hydrogen, oxygen and nitrogen are H₂, O₂ and N₂, so their
+  molar masses are roughly 2, 32 and 28 g/mol — not 1, 16 and 14.
+- **Confusing molar mass with molecular count.** Two substances with one mole each contain the same
+  number of particles but almost always weigh different amounts.
+- **Rounding Avogadro's number too early.** Carry `6.022×10²³` (or more digits) through the whole
+  calculation and round only at the end.
 
 ## Quick summary
 
