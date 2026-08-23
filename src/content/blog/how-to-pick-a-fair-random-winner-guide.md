@@ -45,6 +45,11 @@ it with the [Random Name Picker](/productivity/random-name-picker-wheel/).
 
 </aside>
 
+<figure>
+<img src="/blog/infographic-how-to-pick-a-fair-random-winner-guide.svg" alt="A diagram showing a six-name wheel split into six equal slices to represent a uniform one-in-six chance for each entry, a comparison of biased human picking against an even computer draw, the difference between drawing without replacement where each winner is removed and with replacement where a winner can be picked again, and a four-step fair-draw checklist ending in spinning on screen." width="1200" height="700" loading="lazy" />
+<figcaption>What a fair draw looks like: equal odds for every entry, a computer instead of human guessing, and the right replacement mode for the job.</figcaption>
+</figure>
+
 ## What "fair" actually means
 
 A fair single draw is **uniform**: every entry has exactly the same probability of being chosen. With N

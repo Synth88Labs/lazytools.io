@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="1200" height="700" font-family="Segoe UI, Arial, sans-serif">
+  <rect x="0" y="0" width="1200" height="700" fill="#f8fafc"/>
+
+  <text x="600" y="46" text-anchor="middle" font-size="30" font-weight="700" fill="#0f172a">Base64 vs Ascii85 vs Base62</text>
+  <text x="600" y="76" text-anchor="middle" font-size="17" fill="#64748b">Three ways to carry binary data through text-only channels — trading size against URL-safety</text>
+
+  <!-- Input strip -->
+  <text x="70" y="120" font-size="16" font-weight="600" fill="#334155">Raw bytes in</text>
+  <g font-family="Consolas, monospace">
+    <rect x="70" y="132" width="66" height="46" rx="6" fill="#e2e8f0" stroke="#94a3b8"/>
+    <text x="103" y="155" text-anchor="middle" font-size="15" fill="#0f172a">01001101</text>
+    <text x="103" y="172" text-anchor="middle" font-size="15" fill="#0f172a">M</text>
+    <rect x="142" y="132" width="66" height="46" rx="6" fill="#e2e8f0" stroke="#94a3b8"/>
+    <text x="175" y="155" text-anchor="middle" font-size="15" fill="#0f172a">01100001</text>
+    <text x="175" y="172" text-anchor="middle" font-size="15" fill="#0f172a">a</text>
+    <rect x="214" y="132" width="66" height="46" rx="6" fill="#e2e8f0" stroke="#94a3b8"/>
+    <text x="247" y="155" text-anchor="middle" font-size="15" fill="#0f172a">01101110</text>
+    <text x="247" y="172" text-anchor="middle" font-size="15" fill="#0f172a">n</text>
+  </g>
+  <text x="300" y="160" font-size="15" fill="#64748b">3 bytes = 24 bits</text>
+
+  <!-- Three columns -->
+  <!-- Base64 -->
+  <g>
+    <rect x="60" y="210" width="350" height="440" rx="14" fill="#ffffff" stroke="#1d87f1" stroke-width="2"/>
+    <rect x="60" y="210" width="350" height="52" rx="14" fill="#1d87f1"/>
+    <rect x="60" y="240" width="350" height="22" fill="#1d87f1"/>
+    <text x="235" y="244" text-anchor="middle" font-size="24" font-weight="700" fill="#ffffff">Base64</text>
+    <text x="235" y="286" text-anchor="middle" font-size="15" fill="#64748b">The universal default</text>
+
+    <text x="85" y="322" font-size="15" fill="#334155" font-weight="600">Alphabet</text>
+    <text x="85" y="344" font-family="Consolas, monospace" font-size="14" fill="#0f172a">A-Z a-z 0-9 + / (= pad)</text>
+
+    <text x="85" y="380" font-size="15" fill="#334155" font-weight="600">Packing</text>
+    <text x="85" y="402" font-size="14" fill="#0f172a">3 bytes to 4 chars (6 bits each)</text>
+
+    <text x="85" y="438" font-size="15" fill="#334155" font-weight="600">Overhead</text>
+    <text x="85" y="460" font-size="26" fill="#1d87f1" font-weight="700">~33%</text>
+
+    <text x="85" y="500" font-size="15" fill="#334155" font-weight="600">URL-safe?</text>
+    <text x="185" y="500" font-size="15" fill="#dc2626" font-weight="600">No (+, /, =)</text>
+
+    <text x="85" y="536" font-size="15" fill="#334155" font-weight="600">Example</text>
+    <text x="85" y="560" font-family="Consolas, monospace" font-size="15" fill="#0f172a">Man to TWFu</text>
+
+    <text x="85" y="600" font-size="15" fill="#334155" font-weight="600">Typical use</text>
+    <text x="85" y="622" font-size="14" fill="#475569">Email (MIME), JSON,</text>
+    <text x="85" y="640" font-size="14" fill="#475569">data URIs, JWTs</text>
+  </g>
+
+  <!-- Ascii85 -->
+  <g>
+    <rect x="425" y="210" width="350" height="440" rx="14" fill="#ffffff" stroke="#16a34a" stroke-width="2"/>
+    <rect x="425" y="210" width="350" height="52" rx="14" fill="#16a34a"/>
+    <rect x="425" y="240" width="350" height="22" fill="#16a34a"/>
+    <text x="600" y="244" text-anchor="middle" font-size="24" font-weight="700" fill="#ffffff">Ascii85</text>
+    <text x="600" y="286" text-anchor="middle" font-size="15" fill="#64748b">The compact one (base85)</text>
+
+    <text x="450" y="322" font-size="15" fill="#334155" font-weight="600">Alphabet</text>
+    <text x="450" y="344" font-family="Consolas, monospace" font-size="14" fill="#0f172a">! ... u  (85 characters)</text>
+
+    <text x="450" y="380" font-size="15" fill="#334155" font-weight="600">Packing</text>
+    <text x="450" y="402" font-size="14" fill="#0f172a">4 bytes to 5 chars (base-85)</text>
+
+    <text x="450" y="438" font-size="15" fill="#334155" font-weight="600">Overhead</text>
+    <text x="450" y="460" font-size="26" fill="#16a34a" font-weight="700">~25%</text>
+    <text x="540" y="460" font-size="14" fill="#16a34a" font-weight="600">densest</text>
+
+    <text x="450" y="500" font-size="15" fill="#334155" font-weight="600">URL-safe?</text>
+    <text x="550" y="500" font-size="15" fill="#dc2626" font-weight="600">No</text>
+
+    <text x="450" y="536" font-size="15" fill="#334155" font-weight="600">Example</text>
+    <text x="450" y="560" font-family="Consolas, monospace" font-size="15" fill="#0f172a">"Man " to 9jqo^</text>
+
+    <text x="450" y="600" font-size="15" fill="#334155" font-weight="600">Typical use</text>
+    <text x="450" y="622" font-size="14" fill="#475569">PDF and PostScript</text>
+    <text x="450" y="640" font-size="14" fill="#475569">embedded streams</text>
+  </g>
+
+  <!-- Base62 -->
+  <g>
+    <rect x="790" y="210" width="350" height="440" rx="14" fill="#ffffff" stroke="#7c3aed" stroke-width="2"/>
+    <rect x="790" y="210" width="350" height="52" rx="14" fill="#7c3aed"/>
+    <rect x="790" y="240" width="350" height="22" fill="#7c3aed"/>
+    <text x="965" y="244" text-anchor="middle" font-size="24" font-weight="700" fill="#ffffff">Base62</text>
+    <text x="965" y="286" text-anchor="middle" font-size="15" fill="#64748b">The URL-safe one</text>
+
+    <text x="815" y="322" font-size="15" fill="#334155" font-weight="600">Alphabet</text>
+    <text x="815" y="344" font-family="Consolas, monospace" font-size="14" fill="#0f172a">0-9 A-Z a-z  (no symbols)</text>
+
+    <text x="815" y="380" font-size="15" fill="#334155" font-weight="600">Packing</text>
+    <text x="815" y="402" font-size="14" fill="#0f172a">Big-integer re-expression</text>
+
+    <text x="815" y="438" font-size="15" fill="#334155" font-weight="600">Overhead</text>
+    <text x="815" y="460" font-size="26" fill="#7c3aed" font-weight="700">~35%</text>
+
+    <text x="815" y="500" font-size="15" fill="#334155" font-weight="600">URL-safe?</text>
+    <text x="915" y="500" font-size="15" fill="#16a34a" font-weight="700">Yes</text>
+
+    <text x="815" y="536" font-size="15" fill="#334155" font-weight="600">Example</text>
+    <text x="815" y="560" font-family="Consolas, monospace" font-size="14" fill="#0f172a">"hello world" to</text>
+    <text x="815" y="578" font-family="Consolas, monospace" font-size="14" fill="#0f172a">AAwf93rvy4aWQVw</text>
+
+    <text x="815" y="612" font-size="15" fill="#334155" font-weight="600">Typical use</text>
+    <text x="815" y="634" font-size="14" fill="#475569">Short URLs, filenames, IDs</text>
+  </g>
+
+  <text x="70" y="684" font-size="15" fill="#94a3b8">Reversible transport encodings, not encryption — anyone can decode them.</text>
+  <text x="1130" y="684" text-anchor="end" font-size="15" fill="#94a3b8">lazytools.io/dev/base64-encode-decode/</text>
+</svg>

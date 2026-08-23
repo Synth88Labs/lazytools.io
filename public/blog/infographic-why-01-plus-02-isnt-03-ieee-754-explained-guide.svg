@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="1200" height="700" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <linearGradient id="signG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7c3aed"/>
+      <stop offset="1" stop-color="#6d28d9"/>
+    </linearGradient>
+    <linearGradient id="expG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1d87f1"/>
+      <stop offset="1" stop-color="#1a6fd0"/>
+    </linearGradient>
+    <linearGradient id="manG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#16a34a"/>
+      <stop offset="1" stop-color="#128a3f"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="700" fill="#f8fafc"/>
+
+  <text x="600" y="48" text-anchor="middle" font-size="30" font-weight="700" fill="#0f172a">Why 0.1 plus 0.2 is not 0.3</text>
+  <text x="600" y="78" text-anchor="middle" font-size="16" fill="#64748b">A 64-bit IEEE 754 double packs every number into 1 sign, 11 exponent and 52 mantissa bits</text>
+
+  <!-- Bit layout of a double -->
+  <g>
+    <text x="120" y="120" font-size="15" font-weight="600" fill="#334155">64-bit double: sign | exponent | mantissa</text>
+
+    <!-- Sign -->
+    <rect x="120" y="132" width="46" height="52" rx="4" fill="url(#signG)"/>
+    <text x="143" y="164" text-anchor="middle" font-size="20" font-weight="700" fill="#ffffff">S</text>
+    <text x="143" y="204" text-anchor="middle" font-size="13" fill="#7c3aed" font-weight="600">1 bit</text>
+
+    <!-- Exponent -->
+    <rect x="172" y="132" width="270" height="52" rx="4" fill="url(#expG)"/>
+    <text x="307" y="164" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">exponent</text>
+    <text x="307" y="204" text-anchor="middle" font-size="13" fill="#1a6fd0" font-weight="600">11 bits (bias 1023)</text>
+
+    <!-- Mantissa -->
+    <rect x="448" y="132" width="632" height="52" rx="4" fill="url(#manG)"/>
+    <text x="764" y="164" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">mantissa (fraction)</text>
+    <text x="764" y="204" text-anchor="middle" font-size="13" fill="#128a3f" font-weight="600">52 bits, plus 1 implicit leading bit = 53 bits of precision</text>
+  </g>
+
+  <!-- Value formula -->
+  <rect x="120" y="228" width="960" height="44" rx="6" fill="#eef2ff" stroke="#c7d2fe"/>
+  <text x="600" y="256" text-anchor="middle" font-size="18" fill="#0f172a">value = (minus 1)^sign  x  1.mantissa  x  2^(exponent minus bias)</text>
+
+  <!-- The rounding story -->
+  <text x="120" y="320" font-size="16" font-weight="700" fill="#0f172a">What the bits actually store</text>
+
+  <!-- Row: 0.1 -->
+  <rect x="120" y="336" width="960" height="56" rx="6" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="140" y="360" font-size="15" fill="#334155">you type</text>
+  <text x="140" y="382" font-size="20" font-weight="700" fill="#7c3aed">0.1</text>
+  <text x="300" y="360" font-size="13" fill="#94a3b8">stored double is a hair too big</text>
+  <text x="300" y="382" font-size="15" fill="#0f172a">0.1000000000000000055511151231257827...</text>
+
+  <!-- Row: 0.2 -->
+  <rect x="120" y="400" width="960" height="56" rx="6" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="140" y="424" font-size="15" fill="#334155">you type</text>
+  <text x="140" y="446" font-size="20" font-weight="700" fill="#1d87f1">0.2</text>
+  <text x="300" y="424" font-size="13" fill="#94a3b8">also rounded up a touch</text>
+  <text x="300" y="446" font-size="15" fill="#0f172a">0.2000000000000000111022302462515654...</text>
+
+  <!-- Plus / equals -->
+  <text x="600" y="486" text-anchor="middle" font-size="15" fill="#64748b">exact arithmetic on two inexact inputs, then rounded to the nearest double again</text>
+
+  <!-- Result -->
+  <rect x="120" y="500" width="960" height="70" rx="8" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <text x="140" y="530" font-size="15" fill="#92400e" font-weight="600">0.1 plus 0.2 lands on the next double up</text>
+  <text x="140" y="558" font-size="24" font-weight="700" fill="#0f172a">= 0.30000000000000004</text>
+  <text x="1060" y="544" text-anchor="end" font-size="14" fill="#b45309" font-style="italic">not a bug: nearest representable value at every step</text>
+
+  <!-- Why 0.1 repeats -->
+  <rect x="120" y="592" width="465" height="70" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="140" y="618" font-size="14" font-weight="700" fill="#0f172a">0.1 in binary repeats forever</text>
+  <text x="140" y="642" font-size="15" fill="#334155">0.0001100110011001100... only 1/2, 1/4, 1/8 are exact</text>
+
+  <rect x="615" y="592" width="465" height="70" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="635" y="618" font-size="14" font-weight="700" fill="#0f172a">The display is honest</text>
+  <text x="635" y="642" font-size="15" fill="#334155">it prints the shortest string that round-trips to that double</text>
+
+  <text x="600" y="688" text-anchor="middle" font-size="14" fill="#64748b">lazytools.io/dev/ieee-754-converter/</text>
+</svg>

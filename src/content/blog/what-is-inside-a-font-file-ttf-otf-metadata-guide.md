@@ -49,6 +49,11 @@ ship it. Here's what the key tables store, and how to read them with the
 
 </aside>
 
+<figure>
+<img src="/blog/infographic-what-is-inside-a-font-file-ttf-otf-metadata-guide.svg" alt="Diagram of a font file laid out as an sfnt container: an offset table and a table directory of named 4-character records, each pointing by offset and length to a table. The name table holds family, style, version, designer and copyright; head holds units-per-em of 2048 for TrueType or 1000 for CFF; maxp holds the glyph count; OS/2 holds the weight class, width class and the fsType embedding permission; and glyf versus CFF holds the outlines that distinguish TTF from OTF." width="1200" height="700" loading="lazy" />
+<figcaption>How a TTF or OTF font stores its metadata: a directory of named tables, from the name and OS/2 fields to the glyph outlines.</figcaption>
+</figure>
+
 ## The sfnt container: a directory of tables
 
 Every TrueType and OpenType font starts with an **offset table** (also called the *sfnt header*) that

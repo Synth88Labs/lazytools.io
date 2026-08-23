@@ -49,6 +49,11 @@ same identifier. Here's precisely how the thumbprint is built and how to compute
 
 </aside>
 
+<figure>
+<img src="/blog/infographic-what-is-a-jwk-thumbprint-rfc-7638-guide.svg" alt="A flow showing a full EC JSON Web Key with its use, kid and alg members struck out, leaving the required crv, kty, x and y members sorted into lexicographic order and serialized as compact JSON with no whitespace, which is hashed with SHA-256 and base64url-encoded into a 43-character thumbprint. A side table lists the required members for RSA, EC, OKP and oct key types." width="1200" height="700" loading="lazy" />
+<figcaption>The RFC 7638 procedure: keep only the required members, canonicalise them exactly, then hash with SHA-256 and base64url-encode.</figcaption>
+</figure>
+
 ## The problem: naming a key
 
 A JSON Web Key (JWK) is a JSON object describing a cryptographic key. To reference a specific key — say,

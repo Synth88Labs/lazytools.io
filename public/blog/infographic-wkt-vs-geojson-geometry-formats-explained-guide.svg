@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="1200" height="700" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="5" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#64748b" />
+    </marker>
+    <linearGradient id="wktG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#eff6ff" />
+      <stop offset="1" stop-color="#dbeafe" />
+    </linearGradient>
+    <linearGradient id="geoG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f0fdf4" />
+      <stop offset="1" stop-color="#dcfce7" />
+    </linearGradient>
+  </defs>
+
+  <!-- background -->
+  <rect x="0" y="0" width="1200" height="700" fill="#f8fafc" />
+
+  <!-- title -->
+  <text x="600" y="52" text-anchor="middle" font-size="30" font-weight="700" fill="#0f172a">WKT vs GeoJSON: the same polygon, two ways</text>
+  <text x="600" y="82" text-anchor="middle" font-size="16" fill="#64748b">One square shape. Two text formats. Both store coordinates as X Y (longitude, latitude).</text>
+
+  <!-- ===== WKT panel ===== -->
+  <rect x="40" y="110" width="360" height="380" rx="14" fill="url(#wktG)" stroke="#1d87f1" stroke-width="2" />
+  <rect x="40" y="110" width="360" height="46" rx="14" fill="#1d87f1" />
+  <rect x="40" y="140" width="360" height="16" fill="#1d87f1" />
+  <text x="220" y="140" text-anchor="middle" font-size="20" font-weight="700" fill="#ffffff">WKT (Well-Known Text)</text>
+
+  <text x="64" y="184" font-size="14" fill="#334155">OGC standard, compact single line:</text>
+  <rect x="64" y="196" width="312" height="52" rx="8" fill="#0f172a" />
+  <text x="80" y="220" font-size="14" font-family="Consolas, monospace" fill="#e2e8f0">POLYGON ((30 10, 40 40,</text>
+  <text x="80" y="238" font-size="14" font-family="Consolas, monospace" fill="#e2e8f0">  20 40, 10 20, 30 10))</text>
+
+  <!-- polygon drawing (WKT) -->
+  <g transform="translate(150,270)">
+    <rect x="-40" y="0" width="180" height="180" rx="8" fill="#ffffff" stroke="#cbd5e1" />
+    <!-- axes -->
+    <line x1="-40" y1="180" x2="140" y2="180" stroke="#cbd5e1" />
+    <line x1="-40" y1="0" x2="-40" y2="180" stroke="#cbd5e1" />
+    <!-- polygon: map coords (x 10-40, y 10-40) into box (x:0-150, y:150-0) -->
+    <polygon points="90,150 140,0 40,0 0,100" fill="#1d87f1" fill-opacity="0.22" stroke="#1d87f1" stroke-width="2" />
+    <circle cx="90" cy="150" r="4" fill="#1d87f1" />
+    <circle cx="140" cy="0" r="4" fill="#1d87f1" />
+    <circle cx="40" cy="0" r="4" fill="#1d87f1" />
+    <circle cx="0" cy="100" r="4" fill="#1d87f1" />
+    <text x="94" y="168" font-size="11" fill="#334155">30 10</text>
+  </g>
+  <text x="220" y="478" text-anchor="middle" font-size="13" fill="#334155">Home: spatial databases, PostGIS SQL</text>
+
+  <!-- ===== equals / convert arrows in middle ===== -->
+  <g transform="translate(420,290)">
+    <line x1="0" y1="0" x2="360" y2="0" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)" />
+    <line x1="360" y1="40" x2="0" y2="40" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)" />
+    <rect x="120" y="-24" width="120" height="30" rx="15" fill="#f8fafc" stroke="#94a3b8" />
+    <text x="180" y="-4" text-anchor="middle" font-size="13" fill="#334155">convert →</text>
+    <rect x="120" y="34" width="120" height="30" rx="15" fill="#f8fafc" stroke="#94a3b8" />
+    <text x="180" y="54" text-anchor="middle" font-size="13" fill="#334155">← convert</text>
+    <text x="180" y="94" text-anchor="middle" font-size="13" font-weight="600" fill="#16a34a">No axis swap needed</text>
+    <text x="180" y="112" text-anchor="middle" font-size="12" fill="#64748b">same X Y order, same numbers</text>
+  </g>
+
+  <!-- ===== GeoJSON panel ===== -->
+  <rect x="800" y="110" width="360" height="380" rx="14" fill="url(#geoG)" stroke="#16a34a" stroke-width="2" />
+  <rect x="800" y="110" width="360" height="46" rx="14" fill="#16a34a" />
+  <rect x="800" y="140" width="360" height="16" fill="#16a34a" />
+  <text x="980" y="140" text-anchor="middle" font-size="20" font-weight="700" fill="#ffffff">GeoJSON (RFC 7946)</text>
+
+  <text x="824" y="184" font-size="14" fill="#334155">JSON object, nested arrays:</text>
+  <rect x="824" y="196" width="312" height="70" rx="8" fill="#0f172a" />
+  <text x="840" y="216" font-size="13" font-family="Consolas, monospace" fill="#e2e8f0">{ "type": "Polygon",</text>
+  <text x="840" y="234" font-size="13" font-family="Consolas, monospace" fill="#e2e8f0">  "coordinates": [[[30,10],</text>
+  <text x="840" y="252" font-size="13" font-family="Consolas, monospace" fill="#e2e8f0">  [40,40],[20,40],[10,20],[30,10]]] }</text>
+
+  <!-- polygon drawing (GeoJSON) -->
+  <g transform="translate(910,288)">
+    <rect x="-40" y="0" width="180" height="180" rx="8" fill="#ffffff" stroke="#cbd5e1" />
+    <line x1="-40" y1="180" x2="140" y2="180" stroke="#cbd5e1" />
+    <line x1="-40" y1="0" x2="-40" y2="180" stroke="#cbd5e1" />
+    <polygon points="90,150 140,0 40,0 0,100" fill="#16a34a" fill-opacity="0.22" stroke="#16a34a" stroke-width="2" />
+    <circle cx="90" cy="150" r="4" fill="#16a34a" />
+    <circle cx="140" cy="0" r="4" fill="#16a34a" />
+    <circle cx="40" cy="0" r="4" fill="#16a34a" />
+    <circle cx="0" cy="100" r="4" fill="#16a34a" />
+    <text x="94" y="168" font-size="11" fill="#334155">[30,10]</text>
+  </g>
+  <text x="980" y="478" text-anchor="middle" font-size="13" fill="#334155">Home: web maps (Leaflet, Mapbox)</text>
+
+  <!-- ===== bottom comparison strip ===== -->
+  <rect x="40" y="512" width="1120" height="150" rx="12" fill="#ffffff" stroke="#e2e8f0" />
+  <text x="60" y="540" font-size="16" font-weight="700" fill="#0f172a">Key differences</text>
+
+  <!-- diff 1 -->
+  <circle cx="72" cy="566" r="5" fill="#7c3aed" />
+  <text x="88" y="571" font-size="14" fill="#334155"><tspan font-weight="600">Coordinate order:</tspan> both X Y = longitude first, then latitude</text>
+
+  <!-- diff 2 -->
+  <circle cx="72" cy="594" r="5" fill="#d97706" />
+  <text x="88" y="599" font-size="14" fill="#334155"><tspan font-weight="600">Attributes:</tspan> only GeoJSON carries them (Feature plus properties); WKT is geometry only</text>
+
+  <!-- diff 3 -->
+  <circle cx="72" cy="622" r="5" fill="#1d87f1" />
+  <text x="88" y="627" font-size="14" fill="#334155"><tspan font-weight="600">7 core types</tspan> map one-to-one: Point, LineString, Polygon, the three Multi- variants, plus GeometryCollection</text>
+
+  <!-- diff 4 -->
+  <circle cx="72" cy="650" r="5" fill="#16a34a" />
+  <text x="88" y="655" font-size="14" fill="#334155"><tspan font-weight="600">Verbosity:</tspan> WKT is terse (one line); GeoJSON is more verbose but slots into JSON tooling</text>
+
+  <text x="1160" y="688" text-anchor="end" font-size="13" fill="#94a3b8">lazytools.io/file/wkt-to-geojson/</text>
+</svg>

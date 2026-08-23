@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="1200" height="700" font-family="Segoe UI, Arial, sans-serif">
+  <rect x="0" y="0" width="1200" height="700" fill="#f8fafc"/>
+  <text x="600" y="52" text-anchor="middle" font-size="30" font-weight="700" fill="#0f172a">Three Formats, Three Ways to Store Tags</text>
+  <text x="600" y="82" text-anchor="middle" font-size="16" fill="#64748b">Same fields (title, artist, album) plus completely different byte layouts, so each needs its own reader</text>
+
+  <!-- FLAC column -->
+  <g>
+    <rect x="40" y="110" width="360" height="520" rx="14" fill="#ffffff" stroke="#1d87f1" stroke-width="2"/>
+    <rect x="40" y="110" width="360" height="58" rx="14" fill="#1d87f1"/>
+    <rect x="40" y="140" width="360" height="28" fill="#1d87f1"/>
+    <text x="220" y="140" text-anchor="middle" font-size="24" font-weight="700" fill="#ffffff">FLAC</text>
+    <text x="220" y="160" text-anchor="middle" font-size="13" fill="#dbeafe">Lossless compressed</text>
+
+    <text x="70" y="200" font-size="15" fill="#334155">Tags stored as</text>
+    <text x="70" y="224" font-size="19" font-weight="700" fill="#1d87f1">Vorbis comments</text>
+    <text x="70" y="246" font-size="13" fill="#64748b">Free-form KEY=value, UTF-8</text>
+
+    <!-- file layout -->
+    <rect x="70" y="266" width="300" height="30" rx="4" fill="#e2e8f0"/>
+    <text x="82" y="286" font-size="13" font-weight="700" fill="#334155">fLaC marker</text>
+    <rect x="70" y="300" width="300" height="60" rx="4" fill="#dbeafe" stroke="#1d87f1" stroke-width="1.5"/>
+    <text x="82" y="320" font-size="13" font-weight="700" fill="#1d5fb0">STREAMINFO block</text>
+    <text x="82" y="340" font-size="12" fill="#334155">sample rate, bit depth, samples</text>
+    <text x="82" y="355" font-size="12" fill="#334155">plus MD5 of decoded audio</text>
+    <rect x="70" y="364" width="300" height="58" rx="4" fill="#dbeafe" stroke="#1d87f1" stroke-width="1.5"/>
+    <text x="82" y="384" font-size="13" font-weight="700" fill="#1d5fb0">VORBIS_COMMENT block</text>
+    <text x="82" y="404" font-size="12" fill="#334155">TITLE=  ARTIST=  ALBUM=  DATE=</text>
+    <text x="82" y="416" font-size="11" fill="#64748b">plus encoder vendor string</text>
+    <rect x="70" y="426" width="300" height="26" rx="4" fill="#e2e8f0"/>
+    <text x="82" y="443" font-size="12" fill="#475569">PICTURE block (cover art)</text>
+    <rect x="70" y="456" width="300" height="80" rx="4" fill="#f1f5f9"/>
+    <text x="82" y="480" font-size="12" fill="#475569">audio frames...</text>
+
+    <rect x="70" y="552" width="300" height="56" rx="8" fill="#eff6ff"/>
+    <text x="82" y="574" font-size="12.5" font-weight="700" fill="#1d5fb0">Custom fields: yes</text>
+    <text x="82" y="595" font-size="12" fill="#475569">any invented KEY is valid</text>
+  </g>
+
+  <!-- MP3 column -->
+  <g>
+    <rect x="420" y="110" width="360" height="520" rx="14" fill="#ffffff" stroke="#16a34a" stroke-width="2"/>
+    <rect x="420" y="110" width="360" height="58" rx="14" fill="#16a34a"/>
+    <rect x="420" y="140" width="360" height="28" fill="#16a34a"/>
+    <text x="600" y="140" text-anchor="middle" font-size="24" font-weight="700" fill="#ffffff">MP3</text>
+    <text x="600" y="160" text-anchor="middle" font-size="13" fill="#dcfce7">Lossy compressed</text>
+
+    <text x="450" y="200" font-size="15" fill="#334155">Tags stored as</text>
+    <text x="450" y="224" font-size="19" font-weight="700" fill="#16a34a">ID3 tags</text>
+    <text x="450" y="246" font-size="13" fill="#64748b">ID3v2 at start, ID3v1 at end</text>
+
+    <rect x="450" y="266" width="300" height="62" rx="4" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+    <text x="462" y="286" font-size="13" font-weight="700" fill="#15803d">ID3v2 (start of file)</text>
+    <text x="462" y="306" font-size="12" fill="#334155">TIT2=title  TPE1=artist  TALB=album</text>
+    <text x="462" y="322" font-size="11" fill="#64748b">Unicode frames, APIC cover art</text>
+
+    <rect x="450" y="332" width="300" height="150" rx="4" fill="#f1f5f9"/>
+    <text x="462" y="356" font-size="12" fill="#475569">MPEG audio frames...</text>
+    <text x="462" y="384" font-size="11.5" fill="#64748b">bitrate and sample rate live</text>
+    <text x="462" y="400" font-size="11.5" fill="#64748b">in the MPEG frame header here,</text>
+    <text x="462" y="416" font-size="11.5" fill="#64748b">not in the ID3 tag</text>
+
+    <rect x="450" y="486" width="300" height="50" rx="4" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+    <text x="462" y="506" font-size="13" font-weight="700" fill="#15803d">ID3v1 (last 128 bytes)</text>
+    <text x="462" y="524" font-size="11.5" fill="#64748b">fixed-width fields, truncates</text>
+
+    <rect x="450" y="552" width="300" height="56" rx="8" fill="#f0fdf4"/>
+    <text x="462" y="574" font-size="12.5" font-weight="700" fill="#15803d">Custom fields: limited</text>
+    <text x="462" y="595" font-size="12" fill="#475569">mostly fixed frame types</text>
+  </g>
+
+  <!-- WAV column -->
+  <g>
+    <rect x="800" y="110" width="360" height="520" rx="14" fill="#ffffff" stroke="#d97706" stroke-width="2"/>
+    <rect x="800" y="110" width="360" height="58" rx="14" fill="#d97706"/>
+    <rect x="800" y="140" width="360" height="28" fill="#d97706"/>
+    <text x="980" y="140" text-anchor="middle" font-size="24" font-weight="700" fill="#ffffff">WAV</text>
+    <text x="980" y="160" text-anchor="middle" font-size="13" fill="#fef3c7">Uncompressed PCM</text>
+
+    <text x="830" y="200" font-size="15" fill="#334155">Tags stored as</text>
+    <text x="830" y="224" font-size="19" font-weight="700" fill="#d97706">RIFF LIST / INFO chunk</text>
+    <text x="830" y="246" font-size="13" fill="#64748b">four-character codes</text>
+
+    <rect x="830" y="266" width="300" height="26" rx="4" fill="#e2e8f0"/>
+    <text x="842" y="283" font-size="12.5" font-weight="700" fill="#334155">RIFF ... WAVE header</text>
+    <rect x="830" y="296" width="300" height="56" rx="4" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+    <text x="842" y="316" font-size="13" font-weight="700" fill="#b45309">fmt  chunk</text>
+    <text x="842" y="336" font-size="12" fill="#334155">sample rate, bit depth, channels</text>
+    <rect x="830" y="356" width="300" height="70" rx="4" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+    <text x="842" y="376" font-size="13" font-weight="700" fill="#b45309">LIST / INFO chunk</text>
+    <text x="842" y="396" font-size="12" fill="#334155">INAM=title  IART=artist</text>
+    <text x="842" y="412" font-size="12" fill="#334155">ICRD=creation date</text>
+    <rect x="830" y="430" width="300" height="106" rx="4" fill="#f1f5f9"/>
+    <text x="842" y="454" font-size="12" fill="#475569">data chunk (raw PCM samples)...</text>
+
+    <rect x="830" y="552" width="300" height="56" rx="8" fill="#fffbeb"/>
+    <text x="842" y="574" font-size="12.5" font-weight="700" fill="#b45309">Custom fields: rarely</text>
+    <text x="842" y="595" font-size="12" fill="#475569">thin, inconsistent tag support</text>
+  </g>
+
+  <text x="40" y="660" font-size="14" fill="#475569">The same &quot;song title&quot; is a TITLE= line, a TIT2 frame or an INAM entry, so a parser for one cannot find the others.</text>
+  <text x="40" y="686" font-size="13" fill="#94a3b8">lazytools.io/video/flac-metadata-viewer/</text>
+</svg>

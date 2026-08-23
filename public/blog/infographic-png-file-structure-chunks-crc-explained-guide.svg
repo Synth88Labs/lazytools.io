@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="1200" height="700" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <linearGradient id="sig" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7c3aed"/>
+      <stop offset="1" stop-color="#6d28d9"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="700" fill="#f8fafc"/>
+
+  <text x="40" y="52" font-size="30" font-weight="700" fill="#0f172a">Inside a PNG File: Signature, Chunks and CRC-32</text>
+  <text x="40" y="82" font-size="16" fill="#64748b">A PNG is an 8-byte signature followed by a stream of labelled chunks, in a defined order.</text>
+
+  <!-- Byte-stream row -->
+  <rect x="40" y="110" width="150" height="70" rx="6" fill="url(#sig)"/>
+  <text x="115" y="140" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle">Signature</text>
+  <text x="115" y="162" font-size="12" fill="#ede9fe" text-anchor="middle">89 50 4E 47</text>
+  <text x="115" y="176" font-size="12" fill="#ede9fe" text-anchor="middle">0D 0A 1A 0A</text>
+
+  <g font-size="15" font-weight="700" text-anchor="middle">
+    <rect x="205" y="110" width="120" height="70" rx="6" fill="#1d87f1"/>
+    <text x="265" y="145" fill="#ffffff">IHDR</text>
+    <text x="265" y="168" font-size="11" fill="#dbeafe">critical</text>
+
+    <rect x="340" y="110" width="120" height="70" rx="6" fill="#d97706"/>
+    <text x="400" y="145" fill="#ffffff">pHYs</text>
+    <text x="400" y="168" font-size="11" fill="#fed7aa">ancillary</text>
+
+    <rect x="475" y="110" width="120" height="70" rx="6" fill="#d97706"/>
+    <text x="535" y="145" fill="#ffffff">tEXt</text>
+    <text x="535" y="168" font-size="11" fill="#fed7aa">metadata</text>
+
+    <rect x="610" y="110" width="120" height="70" rx="6" fill="#1d87f1"/>
+    <text x="670" y="145" fill="#ffffff">IDAT</text>
+    <text x="670" y="168" font-size="11" fill="#dbeafe">pixels</text>
+
+    <rect x="745" y="110" width="120" height="70" rx="6" fill="#1d87f1"/>
+    <text x="805" y="145" fill="#ffffff">IDAT</text>
+    <text x="805" y="168" font-size="11" fill="#dbeafe">pixels</text>
+
+    <rect x="880" y="110" width="120" height="70" rx="6" fill="#16a34a"/>
+    <text x="940" y="145" fill="#ffffff">IEND</text>
+    <text x="940" y="168" font-size="11" fill="#dcfce7">ends file</text>
+  </g>
+  <text x="1015" y="150" font-size="26" fill="#94a3b8">...</text>
+
+  <line x1="40" y1="200" x2="1000" y2="200" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="40" y="222" font-size="14" fill="#64748b">Chunks appear in order: IHDR first, optional metadata next, compressed pixels (IDAT), then IEND to close.</text>
+
+  <!-- Anatomy of one chunk -->
+  <text x="40" y="278" font-size="20" font-weight="700" fill="#0f172a">Anatomy of one chunk</text>
+
+  <g>
+    <rect x="40" y="298" width="230" height="90" rx="6" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+    <text x="155" y="326" font-size="15" font-weight="700" fill="#0f172a" text-anchor="middle">Length</text>
+    <text x="155" y="348" font-size="13" fill="#334155" text-anchor="middle">4 bytes, big-endian</text>
+    <text x="155" y="368" font-size="12" fill="#64748b" text-anchor="middle">counts data bytes only</text>
+
+    <rect x="290" y="298" width="230" height="90" rx="6" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+    <text x="405" y="326" font-size="15" font-weight="700" fill="#0f172a" text-anchor="middle">Type</text>
+    <text x="405" y="348" font-size="13" fill="#334155" text-anchor="middle">4 ASCII letters</text>
+    <text x="405" y="368" font-size="12" fill="#64748b" text-anchor="middle">e.g. IHDR, IDAT, tEXt</text>
+
+    <rect x="540" y="298" width="330" height="90" rx="6" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+    <text x="705" y="326" font-size="15" font-weight="700" fill="#0f172a" text-anchor="middle">Data</text>
+    <text x="705" y="348" font-size="13" fill="#334155" text-anchor="middle">payload, "length" bytes</text>
+    <text x="705" y="368" font-size="12" fill="#64748b" text-anchor="middle">the chunk contents</text>
+
+    <rect x="890" y="298" width="270" height="90" rx="6" fill="#ecfdf5" stroke="#16a34a" stroke-width="1.5"/>
+    <text x="1025" y="326" font-size="15" font-weight="700" fill="#166534" text-anchor="middle">CRC-32</text>
+    <text x="1025" y="348" font-size="13" fill="#166534" text-anchor="middle">4 bytes checksum</text>
+    <text x="1025" y="368" font-size="12" fill="#15803d" text-anchor="middle">over type plus data</text>
+  </g>
+  <text x="40" y="412" font-size="13" fill="#64748b">Stated length lets a decoder jump straight to the next chunk, even one it has never seen. CRC covers type plus data, not the length.</text>
+
+  <!-- Left: worked IHDR example -->
+  <rect x="40" y="440" width="540" height="228" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="60" y="472" font-size="18" font-weight="700" fill="#0f172a">Worked example: a 13-byte IHDR</text>
+  <text x="60" y="500" font-size="14" fill="#334155">length 0000000D (13) . type IHDR . 13 data bytes . 4 CRC</text>
+
+  <g font-size="13" fill="#334155">
+    <rect x="60" y="516" width="500" height="26" fill="#f1f5f9"/>
+    <text x="72" y="534">Width</text><text x="300" y="534">4 bytes . 00000780 = 1920</text>
+    <rect x="60" y="544" width="500" height="26" fill="#ffffff"/>
+    <text x="72" y="562">Height</text><text x="300" y="562">4 bytes . 00000438 = 1080</text>
+    <rect x="60" y="572" width="500" height="26" fill="#f1f5f9"/>
+    <text x="72" y="590">Bit depth</text><text x="300" y="590">1 byte . 08 = 8 bits per channel</text>
+    <rect x="60" y="600" width="500" height="26" fill="#ffffff"/>
+    <text x="72" y="618">Colour type</text><text x="300" y="618">1 byte . 02 = truecolour (RGB)</text>
+    <rect x="60" y="628" width="500" height="26" fill="#f1f5f9"/>
+    <text x="72" y="646">Compression, filter, interlace</text><text x="300" y="646">1 byte each</text>
+  </g>
+
+  <!-- Right: case-of-letters trick -->
+  <rect x="600" y="440" width="560" height="228" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="620" y="472" font-size="18" font-weight="700" fill="#0f172a">The case trick: each letter is a flag bit</text>
+
+  <g text-anchor="middle" font-weight="700" font-size="26">
+    <rect x="620" y="490" width="60" height="60" rx="6" fill="#1d87f1"/><text x="650" y="530" fill="#ffffff">I</text>
+    <rect x="690" y="490" width="60" height="60" rx="6" fill="#1d87f1"/><text x="720" y="530" fill="#ffffff">H</text>
+    <rect x="760" y="490" width="60" height="60" rx="6" fill="#1d87f1"/><text x="790" y="530" fill="#ffffff">D</text>
+    <rect x="830" y="490" width="60" height="60" rx="6" fill="#1d87f1"/><text x="860" y="530" fill="#ffffff">R</text>
+  </g>
+
+  <g font-size="13" fill="#334155">
+    <text x="905" y="506" font-weight="700" fill="#0f172a">1st</text><text x="945" y="506">upper = critical / lower = ancillary</text>
+    <text x="905" y="528" font-weight="700" fill="#0f172a">2nd</text><text x="945" y="528">upper = public / lower = private</text>
+    <text x="905" y="550" font-weight="700" fill="#0f172a">3rd</text><text x="945" y="550">reserved, must be uppercase</text>
+  </g>
+  <g font-size="13" fill="#334155">
+    <text x="620" y="588" font-weight="700" fill="#0f172a">4th letter</text>
+    <text x="620" y="610">upper = unsafe to copy after edits</text>
+    <text x="620" y="630">lower = safe to copy blindly</text>
+    <text x="620" y="656" fill="#64748b">Uppercase IHDR, IDAT, IEND, PLTE are critical; lowercase pHYs, tEXt, gAMA, tIME are ancillary.</text>
+  </g>
+
+  <text x="600" y="694" font-size="14" fill="#94a3b8" text-anchor="end">lazytools.io/image/png-chunk-viewer/</text>
+</svg>

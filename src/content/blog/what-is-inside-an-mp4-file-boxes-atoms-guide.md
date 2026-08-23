@@ -48,6 +48,11 @@ the [MP4 Box Viewer](/file/mp4-box-viewer/).
 
 </aside>
 
+<figure>
+<img src="/blog/infographic-what-is-inside-an-mp4-file-boxes-atoms-guide.svg" alt="Diagram of an MP4 file structure. On the left, the box tree from top to bottom: ftyp declaring the brand, moov holding mvhd plus a video trak and an audio trak, and mdat holding the raw media. On the right, two box orderings: a not-optimised file with moov after mdat that cannot stream, and a fast-start file with moov moved before mdat so playback can begin while downloading. Also shown are fragmented MP4 with moof plus mdat pairs, the shared ISO Base Media File Format across MP4, MOV, M4A, M4V and HEIF, and the anatomy of one box as size plus type plus data." width="1200" height="700" loading="lazy" />
+<figcaption>How MP4 boxes nest, and why the order of moov and mdat decides whether a video can stream.</figcaption>
+</figure>
+
 ## MP4 is a tree of boxes
 
 MP4 and its relatives are built on the **ISO Base Media File Format (ISOBMFF)**, where everything is a

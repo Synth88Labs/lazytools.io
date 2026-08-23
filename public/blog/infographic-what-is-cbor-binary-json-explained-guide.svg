@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="1200" height="700" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <linearGradient id="mtGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1d87f1"/>
+      <stop offset="1" stop-color="#1667c4"/>
+    </linearGradient>
+    <linearGradient id="aiGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7c3aed"/>
+      <stop offset="1" stop-color="#5f2bb8"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="700" fill="#f8fafc"/>
+
+  <text x="60" y="56" font-size="30" font-weight="700" fill="#0f172a">Inside a CBOR item: the initial byte</text>
+  <text x="60" y="86" font-size="16" fill="#64748b">Every CBOR data item starts with one byte = (major type x 32) + additional info. That is what makes it self-describing, no schema needed.</text>
+
+  <!-- The initial byte split -->
+  <text x="60" y="140" font-size="18" font-weight="600" fill="#334155">Worked example: the integer 1000 encodes as three bytes</text>
+
+  <!-- Byte 1 breakdown: 0x19 = 000 11001 -->
+  <g>
+    <rect x="60" y="160" width="360" height="150" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+    <text x="80" y="190" font-size="16" font-weight="600" fill="#0f172a">Initial byte  0x19  =  0001 1001</text>
+
+    <!-- 3 bits major type -->
+    <rect x="80" y="205" width="150" height="46" rx="6" fill="url(#mtGrad)"/>
+    <text x="155" y="228" font-size="20" font-weight="700" fill="#ffffff" text-anchor="middle" font-family="Consolas, monospace">000</text>
+    <text x="155" y="245" font-size="12" fill="#dbeafe" text-anchor="middle">3 bits</text>
+
+    <!-- 5 bits additional info -->
+    <rect x="238" y="205" width="162" height="46" rx="6" fill="url(#aiGrad)"/>
+    <text x="319" y="228" font-size="20" font-weight="700" fill="#ffffff" text-anchor="middle" font-family="Consolas, monospace">11001</text>
+    <text x="319" y="245" font-size="12" fill="#ede9fe" text-anchor="middle">5 bits</text>
+
+    <text x="155" y="278" font-size="13" fill="#1667c4" text-anchor="middle" font-weight="600">major type 0</text>
+    <text x="155" y="296" font-size="12" fill="#64748b" text-anchor="middle">unsigned int</text>
+    <text x="319" y="278" font-size="13" fill="#5f2bb8" text-anchor="middle" font-weight="600">add info 25</text>
+    <text x="319" y="296" font-size="12" fill="#64748b" text-anchor="middle">"two bytes follow"</text>
+  </g>
+
+  <!-- arrow -->
+  <line x1="430" y1="235" x2="472" y2="235" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- following bytes -->
+  <g>
+    <rect x="482" y="160" width="300" height="150" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+    <text x="502" y="190" font-size="16" font-weight="600" fill="#0f172a">Next 2 bytes (big-endian)</text>
+    <rect x="502" y="205" width="120" height="46" rx="6" fill="#0f172a"/>
+    <text x="562" y="235" font-size="20" font-weight="700" fill="#7ee787" text-anchor="middle" font-family="Consolas, monospace">0x03E8</text>
+    <text x="640" y="235" font-size="22" fill="#334155">=</text>
+    <text x="712" y="240" font-size="30" font-weight="700" fill="#16a34a" text-anchor="middle" font-family="Consolas, monospace">1000</text>
+    <text x="502" y="285" font-size="13" fill="#64748b">0x03E8 = (3 x 256) + 232 = 1000</text>
+  </g>
+
+  <!-- Tiny-value note -->
+  <g>
+    <rect x="844" y="160" width="296" height="150" rx="10" fill="#eff6ff" stroke="#bfdbfe" stroke-width="2"/>
+    <text x="864" y="188" font-size="15" font-weight="700" fill="#1667c4">Additional info convention</text>
+    <text x="864" y="214" font-size="13.5" fill="#334155">0 to 23  value stored directly</text>
+    <text x="864" y="236" font-size="13.5" fill="#334155">24  one more byte follows</text>
+    <text x="864" y="258" font-size="13.5" fill="#334155">25  two bytes follow</text>
+    <text x="864" y="280" font-size="13.5" fill="#334155">26  four bytes    27  eight bytes</text>
+    <text x="864" y="302" font-size="12" fill="#64748b">Tiny ints cost a single byte; up to exact 64-bit.</text>
+  </g>
+
+  <!-- Major type table -->
+  <text x="60" y="366" font-size="18" font-weight="600" fill="#334155">The 8 major types (top 3 bits)</text>
+
+  <g font-size="14.5">
+    <!-- row helper: 4 columns x 2 rows -->
+    <!-- MT0 -->
+    <rect x="60" y="382" width="270" height="66" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+    <circle cx="88" cy="415" r="16" fill="#1d87f1"/><text x="88" y="420" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle">0</text>
+    <text x="116" y="410" font-weight="600" fill="#0f172a">Unsigned integer</text>
+    <text x="116" y="432" fill="#64748b" font-family="Consolas, monospace">1000</text>
+
+    <!-- MT1 -->
+    <rect x="345" y="382" width="270" height="66" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+    <circle cx="373" cy="415" r="16" fill="#1d87f1"/><text x="373" y="420" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle">1</text>
+    <text x="401" y="410" font-weight="600" fill="#0f172a">Negative integer</text>
+    <text x="401" y="432" fill="#64748b" font-family="Consolas, monospace">-500</text>
+
+    <!-- MT2 -->
+    <rect x="630" y="382" width="270" height="66" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+    <circle cx="658" cy="415" r="16" fill="#7c3aed"/><text x="658" y="420" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle">2</text>
+    <text x="686" y="410" font-weight="600" fill="#0f172a">Byte string</text>
+    <text x="686" y="432" fill="#64748b" font-family="Consolas, monospace">h'01020304'</text>
+
+    <!-- MT3 -->
+    <rect x="915" y="382" width="225" height="66" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+    <circle cx="943" cy="415" r="16" fill="#7c3aed"/><text x="943" y="420" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle">3</text>
+    <text x="971" y="410" font-weight="600" fill="#0f172a">Text string</text>
+    <text x="971" y="432" fill="#64748b" font-family="Consolas, monospace">"name"</text>
+
+    <!-- MT4 -->
+    <rect x="60" y="458" width="270" height="66" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+    <circle cx="88" cy="491" r="16" fill="#16a34a"/><text x="88" y="496" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle">4</text>
+    <text x="116" y="486" font-weight="600" fill="#0f172a">Array</text>
+    <text x="116" y="508" fill="#64748b" font-family="Consolas, monospace">[1, 2, 3]</text>
+
+    <!-- MT5 -->
+    <rect x="345" y="458" width="270" height="66" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+    <circle cx="373" cy="491" r="16" fill="#16a34a"/><text x="373" y="496" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle">5</text>
+    <text x="401" y="486" font-weight="600" fill="#0f172a">Map (key/value)</text>
+    <text x="401" y="508" fill="#64748b" font-family="Consolas, monospace">{"a": 1}</text>
+
+    <!-- MT6 -->
+    <rect x="630" y="458" width="270" height="66" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+    <circle cx="658" cy="491" r="16" fill="#d97706"/><text x="658" y="496" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle">6</text>
+    <text x="686" y="486" font-weight="600" fill="#0f172a">Tag (semantic)</text>
+    <text x="686" y="508" fill="#64748b" font-family="Consolas, monospace">0("2013-03-21...")</text>
+
+    <!-- MT7 -->
+    <rect x="915" y="458" width="225" height="66" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+    <circle cx="943" cy="491" r="16" fill="#d97706"/><text x="943" y="496" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle">7</text>
+    <text x="971" y="486" font-weight="600" fill="#0f172a">Float / simple</text>
+    <text x="971" y="508" fill="#64748b" font-family="Consolas, monospace">1.5 true null</text>
+  </g>
+
+  <!-- Where you meet it strip -->
+  <rect x="60" y="548" width="1080" height="96" rx="12" fill="#0f172a"/>
+  <text x="84" y="582" font-size="16" font-weight="700" fill="#ffffff">Why you meet CBOR</text>
+  <text x="84" y="610" font-size="14" fill="#cbd5e1">Passkeys / WebAuthn attestation objects and COSE keys are CBOR maps.  IoT and constrained devices use it</text>
+  <text x="84" y="632" font-size="14" fill="#cbd5e1">because every byte on the wire counts.  Standardised as RFC 8949 — richer types than JSON, no compression step.</text>
+
+  <rect x="836" y="566" width="280" height="60" rx="8" fill="#16a34a"/>
+  <text x="976" y="592" font-size="14" fill="#dcfce7" text-anchor="middle">binary JSON, plus byte strings,</text>
+  <text x="976" y="612" font-size="14" fill="#dcfce7" text-anchor="middle">tags and exact 64-bit integers</text>
+
+  <text x="60" y="678" font-size="13" fill="#94a3b8">lazytools.io/dev/cbor-decoder/</text>
+</svg>

@@ -48,6 +48,11 @@ Here's how the format works, and how to read any ID with the
 
 </aside>
 
+<figure>
+<img src="/blog/infographic-what-is-a-snowflake-id-discord-twitter-guide.svg" alt="A 64-bit Snowflake ID split into a 1-bit sign, a 41-bit millisecond timestamp, 10 machine bits and a 12-bit sequence counter, with a worked example decoding a Discord ID by shifting right 22 bits and adding the epoch, plus a table of the Discord, Twitter and Instagram epochs." width="1200" height="700" loading="lazy" />
+<figcaption>How the 64 bits of a Snowflake ID break down, and how to recover the creation time by shifting right and adding the platform epoch.</figcaption>
+</figure>
+
 ## The problem Snowflakes solve
 
 When a service like Discord or Twitter creates billions of IDs across many servers, it needs each ID to

@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="1200" height="700" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <linearGradient id="accentBar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#1d87f1"/>
+      <stop offset="1" stop-color="#7c3aed"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="700" fill="#f8fafc"/>
+  <rect x="0" y="0" width="1200" height="6" fill="url(#accentBar)"/>
+
+  <text x="40" y="52" font-size="30" font-weight="700" fill="#0f172a">How an RFC 7638 JWK Thumbprint Is Built</text>
+  <text x="40" y="82" font-size="16" fill="#64748b">Reduce the key to its required members, canonicalise exactly, then hash with SHA-256</text>
+
+  <!-- Step 1: full JWK -->
+  <g>
+    <rect x="40" y="110" width="330" height="250" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+    <rect x="40" y="110" width="330" height="34" rx="10" fill="#eff6ff"/>
+    <rect x="40" y="128" width="330" height="16" fill="#eff6ff"/>
+    <text x="58" y="133" font-size="15" font-weight="700" fill="#1d87f1">1. Full JWK (with metadata)</text>
+    <text x="58" y="172" font-size="14" font-family="Consolas, monospace" fill="#334155">{</text>
+    <text x="74" y="192" font-size="14" font-family="Consolas, monospace" fill="#16a34a">"kty": "EC",</text>
+    <text x="74" y="212" font-size="14" font-family="Consolas, monospace" fill="#16a34a">"crv": "P-256",</text>
+    <text x="74" y="232" font-size="14" font-family="Consolas, monospace" fill="#16a34a">"x": "f83OJ3D2...VEU",</text>
+    <text x="74" y="252" font-size="14" font-family="Consolas, monospace" fill="#16a34a">"y": "x_FEzRu9...5a0",</text>
+    <text x="74" y="278" font-size="14" font-family="Consolas, monospace" fill="#94a3b8" text-decoration="line-through">"use": "sig",</text>
+    <text x="74" y="298" font-size="14" font-family="Consolas, monospace" fill="#94a3b8" text-decoration="line-through">"kid": "an-old-name",</text>
+    <text x="74" y="318" font-size="14" font-family="Consolas, monospace" fill="#94a3b8" text-decoration="line-through">"alg": "ES256"</text>
+    <text x="58" y="338" font-size="14" font-family="Consolas, monospace" fill="#334155">}</text>
+  </g>
+
+  <text x="205" y="386" font-size="13" fill="#d97706" font-weight="600" text-anchor="middle">Drop use, kid, alg,</text>
+  <text x="205" y="404" font-size="13" fill="#d97706" font-weight="600" text-anchor="middle">and any private members</text>
+
+  <!-- arrow 1 -->
+  <line x1="370" y1="235" x2="425" y2="235" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- Step 2/3: canonical string -->
+  <g>
+    <rect x="435" y="110" width="480" height="250" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+    <rect x="435" y="110" width="480" height="34" rx="10" fill="#f5f3ff"/>
+    <rect x="435" y="128" width="480" height="16" fill="#f5f3ff"/>
+    <text x="453" y="133" font-size="15" font-weight="700" fill="#7c3aed">2. Keep required members, sort, compact JSON</text>
+
+    <text x="453" y="176" font-size="14" fill="#334155">Required for EC: sorted lexicographically</text>
+    <g font-size="15" font-family="Consolas, monospace" font-weight="700">
+      <rect x="453" y="188" width="46" height="26" rx="5" fill="#eef2ff"/>
+      <text x="476" y="206" fill="#4338ca" text-anchor="middle">crv</text>
+      <rect x="509" y="188" width="46" height="26" rx="5" fill="#eef2ff"/>
+      <text x="532" y="206" fill="#4338ca" text-anchor="middle">kty</text>
+      <rect x="565" y="188" width="34" height="26" rx="5" fill="#eef2ff"/>
+      <text x="582" y="206" fill="#4338ca" text-anchor="middle">x</text>
+      <rect x="609" y="188" width="34" height="26" rx="5" fill="#eef2ff"/>
+      <text x="626" y="206" fill="#4338ca" text-anchor="middle">y</text>
+    </g>
+
+    <text x="453" y="252" font-size="14" fill="#334155">Canonical string hashed (no whitespace):</text>
+    <rect x="453" y="264" width="444" height="80" rx="6" fill="#0f172a"/>
+    <text x="467" y="286" font-size="12.5" font-family="Consolas, monospace" fill="#e2e8f0">{"crv":"P-256","kty":"EC",</text>
+    <text x="467" y="306" font-size="12.5" font-family="Consolas, monospace" fill="#e2e8f0">"x":"f83OJ3D2...VEU",</text>
+    <text x="467" y="326" font-size="12.5" font-family="Consolas, monospace" fill="#e2e8f0">"y":"x_FEzRu9...5a0"}</text>
+  </g>
+
+  <!-- arrow 2 down -->
+  <line x1="675" y1="360" x2="675" y2="408" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- Step 4/5: hash + encode -->
+  <g>
+    <rect x="435" y="418" width="480" height="150" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+    <rect x="435" y="418" width="480" height="34" rx="10" fill="#ecfdf5"/>
+    <rect x="435" y="436" width="480" height="16" fill="#ecfdf5"/>
+    <text x="453" y="441" font-size="15" font-weight="700" fill="#16a34a">3. SHA-256, then base64url (no padding)</text>
+
+    <rect x="453" y="466" width="180" height="40" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/>
+    <text x="543" y="491" font-size="15" font-weight="700" fill="#0f172a" text-anchor="middle">SHA-256</text>
+    <line x1="633" y1="486" x2="672" y2="486" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow)"/>
+    <rect x="682" y="466" width="215" height="40" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/>
+    <text x="789" y="491" font-size="15" font-weight="700" fill="#0f172a" text-anchor="middle">base64url encode</text>
+
+    <text x="453" y="536" font-size="13" fill="#64748b">256-bit digest becomes a fixed</text>
+    <text x="453" y="554" font-size="13" fill="#64748b">43-character base64url string</text>
+  </g>
+
+  <!-- Result thumbprint -->
+  <g>
+    <rect x="40" y="418" width="375" height="150" rx="10" fill="#0f172a"/>
+    <text x="60" y="452" font-size="15" font-weight="700" fill="#93c5fd">Thumbprint (the kid)</text>
+    <text x="60" y="486" font-size="14.5" font-family="Consolas, monospace" fill="#ffffff">NzbLsXh8uDCc...</text>
+    <text x="60" y="506" font-size="14.5" font-family="Consolas, monospace" fill="#ffffff">43 base64url chars</text>
+    <line x1="60" y1="520" x2="395" y2="520" stroke="#334155" stroke-width="1"/>
+    <text x="60" y="542" font-size="12" fill="#94a3b8">RFC 9278 URI:</text>
+    <text x="60" y="558" font-size="11.5" font-family="Consolas, monospace" fill="#cbd5e1">urn:ietf:...jwk-thumbprint:sha-256:...</text>
+  </g>
+  <line x1="435" y1="493" x2="418" y2="493" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- Required members reference table -->
+  <g>
+    <rect x="945" y="110" width="215" height="458" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+    <rect x="945" y="110" width="215" height="34" rx="10" fill="#fef3c7"/>
+    <rect x="945" y="128" width="215" height="16" fill="#fef3c7"/>
+    <text x="963" y="133" font-size="15" font-weight="700" fill="#d97706">Required members by kty</text>
+
+    <g font-size="13.5">
+      <text x="963" y="178" font-weight="700" fill="#0f172a">RSA</text>
+      <text x="963" y="198" font-family="Consolas, monospace" fill="#334155">e, kty, n</text>
+
+      <line x1="963" y1="216" x2="1142" y2="216" stroke="#f1f5f9" stroke-width="1"/>
+      <text x="963" y="242" font-weight="700" fill="#0f172a">EC</text>
+      <text x="963" y="262" font-family="Consolas, monospace" fill="#334155">crv, kty, x, y</text>
+
+      <line x1="963" y1="280" x2="1142" y2="280" stroke="#f1f5f9" stroke-width="1"/>
+      <text x="963" y="306" font-weight="700" fill="#0f172a">OKP</text>
+      <text x="963" y="326" font-family="Consolas, monospace" fill="#334155">crv, kty, x</text>
+
+      <line x1="963" y1="344" x2="1142" y2="344" stroke="#f1f5f9" stroke-width="1"/>
+      <text x="963" y="370" font-weight="700" fill="#0f172a">oct</text>
+      <text x="963" y="390" font-family="Consolas, monospace" fill="#334155">k, kty</text>
+    </g>
+
+    <rect x="963" y="416" width="179" height="138" rx="8" fill="#fffbeb" stroke="#fde68a"/>
+    <text x="977" y="440" font-size="13" font-weight="700" fill="#92400e">Why it is exact</text>
+    <text x="977" y="463" font-size="12" fill="#78350f">Add a field, reorder,</text>
+    <text x="977" y="480" font-size="12" fill="#78350f">or add a space and the</text>
+    <text x="977" y="497" font-size="12" fill="#78350f">hash changes. Fixing the</text>
+    <text x="977" y="514" font-size="12" fill="#78350f">members, order and</text>
+    <text x="977" y="531" font-size="12" fill="#78350f">formatting gives every</text>
+    <text x="977" y="548" font-size="12" fill="#78350f">key one thumbprint.</text>
+  </g>
+
+  <text x="40" y="602" font-size="13" fill="#334155">Only public members are hashed, so the public and private halves of a key pair share one thumbprint.</text>
+
+  <text x="600" y="678" font-size="14" fill="#64748b" text-anchor="middle">lazytools.io/dev/jwk-thumbprint/</text>
+</svg>

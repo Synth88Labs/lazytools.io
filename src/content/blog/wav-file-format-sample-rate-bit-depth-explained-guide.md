@@ -48,6 +48,11 @@ the breakdown, plus how to read any file's header with the
 
 </aside>
 
+<figure>
+<img src="/blog/infographic-wav-file-format-sample-rate-bit-depth-explained-guide.svg" alt="A WAV file's RIFF chunk layout shown down the left with the fmt chunk holding sample rate 44,100 Hz, 16-bit depth, 2 channels and a byte rate of 176,400 bytes per second, the data chunk holding raw samples, and an optional LIST INFO tag chunk. The right side shows a waveform sampled as dots to illustrate sample rate, a bit-depth comparison of 16-bit versus 24-bit dynamic range, and the byte-rate formula equals sample rate times channels times bit depth divided by eight. A note explains AIFF stores the same facts big-endian with an 80-bit float sample rate." width="1200" height="700" loading="lazy" />
+<figcaption>How a WAV file's RIFF chunks store sample rate and bit depth, and how those specs set the byte rate and duration.</figcaption>
+</figure>
+
 ## Sample rate: how often the sound is measured
 
 Digitising sound means measuring the waveform's height many times per second. Each measurement is a

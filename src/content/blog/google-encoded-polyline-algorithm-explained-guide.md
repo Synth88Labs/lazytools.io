@@ -48,6 +48,11 @@ trip people up, and how to decode one privately with the
 
 </aside>
 
+<figure>
+<img src="/blog/infographic-google-encoded-polyline-algorithm-explained-guide.svg" alt="A five-step pipeline showing how latitude 38.5 becomes the string underscore p tilde i F: scale by ten to the fifth to get 3,850,000, take the delta from the previous point, zig-zag the sign to 7,700,000, split into five-bit base-32 chunks, then add continuation bits and 63 to make printable ASCII. A bar at the bottom shows three points encoding to a single compact polyline string, stored latitude then longitude at precision 5." width="1200" height="700" loading="lazy" />
+<figcaption>The encoding pipeline: each coordinate is scaled, delta-compressed, zig-zag encoded, chunked into base 32, and shifted into printable ASCII.</figcaption>
+</figure>
+
 ## The problem: coordinates are verbose
 
 A route can have hundreds of points, each a latitude and longitude carried to several decimal places. Sent

@@ -48,6 +48,11 @@ yourself with the [IEEE 754 Converter](/dev/ieee-754-converter/).
 
 </aside>
 
+<figure>
+<img src="/blog/infographic-why-01-plus-02-isnt-03-ieee-754-explained-guide.svg" alt="Diagram of a 64-bit IEEE 754 double split into a 1-bit sign, an 11-bit biased exponent and a 52-bit mantissa, with the value formula. It shows that 0.1 stores as slightly more than 0.1 and 0.2 stores as slightly more than 0.2, so adding them lands on the next double up and prints as 0.30000000000000004." width="1200" height="700" loading="lazy" />
+<figcaption>How a double stores 0.1 and 0.2 as slightly-too-large values, so their sum rounds to 0.30000000000000004.</figcaption>
+</figure>
+
 ## Computers store numbers in binary fractions
 
 We write `0.1` in decimal, but a computer stores it in **binary**. Some decimal fractions convert cleanly

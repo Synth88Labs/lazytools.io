@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="1200" height="700" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <linearGradient id="hashGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7c3aed"/>
+      <stop offset="1" stop-color="#5b21b6"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="700" fill="#f8fafc"/>
+
+  <!-- Title -->
+  <text x="600" y="46" text-anchor="middle" font-size="30" font-weight="700" fill="#0f172a">What is inside a .torrent file?</text>
+  <text x="600" y="74" text-anchor="middle" font-size="16" fill="#64748b">Metadata only, encoded in bencode. The info dictionary is hashed into the info-hash.</text>
+
+  <!-- ========== LEFT: bencode types ========== -->
+  <rect x="40" y="100" width="290" height="560" rx="14" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+  <text x="60" y="132" font-size="19" font-weight="700" fill="#1d87f1">Bencode: 4 types</text>
+  <text x="60" y="156" font-size="13" fill="#64748b">One value, exactly one encoding.</text>
+
+  <!-- Integer -->
+  <rect x="60" y="172" width="250" height="64" rx="9" fill="#eff6ff" stroke="#bfdbfe"/>
+  <text x="74" y="196" font-size="14" font-weight="700" fill="#334155">Integer</text>
+  <text x="74" y="222" font-size="17" font-family="Consolas, monospace" fill="#1d4ed8">i42e</text>
+  <text x="200" y="222" font-size="14" fill="#64748b">to  42</text>
+
+  <!-- Byte string -->
+  <rect x="60" y="248" width="250" height="64" rx="9" fill="#f0fdf4" stroke="#bbf7d0"/>
+  <text x="74" y="272" font-size="14" font-weight="700" fill="#334155">Byte string</text>
+  <text x="74" y="298" font-size="17" font-family="Consolas, monospace" fill="#16a34a">4:spam</text>
+  <text x="200" y="298" font-size="14" fill="#64748b">to  "spam"</text>
+
+  <!-- List -->
+  <rect x="60" y="324" width="250" height="64" rx="9" fill="#fefce8" stroke="#fde68a"/>
+  <text x="74" y="348" font-size="14" font-weight="700" fill="#334155">List</text>
+  <text x="74" y="374" font-size="16" font-family="Consolas, monospace" fill="#d97706">l4:spami42ee</text>
+
+  <!-- Dictionary -->
+  <rect x="60" y="400" width="250" height="72" rx="9" fill="#faf5ff" stroke="#e9d5ff"/>
+  <text x="74" y="424" font-size="14" font-weight="700" fill="#334155">Dictionary (sorted keys)</text>
+  <text x="74" y="450" font-size="16" font-family="Consolas, monospace" fill="#7c3aed">d3:cow3:mooe</text>
+
+  <!-- rules note -->
+  <rect x="60" y="490" width="250" height="150" rx="9" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="74" y="516" font-size="14" font-weight="700" fill="#334155">Two strict rules</text>
+  <text x="74" y="542" font-size="13" fill="#475569">1. Exactly one valid encoding</text>
+  <text x="74" y="562" font-size="13" fill="#475569">    per value (no whitespace,</text>
+  <text x="74" y="582" font-size="13" fill="#475569">    no leading zeros).</text>
+  <text x="74" y="608" font-size="13" fill="#475569">2. Dictionary keys in sorted</text>
+  <text x="74" y="628" font-size="13" fill="#475569">    (lexicographic) order.</text>
+
+  <!-- ========== MIDDLE: torrent structure ========== -->
+  <rect x="360" y="100" width="380" height="560" rx="14" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+  <text x="380" y="132" font-size="19" font-weight="700" fill="#0f172a">demo.torrent  (a few KB)</text>
+  <text x="380" y="154" font-size="13" fill="#64748b">One big dictionary of metadata</text>
+
+  <!-- top-level keys -->
+  <rect x="380" y="170" width="340" height="34" rx="7" fill="#f1f5f9" stroke="#e2e8f0"/>
+  <text x="394" y="192" font-size="14" font-family="Consolas, monospace" fill="#334155">announce  to  tracker URL</text>
+
+  <rect x="380" y="210" width="340" height="34" rx="7" fill="#f1f5f9" stroke="#e2e8f0"/>
+  <text x="394" y="232" font-size="14" font-family="Consolas, monospace" fill="#334155">announce-list, created by...</text>
+
+  <!-- info dict highlighted -->
+  <rect x="378" y="256" width="344" height="330" rx="10" fill="#faf5ff" stroke="#7c3aed" stroke-width="2.5"/>
+  <text x="396" y="282" font-size="16" font-weight="700" fill="#7c3aed" font-family="Consolas, monospace">info  (the hashed dictionary)</text>
+
+  <rect x="396" y="296" width="308" height="30" rx="6" fill="#ffffff" stroke="#e9d5ff"/>
+  <text x="410" y="316" font-size="13.5" font-family="Consolas, monospace" fill="#334155">name         demo.iso</text>
+
+  <rect x="396" y="332" width="308" height="30" rx="6" fill="#ffffff" stroke="#e9d5ff"/>
+  <text x="410" y="352" font-size="13.5" font-family="Consolas, monospace" fill="#334155">piece length  262144  (256 KB)</text>
+
+  <rect x="396" y="368" width="308" height="30" rx="6" fill="#ffffff" stroke="#e9d5ff"/>
+  <text x="410" y="388" font-size="13.5" font-family="Consolas, monospace" fill="#334155">length        21474836480</text>
+
+  <rect x="396" y="404" width="308" height="64" rx="6" fill="#ffffff" stroke="#e9d5ff"/>
+  <text x="410" y="424" font-size="13.5" font-family="Consolas, monospace" fill="#334155">pieces</text>
+  <text x="410" y="444" font-size="12.5" fill="#64748b">one 20-byte SHA-1 per piece,</text>
+  <text x="410" y="460" font-size="12.5" fill="#64748b">joined end to end</text>
+
+  <rect x="396" y="474" width="308" height="98" rx="6" fill="#ffffff" stroke="#e9d5ff"/>
+  <text x="410" y="494" font-size="13.5" font-family="Consolas, monospace" fill="#334155">files  (multi-file only)</text>
+  <text x="410" y="516" font-size="12.5" fill="#64748b">each: length + path array,</text>
+  <text x="410" y="534" font-size="12.5" fill="#64748b">e.g. ["disc1","track01.flac"]</text>
+  <text x="410" y="558" font-size="12.5" fill="#64748b">Single-file torrents omit this.</text>
+
+  <text x="380" y="612" font-size="13" fill="#475569">No file content lives here — only the</text>
+  <text x="380" y="632" font-size="13" fill="#475569">description. The real bytes come from peers,</text>
+  <text x="380" y="652" font-size="13" fill="#475569">verified against the piece checksums.</text>
+
+  <!-- arrow from info to hash -->
+  <line x1="742" y1="420" x2="820" y2="420" stroke="#334155" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="748" y="410" font-size="12" fill="#64748b">SHA-1</text>
+
+  <!-- ========== RIGHT: hash + magnet ========== -->
+  <!-- SHA-1 block -->
+  <rect x="830" y="270" width="330" height="120" rx="14" fill="url(#hashGrad)"/>
+  <text x="995" y="304" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">info-hash</text>
+  <text x="995" y="328" text-anchor="middle" font-size="13" fill="#ddd6fe">SHA1( bencode(info) )</text>
+  <text x="995" y="356" text-anchor="middle" font-size="14" font-family="Consolas, monospace" fill="#ffffff">c12fe1...9a5b</text>
+  <text x="995" y="378" text-anchor="middle" font-size="12.5" fill="#ddd6fe">40 hex chars = 20 bytes</text>
+
+  <!-- one byte changes -->
+  <rect x="830" y="120" width="330" height="130" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+  <text x="850" y="148" font-size="16" font-weight="700" fill="#d97706">Byte-precise fingerprint</text>
+  <text x="850" y="176" font-size="13.5" font-family="Consolas, monospace" fill="#16a34a">8:demo.iso</text>
+  <text x="850" y="200" font-size="13.5" font-family="Consolas, monospace" fill="#dc2626">8:Demo.iso</text>
+  <text x="850" y="228" font-size="13" fill="#475569">One changed character to a</text>
+  <text x="850" y="246" font-size="13" fill="#475569">completely different info-hash.</text>
+
+  <!-- arrow hash to magnet -->
+  <line x1="995" y1="392" x2="995" y2="440" stroke="#334155" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- magnet link -->
+  <rect x="830" y="450" width="330" height="210" rx="14" fill="#ffffff" stroke="#16a34a" stroke-width="2.5"/>
+  <text x="850" y="480" font-size="16" font-weight="700" fill="#16a34a">Magnet link = the info-hash</text>
+  <rect x="848" y="494" width="294" height="70" rx="8" fill="#f0fdf4" stroke="#bbf7d0"/>
+  <text x="862" y="516" font-size="12.5" font-family="Consolas, monospace" fill="#166534">magnet:?xt=urn:btih:</text>
+  <text x="862" y="536" font-size="12.5" font-family="Consolas, monospace" fill="#7c3aed">  c12fe1...9a5b</text>
+  <text x="862" y="556" font-size="12.5" font-family="Consolas, monospace" fill="#166534">  and dn=name and tr=tracker</text>
+
+  <text x="850" y="588" font-size="13" fill="#475569">xt=urn:btih: is the info-hash.</text>
+  <text x="850" y="608" font-size="13" fill="#475569">dn= is the display name; tr= is a</text>
+  <text x="850" y="628" font-size="13" fill="#475569">tracker. Built from the .torrent</text>
+  <text x="850" y="648" font-size="13" fill="#475569">with no download and no tracker contact.</text>
+
+  <!-- footer -->
+  <text x="600" y="688" text-anchor="middle" font-size="14" fill="#94a3b8">lazytools.io/file/torrent-file-viewer/</text>
+</svg>

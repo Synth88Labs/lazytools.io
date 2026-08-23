@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="1200" height="700" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <linearGradient id="tsGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3b9bf5"/>
+      <stop offset="1" stop-color="#1d87f1"/>
+    </linearGradient>
+    <linearGradient id="mcGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8b5cf6"/>
+      <stop offset="1" stop-color="#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="sqGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#22b34e"/>
+      <stop offset="1" stop-color="#16a34a"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="700" fill="#f8fafc"/>
+
+  <text x="600" y="52" text-anchor="middle" font-size="30" font-weight="700" fill="#0f172a">Anatomy of a 64-bit Snowflake ID</text>
+  <text x="600" y="82" text-anchor="middle" font-size="16" fill="#64748b">How Discord and Twitter/X pack a creation time into every ID</text>
+
+  <!-- The raw ID -->
+  <text x="70" y="122" font-size="15" fill="#334155">Example Discord ID:</text>
+  <text x="235" y="122" font-size="17" font-weight="700" fill="#0f172a" font-family="Consolas, monospace">175928847299117063</text>
+
+  <!-- Bit layout bar -->
+  <!-- total width 1060, x from 70 to 1130. Widths proportional to bits (1,41,10,12 = 64) -->
+  <!-- 1 bit -> tiny, 41 -> big, 10, 12. Use scale ~15.6px/bit -->
+  <!-- sign: 70..86 (16), ts: 86..726 (640), machine: 726..882 (156), seq: 882..1070 (188) -->
+  <g>
+    <rect x="70" y="150" width="16" height="90" rx="3" fill="#94a3b8"/>
+    <rect x="88" y="150" width="638" height="90" rx="4" fill="url(#tsGrad)"/>
+    <rect x="728" y="150" width="154" height="90" rx="4" fill="url(#mcGrad)"/>
+    <rect x="884" y="150" width="186" height="90" rx="4" fill="url(#sqGrad)"/>
+
+    <text x="78" y="200" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">0</text>
+
+    <text x="407" y="188" text-anchor="middle" font-size="19" font-weight="700" fill="#ffffff">41-bit Timestamp</text>
+    <text x="407" y="212" text-anchor="middle" font-size="13" fill="#eaf3fe">milliseconds since the platform epoch</text>
+
+    <text x="805" y="190" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">10-bit</text>
+    <text x="805" y="210" text-anchor="middle" font-size="13" fill="#efe9fd">Machine</text>
+
+    <text x="977" y="190" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">12-bit</text>
+    <text x="977" y="210" text-anchor="middle" font-size="13" fill="#e6f6ec">Sequence</text>
+  </g>
+
+  <!-- bit counts under bar -->
+  <text x="78" y="262" text-anchor="middle" font-size="12" fill="#64748b">1 bit</text>
+  <text x="407" y="262" text-anchor="middle" font-size="12" fill="#64748b">bits 63 to 22 (high bits)</text>
+  <text x="805" y="262" text-anchor="middle" font-size="12" fill="#64748b">worker + process</text>
+  <text x="977" y="262" text-anchor="middle" font-size="12" fill="#64748b">counter 0 to 4095</text>
+
+  <text x="78" y="292" text-anchor="middle" font-size="11" fill="#94a3b8">sign = 0</text>
+
+  <!-- Descriptions row -->
+  <g font-size="13" fill="#334155">
+    <circle cx="90" cy="322" r="5" fill="#94a3b8"/>
+    <text x="104" y="327">Always zero, so the ID stays a positive signed integer</text>
+    <circle cx="90" cy="348" r="5" fill="#1d87f1"/>
+    <text x="104" y="353">Top 41 bits hold the creation time (about 69 years of range)</text>
+    <circle cx="640" cy="322" r="5" fill="#7c3aed"/>
+    <text x="654" y="327">Which generator made it (Discord: 5-bit worker + 5-bit process)</text>
+    <circle cx="640" cy="348" r="5" fill="#16a34a"/>
+    <text x="654" y="353">Per-millisecond counter that prevents collisions</text>
+  </g>
+
+  <!-- Decode formula box -->
+  <rect x="70" y="382" width="520" height="238" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="90" y="414" font-size="18" font-weight="700" fill="#0f172a">Decoding the timestamp</text>
+
+  <text x="90" y="448" font-size="14" fill="#334155">1. Shift the ID right by 22 bits (divide by 2 to the 22):</text>
+  <text x="112" y="472" font-size="15" font-weight="700" fill="#1d87f1" font-family="Consolas, monospace">175928847299117063  to  41944705796</text>
+
+  <text x="90" y="504" font-size="14" fill="#334155">2. Add the Discord epoch (1420070400000 ms):</text>
+  <text x="112" y="528" font-size="15" font-weight="700" fill="#7c3aed" font-family="Consolas, monospace">41944705796 + 1420070400000</text>
+
+  <text x="90" y="560" font-size="14" fill="#334155">3. Read the Unix millisecond time:</text>
+  <text x="112" y="586" font-size="16" font-weight="700" fill="#16a34a" font-family="Consolas, monospace">2016-04-30T11:18:25.796Z</text>
+
+  <line x1="90" y1="600" x2="570" y2="600" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="90" y="614" font-size="12" fill="#64748b" font-family="Consolas, monospace">time = (ID / 2^22) + epoch</text>
+
+  <!-- Epoch table box -->
+  <rect x="610" y="382" width="520" height="238" rx="10" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="630" y="414" font-size="18" font-weight="700" fill="#0f172a">Each platform counts from its own epoch</text>
+  <text x="630" y="438" font-size="13" fill="#64748b">Pick the wrong service and the date can be off by years.</text>
+
+  <!-- table header -->
+  <text x="630" y="472" font-size="13" font-weight="700" fill="#334155">Service</text>
+  <text x="850" y="472" font-size="13" font-weight="700" fill="#334155">Epoch (UTC)</text>
+  <text x="1010" y="472" font-size="13" font-weight="700" fill="#334155">Epoch in ms</text>
+  <line x1="630" y1="480" x2="1110" y2="480" stroke="#e2e8f0" stroke-width="1"/>
+
+  <g font-size="14">
+    <circle cx="638" cy="502" r="5" fill="#1d87f1"/>
+    <text x="654" y="507" fill="#0f172a" font-weight="600">Discord</text>
+    <text x="850" y="507" fill="#334155">2015-01-01</text>
+    <text x="1010" y="507" fill="#334155" font-family="Consolas, monospace" font-size="13">1420070400000</text>
+
+    <circle cx="638" cy="536" r="5" fill="#0f172a"/>
+    <text x="654" y="541" fill="#0f172a" font-weight="600">Twitter / X</text>
+    <text x="850" y="541" fill="#334155">2010-11-04</text>
+    <text x="1010" y="541" fill="#334155" font-family="Consolas, monospace" font-size="13">1288834974657</text>
+
+    <circle cx="638" cy="570" r="5" fill="#d97706"/>
+    <text x="654" y="575" fill="#0f172a" font-weight="600">Instagram</text>
+    <text x="850" y="575" fill="#334155">2011-08-24</text>
+    <text x="1010" y="575" fill="#334155" font-family="Consolas, monospace" font-size="13">1314220021721</text>
+  </g>
+  <line x1="630" y1="590" x2="1110" y2="590" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="630" y="609" font-size="12" fill="#64748b">Timestamp is not counted from 1970, so the epoch must be added back.</text>
+
+  <text x="600" y="656" text-anchor="middle" font-size="13" fill="#94a3b8">Numeric order equals chronological order — IDs sort by time with no separate date column.</text>
+  <text x="600" y="684" text-anchor="middle" font-size="14" font-weight="600" fill="#64748b">lazytools.io/dev/snowflake-id-decoder/</text>
+</svg>

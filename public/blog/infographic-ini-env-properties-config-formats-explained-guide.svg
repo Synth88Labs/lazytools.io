@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="1200" height="700" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <linearGradient id="jsonGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#eef6ff"/>
+      <stop offset="1" stop-color="#dbeafe"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="700" fill="#f8fafc"/>
+
+  <text x="600" y="46" text-anchor="middle" font-size="30" font-weight="700" fill="#0f172a">Three config formats, one JSON object</text>
+  <text x="600" y="76" text-anchor="middle" font-size="16" fill="#64748b">INI, .env and Java .properties all store key = value text — but the parsing rules differ</text>
+
+  <!-- INI card -->
+  <g>
+    <rect x="40" y="110" width="330" height="250" rx="12" fill="#ffffff" stroke="#1d87f1" stroke-width="2"/>
+    <rect x="40" y="110" width="330" height="40" rx="12" fill="#1d87f1"/>
+    <rect x="40" y="132" width="330" height="18" fill="#1d87f1"/>
+    <text x="60" y="137" font-size="19" font-weight="700" fill="#ffffff">INI</text>
+    <text x="352" y="136" text-anchor="end" font-size="13" fill="#e0f0ff">[section] groups</text>
+
+    <rect x="58" y="166" width="294" height="118" rx="6" fill="#0f172a"/>
+    <text x="72" y="190" font-size="14" fill="#e2e8f0" font-family="Consolas, monospace">title = LazyTools</text>
+    <text x="72" y="212" font-size="14" fill="#7dd3fc" font-family="Consolas, monospace">[server]</text>
+    <text x="72" y="234" font-size="14" fill="#e2e8f0" font-family="Consolas, monospace">host = localhost</text>
+    <text x="72" y="256" font-size="14" fill="#e2e8f0" font-family="Consolas, monospace">port = 8080</text>
+
+    <text x="60" y="308" font-size="13" fill="#334155">Separator: <tspan font-weight="700">=</tspan>   Comments: <tspan font-weight="700">; or #</tspan></text>
+    <text x="60" y="330" font-size="13" fill="#334155">One level deep, no single standard spec</text>
+    <text x="60" y="350" font-size="12.5" fill="#64748b">Used by: php.ini, desktop.ini, Python/PHP</text>
+  </g>
+
+  <!-- .env card -->
+  <g>
+    <rect x="435" y="110" width="330" height="250" rx="12" fill="#ffffff" stroke="#16a34a" stroke-width="2"/>
+    <rect x="435" y="110" width="330" height="40" rx="12" fill="#16a34a"/>
+    <rect x="435" y="132" width="330" height="18" fill="#16a34a"/>
+    <text x="455" y="137" font-size="19" font-weight="700" fill="#ffffff">.env (dotenv)</text>
+    <text x="747" y="136" text-anchor="end" font-size="13" fill="#dcfce7">flat list</text>
+
+    <rect x="453" y="166" width="294" height="118" rx="6" fill="#0f172a"/>
+    <text x="467" y="190" font-size="14" fill="#e2e8f0" font-family="Consolas, monospace">export DB_HOST=localhost</text>
+    <text x="467" y="212" font-size="14" fill="#e2e8f0" font-family="Consolas, monospace">GREETING="hello world"</text>
+    <text x="467" y="234" font-size="14" fill="#e2e8f0" font-family="Consolas, monospace">LITERAL='no $expansion'</text>
+    <text x="467" y="256" font-size="14" fill="#86efac" font-family="Consolas, monospace"># a comment</text>
+
+    <text x="455" y="308" font-size="13" fill="#334155">Separator: <tspan font-weight="700">=</tspan>   Comments: <tspan font-weight="700">#</tspan></text>
+    <text x="455" y="330" font-size="13" fill="#334155">"..." expands escapes, '...' is literal</text>
+    <text x="455" y="350" font-size="12.5" fill="#64748b">Used by: Docker, Node, Python, 12-factor</text>
+  </g>
+
+  <!-- .properties card -->
+  <g>
+    <rect x="830" y="110" width="330" height="250" rx="12" fill="#ffffff" stroke="#d97706" stroke-width="2"/>
+    <rect x="830" y="110" width="330" height="40" rx="12" fill="#d97706"/>
+    <rect x="830" y="132" width="330" height="18" fill="#d97706"/>
+    <text x="850" y="137" font-size="19" font-weight="700" fill="#ffffff">Java .properties</text>
+    <text x="1142" y="136" text-anchor="end" font-size="13" fill="#fef3c7">the fiddly one</text>
+
+    <rect x="848" y="166" width="294" height="118" rx="6" fill="#0f172a"/>
+    <text x="862" y="190" font-size="14" fill="#e2e8f0" font-family="Consolas, monospace">server.host = localhost</text>
+    <text x="862" y="212" font-size="14" fill="#e2e8f0" font-family="Consolas, monospace">server.port : 8080</text>
+    <text x="862" y="234" font-size="14" fill="#e2e8f0" font-family="Consolas, monospace">greeting = Hello, \</text>
+    <text x="862" y="256" font-size="14" fill="#fcd34d" font-family="Consolas, monospace">           World</text>
+
+    <text x="850" y="308" font-size="13" fill="#334155">Separator: <tspan font-weight="700">= : or space</tspan>   Comments: <tspan font-weight="700"># !</tspan></text>
+    <text x="850" y="330" font-size="13" fill="#334155">Trailing \ continues; \uXXXX escapes</text>
+    <text x="850" y="350" font-size="12.5" fill="#64748b">Used by: Spring Boot, Java, i18n bundles</text>
+  </g>
+
+  <!-- arrows converging -->
+  <path d="M205 362 L205 400 Q205 430 470 430 L585 430" fill="none" stroke="#64748b" stroke-width="2.5"/>
+  <line x1="600" y1="362" x2="600" y2="452" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <path d="M995 362 L995 400 Q995 430 730 430 L615 430" fill="none" stroke="#64748b" stroke-width="2.5"/>
+
+  <text x="600" y="416" text-anchor="middle" font-size="14" font-weight="600" fill="#7c3aed">a faithful converter reads each format's rules</text>
+
+  <!-- JSON output -->
+  <g>
+    <rect x="300" y="470" width="600" height="150" rx="12" fill="url(#jsonGrad)" stroke="#7c3aed" stroke-width="2"/>
+    <text x="600" y="500" text-anchor="middle" font-size="17" font-weight="700" fill="#4c1d95">Equivalent JSON — every value stays a string</text>
+    <rect x="330" y="516" width="540" height="82" rx="6" fill="#0f172a"/>
+    <text x="352" y="542" font-size="14.5" fill="#e2e8f0" font-family="Consolas, monospace">{ "host": "localhost", "port": "8080",</text>
+    <text x="352" y="566" font-size="14.5" fill="#e2e8f0" font-family="Consolas, monospace">  "debug": "true",</text>
+    <text x="352" y="590" font-size="14.5" fill="#e2e8f0" font-family="Consolas, monospace">  "greeting": "hello world" }</text>
+  </g>
+
+  <text x="600" y="648" text-anchor="middle" font-size="13" fill="#334155"><tspan font-weight="700">"8080"</tspan> and <tspan font-weight="700">"true"</tspan> stay strings, and dotted keys stay flat — so the round-trip is lossless. Cast types in your own code.</text>
+  <text x="600" y="678" text-anchor="middle" font-size="13" fill="#64748b">lazytools.io/file/ini-to-json/  ·  100% in-browser, nothing uploaded</text>
+</svg>

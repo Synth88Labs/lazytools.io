@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="1200" height="700" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <linearGradient id="wheelG" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1d87f1"/>
+      <stop offset="1" stop-color="#7c3aed"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#334155"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="700" fill="#f8fafc"/>
+
+  <text x="600" y="52" text-anchor="middle" font-size="30" font-weight="700" fill="#0f172a">Picking a Fair Random Winner</text>
+  <text x="600" y="84" text-anchor="middle" font-size="17" fill="#64748b">A fair draw is uniform: with N entries, each has exactly a 1/N chance</text>
+
+  <!-- Left: uniform wheel -->
+  <g>
+    <circle cx="230" cy="330" r="140" fill="none" stroke="#e2e8f0" stroke-width="2"/>
+    <!-- 6 equal segments 1/6 each -->
+    <path d="M230,330 L230,190 A140,140 0 0,1 351.2,260 Z" fill="#1d87f1"/>
+    <path d="M230,330 L351.2,260 A140,140 0 0,1 351.2,400 Z" fill="#16a34a"/>
+    <path d="M230,330 L351.2,400 A140,140 0 0,1 230,470 Z" fill="#d97706"/>
+    <path d="M230,330 L230,470 A140,140 0 0,1 108.8,400 Z" fill="#7c3aed"/>
+    <path d="M230,330 L108.8,400 A140,140 0 0,1 108.8,260 Z" fill="#1d87f1"/>
+    <path d="M230,330 L108.8,260 A140,140 0 0,1 230,190 Z" fill="#16a34a"/>
+    <circle cx="230" cy="330" r="30" fill="#0f172a"/>
+    <!-- pointer -->
+    <polygon points="388,330 358,318 358,342" fill="#0f172a"/>
+    <text x="230" y="235" text-anchor="middle" font-size="15" fill="#ffffff" font-weight="600">Ava</text>
+    <text x="305" y="300" text-anchor="middle" font-size="15" fill="#ffffff" font-weight="600">Ben</text>
+    <text x="305" y="380" text-anchor="middle" font-size="15" fill="#ffffff" font-weight="600">Cy</text>
+    <text x="230" y="440" text-anchor="middle" font-size="15" fill="#ffffff" font-weight="600">Dee</text>
+    <text x="152" y="380" text-anchor="middle" font-size="15" fill="#ffffff" font-weight="600">Eli</text>
+    <text x="152" y="300" text-anchor="middle" font-size="15" fill="#ffffff" font-weight="600">Fay</text>
+    <text x="230" y="520" text-anchor="middle" font-size="16" fill="#334155" font-weight="600">Every slice is equal</text>
+    <text x="230" y="544" text-anchor="middle" font-size="15" fill="#64748b">6 names to 6 equal 1/6 = 16.7% odds</text>
+  </g>
+
+  <!-- Middle: human vs computer -->
+  <g>
+    <rect x="430" y="150" width="300" height="180" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+    <text x="580" y="182" text-anchor="middle" font-size="17" font-weight="700" fill="#d97706">Human "random"</text>
+    <text x="452" y="214" font-size="14" fill="#334155">Favours the top or bottom of a list</text>
+    <text x="452" y="240" font-size="14" fill="#334155">Drifts to familiar names</text>
+    <text x="452" y="266" font-size="14" fill="#334155">Loves a "lucky" number (often 7)</text>
+    <text x="452" y="300" font-size="15" fill="#64748b" font-style="italic">Biased, especially on the one draw</text>
+    <text x="452" y="320" font-size="15" fill="#64748b" font-style="italic">that decides the winner</text>
+
+    <rect x="430" y="350" width="300" height="180" rx="12" fill="#ffffff" stroke="#16a34a" stroke-width="2"/>
+    <text x="580" y="382" text-anchor="middle" font-size="17" font-weight="700" fill="#16a34a">Computer draw</text>
+    <text x="452" y="414" font-size="14" fill="#334155">Uses crypto.getRandomValues</text>
+    <text x="452" y="440" font-size="14" fill="#334155">Maps evenly onto the list</text>
+    <text x="452" y="466" font-size="14" fill="#334155">Avoids modulo bias</text>
+    <text x="452" y="500" font-size="15" fill="#64748b" font-style="italic">Same fair 1/N share, draw</text>
+    <text x="452" y="520" font-size="15" fill="#64748b" font-style="italic">after draw</text>
+  </g>
+
+  <!-- Right: with vs without replacement -->
+  <g>
+    <text x="960" y="182" text-anchor="middle" font-size="18" font-weight="700" fill="#0f172a">Two draw modes</text>
+
+    <!-- Without replacement -->
+    <rect x="790" y="200" width="340" height="150" rx="12" fill="#ffffff" stroke="#1d87f1" stroke-width="2"/>
+    <text x="810" y="228" font-size="16" font-weight="700" fill="#1d87f1">Without replacement</text>
+    <text x="810" y="250" font-size="13" fill="#64748b">Winner is removed before the next spin</text>
+    <circle cx="822" cy="286" r="14" fill="#16a34a"/>
+    <circle cx="862" cy="286" r="14" fill="#cbd5e1"/>
+    <circle cx="902" cy="286" r="14" fill="#cbd5e1"/>
+    <circle cx="942" cy="286" r="14" fill="#cbd5e1"/>
+    <circle cx="982" cy="286" r="14" fill="#cbd5e1"/>
+    <line x1="822" y1="286" x2="822" y2="286" stroke="#16a34a"/>
+    <line x1="815" y1="293" x2="829" y2="279" stroke="#ffffff" stroke-width="2"/>
+    <line x1="815" y1="279" x2="829" y2="293" stroke="#ffffff" stroke-width="2"/>
+    <text x="810" y="332" font-size="13" fill="#334155">Distinct winners: raffles, prize tiers, order</text>
+
+    <!-- With replacement -->
+    <rect x="790" y="370" width="340" height="150" rx="12" fill="#ffffff" stroke="#7c3aed" stroke-width="2"/>
+    <text x="810" y="398" font-size="16" font-weight="700" fill="#7c3aed">With replacement</text>
+    <text x="810" y="420" font-size="13" fill="#64748b">Winner goes back in and can win again</text>
+    <circle cx="822" cy="456" r="14" fill="#16a34a"/>
+    <circle cx="862" cy="456" r="14" fill="#16a34a"/>
+    <circle cx="902" cy="456" r="14" fill="#16a34a"/>
+    <circle cx="942" cy="456" r="14" fill="#16a34a"/>
+    <circle cx="982" cy="456" r="14" fill="#16a34a"/>
+    <text x="810" y="502" font-size="13" fill="#334155">Independent picks: "whose turn?", sampling</text>
+  </g>
+
+  <!-- bottom flow -->
+  <g>
+    <text x="600" y="600" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">Fair-draw checklist</text>
+    <rect x="150" y="618" width="200" height="46" rx="8" fill="#eff6ff" stroke="#1d87f1"/>
+    <text x="250" y="646" text-anchor="middle" font-size="14" fill="#0f172a">De-duplicate the list</text>
+    <line x1="352" y1="641" x2="398" y2="641" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+    <rect x="400" y="618" width="200" height="46" rx="8" fill="#eff6ff" stroke="#1d87f1"/>
+    <text x="500" y="646" text-anchor="middle" font-size="14" fill="#0f172a">Pick the right mode</text>
+    <line x1="602" y1="641" x2="648" y2="641" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+    <rect x="650" y="618" width="200" height="46" rx="8" fill="#eff6ff" stroke="#1d87f1"/>
+    <text x="750" y="646" text-anchor="middle" font-size="14" fill="#0f172a">Real random pick</text>
+    <line x1="852" y1="641" x2="898" y2="641" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+    <rect x="900" y="618" width="200" height="46" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="1000" y="646" text-anchor="middle" font-size="14" fill="#0f172a">Spin on screen</text>
+  </g>
+
+  <text x="600" y="686" text-anchor="middle" font-size="14" fill="#94a3b8">lazytools.io/productivity/random-name-picker-wheel/</text>
+</svg>

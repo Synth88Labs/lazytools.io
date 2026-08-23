@@ -52,6 +52,11 @@ rundown, with inspectors for [FLAC](/video/flac-metadata-viewer/), [MP3](/video/
 
 </aside>
 
+<figure>
+<img src="/blog/infographic-flac-vs-mp3-wav-audio-metadata-explained-guide.svg" alt="Side-by-side breakdown of three audio files. FLAC keeps a fLaC marker, a STREAMINFO block with sample rate, bit depth and an MD5 of the decoded audio, and a VORBIS_COMMENT block of free-form KEY equals value tags. MP3 keeps ID3v2 frames such as TIT2, TPE1 and TALB at the start, MPEG audio frames whose header holds the real bitrate, and a 128-byte ID3v1 block at the end. WAV keeps an fmt chunk with the technical facts and a LIST INFO chunk with INAM, IART and ICRD codes. FLAC allows custom fields, MP3 is limited, WAV rarely supports them." width="1200" height="700" loading="lazy" />
+<figcaption>How FLAC, MP3 and WAV each lay out their audio and their tags on disk.</figcaption>
+</figure>
+
 ## Same job, three tagging systems
 
 The audio itself is encoded differently in each format — FLAC and WAV are lossless, MP3 is lossy — but the

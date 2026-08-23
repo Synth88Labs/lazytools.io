@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="1200" height="700" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#64748b"/>
+    </marker>
+    <linearGradient id="zipGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#eff6ff"/>
+      <stop offset="1" stop-color="#dbeafe"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="700" fill="#f8fafc"/>
+
+  <text x="60" y="56" font-size="30" font-weight="700" fill="#0f172a">Inside an EPUB file</text>
+  <text x="60" y="86" font-size="17" fill="#64748b">An e-book is a ZIP of web pages plus a few XML files that tie it together</text>
+
+  <!-- Outer ZIP container -->
+  <rect x="60" y="110" width="470" height="540" rx="14" fill="url(#zipGrad)" stroke="#1d87f1" stroke-width="2"/>
+  <text x="84" y="142" font-size="19" font-weight="700" fill="#1d87f1">book.epub</text>
+  <text x="300" y="142" font-size="15" fill="#334155" font-style="italic">= ZIP archive</text>
+
+  <!-- mimetype -->
+  <rect x="84" y="160" width="422" height="60" rx="9" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="102" y="186" font-size="17" font-weight="700" fill="#0f172a">mimetype</text>
+  <text x="102" y="208" font-size="13.5" fill="#64748b">application/epub+zip  —  first entry, uncompressed</text>
+
+  <!-- META-INF -->
+  <rect x="84" y="234" width="422" height="76" rx="9" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="102" y="260" font-size="16" font-weight="700" fill="#0f172a">META-INF/</text>
+  <text x="102" y="284" font-size="15" font-weight="600" fill="#d97706">container.xml</text>
+  <text x="102" y="302" font-size="13" fill="#64748b">the signpost — at a fixed, known location</text>
+
+  <!-- OEBPS content folder -->
+  <rect x="84" y="324" width="422" height="308" rx="9" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="102" y="350" font-size="16" font-weight="700" fill="#0f172a">OEBPS/  (folder name can vary)</text>
+
+  <rect x="102" y="362" width="386" height="52" rx="7" fill="#ede9fe" stroke="#7c3aed"/>
+  <text x="118" y="384" font-size="15" font-weight="700" fill="#7c3aed">content.opf</text>
+  <text x="118" y="404" font-size="12.5" fill="#64748b">the package: metadata + manifest + spine</text>
+
+  <rect x="102" y="424" width="386" height="40" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="118" y="449" font-size="14" fill="#334155">nav.xhtml  /  toc.ncx   —  table of contents</text>
+
+  <rect x="102" y="474" width="386" height="40" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="118" y="499" font-size="14" fill="#334155">chapter1.xhtml, chapter2.xhtml …  (web pages)</text>
+
+  <rect x="102" y="524" width="386" height="40" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="118" y="549" font-size="14" fill="#334155">styles.css   —  reflows text to any screen</text>
+
+  <rect x="102" y="574" width="386" height="40" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="118" y="599" font-size="14" fill="#334155">images/cover.jpg, images/…</text>
+
+  <!-- signpost arrow from container.xml to content.opf -->
+  <path d="M300 300 C 560 300, 560 388, 100 388" fill="none" stroke="#d97706" stroke-width="2.5" stroke-dasharray="6 5" marker-end="url(#arrow)"/>
+  <text x="540" y="345" font-size="12.5" fill="#d97706" text-anchor="middle">points to the OPF</text>
+
+  <!-- Right panel: the OPF opened up -->
+  <text x="600" y="142" font-size="20" font-weight="700" fill="#7c3aed">The OPF package, opened</text>
+
+  <!-- metadata block -->
+  <rect x="600" y="160" width="540" height="220" rx="12" fill="#ffffff" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="622" y="188" font-size="16" font-weight="700" fill="#0f172a">&lt;metadata&gt;  —  Dublin Core (dc:)</text>
+  <text x="622" y="214" font-size="14.5" fill="#334155"><tspan font-weight="700" fill="#16a34a">dc:title</tspan>        The Example Novel</text>
+  <text x="622" y="240" font-size="14.5" fill="#334155"><tspan font-weight="700" fill="#16a34a">dc:creator</tspan>    A. Writer  (the author)</text>
+  <text x="622" y="266" font-size="14.5" fill="#334155"><tspan font-weight="700" fill="#16a34a">dc:language</tspan>  en</text>
+  <text x="622" y="292" font-size="14.5" fill="#334155"><tspan font-weight="700" fill="#16a34a">dc:identifier</tspan>  urn:isbn:9780000000000</text>
+  <text x="622" y="318" font-size="14.5" fill="#334155"><tspan font-weight="700" fill="#16a34a">dc:publisher</tspan>  dc:date  dc:subject</text>
+  <text x="622" y="352" font-size="13" fill="#64748b" font-style="italic">Where a book's title, author and ISBN actually live</text>
+
+  <!-- manifest block -->
+  <rect x="600" y="398" width="258" height="130" rx="12" fill="#ffffff" stroke="#1d87f1" stroke-width="1.5"/>
+  <text x="622" y="426" font-size="15.5" font-weight="700" fill="#1d87f1">&lt;manifest&gt;</text>
+  <text x="622" y="450" font-size="13" fill="#64748b">the inventory —</text>
+  <text x="622" y="468" font-size="13" fill="#64748b">every file, with an id</text>
+  <text x="622" y="494" font-size="13.5" fill="#334155">ch1, ch2, css, cover…</text>
+  <text x="622" y="514" font-size="12.5" fill="#64748b">cover + css: present, not read</text>
+
+  <!-- spine block -->
+  <rect x="882" y="398" width="258" height="130" rx="12" fill="#ffffff" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="904" y="426" font-size="15.5" font-weight="700" fill="#16a34a">&lt;spine&gt;</text>
+  <text x="904" y="450" font-size="13" fill="#64748b">the playlist —</text>
+  <text x="904" y="468" font-size="13" fill="#64748b">reading order of ids</text>
+  <text x="904" y="494" font-size="13.5" fill="#334155">ch1  then  ch2</text>
+  <text x="904" y="514" font-size="12.5" fill="#64748b">count ≈ chapters</text>
+
+  <!-- manifest to spine arrow -->
+  <line x1="858" y1="463" x2="882" y2="463" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- EPUB vs PDF strip -->
+  <rect x="600" y="548" width="540" height="84" rx="12" fill="#ecfdf5" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="622" y="576" font-size="15.5" font-weight="700" fill="#0f172a">EPUB reflows;  PDF is fixed</text>
+  <text x="622" y="600" font-size="13.5" fill="#334155">EPUB adapts text to any screen and font size (XHTML + CSS).</text>
+  <text x="622" y="620" font-size="13.5" fill="#334155">A PDF keeps one fixed layout on every device.</text>
+
+  <text x="60" y="682" font-size="14" fill="#94a3b8">lazytools.io/file/epub-metadata-viewer/</text>
+</svg>

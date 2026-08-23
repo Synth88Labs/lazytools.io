@@ -47,6 +47,11 @@ when to use it, with encoders for [Base64](/dev/base64-encode-decode/),
 
 </aside>
 
+<figure>
+<img src="/blog/infographic-base64-ascii85-base62-encoding-comparison-guide.svg" alt="Side-by-side comparison of three binary-to-text encodings. The three input bytes M, a, n become TWFu in Base64, which packs 3 bytes into 4 characters for about 33 percent overhead but is not URL-safe. Ascii85 packs 4 bytes into 5 characters for about 25 percent overhead, the densest option, used in PDF and PostScript, and is not URL-safe. Base62 uses only letters and digits with a big-integer scheme for about 35 percent overhead and is the only URL-safe option, used for short URLs and IDs." width="1200" height="700" loading="lazy" />
+<figcaption>How Base64, Ascii85 and Base62 each turn the same bytes into text, and the size-versus-URL-safety trade-off each one makes.</figcaption>
+</figure>
+
 ## Why encode binary as text?
 
 Email bodies, JSON strings, URLs, XML and source files are all built for text. Drop raw binary bytes

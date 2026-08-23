@@ -48,6 +48,11 @@ or disagree between apps. Here's the full breakdown, plus how to read any file's
 
 </aside>
 
+<figure>
+<img src="/blog/infographic-id3-tags-explained-how-mp3-metadata-works-guide.svg" alt="Diagram of an MP3 file showing an ID3v2 tag at the start, MPEG audio frames in the middle, and a 128-byte ID3v1 tag at the end. A panel lists common ID3v2 frames such as TIT2 for title, TPE1 for artist, TALB for album and APIC for cover art. Another panel shows how the encoding byte 03 marks text as UTF-8 so the bytes decode to Cafe with an accent, while a reader that wrongly assumes Latin-1 produces garbled mojibake." width="1200" height="700" loading="lazy" />
+<figcaption>How ID3v2 and ID3v1 tags wrap the audio, the main ID3v2 frames, and why the encoding byte decides whether text reads correctly or turns into mojibake.</figcaption>
+</figure>
+
 ## What ID3 tags are
 
 An MP3 file is mostly compressed audio frames, but it also carries **metadata** describing the track:

@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="1200" height="700" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f8fafc"/>
+      <stop offset="1" stop-color="#eef2f7"/>
+    </linearGradient>
+    <linearGradient id="cam" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1e293b"/>
+      <stop offset="1" stop-color="#0f172a"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="700" fill="url(#bg)"/>
+
+  <!-- Title -->
+  <text x="60" y="62" font-size="30" font-weight="700" fill="#0f172a">The 10-second pre-call check</text>
+  <text x="60" y="94" font-size="17" fill="#64748b">One browser test shows both devices at once, and records nothing</text>
+
+  <!-- LEFT PANEL: Camera preview -->
+  <rect x="60" y="130" width="500" height="360" rx="14" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+  <text x="84" y="168" font-size="20" font-weight="700" fill="#0f172a">1. Camera preview</text>
+
+  <!-- webcam viewport -->
+  <rect x="84" y="188" width="452" height="230" rx="10" fill="url(#cam)"/>
+  <!-- person silhouette -->
+  <circle cx="310" cy="300" r="46" fill="#334155"/>
+  <path d="M234 418 Q234 350 310 350 Q386 350 386 418 Z" fill="#334155"/>
+  <!-- REC-off / live badge -->
+  <circle cx="112" cy="214" r="7" fill="#16a34a"/>
+  <text x="126" y="220" font-size="14" fill="#e2e8f0">LIVE preview</text>
+  <!-- resolution readout -->
+  <rect x="404" y="384" width="120" height="24" rx="6" fill="#0f172a" opacity="0.72"/>
+  <text x="464" y="401" font-size="14" fill="#e2e8f0" text-anchor="middle">1280 x 720</text>
+
+  <text x="84" y="452" font-size="15" fill="#334155">Right camera is active, picture is clear,</text>
+  <text x="84" y="474" font-size="15" fill="#334155">and the reported resolution is high enough.</text>
+
+  <!-- RIGHT PANEL: Mic meter -->
+  <rect x="640" y="130" width="500" height="360" rx="14" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+  <text x="664" y="168" font-size="20" font-weight="700" fill="#0f172a">2. Microphone level meter</text>
+
+  <!-- mic icon -->
+  <rect x="676" y="212" width="34" height="66" rx="17" fill="#1d87f1"/>
+  <path d="M666 268 Q666 300 693 300 Q720 300 720 268" fill="none" stroke="#1d87f1" stroke-width="5"/>
+  <line x1="693" y1="300" x2="693" y2="320" stroke="#1d87f1" stroke-width="5"/>
+  <line x1="676" y1="320" x2="710" y2="320" stroke="#1d87f1" stroke-width="5"/>
+
+  <!-- level meter bars -->
+  <g>
+    <rect x="750" y="270" width="26" height="24" rx="4" fill="#16a34a"/>
+    <rect x="784" y="252" width="26" height="42" rx="4" fill="#16a34a"/>
+    <rect x="818" y="224" width="26" height="70" rx="4" fill="#16a34a"/>
+    <rect x="852" y="238" width="26" height="56" rx="4" fill="#16a34a"/>
+    <rect x="886" y="206" width="26" height="88" rx="4" fill="#d97706"/>
+    <rect x="920" y="230" width="26" height="64" rx="4" fill="#16a34a"/>
+    <rect x="954" y="256" width="26" height="38" rx="4" fill="#16a34a"/>
+    <rect x="988" y="272" width="26" height="22" rx="4" fill="#16a34a"/>
+    <rect x="1022" y="248" width="26" height="46" rx="4" fill="#16a34a"/>
+    <rect x="1056" y="266" width="26" height="28" rx="4" fill="#16a34a"/>
+    <rect x="1090" y="278" width="26" height="16" rx="4" fill="#94a3b8"/>
+  </g>
+  <line x1="750" y1="300" x2="1116" y2="300" stroke="#cbd5e1" stroke-width="2"/>
+
+  <text x="664" y="340" font-size="15" fill="#334155">Bars jump when you speak, so the input</text>
+  <text x="664" y="362" font-size="15" fill="#334155">is reaching the browser on the right device.</text>
+
+  <!-- verdict pill -->
+  <rect x="664" y="392" width="452" height="72" rx="10" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="2"/>
+  <circle cx="700" cy="428" r="16" fill="#16a34a"/>
+  <polyline points="692,428 698,435 709,421" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="730" y="423" font-size="16" font-weight="700" fill="#166534">Both react to you</text>
+  <text x="730" y="446" font-size="14" fill="#166534">Both devices work — you are ready to join.</text>
+
+  <!-- BOTTOM: privacy strip -->
+  <rect x="60" y="518" width="1080" height="128" rx="14" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+  <text x="84" y="552" font-size="19" font-weight="700" fill="#7c3aed">Test without being recorded</text>
+
+  <!-- three privacy points -->
+  <g>
+    <circle cx="100" cy="592" r="10" fill="#7c3aed"/>
+    <polyline points="94,592 99,597 107,586" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="120" y="588" font-size="15" font-weight="600" fill="#0f172a">Previews and measures only</text>
+    <text x="120" y="610" font-size="14" fill="#64748b">It never records to a file.</text>
+  </g>
+  <g>
+    <circle cx="480" cy="592" r="10" fill="#7c3aed"/>
+    <polyline points="474,592 479,597 487,586" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="500" y="588" font-size="15" font-weight="600" fill="#0f172a">Uploads nothing</text>
+    <text x="500" y="610" font-size="14" fill="#64748b">The streams never leave your device.</text>
+  </g>
+  <g>
+    <circle cx="820" cy="592" r="10" fill="#7c3aed"/>
+    <polyline points="814,592 819,597 827,586" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="840" y="588" font-size="15" font-weight="600" fill="#0f172a">Releases devices on Stop</text>
+    <text x="840" y="610" font-size="14" fill="#64748b">The camera light goes off at once.</text>
+  </g>
+  <text x="84" y="636" font-size="13" fill="#94a3b8">Access works only over a secure https connection, and you can revoke permission any time.</text>
+
+  <text x="1140" y="686" font-size="14" fill="#94a3b8" text-anchor="end">lazytools.io/productivity/webcam-microphone-test/</text>
+</svg>

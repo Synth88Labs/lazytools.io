@@ -47,6 +47,11 @@ naïve conversions.** Here's what separates them, and how to turn any of the thr
 
 </aside>
 
+<figure>
+<img src="/blog/infographic-ini-env-properties-config-formats-explained-guide.svg" alt="Three cards show the same configuration written as INI with a section header, as a flat dotenv file, and as a Java properties file, with each format's separator, comment marker and quoting rules listed. Arrows lead from all three down to one JSON object where the port stays the string 8080 and debug stays the string true." width="1200" height="700" loading="lazy" />
+<figcaption>INI, .env and .properties store the same key = value data with different rules, and a faithful converter turns any of them into the same string-typed JSON.</figcaption>
+</figure>
+
 ## The same idea, three dialects
 
 Every one of these formats is a list of names paired with values. What differs is **structure**

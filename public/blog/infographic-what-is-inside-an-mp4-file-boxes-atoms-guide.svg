@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="1200" height="700" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <linearGradient id="moovG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e0efff"/>
+      <stop offset="1" stop-color="#cfe4fd"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="700" fill="#f8fafc"/>
+
+  <text x="40" y="52" font-size="30" font-weight="700" fill="#0f172a">What is inside an MP4 file?</text>
+  <text x="40" y="82" font-size="17" fill="#64748b">An MP4 is a tree of nested boxes (atoms). Each box = 4-byte size plus 4-byte type, then data or more boxes.</text>
+
+  <!-- LEFT: box tree -->
+  <text x="40" y="128" font-size="19" font-weight="700" fill="#334155">The box tree (top to bottom)</text>
+
+  <!-- ftyp -->
+  <rect x="40" y="145" width="480" height="46" rx="6" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+  <text x="58" y="167" font-size="18" font-weight="700" fill="#92400e">ftyp</text>
+  <text x="130" y="167" font-size="15" fill="#334155">file type plus brand (isom, mp42, qt)</text>
+  <text x="58" y="184" font-size="12.5" fill="#a16207">which spec the file follows</text>
+
+  <!-- moov container -->
+  <rect x="40" y="203" width="480" height="248" rx="6" fill="url(#moovG)" stroke="#1d87f1" stroke-width="1.8"/>
+  <text x="58" y="227" font-size="18" font-weight="700" fill="#1d4ed8">moov</text>
+  <text x="130" y="227" font-size="15" fill="#334155">movie metadata a player needs first</text>
+
+  <rect x="70" y="240" width="420" height="34" rx="5" fill="#ffffff" stroke="#93c5fd"/>
+  <text x="86" y="262" font-size="14.5" fill="#1e3a5f"><tspan font-weight="700">mvhd</tspan>  movie header: duration, timescale</text>
+
+  <rect x="70" y="282" width="420" height="70" rx="5" fill="#ffffff" stroke="#93c5fd"/>
+  <text x="86" y="303" font-size="14.5" fill="#1e3a5f"><tspan font-weight="700">trak</tspan>  video track</text>
+  <text x="98" y="325" font-size="12.5" fill="#475569">mdia to minf to stbl (codec, timing, sample tables)</text>
+  <text x="98" y="343" font-size="12.5" fill="#475569">hdlr = vide  ->  the index into mdat</text>
+
+  <rect x="70" y="360" width="420" height="52" rx="5" fill="#ffffff" stroke="#93c5fd"/>
+  <text x="86" y="381" font-size="14.5" fill="#1e3a5f"><tspan font-weight="700">trak</tspan>  audio track</text>
+  <text x="98" y="401" font-size="12.5" fill="#475569">hdlr = soun</text>
+
+  <rect x="70" y="420" width="420" height="22" rx="5" fill="#eff6ff" stroke="#bfdbfe"/>
+  <text x="86" y="436" font-size="12.5" fill="#475569" font-style="italic">a subtitle track would carry hdlr = subt / text</text>
+
+  <!-- mdat -->
+  <rect x="40" y="463" width="480" height="62" rx="6" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="58" y="487" font-size="18" font-weight="700" fill="#15803d">mdat</text>
+  <text x="130" y="487" font-size="15" fill="#334155">the raw compressed audio and video</text>
+  <text x="58" y="508" font-size="12.5" fill="#166534">a flat run of bytes, useless without moov to index it</text>
+
+  <!-- RIGHT: moov problem / fast start -->
+  <text x="560" y="128" font-size="19" font-weight="700" fill="#334155">The moov problem: box order decides streaming</text>
+
+  <!-- not optimised -->
+  <text x="560" y="162" font-size="15" font-weight="700" fill="#b91c1c">Not optimised - moov at the end</text>
+  <rect x="560" y="172" width="90" height="40" rx="4" fill="#fef3c7" stroke="#d97706"/>
+  <text x="605" y="197" font-size="14" font-weight="700" fill="#92400e" text-anchor="middle">ftyp</text>
+  <rect x="654" y="172" width="470" height="40" rx="4" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="889" y="197" font-size="14" font-weight="700" fill="#15803d" text-anchor="middle">mdat  (200 MB of media)</text>
+  <rect x="1128" y="172" width="52" height="40" rx="4" fill="url(#moovG)" stroke="#1d87f1"/>
+  <text x="1154" y="197" font-size="13" font-weight="700" fill="#1d4ed8" text-anchor="middle">moov</text>
+  <text x="560" y="234" font-size="13" fill="#7f1d1d">Player must download the whole file to reach moov  ->  the video spins, then plays. It cannot stream.</text>
+
+  <!-- fast start -->
+  <text x="560" y="286" font-size="15" font-weight="700" fill="#15803d">Fast start - moov moved to the front</text>
+  <rect x="560" y="296" width="90" height="40" rx="4" fill="#fef3c7" stroke="#d97706"/>
+  <text x="605" y="321" font-size="14" font-weight="700" fill="#92400e" text-anchor="middle">ftyp</text>
+  <rect x="654" y="296" width="52" height="40" rx="4" fill="url(#moovG)" stroke="#1d87f1"/>
+  <text x="680" y="321" font-size="13" font-weight="700" fill="#1d4ed8" text-anchor="middle">moov</text>
+  <rect x="710" y="296" width="470" height="40" rx="4" fill="#dcfce7" stroke="#16a34a"/>
+  <text x="945" y="321" font-size="14" font-weight="700" fill="#15803d" text-anchor="middle">mdat  (200 MB of media)</text>
+  <text x="560" y="358" font-size="13" fill="#166534">moov arrives first, so playback starts while mdat is still downloading. ffmpeg -movflags +faststart just</text>
+  <text x="560" y="376" font-size="13" fill="#166534">reorders the boxes - it does not re-encode anything.</text>
+
+  <!-- fragmented note -->
+  <rect x="560" y="398" width="620" height="66" rx="6" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.3"/>
+  <text x="576" y="422" font-size="15" font-weight="700" fill="#6d28d9">Fragmented MP4 (DASH / HLS)</text>
+  <text x="576" y="444" font-size="13" fill="#4c1d95">A slim moov up front, then repeated moof plus mdat pairs. Seeing moof instead of one big</text>
+  <text x="576" y="461" font-size="13" fill="#4c1d95">moov means the file is fragmented, not broken.</text>
+
+  <!-- one structure many extensions -->
+  <rect x="560" y="476" width="620" height="86" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.3"/>
+  <text x="576" y="500" font-size="15" font-weight="700" fill="#334155">One structure, many extensions (ISO Base Media File Format)</text>
+  <g font-size="13.5" fill="#0f172a">
+    <rect x="576" y="512" width="80" height="34" rx="16" fill="#eff6ff" stroke="#93c5fd"/><text x="616" y="534" text-anchor="middle">MP4</text>
+    <rect x="668" y="512" width="80" height="34" rx="16" fill="#eff6ff" stroke="#93c5fd"/><text x="708" y="534" text-anchor="middle">MOV</text>
+    <rect x="760" y="512" width="80" height="34" rx="16" fill="#eff6ff" stroke="#93c5fd"/><text x="800" y="534" text-anchor="middle">M4A</text>
+    <rect x="852" y="512" width="80" height="34" rx="16" fill="#eff6ff" stroke="#93c5fd"/><text x="892" y="534" text-anchor="middle">M4V</text>
+    <rect x="944" y="512" width="120" height="34" rx="16" fill="#eff6ff" stroke="#93c5fd"/><text x="1004" y="534" text-anchor="middle">HEIF / HEIC</text>
+  </g>
+
+  <!-- box anatomy strip -->
+  <text x="40" y="562" font-size="16" font-weight="700" fill="#334155">Anatomy of one box</text>
+  <rect x="40" y="574" width="130" height="40" rx="4" fill="#e2e8f0" stroke="#94a3b8"/>
+  <text x="105" y="599" font-size="13.5" fill="#0f172a" text-anchor="middle">size (4 bytes)</text>
+  <rect x="172" y="574" width="130" height="40" rx="4" fill="#e2e8f0" stroke="#94a3b8"/>
+  <text x="237" y="599" font-size="13.5" fill="#0f172a" text-anchor="middle">type (4 bytes)</text>
+  <rect x="304" y="574" width="216" height="40" rx="4" fill="#f1f5f9" stroke="#94a3b8"/>
+  <text x="412" y="599" font-size="13.5" fill="#0f172a" text-anchor="middle">data, or more boxes</text>
+  <text x="40" y="636" font-size="12.5" fill="#64748b">size counts the whole box, so a parser jumps size bytes and lands on the next box header - walking the tree with no decoding.</text>
+
+  <line x1="40" y1="662" x2="1160" y2="662" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="40" y="686" font-size="15" fill="#64748b">Inspect any MP4, MOV or HEIF in your browser - nothing uploaded:  <tspan font-weight="700" fill="#1d87f1">lazytools.io/file/mp4-box-viewer/</tspan></text>
+</svg>

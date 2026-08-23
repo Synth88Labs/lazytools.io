@@ -47,6 +47,11 @@ author and ISBN actually live. Here's the tour, plus how to read any EPUB's meta
 
 </aside>
 
+<figure>
+<img src="/blog/infographic-what-is-an-epub-file-inside-the-format-guide.svg" alt="An EPUB opened up as a ZIP archive on the left: the uncompressed mimetype entry first, then META-INF slash container.xml which points to the OEBPS folder holding content.opf, the table of contents, XHTML chapter pages, CSS and images. On the right the OPF package is expanded into three parts: a metadata block of Dublin Core dc fields holding the title, author, language and ISBN, a manifest that inventories every file, and a spine that lists the reading order. A note explains EPUB reflows while PDF stays fixed." width="1200" height="700" loading="lazy" />
+<figcaption>How an EPUB is put together: a ZIP whose container.xml points to the OPF package, where the metadata, manifest and spine live.</figcaption>
+</figure>
+
 ## An EPUB is a ZIP with rules
 
 Rename a DRM-free `.epub` to `.zip`, open it, and you'll find a predictable structure:

@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="1200" height="700" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <linearGradient id="fmtGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#eff6ff"/>
+      <stop offset="1" stop-color="#dbeafe"/>
+    </linearGradient>
+    <linearGradient id="dataGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ecfdf5"/>
+      <stop offset="1" stop-color="#d1fae5"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="700" fill="#f8fafc"/>
+
+  <text x="60" y="56" font-size="30" font-weight="700" fill="#0f172a">Inside a WAV file: RIFF chunks, sample rate and bit depth</text>
+  <text x="60" y="86" font-size="16" fill="#64748b">The specs live in the header, so a file's format and exact length can be read without decoding the audio.</text>
+
+  <!-- Left: RIFF chunk layout -->
+  <text x="60" y="128" font-size="18" font-weight="700" fill="#334155">RIFF / WAVE chunk layout</text>
+
+  <!-- RIFF header -->
+  <rect x="60" y="142" width="470" height="60" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="80" y="168" font-size="18" font-weight="700" fill="#7c3aed">"RIFF" ... "WAVE"</text>
+  <text x="80" y="190" font-size="14" fill="#64748b">Marks the file as WAVE audio, plus total file size</text>
+
+  <!-- fmt chunk -->
+  <rect x="60" y="214" width="470" height="150" rx="8" fill="url(#fmtGrad)" stroke="#1d87f1" stroke-width="2"/>
+  <text x="80" y="242" font-size="18" font-weight="700" fill="#1d87f1">"fmt " chunk — the spec sheet</text>
+  <text x="80" y="272" font-size="15" fill="#334155">Sample rate ...... 44,100 Hz (44.1 kHz)</text>
+  <text x="80" y="296" font-size="15" fill="#334155">Bit depth ......... 16 bits per sample</text>
+  <text x="80" y="320" font-size="15" fill="#334155">Channels .......... 2 (stereo)</text>
+  <text x="80" y="344" font-size="15" fill="#334155">Codec / byte rate . PCM, 176,400 bytes/sec</text>
+
+  <!-- data chunk -->
+  <rect x="60" y="376" width="470" height="110" rx="8" fill="url(#dataGrad)" stroke="#16a34a" stroke-width="2"/>
+  <text x="80" y="404" font-size="18" font-weight="700" fill="#16a34a">"data" chunk — the raw samples</text>
+  <text x="80" y="432" font-size="15" fill="#334155">The PCM sample bytes themselves.</text>
+  <text x="80" y="456" font-size="15" fill="#334155">Its size divided by the byte rate = duration.</text>
+
+  <!-- optional chunk -->
+  <rect x="60" y="498" width="470" height="56" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="80" y="524" font-size="17" font-weight="700" fill="#d97706">"LIST" / "INFO" (optional)</text>
+  <text x="80" y="544" font-size="14" fill="#64748b">Tags such as title, artist and software</text>
+
+  <!-- Right column -->
+  <!-- Sample rate illustration -->
+  <text x="580" y="128" font-size="18" font-weight="700" fill="#334155">Sample rate — how often the wave is measured</text>
+  <rect x="580" y="142" width="560" height="140" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+  <line x1="600" y1="212" x2="1120" y2="212" stroke="#e2e8f0" stroke-width="1"/>
+  <path d="M600 212 Q640 152 680 212 Q720 272 760 212 Q800 152 840 212 Q880 272 920 212 Q960 152 1000 212 Q1040 272 1080 212" fill="none" stroke="#1d87f1" stroke-width="2.5"/>
+  <!-- sample dots -->
+  <circle cx="620" cy="182" r="4" fill="#0f172a"/>
+  <circle cx="650" cy="167" r="4" fill="#0f172a"/>
+  <circle cx="680" cy="212" r="4" fill="#0f172a"/>
+  <circle cx="710" cy="257" r="4" fill="#0f172a"/>
+  <circle cx="740" cy="242" r="4" fill="#0f172a"/>
+  <circle cx="770" cy="197" r="4" fill="#0f172a"/>
+  <circle cx="800" cy="167" r="4" fill="#0f172a"/>
+  <circle cx="830" cy="182" r="4" fill="#0f172a"/>
+  <circle cx="860" cy="227" r="4" fill="#0f172a"/>
+  <circle cx="890" cy="257" r="4" fill="#0f172a"/>
+  <circle cx="920" cy="212" r="4" fill="#0f172a"/>
+  <circle cx="950" cy="177" r="4" fill="#0f172a"/>
+  <circle cx="980" cy="167" r="4" fill="#0f172a"/>
+  <circle cx="1010" cy="197" r="4" fill="#0f172a"/>
+  <circle cx="1040" cy="247" r="4" fill="#0f172a"/>
+  <text x="600" y="270" font-size="13" fill="#64748b">Each dot is one sample. Nyquist: top frequency = sample rate divided by 2.</text>
+
+  <!-- Bit depth illustration -->
+  <text x="580" y="312" font-size="18" font-weight="700" fill="#334155">Bit depth — how precisely each sample is stored</text>
+  <rect x="580" y="326" width="560" height="120" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="600" y="354" font-size="14" fill="#334155">16-bit = 65,536 levels, about 96 dB dynamic range (CD)</text>
+  <text x="600" y="378" font-size="14" fill="#334155">24-bit = 16,777,216 levels, about 144 dB (record and mix)</text>
+  <text x="600" y="402" font-size="14" fill="#64748b">Each extra bit adds roughly 6 dB. Bit depth sets precision, not</text>
+  <text x="600" y="422" font-size="14" fill="#64748b">pitch or loudness. Deliver at 16-bit, work at 24-bit.</text>
+
+  <!-- Formula box -->
+  <rect x="580" y="466" width="560" height="88" rx="10" fill="#0f172a"/>
+  <text x="600" y="498" font-size="15" font-weight="700" fill="#ffffff">Bytes per second (byte rate)</text>
+  <text x="600" y="524" font-size="16" fill="#93c5fd">= sample rate x channels x (bit depth divided by 8)</text>
+  <text x="600" y="546" font-size="14" fill="#cbd5e1">44,100 x 2 x 2 = 176,400 bytes/sec, about 10 MB per minute</text>
+
+  <!-- AIFF note -->
+  <rect x="60" y="580" width="1080" height="60" rx="8" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="80" y="606" font-size="15" font-weight="700" fill="#7c3aed">AIFF: the same idea, Apple-flavoured</text>
+  <text x="80" y="628" font-size="14" fill="#334155">Same facts (sample rate, bit depth, channels) but big-endian, and the sample rate is stored as an 80-bit extended-precision float in its "COMM" chunk.</text>
+
+  <text x="60" y="676" font-size="14" fill="#94a3b8">lazytools.io/video/wav-aiff-inspector/</text>
+</svg>

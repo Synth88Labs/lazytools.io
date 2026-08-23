@@ -50,6 +50,11 @@ and how to decode one with the [X.509 Certificate Decoder](/security/certificate
 
 </aside>
 
+<figure>
+<img src="/blog/infographic-how-to-read-an-x509-ssl-certificate-guide.svg" alt="A three-stage flow showing a PEM certificate being decoded. Stage one is the PEM text envelope, a wall of Base64 wrapped in BEGIN and END CERTIFICATE lines. Base64-decoding it produces stage two, the raw DER bytes shown as hexadecimal tag, length and value pairs. Walking the ASN.1 structure produces stage three, a table of readable X.509 fields: subject, issuer, serial number, validity, public key, signature algorithm, Subject Alternative Name hostnames, extended key usage and basic constraints. A footer notes that X.509 is the schema, ASN.1 the abstract structure, DER the bytes and PEM the text envelope." width="1200" height="700" loading="lazy" />
+<figcaption>Decoding a certificate is just unwrapping the layers: strip the PEM header, Base64-decode to DER, then walk the ASN.1 tree to reach the readable fields.</figcaption>
+</figure>
+
 ## PEM, DER, ASN.1: three words for the same certificate
 
 These three terms confuse everyone at first, but they're just layers of packaging:

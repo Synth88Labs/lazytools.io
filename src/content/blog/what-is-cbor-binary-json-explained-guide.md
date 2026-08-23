@@ -53,6 +53,11 @@ with the [CBOR Decoder](/dev/cbor-decoder/).
 
 </aside>
 
+<figure>
+<img src="/blog/infographic-what-is-cbor-binary-json-explained-guide.svg" alt="Diagram showing how a CBOR item is encoded. The initial byte 0x19 splits into a 3-bit major type of 000 meaning unsigned integer and a 5-bit additional info of 25 meaning two bytes follow, and those two bytes 0x03E8 decode to the integer 1000. A convention panel lists additional info values 0 to 23 stored directly, 24 for one more byte, 25 for two bytes, 26 for four, and 27 for eight. A table names the eight major types from 0 unsigned integer through 7 floats and simple values, and a footer notes CBOR is used by passkeys, WebAuthn, COSE and IoT." width="1200" height="700" loading="lazy" />
+<figcaption>How one CBOR initial byte encodes both the major type and the length, using the integer 1000 as a worked example, alongside the eight major types.</figcaption>
+</figure>
+
 ## CBOR in one sentence
 
 **CBOR (Concise Binary Object Representation, RFC 8949) is binary JSON with extra types.** It encodes the

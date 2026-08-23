@@ -48,6 +48,11 @@ the wire. Here's how the encoding works and how to decode a message with the
 
 </aside>
 
+<figure>
+<img src="/blog/infographic-how-to-decode-protobuf-without-proto-guide.svg" alt="A protobuf message shown as raw hex bytes 08 96 01. The first byte is the tag; its low 3 bits give the wire type and the upper bits give the field number, so byte 08 decodes to field 1 with wire type 0. The remaining bytes 96 01 are the varint value 150. Below, the four wire types are listed: 0 varint, 1 I64, 2 length-delimited, 5 I32. A final panel shows that field numbers, wire types and raw values are recoverable without the proto schema, while field names and exact types are not." width="1200" height="700" loading="lazy" />
+<figcaption>How a protobuf tag byte splits into a field number and a wire type, letting you decode the structure with no schema.</figcaption>
+</figure>
+
 ## The key idea: every field is tagged
 
 A protobuf message is just a flat sequence of fields laid end to end, and each field begins with a

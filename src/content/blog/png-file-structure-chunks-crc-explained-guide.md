@@ -49,6 +49,11 @@ dimensions, DPI and hidden metadata live, and how PNG guarantees integrity. Here
 
 </aside>
 
+<figure>
+<img src="/blog/infographic-png-file-structure-chunks-crc-explained-guide.svg" alt="A PNG file drawn as an 8-byte signature followed by a row of chunks in order: IHDR, pHYs, tEXt, two IDAT chunks and IEND. One chunk is broken out to show its four parts, a 4-byte length, a 4-letter type, the data payload and a 4-byte CRC-32 checksum. A worked IHDR example decodes 13 bytes into width 1920, height 1080, bit depth 8 and truecolour, and a panel shows how the case of each letter in the type flags critical versus ancillary chunks." width="1200" height="700" loading="lazy" />
+<figcaption>How a PNG is laid out: a signature, a sequence of chunks, and the length-type-data-CRC shape of every chunk.</figcaption>
+</figure>
+
 ## Signature, then chunks
 
 Every PNG starts with the same **8-byte signature** (`89 50 4E 47 0D 0A 1A 0A`) — the `PNG` in there is

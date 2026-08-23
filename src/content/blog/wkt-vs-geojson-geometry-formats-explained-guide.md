@@ -48,6 +48,11 @@ comparison, with converters for [WKT → GeoJSON](/file/wkt-to-geojson/) and
 
 </aside>
 
+<figure>
+<img src="/blog/infographic-wkt-vs-geojson-geometry-formats-explained-guide.svg" alt="The same square polygon written as WKT text on the left and as a GeoJSON object on the right, with both drawn as identical shapes and labelled coordinate 30 10. Arrows between them show converting either direction needs no axis swap because both use X Y longitude then latitude order. A panel lists the key differences: coordinate order, attributes only in GeoJSON, seven geometry types mapping one to one, and WKT being terser." width="1200" height="700" loading="lazy" />
+<figcaption>WKT and GeoJSON describe the same geometry in different syntaxes, sharing X Y coordinate order so conversion needs no axis swap.</figcaption>
+</figure>
+
 ## The same polygon, two ways
 
 Here's one square written in each format:

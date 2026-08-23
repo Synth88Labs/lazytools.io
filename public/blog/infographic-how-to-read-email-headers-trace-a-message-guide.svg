@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="1200" height="700" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <linearGradient id="hdr" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1d87f1"/>
+      <stop offset="1" stop-color="#1667c9"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#7c3aed"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="700" fill="#f8fafc"/>
+
+  <!-- Title -->
+  <text x="40" y="52" font-size="30" font-weight="700" fill="#0f172a">Reading Email Headers: Trace the Path, Check the Verdict</text>
+  <text x="40" y="82" font-size="16" fill="#64748b">Each server that handles a message stamps a Received line on top, so the newest hop is first. Read from the bottom up.</text>
+
+  <!-- LEFT: Received chain -->
+  <text x="40" y="126" font-size="20" font-weight="700" fill="#0f172a">The Received chain (delivery path)</text>
+
+  <!-- Direction arrow, bottom-up -->
+  <line x1="70" y1="580" x2="70" y2="170" stroke="#7c3aed" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="52" y="380" font-size="13" fill="#7c3aed" font-weight="600" transform="rotate(-90 52 380)">read bottom to top = sender to inbox</text>
+
+  <!-- Hop 3 (top / newest / last hop) -->
+  <rect x="110" y="150" width="500" height="86" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+  <rect x="110" y="150" width="8" height="86" rx="4" fill="#16a34a"/>
+  <text x="132" y="178" font-size="14" font-weight="700" fill="#16a34a">3 - Last hop (closest to you)</text>
+  <text x="132" y="202" font-size="14" fill="#334155">Received: from mx.google.com</text>
+  <text x="132" y="222" font-size="14" fill="#334155">by inbox.you.com  -  09:15:04</text>
+
+  <!-- Hop 2 -->
+  <rect x="110" y="252" width="500" height="86" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+  <rect x="110" y="252" width="8" height="86" rx="4" fill="#1d87f1"/>
+  <text x="132" y="280" font-size="14" font-weight="700" fill="#1667c9">2 - Middle relay</text>
+  <text x="132" y="304" font-size="14" fill="#334155">Received: from mail.corp-notices.biz</text>
+  <text x="132" y="324" font-size="14" fill="#334155">by mx.google.com  -  09:14:58</text>
+
+  <!-- gap note -->
+  <text x="626" y="370" font-size="13" fill="#d97706" font-weight="600">~5 min gap</text>
+  <text x="626" y="388" font-size="12" fill="#94a3b8">often greylisting,</text>
+  <text x="626" y="404" font-size="12" fill="#94a3b8">not always a problem</text>
+  <line x1="616" y1="338" x2="616" y2="454" stroke="#d97706" stroke-width="2" stroke-dasharray="4 4"/>
+
+  <!-- Hop 1 (bottom / oldest / origin) -->
+  <rect x="110" y="454" width="500" height="100" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+  <rect x="110" y="454" width="8" height="100" rx="4" fill="#d97706"/>
+  <text x="132" y="482" font-size="14" font-weight="700" fill="#b45309">1 - First hop (origin server)</text>
+  <text x="132" y="506" font-size="14" fill="#334155">Received: from localhost (203.0.113.77)</text>
+  <text x="132" y="526" font-size="14" fill="#334155">by mail.corp-notices.biz  -  09:09:12</text>
+  <text x="132" y="546" font-size="12.5" fill="#dc2626" font-weight="600">Unrelated to the brand in the From line - suspicious</text>
+
+  <!-- Only trust from your infra inward -->
+  <text x="110" y="588" font-size="12.5" fill="#64748b">Trust the chain only from your own provider inward - lower lines can be forged.</text>
+
+  <!-- RIGHT: Authentication panel -->
+  <text x="680" y="126" font-size="20" font-weight="700" fill="#0f172a">The authentication verdict</text>
+  <text x="680" y="150" font-size="14" fill="#64748b">Authentication-Results, recorded by the receiver at delivery.</text>
+
+  <!-- From line is forgeable -->
+  <rect x="680" y="168" width="480" height="58" rx="10" fill="#fef2f2" stroke="#fca5a5" stroke-width="1.5"/>
+  <text x="700" y="194" font-size="14" font-weight="700" fill="#dc2626">From:  Your Bank  -  trivially forgeable</text>
+  <text x="700" y="214" font-size="13" fill="#7f1d1d">The visible sender proves nothing. Cross-check it below.</text>
+
+  <!-- SPF -->
+  <rect x="680" y="242" width="480" height="78" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+  <rect x="694" y="262" width="70" height="38" rx="8" fill="#16a34a"/>
+  <text x="729" y="286" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle">SPF</text>
+  <text x="782" y="272" font-size="14" font-weight="700" fill="#0f172a">Was the sending IP authorized?</text>
+  <text x="782" y="294" font-size="13" fill="#64748b">Checks the Return-Path (envelope) domain.</text>
+  <text x="1140" y="308" font-size="13" font-weight="700" fill="#16a34a" text-anchor="end">pass / fail / softfail</text>
+
+  <!-- DKIM -->
+  <rect x="680" y="332" width="480" height="78" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+  <rect x="694" y="352" width="70" height="38" rx="8" fill="#1d87f1"/>
+  <text x="729" y="376" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle">DKIM</text>
+  <text x="782" y="362" font-size="14" font-weight="700" fill="#0f172a">Signature intact and from d= domain?</text>
+  <text x="782" y="384" font-size="13" fill="#64748b">Proves the message was not altered.</text>
+  <text x="1140" y="398" font-size="13" font-weight="700" fill="#16a34a" text-anchor="end">pass / fail / none</text>
+
+  <!-- DMARC -->
+  <rect x="680" y="422" width="480" height="78" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+  <rect x="694" y="442" width="70" height="38" rx="8" fill="#7c3aed"/>
+  <text x="729" y="466" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">DMARC</text>
+  <text x="782" y="452" font-size="14" font-weight="700" fill="#0f172a">Does a pass align with the From domain?</text>
+  <text x="782" y="474" font-size="13" fill="#64748b">Ties SPF or DKIM to the visible sender.</text>
+  <text x="1140" y="488" font-size="13" font-weight="700" fill="#16a34a" text-anchor="end">pass / fail</text>
+
+  <!-- Verdict box -->
+  <rect x="680" y="516" width="480" height="88" rx="10" fill="#0f172a"/>
+  <text x="700" y="546" font-size="15" font-weight="700" fill="#ffffff">Red flag: From says a bank, but DMARC fails</text>
+  <text x="700" y="570" font-size="13.5" fill="#cbd5e1">and the DKIM d= domain plus Return-Path point somewhere else.</text>
+  <text x="700" y="592" font-size="13.5" fill="#93c5fd">The body is marketing - the headers are the evidence.</text>
+
+  <!-- Footer -->
+  <line x1="40" y1="648" x2="1160" y2="648" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="40" y="676" font-size="15" fill="#64748b">Read Received lines bottom-up to trace the path, then confirm SPF, DKIM and DMARC all pass and align.</text>
+  <text x="1160" y="676" font-size="15" font-weight="700" fill="#1d87f1" text-anchor="end">lazytools.io/dev/email-header-analyzer/</text>
+</svg>

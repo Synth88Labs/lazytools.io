@@ -48,6 +48,11 @@ nothing; the headers are where the evidence lives. Here's the guide, plus the
 
 </aside>
 
+<figure>
+<img src="/blog/infographic-how-to-read-email-headers-trace-a-message-guide.svg" alt="A diagram in two halves. On the left, a stack of Received headers with an arrow showing you read them from the bottom up: the first hop is the origin server, a middle relay follows after a roughly five-minute gap that often means greylisting, and the last hop is closest to your inbox. On the right, the authentication verdict shows the From line marked as trivially forgeable, then SPF checking the sending IP, DKIM checking the signature and signing domain, and DMARC checking that a pass aligns with the visible From domain. A red-flag box explains that a From claiming to be a bank while DMARC fails and the DKIM domain points elsewhere is a spoof." width="1200" height="700" loading="lazy" />
+<figcaption>Trace the delivery path by reading the Received lines bottom-up, then confirm SPF, DKIM and DMARC all pass and align with the visible sender.</figcaption>
+</figure>
+
 ## First, how to see the headers
 
 The body of an email is only half of it. The other half — the routing and authentication data — is hidden

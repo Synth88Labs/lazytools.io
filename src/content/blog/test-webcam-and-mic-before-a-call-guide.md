@@ -47,6 +47,11 @@ anything or letting a website record you, using the
 
 </aside>
 
+<figure>
+<img src="/blog/infographic-test-webcam-and-mic-before-a-call-guide.svg" alt="A pre-call check panel showing a live camera preview with a reported resolution of 1280 by 720 on the left, a microphone level meter with bars jumping as you speak on the right, and a bottom strip noting the test only previews and measures, uploads nothing, and releases the devices when you press Stop." width="1200" height="700" loading="lazy" />
+<figcaption>One browser test shows a live camera preview and a moving mic meter at once, and records nothing.</figcaption>
+</figure>
+
 ## The 10-second pre-call check
 
 Before you join, confirm two things:

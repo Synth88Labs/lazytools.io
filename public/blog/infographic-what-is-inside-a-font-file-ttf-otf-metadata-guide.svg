@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="1200" height="700" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#94a3b8"/>
+    </marker>
+    <linearGradient id="hdr" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1d87f1"/>
+      <stop offset="1" stop-color="#1668c4"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="700" fill="#f8fafc"/>
+
+  <text x="40" y="52" font-size="30" font-weight="700" fill="#0f172a">Inside a Font File: the sfnt table directory</text>
+  <text x="40" y="82" font-size="16" fill="#64748b">A .ttf or .otf is a small filesystem — a header, a directory of named 4-character tables, then the table data.</text>
+
+  <!-- LEFT: file layout column -->
+  <text x="40" y="128" font-size="17" font-weight="700" fill="#334155">File layout</text>
+
+  <!-- Offset table -->
+  <rect x="40" y="142" width="300" height="70" rx="8" fill="#eff6ff" stroke="#1d87f1" stroke-width="2"/>
+  <text x="56" y="168" font-size="16" font-weight="700" fill="#0f172a">Offset table (sfnt header)</text>
+  <text x="56" y="192" font-size="13" fill="#475569">version tag plus number of tables</text>
+
+  <!-- Table directory -->
+  <rect x="40" y="224" width="300" height="150" rx="8" fill="#f1f5f9" stroke="#64748b" stroke-width="2"/>
+  <text x="56" y="250" font-size="16" font-weight="700" fill="#0f172a">Table directory</text>
+  <text x="56" y="272" font-size="13" fill="#475569">one record per table:</text>
+  <text x="56" y="294" font-size="13" fill="#334155" font-weight="600">tag  •  checksum  •  offset  •  length</text>
+  <rect x="56" y="308" width="268" height="24" rx="4" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="66" y="325" font-size="12.5" fill="#334155">name  →  offset 0x2A4C  len 812</text>
+  <rect x="56" y="336" width="268" height="24" rx="4" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="66" y="353" font-size="12.5" fill="#334155">OS/2  →  offset 0x0130  len 96</text>
+
+  <!-- Table data -->
+  <rect x="40" y="386" width="300" height="70" rx="8" fill="#f1f5f9" stroke="#64748b" stroke-width="2"/>
+  <text x="56" y="412" font-size="16" font-weight="700" fill="#0f172a">Table data</text>
+  <text x="56" y="436" font-size="13" fill="#475569">the actual bytes of each table</text>
+
+  <text x="40" y="486" font-size="13" fill="#64748b">Version tag reveals the outline flavour:</text>
+  <text x="40" y="508" font-size="13" fill="#334155">0x00010000 / "true" = TrueType   •   "OTTO" = CFF   •   "ttcf" = Collection</text>
+
+  <!-- RIGHT: the key tables -->
+  <text x="470" y="128" font-size="17" font-weight="700" fill="#334155">Key metadata tables</text>
+
+  <!-- name -->
+  <rect x="470" y="142" width="690" height="96" rx="8" fill="#ffffff" stroke="#7c3aed" stroke-width="2"/>
+  <rect x="470" y="142" width="10" height="96" rx="5" fill="#7c3aed"/>
+  <text x="500" y="170" font-size="18" font-weight="700" fill="#0f172a">name</text>
+  <text x="500" y="170" font-size="13" fill="#7c3aed"><tspan x="562" dy="0">who the font says it is</tspan></text>
+  <text x="500" y="196" font-size="13.5" fill="#475569">family (ID 1), subfamily/style (ID 2), full name (ID 4),</text>
+  <text x="500" y="218" font-size="13.5" fill="#475569">version (ID 5), designer (ID 9), copyright (ID 0), licence (ID 13)</text>
+
+  <!-- head -->
+  <rect x="470" y="250" width="335" height="96" rx="8" fill="#ffffff" stroke="#1d87f1" stroke-width="2"/>
+  <rect x="470" y="250" width="10" height="96" rx="5" fill="#1d87f1"/>
+  <text x="500" y="278" font-size="18" font-weight="700" fill="#0f172a">head</text>
+  <text x="500" y="304" font-size="13.5" fill="#475569">units-per-em</text>
+  <text x="500" y="304" font-size="13.5" fill="#334155" font-weight="700"><tspan x="618" dy="0">2048 TTF / 1000 CFF</tspan></text>
+  <text x="500" y="326" font-size="13.5" fill="#475569">creation date, global bounding box</text>
+
+  <!-- maxp -->
+  <rect x="825" y="250" width="335" height="96" rx="8" fill="#ffffff" stroke="#16a34a" stroke-width="2"/>
+  <rect x="825" y="250" width="10" height="96" rx="5" fill="#16a34a"/>
+  <text x="855" y="278" font-size="18" font-weight="700" fill="#0f172a">maxp</text>
+  <text x="855" y="304" font-size="13.5" fill="#475569">number of glyphs</text>
+  <text x="855" y="326" font-size="13.5" fill="#475569">hundreds (Latin) to tens of thousands (CJK)</text>
+
+  <!-- OS/2 -->
+  <rect x="470" y="358" width="690" height="112" rx="8" fill="#fff7ed" stroke="#d97706" stroke-width="2"/>
+  <rect x="470" y="358" width="10" height="112" rx="5" fill="#d97706"/>
+  <text x="500" y="386" font-size="18" font-weight="700" fill="#0f172a">OS/2</text>
+  <text x="500" y="386" font-size="13" fill="#d97706"><tspan x="558" dy="0">Windows metrics plus the embedding flag</tspan></text>
+  <text x="500" y="412" font-size="13.5" fill="#475569">weight class 100 to 900 (400 Regular, 700 Bold)  •  width class 1 to 9</text>
+  <text x="500" y="438" font-size="13.5" fill="#334155" font-weight="700">fsType embedding permission:</text>
+  <text x="500" y="458" font-size="12.5" fill="#475569">0 Installable  •  bit1 Restricted  •  bit2 Preview and Print  •  bit3 Editable</text>
+
+  <!-- glyf / CFF -->
+  <rect x="470" y="482" width="690" height="70" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5 4"/>
+  <text x="500" y="510" font-size="16" font-weight="700" fill="#0f172a">glyf  vs  CFF</text>
+  <text x="500" y="510" font-size="13" fill="#64748b"><tspan x="640" dy="0">the outlines — TTF vs OTF is only about this</tspan></text>
+  <text x="500" y="536" font-size="13.5" fill="#475569">glyf = TrueType quadratic curves   •   "CFF " = PostScript cubic curves</text>
+
+  <!-- connector arrows from directory to tables -->
+  <line x1="340" y1="320" x2="466" y2="190" stroke="#94a3b8" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <line x1="340" y1="348" x2="466" y2="410" stroke="#94a3b8" stroke-width="1.6" marker-end="url(#arrow)"/>
+
+  <text x="40" y="620" font-size="15" fill="#334155">A typical font holds 15 to 25 tables. Read the <tspan font-weight="700" fill="#7c3aed">name</tspan> table to know what font you have; read <tspan font-weight="700" fill="#d97706">OS/2 fsType</tspan> to know if you may ship it.</text>
+  <text x="40" y="646" font-size="14" fill="#64748b">WOFF and WOFF2 wrap the same tables but compress them — convert web fonts to TTF or OTF before inspecting.</text>
+
+  <text x="40" y="682" font-size="14" font-weight="700" fill="#1d87f1">lazytools.io/fonts/font-metadata-inspector/</text>
+</svg>

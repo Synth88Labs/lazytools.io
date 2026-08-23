@@ -49,6 +49,11 @@ BitTorrent verifies data byte for byte. Here's the anatomy, plus the
 
 </aside>
 
+<figure>
+<img src="/blog/infographic-what-is-inside-a-torrent-file-info-hash-guide.svg" alt="Diagram of a torrent file's anatomy. On the left, the four bencode types: integer i42e, byte string 4:spam, list, and sorted-key dictionary, with the two strictness rules. In the middle, a demo.torrent shown as one dictionary with top-level keys like announce and a highlighted info dictionary holding name, piece length, length, the pieces field of 20-byte SHA-1 checksums, and an optional files list. On the right, the info dictionary is run through SHA-1 to produce the 40-character info-hash, and one changed character in a filename yields a completely different hash. The info-hash then forms the magnet link with xt, dn and tr parameters." width="1200" height="700" loading="lazy" />
+<figcaption>How a .torrent's bencoded info dictionary is hashed by SHA-1 into the info-hash that anchors every magnet link.</figcaption>
+</figure>
+
 ## A .torrent is metadata, not data
 
 Open a `.torrent` and you won't find any of the files it's for. You'll find a **description**:
