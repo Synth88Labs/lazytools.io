@@ -63,6 +63,12 @@ const audited = [];
 for (const slug of toAudit) {
   const url = `${SITE}/${slug}/`;
   const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 }, userAgent: 'LazyToolsAuditBot/1.0 (+https://lazytools.io)' });
+  // Capture Core Web Vitals (LCP + CLS) — the March 2026 core update made these a holistic ranking factor.
+  await ctx.addInitScript(() => {
+    window.__cwv = { cls: 0, lcp: 0 };
+    try { new PerformanceObserver((l) => { for (const e of l.getEntries()) if (!e.hadRecentInput) window.__cwv.cls += e.value; }).observe({ type: 'layout-shift', buffered: true }); } catch {}
+    try { new PerformanceObserver((l) => { const es = l.getEntries(); const e = es[es.length - 1]; if (e) window.__cwv.lcp = e.renderTime || e.startTime || 0; }).observe({ type: 'largest-contentful-paint', buffered: true }); } catch {}
+  });
   const page = await ctx.newPage();
   const consoleErrors = [], pageErrors = [], badRequests = [], externalPosts = [];
   page.on('console', (m) => { if (m.type() === 'error') consoleErrors.push(m.text().slice(0, 200)); });
@@ -102,8 +108,11 @@ for (const slug of toAudit) {
         faqCount: (jsonld.find((x) => x['@type'] === 'FAQPage')?.mainEntity || []).length,
         wordCount: bodyText.split(' ').filter(Boolean).length,
         placeholder: /\b(lorem ipsum|coming soon|todo|tbd|placeholder text)\b/i.test(bodyText),
+        aboutLink: !!document.querySelector('a[href*="/about"]'),
+        hasOrgSchema: types.some((t) => t === 'Organization' || t === 'WebSite' || t === 'WebApplication'),
       };
     });
+    const cwv = await page.evaluate(() => (window.__cwv || { cls: 0, lcp: 0 }));
 
     // ── Functionality smoke: does interacting produce output / not throw? ──
     const beforeErr = consoleErrors.length + pageErrors.length;
@@ -164,6 +173,13 @@ for (const slug of toAudit) {
     checks.push(C('performance', 'Loads under 6s', 'medium', loadMs > 0 && loadMs < 6000, `${loadMs} ms`));
     // F. Privacy (brand-critical)
     checks.push(C('privacy', 'No unexpected external requests', 'high', externalPosts.length === 0, [...new Set(externalPosts)].slice(0, 4).join(', ')));
+    // G. Google 2026 updates compliance — guards against the criteria the 2026 core + spam
+    //    updates rank on: holistic Core Web Vitals, helpful/non-thin content, and E-E-A-T.
+    checks.push(C('google', 'Core Web Vitals: LCP good (<2.5s)', 'medium', !cwv.lcp || cwv.lcp < 2500, `LCP ${Math.round(cwv.lcp)}ms (lab)`));
+    checks.push(C('google', 'Core Web Vitals: CLS good (<0.1)', 'medium', cwv.cls < 0.1, `CLS ${Math.round(cwv.cls * 1000) / 1000}`));
+    checks.push(C('google', 'Helpful-content depth (editorial ≥350 words)', 'medium', d.wordCount >= 350, `${d.wordCount} words`));
+    checks.push(C('google', 'Not thin/scaled content (≥200 words + FAQ)', 'high', d.wordCount >= 200 && d.faqCount >= 3, `${d.wordCount} words, ${d.faqCount} FAQs`));
+    checks.push(C('google', 'E-E-A-T signals (about link + publisher schema)', 'low', d.aboutLink && d.hasOrgSchema, `about:${d.aboutLink} schema:${d.hasOrgSchema}`));
   } catch (e) {
     ok = false;
     checks.push(C('functionality', 'Page loads (HTTP 200)', 'critical', false, String(e).slice(0, 180)));
