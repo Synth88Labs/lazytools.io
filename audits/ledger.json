@@ -1605,7 +1605,7 @@
       "resolvedOn": "2026-08-22"
     }
   },
-  "updated": "2026-08-23",
+  "updated": "2026-08-24",
   "runs": [
     {
       "date": "2026-08-22",
@@ -1651,6 +1651,11 @@
         "date": "2026-08-23",
         "auditor": 5,
         "fixer": 4
+      },
+      {
+        "date": "2026-08-24",
+        "auditor": 3.3,
+        "fixer": 4
       }
     ],
     "weekly": [
@@ -1659,6 +1664,12 @@
         "auditor": 4.2,
         "fixer": 4.5,
         "days": 2
+      },
+      {
+        "week": "2026-W35",
+        "auditor": 3.3,
+        "fixer": 4,
+        "days": 1
       }
     ]
   },
@@ -1666,14 +1677,14 @@
     "manager": {
       "role": "Governance — SLAs, ratings, token budget",
       "status": "nominal",
-      "task": "Reviewed 8 research idea(s) (avg 4/5); approved 2. Tokens 0/400000.",
+      "task": "Reviewed 8 research idea(s) (avg 4/5); approved 0. Tokens 29357/400000.",
       "kpis": {
         "overdue": 0,
         "onTrack": 0,
         "slaPct": 100,
-        "tokensToday": 0,
+        "tokensToday": 29357,
         "tokenCap": 400000,
-        "costUsd": 0
+        "costUsd": 0.42
       }
     },
     "auditor": {
@@ -1686,8 +1697,8 @@
         "lastAvg": 100
       },
       "score": {
-        "daily": 5,
-        "weekly": 4.2
+        "daily": 3.3,
+        "weekly": 3.3
       }
     },
     "fixer": {
@@ -1703,16 +1714,16 @@
       },
       "score": {
         "daily": 4,
-        "weekly": 4.5
+        "weekly": 4
       }
     },
     "researcher": {
       "role": "Discovery — weekly research for new tools",
       "status": "reported",
-      "task": "8 idea(s) proposed 2026-08-22; Manager approved 2.",
+      "task": "8 idea(s) proposed 2026-08-22; Manager approved 0.",
       "kpis": {
         "proposed": 8,
-        "approved": 2,
+        "approved": 0,
         "avgRating": 4
       },
       "score": {
@@ -1722,10 +1733,10 @@
     },
     "developer": {
       "role": "Full-stack — weekly, builds approved tools",
-      "status": "queued",
-      "task": "2 approved tool(s) queued: Scatter Plot Maker, Circle of Fifths Generator.",
+      "status": "standby",
+      "task": "No approved tools in the build queue.",
       "kpis": {
-        "queued": 2,
+        "queued": 0,
         "built": 2
       },
       "score": {
@@ -1746,12 +1757,21 @@
           "developer": 19384,
           "fixer": 4716
         }
+      },
+      {
+        "date": "2026-08-24",
+        "input": 1357,
+        "output": 28000,
+        "calls": 2,
+        "byAgent": {
+          "developer": 29357
+        }
       }
     ],
     "total": {
-      "input": 29809,
-      "output": 34591,
-      "calls": 9
+      "input": 31166,
+      "output": 62591,
+      "calls": 11
     }
   },
   "research": {
@@ -1815,9 +1835,10 @@
         "effort": "M",
         "privacyFit": true,
         "impact": 4,
-        "status": "approved",
+        "status": "proposed-build",
         "managerRating": 4,
-        "proposedOn": "2026-08-22"
+        "proposedOn": "2026-08-22",
+        "proposalOn": "2026-08-24"
       },
       {
         "name": "Paper Size Converter",
@@ -1861,9 +1882,10 @@
         "effort": "M",
         "privacyFit": true,
         "impact": 4,
-        "status": "approved",
+        "status": "proposed-build",
         "managerRating": 4.6,
-        "proposedOn": "2026-08-22"
+        "proposedOn": "2026-08-22",
+        "proposalOn": "2026-08-24"
       },
       {
         "name": "Mortgage Refinance Calculator",
