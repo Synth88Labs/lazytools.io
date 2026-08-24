@@ -384,7 +384,7 @@ export const CALCULATORS: CalcDef[] = [
     name: 'Pregnancy Due Date Calculator',
     icon: '🤰',
     description:
-      'Estimate your due date from your last menstrual period using Naegele\'s rule, with current gestational age and trimester. Private — the date never leaves your browser.',
+      'Estimate your due date from your last menstrual period using Naegele\'s rule, with current gestational age and trimester. Private — the date never leaves…',
     lead: 'The classic estimate adds 280 days (40 weeks) to the first day of your last period — adjusted for your cycle length.',
     fields: [
       { id: 'lmp', label: 'First day of last period', type: 'date', defaultValue: '' },
@@ -662,7 +662,7 @@ export const CALCULATORS: CalcDef[] = [
     slug: 'cost-per-square-foot-calculator',
     name: 'Cost Per Square Foot Calculator',
     icon: '🏷️',
-    description: 'Work out the price per square foot (and per square metre) from a total price and area — compare homes, rentals, flooring and materials on a fair like-for-like basis. In your browser.',
+    description: 'Work out the price per square foot (and per square metre) from a total price and area — compare homes, rentals, flooring and materials on a fair…',
     lead: 'Cost per square foot = total price ÷ area. Enter the price and the area to get the cost per square foot and per square metre.',
     fields: [
       { id: 'price', label: 'Total price', type: 'number', placeholder: '350000', defaultValue: '350000', min: 0 },
@@ -689,7 +689,7 @@ export const CALCULATORS: CalcDef[] = [
     slug: 'dilution-ratio-calculator',
     name: 'Dilution Ratio Calculator',
     icon: '🧪',
-    description: 'Mix any 1:N dilution ratio for a target volume — get exactly how much concentrate and how much water you need for cleaning products, chemicals, coolant and more. Free, in your browser.',
+    description: 'Mix any 1:N dilution ratio for a target volume — get exactly how much concentrate and how much water you need for cleaning products, chemicals, coolant and…',
     lead: 'For a 1:N ratio and a target volume, concentrate = volume ÷ (1 + N) and the rest is water. Enter the ratio and how much you want to make.',
     fields: [
       { id: 'parts', label: 'Parts water per 1 part concentrate (the N in 1:N)', type: 'number', placeholder: '10', defaultValue: '10', min: 0 },
@@ -719,7 +719,7 @@ export const CALCULATORS: CalcDef[] = [
     name: 'Aspect Ratio Calculator',
     icon: '📐',
     description:
-      'Work out image and video dimensions for any aspect ratio — enter 16:9 (or your own) and one side, and the other is calculated so nothing stretches. Also reduces any width×height to its simplest ratio. In your browser.',
+      'Work out image and video dimensions for any aspect ratio — enter 16:9 (or your own) and one side, and the other is calculated so nothing stretches. Also…',
     lead: 'Pick an aspect ratio like 16:9 and type one dimension — the other is filled in so your image or video keeps its shape without stretching.',
     widget: 'aspect-ratio',
     fields: [],
@@ -878,7 +878,7 @@ export const CALCULATORS: CalcDef[] = [
     name: 'Pregnancy Week Calculator',
     icon: '🤰',
     description:
-      'Find out how many weeks and days pregnant you are and your trimester, from the first day of your last period — plus your estimated due date. Private, in your browser.',
+      'Find out how many weeks and days pregnant you are and your trimester, from the first day of your last period — plus your estimated due date. Private, in…',
     lead: 'Pregnancy is dated from the first day of your last period, not conception — so "how far along" you are is simply the number of weeks and days since that date, and the due date is 280 days (40 weeks) after it.',
     fields: [
       { id: 'lmp', label: 'First day of your last period', type: 'date' },
