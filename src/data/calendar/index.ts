@@ -21,7 +21,7 @@ export const CALENDAR_TOOLS: CalendarToolDef[] = [
     name: 'Calendar Converter',
     icon: '🗓️',
     description:
-      'Convert any Gregorian date into the Islamic (Hijri), Hebrew, Persian, Indian, Buddhist, Julian and other calendars at once — and back again. Powered by your browser\'s own calendar data.',
+      'Convert any Gregorian date into the Islamic (Hijri), Hebrew, Persian, Indian, Buddhist, Julian and other calendars at once — and back again. Powered by your…',
     lead: 'One date, every calendar: see today (or any date) in the Hijri, Hebrew, Persian, Indian, Buddhist, Julian and more — and convert any of them back to Gregorian.',
     widget: 'multi',
     how: 'Forward conversion uses the calendar data built into your browser — the same ICU/CLDR database your operating system uses — so a Gregorian date is expressed in each system exactly as the standard defines it, with no hand-written calendar maths to get wrong. Reverse conversion (a Hijri or Persian date back to Gregorian) inverts that mapping precisely, since each calendar\'s year-month-day advances strictly with time. Everything is computed on your device.',
@@ -100,7 +100,7 @@ export const CALENDAR_TOOLS: CalendarToolDef[] = [
     name: 'Nepali Date Converter (BS ⇄ AD)',
     icon: '🇳🇵',
     description:
-      'Convert dates between Bikram Sambat (BS), the official Nepali calendar, and Gregorian (AD), both directions. Uses validated official calendar data, in your browser.',
+      'Convert dates between Bikram Sambat (BS), the official Nepali calendar, and Gregorian (AD), both directions. Uses validated official calendar data, in your…',
     lead: 'Bikram Sambat ⇄ Gregorian, both ways — today\'s Nepali date, or convert any BS or AD date. Computed on your device.',
     widget: 'bikram',
     how: 'Bikram Sambat (BS) is the official solar calendar of Nepal, running about 56 years and 8 months ahead of the Gregorian (AD) calendar — so mid-2026 AD is 2083 BS. Its twelve months (Baishakh through Chaitra) have variable lengths of 29 to 32 days, fixed each year by astronomical calculation rather than a simple rule, and published in official almanacs. Because there is no formula, this converter uses a validated table of month lengths (covering BS 1975–2099, roughly AD 1918–2043) and computes both directions on your device.',
@@ -140,7 +140,7 @@ export const CALENDAR_TOOLS: CalendarToolDef[] = [
     name: '4-5-4 Retail Calendar',
     icon: '🛍️',
     description:
-      'Convert any date to its NRF 4-5-4 retail calendar period — fiscal year, quarter, retail month and week — or view a full fiscal year\'s 4-5-4 breakdown. Computed in your browser.',
+      'Convert any date to its NRF 4-5-4 retail calendar period — fiscal year, quarter, retail month and week — or view a full fiscal year\'s 4-5-4 breakdown…',
     lead: 'What retail week is today? Map any date to its NRF 4-5-4 fiscal year, quarter, month and week — or lay out a whole retail year, 53-week years included.',
     widget: 'retail-454',
     how: 'The 4-5-4 calendar is the National Retail Federation standard that lets retailers compare like-for-like periods: the year is split into four 13-week quarters, each quarter into months of 4, 5 and 4 weeks, so every retail month ends on the same weekday and contains the same number of weekends year over year. This tool computes it from first principles — retail weeks run Sunday–Saturday, the retail year ends on the Saturday nearest 31 January, and quarters map to Feb-Mar-Apr, May-Jun-Jul, Aug-Sep-Oct and Nov-Dec-Jan. No lookup table is shipped; the dates are derived, so it works for any year.',

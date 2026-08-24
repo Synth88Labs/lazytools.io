@@ -267,7 +267,7 @@ export const CALCULATORS: CalcDef[] = [
     name: 'TDEE & Calorie Calculator',
     icon: '🍎',
     description:
-      'Calculate your TDEE (total daily energy expenditure) and BMR, plus calorie targets for weight loss, maintenance and gain — Mifflin–St Jeor equation, in your browser.',
+      'Calculate your TDEE (total daily energy expenditure) and BMR, plus calorie targets for weight loss, maintenance and gain — Mifflin–St Jeor equation, in your…',
     lead: 'Your TDEE is BMR × an activity factor — the calories you burn in a day. Below it you lose weight, above it you gain.',
     fields: [
       { id: 'units', label: 'Units', type: 'select', defaultValue: 'metric', options: [{ value: 'metric', label: 'Metric (kg, cm)' }, { value: 'imperial', label: 'Imperial (lb, in)' }] },
@@ -410,7 +410,7 @@ export const CALCULATORS: CalcDef[] = [
     name: 'Mortgage Calculator',
     icon: '🏠',
     description:
-      'Calculate your monthly mortgage payment and see the full amortization schedule — how each payment splits between principal and interest — with CSV export. In your browser.',
+      'Calculate your monthly mortgage payment and see the full amortization schedule — how each payment splits between principal and interest — with CSV export…',
     lead: 'Your monthly payment is fixed, but early payments are mostly interest — the amortization schedule shows exactly how that shifts over the life of the loan.',
     fields: [],
     computeId: 'mortgage',
@@ -540,7 +540,7 @@ export const CALCULATORS: CalcDef[] = [
     name: 'GPA Calculator',
     icon: '🎓',
     description:
-      'Calculate your GPA from course grades and credit hours on a 4.0 scale, and work out the grade you need on a final. Add as many courses as you like — in your browser.',
+      'Calculate your GPA from course grades and credit hours on a 4.0 scale, and work out the grade you need on a final. Add as many courses as you like — in your…',
     lead: 'Your GPA is a credit-weighted average of grade points — a heavier course counts more, which is why credits matter as much as grades.',
     fields: [],
     computeId: 'gpa',
@@ -634,7 +634,7 @@ export const CALCULATORS: CalcDef[] = [
     slug: 'square-footage-calculator',
     name: 'Square Footage Calculator',
     icon: '📐',
-    description: 'Calculate the area of a room or space in square feet and square metres from its length and width — multiply up for multiple identical areas. Free, in your browser.',
+    description: 'Calculate the area of a room or space in square feet and square metres from its length and width — multiply up for multiple identical areas. Free, in your…',
     lead: 'Square footage = length × width. Enter the dimensions to get the area in both square feet and square metres, with a multiplier for repeated areas.',
     fields: [
       { id: 'length', label: 'Length', type: 'number', placeholder: '12', defaultValue: '12', min: 0 },
@@ -821,7 +821,7 @@ export const CALCULATORS: CalcDef[] = [
     name: 'Protein Intake Calculator',
     icon: '🍗',
     description:
-      'Work out how much protein to eat per day in grams, based on your body weight and goal (general health, active, building muscle, or fat loss). Private, in your browser.',
+      'Work out how much protein to eat per day in grams, based on your body weight and goal (general health, active, building muscle, or fat loss). Private, in…',
     lead: 'Daily protein is set per kilogram of body weight: roughly 0.8 g/kg for general health, 1.2–1.6 g/kg if active, and 1.6–2.2 g/kg when building muscle or dieting to preserve it.',
     fields: [
       { id: 'weight', label: 'Body weight', type: 'number', placeholder: '70', defaultValue: '70' },

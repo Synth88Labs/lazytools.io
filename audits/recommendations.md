@@ -1,39 +1,23 @@
 # Open recommendations (need human or AI judgement)
 
-_Updated 2026-08-24. These findings can't be safely auto-fixed by the token-free Fixer bot (they need written content or code changes). 1170 open._
+_Updated 2026-08-24. These findings can't be safely auto-fixed by the token-free Fixer bot (they need written content or code changes). 1163 open._
 
-## high (843)
+## high (835)
 
-- **astronomy/golden-hour-calculator** — seo: Title present (15–60 chars) — 63 chars: "Golden Hour & Blue Hour Calculator — Free & Privat"  
-  <https://lazytools.io/astronomy/golden-hour-calculator/> · first seen 2026-08-24
 - **astronomy/golden-hour-calculator** — accessibility: No serious/critical axe violations — color-contrast (1)  
   <https://lazytools.io/astronomy/golden-hour-calculator/> · first seen 2026-08-24
 - **astronomy/keplers-third-law-calculator** — accessibility: No serious/critical axe violations — color-contrast (1)  
   <https://lazytools.io/astronomy/keplers-third-law-calculator/> · first seen 2026-08-24
-- **astronomy/light-travel-time-calculator** — seo: Title present (15–60 chars) — 68 chars: "Light Travel Time & Distance Calculator — Free & P"  
-  <https://lazytools.io/astronomy/light-travel-time-calculator/> · first seen 2026-08-24
-- **astronomy/parallax-distance-calculator** — seo: Title present (15–60 chars) — 65 chars: "Stellar Parallax Distance Calculator — Free & Priv"  
-  <https://lazytools.io/astronomy/parallax-distance-calculator/> · first seen 2026-08-24
 - **astronomy/parallax-distance-calculator** — accessibility: No serious/critical axe violations — color-contrast (1)  
   <https://lazytools.io/astronomy/parallax-distance-calculator/> · first seen 2026-08-24
-- **astronomy/star-magnitude-calculator** — seo: Title present (15–60 chars) — 65 chars: "Star Magnitude & Distance Calculator — Free & Priv"  
-  <https://lazytools.io/astronomy/star-magnitude-calculator/> · first seen 2026-08-24
-- **astronomy/weight-on-other-planets** — seo: Title present (15–60 chars) — 63 chars: "Weight on Other Planets Calculator — Free & Privat"  
-  <https://lazytools.io/astronomy/weight-on-other-planets/> · first seen 2026-08-24
 - **astronomy/weight-on-other-planets** — accessibility: No serious/critical axe violations — color-contrast (1)  
   <https://lazytools.io/astronomy/weight-on-other-planets/> · first seen 2026-08-24
 - **automotive/engine-displacement-calculator** — accessibility: No serious/critical axe violations — color-contrast (1)  
   <https://lazytools.io/automotive/engine-displacement-calculator/> · first seen 2026-08-24
-- **automotive/fuel-economy-converter** — seo: Title present (15–60 chars) — 66 chars: "Fuel Economy Converter (MPG, L/100km) — Free & Pri"  
-  <https://lazytools.io/automotive/fuel-economy-converter/> · first seen 2026-08-24
 - **automotive/gear-ratio-calculator** — accessibility: No serious/critical axe violations — color-contrast (1)  
   <https://lazytools.io/automotive/gear-ratio-calculator/> · first seen 2026-08-24
 - **automotive/horsepower-torque-calculator** — accessibility: No serious/critical axe violations — color-contrast (1)  
   <https://lazytools.io/automotive/horsepower-torque-calculator/> · first seen 2026-08-24
-- **automotive/power-to-weight-ratio-calculator** — seo: Title present (15–60 chars) — 61 chars: "Power-to-Weight Ratio Calculator — Free & Private "  
-  <https://lazytools.io/automotive/power-to-weight-ratio-calculator/> · first seen 2026-08-24
-- **automotive/quarter-mile-calculator** — seo: Title present (15–60 chars) — 68 chars: "Quarter-Mile ET & Trap Speed Calculator — Free & P"  
-  <https://lazytools.io/automotive/quarter-mile-calculator/> · first seen 2026-08-24
 - **automotive/quarter-mile-calculator** — accessibility: No serious/critical axe violations — color-contrast (1)  
   <https://lazytools.io/automotive/quarter-mile-calculator/> · first seen 2026-08-24
 - **automotive/tire-pressure-temperature-calculator** — seo: Title present (15–60 chars) — 65 chars: "Tire Pressure Temperature Calculator — Free & Priv"  
@@ -1691,7 +1675,7 @@ _Updated 2026-08-24. These findings can't be safely auto-fixed by the token-free
 - **weather/wind-chill-calculator** — accessibility: No serious/critical axe violations — color-contrast (1)  
   <https://lazytools.io/weather/wind-chill-calculator/> · first seen 2026-08-24
 
-## medium (327)
+## medium (328)
 
 - **3d-printing/print-energy-cost-calculator** — google: Helpful-content depth (editorial ≥350 words) — 343 words  
   <https://lazytools.io/3d-printing/print-energy-cost-calculator/> · first seen 2026-08-24
@@ -2347,4 +2331,6 @@ _Updated 2026-08-24. These findings can't be safely auto-fixed by the token-free
   <https://lazytools.io/video/vtt-to-srt/> · first seen 2026-08-24
 - **weather/beaufort-scale-calculator** — google: Helpful-content depth (editorial ≥350 words) — 306 words  
   <https://lazytools.io/weather/beaufort-scale-calculator/> · first seen 2026-08-24
+- **automotive/power-to-weight-ratio-calculator** — google: Helpful-content depth (editorial ≥350 words) — 349 words  
+  <https://lazytools.io/automotive/power-to-weight-ratio-calculator/> · first seen 2026-08-24
 

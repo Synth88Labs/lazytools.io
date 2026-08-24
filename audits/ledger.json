@@ -1639,7 +1639,7 @@
       "severity": "high",
       "detail": "63 chars: \"Golden Hour & Blue Hour Calculator — Free & Privat\"",
       "fixType": "manual",
-      "status": "verifying",
+      "status": "complete",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-24",
       "attempts": 0,
@@ -1653,6 +1653,11 @@
           "date": "2026-08-24",
           "event": "llm-fixed",
           "note": "Golden Hour & Blue Hour Calculator… → Golden & Blue Hour Calculator…"
+        },
+        {
+          "date": "2026-08-24",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "fixedOn": "2026-08-24",
@@ -1660,7 +1665,8 @@
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-24"
     },
     "astronomy/golden-hour-calculator::Meta description (70–160 chars)": {
       "id": "astronomy/golden-hour-calculator::Meta description (70–160 chars)",
@@ -1671,7 +1677,7 @@
       "severity": "high",
       "detail": "168 chars",
       "fixType": "auto:trim-meta-description",
-      "status": "verifying",
+      "status": "complete",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-24",
       "attempts": 0,
@@ -1685,6 +1691,11 @@
           "date": "2026-08-24",
           "event": "auto-fixed",
           "note": "shortened meta description 168→155 chars"
+        },
+        {
+          "date": "2026-08-24",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "fixedOn": "2026-08-24",
@@ -1692,7 +1703,8 @@
       "eta": "next run (~1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-24"
     },
     "astronomy/golden-hour-calculator::No serious/critical axe violations": {
       "id": "astronomy/golden-hour-calculator::No serious/critical axe violations",
@@ -1757,7 +1769,7 @@
       "severity": "high",
       "detail": "68 chars: \"Light Travel Time & Distance Calculator — Free & P\"",
       "fixType": "manual",
-      "status": "verifying",
+      "status": "complete",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-24",
       "attempts": 0,
@@ -1771,6 +1783,11 @@
           "date": "2026-08-24",
           "event": "llm-fixed",
           "note": "name: 'Light Travel Time & Distance Calc… → name: 'Light Travel Time Calculator',…"
+        },
+        {
+          "date": "2026-08-24",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "fixedOn": "2026-08-24",
@@ -1778,7 +1795,8 @@
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-24"
     },
     "astronomy/parallax-distance-calculator::Title present (15–60 chars)": {
       "id": "astronomy/parallax-distance-calculator::Title present (15–60 chars)",
@@ -1789,7 +1807,7 @@
       "severity": "high",
       "detail": "65 chars: \"Stellar Parallax Distance Calculator — Free & Priv\"",
       "fixType": "manual",
-      "status": "verifying",
+      "status": "complete",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-24",
       "attempts": 0,
@@ -1803,6 +1821,11 @@
           "date": "2026-08-24",
           "event": "llm-fixed",
           "note": "Stellar Parallax Distance Calculator… → Parallax Distance Calculator…"
+        },
+        {
+          "date": "2026-08-24",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "fixedOn": "2026-08-24",
@@ -1810,7 +1833,8 @@
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-24"
     },
     "astronomy/parallax-distance-calculator::Meta description (70–160 chars)": {
       "id": "astronomy/parallax-distance-calculator::Meta description (70–160 chars)",
@@ -1821,7 +1845,7 @@
       "severity": "high",
       "detail": "164 chars",
       "fixType": "auto:trim-meta-description",
-      "status": "verifying",
+      "status": "complete",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-24",
       "attempts": 0,
@@ -1835,6 +1859,11 @@
           "date": "2026-08-24",
           "event": "auto-fixed",
           "note": "shortened meta description 164→156 chars"
+        },
+        {
+          "date": "2026-08-24",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "fixedOn": "2026-08-24",
@@ -1842,7 +1871,8 @@
       "eta": "next run (~1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-24"
     },
     "astronomy/parallax-distance-calculator::No serious/critical axe violations": {
       "id": "astronomy/parallax-distance-calculator::No serious/critical axe violations",
@@ -1880,7 +1910,7 @@
       "severity": "high",
       "detail": "65 chars: \"Star Magnitude & Distance Calculator — Free & Priv\"",
       "fixType": "manual",
-      "status": "verifying",
+      "status": "complete",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-24",
       "attempts": 0,
@@ -1894,6 +1924,11 @@
           "date": "2026-08-24",
           "event": "llm-fixed",
           "note": "Star Magnitude & Distance Calculator… → Star Magnitude Calculator…"
+        },
+        {
+          "date": "2026-08-24",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "fixedOn": "2026-08-24",
@@ -1901,7 +1936,8 @@
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-24"
     },
     "astronomy/telescope-calculator::Meta description (70–160 chars)": {
       "id": "astronomy/telescope-calculator::Meta description (70–160 chars)",
@@ -1912,7 +1948,7 @@
       "severity": "high",
       "detail": "184 chars",
       "fixType": "auto:trim-meta-description",
-      "status": "verifying",
+      "status": "complete",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-24",
       "attempts": 0,
@@ -1926,6 +1962,11 @@
           "date": "2026-08-24",
           "event": "auto-fixed",
           "note": "shortened meta description 184→154 chars"
+        },
+        {
+          "date": "2026-08-24",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "fixedOn": "2026-08-24",
@@ -1933,7 +1974,8 @@
       "eta": "next run (~1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-24"
     },
     "astronomy/weight-on-other-planets::Title present (15–60 chars)": {
       "id": "astronomy/weight-on-other-planets::Title present (15–60 chars)",
@@ -1944,7 +1986,7 @@
       "severity": "high",
       "detail": "63 chars: \"Weight on Other Planets Calculator — Free & Privat\"",
       "fixType": "manual",
-      "status": "verifying",
+      "status": "complete",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-24",
       "attempts": 0,
@@ -1958,6 +2000,11 @@
           "date": "2026-08-24",
           "event": "llm-fixed",
           "note": "Weight on Other Planets Calculator… → Weight on Other Planets…"
+        },
+        {
+          "date": "2026-08-24",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 4,
@@ -1965,7 +2012,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "fixedOn": "2026-08-24"
+      "fixedOn": "2026-08-24",
+      "resolvedOn": "2026-08-24"
     },
     "astronomy/weight-on-other-planets::No serious/critical axe violations": {
       "id": "astronomy/weight-on-other-planets::No serious/critical axe violations",
@@ -2082,7 +2130,7 @@
       "severity": "high",
       "detail": "66 chars: \"Fuel Economy Converter (MPG, L/100km) — Free & Pri\"",
       "fixType": "manual",
-      "status": "verifying",
+      "status": "complete",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-24",
       "attempts": 0,
@@ -2096,6 +2144,11 @@
           "date": "2026-08-24",
           "event": "llm-fixed",
           "note": "Fuel Economy Converter (MPG, L/100km)… → MPG & L/100km Converter…"
+        },
+        {
+          "date": "2026-08-24",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 4,
@@ -2103,7 +2156,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "fixedOn": "2026-08-24"
+      "fixedOn": "2026-08-24",
+      "resolvedOn": "2026-08-24"
     },
     "automotive/gear-ratio-calculator::No serious/critical axe violations": {
       "id": "automotive/gear-ratio-calculator::No serious/critical axe violations",
@@ -2194,7 +2248,7 @@
       "severity": "high",
       "detail": "61 chars: \"Power-to-Weight Ratio Calculator — Free & Private \"",
       "fixType": "manual",
-      "status": "verifying",
+      "status": "complete",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-24",
       "attempts": 0,
@@ -2208,6 +2262,11 @@
           "date": "2026-08-24",
           "event": "llm-fixed",
           "note": "name: 'Power-to-Weight Ratio Calculator'… → name: 'Power-to-Weight Calculator',…"
+        },
+        {
+          "date": "2026-08-24",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 4,
@@ -2215,7 +2274,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "fixedOn": "2026-08-24"
+      "fixedOn": "2026-08-24",
+      "resolvedOn": "2026-08-24"
     },
     "automotive/power-to-weight-ratio-calculator::Meta description (70–160 chars)": {
       "id": "automotive/power-to-weight-ratio-calculator::Meta description (70–160 chars)",
@@ -2226,7 +2286,7 @@
       "severity": "high",
       "detail": "163 chars",
       "fixType": "auto:trim-meta-description",
-      "status": "verifying",
+      "status": "complete",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-24",
       "attempts": 0,
@@ -2240,6 +2300,11 @@
           "date": "2026-08-24",
           "event": "auto-fixed",
           "note": "shortened meta description 163→155 chars"
+        },
+        {
+          "date": "2026-08-24",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "fixedOn": "2026-08-24",
@@ -2247,7 +2312,8 @@
       "eta": "next run (~1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-24"
     },
     "automotive/quarter-mile-calculator::Title present (15–60 chars)": {
       "id": "automotive/quarter-mile-calculator::Title present (15–60 chars)",
@@ -2258,7 +2324,7 @@
       "severity": "high",
       "detail": "68 chars: \"Quarter-Mile ET & Trap Speed Calculator — Free & P\"",
       "fixType": "manual",
-      "status": "verifying",
+      "status": "complete",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-24",
       "attempts": 0,
@@ -2272,6 +2338,11 @@
           "date": "2026-08-24",
           "event": "llm-fixed",
           "note": "Quarter-Mile ET & Trap Speed Calculator… → 1/4-Mile ET & Trap Speed Calc…"
+        },
+        {
+          "date": "2026-08-24",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 4,
@@ -2279,7 +2350,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "fixedOn": "2026-08-24"
+      "fixedOn": "2026-08-24",
+      "resolvedOn": "2026-08-24"
     },
     "automotive/quarter-mile-calculator::No serious/critical axe violations": {
       "id": "automotive/quarter-mile-calculator::No serious/critical axe violations",
@@ -2343,7 +2415,7 @@
       "severity": "high",
       "detail": "168 chars",
       "fixType": "auto:trim-meta-description",
-      "status": "verifying",
+      "status": "complete",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-24",
       "attempts": 0,
@@ -2357,6 +2429,11 @@
           "date": "2026-08-24",
           "event": "auto-fixed",
           "note": "shortened meta description 168→155 chars"
+        },
+        {
+          "date": "2026-08-24",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "fixedOn": "2026-08-24",
@@ -2364,7 +2441,8 @@
       "eta": "next run (~1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-24"
     },
     "automotive/tire-size-comparison::Title present (15–60 chars)": {
       "id": "automotive/tire-size-comparison::Title present (15–60 chars)",
@@ -3398,7 +3476,7 @@
       "severity": "high",
       "detail": "217 chars",
       "fixType": "auto:trim-meta-description",
-      "status": "verifying",
+      "status": "complete",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-24",
       "attempts": 0,
@@ -3412,6 +3490,11 @@
           "date": "2026-08-24",
           "event": "auto-fixed",
           "note": "shortened meta description 217→153 chars"
+        },
+        {
+          "date": "2026-08-24",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "fixedOn": "2026-08-24",
@@ -3419,7 +3502,8 @@
       "eta": "next run (~1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-24"
     },
     "calc/auto-loan-calculator::Core Web Vitals: CLS good (<0.1)": {
       "id": "calc/auto-loan-calculator::Core Web Vitals: CLS good (<0.1)",
@@ -3638,7 +3722,7 @@
       "severity": "high",
       "detail": "182 chars",
       "fixType": "auto:trim-meta-description",
-      "status": "verifying",
+      "status": "complete",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-24",
       "attempts": 0,
@@ -3652,6 +3736,11 @@
           "date": "2026-08-24",
           "event": "auto-fixed",
           "note": "shortened meta description 182→145 chars"
+        },
+        {
+          "date": "2026-08-24",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "fixedOn": "2026-08-24",
@@ -3659,7 +3748,8 @@
       "eta": "next run (~1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-24"
     },
     "calc/creatinine-unit-converter::Title present (15–60 chars)": {
       "id": "calc/creatinine-unit-converter::Title present (15–60 chars)",
@@ -4052,7 +4142,7 @@
       "severity": "high",
       "detail": "165 chars",
       "fixType": "auto:trim-meta-description",
-      "status": "open",
+      "status": "verifying",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-24",
       "attempts": 0,
@@ -4061,13 +4151,19 @@
           "date": "2026-08-24",
           "event": "opened",
           "note": "165 chars"
+        },
+        {
+          "date": "2026-08-24",
+          "event": "auto-fixed",
+          "note": "shortened meta description 165→157 chars"
         }
       ],
       "effortHours": 2,
       "eta": "next run (~1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "fixedOn": "2026-08-24"
     },
     "calc/gpa-calculator::No horizontal scroll on mobile": {
       "id": "calc/gpa-calculator::No horizontal scroll on mobile",
@@ -4234,7 +4330,7 @@
       "severity": "high",
       "detail": "171 chars",
       "fixType": "auto:trim-meta-description",
-      "status": "open",
+      "status": "verifying",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-24",
       "attempts": 0,
@@ -4243,13 +4339,19 @@
           "date": "2026-08-24",
           "event": "opened",
           "note": "171 chars"
+        },
+        {
+          "date": "2026-08-24",
+          "event": "auto-fixed",
+          "note": "shortened meta description 171→154 chars"
         }
       ],
       "effortHours": 2,
       "eta": "next run (~1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "fixedOn": "2026-08-24"
     },
     "calc/mortgage-calculator::No serious/critical axe violations": {
       "id": "calc/mortgage-calculator::No serious/critical axe violations",
@@ -4417,7 +4519,7 @@
       "severity": "high",
       "detail": "167 chars",
       "fixType": "auto:trim-meta-description",
-      "status": "open",
+      "status": "verifying",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-24",
       "attempts": 0,
@@ -4426,13 +4528,19 @@
           "date": "2026-08-24",
           "event": "opened",
           "note": "167 chars"
+        },
+        {
+          "date": "2026-08-24",
+          "event": "auto-fixed",
+          "note": "shortened meta description 167→154 chars"
         }
       ],
       "effortHours": 2,
       "eta": "next run (~1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "fixedOn": "2026-08-24"
     },
     "calc/sales-tax-calculator::Core Web Vitals: CLS good (<0.1)": {
       "id": "calc/sales-tax-calculator::Core Web Vitals: CLS good (<0.1)",
@@ -4574,7 +4682,7 @@
       "severity": "high",
       "detail": "163 chars",
       "fixType": "auto:trim-meta-description",
-      "status": "open",
+      "status": "verifying",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-24",
       "attempts": 0,
@@ -4583,13 +4691,19 @@
           "date": "2026-08-24",
           "event": "opened",
           "note": "163 chars"
+        },
+        {
+          "date": "2026-08-24",
+          "event": "auto-fixed",
+          "note": "shortened meta description 163→155 chars"
         }
       ],
       "effortHours": 2,
       "eta": "next run (~1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "fixedOn": "2026-08-24"
     },
     "calc/square-footage-calculator::Core Web Vitals: CLS good (<0.1)": {
       "id": "calc/square-footage-calculator::Core Web Vitals: CLS good (<0.1)",
@@ -4626,7 +4740,7 @@
       "severity": "high",
       "detail": "165 chars",
       "fixType": "auto:trim-meta-description",
-      "status": "open",
+      "status": "verifying",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-24",
       "attempts": 0,
@@ -4635,13 +4749,19 @@
           "date": "2026-08-24",
           "event": "opened",
           "note": "165 chars"
+        },
+        {
+          "date": "2026-08-24",
+          "event": "auto-fixed",
+          "note": "shortened meta description 165→157 chars"
         }
       ],
       "effortHours": 2,
       "eta": "next run (~1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "fixedOn": "2026-08-24"
     },
     "calc/test-grade-calculator::Title present (15–60 chars)": {
       "id": "calc/test-grade-calculator::Title present (15–60 chars)",
@@ -4834,7 +4954,7 @@
       "severity": "high",
       "detail": "176 chars",
       "fixType": "auto:trim-meta-description",
-      "status": "open",
+      "status": "verifying",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-24",
       "attempts": 0,
@@ -4843,13 +4963,19 @@
           "date": "2026-08-24",
           "event": "opened",
           "note": "176 chars"
+        },
+        {
+          "date": "2026-08-24",
+          "event": "auto-fixed",
+          "note": "shortened meta description 176→150 chars"
         }
       ],
       "effortHours": 2,
       "eta": "next run (~1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "fixedOn": "2026-08-24"
     },
     "calendar/bikram-sambat-converter::Meta description (70–160 chars)": {
       "id": "calendar/bikram-sambat-converter::Meta description (70–160 chars)",
@@ -4860,7 +4986,7 @@
       "severity": "high",
       "detail": "164 chars",
       "fixType": "auto:trim-meta-description",
-      "status": "open",
+      "status": "verifying",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-24",
       "attempts": 0,
@@ -4869,13 +4995,19 @@
           "date": "2026-08-24",
           "event": "opened",
           "note": "164 chars"
+        },
+        {
+          "date": "2026-08-24",
+          "event": "auto-fixed",
+          "note": "shortened meta description 164→156 chars"
         }
       ],
       "effortHours": 2,
       "eta": "next run (~1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "fixedOn": "2026-08-24"
     },
     "calendar/calendar-converter::Meta description (70–160 chars)": {
       "id": "calendar/calendar-converter::Meta description (70–160 chars)",
@@ -4886,7 +5018,7 @@
       "severity": "high",
       "detail": "185 chars",
       "fixType": "auto:trim-meta-description",
-      "status": "open",
+      "status": "verifying",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-24",
       "attempts": 0,
@@ -4895,13 +5027,19 @@
           "date": "2026-08-24",
           "event": "opened",
           "note": "185 chars"
+        },
+        {
+          "date": "2026-08-24",
+          "event": "auto-fixed",
+          "note": "shortened meta description 185→157 chars"
         }
       ],
       "effortHours": 2,
       "eta": "next run (~1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "fixedOn": "2026-08-24"
     },
     "calendar/calendar-converter::No serious/critical axe violations": {
       "id": "calendar/calendar-converter::No serious/critical axe violations",
@@ -5098,7 +5236,7 @@
       "severity": "high",
       "detail": "176 chars",
       "fixType": "auto:trim-meta-description",
-      "status": "open",
+      "status": "verifying",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-24",
       "attempts": 0,
@@ -5107,13 +5245,19 @@
           "date": "2026-08-24",
           "event": "opened",
           "note": "176 chars"
+        },
+        {
+          "date": "2026-08-24",
+          "event": "auto-fixed",
+          "note": "shortened meta description 176→156 chars"
         }
       ],
       "effortHours": 2,
       "eta": "next run (~1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "fixedOn": "2026-08-24"
     },
     "charts/bar-chart-maker::No serious/critical axe violations": {
       "id": "charts/bar-chart-maker::No serious/critical axe violations",
@@ -5151,7 +5295,7 @@
       "severity": "high",
       "detail": "178 chars",
       "fixType": "auto:trim-meta-description",
-      "status": "open",
+      "status": "verifying",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-24",
       "attempts": 0,
@@ -5160,13 +5304,19 @@
           "date": "2026-08-24",
           "event": "opened",
           "note": "178 chars"
+        },
+        {
+          "date": "2026-08-24",
+          "event": "auto-fixed",
+          "note": "shortened meta description 178→156 chars"
         }
       ],
       "effortHours": 2,
       "eta": "next run (~1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "fixedOn": "2026-08-24"
     },
     "charts/funnel-chart-maker::No serious/critical axe violations": {
       "id": "charts/funnel-chart-maker::No serious/critical axe violations",
@@ -39044,6 +39194,32 @@
       "sla": "on-track",
       "assignedTo": "fixer",
       "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+    },
+    "automotive/power-to-weight-ratio-calculator::Helpful-content depth (editorial ≥350 words)": {
+      "id": "automotive/power-to-weight-ratio-calculator::Helpful-content depth (editorial ≥350 words)",
+      "tool": "automotive/power-to-weight-ratio-calculator",
+      "url": "https://lazytools.io/automotive/power-to-weight-ratio-calculator/",
+      "category": "google",
+      "check": "Helpful-content depth (editorial ≥350 words)",
+      "severity": "medium",
+      "detail": "349 words",
+      "fixType": "manual",
+      "status": "open",
+      "firstSeen": "2026-08-24",
+      "lastSeen": "2026-08-24",
+      "attempts": 0,
+      "history": [
+        {
+          "date": "2026-08-24",
+          "event": "opened",
+          "note": "349 words"
+        }
+      ],
+      "effortHours": 6,
+      "eta": "~6h (1 day)",
+      "dueBy": "2026-08-29",
+      "sla": "on-track",
+      "assignedTo": "fixer"
     }
   },
   "updated": "2026-08-24",
@@ -39068,11 +39244,11 @@
     },
     {
       "date": "2026-08-24",
-      "tools": 1073,
-      "avg": 95,
-      "issues": 1426,
-      "opened": 1425,
-      "resolved": 0,
+      "tools": 22,
+      "avg": 99,
+      "issues": 7,
+      "opened": 1,
+      "resolved": 15,
       "challenged": 0
     }
   ],
@@ -40166,8 +40342,8 @@
       },
       {
         "date": "2026-08-24",
-        "auditor": 4.7,
-        "fixer": 4.4
+        "auditor": 5,
+        "fixer": 5
       }
     ],
     "weekly": [
@@ -40179,8 +40355,8 @@
       },
       {
         "week": "2026-W35",
-        "auditor": 4.7,
-        "fixer": 4.4,
+        "auditor": 5,
+        "fixer": 5,
         "days": 1
       }
     ]
@@ -40192,7 +40368,7 @@
       "task": "Reviewed 8 research idea(s) (avg 4/5); approved 0. Tokens 42220/400000.",
       "kpis": {
         "overdue": 0,
-        "onTrack": 1425,
+        "onTrack": 1411,
         "slaPct": 100,
         "tokensToday": 42220,
         "tokenCap": 400000,
@@ -40202,31 +40378,31 @@
     "auditor": {
       "role": "Truth — detect, verify, close findings",
       "status": "verifying",
-      "task": "Re-verifying 18 fixed tool(s); next 10-tool sweep from index 0.",
+      "task": "Re-verifying 13 fixed tool(s); next 10-tool sweep from index 0.",
       "kpis": {
         "auditedTotal": 1073,
         "catalogue": 1073,
-        "lastAvg": 95
+        "lastAvg": 99
       },
       "score": {
-        "daily": 4.7,
-        "weekly": 4.7
+        "daily": 5,
+        "weekly": 5
       }
     },
     "fixer": {
       "role": "Senior dev — auto + LLM fixes, build-gated, 24/7",
       "status": "fixing",
-      "task": "Auto-fixing 444 title item(s), build-gated. Driving 283 systemic fix(es); 1 tracker removals await your one-time OK. 18 awaiting re-verify.",
+      "task": "Auto-fixing 444 title item(s), build-gated. Driving 283 systemic fix(es); 1 tracker removals await your one-time OK. 13 awaiting re-verify.",
       "kpis": {
-        "open": 1407,
+        "open": 1398,
         "fixable": 444,
         "systemic": 283,
-        "verifying": 18,
-        "completed": 51
+        "verifying": 13,
+        "completed": 66
       },
       "score": {
-        "daily": 4.4,
-        "weekly": 4.4
+        "daily": 5,
+        "weekly": 5
       }
     },
     "researcher": {

@@ -19,7 +19,7 @@ export const CHART_TOOLS: ChartToolDef[] = [
     name: 'Bar Chart Maker',
     icon: '📊',
     description:
-      'Make a bar chart from your own data and download it as PNG or SVG — paste “label, value” lines, pick colors, add a title. Free, no sign-up, your data never leaves your browser.',
+      'Make a bar chart from your own data and download it as PNG or SVG — paste “label, value” lines, pick colors, add a title. Free, no sign-up, your data never…',
     lead: 'Paste your data as “label, value” lines, choose a color palette, and download a clean bar chart as a crisp PNG or an editable SVG — all in your browser.',
     widget: 'bar',
     how: 'Enter one “label, value” pair per line (comma or tab separated). The tool scales the tallest bar to the plot height, draws evenly spaced bars with value labels and a gridded value axis, and colors each bar from the palette you pick. The chart is drawn as an SVG in your browser; the PNG export renders that SVG onto a 2× canvas for a sharp, high-resolution image. Nothing is uploaded — the data you paste stays on your device.',
@@ -76,7 +76,7 @@ export const CHART_TOOLS: ChartToolDef[] = [
     name: 'Funnel Chart Maker',
     icon: '🫙',
     description:
-      'Make a funnel chart to show conversion through stages — paste “stage, value” lines and get each stage’s drop-off and percentage of the top. Download PNG or SVG, nothing uploaded.',
+      'Make a funnel chart to show conversion through stages — paste “stage, value” lines and get each stage’s drop-off and percentage of the top. Download PNG or…',
     lead: 'Paste your funnel stages as “label, value” lines and get a clean funnel chart with each stage’s percentage of the top — download a crisp PNG or an editable SVG in your browser.',
     widget: 'funnel',
     how: 'Enter one “stage, value” pair per line, from the widest stage at the top to the narrowest at the bottom. The tool draws each stage as a trapezoid whose width is proportional to its value, so the tapering shape shows how many people or items drop off between steps, and labels each stage with its count and its percentage of the first (top) stage. It’s drawn as an SVG in your browser with a 2× PNG export — your numbers are never uploaded.',
