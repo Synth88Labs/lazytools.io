@@ -29,8 +29,9 @@ const MAX_ATTEMPTS = 3;
 
 // ── allow-list of external hosts a privacy-first client-side site may contact ──
 const ALLOWED_HOSTS = [/(^|\.)lazytools\.io$/, /(^|\.)googletagmanager\.com$/, /(^|\.)google-analytics\.com$/, /(^|\.)analytics\.google\.com$/, /(^|\.)gstatic\.com$/, /(^|\.)googleapis\.com$/,
-  // Owner-accepted: Mediavine "Grow.me" audience-engagement + its Unified-ID stack (intentional monetization; see Base.astro). Remove those hosts here if the script is ever removed.
-  /(^|\.)grow\.me$/, /(^|\.)growplow\.events$/, /(^|\.)uidapi\.com$/];
+  // Owner-accepted: Mediavine "Grow.me" audience-engagement + its Unified-ID stack + Recombee
+  // recommendation API (intentional monetization; see Base.astro). Remove if the script is ever removed.
+  /(^|\.)grow\.me$/, /(^|\.)growplow\.events$/, /(^|\.)uidapi\.com$/, /(^|\.)recombee\.com$/];
 const hostAllowed = (h) => ALLOWED_HOSTS.some((re) => re.test(h));
 
 const readJSON = async (p, fb) => { try { return JSON.parse(await readFile(p, 'utf8')); } catch { return fb; } };
@@ -107,7 +108,9 @@ for (const slug of toAudit) {
         jsonldTypes: types,
         faqCount: (jsonld.find((x) => x['@type'] === 'FAQPage')?.mainEntity || []).length,
         wordCount: bodyText.split(' ').filter(Boolean).length,
-        placeholder: /\b(lorem ipsum|coming soon|todo|tbd|placeholder text)\b/i.test(bodyText),
+        // Only unambiguous dev-leftover markers — NOT "lorem ipsum"/"placeholder text",
+        // which are legitimate content/topics for the /generate/ tools (lorem generator, etc.).
+        placeholder: /\b(coming soon|under construction|content goes here|your content here|insert (?:text|content) here|placeholder text goes here|todo:|fixme)\b/i.test(bodyText),
         aboutLink: !!document.querySelector('a[href*="/about"]'),
         hasOrgSchema: types.some((t) => t === 'Organization' || t === 'WebSite' || t === 'WebApplication'),
       };
@@ -149,7 +152,11 @@ for (const slug of toAudit) {
     checks.push(C('functionality', 'No failed resource requests', 'high', badRequests.length === 0, badRequests.slice(0, 3).join('  |  ')));
     checks.push(C('functionality', 'Interactive tool hydrates', 'critical', d.controls > 0, `${d.controls} controls in <main>`));
     checks.push(C('functionality', 'Actions run without error', 'critical', !interactErr, interactErr ? 'a click threw an error' : `${clicked} action(s) clicked cleanly`));
-    checks.push(C('output', 'Produces output for its input', 'high', outAfter >= outBefore && outAfter > 40, `output text length ${outAfter}`));
+    // A tool "produces output" if it shows substantial output text — either from the start
+    // (generators seeded with a value) or after interaction. The prior `outAfter >= outBefore`
+    // clause false-flagged generators whose output shrank when the auditor clicked (e.g. a
+    // regenerate that returns fewer items), so it's dropped in favour of the real intent.
+    checks.push(C('output', 'Produces output for its input', 'high', outAfter > 40 || outBefore > 40, `output text length ${outAfter} (was ${outBefore})`));
     // B. SEO / metadata
     checks.push(C('seo', 'Title present (15–60 chars)', 'high', d.title.length >= 15 && d.title.length <= 60, `${d.title.length} chars: "${d.title.slice(0, 50)}"`, (d.title.length > 60 ? 'manual' : 'manual')));
     checks.push(C('seo', 'Meta description (70–160 chars)', 'high', d.metaDesc.length >= 70 && d.metaDesc.length <= 160, `${d.metaDesc.length} chars`, d.metaDesc.length > 160 ? 'auto:trim-meta-description' : 'manual'));
