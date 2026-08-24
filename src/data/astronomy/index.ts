@@ -52,7 +52,7 @@ export const ASTRO_TOOLS: AstroToolDef[] = [
   },
   {
     slug: 'weight-on-other-planets',
-    name: 'Weight on Other Planets Calculator',
+    name: 'Weight on Other Planets',
     icon: '🪐',
     widget: 'planetweight',
     description: 'Find out how much you\'d weigh on the Moon, Mars, Jupiter and every other planet — from your Earth weight and each body\'s surface gravity. In your browser.',

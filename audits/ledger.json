@@ -1944,7 +1944,7 @@
       "severity": "high",
       "detail": "63 chars: \"Weight on Other Planets Calculator — Free & Privat\"",
       "fixType": "manual",
-      "status": "open",
+      "status": "verifying",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-24",
       "attempts": 0,
@@ -1953,13 +1953,19 @@
           "date": "2026-08-24",
           "event": "opened",
           "note": "63 chars: \"Weight on Other Planets Calculator — Free & Privat\""
+        },
+        {
+          "date": "2026-08-24",
+          "event": "llm-fixed",
+          "note": "Weight on Other Planets Calculator… → Weight on Other Planets…"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "fixedOn": "2026-08-24"
     },
     "astronomy/weight-on-other-planets::No serious/critical axe violations": {
       "id": "astronomy/weight-on-other-planets::No serious/critical axe violations",
@@ -2076,7 +2082,7 @@
       "severity": "high",
       "detail": "66 chars: \"Fuel Economy Converter (MPG, L/100km) — Free & Pri\"",
       "fixType": "manual",
-      "status": "open",
+      "status": "verifying",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-24",
       "attempts": 0,
@@ -2085,13 +2091,19 @@
           "date": "2026-08-24",
           "event": "opened",
           "note": "66 chars: \"Fuel Economy Converter (MPG, L/100km) — Free & Pri\""
+        },
+        {
+          "date": "2026-08-24",
+          "event": "llm-fixed",
+          "note": "Fuel Economy Converter (MPG, L/100km)… → MPG & L/100km Converter…"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "fixedOn": "2026-08-24"
     },
     "automotive/gear-ratio-calculator::No serious/critical axe violations": {
       "id": "automotive/gear-ratio-calculator::No serious/critical axe violations",
@@ -2182,7 +2194,7 @@
       "severity": "high",
       "detail": "61 chars: \"Power-to-Weight Ratio Calculator — Free & Private \"",
       "fixType": "manual",
-      "status": "open",
+      "status": "verifying",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-24",
       "attempts": 0,
@@ -2191,13 +2203,19 @@
           "date": "2026-08-24",
           "event": "opened",
           "note": "61 chars: \"Power-to-Weight Ratio Calculator — Free & Private \""
+        },
+        {
+          "date": "2026-08-24",
+          "event": "llm-fixed",
+          "note": "name: 'Power-to-Weight Ratio Calculator'… → name: 'Power-to-Weight Calculator',…"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "fixedOn": "2026-08-24"
     },
     "automotive/power-to-weight-ratio-calculator::Meta description (70–160 chars)": {
       "id": "automotive/power-to-weight-ratio-calculator::Meta description (70–160 chars)",
@@ -2240,7 +2258,7 @@
       "severity": "high",
       "detail": "68 chars: \"Quarter-Mile ET & Trap Speed Calculator — Free & P\"",
       "fixType": "manual",
-      "status": "open",
+      "status": "verifying",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-24",
       "attempts": 0,
@@ -2249,13 +2267,19 @@
           "date": "2026-08-24",
           "event": "opened",
           "note": "68 chars: \"Quarter-Mile ET & Trap Speed Calculator — Free & P\""
+        },
+        {
+          "date": "2026-08-24",
+          "event": "llm-fixed",
+          "note": "Quarter-Mile ET & Trap Speed Calculator… → 1/4-Mile ET & Trap Speed Calc…"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "fixedOn": "2026-08-24"
     },
     "automotive/quarter-mile-calculator::No serious/critical axe violations": {
       "id": "automotive/quarter-mile-calculator::No serious/critical axe violations",
@@ -40165,20 +40189,20 @@
     "manager": {
       "role": "Governance — SLAs, ratings, token budget",
       "status": "nominal",
-      "task": "Reviewed 8 research idea(s) (avg 4/5); approved 0. Tokens 34446/400000.",
+      "task": "Reviewed 8 research idea(s) (avg 4/5); approved 0. Tokens 42220/400000.",
       "kpis": {
         "overdue": 0,
         "onTrack": 1425,
         "slaPct": 100,
-        "tokensToday": 34446,
+        "tokensToday": 42220,
         "tokenCap": 400000,
-        "costUsd": 0.46
+        "costUsd": 0.53
       }
     },
     "auditor": {
       "role": "Truth — detect, verify, close findings",
       "status": "verifying",
-      "task": "Re-verifying 14 fixed tool(s); next 10-tool sweep from index 0.",
+      "task": "Re-verifying 18 fixed tool(s); next 10-tool sweep from index 0.",
       "kpis": {
         "auditedTotal": 1073,
         "catalogue": 1073,
@@ -40192,12 +40216,12 @@
     "fixer": {
       "role": "Senior dev — auto + LLM fixes, build-gated, 24/7",
       "status": "fixing",
-      "task": "Auto-fixing 448 title item(s), build-gated. Driving 283 systemic fix(es); 1 tracker removals await your one-time OK. 14 awaiting re-verify.",
+      "task": "Auto-fixing 444 title item(s), build-gated. Driving 283 systemic fix(es); 1 tracker removals await your one-time OK. 18 awaiting re-verify.",
       "kpis": {
-        "open": 1411,
-        "fixable": 448,
+        "open": 1407,
+        "fixable": 444,
         "systemic": 283,
-        "verifying": 14,
+        "verifying": 18,
         "completed": 51
       },
       "score": {
@@ -40248,19 +40272,19 @@
       },
       {
         "date": "2026-08-24",
-        "input": 4938,
-        "output": 29508,
-        "calls": 6,
+        "input": 8623,
+        "output": 33597,
+        "calls": 10,
         "byAgent": {
           "developer": 29357,
-          "fixer": 5089
+          "fixer": 12863
         }
       }
     ],
     "total": {
-      "input": 34747,
-      "output": 64099,
-      "calls": 15
+      "input": 38432,
+      "output": 68188,
+      "calls": 19
     }
   },
   "research": {

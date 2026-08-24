@@ -124,7 +124,7 @@ export const AUTO_TOOLS: AutoToolDef[] = [
   },
   {
     slug: 'fuel-economy-converter',
-    name: 'Fuel Economy Converter (MPG, L/100km)',
+    name: 'MPG & L/100km Converter',
     icon: '⛽',
     widget: 'fueleconomy',
     description: 'Convert fuel economy between US MPG, UK (imperial) MPG, litres per 100 km and km per litre — the US and UK gallons differ, and this handles it. In your browser.',
@@ -178,7 +178,7 @@ export const AUTO_TOOLS: AutoToolDef[] = [
   },
   {
     slug: 'power-to-weight-ratio-calculator',
-    name: 'Power-to-Weight Ratio Calculator',
+    name: 'Power-to-Weight Calculator',
     icon: '🏎️',
     widget: 'pwr2wt',
     description: 'Calculate power-to-weight ratio — hp per tonne, W/kg, hp per pound — from a vehicle\'s power and weight. The best single predictor of acceleration. In your…',
@@ -214,7 +214,7 @@ export const AUTO_TOOLS: AutoToolDef[] = [
   },
   {
     slug: 'quarter-mile-calculator',
-    name: 'Quarter-Mile ET & Trap Speed Calculator',
+    name: '1/4-Mile ET & Trap Speed Calc',
     icon: '🏁',
     widget: 'quartermile',
     description: 'Estimate a car\'s 1/4-mile elapsed time and trap speed from its horsepower and weight, using the classic drag-racing formulas. In your browser.',
