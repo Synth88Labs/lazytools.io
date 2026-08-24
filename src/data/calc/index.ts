@@ -15,7 +15,7 @@ export const CALCULATORS: CalcDef[] = [
       { id: 'of', label: 'Of the value', type: 'number', placeholder: '80', defaultValue: '80' },
     ],
     computeId: 'percentage',
-    formula: 'result = value × (percentage ÷ 100). "Percent" literally means "per hundred" — 15% is 15 parts of every 100.',
+    formula: 'result = value × (percentage ÷ 100). "Percent" literally means "per hundred" — 15% is 15 parts of every 100. To find what percent one number is of another, flip it around: divide the part by the whole and multiply by 100. And because multiplication commutes, X% of Y always equals Y% of X, which often turns an awkward sum into an easy one.',
     example: '15% of 80 → 80 × 0.15 = 12.',
     note: 'Handy reversal: X% of Y always equals Y% of X. Awkward problems flip into easy ones — 8% of 50 is the same as 50% of 8, which is instantly 4.',
     faqs: [
@@ -24,6 +24,8 @@ export const CALCULATORS: CalcDef[] = [
       { q: 'What is the fastest mental percentage trick?', a: 'Anchor on 10%: move the decimal one place (10% of 340 = 34), then scale — 5% is half of that, 20% is double, 15% is one-and-a-half times. And remember X% of Y = Y% of X.' },
       { q: 'How do I add or subtract a percentage from a number?', a: 'To add 15% to 80, multiply by 1.15 (= 92); to subtract 15%, multiply by 0.85 (= 68). In general, add p% by multiplying by (1 + p/100) and subtract by multiplying by (1 − p/100) — handy for tips, taxes and discounts.' },
       { q: 'What does "percent" actually mean?', a: 'Percent means "per hundred" (from the Latin per centum), so 25% is 25 out of every 100, or the fraction 25/100 = 0.25. That is why converting a percentage to a decimal is just dividing by 100.' },
+      { q: 'What is 40% of 60?', a: 'Multiply 60 by 0.40: 60 × 0.40 = 24. Equivalently, because X% of Y = Y% of X, it is the same as 60% of 40, which is also 24.' },
+      { q: 'How do I turn a percentage into a decimal or a fraction?', a: 'Divide by 100 for the decimal (35% = 0.35) and put it over 100 for the fraction (35/100, which simplifies to 7/20). Multiplying by that decimal is exactly what "taking a percentage" does.' },
     ],
     keywords: ['percentage calculator', 'percent of a number', 'how to calculate percentage', 'what is 15 of 80'],
   },
@@ -40,7 +42,7 @@ export const CALCULATORS: CalcDef[] = [
     ],
     computeId: 'percentageChange',
     formula:
-      'change % = (new value − original value) ÷ |original value| × 100. Positive results are increases, negative are decreases.',
+      'change % = (new value − original value) ÷ |original value| × 100. Positive results are increases, negative are decreases. The sign carries the direction, so you never need separate "increase" and "decrease" formulas — a negative answer simply means the value fell.',
     example: 'From 80 to 100 → (100 − 80) ÷ 80 × 100 = 25% increase.',
     note: 'Mind the asymmetry: a 25% increase from 80 reaches 100, but getting back from 100 to 80 is only a 20% decrease. Percentage changes are always relative to the starting value, which is why a 50% loss needs a 100% gain to recover.',
     faqs: [
@@ -49,6 +51,8 @@ export const CALCULATORS: CalcDef[] = [
       { q: 'Why do a 50% drop and a 50% gain not cancel out?', a: 'Because each change applies to a different base: 100 → 50 (−50%) → 75 (+50% of 50). After a 50% loss you need a 100% gain to break even.' },
       { q: 'How do I calculate a percentage decrease?', a: 'Use the same formula — (new − old) ÷ old × 100 — and the result comes out negative. Going from 200 to 150 is (150 − 200) ÷ 200 × 100 = −25%, i.e. a 25% decrease.' },
       { q: 'Is percentage change the same as percentage difference?', a: 'No. Percentage change has a clear before/after and divides by the original value. Percentage difference compares two values with no order, dividing by their average — used when neither number is "the baseline".' },
+      { q: 'How do I apply a 15% increase to 200?', a: 'Multiply by 1.15: 200 × 1.15 = 230. In general, apply a change of p% by multiplying by (1 + p/100), using a negative p for a decrease.' },
+      { q: 'What does a percentage change above 100% mean?', a: 'It means the value more than doubled: going from 50 to 150 is (150 − 50) ÷ 50 × 100 = 200% increase, i.e. three times the original. There is no ceiling on an increase, but a decrease cannot exceed 100% — that would mean reaching zero.' },
     ],
     keywords: ['percentage change calculator', 'percent increase calculator', 'percent decrease', 'percentage difference'],
   },
@@ -91,7 +95,7 @@ export const CALCULATORS: CalcDef[] = [
     ],
     computeId: 'bmi',
     formula:
-      'BMI = weight in kilograms ÷ (height in meters)². WHO adult ranges: under 18.5 underweight · 18.5–24.9 normal · 25–29.9 overweight · 30+ obesity.',
+      'BMI = weight in kilograms ÷ (height in meters)². WHO adult ranges: under 18.5 underweight · 18.5–24.9 normal · 25–29.9 overweight · 30+ obesity. The units must match the formula: use kilograms and metres, not centimetres, so 175 cm becomes 1.75 m and squares to about 3.06.',
     example: '70 kg at 175 cm → 70 ÷ 1.75² = 22.9 (normal range).',
     note: 'BMI is a population screening measure, not a diagnosis: it cannot distinguish muscle from fat, so athletes often read "overweight" while lean-mass poor individuals can read "normal". Health data is exactly the kind of input you shouldn’t hand to random web servers — this calculator never transmits yours anywhere.',
     faqs: [
@@ -100,6 +104,8 @@ export const CALCULATORS: CalcDef[] = [
       { q: 'Does the formula differ for imperial units?', a: 'The imperial form is weight (lb) ÷ height (in)² × 703. Convert first with the lbs-to-kg tool if needed; both routes give the same BMI.' },
       { q: 'What are the standard BMI categories?', a: 'For adults the WHO ranges are: under 18.5 underweight, 18.5–24.9 healthy weight, 25–29.9 overweight, and 30 or above obese. These are population guides, not a diagnosis.' },
       { q: 'Why can BMI be misleading?', a: 'BMI only uses height and weight, so it can\'t tell muscle from fat or account for frame size, age or body-fat distribution. A muscular athlete may read "overweight" while being lean — treat it as a rough screen, not a health verdict.' },
+      { q: 'How do I calculate BMI step by step?', a: 'Convert height to metres, square it, then divide weight in kilograms by the result. For 80 kg at 180 cm: 1.80² = 3.24, and 80 ÷ 3.24 = 24.7, near the top of the normal range.' },
+      { q: 'Does BMI work the same way for children?', a: 'No — for children and teens the same weight-over-height² figure is compared against age- and sex-specific percentile charts rather than the fixed adult cut-offs, so the adult categories should not be applied to a child.' },
     ],
     keywords: ['bmi calculator', 'body mass index', 'healthy weight calculator', 'bmi formula'],
   },
@@ -113,7 +119,7 @@ export const CALCULATORS: CalcDef[] = [
     fields: [{ id: 'dob', label: 'Date of birth', type: 'date' }],
     computeId: 'age',
     formula:
-      'Age counts completed calendar years, then completed months, then leftover days — borrowing from the previous month/year when the day or month hasn’t been reached yet, exactly like official age reckoning.',
+      'Age counts completed calendar years, then completed months, then leftover days — borrowing from the previous month/year when the day or month hasn’t been reached yet, exactly like official age reckoning. Because month lengths differ, the borrow step uses the actual number of days in the month being borrowed from, so the leftover-days count is always correct.',
     example: 'Born 2000-03-15, checked on 2026-07-04 → 26 years, 3 months, 19 days.',
     note: 'Forms, visa applications and school admissions often want age "as on" a specific date in years-months-days — this is that computation, done locally on your device (a birthdate is personal data; it never leaves your browser here).',
     faqs: [
@@ -122,6 +128,8 @@ export const CALCULATORS: CalcDef[] = [
       { q: 'Does it handle leap-year birthdays?', a: 'Yes — February 29 birthdays age normally; in non-leap years the completed year ticks over on March 1, consistent with most legal conventions.' },
       { q: 'How is age calculated in years, months and days?', a: 'It subtracts your birth date from today calendar-component by calendar-component: full years first, then the leftover months, then the remaining days — the same way you\'d say "34 years, 2 months and 5 days".' },
       { q: 'Why does my age in total days differ from years × 365?', a: 'Because years aren\'t all 365 days — leap years add a day. Over 34 years there are roughly 8 leap days, so the exact total-days figure is a little higher than 34 × 365. The tool counts the real calendar days.' },
+      { q: 'Can I calculate my age as on a future or past date?', a: 'Yes — age is just the calendar gap between two dates, so entering any reference date gives your age "as on" that day, which is exactly what many forms, visas and exams ask for.' },
+      { q: 'Why isn\'t my age simply this year minus my birth year?', a: 'Because that ignores whether your birthday has happened yet this year. If it hasn\'t, you are still a year younger than the subtraction suggests — the tool checks the month and day, not just the year.' },
     ],
     keywords: ['age calculator', 'how old am i', 'age in days', 'date of birth calculator', 'age in years months days'],
   },
@@ -138,7 +146,7 @@ export const CALCULATORS: CalcDef[] = [
       { id: 'split', label: 'Split between', type: 'number', suffix: 'people', placeholder: '1', defaultValue: '1', min: 1 },
     ],
     computeId: 'tip',
-    formula: 'tip = bill × (tip% ÷ 100); total = bill + tip; per person = total ÷ number of people.',
+    formula: 'tip = bill × (tip% ÷ 100); total = bill + tip; per person = total ÷ number of people. Splitting divides the grand total, so each person covers an equal share of both the bill and the tip; for uneven shares, run each person\'s subtotal through separately.',
     example: '85 bill, 18% tip, split by 2 → tip 15.30, total 100.30, per person 50.15.',
     note: 'US customary ranges: 15% baseline, 18–20% for good service, 10% for counter service. Mental shortcut: 10% is the decimal shift, 20% doubles it, and 15% is one-and-a-half times the 10% figure.',
     faqs: [
@@ -147,6 +155,8 @@ export const CALCULATORS: CalcDef[] = [
       { q: 'How do we split an uneven bill fairly?', a: 'Enter the full bill, tip percentage and headcount — the per-person figure includes the tip. For itemized fairness, each person can run their own subtotal through the calculator.' },
       { q: 'How much should I tip?', a: 'In the US, 15–20% of the pre-tax bill is customary for sit-down restaurant service, with ~18% a common default and more for exceptional service. Tipping norms vary widely by country — in many places service is included or tipping is minimal.' },
       { q: 'Should I tip on the pre-tax or post-tax amount?', a: 'Etiquette guides base the tip on the pre-tax subtotal, though many people simply tip on the total for convenience. On a modest bill the difference is small; enter whichever amount you prefer as the bill.' },
+      { q: 'How do I split a bill with tip between friends?', a: 'Enter the full bill, the tip percentage and the number of people; the per-person figure already includes the tip. A 120 bill at 20% split three ways is 144 ÷ 3 = 48 each.' },
+      { q: 'How much is a 15% tip on 60?', a: 'Take 10% (6.00) and add half of that (3.00): 15% is 9.00, for a 69.00 total. The 10%-anchor trick makes most tip percentages easy to do in your head.' },
     ],
     keywords: ['tip calculator', 'tip split calculator', 'how much to tip', '20 percent tip'],
   },
@@ -162,7 +172,7 @@ export const CALCULATORS: CalcDef[] = [
       { id: 'percent', label: 'Discount', type: 'number', suffix: '% off', placeholder: '30', defaultValue: '30' },
     ],
     computeId: 'discount',
-    formula: 'savings = price × (discount ÷ 100); final price = price − savings = price × (1 − discount ÷ 100).',
+    formula: 'savings = price × (discount ÷ 100); final price = price − savings = price × (1 − discount ÷ 100). The kept fraction (1 − discount ÷ 100) is the key quantity: multiplying by it gives the sale price directly, and dividing a sale price by it recovers the original.',
     example: '30% off 2,499 → save 749.70, pay 1,749.30.',
     note: 'Stacked discounts multiply, they don’t add: "30% off + extra 20% off" is 0.70 × 0.80 = 0.56 — a 44% total discount, not 50%. Retailers rely on that gap.',
     faqs: [
@@ -171,6 +181,8 @@ export const CALCULATORS: CalcDef[] = [
       { q: 'How do I find the original price after a discount?', a: 'Divide by the kept fraction: paid 84 after 30% off → 84 ÷ 0.70 = 120 original.' },
       { q: 'How do I stack two discounts (e.g. 20% then 10%)?', a: 'Apply them one after another, not by adding: 20% then 10% off 100 is 100 × 0.80 × 0.90 = 72, a 28% total discount — not 30%. Successive percentages multiply.' },
       { q: 'How do I work out the percentage off from two prices?', a: 'Discount % = (original − sale) ÷ original × 100. A drop from 120 to 84 is (120 − 84) ÷ 120 × 100 = 30% off.' },
+      { q: 'What does 25% off 80 come to?', a: 'Keep 75%: 80 × 0.75 = 60, a saving of 20. You can also compute the saving first (80 × 0.25 = 20) and subtract it from 80.' },
+      { q: 'How much is an extra 10% off an already 40%-reduced price?', a: 'Multiply the kept fractions: 0.60 × 0.90 = 0.54, so you pay 54% of the original — a 46% total discount, not 50%. Successive discounts always multiply rather than add.' },
     ],
     keywords: ['discount calculator', 'sale price calculator', 'percent off calculator', '30 percent off'],
   },
@@ -197,7 +209,7 @@ export const CALCULATORS: CalcDef[] = [
     ],
     computeId: 'compoundInterest',
     formula:
-      'FV = P × (1 + r/n)^(n×t), where r is the yearly rate as a decimal, n the compounding periods per year and t the years. More frequent compounding raises the effective yield slightly.',
+      'FV = P × (1 + r/n)^(n×t), where r is the yearly rate as a decimal, n the compounding periods per year and t the years. More frequent compounding raises the effective yield slightly. Raising (1 + r/n) to the power n×t compounds every period, so the interest itself starts earning interest — and the gap over simple interest widens the longer the money is left untouched.',
     example: '100,000 at 8% for 10 years, yearly compounding → 215,892 (interest 115,892).',
     note: 'The rule of 72 gives the doubling time in your head: 72 ÷ rate ≈ years to double. At 8%, money doubles roughly every 9 years — so 10× in 30 years isn’t magic, it’s three doublings plus change.',
     faqs: [
@@ -206,6 +218,8 @@ export const CALCULATORS: CalcDef[] = [
       { q: 'How much difference does compounding frequency make?', a: 'Less than most expect: 8% for 10 years grows 100,000 to 215,892 yearly-compounded vs 222,196 monthly-compounded — about 3% more. Rate and time dominate; frequency fine-tunes.' },
       { q: 'What is the difference between compound and simple interest?', a: 'Simple interest is charged only on the original principal, so it grows in a straight line. Compound interest is charged on the principal plus previously-earned interest, so it accelerates over time — the "interest on interest" effect.' },
       { q: 'What is the rule of 72?', a: 'A quick way to estimate doubling time: divide 72 by the annual percentage rate. At 8% money roughly doubles in 72 ÷ 8 = 9 years. It\'s an approximation that works best for rates between about 6% and 10%.' },
+      { q: 'What is the effective annual rate?', a: 'It is the true yearly growth once compounding is included: EAR = (1 + r/n)^n − 1. A nominal 12% compounded monthly works out to (1 + 0.01)^12 − 1 = 12.68% effective.' },
+      { q: 'How long to double my money at 6%?', a: 'By the rule of 72, about 72 ÷ 6 = 12 years. The exact figure from the formula is ln(2) ÷ ln(1.06) ≈ 11.9 years, so the shortcut lands very close.' },
     ],
     keywords: ['compound interest calculator', 'future value calculator', 'rule of 72', 'investment growth calculator'],
   },
@@ -222,7 +236,7 @@ export const CALCULATORS: CalcDef[] = [
       { id: 'years', label: 'Time', type: 'number', suffix: 'years', placeholder: '3', defaultValue: '3' },
     ],
     computeId: 'simpleInterest',
-    formula: 'SI = P × R × T ÷ 100; total = principal + SI. Interest is charged only on the original principal each period.',
+    formula: 'SI = P × R × T ÷ 100; total = principal + SI. Interest is charged only on the original principal each period. Because it is a fixed slice of the principal each year, the total grows in a straight line — doubling the time doubles the interest, unlike compounding, which accelerates.',
     example: '50,000 at 7% for 3 years → interest 10,500; total 60,500.',
     note: 'Simple interest survives in short-term lending, some auto loans, bonds’ coupon math and school syllabi; most savings and mortgages compound instead. Same inputs at 7%/3 years compounded yearly would yield 11,252 — the gap widens fast with time.',
     faqs: [
@@ -231,6 +245,8 @@ export const CALCULATORS: CalcDef[] = [
       { q: 'How do I get the time in months?', a: 'Use fractional years: 9 months = 0.75 years. SI on 10,000 at 8% for 9 months = 10,000 × 8 × 0.75 ÷ 100 = 600.' },
       { q: 'When is simple interest actually used?', a: 'It\'s common for short-term and fixed arrangements: many car loans, some personal and student loans, and certain bonds and treasury instruments quote simple interest. Savings accounts and mortgages usually compound instead.' },
       { q: 'How do I find the rate or principal from simple interest?', a: 'Rearrange I = P × R × T ÷ 100. Rate = I × 100 ÷ (P × T); principal = I × 100 ÷ (R × T). For example, 600 interest on 10,000 over 0.75 years implies a rate of 600 × 100 ÷ (10,000 × 0.75) = 8%.' },
+      { q: 'What is the total to repay on a simple-interest loan?', a: 'Add the interest to the principal: for 8,000 at 6% over 4 years, interest is 8,000 × 6 × 4 ÷ 100 = 1,920, so the total repayable is 9,920.' },
+      { q: 'How do I handle a loan measured in days?', a: 'Convert days to a fraction of a year, usually days ÷ 365. For 10,000 at 9% over 90 days: 10,000 × 9 × (90 ÷ 365) ÷ 100 ≈ 221.9 interest.' },
     ],
     keywords: ['simple interest calculator', 'si formula', 'principal rate time', 'interest calculator'],
   },
@@ -248,7 +264,7 @@ export const CALCULATORS: CalcDef[] = [
     ],
     computeId: 'hourlyToSalary',
     formula:
-      'weekly = rate × hours; annual = weekly × 52; monthly = annual ÷ 12. The quick two-way approximation at 40 h/week: salary ≈ hourly × 2,080, or hourly ≈ salary ÷ 2,000.',
+      'weekly = rate × hours; annual = weekly × 52; monthly = annual ÷ 12. The quick two-way approximation at 40 h/week: salary ≈ hourly × 2,080, or hourly ≈ salary ÷ 2,000. The 52 comes from weeks in a year and the 12 from months; if you take unpaid weeks off, lower the 52 accordingly before converting.',
     example: '25/hour at 40 h/week → 1,000 weekly, 4,333 monthly, 52,000 annually.',
     note: 'The doubling shortcut: at 40 hours/week, annual salary ≈ hourly rate × 2,000 — so 25/hour ≈ 50k and 50/hour ≈ 100k. Gross figures only; taxes, unpaid leave and overtime change take-home pay.',
     faqs: [
@@ -257,6 +273,8 @@ export const CALCULATORS: CalcDef[] = [
       { q: 'Does this include taxes or overtime?', a: 'No — results are gross pay from rate × hours. Overtime, deductions and unpaid weeks shift real take-home; enter adjusted hours to model them.' },
       { q: 'How do I convert an hourly wage to an annual salary?', a: 'Multiply the hourly rate by hours per week and by weeks worked per year. A common shortcut for full-time (40 hrs × 52 weeks = 2,080 hrs) is: annual ≈ hourly × 2,080 — so $25/hr ≈ $52,000 a year.' },
       { q: 'Should I use 52 weeks or fewer for unpaid time off?', a: 'If your time off is unpaid, subtract those weeks: 50 paid weeks instead of 52 lowers the annual figure. Salaried equivalents usually assume all 52 weeks are paid, so use 52 to compare like-for-like.' },
+      { q: 'How much is 30 dollars an hour per month?', a: 'At 40 hours a week: 30 × 40 × 52 = 62,400 a year, which divided by 12 is about 5,200 a month gross.' },
+      { q: 'How do part-time hours change the annual figure?', a: 'Multiply by your actual weekly hours, not 40. At 20 hours a week, 25/hour is 25 × 20 × 52 = 26,000 a year — half the full-time figure for the same rate.' },
     ],
     keywords: ['hourly to salary calculator', 'salary calculator', '25 an hour is how much a year', 'wage to salary'],
   },
@@ -314,7 +332,7 @@ export const CALCULATORS: CalcDef[] = [
     ],
     computeId: 'bodyFat',
     formula:
-      'U.S. Navy method (log₁₀, measurements in cm). Men: 495 ÷ (1.0324 − 0.19077·log(waist − neck) + 0.15456·log(height)) − 450. Women add the hip and use different constants. Measure the waist at the navel and the neck below the larynx.',
+      'U.S. Navy method (log₁₀, measurements in cm). Men: 495 ÷ (1.0324 − 0.19077·log(waist − neck) + 0.15456·log(height)) − 450. Women add the hip and use different constants. Measure the waist at the navel and the neck below the larynx. Once you have the percentage, fat mass = body weight × body fat % and lean mass is the remainder, so an 80 kg person at 20% carries 16 kg of fat and 64 kg of lean mass.',
     example: 'A man 175 cm tall with a 38 cm neck and 85 cm waist estimates at roughly 18% body fat.',
     note: 'The tape method is convenient but approximate — expect ±3–4% versus a DEXA scan, and it can mis-estimate very lean or very heavy builds. Measure relaxed (don\'t suck in), snug but not compressing, and take each measurement twice. General fitness categories: for men, ~6–13% athletic, 14–17% fitness, 18–24% average; women run ~8% higher. Not medical advice.',
     faqs: [
@@ -322,6 +340,8 @@ export const CALCULATORS: CalcDef[] = [
       { q: 'How accurate is the tape-measure method?', a: 'Reasonably, for tracking trends: typically within 3–4 percentage points of a DEXA scan. It\'s less accurate at the extremes (very lean or very high body fat). Consistency matters more than absolute accuracy — measure the same way each time.' },
       { q: 'Where exactly do I measure?', a: 'Neck: just below the larynx, tape sloping slightly down at the front. Waist: at the navel for men, at the narrowest point for women. Hips (women): at the widest point. Stand relaxed and breathe normally — don\'t suck in.' },
       { q: 'What is a healthy body fat percentage?', a: 'Rough guides: men 10–20% and women 18–28% are commonly considered healthy, with athletes lower. Essential fat (the minimum) is about 3–5% for men and 10–13% for women. These are general ranges, not medical thresholds.' },
+      { q: 'How do I turn a body fat percentage into fat mass?', a: 'Multiply your weight by the percentage as a decimal: 75 kg at 18% is 75 × 0.18 = 13.5 kg of fat, leaving 61.5 kg of lean mass. Watching lean mass helps confirm you are losing fat rather than muscle.' },
+      { q: 'Why do men and women use different formulas?', a: 'Women naturally carry more essential fat and store it differently, so the Navy method adds the hip measurement and uses separate constants for women to keep the estimate accurate.' },
     ],
     keywords: ['body fat calculator', 'body fat percentage', 'navy body fat calculator', 'how to measure body fat', 'body fat tape measure'],
   },
@@ -392,7 +412,7 @@ export const CALCULATORS: CalcDef[] = [
     ],
     computeId: 'dueDate',
     formula:
-      'Naegele\'s rule: due date = first day of last menstrual period + 280 days (40 weeks). For cycles other than 28 days, add or subtract the difference (a 30-day cycle adds 2 days). Gestational age is counted from that first day, so "weeks pregnant" starts about two weeks before conception.',
+      'Naegele\'s rule: due date = first day of last menstrual period + 280 days (40 weeks). For cycles other than 28 days, add or subtract the difference (a 30-day cycle adds 2 days). Gestational age is counted from that first day, so "weeks pregnant" starts about two weeks before conception. Because a longer cycle shifts ovulation later, the tool moves the estimate accordingly — a 32-day cycle pushes the date about 4 days past the plain 280-day mark.',
     example: 'Last period starting Jan 1 with a 28-day cycle gives a due date of about October 8.',
     note: 'This is an estimate — only about 4% of babies arrive exactly on the due date, and a full-term birth is anything from 37 to 42 weeks. An early-pregnancy ultrasound gives a more accurate date and takes precedence over the LMP calculation. This tool is informational, not medical advice — and because it runs entirely in your browser, the date you enter is never uploaded anywhere.',
     faqs: [
@@ -400,6 +420,8 @@ export const CALCULATORS: CalcDef[] = [
       { q: 'How accurate is a due date?', a: 'It\'s an estimate. Only around 4% of births land on the exact due date; most happen within a week either side, and 37–42 weeks is all considered full term. A first-trimester ultrasound dates the pregnancy more precisely and is used in preference to the last-period calculation when they differ.' },
       { q: 'What if my cycle isn\'t 28 days?', a: 'The tool adjusts: a longer cycle pushes the due date later and a shorter one earlier, because ovulation (and so conception) shifts. Enter your average cycle length for a better estimate.' },
       { q: 'Is the date I enter kept private?', a: 'Yes — the calculation runs entirely in your browser and the page works offline. Nothing you type is sent to any server, which for something this personal is the point.' },
+      { q: 'Can I get my due date from a conception or IVF date?', a: 'Yes — from a known conception date, add about 266 days instead of 280, since the roughly two-week pre-conception offset does not apply. IVF transfers are dated even more precisely from the embryo\'s age.' },
+      { q: 'What is the difference between the due date and full term?', a: 'The due date is a single 40-week estimate, but "full term" is a range — 37 to 42 weeks — so a birth a couple of weeks either side of the due date is entirely normal.' },
     ],
     keywords: ['due date calculator', 'pregnancy due date', 'when is my baby due', 'gestational age calculator', 'naegele rule'],
   },
@@ -524,7 +546,7 @@ export const CALCULATORS: CalcDef[] = [
     ],
     computeId: 'fuelCost',
     formula:
-      'Fuel used = distance ÷ economy (or distance × economy ÷ 100 for L/100 km); cost = fuel used × price per unit. Keep distance and economy in the same system — miles with MPG, kilometres with L/100 km or km/L.',
+      'Fuel used = distance ÷ economy (or distance × economy ÷ 100 for L/100 km); cost = fuel used × price per unit. Keep distance and economy in the same system — miles with MPG, kilometres with L/100 km or km/L. For a round trip, double the distance before dividing; for km/L, divide distance by the figure just as with MPG, since both express distance per unit of fuel.',
     example: 'A 300-mile trip at 30 MPG with fuel at 3.50/gallon uses 10 gallons and costs about 35.',
     note: 'Real-world economy runs below the sticker figure — city driving, cold starts, roof racks, heavy loads and highway speeds above ~60 mph all cut it, often 10–20%. For a trip budget, use your car\'s actual observed economy (fill-to-fill) rather than the rated number, and add a little headroom. Choose the units your dashboard and pump use to avoid a MPG/L-per-100 km mix-up.',
     faqs: [
@@ -532,6 +554,8 @@ export const CALCULATORS: CalcDef[] = [
       { q: 'What\'s the difference between US and UK MPG?', a: 'The gallon. A US gallon is 3.785 litres and an imperial (UK) gallon is 4.546 litres — about 20% larger — so the same car reads a higher MPG in UK figures. Pick the right one, or your estimate will be off by a fifth.' },
       { q: 'How do I convert L/100 km to MPG?', a: 'They\'re inverse measures: MPG (US) ≈ 235.2 ÷ (L/100 km). So 8 L/100 km ≈ 29 MPG. This calculator lets you just pick your unit instead of converting by hand.' },
       { q: 'Why is my real fuel economy worse than the rating?', a: 'Official figures come from controlled tests. Real driving adds cold starts, city stop-go, high speeds, air conditioning, cargo and terrain — commonly cutting economy 10–20%. Use your own fill-to-fill average for trip budgeting.' },
+      { q: 'How do I work out the fuel cost per mile?', a: 'Divide the price per gallon by your MPG: at 3.50/gallon and 30 MPG, each mile costs 3.50 ÷ 30 ≈ 0.117, about 12 cents. Multiply by the trip distance for the total.' },
+      { q: 'Should I enter the one-way or round-trip distance?', a: 'Enter the total distance you will actually drive. For a return journey, double the one-way distance first, or the estimate will be only half the real fuel cost.' },
     ],
     keywords: ['fuel cost calculator', 'gas cost calculator', 'trip fuel cost', 'petrol cost calculator', 'mpg cost calculator', 'fuel economy cost'],
   },
@@ -568,7 +592,7 @@ export const CALCULATORS: CalcDef[] = [
       { id: 'total', label: 'Total questions', type: 'number', placeholder: '50', defaultValue: '50', min: 1 },
     ],
     computeId: 'testGrade',
-    formula: 'Percentage = (correct ÷ total) × 100. The letter grade maps the percentage onto the common US scale (A 93–100, A− 90–92, B+ 87–89, … , D 60–69, F below 60).',
+    formula: 'Percentage = (correct ÷ total) × 100. The letter grade maps the percentage onto the common US scale (A 93–100, A− 90–92, B+ 87–89, … , D 60–69, F below 60). Because it is a simple ratio, partial credit works too — just enter the total points earned as "correct" and the maximum possible as "total".',
     example: '45 correct out of 50 → 45 ÷ 50 × 100 = 90%, an A−, with 5 missed.',
     note: 'The letter-grade bands here are the widely used US convention, but scales vary by school, country and course — some use straight A/B/C without pluses and minuses, and cut-offs differ. Use the percentage as the reliable figure and apply your own institution\'s letter bands.',
     faqs: [
@@ -577,6 +601,8 @@ export const CALCULATORS: CalcDef[] = [
       { q: 'How many can I get wrong and still get an A?', a: 'You need 90% for an A−, so on a 50-question test you can miss 5 (45/50 = 90%). On a 20-question test you can miss 2 (18/20 = 90%). The tool shows your percentage as you change the numbers.' },
       { q: 'What letter grade is 75%?', a: 'On the standard US scale, 75% is a C (73–76%). 77% would be a C+ and 70% a C−. Bands vary by school, so treat this as the common convention.' },
       { q: 'Is this the same as a GPA?', a: 'No — this converts one test\'s correct answers to a percentage and letter. A GPA averages letter grades across courses on a 4.0 scale; use the GPA calculator for that.' },
+      { q: 'How do I grade a test where questions are worth different points?', a: 'Add up the points earned and divide by the total points available, then multiply by 100 — the same ratio, using points instead of a question count. 38 out of 45 points is 84.4%.' },
+      { q: 'How do I convert a score like 18/24 to a percentage?', a: 'Divide and multiply by 100: 18 ÷ 24 × 100 = 75%. The tool does this instantly and also maps it to a letter grade.' },
     ],
     keywords: ['test grade calculator', 'ez grader', 'grade calculator', 'grade percentage calculator', 'score calculator', 'points to grade', 'exam grade calculator'],
   },
@@ -593,7 +619,7 @@ export const CALCULATORS: CalcDef[] = [
       { id: 'qtyB', label: 'Item B — quantity/size', type: 'number', placeholder: '24', defaultValue: '24', min: 0 },
     ],
     computeId: 'unitPrice',
-    formula: 'Unit price = price ÷ quantity. Compare the two unit prices; the lower one is the better value, and the percentage difference shows by how much.',
+    formula: 'Unit price = price ÷ quantity. Compare the two unit prices; the lower one is the better value, and the percentage difference shows by how much. Dividing price by quantity strips out package size, so a large pack and a small pack are reduced to the same per-unit basis and can be compared at a glance.',
     example: '$3 for 12 = $0.25 each; $5 for 24 ≈ $0.208 each → the 24-pack is about 17% cheaper per unit.',
     note: 'Use the same unit for both quantities (both in ounces, both in count, both in millilitres) so the comparison is fair. The bigger package is usually — but not always — the better unit price; this is the quick way to catch the exceptions on the shelf.',
     faqs: [
@@ -602,6 +628,8 @@ export const CALCULATORS: CalcDef[] = [
       { q: 'What units should I use?', a: 'Whatever is on the label, as long as both items use the same one — count, ounces, grams, litres. If one is in ounces and the other in grams, convert first so you\'re comparing like with like.' },
       { q: 'How do I compare price per 100 g?', a: 'Enter the price and the weight in grams, and the unit price is per gram; multiply by 100 for per-100 g. Keeping both items in grams lets you compare directly.' },
       { q: 'Does a lower unit price always mean buy it?', a: 'Only if you\'ll use it before it spoils and can afford the upfront cost. Unit price finds the cheapest per unit; whether the bigger pack is worth it also depends on waste and cash flow.' },
+      { q: 'How do I compare more than two products?', a: 'Work out each one\'s price ÷ quantity separately and compare the per-unit figures; the smallest wins. Keep every item in the same unit so the comparison stays fair.' },
+      { q: 'Why is the smaller pack sometimes the better deal?', a: 'Promotions, multi-buys and "value" sizing don\'t always favour the big pack — occasionally the small one has the lower unit price, which is exactly the case comparing per-unit cost is designed to catch.' },
     ],
     keywords: ['unit price calculator', 'price per unit calculator', 'cost per unit', 'price per ounce calculator', 'unit price comparison', 'better value calculator', 'price per 100g'],
   },
@@ -618,7 +646,7 @@ export const CALCULATORS: CalcDef[] = [
       { id: 'multiplier', label: 'Overtime multiplier', type: 'number', suffix: '×', placeholder: '1.5', defaultValue: '1.5', min: 1, step: 0.5 },
     ],
     computeId: 'overtimePay',
-    formula: 'Regular pay = rate × regular hours. Overtime pay = rate × multiplier × overtime hours (multiplier 1.5 for the common "time and a half"). Total = regular + overtime.',
+    formula: 'Regular pay = rate × regular hours. Overtime pay = rate × multiplier × overtime hours (multiplier 1.5 for the common "time and a half"). Total = regular + overtime. The premium is the extra half-rate: at time and a half each overtime hour pays the normal rate plus 50%, so 10 hours at a 20 rate adds 20 × 0.5 × 10 = 100 on top of plain-rate pay.',
     example: '$20/h, 40 regular + 10 overtime at 1.5× → 800 + (20 × 1.5 × 10) = 800 + 300 = $1,100.',
     note: 'US federal law (FLSA) requires at least 1.5× the regular rate for hours over 40 in a workweek for non-exempt employees; some states or contracts add daily overtime or double time (2×) — set the multiplier to match your rules. This estimates gross pay before taxes and deductions.',
     faqs: [
@@ -627,6 +655,8 @@ export const CALCULATORS: CalcDef[] = [
       { q: 'When does overtime start?', a: 'Under US federal law (FLSA), after 40 hours in a workweek for non-exempt employees. Some states (like California) also require overtime after 8 hours in a day, and double time in some cases — check your local rules and set the multiplier accordingly.' },
       { q: 'What is double time?', a: 'Overtime paid at 2× the regular rate, required in some states or contracts for very long shifts or holidays. Enter 2 as the multiplier to calculate it.' },
       { q: 'Is this gross or net pay?', a: 'Gross — before taxes, insurance and other deductions. Your take-home pay will be lower once withholding is applied.' },
+      { q: 'How do I calculate total pay for a week with overtime?', a: 'Add regular and overtime pay: 40 hours at 18/hour is 720, plus 6 overtime hours at 1.5× (18 × 1.5 × 6 = 162), for an 882 gross week.' },
+      { q: 'Does overtime apply to salaried employees?', a: 'Only if they are classed as non-exempt. Many salaried roles are exempt from FLSA overtime, while hourly and non-exempt staff must be paid the premium for hours over the threshold — check your classification.' },
     ],
     keywords: ['overtime pay calculator', 'time and a half calculator', 'overtime calculator', 'ot pay calculator', 'double time calculator', 'how to calculate overtime', 'overtime rate'],
   },
@@ -885,7 +915,7 @@ export const CALCULATORS: CalcDef[] = [
     ],
     computeId: 'gestationalAge',
     formula:
-      'Gestational age = today − first day of last menstrual period (LMP), expressed in completed weeks and days. Trimesters: weeks 0–12 (first), 13–26 (second), 27+ (third). Estimated due date = LMP + 280 days (Naegele\'s rule).',
+      'Gestational age = today − first day of last menstrual period (LMP), expressed in completed weeks and days. Trimesters: weeks 0–12 (first), 13–26 (second), 27+ (third). Estimated due date = LMP + 280 days (Naegele\'s rule). Weeks and days are read together — 10 weeks and 3 days means ten complete weeks plus three days, written 10+3 in clinical shorthand.',
     example: 'If your last period began 10 weeks and 3 days ago, you are 10 weeks 3 days pregnant — in the first trimester, with a due date about 40 weeks after that period.',
     note: 'Dating from the last period means the first ~2 weeks of "pregnancy" are before conception even occurs — this is the standard clinical convention. It is an estimate: an early ultrasound is more accurate, especially with irregular cycles, and this tool is not a substitute for prenatal care or medical advice. Your date stays on your device and is never uploaded.',
     faqs: [
@@ -893,6 +923,8 @@ export const CALCULATORS: CalcDef[] = [
       { q: 'Why is pregnancy dated from the last period, not conception?', a: 'Because the last period is a date most people know precisely, while the exact conception day usually isn\'t. By convention, gestational age starts from the last period — which is why you\'re considered ~2 weeks "pregnant" at conception.' },
       { q: 'How is the due date calculated?', a: 'By Naegele\'s rule: last period plus 280 days (40 weeks). It assumes a regular 28-day cycle, so it\'s an estimate — only about 1 in 20 babies arrive exactly on the due date.' },
       { q: 'Is this a substitute for a doctor?', a: 'No. It\'s a convenience estimate. An early ultrasound gives more accurate dating, and prenatal care should come from your healthcare provider.' },
+      { q: 'Which trimester am I in?', a: 'By convention the first trimester runs up to the end of week 12, the second covers weeks 13 to 26, and the third is week 27 onward. The tool labels your current week automatically.' },
+      { q: 'What does a measurement like "10+3" mean?', a: 'It is the clinical way to write gestational age: ten completed weeks plus three days. The next day is 10+4, and after 10+6 comes 11+0.' },
     ],
     keywords: ['how many weeks pregnant am i', 'pregnancy week calculator', 'gestational age calculator', 'how far along am i', 'pregnancy weeks calculator', 'weeks pregnant calculator'],
   },
@@ -937,7 +969,7 @@ export const CALCULATORS: CalcDef[] = [
     ],
     computeId: 'conceptionDate',
     formula:
-      'From a due date: conception ≈ due date − 266 days (pregnancy averages 266 days from conception, or 280 from the last period). From the last period: conception ≈ first day of last period + 14 days, i.e. around ovulation. A few days\' window is shown either side because ovulation timing varies.',
+      'From a due date: conception ≈ due date − 266 days (pregnancy averages 266 days from conception, or 280 from the last period). From the last period: conception ≈ first day of last period + 14 days, i.e. around ovulation. A few days\' window is shown either side because ovulation timing varies. That window reflects that ovulation — and so the fertile days — can fall a little earlier or later than the average day 14, especially with longer or shorter cycles.',
     example: 'Due date March 1 → estimated conception around June 8 the previous year (266 days earlier), with a window of roughly June 5–10.',
     note: 'This is a calendar estimate, not a precise or medical determination — actual conception depends on your real ovulation day and cycle, which shift with cycle length, stress and health. It assumes an average 28-day cycle and 280-day pregnancy. For anything that matters legally or medically, an early ultrasound and a clinician are the reliable sources. Your date stays on your device and is never uploaded.',
     faqs: [
@@ -945,6 +977,8 @@ export const CALCULATORS: CalcDef[] = [
       { q: 'Why is conception ~266 days before the due date, not 280?', a: 'Because due dates are dated from the last menstrual period, which is about 14 days before conception. Pregnancy is roughly 280 days from the last period but about 266 days from conception itself.' },
       { q: 'How accurate is a conception date estimate?', a: 'It\'s an approximation. Real conception depends on your actual ovulation day, which varies with cycle length and from month to month. Treat the window as a best estimate, not an exact date.' },
       { q: 'Is this medical advice?', a: 'No. It\'s a convenience estimate based on average timings. For medical or legal certainty, an early ultrasound and your healthcare provider give accurate dating.' },
+      { q: 'Can I estimate conception from an ultrasound date?', a: 'An ultrasound gives a gestational age; subtract about two weeks from that age to approximate the conception date, since gestational age is counted from the last period, roughly two weeks before conception.' },
+      { q: 'Does a longer cycle change the conception estimate?', a: 'Yes — ovulation happens about 14 days before the next period, so a longer cycle pushes likely conception later than day 14, which is why a window rather than a single day is shown.' },
     ],
     keywords: ['conception date calculator', 'when did i conceive', 'conception calculator', 'date of conception', 'conception date from due date', 'how to calculate conception date'],
   },
@@ -960,7 +994,7 @@ export const CALCULATORS: CalcDef[] = [
     ],
     computeId: 'daysUntil',
     formula:
-      'days = target date − today, counted in whole calendar days. A future date gives a positive countdown; a past date counts up from then. Weeks are the day count ÷ 7, and the weekday figure counts only Monday–Friday between the two dates.',
+      'days = target date − today, counted in whole calendar days. A future date gives a positive countdown; a past date counts up from then. Weeks are the day count ÷ 7, and the weekday figure counts only Monday–Friday between the two dates. Because it counts whole days between two calendar dates, a target of tomorrow reads as 1 and today as 0, with no part-days from the current time.',
     example: 'If today is June 1 and the target is June 15, that\'s 14 days (2 weeks) from now, with 10 weekdays in between.',
     note: 'Counting is done in whole days from midnight to midnight, so time of day doesn\'t affect the result. The weekday total (Monday–Friday only) is handy for working-day deadlines like shipping, notice periods or project timelines. For a past date, the tool tells you how long ago it was. Everything is computed locally in your browser.',
     faqs: [
@@ -968,6 +1002,8 @@ export const CALCULATORS: CalcDef[] = [
       { q: 'Does it count weekends?', a: 'The main day count includes every day. The separate "weekdays" figure counts only Monday–Friday between the two dates, which is useful for business or working-day deadlines.' },
       { q: 'How is "days until" calculated?', a: 'By subtracting today\'s date from the target date and counting whole calendar days. Because it counts midnight to midnight, the time of day doesn\'t change the answer.' },
       { q: 'Can I count days since a past date?', a: 'Yes — enter a date in the past and the tool shows how many days (and weeks) ago it was, so it works as both a countdown and a "days since" counter.' },
+      { q: 'Does the count include today or the target day?', a: 'It measures whole days between the two dates, so a date three days out reads as 3. Time of day is ignored — the count changes only when the calendar date rolls over at midnight.' },
+      { q: 'How do I count only working days to a deadline?', a: 'Use the weekdays figure, which counts Monday to Friday between the two dates and skips weekends — handy for shipping, notice periods and project deadlines. It does not remove public holidays, which vary by country.' },
     ],
     keywords: ['days until', 'days until date calculator', 'how many days until', 'countdown to date', 'days until countdown', 'days between today and date'],
   },
@@ -1075,7 +1111,7 @@ export const CALCULATORS: CalcDef[] = [
     ],
     computeId: 'creatinine',
     formula:
-      'µmol/L = mg/dL × 88.42, and mg/dL = µmol/L ÷ 88.42. The factor 88.42 comes from creatinine’s molar mass of 113.12 g/mol: 1 mg/dL is 10 mg/L, which is 10 ÷ 113.12 = 0.0884 mmol/L = 88.42 µmol/L.',
+      'µmol/L = mg/dL × 88.42, and mg/dL = µmol/L ÷ 88.42. The factor 88.42 comes from creatinine’s molar mass of 113.12 g/mol: 1 mg/dL is 10 mg/L, which is 10 ÷ 113.12 = 0.0884 mmol/L = 88.42 µmol/L. Reading a table is easy: since 1 mg/dL ≈ 88.4 µmol/L, a value near 1 mg/dL sits near 88 µmol/L, and each 0.1 mg/dL step is about 8.8 µmol/L.',
     example: '1.0 mg/dL × 88.42 = 88 µmol/L, and a lab value of 80 µmol/L ÷ 88.42 = 0.90 mg/dL.',
     note: 'Serum creatinine is reported in mg/dL in the US and in µmol/L in the UK, Canada, Australia and most of Europe. The exact factor 88.42 is derived from creatinine’s molar mass, so no precision is lost. Note this converts the creatinine concentration only — it does not compute eGFR (kidney function), which additionally requires age and sex. This tool is a unit conversion, not medical advice or a kidney-function assessment; discuss results with your clinician.',
     faqs: [
@@ -1084,6 +1120,8 @@ export const CALCULATORS: CalcDef[] = [
       { q: 'Does this calculate eGFR or kidney function?', a: 'No. This converts the creatinine number between units only. Estimated GFR (eGFR) needs more inputs such as age and sex and a specific equation (e.g. CKD-EPI); this tool deliberately does just the unit conversion.' },
       { q: 'Is 88.4 or 88.42 the right factor?', a: 'They are the same value rounded differently. The molar-mass-derived factor is 88.42, which this tool uses; many references round it to 88.4.' },
       { q: 'Is my data uploaded?', a: 'No — the conversion runs locally in your browser and nothing is transmitted.' },
+      { q: 'How do I convert 1.5 mg/dL to µmol/L?', a: 'Multiply by 88.42: 1.5 × 88.42 = 133 µmol/L. Going the other way, 133 ÷ 88.42 returns 1.5 mg/dL.' },
+      { q: 'Is µmol/L the same as mmol/L for creatinine?', a: 'No — creatinine is reported in micromoles per litre (µmol/L), one-thousandth of a millimole per litre. A value of 88 µmol/L is 0.088 mmol/L, so watch the prefix when reading lab reports.' },
     ],
     keywords: ['creatinine converter', 'creatinine mg/dl to umol/l', 'creatinine umol/l to mg/dl', 'serum creatinine unit converter', 'creatinine unit conversion'],
   },

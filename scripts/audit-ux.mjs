@@ -108,6 +108,9 @@ for (const slug of toAudit) {
         jsonldTypes: types,
         faqCount: (jsonld.find((x) => x['@type'] === 'FAQPage')?.mainEntity || []).length,
         wordCount: bodyText.split(' ').filter(Boolean).length,
+        // All crawlable text in <main>, including answers inside collapsed <details> FAQ
+        // accordions (which innerText omits but Google indexes). Used for depth checks.
+        contentWords: (main.textContent || '').replace(/\s+/g, ' ').trim().split(' ').filter(Boolean).length,
         // Only unambiguous dev-leftover markers — NOT "lorem ipsum"/"placeholder text",
         // which are legitimate content/topics for the /generate/ tools (lorem generator, etc.).
         placeholder: /\b(coming soon|under construction|content goes here|your content here|insert (?:text|content) here|placeholder text goes here|todo:|fixme)\b/i.test(bodyText),
@@ -184,8 +187,8 @@ for (const slug of toAudit) {
     //    updates rank on: holistic Core Web Vitals, helpful/non-thin content, and E-E-A-T.
     checks.push(C('google', 'Core Web Vitals: LCP good (<2.5s)', 'medium', !cwv.lcp || cwv.lcp < 2500, `LCP ${Math.round(cwv.lcp)}ms (lab)`));
     checks.push(C('google', 'Core Web Vitals: CLS good (<0.1)', 'medium', cwv.cls < 0.1, `CLS ${Math.round(cwv.cls * 1000) / 1000}`));
-    checks.push(C('google', 'Helpful-content depth (editorial ≥350 words)', 'medium', d.wordCount >= 350, `${d.wordCount} words`));
-    checks.push(C('google', 'Not thin/scaled content (≥200 words + FAQ)', 'high', d.wordCount >= 200 && d.faqCount >= 3, `${d.wordCount} words, ${d.faqCount} FAQs`));
+    checks.push(C('google', 'Helpful-content depth (editorial ≥350 words)', 'medium', d.contentWords >= 350, `${d.contentWords} words (crawlable)`));
+    checks.push(C('google', 'Not thin/scaled content (≥200 words + FAQ)', 'high', d.contentWords >= 200 && d.faqCount >= 3, `${d.contentWords} words, ${d.faqCount} FAQs`));
     checks.push(C('google', 'E-E-A-T signals (about link + publisher schema)', 'low', d.aboutLink && d.hasOrgSchema, `about:${d.aboutLink} schema:${d.hasOrgSchema}`));
   } catch (e) {
     ok = false;

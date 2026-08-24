@@ -129,7 +129,7 @@ export const WEATHER_TOOLS: WeatherToolDef[] = [
     widget: 'beaufort',
     description: 'Convert a wind speed (mph, km/h, knots or m/s) to its Beaufort force number and description, from calm to hurricane force. In your browser.',
     lead: 'Enter a wind speed in any unit to get its Beaufort force number, name and the effects you\'d see.',
-    how: 'The Beaufort scale relates wind speed to what you can observe — smoke, leaves, branches, whole trees, structural damage. The tool converts your wind speed to miles per hour and matches it to the Beaufort force (0 to 12), giving the descriptive name and typical effects on land, based on the National Weather Service / WMO scale.',
+    how: 'The Beaufort scale relates wind speed to what you can observe — smoke, leaves, branches, whole trees, structural damage. The tool converts your wind speed to miles per hour and matches it to the Beaufort force (0 to 12), giving the descriptive name and typical effects on land, based on the National Weather Service / WMO scale. The force numbers aren\'t evenly spaced in speed: they follow the empirical relation v ≈ 0.836 × B^1.5 metres per second, so each step up covers a wider band of speed than the last. Wind speed for the scale is measured as a 10-minute average at the standard height of 10 metres (33 ft) above open ground, which is why a brief gust can exceed the force suggested by the sustained wind.',
     note: 'Devised by Francis Beaufort in 1805 for sailors without instruments, the scale is still used in marine and land forecasts. Force 12 (hurricane force) is open-ended, beginning at 73 mph (64 knots) with no upper limit.',
     faqs: [
       { q: 'What is the Beaufort scale?', a: 'A 0–12 scale relating wind speed to observable effects, from Force 0 (calm, smoke rises straight up) to Force 12 (hurricane force, devastation). It lets you estimate wind strength without instruments.' },
@@ -137,6 +137,9 @@ export const WEATHER_TOOLS: WeatherToolDef[] = [
       { q: 'How do I convert wind speed to Beaufort?', a: 'Match the speed to the scale\'s bands: for example 19–24 mph is Force 5 (fresh breeze), 25–31 mph is Force 6 (strong breeze). Enter any speed and unit and the tool identifies the force.' },
       { q: 'What wind speed is dangerous?', a: 'Force 7 (near gale, 32+ mph) makes walking hard; Force 8–9 (gale, 39+ mph) can break branches and cause minor damage; Force 10+ (storm, 55+ mph) uproots trees and damages buildings.' },
       { q: 'Is Force 12 the top of the scale?', a: 'Yes — Force 12 (hurricane force) is the highest and is open-ended, starting at 73 mph (64 knots) with no upper bound. Extended scales to Force 17 exist for typhoons but aren\'t part of the standard scale.' },
+      { q: 'How do you convert wind speed units for the scale?', a: 'The scale is unit-neutral, so the tool normalises everything first: 1 knot = 1.151 mph = 1.852 km/h ≈ 0.514 m/s. For example 20 knots is 23 mph or 37 km/h, which lands in Force 5 (fresh breeze). Enter whichever unit your source reports.' },
+      { q: 'What Beaufort force is a 30 mph wind?', a: 'A sustained 30 mph wind is Force 6, a strong breeze (25–31 mph): large branches move, umbrellas become hard to use and telephone wires whistle. One more mph, at 32 mph, tips it into Force 7 (near gale).' },
+      { q: 'Is the Beaufort scale for gusts or sustained wind?', a: 'Sustained wind — the standard is a 10-minute mean at 10 m height. Gusts are short peaks that routinely run higher than the sustained speed, so a Force 6 wind can still produce brief Force 8 gusts.' },
     ],
     keywords: ['beaufort scale calculator', 'beaufort wind scale', 'wind speed to beaufort', 'beaufort number calculator', 'wind force calculator', 'beaufort scale chart'],
   },

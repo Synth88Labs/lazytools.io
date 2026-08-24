@@ -63,6 +63,22 @@ const blogPosts = allBlog.filter((p) => p.data.tools.includes(`/photo/${spec.slu
       <RatingWidget client:idle toolSlug={`photo/${spec.slug}`} avg={ratingFor(`photo/${spec.slug}`)?.avg} count={ratingFor(`photo/${spec.slug}`)?.count} />
     </div>
 
+    <section class="prose-lazy mt-8">
+      <h2>How to make a compliant {spec.label.toLowerCase()}</h2>
+      <p>
+        A {spec.label.toLowerCase()} must be {spec.widthMm}×{spec.heightMm} mm{spec.widthIn ? ` (${spec.widthIn}×${spec.heightIn} in)` : ''} — that is {px.w}×{px.h} pixels at {spec.dpi} DPI — on a {spec.backgroundLabel.toLowerCase()}{spec.headHeightMinMm ? `, with the head measuring ${spec.headHeightMinMm}–${spec.headHeightMaxMm} mm from chin to crown` : ''}. The editor above handles the cropping, sizing and checking for you, and every step runs on your own device:
+      </p>
+      <ol>
+        <li><strong>Add your photo.</strong> Click the frame or drop in a clear, front-facing shot with a neutral expression, both eyes open and nothing covering the face. The image never leaves your browser.</li>
+        <li><strong>Position the head.</strong> Drag and zoom until the face sits inside the on-screen guides{spec.headHeightMinMm ? ` — they mark the ${spec.headHeightMinMm}–${spec.headHeightMaxMm} mm chin-to-crown zone` : ''}, centred, level and looking straight at the camera.</li>
+        <li><strong>Check the background.</strong> Use a {spec.backgroundLabel.toLowerCase()} that is evenly lit and free of shadows; the built-in checker flags a wrong-coloured or uneven background and poor exposure before you export.</li>
+        <li><strong>Export to spec.</strong> Download as {spec.allowedFormats.map((f) => f.toUpperCase()).join(' or ')}{spec.fileSizeMaxKb ? `, kept under ${spec.fileSizeMaxKb} KB` : ''}, sized to {px.w}×{px.h} px with {spec.dpi} DPI embedded so it prints at the correct physical size.</li>
+      </ol>
+      <p>
+        These requirements are set by {spec.sourceName} and can change over time — always confirm against the official source linked below before you submit your application.
+      </p>
+    </section>
+
     {/* Do's & Don'ts cards */}
     <section class="mt-8 grid gap-4 sm:grid-cols-2">
       <div class="rounded-2xl border border-emerald-200 bg-emerald-50/60 p-5">

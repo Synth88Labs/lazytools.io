@@ -93,7 +93,7 @@ export const GARDEN_TOOLS: GardenToolDef[] = [
     widget: 'watering',
     description: 'Calculate how much water your garden bed needs to apply a given depth — in litres and gallons. Most vegetables want about 1 inch (25 mm) per week. In your browser.',
     lead: 'Enter your bed size and the depth of water you want to apply, and get the volume in litres and gallons.',
-    how: 'Applying a depth of water over an area is a volume: area × depth. The tool uses the standard conversions — 1 inch of water over 1 ft² is about 0.623 US gallons, and metrically 1 mm over 1 m² is exactly 1 litre. Enter the bed size and target depth and it gives the total to apply.',
+    how: 'Applying a depth of water over an area is a volume: area × depth. The tool uses the standard conversions — 1 inch of water over 1 ft² is about 0.623 US gallons, and metrically 1 mm over 1 m² is exactly 1 litre. Enter the bed size and target depth and it gives the total to apply. The metric relationship is exact because a litre is defined as a cubic decimetre: spread over one square metre it forms a layer exactly one millimetre deep. The imperial 0.623 figure comes from a square foot (144 in²) one inch deep being 144 cubic inches, which is 144 ÷ 231 ≈ 0.623 US gallons since a US gallon is 231 cubic inches.',
     note: 'Most vegetable gardens need roughly 1 inch (25 mm) of water per week, from rainfall plus irrigation. Water deeply and less often to encourage deep roots, water early in the day to cut evaporation, and adjust for heat, wind and your soil type.',
     faqs: [
       { q: 'How much water does my garden need?', a: 'About 1 inch (25 mm) per week for most vegetables, including rain. Over a 10 × 4 ft bed that\'s roughly 25 US gallons (about 95 litres) a week. Enter your bed size and target depth to get the exact volume.' },
@@ -101,6 +101,8 @@ export const GARDEN_TOOLS: GardenToolDef[] = [
       { q: 'How often should I water the garden?', a: 'Deeply once or twice a week is usually better than a little every day — it encourages deep roots. Sandy soils drain faster and need more frequent watering; clay holds water longer. Adjust for weather.' },
       { q: 'What time of day is best to water?', a: 'Early morning is best: less evaporation, and foliage dries quickly, reducing disease. Evening watering is second-best; midday loses the most to evaporation.' },
       { q: 'How do I measure how much rain fell?', a: 'A rain gauge shows rainfall in inches or millimetres directly. Subtract the week\'s rain from your ~1-inch target and irrigate the difference — the tool converts that depth into a volume for hand-watering.' },
+      { q: 'How long should I run a sprinkler or hose to apply an inch?', a: 'Measure your output first: set out a few straight-sided cans, run the sprinkler for 15 minutes, and check the average depth collected. If they fill 0.25 inch in 15 minutes, an inch takes about an hour. For hand-watering, this tool gives the total volume, and you divide by your hose\'s flow rate.' },
+      { q: 'Does mulch reduce how much I need to water?', a: 'Yes — a 2–3 inch layer of mulch slows evaporation from the soil surface and moderates soil temperature, so more of the water you apply stays available to roots. Beds with bare soil in wind and sun lose water fastest and need topping up more often.' },
     ],
     keywords: ['garden watering calculator', 'how much water for garden', 'inch of water calculator', 'watering calculator plants', 'garden water gallons', 'vegetable garden watering', 'how much to water garden'],
   },
