@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import { SITE } from '../lib/site';
+import { clampDescription } from '../lib/seo';
 import { organizationSchema, websiteSchema } from '../lib/schema';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -15,7 +16,9 @@ interface Props {
   image?: string;
 }
 
-const { title, description, schema = [], noindex = false, image } = Astro.props;
+const { title, description: rawDescription, schema = [], noindex = false, image } = Astro.props;
+// Keep meta descriptions within Google's ~160-char SERP limit (also the auditor's rule).
+const description = clampDescription(rawDescription);
 const canonical = new URL(Astro.url.pathname, SITE.url).href;
 // Every page gets a social image: the page's own, or the branded default.
 const imageUrl = new URL(image || '/og-default.png', SITE.url).href;

@@ -40,7 +40,7 @@ export default function RestrictionDigestTool() {
           return (
             <button onClick={() => toggle(e.name)} title={`${e.site} · ${e.ends}`}
               class={`rounded-lg px-2 py-1 font-mono text-xs font-semibold ring-1 ${on ? 'bg-brand-600 text-white ring-brand-600' : 'bg-white text-slate-600 ring-slate-200 hover:ring-brand-400'}`}>
-              {e.name}{n > 0 ? <span class={on ? 'text-brand-100' : 'text-emerald-600'}> ·{n}</span> : ''}
+              {e.name}{n > 0 ? <span class={on ? 'text-white' : 'text-emerald-600'}> ·{n}</span> : ''}
             </button>
           );
         })}

@@ -8,8 +8,10 @@
   --color-brand-300: #8ed9ff;
   --color-brand-400: #59c2ff;
   --color-brand-500: #33a5fc;
-  --color-brand-600: #1d87f1;
-  --color-brand-700: #166fde;
+  /* brand-600/700 darkened to clear WCAG AA 4.5:1 both as button background
+     (white text) and as link text on white — was #1d87f1 (3.63:1). */
+  --color-brand-600: #1470cf;
+  --color-brand-700: #135ec0;
   --color-brand-800: #185ab4;
   --color-brand-900: #1a4d8d;
   --color-brand-950: #153056;
@@ -209,12 +211,27 @@ body {
   @apply text-slate-600;
 }
 
-/* WCAG AA: Tailwind's slate-400 (#90a1b9) fails 4.5:1 as small text on white.
-   The two-class selector out-specifies the single-class utility, so this fixes
-   the flagged small-muted text site-wide without affecting larger slate-400 use. */
-.text-xs.text-slate-400,
-.text-\[10px\].text-slate-400,
-.text-\[11px\].text-slate-400,
-.text-sm.text-slate-400 {
-  color: #55637a;
+/* ── WCAG AA contrast patches ─────────────────────────────────────────────
+   Several Tailwind utilities fail the 4.5:1 small-text ratio on light
+   backgrounds. These override just the text colour (never used as light text
+   on dark surfaces anywhere in the app — verified), darkening each to a
+   passing shade so muted labels and coloured result numbers stay legible. */
+
+/* slate-400 (#90a1b9) ≈ 2.5:1 on white — darken all text uses. */
+.text-slate-400 {
+  color: #5a6a86;
 }
+
+/* slate-500 (#62748e) is 4.6:1 on white but 4.45:1 on tinted panels (brand-50,
+   orange-50, …). A slight darken clears the tinted-background cases too. */
+.text-slate-500 {
+  color: #566073;
+}
+
+/* Coloured accent text at −600 fails 4.5:1 on white; bump to the −700 shade.
+   (red-600 4.77:1 and rose-600 4.53:1 already pass, so they're left alone.) */
+.text-emerald-600 { color: #047857; }
+.text-green-600   { color: #008236; }
+.text-amber-600   { color: #bb4d00; }
+.text-orange-600  { color: #ca3500; }
+.text-sky-600     { color: #0069a8; }

@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
+import { seoTitle } from '../../lib/seo';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import PrivacyStrip from '../../components/PrivacyStrip.astro';
 import FaqSection from '../../components/FaqSection.astro';
@@ -27,7 +28,7 @@ const crumbs = [
   { name: calc.name, url: `/calc/${calc.slug}/` },
 ];
 
-const pageTitle = `${calc.name} — Free & Private | LazyTools`;
+const pageTitle = seoTitle(calc.name);
 
 const faqs = [
   ...calc.faqs,

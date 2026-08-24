@@ -26,6 +26,7 @@ import {
   type Quantity,
 } from '../../data/units';
 import { breadcrumbSchema, webApplicationSchema, faqSchema, collectionPageSchema } from '../../lib/schema';
+import { seoTitle } from '../../lib/seo';
 
 export function getStaticPaths() {
   const paths = [];
@@ -68,7 +69,7 @@ let crumbs: { name: string; url: string }[] = [];
 if (type === 'pair' && pair) {
   const { from, to, quantity: q } = pair;
   const oneAsTo = convert(1, from, to);
-  pageTitle = `${titleNoun(from)} to ${titleNoun(to)} Converter (${from.symbol} to ${to.symbol}) — Free & Private | LazyTools`;
+  pageTitle = seoTitle(`Convert ${from.symbol} to ${to.symbol} (${q.name})`);
   pageDescription = `Convert ${from.plural} to ${to.plural} instantly. 1 ${from.symbol} = ${formatNumber(oneAsTo, 6)} ${to.symbol}. Formula, conversion table and examples — runs 100% in your browser, nothing uploaded.`;
   crumbs = [
     { name: 'Home', url: '/' },
@@ -79,7 +80,7 @@ if (type === 'pair' && pair) {
 }
 
 if (type === 'quantity' && quantity) {
-  pageTitle = `${quantity.name} Converter — Free & Private | LazyTools`;
+  pageTitle = seoTitle(`${quantity.name} Converter`);
   pageDescription = `${quantity.description.split('.')[0]}. Instant, accurate and 100% in your browser — nothing is uploaded.`;
   crumbs = [
     { name: 'Home', url: '/' },
@@ -162,6 +163,36 @@ const hubData = (() => {
     factor: u.factor,
     offset: u.offset,
   }));
+
+  const qn = quantity.name.toLowerCase();
+  const unitList = quantity.units.map((u) => `${u.name} (${u.symbol})`);
+  const unitSummary =
+    unitList.length <= 4 ? unitList.join(', ') : `${unitList.slice(0, 4).join(', ')} and ${unitList.length - 4} more`;
+  const top = pairs[0];
+  // FAQs are built from this quantity's own data (unit list, count, top pair) — no invented facts.
+  const faqs: { q: string; a: string }[] = [
+    {
+      q: `How do I convert ${qn} units?`,
+      a: `Choose your two units in the converter above and type a value — the result updates instantly, entirely in your browser. All ${quantity.units.length} ${qn} units on this page are interchangeable, so you can convert in either direction.`,
+    },
+    {
+      q: `Which ${qn} units can I convert here?`,
+      a: `This converter supports ${quantity.units.length} ${qn} units: ${unitSummary}. Pick any two to convert between them.`,
+    },
+    ...(top
+      ? [
+          {
+            q: `What is the most common ${qn} conversion?`,
+            a: `One of the most-used ${qn} conversions is ${titleNoun(top.from)} to ${titleNoun(top.to)} (${top.from.symbol} → ${top.to.symbol}). Every ${qn} pair we support is linked below, each with its own formula and table.`,
+          },
+        ]
+      : []),
+    {
+      q: `Is this ${quantity.name} Converter free and private?`,
+      a: `Yes. It is free with no sign-up, uses the exact internationally defined conversion factors, and computes every result locally in your browser — nothing you type is uploaded, and the page keeps working offline.`,
+    },
+  ];
+
   schema = [
     breadcrumbSchema(crumbs),
     collectionPageSchema({
@@ -173,8 +204,9 @@ const hubData = (() => {
         url: `/units/${p.slug}/`,
       })),
     }),
+    faqSchema(faqs),
   ];
-  return { pairs, unitsDto, blogPosts };
+  return { pairs, unitsDto, blogPosts, faqs };
 })();
 ---
 
@@ -416,6 +448,8 @@ const hubData = (() => {
             </table>
           </div>
         </section>
+
+        <FaqSection faqs={hubData.faqs} />
       </article>
     )
   }
