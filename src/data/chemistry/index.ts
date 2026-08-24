@@ -341,7 +341,7 @@ CHEM_TOOLS.push(
     name: 'Density Calculator',
     icon: '🪨',
     widget: 'density',
-    description: 'Calculate density, mass or volume with ρ = m/V. Exact, in-browser.',
+    description: 'Calculate density, mass or volume using the formula ρ = m/V — exact results computed 100% in your browser, with nothing uploaded.',
     lead: 'Solve density, mass or volume from ρ = m/V — enter any two and get the third.',
     how: 'Density is mass per unit volume: ρ = m/V. Enter any two of density, mass and volume and the tool solves for the third; keep units consistent (g and mL give g/mL).',
     note: 'A staple across chemistry and physics — identify a substance, convert between mass and volume, or check purity, all from mass ÷ volume.',

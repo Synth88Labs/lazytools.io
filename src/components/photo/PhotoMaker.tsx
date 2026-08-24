@@ -124,8 +124,11 @@ export default function PhotoMaker({ spec }: { spec: PhotoSpec }) {
   const onPointerDown = (e: PointerEvent) => { drag.current = { x: e.clientX, y: e.clientY }; (e.target as HTMLElement).setPointerCapture(e.pointerId); };
   const onPointerMove = (e: PointerEvent) => {
     if (!drag.current) return;
-    const dx = (e.clientX - drag.current.x) / dispW;
-    const dy = (e.clientY - drag.current.y) / dispH;
+    // Normalise by the *rendered* canvas size (not the fixed buffer dispW/dispH) so
+    // panning stays 1:1 with the pointer even when the preview is scaled down on mobile.
+    const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
+    const dx = (e.clientX - drag.current.x) / (rect.width || dispW);
+    const dy = (e.clientY - drag.current.y) / (rect.height || dispH);
     drag.current = { x: e.clientX, y: e.clientY };
     setPan((p) => clampPan({ x: p.x + dx, y: p.y + dy }, zoom));
   };
@@ -190,17 +193,17 @@ export default function PhotoMaker({ spec }: { spec: PhotoSpec }) {
 
   return (
     <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
-      <div class="grid gap-6 lg:grid-cols-[auto_1fr]">
+      <div class="grid grid-cols-1 gap-6 lg:grid-cols-[auto_1fr]">
         {/* editor */}
         <div>
-          <div class="relative mx-auto" style={`width:${dispW}px;height:${dispH}px`}>
+          <div class="relative mx-auto w-full" style={`max-width:${dispW}px;aspect-ratio:${dispW}/${dispH}`}>
             <canvas
               ref={canvasRef} width={dispW} height={dispH}
-              class="absolute inset-0 rounded-lg border border-slate-300 bg-white shadow-inner touch-none"
+              class="absolute inset-0 h-full w-full rounded-lg border border-slate-300 bg-white shadow-inner touch-none"
               style={hasImg ? 'cursor:grab' : ''}
               onPointerDown={onPointerDown} onPointerMove={onPointerMove} onPointerUp={onPointerUp} onPointerCancel={onPointerUp}
             />
-            <canvas ref={overlayRef} width={dispW} height={dispH} class="pointer-events-none absolute inset-0 rounded-lg" />
+            <canvas ref={overlayRef} width={dispW} height={dispH} class="pointer-events-none absolute inset-0 h-full w-full rounded-lg" />
             {!hasImg && (
               <label class="absolute inset-0 flex cursor-pointer flex-col items-center justify-center gap-2 rounded-lg border-2 border-dashed border-slate-300 bg-white/70 text-center hover:border-brand-400">
                 <span class="text-3xl">📷</span>
@@ -211,7 +214,7 @@ export default function PhotoMaker({ spec }: { spec: PhotoSpec }) {
           </div>
 
           {hasImg && (
-            <div class="mx-auto mt-3 space-y-3" style={`width:${dispW}px`}>
+            <div class="mx-auto mt-3 w-full space-y-3" style={`max-width:${dispW}px`}>
               <label class="flex items-center gap-3 text-sm text-slate-600">
                 <span class="w-12 font-medium">Zoom</span>
                 <input type="range" min="1" max="3" step="0.01" value={zoom} class="flex-1 accent-brand-600" onInput={(e) => setZoomClamped(parseFloat((e.target as HTMLInputElement).value))} />

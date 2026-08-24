@@ -58,7 +58,7 @@ export default function TimeBlockingTool() {
           })}
         </div>
 
-        <div>
+        <div class="min-w-0">
           <div class="overflow-x-auto rounded-xl border border-slate-200 bg-white">
             <table class="w-full text-sm">
               <thead><tr class="border-b border-slate-200 bg-slate-50 text-left text-xs font-semibold uppercase tracking-wide text-slate-500"><th class="px-3 py-2">Block</th><th class="px-2 py-2">Start</th><th class="px-2 py-2">Min</th><th class="px-2 py-2">Category</th><th></th></tr></thead>

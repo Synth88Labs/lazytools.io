@@ -31,7 +31,7 @@ export default function ExponentCalcTool() {
       const approx = Math.pow(Number(base.n), p / k);
       body = (
         <>
-          <p class="mt-5 rounded-xl border border-brand-200 bg-brand-50 px-4 py-3 font-mono text-2xl font-extrabold text-brand-800">
+          <p class="mt-5 break-all rounded-xl border border-brand-200 bg-brand-50 px-4 py-3 font-mono text-2xl font-extrabold text-brand-800">
             {baseStr}^({expTrim}) = {display} <span class="text-base font-semibold text-slate-600">≈ {approx.toPrecision(8)}</span>
           </p>
           <div class="mt-4 rounded-xl border border-slate-200 bg-white p-4 text-sm text-slate-700">

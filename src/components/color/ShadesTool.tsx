@@ -25,7 +25,7 @@ export default function ShadesTool() {
       type="button"
       onClick={() => copy(hex)}
       title={`Copy ${hex}`}
-      class="group flex h-16 flex-1 flex-col items-center justify-end rounded-lg border border-slate-200 pb-1 transition hover:scale-105"
+      class="group flex h-16 min-w-0 flex-1 flex-col items-center justify-end overflow-hidden rounded-lg border border-slate-200 pb-1 transition hover:scale-105"
       style={`background:${hex}`}
     >
       <span class="rounded bg-white/85 px-1 font-mono text-[10px] font-semibold text-slate-800 opacity-0 transition group-hover:opacity-100">

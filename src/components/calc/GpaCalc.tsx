@@ -40,11 +40,11 @@ export default function GpaCalc() {
       {mode === 'gpa' ? (
         <>
           <div class="mt-4 space-y-2">
-            <div class="grid grid-cols-[1fr_1fr_auto] gap-2 text-xs font-semibold uppercase tracking-wide text-slate-500">
+            <div class="grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)_auto] gap-2 text-xs font-semibold uppercase tracking-wide text-slate-500">
               <span>Grade</span><span>Credit hours</span><span></span>
             </div>
             {courses.map((c, i) => (
-              <div class="grid grid-cols-[1fr_1fr_auto] gap-2">
+              <div class="grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)_auto] gap-2">
                 <select class={inputCls} value={c.grade} onChange={(e) => set(i, 'grade', (e.target as HTMLSelectElement).value)} aria-label={`Grade ${i + 1}`}>
                   {GRADES.map(([label, gp]) => <option value={String(gp)}>{label} ({gp.toFixed(1)})</option>)}
                 </select>
