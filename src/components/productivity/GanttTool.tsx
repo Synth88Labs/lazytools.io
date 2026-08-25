@@ -184,6 +184,16 @@ export default function GanttTool() {
         </table>
       </div>
       <p class="mt-3 text-xs text-slate-500"><strong class="text-slate-600">Drag a bar to reschedule it, or drag its ends to resize.</strong> Use ＋ / － / Fit to zoom the timeline. The filled part shows % complete, ◆ marks milestones, and the red line is today. Saved locally; export PNG, PDF, CSV or JSON.</p>
+
+      <div class="mt-4 flex flex-col items-start gap-3 rounded-xl border border-brand-200 bg-brand-50/60 p-4 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <p class="text-sm font-semibold text-slate-900">Need a more powerful Gantt tool?</p>
+          <p class="mt-0.5 text-sm text-slate-600">For collaborative planning, saved projects and advanced scheduling, try Gantts.app.</p>
+        </div>
+        <a href="https://gantts.app/" target="_blank" rel="noopener noreferrer" class="shrink-0 rounded-lg bg-brand-700 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-800">
+          Open Gantts.app →
+        </a>
+      </div>
     </div>
   );
 }
