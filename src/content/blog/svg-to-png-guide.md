@@ -1,6 +1,7 @@
 ---
 title: "How to Convert SVG to PNG (at Any Size)"
-description: "To convert SVG to PNG, load the SVG onto a canvas at your chosen size and export a lossless PNG — free, in your browser. Pick a size, keep the aspect ratio, and render at 2× for retina."
+seoTitle: 'How to Convert SVG to PNG (Any Size)'
+description: "Convert SVG to PNG in your browser: load the SVG onto a canvas at any size and export a lossless PNG. Keep the aspect ratio and render at 2× for retina."
 pubDate: 2026-07-28
 updatedDate: 2026-07-28
 archetype: how-to
@@ -35,8 +36,8 @@ draft: false
 PNG — that's the whole method.** An SVG is vector artwork (drawing instructions, not pixels), so it
 scales to any size without blurring; a PNG is a fixed grid of pixels. Many apps, upload forms, chat
 tools, and thumbnails need the raster PNG. The [SVG to PNG converter](/image/svg-to-png/) does it
-in your browser with the Canvas API — pick a size, optionally a background, and download. Nothing is
-uploaded.
+in your browser with the [Canvas API](https://developer.mozilla.org/) — pick a size, optionally a
+background, and download. Nothing is uploaded.
 
 <aside class="key-takeaways">
 <p class="kt-title">⚡ Key takeaways</p>

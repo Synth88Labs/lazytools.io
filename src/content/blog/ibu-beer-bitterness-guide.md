@@ -1,6 +1,7 @@
 ---
 title: "IBU Explained: Why Your 60 IBU Beer Doesn't Taste Twice as Bitter as a 30"
-description: "IBU measures dissolved iso-alpha acids in mg/L, but perceived bitterness depends on malt sweetness too. Here's how the Tinseth formula works, why boil time and wort gravity change hop utilisation, and why BU:GU predicts balance better than IBU alone."
+seoTitle: 'IBU Explained: Beer Bitterness & BU:GU'
+description: "IBU measures iso-alpha acids in mg/L, but perceived bitterness depends on malt too. How the Tinseth formula works and why BU:GU predicts balance."
 pubDate: 2026-07-18
 updatedDate: 2026-07-18
 archetype: explainer
@@ -118,26 +119,3 @@ Even BU:GU is an approximation. Perceived bitterness is also pushed around by:
 - **Hop character and age.** Old or poorly stored hops lose alpha acid, so your calculated IBU may overstate reality.
 
 There's also a practical ceiling: beer becomes saturated with iso-alpha acids somewhere in the region of 100 IBU, so a "1,000 IBU" claim on a can is marketing rather than a dissolved measurement — much of that hop matter never makes it into solution.
-
-## Frequently asked questions
-
-### What does IBU mean in beer?
-International Bitterness Units — the concentration of iso-alpha acids (the bitter compounds from hops) in the finished beer, measured in milligrams per litre. It's an objective chemical measurement, not a rating of how bitter the beer tastes.
-
-### Does a higher IBU always mean a more bitter beer?
-No. Malt sweetness counteracts bitterness, so a high-IBU, high-gravity beer can taste less bitter than a low-IBU dry one. The BU:GU ratio — IBU divided by gravity units — predicts perceived balance far better than IBU alone.
-
-### What is the Tinseth formula?
-The standard homebrewing model for estimating IBU, published by Glenn Tinseth in 1997. It multiplies hop mass and alpha acid percentage by a utilisation figure that falls as wort gravity rises and increases with boil time, then divides by batch volume.
-
-### Why does boil time change bitterness?
-Alpha acids must isomerise into soluble iso-alpha acids, and that takes sustained heat. Longer boiling converts more of them, so a 60-minute addition contributes far more bitterness than a 10-minute one — though utilisation plateaus, so extending well past 60 minutes adds little.
-
-### Do dry hops add IBU?
-Essentially none. Dry hopping happens without heat, so no isomerisation occurs. It adds substantial aroma and flavour while leaving measured bitterness almost unchanged — which is why heavily dry-hopped IPAs can smell far hoppier than they measure.
-
-### What is a good BU:GU ratio?
-Around 0.5–0.8 for a balanced beer. Below 0.5 reads malt-forward and sweeter (barleywines, bocks); above 0.8 reads hop-forward and bitter (IPAs). It's a guide to style character rather than a rule.
-
-### Why do high-gravity beers need more hops?
-Because hop utilisation drops as wort density rises — the Tinseth "bigness factor" shrinks at higher gravity. A strong IPA therefore needs disproportionately more hops than a session beer to reach the same IBU.

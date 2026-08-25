@@ -1,6 +1,7 @@
 ---
 title: "How IBAN Validation Works (the Mod-97 Check)"
-description: "An IBAN is valid when its ISO 13616 mod-97 checksum leaves a remainder of exactly 1 — here's how the check works, step by step. Checked in your browser, never uploaded."
+seoTitle: 'How IBAN Validation Works: The Mod-97 Check'
+description: "An IBAN is valid when its ISO 13616 mod-97 checksum leaves a remainder of exactly 1. How the check works, step by step — locally, never uploaded."
 pubDate: 2026-07-28
 updatedDate: 2026-07-28
 archetype: explainer
@@ -81,7 +82,7 @@ transcription errors.
 
 ## The mod-97 check, step by step
 
-Validation is one calculation, defined by ISO 13616 and ISO 7064, in three moves. Using
+Validation is one calculation, defined by [ISO 13616](https://en.wikipedia.org/wiki/International_Bank_Account_Number) and [ISO 7064](https://en.wikipedia.org/wiki/ISO_7064), in three moves. Using
 `GB82 WEST 1234 5698 7654 32`:
 
 1. **Move the first four characters to the end.** Take the country code and check digits (`GB82`)

@@ -1,6 +1,7 @@
 ---
 title: "Kids' Shoe Sizes by Age: US, UK, EU Charts — and the 13C-to-1Y Mystery"
-description: "US kids' sizes run 2C–13.5C then restart at 1Y (which is BIGGER). Get the full chart with ages and cm, the measuring method, growing-room rules, and the youth-to-women's trick."
+seoTitle: "Kids' Shoe Sizes by Age: US, UK, EU Charts"
+description: "Kids' shoe sizes run 2C–13.5C then restart at 1Y (which is bigger). Full US/UK/EU chart with ages and cm, measuring method, and growing-room rules."
 pubDate: 2026-07-05
 updatedDate: 2026-08-23
 archetype: how-to
@@ -78,7 +79,7 @@ sizing history, where children's sizes counted up from a tiny zero and simply ro
 13. Nobody designed it; everyone inherited it. **EU sizing has no restart** (a big kid just wears EU 33
 after 32), and **UK kids' sizes** shadow the US scale one step lower, rolling over the same way.
 
-The barleycorn is the old English unit behind all of this: **one shoe size equals one-third of an inch
+The [barleycorn](https://en.wikipedia.org/wiki/Shoe_size) is the old English unit behind all of this: **one shoe size equals one-third of an inch
 (≈8.5 mm)**, and a half size is one-sixth of an inch (≈4.2 mm). That is why the whole ladder feels so
 granular — each step forward is only a few millimetres of foot length, which is exactly why measuring in
 centimetres beats guessing. The EU scale uses a different unit, the **Paris point** of two-thirds of a

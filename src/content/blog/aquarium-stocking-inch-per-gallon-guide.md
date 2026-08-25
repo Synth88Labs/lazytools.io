@@ -1,6 +1,7 @@
 ---
 title: "The 1 Inch Per Gallon Rule Is Wrong — What Actually Limits Fish Stocking"
-description: "The inch-per-gallon rule fails because waste scales with body mass, not length — one 10-inch fish is nowhere near ten 1-inch fish. Here's what really sets your limit: adult size, bioload, surface area, filtration and territory."
+seoTitle: 'Inch Per Gallon Rule: What Really Limits Stocking'
+description: "The 1 inch per gallon rule fails: fish waste scales with body mass, not length. What really limits stocking — adult size, bioload, surface area and filtration."
 pubDate: 2026-07-18
 updatedDate: 2026-07-18
 archetype: explainer
@@ -84,7 +85,7 @@ Tall tanks also give less **swim footprint**, which matters for active, horizont
 
 ## Filtration is the real ceiling
 
-The nitrogen cycle is what keeps fish alive: beneficial bacteria convert toxic ammonia → nitrite → far less toxic nitrate, which you export through water changes. That conversion happens on the **biological media in your filter**, and its capacity is finite.
+The [nitrogen cycle](https://en.wikipedia.org/wiki/Nitrogen_cycle) is what keeps fish alive: beneficial bacteria convert toxic ammonia → nitrite → far less toxic nitrate, which you export through water changes. That conversion happens on the **biological media in your filter**, and its capacity is finite.
 
 A 20-gallon tank with generous, well-maintained filtration can safely hold more than a 30-gallon with an undersized filter. Gallons don't process ammonia; bacteria do.
 

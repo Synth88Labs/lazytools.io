@@ -1,6 +1,7 @@
 ---
 title: "How Much House Can You Afford? The 28/36 Rule Explained"
-description: "Lenders don't ask what you want to spend — they check two ratios against your income. Here's how the 28/36 rule works, how to turn it into a real home-price ceiling, and why the number it gives is a limit, not a target."
+seoTitle: 'How Much House Can I Afford? The 28/36 Rule'
+description: "How much house can you afford? The 28/36 rule checks two ratios against your income. How it works, how to turn it into a home-price ceiling."
 pubDate: 2026-07-12
 updatedDate: 2026-08-23
 archetype: explainer
@@ -51,7 +52,7 @@ draft: false
 
 ## The two ratios
 
-Lenders measure affordability with your **debt-to-income (DTI)** ratio — the share of your gross monthly income eaten by debt payments. The 28/36 rule sets two caps:
+Lenders measure affordability with your **debt-to-income (DTI)** ratio — the share of your gross monthly income eaten by debt payments (the [Consumer Financial Protection Bureau](https://www.consumerfinance.gov/) explains how lenders weigh DTI). The 28/36 rule sets two caps:
 
 - **Front-end ratio — 28%.** Your monthly *housing* payment (the full PITI: principal, interest, taxes and insurance, plus HOA) should stay under about **28%** of gross monthly income.
 - **Back-end ratio — 36%.** *All* your monthly debt payments together — housing **plus** car loans, student loans and minimum credit-card payments — should stay under about **36%**.

@@ -1,6 +1,7 @@
 ---
 title: "Colligative Properties: Why Salt Melts Ice and Antifreeze Works"
-description: "Colligative properties depend on the number of dissolved particles, not their identity. Freezing-point depression (ΔTf = i·Kf·m) and boiling-point elevation (ΔTb = i·Kb·m), the van't Hoff factor, and why 1 molal NaCl drops water's freezing point by 3.72 °C."
+seoTitle: 'Colligative Properties: Why Salt Melts Ice'
+description: "Colligative properties depend on how many particles dissolve, not what they are — freezing-point depression (ΔTf = i·Kf·m) and boiling-point elevation."
 pubDate: 2026-07-11
 updatedDate: 2026-08-23
 archetype: explainer
@@ -30,7 +31,7 @@ faqs:
 draft: false
 ---
 
-**Colligative properties are the ones that only care *how many* particles you dissolve, not *what* they
+**[Colligative properties](https://en.wikipedia.org/wiki/Colligative_properties) are the ones that only care *how many* particles you dissolve, not *what* they
 are.** Dissolve anything in water and you lower its freezing point (`ΔTf = i·Kf·m`) and raise its boiling
 point (`ΔTb = i·Kb·m`). That single idea explains salted roads, antifreeze, and why pasta water with salt
 boils a hair hotter.

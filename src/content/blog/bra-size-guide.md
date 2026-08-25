@@ -1,6 +1,7 @@
 ---
 title: "Bra Size Conversion and Sister Sizes: US, UK and EU Explained"
-description: "A US 34DD is an EU 75E and a FR 90E — and 36D holds exactly the same cup volume. Learn how band and cup systems convert, how to measure, and how sister sizes fix bras that almost fit."
+seoTitle: 'Bra Size Conversion: US, UK & EU + Sister Sizes'
+description: "Bra size conversion across US, UK, EU and FR, plus how sister sizes fix a bra that almost fits — and how to measure band and cup at home."
 pubDate: 2026-07-04
 updatedDate: 2026-07-04
 archetype: explainer
@@ -52,7 +53,7 @@ and why a 36D holds exactly the same cup volume. Convert any size, with sister s
 
 **The band number** is the ribcage measurement — inches in the US/UK (30, 32, 34…), centimeters
 rounded to fives in the EU (65, 70, 75…). Because they measure the same thing in different units,
-bands convert exactly:
+[bands convert exactly](https://en.wikipedia.org/wiki/Bra_size):
 
 | US / UK | EU / DE | FR / ES | IT | AU |
 |---|---|---|---|---|

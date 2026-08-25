@@ -1,5 +1,6 @@
 ---
 title: "How to Make a Favicon (Every Size You Need)"
+seoTitle: 'How to Make a Favicon: Sizes, .ico & Link Tags'
 description: "Make a favicon the right way: start from one square image, export favicon.ico plus every PNG size, and add the link tags. Free, in your browser."
 pubDate: 2026-07-28
 updatedDate: 2026-08-23
@@ -92,7 +93,7 @@ If you add an SVG icon, reference it alongside the others and keep `sizes="any"`
 
 ## The HTML link tags to add
 
-The link tags tell browsers and devices which icon to use where. Add these inside the `<head>` of your pages:
+The [link tags](https://developer.mozilla.org/) tell browsers and devices which icon to use where. Add these inside the `<head>` of your pages:
 
 ```html
 <link rel="icon" href="/favicon.ico" sizes="any">

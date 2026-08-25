@@ -1,6 +1,7 @@
 ---
 title: "The Mole Explained: Converting Grams, Moles and Molecules"
-description: "The mole is the hub of chemistry calculations: moles = mass ÷ molar mass, and particles = moles × Avogadro's number (6.022×10²³). How to convert between grams, moles and molecules, why one mole equals the molar mass in grams, and how it drives stoichiometry."
+seoTitle: 'The Mole: Convert Grams, Moles & Molecules'
+description: "The mole links mass, moles and particles: moles = mass ÷ molar mass, particles = moles × 6.022×10²³. Convert grams, moles and molecules with worked examples."
 pubDate: 2026-07-11
 updatedDate: 2026-08-23
 archetype: explainer
@@ -138,8 +139,8 @@ by the molar volume to reach moles, and continue as usual.
 
 ## Avogadro's number
 
-**6.02214076×10²³** is Avogadro's number — the count of particles in one mole. Since the 2019 revision
-of the SI, it is an *exact defined value* (it's how the mole is now defined), so it never drifts. It is
+**6.02214076×10²³** is Avogadro's number — the count of particles in one mole. Since the [2019 revision
+of the SI](https://en.wikipedia.org/wiki/2019_revision_of_the_SI), it is an *exact defined value* (it's how the mole is now defined), so it never drifts. It is
 staggeringly large: a mole of water molecules is about 18 mL, yet contains more molecules than there are
 stars in the observable universe by a wide margin.
 

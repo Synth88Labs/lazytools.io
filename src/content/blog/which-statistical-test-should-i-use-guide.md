@@ -1,5 +1,6 @@
 ---
 title: "Which Statistical Test Should I Use? A Decision Guide"
+seoTitle: "Which Statistical Test Should I Use?"
 description: "t-test, z-test, ANOVA, Mann-Whitney or chi-square? The right test depends on your data type, how many groups you have, and whether it's normal. Here's a simple decision path, with calculators that run in your browser."
 pubDate: 2026-08-01
 updatedDate: 2026-08-23

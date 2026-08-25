@@ -1,6 +1,7 @@
 ---
 title: "Cron Syntax Explained: The Five Fields, the Shortcuts, and the OR-Rule Trap"
-description: "How cron expressions work: the five fields (minute, hour, day-of-month, month, day-of-week), the special characters (* , - /), what */15 means, and the day-of-month/day-of-week OR-rule that makes jobs run more often than expected."
+seoTitle: 'Cron Syntax Explained: The Five Fields & OR-Trap'
+description: 'How cron expressions work — the five fields, special characters, and the day-of-month/day-of-week OR-rule that makes jobs run too often.'
 pubDate: 2026-07-10
 updatedDate: 2026-07-10
 archetype: explainer

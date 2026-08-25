@@ -1,6 +1,7 @@
 ---
 title: "Shoe Size Conversion: US, UK, EU and cm — and Why Brands Never Quite Agree"
-description: "A US men's 9 is UK 8, EU 42.5 and 26.5 cm — usually. Get the men's and women's charts, the barleycorn/Paris-point history behind the chaos, and the foot-measuring method that beats every chart."
+seoTitle: 'Shoe Size Conversion: US, UK, EU & cm'
+description: "A US men's 9 is a UK 8, EU 42.5 and 26.5 cm — usually. The men's and women's charts, the barleycorn history, and the foot-measuring method that wins."
 pubDate: 2026-07-04
 updatedDate: 2026-08-23
 archetype: explainer
@@ -55,7 +56,7 @@ foot-measurement lookup.
 (children) or 8⅔ inches (adults' scale start). **US sizing** kept the barleycorn step but shifted the
 starting point — so US runs about one size higher than UK for men. **EU sizing** counts *Paris points*
 of 2/3 cm from zero, measuring the last, not the foot. And **Japan** ignored all of it and just uses
-foot length in centimeters — the approach ISO's "Mondopoint" standard endorses, because it's the only
+foot length in centimeters — the approach ISO's ["Mondopoint" standard](https://en.wikipedia.org/wiki/Mondopoint) endorses, because it's the only
 one that measures the actual foot.
 
 <div class="callout cite">

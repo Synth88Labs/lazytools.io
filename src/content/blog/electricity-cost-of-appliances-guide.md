@@ -1,6 +1,7 @@
 ---
 title: "How Much Does It Cost to Run an Appliance? (Watts to Dollars)"
-description: "An appliance's running cost is its power in kilowatts times the hours you use it times your price per kWh. Here's the formula, worked examples for common devices, and why fridges and ACs cost less than the maths suggests."
+seoTitle: 'Cost to Run an Appliance: Watts to Dollars'
+description: "An appliance's running cost is its power in kW times hours used times your price per kWh — the formula, worked examples, and why fridges cost less."
 pubDate: 2026-07-28
 updatedDate: 2026-08-23
 archetype: explainer
@@ -58,7 +59,7 @@ Your electricity company charges by the **kilowatt-hour (kWh)** — the energy o
 
 The first part (watts ÷ 1000 × hours) is the **energy in kWh**; multiplying by your rate turns it into money. The [electricity cost calculator](/calc/electricity-cost-calculator/) does it and projects the daily figure to a month and a year.
 
-Two numbers do all the work, and both are easy to find. The **wattage** comes from the appliance itself; the **price per kWh** comes from your latest bill (in many places a typical residential rate falls somewhere in the range of roughly $0.10–$0.35 per kWh, but yours may sit outside that — always use your own figure). Everything else is just multiplication.
+Two numbers do all the work, and both are easy to find. The **wattage** comes from the appliance itself; the **price per kWh** comes from your latest bill (in many places a typical residential rate falls somewhere in the range of roughly $0.10–$0.35 per kWh — the [US Energy Information Administration](https://www.eia.gov/) publishes average rates — but yours may sit outside that, so always use your own figure). Everything else is just multiplication.
 
 ### Why the ÷ 1000 step matters
 
@@ -130,27 +131,7 @@ Once you can see the numbers, the big savers become obvious: it's the **high-wat
 - **Attack the top band first.** Trimming an hour a day off a 2000 W heater saves more than unplugging every charger in the house.
 - **Heat and cool smaller zones.** Warming or cooling one occupied room instead of the whole home cuts run-time directly.
 - **Shift to off-peak rates** if your tariff has them — running the dishwasher or dryer when the per-kWh price is lower changes the bill without changing the energy used.
-- **Replace the biggest hogs** with efficient models; the payback on an old fridge or an inefficient dryer can be surprisingly fast.
+- **Replace the biggest hogs** with efficient models; the payback on an old fridge or an inefficient dryer can be surprisingly fast. If you are weighing rooftop generation against these running costs, see [how many solar panels you need](/blog/how-many-solar-panels-guide/).
 - **Line-dry when you can** — a tumble dryer is one of the most expensive things to run per hour in most homes.
 
 Run each candidate through the [electricity cost calculator](/calc/electricity-cost-calculator/) before and after a change and you'll see, in your own currency, exactly which habits are worth keeping.
-
-## FAQ
-
-**How do I calculate the cost of running an appliance?**
-Multiply its power in kilowatts (watts ÷ 1000) by the hours you use it and your price per kWh. A 2000 W device used 3 hours at $0.20/kWh costs 2 × 3 × 0.20 = $1.20. The [calculator](/calc/electricity-cost-calculator/) also projects monthly and yearly totals.
-
-**Where do I find an appliance's wattage?**
-On the rating label (often on the back or base) or in the manual, in watts. If only volts and amps are shown, multiply them: watts = volts × amps.
-
-**Why does my fridge cost less than the calculation says?**
-Because its compressor cycles on and off rather than running constantly. Use the fridge's average power or its annual kWh label rather than assuming a full 24 hours at nameplate wattage.
-
-**What is a kilowatt-hour?**
-The energy used by 1000 watts running for one hour. It's the unit your electricity is billed in, so all running-cost maths converts power and time into kWh, then multiplies by your rate.
-
-**Does the calculator work in any currency?**
-Yes — the arithmetic is the same everywhere. Enter your price per kWh in whatever currency your bill uses and the results come out in that currency.
-
-**Which appliances cost the most to run?**
-High-wattage devices that run for long periods: electric heating, air conditioning, water heaters and tumble dryers. Low-wattage electronics and LED lighting cost very little by comparison.

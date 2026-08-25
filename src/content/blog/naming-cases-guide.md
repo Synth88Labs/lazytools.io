@@ -1,6 +1,7 @@
 ---
 title: "camelCase vs snake_case vs kebab-case: Which Naming Case Goes Where"
-description: "JavaScript uses camelCase, Python snake_case, URLs and CSS kebab-case, classes PascalCase, constants CONSTANT_CASE. The full convention map, why URLs prefer hyphens, and how to convert between them."
+seoTitle: 'camelCase vs snake_case vs kebab-case'
+description: "camelCase for JavaScript, snake_case for Python, kebab-case for URLs and CSS, PascalCase for classes — the full naming-case map and converter."
 pubDate: 2026-07-05
 updatedDate: 2026-08-23
 archetype: explainer

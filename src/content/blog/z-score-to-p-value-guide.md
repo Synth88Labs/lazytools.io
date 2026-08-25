@@ -1,5 +1,6 @@
 ---
 title: "Z-Score to P-Value: How to Read the Normal Distribution"
+seoTitle: "Z-Score to P-Value: Reading the Normal Curve"
 description: "A p-value is the tail area of the normal curve beyond your z-score. z = 1.96 gives a two-tailed p of 0.05; z = 1.645 a one-tailed p of 0.05. How the conversion works, one- versus two-tailed, and why a table is coarser than the exact erf calculation."
 pubDate: 2026-07-11
 updatedDate: 2026-08-23

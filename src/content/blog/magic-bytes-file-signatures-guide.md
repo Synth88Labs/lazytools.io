@@ -1,6 +1,7 @@
 ---
 title: "Magic Bytes: How to Tell a File's Real Type (Not Its Extension)"
-description: "A file's extension is just a label — its real type is written in its first few bytes, the 'magic number'. Here's how file signatures work, why a .pdf can secretly be an .exe, and how to check, all in your browser."
+seoTitle: 'Magic Bytes & File Signatures Explained'
+description: "A file's real type lives in its first few bytes — the magic number — not its extension. How file signatures work and why a .pdf can secretly be an .exe."
 pubDate: 2026-08-02
 updatedDate: 2026-08-23
 archetype: explainer
@@ -55,7 +56,7 @@ reads only the leading bytes, in your browser.
 The extension (`.pdf`, `.jpg`, `.zip`) is nothing more than the text after the last dot in a filename.
 It's a hint for your operating system about which app to launch — but you can rename a file to anything,
 and nothing about its contents changes. What programs *actually* use to recognise a format is the
-**magic number**: a fixed byte pattern at the start of the file.
+**[magic number](https://en.wikipedia.org/wiki/List_of_file_signatures)**: a fixed byte pattern at the start of the file.
 
 | Format | First bytes (hex) | As text |
 |---|---|---|
@@ -115,7 +116,8 @@ thing." Many signatures are also human-readable on purpose. Open a PDF in a text
 first characters are literally `%PDF-1.7`; a ZIP starts with `PK`, the initials of Phil Katz, who
 created the format. Others are deliberately binary — PNG's leading `89` byte is chosen so that a
 transfer tool that strips the high bit will visibly corrupt the file rather than pass a broken copy
-through silently.
+through silently. (That signature is only the first of several structural markers — see how the rest of
+a PNG is laid out in the [PNG file structure guide](/blog/png-file-structure-chunks-crc-explained-guide/).)
 
 ## Read the bytes yourself: a worked example
 

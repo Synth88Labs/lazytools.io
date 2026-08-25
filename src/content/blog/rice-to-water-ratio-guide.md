@@ -1,5 +1,6 @@
 ---
 title: "Rice to Water Ratio: Perfect Rice by Type"
+seoTitle: 'Rice to Water Ratio by Type (Chart)'
 description: "White long-grain rice uses a 2:1 water-to-rice ratio. Brown, basmati, jasmine, sushi and wild rice each differ — get the numbers, free, in your browser."
 pubDate: 2026-07-28
 updatedDate: 2026-07-28

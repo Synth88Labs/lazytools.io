@@ -1,6 +1,7 @@
 ---
 title: "Check Digits Explained: How Barcodes, ISBNs and Card Numbers Catch Typos"
-description: "The last digit of a barcode, ISBN, credit card or IMEI isn't part of the ID — it's a check digit computed from the rest to catch typos. Here's how mod-10, mod-11 and Luhn work, and how to validate them in your browser."
+seoTitle: 'Check Digits Explained: Barcodes, ISBNs & Luhn'
+description: "A check digit is an extra digit computed from the rest of a barcode, ISBN or card number to catch typos — how mod-10, mod-11 and Luhn work."
 pubDate: 2026-08-02
 updatedDate: 2026-08-23
 archetype: explainer
@@ -85,7 +86,8 @@ Well-designed check digits catch **every single-digit error** and **almost all "
 
 ## GS1 mod-10 (barcodes and ISBN-13)
 
-Take an EAN-13 like `4006381333931`. Drop the last digit (the check, `1`) and, reading the remaining 12
+The barcodes on retail products are administered by [GS1](https://www.gs1.org/), the standards body
+behind EAN and UPC. Take an EAN-13 like `4006381333931`. Drop the last digit (the check, `1`) and, reading the remaining 12
 from the right, multiply alternately by 3 and 1, add them, and the check digit is whatever makes the
 total a multiple of 10. Scanners do this on every beep — it's why a smudged or mis-scanned barcode
 simply won't register rather than ringing up the wrong item. The
@@ -110,7 +112,8 @@ and the scan is rejected.
 
 ## Luhn (cards and IMEIs)
 
-Credit-card numbers and phone IMEIs use the **Luhn** algorithm. From the right, double every second
+Credit-card numbers and phone IMEIs use the **[Luhn](https://en.wikipedia.org/wiki/Luhn_algorithm)**
+algorithm. From the right, double every second
 digit (if that gives more than 9, subtract 9), add everything up, and a valid number's total is
 divisible by 10. It's why a payment form can flag a mistyped card *before* contacting the bank, and why
 `490154203237518` is a valid IMEI but `490154203237517` isn't. Check either with the

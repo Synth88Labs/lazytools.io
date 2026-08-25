@@ -1,6 +1,7 @@
 ---
 title: "OKLCH: The Modern CSS Color Format (and How to Convert from HEX)"
-description: "OKLCH is a perceptually uniform color format — oklch(L% C H) — now supported in ~95% of browsers and Tailwind CSS 4's default. Why it beats HEX and HSL for building shade ramps, how to convert HEX to OKLCH, and why you still keep a HEX fallback."
+seoTitle: 'OKLCH: The Modern CSS Color Format'
+description: "OKLCH is a perceptually uniform CSS color format — oklch(L% C H), ~95% browser support and Tailwind 4's default. Why it beats HEX and HSL, and how to convert."
 pubDate: 2026-07-11
 updatedDate: 2026-07-11
 archetype: explainer
@@ -32,7 +33,7 @@ draft: false
 ---
 
 **OKLCH is a way of writing colors — `oklch(L% C H)` — that matches how your eyes actually work.** L is
-lightness, C is chroma (colorfulness), H is hue. It is a CSS Color 4 function supported in about 95% of
+lightness, C is chroma (colorfulness), H is hue. It is a [CSS Color 4](https://www.w3.org/TR/css-color-4/) function supported in about 95% of
 browsers and is Tailwind CSS 4's default color space. The headline benefit: equal number changes look
 like equal visual changes, which HEX and HSL never guaranteed. `#1d87f1` is `oklch(62.3% 0.183 253.6)`.
 
@@ -136,7 +137,7 @@ without `oklch()` keeps the HEX, a browser with it takes the second line. No `@s
 
 ## Browser support in one line
 
-The `oklch()` function shipped across the major engines a while ago: Chrome and Edge from version 111,
+The [`oklch()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/oklch) function shipped across the major engines a while ago: Chrome and Edge from version 111,
 Safari from 15.4, and Firefox from 113. In practice that covers the large majority of users — commonly
 cited figures put it in the low-to-mid 90s percent range, and the share keeps climbing as older browsers
 age out. The remaining slice is exactly what the HEX fallback above is for, so you lose nothing by

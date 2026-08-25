@@ -1,6 +1,7 @@
 ---
 title: "GPS Coordinate Formats Explained: DD, DMS, UTM, MGRS and Geohash"
-description: "The same spot on Earth can be written as 51.5074, 51°30′26″N, UTM 30U 699319 5710156, an MGRS grid ref, or a geohash. Here's what each format is, who uses it, and how to convert between them — in your browser."
+seoTitle: 'GPS Coordinate Formats: DD, DMS, UTM & MGRS'
+description: "GPS coordinate formats explained: decimal degrees, DMS, UTM, MGRS and geohash — what each is, who uses it, and how to convert between them."
 pubDate: 2026-08-02
 updatedDate: 2026-08-23
 archetype: explainer
@@ -99,8 +100,8 @@ for almost any real-world use** — extra digits look precise but describe accur
 
 ## The grid formats: UTM and MGRS
 
-DD/DMS describe angles on a sphere. **UTM (Universal Transverse Mercator)** instead lays a flat metric
-grid over the world, split into 60 north–south **zones**. A UTM coordinate is a zone plus an
+DD/DMS describe angles on a sphere. **[UTM (Universal Transverse Mercator)](https://en.wikipedia.org/wiki/Universal_Transverse_Mercator_coordinate_system)**
+instead lays a flat metric grid over the world, split into 60 north–south **zones**. A UTM coordinate is a zone plus an
 **easting** and **northing** in metres — e.g. `30U 699319 5710156`. Because it's metric and
 rectangular, it's natural for surveying and local mapping.
 
@@ -129,7 +130,8 @@ ellipsoid), not simple arithmetic — which is exactly where hand-conversions go
 
 ## The database format: geohash
 
-A **geohash** encodes a lat/lon into a short string like `gcpvj0duq`. Under the hood it interleaves the
+A **[geohash](https://en.wikipedia.org/wiki/Geohash)** encodes a lat/lon into a short string like
+`gcpvj0duq`. Under the hood it interleaves the
 bits of latitude and longitude and encodes them in base-32, which produces the format's defining
 property: **nearby places share a leading prefix**. `gcpvj` is central London; add characters and you
 zoom in on the same area. That lets a database find points "near" a location with a simple text
@@ -184,7 +186,8 @@ Most conversion errors are not maths mistakes — they're small assumptions that
   the `N/S/E/W` letter. Convert `-0.1278` to `0°07′40″` and forget the `W`, and you've flipped it across
   the Prime Meridian.
 - **Latitude/longitude order.** Most mapping software writes **latitude first, then longitude**, but some
-  APIs and GeoJSON use the opposite order. Swapping them can drop a London coordinate into the ocean.
+  APIs and [GeoJSON](/blog/wkt-vs-geojson-geometry-formats-explained-guide/) use the opposite order.
+  Swapping them can drop a London coordinate into the ocean.
 - **Datum mismatches.** Coordinates only mean something relative to a *datum* — a model of Earth's shape.
   Web maps and GPS use **WGS-84**; older national maps may use a local datum, and the same numbers can
   land tens of metres apart between them. When precision matters, confirm both sides use the same datum.

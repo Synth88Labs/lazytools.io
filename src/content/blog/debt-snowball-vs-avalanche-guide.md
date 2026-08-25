@@ -1,6 +1,7 @@
 ---
 title: "Debt Snowball vs Avalanche: Which Pays Off Debt Faster?"
-description: "The avalanche method (highest interest rate first) always costs the least interest; the snowball method (smallest balance first) gives faster psychological wins. Both keep the same monthly budget — only the target order changes. How each works, a worked example, and how to decide."
+seoTitle: 'Debt Snowball vs Avalanche: Which Is Faster?'
+description: "Avalanche (highest rate first) pays the least interest; snowball (smallest balance first) gives faster wins. How each works and how to choose."
 pubDate: 2026-07-11
 updatedDate: 2026-07-11
 archetype: explainer

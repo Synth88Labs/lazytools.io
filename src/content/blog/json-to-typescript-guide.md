@@ -1,6 +1,7 @@
 ---
 title: "How to Convert JSON to TypeScript Interfaces"
-description: "To turn JSON into TypeScript, map each value to a type — strings to string, numbers to number, nested objects to their own interface, and keys missing from some array items to optional. Here's how inference works and how to do it instantly."
+seoTitle: 'JSON to TypeScript: Generate Interfaces'
+description: "JSON to TypeScript: map each value to a type, break nested objects into their own interface, and mark missing keys optional — instantly in your browser."
 pubDate: 2026-07-28
 updatedDate: 2026-08-23
 archetype: explainer
@@ -164,7 +165,7 @@ Most generators let you emit either an `interface` or a `type` alias, and for a 
 | Unions / intersections at top level | No | Yes (`type Id = string \| number`) |
 | Extending | `extends` | `&` intersection |
 
-A common convention is to prefer `interface` for object models and reach for `type` when you need a union, a tuple, or a mapped type. Pick whichever matches your codebase's existing style — consistency matters more than the choice itself.
+A common convention (echoed in the [TypeScript handbook](https://www.typescriptlang.org/)) is to prefer `interface` for object models and reach for `type` when you need a union, a tuple, or a mapped type. Pick whichever matches your codebase's existing style — consistency matters more than the choice itself.
 
 ## The limits of inference
 
@@ -174,30 +175,10 @@ Types are only as good as the **sample** you paste:
 - **Empty arrays** become `any[]`, since there's no element to infer from.
 - The generator can't know about fields that never appear in your sample.
 
-Treat the output as a strong starting point, then adjust nullable and union types to match the real API contract.
+Treat the output as a strong starting point, then adjust nullable and union types to match the real API contract. For the broader workflow of turning API payloads into typed models, see [generating typed models from JSON](/blog/generate-typed-models-from-json-guide/).
 
 A practical habit: paste the **largest, most complete** sample you have — ideally one that exercises optional fields and every variant. The more the sample resembles the full range of real responses, the fewer manual fixes you make afterward. If your API documents nullable fields, reconcile the generated `null` types against that documentation rather than trusting a single lucky response.
 
 ## Do it privately
 
 API responses can contain sensitive data — tokens, personal details, internal IDs. A [browser-based JSON-to-TypeScript tool](/dev/json-to-typescript/) does the inference **locally in your browser**, so the JSON you paste is never uploaded to a server. You can also switch the output between `interface` and `type` aliases to match your codebase's style.
-
-## FAQ
-
-**How do I convert JSON to a TypeScript interface?**
-Paste your JSON into a [generator](/dev/json-to-typescript/) and it infers an interface for it, breaking nested objects into their own named interfaces. Copy the result into your `.ts` file.
-
-**Does it detect optional and union types?**
-Yes. In an array of objects, a key missing from some elements is marked optional (`?`), and a key that appears with different value types becomes a union like `string | number`.
-
-**Can I get `type` aliases instead of `interface`?**
-Yes — most generators (including this one) let you switch the output to `type X = { … }` instead of `interface X { … }`. Both describe the same shape.
-
-**Why is a field typed `null` or `any`?**
-A field whose only sample value is `null` is typed `null` — widen it manually if it can hold other values. Empty arrays become `any[]` because there's nothing to infer the element type from.
-
-**Is it safe to paste a real API response?**
-With a browser-based tool, yes — the JSON is parsed locally and never uploaded, so even responses containing tokens or personal data stay on your device.
-
-**Does it handle deeply nested JSON?**
-Yes. The generator recurses through nested objects and arrays, creating a named interface for each object shape and referencing them, so even complex structures produce clean, reusable types.

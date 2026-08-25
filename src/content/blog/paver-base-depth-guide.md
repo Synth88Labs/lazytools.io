@@ -1,6 +1,7 @@
 ---
 title: "How Deep Should a Paver Base Be? Gravel, Sand and the Mistakes That Sink Patios"
-description: "A paver patio needs 4–6 inches of compacted gravel plus 1 inch of bedding sand; a driveway needs 8–12. Here's why compaction happens in thin lifts, why the sand layer must stay thin, and the two omissions that ruin most DIY paver jobs."
+seoTitle: 'How Deep Should a Paver Base Be? Gravel & Sand'
+description: "Paver base depth: 4–6 inches of compacted gravel plus 1 inch of bedding sand (8–12 for driveways). Why to compact in thin lifts and what sinks patios."
 pubDate: 2026-07-18
 updatedDate: 2026-07-18
 archetype: explainer
@@ -59,7 +60,7 @@ draft: false
 | Driveway (cars) | 8″ | 1″ |
 | Driveway (heavy vehicles) | 10–12″ | 1″ |
 
-Go deeper in two situations: **poor-draining clay subgrade**, and **cold climates with hard frost**, where a deeper free-draining base reduces frost heave. If your soil stays wet and soft, adding base depth is cheaper than rebuilding.
+Go deeper in two situations: **poor-draining clay subgrade**, and **cold climates with hard frost**, where a deeper free-draining base reduces [frost heave](https://en.wikipedia.org/wiki/Frost_heaving). If your soil stays wet and soft, adding base depth is cheaper than rebuilding.
 
 Work out quantities with the [paver calculator](/home/paver-calculator/) and the [gravel calculator](/home/gravel-calculator/).
 
@@ -109,26 +110,3 @@ Install plastic or metal **edge restraint** spiked into the compacted base (not 
 ## The finishing step
 
 After laying, sweep **joint sand** across the surface and run the plate compactor over the pavers (with a protective mat) to vibrate sand into the joints and seat the pavers into the bedding layer. Repeat the sweep-and-compact cycle until the joints stay full. **Polymeric sand** hardens slightly when wetted and resists washout and weeds better than plain sand — follow its instructions closely, since it must be properly cleaned off the paver faces before wetting.
-
-## Frequently asked questions
-
-### How deep should a paver base be?
-4–6 inches of compacted gravel for patios and walkways, plus 1 inch of bedding sand. Driveways need 8–12 inches of gravel because of vehicle loads. Go deeper on clay or poor-draining soil, and in hard-frost climates.
-
-### Can I lay pavers on sand only?
-Only for the most temporary, light-duty work. Sand doesn't provide structural support — without a compacted gravel base beneath it, pavers sink and rut under load and after rain. The sand's job is levelling, not bearing.
-
-### How thick should the sand layer be under pavers?
-One inch, screeded uniformly. Thicker sand is the most common cause of a wavy patio, because deep and shallow areas consolidate at different rates. Never use extra sand to compensate for an uneven base.
-
-### What kind of gravel is best for a paver base?
-A well-graded crushed aggregate containing a range of sizes down to fines — sold as road base, crusher run, or MOT Type 1. The fines lock the larger stone together when compacted. Uniform clean gravel with no fines won't form a rigid base.
-
-### Do I really need edge restraint?
-Yes. Without it the outer pavers gradually push outward, joints open, bedding sand escapes and the whole field spreads. Spike restraints into the compacted base, not into the sand.
-
-### How much slope does a paver patio need?
-About 1/4 inch per foot (2%), falling away from the building. Build the slope into the excavation and base layers so the gravel and sand stay uniform thickness throughout.
-
-### Why is my paver patio sinking?
-Usually insufficient base depth, base compacted in one thick layer instead of 2–3 inch lifts, an uncompacted subgrade, or too much bedding sand. Localised dips often mean a soft spot in the subgrade that was never compacted before the gravel went down.

@@ -1,6 +1,7 @@
 ---
 title: "How to Create and Sign a JWT (HS256)"
-description: "To create a JWT, base64url-encode a JSON header and payload, then sign header.payload with HMAC-SHA256 and your secret. Do it in your browser — the secret never uploaded."
+seoTitle: 'How to Create & Sign a JWT (HS256)'
+description: "To create a JWT, base64url-encode a JSON header and payload, then sign header.payload with HMAC-SHA256 and your secret — all in your browser, never uploaded."
 pubDate: 2026-07-28
 updatedDate: 2026-07-28
 archetype: how-to

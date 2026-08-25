@@ -1,6 +1,7 @@
 ---
 title: "What's Inside a Font File? TTF and OTF Metadata Explained"
-description: "A .ttf or .otf font is an sfnt file — a directory of tables holding the family name, version, glyph outlines and even an embedding licence. Here's what each key table stores and how to read a font's metadata in your browser."
+seoTitle: "What's Inside a Font File? TTF & OTF Metadata"
+description: "A .ttf or .otf font is an sfnt file: a directory of tables holding name, version, glyph outlines and embedding licence. What each stores, read in your browser."
 pubDate: 2026-08-02
 updatedDate: 2026-08-23
 archetype: explainer
@@ -56,7 +57,7 @@ ship it. Here's what the key tables store, and how to read them with the
 
 ## The sfnt container: a directory of tables
 
-Every TrueType and OpenType font starts with an **offset table** (also called the *sfnt header*) that
+Every TrueType and [OpenType](https://en.wikipedia.org/wiki/OpenType) font starts with an **offset table** (also called the *sfnt header*) that
 begins with a version tag and says how many tables the font contains. It's followed by a **table
 directory** — one record per table giving its 4-character tag, a checksum, its offset from the start of
 the file, and its length. To read any piece of a font, you look up the tag in the directory and jump to
@@ -184,4 +185,5 @@ Because fonts are often licensed — and unreleased fonts are confidential — y
 to a random server just to read its name. The [Font Metadata Inspector](/fonts/font-metadata-inspector/)
 parses the sfnt tables entirely in your browser: drop in a `.ttf`, `.otf` or `.ttc` and it shows the
 family, style, version, glyph count, units-per-em, weight and embedding permission — with the file never
-leaving your device. (WOFF/WOFF2 web fonts are compressed; convert them to TTF/OTF first.)
+leaving your device. (WOFF/WOFF2 web fonts are compressed; convert them to TTF/OTF first.) It sits
+alongside the rest of the [LazyTools font tools](/fonts/) if you want to go further.

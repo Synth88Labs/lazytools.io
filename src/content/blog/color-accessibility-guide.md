@@ -1,6 +1,7 @@
 ---
 title: "Accessible Color: Contrast Ratios and Color Blindness, Explained"
-description: "Accessible color rests on two things: enough contrast (WCAG AA needs 4.5:1 for text, 3:1 for large text) and not relying on color alone (~1 in 12 men are color-blind). How the ratios work, what deuteranopia/protanopia/tritanopia change, and how to fix a failing color."
+seoTitle: 'Color Accessibility: Contrast & Color Blindness'
+description: "Accessible color needs enough contrast (WCAG AA: 4.5:1 text, 3:1 large) plus cues beyond color — ~1 in 12 men are color-blind. How to get both right."
 pubDate: 2026-07-11
 updatedDate: 2026-08-23
 archetype: explainer
@@ -57,7 +58,7 @@ apart, so color must never be the *only* signal.
 ## Pillar 1 — contrast
 
 Contrast is a **ratio** between the relative luminance of the text and its background, from `1:1`
-(identical, invisible) to `21:1` (black on white). WCAG 2 sets the thresholds:
+(identical, invisible) to `21:1` (black on white). The [WCAG 2 guidelines](https://en.wikipedia.org/wiki/Web_Content_Accessibility_Guidelines) set the thresholds:
 
 | Level | Normal text | Large text (≥18.66px bold / ≥24px) |
 |---|---|---|
@@ -107,7 +108,7 @@ enter the foreground, background and target, and it returns the nearest passing 
 ## Pillar 2 — color blindness
 
 Contrast fixes *legibility*, but a perfectly high-contrast red and green can still be **indistinguishable**
-to a color-blind user. Color-vision deficiency affects about 8% of men (and far fewer women), in three
+to a color-blind user. [Color-vision deficiency](https://en.wikipedia.org/wiki/Color_blindness) affects about 8% of men (and far fewer women), in three
 main forms:
 
 - **Deuteranopia** — green-weak, the most common. Reds, greens, browns and oranges blur together.

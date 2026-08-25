@@ -1,6 +1,7 @@
 ---
 title: "JSON vs YAML vs XML: Which Data Format for Which Job"
-description: "APIs speak JSON, humans edit YAML, legacy systems demand XML. How the three formats differ, when each wins, the Norway problem, and how to convert between them without losing data."
+seoTitle: 'JSON vs YAML vs XML: Which to Use'
+description: "APIs speak JSON, humans edit YAML, legacy systems demand XML. How the three formats differ, when each wins, and how to convert without losing data."
 pubDate: 2026-07-05
 updatedDate: 2026-08-23
 archetype: explainer

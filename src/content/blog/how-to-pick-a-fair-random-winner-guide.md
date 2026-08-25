@@ -1,6 +1,7 @@
 ---
 title: "How to Pick a Fair Random Winner (Names, Raffles and Giveaways)"
-description: "Picking a name 'at random' by hand is rarely fair. Here's what fair selection actually means, when to draw with or without replacement, and how to spin a fair random winner from any list in your browser."
+seoTitle: 'How to Pick a Fair Random Winner'
+description: "Picking a random winner by hand is rarely fair. What fair selection means, when to draw with or without replacement, and how to spin one locally."
 pubDate: 2026-08-06
 updatedDate: 2026-08-23
 archetype: explainer
@@ -113,7 +114,7 @@ reads off wherever a physics fling lands can be subtly biased by the animation.)
 ## Where the randomness comes from
 
 "A computer picks it" only helps if the underlying randomness is sound. Browsers expose a
-cryptographic-quality source (`crypto.getRandomValues`) that's far better suited to a fair draw than the
+cryptographic-quality source ([`crypto.getRandomValues`](https://developer.mozilla.org/en-US/docs/Web/API/Crypto/getRandomValues)) that's far better suited to a fair draw than the
 basic `Math.random` used for throwaway effects. The practical difference for a giveaway is small — either
 is vastly fairer than a human — but a well-built picker reaches for the stronger source and maps it evenly
 onto your list so there's no leftover bias toward the first or last few names.

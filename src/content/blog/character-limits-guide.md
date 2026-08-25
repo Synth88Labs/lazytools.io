@@ -1,6 +1,7 @@
 ---
 title: "Character Limits Cheat Sheet: X/Twitter, SMS, Google, Instagram and More"
-description: "X allows 280 characters (URLs count as 23), one SMS is 160, Google shows ~60 of a title and ~158 of a meta description. The full limits table, the emoji trap, and how to count reliably."
+seoTitle: 'Character Limits: X, SMS, Google, Instagram'
+description: "X allows 280 characters, one SMS is 160, Google shows ~60 of a title and ~158 of a meta description — the full limits table plus the emoji trap."
 pubDate: 2026-07-05
 updatedDate: 2026-08-23
 archetype: explainer
@@ -76,7 +77,7 @@ second kind rewards front-loading far more than trimming.
 
 ## The two traps that surprise everyone
 
-**The emoji/SMS trap.** Standard SMS uses GSM-7 encoding: 160 characters per message. The moment your
+**The emoji/SMS trap.** Standard SMS uses [GSM-7 encoding](https://en.wikipedia.org/wiki/GSM_03.38): 160 characters per message. The moment your
 text includes a character outside that set — an emoji, curly quotes, many accented letters — the
 entire message re-encodes as UCS-2 and the limit drops to **70**. Long messages then split into
 segments of 153 (GSM) or 67 (UCS-2) characters, and bulk-SMS services bill per segment: one 🎉 in a

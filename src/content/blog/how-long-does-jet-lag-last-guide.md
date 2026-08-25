@@ -1,6 +1,7 @@
 ---
 title: "How Long Does Jet Lag Last? Why Flying East Is Worse — and How to Cut Recovery in Half"
-description: "Jet lag lasts roughly one day per time zone flying west, but about 1.5 days per zone flying east. Here's the circadian reason east is harder, and how correctly timed light exposure compresses recovery to 2–3 zones a day."
+seoTitle: 'How Long Does Jet Lag Last? East vs West'
+description: "Jet lag lasts about 1 day per time zone west, 1.5 days per zone east. The circadian reason east is harder, and how timed light cuts recovery in half."
 pubDate: 2026-07-18
 updatedDate: 2026-07-18
 archetype: explainer
@@ -52,14 +53,14 @@ draft: false
 
 ## Why east is harder than west
 
-Your circadian clock isn't exactly 24 hours. For roughly three quarters of people it runs slightly *longer* than 24 hours, which the daily cycle of light resets each morning.
+Your [circadian clock](https://en.wikipedia.org/wiki/Circadian_rhythm) isn't exactly 24 hours. For roughly three quarters of people it runs slightly *longer* than 24 hours, which the daily cycle of light resets each morning.
 
 That small detail explains the whole east–west asymmetry:
 
 - **Flying west lengthens your day.** You stay up later and sleep later — a **phase delay**. Your clock already drifts that direction, so you're working with your biology.
 - **Flying east shortens your day.** You must fall asleep and wake earlier — a **phase advance**. That's the direction your clock resists.
 
-Research on the brain's master clock (the suprachiasmatic nucleus) finds it responds more sluggishly to eastward shifts, needing meaningfully more recovery time. The effect is strong enough that a *shorter* eastward trip can take longer to recover from than a *longer* westward one — five zones east can outlast seven zones west.
+Research on the brain's master clock (the [suprachiasmatic nucleus](https://en.wikipedia.org/wiki/Suprachiasmatic_nucleus)) finds it responds more sluggishly to eastward shifts, needing meaningfully more recovery time. The effect is strong enough that a *shorter* eastward trip can take longer to recover from than a *longer* westward one — five zones east can outlast seven zones west.
 
 ## The baseline: how many days
 

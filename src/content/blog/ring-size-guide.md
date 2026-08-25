@@ -1,6 +1,7 @@
 ---
 title: "How to Measure Your Ring Size at Home (US, UK, EU Charts Included)"
-description: "Measure your ring size with a strip of paper in two minutes: circumference in mm IS your EU size, and US 7 = UK N = EU 54.4. Full conversion chart, secret-sizing tips for proposals, and the mistakes to avoid."
+seoTitle: 'How to Measure Ring Size (US, UK, EU Chart)'
+description: "Measure your ring size at home with a paper strip: circumference in mm is your EU size, and US 7 = UK N = EU 54.4. Full US/UK/EU conversion chart."
 pubDate: 2026-07-04
 updatedDate: 2026-08-23
 archetype: how-to
@@ -147,7 +148,7 @@ for those, getting the size right the first time is essential, so measure on mor
 The US, UK/Australia, and EU/ISO systems above cover most of the world, but a few markets number rings
 differently — Japan and China, for example, use their own numeric scales. When in doubt, the safest
 common language is the **inner circumference in millimeters**: it is unambiguous everywhere and is the
-basis of the ISO 8653 standard, so a jeweler in any country can work from it. The
+basis of the [ISO 8653 standard](https://en.wikipedia.org/wiki/Ring_size), so a jeweler in any country can work from it. The
 [converter](/size/ring-size-converter/) always shows the millimeter value alongside each named size.
 
 ## Common ring-sizing mistakes

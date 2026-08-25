@@ -1,6 +1,7 @@
 ---
 title: "Unix Timestamps Explained: Seconds vs Milliseconds, UTC and the Year 2038"
-description: "A Unix timestamp counts seconds since 1 January 1970 UTC. How to convert one to a date, tell seconds from milliseconds at a glance (10 vs 13 digits), avoid the 1970-bug, and what actually happens in January 2038."
+seoTitle: 'Unix Timestamps: Seconds, Milliseconds & 2038'
+description: "A Unix timestamp counts seconds since 1 January 1970 UTC. Convert to a date, tell seconds from milliseconds (10 vs 13 digits), and the Year 2038 bug."
 pubDate: 2026-07-05
 updatedDate: 2026-07-05
 archetype: explainer
@@ -136,7 +137,8 @@ UI. Deciding the unit once per interface, and naming it in the field, removes th
 
 ## The year 2038, precisely
 
-Early systems stored Unix time in a **signed 32-bit integer**, whose maximum is 2,147,483,647. That
+Early systems stored Unix time in a **signed 32-bit integer**, whose maximum is 2,147,483,647 — the
+root of the [Year 2038 problem](https://en.wikipedia.org/wiki/Year_2038_problem). That
 count of seconds runs out at **03:14:07 UTC on 19 January 2038**; one second later the value wraps
 negative, which naive code interprets as 13 December 1901.
 

@@ -1,6 +1,7 @@
 ---
 title: "How to Convert a curl Command to JavaScript fetch()"
-description: "A curl command maps cleanly onto fetch(): -X becomes method, each -H becomes a headers entry, and -d becomes the body. Here's the mapping, the gotchas, and a converter that does it in your browser — nothing uploaded."
+seoTitle: 'curl to fetch: Convert a curl Command to JS'
+description: "Convert a curl command to JavaScript fetch(): -X becomes method, each -H a headers entry, -d the body — the full mapping and gotchas."
 pubDate: 2026-08-01
 updatedDate: 2026-08-23
 archetype: explainer
@@ -148,10 +149,11 @@ fetch("https://api.example.com/me", {
   .then(console.log);
 ```
 
-With no `-X` and no `-d`, the method defaults to `GET`, so it can be omitted entirely — `fetch()` uses
-`GET` by default. If the same endpoint used HTTP Basic auth instead (`-u ada:secret`), the converter
-would replace it with `"Authorization": "Basic YWRhOnNlY3JldA=="` — the base64 of `ada:secret` — since
-`fetch()` has no credentials shorthand of its own.
+With no `-X` and no `-d`, the method defaults to `GET`, so it can be omitted entirely — the
+[Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) uses `GET` by default. If the
+same endpoint used HTTP Basic auth instead (`-u ada:secret`), the converter would replace it with
+`"Authorization": "Basic YWRhOnNlY3JldA=="` — the [base64](/dev/base64-encode-decode/) of `ada:secret`
+— since `fetch()` has no credentials shorthand of its own.
 
 ## A flag-by-flag reference
 

@@ -1,6 +1,7 @@
 ---
 title: "WAV vs MP3: Lossless, Lossy, and Why Converting MP3 to WAV Doesn't Improve Anything"
-description: "WAV stores every sample (~10 MB per stereo minute); MP3 discards what you're unlikely to hear at a tenth the size. When each format wins, why MP3→WAV can't restore quality, and how browser audio tools work locally."
+seoTitle: 'WAV vs MP3: Lossless vs Lossy Audio'
+description: "WAV stores every sample (~10 MB per stereo minute); MP3 discards what you won't hear at a tenth the size. Why MP3→WAV can't restore quality."
 pubDate: 2026-07-05
 updatedDate: 2026-07-05
 archetype: explainer

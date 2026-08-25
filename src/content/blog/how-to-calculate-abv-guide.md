@@ -1,6 +1,7 @@
 ---
 title: "How to Calculate ABV: Original Gravity, Final Gravity and Alcohol"
-description: "Your beer's alcohol content is hiding in two hydrometer readings. Here's what original and final gravity mean, the simple formula that turns them into ABV, when to reach for the more accurate one, and the mistakes that throw the number off."
+seoTitle: 'How to Calculate ABV from Gravity Readings'
+description: "Calculate ABV from two hydrometer readings: ABV = (OG − FG) × 131.25. What original and final gravity mean, the formula, and when to use the accurate one."
 pubDate: 2026-07-12
 updatedDate: 2026-08-23
 archetype: explainer

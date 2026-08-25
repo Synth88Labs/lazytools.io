@@ -1,6 +1,7 @@
 ---
 title: "What Is VPD? Vapor Pressure Deficit Explained (with Target Ranges)"
-description: "VPD — vapor pressure deficit — is the single number serious growers tune instead of humidity, because it accounts for temperature. Here's what it means, how it's calculated, and the target VPD ranges for each growth stage."
+seoTitle: 'VPD Explained: Target Ranges by Growth Stage'
+description: "VPD (vapor pressure deficit) is the number growers tune instead of humidity because it includes temperature. What it means and target ranges by stage."
 pubDate: 2026-07-12
 updatedDate: 2026-08-23
 archetype: explainer
@@ -57,7 +58,7 @@ That's why humidity alone misleads: **60% RH at 20 °C and 60% RH at 30 °C are 
 
 > VPD = SVP(leaf temp) − SVP(air temp) × (RH ÷ 100)
 
-where **SVP** is the saturation vapour pressure — the maximum vapour pressure at a given temperature, from the Magnus equation. In practice:
+where **SVP** is the [saturation vapour pressure](https://en.wikipedia.org/wiki/Vapour_pressure_of_water) — the maximum vapour pressure at a given temperature, from the Magnus equation. In practice:
 
 1. Compute SVP at the **leaf** temperature (the air's capacity right at the leaf surface).
 2. Compute the **actual** vapour pressure = SVP(air) × RH.

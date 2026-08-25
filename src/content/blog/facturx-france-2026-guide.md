@@ -1,6 +1,7 @@
 ---
 title: "France's 2026 E-Invoicing Mandate: How to Open a Factur-X Invoice Without Accounting Software"
-description: "From 1 September 2026, every French company must be able to receive electronic invoices — most arriving as Factur-X hybrid PDFs. What the mandate requires, how a Factur-X file is structured, what the five profiles mean, and how to read one privately in your browser."
+seoTitle: "Factur-X: France's 2026 E-Invoicing Mandate"
+description: "From 1 September 2026 every French company must receive e-invoices — most as Factur-X hybrid PDFs. What it requires, the five profiles, how to read one."
 pubDate: 2026-07-07
 updatedDate: 2026-07-07
 archetype: explainer

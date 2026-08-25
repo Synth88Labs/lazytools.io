@@ -1,6 +1,7 @@
 ---
 title: "Paper Sizes Explained: A4 vs Letter, and Every Size in mm, Inches and Pixels"
-description: "A4 is 210 × 297 mm; US Letter is 215.9 × 279.4 mm — close but not interchangeable. Here's every ISO, US, ANSI and Architectural size in mm, inches, points and pixels, and why the ISO 1:√2 ratio means folding A4 in half gives A5."
+seoTitle: 'A4 vs Letter: Paper Sizes in mm, Inches & Pixels'
+description: "A4 is 210×297 mm; US Letter is 215.9×279.4 mm — not interchangeable. Every ISO, US and ANSI size in mm, inches, points and pixels, plus the 1:√2 ratio."
 pubDate: 2026-08-23
 updatedDate: 2026-08-23
 archetype: explainer
@@ -66,7 +67,7 @@ Because Letter is wider *and* shorter, there is no scale factor that maps one on
 
 ## The ISO system: one ratio, endless sizes
 
-Every **ISO 216** A and B size shares the same shape: a width-to-height ratio of **1:√2** (about 1:1.414). That single choice has a neat consequence — cut any sheet in half across its long edge and the two halves keep the exact same ratio, so they are simply the next size down:
+Every [**ISO 216**](https://en.wikipedia.org/wiki/ISO_216) A and B size shares the same shape: a width-to-height ratio of **1:√2** (about 1:1.414). That single choice has a neat consequence — cut any sheet in half across its long edge and the two halves keep the exact same ratio, so they are simply the next size down:
 
 - **A0** 841 × 1189 mm → **A1** 594 × 841 → **A2** 420 × 594 → **A3** 297 × 420 → **A4** 210 × 297 → **A5** 148 × 210 …
 
@@ -84,7 +85,7 @@ A paper size is a physical thing (millimetres), but you often need it in other u
 | Pixels @ 96 DPI | inches × 96 | 794 × 1123 px | 816 × 1056 px |
 | Pixels @ 300 DPI | inches × 300 | 2480 × 3508 px | 2550 × 3300 px |
 
-The one that catches people out is **pixels**. There is no single "A4 in pixels" — it is `inches × DPI`. Use **96 DPI** for on-screen or CSS work, **150 DPI** for drafts, and **300 DPI** for print-quality artwork. Set the DPI in the [paper size converter](/size/paper-size-converter/) and it computes the exact pixel canvas for you.
+The one that catches people out is **pixels**. There is no single "A4 in pixels" — it is `inches × DPI`. Use **96 DPI** for on-screen or CSS work, **150 DPI** for drafts, and **300 DPI** for print-quality artwork (see the [300 DPI guide](/blog/image-dpi-explained-300-dpi-guide/) for why). Set the DPI in the [paper size converter](/size/paper-size-converter/) and it computes the exact pixel canvas for you.
 
 ## US large-format: ANSI and Architectural
 

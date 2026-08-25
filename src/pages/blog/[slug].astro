@@ -4,6 +4,7 @@ import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import FaqSection from '../../components/FaqSection.astro';
 import { breadcrumbSchema, faqSchema } from '../../lib/schema';
+import { seoTitle } from '../../lib/seo';
 import { SITE } from '../../lib/site';
 import { allPairs, titleNoun } from '../../data/units';
 
@@ -63,7 +64,7 @@ if (post.data.faqs.length > 0) schema.push(faqSchema(post.data.faqs));
 ---
 
 <Base
-  title={`${post.data.title} | LazyTools Blog`}
+  title={post.data.seoTitle ?? seoTitle(post.data.title)}
   description={post.data.description}
   schema={schema}
   noindex={post.data.draft}

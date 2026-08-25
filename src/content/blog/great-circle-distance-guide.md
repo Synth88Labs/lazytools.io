@@ -1,6 +1,7 @@
 ---
 title: "Why Flight Paths Curve on the Map: Great-Circle Distance"
-description: "A flight from New York to London arcs north on a flat map instead of running straight across — not to avoid anything, but because the shortest path over a round Earth is a great circle. Here's what that means, why the map lies, and how the distance is actually calculated."
+seoTitle: 'Great-Circle Distance: Why Flight Paths Curve'
+description: "Great-circle distance is why flights arc north on a flat map — the shortest path over a round Earth. How it works and how the haversine formula computes it."
 pubDate: 2026-07-12
 updatedDate: 2026-07-12
 archetype: explainer

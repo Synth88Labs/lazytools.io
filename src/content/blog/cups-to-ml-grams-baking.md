@@ -1,6 +1,7 @@
 ---
 title: "Cups to mL and Grams: The Baking Conversion Guide That Actually Works"
-description: "1 US cup = 236.59 mL — but an Australian cup is 250 mL and a Japanese cup is 200 mL. Get the cup-systems table, cups-to-grams for common ingredients, and why weighing beats scooping."
+seoTitle: 'Cups to mL and Grams: Baking Conversions'
+description: "1 US cup = 236.59 mL, but an Australian cup is 250 mL and a Japanese cup 200 mL. The cup-systems table, cups-to-grams for baking, and why weighing wins."
 pubDate: 2026-07-04
 updatedDate: 2026-07-04
 archetype: how-to
@@ -147,7 +148,7 @@ before measuring, and convert liquids exactly with the [cups to mL converter](/u
 For solids, volume needs density: use the grams table above, or better, a kitchen scale — weight is
 the only measurement that doesn't care how you scooped.
 
-*All volume conversions use exact US customary definitions (1 US cup = 236.588 mL, derived from the
+*All volume conversions use exact [US customary definitions](https://www.nist.gov/) (1 US cup = 236.588 mL, derived from the
 231-cubic-inch gallon) — verified in [our public test suite](https://github.com/Synth88Labs/lazytools.io).
 Related: [mL to cups](/units/ml-to-cups/) · [fluid ounces to mL](/units/fl-oz-to-ml/) ·
 [liters to quarts](/units/liters-to-quarts/).*

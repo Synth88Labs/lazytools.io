@@ -1,6 +1,7 @@
 ---
 title: "Privacy-First Productivity: Plan, Focus and Track Without the Cloud"
-description: "Notion, Trello and Todoist keep your tasks on their servers. A different approach: single-purpose productivity tools that run in your browser, save to your device, and never upload a thing — Pomodoro, Eisenhower matrix, habit tracker and more."
+seoTitle: 'Privacy-First Productivity Tools (No Cloud)'
+description: "Privacy-first productivity tools that run in your browser and save to your device — Pomodoro, Eisenhower matrix, habit tracker — no account, no cloud."
 pubDate: 2026-07-06
 updatedDate: 2026-07-06
 archetype: explainer
@@ -142,7 +143,7 @@ decision tools like a weighted decision matrix and RICE prioritisation — all b
 
 Abstract benefits are easy to nod along to and hard to feel. Here are two concrete ones.
 
-**A Pomodoro morning.** The technique, devised by Francesco Cirillo in the late 1980s, uses a fixed
+**A Pomodoro morning.** The technique, devised by [Francesco Cirillo](https://en.wikipedia.org/wiki/Pomodoro_Technique) in the late 1980s, uses a fixed
 work-then-break rhythm — classically 25 minutes of focus followed by a 5-minute break, with a longer
 break after four intervals. Run four of those cycles before lunch and the arithmetic is simple: four
 × 25 minutes is 100 minutes of protected, single-task focus, wrapped in 15 minutes of short breaks

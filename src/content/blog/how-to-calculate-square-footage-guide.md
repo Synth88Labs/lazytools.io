@@ -1,6 +1,7 @@
 ---
 title: "How to Calculate Square Footage of a Room (Including L-Shapes and Odd Angles)"
-description: "Square footage is length × width. For a 12 × 10 ft room that's 120 sq ft. Here's how to handle L-shaped rooms, circles and triangles, how much waste to add for flooring, and how to convert to square metres."
+seoTitle: 'How to Calculate Square Footage of a Room'
+description: "Square footage is length × width — a 12 × 10 ft room is 120 sq ft. How to handle L-shaped rooms, circles, triangles, flooring waste and square metres."
 pubDate: 2026-07-14
 updatedDate: 2026-07-14
 archetype: explainer
@@ -85,7 +86,7 @@ For a circular patio, measure across the middle to get the diameter, halve it fo
 
 ## Converting between square feet and square metres
 
-The exact conversion comes from the definition of a foot (0.3048 m), so one square foot is 0.3048² = **0.09290304 square metres**:
+The exact conversion comes from the definition of a [foot](https://en.wikipedia.org/wiki/Foot_(unit)) (0.3048 m), so one square foot is 0.3048² = **0.09290304 square metres**:
 
 - **Square feet → square metres:** multiply by 0.0929
 - **Square metres → square feet:** multiply by 10.764
@@ -107,23 +108,3 @@ Multiply your square footage by 1.05–1.20 accordingly, then round **up** to wh
 ## Square footage and price
 
 Once you have the area, **price per square foot** lets you compare homes, rentals or materials of very different sizes on a fair basis — it's total price ÷ area. A \$350,000 home of 1,800 sq ft works out to about \$194 per square foot. Our [cost per square foot calculator](/calc/cost-per-square-foot-calculator/) does this and shows the per-square-metre figure too.
-
-## Frequently asked questions
-
-### How do I calculate the square footage of a room?
-Measure the length and width in feet and multiply them. A 12 ft by 10 ft room is 12 × 10 = 120 square feet. If a wall reads in feet and inches, divide the inches by 12 first (12 ft 6 in = 12.5 ft).
-
-### How do I find the square footage of an L-shaped room?
-Split the room into two or more rectangles with straight lines, calculate each rectangle's area (length × width), and add them together. An L made of a 12 × 8 ft section and a 4 × 6 ft section is 96 + 24 = 120 square feet.
-
-### How many square feet are in a square metre?
-One square metre is about 10.764 square feet, and one square foot is 0.0929 square metres. To convert square feet to square metres, multiply by 0.0929; to go the other way, multiply by 10.764.
-
-### How do I calculate square footage from inches?
-Divide each measurement in inches by 12 to convert it to feet, then multiply length by width. For example, 144 inches is 12 feet, so a 144 in × 120 in room is 12 × 10 = 120 square feet.
-
-### How much extra flooring should I buy?
-Add a waste allowance to the bare square footage: about 5–10% for a straight lay and 15–20% for diagonal or herringbone patterns. Multiply your area by 1.05–1.20 and round up to whole boxes.
-
-### How do I measure the square footage of a whole house?
-Calculate each room's square footage separately (splitting odd shapes into rectangles), then add all the rooms together. For real-estate figures, measured living area usually excludes garages, unfinished basements and open-to-below spaces — check the standard your listing uses.

@@ -1,5 +1,6 @@
 ---
 title: "How to Calculate BMI and What It Means"
+seoTitle: 'How to Calculate BMI: Formula, Chart & Ranges'
 description: "BMI = weight(kg) ÷ height(m)² — 70 kg at 1.75 m is 22.9. The formula, WHO ranges, and its limits, computed in your browser, health data never uploaded."
 pubDate: 2026-07-28
 updatedDate: 2026-07-28

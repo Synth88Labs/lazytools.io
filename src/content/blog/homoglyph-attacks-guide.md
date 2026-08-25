@@ -1,6 +1,7 @@
 ---
 title: "Homoglyph Attacks: How Lookalike Characters Spoof Domains and Brands"
-description: "“pаypal.com” with a Cyrillic а looks identical to the real thing but is a different address. How homoglyph (IDN homograph) attacks use confusable Unicode characters for phishing, why mixed scripts are the giveaway, and how to detect them."
+seoTitle: 'Homoglyph Attacks: Lookalike Characters Explained'
+description: "Homoglyph attacks use confusable Unicode characters — like a Cyrillic а in “pаypal.com” — to spoof domains and brands. How they work and how to spot them."
 pubDate: 2026-07-11
 updatedDate: 2026-08-23
 archetype: explainer

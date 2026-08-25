@@ -1,5 +1,6 @@
 ---
 title: "How Much Soil Do I Need for a Raised Bed?"
+seoTitle: 'How Much Soil for a Raised Bed? (Formula)'
 description: "Soil for a raised bed = length x width x depth. An 8x4 ft bed 12 in deep = 32 ft3 (about 906 L, 1.2 yd3). Work it out free, in your browser."
 pubDate: 2026-07-28
 updatedDate: 2026-07-28

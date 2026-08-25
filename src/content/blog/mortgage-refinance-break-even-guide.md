@@ -1,6 +1,7 @@
 ---
 title: "Is Refinancing Worth It? How to Find Your Mortgage Break-Even Point"
-description: "Refinancing pays off once you pass the break-even point — the month your accumulated monthly savings equal the closing costs. Break-even months = closing costs ÷ monthly savings. Here's how to work it out, plus the longer-term trap that a lower payment can hide."
+seoTitle: 'Mortgage Refinance Break-Even: Is It Worth It?'
+description: "Mortgage refinance break-even = closing costs ÷ monthly savings. How to find the month refinancing pays off, and the longer-term trap a lower payment hides."
 pubDate: 2026-08-23
 updatedDate: 2026-08-23
 archetype: how-to
@@ -40,8 +41,8 @@ draft: false
 - **Break-even months = closing costs ÷ monthly savings.** That single number decides most refinances.
 - **Worth it if** you keep the loan *past* the break-even month; **not worth it** if you might move or refinance again before then.
 - A **lower payment is not the same as saving money** — a longer term lowers the payment but can raise total interest. Compare the lifetime cost.
-- **Closing costs** are typically 2–5% of the loan; enter your real total, not a guess.
-- Both payments use the standard amortization formula: **M = P · i ÷ (1 − (1 + i)⁻ⁿ)**.
+- **Closing costs** are typically [2–5% of the loan](https://www.consumerfinance.gov/); enter your real total, not a guess.
+- Both payments use the standard [amortization](/blog/mortgage-amortization-guide/) formula: **M = P · i ÷ (1 − (1 + i)⁻ⁿ)**.
 
 </aside>
 

@@ -1,6 +1,7 @@
 ---
 title: "How to Convert a PDF to JPG Without Uploading It"
-description: "Most 'PDF to JPG' sites upload your document to their servers to do the conversion — a problem when it's a contract, a bank statement or an ID. Here's how to convert PDF pages to images entirely in your browser, and how to choose JPG vs PNG and the right resolution."
+seoTitle: 'Convert PDF to JPG Without Uploading It'
+description: "Convert PDF pages to JPG entirely in your browser, nothing uploaded — plus how to choose JPG vs PNG and the right resolution."
 pubDate: 2026-07-12
 updatedDate: 2026-08-23
 archetype: explainer
@@ -59,7 +60,7 @@ The good news: turning a PDF page into an image is **pure rendering** — the ex
 
 ## Converting in the browser
 
-A client-side converter uses a PDF rendering engine (the same open-source **pdf.js**, maintained by Mozilla, that powers in-browser PDF viewing) to draw each page onto an HTML `<canvas>`, then exports that canvas as a JPG or PNG. It all happens locally in JavaScript — **no upload, and it keeps working even with your network disconnected**, which is a quick way to prove nothing is being sent.
+A client-side converter uses a PDF rendering engine (the same open-source [**pdf.js**](https://mozilla.github.io/pdf.js/), maintained by Mozilla, that powers in-browser PDF viewing) to draw each page onto an HTML `<canvas>`, then exports that canvas as a JPG or PNG. It all happens locally in JavaScript — **no upload, and it keeps working even with your network disconnected**, which is a quick way to prove nothing is being sent.
 
 The [PDF to JPG tool](/pdf/pdf-to-jpg/) does exactly this: open a PDF, pick your format and resolution, and each page becomes an image you can download individually or all at once (a multi-page PDF is typically zipped for a single download). The file never touches a server. Going the other way — stitching images *into* a single PDF — is the [JPG to PDF tool](/pdf/jpg-to-pdf/).
 

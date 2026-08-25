@@ -1,6 +1,7 @@
 ---
 title: "How Old Is My Dog in Human Years? The 7-Year Myth, Debunked"
-description: "Multiplying a dog's age by 7 is a myth — dogs mature fast then age slowly. A 1-year-old dog is roughly a 15-year-old human, not 7. The better methods: the 2020 epigenetic formula (16 × ln(age) + 31) and the size-based chart, explained with a worked example."
+seoTitle: 'Dog Age in Human Years: The 7-Year Myth'
+description: "The 'multiply by 7' dog-age rule is a myth. Better methods: the 2020 epigenetic formula (16 × ln(age) + 31) and the size-based chart, with a worked example."
 pubDate: 2026-07-12
 updatedDate: 2026-08-23
 archetype: explainer
@@ -61,7 +62,7 @@ Where does "7" even come from? The most common story is that it was a rough mark
 
 ## The modern method: the epigenetic formula
 
-In 2020, researchers (Wang et al.) compared **DNA methylation** — chemical marks that accumulate on DNA as both dogs and humans age — and derived a translation:
+In 2020, researchers (Wang et al.) compared **[DNA methylation](https://en.wikipedia.org/wiki/DNA_methylation)** — chemical marks that accumulate on DNA as both dogs and humans age — and derived a translation:
 
 > **human age = 16 × ln(dog age) + 31**
 
@@ -84,7 +85,7 @@ Suppose you have a 4-year-old dog and want the epigenetic estimate by hand. Take
 
 ## The traditional method: size matters
 
-The other common approach is the **size-based chart** used by many vets: about **15** human years for the first year, **+9** for the second (so ~24 at age two), then a yearly amount that depends on the dog's **size**. Larger breeds have shorter lifespans and age faster, so a giant breed gains more human-equivalent years per calendar year than a toy breed. That's why a 10-year-old Great Dane is "older" than a 10-year-old Chihuahua.
+The other common approach is the **size-based chart** used by many vets (and published by groups like the [American Veterinary Medical Association](https://www.avma.org/)): about **15** human years for the first year, **+9** for the second (so ~24 at age two), then a yearly amount that depends on the dog's **size**. Larger breeds have shorter lifespans and age faster, so a giant breed gains more human-equivalent years per calendar year than a toy breed. That's why a 10-year-old Great Dane is "older" than a 10-year-old Chihuahua.
 
 Here is how the same calendar age lands very differently by size under the traditional convention:
 

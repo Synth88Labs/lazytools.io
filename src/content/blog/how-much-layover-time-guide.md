@@ -1,6 +1,7 @@
 ---
 title: "How Much Layover Time Do You Need? Minimum Connection Times vs. What's Actually Safe"
-description: "Airlines allow domestic connections as short as 30 minutes, but the realistic minimum is 60–90 minutes domestic and 2–3 hours international. Here's what minimum connection time really means, why it's optimistic, and the one factor that matters more than the clock."
+seoTitle: 'How Much Layover Time Do You Need?'
+description: "Airlines allow 30-minute connections, but plan 60–90 minutes domestic and 2–3 hours international. What minimum connection time really means."
 pubDate: 2026-07-18
 updatedDate: 2026-07-18
 archetype: explainer
@@ -56,7 +57,7 @@ Every airport–airline pairing has a published MCT: the shortest gap the reserv
 
 Two things it does **not** account for:
 
-1. **Your inbound flight being late.** This is the single most common cause of a missed connection — not slow passengers. US Department of Transportation data recorded roughly 127,000 missed domestic connections in one quarter of 2025 caused by late international arrivals alone. A tight-but-legal connection assumes an on-time arrival you can't control.
+1. **Your inbound flight being late.** This is the single most common cause of a missed connection — not slow passengers. [US Department of Transportation](https://www.transportation.gov/) air-travel data consistently shows late-arriving aircraft as a leading driver of onward disruption. A tight-but-legal connection assumes an on-time arrival you can't control.
 2. **You, specifically.** MCT assumes a passenger who moves briskly and knows where they're going — not someone with a stroller, mobility needs, or a first visit to a sprawling hub.
 
 So an MCT-legal connection is *bookable*, not *comfortable*.
@@ -111,26 +112,3 @@ Before booking a tight connection, ask:
 6. Do I have **checked bags** on separate tickets? Add collection and re-check time.
 
 If two or more of those apply, take the later flight.
-
-## Frequently asked questions
-
-### Is a 1 hour layover enough?
-For a domestic connection at a familiar airport on a single ticket, usually yes — though it leaves no slack for a late inbound. For anything international, involving immigration, a terminal change, or separate tickets, one hour is not enough.
-
-### What is minimum connection time?
-It's the shortest layover an airline's booking system will sell for a given airport and route pairing. Airlines set it themselves based on walking times under ideal conditions with an on-time arrival — it's a technical feasibility floor, not a safety recommendation.
-
-### How much layover time do I need for an international flight?
-Plan on two to three hours. If you're arriving internationally and must clear immigration, collect checked bags, clear customs and re-check them, budget 2.5–3 hours. International-to-international transfers without immigration can be nearer two.
-
-### What happens if I miss my connection?
-On a single ticket, the airline rebooks you on the next available flight at no additional fare, and may provide accommodation if it's an overnight and the delay was within their control. On separate tickets, the onward airline owes you nothing and you'll be buying a new ticket.
-
-### Do I need to collect my bags on a layover?
-Not usually on a single itinerary — bags are checked through to your final destination. You generally do need to collect and re-check them when entering a country that requires customs clearance on first arrival, and almost always when flying on separate tickets.
-
-### Does the airport matter?
-Considerably. Large hubs with multiple terminals, landside transfers, or a second security screening need more time than a compact single-terminal airport. Check whether your two gates are in the same terminal before deciding a connection is comfortable.
-
-### Is a long layover better than a short one?
-For reliability, yes — a long layover absorbs inbound delays that would break a tight one. The trade-offs are total travel fatigue and time spent waiting, though many airlines offer stopover programmes that turn a long gap into a short visit to the hub city.

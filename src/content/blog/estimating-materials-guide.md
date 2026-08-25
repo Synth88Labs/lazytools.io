@@ -1,6 +1,7 @@
 ---
 title: "How Much Do I Need? Estimating Paint, Tile, Concrete and Mulch"
-description: "Every home-project estimate is either an area job (paint, tiles) or a volume job (concrete, mulch). Area = length × width; volume = area × depth. The formulas, sensible coverage and waste allowances, and how to turn them into cans, tiles, bags and rolls."
+seoTitle: 'Estimating Materials: Paint, Tile, Concrete, Mulch'
+description: "Estimating materials for any home project: area jobs (paint, tile) vs volume jobs (concrete, mulch), the formulas, coverage and waste allowances."
 pubDate: 2026-07-11
 updatedDate: 2026-08-23
 archetype: explainer

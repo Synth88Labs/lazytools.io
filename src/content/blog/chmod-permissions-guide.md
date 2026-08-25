@@ -1,6 +1,7 @@
 ---
 title: "chmod 755 Explained: Unix File Permissions Without the Guesswork"
-description: "What chmod 755 actually means, how the numbers work (read=4, write=2, execute=1), the difference between 644 and 755, when to use 600, and why chmod 777 is almost always the wrong fix. With the setuid/setgid/sticky bits explained."
+seoTitle: 'chmod 755 Explained: Unix File Permissions'
+description: "chmod 755 explained: how the octal numbers work (read=4, write=2, execute=1), 644 vs 755, when to use 600, and why 777 is almost always wrong."
 pubDate: 2026-07-10
 updatedDate: 2026-07-10
 archetype: explainer

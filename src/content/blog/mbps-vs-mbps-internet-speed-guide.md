@@ -1,6 +1,7 @@
 ---
 title: "Mbps vs MB/s: Why Your Download Is 8× Slower Than Your Internet Plan"
-description: "Your 100 Mbps plan downloads files at about 12.5 MB/s — not 100. The reason is bits versus bytes: there are 8 bits in a byte, so you divide Mbps by 8 to get MB/s. Here's the full explanation, a conversion table, and how to estimate download times."
+seoTitle: 'Mbps vs MB/s: Why Downloads Look 8× Slower'
+description: 'Mbps vs MB/s explained: a 100 Mbps plan downloads at about 12.5 MB/s because a byte is 8 bits — divide Mbps by 8 to get MB/s.'
 pubDate: 2026-07-13
 updatedDate: 2026-07-13
 archetype: explainer
@@ -91,7 +92,7 @@ That's why a 1 GB game update on a "100 Mbps" connection takes over a minute, no
 
 ## A note on decimal vs binary
 
-There's a second, smaller subtlety. Networking uses **decimal** units — 1 Mbps is exactly 1,000,000 bits per second. Storage sometimes uses **binary** units, where 1 MiB (mebibyte) is 1,048,576 bytes. That distinction can shift a calculation by a few percent, but it's separate from — and much smaller than — the eightfold bits-versus-bytes gap. For everyday internet-speed questions, the factor of 8 is the one that matters.
+There's a second, smaller subtlety. Networking uses **decimal** units — 1 Mbps is exactly 1,000,000 bits per second. Storage sometimes uses **binary** units, where 1 [MiB (mebibyte)](https://en.wikipedia.org/wiki/Mebibyte) is 1,048,576 bytes. That distinction can shift a calculation by a few percent, but it's separate from — and much smaller than — the eightfold bits-versus-bytes gap. For everyday internet-speed questions, the factor of 8 is the one that matters.
 
 ## Frequently asked questions
 

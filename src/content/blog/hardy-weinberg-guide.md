@@ -1,6 +1,7 @@
 ---
 title: "Hardy–Weinberg Equilibrium: Allele Frequencies, p²+2pq+q², and the χ² Test"
-description: "Hardy–Weinberg predicts genotype frequencies from allele frequencies: p²+2pq+q²=1. Find p and q from genotype counts (p = (2·AA+Aa)/2N), compute expected counts, and test for equilibrium with a chi-square goodness-of-fit — with a worked example."
+seoTitle: 'Hardy–Weinberg Equilibrium & the χ² Test'
+description: "Hardy–Weinberg predicts genotypes from allele frequencies (p²+2pq+q²=1). Find p and q from counts and test for equilibrium with a chi-square test."
 pubDate: 2026-07-10
 updatedDate: 2026-08-23
 archetype: explainer

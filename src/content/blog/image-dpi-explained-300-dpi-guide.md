@@ -1,6 +1,7 @@
 ---
 title: "DPI Explained: How to Set an Image to 300 DPI Without Losing Quality"
-description: "DPI is just a metadata tag for printers — it changes nothing on screen, and 'convert to 300 DPI' tools that resample your image are doing the wrong thing. Here's what DPI really is and how to set it losslessly in your browser."
+seoTitle: 'Image DPI Explained: How to Set 300 DPI'
+description: "Image DPI is a print-time metadata tag: setting it to 300 DPI is lossless, resampling is not. What DPI really means and how to set it in your browser."
 pubDate: 2026-08-02
 updatedDate: 2026-08-23
 archetype: explainer
@@ -51,7 +52,7 @@ touching a single pixel — with the [Change Image DPI tool](/image/change-image
 
 ## DPI, PPI, and why the word is confusing
 
-Before the details, one bit of vocabulary. Strictly speaking, **PPI** (pixels per inch) describes a digital image, while **DPI** (dots per inch) describes the tiny ink dots a printer physically lays down. In everyday use — and in almost every "300 DPI" request you'll get from a portal or print shop — the two words are used interchangeably to mean the same metadata number: *how many of the image's pixels map onto one inch of paper*. This article uses "DPI" throughout because that's the word the tools, the upload forms, and the print operators use. Just know that when a designer says PPI and a print shop says DPI, in this context they mean the same thing.
+Before the details, one bit of vocabulary. Strictly speaking, **PPI** (pixels per inch) describes a digital image, while **[DPI](https://en.wikipedia.org/wiki/Dots_per_inch)** (dots per inch) describes the tiny ink dots a printer physically lays down. In everyday use — and in almost every "300 DPI" request you'll get from a portal or print shop — the two words are used interchangeably to mean the same metadata number: *how many of the image's pixels map onto one inch of paper*. This article uses "DPI" throughout because that's the word the tools, the upload forms, and the print operators use. Just know that when a designer says PPI and a print shop says DPI, in this context they mean the same thing.
 
 ## DPI is about paper, not pixels
 
@@ -154,3 +155,5 @@ DPI is a print-time tag, not a quality dial: it does nothing on screen, and "300
 means "tag it 300", not "resample it". Set the tag losslessly, remember that **print size = pixels ÷
 DPI**, and give yourself enough pixels for the size you actually want to print. Do it privately with
 the [Change Image DPI tool](/image/change-image-dpi/).
+
+*Related: [passport photo sizes by country](/blog/passport-photo-size-by-country-guide/), where a 300 DPI tag is one of the most common upload requirements.*

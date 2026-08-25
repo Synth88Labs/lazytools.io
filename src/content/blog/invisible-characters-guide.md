@@ -1,6 +1,7 @@
 ---
 title: "Invisible Characters in Text: Zero-Width Spaces, Hidden Watermarks, and How to Remove Them"
-description: "A zero-width space (U+200B) is invisible on screen but real in the bytes — it breaks search, code and CSV parsing, and tag characters (U+E0000–E007F) can invisibly watermark AI text. What the hidden characters are, why they matter, and how to detect and strip them."
+seoTitle: 'Invisible Characters: Zero-Width Spaces & Watermarks'
+description: "A zero-width space (U+200B) is invisible on screen but breaks search, code and CSV parsing — what the hidden characters are and how to detect and strip them."
 pubDate: 2026-07-11
 updatedDate: 2026-08-23
 archetype: explainer

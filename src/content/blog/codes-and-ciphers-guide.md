@@ -1,6 +1,7 @@
 ---
 title: "Morse, NATO, Binary and Classic Ciphers: Codes You Can Actually Read"
-description: "Morse code, the NATO phonetic alphabet and binary are encodings anyone can reverse; the Caesar, ROT13 and Vigenère ciphers scramble text with a key. What each one is, how they differ from real encryption, and when to use them."
+seoTitle: 'Morse, Binary & Classic Ciphers Explained'
+description: "Morse, NATO and binary are encodings anyone can reverse; Caesar, ROT13 and Vigenère are ciphers with a key. How they differ from real encryption."
 pubDate: 2026-07-06
 updatedDate: 2026-07-06
 archetype: explainer

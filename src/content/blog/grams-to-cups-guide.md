@@ -1,6 +1,7 @@
 ---
 title: "Grams to Cups: Why a Cup of Flour Isn't a Cup of Sugar"
-description: "A cup measures volume, but grams measure weight — so one cup weighs a different number of grams for every ingredient: about 120 g of flour, 198 g of sugar, 336 g of honey. Why there's no single grams-per-cup number, and why weighing beats scooping."
+seoTitle: 'Grams to Cups: How Many Grams in a Cup?'
+description: "A cup is volume, grams are weight — so each ingredient weighs differently: ~120 g flour, 198 g sugar, 336 g honey per cup. Why there's no single number."
 pubDate: 2026-07-11
 updatedDate: 2026-08-23
 archetype: explainer

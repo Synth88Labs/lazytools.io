@@ -1,6 +1,7 @@
 ---
 title: "Why Your SVG Files Are Bloated — and How to Optimize Them Safely"
-description: "An SVG exported from Illustrator or Figma is often 2–5× bigger than it needs to be — stuffed with editor metadata, comments and needless decimal precision. Here's what that junk is and how to strip it losslessly, in your browser."
+seoTitle: 'Why SVG Files Are Bloated & How to Optimize Them'
+description: "SVGs from Illustrator or Figma are often 2–5× too big — full of editor metadata and extra precision. What the junk is and how to strip it losslessly."
 pubDate: 2026-08-02
 updatedDate: 2026-08-23
 archetype: explainer
@@ -55,7 +56,7 @@ identical. Do it in your browser with the [SVG Optimizer](/file/svg-optimizer/).
 
 ## Why SVG gets fat in the first place
 
-SVG is not a compiled binary like PNG or WebP — it is a plain-text XML document. That is its great
+SVG is not a compiled binary like PNG or WebP — it is a [plain-text XML document](https://developer.mozilla.org/en-US/docs/Web/SVG). That is its great
 strength (it scales, it diffs, you can edit it by hand) and also the reason it bloats. Every design
 tool treats the SVG file as a place to stash whatever it needs to reopen the artwork later: which
 layer a shape belonged to, where the canvas guides sat, what zoom level you left the document at, and
@@ -216,4 +217,4 @@ browser**, nothing is uploaded and the tool works with no network at all.
 SVGs are bloated because editors pack them with metadata, comments and precision the browser never
 uses. Strip that and you often halve the file with zero visual change. Keep coordinate rounding
 conservative, and optimize locally with the [SVG Optimizer](/file/svg-optimizer/) so your designs stay
-on your machine.
+on your machine. Need a raster version instead? See [how to convert SVG to PNG](/blog/svg-to-png-guide/).

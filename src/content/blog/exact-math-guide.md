@@ -1,6 +1,7 @@
 ---
 title: "0.1 + 0.2 ≠ 0.3: Why Most Calculators Quietly Round — and What Exact Arithmetic Looks Like"
-description: "Every ordinary calculator computes in floating point, which silently rounds past ~15 digits, turns 1/3 + 2/3 into 0.9999999999999999, and overflows at 171!. How exact rational and big-integer arithmetic avoids all of it — and when the difference actually matters."
+seoTitle: 'Why 0.1 + 0.2 ≠ 0.3: Floating Point Explained'
+description: "Every ordinary calculator uses floating point, which rounds past ~15 digits and turns 1/3 + 2/3 into 0.999…9. How exact arithmetic avoids all of it."
 pubDate: 2026-07-09
 updatedDate: 2026-08-23
 archetype: explainer

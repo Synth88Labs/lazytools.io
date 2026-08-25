@@ -1,5 +1,6 @@
 ---
 title: "BMR vs TDEE: How Many Calories You Actually Need (and Why)"
+seoTitle: "BMR vs TDEE: How Many Calories You Need"
 description: "Your BMR is what you burn at rest; your TDEE is BMR times an activity factor — the real number that decides whether you lose, hold or gain. The Mifflin–St Jeor formula, the five activity multipliers, and how to set a deficit, worked through step by step."
 pubDate: 2026-07-10
 updatedDate: 2026-07-10

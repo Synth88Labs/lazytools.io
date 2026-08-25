@@ -1,5 +1,6 @@
 ---
 title: "Why 0.1 + 0.2 Isn't 0.3: IEEE 754 Floating-Point Explained"
+seoTitle: "Why 0.1 + 0.2 = 0.3 Fails: IEEE 754 Explained"
 description: "Type 0.1 + 0.2 into almost any programming language and you get 0.30000000000000004. Here's why — how IEEE 754 stores numbers as sign, exponent and mantissa, why most decimals can't be exact, and how to see the bits yourself."
 pubDate: 2026-08-03
 updatedDate: 2026-08-23

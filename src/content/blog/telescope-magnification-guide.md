@@ -1,6 +1,7 @@
 ---
 title: "Telescope Magnification: Why the '600x' on the Box Is a Lie"
-description: "Magnification is telescope focal length ÷ eyepiece focal length — but the useful limit is about 50× per inch of aperture. Here's why aperture beats magnification, what exit pupil means, and why planetary observers deliberately use less power."
+seoTitle: "Telescope Magnification: Why '600x' Is a Lie"
+description: "Telescope magnification = focal length ÷ eyepiece focal length, but the useful limit is ~50× per inch of aperture — why aperture beats power."
 pubDate: 2026-07-18
 updatedDate: 2026-07-18
 archetype: explainer
@@ -97,7 +98,7 @@ Practical targets:
 
 ## The atmosphere usually decides
 
-Even a perfect telescope is looking through kilometres of moving air. Astronomers call this **seeing**, and on an average night it limits usable magnification to somewhere around 150–250× regardless of your aperture. On a poor night, 100× may be all that holds together; on an exceptional night, a large scope might push past 400×.
+Even a perfect telescope is looking through kilometres of moving air. Astronomers call this **[seeing](https://en.wikipedia.org/wiki/Astronomical_seeing)**, and on an average night it limits usable magnification to somewhere around 150–250× regardless of your aperture. On a poor night, 100× may be all that holds together; on an exceptional night, a large scope might push past 400×.
 
 This is why experienced planetary observers habitually work at **20–30× per inch** rather than the 50× maximum. A slightly smaller, rock-steady, high-contrast image reveals more genuine detail than a bloated, wobbling one. The maximum is a ceiling, not a target.
 
@@ -112,26 +113,3 @@ If you're choosing a telescope, ignore any power claim on the box and look at:
 3. **Eyepieces** — a low-power (wide-field) and a medium-power eyepiece cover most nights. Add high power later.
 
 Aperture also has a cost: bigger scopes are heavier and less likely to get carried outside. The best telescope is the one you actually use.
-
-## Frequently asked questions
-
-### How do you calculate telescope magnification?
-Divide the telescope's focal length by the eyepiece's focal length, both in millimetres. A 900 mm telescope with a 15 mm eyepiece gives 900 ÷ 15 = 60×. A 2× Barlow lens doubles whatever the eyepiece would otherwise give.
-
-### What is the maximum useful magnification of a telescope?
-About 50× per inch of aperture, or 2× per millimetre — so roughly 200× for a 4-inch (100 mm) scope. Beyond that you get "empty magnification": the image is larger but dimmer and no more detailed, because the aperture never captured that detail.
-
-### Why does my telescope say 600x if it can't do it?
-Because magnification is easy to print and aperture is expensive to build. Any telescope can technically reach 600× with a short enough eyepiece — the image is just useless. Reputable manufacturers quote aperture and focal length; a headline power claim is a warning sign.
-
-### What magnification do I need to see the planets?
-Usually 100–200×, depending on aperture and conditions. Experienced observers often use 20–30× per inch of aperture rather than the maximum, because a steadier, higher-contrast image shows more real detail than an over-magnified one.
-
-### What is exit pupil and why does it matter?
-Exit pupil is aperture ÷ magnification in millimetres — the width of the light beam entering your eye. Larger than your dark-adapted pupil (about 5–7 mm) wastes light; much below 0.5 mm gives a dim image. It's the physical reason the 50×-per-inch limit exists.
-
-### Is a bigger telescope always better?
-Optically, more aperture always gathers more light and resolves more detail. Practically, larger scopes are heavier, slower to set up and easier to leave indoors — and a big scope on a poor mount performs worse than a smaller one on a stable mount.
-
-### Why does the image get blurry at high magnification?
-Three reasons stacking up: you've exceeded what the aperture can resolve, the exit pupil has shrunk so the image is dim, and atmospheric turbulence ("seeing") is being magnified along with the target. On most nights the atmosphere is the binding constraint.

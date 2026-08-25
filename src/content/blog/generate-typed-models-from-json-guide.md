@@ -1,6 +1,7 @@
 ---
 title: "Generate Typed Models from JSON: TypeScript, Go, Python, Rust & C#"
-description: "Turn a JSON sample into typed models in any language — the same shape maps to a TypeScript interface, a Go struct, a Python dataclass, a Rust serde struct, or a C# class. Here's how the mapping works and where to refine it. Runs in your browser, never uploaded."
+seoTitle: 'Generate Typed Models from JSON: 5 Languages'
+description: "Turn a JSON sample into typed models — a TypeScript interface, Go struct, Python dataclass, Rust struct or C# class. How the mapping works, in your browser."
 pubDate: 2026-08-01
 updatedDate: 2026-08-23
 archetype: explainer

@@ -1,6 +1,7 @@
 ---
 title: "INI vs .env vs .properties: Three Config Formats Explained (and How to Convert Them to JSON)"
-description: "INI, .env and Java .properties all store key=value config, but their rules differ in ways that trip up parsers. Here's how each one works, where they're used, and how to convert any of them to JSON in your browser."
+seoTitle: 'INI vs .env vs .properties Config Formats'
+description: "INI, .env and Java .properties all store key=value config with different rules. How each works and how to convert any of them to JSON in your browser."
 pubDate: 2026-08-02
 updatedDate: 2026-08-23
 archetype: explainer
@@ -99,7 +100,7 @@ under `[section]` headers — so they read the same everywhere.
 
 ## .env: a flat list of secrets
 
-A `.env` file is what dotenv loaders (Node, Python, Docker Compose) read into environment variables.
+A `.env` file is what dotenv loaders (Node, Python, Docker Compose) read into environment variables, the approach popularised by the [12-factor app](https://12factor.net/) methodology.
 It's flat, and it has a few quirks worth knowing:
 
 ```bash
@@ -127,7 +128,7 @@ every value is a string by definition — there is no way to store a real number
 
 ## .properties: the fiddly one
 
-Java `.properties` (Spring Boot's `application.properties`, i18n bundles) looks simple but has the most
+Java [`.properties`](https://en.wikipedia.org/wiki/.properties) (Spring Boot's `application.properties`, i18n bundles) looks simple but has the most
 rules. The separator can be `=`, `:`, **or whitespace**; a line ending in a backslash **continues** onto
 the next; and `\uXXXX` escapes decode to Unicode:
 

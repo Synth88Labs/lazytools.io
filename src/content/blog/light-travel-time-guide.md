@@ -1,6 +1,7 @@
 ---
 title: "Why You Always See Space in the Past: Light Travel Time Explained"
-description: "Light is fast but not instant, and space is vast — so every time you look up, you see the past. The Sun as it was 8 minutes ago, the nearest star 4 years ago, distant galaxies millions of years back. How light travel time works, and what a light-year really is."
+seoTitle: 'Light Travel Time: Why We See Space in the Past'
+description: "Light is fast but not instant — so you always see space in the past: the Sun 8 minutes ago, the nearest star 4 years back. How light travel time works."
 pubDate: 2026-07-12
 updatedDate: 2026-08-23
 archetype: explainer
@@ -78,7 +79,7 @@ The single most useful way to feel this is to line up familiar objects and see h
 
 ## What a light-year really means
 
-Beyond the solar system the numbers explode, so astronomers switch units. A **light-year** is not a time — it's the *distance* light covers in a year, about **9.46 trillion kilometres**. Saying a star is "100 light-years away" is therefore also saying its light is 100 years old: you see it as it was a century ago.
+Beyond the solar system the numbers explode, so astronomers switch units. A [**light-year**](https://en.wikipedia.org/wiki/Light-year) is not a time — it's the *distance* light covers in a year, about **9.46 trillion kilometres**. Saying a star is "100 light-years away" is therefore also saying its light is 100 years old: you see it as it was a century ago.
 
 The **nearest star**, Proxima Centauri, is **4.24 light-years** away, so its light is over four years old when it reaches us. The bright stars of familiar constellations are tens to hundreds of light-years off. And the faint smudge of the **Andromeda galaxy** — the most distant thing visible to the unaided eye — is **2.5 million light-years** away, so you're seeing light that set out before our species existed.
 

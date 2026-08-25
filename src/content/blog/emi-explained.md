@@ -1,6 +1,7 @@
 ---
 title: "How EMI Is Calculated: The Exact Formula Banks Use (With Worked Examples)"
-description: "EMI = P·r·(1+r)ⁿ ÷ ((1+r)ⁿ−1). See the formula worked step by step, why early payments are mostly interest, the flat-rate trap, and how tenure changes total interest."
+seoTitle: 'How EMI Is Calculated: The Exact Formula Banks Use'
+description: "EMI = P·r·(1+r)ⁿ ÷ ((1+r)ⁿ−1). See it worked step by step: why early EMIs are mostly interest, the flat-rate trap, and how tenure drives total interest."
 pubDate: 2026-07-04
 updatedDate: 2026-07-04
 archetype: explainer
@@ -113,7 +114,7 @@ computed on the *original* principal for the entire tenure, ignoring that you're
 A 5-year, 500,000 loan "at just 10% flat": interest = 500,000 × 10% × 5 = 250,000, EMI = 12,500. The
 same EMI under honest reducing-balance math corresponds to roughly a **17.9% annual rate**. Rule of
 thumb: a flat rate ≈ 1.8× its reducing-balance equivalent on mid-length loans. Always ask for the
-reducing-balance rate or APR — and check any quote against the
+reducing-balance rate or [APR](https://en.wikipedia.org/wiki/Annual_percentage_rate) — and check any quote against the
 [EMI calculator](/calc/emi-calculator/), which speaks only reducing-balance.
 
 <div class="callout warn">

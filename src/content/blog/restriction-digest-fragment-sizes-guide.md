@@ -1,6 +1,7 @@
 ---
 title: "How to Predict Restriction Digest Fragment Sizes"
-description: "A restriction digest cuts DNA into fragments — and you can predict their sizes from the sequence before you run the gel. Here's how cut positions become fragment sizes, why linear and circular DNA differ, and what the prediction can't tell you."
+seoTitle: 'Predict Restriction Digest Fragment Sizes'
+description: "Predict restriction digest fragment sizes from the sequence before you run the gel — how cut positions become bands and why topology changes the count."
 pubDate: 2026-07-12
 updatedDate: 2026-08-23
 archetype: explainer

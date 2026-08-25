@@ -1,6 +1,7 @@
 ---
 title: "How to Extract Text from a PDF (Without Uploading It)"
-description: "A digital PDF stores a text layer you can pull out instantly; a scanned PDF is just images and needs OCR. Here's how to extract PDF text in your browser — privately, with nothing uploaded — and why some PDFs return no text."
+seoTitle: 'Extract Text from a PDF (Without Uploading)'
+description: "Extract PDF text in your browser, nothing uploaded — digital PDFs give up text instantly, scanned PDFs need OCR. Here's how, and why some return none."
 pubDate: 2026-07-27
 updatedDate: 2026-07-27
 archetype: explainer
@@ -65,7 +66,7 @@ You don't need to install anything or upload your file:
 2. Choose your PDF. It's read on your device — nothing is sent to a server.
 3. The text appears with line breaks preserved. **Copy** it or **download a .txt** file.
 
-Under the hood, this uses the same PDF engine your browser already uses to display PDFs (pdf.js). It walks each page, reads the position of every text fragment, and reconstructs the lines — all in local memory.
+Under the hood, this uses the same PDF engine your browser already uses to display PDFs ([pdf.js](https://mozilla.github.io/pdf.js/)). It walks each page, reads the position of every text fragment, and reconstructs the lines — all in local memory.
 
 ## Why "in your browser" matters here
 
@@ -85,25 +86,4 @@ A browser-based extractor never uploads anything. The file is read in your brows
 - **Complex layouts may reflow oddly.** Multi-column pages, tables and text boxes are reconstructed from fragment positions, so reading order isn't always perfect.
 - **Formatting is not preserved.** You get the words and line breaks, not fonts, colours or exact spacing — it's plain text by design.
 
-## FAQ
-
-**How do I extract text from a PDF for free?**
-Open the PDF in a browser-based extractor like the [PDF to Text tool](/pdf/pdf-to-text/), and copy the result or download a .txt. It's free, needs no sign-up, and processes the file on your device.
-
-**Why does my PDF show no text when I extract it?**
-It's almost certainly a scanned or image-only PDF — the pages are pictures with no text layer. You'd need OCR to read words out of the images. Test by trying to select text on the page: if nothing highlights, it's scanned.
-
-**Can I copy text from a PDF without any software?**
-Yes. A browser-based extractor runs in the web page itself, so there's nothing to install. You can also often select and copy directly in a PDF viewer, but an extractor pulls the whole document at once and preserves line breaks.
-
-**Is it safe to extract text from a confidential PDF online?**
-Only if the tool processes the file locally. Many online converters upload your PDF to their servers. A browser-based extractor reads it on your device and uploads nothing, which is the safe option for sensitive documents.
-
-**How do I extract text from a scanned PDF?**
-You need OCR (optical character recognition) to convert the page images into text — a plain extractor can't, because there's no text layer. Look for an OCR tool, ideally one that also runs locally for privacy.
-
-**Will the formatting and layout be kept?**
-Line breaks are preserved as closely as the file allows, but fonts, colours and exact positioning are not — the output is plain text. Complex multi-column layouts may not come out in perfect reading order.
-
-**Does extracting text change the original PDF?**
-No. Extraction only reads the file; your original PDF is untouched. You get a separate copy of its text to use however you like.
+Need the pages as images instead of text? See [how to convert a PDF to JPG without uploading it](/blog/pdf-to-jpg-without-uploading-guide/) — the same browser-local approach applied to rendering rather than extraction.

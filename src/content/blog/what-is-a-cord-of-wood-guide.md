@@ -1,6 +1,7 @@
 ---
 title: "What Is a Cord of Wood? Full Cord vs Face Cord (and How Not to Get Shorted)"
-description: "A cord of firewood is a stack measuring 4 ft × 4 ft × 8 ft — exactly 128 cubic feet. A 'face cord' is only one log deep, so it's often just a third of that. Here's how to measure a delivery, spot a short cord, and convert between the two."
+seoTitle: 'What Is a Cord of Wood? Full vs Face Cord'
+description: "A cord of wood is a 4 × 4 × 8 ft stack — exactly 128 cubic feet. A face cord is only one log deep, often just a third of that. How to spot a short cord."
 pubDate: 2026-07-14
 updatedDate: 2026-07-14
 archetype: explainer
@@ -49,7 +50,7 @@ draft: false
 
 ## The full cord: the only real standard
 
-A **cord** is a unit of volume for stacked firewood, standardized at **128 cubic feet**. The classic arrangement is 4 feet high, 4 feet deep, and 8 feet long (4 × 4 × 8 = 128), but any tightly stacked pile totalling 128 cubic feet is a cord. In the US, the cord is the legally defined firewood measure — it appears in the National Institute of Standards and Technology (NIST) Handbook 130 model regulations that most states adopt — and many states prohibit advertising firewood by vague terms like "truckload," "pile," or "face cord" without also stating the amount.
+A **cord** is a unit of volume for stacked firewood, standardized at **128 cubic feet**. The classic arrangement is 4 feet high, 4 feet deep, and 8 feet long (4 × 4 × 8 = 128), but any tightly stacked pile totalling 128 cubic feet is a cord. In the US, the cord is the legally defined firewood measure — it appears in the [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) Handbook 130 model regulations that most states adopt — and many states prohibit advertising firewood by vague terms like "truckload," "pile," or "face cord" without also stating the amount.
 
 The key phrase is *tightly stacked*. A cord is a stacked measure that includes the unavoidable air gaps between split logs — but a wood pile **thrown** loosely into a truck bed holds far more air and far less actual wood than the same apparent volume stacked. The same wood that stacks into 128 cubic feet will occupy noticeably more space when dumped loose, so a truck bed that *looks* full is not proof of a cord. Always measure, or have delivered wood stacked, before you judge the amount.
 
@@ -85,7 +86,7 @@ So if someone advertises a "cord" but delivers a **face cord** of 16-inch wood, 
 3. **Multiply** the three for the volume in cubic feet.
 4. **Divide by 128** for the number of full cords.
 
-For example, a stack 8 ft long × 4 ft high × 2 ft deep is 64 cubic feet — exactly **half a cord**. Our [firewood cord calculator](/home/firewood-cord-calculator/) does this instantly and also shows the face-cord equivalent, so you can check a delivery against what you paid for.
+For example, a stack 8 ft long × 4 ft high × 2 ft deep is 64 cubic feet — exactly **half a cord**. Our [firewood cord calculator](/home/firewood-cord-calculator/) does this instantly and also shows the face-cord equivalent, so you can check a delivery against what you paid for — one of the [Home & DIY tools](/home/) for planning a project.
 
 ### A worked example
 

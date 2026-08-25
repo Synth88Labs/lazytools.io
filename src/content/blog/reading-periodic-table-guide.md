@@ -1,6 +1,7 @@
 ---
 title: "How to Read the Periodic Table: Groups, Periods, Blocks and Trends"
-description: "The periodic table is organised so position predicts behaviour: columns (groups) share chemistry, rows (periods) count electron shells, and blocks show which orbital fills. How to read it, plus the key trends — electronegativity, atomic radius and reactivity."
+seoTitle: 'How to Read the Periodic Table: Groups & Trends'
+description: "How to read the periodic table: groups share chemistry, periods count electron shells, blocks show which orbital fills, plus the key periodic trends."
 pubDate: 2026-07-11
 updatedDate: 2026-08-23
 archetype: explainer
@@ -138,7 +139,7 @@ The block matches the last electron added — which is exactly what the
 
 Four trends do most of the heavy lifting, and they all point the same way relative to fluorine (top-right):
 
-- **Electronegativity** (pull on shared electrons) — increases **up and to the right**. Fluorine is the
+- **[Electronegativity](https://en.wikipedia.org/wiki/Electronegativity)** (pull on shared electrons) — increases **up and to the right**. Fluorine is the
   highest.
 - **Ionisation energy** (energy to remove an electron) — also increases **up and to the right**.
 - **Atomic radius** (size) — increases **down and to the left**, as new shells are added.
@@ -221,5 +222,5 @@ and ionisation energy rise up and to the right; atomic radius rises down and lef
 nonmetals upper-right, metalloids on the staircase. Explore it all in the
 [interactive periodic table](/chemistry/periodic-table/).
 
-*Sources: standard chemistry (IUPAC periodic table organisation and periodic trends). Educational
+*Sources: standard chemistry ([IUPAC](https://iupac.org/) periodic table organisation and periodic trends). Educational
 information.*

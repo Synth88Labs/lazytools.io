@@ -1,6 +1,7 @@
 ---
 title: "The SUVAT Equations: Solve Any Constant-Acceleration Problem"
-description: "The five SUVAT kinematic equations link displacement, initial and final velocity, acceleration and time. Know any three and you can find the other two. How to pick the right equation, worked examples, and why they only work for constant acceleration."
+seoTitle: 'SUVAT Equations: Solve Any Motion Problem'
+description: "The five SUVAT kinematic equations link displacement, velocity, acceleration and time. Know any three, find the other two, plus the equation-picking trick."
 pubDate: 2026-07-11
 updatedDate: 2026-08-23
 archetype: explainer
@@ -32,7 +33,7 @@ draft: false
 
 **Almost every motion problem in introductory physics is a SUVAT problem.** If acceleration is constant,
 five variables — displacement `s`, initial velocity `u`, final velocity `v`, acceleration `a` and time
-`t` — are tied together by five equations. **Know any three, and the other two are fixed.** The only skill
+`t` — are tied together by five [equations of motion](https://en.wikipedia.org/wiki/Equations_of_motion). **Know any three, and the other two are fixed.** The only skill
 is picking the right equation, and there's a simple trick for that.
 
 <aside class="key-takeaways">

@@ -1,6 +1,7 @@
 ---
 title: "How Many Miles Is a 5K, 10K, Half and Full Marathon? (+ Pace Charts)"
-description: "A 5K is 3.11 miles, a 10K is 6.21, a half marathon 13.11 and a marathon 26.22 miles (42.195 km). Get finish-time pace charts, treadmill speed conversions and the 1908 story behind 42.195."
+seoTitle: '5K, 10K, Half & Full Marathon in Miles + Pace'
+description: "A 5K is 3.11 miles, a 10K 6.21, a half 13.11 and a marathon 26.22 miles (42.195 km). Pace charts, treadmill conversions and the 26.2-mile backstory."
 pubDate: 2026-07-04
 updatedDate: 2026-08-23
 archetype: explainer
@@ -63,7 +64,7 @@ gives exact numbers in your browser.
 | 100 miles | 160.934 | 100 | 402 |
 
 The conversion behind the table: **1 km = 0.621371 miles** (1 mile = 1.609344 km exactly, from the
-1959 international yard definition). Quick estimate: multiply kilometers by 0.6 and nudge up.
+[1959 international yard definition](https://en.wikipedia.org/wiki/International_yard_and_pound)). Quick estimate: multiply kilometers by 0.6 and nudge up.
 
 <figure>
 <img src="/blog/infographic-race-distances.svg" alt="Infographic: race distances drawn to scale — the 5K bar is 3.11 miles, 10K is 6.21, half marathon 13.11, and the marathon bar spans 26.22 miles" width="1200" height="620" loading="lazy" />
@@ -76,7 +77,7 @@ The original Olympic marathons honored Pheidippides' legendary run from Marathon
 40 km, and the early races varied. At the **1908 London Olympics**, the course was laid out to start on
 the lawn of **Windsor Castle** (so the royal children could watch) and finish in front of the **royal
 box** at White City Stadium: exactly **26 miles 385 yards**. After years of varying distances, the IAAF
-standardized that quirk in **1921** as the official marathon: **42.195 km / 26.219 miles**.
+standardized [that quirk](https://en.wikipedia.org/wiki/Marathon) in **1921** as the official marathon: **42.195 km / 26.219 miles**.
 
 <div class="callout cite">
 <p><span class="co-label">📌 Citable fact</span> The marathon distance of 42.195 km (26 miles 385 yards) comes from the 1908 London Olympic course between Windsor Castle and the White City royal box, standardized by the IAAF in 1921. The half marathon is defined as exactly half: 21.0975 km.</p>

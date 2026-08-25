@@ -1,6 +1,7 @@
 ---
 title: "What Is a JWK Thumbprint? Stable Key IDs the RFC 7638 Way"
-description: "A JWK thumbprint is a reproducible fingerprint of a JSON Web Key, used as its kid in JWKS endpoints and OAuth/OIDC. Here's exactly how RFC 7638 computes it, why the canonicalization matters, and how to generate one in your browser."
+seoTitle: 'JWK Thumbprint Explained: Stable Key IDs (RFC 7638)'
+description: "A JWK thumbprint is a reproducible fingerprint of a JSON Web Key, used as its kid. How RFC 7638 computes it and how to generate one in your browser."
 pubDate: 2026-08-04
 updatedDate: 2026-08-23
 archetype: explainer
@@ -31,7 +32,7 @@ draft: false
 ---
 
 **When a service publishes its signing keys at a JWKS endpoint, each key needs a name — and that name is
-usually its *thumbprint*, a reproducible fingerprint defined by RFC 7638.** It's how a JWT says "I was
+usually its *thumbprint*, a reproducible fingerprint defined by [RFC 7638](https://datatracker.ietf.org/doc/html/rfc7638).** It's how a [JWT](/blog/how-to-create-a-jwt-guide/) says "I was
 signed by *this* key." The thumbprint is computed by reducing a JSON Web Key to its required members, in a
 strictly canonical form, and hashing them with SHA-256 — so anyone holding the same key derives the exact
 same identifier. Here's precisely how the thumbprint is built and how to compute one with the

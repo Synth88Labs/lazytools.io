@@ -1,5 +1,6 @@
 ---
 title: "How to Reduce Image Size to KB (Under 50 KB)"
+seoTitle: 'Reduce Image Size to KB (Under 50 KB)'
 description: "Reduce image size to KB by lowering quality and dimensions. A browser tool binary-searches JPEG quality to hit your exact target — never uploaded."
 pubDate: 2026-07-28
 updatedDate: 2026-07-28
@@ -79,7 +80,7 @@ For hitting a small KB target on a photo, **JPEG is the safe default and WebP is
 | Format | Best for | Hitting a KB target | Form acceptance |
 | --- | --- | --- | --- |
 | **JPEG** | Photos, scans, ID photos | Excellent — quality is fully adjustable | Universal; safest for strict portals |
-| **WebP** | Photos where size is tight | Excellent — ~25–35% smaller at equal quality | Wide, but a few older portals reject it |
+| **[WebP](https://en.wikipedia.org/wiki/WebP)** | Photos where size is tight | Excellent — ~25–35% smaller at equal quality | Wide, but a few older portals reject it |
 | **PNG** | Logos, line art, transparency | Poor — lossless, can't trade quality for size | Fine, but files stay large for photos |
 
 Use **JPEG when the form is strict** — passport, visa, exam and government portals almost always accept it, and it is the format they expect. Reach for **WebP** when you want the smallest possible file at a given sharpness and you have confirmed the form accepts it. Avoid **PNG for a small photo target**: because it is lossless, it cannot shed quality to shrink the way JPEG and WebP can, so it fights you the whole way down.

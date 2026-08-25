@@ -1,6 +1,7 @@
 ---
 title: "What Time Should I Go to Bed? Sleep Cycles, Bedtime Charts, and Why 7.5 Hours Beats 8"
-description: "To wake at 6 AM feeling refreshed, go to bed around 10:15 PM — five 90-minute sleep cycles plus time to fall asleep. Here's the bedtime chart for every wake-up time, how much sleep you need by age, and why waking between cycles beats a round number of hours."
+seoTitle: 'What Time Should I Go to Bed? Sleep Cycle Chart'
+description: "To wake at 6 AM refreshed, go to bed around 10:15 PM — five 90-minute sleep cycles. The bedtime chart for every wake time, plus how much sleep you need by age."
 pubDate: 2026-07-25
 updatedDate: 2026-07-25
 archetype: explainer
@@ -56,7 +57,7 @@ draft: false
 
 ## The 90-minute rule, in one line
 
-During the night you don't sleep at one steady depth — you move through **cycles of roughly 90 minutes**, each running from light sleep down into deep sleep, up into REM (dreaming), and back. You repeat that four to six times a night.
+During the night you don't sleep at one steady depth — you move through **[cycles of roughly 90 minutes](https://en.wikipedia.org/wiki/Sleep_cycle)**, each running from light sleep down into deep sleep, up into REM (dreaming), and back. You repeat that four to six times a night.
 
 The practical upshot: **plan your night in 90-minute blocks, and aim to wake at the top of a cycle.** Being woken from *deep* sleep, mid-cycle, is what produces "sleep inertia" — the disoriented, heavy grogginess that can linger for half an hour or more. Being woken from *light* sleep, at a cycle boundary, barely registers.
 
@@ -127,26 +128,3 @@ The calculator gives you target times, but the times only help if you actually f
 - **Keep the room cool and dark** — around 60–67°F (16–19°C) suits most people. (A comfortable room also depends on humidity — see the [dew point guide](/blog/dew-point-vs-humidity-guide/).)
 - **Consistent schedule** — same bedtime and wake time daily trains your body to be ready.
 - **Watch late caffeine and alcohol** — caffeine lingers for hours; alcohol helps you fall asleep but fragments the second half of the night.
-
-## Frequently asked questions
-
-### What time should I go to bed to wake up at 6 AM?
-About 10:15 PM for five 90-minute cycles (7.5 hours), or 8:45 PM for six cycles (9 hours), assuming roughly 15 minutes to fall asleep. Both land your alarm at the end of a cycle so waking is easier.
-
-### What time should I go to bed to wake up at 7 AM?
-Around 11:15 PM for five cycles (7.5 hours) or 9:45 PM for six cycles (9 hours), allowing 15 minutes to fall asleep.
-
-### How long is a sleep cycle?
-About 90 minutes on average, ranging from roughly 70 to 120 minutes. It varies between people and across the night — the first cycle is often shorter, and later cycles hold more REM sleep.
-
-### Is it better to sleep 7.5 hours or 8 hours?
-It depends on where each ends. 7.5 hours is exactly five cycles, so it tends to end at a clean cycle boundary; 8 hours can end mid-cycle and leave you groggier. Waking between cycles often matters more than the extra half hour.
-
-### Why do I feel groggy after a full night's sleep?
-Most likely sleep inertia — your alarm woke you from deep sleep in the middle of a cycle. Waking at the end of a cycle, in light sleep, avoids it, which is why aligning your alarm to 90-minute multiples helps even when total hours are the same.
-
-### How many hours of sleep do I need by age?
-Adults 18–64 need 7–9 hours, older adults 7–8, teenagers 8–10, school-age children 9–12, and preschoolers 10–13. These are ranges — where you fall within them is individual.
-
-### Does the sleep calculator account for time to fall asleep?
-Yes. It adds a sleep-latency allowance (default 15 minutes) so the cycle timing reflects actual sleep, not just time in bed. You can raise or lower it if you know you drift off faster or slower.

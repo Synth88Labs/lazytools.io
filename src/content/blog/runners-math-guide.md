@@ -1,6 +1,7 @@
 ---
 title: "The Runner's Math: Pace, Race Times and Heart-Rate Zones Explained"
-description: "Three formulas cover almost all of running math: pace = time ÷ distance, Riegel's race predictor (t2 = t1 × (d2/d1)^1.06), and heart-rate zones from your max HR. What each means, worked examples, and how to use them to train and race smarter."
+seoTitle: "Runner's Math: Pace, Race Times & HR Zones"
+description: "Runner's math in three formulas: pace = time ÷ distance, Riegel's race-time predictor, and heart-rate zones from your max HR — with worked examples."
 pubDate: 2026-07-11
 updatedDate: 2026-08-23
 archetype: explainer
@@ -92,7 +93,7 @@ So a 25-minute 5K runner has roughly **four-hour-marathon** potential. The big c
 
 ## 3. Heart-rate zones: training at the right intensity
 
-Running the right *effort* matters as much as the right pace, and heart rate is how you measure effort. First estimate your **maximum heart rate**. The old rule is 220 − age, but the **Tanaka formula is more accurate**:
+Running the right *effort* matters as much as the right pace, and heart rate is how you measure effort. First estimate your **[maximum heart rate](https://en.wikipedia.org/wiki/Heart_rate)**. The old rule is 220 − age, but the **Tanaka formula is more accurate**:
 
 `HRmax ≈ 208 − 0.7 × age` → for a 30-year-old, about **187 bpm**.
 
@@ -122,7 +123,7 @@ At age 40 the classic and Tanaka formulas happen to agree, but Tanaka tracks bet
 
 ## 4. VO2 max: your aerobic ceiling
 
-Where pace measures output and heart rate measures effort, **VO2 max** measures capacity — the maximum volume of oxygen your body can use per minute, in millilitres per kilogram of bodyweight per minute (ml/kg/min). It sets the ceiling all your other numbers push against. You don't need a lab: the **Cooper 12-minute run test** estimates it from how far you can run flat-out in 12 minutes.
+Where pace measures output and heart rate measures effort, **[VO2 max](https://en.wikipedia.org/wiki/VO2_max)** measures capacity — the maximum volume of oxygen your body can use per minute, in millilitres per kilogram of bodyweight per minute (ml/kg/min). It sets the ceiling all your other numbers push against. You don't need a lab: the **Cooper 12-minute run test** estimates it from how far you can run flat-out in 12 minutes.
 
 > **VO2 max ≈ (distance in metres − 504.9) ÷ 44.73**
 

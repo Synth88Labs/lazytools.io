@@ -1,6 +1,7 @@
 ---
 title: "What Is HMAC? (And How to Generate One)"
-description: "HMAC is a keyed hash: mix a message, a secret key and a hash like SHA-256 to get a signature only key-holders can reproduce — proving origin and integrity. Generate one in your browser; the key is never uploaded."
+seoTitle: 'What Is HMAC? SHA-256 Signatures Explained'
+description: "HMAC is a keyed hash: mix a message, a secret key and a hash like SHA-256 to get a signature only key-holders can reproduce, proving origin and integrity."
 pubDate: 2026-07-28
 updatedDate: 2026-07-28
 archetype: explainer
@@ -32,7 +33,7 @@ faqs:
 draft: false
 ---
 
-**HMAC (Hash-based Message Authentication Code) is a keyed hash: you feed it a message, a secret
+**[HMAC](https://en.wikipedia.org/wiki/HMAC) (Hash-based Message Authentication Code) is a keyed hash: you feed it a message, a secret
 key, and a hash function like SHA-256, and it returns a fixed-length signature that only someone
 holding the same key can reproduce.** That is what makes HMAC useful — it proves a message came
 from a key-holder *and* that nobody altered it along the way. Generate one instantly with the

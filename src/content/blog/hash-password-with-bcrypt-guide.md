@@ -1,6 +1,7 @@
 ---
 title: "How to Hash a Password with Bcrypt"
-description: "To hash a password with bcrypt: pick a cost factor (10–12), hash, and store the whole $2b$ string — salt included. Do it in your browser; the password is never uploaded."
+seoTitle: 'Hash a Password with Bcrypt: Cost, Salt, Verify'
+description: "To hash a password with bcrypt: pick a cost factor (10–12), hash, and store the whole $2b$ string — salt included. Runs in your browser; never uploaded."
 pubDate: 2026-07-28
 updatedDate: 2026-07-28
 archetype: how-to
@@ -59,7 +60,7 @@ never leaves your device.
 
 ## Why passwords need bcrypt (not SHA-256)
 
-Passwords need a hash that is *slow on purpose*, and bcrypt is exactly that. The reason is the
+Passwords need a hash that is *slow on purpose*, and [bcrypt](https://en.wikipedia.org/wiki/Bcrypt) is exactly that. The reason is the
 threat model: at some point a database leaks, and the attacker gets your table of password hashes.
 From that moment the only thing standing between them and every account is how expensive it is to
 guess. A general-purpose hash like SHA-256 is engineered for speed — great for file checksums and

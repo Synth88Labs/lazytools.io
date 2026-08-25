@@ -1,6 +1,7 @@
 ---
 title: "Rebar in a Concrete Slab: Spacing, Cover and Lap Splices Explained"
-description: "Residential slabs typically use #4 bar at 12–18 inches on centre with 3 inches of cover. Here's how to work out bar counts, why cover matters more than people think, and where the '40 bar diameters' lap rule differs from what the code actually requires."
+seoTitle: 'Rebar in a Concrete Slab: Spacing, Cover, Splices'
+description: "Rebar spacing in a concrete slab: #4 bar at 12–18 in on centre, 3 in cover. How to count bars, why cover matters, and how lap splices differ from code."
 pubDate: 2026-07-18
 updatedDate: 2026-07-18
 archetype: explainer
@@ -92,7 +93,7 @@ The corollary: **rebar must be held up off the ground.** Bar laid on the subgrad
 
 Rebar comes in fixed lengths (commonly 20 ft), so long runs need overlapping — a **lap splice** — so the two bars act as one. The load transfers through the concrete between them, which is why the overlap has to be long enough.
 
-The widely quoted rule of thumb is **40 × bar diameter** for Grade 60 steel:
+The widely quoted rule of thumb is **40 × bar diameter** for Grade 60 steel, though the governing standard is [ACI 318](https://www.concrete.org/), the American Concrete Institute's building code for structural concrete:
 
 | Size | 40 × diameter rule | Typical ACI 318 value* |
 | --- | --- | --- |

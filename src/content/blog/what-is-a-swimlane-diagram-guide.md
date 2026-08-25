@@ -1,6 +1,7 @@
 ---
 title: "What Is a Swimlane Diagram? Mapping Who Does What (and Where Work Stalls)"
-description: "A swimlane diagram is a flowchart split into lanes, one per role or team, so every hand-off between them becomes a visible arrow. Here's when to use one, how many lanes to draw, lanes vs pools in BPMN, and how to read the hand-offs where delays hide."
+seoTitle: 'What Is a Swimlane Diagram? Mapping Who Does What'
+description: "A swimlane diagram is a flowchart split into lanes, one per role, so every hand-off becomes a visible arrow. When to use one, lane counts, and lanes vs pools."
 pubDate: 2026-07-17
 updatedDate: 2026-07-17
 archetype: explainer
@@ -92,7 +93,7 @@ You can do all of this in the [swimlane diagram maker](/productivity/swimlane-di
 
 ## Lanes vs pools: the BPMN distinction
 
-If you move from sketching into formal modelling, you'll meet **BPMN** (Business Process Model and Notation), where the distinction between lanes and pools is precise:
+If you move from sketching into formal modelling, you'll meet **[BPMN](https://en.wikipedia.org/wiki/Business_Process_Model_and_Notation)** (Business Process Model and Notation), where the distinction between lanes and pools is precise:
 
 | | Represents | Example |
 | --- | --- | --- |

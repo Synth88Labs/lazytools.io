@@ -1,6 +1,7 @@
 ---
 title: "BPM to Delay Time: The 60,000 Rule Every Producer Should Know"
-description: "Quarter-note delay in milliseconds is 60,000 ÷ BPM — 500 ms at 120 BPM. Here's the full subdivision table, how dotted and triplet delays work, and why the dotted eighth is the most useful delay setting in pop production."
+seoTitle: 'BPM to Delay Time: The 60,000 Rule'
+description: "BPM to delay time: quarter-note ms = 60,000 ÷ BPM (500 ms at 120 BPM). Full subdivision table plus dotted and triplet delays explained."
 pubDate: 2026-07-18
 updatedDate: 2026-07-18
 archetype: explainer
@@ -81,7 +82,7 @@ The [BPM delay calculator](/music/bpm-delay-calculator/) prints the whole table 
 
 ## Why the dotted eighth is everywhere
 
-Set a delay to a **dotted eighth** (0.75 of a beat) and the echoes don't land on the beat — they land three sixteenths later, repeatedly, drifting across the bar before realigning. Against a straight eighth-note part, that creates the interlocking, galloping pattern heard on countless pop and rock records, most famously in U2's guitar sound.
+Set a [delay](https://en.wikipedia.org/wiki/Delay_(audio_effect)) to a **dotted eighth** (0.75 of a beat) and the echoes don't land on the beat — they land three sixteenths later, repeatedly, drifting across the bar before realigning. Against a straight eighth-note part, that creates the interlocking, galloping pattern heard on countless pop and rock records, most famously in U2's guitar sound.
 
 It's a rhythmic trick, not a timbral one: a single note becomes a pattern. That's why it's the first delay setting worth learning after the plain quarter.
 
@@ -110,26 +111,3 @@ The rule of thumb: if you want the effect to be *heard as rhythm*, sync it. If y
 ## Going the other way
 
 To convert a delay time back to tempo: **BPM = 60,000 ÷ delay time (ms)**. A 400 ms quarter note is 150 BPM. Useful for matching a tempo to a sample or a loop you've been handed without metadata.
-
-## Frequently asked questions
-
-### How do you calculate delay time from BPM?
-Divide 60,000 by the tempo to get the quarter-note delay in milliseconds. At 120 BPM that's 60,000 ÷ 120 = 500 ms. Halve it for eighths (250 ms), quarter it for sixteenths (125 ms).
-
-### Why 60,000?
-Because there are 60,000 milliseconds in a minute and BPM counts beats per minute. Dividing total milliseconds by beats gives milliseconds per beat.
-
-### What is a dotted eighth delay?
-A delay of 0.75 of a beat — 45,000 ÷ BPM, or 375 ms at 120 BPM. The echoes fall off the beat and interlock with straight eighth-note parts, producing the rhythmic, galloping delay pattern common in pop and rock guitar.
-
-### How do I calculate a triplet delay?
-Multiply the base note value by ⅔. An eighth-note triplet is 20,000 ÷ BPM — about 167 ms at 120 BPM. Triplets fit three notes in the space of two.
-
-### What should I set reverb pre-delay to?
-Often a sixteenth or thirty-second note — roughly 60–125 ms at 120 BPM. Enough separation keeps the dry vocal clear while the tail still reads as a large space. Set decay so the tail mostly clears before the next downbeat.
-
-### Should every delay be tempo-synced?
-No. Sync when you want the effect perceived as rhythm. Short slapback (60–120 ms) and doubling delays (10–40 ms) are normally dialled in by ear, since they're heard as thickness rather than distinct repeats.
-
-### How do I convert milliseconds back to BPM?
-BPM = 60,000 ÷ the quarter-note delay time in milliseconds. A 500 ms quarter note is 120 BPM; 400 ms is 150 BPM.

@@ -1,6 +1,7 @@
 ---
 title: "Celsius to Fahrenheit: Formula, Charts for Weather, Fever and Ovens"
-description: "°F = °C × 9/5 + 32. The complete guide: exact formula, mental shortcut, charts for weather, fever thresholds, oven temperatures and world records — plus Kelvin and the history of both scales."
+seoTitle: 'Celsius to Fahrenheit: Formula, Charts & Examples'
+description: "Celsius to Fahrenheit: °F = °C × 9/5 + 32. The exact formula, a mental shortcut, and charts for weather, fever, ovens and Kelvin."
 pubDate: 2026-07-04
 updatedDate: 2026-07-04
 archetype: how-to
@@ -159,7 +160,7 @@ you subtract two temperatures).
 |---|---|---|
 | 36.1–37.2 | 97.0–99.0 | normal range |
 | 37.5–37.9 | 99.5–100.3 | low-grade elevation |
-| **38.0** | **100.4** | **fever threshold (CDC, most hospitals)** |
+| **38.0** | **100.4** | **fever threshold ([CDC](https://www.cdc.gov/), most hospitals)** |
 | 39.4 | 103.0 | high fever — seek advice |
 | 40.0 | 104.0 | medical attention |
 | 35.0 and below | 95.0 and below | hypothermia — emergency |

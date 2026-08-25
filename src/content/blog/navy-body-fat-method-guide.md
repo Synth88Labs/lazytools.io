@@ -1,6 +1,7 @@
 ---
 title: "How to Measure Body Fat with a Tape (The US Navy Method)"
-description: "The US Navy body-fat method estimates your body fat percentage from a few tape measurements — neck and waist for men, plus hips for women — and your height. Here's how to measure correctly, how accurate it is, and what the numbers mean."
+seoTitle: 'Navy Body Fat Method: Measure with a Tape'
+description: "The US Navy body-fat method estimates body fat percentage from tape measurements: neck and waist for men, plus hips for women. Measuring and accuracy."
 pubDate: 2026-07-28
 updatedDate: 2026-07-28
 archetype: explainer
@@ -81,7 +82,7 @@ Measurement technique is where most of the error creeps in, so take your time an
 
 ## What the numbers mean
 
-Body-fat percentage is often grouped into these bands (American Council on Exercise):
+Body-fat percentage is often grouped into these bands ([American Council on Exercise](https://en.wikipedia.org/wiki/Body_fat_percentage)):
 
 | Category | Men | Women |
 | --- | --- | --- |
@@ -105,7 +106,7 @@ For a woman, the same logic applies but with hips added: the driver is **waist +
 
 For people of average build, the Navy method usually lands **within about 3 percentage points** of gold-standard methods like DEXA or hydrostatic weighing — good enough to track progress over weeks and months. Its weakness is that it infers fat from body measurements alone, so it can **overestimate** for very muscular people (a thick waist that's muscle, not fat) and **misjudge** very lean or unusual body shapes. Consistency matters more than a single reading: measure the same way each time and watch the trend.
 
-Because it relies on your waist measurement, it also doubles as a rough health signal — a rising waist circumference is itself linked to metabolic risk, independent of the exact body-fat figure.
+Because it relies on your waist measurement, it also doubles as a rough health signal — a rising waist circumference is itself linked to metabolic risk, independent of the exact body-fat figure, and it pairs well with a [BMI reading](/blog/bmi-calculator-guide/) for a fuller picture.
 
 ## How it compares to other methods
 
@@ -124,26 +125,3 @@ The practical takeaway: pick one method and stick with it. Comparing a caliper r
 ## When to be cautious with the result
 
 Treat the estimate as a ballpark, not a verdict, if you are very muscular, very lean, pregnant, or have a body shape that differs from the population the formula was built on. Bodybuilders in particular tend to see inflated readings because a large, muscular waist looks like fat to a tape that cannot tell the two apart. In those cases the trend over time is still useful even when the absolute number is off.
-
-## FAQ
-
-**How do I calculate body fat with just a tape measure?**
-Measure your neck and waist (men) or neck, waist and hips (women), plus your height, then enter them into the [Navy body-fat calculator](/fitness/navy-body-fat-calculator/). It applies the US Navy formula and returns a percentage — no calipers or scales needed.
-
-**Where exactly do I measure the waist?**
-For men, horizontally at the navel. For women, at the narrowest part of the waist. Keep the tape level and snug, stand relaxed, and don't hold your breath or pull your stomach in.
-
-**How accurate is the Navy body-fat method?**
-Typically within about 3% of lab methods for average builds — reliable for tracking changes over time. It's less accurate for very muscular or very lean people because it estimates fat from circumference rather than measuring it directly.
-
-**Why are the healthy ranges different for men and women?**
-Women's bodies require more essential fat for hormonal and reproductive function, so a healthy body-fat percentage is naturally higher for women than for men.
-
-**Is the tape method better than a bathroom scale that shows body fat?**
-Both are estimates. Bioelectrical-impedance scales are quick but sensitive to hydration and time of day; the tape method is more consistent if you measure carefully. Use one method consistently rather than comparing across methods.
-
-**Can I measure in inches?**
-Yes — the calculator accepts centimetres or inches and converts internally. Just be consistent with the unit for all measurements.
-
-**Is this a medical assessment?**
-No. It's a fitness screening estimate. For clinical accuracy or health decisions, a professional using DEXA, hydrostatic weighing or air-displacement plethysmography gives a precise figure.

@@ -1,6 +1,7 @@
 ---
 title: "How to Generate SQL INSERTs from JSON or CSV (Safely)"
-description: "Turning JSON or CSV into SQL INSERT statements is mechanical — but the value typing and quote escaping are where it breaks. Here's how to do it correctly, plus a browser tool that never uploads your data."
+seoTitle: 'JSON & CSV to SQL INSERTs: Generate Them Safely'
+description: "Convert JSON or CSV to SQL INSERTs correctly: type each value, escape single quotes by doubling, and parse CSV per RFC 4180 — all in your browser."
 pubDate: 2026-08-01
 updatedDate: 2026-08-23
 archetype: explainer
@@ -134,7 +135,7 @@ dependent — PostgreSQL accepts `TRUE`/`FALSE` literally, whereas older MySQL t
 ## CSV has an extra trap: parsing
 
 A spreadsheet value like `"Bo, Jr"` contains a comma *inside* a field. Splitting on every comma shifts
-all your columns and corrupts the import. A correct converter uses an RFC 4180 parser that respects
+all your columns and corrupts the import. A correct converter uses an [RFC 4180](https://datatracker.ietf.org/doc/html/rfc4180) parser that respects
 quoted fields, escaped quotes (`""`), and even newlines inside quotes — so `"Bo, Jr"` stays one value.
 That's why [CSV to SQL](/dev/csv-to-sql/) parses properly rather than `split(',')`, and why it also
 lets you pick a delimiter for semicolon (European) or tab-separated data.

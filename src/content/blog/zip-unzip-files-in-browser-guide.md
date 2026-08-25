@@ -1,6 +1,7 @@
 ---
 title: "How to Zip and Unzip Files in Your Browser (No Software, No Upload)"
-description: "You don't need WinRAR or 7-Zip to make or open a ZIP — a browser can do both, and doing it locally keeps your files private. Here's how ZIP works and how to create or extract one without uploading anything."
+seoTitle: 'Zip and Unzip Files in Your Browser'
+description: "You don't need WinRAR or 7-Zip to make or open a ZIP — a browser does both locally. How ZIP works and how to zip or unzip without uploading anything."
 pubDate: 2026-08-02
 updatedDate: 2026-08-23
 archetype: explainer
@@ -61,7 +62,7 @@ barely at all.
 - **Compression** — each file is optionally squeezed with an algorithm called **DEFLATE**, which
   removes repetition.
 
-The ZIP format has been around since the late 1980s and is now understood by practically every
+The [ZIP format](https://en.wikipedia.org/wiki/ZIP_(file_format)) has been around since the late 1980s and is now understood by practically every
 operating system out of the box — Windows, macOS and most Linux desktops can open a `.zip` without any
 extra software. That universality is exactly why it's still the safe default when you need to hand a
 batch of files to someone else: you rarely have to wonder whether they can open it.

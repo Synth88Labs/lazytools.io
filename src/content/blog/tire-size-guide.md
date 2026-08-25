@@ -1,6 +1,7 @@
 ---
 title: "How to Read a Tire Size: 225/45R17 Decoded"
-description: "A tire size like 225/45R17 packs four facts into one code: section width in millimetres (225), aspect ratio as a percentage (45), radial construction (R), and rim diameter in inches (17). What each part means, how to find the real overall diameter, and why part is metric and part is inches."
+seoTitle: 'How to Read a Tire Size: 225/45R17 Decoded'
+description: "How to read a tire size like 225/45R17: width (225), aspect ratio (45), radial (R) and rim diameter (17) — and how to find the real overall diameter."
 pubDate: 2026-07-11
 updatedDate: 2026-08-23
 archetype: explainer
@@ -127,4 +128,4 @@ The [tire size calculator](/automotive/tire-size-calculator/) decodes any size i
 
 ---
 
-*The overall-diameter, circumference and revolutions-per-mile figures here are exact geometry from the standard tire-code formula. Always match the size on your vehicle's door-jamb placard, and confirm clearance before changing sizes.*
+*The overall-diameter, circumference and revolutions-per-mile figures here are exact geometry from the standard [tire-code formula](https://en.wikipedia.org/wiki/Tire_code). Always match the size on your vehicle's door-jamb placard, and confirm clearance before changing sizes.*

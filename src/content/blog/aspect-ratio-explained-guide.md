@@ -1,6 +1,7 @@
 ---
 title: "Aspect Ratio Explained: What 16:9 Means and How to Resize Without Stretching"
-description: "Aspect ratio is the proportion of width to height — 16:9, 4:3, 1:1 — independent of pixel size. Here's how to find a matching dimension by cross-multiplying, how to reduce any resolution to its ratio, and which ratio each platform wants."
+seoTitle: 'What Does 16:9 Mean? Aspect Ratio Explained'
+description: "Aspect ratio is the width-to-height proportion — 16:9, 4:3, 1:1 — independent of pixel size. Resize without stretching and pick the right ratio."
 pubDate: 2026-07-25
 updatedDate: 2026-07-25
 archetype: explainer
@@ -88,7 +89,7 @@ The calculator's "get ratio from these dimensions" button does exactly this redu
 | **3:2** | Landscape | Most DSLR/mirrorless photos | 6000×4000 |
 | **21:9** | Ultrawide | Cinematic film, ultrawide monitors | 2560×1080, 3440×1440 |
 
-16:9 became the default as screens grew wider and replaced the old 4:3 television shape; vertical 9:16 rose with the phone.
+[16:9 became the default](https://en.wikipedia.org/wiki/16:9_aspect_ratio) as screens grew wider and replaced the old 4:3 television shape; vertical 9:16 rose with the phone.
 
 ## Why locking the ratio matters when you resize
 
@@ -99,26 +100,3 @@ The rule: **resize proportionally.** Only change the ratio deliberately, and whe
 ## One thing a ratio can't do
 
 Matching an aspect ratio and enlarging to a bigger size are different things. Scaling a 1280×720 image up to 1920×1080 keeps it at 16:9 — but it does **not** add real detail. The tool just spreads the existing 720p of information across more pixels, which looks softer. Aspect ratio governs *shape*; it says nothing about how much genuine resolution you have.
-
-## Frequently asked questions
-
-### What does a 16:9 aspect ratio mean?
-It means the frame is 16 units wide for every 9 units tall — a widescreen shape. It's a proportion, not a fixed size, so 1280×720, 1920×1080 and 3840×2160 are all 16:9.
-
-### How do I calculate aspect ratio from pixel dimensions?
-Divide both dimensions by their greatest common divisor. 1920×1080 shares a GCD of 120, so it reduces to 16:9. An aspect ratio calculator does this automatically when you enter the resolution.
-
-### How do I find a height for a given width and ratio?
-Multiply the width by the ratio's height divided by its width: new height = width × H ÷ W. For 16:9, a width of 1280 gives 1280 × 9 ÷ 16 = 720.
-
-### How do I resize an image without stretching it?
-Keep the aspect ratio locked so the second dimension is recalculated from the first — set the width and let the height follow, or vice versa. Distortion only happens when width and height are changed independently to a different ratio.
-
-### What aspect ratio should I use for social media?
-Broadly: 16:9 for landscape/YouTube video, 9:16 for Reels, TikTok, Stories and Shorts, 1:1 or 4:5 for Instagram and Facebook feed posts (4:5 fills the most screen), and 2:3 or 3:4 for portrait photos. Each platform publishes recommended pixel sizes within those ratios.
-
-### Does changing aspect ratio lose quality?
-Cropping to a new ratio removes pixels but keeps the rest sharp; stretching to a new ratio distorts the image. Scaling to a larger size at the same ratio doesn't add detail — it enlarges the pixels you already have, so it looks softer.
-
-### What is the difference between aspect ratio and resolution?
-Aspect ratio is the shape (the width-to-height proportion); resolution is the actual pixel count (like 1920×1080). Many different resolutions can share one aspect ratio, and the same ratio can be sharp or soft depending on the resolution.

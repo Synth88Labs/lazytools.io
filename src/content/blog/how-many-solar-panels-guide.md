@@ -1,6 +1,7 @@
 ---
 title: "How Many Solar Panels Do I Need? A Simple Way to Size a System"
-description: "The answer isn't a fixed number — it depends on how much energy you use and how much sun you get. Here's the simple three-step method to size a solar array, with a worked example and the margin to add for real-world conditions."
+seoTitle: 'How Many Solar Panels Do I Need?'
+description: "How many solar panels you need depends on your energy use and your sun. The simple three-step sizing method, a worked example, and the margin to add."
 pubDate: 2026-07-12
 updatedDate: 2026-08-23
 archetype: explainer

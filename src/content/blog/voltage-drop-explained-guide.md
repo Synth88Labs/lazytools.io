@@ -1,6 +1,7 @@
 ---
 title: "Voltage Drop Explained (and How to Keep It Under 3%)"
-description: "Voltage drop is the voltage lost to wire resistance over a run: 2 × current × resistance-per-metre × one-way length (√3 for three-phase). Here's how to calculate it, the 3% rule, and how to fix an excessive drop."
+seoTitle: 'Voltage Drop Explained: Formula & the 3% Rule'
+description: "Voltage drop is voltage lost to wire resistance: 2 × current × resistance-per-metre × one-way length (√3 for three-phase). Calculating it and the 3% rule."
 pubDate: 2026-07-28
 updatedDate: 2026-08-23
 archetype: explainer
@@ -73,7 +74,7 @@ Treat these as guide figures for estimating drop, not as ampacity ratings. The e
 
 ## The 3% rule
 
-The National Electrical Code (NEC) recommends:
+The [National Electrical Code (NEC)](https://www.nfpa.org/), published by the NFPA, recommends:
 
 - **≤ 3%** voltage drop on a branch circuit, and
 - **≤ 5%** total including the feeder.
@@ -110,23 +111,3 @@ A wire has two separate size limits, and it is easy to confuse them. **Ampacity*
 The dropped voltage also has a real energy cost. The voltage lost across the cable, multiplied by the current, is power dissipated as heat (P = drop × current, equivalently I²R). In the first worked example above, 3.9 V across 20 A is roughly 78 W turned into heat in the wire — energy you pay for but never use. Cutting voltage drop cuts that waste at the same time.
 
 *This is a design aid. Always follow your local electrical code and use a licensed electrician for real installations.*
-
-## FAQ
-
-**How do I calculate voltage drop?**
-Multiply the current by the wire's resistance and by the total conductor length. For DC or single-phase: 2 × current × resistance-per-metre × one-way length; for three-phase, use √3 instead of 2. The [calculator](/electronics/voltage-drop-calculator/) does it from the AWG, length, current and material.
-
-**What is an acceptable voltage drop?**
-The NEC recommends under 3% on a branch circuit and 5% total. Solar and low-voltage designers often aim for 2% or less because low-voltage systems are more sensitive to loss.
-
-**How do I reduce voltage drop?**
-Use a thicker (lower-AWG) wire, shorten the cable run, switch from aluminium to copper, or run at a higher voltage. Increasing the wire size is usually the simplest fix.
-
-**Does aluminium wire drop more voltage than copper?**
-Yes — aluminium has about 1.6 times the resistance of copper for the same gauge, so it drops proportionally more. You typically go up a couple of gauge sizes to match copper's performance.
-
-**Why does a long cable run matter so much?**
-Because voltage drop is proportional to length: double the run, double the drop. Long runs, especially at high current or low voltage, are where voltage drop becomes a real design constraint.
-
-**Is voltage drop the same as power loss?**
-They're related — the dropped voltage times the current is the power lost as heat in the cable. Keeping voltage drop low also keeps that wasted energy low.

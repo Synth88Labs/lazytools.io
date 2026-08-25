@@ -1,6 +1,7 @@
 ---
 title: "BS to AD (and Back): How the Nepali Bikram Sambat Calendar Works"
-description: "Nepal runs on Bikram Sambat, about 56 years 8 months ahead of the Gregorian calendar — so 2024 AD is 2081 BS. Why BS months have no fixed length, how conversion actually works, and how to convert any date both ways."
+seoTitle: 'BS to AD: How the Bikram Sambat Calendar Works'
+description: "Nepal's Bikram Sambat runs ~56 years 8 months ahead of AD, so 2024 AD is 2081 BS. Why BS months vary, and how to convert any date both ways."
 pubDate: 2026-07-06
 updatedDate: 2026-07-06
 archetype: explainer

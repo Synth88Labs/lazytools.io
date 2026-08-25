@@ -1,6 +1,7 @@
 ---
 title: "Punnett Squares: Monohybrid, Dihybrid, and Where the 9:3:3:1 Comes From"
-description: "A monohybrid Aa × Aa cross gives 1:2:1 genotypes and a 3:1 phenotype ratio; a dihybrid AaBb × AaBb gives 9:3:3:1. How to fill the grid, read the ratios, and why larger crosses are so easy to get wrong by hand."
+seoTitle: 'Punnett Squares: 3:1, 9:3:3:1 & How to Fill Them'
+description: "Punnett squares explained: a monohybrid Aa × Aa cross gives a 3:1 phenotype ratio and a dihybrid AaBb × AaBb gives 9:3:3:1. How to fill the grid."
 pubDate: 2026-07-10
 updatedDate: 2026-08-23
 archetype: explainer

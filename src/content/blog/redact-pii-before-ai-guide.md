@@ -1,6 +1,7 @@
 ---
 title: "How to Redact Personal Data Before Pasting Text Into AI"
-description: "Pasting an error log, email or spreadsheet row into ChatGPT is convenient — and an easy way to leak customer data. Here's why it matters, what counts as PII, and how to strip it out locally in seconds before you hit send."
+seoTitle: 'Redact PII Before Pasting Into AI'
+description: "Pasting text into ChatGPT can leak customer data. What counts as PII and how to strip it out locally in seconds before you hit send."
 pubDate: 2026-07-12
 updatedDate: 2026-08-23
 archetype: explainer
@@ -51,7 +52,7 @@ draft: false
 
 ## Why pasting into AI is risky
 
-When you paste text into a chatbot, support tool or public forum, you lose control of it. Depending on the service and your settings, it may be **stored**, **processed on servers you don't control**, and in some cases **used to train future models**. For your own scratch notes that's fine. For a customer's email, a patient record, or a colleague's contact details, it can breach privacy policies, contracts, or laws like the EU's GDPR — and once it's out, you can't pull it back.
+When you paste text into a chatbot, support tool or public forum, you lose control of it. Depending on the service and your settings, it may be **stored**, **processed on servers you don't control**, and in some cases **used to train future models**. For your own scratch notes that's fine. For a customer's email, a patient record, or a colleague's contact details, it can breach privacy policies, contracts, or laws like the EU's [GDPR](https://en.wikipedia.org/wiki/General_Data_Protection_Regulation) — and once it's out, you can't pull it back.
 
 The risk is easy to underrate because the interface feels private. It looks like a chat window on your screen, but the text travels to a remote service to be processed. Consumer AI tools generally let you turn off training on your inputs and offer enterprise or API tiers that contractually exclude your data from training — but defaults, retention windows and settings vary by provider and change over time, so the safe assumption for anything sensitive is that a copy may persist somewhere you can't reach.
 

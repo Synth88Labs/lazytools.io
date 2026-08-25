@@ -1,6 +1,7 @@
 ---
 title: "What Is CBOR? Binary JSON for Passkeys, COSE and IoT — Explained"
-description: "CBOR is a compact binary format like JSON, and it's what passkeys, WebAuthn and many IoT protocols use under the hood. Here's how CBOR encoding works, what diagnostic notation is, and how to decode a CBOR message in your browser."
+seoTitle: 'What Is CBOR? Binary JSON Explained'
+description: "CBOR is a compact binary format like JSON, used by passkeys, WebAuthn and IoT. How CBOR encoding works, diagnostic notation, and how to decode it."
 pubDate: 2026-08-03
 updatedDate: 2026-08-23
 archetype: explainer
@@ -60,7 +61,7 @@ with the [CBOR Decoder](/dev/cbor-decoder/).
 
 ## CBOR in one sentence
 
-**CBOR (Concise Binary Object Representation, RFC 8949) is binary JSON with extra types.** It encodes the
+**CBOR (Concise Binary Object Representation, [RFC 8949](https://en.wikipedia.org/wiki/CBOR)) is binary JSON with extra types.** It encodes the
 same data model as JSON — numbers, strings, arrays, maps, booleans, null — but in a smaller binary form,
 and it adds native **byte strings**, **tags**, and **exact 64-bit integers**. The trade-off versus JSON is
 readability for efficiency: you give up being able to read it in a text editor in exchange for a payload
@@ -145,7 +146,7 @@ with plain JSON and with MessagePack, the other well-known binary-JSON encoding.
 | Self-describing (no schema) | Yes | Yes | Yes |
 | Used by WebAuthn / COSE | No | Yes | No |
 
-The practical takeaway: JSON stays king for anything a human reads or edits and for universal tooling;
+The practical takeaway: [JSON](/blog/json-yaml-xml-guide/) stays king for anything a human reads or edits and for universal tooling;
 CBOR wins when you need a standardised, tag-rich binary format — which is precisely why the security
 world chose it. CBOR and MessagePack overlap heavily, but they use different byte encodings, so a
 MessagePack blob will not decode as CBOR or the other way round.

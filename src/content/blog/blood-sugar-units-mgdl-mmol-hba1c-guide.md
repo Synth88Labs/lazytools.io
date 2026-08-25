@@ -1,6 +1,7 @@
 ---
 title: "Blood Sugar Units Explained: mg/dL, mmol/L, HbA1c and eAG"
-description: "mg/dL and mmol/L are the same glucose measured on two scales — divide mg/dL by 18.0182 to get mmol/L. HbA1c has its own two scales (% and mmol/mol) plus an estimated average glucose. Here's how they all connect. Converts in your browser."
+seoTitle: 'mg/dL to mmol/L: Blood Sugar Units & HbA1c'
+description: "Convert blood sugar units: divide mg/dL by 18.0182 for mmol/L, and see how HbA1c %, mmol/mol and estimated average glucose all connect."
 pubDate: 2026-08-01
 updatedDate: 2026-08-23
 archetype: explainer
@@ -172,7 +173,7 @@ glucose because red-cell turnover varies. Treat it as a helpful translation, not
 ## Reference ranges for context
 
 Conversions only tell you the *number*, not what it signifies. For orientation, the table below shows the
-broad categories the American Diabetes Association uses, on every scale at once. These are general
+broad categories the [American Diabetes Association](https://diabetes.org/) uses, on every scale at once. These are general
 diagnostic thresholds — a clinician interprets them alongside your history, symptoms and repeat testing,
 and some conditions (pregnancy, anaemia, certain haemoglobin variants) shift how the numbers behave.
 

@@ -1,6 +1,7 @@
 ---
 title: "How to Blur the Background: The 4 Keys to Depth of Field"
-description: "That creamy blurred background comes from a shallow depth of field — and four things control it: aperture, focal length, subject distance and sensor size. How each one works, and the exact recipe for a blurry background or front-to-back sharpness."
+seoTitle: 'Depth of Field: How to Blur the Background'
+description: "Depth of field controls background blur, and four things set it: aperture, focal length, subject distance and sensor size. The recipe for a blurry background."
 pubDate: 2026-07-12
 updatedDate: 2026-08-23
 archetype: explainer
@@ -55,7 +56,7 @@ draft: false
 
 Depth of field (DoF) is the range of distances in a scene that appears acceptably sharp. Only a single plane is ever in *perfect* focus; everything in front of and behind it gets progressively softer. The zone where that softening is small enough to still read as "sharp" is your depth of field. Make that zone thin and the background dissolves into blur; make it deep and everything from the foreground to the horizon looks crisp.
 
-Because "acceptably sharp" is a judgement, not a hard edge, DoF is defined against a **circle of confusion** — the largest blur spot that still looks like a point at normal viewing size. A common convention sets it to the sensor diagonal divided by about 1500, which is the value our calculators use. That is why the same lens can look "sharp enough" in a small web image and slightly soft in a large print: the standard assumes a typical print and viewing distance.
+Because "acceptably sharp" is a judgement, not a hard edge, DoF is defined against a [**circle of confusion**](https://en.wikipedia.org/wiki/Circle_of_confusion) — the largest blur spot that still looks like a point at normal viewing size. A common convention sets it to the sensor diagonal divided by about 1500, which is the value our calculators use. That is why the same lens can look "sharp enough" in a small web image and slightly soft in a large print: the standard assumes a typical print and viewing distance.
 
 Four things move that zone, and nothing else does. Here they are in order of how directly you can reach for them.
 

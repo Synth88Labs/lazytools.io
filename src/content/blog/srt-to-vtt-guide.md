@@ -1,5 +1,6 @@
 ---
 title: "How to Convert SRT to VTT for HTML5 Video"
+seoTitle: 'Convert SRT to VTT for HTML5 Video'
 description: "To convert SRT to VTT, add a WEBVTT header, change the millisecond comma to a dot, and drop the cue numbers. Do it free, in your browser — nothing uploaded."
 pubDate: 2026-07-28
 updatedDate: 2026-07-28
@@ -130,7 +131,7 @@ For the vast majority of subtitle files — plain text with the odd italic — n
 
 ## Add the subtitles to your HTML5 video
 
-Once you have a `.vtt` file, you attach it to a video with a `<track>` element nested inside `<video>`:
+Once you have a `.vtt` file, you attach it to a video with a [`<track>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/track) nested inside `<video>`:
 
 ```html
 <video controls>

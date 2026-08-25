@@ -1,6 +1,7 @@
 ---
 title: "Kg to Lbs Conversion: Formula, Charts and the 2-Second Mental Trick"
-description: "1 kg = 2.2046 lbs exactly. The complete guide: formula, history, charts for body weight, gym plates, luggage and newborns, sports weight classes, common mistakes and FAQs."
+seoTitle: 'Kg to Lbs: Formula, Charts & Mental Trick'
+description: "1 kg = 2.2046 lbs exactly. The full kg to lbs guide: formula, mental trick, charts for body weight, luggage, gym plates and newborns."
 pubDate: 2026-07-04
 updatedDate: 2026-07-04
 archetype: how-to
@@ -59,8 +60,9 @@ working shown.
 
 **pounds = kilograms × 2.2046226218**
 
-The number isn't a measurement — it's a legal definition. In the **1959 International Yard and Pound
-Agreement**, the United States, United Kingdom, Canada, Australia, New Zealand and South Africa defined
+The number isn't a measurement — it's a legal definition. In the
+**[1959 International Yard and Pound Agreement](https://en.wikipedia.org/wiki/International_yard_and_pound)**,
+the United States, United Kingdom, Canada, Australia, New Zealand and South Africa defined
 one avoirdupois pound as exactly **0.45359237 kilograms**, ending decades of tiny national differences
 (the US pound and UK pound previously disagreed in the sixth decimal place). Dividing 1 by 0.45359237
 gives 2.20462262185…, the factor every accurate converter uses.

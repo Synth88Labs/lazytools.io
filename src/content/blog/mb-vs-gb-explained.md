@@ -1,6 +1,7 @@
 ---
 title: "MB vs GB Explained: Why a 1 TB Drive Shows Only 931 GB"
-description: "1 GB = 1,000 MB by the decimal standard, but Windows counts in binary. The complete guide: the full unit ladder from bit to quettabyte, missing-space tables, Mbps vs MB/s, phone storage and the law."
+seoTitle: 'MB vs GB: Why 1 TB Shows Only 931 GB'
+description: "MB vs GB explained: 1 GB = 1,000 MB by the decimal standard, but Windows counts in binary — which is why a 1 TB drive shows only 931 GB."
 pubDate: 2026-07-04
 updatedDate: 2026-07-04
 archetype: explainer

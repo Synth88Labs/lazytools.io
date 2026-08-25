@@ -1,6 +1,7 @@
 ---
 title: "Hijri, Hebrew, Persian and Julian: How the World's Calendars Actually Work"
-description: "Why is the Islamic year 1447 while the Gregorian is 2026? A guide to the world's major calendar systems — lunar, solar and lunisolar — how they differ, and how to convert any date between them in your browser."
+seoTitle: "How the World's Calendar Systems Work"
+description: "A guide to the world's major calendar systems — lunar, solar and lunisolar — how Hijri, Hebrew, Persian and Julian differ, and how to convert between them."
 pubDate: 2026-07-06
 updatedDate: 2026-07-06
 archetype: explainer

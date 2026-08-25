@@ -1,6 +1,7 @@
 ---
 title: "How to Add and Remove VAT (Without Getting It Wrong)"
-description: "To add VAT, multiply the net price by 1 plus the rate; to remove VAT, divide the gross price by 1 plus the rate — you divide, you don't subtract the percentage. Here's why, with worked examples, a country rate table, and the mistake almost everyone makes."
+seoTitle: 'How to Calculate VAT: Add and Remove It Right'
+description: "How to calculate VAT: add by multiplying net by 1 plus the rate, remove by dividing gross by it — not by subtracting the percentage. Worked examples inside."
 pubDate: 2026-07-27
 updatedDate: 2026-07-27
 archetype: explainer
@@ -113,25 +114,4 @@ These are standard rates; many countries apply **reduced or zero rates** to cate
 
 The [VAT / GST calculator](/calc/vat-gst-calculator/) does both directions at any rate: enter a price, pick "add" or "remove", and it returns the net, the VAT, and the gross. It runs entirely in your browser — your figures are never uploaded — and works for VAT, GST, or any percentage sales tax.
 
-## FAQ
-
-**How do I remove VAT from a price?**
-Divide the VAT-inclusive price by 1 plus the rate as a decimal. To remove 20% VAT from £60: £60 ÷ 1.20 = £50 net, so the VAT was £10. Don't subtract 20% of the gross — that removes too much.
-
-**How do I add VAT to a price?**
-Multiply the net (ex-VAT) price by 1 plus the rate. At 20%: net × 1.20. The VAT amount alone is net × 0.20.
-
-**Why isn't the VAT in a gross price just 20% of it?**
-Because the 20% was applied to the net price, which is smaller. In a £60 gross price at 20%, the £10 of VAT is 20% of the £50 net but only 16.67% of the £60 gross. That's why you divide by 1.20 to reverse it.
-
-**What's the difference between VAT and GST?**
-None mathematically — both are percentage consumption taxes added to a price. "VAT" is used in the UK, EU and many countries; "GST" is the name in Australia, New Zealand, India, Singapore and Canada. Use the same add/remove formulas with the local rate.
-
-**What VAT rate should I use?**
-Your country's current standard rate, unless the item qualifies for a reduced or zero rate. Because rates and categories change, verify the official current rate rather than relying on a remembered figure.
-
-**How do I find the VAT included in a total?**
-Divide the total by 1 plus the rate to get the net, then subtract that from the total. For £240 at 20%: net = £240 ÷ 1.20 = £200, so VAT = £40.
-
-**Is the VAT calculator private?**
-Yes — it computes entirely in your browser and uploads nothing, so you can price-check invoices and quotes without sending figures to a server. It also works offline once loaded.
+*Related: the [percentage guide](/blog/percentage-guide/) covers the reverse-percentage arithmetic behind removing VAT, and [markup vs margin](/blog/markup-vs-margin-guide/) explains the related pricing maths.*

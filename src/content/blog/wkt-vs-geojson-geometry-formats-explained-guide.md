@@ -1,6 +1,7 @@
 ---
 title: "WKT vs GeoJSON: Two Ways to Write a Geometry (and How to Convert)"
-description: "WKT and GeoJSON both describe points, lines and polygons, but one is compact text for databases and the other is JSON for web maps. Here's how each works, the coordinate-order gotcha, and how to convert between them in your browser."
+seoTitle: 'WKT vs GeoJSON: Two Ways to Write a Geometry'
+description: "WKT vs GeoJSON: both describe points, lines and polygons, but one is compact text for databases and one is JSON for web maps — plus how to convert."
 pubDate: 2026-08-03
 updatedDate: 2026-08-23
 archetype: explainer
@@ -86,7 +87,7 @@ Neither is "better" — they are optimised for different destinations, and most 
 
 ## WKT: compact text for databases
 
-**Well-Known Text** is an OGC standard: a geometry type keyword followed by parenthesised coordinates.
+**[Well-Known Text](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry)** is an OGC standard: a geometry type keyword followed by parenthesised coordinates.
 
 ```
 POINT (30 10)
@@ -114,7 +115,7 @@ face you see in a query.
 
 ## GeoJSON: JSON for the web
 
-**GeoJSON** (RFC 7946) expresses the same geometries as JSON objects, which is why every web-mapping
+**GeoJSON** ([RFC 7946](https://datatracker.ietf.org/doc/html/rfc7946)) expresses the same geometries as JSON objects, which is why every web-mapping
 library speaks it. It also adds a layer WKT lacks: a **Feature** wraps a geometry with a `properties`
 object, and a **FeatureCollection** groups many Features — so GeoJSON can carry both the shape *and* its
 data.

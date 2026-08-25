@@ -1,6 +1,7 @@
 ---
 title: "What Is a Snowflake ID? How Discord and Twitter Hide a Timestamp in Every ID"
-description: "A Discord or Twitter/X ID is a 64-bit Snowflake with the creation time baked in. Here's how the bits are laid out, why the epoch matters, and how to decode any ID's timestamp in your browser."
+seoTitle: 'What Is a Snowflake ID? Discord & Twitter IDs'
+description: "A Discord or Twitter/X ID is a 64-bit Snowflake with the creation time baked in — how the bits are laid out, why the epoch matters, and how to decode one."
 pubDate: 2026-08-02
 updatedDate: 2026-08-23
 archetype: explainer
@@ -60,7 +61,7 @@ be **unique**, **generated without a central coordinator**, and ideally **sortab
 UUID is unique but tells you nothing and doesn't sort. An auto-incrementing database counter sorts but
 needs one central authority handing out numbers — a bottleneck.
 
-The Snowflake format (originally from Twitter) threads the needle: pack a timestamp, a machine
+The [Snowflake format](https://en.wikipedia.org/wiki/Snowflake_ID) (originally from Twitter) threads the needle: pack a timestamp, a machine
 identifier, and a small counter into one 64-bit integer. Because the timestamp is in the high bits, IDs
 generated later are always numerically larger — so sorting by ID is sorting by time — and because each
 machine has its own ID and its own counter, two servers never clash even within the same millisecond.
@@ -94,7 +95,7 @@ major services do it," not a single spec everyone follows.
 
 ## The epoch: why the same number decodes to different dates
 
-The timestamp doesn't count from the Unix epoch (1970). Each platform counts from its **own** epoch:
+The timestamp doesn't count from the [Unix epoch](/blog/unix-timestamps-guide/) (1970). Each platform counts from its **own** epoch:
 
 | Service | Epoch (UTC) | Epoch in ms |
 |---|---|---|

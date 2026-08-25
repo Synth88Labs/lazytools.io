@@ -1,6 +1,7 @@
 ---
 title: "Reverse Complement of DNA: The Rule, the Steps, and Why Direction Matters"
-description: "The reverse complement of ATGC is GCAT — complement each base (A↔T, G↔C), then reverse to read 5′→3′. Why it's not the same as the complement, how translation and transcription differ, and why you shouldn't paste sequences into a chatbot."
+seoTitle: 'Reverse Complement of DNA: The Rule & Steps'
+description: "The reverse complement of ATGC is GCAT — complement each base (A↔T, G↔C), then reverse to read 5′→3′. How it differs from the complement."
 pubDate: 2026-07-10
 updatedDate: 2026-08-23
 archetype: explainer

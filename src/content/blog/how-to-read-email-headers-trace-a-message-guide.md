@@ -1,6 +1,7 @@
 ---
 title: "How to Read Email Headers and Trace a Message's Path"
-description: "Every email carries a hidden trail of headers showing exactly which servers handled it and whether it passed SPF, DKIM and DMARC. Here's how to read them, spot a spoof, and analyze the delivery path in your browser."
+seoTitle: 'How to Read Email Headers & Trace a Message'
+description: "Email headers show which servers handled a message and whether it passed SPF, DKIM and DMARC. How to read them, spot a spoof, and trace the path."
 pubDate: 2026-08-03
 updatedDate: 2026-08-23
 archetype: explainer
@@ -117,7 +118,7 @@ on next by checking authentication.
 
 ## SPF, DKIM, DMARC: is it really from who it says?
 
-Because the visible **From** line is trivially forgeable, mail relies on three checks, and the receiving
+Because the visible **From** line is trivially forgeable, mail relies on three checks ([SPF, DKIM and DMARC](https://en.wikipedia.org/wiki/DMARC)), and the receiving
 server records their results in an **`Authentication-Results`** header:
 
 | Check | What it proves | Common results |

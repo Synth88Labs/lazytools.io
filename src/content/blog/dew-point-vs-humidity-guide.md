@@ -1,6 +1,7 @@
 ---
 title: "Dew Point vs Relative Humidity: Why 100% Humidity Can Feel Fine and 50% Can Feel Awful"
-description: "Relative humidity depends on temperature, so it tells you almost nothing about comfort. Dew point measures the actual moisture in the air. Here's the comfort scale, why sweat is the mechanism, and why 100% RH at 30°F feels dry."
+seoTitle: 'Dew Point vs Relative Humidity Explained'
+description: "Dew point measures actual moisture; relative humidity depends on temperature. Why 100% humidity can feel dry and 50% can feel muggy, plus the comfort scale."
 pubDate: 2026-07-18
 updatedDate: 2026-07-18
 archetype: explainer
@@ -30,7 +31,7 @@ faqs:
 draft: false
 ---
 
-**Relative humidity is a percentage *of what the air could hold at that temperature* — so it moves when the temperature moves, even if the moisture doesn't.** Dew point measures the actual amount of water vapour in the air, and it doesn't care what the thermometer says. That's why a 30°F morning at 100% relative humidity feels crisp and dry, while an 80°F afternoon at just 50% feels sticky and oppressive. Meteorologists quote dew point for comfort because it's the number that actually tracks how the air feels.
+**Relative humidity is a percentage *of what the air could hold at that temperature* — so it moves when the temperature moves, even if the moisture doesn't.** Dew point measures the actual amount of water vapour in the air, and it doesn't care what the thermometer says. That's why a 30°F morning at 100% relative humidity feels crisp and dry, while an 80°F afternoon at just 50% feels sticky and oppressive. [Meteorologists](https://www.weather.gov/) quote dew point for comfort because it's the number that actually tracks how the air feels.
 
 <aside class="key-takeaways">
 
@@ -106,26 +107,3 @@ RH isn't useless — it's just the wrong tool for outdoor comfort. It's the corr
 - **Mould and condensation risk** — mould growth tracks surface RH
 - **Musical instruments, wood, paper and artwork** — all respond to RH
 - **Greenhouses and growing** — though growers increasingly use **VPD** (vapour pressure deficit), which combines temperature and humidity into how hard plants must work to transpire
-
-## Frequently asked questions
-
-### What is the difference between dew point and relative humidity?
-Dew point is the temperature at which air becomes saturated — an absolute measure of moisture content. Relative humidity is the percentage of moisture relative to what the air could hold at its current temperature, so it changes as temperature changes even when the moisture doesn't.
-
-### Why does 100% humidity sometimes feel dry?
-Because relative humidity is relative to temperature. At 30°F, saturated air (100% RH) contains very little actual water vapour, so it feels crisp. Warm air at 50% RH can hold far more water in absolute terms and feels much muggier.
-
-### What dew point is uncomfortable?
-Above about 60°F (16°C) starts to feel sticky, 65°F is clearly muggy, and above 70°F (21°C) is oppressive. Dew points of 55°F and below are generally comfortable.
-
-### Why does high humidity make heat dangerous?
-Your body cools by evaporating sweat. When the air already holds a lot of moisture, sweat evaporates poorly, so that cooling mechanism fails. This is why heat index and wet-bulb temperature — which account for humidity — describe heat risk far better than air temperature alone.
-
-### Can dew point be higher than the temperature?
-No. Dew point can equal the air temperature (saturation, 100% relative humidity) but not exceed it. When air cools to its dew point you get condensation — fog, dew, or clouds.
-
-### Does dew point predict the overnight low?
-Roughly, yes. Air struggles to cool much below its dew point because condensation releases latent heat. On a clear, calm night the current dew point is a reasonable first estimate of the morning minimum.
-
-### Should I use relative humidity indoors?
-Yes — indoors, temperature is controlled and RH is the useful measure. Around 30–50% is a common target for comfort, and RH is what governs mould risk and the wellbeing of wood, paper and instruments.

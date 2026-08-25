@@ -1,6 +1,7 @@
 ---
 title: "How to Merge, Split and Rotate PDFs Without Uploading Them Anywhere"
-description: "PDF tools are where people upload their most sensitive documents — contracts, IDs, tax forms. How browser-based merging and splitting works, why it's lossless, and the workflows for the four most common PDF fixes."
+seoTitle: 'Merge, Split & Rotate PDFs Without Uploading'
+description: "Merge, split and rotate PDFs in your browser — nothing uploaded. How local, lossless PDF editing works, and the four most common fixes step by step."
 pubDate: 2026-07-05
 updatedDate: 2026-08-23
 archetype: how-to
@@ -57,7 +58,7 @@ verification, bank statements for applications, medical results, employment cont
 online PDF merger — just upload your files" means *those* files, on someone else's server,
 governed by a privacy policy nobody read, retained for however long their disk cleanup runs.
 
-There's no technical reason for it. The PDF format is a documented, published standard (ISO 32000,
+There's no technical reason for it. The PDF format is a documented, published standard ([ISO 32000](https://en.wikipedia.org/wiki/PDF),
 originally derived from Adobe's specification), and open-source libraries like
 [pdf-lib](https://pdf-lib.js.org) parse and rebuild it entirely in JavaScript — meaning entirely in
 *your browser*. The upload exists for the site's benefit, not the operation's.

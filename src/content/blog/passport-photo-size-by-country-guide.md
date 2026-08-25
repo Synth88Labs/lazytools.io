@@ -1,6 +1,7 @@
 ---
 title: "Passport Photo Size by Country: The Complete Guide (2026)"
-description: "Most countries use the ICAO 35×45 mm photo, the US uses 2×2 inches, and there are real outliers — Spain 26×32, Canada 50×70, China 33×48, Kenya 55×55. The size, background colour and file rules for passport and visa photos worldwide, with a country-by-country table."
+seoTitle: 'Passport Photo Size by Country (2026 Guide)'
+description: "Most countries use the ICAO 35×45 mm photo and the US uses 2×2 inches — passport photo size, background and file rules worldwide, country by country."
 pubDate: 2026-07-10
 updatedDate: 2026-07-10
 archetype: reference
@@ -59,7 +60,7 @@ browser, with the [Photo Size Maker](/photo/).
 Most passport photo questions come down to which of three groups your country is in:
 
 - **The ICAO 35×45 mm group** — the majority of the world, because countries inherit the same
-  biometric-portrait standard (ICAO Document 9303).
+  biometric-portrait standard (ICAO Document 9303, from the [International Civil Aviation Organization](https://www.icao.int/)).
 - **The 2×2 inch square** — the United States (51×51 mm). India *used* to be here but switched to
   35×45 mm in September 2025.
 - **The outliers** — countries with their own size, which is exactly where applications get rejected

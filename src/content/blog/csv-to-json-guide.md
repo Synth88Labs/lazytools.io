@@ -1,6 +1,7 @@
 ---
 title: "CSV to JSON Without the Traps: Quotes, Commas, Semicolons and Typed Values"
-description: "Converting CSV to JSON fails in predictable ways: commas inside quoted fields, semicolon Excel exports, and numbers arriving as strings. How the conversion actually works, both directions, with fixes for every trap."
+seoTitle: 'CSV to JSON: Quotes, Delimiters & Typed Values'
+description: "CSV to JSON fails in predictable ways: quoted commas, semicolon Excel exports, numbers arriving as strings. How the conversion works, with fixes for each trap."
 pubDate: 2026-07-05
 updatedDate: 2026-08-23
 archetype: how-to
@@ -104,7 +105,7 @@ tool demonstrates the case on load.
 `"42"` and `42` are different JSON values, and downstream code cares. Good conversion coerces
 numbers, `true`/`false` and `null` into real types. **The exception is deliberate:** digit strings of
 16+ characters (credit cards, phone numbers, snowflake IDs) stay strings, because JSON numbers ride on
-64-bit floats — anything past `9007199254740991` (JavaScript's `Number.MAX_SAFE_INTEGER`) can no
+[64-bit floats](https://en.wikipedia.org/wiki/Double-precision_floating-point_format) — anything past `9007199254740991` (JavaScript's `Number.MAX_SAFE_INTEGER`) can no
 longer be represented exactly, so `9007199254740993` rounds to `9007199254740992`. If your IDs come
 back altered by any tool, this is why.
 

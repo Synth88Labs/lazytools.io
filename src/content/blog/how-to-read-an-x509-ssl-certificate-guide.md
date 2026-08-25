@@ -1,6 +1,7 @@
 ---
 title: "How to Read an X.509 SSL Certificate: Every Field Explained (PEM, DER and ASN.1)"
-description: "An X.509 certificate looks like a wall of Base64, but it decodes into a handful of readable fields: subject, issuer, validity dates, public key and SAN domains. Here's what each one means and how to decode a PEM certificate in your browser."
+seoTitle: 'How to Read an X.509 SSL Certificate'
+description: "Read an X.509 SSL certificate: it decodes into readable fields — subject, issuer, validity, public key and SAN domains. What each means, decoded locally."
 pubDate: 2026-08-02
 updatedDate: 2026-08-23
 archetype: explainer
@@ -32,8 +33,9 @@ draft: false
 
 **An X.509 certificate looks like an intimidating wall of Base64, but underneath it's just a
 structured record with a handful of readable fields** — who it's for, who signed it, when it expires,
-what key it carries and which domains it covers. Once you know the layout defined by the X.509 standard
-(RFC 5280), the "wall of text" becomes a short, predictable checklist. Here's how to read every field,
+what key it carries and which domains it covers. Once you know the layout defined by the
+[X.509 standard](https://en.wikipedia.org/wiki/X.509) (RFC 5280), the "wall of text" becomes a short,
+predictable checklist. Here's how to read every field,
 and how to decode one with the [X.509 Certificate Decoder](/security/certificate-decoder/).
 
 <aside class="key-takeaways">
@@ -106,8 +108,9 @@ expired `notAfter` nobody was watching. A decoder compares those dates to now an
 certs before they lapse is worth the thirty seconds.
 
 Validity windows have shrunk sharply over the years. Publicly trusted TLS certificates issued today are
-capped at a maximum of about 398 days (roughly 13 months) under the CA/Browser Forum Baseline
-Requirements, down from the multi-year lifetimes common a decade ago, and industry plans are moving the
+capped at a maximum of about 398 days (roughly 13 months) under the
+[CA/Browser Forum](https://cabforum.org/) Baseline Requirements, down from the multi-year lifetimes
+common a decade ago, and industry plans are moving the
 ceiling lower still. The practical lesson is the same either way: renewal is frequent enough that manual
 tracking is unreliable — automate it, and use a quick decode as a spot check.
 
@@ -170,7 +173,8 @@ Common red flags to notice in the same view:
 Reading a certificate is **not** the same as trusting it. A decoder shows you what the certificate
 *claims*. **Verification** is a separate process:
 
-1. Check the **signature** using the issuer's public key.
+1. Check the **signature** using the issuer's public key (the same keyed-verification idea behind an
+   [HMAC](/blog/what-is-hmac-guide/), applied with public-key cryptography).
 2. Build a **chain** from the certificate up to a trusted root CA.
 3. Check **revocation** (CRL or OCSP) to be sure it wasn't cancelled early.
 

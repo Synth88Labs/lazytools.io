@@ -1,6 +1,7 @@
 ---
 title: "How to Test Your Webcam and Mic Before a Call (Privately)"
-description: "'Can you hear me?' wastes the first five minutes of too many calls. Here's how to check your camera and microphone in the browser before you join — and how to do it without any site recording you."
+seoTitle: 'Test Your Webcam and Mic Before a Call'
+description: 'Test your webcam and mic before a call: check your camera preview and microphone level meter in the browser — privately, with nothing recorded.'
 pubDate: 2026-08-06
 updatedDate: 2026-08-23
 archetype: explainer
@@ -154,4 +155,4 @@ outbound data while the preview runs. Privacy you can check beats privacy you're
 The [Webcam & Microphone Test](/productivity/webcam-microphone-test/) shows a live camera preview with its
 resolution and a real-time mic level meter, entirely in your browser — nothing is recorded, saved or
 uploaded, and access ends the moment you press Stop. Run it before your next call so the first thing you
-say isn't "can you hear me?"
+say isn't "can you hear me?" — part of the same [privacy-first approach to everyday tools](/blog/privacy-first-productivity-guide/) where your data never leaves your device.

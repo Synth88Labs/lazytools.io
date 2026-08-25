@@ -1,6 +1,7 @@
 ---
 title: "HEX, RGB, HSL and CMYK: CSS Color Formats Explained (With Conversion Math)"
-description: "#1d87f1 = rgb(29, 135, 241) = hsl(210, 88%, 53%) — the same color in three dialects. How each format works, when to use which, the manual conversion math, and why CMYK never quite matches."
+seoTitle: 'HEX vs RGB vs HSL vs CMYK: CSS Color Formats'
+description: "HEX, RGB and HSL are one color in three dialects — how each CSS format works, when to use which, the conversion math, and why CMYK never quite matches."
 pubDate: 2026-07-05
 updatedDate: 2026-07-05
 archetype: explainer
@@ -52,7 +53,7 @@ of them instantly in the [color converter](/color/color-converter/), or read the
 
 ## The three screen formats, one color model
 
-Everything on screen is additive RGB — three light channels, 0 to 255 each. The formats differ only in
+Everything on screen is [additive RGB](https://en.wikipedia.org/wiki/RGB_color_model) — three light channels, 0 to 255 each. The formats differ only in
 how they *write* those numbers:
 
 | Format | Example | Strength |

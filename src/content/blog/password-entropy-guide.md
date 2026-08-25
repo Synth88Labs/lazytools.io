@@ -1,6 +1,7 @@
 ---
 title: "How Strong Is a Password, Really? Entropy Explained (Length Beats Complexity)"
-description: "Password strength is measured in entropy bits: length × log₂(alphabet size). Why a 16-character lowercase password beats an 8-character symbol soup, what NIST actually recommends, and how to generate passwords that hold up."
+seoTitle: 'Password Entropy: Why Length Beats Complexity'
+description: "Password entropy = length × log₂(alphabet size). Why a 16-char lowercase password beats an 8-char symbol soup, and what NIST actually recommends."
 pubDate: 2026-07-05
 updatedDate: 2026-07-05
 archetype: explainer

@@ -1,5 +1,6 @@
 ---
 title: "How Many Calories Did I Burn? (MET Formula)"
+seoTitle: 'How Many Calories Did I Burn? MET Formula'
 description: "How many calories did I burn? Per minute it's MET × 3.5 × weight(kg) ÷ 200 — the ACSM formula. Estimate walking, running or cycling free, in your browser."
 pubDate: 2026-07-28
 updatedDate: 2026-07-28
@@ -51,7 +52,7 @@ draft: false
 
 ## The MET calorie formula
 
-Every estimate on this page comes from one equation, the standard published by the American College of Sports Medicine (ACSM):
+Every estimate on this page comes from one equation, the standard published by the [American College of Sports Medicine (ACSM)](https://www.acsm.org/):
 
 **calories per minute = MET × 3.5 × body weight in kg ÷ 200**
 
@@ -67,7 +68,7 @@ You don't need to memorise any of it. The point of knowing the formula is trust:
 
 ## What is a MET?
 
-MET stands for **metabolic equivalent of task**. It answers a single question: how many times more energy does this activity use than sitting quietly?
+MET stands for **[metabolic equivalent of task](https://en.wikipedia.org/wiki/Metabolic_equivalent_of_task)**. It answers a single question: how many times more energy does this activity use than sitting quietly?
 
 Sitting at rest is defined as **1 MET**. Everything else is measured against it. Walking the dog might be around 3 METs — three times resting energy. A brisk run can be 9 or 10 METs. An all-out effort climbs past 12. The bigger the MET, the more calories per minute, because the formula multiplies straight through.
 

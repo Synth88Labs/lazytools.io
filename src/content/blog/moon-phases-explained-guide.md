@@ -1,6 +1,7 @@
 ---
 title: "Moon Phases Explained: Why There Are 8, Why They Take 29.5 Days, and Why There's No Dark Side"
-description: "The Moon's phases come from the changing angle between the Sun, Earth and Moon — not from Earth's shadow. Here's the 8-phase cycle, why the synodic month is 29.5 days rather than 27.3, and why the far side isn't dark."
+seoTitle: 'Moon Phases Explained: The 8-Phase Cycle'
+description: "The Moon's phases come from the Sun–Earth–Moon angle, not Earth's shadow — the 8-phase cycle, why the month is 29.5 days, and why there's no dark side."
 pubDate: 2026-07-18
 updatedDate: 2026-07-18
 archetype: explainer
@@ -97,7 +98,7 @@ That 29.53-day figure is also why lunar calendar months are 29 or 30 days, and w
 
 ## Tidal locking: the same face, always
 
-The Moon rotates — it just does so at precisely the rate that keeps one face toward us. One rotation takes exactly as long as one orbit. That's **tidal locking**, and it isn't a coincidence: over hundreds of millions of years Earth's gravity raised a slight bulge on the Moon and dragged on it, gradually braking its spin until the rotation matched the orbit and the tugging stopped.
+The Moon rotates — it just does so at precisely the rate that keeps one face toward us. One rotation takes exactly as long as one orbit. That's [**tidal locking**](https://en.wikipedia.org/wiki/Tidal_locking), and it isn't a coincidence: over hundreds of millions of years Earth's gravity raised a slight bulge on the Moon and dragged on it, gradually braking its spin until the rotation matched the orbit and the tugging stopped.
 
 It's a common outcome in the Solar System — most large moons are tidally locked to their planets.
 
@@ -111,26 +112,3 @@ The far side receives just as much sunlight as the near side. In fact:
 The far side has a two-week day and a two-week night, exactly like the near side. What makes it distinct is that it's permanently **hidden from Earth**, not permanently dark. It stayed genuinely unseen until a Soviet probe photographed it in 1959.
 
 (It's also visibly different: the far side has far fewer of the large dark plains — the *maria* — that form the "man in the Moon" pattern on the near side.)
-
-## Frequently asked questions
-
-### Why does the Moon have phases?
-Because the angle between the Sun, Earth and Moon changes as the Moon orbits. The Sun always lights half the Moon; the phase is simply how much of that lit half is turned toward Earth. It is not caused by Earth's shadow.
-
-### What is the difference between waxing and waning?
-Waxing means the illuminated part is growing, from new moon toward full — best seen in the evening sky. Waning means it's shrinking, from full back toward new — best seen in the early morning.
-
-### How long is one full moon cycle?
-29.53 days, the synodic month. That's longer than the Moon's 27.3-day orbit because Earth also moves around the Sun during that time, so the Moon needs about two extra days to return to the same Sun–Earth–Moon alignment.
-
-### Why do we always see the same side of the Moon?
-The Moon is tidally locked: it rotates exactly once per orbit, so the same face stays pointed at us. Earth's gravity gradually slowed the Moon's original faster spin until the two periods matched.
-
-### Is there really a dark side of the Moon?
-No. The far side gets as much sunlight as the near side — at new moon it's the far side that's fully lit. It's the *far* side because it's permanently hidden from Earth, not because it's dark.
-
-### Why is a quarter moon half lit?
-Because "quarter" describes the point in the cycle, not the illumination. First quarter is one quarter of the way through the 29.5-day cycle, at which point we see half of the sunlit half — a disc that looks 50% lit.
-
-### Can you see the Moon during the day?
-Often, yes. Except near new moon (when it's too close to the Sun) the Moon is above the horizon during daylight for part of its cycle. A first-quarter moon is up all afternoon, and waning gibbous moons are commonly visible on morning commutes.

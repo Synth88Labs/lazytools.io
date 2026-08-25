@@ -1,5 +1,6 @@
 ---
 title: "How Long to Cook and Thaw a Turkey (By Weight)"
+seoTitle: "Turkey Cooking & Thaw Time by Weight"
 description: "Roast a turkey at 325°F for about 13 minutes per pound unstuffed (15 stuffed), and thaw it in the fridge about 24 hours per 4–5 pounds. Here are the timings by weight — but the only real doneness test is 165°F."
 pubDate: 2026-07-28
 updatedDate: 2026-08-23

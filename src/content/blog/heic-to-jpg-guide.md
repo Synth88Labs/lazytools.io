@@ -1,6 +1,7 @@
 ---
 title: "Why iPhone Photos Won't Open on Windows — HEIC Explained (and How to Convert It)"
-description: "iPhones save photos as HEIC — half the size of JPEG, but unreadable on Windows, Android and the web. What HEIC is, why it breaks things, how to convert it privately, and how to make your iPhone shoot JPEG instead."
+seoTitle: "HEIC to JPG: Why iPhone Photos Won't Open"
+description: "HEIC to JPG: why iPhone photos won't open on Windows, Android or the web, and how to convert them privately in your browser (no upload)."
 pubDate: 2026-07-06
 updatedDate: 2026-07-06
 archetype: explainer
@@ -73,7 +74,7 @@ The compression that makes HEIC efficient is also what makes it unreadable in so
 | **Older software** | Photo editors and uploaders from before ~2018 reject it |
 | **Upload forms** | Many reject .heic, expecting .jpg/.png |
 
-The root cause is **patents**. HEVC is covered by a thicket of licensing claims, and building that
+The root cause is **patents**. [HEVC](https://en.wikipedia.org/wiki/High_Efficiency_Video_Coding) is covered by a thicket of licensing claims, and building that
 licensing into every web browser and operating system has been a legal and financial obstacle. By
 contrast, the formats that "just work" — JPEG, PNG, and increasingly WebP — are royalty-free, so
 platforms can support them universally. HEIC's technical merit ran straight into a licensing wall.

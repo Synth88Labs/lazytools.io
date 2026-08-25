@@ -1,6 +1,7 @@
 ---
 title: "What Day of the Year Is It? Ordinal Dates and Leap Years Explained"
-description: "The day-of-year is the ordinal count from January 1 — day 60 is March 1 in a common year, day 61 in a leap year. Here's how ordinal dates, leap years and business-day math work, with tools that run in your browser."
+seoTitle: 'Day of the Year: Ordinal Dates & Leap Years'
+description: "The day-of-year is the ordinal count from January 1: day 60 is March 1, day 61 in a leap year. How ordinal dates, leap years and business days work."
 pubDate: 2026-08-01
 updatedDate: 2026-08-23
 archetype: explainer
@@ -53,7 +54,7 @@ codes, leap-year handling, and working out weekdays and business-day deadlines. 
 
 ## Ordinal dates: counting from January 1
 
-An **ordinal date** replaces "month and day" with a single number: how many days into the year you
+An [**ordinal date**](https://en.wikipedia.org/wiki/Ordinal_date) replaces "month and day" with a single number: how many days into the year you
 are. January 1 is day 1; the count climbs to 365 (or 366) on December 31. The pivot is February:
 
 | Date | Common year | Leap year |
@@ -127,7 +128,7 @@ Watch out for a naming clash:
 - **Ordinal day-of-year** — the day 1–366 number above, often zero-padded (`2024045` = day 45 of
   2024). This is what a warehouse or a spreadsheet usually means by "Julian date," and it's what the
   [Day of the Year Calculator](/time/day-of-year-calculator/) gives you.
-- **Astronomical Julian Day Number** — a continuous count of days since January 1, 4713 BC, used in
+- **[Astronomical Julian Day Number](https://en.wikipedia.org/wiki/Julian_day)** — a continuous count of days since January 1, 4713 BC, used in
   astronomy (today is around 2.46 million). Completely different number, same word.
 
 If someone hands you a 5- or 7-digit "Julian date" for a product lot, they almost always mean the

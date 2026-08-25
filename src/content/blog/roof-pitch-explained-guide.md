@@ -1,6 +1,7 @@
 ---
 title: "Roof Pitch Explained: 4/12 in Degrees, Walkability, and Minimum Slopes by Material"
-description: "Roof pitch is rise per 12 inches of run — a 4/12 roof rises 4 inches every 12 across, which is 18.4°. Here's the pitch-to-degrees chart, which roofs are safe to walk, and the minimum slope asphalt shingles and tile actually require."
+seoTitle: 'Roof Pitch Explained: 4/12 in Degrees & Slopes'
+description: "Roof pitch is rise per 12 of run — a 4/12 roof is 18.4°. The pitch-to-degrees chart, which roofs are walkable, and minimum slopes by material."
 pubDate: 2026-07-17
 updatedDate: 2026-07-17
 archetype: explainer

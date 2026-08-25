@@ -1,6 +1,7 @@
 ---
 title: "How to Password-Protect a PDF (or Remove a Password) Without Uploading It"
-description: "PDF encryption uses AES — but 'free online' unlock tools ask you to upload the document and its password together, the two things you should never send anywhere. How PDF passwords work and how to add or remove them locally."
+seoTitle: 'Password-Protect a PDF (or Remove a Password)'
+description: "PDF encryption uses AES, but online unlock tools want your document and its password together. How PDF passwords work and how to add or remove them locally."
 pubDate: 2026-07-06
 updatedDate: 2026-07-06
 archetype: how-to
@@ -54,7 +55,8 @@ the password ever leaves your device.
 ## How PDF passwords actually work
 
 PDF encryption isn't a flimsy add-on — it's part of the format standard (ISO 32000), and modern
-PDFs use **AES**, up to **AES-256** in PDF 2.0. When a PDF is protected, its content streams are
+PDFs use **[AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)**, up to **AES-256** in
+PDF 2.0. When a PDF is protected, its content streams are
 encrypted; a reader must derive the key from your password before it can render a single page.
 
 The subtlety that confuses everyone is that PDFs have **two** kinds of password:

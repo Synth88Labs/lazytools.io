@@ -1,6 +1,7 @@
 ---
 title: "Elastic vs Inelastic Collisions: What's Conserved (and Why)"
-description: "Momentum is conserved in every collision — but kinetic energy is only conserved in an elastic one. Here's the difference, the formulas for the final velocities, where the 'lost' energy goes, and the coefficient of restitution that ties it all together."
+seoTitle: "Elastic vs Inelastic Collisions: What's Conserved"
+description: "Momentum is conserved in every collision, but kinetic energy only in an elastic one. The difference, final-velocity formulas, and coefficient of restitution."
 pubDate: 2026-07-12
 updatedDate: 2026-08-23
 archetype: explainer
@@ -103,7 +104,7 @@ It feels strange that one conserved quantity can vanish while another is untouch
 
 ## The dial between them: coefficient of restitution
 
-Real collisions live between the two extremes, and the **coefficient of restitution e** measures where:
+Real collisions live between the two extremes, and the [**coefficient of restitution e**](https://en.wikipedia.org/wiki/Coefficient_of_restitution) measures where:
 
 ```
 e = (relative speed after) / (relative speed before)

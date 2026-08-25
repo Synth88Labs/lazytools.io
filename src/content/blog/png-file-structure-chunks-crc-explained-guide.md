@@ -1,6 +1,7 @@
 ---
 title: "Inside a PNG File: Chunks, CRCs and Hidden Metadata"
-description: "A PNG is a signature followed by a stream of 'chunks', each carrying a CRC-32 to catch corruption. Here's how the format is structured, what each chunk does, where hidden metadata lives, and how to inspect any PNG in your browser."
+seoTitle: 'Inside a PNG: Chunks, CRCs & Metadata'
+description: "A PNG is a signature followed by labelled chunks, each with a CRC-32 to catch corruption. How the format is structured and where hidden metadata lives."
 pubDate: 2026-08-04
 updatedDate: 2026-08-23
 archetype: explainer
@@ -56,7 +57,7 @@ dimensions, DPI and hidden metadata live, and how PNG guarantees integrity. Here
 
 ## Signature, then chunks
 
-Every PNG starts with the same **8-byte signature** (`89 50 4E 47 0D 0A 1A 0A`) — the `PNG` in there is
+Every PNG starts with the same **8-byte signature** (`89 50 4E 47 0D 0A 1A 0A`), fixed by the [PNG specification](https://www.w3.org/) — the `PNG` in there is
 visible in the middle three bytes, and the surrounding bytes are chosen deliberately: the leading `0x89`
 has the high bit set to catch systems that strip it, the `0D 0A` / `0D 0A 1A 0A` sequence catches the
 classic corruption where a file transfer converts line endings, and the `1A` byte stops output early on
@@ -156,7 +157,8 @@ and `Comment`.
 A PNG exported from a photo editor often carries a **Software** tag naming the exact application and
 version, and may include an author, description or comment. Screenshots and AI-generated images can carry
 tool names or generation parameters here too. If you care about what a shared image discloses, those
-chunks are worth a look — and stripping them before publishing is worth considering. Note that physical
+chunks are worth a look — and stripping them before publishing is worth considering, much like the
+camera details a photo can carry in its [EXIF metadata](/blog/exif-metadata-guide/). Note that physical
 resolution (DPI) is stored separately in the `pHYs` chunk as pixels-per-metre, so a "300 DPI" export
 actually stores roughly 11811 pixels per metre.
 

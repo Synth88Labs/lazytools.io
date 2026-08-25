@@ -1,6 +1,7 @@
 ---
 title: "When Is Your Fertile Window? How to Estimate Ovulation"
-description: "Ovulation happens about 14 days before your next period, and the fertile window is the roughly 6 days ending on ovulation day. Here's how to estimate it from your cycle, why it isn't always 'day 14', and the limits of the calendar method."
+seoTitle: 'Fertile Window: How to Estimate Ovulation'
+description: "Your fertile window is the ~6 days ending on ovulation, which falls about 14 days before your next period. How to estimate it from your cycle length."
 pubDate: 2026-07-28
 updatedDate: 2026-07-28
 archetype: explainer
@@ -50,7 +51,7 @@ draft: false
 
 ## Why 14 days *before* the next period
 
-A menstrual cycle has two phases, and understanding the difference between them is the whole trick to estimating ovulation. Day 1 is the first day of bleeding.
+A [menstrual cycle](https://en.wikipedia.org/wiki/Menstrual_cycle) has two phases, and understanding the difference between them is the whole trick to estimating ovulation. Day 1 is the first day of bleeding.
 
 - The **follicular phase** runs from the start of your period until ovulation. This is where a follicle matures and estrogen rises. Its length **varies** — between people, and from month to month in the same person. This is the part of the cycle that stretches or shrinks when your total cycle length changes.
 - The **luteal phase** runs from ovulation to the start of your next period. After the egg is released, the ruptured follicle becomes the corpus luteum, which produces progesterone on a fairly fixed schedule. This phase is much more **consistent**, commonly around 12–14 days.
@@ -125,23 +126,3 @@ Each method answers a slightly different question — predict versus confirm —
 **Important:** this is general information, not medical advice, and the calendar method is **not a reliable form of contraception** — it doesn't account for cycle variability or sperm survival well enough to prevent pregnancy. If you're trying to conceive and it isn't happening after several months, if your cycles are very irregular or you rarely get a period, or if you're trying to avoid pregnancy, speak with a healthcare provider about the options that fit your situation.
 
 *Your cycle dates are personal data. A local calculator keeps them on your device.*
-
-## FAQ
-
-**When am I most fertile?**
-In the roughly 6-day window ending on ovulation day — the 5 days before plus the day of ovulation — with the peak in the 2–3 days right before and including ovulation. Enter your last period and cycle length in the [calculator](/calc/ovulation-calculator/) to see the window.
-
-**How do I know when I ovulate?**
-Estimate it as about 14 days before your next expected period (day C − 14 for a cycle of length C). For confirmation, use ovulation predictor kits, basal body temperature, or cervical-mucus changes.
-
-**Is ovulation always on day 14?**
-No — that's only true for a 28-day cycle. Ovulation is about 14 days before your *next* period, so a longer cycle ovulates later and a shorter one earlier. Day 14 is a common case, not a rule.
-
-**Why is the fertile window several days, not one?**
-Because sperm can survive up to about 5 days and the egg lives about a day. Intercourse in the days before ovulation can still lead to conception, which stretches the fertile window to roughly six days.
-
-**Can I use an ovulation calculator as birth control?**
-No. The calendar method doesn't reliably prevent pregnancy because it can't account for cycle variability and sperm survival. If you're avoiding pregnancy, use a proven contraceptive method and talk to a healthcare provider.
-
-**How accurate is a calendar ovulation estimate?**
-It's a reasonable approximation for regular cycles but can be off by days if your cycle varies. Combining it with ovulation tests or temperature tracking gives a more accurate picture.

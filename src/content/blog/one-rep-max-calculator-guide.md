@@ -1,5 +1,6 @@
 ---
 title: "How to Calculate Your One-Rep Max (1RM)"
+seoTitle: 'One-Rep Max: How to Calculate 1RM (Epley)'
 description: "Estimate your one-rep max from a near-failure set with the Epley formula instead of risky max testing. Worked examples, %1RM by goal — free, in your browser."
 pubDate: 2026-07-28
 updatedDate: 2026-07-28

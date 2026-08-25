@@ -1,6 +1,7 @@
 ---
 title: "Readability Scores Explained: Flesch Reading Ease, Grade Level, and How to Improve Them"
-description: "Flesch Reading Ease scores text 0–100 (higher is easier); Flesch-Kincaid, Gunning Fog, SMOG, Coleman-Liau and ARI give a US grade level. What the scores mean, the formulas behind them, what to aim for, and how shorter sentences and simpler words move the numbers."
+seoTitle: 'Readability Scores Explained: Flesch & Grade Level'
+description: "Flesch Reading Ease scores text 0–100 (higher is easier); grade-level formulas give a US grade — what the scores mean and how to improve them."
 pubDate: 2026-07-11
 updatedDate: 2026-08-23
 archetype: explainer
@@ -57,7 +58,7 @@ long words you use. Score any text against all six, with the counts shown, in th
 
 ## Flesch Reading Ease: the 0–100 score
 
-The best-known readability measure runs from 0 to 100, and — unlike the others — **higher means
+The best-known readability measure — the [Flesch–Kincaid readability tests](https://en.wikipedia.org/wiki/Flesch%E2%80%93Kincaid_readability_tests) — runs from 0 to 100, and, unlike the others, **higher means
 easier**:
 
 > **Reading Ease = 206.835 − 1.015 × (words ÷ sentences) − 84.6 × (syllables ÷ words)**

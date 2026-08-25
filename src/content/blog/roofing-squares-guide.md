@@ -1,6 +1,7 @@
 ---
 title: "How Many Shingles Do I Need? Roofing Squares and Pitch Explained"
-description: "A roof is bigger than its footprint because it slopes. Multiply the footprint by the slope factor √(1 + (rise/run)²), convert to roofing squares (1 square = 100 sq ft), then to shingle bundles (usually 3 per square). Worked examples and how much to add for waste."
+seoTitle: 'How Many Shingles Do I Need? Squares & Pitch'
+description: "How many shingles you need: multiply footprint by the slope factor, convert to roofing squares (100 sq ft each), then ~3 bundles per square."
 pubDate: 2026-07-11
 updatedDate: 2026-08-23
 archetype: explainer
@@ -87,7 +88,7 @@ within a bundle or two on most houses.
 
 ### 2. Roof area → squares
 
-Roofing is sold by the **square**, where **1 square = 100 sq ft** (≈ 9.29 m²). Divide your roof area by
+Roofing is sold by the **square**, where **1 [square](https://en.wikipedia.org/wiki/Square_%28unit%29) = 100 sq ft** (≈ 9.29 m²). Divide your roof area by
 100:
 
 > squares = roof area (sq ft) ÷ 100

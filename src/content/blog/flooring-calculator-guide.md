@@ -1,6 +1,7 @@
 ---
 title: "How Many Boxes of Flooring Do I Need?"
-description: "How many boxes of flooring do I need? Add a waste allowance to your room area, divide by the coverage per box, and round up. Free flooring calculator, in your browser."
+seoTitle: 'How Many Boxes of Flooring Do I Need? Calculator'
+description: "How many boxes of flooring do I need? Add a waste allowance to your room area, divide by the coverage per box, and round up. Free calculator in your browser."
 pubDate: 2026-07-28
 updatedDate: 2026-07-28
 archetype: how-to

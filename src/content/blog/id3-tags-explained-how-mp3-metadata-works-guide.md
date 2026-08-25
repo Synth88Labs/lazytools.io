@@ -1,6 +1,7 @@
 ---
 title: "ID3 Tags Explained: How MP3 Metadata Actually Works"
-description: "The title, artist and album shown for an MP3 come from ID3 tags embedded in the file. Here's how ID3v1 and ID3v2 differ, why tags sometimes show garbled text, and how to read any MP3's tags and bitrate in your browser."
+seoTitle: 'ID3 Tags Explained: How MP3 Metadata Works'
+description: "ID3 tags hold an MP3's title, artist and album. How ID3v1 and ID3v2 differ, why tags show garbled text, and how to read any MP3's tags in-browser."
 pubDate: 2026-08-03
 updatedDate: 2026-08-23
 archetype: explainer
@@ -56,8 +57,8 @@ or disagree between apps. Here's the full breakdown, plus how to read any file's
 ## What ID3 tags are
 
 An MP3 file is mostly compressed audio frames, but it also carries **metadata** describing the track:
-title, artist, album, year, genre, track number, cover art and more. That metadata is stored in **ID3
-tags** (the name comes from "IDentify an MP3"). Without them, your library would be a wall of filenames.
+title, artist, album, year, genre, track number, cover art and more. That metadata is stored in **[ID3
+tags](https://en.wikipedia.org/wiki/ID3)** (the name comes from "IDentify an MP3"). Without them, your library would be a wall of filenames.
 There are two generations of the format, and a single file often carries both at once — ID3v2 at the
 front and ID3v1 at the back — which is exactly why two apps can occasionally show slightly different
 details for the same song.
@@ -122,7 +123,7 @@ Each ID3v2 text frame begins with an **encoding byte** that declares how the fol
 | 3 | UTF-8 | 2.4 only |
 
 If a player ignores that byte and just guesses an encoding, non-Latin or accented text becomes
-**mojibake** — the classic example is "Café" turning into "CafÃ©" when UTF-8 bytes are misread as
+**[mojibake](https://en.wikipedia.org/wiki/Mojibake)** — the classic example is "Café" turning into "CafÃ©" when UTF-8 bytes are misread as
 Latin-1. Cyrillic, Greek, Japanese and Chinese titles suffer the worst, sometimes collapsing into rows
 of question marks. A reader that honours the declared encoding byte shows the text exactly as it was
 written. This mismatch is the single most common cause of "weird characters" in music libraries, and it
@@ -165,4 +166,5 @@ entirely in your browser: drop in an `.mp3` and it shows the title, artist, albu
 — decoded in the correct character set, so no mojibake — plus the bitrate, sample rate, channel mode and
 duration read straight from the frame header. The file never leaves your device. It reads tags; it
 doesn't change them, so it's a safe way to inspect a library and diagnose exactly why a stubborn track
-displays the way it does.
+displays the way it does. For how lossless and other formats store the same kind of metadata, see
+[FLAC vs MP3 vs WAV](/blog/flac-vs-mp3-wav-audio-metadata-explained-guide/).

@@ -1,6 +1,7 @@
 ---
 title: "IPv6 Crossed 50%: A Practical Subnetting Guide for the Dual-Stack Era"
-description: "IPv6 now carries the majority of traffic to major services. What that means in practice: how IPv6 addresses are structured, why every LAN is a /64, how /48 and /56 allocations work, and the habits to unlearn from IPv4 subnetting."
+seoTitle: 'IPv6 Subnetting: A Practical Dual-Stack Guide'
+description: "IPv6 subnetting made simple: why every LAN is a /64, how /48 and /56 allocations work, and the IPv4 habits to unlearn now that IPv6 is the majority."
 pubDate: 2026-07-07
 updatedDate: 2026-07-07
 archetype: explainer

@@ -1,6 +1,7 @@
 ---
 title: "Why Your First Mortgage Payment Is Almost All Interest"
-description: "On a $300k loan at 6%, payment #1 is $1,500 interest and just $299 principal — because interest is charged on the balance you still owe, and early on you owe nearly everything. How amortization works, why total interest can exceed the loan, and how extra principal shortens it."
+seoTitle: 'Mortgage Amortization: Why Payment #1 Is Interest'
+description: "Mortgage amortization explained: why payment #1 on a $300k loan at 6% is $1,500 interest and just $299 principal, and how extra principal shortens the loan."
 pubDate: 2026-07-10
 updatedDate: 2026-07-10
 archetype: explainer

@@ -1,6 +1,7 @@
 ---
 title: "How to Read a Resistor Color Code (Bands to Ohms)"
-description: "A resistor's colored bands are a compact code: the first two are digits, the next is a ×10ⁿ multiplier, and the last is tolerance. Learn the color values, how to tell which end to start from, and how 4, 5 and 6-band resistors differ — with a worked example."
+seoTitle: 'Resistor Color Code: How to Read the Bands'
+description: "Resistor color code: the first two bands are digits, the next a ×10ⁿ multiplier, the last tolerance. Color values, which end to start from, and 4/5/6-band."
 pubDate: 2026-07-12
 updatedDate: 2026-08-23
 archetype: explainer
@@ -32,7 +33,7 @@ faqs:
 draft: false
 ---
 
-**A resistor is too small to print a number on, so its value is written in colored bands** — a code that looks cryptic until you know the trick. Once you do, you can read any resistor at a glance: the first bands are digits, the next multiplies them, and the last tells you how precise it is.
+**A resistor is too small to print a number on, so its value is written in [colored bands](https://en.wikipedia.org/wiki/Electronic_color_code)** — a code that looks cryptic until you know the trick. Once you do, you can read any resistor at a glance: the first bands are digits, the next multiplies them, and the last tells you how precise it is.
 
 <aside class="key-takeaways">
 

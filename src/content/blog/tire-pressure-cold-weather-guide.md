@@ -1,6 +1,7 @@
 ---
 title: "Why Your Tire Pressure Light Comes On in Winter (1 PSI per 10°F, Explained)"
-description: "Tires lose roughly 1 PSI for every 10°F the temperature drops — so an overnight cold snap can trigger your TPMS light with no leak at all. Here's the physics, when 'cold' pressure actually means cold, and why you shouldn't overinflate to compensate."
+seoTitle: 'Tire Pressure in Cold Weather: 1 PSI per 10°F'
+description: "Tires lose about 1 PSI for every 10°F the temperature drops, so a cold snap can trigger your TPMS light with no leak — the physics and what to do."
 pubDate: 2026-07-18
 updatedDate: 2026-07-18
 archetype: explainer
@@ -67,7 +68,7 @@ Run your own numbers with the [tire pressure temperature calculator](/automotive
 
 ## Why the warning light picks winter
 
-A Tire Pressure Monitoring System triggers its warning at roughly **25% below** the vehicle's recommended pressure. On a 35 PSI placard that's about 26 PSI.
+A [Tire Pressure Monitoring System](https://www.nhtsa.gov/) triggers its warning at roughly **25% below** the vehicle's recommended pressure. On a 35 PSI placard that's about 26 PSI.
 
 Now stack the effects. A tire sitting at 31 PSI in autumn — already a little low, not low enough to warn — meets a 40°F cold snap and drops to about 27 PSI. One more cold night and the light comes on. Nothing failed; a slightly soft tire simply crossed the threshold as the season turned.
 

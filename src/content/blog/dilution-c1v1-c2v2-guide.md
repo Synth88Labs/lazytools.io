@@ -1,6 +1,7 @@
 ---
 title: "C1V1 = C2V2: How to Calculate Any Dilution (with Serial Dilutions)"
-description: "The dilution equation C1V1 = C2V2 conserves solute, so the stock volume you need is V1 = C2V2/C1. To make 100 mL of 1× from a 10× stock: 10 mL stock + 90 mL diluent. How to solve for any unknown, plan a serial dilution, and why units cancel."
+seoTitle: 'C1V1 = C2V2: How to Calculate Any Dilution'
+description: "The dilution equation C1V1 = C2V2 conserves solute, so V1 = C2V2/C1 — to make 100 mL of 1× from a 10× stock, use 10 mL stock plus 90 mL diluent."
 pubDate: 2026-07-10
 updatedDate: 2026-08-23
 archetype: explainer
@@ -131,7 +132,7 @@ and molar stocks you rarely hit those edges.
 ## Serial dilutions and the dilution factor
 
 Sometimes one dilution can't reach the concentration you need accurately (pipetting 1 µL of stock into
-10 L isn't practical). A **serial dilution** solves this by repeating a smaller, fixed fold-dilution
+10 L isn't practical). A **[serial dilution](https://en.wikipedia.org/wiki/Serial_dilution)** solves this by repeating a smaller, fixed fold-dilution
 step by step:
 
 - 1:10, then 1:10 again → 1:100, then again → 1:1000, and so on.

@@ -1,5 +1,6 @@
 ---
 title: "Series vs Parallel: Resistors and Capacitors (and Why They're Opposite)"
+seoTitle: "Series vs Parallel Resistors & Capacitors"
 description: "Resistors in series add; in parallel their reciprocals add (total below the smallest). Capacitors do the exact reverse. The rules, the reason, a memory aid, and worked examples — so you never mix them up again."
 pubDate: 2026-07-11
 updatedDate: 2026-08-23

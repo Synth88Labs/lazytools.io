@@ -1,6 +1,7 @@
 ---
 title: "How to Clean Up Any Messy List: Dedupe, Sort and Fix Broken Text in 4 Steps"
-description: "The repeatable pipeline for messy pasted data: fix broken line breaks, remove duplicates (with the invisible-spaces trap), natural-sort, and pattern-fix with find & replace — each step one click."
+seoTitle: 'Clean Up a Messy List: Dedupe, Sort, Fix Text'
+description: "Clean up any messy list in four steps: fix line breaks, dedupe, natural-sort, and pattern-fix with find & replace — each step one click."
 pubDate: 2026-07-05
 updatedDate: 2026-08-23
 archetype: how-to
@@ -111,7 +112,7 @@ Natural sort reads the run of digits as one number and compares `2` against `10`
 
 Reversing is also available as a standalone line flip in [reverse text](/text/reverse-text/) when you
 only want to invert order without re-sorting. One caution on random shuffle: a *fair* shuffle needs an
-unbiased algorithm (the Fisher–Yates method is the standard one) — naive "sort by random key" schemes
+unbiased algorithm (the [Fisher–Yates method](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle) is the standard one) — naive "sort by random key" schemes
 skew toward some orderings, which matters if the draw has to be defensible.
 
 ## Step 4 — Pattern-fix the leftovers ([find & replace](/text/find-and-replace/))

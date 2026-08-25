@@ -1,5 +1,6 @@
 ---
 title: "How to Crop an Image to Any Aspect Ratio"
+seoTitle: 'How to Crop an Image to Any Aspect Ratio'
 description: "To crop an image, drag a crop box (or type an exact X, Y, width and height) over the part you want to keep and export it. Do it free, in your browser."
 pubDate: 2026-07-28
 updatedDate: 2026-07-28

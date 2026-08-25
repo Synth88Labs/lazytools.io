@@ -1,6 +1,7 @@
 ---
 title: "How Google's Encoded Polyline Algorithm Works (and How to Decode One)"
-description: "That cryptic string of characters a maps API returns for a route is an encoded polyline — a compact way to store a list of coordinates. Here's how the algorithm works step by step, the precision and lat/lng gotchas, and how to decode one in your browser."
+seoTitle: 'Google Encoded Polyline: How to Decode It'
+description: "A Google encoded polyline is a compact string of coordinates. How the algorithm works step by step, the precision and lat/lng gotchas, and how to decode one."
 pubDate: 2026-08-04
 updatedDate: 2026-08-23
 archetype: explainer
@@ -133,7 +134,7 @@ The two formats answer different needs. A polyline is a **transport** format —
 squeezing a route into an API response or a URL. GeoJSON is a **working** format — verbose but
 human-readable, self-describing, and understood natively by nearly every mapping library and GIS tool. A
 common workflow is to receive a polyline from a routing API, decode it once, and keep working in GeoJSON
-from there. Because the polyline throws away everything past the chosen number of decimals, re-encoding
+from there — see [WKT vs GeoJSON geometry formats](/blog/wkt-vs-geojson-geometry-formats-explained-guide/) for how that representation is structured. Because the polyline throws away everything past the chosen number of decimals, re-encoding
 GeoJSON back to a polyline is lossy — expect coordinates to be rounded to the precision you pick.
 
 ## Why deltas make it compact
@@ -141,7 +142,7 @@ GeoJSON back to a polyline is lossy — expect coordinates to be rounded to the 
 The reason the output string is so short is step 2. Because neighbouring points on a route differ by tiny
 amounts, their deltas are small integers, and small integers encode to just one or two characters after
 the zig-zag and base-32 stages. Only the very first point of each coordinate pair is stored at full
-magnitude. It is the same principle as delta-encoding a time series or a changelog: record the changes,
+magnitude. It is the same principle as [delta encoding](https://en.wikipedia.org/wiki/Delta_encoding) a time series or a changelog: record the changes,
 not the absolute values, and let the small numbers keep the payload tiny.
 
 ## Decode or encode one privately

@@ -1,6 +1,7 @@
 ---
 title: "Received an Invoice as an XML File? XRechnung and ZUGFeRD Explained"
-description: "Germany's B2B e-invoicing mandate means invoices now arrive as XRechnung XML or ZUGFeRD hybrid PDFs. What the formats are, why you're getting them, the 2025–2028 timeline, and how to actually read one."
+seoTitle: 'XRechnung & ZUGFeRD: Reading XML E-Invoices'
+description: "XRechnung and ZUGFeRD explained: why Germany's mandate makes B2B invoices arrive as XML, the 2025–2028 timeline, and how to read one on-device."
 pubDate: 2026-07-06
 updatedDate: 2026-07-06
 archetype: explainer

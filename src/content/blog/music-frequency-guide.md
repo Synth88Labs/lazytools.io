@@ -1,6 +1,7 @@
 ---
 title: "Why Every Octave Doubles: The Math Behind Musical Notes"
-description: "Every musical note is a frequency, and the system is beautifully simple: an octave doubles the frequency, and twelve equal semitone steps divide it, each multiplying by the twelfth root of 2. Why A = 440 Hz, what cents are, and why a piano's fifths aren't quite pure."
+seoTitle: 'Note Frequencies: Why Every Octave Doubles'
+description: "Every musical note is a frequency: an octave doubles it and twelve equal semitones divide it. Why A = 440 Hz, what cents are, and equal temperament."
 pubDate: 2026-07-12
 updatedDate: 2026-08-23
 archetype: explainer
@@ -98,7 +99,7 @@ Multiply any row by two to jump an octave up, or halve it to drop an octave down
 
 ## Why A = 440 Hz?
 
-There's nothing physically special about 440 Hz — it's a **standard**, agreed so that instruments built and played around the world are in tune with each other. It was fixed internationally as **ISO 16**. Before standardisation, "A" varied widely between cities and eras, which made travelling musicians' lives difficult. Some orchestras still tune slightly higher (442–443 Hz) for brilliance, and **A = 432 Hz** has a following as a warmer alternative — the calculator retunes every note if you change the reference.
+There's nothing physically special about 440 Hz — it's a **standard**, agreed so that instruments built and played around the world are in tune with each other. It was fixed internationally as [**ISO 16**](https://en.wikipedia.org/wiki/A440_(pitch_standard)). Before standardisation, "A" varied widely between cities and eras, which made travelling musicians' lives difficult. Some orchestras still tune slightly higher (442–443 Hz) for brilliance, and **A = 432 Hz** has a following as a warmer alternative — the calculator retunes every note if you change the reference.
 
 ## Cents, and the piano's tiny white lie
 

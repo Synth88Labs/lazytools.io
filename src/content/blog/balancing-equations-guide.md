@@ -1,6 +1,7 @@
 ---
 title: "How to Balance Chemical Equations: The Algebra Method (Step by Step)"
-description: "Balancing a chemical equation is exact algebra: one unknown per species, one equation per element, solved for the smallest whole numbers. The step-by-step method, worked examples, and why it's the reliable way to balance redox reactions that chatbots get wrong."
+seoTitle: 'How to Balance Chemical Equations: Algebra Method'
+description: "Balance any chemical equation with the algebra method: one unknown per species, one equation per element, solved for the smallest whole numbers."
 pubDate: 2026-07-11
 updatedDate: 2026-08-23
 archetype: explainer
@@ -73,7 +74,7 @@ oxygen gives `b = 1` and hydrogen gives `a = 2`:
 > **2 H₂ + O₂ → 2 H₂O**
 
 That's the whole method. It scales to any equation — you just get a bigger linear system. Notice what it
-rests on: the **law of conservation of mass**. Atoms are neither created nor destroyed in a chemical
+rests on: the **[law of conservation of mass](https://en.wikipedia.org/wiki/Conservation_of_mass)**. Atoms are neither created nor destroyed in a chemical
 reaction, so every element that enters as a reactant must leave as a product in equal number. Each
 element gives you one equation; each species gives you one unknown. Balancing is simply solving that
 system.

@@ -1,6 +1,7 @@
 ---
 title: "How to Decode a Protobuf Message Without the .proto Schema"
-description: "You can decode a Protocol Buffers message even without its .proto file — the wire format is self-describing for field numbers and types. Here's how protobuf encoding works and how to read a raw message in your browser."
+seoTitle: 'Decode Protobuf Without the .proto Schema'
+description: "Decode a Protocol Buffers message without its .proto file — the wire format is self-describing. How protobuf encoding works and how to read a raw message."
 pubDate: 2026-08-03
 updatedDate: 2026-08-23
 archetype: explainer
@@ -98,7 +99,7 @@ and read the groups back to front.
 
 ## A worked example
 
-Take the canonical example from Google's own encoding docs — a message with field 1 (an int32) set to
+Take the canonical example from [Google's own encoding docs](https://protobuf.dev/) — a message with field 1 (an int32) set to
 150:
 
 ```
@@ -185,7 +186,7 @@ client-side web decoder gets you the same answer with nothing to install and not
 When a payload lands in front of you with no schema, a repeatable order of operations helps:
 
 1. **Get the bytes into hex or base64.** Most capture tools (browser dev-tools, `grpcurl`, a proxy) can
-   copy the raw body in one of those encodings.
+   copy the raw body in one of those encodings; a [Base64 encoder/decoder](/dev/base64-encode-decode/) helps convert between them.
 2. **Decode the structure** to see the field numbers, wire types and values.
 3. **Look for anchors.** A recognisable string ("testing", an email, a URL) or a plausible timestamp
    often tells you which field is which faster than any schema.

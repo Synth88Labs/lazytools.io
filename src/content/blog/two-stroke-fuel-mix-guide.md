@@ -1,6 +1,7 @@
 ---
 title: "Two-Stroke Fuel Mix Ratios Explained (50:1, 40:1, 32:1)"
-description: "To mix two-stroke fuel, divide the petrol volume by the ratio number to get the oil — so 5 litres at 50:1 needs 100 ml of oil. Here's how every common ratio works, a quick chart, and the mistakes that wreck engines."
+seoTitle: 'Two-Stroke Fuel Mix Ratios (50:1, 40:1, 32:1)'
+description: "To mix two-stroke fuel, divide the petrol by the ratio number to get the oil — 5 litres at 50:1 needs 100 ml. Every ratio, a chart, and costly mistakes."
 pubDate: 2026-07-28
 updatedDate: 2026-07-28
 archetype: explainer
@@ -110,7 +111,7 @@ Getting it wrong is expensive: too little oil is the fast route to a seized pist
 
 ## Choosing the right two-stroke oil
 
-The ratio is only half the job — the oil itself has to match the engine. Air-cooled garden and power equipment is rated under the Japanese JASO standard, while water-cooled marine outboards use the American NMMA TC-W3 standard. They are not interchangeable, and the higher grades are formulated to burn cleaner and leave less deposit.
+The ratio is only half the job — the oil itself has to match the engine. Air-cooled garden and power equipment is rated under the [Japanese JASO standard](https://en.wikipedia.org/wiki/Japanese_Automotive_Standards_Organization), while water-cooled marine outboards use the American NMMA TC-W3 standard. They are not interchangeable, and the higher grades are formulated to burn cleaner and leave less deposit.
 
 | Oil grade | Typical use | Notes |
 | --- | --- | --- |
@@ -127,26 +128,3 @@ When in doubt, match the grade named in your manual. A modern low-smoke syntheti
 - **Use a proper two-stroke oil** rated for your engine (look for JASO FD for air-cooled equipment, or TC-W3 for water-cooled marine engines).
 - **Measure the oil accurately** and pour it into the fuel, then shake or swirl the container to combine before filling the tank.
 - **Label the can** with the ratio so you don't accidentally run straight petrol or the wrong mix.
-
-## FAQ
-
-**How much oil do I add for a 50:1 mix?**
-Divide the petrol by 50. That's 20 ml per litre, 100 ml per 5 litres, or about 2.6 fl oz per US gallon. The [calculator](/automotive/two-stroke-fuel-mix-calculator/) does it for any amount.
-
-**Is 40:1 more oil than 50:1?**
-Yes. 40:1 puts in 25 ml per litre versus 20 ml at 50:1 — the lower the second number, the more oil. 32:1 is richer still at about 31 ml per litre.
-
-**What happens if I put too much oil in two-stroke fuel?**
-The engine smokes heavily, the spark plug fouls, and carbon builds up on the piston and exhaust port. It runs poorly but a slightly oil-rich mix rarely causes immediate damage — unlike too little oil.
-
-**What happens if there's not enough oil?**
-The engine loses lubrication and can overheat and seize, often ruining the piston and cylinder. This is the dangerous mistake, which is why you should never run straight petrol or a too-lean mix.
-
-**Can I use car engine oil in two-stroke fuel?**
-No. Use oil specifically formulated for two-stroke engines. Regular motor oil doesn't burn cleanly in a two-stroke and won't lubricate correctly, risking damage.
-
-**What ratio does my chainsaw or trimmer use?**
-Check the manual, the fuel cap, or the manufacturer's website — many modern units are 50:1 or 40:1, but it varies by brand and age. Use the specified ratio exactly.
-
-**How long does mixed two-stroke fuel last?**
-Use it within about 30 days. Mixed fuel — especially with ethanol-blended petrol — degrades and can gum up the carburettor. Mix small batches and store fuel in a sealed, approved container out of sunlight.

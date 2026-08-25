@@ -1,6 +1,7 @@
 ---
 title: "Text to Speech in Your Browser: How It Works (No Upload, No Account)"
-description: "Your browser can read text aloud using the voices built into your device — no account, no upload, works offline. Here's how the Web Speech API works, which voices are truly local vs network, and how to use it well for proofreading and accessibility."
+seoTitle: 'Browser Text to Speech: How It Works (No Upload)'
+description: "Browser text to speech reads text aloud with your device's built-in voices — no account, no upload, offline for local voices. Here's how it works."
 pubDate: 2026-08-06
 updatedDate: 2026-08-23
 archetype: explainer
@@ -54,7 +55,7 @@ draft: false
 
 ## The browser already has a voice
 
-Behind the feature is the **Web Speech API's speech synthesis**, built into Chrome, Edge, Safari and Firefox. It taps the **text-to-speech voices installed in your operating system** — the same ones that power screen readers and "speak selection." So reading text aloud needs no plugin and no third-party service: you hand the browser some text and it speaks it, using a voice from a list the browser gets from your OS.
+Behind the feature is the [**Web Speech API's speech synthesis**](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API), built into Chrome, Edge, Safari and Firefox. It taps the **text-to-speech voices installed in your operating system** — the same ones that power screen readers and "speak selection." So reading text aloud needs no plugin and no third-party service: you hand the browser some text and it speaks it, using a voice from a list the browser gets from your OS.
 
 A good TTS tool just wraps that engine with controls: pick a **voice and language**, set the **rate, pitch and volume**, and play, pause or stop.
 

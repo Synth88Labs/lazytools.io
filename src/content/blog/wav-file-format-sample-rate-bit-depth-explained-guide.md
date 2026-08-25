@@ -1,6 +1,7 @@
 ---
 title: "Sample Rate, Bit Depth and the WAV File Format Explained"
-description: "44.1 kHz, 16-bit, stereo — what do a WAV file's specs actually mean, and where are they stored? Here's how sample rate and bit depth work, how the RIFF/WAVE format lays them out, and how to read any WAV or AIFF file's header in your browser."
+seoTitle: 'Sample Rate & Bit Depth: WAV Format Explained'
+description: "Sample rate and bit depth explained: what 44.1 kHz, 16-bit mean, how the RIFF/WAVE format stores them, and how to read a WAV header."
 pubDate: 2026-08-03
 updatedDate: 2026-08-23
 archetype: explainer
@@ -63,7 +64,7 @@ Digitising sound means measuring the waveform's height many times per second. Ea
 - **96 kHz / 192 kHz** — high-resolution recording.
 
 Why 44.1 kHz specifically? The **Nyquist theorem** says a sample rate can faithfully capture
-frequencies up to *half* its value — the **Nyquist frequency**. Human hearing tops out around 20 kHz,
+frequencies up to *half* its value — the [**Nyquist frequency**](https://en.wikipedia.org/wiki/Nyquist_frequency). Human hearing tops out around 20 kHz,
 and 44.1 kHz / 2 = 22.05 kHz covers it with a little room for the anti-aliasing filter to roll off
 cleanly. The odd-looking 44,100 figure is a historical artefact: it fit neatly onto the video tape
 recorders used to master the first digital audio, and it stuck as the CD standard. Higher rates mainly
@@ -120,7 +121,7 @@ Sample rate and bit depth directly determine the data rate of uncompressed audio
 
 For 44.1 kHz, 16-bit, stereo that's **44,100 × 2 × 2 = 176,400 bytes/sec** (~1.4 Mbit/s). Divide the
 audio data size by that and you get the exact duration — no decoding required. It's also why uncompressed
-audio is big: about **10 MB per minute** at CD quality.
+audio is big: about **10 MB per minute** at CD quality (which is the whole reason lossy codecs exist — see [WAV vs MP3](/blog/wav-vs-mp3-guide/)).
 
 **Worked example.** Say a WAV's `data` chunk is 30,870,000 bytes. First find the byte rate from its
 `fmt ` chunk — 44.1 kHz, 16-bit, stereo gives 176,400 bytes/sec. Then 30,870,000 ÷ 176,400 = **175

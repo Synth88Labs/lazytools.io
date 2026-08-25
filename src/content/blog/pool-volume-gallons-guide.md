@@ -1,6 +1,7 @@
 ---
 title: "How Many Gallons Is My Pool? (Volume by Shape)"
-description: "Pool volume is the surface area times the average depth: length × width × depth for rectangular, π × radius² × depth for round. Here's how to calculate gallons for any shape and why you need it to dose chemicals."
+seoTitle: 'How Many Gallons Is My Pool? Volume by Shape'
+description: "Pool volume = surface area × average depth: length × width × depth (rectangular) or π × radius² × depth (round). Calculate gallons for any pool shape."
 pubDate: 2026-07-28
 updatedDate: 2026-08-23
 archetype: explainer
@@ -58,7 +59,7 @@ Pool volume is always **area × average depth**; only the area formula changes w
 - **Round:** π × radius² × average depth (radius = diameter ÷ 2)
 - **Oval:** π × (length ÷ 2) × (width ÷ 2) × average depth
 
-Work in consistent units (all metres, or all feet), then convert the result to gallons. The [pool volume calculator](/home/pool-volume-calculator/) does the geometry and the conversion for you in US gallons, litres and cubic metres.
+Work in consistent units (all metres, or all feet), then convert the result to gallons. The [pool volume calculator](/home/pool-volume-calculator/) does the geometry and the conversion for you in US gallons, litres and cubic metres. (The surface-area step is the same math covered in [how to calculate square footage](/blog/how-to-calculate-square-footage-guide/) if you want a refresher.)
 
 A quick way to remember the imperial version: if you measure everything in feet, multiply length × width × average depth to get cubic feet, then multiply by **7.48** to get US gallons. Many pool guides round that factor to 7.5 for mental arithmetic, which is close enough for dosing.
 
@@ -93,7 +94,7 @@ Once you have the volume, convert to the unit your chemicals are dosed in:
 
 So the 48 m³ example is 48 × 264.2 ≈ **12,680 US gallons** (or 48,000 litres).
 
-One more distinction worth knowing: a **US gallon** and an **imperial (UK) gallon** are not the same. One imperial gallon is about 1.2 US gallons (4.546 litres versus 3.785). Pool-chemical labels sold in North America assume US gallons, so unless a product specifically says imperial, treat "gallons" as US gallons.
+One more distinction worth knowing: a **US gallon** and an **imperial (UK) [gallon](https://en.wikipedia.org/wiki/Gallon)** are not the same. One imperial gallon is about 1.2 US gallons (4.546 litres versus 3.785). Pool-chemical labels sold in North America assume US gallons, so unless a product specifically says imperial, treat "gallons" as US gallons.
 
 ## Typical pool sizes for reference
 
@@ -119,23 +120,3 @@ Volume drives more than chemicals. Your **filter and pump** are sized to "turn o
 - **Mixing units.** Feet with metres, or inches with feet, silently ruins the result. Convert everything first.
 - **Confusing US and imperial gallons.** A 20,000-gallon figure means very different dose amounts depending on which gallon you mean.
 - **Guessing from a "typical size" chart.** Two 32-foot pools can differ by thousands of gallons depending on depth and shape. Measure your own.
-
-## FAQ
-
-**How do I calculate how many gallons are in my pool?**
-Multiply the surface area by the average depth to get the volume, then convert to gallons. For a rectangular pool that's length × width × average depth; the [calculator](/home/pool-volume-calculator/) handles rectangular, round and oval pools and converts to gallons, litres and cubic metres.
-
-**What depth should I use for a pool that gets deeper?**
-The average depth — add the shallow-end and deep-end depths and divide by two. Using only the deep end overestimates the volume.
-
-**How do I measure a round pool?**
-Measure the diameter (all the way across the centre) and halve it to get the radius, then use π × radius² × average depth. For an oval, measure the longest length and widest width.
-
-**Why do I need to know my pool's volume?**
-Because every pool chemical is dosed per volume of water. An accurate gallon figure lets you add exactly the right amount of chlorine, shock and other chemicals — no guessing.
-
-**How many gallons is a typical backyard pool?**
-It varies widely, but many residential in-ground pools hold roughly 15,000–30,000 US gallons, and above-ground pools often 5,000–15,000. Calculate yours from its actual dimensions rather than a rule of thumb.
-
-**How do I convert cubic metres or feet to gallons?**
-Multiply cubic metres by 264.2, or cubic feet by 7.48, to get US gallons. For litres, multiply cubic metres by 1000.

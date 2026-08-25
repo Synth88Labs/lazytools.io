@@ -1,6 +1,7 @@
 ---
 title: "The Pomodoro Technique: Why 25-Minute Sprints Beat Marathon Focus"
-description: "The Pomodoro Technique breaks work into 25-minute focus sprints with short breaks. Why the timer works, how to run it properly, the mistakes that break it, and how to tune the intervals to your attention span."
+seoTitle: 'Pomodoro Technique: Why 25-Minute Sprints Work'
+description: "The Pomodoro Technique breaks work into 25-minute focus sprints with short breaks. Why it works, how to run it properly, and how to tune the intervals."
 pubDate: 2026-07-06
 updatedDate: 2026-07-06
 archetype: explainer
@@ -51,7 +52,7 @@ in your browser tab.
 
 ## Where it came from
 
-The technique was devised by **Francesco Cirillo** as a university student in the late 1980s, using a
+The technique was devised by **[Francesco Cirillo](https://en.wikipedia.org/wiki/Pomodoro_Technique)** as a university student in the late 1980s, using a
 kitchen timer shaped like a tomato — *pomodoro* in Italian. Overwhelmed by studying, he challenged
 himself to focus for just ten minutes. The timer turned an intimidating, open-ended task into a
 small, concrete commitment, and the method grew from there. That origin story is the whole idea in

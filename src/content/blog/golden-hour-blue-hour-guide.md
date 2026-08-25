@@ -1,6 +1,7 @@
 ---
 title: "Golden Hour and Blue Hour: The Sun Angles That Make the Best Light"
-description: "Golden hour isn't a clock time — it's a sun angle. Here's exactly which elevations define golden hour, blue hour and the three twilights, why the windows are longer some places than others, and how to find them for any date and location."
+seoTitle: 'Golden Hour & Blue Hour: The Sun Angles Explained'
+description: "Golden hour isn't a clock time — it's a sun angle. The exact elevations that define golden hour, blue hour and the three twilights, and how to find them."
 pubDate: 2026-07-12
 updatedDate: 2026-08-23
 archetype: explainer
@@ -59,7 +60,7 @@ As the sun rises and sets it sweeps through a range of **elevation angles** — 
 
 ## The three twilights
 
-Keep going down and you pass the formal twilight stages, each a threshold of darkness:
+Keep going down and you pass the formal [twilight](https://en.wikipedia.org/wiki/Twilight) stages, each a threshold of darkness:
 
 - **Civil twilight — to −6°:** there's still enough natural light for most outdoor activities without artificial light. This is the practical "dawn" and "dusk," and in many countries it defines legal lighting-up times for vehicles.
 - **Nautical twilight — to −12°:** dark enough that the brighter stars appear, but sailors can still make out the sea horizon against the sky (hence the name) — the condition once needed to take star sightings with a sextant.

@@ -1,6 +1,7 @@
 ---
 title: "Base32 vs Base64: What's the Difference?"
-description: "Base32 uses 32 characters and is case-insensitive and easy to transcribe; Base64 uses 64 and is more compact. When to use each, and encode/decode in your browser."
+seoTitle: 'Base32 vs Base64: Key Differences Explained'
+description: "Base32 vs Base64: Base32 is case-insensitive and easy to type; Base64 is more compact. When to use each, and encode or decode in your browser."
 pubDate: 2026-07-28
 updatedDate: 2026-07-28
 archetype: explainer

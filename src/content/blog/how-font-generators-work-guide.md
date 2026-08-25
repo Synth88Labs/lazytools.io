@@ -1,6 +1,7 @@
 ---
 title: "How Do Font Generators Work? (They're Not Fonts — They're Unicode)"
-description: "Instagram and TikTok 'fonts' aren't fonts at all. A font generator swaps each letter for a different Unicode character that happens to look bold, italic or cursive. Here's exactly how that works, why it survives copy-paste anywhere, and the accessibility cost you should know about."
+seoTitle: "How Font Generators Work (It's Just Unicode)"
+description: "Instagram 'fonts' aren't fonts — a generator swaps each letter for a Unicode character that looks bold or cursive. How it works and its accessibility cost."
 pubDate: 2026-07-26
 updatedDate: 2026-07-26
 archetype: explainer
@@ -57,7 +58,7 @@ That's the whole trick. Everything else is detail.
 
 ## Where the styled letters come from
 
-Most of what a fancy text generator produces lives in one Unicode block: **Mathematical Alphanumeric Symbols**, spanning U+1D400 to U+1D7FF. It was added so mathematicians could write things like a bold vector **v** or a script ℒ distinctly from a normal variable — but the side effect is a full set of pre-styled Latin alphabets and digits.
+Most of what a fancy text generator produces lives in one Unicode block: [**Mathematical Alphanumeric Symbols**](https://en.wikipedia.org/wiki/Mathematical_Alphanumeric_Symbols), spanning U+1D400 to U+1D7FF. It was added so mathematicians could write things like a bold vector **v** or a script ℒ distinctly from a normal variable — but the side effect is a full set of pre-styled Latin alphabets and digits.
 
 | Style you see | Where it comes from | Example |
 | --- | --- | --- |

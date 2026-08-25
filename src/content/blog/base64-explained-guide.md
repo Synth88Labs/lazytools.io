@@ -1,6 +1,7 @@
 ---
 title: "Base64 Is Not Encryption: What It Actually Does (and When to Use It)"
-description: "Base64 turns any bytes into 64 safe text characters — 3 bytes become 4 characters, 33% bigger, instantly reversible by anyone. What it's for, how the encoding works, the URL-safe variant, and why JWTs are readable by design."
+seoTitle: 'Base64 Explained: Encoding, Not Encryption'
+description: "Base64 re-spells bytes as 64 safe text characters so binary survives text channels — reversible by anyone, not encryption. The math, URL-safe variant, JWTs."
 pubDate: 2026-07-05
 updatedDate: 2026-07-05
 archetype: explainer
@@ -107,7 +108,7 @@ URL-safe toggle for exactly this. (For encoding *text* into URLs, that's a diffe
 different rules: the [URL encoder/decoder](/dev/url-encode-decode/).)
 
 **A UTF-8 footnote that saves debugging time:** Base64 encodes *bytes*, so text must first be
-converted to bytes. JavaScript's ancient `btoa()` assumes Latin-1 and throws (or garbles) on emoji
+converted to bytes. JavaScript's ancient [`btoa()`](https://developer.mozilla.org/en-US/docs/Web/API/Window/btoa) assumes Latin-1 and throws (or garbles) on emoji
 and most non-English text; correct implementations encode via UTF-8 first (`TextEncoder`), which is
 what our encoder does — round-tripping `héllo 🌍` intact.
 

@@ -1,6 +1,7 @@
 ---
 title: "Significant Figures: The Rules, the Ambiguous Cases, and How to Round Correctly"
-description: "How many significant figures does 0.004560 have? Why is 1200 ambiguous? The four sig-fig rules explained digit by digit, how to round to N significant figures (including the 9.99 carry case), and why the rules exist at all."
+seoTitle: 'Significant Figures: Rules & How to Round'
+description: "The four significant-figures rules explained digit by digit: which zeros count, why 1200 is ambiguous, and how to round to N sig figs (the 9.99 carry case)."
 pubDate: 2026-07-10
 updatedDate: 2026-08-23
 archetype: explainer

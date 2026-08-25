@@ -1,6 +1,7 @@
 ---
 title: "LLM Tokens Explained: What Your Prompts Actually Cost — and Why Claude & Gemini Counts Are Estimates"
-description: "API bills are denominated in tokens, not words. How tokenization works, the cost formula, verified July 2026 pricing for GPT-5.6, Claude Opus 5 and Gemini, why output tokens dominate the bill, and why only OpenAI counts can be exact in a browser."
+seoTitle: 'LLM Tokens Explained: What Prompts Cost'
+description: "API bills are counted in tokens, not words. How tokenization works, the cost formula, why output tokens dominate, and why only OpenAI counts are exact."
 pubDate: 2026-07-07
 updatedDate: 2026-07-28
 archetype: explainer

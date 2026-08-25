@@ -1,6 +1,7 @@
 ---
 title: "Is Your A/B Test Result Real? Significance, p-values and Effect Size"
-description: "A green 'winner' isn't enough — a real result needs a small p-value AND a meaningful effect size, from an honest test. Here's how the two-proportion z-test, p-values and Cohen's d fit together, with calculators that run in your browser."
+seoTitle: 'A/B Test Significance: p-values & Effect Size'
+description: "A/B test significance needs a small p-value AND a meaningful effect size, not just a green badge — how z-tests, p-values and Cohen's d fit together."
 pubDate: 2026-08-01
 updatedDate: 2026-08-23
 archetype: explainer
@@ -130,7 +131,7 @@ d](/statistics/effect-size-calculator/) expresses the gap in pooled-standard-dev
 small, 0.5 medium, 0.8 large). For an A/B test, the plain **percentage-point lift** is the effect that
 matters — read it next to the p-value, never instead of it.
 
-Cohen's original benchmarks are rules of thumb, not laws; a "small" effect can be hugely valuable at
+[Cohen's original benchmarks](https://en.wikipedia.org/wiki/Effect_size) are rules of thumb, not laws; a "small" effect can be hugely valuable at
 scale, and a "large" one can be irrelevant if it moves a metric nobody cares about. Use them as a
 starting sense of magnitude, then judge against your own context:
 
@@ -159,7 +160,8 @@ Comparing two average order values from modest samples? That's a [t-test](/stati
 ## The cardinal sin: peeking
 
 The fastest way to fake a significant result is to watch the dashboard and stop the moment it turns
-green. Every extra peek is another chance for random noise to cross the line, and "stop at first p <
+green. Every extra peek is another chance for random noise to cross the line (a form of the
+[multiple comparisons problem](https://en.wikipedia.org/wiki/Multiple_comparisons_problem)), and "stop at first p <
 0.05" can inflate your false-positive rate several-fold. **Decide the sample size before you start**,
 run to it, then evaluate once.
 

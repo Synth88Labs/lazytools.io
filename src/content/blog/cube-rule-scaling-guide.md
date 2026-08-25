@@ -1,6 +1,7 @@
 ---
 title: "Why a Bigger 3D Print Uses So Much More Filament: The Cube Rule"
-description: "Scaling a model to 200% doesn't use twice the filament — it uses eight times. That surprise trips up almost everyone new to 3D printing. Here's the simple cube rule behind it, why print time balloons the same way, and how to plan a resize."
+seoTitle: 'Cube Rule: Why Bigger 3D Prints Use 8× Filament'
+description: "The cube rule explains why scaling a 3D print to 200% uses 8× the filament, not 2× — plus why print time balloons and how to plan a resize."
 pubDate: 2026-07-12
 updatedDate: 2026-08-23
 archetype: explainer
@@ -79,7 +80,7 @@ That mismatch explains a few things printers notice:
 
 - **Paint, primer and coating** track surface area, so they grow far more slowly than filament does when you scale up.
 - **Big prints feel "hollow" for their weight** relative to how imposing they look, because so much of the added volume is interior infill rather than shell.
-- **Cooling and warping behaviour changes** as parts get larger, since the ratio of skin to mass keeps shifting. This is the same square-cube principle engineers and biologists use to reason about why large structures can't simply be scaled-up copies of small ones.
+- **Cooling and warping behaviour changes** as parts get larger, since the ratio of skin to mass keeps shifting. This is the same [square-cube law](https://en.wikipedia.org/wiki/Square-cube_law) engineers and biologists use to reason about why large structures can't simply be scaled-up copies of small ones.
 
 ## Worked example: a 60 mm figurine at 180%
 

@@ -1,6 +1,7 @@
 ---
 title: "FLAC vs MP3 vs WAV: Three Formats, Three Ways to Store Tags"
-description: "FLAC, MP3 and WAV all hold audio, but each stores its title/artist metadata differently — Vorbis comments, ID3, and RIFF chunks. Here's how each works, how to tell if a FLAC is really hi-res, and how to inspect any of them in your browser."
+seoTitle: 'FLAC vs MP3 vs WAV: How Each Stores Tags'
+description: "FLAC vs MP3 vs WAV: how each stores tags (Vorbis comments, ID3, RIFF chunks), how to check if a FLAC is really hi-res, all in your browser."
 pubDate: 2026-08-04
 updatedDate: 2026-08-23
 archetype: explainer
@@ -99,7 +100,8 @@ in a separate `PICTURE` metadata block rather than inside the comment text.
 
 ## The "is it really hi-res?" check
 
-FLAC is where the hi-res question comes up most, and STREAMINFO answers it. **True hi-res** is generally
+FLAC is where the hi-res question comes up most, and STREAMINFO answers it. **True
+[hi-res](https://en.wikipedia.org/wiki/High-resolution_audio)** is generally
 **24-bit** at **88.2 kHz or higher**. A file that decodes to **16-bit / 44.1 kHz** is CD quality — no
 matter what the filename or store page claimed. Since the bit depth and sample rate are stored right in
 STREAMINFO, a quick look at the [FLAC Metadata Viewer](/video/flac-metadata-viewer/) tells you the real

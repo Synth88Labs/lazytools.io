@@ -1,6 +1,7 @@
 ---
 title: "How to Compress a PDF Without Losing Quality"
-description: "Lossless PDF compression recompresses the file's internal data streams and consolidates its objects — text stays selectable and images keep their exact quality. Here's how it works, and when it can't help. Runs in your browser, never uploaded."
+seoTitle: 'Compress a PDF Without Losing Quality'
+description: "Compress a PDF without losing quality: lossless compression re-encodes the file's data streams so text stays selectable and images keep their exact pixels."
 pubDate: 2026-08-01
 updatedDate: 2026-08-23
 archetype: explainer
@@ -104,7 +105,7 @@ common cause of a bloated PDF — an un-optimized export — it does most of the
 ## Why so many PDFs are bloated for no good reason
 
 A PDF is a container of *objects* — pages, fonts, images, and content streams — and those streams can
-be stored either raw or compressed with Flate (the same zlib/DEFLATE algorithm behind PNG and ZIP).
+be stored either raw or compressed with Flate (the same zlib/[DEFLATE](https://en.wikipedia.org/wiki/Deflate) algorithm behind PNG and ZIP).
 Many programs that export PDFs take the lazy path: they leave streams lightly compressed or
 uncompressed, and they scatter objects individually instead of packing them into compressed
 *object streams* (a feature added in PDF 1.5).
@@ -184,8 +185,8 @@ can judge the result:
   than a full-colour photographic scan, and for most paperwork it looks identical.
 - **Remove pages you don't need** before compressing, rather than shipping the whole bundle.
 - **Unlock first if the file is encrypted.** A password-protected PDF can't be rewritten until the
-  protection is removed; supply the password to the browser-based Unlock PDF tool, then compress the
-  unlocked copy.
+  protection is removed; supply the password to the browser-based [Unlock PDF tool](/pdf/unlock-pdf/),
+  then compress the unlocked copy.
 
 These steps keep the decision in your hands: you decide what detail is expendable, instead of a
 one-click "90% smaller" button deciding for you.

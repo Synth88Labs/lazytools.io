@@ -1,6 +1,7 @@
 ---
 title: "WiFi QR Codes: How They Work, the WIFI: Format, and How to Make One Safely"
-description: "A WiFi QR code encodes the string WIFI:T:WPA;S:network;P:password;; — scan it and a phone joins the network with no typing. How the format works, why special characters must be escaped, and why encoding it directly (not via a tracking redirect) matters."
+seoTitle: 'WiFi QR Codes: How They Work & the WIFI: Format'
+description: "A WiFi QR code encodes the string WIFI:T:WPA;S:network;P:password;; — how the format works, why special characters must be escaped, and how to make one safely."
 pubDate: 2026-07-11
 updatedDate: 2026-08-23
 archetype: explainer
@@ -54,7 +55,7 @@ redirect, and the code works forever. Make one privately with the
 <figcaption>One plain-text string, read natively by the phone camera.</figcaption>
 </figure>
 
-A WiFi QR code is nothing exotic — it's an ordinary QR code (the same ISO/IEC 18004 barcode you see on
+A WiFi QR code is nothing exotic — it's an ordinary [QR code](https://en.wikipedia.org/wiki/QR_code) (the same ISO/IEC 18004 barcode you see on
 posters and packaging) whose *content* happens to be a short, structured string:
 
 > `WIFI:T:WPA;S:MyNetwork;P:mypassword;H:false;;`

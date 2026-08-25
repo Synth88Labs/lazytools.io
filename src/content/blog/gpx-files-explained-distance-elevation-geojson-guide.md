@@ -1,6 +1,7 @@
 ---
 title: "GPX Files Explained: Distance, Elevation and Converting to GeoJSON"
-description: "A GPX file is just XML listing GPS track points — but it reveals exactly where you live and train. Here's how distance and elevation are calculated from it, the lat/lon trap when converting to GeoJSON, and why to do it in your browser."
+seoTitle: 'GPX Files: Distance, Elevation & GeoJSON'
+description: "A GPX file is XML listing GPS track points. How distance and elevation are calculated, the lat/lon trap when converting to GeoJSON, and doing it in your browser."
 pubDate: 2026-08-01
 updatedDate: 2026-08-23
 archetype: explainer
@@ -88,7 +89,7 @@ which also assumes WGS 84.
 ## How distance and elevation are computed
 
 **Distance** is the sum of the straight-line (great-circle) distance between each consecutive pair of
-points, using the **haversine formula** on the Earth's radius. No single point has a "distance"; the
+points, using the [**haversine formula**](https://en.wikipedia.org/wiki/Haversine_formula) on the Earth's radius. No single point has a "distance"; the
 route length emerges from adding thousands of tiny hops.
 
 **Elevation gain** sums only the *upward* changes between consecutive points (and loss sums the
@@ -156,7 +157,7 @@ a faithful reading of *your file*, not a claim that every app should agree to th
 
 ## The GeoJSON coordinate trap
 
-If you take one thing away: **GPX writes latitude then longitude; GeoJSON (RFC 7946) requires
+If you take one thing away: **GPX writes latitude then longitude; GeoJSON ([RFC 7946](https://datatracker.ietf.org/doc/html/rfc7946)) requires
 `[longitude, latitude]` — the opposite order.** Copy the numbers across without swapping and every
 point plots in the wrong place, frequently the wrong hemisphere. It's the single most common
 GPX↔GeoJSON bug.

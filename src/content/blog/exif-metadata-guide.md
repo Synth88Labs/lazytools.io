@@ -1,6 +1,7 @@
 ---
 title: "What Your Photos Reveal: EXIF, GPS Location and How to Strip Them"
-description: "Phone photos embed EXIF metadata — camera, timestamps and, with location on, GPS coordinates accurate to a few meters. What's in the file, which sharing channels leak it, and how to remove it in your browser."
+seoTitle: 'EXIF Data: GPS Location in Photos & How to Strip It'
+description: "EXIF metadata in phone photos includes camera, timestamps and GPS coordinates accurate to a few meters. What leaks, and how to strip it in your browser."
 pubDate: 2026-07-05
 updatedDate: 2026-07-05
 archetype: explainer

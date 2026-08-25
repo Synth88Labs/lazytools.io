@@ -1,6 +1,7 @@
 ---
 title: "How TOTP (Two-Factor Authenticator) Codes Work"
-description: "TOTP is the rotating 6-digit 2FA code your authenticator app shows — an HMAC of the current time and a shared secret, defined in RFC 6238. Here's exactly how it's built, why it changes every 30 seconds, and how to generate them privately in your browser."
+seoTitle: 'How TOTP 2FA Authenticator Codes Work'
+description: "TOTP is the rotating 6-digit 2FA code your authenticator shows — an HMAC of the current time and a shared secret (RFC 6238). How it's built and why it rotates."
 pubDate: 2026-07-28
 updatedDate: 2026-07-28
 archetype: explainer

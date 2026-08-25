@@ -1,6 +1,7 @@
 ---
 title: "How Many People Do You Need to Survey? Sample Size Explained"
-description: "The sample size for a proportion is n = z²·p(1−p) / E². At 95% confidence with a ±5% margin you need 385 responses — whether your population is 20,000 or 20 million. Why p = 0.5 is the safe choice, why halving the margin quadruples n, and when population size matters."
+seoTitle: 'Survey Sample Size Explained (the 385 Rule)'
+description: "The sample size for a proportion is n = z²·p(1−p) / E² — at 95% confidence with a ±5% margin you need 385 responses, whatever your population size."
 pubDate: 2026-07-11
 updatedDate: 2026-08-23
 archetype: explainer
@@ -164,6 +165,6 @@ Use p = 0.5 when unsure, remember that halving the margin quadruples the sample,
 population size for small groups. Work out your own number with the
 [sample-size calculator](/statistics/sample-size-calculator/).
 
-*Sources: the standard sample-size formula for estimating a proportion (Cochran's formula) and the
+*Sources: the standard [sample-size formula for estimating a proportion](https://en.wikipedia.org/wiki/Sample_size_determination) (Cochran's formula) and the
 finite-population correction, as taught in introductory statistics and survey methodology. Educational
 information — not a substitute for a statistician on a high-stakes study.*

@@ -1,6 +1,7 @@
 ---
 title: "When to Start Seeds: Timing Your Whole Garden to the Last Frost"
-description: "One date runs the whole vegetable garden: your average last spring frost. Start tomatoes indoors ~7 weeks before it, sow peas 5 weeks before, plant beans after it. How frost-relative timing works, a crop-by-crop guide, and how to turn it into real dates."
+seoTitle: 'When to Start Seeds: Timing to the Last Frost'
+description: "When to start seeds: count back from your average last spring frost — tomatoes ~7 weeks before, peas ~5, beans after. A crop-by-crop timing guide."
 pubDate: 2026-07-12
 updatedDate: 2026-08-23
 archetype: explainer
@@ -103,7 +104,7 @@ The last frost date marks when a killing frost becomes unlikely — but tender c
 
 ## Turn the offsets into real dates
 
-The one thing you have to supply is your **local average last-frost date** — look it up from a regional extension service or a frost-date tool for your area. Once you have it, the [planting date calculator](/garden/planting-date-calculator/) turns each crop's offset into an actual calendar date to start seeds, transplant and direct-sow. From there, the [plant spacing](/garden/plant-spacing-calculator/) and [seed spacing](/garden/seed-spacing-calculator/) calculators tell you how many plants and seeds you'll need for your beds — all worked out privately in your browser.
+The one thing you have to supply is your **local average last-frost date** — look it up from a regional [extension service](https://www.usda.gov/) or a frost-date tool for your area. Once you have it, the [planting date calculator](/garden/planting-date-calculator/) turns each crop's offset into an actual calendar date to start seeds, transplant and direct-sow. From there, the [plant spacing](/garden/plant-spacing-calculator/) and [seed spacing](/garden/seed-spacing-calculator/) calculators tell you how many plants and seeds you'll need for your beds — all worked out privately in your browser.
 
 ---
 

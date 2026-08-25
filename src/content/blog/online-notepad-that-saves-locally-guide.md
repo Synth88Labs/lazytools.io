@@ -1,6 +1,7 @@
 ---
 title: "An Online Notepad That Saves in Your Browser (Not the Cloud)"
-description: "Most 'online notepad' sites quietly send your notes to a server. Here's how a browser-only notepad works with localStorage, why that's more private, its real trade-offs and storage limits, and how to keep your notes safe."
+seoTitle: 'Online Notepad That Saves Locally in Your Browser'
+description: "An online notepad that saves in your browser with localStorage — not the cloud. How local autosave works, why it's more private, and its storage limits."
 pubDate: 2026-08-06
 updatedDate: 2026-08-23
 archetype: explainer
@@ -69,7 +70,7 @@ Neither is universally "better" — but for the things people actually paste int
 
 ## How local autosave works (localStorage)
 
-Every browser ships a small built-in key-value store called **localStorage**. A browser notepad uses it like this:
+Every browser ships a small built-in key-value store called **[localStorage](https://en.wikipedia.org/wiki/Web_storage)**. A browser notepad uses it like this:
 
 1. **You type.**
 2. A moment after you pause, the note is written to localStorage under a key for the site (a "debounce", so it isn't saving on every single keystroke).
@@ -111,4 +112,4 @@ Plenty for text. localStorage gives each site roughly **5 MB** (some browsers up
 
 ## Jot something down, privately
 
-The [Online Notepad](/productivity/online-notepad/) is a distraction-free writing box that autosaves to your browser as you type, shows a live word, character and line count plus reading time, and lets you download or copy the note any time — with **nothing ever uploaded**. Open it, start typing, and it remembers your note the next time you come back, online or off.
+The [Online Notepad](/productivity/online-notepad/) is a distraction-free writing box that autosaves to your browser as you type, shows a live word, character and line count plus reading time, and lets you download or copy the note any time — with **nothing ever uploaded**. Open it, start typing, and it remembers your note the next time you come back, online or off. It's part of the same [privacy-first productivity](/blog/privacy-first-productivity-guide/) toolkit — tools that keep your data on your device.

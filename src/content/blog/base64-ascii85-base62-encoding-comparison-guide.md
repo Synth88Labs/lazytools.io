@@ -1,6 +1,7 @@
 ---
 title: "Base64 vs Ascii85 vs Base62: Which Binary-to-Text Encoding Should You Use?"
-description: "Base64, Ascii85 and Base62 all turn binary data into text, but they trade size against URL-safety differently. Here's how each works, how much overhead it adds, and when to reach for which — with encoders that run in your browser."
+seoTitle: 'Base64 vs Ascii85 vs Base62: Encoding Compared'
+description: "Base64, Ascii85 and Base62 turn binary into text with different size and URL-safety trade-offs — how each works and when to use which."
 pubDate: 2026-08-02
 updatedDate: 2026-08-23
 archetype: explainer
@@ -100,7 +101,7 @@ byte of input still costs four characters of output.
 
 ## Ascii85: the compact one
 
-Ascii85 (base85) uses **85 symbols**, packing **4 bytes into 5 characters** for only about **25%
+[Ascii85](https://en.wikipedia.org/wiki/Ascii85) (base85) uses **85 symbols**, packing **4 bytes into 5 characters** for only about **25%
 overhead** — noticeably tighter than Base64. This is why it's the encoding inside **PDF and PostScript**
 streams. The Adobe variant adds two conveniences: a run of four zero bytes collapses to a single `z`,
 and the stream can be wrapped in `<~ … ~>` markers.
@@ -159,7 +160,7 @@ encoding a 16-byte token, it rounds away to almost nothing and other factors sho
 ## URL-safe Base64: the fourth option
 
 Before you reach for Base62 purely to survive a URL, know that standard Base64 has a URL-safe sibling.
-Defined alongside the base encodings in RFC 4648, it keeps the 3-bytes-to-4-characters math and the whole
+Defined alongside the base encodings in [RFC 4648](https://datatracker.ietf.org/doc/html/rfc4648), it keeps the 3-bytes-to-4-characters math and the whole
 Base64 toolchain, but swaps the two troublesome symbols: `+` becomes `-` and `/` becomes `_`. Padding is
 often dropped as well, since the decoder can infer length. JSON Web Tokens use exactly this variant, which
 is why a JWT drops cleanly into an `Authorization` header or a query string.

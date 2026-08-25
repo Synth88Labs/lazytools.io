@@ -1,6 +1,7 @@
 ---
 title: "Markup vs Margin: Same Profit, Two Very Different Percentages"
-description: "Buy for $60, sell for $100: that's a 66.7% markup but a 40% margin — the same $40 profit measured against cost vs against price. Why markup is always bigger, how to convert between them, and the pricing mistake that quietly eats your profit."
+seoTitle: 'Markup vs Margin: Formulas and How to Convert'
+description: "Markup vs margin: $60→$100 is a 66.7% markup but a 40% margin. Why markup is always bigger, how to convert, and the costly pricing mistake to avoid."
 pubDate: 2026-07-10
 updatedDate: 2026-08-23
 archetype: explainer

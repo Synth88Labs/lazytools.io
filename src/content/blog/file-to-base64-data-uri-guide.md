@@ -1,6 +1,7 @@
 ---
 title: "How to Convert a File to a Base64 Data URI (and Back)"
-description: "A Base64 data URI embeds a whole file as text — data:<mime>;base64,<data> — so you can inline it in HTML, CSS or JSON with no separate request. Here's how encoding works, when to use it, and how to decode it back. Runs in your browser, never uploaded."
+seoTitle: 'File to Base64 Data URI: Convert & Decode'
+description: "A Base64 data URI embeds a whole file as text — data:<mime>;base64,<data> — so you can inline it in HTML, CSS or JSON with no separate request."
 pubDate: 2026-08-01
 updatedDate: 2026-08-23
 archetype: explainer
@@ -54,7 +55,7 @@ and the [Base64 to File decoder](/file/base64-to-file/) — the file never leave
 ## What Base64 actually does
 
 Computers store files as bytes, but many formats — JSON, HTML attributes, CSS, email — expect *text*.
-Base64 bridges that gap. It takes every 3 bytes (24 bits) and rewrites them as 4 characters from a
+[Base64](https://en.wikipedia.org/wiki/Base64) bridges that gap. It takes every 3 bytes (24 bits) and rewrites them as 4 characters from a
 fixed 64-symbol alphabet (`A–Z`, `a–z`, `0–9`, `+`, `/`), padding the end with `=` when needed. The
 result is pure text that survives anywhere text is allowed — and it's perfectly reversible.
 

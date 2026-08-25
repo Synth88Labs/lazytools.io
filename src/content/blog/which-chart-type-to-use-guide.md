@@ -1,5 +1,6 @@
 ---
 title: "Which Chart Type Should You Use? A Decision Guide (Bar, Line, Pie, Funnel, Radar, Waterfall)"
+seoTitle: "Which Chart Type Should You Use? A Guide"
 description: "Bar charts compare categories, line charts show change over time, pie charts show parts of a whole. Here's a decision framework for picking the right chart — plus when funnel, radar and waterfall charts beat all three, and the mistakes that make charts lie."
 pubDate: 2026-07-17
 updatedDate: 2026-07-17

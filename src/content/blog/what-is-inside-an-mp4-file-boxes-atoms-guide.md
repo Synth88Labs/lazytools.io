@@ -1,6 +1,7 @@
 ---
 title: "What's Inside an MP4 File? Boxes, Atoms and the 'moov' Problem"
-description: "An MP4 isn't one blob — it's a tree of 'boxes' (atoms) like ftyp, moov and mdat. Here's how the structure works, why a misplaced moov box stops a video from playing or streaming, and how to inspect any MP4/MOV in your browser."
+seoTitle: "What's Inside an MP4 File? Boxes & Atoms"
+description: "What's inside an MP4? A tree of boxes (atoms) like ftyp, moov and mdat. How the structure works, why a misplaced moov box breaks playback or streaming."
 pubDate: 2026-08-05
 updatedDate: 2026-08-23
 archetype: explainer
@@ -55,7 +56,7 @@ the [MP4 Box Viewer](/file/mp4-box-viewer/).
 
 ## MP4 is a tree of boxes
 
-MP4 and its relatives are built on the **ISO Base Media File Format (ISOBMFF)**, where everything is a
+MP4 and its relatives are built on the [**ISO Base Media File Format (ISOBMFF)**](https://en.wikipedia.org/wiki/ISO_base_media_file_format), where everything is a
 **box**: a size, a four-character type, and then either data or more boxes. Read from the top, a typical
 MP4 looks like:
 
@@ -166,7 +167,7 @@ it's a fragmented file, not a broken one.
 
 ## One structure, many extensions
 
-Because MP4, **MOV**, **M4A**, **M4V** and **HEIF/HEIC** all sit on ISOBMFF, they share this box layout —
+Because MP4, **MOV**, **M4A**, **M4V** and **[HEIF/HEIC](/blog/heic-to-jpg-guide/)** all sit on ISOBMFF, they share this box layout —
 the same `ftyp`/`moov`/`mdat` grammar, just different brands and handler types. A `.mov` from a camera and
 a `.mp4` from an editor can be almost identical inside; the extension is mostly a hint. A single inspector
 reads them all, which is handy when a file has the wrong extension, refuses to open in one app but not

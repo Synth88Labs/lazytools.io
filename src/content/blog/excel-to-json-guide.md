@@ -1,6 +1,7 @@
 ---
 title: "How to Convert Excel to JSON (in Your Browser)"
-description: "To convert Excel to JSON, the first row becomes the field names and each row becomes an object — an array of objects. Do it locally; your file is never uploaded."
+seoTitle: 'Convert Excel to JSON (in Your Browser)'
+description: "To convert Excel to JSON, the first row becomes the field names and each row becomes an object — an array of objects. Done locally, never uploaded."
 pubDate: 2026-07-28
 updatedDate: 2026-07-28
 archetype: how-to

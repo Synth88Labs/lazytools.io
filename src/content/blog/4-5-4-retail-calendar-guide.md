@@ -1,6 +1,7 @@
 ---
 title: "The 4-5-4 Retail Calendar Explained: Why Retailers Don't Use Normal Months"
-description: "The NRF 4-5-4 calendar splits the retail year into 13-week quarters of 4-5-4 week months so sales compare like-for-like. How it works, when the retail year starts, why some years have 53 weeks, and how to find any date's retail week."
+seoTitle: 'The 4-5-4 Retail Calendar, Explained (NRF)'
+description: "The NRF 4-5-4 calendar splits the retail year into 13-week quarters of 4-5-4 week months so retail sales compare like-for-like across years."
 pubDate: 2026-07-06
 updatedDate: 2026-07-06
 archetype: explainer

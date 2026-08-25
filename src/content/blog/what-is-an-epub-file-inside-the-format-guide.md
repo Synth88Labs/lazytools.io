@@ -1,5 +1,6 @@
 ---
 title: "What Is an EPUB File? A Look Inside the E-book Format"
+seoTitle: "What Is an EPUB File? Inside the Format"
 description: "An EPUB is really a ZIP of web pages plus a metadata file. Here's how the format is structured — container.xml, the OPF package, Dublin Core metadata and the spine — and how to read any EPUB's title, author and ISBN in your browser."
 pubDate: 2026-08-03
 updatedDate: 2026-08-23

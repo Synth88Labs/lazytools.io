@@ -1,6 +1,7 @@
 ---
 title: "How to Edit a PDF Without Uploading It (Sign, Organize, Convert — Privately)"
-description: "Most online PDF editors upload your file to their servers. Modern browsers can sign, merge, split, reorder, number and extract text from PDFs entirely on your device — nothing uploaded. Here's why that matters and how to do each task privately."
+seoTitle: 'Edit a PDF Without Uploading It — Privately'
+description: 'Edit a PDF without uploading it — sign, merge, split, reorder and extract text entirely in your browser, so the file never leaves your device.'
 pubDate: 2026-07-27
 updatedDate: 2026-07-27
 archetype: explainer
@@ -86,7 +87,7 @@ To reuse a PDF's words, a [text extractor](/pdf/pdf-to-text/) reads the document
 
 Two mature JavaScript libraries make this possible, and they run in the page itself:
 
-- **pdf.js** (from Mozilla) — the same engine Firefox uses to *display* PDFs. It reads and renders pages, so it powers previews, thumbnails and text extraction.
+- **[pdf.js](https://en.wikipedia.org/wiki/PDF.js)** (from Mozilla) — the same engine Firefox uses to *display* PDFs. It reads and renders pages, so it powers previews, thumbnails and text extraction.
 - **pdf-lib** — creates and modifies PDFs: adding pages, images and text, copying and reordering pages, and saving the result.
 
 Between them, the browser can do the edits that used to require a desktop app or a server. The only things that still genuinely need heavier tooling are OCR of scans and certificate-based digital signatures.

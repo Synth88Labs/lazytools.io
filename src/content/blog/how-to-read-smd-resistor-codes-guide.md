@@ -1,6 +1,7 @@
 ---
 title: "How to Read SMD Resistor Codes (103, 4700, 01C and R47)"
-description: "Surface-mount resistors print a tiny number instead of color bands — and the rules aren't obvious. Here's how to decode 3-digit, 4-digit, EIA-96 and R-notation markings, why 470 means 47 ohms, and how to read the zero-ohm jumper."
+seoTitle: 'How to Read SMD Resistor Codes: 103, R47, 01C'
+description: "Decode SMD resistor codes: 3-digit, 4-digit, EIA-96 and R-notation markings, why 470 means 47 ohms, and the zero-ohm jumper."
 pubDate: 2026-07-12
 updatedDate: 2026-08-23
 archetype: explainer

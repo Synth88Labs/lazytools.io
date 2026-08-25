@@ -1,5 +1,6 @@
 ---
 title: "Women's Clothing Size Conversion: US, UK, EU, IT Charts — and Why Vanity Sizing Broke Them"
+seoTitle: 'Clothing Size Conversion Chart: US, UK, EU, IT'
 description: "A US 8 is a UK 12, EU 38, FR 40, IT 44 and JP 13. Get the full conversion chart, the fixed offsets behind it, and why a 1975 size 12 became today's size 6."
 pubDate: 2026-07-05
 updatedDate: 2026-08-23
@@ -90,7 +91,7 @@ than German — separate national garment industries, separate conventions, neve
 
 Between the 1970s and today, the *measurements* attached to size numbers grew dramatically. Analyses of
 historical sizing charts (including the withdrawn US commercial standard from 1971 versus modern brand
-charts) show **a 1975 US size 12 corresponds to roughly a modern US 6** — brands relabeled larger
+charts) show **a 1975 US size 12 corresponds to roughly a modern US 6** ([vanity sizing](https://en.wikipedia.org/wiki/Vanity_sizing)) — brands relabeled larger
 garments with smaller numbers as average bodies changed, because smaller numbers sell.
 
 <div class="callout cite">

@@ -1,6 +1,7 @@
 ---
 title: "Hat Sizes Decoded: Why 7⅛ Means Your Head's Diameter (Charts + Measuring Guide)"
-description: "Fitted hat sizes are head circumference in inches ÷ π. Measure your head in 30 seconds, convert 52–64 cm to US/UK fitted and S–XXL sizes, and learn the fedora-era logic behind the eighths."
+seoTitle: 'Hat Size Chart: Measure and Convert Your Head'
+description: "Fitted hat size = head circumference in inches ÷ π. Measure your head, then convert 52–64 cm to US, UK fitted and S–XXL letter sizes."
 pubDate: 2026-07-05
 updatedDate: 2026-08-23
 archetype: explainer
@@ -51,7 +52,7 @@ instantly.
 ## The fedora-era logic behind the eighths
 
 Hat sizing predates flexible tape measures being standard shop kit. Hatmakers measured the wooden
-head-forms ("blocks") hats were shaped on by their **diameter** — and a block for a 22-inch head has a
+head-forms (["blocks"](https://en.wikipedia.org/wiki/Hat)) hats were shaped on by their **diameter** — and a block for a 22-inch head has a
 diameter of 22 ÷ π ≈ 7 inches. The eighth-inch steps survive from an era when a gentleman's hat was
 fitted like a suit. So the strange-looking 7⅜ on a modern baseball cap is a 19th-century wood-block
 measurement: it means "your head is about 7⅜ inches across."

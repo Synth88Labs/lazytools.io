@@ -1,6 +1,7 @@
 ---
 title: "Extracting Colors from an Image: Pickers, Palettes and Naming"
-description: "Three ways to pull colors out of an image, all on-device: pick a pixel for its exact HEX/RGB/HSL (or use the EyeDropper API), extract a dominant palette with median-cut, and find the nearest CSS color name by CIEDE2000. How each works and why nothing is uploaded."
+seoTitle: 'Extract Colors from an Image: Pick, Palette, Name'
+description: "Extract colors from an image on-device: pick a pixel for exact HEX/RGB/HSL, pull a dominant palette with median-cut, and name the nearest CSS color."
 pubDate: 2026-07-11
 updatedDate: 2026-08-23
 archetype: explainer
@@ -102,7 +103,7 @@ shades. A quick reference for one green:
 
 ## 2. Extract a palette
 
-Pulling the *dominant* colors is a quantization problem: an image has thousands of distinct pixel colors,
+Pulling the *dominant* colors is a [quantization](https://en.wikipedia.org/wiki/Color_quantization) problem: an image has thousands of distinct pixel colors,
 and you want to reduce them to a representative handful. The classic method is **median cut**:
 
 1. Put all the sampled pixels into one "box" in RGB space.
@@ -135,7 +136,7 @@ Sometimes you have a hex and want a *name* — "what would you call `#2f855a`?" 
 a **perceptual measurement**, not a guess:
 
 1. Convert your color and every standard CSS named color to **CIELAB**, a perceptually organised space.
-2. Compute the **CIEDE2000 (ΔE)** distance from your color to each name.
+2. Compute the **[CIEDE2000 (ΔE)](https://en.wikipedia.org/wiki/Color_difference)** distance from your color to each name.
 3. The smallest distance is the nearest name (`#2f855a` → *seagreen*).
 
 A ΔE around 1–2 is roughly a "just noticeable difference", so a small ΔE means the name is essentially

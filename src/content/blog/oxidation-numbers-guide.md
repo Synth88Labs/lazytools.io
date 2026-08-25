@@ -1,6 +1,7 @@
 ---
 title: "Oxidation Numbers: The Rules and How to Assign Them"
-description: "Oxidation numbers follow a short priority list of rules — group 1 is +1, oxygen is −2, hydrogen is +1 — and the last unknown falls out by making everything sum to the overall charge. The rules in order, worked examples like KMnO₄ → Mn +7, and the exceptions."
+seoTitle: 'Oxidation Numbers: Rules and How to Assign Them'
+description: "Oxidation number rules in priority order — group 1 +1, oxygen −2, hydrogen +1 — then solve the last element by balancing. Worked example: KMnO₄ → Mn +7."
 pubDate: 2026-07-11
 updatedDate: 2026-08-23
 archetype: explainer
@@ -64,7 +65,7 @@ The rules are a **priority list** — when two could apply, the higher one wins:
 6. **Oxygen is −2** — except in peroxides (−1) and with fluorine (+2).
 7. **The oxidation numbers sum to the overall charge** (0 for a neutral compound; the ion's charge otherwise).
 
-The reason the list is ordered this way comes down to **electronegativity**. An oxidation number is what
+The reason the list is ordered this way comes down to **electronegativity**. An [oxidation number](https://en.wikipedia.org/wiki/Oxidation_state) is what
 an atom's charge *would* be if every bond were split and both shared electrons handed to the more
 electronegative partner. Fluorine is the most electronegative element, so it never loses that tug-of-war —
 which is why it sits high on the list and is *always* −1 in compounds. Oxygen is second only to fluorine,

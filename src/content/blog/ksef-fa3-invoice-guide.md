@@ -1,6 +1,7 @@
 ---
 title: "KSeF in 2026/2027: How to Open and Read an FA(3) Invoice XML — No Software, Nothing Uploaded"
-description: "Poland's KSeF makes the XML the legally binding invoice — mandatory for all VAT businesses since April 2026, with penalties from January 2027. What the FA(3) structure contains, how the clearance model works, and how to read or pre-check an FA(3) file in your browser."
+seoTitle: 'KSeF FA(3) Invoice XML: Open and Read It'
+description: "Poland's KSeF makes the FA(3) XML the binding invoice — mandatory since April 2026, penalties from 2027. What's inside it and how to read one."
 pubDate: 2026-07-07
 updatedDate: 2026-07-07
 archetype: explainer

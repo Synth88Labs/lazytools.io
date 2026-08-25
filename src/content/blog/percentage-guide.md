@@ -1,6 +1,7 @@
 ---
 title: "How to Calculate Percentages: All 3 Forms, Fast Tricks and Real Examples"
-description: "Every percentage problem is one of three forms. Learn all three formulas, the X%-of-Y = Y%-of-X swap trick, reverse percentages for sale prices, and the mistakes that trip everyone up."
+seoTitle: 'How to Calculate Percentages: 3 Forms & Tricks'
+description: "How to calculate percentages: every problem is one of three forms. The formulas, the X% of Y = Y% of X swap trick, reverse percentages, and common mistakes."
 pubDate: 2026-07-04
 updatedDate: 2026-07-04
 archetype: how-to

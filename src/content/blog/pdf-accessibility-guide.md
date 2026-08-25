@@ -1,6 +1,7 @@
 ---
 title: "PDF Accessibility After the EAA: What a Screen Reader Actually Needs From Your PDF"
-description: "The European Accessibility Act has applied since June 2025, and PDFs inside e-commerce, banking and e-book services are in scope. What makes a PDF readable to assistive technology — tags, language, title, text layer, alt text — which checks a machine can run, and how to triage a document in your browser."
+seoTitle: 'PDF Accessibility After the EAA'
+description: "What makes a PDF accessible under the EAA — tags, language, title, text layer, alt text — which checks a machine can run, and how to triage it locally."
 pubDate: 2026-07-08
 updatedDate: 2026-07-08
 archetype: explainer

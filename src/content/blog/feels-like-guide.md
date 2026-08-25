@@ -1,6 +1,7 @@
 ---
 title: "Why 'Feels Like' Isn't the Temperature: Heat Index, Wind Chill and Wet-Bulb"
-description: "The thermometer only tells half the story. In humid heat, sweat can't evaporate — the heat index. In cold wind, heat is stripped away — the wind chill. And the wet-bulb temperature sets the hard limit on how much the body can cool at all. What each means and when it matters."
+seoTitle: 'Heat Index, Wind Chill & Wet-Bulb Explained'
+description: "Why 'feels like' isn't the temperature: humidity drives the heat index, wind drives the wind chill, and wet-bulb sets the survival limit of cooling."
 pubDate: 2026-07-12
 updatedDate: 2026-08-23
 archetype: explainer
@@ -55,7 +56,7 @@ draft: false
 
 Your body's main cooling system is sweat evaporating off your skin. Evaporation carries away heat — but it only works if the surrounding air can accept more moisture, and **humid air already holds a lot**. When the humidity is high, sweat beads up and lingers instead of evaporating, cooling stalls, and the same air temperature feels much hotter. That's the **[heat index](/weather/heat-index-calculator/)**: an "apparent temperature" that combines the air temperature with the relative humidity.
 
-Consider a worked example. At **90°F with 70% relative humidity**, the heat index is roughly **106°F** — squarely in the National Weather Service (NWS) "danger" band, where heat cramps and heat exhaustion are likely with prolonged exposure. Drop the humidity to a dry 30% at the same 90°F and the heat index falls back to around 85°F, well below the air temperature itself. Same thermometer reading, radically different risk. The heat index comes from the NWS Rothfusz regression, which was fitted to a detailed model of the human body's heat balance and is defined for shade conditions.
+Consider a worked example. At **90°F with 70% relative humidity**, the heat index is roughly **106°F** — squarely in the [National Weather Service (NWS)](https://www.weather.gov/) "danger" band, where heat cramps and heat exhaustion are likely with prolonged exposure. Drop the humidity to a dry 30% at the same 90°F and the heat index falls back to around 85°F, well below the air temperature itself. Same thermometer reading, radically different risk. The heat index comes from the NWS Rothfusz regression, which was fitted to a detailed model of the human body's heat balance and is defined for shade conditions.
 
 Here is roughly how the apparent temperature climbs with humidity at a fixed 90°F:
 

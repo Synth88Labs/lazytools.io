@@ -1,6 +1,7 @@
 ---
 title: "What's Inside a .torrent File? Bencode, the Info-Hash and Magnet Links"
-description: "A .torrent file doesn't contain any of the actual content — just a description of it, encoded in 'bencode', plus the info-hash that identifies the torrent. Here's how it's structured and how to read one in your browser."
+seoTitle: "What's Inside a .torrent File? Info-Hash"
+description: "A .torrent file holds no content — just bencoded metadata plus the info-hash that identifies the torrent. How it's structured and how to read one."
 pubDate: 2026-08-03
 updatedDate: 2026-08-23
 archetype: explainer
@@ -83,7 +84,7 @@ and ~400 KB of hashes — one reason large torrents tend to use bigger pieces.
 
 ## Bencode: the format inside
 
-All of that is stored in **bencode**, BitTorrent's simple binary encoding. It has exactly four types:
+All of that is stored in [**bencode**](https://en.wikipedia.org/wiki/Bencode), BitTorrent's simple binary encoding. It has exactly four types:
 
 | Type | Syntax | Example | Decodes to |
 |---|---|---|---|
@@ -132,7 +133,8 @@ info-hash = SHA1( bencode(info) )
 Trackers and peers use it to group everyone sharing the same content. Because it's computed from the
 exact bytes, changing anything in `info` — even one character of a filename — produces a completely
 different info-hash and, effectively, a different torrent. This is exactly why bencode is byte-precise:
-the hash depends on it.
+the hash depends on it. If you enjoy reading a file's raw structure like this, the same idea underlies
+[how magic bytes identify a file](/blog/magic-bytes-file-signatures-guide/) from its first few bytes.
 
 A worked sketch makes it concrete. Suppose the `info` dictionary bencodes to the bytes
 `d4:name8:demo.iso12:piece lengthi262144e6:pieces20:....e`. Your client takes those exact bytes — the

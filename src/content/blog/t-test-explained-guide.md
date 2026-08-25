@@ -1,6 +1,7 @@
 ---
 title: "The t-Test Explained: One-Sample, Two-Sample and Paired"
-description: "A t-test answers one question: is a difference in means real, or could it be chance? Here's how the three types work, how to pick between Welch and pooled, what the p-value actually tells you, and the mistake almost everyone makes reading a non-significant result."
+seoTitle: 't-Test Explained: One-Sample, Two-Sample, Paired'
+description: "A t-test tells you whether a difference in means is real or just chance. How the three types work, Welch vs pooled, and what the p-value really means."
 pubDate: 2026-07-12
 updatedDate: 2026-08-23
 archetype: explainer
@@ -118,7 +119,7 @@ The p-value tells you whether an effect is detectable; it says nothing about how
 
 A t-test is only as trustworthy as the conditions behind it:
 
-- **Approximate normality.** The test assumes the data (or, for two samples, each group; for paired, the differences) are roughly normal. It's fairly robust to mild departures, and with larger samples the central limit theorem carries the mean toward normality regardless. Heavy skew or strong outliers in a small sample are the real danger — inspect a histogram first.
+- **Approximate normality.** The test assumes the data (or, for two samples, each group; for paired, the differences) are roughly normal. It's fairly robust to mild departures, and with larger samples the [central limit theorem](https://en.wikipedia.org/wiki/Central_limit_theorem) carries the mean toward normality regardless. Heavy skew or strong outliers in a small sample are the real danger — inspect a histogram first.
 - **Independence.** Observations should be independent of one another. Repeated measures on the same subject are *not* independent, which is exactly why the paired design exists.
 - **Equal variances — only for the pooled test.** Welch's version drops this requirement, which is why it's the safer default.
 

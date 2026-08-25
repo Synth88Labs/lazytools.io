@@ -1,6 +1,7 @@
 ---
 title: "How to Calculate Your GPA (Grade Points & Credits)"
-description: "GPA = Σ(grade points × credit hours) ÷ Σ(credit hours) on the 4.0 scale. Worked examples, weighted vs unweighted, and the grade-you-need formula — all in your browser, nothing uploaded."
+seoTitle: 'How to Calculate Your GPA (Grade Points)'
+description: "GPA = Σ(grade points × credit hours) ÷ Σ(credit hours) on the 4.0 scale. Worked examples, weighted vs unweighted, and the grade-you-need formula."
 pubDate: 2026-07-28
 updatedDate: 2026-07-28
 archetype: how-to

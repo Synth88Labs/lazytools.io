@@ -1,5 +1,6 @@
 ---
 title: "How to Find the pH of a Weak Acid (the ICE-Table Method)"
+seoTitle: "Weak Acid pH: The ICE-Table Method"
 description: "A weak acid at 0.1 M isn't pH 1 — it's closer to 3, because it barely ionizes. Here's why −log of the concentration fails, how to set up the ICE table, and how to solve for pH exactly instead of guessing that 'x is small'."
 pubDate: 2026-07-12
 updatedDate: 2026-08-23

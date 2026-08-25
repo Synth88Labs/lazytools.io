@@ -1,6 +1,7 @@
 ---
 title: "JPEG vs PNG vs WebP: Which Image Format to Use (and How to Shrink Files 90%)"
-description: "JPEG for photos, PNG for screenshots and transparency, WebP for the web at 25–35% smaller. How each format works, the conversion mistakes that ruin images, and the resize-then-compress workflow that cuts files by 90%."
+seoTitle: 'JPEG vs PNG vs WebP: Which Format to Use'
+description: "JPEG vs PNG vs WebP: JPEG for photos, PNG for screenshots and transparency, WebP for 25–35% smaller web files — plus the resize-then-compress workflow."
 pubDate: 2026-07-05
 updatedDate: 2026-07-05
 archetype: explainer

@@ -1,5 +1,6 @@
 ---
 title: "Hourly to Salary: What You Earn Per Year"
+seoTitle: 'Hourly to Salary: Convert Any Wage to Yearly Pay'
 description: "Annual salary = hourly rate × hours/week × 52. $25/hr at 40 h → $52,000. Convert any wage to yearly, monthly or back — free, in your browser."
 pubDate: 2026-07-28
 updatedDate: 2026-07-28

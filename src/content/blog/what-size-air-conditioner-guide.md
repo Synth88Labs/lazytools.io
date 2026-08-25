@@ -1,5 +1,6 @@
 ---
 title: "What Size Air Conditioner Do I Need? (BTU)"
+seoTitle: 'AC Size Calculator: BTU per Square Foot'
 description: "What size air conditioner do I need? Start at about 20 BTU/h per square foot, then adjust for sun, people and kitchens. Free BTU calculator, in your browser."
 pubDate: 2026-07-28
 updatedDate: 2026-07-28
@@ -52,7 +53,7 @@ draft: false
 
 ## The 20 BTU per square foot rule
 
-The ENERGY STAR guideline is about **20 BTU per hour for every square foot** of floor area. Measure the room (length × width in feet), multiply by 20, and you have a starting capacity:
+The [ENERGY STAR](https://www.energystar.gov/) guideline is about **20 BTU per hour for every square foot** of floor area. Measure the room (length × width in feet), multiply by 20, and you have a starting capacity:
 
 > baseline BTU/h = floor area (ft²) × 20
 

@@ -1,6 +1,7 @@
 ---
 title: "How .ics and .vcf Files Work: Calendar Events and Contacts Explained"
-description: "The .ics behind every 'Add to Calendar' button and the .vcf behind every saved contact are just text files — but escaping, line-folding and the exclusive all-day end date trip everyone up. Here's how both work, done privately in your browser."
+seoTitle: 'How .ics and .vcf Files Work: Calendar & Contacts'
+description: ".ics and .vcf files are the plain text behind calendar events and contacts — how iCalendar and vCard work, the all-day end-date gotcha, done in your browser."
 pubDate: 2026-08-02
 updatedDate: 2026-08-23
 archetype: explainer
@@ -42,7 +43,7 @@ notorious *exclusive* all-day end date. Here's how each works, with a browser-ba
 
 **Key takeaways**
 
-- An `.ics` file is an iCalendar event (RFC 5545); a `.vcf` file is a vCard contact (RFC 6350). Both are plain UTF-8 text that every major calendar and address-book app can read.
+- An `.ics` file is an [iCalendar](https://en.wikipedia.org/wiki/ICalendar) event (RFC 5545); a `.vcf` file is a [vCard](https://en.wikipedia.org/wiki/VCard) contact (RFC 6350). Both are plain UTF-8 text that every major calendar and address-book app can read.
 - Three things break hand-written `.ics` files: unescaped special characters, lines longer than 75 octets that aren't folded, and the all-day `DTEND` being *exclusive* (the day after the event ends).
 - vCards and CSVs carry the same contact fields in different layouts, so converting between them is the standard way to move address books between phones, spreadsheets and CRMs.
 - Because both formats hold private data — meeting links, home addresses, other people's phone numbers — generating and converting them in your browser keeps that data off anyone else's server.

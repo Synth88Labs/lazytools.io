@@ -1,6 +1,7 @@
 ---
 title: "Why PDF Redactions Keep Failing — and How to Redact (and Verify) for Real"
-description: "From the Epstein files to routine court filings, 'redacted' PDFs keep leaking their contents because black boxes hide text instead of removing it. How redaction actually fails, how to do it irreversibly by flattening, and the ten-second verification everyone skips."
+seoTitle: 'Why PDF Redactions Fail — and How to Redact Right'
+description: "PDF redaction fails when black boxes hide text instead of removing it. How redaction leaks, how to flatten pages for real, and the verification everyone skips."
 pubDate: 2026-07-08
 updatedDate: 2026-07-08
 archetype: explainer

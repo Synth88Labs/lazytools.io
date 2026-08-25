@@ -1,6 +1,7 @@
 ---
 title: "What Grade Do I Need on My Final? (The Formula)"
-description: "To find the score you need on your final, subtract your current grade times (1 − the final's weight) from your target, then divide by the final's weight. Here's the formula worked out, with examples for reachable, locked-in, and impossible targets."
+seoTitle: "What Grade Do I Need on My Final? (Formula)"
+description: "What grade do I need on my final? needed = (target − current × (1 − weight)) ÷ weight. The formula worked out, with reachable and impossible examples."
 pubDate: 2026-07-28
 updatedDate: 2026-07-28
 archetype: explainer

@@ -1,6 +1,7 @@
 ---
 title: "WCAG Color Contrast Explained: The 4.5:1 Rule Without the Jargon"
-description: "WCAG AA requires 4.5:1 contrast for normal text and 3:1 for large text and UI — the standard cited by the EU Accessibility Act. What the ratio means, how to check it, and how to fix failing brand colors."
+seoTitle: 'WCAG Color Contrast: The 4.5:1 Rule Explained'
+description: "WCAG AA requires 4.5:1 contrast for normal text, 3:1 for large text and UI. What the ratio means, how to check it, and how to fix failing brand colors."
 pubDate: 2026-07-05
 updatedDate: 2026-07-05
 archetype: explainer

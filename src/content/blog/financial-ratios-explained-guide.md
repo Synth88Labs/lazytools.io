@@ -1,6 +1,7 @@
 ---
 title: "Financial Ratios Explained: The 6 Families and How to Read Them"
-description: "A single ratio is just a number — its meaning comes from what you compare it to. Here's a plain-English tour of the six families of financial ratios (liquidity, leverage, coverage, profitability, efficiency, valuation), the formulas, the healthy benchmarks, and which ratios only make sense against industry peers."
+seoTitle: 'Financial Ratios Explained: The 6 Families'
+description: "Financial ratios explained: the six families — liquidity, leverage, coverage, profitability, efficiency, valuation — with formulas, benchmarks and peer context."
 pubDate: 2026-07-12
 updatedDate: 2026-07-12
 archetype: explainer

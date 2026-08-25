@@ -1,6 +1,7 @@
 ---
 title: "Brand Colors: The Exact Hex Codes of Famous Brands — and How to Use Them Legally"
-description: "Netflix red is #e50914, Spotify green #1db954, Tiffany blue #0abab5. Where to find the exact hex codes of 1,100+ brands, why colors themselves aren't owned, and where using a brand's palette crosses from normal design practice into trademark trouble."
+seoTitle: 'Brand Colors: Exact Hex Codes of Famous Brands'
+description: "Exact brand color hex codes — Netflix #e50914, Spotify #1db954, Tiffany #0abab5 — for 1,100+ brands, plus when using a brand's palette is legal."
 pubDate: 2026-07-10
 updatedDate: 2026-07-10
 archetype: explainer
