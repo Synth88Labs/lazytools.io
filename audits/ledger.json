@@ -46580,6 +46580,15 @@
       "opened": 2,
       "resolved": 1213,
       "challenged": 0
+    },
+    {
+      "date": "2026-08-25",
+      "tools": 10,
+      "avg": 100,
+      "issues": 0,
+      "opened": 0,
+      "resolved": 0,
+      "challenged": 0
     }
   ],
   "auditedTools": [
@@ -47677,7 +47686,7 @@
       },
       {
         "date": "2026-08-25",
-        "auditor": 3.3,
+        "auditor": 5,
         "fixer": 4
       }
     ],
@@ -47690,7 +47699,7 @@
       },
       {
         "week": "2026-W35",
-        "auditor": 4.2,
+        "auditor": 5,
         "fixer": 4.5,
         "days": 2
       }
@@ -47717,11 +47726,11 @@
       "kpis": {
         "auditedTotal": 1073,
         "catalogue": 1073,
-        "lastAvg": 99
+        "lastAvg": 100
       },
       "score": {
-        "daily": 3.3,
-        "weekly": 4.2
+        "daily": 5,
+        "weekly": 5
       }
     },
     "fixer": {

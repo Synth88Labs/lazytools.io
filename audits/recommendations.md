@@ -1,6 +1,6 @@
 # Open recommendations (need human or AI judgement)
 
-_Updated 2026-08-24. These findings can't be safely auto-fixed by the token-free Fixer bot (they need written content or code changes). 200 open._
+_Updated 2026-08-25. These findings can't be safely auto-fixed by the token-free Fixer bot (they need written content or code changes). 200 open._
 
 ## high (164)
 
