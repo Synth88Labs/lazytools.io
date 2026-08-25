@@ -88,7 +88,7 @@ export default function IcsGenTool() {
               <button onClick={download} class="rounded-lg bg-brand-700 px-3 py-1.5 text-xs font-semibold text-white hover:bg-brand-800">⬇ Download .ics</button>
             </div>
           </div>
-          <textarea readonly rows={8} class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 font-mono text-xs text-slate-800" value={ics} />
+          <textarea readonly rows={8} class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 font-mono text-xs text-slate-800" value={ics} aria-label=".ics file output" />
         </div>
       )}
 

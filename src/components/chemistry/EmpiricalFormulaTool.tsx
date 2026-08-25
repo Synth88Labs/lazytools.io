@@ -25,9 +25,9 @@ export default function EmpiricalFormulaTool() {
       <div class="space-y-2">
         {rows.map((r, i) => (
           <div class="flex items-center gap-2">
-            <input value={r.symbol} placeholder="El" spellcheck={false} onInput={(e) => update(i, { symbol: (e.target as HTMLInputElement).value })}
+            <input value={r.symbol} placeholder="El" spellcheck={false} aria-label="Element symbol" onInput={(e) => update(i, { symbol: (e.target as HTMLInputElement).value })}
               class="w-20 rounded-lg border border-slate-300 bg-white px-3 py-2 font-mono text-sm text-slate-900 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200" />
-            <input type="number" step="any" value={r.amount} placeholder="% or g" onInput={(e) => update(i, { amount: (e.target as HTMLInputElement).value })}
+            <input type="number" step="any" value={r.amount} placeholder="% or g" aria-label="Element amount in mass percent or grams" onInput={(e) => update(i, { amount: (e.target as HTMLInputElement).value })}
               class="flex-1 rounded-lg border border-slate-300 bg-white px-3 py-2 font-mono text-sm text-slate-900 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200" />
             <button onClick={() => delRow(i)} class="shrink-0 rounded-lg px-2.5 py-2 text-sm text-slate-400 ring-1 ring-slate-200 hover:text-red-600 hover:ring-red-300" aria-label="Remove">✕</button>
           </div>
@@ -57,7 +57,7 @@ export default function EmpiricalFormulaTool() {
               </div>
             )}
           </div>
-          <div class="mt-3 overflow-x-auto rounded-xl bg-white ring-1 ring-slate-200">
+          <div class="mt-3 overflow-x-auto rounded-xl bg-white ring-1 ring-slate-200" role="group" tabIndex={0} aria-label="Empirical formula calculation table">
             <table class="w-full text-sm">
               <thead><tr class="border-b border-slate-200 text-left text-xs uppercase tracking-wide text-slate-500"><th class="px-3 py-2">Element</th><th class="px-3 py-2 text-right">Moles</th><th class="px-3 py-2 text-right">÷ smallest</th><th class="px-3 py-2 text-right">Whole #</th></tr></thead>
               <tbody>

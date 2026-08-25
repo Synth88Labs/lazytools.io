@@ -49,16 +49,16 @@ export default function DecisionMatrixTool() {
         <button type="button" onClick={() => pickJson().then((d) => d && setSt(d as State)).catch(() => {})} class={btn}>⬆ Import</button>
       </div>
 
-      <div class="overflow-x-auto rounded-xl border border-slate-200 bg-white">
+      <div class="overflow-x-auto rounded-xl border border-slate-200 bg-white" tabIndex={0} aria-label="Decision matrix">
         <table class="w-full text-sm">
           <thead>
             <tr class="border-b border-slate-200 bg-slate-50 text-left">
               <th class="px-3 py-2 text-xs font-semibold uppercase tracking-wide text-slate-500">Option</th>
               {st.criteria.map((c) => (
                 <th class="px-2 py-2">
-                  <input value={c.name} onInput={(e) => setCrit(c.id, { name: (e.target as HTMLInputElement).value })} class={`${inp} w-24 font-semibold`} />
+                  <input value={c.name} onInput={(e) => setCrit(c.id, { name: (e.target as HTMLInputElement).value })} aria-label="Criterion name" class={`${inp} w-24 font-semibold`} />
                   <div class="mt-1 flex items-center gap-1 text-[11px] text-slate-400">
-                    weight<input type="number" min={1} max={10} value={c.weight} onInput={(e) => setCrit(c.id, { weight: Math.max(1, Math.min(10, parseInt((e.target as HTMLInputElement).value, 10) || 1)) })} class="w-11 rounded border border-slate-200 px-1 py-0.5" />
+                    weight<input type="number" min={1} max={10} value={c.weight} onInput={(e) => setCrit(c.id, { weight: Math.max(1, Math.min(10, parseInt((e.target as HTMLInputElement).value, 10) || 1)) })} aria-label="Criterion weight" class="w-11 rounded border border-slate-200 px-1 py-0.5" />
                     <button type="button" onClick={() => delCrit(c.id)} class="text-slate-300 hover:text-red-600">✕</button>
                   </div>
                 </th>
@@ -76,13 +76,13 @@ export default function DecisionMatrixTool() {
                   <td class="px-3 py-1.5">
                     <span class="flex items-center gap-1.5">
                       <span class="w-5 text-center font-bold text-slate-400">{i + 1}</span>
-                      <input value={o.name} onInput={(e) => setOpt(o.id, { name: (e.target as HTMLInputElement).value })} class={`${inp} min-w-28 font-medium`} />
-                      {isWin && <span class="rounded-full bg-mint-500 px-2 text-xs font-bold text-white">✓ best</span>}
+                      <input value={o.name} onInput={(e) => setOpt(o.id, { name: (e.target as HTMLInputElement).value })} aria-label="Option name" class={`${inp} min-w-28 font-medium`} />
+                      {isWin && <span class="rounded-full bg-mint-700 px-2 text-xs font-bold text-white">✓ best</span>}
                     </span>
                   </td>
                   {st.criteria.map((c) => (
                     <td class="px-2 py-1.5 text-center">
-                      <input type="number" min={0} max={10} value={o.scores[c.id] ?? ''} placeholder="0" onInput={(e) => setScore(o.id, c.id, Math.max(0, Math.min(10, parseInt((e.target as HTMLInputElement).value, 10) || 0)))} class={`${inp} w-14 text-center`} />
+                      <input type="number" min={0} max={10} value={o.scores[c.id] ?? ''} placeholder="0" onInput={(e) => setScore(o.id, c.id, Math.max(0, Math.min(10, parseInt((e.target as HTMLInputElement).value, 10) || 0)))} aria-label={`Score for ${c.name}`} class={`${inp} w-14 text-center`} />
                     </td>
                   ))}
                   <td class="px-3 py-1.5 text-right">

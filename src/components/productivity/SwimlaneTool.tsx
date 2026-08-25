@@ -144,9 +144,9 @@ export default function SwimlaneTool() {
       {selStep && !connect && (
         <div class="mb-3 flex flex-wrap items-center gap-2">
           <label class="text-xs font-semibold uppercase tracking-wide text-slate-500">Step text:</label>
-          <input value={selStep.text} onInput={(e) => rename(selStep.id, (e.target as HTMLInputElement).value)} class="min-w-0 flex-1 rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-900 focus:border-brand-500 focus:outline-none" />
+          <input value={selStep.text} onInput={(e) => rename(selStep.id, (e.target as HTMLInputElement).value)} aria-label="Step text" class="min-w-0 flex-1 rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-900 focus:border-brand-500 focus:outline-none" />
           <label class="text-xs font-semibold uppercase tracking-wide text-slate-500">Lane:</label>
-          <select value={selStep.lane} onChange={(e) => { const lane = Number((e.target as HTMLSelectElement).value); setSt((s) => ({ ...s, steps: s.steps.map((x) => (x.id === selStep.id ? { ...x, lane } : x)) })); }} class="rounded-lg border border-slate-300 bg-white px-2 py-2 text-sm text-slate-900 focus:border-brand-500 focus:outline-none">
+          <select value={selStep.lane} onChange={(e) => { const lane = Number((e.target as HTMLSelectElement).value); setSt((s) => ({ ...s, steps: s.steps.map((x) => (x.id === selStep.id ? { ...x, lane } : x)) })); }} aria-label="Lane" class="rounded-lg border border-slate-300 bg-white px-2 py-2 text-sm text-slate-900 focus:border-brand-500 focus:outline-none">
             {st.lanes.map((l, i) => <option value={i}>{l.title || `Lane ${i + 1}`}</option>)}
           </select>
         </div>
@@ -156,13 +156,13 @@ export default function SwimlaneTool() {
         <span class="text-xs font-semibold uppercase tracking-wide text-slate-500">Lanes:</span>
         {st.lanes.map((l, i) => (
           <span class={`flex items-center gap-1 rounded-md border px-1.5 py-1 ${selLane === i ? 'border-brand-400 bg-brand-50' : 'border-slate-200'}`}>
-            <input value={l.title} onFocus={() => setSelLane(i)} onInput={(e) => renameLane(i, (e.target as HTMLInputElement).value)} class="w-24 bg-transparent text-sm font-medium text-slate-800 focus:outline-none" />
+            <input value={l.title} onFocus={() => setSelLane(i)} onInput={(e) => renameLane(i, (e.target as HTMLInputElement).value)} aria-label="Lane name" class="w-24 bg-transparent text-sm font-medium text-slate-800 focus:outline-none" />
             <button type="button" onClick={() => delLane(i)} disabled={st.lanes.length <= 1} title="Delete lane" class="text-slate-400 hover:text-red-600 disabled:opacity-30">×</button>
           </span>
         ))}
       </div>
 
-      <div class={`overflow-auto rounded-xl border border-slate-200 bg-white ${fs.isFull ? 'flex-1' : ''}`}>
+      <div role="group" class={`overflow-auto rounded-xl border border-slate-200 bg-white ${fs.isFull ? 'flex-1' : ''}`} tabIndex={0} aria-label="Swimlane diagram">
         <svg ref={svgRef} viewBox={`0 0 ${W} ${H}`} width={W} height={H} xmlns="http://www.w3.org/2000/svg" class="max-w-none touch-none select-none" style="font-family:'Plus Jakarta Sans','Segoe UI',Arial,sans-serif">
           <defs><marker id="swah" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#64748b" /></marker></defs>
           <rect x="0" y="0" width={W} height={H} fill="#ffffff" />

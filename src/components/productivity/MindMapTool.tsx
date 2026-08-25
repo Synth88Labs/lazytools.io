@@ -97,11 +97,11 @@ export default function MindMapTool() {
       {selNode && (
         <div class="mb-3 flex items-center gap-2">
           <label class="text-xs font-semibold uppercase tracking-wide text-slate-500">Selected:</label>
-          <input value={selNode.text} onInput={(e) => rename(sel, (e.target as HTMLInputElement).value)} class="min-w-0 flex-1 rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-900 focus:border-brand-500 focus:outline-none" placeholder="Node text" />
+          <input value={selNode.text} onInput={(e) => rename(sel, (e.target as HTMLInputElement).value)} aria-label="Selected node text" class="min-w-0 flex-1 rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-900 focus:border-brand-500 focus:outline-none" placeholder="Node text" />
         </div>
       )}
 
-      <div class={`overflow-auto rounded-xl border border-slate-200 bg-white ${fs.isFull ? 'flex-1' : ''}`}>
+      <div class={`overflow-auto rounded-xl border border-slate-200 bg-white ${fs.isFull ? 'flex-1' : ''}`} tabIndex={0} aria-label="Mind map canvas">
         <svg ref={svgRef} viewBox={`0 0 ${W} ${H}`} width={W} height={H} xmlns="http://www.w3.org/2000/svg" class="max-w-none touch-none select-none" style="font-family:'Plus Jakarta Sans','Segoe UI',Arial,sans-serif">
           <rect x="0" y="0" width={W} height={H} fill="#ffffff" />
           {nodes.filter((n) => n.parent).map((n) => {

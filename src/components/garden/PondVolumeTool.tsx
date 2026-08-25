@@ -26,7 +26,7 @@ export default function PondVolumeTool() {
   return (
     <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
       <div class="mb-3 flex items-center gap-2"><span class="text-xs font-semibold uppercase tracking-wide text-slate-500">Units</span>
-        <select value={unit} onChange={(e) => setUnit((e.target as HTMLSelectElement).value as 'm' | 'ft')} class={sel}><option value="m">metres</option><option value="ft">feet</option></select></div>
+        <select value={unit} onChange={(e) => setUnit((e.target as HTMLSelectElement).value as 'm' | 'ft')} class={sel} aria-label="Units"><option value="m">metres</option><option value="ft">feet</option></select></div>
       <div class="grid gap-3 sm:grid-cols-3">
         <label class="block"><span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Length ({unit})</span><input type="number" step="any" value={length} onInput={(e) => setLength((e.target as HTMLInputElement).value)} class={inp} /></label>
         <label class="block"><span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Width ({unit})</span><input type="number" step="any" value={width} onInput={(e) => setWidth((e.target as HTMLInputElement).value)} class={inp} /></label>

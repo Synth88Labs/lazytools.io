@@ -110,7 +110,7 @@ export default function GradientTextTool() {
 
       <div class="mt-4">
         <span class="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-slate-500">CSS</span>
-        <pre class="overflow-x-auto rounded-xl border border-slate-200 bg-white p-3 text-sm text-slate-800"><code>{css}</code></pre>
+        <pre class="overflow-x-auto rounded-xl border border-slate-200 bg-white p-3 text-sm text-slate-800" tabIndex={0} aria-label="CSS output"><code>{css}</code></pre>
       </div>
 
       <div class="mt-3 flex flex-wrap justify-end gap-2">

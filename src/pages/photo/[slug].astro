@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
+import { seoTitle } from '../../lib/seo';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import FaqSection from '../../components/FaqSection.astro';
 import RatingWidget from '../../components/RatingWidget.tsx';
@@ -16,7 +17,7 @@ export function getStaticPaths() {
 
 const { spec } = Astro.props;
 const px = outputPixels(spec);
-const title = `${spec.label} Maker — Size & Free Editor | LazyTools`;
+const title = seoTitle(`${spec.label} Maker`);
 const description = `Make a compliant ${spec.label.toLowerCase()} (${spec.widthMm}×${spec.heightMm} mm${spec.widthIn ? `, ${spec.widthIn}×${spec.heightIn} in` : ''}, ${spec.backgroundLabel.toLowerCase()}). Crop, auto-check and download — 100% in your browser, never uploaded.`;
 
 const crumbs = [

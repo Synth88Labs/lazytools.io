@@ -28,11 +28,11 @@ export default function LuggageTool() {
   return (
     <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
       <div class="mb-3 flex flex-wrap items-center gap-2">
-        <select class={sel} value={kind} onChange={(e) => setKind((e.target as HTMLSelectElement).value as 'carryOn' | 'checked')}>
+        <select class={sel} value={kind} aria-label="Bag type" onChange={(e) => setKind((e.target as HTMLSelectElement).value as 'carryOn' | 'checked')}>
           <option value="carryOn">Carry-on / cabin bag</option>
           <option value="checked">Checked bag</option>
         </select>
-        <select class={sel} value={unit} onChange={(e) => setUnit((e.target as HTMLSelectElement).value as 'cm' | 'in')}><option value="cm">centimetres</option><option value="in">inches</option></select>
+        <select class={sel} value={unit} aria-label="Measurement unit" onChange={(e) => setUnit((e.target as HTMLSelectElement).value as 'cm' | 'in')}><option value="cm">centimetres</option><option value="in">inches</option></select>
       </div>
 
       <div class="grid gap-3 sm:grid-cols-3">

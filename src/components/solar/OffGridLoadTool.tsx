@@ -28,7 +28,7 @@ export default function OffGridLoadTool() {
 
   return (
     <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
-      <div class="overflow-x-auto">
+      <div class="overflow-x-auto" role="group" tabIndex={0} aria-label="Appliance load table">
         <table class="w-full min-w-[560px] text-sm">
           <thead>
             <tr class="text-left text-[11px] font-semibold uppercase tracking-wide text-slate-500">
@@ -38,10 +38,10 @@ export default function OffGridLoadTool() {
           <tbody>
             {rows.map((r) => (
               <tr key={r.id} class="border-t border-slate-200">
-                <td class="py-1.5 pr-2"><input value={r.name} onInput={(e) => update(r.id, { name: (e.target as HTMLInputElement).value })} class={nameInp} /></td>
-                <td class="py-1.5 px-2"><input type="number" step="any" value={r.watts} onInput={(e) => update(r.id, { watts: parseFloat((e.target as HTMLInputElement).value) || 0 })} class={inp} /></td>
-                <td class="py-1.5 px-2"><input type="number" step="1" value={r.qty} onInput={(e) => update(r.id, { qty: parseInt((e.target as HTMLInputElement).value) || 1 })} class={inp} /></td>
-                <td class="py-1.5 px-2"><input type="number" step="any" value={r.hoursPerDay} onInput={(e) => update(r.id, { hoursPerDay: parseFloat((e.target as HTMLInputElement).value) || 0 })} class={inp} /></td>
+                <td class="py-1.5 pr-2"><input value={r.name} aria-label="Appliance name" onInput={(e) => update(r.id, { name: (e.target as HTMLInputElement).value })} class={nameInp} /></td>
+                <td class="py-1.5 px-2"><input type="number" step="any" value={r.watts} aria-label="Watts" onInput={(e) => update(r.id, { watts: parseFloat((e.target as HTMLInputElement).value) || 0 })} class={inp} /></td>
+                <td class="py-1.5 px-2"><input type="number" step="1" value={r.qty} aria-label="Quantity" onInput={(e) => update(r.id, { qty: parseInt((e.target as HTMLInputElement).value) || 1 })} class={inp} /></td>
+                <td class="py-1.5 px-2"><input type="number" step="any" value={r.hoursPerDay} aria-label="Hours per day" onInput={(e) => update(r.id, { hoursPerDay: parseFloat((e.target as HTMLInputElement).value) || 0 })} class={inp} /></td>
                 <td class="py-1.5 px-2 text-right font-mono font-semibold text-slate-700">{fmt(r.watts * r.hoursPerDay * (r.qty || 1))}</td>
                 <td class="py-1.5 pl-2 text-center"><button onClick={() => remove(r.id)} class="text-slate-400 hover:text-rose-600" aria-label="Remove">✕</button></td>
               </tr>
@@ -52,7 +52,7 @@ export default function OffGridLoadTool() {
 
       <div class="mt-3 flex flex-wrap items-center gap-2">
         <button onClick={add} class="rounded-lg bg-brand-600 px-3 py-1.5 text-sm font-semibold text-white hover:bg-brand-700">+ Add row</button>
-        <select onChange={(e) => { addPreset((e.target as HTMLSelectElement).value); (e.target as HTMLSelectElement).selectedIndex = 0; }} class="rounded-lg border border-slate-300 bg-white px-2 py-1.5 text-sm text-slate-700">
+        <select aria-label="Add common appliance" onChange={(e) => { addPreset((e.target as HTMLSelectElement).value); (e.target as HTMLSelectElement).selectedIndex = 0; }} class="rounded-lg border border-slate-300 bg-white px-2 py-1.5 text-sm text-slate-700">
           <option>+ Add common appliance…</option>
           {APPLIANCE_PRESETS.map((a) => <option value={a.name}>{a.name} ({a.watts} W)</option>)}
         </select>

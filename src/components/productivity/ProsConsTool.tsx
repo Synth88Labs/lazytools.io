@@ -28,7 +28,7 @@ export default function ProsConsTool() {
         {st[side].map((i) => (
           <li class="group flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-800">
             <span class="min-w-0 flex-1 break-words">{i.text}</span>
-            <select value={i.weight} onChange={(e) => setW(side, i.id, parseInt((e.target as HTMLSelectElement).value, 10))} class="rounded border border-slate-200 bg-white px-1 py-0.5 text-xs" title="Importance 1–5">
+            <select value={i.weight} onChange={(e) => setW(side, i.id, parseInt((e.target as HTMLSelectElement).value, 10))} aria-label="Importance" class="rounded border border-slate-200 bg-white px-1 py-0.5 text-xs" title="Importance 1–5">
               {[1, 2, 3, 4, 5].map((w) => <option value={w}>{w}</option>)}
             </select>
             <button type="button" onClick={() => del(side, i.id)} class="text-slate-300 opacity-0 transition group-hover:opacity-100 hover:text-red-600" aria-label="Delete">✕</button>
@@ -36,7 +36,7 @@ export default function ProsConsTool() {
         ))}
       </ul>
       <div class="mt-2 flex gap-1">
-        <input value={draft} onInput={(e) => setDraft((e.target as HTMLInputElement).value)} onKeyDown={(e) => e.key === 'Enter' && addFn()} placeholder={`+ add ${side === 'pros' ? 'pro' : 'con'}`} class="min-w-0 flex-1 rounded-lg border border-slate-200 bg-white px-2 py-1.5 text-sm focus:border-brand-500 focus:outline-none" />
+        <input value={draft} onInput={(e) => setDraft((e.target as HTMLInputElement).value)} onKeyDown={(e) => e.key === 'Enter' && addFn()} placeholder={`+ add ${side === 'pros' ? 'pro' : 'con'}`} aria-label={`Add ${side === 'pros' ? 'pro' : 'con'}`} class="min-w-0 flex-1 rounded-lg border border-slate-200 bg-white px-2 py-1.5 text-sm focus:border-brand-500 focus:outline-none" />
         <button type="button" onClick={addFn} class="rounded-lg bg-brand-700 px-3 text-sm font-semibold text-white hover:bg-brand-800">Add</button>
       </div>
     </div>
@@ -45,7 +45,7 @@ export default function ProsConsTool() {
   return (
     <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
       <div class="mb-3 flex flex-wrap items-center gap-2">
-        <input value={st.title} onInput={(e) => setSt((s) => ({ ...s, title: (e.target as HTMLInputElement).value }))} class="min-w-0 flex-1 rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm font-semibold text-slate-900 focus:border-brand-500 focus:outline-none" placeholder="The decision…" />
+        <input value={st.title} onInput={(e) => setSt((s) => ({ ...s, title: (e.target as HTMLInputElement).value }))} aria-label="Decision title" class="min-w-0 flex-1 rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm font-semibold text-slate-900 focus:border-brand-500 focus:outline-none" placeholder="The decision…" />
         <button type="button" onClick={() => exportJson('proscons', 'pros-cons.json', st)} class={btn}>⬇ JSON</button>
         <button type="button" onClick={() => pickJson().then((d) => d && setSt(d as State)).catch(() => {})} class={btn}>⬆ Import</button>
       </div>

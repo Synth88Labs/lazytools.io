@@ -58,17 +58,17 @@ export default function BikramTool() {
           <div class="flex flex-wrap items-end gap-2">
             <div>
               <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">BS year</label>
-              <input type="number" min={BS_RANGE.minYear} max={BS_RANGE.maxYear} value={bsY} onInput={(e) => setBsY((e.target as HTMLInputElement).value)} class={`${inputCls} w-28`} />
+              <input type="number" min={BS_RANGE.minYear} max={BS_RANGE.maxYear} value={bsY} onInput={(e) => setBsY((e.target as HTMLInputElement).value)} aria-label="BS year" class={`${inputCls} w-28`} />
             </div>
             <div>
               <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Month</label>
-              <select value={bsM} onChange={(e) => setBsM((e.target as HTMLSelectElement).value)} class={inputCls}>
+              <select value={bsM} onChange={(e) => setBsM((e.target as HTMLSelectElement).value)} aria-label="BS month" class={inputCls}>
                 {BS_MONTHS.map((name, i) => <option value={i + 1}>{i + 1} — {name}</option>)}
               </select>
             </div>
             <div>
               <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Day</label>
-              <input type="number" min={1} max={32} value={bsD} onInput={(e) => setBsD((e.target as HTMLInputElement).value)} class={`${inputCls} w-20`} />
+              <input type="number" min={1} max={32} value={bsD} onInput={(e) => setBsD((e.target as HTMLInputElement).value)} aria-label="BS day" class={`${inputCls} w-20`} />
             </div>
           </div>
         )}

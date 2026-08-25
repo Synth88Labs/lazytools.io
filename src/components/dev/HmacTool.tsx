@@ -125,6 +125,7 @@ export default function HmacTool() {
           </div>
           <textarea
             readOnly
+            aria-label="HMAC signature"
             class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 font-mono text-xs"
             rows={3}
             value={output}

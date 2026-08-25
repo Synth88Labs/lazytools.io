@@ -89,6 +89,7 @@ export default function TextRepeater() {
           readonly
           rows={6}
           value={out}
+          aria-label="Result"
           class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 font-mono text-sm text-slate-800"
         />
       </div>

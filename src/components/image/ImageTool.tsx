@@ -255,7 +255,7 @@ export default function ImageTool({ mode }: Props) {
               {copied ? '✓ Copied' : 'Copy'}
             </button>
           </div>
-          <textarea readOnly rows={6} value={b64} class="mt-2 w-full rounded-xl border border-brand-200 bg-white px-3 py-2 font-mono text-xs text-slate-800" spellcheck={false} />
+          <textarea readOnly rows={6} value={b64} aria-label="Base64 data URL" class="mt-2 w-full rounded-xl border border-brand-200 bg-white px-3 py-2 font-mono text-xs text-slate-800" spellcheck={false} />
           {b64.length > 100_000 && <p class="mt-1 text-xs font-medium text-amber-700">⚠ Over 100 KB — consider linking the file instead of embedding it.</p>}
         </div>
       )}

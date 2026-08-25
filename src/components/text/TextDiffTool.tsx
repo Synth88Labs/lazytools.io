@@ -26,7 +26,7 @@ export default function TextDiffTool() {
         <span class="ml-auto font-medium"><span class="text-emerald-700">+{diff.added}</span> · <span class="text-red-700">−{diff.removed}</span> · <span class="text-slate-500">{diff.unchanged} unchanged</span></span>
       </div>
 
-      <div class="mt-3 overflow-auto rounded-xl border border-slate-200 bg-white font-mono text-sm">
+      <div class="mt-3 overflow-auto rounded-xl border border-slate-200 bg-white font-mono text-sm" tabIndex={0} aria-label="Diff result">
         {diff.rows.map((r) => (
           r.type === 'eq'
             ? <div class="flex"><span class="w-6 select-none border-r border-slate-100 px-1 text-center text-slate-300"> </span><span class="whitespace-pre-wrap px-2 py-0.5 text-slate-600">{r.a || ' '}</span></div>

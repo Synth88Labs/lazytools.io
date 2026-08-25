@@ -104,7 +104,7 @@ export default function AnnotateImageTool() {
             <label class="flex items-center gap-1 text-sm text-slate-600">Size <input type="range" min={2} max={12} value={width} onInput={(e) => setWidth(Number((e.target as HTMLInputElement).value))} class="w-20 accent-brand-600" /></label>
             <button type="button" onClick={() => setShapes((s) => s.slice(0, -1))} disabled={!shapes.length} class="rounded-lg bg-white px-3 py-1.5 text-sm font-semibold text-slate-700 ring-1 ring-slate-300 hover:ring-brand-400 disabled:opacity-40">↶ Undo</button>
           </div>
-          <div class="overflow-auto rounded-xl border border-slate-200 bg-slate-100">
+          <div class="overflow-auto rounded-xl border border-slate-200 bg-slate-100" tabIndex={0} aria-label="Annotation canvas">
             <canvas ref={canvasRef} width={img.naturalWidth} height={img.naturalHeight} onPointerDown={down} onPointerMove={move} onPointerUp={up} class="max-w-full touch-none" style="max-height:60vh" />
           </div>
           <div class="mt-3 flex justify-end">

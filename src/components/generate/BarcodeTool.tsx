@@ -50,12 +50,12 @@ export default function BarcodeTool() {
     <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
       <div class="grid gap-3 sm:grid-cols-2">
         <div><label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Barcode type</label>
-          <select class={inputCls} value={format} onChange={(e) => setFormat((e.target as HTMLSelectElement).value)}>
+          <select class={inputCls} value={format} onChange={(e) => setFormat((e.target as HTMLSelectElement).value)} aria-label="Barcode type">
             {FORMATS.map((f) => <option value={f.value}>{f.label}</option>)}
           </select>
         </div>
         <div><label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Value</label>
-          <input class={`${inputCls} font-mono`} value={value} placeholder={active.ph} onInput={(e) => setValue((e.target as HTMLInputElement).value)} />
+          <input class={`${inputCls} font-mono`} value={value} placeholder={active.ph} onInput={(e) => setValue((e.target as HTMLInputElement).value)} aria-label="Barcode value" />
         </div>
       </div>
 

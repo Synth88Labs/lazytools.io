@@ -52,7 +52,7 @@ export default function LoremTool() {
           {copied ? '✓ Copied' : 'Copy'}
         </button>
       </div>
-      <textarea readOnly rows={10} value={text} class="mt-2 w-full rounded-xl border border-brand-200 bg-white px-3 py-3 text-sm leading-relaxed text-slate-800" />
+      <textarea readOnly rows={10} value={text} class="mt-2 w-full rounded-xl border border-brand-200 bg-white px-3 py-3 text-sm leading-relaxed text-slate-800" aria-label="Generated text" />
     </div>
   );
 }

@@ -54,7 +54,7 @@ export default function StoichiometryTool() {
                   <p class="mt-1 text-2xl font-extrabold text-brand-800">{result.limiting}</p>
                 </div>
               )}
-              <div class="mt-3 overflow-x-auto rounded-xl bg-white ring-1 ring-slate-200">
+              <div class="mt-3 overflow-x-auto rounded-xl bg-white ring-1 ring-slate-200" role="group" tabIndex={0} aria-label="Stoichiometry results table">
                 <table class="w-full text-sm">
                   <thead>
                     <tr class="border-b border-slate-200 text-left text-xs uppercase tracking-wide text-slate-500">

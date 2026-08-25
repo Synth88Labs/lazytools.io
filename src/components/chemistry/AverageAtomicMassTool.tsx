@@ -23,9 +23,9 @@ export default function AverageAtomicMassTool() {
         {rows.map((row, i) => (
           <div class="flex items-center gap-2">
             <span class="w-6 shrink-0 text-center font-mono text-xs text-slate-400">{i + 1}</span>
-            <input type="number" step="any" value={row.mass} placeholder="mass (u)" onInput={(e) => update(i, { mass: (e.target as HTMLInputElement).value })}
+            <input type="number" step="any" value={row.mass} placeholder="mass (u)" aria-label="Isotope mass in u" onInput={(e) => update(i, { mass: (e.target as HTMLInputElement).value })}
               class="min-w-0 flex-1 rounded-lg border border-slate-300 bg-white px-3 py-2 font-mono text-sm text-slate-900 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200" />
-            <input type="number" step="any" value={row.abund} placeholder="abundance %" onInput={(e) => update(i, { abund: (e.target as HTMLInputElement).value })}
+            <input type="number" step="any" value={row.abund} placeholder="abundance %" aria-label="Isotope natural abundance percent" onInput={(e) => update(i, { abund: (e.target as HTMLInputElement).value })}
               class="min-w-0 flex-1 rounded-lg border border-slate-300 bg-white px-3 py-2 font-mono text-sm text-slate-900 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200" />
             <button onClick={() => setRows(rows.filter((_, j) => j !== i))} class="shrink-0 rounded-lg px-2.5 py-2 text-sm text-slate-400 ring-1 ring-slate-200 hover:text-red-600 hover:ring-red-300" aria-label="Remove">✕</button>
           </div>

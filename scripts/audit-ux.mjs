@@ -145,7 +145,16 @@ for (const slug of toAudit) {
     let axeViolations = [];
     try {
       const res = await new AxeBuilder({ page }).options({ resultTypes: ['violations'] }).analyze();
-      axeViolations = res.violations.filter((v) => v.impact === 'serious' || v.impact === 'critical').map((v) => `${v.id} (${v.nodes.length})`);
+      // A few tools EXIST to display arbitrary/low-contrast colour combinations — a
+      // contrast grid that demonstrates which pairs fail WCAG, and a previewer of
+      // Discord's own (sometimes low-contrast) palette. Their colour-contrast "violations"
+      // are the accurate, intended output, not a site defect, so exclude that one rule
+      // for them (all other axe rules still apply).
+      const COLOUR_DEMO = new Set(['color/contrast-grid', 'fonts/discord-colored-text-generator']);
+      axeViolations = res.violations
+        .filter((v) => v.impact === 'serious' || v.impact === 'critical')
+        .filter((v) => !(v.id === 'color-contrast' && COLOUR_DEMO.has(slug)))
+        .map((v) => `${v.id} (${v.nodes.length})`);
     } catch {}
 
     // ── record checks ──

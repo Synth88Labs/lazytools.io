@@ -57,7 +57,7 @@ export default function LongDivisionTool() {
             )}
           </div>
 
-          <div class="mt-4 overflow-x-auto rounded-xl border border-slate-200 bg-white">
+          <div class="mt-4 overflow-x-auto rounded-xl border border-slate-200 bg-white" tabIndex={0} aria-label="Long division steps table">
             <table class="w-full text-left text-sm">
               <thead class="bg-slate-50 text-xs font-semibold uppercase tracking-wide text-slate-500">
                 <tr>

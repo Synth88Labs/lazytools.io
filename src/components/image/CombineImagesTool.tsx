@@ -181,6 +181,7 @@ export default function CombineImagesTool() {
             accept="image/*"
             multiple
             onChange={onFiles}
+            aria-label="Choose images"
             class="block w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm file:mr-3 file:rounded-lg file:border-0 file:bg-brand-700 file:px-3 file:py-1.5 file:text-white hover:file:bg-brand-800"
           />
           <p class="mt-1.5 text-xs text-slate-500">
@@ -247,6 +248,7 @@ export default function CombineImagesTool() {
               <select
                 value={align}
                 onChange={(e) => setAlign((e.target as HTMLSelectElement).value as Align)}
+                aria-label="Alignment"
                 class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm"
               >
                 {alignOptions.map((o) => (
@@ -264,6 +266,7 @@ export default function CombineImagesTool() {
                 type="number"
                 min={0}
                 value={gap}
+                aria-label="Gap (px)"
                 onInput={(e) => setGap(Math.max(0, Number((e.target as HTMLInputElement).value) || 0))}
                 class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm"
               />
@@ -278,6 +281,7 @@ export default function CombineImagesTool() {
                     type="color"
                     value={bg}
                     onInput={(e) => setBg((e.target as HTMLInputElement).value)}
+                    aria-label="Background colour"
                     class="h-10 w-12 cursor-pointer rounded-lg border border-slate-300 bg-white"
                   />
                   <span class="text-sm text-slate-600">{bg}</span>
@@ -288,6 +292,7 @@ export default function CombineImagesTool() {
                 <select
                   value={format}
                   onChange={(e) => setFormat((e.target as HTMLSelectElement).value as Format)}
+                  aria-label="Format"
                   class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm"
                 >
                   <option value="png">PNG</option>
@@ -308,7 +313,7 @@ export default function CombineImagesTool() {
                 </span>
               )}
             </span>
-            <div class="overflow-auto rounded-xl bg-slate-100 p-3">
+            <div class="overflow-auto rounded-xl bg-slate-100 p-3" tabIndex={0} aria-label="Combined image preview">
               <canvas ref={canvasRef} class="max-h-96 w-auto rounded-xl border border-slate-300" />
             </div>
           </div>

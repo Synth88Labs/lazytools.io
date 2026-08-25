@@ -40,7 +40,7 @@ export default function HarmonicsTool() {
       <p class="mt-1 text-xs text-slate-500">e.g. {mediumInfo.note}. Use ~340 m/s for sound in air, or the string's wave speed.</p>
 
       {rows ? (
-        <div class="mt-4 overflow-x-auto rounded-xl bg-white ring-1 ring-slate-200">
+        <div class="mt-4 overflow-x-auto rounded-xl bg-white ring-1 ring-slate-200" role="group" tabIndex={0} aria-label="Harmonics table">
           <table class="w-full min-w-[360px] text-sm">
             <thead><tr class="border-b border-slate-200 text-left text-[11px] font-semibold uppercase tracking-wide text-slate-500"><th class="px-4 py-2">Harmonic</th><th class="px-4 py-2 text-right">Frequency</th><th class="px-4 py-2 text-right">Wavelength</th></tr></thead>
             <tbody>

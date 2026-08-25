@@ -52,8 +52,8 @@ export default function BeerColorTool() {
       </div>
       {grains.map((g, i) => (
         <div class="mb-2 grid grid-cols-[1fr_1fr_auto] gap-2">
-          <input type="number" step="any" value={g.color} onInput={(e) => setGrain(i, 'color', (e.target as HTMLInputElement).value)} class={inp} />
-          <input type="number" step="any" value={g.weight} onInput={(e) => setGrain(i, 'weight', (e.target as HTMLInputElement).value)} class={inp} />
+          <input type="number" step="any" value={g.color} onInput={(e) => setGrain(i, 'color', (e.target as HTMLInputElement).value)} class={inp} aria-label="Malt colour (°Lovibond)" />
+          <input type="number" step="any" value={g.weight} onInput={(e) => setGrain(i, 'weight', (e.target as HTMLInputElement).value)} class={inp} aria-label="Weight (lb)" />
           <button onClick={() => delGrain(i)} class="rounded-lg px-2 text-slate-400 hover:text-rose-600" aria-label="Remove">✕</button>
         </div>
       ))}
@@ -61,7 +61,7 @@ export default function BeerColorTool() {
         <button onClick={addGrain} class="rounded-lg bg-white px-3 py-1.5 text-sm font-semibold text-brand-700 ring-1 ring-slate-200 hover:ring-brand-300">+ Add malt</button>
         <label class="ml-auto flex items-center gap-2 text-sm text-slate-600">Batch volume
           <input type="number" step="any" value={volume} onInput={(e) => setVolume((e.target as HTMLInputElement).value)} class="w-20 rounded-lg border border-slate-300 bg-white px-2 py-1.5 text-center font-mono text-sm" />
-          <select value={vUnit} onChange={(e) => setVUnit((e.target as HTMLSelectElement).value as 'gal' | 'L')} class={sel}><option value="gal">gal</option><option value="L">L</option></select>
+          <select value={vUnit} onChange={(e) => setVUnit((e.target as HTMLSelectElement).value as 'gal' | 'L')} class={sel} aria-label="Volume unit"><option value="gal">gal</option><option value="L">L</option></select>
         </label>
       </div>
 

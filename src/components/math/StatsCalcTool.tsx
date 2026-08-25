@@ -50,7 +50,7 @@ export default function StatsCalcTool() {
       {!stats && <p class="mt-3 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800">Enter at least one number.</p>}
 
       {stats && (
-        <div class="mt-4 overflow-x-auto rounded-xl border border-slate-200 bg-white">
+        <div class="mt-4 overflow-x-auto rounded-xl border border-slate-200 bg-white" tabIndex={0} aria-label="Statistics results table">
           <table class="w-full text-left text-sm">
             <tbody class="divide-y divide-slate-100">
               {rows.map(([k, v]) => (

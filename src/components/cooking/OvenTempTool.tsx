@@ -52,7 +52,7 @@ export default function OvenTempTool() {
 
       <details class="mt-4 rounded-xl bg-white p-3 ring-1 ring-slate-200">
         <summary class="cursor-pointer text-sm font-semibold text-slate-700">Full conversion table</summary>
-        <div class="mt-2 overflow-x-auto"><table class="w-full text-sm">
+        <div class="mt-2 overflow-x-auto" role="group" tabIndex={0} aria-label="Oven temperature conversion table"><table class="w-full text-sm">
           <thead><tr class="text-left text-xs font-semibold uppercase tracking-wide text-slate-500"><th class="px-3 py-1">Gas</th><th class="px-3 py-1">°F</th><th class="px-3 py-1">°C</th><th class="px-3 py-1">Description</th></tr></thead>
           <tbody>{OVEN_TABLE.map((row, i) => <tr class={i % 2 ? 'bg-slate-50' : ''}><td class="px-3 py-1 font-mono">{row.gas}</td><td class="px-3 py-1 font-mono">{row.f}</td><td class="px-3 py-1 font-mono">{row.c}</td><td class="px-3 py-1 text-slate-600">{row.desc}</td></tr>)}</tbody>
         </table></div>

@@ -32,7 +32,7 @@ export default function DebtPayoffTool() {
 
   return (
     <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
-      <div class="overflow-x-auto rounded-xl border border-slate-200 bg-white">
+      <div class="overflow-x-auto rounded-xl border border-slate-200 bg-white" role="group" tabIndex={0} aria-label="Debts input table">
         <table class="w-full text-sm">
           <thead><tr class="border-b border-slate-200 bg-slate-50 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">
             <th class="px-3 py-2">Debt</th><th class="px-3 py-2">Balance ($)</th><th class="px-3 py-2">APR (%)</th><th class="px-3 py-2">Min/mo ($)</th><th class="px-2 py-2"></th>
@@ -40,10 +40,10 @@ export default function DebtPayoffTool() {
           <tbody>
             {rows.map((r, i) => (
               <tr class="border-b border-slate-100 last:border-0">
-                <td class="px-3 py-1.5"><input value={r.name} onInput={(e) => set(i, { name: (e.target as HTMLInputElement).value })} class={`${cell} w-full min-w-28`} /></td>
-                <td class="px-3 py-1.5"><input type="number" value={r.balance} onInput={(e) => set(i, { balance: (e.target as HTMLInputElement).value })} class={`${cell} w-24`} /></td>
-                <td class="px-3 py-1.5"><input type="number" value={r.apr} onInput={(e) => set(i, { apr: (e.target as HTMLInputElement).value })} class={`${cell} w-20`} /></td>
-                <td class="px-3 py-1.5"><input type="number" value={r.min} onInput={(e) => set(i, { min: (e.target as HTMLInputElement).value })} class={`${cell} w-20`} /></td>
+                <td class="px-3 py-1.5"><input value={r.name} aria-label="Debt name" onInput={(e) => set(i, { name: (e.target as HTMLInputElement).value })} class={`${cell} w-full min-w-28`} /></td>
+                <td class="px-3 py-1.5"><input type="number" value={r.balance} aria-label="Balance in dollars" onInput={(e) => set(i, { balance: (e.target as HTMLInputElement).value })} class={`${cell} w-24`} /></td>
+                <td class="px-3 py-1.5"><input type="number" value={r.apr} aria-label="APR percent" onInput={(e) => set(i, { apr: (e.target as HTMLInputElement).value })} class={`${cell} w-20`} /></td>
+                <td class="px-3 py-1.5"><input type="number" value={r.min} aria-label="Minimum monthly payment in dollars" onInput={(e) => set(i, { min: (e.target as HTMLInputElement).value })} class={`${cell} w-20`} /></td>
                 <td class="px-2 py-1.5"><button onClick={() => setRows(rows.filter((_, j) => j !== i))} class="text-slate-300 hover:text-red-600" aria-label="Remove">✕</button></td>
               </tr>
             ))}
@@ -71,7 +71,7 @@ export default function DebtPayoffTool() {
           <div class="mt-3 rounded-xl bg-emerald-50 p-3 text-center ring-1 ring-emerald-200">
             <p class="text-sm text-emerald-800">Avalanche saves <strong>${money(Math.max(0, result.saved))}</strong> in interest{result.sooner > 0 ? ` and clears ${result.sooner} month${result.sooner === 1 ? '' : 's'} sooner` : ''} versus snowball. Snowball can be easier to stick with — the best plan is the one you’ll follow.</p>
           </div>
-          <div class="mt-3 overflow-x-auto rounded-xl border border-slate-200 bg-white">
+          <div class="mt-3 overflow-x-auto rounded-xl border border-slate-200 bg-white" role="group" tabIndex={0} aria-label="Payoff order table">
             <table class="w-full text-sm">
               <thead><tr class="border-b border-slate-200 bg-slate-50 text-left text-xs font-semibold uppercase tracking-wide text-slate-500"><th class="px-3 py-2">Payoff order (avalanche)</th><th class="px-3 py-2 text-right">Cleared by</th><th class="px-3 py-2 text-right">Interest paid</th></tr></thead>
               <tbody>{result.aval.order.map((o) => (<tr class="border-b border-slate-100 last:border-0"><td class="px-3 py-1.5 font-medium text-slate-800">{o.name}</td><td class="px-3 py-1.5 text-right font-mono text-slate-600">month {o.payoffMonth}</td><td class="px-3 py-1.5 text-right font-mono text-slate-600">${money(o.interestPaid)}</td></tr>))}</tbody>

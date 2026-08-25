@@ -22,7 +22,7 @@ export default function SprayMixTool() {
   return (
     <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
       <div class="mb-3 flex items-center gap-2"><span class="text-xs font-semibold uppercase tracking-wide text-slate-500">Units</span>
-        <select value={system} onChange={(e) => setSystem((e.target as HTMLSelectElement).value as 'us' | 'metric')} class={sel}><option value="us">US (oz/gal)</option><option value="metric">Metric (mL/L)</option></select></div>
+        <select value={system} onChange={(e) => setSystem((e.target as HTMLSelectElement).value as 'us' | 'metric')} class={sel} aria-label="Units"><option value="us">US (oz/gal)</option><option value="metric">Metric (mL/L)</option></select></div>
       <div class="grid gap-3 sm:grid-cols-2">
         <label class="block"><span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Tank / sprayer volume ({tankUnit})</span><input type="number" step="any" value={tank} onInput={(e) => setTank((e.target as HTMLInputElement).value)} class={inp} /></label>
         <label class="block"><span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Label rate ({rateUnit})</span><input type="number" step="any" value={rate} onInput={(e) => setRate((e.target as HTMLInputElement).value)} class={inp} /></label>

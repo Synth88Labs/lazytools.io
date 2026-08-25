@@ -33,7 +33,7 @@ export default function YeastPitchTool() {
       <div class="grid gap-3 sm:grid-cols-3">
         <label class="block"><span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Batch volume</span>
           <div class="flex gap-1"><input type="number" step="any" value={volume} onInput={(e) => setVolume((e.target as HTMLInputElement).value)} class={inp} />
-            <select value={unit} onChange={(e) => setUnit((e.target as HTMLSelectElement).value as 'L' | 'gal')} class={sel}><option value="L">L</option><option value="gal">gal</option></select></div></label>
+            <select value={unit} onChange={(e) => setUnit((e.target as HTMLSelectElement).value as 'L' | 'gal')} class={sel} aria-label="Volume unit"><option value="L">L</option><option value="gal">gal</option></select></div></label>
         <label class="block"><span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Original gravity (OG)</span>
           <input type="number" step="any" value={og} onInput={(e) => setOg((e.target as HTMLInputElement).value)} class={inp} /></label>
         <label class="block"><span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Pitch rate (M cells/mL/°P)</span>

@@ -81,11 +81,11 @@ export default function FlowchartTool() {
       {selNode && !connect && (
         <div class="mb-3 flex items-center gap-2">
           <label class="text-xs font-semibold uppercase tracking-wide text-slate-500">Text:</label>
-          <input value={selNode.text} onInput={(e) => rename(selNode.id, (e.target as HTMLInputElement).value)} class="min-w-0 flex-1 rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-900 focus:border-brand-500 focus:outline-none" />
+          <input value={selNode.text} onInput={(e) => rename(selNode.id, (e.target as HTMLInputElement).value)} aria-label="Selected shape text" class="min-w-0 flex-1 rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-900 focus:border-brand-500 focus:outline-none" />
         </div>
       )}
 
-      <div class={`overflow-auto rounded-xl border border-slate-200 bg-white ${fs.isFull ? 'flex-1' : ''}`}>
+      <div role="group" class={`overflow-auto rounded-xl border border-slate-200 bg-white ${fs.isFull ? 'flex-1' : ''}`} tabIndex={0} aria-label="Flowchart canvas">
         <svg ref={svgRef} viewBox={`0 0 ${W} ${H}`} width={W} height={H} xmlns="http://www.w3.org/2000/svg" class="max-w-none touch-none select-none" style="font-family:'Plus Jakarta Sans','Segoe UI',Arial,sans-serif">
           <defs><marker id="fah" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#64748b" /></marker></defs>
           <rect x="0" y="0" width={W} height={H} fill="#ffffff" />

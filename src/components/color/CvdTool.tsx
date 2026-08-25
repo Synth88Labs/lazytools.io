@@ -97,7 +97,7 @@ export default function CvdTool({ initialType = 'deuteranopia' as CvdType }: { i
 
       {mode === 'image' ? (
         <div class="mt-4">
-          <input type="file" accept="image/*" onChange={onFile}
+          <input type="file" accept="image/*" onChange={onFile} aria-label="Upload image"
             class="block w-full text-sm text-slate-600 file:mr-3 file:rounded-lg file:border-0 file:bg-brand-600 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-white hover:file:bg-brand-700" />
           <div class={`mt-4 grid gap-4 sm:grid-cols-2 ${imgUrl ? '' : 'hidden'}`}>
             <figure><figcaption class="mb-1 text-xs font-semibold uppercase tracking-wide text-slate-500">Original</figcaption>

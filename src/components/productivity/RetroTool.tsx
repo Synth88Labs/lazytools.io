@@ -42,7 +42,7 @@ export default function RetroTool() {
               ))}
             </ul>
             <div class="mt-2 flex gap-1">
-              <input value={drafts[col.id]} onInput={(e) => setDrafts((d) => ({ ...d, [col.id]: (e.target as HTMLInputElement).value }))} onKeyDown={(e) => e.key === 'Enter' && add(col.id)} placeholder="+ add note" class="min-w-0 flex-1 rounded-lg border border-slate-200 bg-white px-2 py-1.5 text-sm focus:border-brand-500 focus:outline-none" />
+              <input value={drafts[col.id]} onInput={(e) => setDrafts((d) => ({ ...d, [col.id]: (e.target as HTMLInputElement).value }))} onKeyDown={(e) => e.key === 'Enter' && add(col.id)} placeholder="+ add note" aria-label="Add note" class="min-w-0 flex-1 rounded-lg border border-slate-200 bg-white px-2 py-1.5 text-sm focus:border-brand-500 focus:outline-none" />
               <button type="button" onClick={() => add(col.id)} class="rounded-lg bg-brand-700 px-3 text-sm font-semibold text-white hover:bg-brand-800">Add</button>
             </div>
           </div>

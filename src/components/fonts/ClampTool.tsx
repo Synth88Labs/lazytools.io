@@ -74,7 +74,7 @@ export default function ClampTool() {
       <div class="mt-4">
         <span class="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-slate-500">CSS output</span>
         <div class="flex items-stretch gap-2">
-          <pre class="flex-1 overflow-x-auto rounded-xl border border-slate-200 bg-white p-3 text-sm text-slate-800"><code>{css}</code></pre>
+          <pre class="flex-1 overflow-x-auto rounded-xl border border-slate-200 bg-white p-3 text-sm text-slate-800" tabIndex={0} aria-label="CSS output"><code>{css}</code></pre>
           <button
             type="button"
             onClick={copy}

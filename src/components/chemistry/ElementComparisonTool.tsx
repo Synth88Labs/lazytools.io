@@ -45,7 +45,7 @@ export default function ElementComparisonTool() {
         ))}
         {picked.length < 5 && (
           <div class="relative">
-            <input value={query} onInput={(e) => setQuery((e.target as HTMLInputElement).value)} placeholder="+ add element…"
+            <input value={query} onInput={(e) => setQuery((e.target as HTMLInputElement).value)} placeholder="+ add element…" aria-label="Add element"
               class="w-40 rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-sm text-slate-900 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200" />
             {suggestions.length > 0 && (
               <div class="absolute z-10 mt-1 w-48 overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-slate-200">
@@ -59,7 +59,7 @@ export default function ElementComparisonTool() {
       </div>
 
       {els.length >= 2 ? (
-        <div class="mt-4 overflow-x-auto rounded-xl bg-white ring-1 ring-slate-200">
+        <div class="mt-4 overflow-x-auto rounded-xl bg-white ring-1 ring-slate-200" role="group" tabIndex={0} aria-label="Element comparison table">
           <table class="w-full text-sm">
             <thead>
               <tr class="border-b border-slate-200 bg-slate-50">

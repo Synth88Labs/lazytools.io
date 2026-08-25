@@ -42,7 +42,7 @@ export default function ContrastGridTool() {
       <p class="mt-1 text-xs text-slate-500">{items.length} color{items.length === 1 ? '' : 's'} · rows = text, columns = background · AA 4.5:1 · AA18 (large) 3:1 · AAA 7:1</p>
 
       {items.length >= 2 ? (
-        <div class="mt-4 overflow-x-auto rounded-xl bg-white p-2 ring-1 ring-slate-200">
+        <div class="mt-4 overflow-x-auto rounded-xl bg-white p-2 ring-1 ring-slate-200" tabIndex={0} aria-label="Contrast grid">
           <table class="border-separate" style="border-spacing:3px">
             <thead>
               <tr>

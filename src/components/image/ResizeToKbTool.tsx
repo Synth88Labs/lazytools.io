@@ -172,6 +172,7 @@ export default function ResizeToKbTool() {
               type="number"
               min={1}
               step={1}
+              aria-label="Target size (KB)"
               value={targetKb}
               onInput={(e) => {
                 const v = Math.max(1, Math.round(Number((e.target as HTMLInputElement).value) || 0));
@@ -201,6 +202,7 @@ export default function ResizeToKbTool() {
             <label class="block text-sm font-medium text-slate-700">Output format</label>
             <select
               value={mime}
+              aria-label="Output format"
               onChange={(e) => setMime((e.target as HTMLSelectElement).value)}
               class="mt-1 w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm"
             >

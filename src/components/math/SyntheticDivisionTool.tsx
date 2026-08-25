@@ -132,7 +132,7 @@ export default function SyntheticDivisionTool() {
             Dividing <span class="font-mono font-semibold text-slate-900">{polyToString(coeffs)}</span> by <span class="font-mono font-semibold text-slate-900">(x {r.sign() < 0 ? '+' : '−'} {r.sign() < 0 ? r.neg().toFrac() : r.toFrac()})</span>:
           </p>
 
-          <div class="mt-3 overflow-x-auto rounded-xl border border-slate-200 bg-white p-4">
+          <div class="mt-3 overflow-x-auto rounded-xl border border-slate-200 bg-white p-4" tabIndex={0} aria-label="Synthetic division table">
             <table class="font-mono text-lg">
               <tbody>
                 <tr>

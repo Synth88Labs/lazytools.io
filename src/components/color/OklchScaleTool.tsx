@@ -68,9 +68,10 @@ export default function OklchScaleTool() {
           <div class="mt-4 overflow-hidden rounded-xl ring-1 ring-slate-200">
             {scale.map((s) => (
               <button onClick={() => copy(`sw-${s.step}`, s.hex)} class="flex w-full items-center justify-between px-4 py-2.5 text-left transition hover:opacity-90"
-                style={`background:${s.hex};color:${luma(s.rgb) > 140 ? '#0f172a' : '#ffffff'}`}>
-                <span class="font-mono text-sm font-bold">{name}-{s.step}</span>
-                <span class="font-mono text-xs">{copied === `sw-${s.step}` ? 'copied ✓' : s.hex}</span>
+                style={`background:${s.hex}`}>
+                {/* Labels sit in a chip so text contrast is guaranteed on any mid-tone swatch. */}
+                <span class="rounded px-1.5 py-0.5 font-mono text-sm font-bold" style={`background:${luma(s.rgb) > 140 ? 'rgba(255,255,255,.85)' : 'rgba(0,0,0,.6)'};color:${luma(s.rgb) > 140 ? '#0f172a' : '#ffffff'}`}>{name}-{s.step}</span>
+                <span class="rounded px-1.5 py-0.5 font-mono text-xs" style={`background:${luma(s.rgb) > 140 ? 'rgba(255,255,255,.85)' : 'rgba(0,0,0,.6)'};color:${luma(s.rgb) > 140 ? '#0f172a' : '#ffffff'}`}>{copied === `sw-${s.step}` ? 'copied ✓' : s.hex}</span>
               </button>
             ))}
           </div>
@@ -81,14 +82,14 @@ export default function OklchScaleTool() {
                 <span class="text-xs font-semibold uppercase tracking-wide text-slate-500">Tailwind 4 @theme (OKLCH)</span>
                 <button onClick={() => copy('theme', themeCss)} class="rounded px-2 py-0.5 text-xs font-semibold text-brand-700 ring-1 ring-brand-200 hover:bg-brand-50">{copied === 'theme' ? '✓' : 'Copy'}</button>
               </div>
-              <pre class="max-h-56 overflow-auto rounded-lg bg-slate-900 p-3 text-xs leading-relaxed text-slate-100"><code>{themeCss}</code></pre>
+              <pre tabIndex={0} aria-label="Tailwind theme CSS" class="max-h-56 overflow-auto rounded-lg bg-slate-900 p-3 text-xs leading-relaxed text-slate-100"><code>{themeCss}</code></pre>
             </div>
             <div>
               <div class="mb-1 flex items-center justify-between">
                 <span class="text-xs font-semibold uppercase tracking-wide text-slate-500">JS config (HEX)</span>
                 <button onClick={() => copy('js', jsConfig)} class="rounded px-2 py-0.5 text-xs font-semibold text-brand-700 ring-1 ring-brand-200 hover:bg-brand-50">{copied === 'js' ? '✓' : 'Copy'}</button>
               </div>
-              <pre class="max-h-56 overflow-auto rounded-lg bg-slate-900 p-3 text-xs leading-relaxed text-slate-100"><code>{jsConfig}</code></pre>
+              <pre tabIndex={0} aria-label="JS config" class="max-h-56 overflow-auto rounded-lg bg-slate-900 p-3 text-xs leading-relaxed text-slate-100"><code>{jsConfig}</code></pre>
             </div>
           </div>
         </>

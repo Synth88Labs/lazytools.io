@@ -95,7 +95,7 @@ export default function WheelPickerTool() {
       <div class="grid gap-6 md:grid-cols-[1fr_auto]">
         <div>
           <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Entries (one per line) — {entries.length}</label>
-          <textarea rows={10} class={inp} value={text} onInput={(e) => setText((e.target as HTMLTextAreaElement).value)} placeholder={'Alice\nBob\nCharlie'} />
+          <textarea rows={10} class={inp} value={text} onInput={(e) => setText((e.target as HTMLTextAreaElement).value)} placeholder={'Alice\nBob\nCharlie'} aria-label="Entries (one per line)" />
           <label class="mt-2 flex items-center gap-2 text-sm text-slate-600">
             <input type="checkbox" checked={removeAfter} onChange={(e) => setRemoveAfter((e.target as HTMLInputElement).checked)} />
             Remove the winner after each spin (draw without replacement)

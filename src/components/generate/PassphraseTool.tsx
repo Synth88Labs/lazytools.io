@@ -57,9 +57,9 @@ export default function PassphraseTool() {
 
       <div class="mt-4 grid gap-4 sm:grid-cols-2">
         <div><label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Words: {count}</label>
-          <input type="range" min={3} max={10} value={count} onInput={(e) => setCount(parseInt((e.target as HTMLInputElement).value))} class="w-full accent-brand-600" /></div>
+          <input type="range" min={3} max={10} value={count} onInput={(e) => setCount(parseInt((e.target as HTMLInputElement).value))} class="w-full accent-brand-600" aria-label="Number of words" /></div>
         <div><label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Separator</label>
-          <select class={inputCls} value={sep} onChange={(e) => setSep((e.target as HTMLSelectElement).value)}>
+          <select class={inputCls} value={sep} onChange={(e) => setSep((e.target as HTMLSelectElement).value)} aria-label="Separator">
             <option value="-">hyphen -</option><option value=".">dot .</option><option value="_">underscore _</option><option value=" ">space</option><option value="">none</option>
           </select></div>
         <label class="flex items-center gap-2 text-sm text-slate-600"><input type="checkbox" checked={cap} onChange={(e) => setCap((e.target as HTMLInputElement).checked)} class="accent-brand-600" /> Capitalise each word</label>

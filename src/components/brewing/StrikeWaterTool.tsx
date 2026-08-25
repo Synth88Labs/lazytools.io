@@ -40,7 +40,7 @@ export default function StrikeWaterTool() {
   return (
     <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
       <div class="mb-3 flex justify-end">
-        <select class={sel} value={unit} onChange={(e) => swap((e.target as HTMLSelectElement).value as 'C' | 'F')}><option value="C">Metric (°C, L/kg)</option><option value="F">Imperial (°F, qt/lb)</option></select>
+        <select class={sel} aria-label="Unit system" value={unit} onChange={(e) => swap((e.target as HTMLSelectElement).value as 'C' | 'F')}><option value="C">Metric (°C, L/kg)</option><option value="F">Imperial (°F, qt/lb)</option></select>
       </div>
       <div class="grid gap-3 sm:grid-cols-3">
         <label class="block"><span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Target mash temp (°{unit})</span>

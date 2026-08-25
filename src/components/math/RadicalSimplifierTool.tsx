@@ -197,7 +197,7 @@ export default function RadicalSimplifierTool() {
           <input class={inputCls} value={p} onInput={(e) => setP((e.target as HTMLInputElement).value)} aria-label="first coefficient" />
           <span>√</span>
           <input class={inputCls} value={x} onInput={(e) => setX((e.target as HTMLInputElement).value)} aria-label="first radicand" />
-          <select class="rounded-lg border border-slate-300 bg-white px-2 py-2 text-lg font-bold" value={op} onChange={(e) => setOp((e.target as HTMLSelectElement).value as typeof op)}>
+          <select class="rounded-lg border border-slate-300 bg-white px-2 py-2 text-lg font-bold" value={op} onChange={(e) => setOp((e.target as HTMLSelectElement).value as typeof op)} aria-label="Operation">
             {['+', '-', '×'].map((o) => <option value={o}>{o}</option>)}
           </select>
           <input class={inputCls} value={q} onInput={(e) => setQ((e.target as HTMLInputElement).value)} aria-label="second coefficient" />

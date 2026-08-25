@@ -39,7 +39,7 @@ export default function IbuTool() {
           <input type="number" step="any" value={volume} onInput={(e) => setVolume((e.target as HTMLInputElement).value)} class={top} /></label>
       </div>
 
-      <div class="overflow-x-auto">
+      <div class="overflow-x-auto" tabIndex={0} aria-label="Hop additions table">
         <table class="w-full min-w-[520px] text-sm">
           <thead>
             <tr class="text-left text-[11px] font-semibold uppercase tracking-wide text-slate-500">
@@ -49,9 +49,9 @@ export default function IbuTool() {
           <tbody>
             {rows.map((row, i) => (
               <tr key={row.id} class="border-t border-slate-200">
-                <td class="py-1.5 pr-2"><input type="number" step="any" value={row.grams} onInput={(e) => update(row.id, { grams: parseFloat((e.target as HTMLInputElement).value) || 0 })} class={inp} /></td>
-                <td class="py-1.5 px-2"><input type="number" step="any" value={row.alphaPct} onInput={(e) => update(row.id, { alphaPct: parseFloat((e.target as HTMLInputElement).value) || 0 })} class={inp} /></td>
-                <td class="py-1.5 px-2"><input type="number" step="any" value={row.boilMinutes} onInput={(e) => update(row.id, { boilMinutes: parseFloat((e.target as HTMLInputElement).value) || 0 })} class={inp} /></td>
+                <td class="py-1.5 pr-2"><input type="number" step="any" value={row.grams} onInput={(e) => update(row.id, { grams: parseFloat((e.target as HTMLInputElement).value) || 0 })} class={inp} aria-label="Hops (g)" /></td>
+                <td class="py-1.5 px-2"><input type="number" step="any" value={row.alphaPct} onInput={(e) => update(row.id, { alphaPct: parseFloat((e.target as HTMLInputElement).value) || 0 })} class={inp} aria-label="Alpha acid %" /></td>
+                <td class="py-1.5 px-2"><input type="number" step="any" value={row.boilMinutes} onInput={(e) => update(row.id, { boilMinutes: parseFloat((e.target as HTMLInputElement).value) || 0 })} class={inp} aria-label="Boil (min)" /></td>
                 <td class="py-1.5 px-2 text-right font-mono font-semibold text-slate-700">{r ? fmt(r.perRow[i]) : '—'}</td>
                 <td class="py-1.5 pl-2 text-center"><button onClick={() => remove(row.id)} class="text-slate-400 hover:text-rose-600" aria-label="Remove">✕</button></td>
               </tr>

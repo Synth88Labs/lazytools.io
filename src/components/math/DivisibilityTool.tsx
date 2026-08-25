@@ -97,7 +97,7 @@ export default function DivisibilityTool() {
             </div>
           </div>
 
-          <div class="mt-4 overflow-x-auto rounded-xl border border-slate-200 bg-white">
+          <div class="mt-4 overflow-x-auto rounded-xl border border-slate-200 bg-white" tabIndex={0} aria-label="Divisibility rules table">
             <table class="w-full text-left text-sm">
               <thead class="bg-slate-50 text-xs font-semibold uppercase tracking-wide text-slate-500">
                 <tr><th class="px-3 py-2">÷</th><th class="px-3 py-2">Verdict</th><th class="px-3 py-2">Rule</th><th class="px-3 py-2">Working</th></tr>

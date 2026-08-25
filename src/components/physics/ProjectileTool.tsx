@@ -75,7 +75,7 @@ export default function ProjectileTool() {
 
       {r && svg ? (
         <>
-          <div class="mt-4 overflow-x-auto rounded-xl bg-white p-2 ring-1 ring-slate-200">
+          <div class="mt-4 overflow-x-auto rounded-xl bg-white p-2 ring-1 ring-slate-200" role="group" tabIndex={0} aria-label="Projectile trajectory diagram">
             <svg viewBox={`0 0 ${svg.W} ${svg.H}`} class="mx-auto block w-full max-w-xl" role="img" aria-label="Projectile trajectory parabola with apex and range marked">
               <line x1={svg.padL} y1={svg.baseY} x2={svg.W - 20} y2={svg.baseY} stroke="#cbd5e1" />
               <line x1={svg.padL} y1="20" x2={svg.padL} y2={svg.baseY} stroke="#cbd5e1" />

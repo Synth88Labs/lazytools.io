@@ -30,7 +30,7 @@ export default function ReadabilityTool() {
             </div>
           </div>
 
-          <div class="mt-3 overflow-auto rounded-xl border border-slate-200 bg-white">
+          <div class="mt-3 overflow-auto rounded-xl border border-slate-200 bg-white" tabIndex={0} aria-label="Readability scores table">
             <table class="w-full text-right text-sm">
               <thead class="bg-slate-50 text-xs font-semibold uppercase tracking-wide text-slate-500"><tr><th class="px-3 py-2 text-left">Index</th><th class="px-3 py-2">Score</th><th class="px-3 py-2 text-left">Meaning</th></tr></thead>
               <tbody class="divide-y divide-slate-100 font-mono">

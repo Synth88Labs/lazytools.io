@@ -34,9 +34,9 @@ export default function HessLawTool() {
       <div class="space-y-1.5">
         {rows.filter((r) => r.side === side).map((r) => (
           <div key={r.id} class="flex items-center gap-1.5">
-            <input value={r.name} placeholder="Formula" onInput={(e) => update(r.id, { name: (e.target as HTMLInputElement).value })} class={`${nameInp} flex-1`} />
-            <input type="number" step="any" value={r.coeff} title="Coefficient" onInput={(e) => update(r.id, { coeff: parseFloat((e.target as HTMLInputElement).value) || 0 })} class={`${inp} w-16`} />
-            <input type="number" step="any" value={r.hf} title="ΔHf (kJ/mol)" onInput={(e) => update(r.id, { hf: parseFloat((e.target as HTMLInputElement).value) || 0 })} class={`${inp} w-24`} />
+            <input value={r.name} placeholder="Formula" aria-label="Species formula" onInput={(e) => update(r.id, { name: (e.target as HTMLInputElement).value })} class={`${nameInp} flex-1`} />
+            <input type="number" step="any" value={r.coeff} title="Coefficient" aria-label="Coefficient" onInput={(e) => update(r.id, { coeff: parseFloat((e.target as HTMLInputElement).value) || 0 })} class={`${inp} w-16`} />
+            <input type="number" step="any" value={r.hf} title="ΔHf (kJ/mol)" aria-label="Standard enthalpy of formation in kJ/mol" onInput={(e) => update(r.id, { hf: parseFloat((e.target as HTMLInputElement).value) || 0 })} class={`${inp} w-24`} />
             <button onClick={() => remove(r.id)} class="text-slate-400 hover:text-rose-600" aria-label="Remove">✕</button>
           </div>
         ))}

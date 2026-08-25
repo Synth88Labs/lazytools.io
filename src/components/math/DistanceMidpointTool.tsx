@@ -73,7 +73,7 @@ export default function DistanceMidpointTool() {
               <span class="text-xs font-semibold uppercase tracking-wide text-slate-500">{pythMode === 'hyp' ? 'Leg b' : 'Hypotenuse c'}</span>
               <input class={inputCls} value={legB} onInput={(e) => setLegB((e.target as HTMLInputElement).value)} aria-label={pythMode === 'hyp' ? 'leg b' : 'hypotenuse'} />
             </label>
-            <select class="rounded-lg border border-slate-300 bg-white px-2 py-2 text-sm font-semibold" value={pythMode} onChange={(e) => setPythMode((e.target as HTMLSelectElement).value as typeof pythMode)}>
+            <select class="rounded-lg border border-slate-300 bg-white px-2 py-2 text-sm font-semibold" value={pythMode} onChange={(e) => setPythMode((e.target as HTMLSelectElement).value as typeof pythMode)} aria-label="Find hypotenuse or missing leg">
               <option value="hyp">find hypotenuse</option>
               <option value="leg">find missing leg</option>
             </select>

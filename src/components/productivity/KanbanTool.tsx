@@ -53,7 +53,7 @@ export default function KanbanTool() {
         <button type="button" onClick={fs.toggle} class="ml-auto rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-600 transition hover:border-brand-400">{fs.isFull ? '⤢ Exit full screen' : '⛶ Full screen'}</button>
       </div>
 
-      <div class={`flex gap-3 overflow-x-auto pb-2 ${fs.isFull ? 'flex-1' : ''}`}>
+      <div class={`flex gap-3 overflow-x-auto pb-2 ${fs.isFull ? 'flex-1' : ''}`} tabIndex={0} aria-label="Kanban board">
         {cols.map((col) => {
           const over = col.wip > 0 && col.cards.length > col.wip;
           return (
@@ -63,7 +63,7 @@ export default function KanbanTool() {
               class="flex w-72 shrink-0 flex-col rounded-xl border border-slate-200 bg-white p-3"
             >
               <div class="flex items-center gap-1">
-                <input value={col.title} onInput={(e) => renameCol(col.id, (e.target as HTMLInputElement).value)} class="min-w-0 flex-1 rounded border-0 bg-transparent px-1 py-0.5 text-sm font-bold text-slate-900 focus:bg-slate-50 focus:outline-none" />
+                <input value={col.title} onInput={(e) => renameCol(col.id, (e.target as HTMLInputElement).value)} aria-label="Column title" class="min-w-0 flex-1 rounded border-0 bg-transparent px-1 py-0.5 text-sm font-bold text-slate-900 focus:bg-slate-50 focus:outline-none" />
                 <span class={`rounded-full px-2 text-xs font-bold ${over ? 'bg-red-100 text-red-700' : 'bg-slate-100 text-slate-500'}`}>{col.cards.length}{col.wip > 0 ? `/${col.wip}` : ''}</span>
                 <button type="button" onClick={() => removeCol(col.id)} class="text-slate-300 hover:text-red-600" aria-label="Delete column">✕</button>
               </div>
@@ -95,6 +95,7 @@ export default function KanbanTool() {
                   onInput={(e) => setDraft(col.id, (e.target as HTMLInputElement).value)}
                   onKeyDown={(e) => e.key === 'Enter' && addCard(col.id)}
                   placeholder="+ add card"
+                  aria-label="Card title"
                   class="min-w-0 flex-1 rounded-lg border border-slate-200 px-2 py-1.5 text-sm focus:border-brand-500 focus:outline-none"
                 />
                 <button type="button" onClick={() => addCard(col.id)} class="rounded-lg bg-brand-700 px-3 text-sm font-semibold text-white hover:bg-brand-800">Add</button>

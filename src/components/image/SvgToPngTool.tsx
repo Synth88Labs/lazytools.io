@@ -180,6 +180,7 @@ export default function SvgToPngTool() {
             onInput={(e) => ingest((e.currentTarget as HTMLTextAreaElement).value)}
             placeholder="<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>…</svg>"
             rows={5}
+            aria-label="Paste SVG markup"
             class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 font-mono text-xs text-slate-800"
           />
           {hasSvg && (
@@ -199,6 +200,7 @@ export default function SvgToPngTool() {
               type="number"
               min={1}
               value={outW}
+              aria-label="Output width (px)"
               onInput={(e) => onWidth(parseInt((e.currentTarget as HTMLInputElement).value, 10))}
               class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm"
             />
@@ -209,6 +211,7 @@ export default function SvgToPngTool() {
               type="number"
               min={1}
               value={outH}
+              aria-label="Output height (px)"
               onInput={(e) => onHeight(parseInt((e.currentTarget as HTMLInputElement).value, 10))}
               class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm"
             />

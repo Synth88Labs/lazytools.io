@@ -24,7 +24,7 @@ export default function ChecklistTool() {
 
   return (
     <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
-      <input value={st.title} onInput={(e) => setSt((s) => ({ ...s, title: (e.target as HTMLInputElement).value }))} class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-lg font-bold text-slate-900 focus:border-brand-500 focus:outline-none" placeholder="Checklist name" />
+      <input value={st.title} onInput={(e) => setSt((s) => ({ ...s, title: (e.target as HTMLInputElement).value }))} aria-label="Checklist name" class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-lg font-bold text-slate-900 focus:border-brand-500 focus:outline-none" placeholder="Checklist name" />
 
       <div class="mt-3 flex items-center gap-3">
         <span class="h-2.5 flex-1 overflow-hidden rounded-full bg-slate-200"><span class="block h-full rounded-full bg-mint-500 transition-all" style={`width:${pct}%`} /></span>
@@ -34,7 +34,7 @@ export default function ChecklistTool() {
       <ul class="mt-3 space-y-1.5">
         {st.steps.map((s, i) => (
           <li class="group flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-2">
-            <input type="checkbox" checked={s.done} onChange={() => toggle(s.id)} class="h-5 w-5 rounded border-slate-300 text-mint-600 focus:ring-mint-500" />
+            <input type="checkbox" checked={s.done} onChange={() => toggle(s.id)} aria-label={s.text} class="h-5 w-5 rounded border-slate-300 text-mint-600 focus:ring-mint-500" />
             <span class={`min-w-0 flex-1 break-words text-sm ${s.done ? 'text-slate-400 line-through' : 'text-slate-800'}`}>{s.text}</span>
             <button type="button" onClick={() => move(i, -1)} disabled={i === 0} class="text-slate-300 disabled:opacity-30 hover:text-brand-600" aria-label="Up">↑</button>
             <button type="button" onClick={() => move(i, 1)} disabled={i === st.steps.length - 1} class="text-slate-300 disabled:opacity-30 hover:text-brand-600" aria-label="Down">↓</button>
@@ -44,7 +44,7 @@ export default function ChecklistTool() {
       </ul>
 
       <div class="mt-3 flex gap-1">
-        <input value={draft} onInput={(e) => setDraft((e.target as HTMLInputElement).value)} onKeyDown={(e) => e.key === 'Enter' && add()} placeholder="+ add step" class="min-w-0 flex-1 rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm focus:border-brand-500 focus:outline-none" />
+        <input value={draft} onInput={(e) => setDraft((e.target as HTMLInputElement).value)} onKeyDown={(e) => e.key === 'Enter' && add()} placeholder="+ add step" aria-label="New step" class="min-w-0 flex-1 rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm focus:border-brand-500 focus:outline-none" />
         <button type="button" onClick={add} class="rounded-lg bg-brand-700 px-4 text-sm font-semibold text-white hover:bg-brand-800">Add</button>
       </div>
 

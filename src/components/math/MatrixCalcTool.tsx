@@ -16,7 +16,7 @@ function Grid({ M, n, onSet }: { M: Matrix; n: number; onSet: (i: number, j: num
     <div class="inline-grid gap-1" style={`grid-template-columns: repeat(${n}, minmax(0, 1fr))`}>
       {Array.from({ length: n }, (_, i) => Array.from({ length: n }, (_, j) => (
         <input type="number" step="any" value={String(M[i][j])} onInput={(e) => onSet(i, j, (e.target as HTMLInputElement).value)}
-          class="w-14 rounded-md border border-slate-300 bg-white px-1 py-1.5 text-center font-mono text-sm text-slate-900 focus:border-brand-500 focus:outline-none" />
+          class="w-14 rounded-md border border-slate-300 bg-white px-1 py-1.5 text-center font-mono text-sm text-slate-900 focus:border-brand-500 focus:outline-none" aria-label={`Row ${i + 1}, column ${j + 1}`} />
       )))}
     </div>
   );
@@ -55,7 +55,7 @@ export default function MatrixCalcTool() {
           <span class="pr-1 text-xs font-semibold uppercase tracking-wide text-slate-500">Size</span>
           {[2, 3].map((sz) => <button onClick={() => resize(sz)} class={`rounded-lg px-3 py-1 text-sm font-semibold ring-1 ${n === sz ? 'bg-brand-600 text-white ring-brand-600' : 'bg-white text-slate-600 ring-slate-200'}`}>{sz}×{sz}</button>)}
         </div>
-        <select value={op} onChange={(e) => setOp((e.target as HTMLSelectElement).value as Op)} class="rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm">
+        <select value={op} onChange={(e) => setOp((e.target as HTMLSelectElement).value as Op)} class="rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm" aria-label="Matrix operation">
           {OPS.map((o) => <option value={o.id}>{o.label}</option>)}
         </select>
       </div>

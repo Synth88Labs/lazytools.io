@@ -40,7 +40,7 @@ export default function OkrTool() {
             <div class="rounded-xl border border-slate-200 bg-white p-4">
               <div class="flex items-center gap-2">
                 <span class="text-lg">🎯</span>
-                <input value={o.name} onInput={(e) => setObj(o.id, { name: (e.target as HTMLInputElement).value })} class={`${inp} min-w-0 flex-1 text-base font-bold`} />
+                <input value={o.name} onInput={(e) => setObj(o.id, { name: (e.target as HTMLInputElement).value })} aria-label="Objective name" class={`${inp} min-w-0 flex-1 text-base font-bold`} />
                 <span class="text-sm font-bold text-slate-700">{p}%</span>
                 <button type="button" onClick={() => delObj(o.id)} class="text-slate-300 hover:text-red-600" aria-label="Delete objective">✕</button>
               </div>
@@ -52,12 +52,12 @@ export default function OkrTool() {
                   return (
                     <li class="rounded-lg border border-slate-100 bg-slate-50 p-2.5">
                       <div class="flex flex-wrap items-center gap-2 text-sm">
-                        <input value={k.name} onInput={(e) => setKr(o.id, k.id, { name: (e.target as HTMLInputElement).value })} class={`${inp} min-w-0 flex-1 font-medium`} />
+                        <input value={k.name} onInput={(e) => setKr(o.id, k.id, { name: (e.target as HTMLInputElement).value })} aria-label="Key result name" class={`${inp} min-w-0 flex-1 font-medium`} />
                         <span class="flex items-center gap-1 text-xs text-slate-500">
-                          <input type="number" value={k.current} onInput={(e) => setKr(o.id, k.id, { current: parseFloat((e.target as HTMLInputElement).value) || 0 })} class={`${inp} w-20`} title="current" />
+                          <input type="number" value={k.current} onInput={(e) => setKr(o.id, k.id, { current: parseFloat((e.target as HTMLInputElement).value) || 0 })} aria-label="Current value" class={`${inp} w-20`} title="current" />
                           /
-                          <input type="number" value={k.target} onInput={(e) => setKr(o.id, k.id, { target: parseFloat((e.target as HTMLInputElement).value) || 0 })} class={`${inp} w-20`} title="target" />
-                          <input value={k.unit} onInput={(e) => setKr(o.id, k.id, { unit: (e.target as HTMLInputElement).value })} class={`${inp} w-12`} placeholder="unit" title="unit" />
+                          <input type="number" value={k.target} onInput={(e) => setKr(o.id, k.id, { target: parseFloat((e.target as HTMLInputElement).value) || 0 })} aria-label="Target value" class={`${inp} w-20`} title="target" />
+                          <input value={k.unit} onInput={(e) => setKr(o.id, k.id, { unit: (e.target as HTMLInputElement).value })} aria-label="Unit" class={`${inp} w-12`} placeholder="unit" title="unit" />
                         </span>
                         <span class="w-10 text-right text-xs font-bold text-slate-600">{kp}%</span>
                         <button type="button" onClick={() => delKr(o.id, k.id)} class="text-slate-300 hover:text-red-600" aria-label="Delete key result">✕</button>

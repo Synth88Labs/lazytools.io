@@ -25,7 +25,7 @@ export default function TongueWeightTool() {
 
   return (
     <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
-      <div class="mb-3 flex justify-end"><select value={unit} onChange={(e) => setUnit((e.target as HTMLSelectElement).value as 'lb' | 'kg')} class={sel}><option value="lb">lb</option><option value="kg">kg</option></select></div>
+      <div class="mb-3 flex justify-end"><select value={unit} aria-label="Weight unit" onChange={(e) => setUnit((e.target as HTMLSelectElement).value as 'lb' | 'kg')} class={sel}><option value="lb">lb</option><option value="kg">kg</option></select></div>
       <div class="grid gap-3 sm:grid-cols-2">
         <label class="block"><span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Loaded trailer weight ({unit})</span>
           <input type="number" step="any" value={trailer} onInput={(e) => setTrailer((e.target as HTMLInputElement).value)} class={inp} /></label>

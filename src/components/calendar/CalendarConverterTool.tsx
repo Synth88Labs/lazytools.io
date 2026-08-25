@@ -71,7 +71,7 @@ export default function CalendarConverterTool({ mode, system }: Props) {
               <p class="mt-1 text-sm text-slate-500">{weekdayUTC(gregMs)} · {pinned.note}</p>
             </div>
           ) : (
-            <div class="overflow-x-auto rounded-xl border border-slate-200 bg-white">
+            <div class="overflow-x-auto rounded-xl border border-slate-200 bg-white" tabIndex={0} aria-label="Calendar conversion table">
               <table class="w-full text-sm">
                 <thead>
                   <tr class="border-b border-slate-200 bg-slate-50 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">
@@ -110,17 +110,17 @@ export default function CalendarConverterTool({ mode, system }: Props) {
             )}
             <div>
               <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">{isJdn ? 'Julian Day Number' : 'Year'}</label>
-              <input type="number" value={ry} onInput={(e) => setRy((e.target as HTMLInputElement).value)} class={`${inputCls} w-28`} />
+              <input type="number" value={ry} onInput={(e) => setRy((e.target as HTMLInputElement).value)} aria-label={isJdn ? 'Julian Day Number' : 'Year'} class={`${inputCls} w-28`} />
             </div>
             {!isJdn && (
               <>
                 <div>
                   <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Month #</label>
-                  <input type="number" min={1} max={13} value={rm} onInput={(e) => setRm((e.target as HTMLInputElement).value)} class={`${inputCls} w-20`} />
+                  <input type="number" min={1} max={13} value={rm} onInput={(e) => setRm((e.target as HTMLInputElement).value)} aria-label="Month number" class={`${inputCls} w-20`} />
                 </div>
                 <div>
                   <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Day</label>
-                  <input type="number" min={1} max={31} value={rd} onInput={(e) => setRd((e.target as HTMLInputElement).value)} class={`${inputCls} w-20`} />
+                  <input type="number" min={1} max={31} value={rd} onInput={(e) => setRd((e.target as HTMLInputElement).value)} aria-label="Day" class={`${inputCls} w-20`} />
                 </div>
               </>
             )}

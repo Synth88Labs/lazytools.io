@@ -33,6 +33,7 @@ export default function MixerTool() {
           type="text"
           value={value}
           onInput={(e) => set((e.target as HTMLInputElement).value)}
+          aria-label={label}
           class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 font-mono text-sm text-slate-900 focus:border-brand-500 focus:outline-none"
         />
         <input

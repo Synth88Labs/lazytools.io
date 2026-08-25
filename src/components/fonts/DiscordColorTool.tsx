@@ -111,7 +111,7 @@ export default function DiscordColorTool() {
 
       <div class="mt-4">
         <span class="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-slate-500">Paste this into Discord</span>
-        <pre class="overflow-x-auto rounded-xl border border-slate-200 bg-white p-3 text-xs text-slate-700"><code>{output.replace(/\u001b/g, '\\u001b')}</code></pre>
+        <pre class="overflow-x-auto rounded-xl border border-slate-200 bg-white p-3 text-xs text-slate-700" tabIndex={0} aria-label="Discord code block"><code>{output.replace(/\u001b/g, '\\u001b')}</code></pre>
       </div>
 
       <div class="mt-3 flex justify-end">

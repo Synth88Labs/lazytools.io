@@ -56,15 +56,15 @@ export default function MeasureTool() {
           <p class="text-xs text-slate-500">or {cpl}ch (≈)</p>
         </div>
         <div class={`rounded-xl border p-4 text-center ${verdictClass}`}>
-          <p class="text-xs font-semibold uppercase tracking-wide opacity-70">Readability</p>
+          <p class="text-xs font-semibold uppercase tracking-wide">Readability</p>
           <p class="mt-1 text-lg font-bold">{verdict}</p>
-          <p class="text-xs opacity-70">ideal 45–75</p>
+          <p class="text-xs">ideal 45–75</p>
         </div>
       </div>
 
       <div class="mt-4">
         <span class="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-slate-500">Live preview at this width</span>
-        <div class="overflow-x-auto rounded-xl border border-slate-200 bg-white p-4">
+        <div class="overflow-x-auto rounded-xl border border-slate-200 bg-white p-4" tabIndex={0} aria-label="Line length preview">
           <p class="text-slate-800" style={`font-size:${fontSize}px;line-height:1.6;max-width:${widthPx}px`}>{sample}</p>
         </div>
       </div>

@@ -59,6 +59,7 @@ export default function NotepadTool() {
         value={text}
         onInput={(e) => setText((e.target as HTMLTextAreaElement).value)}
         placeholder="Start typing… your note saves automatically in this browser, and never leaves your device."
+        aria-label="Note"
         spellcheck
         class={`w-full resize-y rounded-xl border border-slate-300 bg-white p-4 text-slate-900 shadow-inner focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200 ${big ? 'text-lg leading-relaxed' : 'text-sm'}`}
         style={`min-height:${big ? '60vh' : '380px'}`}

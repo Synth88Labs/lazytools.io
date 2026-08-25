@@ -62,7 +62,7 @@ export default function RecipeScalerTool() {
         <p class="mt-3 text-sm text-slate-600">Scaling factor: <strong class="font-mono text-brand-700">×{fmt(mult)}</strong></p>
       )}
 
-      <div class="mt-4 overflow-x-auto">
+      <div class="mt-4 overflow-x-auto" role="group" tabIndex={0} aria-label="Recipe ingredients table">
         <table class="w-full text-sm">
           <thead>
             <tr class="text-left text-xs font-semibold uppercase tracking-wide text-slate-500">
@@ -76,9 +76,9 @@ export default function RecipeScalerTool() {
               const scaled = q != null && mult != null ? q * mult : null;
               return (
                 <tr>
-                  <td class="px-2 py-1"><input value={r.qty} onInput={(e) => set(i, { qty: (e.target as HTMLInputElement).value })} class={`${cell} w-20`} placeholder="1 1/2" /></td>
-                  <td class="px-2 py-1"><input value={r.unit} onInput={(e) => set(i, { unit: (e.target as HTMLInputElement).value })} class={`${cell} w-24`} placeholder="cups" /></td>
-                  <td class="px-2 py-1"><input value={r.name} onInput={(e) => set(i, { name: (e.target as HTMLInputElement).value })} class={`${cell} w-full`} placeholder="flour" /></td>
+                  <td class="px-2 py-1"><input value={r.qty} aria-label="Quantity" onInput={(e) => set(i, { qty: (e.target as HTMLInputElement).value })} class={`${cell} w-20`} placeholder="1 1/2" /></td>
+                  <td class="px-2 py-1"><input value={r.unit} aria-label="Unit" onInput={(e) => set(i, { unit: (e.target as HTMLInputElement).value })} class={`${cell} w-24`} placeholder="cups" /></td>
+                  <td class="px-2 py-1"><input value={r.name} aria-label="Ingredient name" onInput={(e) => set(i, { name: (e.target as HTMLInputElement).value })} class={`${cell} w-full`} placeholder="flour" /></td>
                   <td class="px-2 py-1 text-right font-mono font-semibold text-brand-800">{scaled != null ? `${fmt(scaled)} ${r.unit}` : '—'}</td>
                   <td class="px-2 py-1 text-right"><button onClick={() => setRows(rows.filter((_, j) => j !== i))} class="text-slate-400 hover:text-red-500" aria-label="Remove">✕</button></td>
                 </tr>

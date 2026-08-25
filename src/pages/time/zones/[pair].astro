@@ -7,6 +7,7 @@ import RatingWidget from '../../../components/RatingWidget.tsx';
 import TimezonePairTool from '../../../components/time/TimezonePairTool.tsx';
 import { allPairs, observesDst, type PairDef } from '../../../data/time/zones';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../../lib/schema';
+import { seoTitle } from '../../../lib/seo';
 import { ratingFor } from '../../../lib/ratings';
 
 export function getStaticPaths() {
@@ -68,7 +69,7 @@ const schema = [
 ---
 
 <Base
-  title={`${title} — Live & Private | LazyTools`}
+  title={seoTitle(title)}
   description={`${aUp} to ${bUp} time converter: live clocks for ${a.cities.split(',')[0]} and ${b.cities.split(',')[0]}, a 9-to-5 meeting overlap table and daylight-saving notes. All in your browser.`}
   schema={schema}
 >

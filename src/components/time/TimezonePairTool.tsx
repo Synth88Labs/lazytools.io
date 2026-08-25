@@ -101,7 +101,7 @@ export default function TimezonePairTool({ aAbbr, bAbbr }: Props) {
           </p>
         )}
 
-        <div class="mt-3 max-h-72 overflow-y-auto rounded-xl border border-slate-200 bg-white">
+        <div class="mt-3 max-h-72 overflow-y-auto rounded-xl border border-slate-200 bg-white" tabIndex={0} aria-label="Hour-by-hour overlap table">
           <table class="w-full text-sm">
             <thead class="sticky top-0 bg-slate-50 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">
               <tr>

@@ -31,7 +31,7 @@ export default function BakersPercentageTool() {
       <label class="block"><span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Flour (100% — the baseline)</span>
         <input type="number" step="any" min="0" value={flour} onInput={(e) => setFlour((e.target as HTMLInputElement).value)} class={`${cell} w-40 font-mono`} /> <span class="text-sm text-slate-500">g</span></label>
 
-      <div class="mt-4 overflow-x-auto">
+      <div class="mt-4 overflow-x-auto" role="group" tabIndex={0} aria-label="Baker's percentage table">
         <table class="w-full text-sm">
           <thead><tr class="text-left text-xs font-semibold uppercase tracking-wide text-slate-500">
             <th class="px-2 py-1">Ingredient</th><th class="px-2 py-1">Grams</th><th class="px-2 py-1 text-right">Baker's %</th><th></th>
@@ -40,8 +40,8 @@ export default function BakersPercentageTool() {
             <tr class="bg-brand-50/50"><td class="px-2 py-1.5 font-semibold text-slate-700">Flour</td><td class="px-2 py-1.5 font-mono">{r ? fmt(r.f, 0) : '—'}</td><td class="px-2 py-1.5 text-right font-mono font-semibold text-brand-800">100%</td><td></td></tr>
             {rows.map((row, i) => (
               <tr>
-                <td class="px-2 py-1"><input value={row.name} onInput={(e) => set(i, { name: (e.target as HTMLInputElement).value })} class={`${cell} w-full`} /></td>
-                <td class="px-2 py-1"><input type="number" step="any" min="0" value={row.grams} onInput={(e) => set(i, { grams: (e.target as HTMLInputElement).value })} class={`${cell} w-24 font-mono`} /></td>
+                <td class="px-2 py-1"><input value={row.name} aria-label="Ingredient name" onInput={(e) => set(i, { name: (e.target as HTMLInputElement).value })} class={`${cell} w-full`} /></td>
+                <td class="px-2 py-1"><input type="number" step="any" min="0" value={row.grams} aria-label="Ingredient weight in grams" onInput={(e) => set(i, { grams: (e.target as HTMLInputElement).value })} class={`${cell} w-24 font-mono`} /></td>
                 <td class="px-2 py-1 text-right font-mono font-semibold text-slate-700">{r?.ings[i]?.pct != null ? `${fmt(r.ings[i].pct!)}%` : '—'}</td>
                 <td class="px-2 py-1 text-right"><button onClick={() => setRows(rows.filter((_, j) => j !== i))} class="text-slate-400 hover:text-red-500" aria-label="Remove">✕</button></td>
               </tr>

@@ -30,9 +30,9 @@ export default function SwimPaceTool() {
             <select value={unit} onChange={(e) => setUnit((e.target as HTMLSelectElement).value as 'm' | 'yd')} class={sel}><option value="m">metres</option><option value="yd">yards</option></select></div></label>
         <div><span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Time (min : sec)</span>
           <div class="flex items-center gap-1">
-            <input type="number" min="0" value={mm} onInput={(e) => setMm((e.target as HTMLInputElement).value)} class={inp} />
+            <input type="number" min="0" value={mm} aria-label="Minutes" onInput={(e) => setMm((e.target as HTMLInputElement).value)} class={inp} />
             <span class="font-bold text-slate-400">:</span>
-            <input type="number" min="0" max="59" value={ss} onInput={(e) => setSs((e.target as HTMLInputElement).value)} class={inp} />
+            <input type="number" min="0" max="59" value={ss} aria-label="Seconds" onInput={(e) => setSs((e.target as HTMLInputElement).value)} class={inp} />
           </div></div>
       </div>
 

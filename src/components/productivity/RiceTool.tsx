@@ -22,7 +22,7 @@ export default function RiceTool() {
   const inp = 'rounded-lg border border-slate-300 bg-white px-2 py-1 text-sm text-slate-900 focus:border-brand-500 focus:outline-none';
   const btn = 'rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-600 transition hover:border-brand-400';
   const numTd = (id: string, k: keyof Item, min: number, max: number, step = 1) => (
-    <td class="px-2 py-1.5 text-center"><input type="number" min={min} max={max} step={step} value={items.find((x) => x.id === id)![k] as number} onInput={(e) => set(id, { [k]: Math.max(min, parseFloat((e.target as HTMLInputElement).value) || 0) } as Partial<Item>)} class={`${inp} w-20 text-center`} /></td>
+    <td class="px-2 py-1.5 text-center"><input type="number" min={min} max={max} step={step} value={items.find((x) => x.id === id)![k] as number} onInput={(e) => set(id, { [k]: Math.max(min, parseFloat((e.target as HTMLInputElement).value) || 0) } as Partial<Item>)} aria-label={k as string} class={`${inp} w-20 text-center`} /></td>
   );
 
   return (
@@ -34,7 +34,7 @@ export default function RiceTool() {
         <button type="button" onClick={() => pickJson().then((d) => Array.isArray(d) && setItems(d as Item[])).catch(() => {})} class={btn}>⬆ Import</button>
       </div>
 
-      <div class="overflow-x-auto rounded-xl border border-slate-200 bg-white">
+      <div class="overflow-x-auto rounded-xl border border-slate-200 bg-white" tabIndex={0} aria-label="RICE scores table">
         <table class="w-full text-sm">
           <thead>
             <tr class="border-b border-slate-200 bg-slate-50 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">
@@ -50,7 +50,7 @@ export default function RiceTool() {
             {ranked.map((i, idx) => (
               <tr class={`border-b border-slate-100 last:border-0 ${idx === 0 && items.length > 1 ? 'bg-mint-50' : ''}`}>
                 <td class="px-3 py-1.5 text-center font-bold text-slate-400">{idx + 1}</td>
-                <td class="px-3 py-1.5"><input value={i.name} onInput={(e) => set(i.id, { name: (e.target as HTMLInputElement).value })} class={`${inp} min-w-28 font-medium`} /></td>
+                <td class="px-3 py-1.5"><input value={i.name} onInput={(e) => set(i.id, { name: (e.target as HTMLInputElement).value })} aria-label="Item name" class={`${inp} min-w-28 font-medium`} /></td>
                 {numTd(i.id, 'reach', 0, 1e9)}
                 {numTd(i.id, 'impact', 0, 10, 0.25)}
                 {numTd(i.id, 'confidence', 0, 100)}

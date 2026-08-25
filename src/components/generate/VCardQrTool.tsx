@@ -36,7 +36,7 @@ export default function VCardQrTool() {
 
   const F = (k: keyof typeof f, label: string, ph = '') => (
     <div><label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">{label}</label>
-      <input class={inputCls} value={f[k]} placeholder={ph} onInput={(e) => set(k, (e.target as HTMLInputElement).value)} /></div>
+      <input class={inputCls} value={f[k]} placeholder={ph} onInput={(e) => set(k, (e.target as HTMLInputElement).value)} aria-label={label} /></div>
   );
 
   return (
@@ -49,7 +49,7 @@ export default function VCardQrTool() {
           <div class="col-span-2">{F('url', 'Website')}</div>
           <div class="col-span-2">{F('addr', 'Address')}</div>
           <div class="col-span-2"><label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Size: {size}px</label>
-            <input type="range" min={128} max={1024} step={32} value={size} onInput={(e) => setSize(parseInt((e.target as HTMLInputElement).value))} class="w-full accent-brand-600" /></div>
+            <input type="range" min={128} max={1024} step={32} value={size} onInput={(e) => setSize(parseInt((e.target as HTMLInputElement).value))} class="w-full accent-brand-600" aria-label="QR code size" /></div>
         </div>
         <div class="flex flex-col items-center rounded-xl border border-brand-100 bg-white p-4">
           <canvas ref={canvasRef} width={size} height={size} class="max-w-full rounded-lg" aria-label="vCard QR code" />

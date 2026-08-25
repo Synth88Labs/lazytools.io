@@ -129,6 +129,7 @@ export default function TotpTool() {
           value={secret}
           spellcheck={false}
           autocomplete="off"
+          aria-label="Base32 secret"
           placeholder="JBSWY3DPEHPK3PXP"
           onInput={(e) => setSecret((e.target as HTMLInputElement).value)}
           class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm font-mono"
@@ -149,6 +150,7 @@ export default function TotpTool() {
           <select
             value={algo}
             onChange={(e) => setAlgo((e.target as HTMLSelectElement).value as TotpAlgo)}
+            aria-label="Algorithm"
             class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm font-mono"
           >
             <option value="SHA-1">SHA-1</option>
@@ -161,6 +163,7 @@ export default function TotpTool() {
           <select
             value={String(digits)}
             onChange={(e) => setDigits(Number((e.target as HTMLSelectElement).value))}
+            aria-label="Digits"
             class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm font-mono"
           >
             <option value="6">6</option>
@@ -173,6 +176,7 @@ export default function TotpTool() {
             type="number"
             min={1}
             value={period}
+            aria-label="Period in seconds"
             onInput={(e) => {
               const v = Number((e.target as HTMLInputElement).value);
               setPeriod(Number.isFinite(v) && v >= 1 ? v : 30);
@@ -227,6 +231,7 @@ export default function TotpTool() {
             inputMode="numeric"
             value={checkInput}
             placeholder="123 456"
+            aria-label="Verify a code"
             onInput={(e) => {
               setCheckInput((e.target as HTMLInputElement).value);
               setCheckResult(null);

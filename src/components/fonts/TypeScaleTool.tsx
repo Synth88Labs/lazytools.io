@@ -80,7 +80,7 @@ export default function TypeScaleTool() {
       </div>
 
       {/* Preview + table */}
-      <div class="mt-4 space-y-1 overflow-x-auto rounded-xl border border-slate-200 bg-white p-4">
+      <div class="mt-4 space-y-1 overflow-x-auto rounded-xl border border-slate-200 bg-white p-4" tabIndex={0} aria-label="Type scale preview">
         {rows.map((row) => (
           <div class="flex items-baseline justify-between gap-4 border-b border-slate-100 py-1.5 last:border-0">
             <span class="truncate text-slate-800" style={{ fontSize: `${Math.min(row.px, 56)}px`, lineHeight: 1.1 }}>{row.label}</span>
@@ -95,7 +95,7 @@ export default function TypeScaleTool() {
           <span class={label}>CSS custom properties</span>
           <button type="button" onClick={copyCss} class={`rounded-lg px-3 py-1 text-xs font-semibold transition ${copied ? 'bg-mint-600 text-white' : 'bg-brand-600 text-white hover:bg-brand-700'}`}>{copied ? '✓ Copied' : 'Copy CSS'}</button>
         </div>
-        <pre class="overflow-x-auto rounded-xl border border-slate-200 bg-slate-900 p-3 font-mono text-xs text-slate-100">{cssBlock}</pre>
+        <pre class="overflow-x-auto rounded-xl border border-slate-200 bg-slate-900 p-3 font-mono text-xs text-slate-100" tabIndex={0} aria-label="Generated CSS">{cssBlock}</pre>
       </div>
 
       <p class="mt-4 text-xs text-slate-500">

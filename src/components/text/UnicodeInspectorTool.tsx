@@ -41,7 +41,7 @@ export default function UnicodeInspectorTool() {
         <textarea class={ta} rows={3} value={input} onInput={(e) => setInput((e.target as HTMLTextAreaElement).value)} />
       </label>
 
-      <div class="mt-4 overflow-auto rounded-xl border border-slate-200 bg-white">
+      <div class="mt-4 overflow-auto rounded-xl border border-slate-200 bg-white" tabIndex={0} aria-label="Character details table">
         <table class="w-full text-left text-sm">
           <thead class="bg-slate-50 text-xs font-semibold uppercase tracking-wide text-slate-500">
             <tr><th class="px-3 py-2">Char</th><th class="px-3 py-2">Code point</th><th class="px-3 py-2">Decimal</th><th class="px-3 py-2">UTF-8 bytes</th><th class="px-3 py-2">HTML</th><th class="px-3 py-2">Category</th></tr>

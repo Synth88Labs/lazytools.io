@@ -54,7 +54,7 @@ export default function FlightDistanceTool() {
           return (
             <div class="rounded-xl bg-white p-4 ring-1 ring-slate-200">
               <p class="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">{which === 'a' ? 'From' : 'To'}</p>
-              <select class={sel} onChange={(e) => setPreset(which, (e.target as HTMLSelectElement).selectedIndex - 1)}>
+              <select class={sel} aria-label={which === 'a' ? 'From city' : 'To city'} onChange={(e) => setPreset(which, (e.target as HTMLSelectElement).selectedIndex - 1)}>
                 <option>Pick a city…</option>
                 {PRESETS.map((p) => <option>{p.label}</option>)}
               </select>

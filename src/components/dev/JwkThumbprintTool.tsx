@@ -43,7 +43,7 @@ export default function JwkThumbprintTool() {
           </select>
         </label>
       </div>
-      <textarea rows={8} class={inp} value={text} onInput={(e) => setText((e.target as HTMLTextAreaElement).value)} placeholder='{ "kty": "RSA", "n": "…", "e": "AQAB" }' />
+      <textarea rows={8} class={inp} aria-label="JSON Web Key (JWK)" value={text} onInput={(e) => setText((e.target as HTMLTextAreaElement).value)} placeholder='{ "kty": "RSA", "n": "…", "e": "AQAB" }' />
 
       {error && <p class="mt-4 rounded-lg bg-rose-50 px-3 py-2 text-sm text-rose-700 ring-1 ring-rose-200">⚠️ {error}</p>}
 

@@ -41,7 +41,7 @@ export default function FileTypeTool() {
       <div class="mt-3">
         <span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">…or paste the first bytes as hex</span>
         <div class="flex gap-2">
-          <input class={inp} value={hexInput} onInput={(e) => setHexInput((e.target as HTMLInputElement).value)} placeholder="89 50 4E 47 0D 0A 1A 0A" />
+          <input class={inp} aria-label="First bytes as hex" value={hexInput} onInput={(e) => setHexInput((e.target as HTMLInputElement).value)} placeholder="89 50 4E 47 0D 0A 1A 0A" />
           <button onClick={fromHex} disabled={!hexInput.trim()} class="shrink-0 rounded-xl bg-brand-700 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-800 disabled:opacity-50">Identify</button>
         </div>
       </div>

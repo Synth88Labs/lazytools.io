@@ -50,7 +50,7 @@ export default function SlopeLineTool() {
               <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">y-intercept</p>
             </div>
           </div>
-          <div class="mt-4 overflow-x-auto rounded-xl border border-slate-200 bg-white">
+          <div class="mt-4 overflow-x-auto rounded-xl border border-slate-200 bg-white" tabIndex={0} aria-label="Line equation forms table">
             <table class="w-full text-left text-sm">
               <tbody class="divide-y divide-slate-100">
                 <tr><th class="w-48 px-4 py-2 font-semibold text-slate-600">Slope-intercept form</th><td class="px-4 py-2 font-mono text-slate-800">y = {slopePart}{bPart}</td></tr>

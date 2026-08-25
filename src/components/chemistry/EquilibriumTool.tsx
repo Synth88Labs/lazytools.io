@@ -44,15 +44,15 @@ export default function EquilibriumTool() {
   return (
     <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
       <p class="mb-2 text-sm text-slate-600">Reaction: <span class="font-mono font-semibold">aA + bB ⇌ cC + dD</span> — set coefficients (0 to drop a species) and initial concentrations.</p>
-      <div class="overflow-x-auto">
+      <div class="overflow-x-auto" role="group" tabIndex={0} aria-label="Equilibrium species table">
         <table class="w-full min-w-[440px] text-sm">
           <thead><tr class="text-left text-[11px] font-semibold uppercase tracking-wide text-slate-500"><th class="pb-2 pr-2">Species</th><th class="pb-2 px-2 w-28">Coefficient</th><th class="pb-2 px-2 w-32">Initial conc. (M)</th></tr></thead>
           <tbody>
             {(['A', 'B', 'C', 'D'] as const).map((key) => (
               <tr key={key} class="border-t border-slate-200">
                 <td class="py-1.5 pr-2 font-medium text-slate-700">{labels[key]}</td>
-                <td class="py-1.5 px-2"><input type="number" step="1" min="0" value={rows[key].coeff} onInput={(e) => set(key, 'coeff', (e.target as HTMLInputElement).value)} class={inp} /></td>
-                <td class="py-1.5 px-2"><input type="number" step="any" min="0" value={rows[key].conc} onInput={(e) => set(key, 'conc', (e.target as HTMLInputElement).value)} class={inp} /></td>
+                <td class="py-1.5 px-2"><input type="number" step="1" min="0" value={rows[key].coeff} aria-label={`${labels[key]} coefficient`} onInput={(e) => set(key, 'coeff', (e.target as HTMLInputElement).value)} class={inp} /></td>
+                <td class="py-1.5 px-2"><input type="number" step="any" min="0" value={rows[key].conc} aria-label={`${labels[key]} initial concentration`} onInput={(e) => set(key, 'conc', (e.target as HTMLInputElement).value)} class={inp} /></td>
               </tr>
             ))}
           </tbody>

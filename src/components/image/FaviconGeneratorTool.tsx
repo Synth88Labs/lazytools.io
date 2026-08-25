@@ -316,6 +316,7 @@ export default function FaviconGeneratorTool() {
           readOnly
           rows={5}
           value={HTML_SNIPPET}
+          aria-label="HTML snippet"
           class="mt-3 w-full rounded-lg border border-slate-200 bg-white p-3 font-mono text-xs text-slate-700"
           onClick={(e) => (e.target as HTMLTextAreaElement).select()}
         />

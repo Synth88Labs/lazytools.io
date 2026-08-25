@@ -53,8 +53,8 @@ function Countdown() {
   return (
     <div>
       <div class="flex flex-wrap gap-2">
-        <input value={label} onInput={(e) => setLabel((e.target as HTMLInputElement).value)} placeholder="Event name" class={`${inputCls} flex-1`} />
-        <input type="datetime-local" value={target} onInput={(e) => setTarget((e.target as HTMLInputElement).value)} class={inputCls} />
+        <input value={label} onInput={(e) => setLabel((e.target as HTMLInputElement).value)} placeholder="Event name" aria-label="Event name" class={`${inputCls} flex-1`} />
+        <input type="datetime-local" value={target} onInput={(e) => setTarget((e.target as HTMLInputElement).value)} aria-label="Target date and time" class={inputCls} />
       </div>
       {Number.isFinite(targetMs) ? (
         <div class="mt-4 rounded-2xl border border-brand-100 bg-brand-50/40 p-5 text-center">

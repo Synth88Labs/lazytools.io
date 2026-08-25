@@ -43,7 +43,7 @@ export default function InvisibleCharTool() {
             <span class="text-xs font-semibold uppercase tracking-wide text-slate-500">Cleaned text (hidden characters removed)</span>
             <button type="button" onClick={copy} class="rounded-lg bg-brand-700 px-3 py-1 text-xs font-medium text-white hover:bg-brand-800">{copied ? '✓ Copied' : 'Copy clean text'}</button>
           </div>
-          <textarea class={`${ta} border-brand-200`} rows={6} readOnly value={cleaned} />
+          <textarea class={`${ta} border-brand-200`} rows={6} readOnly value={cleaned} aria-label="Cleaned text" />
         </div>
       )}
       <p class="mt-3 text-xs text-slate-500">Detects zero-width spaces, non-breaking spaces, bidirectional controls, the BOM, and the tag/variation-selector characters increasingly used to invisibly watermark AI-generated text. 🔒 Everything runs in your browser — your text is never uploaded.</p>

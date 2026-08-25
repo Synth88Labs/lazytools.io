@@ -1,11 +1,12 @@
 import { usePersistentState, exportJson, pickJson, uid } from '../../lib/persist';
 
+// Colours are darkened enough that the white block labels clear WCAG AA 4.5:1.
 const CATS = [
-  { name: 'Deep work', color: '#1d87f1' },
-  { name: 'Meetings', color: '#f59e0b' },
-  { name: 'Admin', color: '#64748b' },
-  { name: 'Break', color: '#10b981' },
-  { name: 'Personal', color: '#8b5cf6' },
+  { name: 'Deep work', color: '#1565c0' },
+  { name: 'Meetings', color: '#b45309' },
+  { name: 'Admin', color: '#475569' },
+  { name: 'Break', color: '#047857' },
+  { name: 'Personal', color: '#6d28d9' },
 ];
 interface Block { id: string; start: string; dur: number; label: string; cat: number }
 const INITIAL: Block[] = [
@@ -52,23 +53,23 @@ export default function TimeBlockingTool() {
             return (
               <div class="absolute left-12 right-1.5 overflow-hidden rounded-lg px-2 py-1 text-xs text-white shadow-sm" style={`top:${top}px;height:${h}px;background:${c.color}`} title={`${b.label} · ${b.start} · ${fmtDur(b.dur)}`}>
                 <span class="font-semibold">{b.label}</span>
-                <span class="ml-1 opacity-80">{b.start}</span>
+                <span class="ml-1">{b.start}</span>
               </div>
             );
           })}
         </div>
 
         <div class="min-w-0">
-          <div class="overflow-x-auto rounded-xl border border-slate-200 bg-white">
+          <div class="overflow-x-auto rounded-xl border border-slate-200 bg-white" tabIndex={0} aria-label="Time blocks table">
             <table class="w-full text-sm">
               <thead><tr class="border-b border-slate-200 bg-slate-50 text-left text-xs font-semibold uppercase tracking-wide text-slate-500"><th class="px-3 py-2">Block</th><th class="px-2 py-2">Start</th><th class="px-2 py-2">Min</th><th class="px-2 py-2">Category</th><th></th></tr></thead>
               <tbody>
                 {blocks.slice().sort((a, b) => toMin(a.start) - toMin(b.start)).map((b) => (
                   <tr class="border-b border-slate-100 last:border-0">
-                    <td class="px-3 py-1.5"><input value={b.label} onInput={(e) => set(b.id, { label: (e.target as HTMLInputElement).value })} class={`${inp} w-full min-w-28`} /></td>
-                    <td class="px-2 py-1.5"><input type="time" value={b.start} onInput={(e) => set(b.id, { start: (e.target as HTMLInputElement).value })} class={inp} /></td>
-                    <td class="px-2 py-1.5"><input type="number" min={5} max={720} step={5} value={b.dur} onInput={(e) => set(b.id, { dur: Math.max(5, parseInt((e.target as HTMLInputElement).value, 10) || 5) })} class={`${inp} w-16`} /></td>
-                    <td class="px-2 py-1.5"><select value={b.cat} onChange={(e) => set(b.id, { cat: parseInt((e.target as HTMLSelectElement).value, 10) })} class={inp}>{CATS.map((c, i) => <option value={i}>{c.name}</option>)}</select></td>
+                    <td class="px-3 py-1.5"><input value={b.label} onInput={(e) => set(b.id, { label: (e.target as HTMLInputElement).value })} aria-label="Block name" class={`${inp} w-full min-w-28`} /></td>
+                    <td class="px-2 py-1.5"><input type="time" value={b.start} onInput={(e) => set(b.id, { start: (e.target as HTMLInputElement).value })} aria-label="Start time" class={inp} /></td>
+                    <td class="px-2 py-1.5"><input type="number" min={5} max={720} step={5} value={b.dur} onInput={(e) => set(b.id, { dur: Math.max(5, parseInt((e.target as HTMLInputElement).value, 10) || 5) })} aria-label="Duration in minutes" class={`${inp} w-16`} /></td>
+                    <td class="px-2 py-1.5"><select value={b.cat} onChange={(e) => set(b.id, { cat: parseInt((e.target as HTMLSelectElement).value, 10) })} aria-label="Category" class={inp}>{CATS.map((c, i) => <option value={i}>{c.name}</option>)}</select></td>
                     <td class="px-2"><button type="button" onClick={() => del(b.id)} class="text-slate-300 hover:text-red-600" aria-label="Delete">✕</button></td>
                   </tr>
                 ))}

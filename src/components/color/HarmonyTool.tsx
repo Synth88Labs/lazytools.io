@@ -30,7 +30,7 @@ function Chip({ color }: { color: RGB }) {
   return (
     <div class="overflow-hidden rounded-xl ring-1 ring-slate-200">
       <div class="flex h-20 items-end justify-end p-2" style={`background:${hex}`}>
-        <span class="rounded px-1.5 py-0.5 text-[10px] font-bold" style={`background:${luma(color) > 128 ? 'rgba(0,0,0,.12)' : 'rgba(255,255,255,.2)'};color:${luma(color) > 128 ? '#000' : '#fff'}`}>{hex}</span>
+        <span class="rounded px-1.5 py-0.5 text-[10px] font-bold" style={`background:${luma(color) > 128 ? 'rgba(255,255,255,.92)' : 'rgba(0,0,0,.72)'};color:${luma(color) > 128 ? '#111827' : '#ffffff'}`}>{hex}</span>
       </div>
       <div class="space-y-1 bg-white p-2">
         {codes.map((c) => (

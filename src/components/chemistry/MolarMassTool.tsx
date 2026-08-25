@@ -41,7 +41,7 @@ export default function MolarMassTool({ view = 'mass' as 'mass' | 'percent' }: {
             </div>
           )}
 
-          <div class="mt-4 overflow-x-auto rounded-xl bg-white ring-1 ring-slate-200">
+          <div class="mt-4 overflow-x-auto rounded-xl bg-white ring-1 ring-slate-200" role="group" tabIndex={0} aria-label="Molar mass breakdown table">
             <table class="w-full text-sm">
               <thead>
                 <tr class="border-b border-slate-200 text-left text-xs uppercase tracking-wide text-slate-500">

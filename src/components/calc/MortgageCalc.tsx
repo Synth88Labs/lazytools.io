@@ -103,7 +103,7 @@ export default function MortgageCalc() {
             </div>
           </div>
 
-          <div class="mt-2 max-h-96 overflow-auto rounded-xl border border-slate-200 bg-white">
+          <div class="mt-2 max-h-96 overflow-auto rounded-xl border border-slate-200 bg-white" role="group" tabIndex={0} aria-label="Amortization schedule">
             <table class="w-full text-right text-sm">
               <thead class="sticky top-0 bg-slate-50 text-xs font-semibold uppercase tracking-wide text-slate-500">
                 <tr>

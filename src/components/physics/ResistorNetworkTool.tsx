@@ -33,7 +33,7 @@ export default function ResistorNetworkTool({ kind = 'resistor' as 'resistor' | 
         {rows.map((v, i) => (
           <div class="flex items-center gap-2">
             <span class="w-10 shrink-0 font-mono text-sm text-slate-500">{sym}{i + 1}</span>
-            <input type="number" step="any" value={v} onInput={(e) => setRows(rows.map((x, j) => (j === i ? (e.target as HTMLInputElement).value : x)))}
+            <input type="number" step="any" value={v} aria-label={`${sym}${i + 1} value`} onInput={(e) => setRows(rows.map((x, j) => (j === i ? (e.target as HTMLInputElement).value : x)))}
               class="flex-1 rounded-lg border border-slate-300 bg-white px-3 py-2 font-mono text-sm text-slate-900 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200" />
             <button onClick={() => setRows(rows.filter((_, j) => j !== i))} class="shrink-0 rounded-lg px-2.5 py-2 text-sm text-slate-400 ring-1 ring-slate-200 hover:text-red-600 hover:ring-red-300" aria-label="Remove">✕</button>
           </div>

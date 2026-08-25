@@ -20,7 +20,7 @@ export default function HsvConverterTool() {
       <label class="block"><span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Color (HEX, rgb(), or a name)</span>
         <div class="flex gap-2">
           <input value={input} onInput={(e) => setInput((e.target as HTMLInputElement).value)} class={inp} />
-          {res && <input type="color" value={res.hex} onInput={(e) => setInput((e.target as HTMLInputElement).value)} class="h-10 w-12 shrink-0 cursor-pointer rounded-lg border border-slate-300" />}
+          {res && <input type="color" value={res.hex} onInput={(e) => setInput((e.target as HTMLInputElement).value)} aria-label="Pick a colour visually" class="h-10 w-12 shrink-0 cursor-pointer rounded-lg border border-slate-300" />}
         </div>
       </label>
 

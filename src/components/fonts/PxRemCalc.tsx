@@ -71,7 +71,7 @@ export default function PxRemCalc() {
       </div>
 
       {/* Reference table */}
-      <div class="mt-4 overflow-x-auto">
+      <div class="mt-4 overflow-x-auto" tabIndex={0} aria-label="px to rem reference table">
         <table class="w-full text-sm">
           <thead>
             <tr class="border-b border-slate-200 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">

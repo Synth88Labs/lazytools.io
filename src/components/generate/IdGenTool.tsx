@@ -40,7 +40,7 @@ export default function IdGenTool({ variant = 'v4' }: { variant?: Tab }) {
             <button type="button" onClick={gen} class="rounded-lg bg-brand-700 px-4 py-2.5 text-sm font-semibold text-white hover:bg-brand-800">Generate</button>
             {out.length > 0 && <button type="button" onClick={copy} class="rounded-lg border border-brand-300 bg-white px-4 py-2.5 text-sm font-semibold text-brand-700 hover:bg-brand-50">{copied ? '✓ Copied' : 'Copy all'}</button>}
           </div>
-          {out.length > 0 && <textarea readOnly rows={Math.min(12, out.length + 1)} class="mt-3 w-full rounded-xl border border-brand-200 bg-white px-3 py-3 font-mono text-sm text-slate-900" value={out.join('\n')} />}
+          {out.length > 0 && <textarea readOnly rows={Math.min(12, out.length + 1)} class="mt-3 w-full rounded-xl border border-brand-200 bg-white px-3 py-3 font-mono text-sm text-slate-900" value={out.join('\n')} aria-label="Generated IDs" />}
           <p class="mt-3 text-xs text-slate-500">
             {tab === 'v4' && 'Random UUID (RFC 9562 v4) via crypto.getRandomValues — 122 bits of entropy.'}
             {tab === 'v7' && 'Time-sortable UUID v7 (RFC 9562, 2024): a 48-bit millisecond timestamp + secure randomness — better database index locality than v4.'}

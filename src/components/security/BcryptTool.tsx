@@ -106,6 +106,7 @@ export default function BcryptTool() {
               value={hashPassword}
               onInput={(e) => setHashPassword((e.target as HTMLInputElement).value)}
               placeholder="Enter a password to hash"
+              aria-label="Password to hash"
               class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm font-mono"
             />
           </div>
@@ -122,6 +123,7 @@ export default function BcryptTool() {
               step={1}
               value={cost}
               onInput={(e) => setCost(Number((e.target as HTMLInputElement).value))}
+              aria-label="Cost factor (rounds)"
               class="w-full accent-brand-700"
             />
             <p class="mt-1 text-xs text-slate-500">
@@ -149,6 +151,7 @@ export default function BcryptTool() {
                   type="text"
                   readOnly
                   value={hashResult}
+                  aria-label="Bcrypt hash"
                   class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm font-mono"
                 />
                 <button
@@ -176,6 +179,7 @@ export default function BcryptTool() {
               value={verifyPassword}
               onInput={(e) => setVerifyPassword((e.target as HTMLInputElement).value)}
               placeholder="Password to check"
+              aria-label="Password to verify"
               class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm font-mono"
             />
           </div>
@@ -187,6 +191,7 @@ export default function BcryptTool() {
               value={verifyHash}
               onInput={(e) => setVerifyHash((e.target as HTMLInputElement).value)}
               placeholder="$2b$10$…"
+              aria-label="Bcrypt hash to verify"
               class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm font-mono"
             />
           </div>

@@ -113,7 +113,7 @@ export default function RetailCalendarTool() {
             </p>
           </div>
 
-          <div class="mt-4 overflow-x-auto rounded-xl border border-slate-200 bg-white">
+          <div class="mt-4 overflow-x-auto rounded-xl border border-slate-200 bg-white" tabIndex={0} aria-label="Retail year calendar table">
             <table class="w-full text-sm">
               <thead>
                 <tr class="border-b border-slate-200 bg-slate-50 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">

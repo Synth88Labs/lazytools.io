@@ -97,6 +97,7 @@ export default function PomodoroTool() {
           value={task}
           onInput={(e) => setTask((e.target as HTMLInputElement).value)}
           placeholder="What are you working on?"
+          aria-label="Current task"
           class="mt-4 w-full max-w-xs rounded-lg border border-slate-300 bg-white px-3 py-2 text-center text-sm text-slate-800 focus:border-brand-500 focus:outline-none"
         />
         <div class="mt-4 flex gap-2">

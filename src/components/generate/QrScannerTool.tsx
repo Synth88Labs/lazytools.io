@@ -166,6 +166,7 @@ export default function QrScannerTool() {
             rows={4}
             value={result}
             class="mt-1 w-full rounded-xl border border-slate-300 bg-white p-3 font-mono text-sm text-slate-800"
+            aria-label="Decoded content"
           />
           <div class="mt-2 flex flex-wrap items-center gap-2">
             <button

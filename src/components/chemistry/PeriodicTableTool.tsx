@@ -94,7 +94,7 @@ export default function PeriodicTableTool() {
   return (
     <div ref={fs.ref} class={`rounded-2xl border border-slate-200 bg-slate-50 p-3 shadow-sm sm:p-5 ${fs.isFull ? 'fixed inset-0 z-[60] overflow-auto !rounded-none' : ''}`}>
       <div class="mb-3 flex flex-wrap items-center gap-2">
-        <input value={query} onInput={(e) => setQuery((e.target as HTMLInputElement).value)} placeholder="Search name, symbol or number…"
+        <input value={query} onInput={(e) => setQuery((e.target as HTMLInputElement).value)} placeholder="Search name, symbol or number…" aria-label="Search elements"
           class="w-56 rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-sm text-slate-900 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200" />
         <label class="flex items-center gap-1.5 text-sm text-slate-600">
           <span class="font-semibold">Colour by</span>

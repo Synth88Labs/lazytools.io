@@ -59,6 +59,7 @@ export default function UuidGenTool() {
         value={text}
         class="mt-4 w-full rounded-xl border border-brand-200 bg-white px-3 py-3 font-mono text-sm text-slate-900"
         spellcheck={false}
+        aria-label="Generated UUIDs"
       />
       <p class="mt-2 text-xs text-slate-500">RFC 4122 version 4, via crypto.randomUUID() — generated locally.</p>
     </div>

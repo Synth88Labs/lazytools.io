@@ -60,7 +60,7 @@ export default function FractionCalcTool() {
           <span class="text-xs font-semibold uppercase tracking-wide text-slate-500">First fraction</span>
           <input class={inputCls} value={aStr} onInput={(e) => setAStr((e.target as HTMLInputElement).value)} placeholder="1 1/2" />
         </label>
-        <select class="rounded-lg border border-slate-300 bg-white px-3 py-2 text-lg font-bold" value={op} onChange={(e) => setOp((e.target as HTMLSelectElement).value as typeof op)}>
+        <select class="rounded-lg border border-slate-300 bg-white px-3 py-2 text-lg font-bold" value={op} onChange={(e) => setOp((e.target as HTMLSelectElement).value as typeof op)} aria-label="Operation">
           {['+', '-', '×', '÷', '≷'].map((o) => <option value={o}>{o === '≷' ? '≷ compare' : o}</option>)}
         </select>
         <label class="block w-40">

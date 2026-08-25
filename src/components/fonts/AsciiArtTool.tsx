@@ -84,7 +84,7 @@ export default function AsciiArtTool() {
         </label>
       </div>
 
-      <div class="mt-4 overflow-x-auto rounded-xl border border-slate-200 bg-slate-900 p-4">
+      <div class="mt-4 overflow-x-auto rounded-xl border border-slate-200 bg-slate-900 p-4" tabIndex={0} aria-label="ASCII art output">
         <pre class="whitespace-pre font-mono text-xs leading-tight text-emerald-300 sm:text-sm">{output}</pre>
       </div>
 

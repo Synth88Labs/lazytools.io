@@ -35,6 +35,7 @@ export default function ContrastCheckerTool() {
           type="text"
           value={value}
           onInput={(e) => set((e.target as HTMLInputElement).value)}
+          aria-label={label}
           class="w-full rounded-xl border border-slate-300 bg-white px-3 py-3 font-mono text-base text-slate-900 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200"
         />
         <input

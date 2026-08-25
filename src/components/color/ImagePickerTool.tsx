@@ -105,7 +105,7 @@ export default function ImagePickerTool() {
   return (
     <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
       <div class="flex flex-wrap items-center gap-3">
-        <input type="file" accept="image/*" onChange={onFile}
+        <input type="file" accept="image/*" onChange={onFile} aria-label="Upload image"
           class="block text-sm text-slate-600 file:mr-3 file:rounded-lg file:border-0 file:bg-brand-600 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-white hover:file:bg-brand-700" />
         {hasEyeDropper && (
           <button onClick={screenPick} class="rounded-lg bg-slate-800 px-3 py-2 text-sm font-semibold text-white transition hover:bg-slate-700">🎯 Pick from screen</button>

@@ -58,7 +58,7 @@ export default function ImageDpiTool() {
           <div class="mt-3">
             <span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Set DPI to</span>
             <div class="flex flex-wrap items-center gap-2">
-              <input type="number" min="1" class={`${inp} w-32`} value={target} onInput={(e) => setTarget((e.target as HTMLInputElement).value)} />
+              <input type="number" min="1" aria-label="Set DPI to" class={`${inp} w-32`} value={target} onInput={(e) => setTarget((e.target as HTMLInputElement).value)} />
               {PRESETS.map((p) => (
                 <button onClick={() => setTarget(String(p))} class={`rounded-lg px-2.5 py-1.5 text-xs font-semibold ${target === String(p) ? 'bg-brand-700 text-white' : 'bg-slate-200 text-slate-700 hover:bg-slate-300'}`}>{p}</button>
               ))}

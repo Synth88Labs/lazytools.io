@@ -45,7 +45,7 @@ export default function WordFrequencyTool() {
         <button type="button" onClick={copyCsv} class="ml-auto rounded-lg bg-brand-700 px-3 py-1 text-xs font-medium text-white hover:bg-brand-800">{copied ? '✓ Copied' : 'Copy CSV'}</button>
       </div>
 
-      <div class="mt-3 max-h-96 overflow-auto rounded-xl border border-slate-200 bg-white">
+      <div class="mt-3 max-h-96 overflow-auto rounded-xl border border-slate-200 bg-white" tabIndex={0} aria-label="Word frequency table">
         <table class="w-full text-left text-sm">
           <thead class="sticky top-0 bg-slate-50 text-xs font-semibold uppercase tracking-wide text-slate-500"><tr><th class="px-3 py-2">#</th><th class="px-3 py-2">Word</th><th class="px-3 py-2 text-right">Count</th><th class="px-3 py-2 text-right">%</th><th class="px-3 py-2 w-1/3">Frequency</th></tr></thead>
           <tbody class="divide-y divide-slate-100">

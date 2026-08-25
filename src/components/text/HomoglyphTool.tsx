@@ -25,7 +25,7 @@ export default function HomoglyphTool() {
 
       {res.hits.length > 0 && (
         <>
-          <div class="mt-4 overflow-auto rounded-xl border border-slate-200 bg-white">
+          <div class="mt-4 overflow-auto rounded-xl border border-slate-200 bg-white" tabIndex={0} aria-label="Lookalike characters table">
             <table class="w-full text-left text-sm">
               <thead class="bg-slate-50 text-xs font-semibold uppercase tracking-wide text-slate-500"><tr><th class="px-3 py-2">Character</th><th class="px-3 py-2">Codepoint</th><th class="px-3 py-2">Script</th><th class="px-3 py-2">Looks like</th></tr></thead>
               <tbody class="divide-y divide-slate-100 font-mono">
@@ -40,7 +40,7 @@ export default function HomoglyphTool() {
               <span class="text-xs font-semibold uppercase tracking-wide text-slate-500">ASCII-normalized text</span>
               <button type="button" onClick={copy} class="rounded-lg bg-brand-700 px-3 py-1 text-xs font-medium text-white hover:bg-brand-800">{copied ? '✓ Copied' : 'Copy'}</button>
             </div>
-            <textarea class={`${ta} border-brand-200`} rows={3} readOnly value={res.normalized} />
+            <textarea class={`${ta} border-brand-200`} rows={3} readOnly value={res.normalized} aria-label="ASCII-normalized text" />
           </div>
         </>
       )}

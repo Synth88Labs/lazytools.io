@@ -39,7 +39,7 @@ export default function PngChunkTool() {
             <div class={`rounded-xl p-4 text-center ring-1 ${allOk ? 'bg-emerald-50 ring-emerald-200' : 'bg-rose-50 ring-rose-200'}`}><p class="text-xs font-semibold uppercase tracking-wide text-slate-500">CRC integrity</p><p class={`mt-0.5 text-sm font-bold ${allOk ? 'text-emerald-700' : 'text-rose-700'}`}>{allOk ? '✅ all chunks valid' : '⛔ corruption found'}</p></div>
           </div>
 
-          <div class="overflow-x-auto rounded-xl bg-white p-4 ring-1 ring-slate-200">
+          <div class="overflow-x-auto rounded-xl bg-white p-4 ring-1 ring-slate-200" tabIndex={0} aria-label="PNG chunks table">
             <p class="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">Chunks ({info.chunks.length})</p>
             <table class="w-full text-left text-sm">
               <thead><tr class="border-b border-slate-200 text-xs uppercase tracking-wide text-slate-400">

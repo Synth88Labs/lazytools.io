@@ -50,7 +50,7 @@ export default function HabitTrackerTool() {
       {habits.length === 0 ? (
         <p class="mt-6 rounded-xl border border-dashed border-slate-300 bg-white p-6 text-center text-sm text-slate-400">Add a habit above to start tracking. Tap a day to mark it done — build your streak.</p>
       ) : (
-        <div class="mt-3 overflow-x-auto rounded-xl border border-slate-200 bg-white">
+        <div class="mt-3 overflow-x-auto rounded-xl border border-slate-200 bg-white" tabIndex={0} aria-label="Habit tracker grid">
           <table class="w-full border-collapse text-center text-xs">
             <thead>
               <tr class="border-b border-slate-200 bg-slate-50 text-slate-500">

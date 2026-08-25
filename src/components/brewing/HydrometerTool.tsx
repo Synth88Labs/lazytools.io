@@ -31,7 +31,7 @@ export default function HydrometerTool() {
         <label class="block"><span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Sample temp (°{unit})</span>
           <div class="flex gap-2">
             <input type="number" step="any" value={temp} onInput={(e) => setTemp((e.target as HTMLInputElement).value)} class={inp} />
-            <select class={sel} value={unit} onChange={(e) => setUnit((e.target as HTMLSelectElement).value as 'C' | 'F')}><option value="C">°C</option><option value="F">°F</option></select>
+            <select class={sel} aria-label="Temperature unit" value={unit} onChange={(e) => setUnit((e.target as HTMLSelectElement).value as 'C' | 'F')}><option value="C">°C</option><option value="F">°F</option></select>
           </div></label>
         <label class="block"><span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Calibration temp (°{unit})</span>
           <input type="number" step="any" value={calTemp} onInput={(e) => setCalTemp((e.target as HTMLInputElement).value)} class={inp} /></label>

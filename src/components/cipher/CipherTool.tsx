@@ -146,7 +146,7 @@ export default function CipherTool({ mode }: Props) {
           <button type="button" onClick={copy} disabled={!output.trim()} class="rounded-lg bg-brand-700 px-3 py-1.5 text-xs font-medium text-white transition hover:bg-brand-800 disabled:opacity-40">{copied ? '✓ Copied' : 'Copy'}</button>
         </div>
       </div>
-      <textarea readOnly rows={4} value={output} class="mt-1 w-full rounded-xl border border-brand-200 bg-white px-3 py-3 font-mono text-sm text-slate-800" spellcheck={false} />
+      <textarea readOnly rows={4} value={output} aria-label="Result" class="mt-1 w-full rounded-xl border border-brand-200 bg-white px-3 py-3 font-mono text-sm text-slate-800" spellcheck={false} />
 
       {mode === 'caesar' && (
         <details class="mt-3 rounded-xl border border-slate-200 bg-white p-3">

@@ -27,14 +27,14 @@ export default function EthUnitTool() {
     <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
       <div class="grid gap-3 sm:grid-cols-[1fr_auto]">
         <div><label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Amount</label>
-          <input class={`${inputCls} font-mono`} value={value} onInput={(e) => setValue((e.target as HTMLInputElement).value)} /></div>
+          <input class={`${inputCls} font-mono`} aria-label="Amount" value={value} onInput={(e) => setValue((e.target as HTMLInputElement).value)} /></div>
         <div><label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">In unit</label>
-          <select class={inputCls} value={from} onChange={(e) => setFrom((e.target as HTMLSelectElement).value)}>
+          <select class={inputCls} aria-label="In unit" value={from} onChange={(e) => setFrom((e.target as HTMLSelectElement).value)}>
             {UNITS.map((u) => <option value={u}>{u} (10^{ETH_UNITS[u]})</option>)}
           </select></div>
       </div>
       {err ? <p class="mt-3 text-sm text-red-700">✗ {err}</p> : (
-        <div class="mt-3 overflow-auto rounded-xl border border-slate-200 bg-white">
+        <div class="mt-3 overflow-auto rounded-xl border border-slate-200 bg-white" tabIndex={0} aria-label="Ethereum unit conversions">
           <table class="w-full text-left text-sm">
             <tbody class="divide-y divide-slate-100 font-mono">
               {rows.map(([u, v]) => (
@@ -52,8 +52,8 @@ export default function EthUnitTool() {
       <div class="mt-5 border-t border-slate-200 pt-4">
         <p class="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">Bitcoin — satoshi ⇄ BTC</p>
         <div class="grid grid-cols-2 gap-3">
-          <div><label class="mb-1 block text-xs text-slate-500">BTC</label><input class={`${inputCls} font-mono`} value={btc} placeholder="0.001" onInput={(e) => onBtc((e.target as HTMLInputElement).value)} /></div>
-          <div><label class="mb-1 block text-xs text-slate-500">satoshi</label><input class={`${inputCls} font-mono`} value={sats} placeholder="100000" onInput={(e) => onSats((e.target as HTMLInputElement).value)} /></div>
+          <div><label class="mb-1 block text-xs text-slate-500">BTC</label><input class={`${inputCls} font-mono`} aria-label="BTC" value={btc} placeholder="0.001" onInput={(e) => onBtc((e.target as HTMLInputElement).value)} /></div>
+          <div><label class="mb-1 block text-xs text-slate-500">satoshi</label><input class={`${inputCls} font-mono`} aria-label="satoshi" value={sats} placeholder="100000" onInput={(e) => onSats((e.target as HTMLInputElement).value)} /></div>
         </div>
         <p class="mt-1 text-xs text-slate-400">1 BTC = 100,000,000 satoshi (8 decimals).</p>
       </div>

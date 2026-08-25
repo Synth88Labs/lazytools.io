@@ -14,7 +14,7 @@ function Panel({ title, items, tone }: { title: string; items: string[]; tone: s
       {items.length === 0 ? (
         <p class="mt-2 text-sm italic text-slate-400">none</p>
       ) : (
-        <ul class="mt-2 max-h-64 space-y-0.5 overflow-auto">
+        <ul class="mt-2 max-h-64 space-y-0.5 overflow-auto" tabIndex={0} aria-label={title}>
           {items.map((x) => <li class="break-all font-mono text-sm text-slate-800">{x}</li>)}
         </ul>
       )}

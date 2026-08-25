@@ -26,7 +26,7 @@ export default function StairCalculator() {
   return (
     <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
       <div class="mb-3 flex items-center gap-2"><span class="text-xs font-semibold uppercase tracking-wide text-slate-500">Units</span>
-        <select value={unit} onChange={(e) => { const u = (e.target as HTMLSelectElement).value as 'in' | 'cm'; setUnit(u); if (u === 'cm') { setTarget('19'); setTread('25'); } else { setTarget('7.5'); setTread('10'); } }} class={sel}><option value="in">inches</option><option value="cm">cm</option></select></div>
+        <select value={unit} aria-label="Units" onChange={(e) => { const u = (e.target as HTMLSelectElement).value as 'in' | 'cm'; setUnit(u); if (u === 'cm') { setTarget('19'); setTread('25'); } else { setTarget('7.5'); setTread('10'); } }} class={sel}><option value="in">inches</option><option value="cm">cm</option></select></div>
       <div class="grid gap-3 sm:grid-cols-3">
         <label class="block"><span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Total rise (floor to floor)</span><input type="number" step="any" value={rise} onInput={(e) => setRise((e.target as HTMLInputElement).value)} class={inp} /></label>
         <label class="block"><span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Target riser height</span><input type="number" step="any" value={target} onInput={(e) => setTarget((e.target as HTMLInputElement).value)} class={inp} /></label>

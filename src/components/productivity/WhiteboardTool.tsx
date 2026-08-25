@@ -70,7 +70,7 @@ export default function WhiteboardTool() {
           {COLORS.map((c) => (
             <button type="button" onClick={() => { setColor(c); setEraser(false); }} class={`h-7 w-7 rounded-full border-2 ${color === c && !eraser ? 'border-brand-500 ring-2 ring-brand-200' : 'border-slate-300'}`} style={`background:${c}`} aria-label={`Colour ${c}`} title={c} />
           ))}
-          <input type="color" value={color} onInput={(e) => { setColor((e.target as HTMLInputElement).value); setEraser(false); }} class="h-7 w-7 cursor-pointer rounded-full border border-slate-300 bg-transparent" title="Custom colour" />
+          <input type="color" value={color} onInput={(e) => { setColor((e.target as HTMLInputElement).value); setEraser(false); }} aria-label="Custom colour" class="h-7 w-7 cursor-pointer rounded-full border border-slate-300 bg-transparent" title="Custom colour" />
         </div>
         <span class="mx-1 h-5 w-px bg-slate-200" />
         <button type="button" onClick={() => setEraser((x) => !x)} class={`rounded-lg border px-3 py-1.5 text-sm font-semibold transition ${eraser ? 'border-brand-500 bg-brand-50 text-brand-800' : 'border-slate-300 bg-white text-slate-600 hover:border-brand-400'}`}>🧽 Eraser</button>
@@ -82,7 +82,7 @@ export default function WhiteboardTool() {
         <button type="button" onClick={fs.toggle} class={`${btn} ml-auto`}>{fs.isFull ? '⤢ Exit full screen' : '⛶ Full screen'}</button>
       </div>
 
-      <div class={`overflow-auto rounded-xl border border-slate-200 bg-white ${fs.isFull ? 'flex-1' : ''}`}>
+      <div role="group" class={`overflow-auto rounded-xl border border-slate-200 bg-white ${fs.isFull ? 'flex-1' : ''}`} tabIndex={0} aria-label="Drawing canvas">
         <canvas
           ref={canvasRef}
           width={CW}

@@ -107,6 +107,7 @@ export default function SubtitleTool({ mode }: Props) {
           <textarea
             rows={10}
             value={input}
+            aria-label="Subtitle input"
             onInput={(e) => setInput((e.target as HTMLTextAreaElement).value)}
             placeholder="Paste your subtitles here…"
             class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 font-mono text-xs"
@@ -122,6 +123,7 @@ export default function SubtitleTool({ mode }: Props) {
               type="number"
               step={0.1}
               value={shiftSeconds}
+              aria-label="Shift by seconds"
               onInput={(e) => setShiftSeconds((e.target as HTMLInputElement).value)}
               class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 font-mono text-xs sm:w-48"
             />
@@ -142,6 +144,7 @@ export default function SubtitleTool({ mode }: Props) {
               rows={10}
               readOnly
               value={output}
+              aria-label="Converted subtitles output"
               placeholder="Converted subtitles will appear here…"
               class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 font-mono text-xs"
             />

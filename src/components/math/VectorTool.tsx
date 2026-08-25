@@ -30,7 +30,7 @@ export default function VectorTool() {
       <span class="w-6 font-mono text-sm font-bold text-slate-700">{label}</span>
       <span class="text-slate-400">(</span>
       {Array.from({ length: dim }, (_, i) => (
-        <input type="number" step="any" value={vec[i]} onInput={(e) => setComp(which, i, (e.target as HTMLInputElement).value)} class={inp} />
+        <input type="number" step="any" value={vec[i]} onInput={(e) => setComp(which, i, (e.target as HTMLInputElement).value)} class={inp} aria-label={`Vector ${label} component ${i + 1}`} />
       ))}
       <span class="text-slate-400">)</span>
     </div>

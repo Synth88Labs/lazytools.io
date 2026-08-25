@@ -111,7 +111,7 @@ export default function GanttTool() {
         <button type="button" onClick={fs.toggle} class={btn}>{fs.isFull ? '⤢ Exit full screen' : '⛶ Full screen'}</button>
       </div>
 
-      <div class="overflow-auto rounded-xl border border-slate-200 bg-white">
+      <div class="overflow-auto rounded-xl border border-slate-200 bg-white" tabIndex={0} aria-label="Gantt chart">
         <svg ref={svgRef} viewBox={`0 0 ${W} ${H}`} width={W} height={H} xmlns="http://www.w3.org/2000/svg" class="max-w-none" style="font-family:'Plus Jakarta Sans','Segoe UI',Arial,sans-serif">
           <rect x="0" y="0" width={W} height={H} fill="#ffffff" />
           {gridlines.map((g) => <line x1={g.x} y1={g.month ? 0 : HEAD_H - 6} x2={g.x} y2={H} stroke={g.month ? '#cbd5e1' : '#eef2f7'} stroke-width={g.month ? 1.5 : 1} />)}
@@ -158,7 +158,7 @@ export default function GanttTool() {
         </svg>
       </div>
 
-      <div class="mt-3 overflow-x-auto rounded-xl border border-slate-200 bg-white">
+      <div class="mt-3 overflow-x-auto rounded-xl border border-slate-200 bg-white" tabIndex={0} aria-label="Task table">
         <table class="w-full text-sm">
           <thead><tr class="border-b border-slate-200 bg-slate-50 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">
             <th class="px-3 py-2">Task</th><th class="px-3 py-2">Start</th><th class="px-3 py-2">End</th><th class="px-3 py-2">%</th><th class="px-2 py-2">◆</th><th class="px-3 py-2">After</th><th class="px-2 py-2"></th>
@@ -166,13 +166,13 @@ export default function GanttTool() {
           <tbody>
             {tasks.map((t) => (
               <tr class="border-b border-slate-100 last:border-0">
-                <td class="px-3 py-1.5"><input value={t.name} onInput={(e) => set(t.id, { name: (e.target as HTMLInputElement).value })} class={`${inp} w-full min-w-32`} /></td>
-                <td class="px-3 py-1.5"><input type="date" value={t.start} onInput={(e) => set(t.id, { start: (e.target as HTMLInputElement).value })} class={inp} /></td>
-                <td class="px-3 py-1.5"><input type="date" value={t.end} onInput={(e) => set(t.id, { end: (e.target as HTMLInputElement).value })} class={inp} /></td>
-                <td class="px-3 py-1.5"><input type="number" min={0} max={100} value={t.pct} onInput={(e) => set(t.id, { pct: Math.max(0, Math.min(100, parseInt((e.target as HTMLInputElement).value, 10) || 0)) })} class={`${inp} w-16`} /></td>
-                <td class="px-2 py-1.5 text-center"><input type="checkbox" checked={t.milestone} onChange={(e) => set(t.id, { milestone: (e.target as HTMLInputElement).checked })} class="h-4 w-4 rounded border-slate-300 text-brand-600" /></td>
+                <td class="px-3 py-1.5"><input value={t.name} onInput={(e) => set(t.id, { name: (e.target as HTMLInputElement).value })} aria-label="Task name" class={`${inp} w-full min-w-32`} /></td>
+                <td class="px-3 py-1.5"><input type="date" value={t.start} onInput={(e) => set(t.id, { start: (e.target as HTMLInputElement).value })} aria-label="Start date" class={inp} /></td>
+                <td class="px-3 py-1.5"><input type="date" value={t.end} onInput={(e) => set(t.id, { end: (e.target as HTMLInputElement).value })} aria-label="End date" class={inp} /></td>
+                <td class="px-3 py-1.5"><input type="number" min={0} max={100} value={t.pct} onInput={(e) => set(t.id, { pct: Math.max(0, Math.min(100, parseInt((e.target as HTMLInputElement).value, 10) || 0)) })} aria-label="Percent complete" class={`${inp} w-16`} /></td>
+                <td class="px-2 py-1.5 text-center"><input type="checkbox" checked={t.milestone} onChange={(e) => set(t.id, { milestone: (e.target as HTMLInputElement).checked })} aria-label="Milestone" class="h-4 w-4 rounded border-slate-300 text-brand-600" /></td>
                 <td class="px-3 py-1.5">
-                  <select value={t.after} onChange={(e) => set(t.id, { after: (e.target as HTMLSelectElement).value })} class={inp}>
+                  <select value={t.after} onChange={(e) => set(t.id, { after: (e.target as HTMLSelectElement).value })} aria-label="Depends on" class={inp}>
                     <option value="">—</option>
                     {tasks.filter((o) => o.id !== t.id).map((o) => <option value={o.id}>{o.name.slice(0, 18)}</option>)}
                   </select>

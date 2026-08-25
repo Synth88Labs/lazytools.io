@@ -125,6 +125,7 @@ export default function Base64ToImageTool() {
         placeholder="iVBORw0KGgoAAAANSUhEUgAA…   or   data:image/png;base64,iVBORw0KGgo…"
         rows={7}
         spellcheck={false}
+        aria-label="Base64 or data: URL"
         class="mt-2 w-full rounded-xl border border-slate-300 bg-white px-3 py-2 font-mono text-xs"
       />
 

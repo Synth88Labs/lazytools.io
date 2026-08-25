@@ -51,7 +51,7 @@ function WaveMode() {
       </div>
       {r && svg ? (
         <>
-          <div class="mt-4 overflow-x-auto rounded-xl bg-white p-2 ring-1 ring-slate-200">
+          <div class="mt-4 overflow-x-auto rounded-xl bg-white p-2 ring-1 ring-slate-200" role="group" tabIndex={0} aria-label="Wave diagram">
             <svg viewBox={`0 0 ${svg.W} ${svg.H}`} class="mx-auto block w-full max-w-xl" role="img" aria-label="Sine wave with amplitude and wavelength marked">
               <line x1={svg.pad} y1={svg.mid} x2={svg.W - svg.pad} y2={svg.mid} stroke="#e2e8f0" />
               <path d={svg.path} fill="none" stroke="#4338ca" stroke-width="2.5" />

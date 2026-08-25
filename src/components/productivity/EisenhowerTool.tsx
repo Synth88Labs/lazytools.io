@@ -34,7 +34,7 @@ export default function EisenhowerTool() {
           <label for="ei-add" class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Add a task</label>
           <input id="ei-add" value={draft} onInput={(e) => setDraft((e.target as HTMLInputElement).value)} onKeyDown={(e) => e.key === 'Enter' && add()} placeholder="e.g. Reply to the client proposal" class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 focus:border-brand-500 focus:outline-none" />
         </div>
-        <select value={addQ} onChange={(e) => setAddQ((e.target as HTMLSelectElement).value as Quad)} class="rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm font-medium text-slate-700">
+        <select value={addQ} onChange={(e) => setAddQ((e.target as HTMLSelectElement).value as Quad)} aria-label="Quadrant" class="rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm font-medium text-slate-700">
           {ORDER.map((q) => <option value={q}>{QUAD[q].title}</option>)}
         </select>
         <button type="button" onClick={add} class="rounded-xl bg-brand-700 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-brand-800">Add</button>

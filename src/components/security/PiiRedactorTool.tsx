@@ -38,7 +38,7 @@ export default function PiiRedactorTool() {
           <button onClick={() => setEnabled((s) => ({ ...s, [t]: !s[t] }))} class={`rounded-full px-2.5 py-1 text-xs font-semibold ring-1 transition ${enabled[t] ? 'bg-brand-600 text-white ring-brand-600' : 'bg-white text-slate-500 ring-slate-300'}`}>{PII_LABELS[t]}{r.counts[t] ? ` · ${r.counts[t]}` : ''}</button>
         ))}
         <span class="mx-1 h-4 w-px bg-slate-300" />
-        <select value={style} onChange={(e) => setStyle((e.target as HTMLSelectElement).value as MaskStyle)} class="rounded-lg border border-slate-300 bg-white px-2 py-1 text-xs text-slate-700">
+        <select value={style} onChange={(e) => setStyle((e.target as HTMLSelectElement).value as MaskStyle)} aria-label="Mask style" class="rounded-lg border border-slate-300 bg-white px-2 py-1 text-xs text-slate-700">
           <option value="label">Labels [EMAIL]</option>
           <option value="block">Blocks ████</option>
           <option value="partial">Partial ••••1234</option>

@@ -33,7 +33,7 @@ export default function EmailHeaderTool() {
           <input type="file" accept=".eml,.txt,message/rfc822,text/plain" class="hidden" onChange={(e) => onFile((e.target as HTMLInputElement).files?.[0] ?? null)} />
         </label>
       </div>
-      <textarea rows={6} class={inp} value={text} onInput={(e) => setText((e.target as HTMLTextAreaElement).value)} placeholder={'Received: from …\nAuthentication-Results: …\nFrom: …\nSubject: …'} />
+      <textarea rows={6} class={inp} aria-label="Email headers" value={text} onInput={(e) => setText((e.target as HTMLTextAreaElement).value)} placeholder={'Received: from …\nAuthentication-Results: …\nFrom: …\nSubject: …'} />
 
       {result?.error && <p class="mt-4 rounded-lg bg-rose-50 px-3 py-2 text-sm text-rose-700 ring-1 ring-rose-200">⚠️ {result.error}</p>}
 

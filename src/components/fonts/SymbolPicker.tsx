@@ -40,6 +40,7 @@ export default function SymbolPicker() {
           type="search"
           value={query}
           placeholder="Filter categories (arrows, hearts, math…)"
+          aria-label="Filter categories"
           onInput={(e) => setQuery((e.target as HTMLInputElement).value)}
           class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200"
         />

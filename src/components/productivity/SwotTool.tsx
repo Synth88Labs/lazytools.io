@@ -39,7 +39,7 @@ export default function SwotTool() {
               ))}
             </ul>
             <div class="mt-2 flex gap-1">
-              <input value={drafts[q]} onInput={(e) => setDrafts((d) => ({ ...d, [q]: (e.target as HTMLInputElement).value }))} onKeyDown={(e) => e.key === 'Enter' && add(q)} placeholder={`+ add ${META[q].title.toLowerCase().slice(0, -1)}`} class="min-w-0 flex-1 rounded-lg border border-slate-200 bg-white px-2 py-1.5 text-sm focus:border-brand-500 focus:outline-none" />
+              <input value={drafts[q]} onInput={(e) => setDrafts((d) => ({ ...d, [q]: (e.target as HTMLInputElement).value }))} onKeyDown={(e) => e.key === 'Enter' && add(q)} placeholder={`+ add ${META[q].title.toLowerCase().slice(0, -1)}`} aria-label={`Add ${META[q].title.toLowerCase().slice(0, -1)}`} class="min-w-0 flex-1 rounded-lg border border-slate-200 bg-white px-2 py-1.5 text-sm focus:border-brand-500 focus:outline-none" />
               <button type="button" onClick={() => add(q)} class="rounded-lg bg-brand-700 px-3 text-sm font-semibold text-white hover:bg-brand-800">Add</button>
             </div>
           </div>

@@ -43,7 +43,7 @@ export default function PrimingSugarTool() {
         <label class="block"><span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Beer temp (°{unit})</span>
           <div class="flex gap-2">
             <input type="number" step="any" value={temp} onInput={(e) => setTemp((e.target as HTMLInputElement).value)} class={inp} />
-            <select class={sel} value={unit} onChange={(e) => { const u = (e.target as HTMLSelectElement).value as 'C' | 'F'; const cur = num(temp); if (cur != null) setTemp(String(Math.round((u === 'F' ? C_TO_F(cur) : F_TO_C(cur)) * 10) / 10)); setUnit(u); }}><option value="C">°C</option><option value="F">°F</option></select>
+            <select class={sel} aria-label="Temperature unit" value={unit} onChange={(e) => { const u = (e.target as HTMLSelectElement).value as 'C' | 'F'; const cur = num(temp); if (cur != null) setTemp(String(Math.round((u === 'F' ? C_TO_F(cur) : F_TO_C(cur)) * 10) / 10)); setUnit(u); }}><option value="C">°C</option><option value="F">°F</option></select>
           </div></label>
         <label class="block"><span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Batch volume (L)</span>
           <input type="number" step="any" value={volume} onInput={(e) => setVolume((e.target as HTMLInputElement).value)} class={inp} /></label>

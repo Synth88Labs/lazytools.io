@@ -24,7 +24,7 @@ export default function CompostTool() {
 
   return (
     <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
-      <div class="overflow-x-auto">
+      <div class="overflow-x-auto" tabIndex={0} aria-label="Compost materials table">
         <table class="w-full text-sm">
           <thead><tr class="text-left text-xs font-semibold uppercase tracking-wide text-slate-500"><th class="px-2 py-1">Material</th><th class="px-2 py-1">C:N</th><th class="px-2 py-1">Parts (by volume)</th><th></th></tr></thead>
           <tbody>
@@ -32,12 +32,12 @@ export default function CompostTool() {
               const mat = getMaterial(row.id);
               return (
                 <tr>
-                  <td class="px-2 py-1"><select value={row.id} onChange={(e) => set(i, { id: (e.target as HTMLSelectElement).value })} class={`${cell} w-full`}>
+                  <td class="px-2 py-1"><select value={row.id} onChange={(e) => set(i, { id: (e.target as HTMLSelectElement).value })} class={`${cell} w-full`} aria-label={`Material row ${i + 1}`}>
                     <optgroup label="Greens (nitrogen)">{COMPOST_MATERIALS.filter((m) => m.type === 'green').map((m) => <option value={m.id}>{m.name}</option>)}</optgroup>
                     <optgroup label="Browns (carbon)">{COMPOST_MATERIALS.filter((m) => m.type === 'brown').map((m) => <option value={m.id}>{m.name}</option>)}</optgroup>
                   </select></td>
                   <td class="px-2 py-1 font-mono text-slate-500">{mat?.cn}:1</td>
-                  <td class="px-2 py-1"><input type="number" step="any" min="0" value={row.parts} onInput={(e) => set(i, { parts: (e.target as HTMLInputElement).value })} class={`${cell} w-24 font-mono`} /></td>
+                  <td class="px-2 py-1"><input type="number" step="any" min="0" value={row.parts} onInput={(e) => set(i, { parts: (e.target as HTMLInputElement).value })} class={`${cell} w-24 font-mono`} aria-label={`Parts row ${i + 1}`} /></td>
                   <td class="px-2 py-1 text-right"><button onClick={() => setRows(rows.filter((_, j) => j !== i))} class="text-slate-400 hover:text-red-500" aria-label="Remove">✕</button></td>
                 </tr>
               );

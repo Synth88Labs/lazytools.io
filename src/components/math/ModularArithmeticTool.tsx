@@ -33,7 +33,7 @@ export default function ModularArithmeticTool() {
           <p class="mt-5 rounded-xl border border-brand-200 bg-brand-50 px-4 py-3 font-mono text-2xl font-extrabold text-brand-800">
             {b}^{e} mod {m} = {String(result)}
           </p>
-          <div class="mt-4 overflow-x-auto rounded-xl border border-slate-200 bg-white">
+          <div class="mt-4 overflow-x-auto rounded-xl border border-slate-200 bg-white" tabIndex={0} aria-label="Square-and-multiply steps table">
             <table class="w-full text-left text-sm">
               <thead class="bg-slate-50 text-xs font-semibold uppercase tracking-wide text-slate-500">
                 <tr><th class="px-3 py-2">Exponent bit</th><th class="px-3 py-2">Operation</th><th class="px-3 py-2 text-right">Accumulator (mod {m})</th></tr>
@@ -72,7 +72,7 @@ export default function ModularArithmeticTool() {
               No inverse exists: gcd({ia}, {im}) = {String(g)} ≠ 1. Inverses exist only when a and the modulus are coprime.
             </p>
           )}
-          <div class="mt-4 overflow-x-auto rounded-xl border border-slate-200 bg-white">
+          <div class="mt-4 overflow-x-auto rounded-xl border border-slate-200 bg-white" tabIndex={0} aria-label="Extended Euclidean algorithm table">
             <table class="w-full text-left text-sm">
               <thead class="bg-slate-50 text-xs font-semibold uppercase tracking-wide text-slate-500">
                 <tr><th class="px-3 py-2">a</th><th class="px-3 py-2">b</th><th class="px-3 py-2">quotient</th><th class="px-3 py-2">remainder</th></tr>

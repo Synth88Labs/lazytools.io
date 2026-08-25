@@ -52,7 +52,7 @@ export default function CertDecoderTool() {
           <input type="file" accept=".pem,.crt,.cer,.cert,text/plain" class="hidden" onChange={(e) => onFile((e.target as HTMLInputElement).files?.[0] ?? null)} />
         </label>
       </div>
-      <textarea rows={6} class={inp} placeholder={SAMPLE} value={text} onInput={(e) => setText((e.target as HTMLTextAreaElement).value)} />
+      <textarea rows={6} class={inp} aria-label="PEM certificate" placeholder={SAMPLE} value={text} onInput={(e) => setText((e.target as HTMLTextAreaElement).value)} />
 
       {result?.error && (
         <p class="mt-4 rounded-lg bg-rose-50 px-3 py-2 text-sm text-rose-700 ring-1 ring-rose-200">⚠️ {result.error}. Make sure you pasted the whole PEM block (or the raw base64/DER-hex).</p>

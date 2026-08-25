@@ -51,9 +51,9 @@ export default function LogarithmTool() {
       <div class="mt-5 border-t border-slate-200 pt-4">
         <p class="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">Antilogarithm (bˣ)</p>
         <div class="flex flex-wrap items-center gap-2">
-          <input type="number" step="any" value={antiBase} onInput={(e) => setAntiBase((e.target as HTMLInputElement).value)} class={inp.replace('w-32', 'w-24')} />
+          <input type="number" step="any" value={antiBase} onInput={(e) => setAntiBase((e.target as HTMLInputElement).value)} class={inp.replace('w-32', 'w-24')} aria-label="Antilog base" />
           <span class="font-mono text-slate-500">^</span>
-          <input type="number" step="any" value={antiExp} onInput={(e) => setAntiExp((e.target as HTMLInputElement).value)} class={inp.replace('w-32', 'w-24')} />
+          <input type="number" step="any" value={antiExp} onInput={(e) => setAntiExp((e.target as HTMLInputElement).value)} class={inp.replace('w-32', 'w-24')} aria-label="Antilog exponent" />
           <span class="font-mono text-slate-500">=</span>
           <span class="font-mono text-2xl font-extrabold text-slate-800">{anti != null ? fmt(anti) : '—'}</span>
         </div>

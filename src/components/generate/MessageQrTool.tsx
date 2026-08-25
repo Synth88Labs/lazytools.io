@@ -41,24 +41,24 @@ export default function MessageQrTool() {
       <div class="mt-4 grid gap-4 lg:grid-cols-2">
         <div class="space-y-3">
           {mode === 'email' && (<>
-            <div><label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">To</label><input class={inputCls} value={email.to} onInput={(e) => setEmail({ ...email, to: (e.target as HTMLInputElement).value })} /></div>
-            <div><label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Subject</label><input class={inputCls} value={email.subject} onInput={(e) => setEmail({ ...email, subject: (e.target as HTMLInputElement).value })} /></div>
-            <div><label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Body</label><textarea rows={3} class={inputCls} value={email.body} onInput={(e) => setEmail({ ...email, body: (e.target as HTMLTextAreaElement).value })} /></div>
+            <div><label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">To</label><input class={inputCls} value={email.to} onInput={(e) => setEmail({ ...email, to: (e.target as HTMLInputElement).value })} aria-label="Email to" /></div>
+            <div><label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Subject</label><input class={inputCls} value={email.subject} onInput={(e) => setEmail({ ...email, subject: (e.target as HTMLInputElement).value })} aria-label="Email subject" /></div>
+            <div><label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Body</label><textarea rows={3} class={inputCls} value={email.body} onInput={(e) => setEmail({ ...email, body: (e.target as HTMLTextAreaElement).value })} aria-label="Email body" /></div>
           </>)}
           {mode === 'sms' && (<>
-            <div><label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Phone number</label><input class={inputCls} value={sms.number} placeholder="+1 555 123 4567" onInput={(e) => setSms({ ...sms, number: (e.target as HTMLInputElement).value })} /></div>
-            <div><label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Message</label><textarea rows={3} class={inputCls} value={sms.message} onInput={(e) => setSms({ ...sms, message: (e.target as HTMLTextAreaElement).value })} /></div>
+            <div><label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Phone number</label><input class={inputCls} value={sms.number} placeholder="+1 555 123 4567" onInput={(e) => setSms({ ...sms, number: (e.target as HTMLInputElement).value })} aria-label="SMS phone number" /></div>
+            <div><label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Message</label><textarea rows={3} class={inputCls} value={sms.message} onInput={(e) => setSms({ ...sms, message: (e.target as HTMLTextAreaElement).value })} aria-label="SMS message" /></div>
           </>)}
           {mode === 'phone' && (
-            <div><label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Phone number</label><input class={inputCls} value={phone} placeholder="+1 555 123 4567" onInput={(e) => setPhone((e.target as HTMLInputElement).value)} /></div>
+            <div><label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Phone number</label><input class={inputCls} value={phone} placeholder="+1 555 123 4567" onInput={(e) => setPhone((e.target as HTMLInputElement).value)} aria-label="Phone number" /></div>
           )}
           {mode === 'geo' && (
             <div class="grid grid-cols-2 gap-3">
-              <div><label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Latitude</label><input class={`${inputCls} font-mono`} value={geo.lat} onInput={(e) => setGeo({ ...geo, lat: (e.target as HTMLInputElement).value })} /></div>
-              <div><label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Longitude</label><input class={`${inputCls} font-mono`} value={geo.lon} onInput={(e) => setGeo({ ...geo, lon: (e.target as HTMLInputElement).value })} /></div>
+              <div><label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Latitude</label><input class={`${inputCls} font-mono`} value={geo.lat} onInput={(e) => setGeo({ ...geo, lat: (e.target as HTMLInputElement).value })} aria-label="Latitude" /></div>
+              <div><label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Longitude</label><input class={`${inputCls} font-mono`} value={geo.lon} onInput={(e) => setGeo({ ...geo, lon: (e.target as HTMLInputElement).value })} aria-label="Longitude" /></div>
             </div>
           )}
-          <div><label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Size: {size}px</label><input type="range" min={128} max={1024} step={32} value={size} onInput={(e) => setSize(parseInt((e.target as HTMLInputElement).value))} class="w-full accent-brand-600" /></div>
+          <div><label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Size: {size}px</label><input type="range" min={128} max={1024} step={32} value={size} onInput={(e) => setSize(parseInt((e.target as HTMLInputElement).value))} class="w-full accent-brand-600" aria-label="QR code size" /></div>
         </div>
         <div class="flex flex-col items-center rounded-xl border border-brand-100 bg-white p-4">
           <canvas ref={canvasRef} width={size} height={size} class="max-w-full rounded-lg" aria-label="QR code" />

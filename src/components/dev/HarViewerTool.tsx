@@ -88,8 +88,8 @@ export default function HarViewerTool() {
             <span class="rounded-lg bg-white px-3 py-1.5 text-sm ring-1 ring-slate-200"><strong>{(data.totalTime / 1000).toFixed(2)} s</strong> total time</span>
             {secretCount > 0 && <span class="rounded-lg bg-amber-50 px-3 py-1.5 text-sm font-semibold text-amber-800 ring-1 ring-amber-200">⚠ {secretCount} request{secretCount === 1 ? '' : 's'} carry credentials</span>}
           </div>
-          <input type="search" value={query} placeholder="Filter by URL…" onInput={(e) => setQuery((e.target as HTMLInputElement).value)} class="mb-2 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm focus:border-brand-500 focus:outline-none" />
-          <div class="max-h-96 overflow-auto rounded-xl ring-1 ring-slate-200">
+          <input type="search" value={query} placeholder="Filter by URL…" aria-label="Filter by URL" onInput={(e) => setQuery((e.target as HTMLInputElement).value)} class="mb-2 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm focus:border-brand-500 focus:outline-none" />
+          <div class="max-h-96 overflow-auto rounded-xl ring-1 ring-slate-200" tabIndex={0} aria-label="HAR requests table">
             <table class="w-full border-collapse text-left text-xs">
               <thead class="sticky top-0 bg-slate-100 text-slate-600"><tr><th class="px-2 py-1.5">Method</th><th class="px-2 py-1.5">Status</th><th class="px-2 py-1.5">URL</th><th class="px-2 py-1.5 text-right">Size</th><th class="px-2 py-1.5 text-right">Time</th></tr></thead>
               <tbody>

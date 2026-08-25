@@ -38,7 +38,7 @@ export default function MeetingCostTool() {
             <select value={cfg.currency} onChange={(e) => set({ currency: (e.target as HTMLSelectElement).value })} class="rounded-xl border border-slate-300 bg-white px-2 text-sm">
               {['$', '€', '£', '₹', '¥', 'A$', 'C$'].map((c) => <option value={c}>{c}</option>)}
             </select>
-            <input type="number" min={0} value={cfg.rate} onInput={(e) => set({ rate: Math.max(0, parseFloat((e.target as HTMLInputElement).value) || 0) })} class={num} />
+            <input type="number" min={0} value={cfg.rate} onInput={(e) => set({ rate: Math.max(0, parseFloat((e.target as HTMLInputElement).value) || 0) })} class={num} aria-label="Hourly rate" />
           </div>
         </label>
         <label class="text-xs font-semibold uppercase tracking-wide text-slate-500">Duration

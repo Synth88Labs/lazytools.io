@@ -54,7 +54,7 @@ export default function ColorConverterTool({ preset = 'hex' }: { preset?: 'hex' 
       <div class="mt-5 rounded-xl border border-brand-100 bg-white p-4">
         {rgb && rows ? (
           <div class="flex flex-wrap items-stretch gap-4">
-            <div class="h-28 w-28 shrink-0 rounded-xl border border-slate-200" style={`background:${rgbToHex(rgb)}`} aria-label="Color swatch" />
+            <div class="h-28 w-28 shrink-0 rounded-xl border border-slate-200" style={`background:${rgbToHex(rgb)}`} />
             <div class="grid flex-1 gap-2 sm:grid-cols-2">
               {rows.map(([label, value]) => (
                 <button

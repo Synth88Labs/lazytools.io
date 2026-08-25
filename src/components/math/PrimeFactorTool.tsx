@@ -51,6 +51,7 @@ export default function PrimeFactorTool() {
           onInput={(e) => setInput((e.target as HTMLInputElement).value)}
           onKeyDown={(e) => e.key === 'Enter' && run()}
           placeholder="360"
+          aria-label="Number to factorize"
         />
         <button type="button" onClick={run} disabled={busy} class="rounded-lg bg-brand-700 px-5 py-2 font-semibold text-white transition hover:bg-brand-800 disabled:opacity-40">
           {busy ? '…' : 'Factorize'}

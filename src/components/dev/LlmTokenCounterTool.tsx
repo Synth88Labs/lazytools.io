@@ -83,7 +83,7 @@ export default function LlmTokenCounterTool() {
       <div class="mt-5 rounded-xl border border-slate-200 bg-white p-4">
         <div class="flex flex-wrap items-center justify-between gap-2">
           <p class="text-sm font-bold text-slate-900">Context-window fit</p>
-          <select class="rounded-lg border border-slate-300 bg-white px-2 py-1 text-sm" value={context} onChange={(e) => setContext(parseInt((e.target as HTMLSelectElement).value, 10))}>
+          <select class="rounded-lg border border-slate-300 bg-white px-2 py-1 text-sm" aria-label="Context window size" value={context} onChange={(e) => setContext(parseInt((e.target as HTMLSelectElement).value, 10))}>
             {CONTEXT_SIZES.map((c) => (
               <option value={c.value}>{c.label}</option>
             ))}
@@ -98,7 +98,7 @@ export default function LlmTokenCounterTool() {
       </div>
 
       {/* per-model counts + cost */}
-      <div class="mt-5 overflow-x-auto rounded-xl border border-slate-200 bg-white">
+      <div class="mt-5 overflow-x-auto rounded-xl border border-slate-200 bg-white" tabIndex={0} aria-label="Per-model token counts and cost">
         <table class="w-full text-left text-sm">
           <thead class="bg-slate-50 text-xs font-semibold uppercase tracking-wide text-slate-500">
             <tr>
