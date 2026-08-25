@@ -32,7 +32,7 @@ faqs:
 draft: false
 ---
 
-**The right statistical test comes down to three questions: is your data numeric or categorical, how
+**The right [statistical test](https://en.wikipedia.org/wiki/Statistical_hypothesis_testing) comes down to three questions: is your data numeric or categorical, how
 many groups are you comparing, and can you assume it's roughly normal?** Answer those three and the
 choice — t-test, z-test, ANOVA, Mann-Whitney or chi-square — is almost automatic. This guide walks the
 decision path, adds worked examples, and links a browser-based calculator for each, so nothing you
@@ -165,7 +165,7 @@ and can hide a real effect.
 ## Three or more groups → ANOVA (not many t-tests)
 
 With 3+ groups, don't run a t-test on every pair — each comparison carries its own false-positive risk,
-and doing many inflates the overall error rate. [One-way ANOVA](/statistics/anova-calculator/) tests
+and doing many inflates the overall error rate. One-way [ANOVA](https://en.wikipedia.org/wiki/Analysis_of_variance) ([calculator](/statistics/anova-calculator/)) tests
 all groups at once with a single F test. A significant result says the groups aren't all equal; a
 follow-up **post-hoc test** (e.g. Tukey's HSD) tells you which ones differ. If the groups are clearly
 non-normal, the rank-based [Kruskal-Wallis test](/statistics/kruskal-wallis-test-calculator/) is the

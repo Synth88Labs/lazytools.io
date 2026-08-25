@@ -54,12 +54,12 @@ numbers everyone remembers: **z = 1.96 → two-tailed p = 0.05**, and **z = 1.64
 <figcaption>The p-value is the shaded tail — how far out your statistic lands.</figcaption>
 </figure>
 
-A **z-score** answers "how unusual is this value?" in units of standard deviations:
+A **[z-score](https://en.wikipedia.org/wiki/Standard_score)** answers "how unusual is this value?" in units of standard deviations:
 
 > z = (x − μ) / σ
 
 A z of +1 sits one standard deviation above the mean; a z of −2.5 sits two-and-a-half below. The
-**p-value** turns that position into a probability: the chance of landing at least that far out in the
+**[p-value](https://en.wikipedia.org/wiki/P-value)** turns that position into a probability: the chance of landing at least that far out in the
 tail if nothing but random variation were at work. Position in, probability out — that is the whole
 conversion, and the [normal distribution calculator](/statistics/normal-distribution-calculator/) shows
 it with the tail shaded so you can see the area you are measuring.

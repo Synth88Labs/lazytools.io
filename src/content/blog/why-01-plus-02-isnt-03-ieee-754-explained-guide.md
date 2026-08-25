@@ -84,7 +84,7 @@ Different base, same limitation.
 
 ## How a float is built: sign, exponent, mantissa
 
-IEEE 754 packs a number into three fields:
+[IEEE 754](https://en.wikipedia.org/wiki/IEEE_754) packs a number into three fields:
 
 | Field | Single (32-bit) | Double (64-bit) | Role |
 |---|---|---|---|

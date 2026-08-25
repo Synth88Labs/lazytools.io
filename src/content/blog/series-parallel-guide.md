@@ -56,7 +56,7 @@ opposite**. Get the pattern once and you never have to re-derive it.
 
 ## The four rules at a glance
 
-Before the reasoning, here is every rule in one place. Notice that only two *kinds* of maths appear —
+Before the reasoning, here are all the standard [series and parallel circuit](https://en.wikipedia.org/wiki/Series_and_parallel_circuits) rules in one place. Notice that only two *kinds* of maths appear —
 plain addition and reciprocal addition — and each component uses each kind exactly once, just swapped
 between the two arrangements.
 

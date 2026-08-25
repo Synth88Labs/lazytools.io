@@ -56,7 +56,7 @@ For a **strong** acid, every molecule donates its proton, so [H⁺] equals the a
 
 A **weak** acid doesn't. Acetic acid in water sits mostly as intact CH₃COOH molecules, with only a small fraction broken into H⁺ and CH₃COO⁻ at any moment. That fraction — the **percent ionization** — is often just 1–2%. So the real [H⁺] is a fraction of the concentration, and the pH is much higher (less acidic) than −log(C) predicts.
 
-How much ionizes is set by the acid's **Ka**, its acid-dissociation constant. A bigger Ka means a stronger weak acid; acetic acid's Ka is 1.8×10⁻⁵ (a pKa of 4.74). Chemists usually quote **pKa = −log Ka** because it's a friendlier number — and because a difference of one pKa unit is a tenfold difference in strength. The table below shows how wide the range is among common weak acids, all far from the strong-acid limit.
+How much ionizes is set by the acid's **Ka**, its [acid-dissociation constant](https://en.wikipedia.org/wiki/Acid_dissociation_constant). A bigger Ka means a stronger weak acid; acetic acid's Ka is 1.8×10⁻⁵ (a pKa of 4.74). Chemists usually quote **pKa = −log Ka** because it's a friendlier number — and because a difference of one pKa unit is a tenfold difference in strength. The table below shows how wide the range is among common weak acids, all far from the strong-acid limit.
 
 | Weak acid | Formula | Ka (25 °C) | pKa |
 |---|---|---|---|
@@ -73,7 +73,7 @@ Ka values are standard reference figures and vary slightly between sources (HF i
 
 ## Setting up the ICE table
 
-ICE stands for **Initial, Change, Equilibrium**. For a weak acid HA ⇌ H⁺ + A⁻ starting at concentration C:
+ICE stands for **Initial, Change, Equilibrium** (also written as a [RICE chart](https://en.wikipedia.org/wiki/RICE_chart)). For a weak acid HA ⇌ H⁺ + A⁻ starting at concentration C:
 
 | | HA | H⁺ | A⁻ |
 |---|---|---|---|

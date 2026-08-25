@@ -74,7 +74,7 @@ The [turkey cooking time calculator](/cooking/turkey-cooking-time-calculator/) r
 
 ## Why 325°F is the standard
 
-USDA guidance is to cook a whole turkey at an oven temperature of **no lower than 325°F**. Lower temperatures leave the bird in the bacterial "danger zone" (roughly 40°F to 140°F) for too long. Higher temperatures — some cooks start at 425°F to crisp the skin, then drop to 325°F — cook faster but risk a dry breast before the thighs finish. The per-pound estimates in this guide assume a steady 325°F throughout; if you use a hotter start, your total time will be shorter, which makes the thermometer even more important.
+[USDA/FSIS guidance](https://www.fsis.usda.gov/) is to cook a whole turkey at an oven temperature of **no lower than 325°F**. Lower temperatures leave the bird in the bacterial "danger zone" (roughly 40°F to 140°F) for too long. Higher temperatures — some cooks start at 425°F to crisp the skin, then drop to 325°F — cook faster but risk a dry breast before the thighs finish. The per-pound estimates in this guide assume a steady 325°F throughout; if you use a hotter start, your total time will be shorter, which makes the thermometer even more important.
 
 Roasting the bird **breast-side up** and **uncovered** gives the most even browning. A loose foil tent over the breast partway through slows it down if the skin darkens before the interior is done.
 
@@ -122,26 +122,3 @@ A few habits cost people a good turkey more than anything else:
 - **Carving too soon.** Cutting straight out of the oven spills the juices; a 20–30 minute rest keeps the meat moist.
 
 *Timings are based on USDA/FSIS guidance. Always confirm doneness with a food thermometer.*
-
-## FAQ
-
-**How long do I cook a turkey per pound?**
-About 13 minutes per pound unstuffed, or 15 minutes per pound stuffed, at 325°F. A 14 lb unstuffed turkey takes roughly 3 hours — but always confirm with a thermometer reading 165°F.
-
-**How long does it take to thaw a turkey?**
-In the fridge, about 24 hours per 4–5 pounds, so a 15 lb turkey needs 3–4 days. In cold water, about 30 minutes per pound with the water changed every 30 minutes. Never thaw at room temperature.
-
-**What temperature should turkey be cooked to?**
-165°F (74°C), measured in the thickest part of the breast and the innermost thigh, away from bone. Stuffing must also hit 165°F. Temperature — not time — is what tells you it's safe.
-
-**Does stuffing a turkey change the cooking time?**
-Yes. A stuffed turkey takes longer (~15 min/lb vs 13), and the stuffing must reach 165°F too, which risks overcooking the breast. Baking the stuffing separately cooks more evenly and safely.
-
-**Can I thaw a turkey faster?**
-The cold-water method (~30 min/lb) is faster than the fridge but needs attention: keep the bird fully submerged in cold water, change the water every 30 minutes, and cook it right after thawing.
-
-**How long should a turkey rest after cooking?**
-20 to 30 minutes. Resting lets the juices redistribute so the meat is moist and easier to carve. Tent it loosely with foil while it rests.
-
-**Why is my turkey taking longer than the calculator says?**
-Times are estimates. A colder starting temperature, a stuffed cavity, opening the oven often, or an inaccurate oven all add time. Rely on the thermometer, and start checking early.

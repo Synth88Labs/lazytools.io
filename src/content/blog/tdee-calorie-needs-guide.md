@@ -58,7 +58,7 @@ below it to lose or above it to gain. Run your own numbers in the
 
 ## Step 1 — BMR from Mifflin–St Jeor
 
-Basal metabolic rate is what your body spends just staying alive: keeping your heart beating, your
+[Basal metabolic rate](https://en.wikipedia.org/wiki/Basal_metabolic_rate) is what your body spends just staying alive: keeping your heart beating, your
 lungs working, your cells repairing. It's the biggest slice of most people's daily burn — usually
 60–70% of the total. The **Mifflin–St Jeor equation**, published in 1990, is the one dietitians reach
 for because it tracks measured metabolism more closely than the older Harris–Benedict:

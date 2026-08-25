@@ -33,7 +33,7 @@ draft: false
 
 **An EPUB e-book looks like a single file, but open it up and it's a small website in a ZIP: web pages
 for the chapters, CSS for styling, and a couple of XML files that tie it together and describe the
-book.** Understanding that structure explains why EPUBs reflow to any screen and where a book's title,
+book.** Understanding that structure explains why [EPUBs](https://en.wikipedia.org/wiki/EPUB) reflow to any screen and where a book's title,
 author and ISBN actually live. Here's the tour, plus how to read any EPUB's metadata with the
 [EPUB Metadata Viewer](/file/epub-metadata-viewer/).
 
@@ -136,7 +136,7 @@ read in sequence.
 
 ## Dublin Core: where the title and author live
 
-The metadata uses **Dublin Core**, a small standard vocabulary of `dc:` elements:
+The metadata uses **[Dublin Core](https://en.wikipedia.org/wiki/Dublin_Core)**, a small standard vocabulary of `dc:` elements:
 
 | Element | Meaning |
 |---|---|
