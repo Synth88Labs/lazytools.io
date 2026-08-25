@@ -55,7 +55,12 @@ jobs:
             echo "No changes."
           else
             git commit -m "loop(${{ github.run_number }}): ${{ steps.fixllm.outputs.fixes_applied || 0 }} fix(es), ${{ steps.dev.outputs.dev_built || 0 }} proposal(s)"
-            git push
+            for i in 1 2 3 4 5; do
+              git push && break
+              echo "push rejected (attempt $i) — rebasing onto latest ${{ github.ref_name }}"
+              git pull --rebase --autostash origin ${{ github.ref_name }} || { git rebase --abort || true; }
+              sleep 3
+            done
           fi
 
       - name: Deploy if the Fixer changed the site

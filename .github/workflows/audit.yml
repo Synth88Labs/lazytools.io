@@ -80,7 +80,13 @@ jobs:
             echo "No changes to commit."
           else
             git commit -m "audit(${{ github.run_number }}): ${{ steps.audit.outputs.subject }}"
-            git push
+            # Rebase-retry so a concurrent push (dev/deploy) doesn't discard these results.
+            for i in 1 2 3 4 5; do
+              git push && break
+              echo "push rejected (attempt $i) — rebasing onto latest ${{ github.ref_name }}"
+              git pull --rebase --autostash origin ${{ github.ref_name }} || { git rebase --abort || true; }
+              sleep 3
+            done
           fi
 
       - name: Deploy if the Fixer changed the site
