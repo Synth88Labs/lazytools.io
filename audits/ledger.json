@@ -2628,15 +2628,20 @@
       "severity": "high",
       "detail": "select-name (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "select-name (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -2644,7 +2649,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "automotive/wheel-offset-calculator::Title present (15–60 chars)": {
       "id": "automotive/wheel-offset-calculator::Title present (15–60 chars)",
@@ -3361,15 +3367,20 @@
       "severity": "high",
       "detail": "label (4)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "label (4)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -3377,7 +3388,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "brewing/brix-to-sg-calculator::Title present (15–60 chars)": {
       "id": "brewing/brix-to-sg-calculator::Title present (15–60 chars)",
@@ -3484,15 +3496,20 @@
       "severity": "high",
       "detail": "label (6)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "color-contrast (1), label (6)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -3500,7 +3517,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "brewing/keg-carbonation-calculator::Title present (15–60 chars)": {
       "id": "brewing/keg-carbonation-calculator::Title present (15–60 chars)",
@@ -3673,15 +3691,20 @@
       "severity": "high",
       "detail": "select-name (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "select-name (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -3689,7 +3712,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "calc/age-calculator::Core Web Vitals: CLS good (<0.1)": {
       "id": "calc/age-calculator::Core Web Vitals: CLS good (<0.1)",
@@ -3702,7 +3726,7 @@
       "fixType": "manual",
       "status": "open",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
@@ -3798,7 +3822,7 @@
       "fixType": "manual",
       "status": "open",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
@@ -3984,7 +4008,7 @@
       "fixType": "manual",
       "status": "open",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
@@ -4144,7 +4168,7 @@
       "fixType": "manual",
       "status": "open",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
@@ -4240,7 +4264,7 @@
       "fixType": "manual",
       "status": "open",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
@@ -4368,7 +4392,7 @@
       "fixType": "manual",
       "status": "open",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
@@ -4394,7 +4418,7 @@
       "fixType": "manual",
       "status": "open",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
@@ -4592,7 +4616,7 @@
       "fixType": "manual",
       "status": "open",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
@@ -4650,7 +4674,7 @@
       "fixType": "manual",
       "status": "open",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
@@ -4708,7 +4732,7 @@
       "fixType": "manual",
       "status": "open",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
@@ -4770,15 +4794,20 @@
       "severity": "high",
       "detail": "scrollable-region-focusable (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "scrollable-region-focusable (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -4786,7 +4815,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "calc/mortgage-calculator::Core Web Vitals: CLS good (<0.1)": {
       "id": "calc/mortgage-calculator::Core Web Vitals: CLS good (<0.1)",
@@ -4799,7 +4829,7 @@
       "fixType": "manual",
       "status": "open",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
@@ -4825,7 +4855,7 @@
       "fixType": "manual",
       "status": "open",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
@@ -4985,7 +5015,7 @@
       "fixType": "manual",
       "status": "open",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
@@ -5011,7 +5041,7 @@
       "fixType": "manual",
       "status": "open",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
@@ -5102,7 +5132,7 @@
       "fixType": "manual",
       "status": "open",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
@@ -5166,7 +5196,7 @@
       "fixType": "manual",
       "status": "open",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
@@ -5262,7 +5292,7 @@
       "fixType": "manual",
       "status": "open",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
@@ -5384,7 +5414,7 @@
       "fixType": "manual",
       "status": "open",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
@@ -5554,15 +5584,20 @@
       "severity": "high",
       "detail": "label (3)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "label (3)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -5570,7 +5605,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "calendar/hebrew-calendar-converter::Helpful-content depth (editorial ≥350 words)": {
       "id": "calendar/hebrew-calendar-converter::Helpful-content depth (editorial ≥350 words)",
@@ -5613,15 +5649,20 @@
       "severity": "high",
       "detail": "label (3)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "label (3)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -5629,7 +5670,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "calendar/julian-date-converter::Title present (15–60 chars)": {
       "id": "calendar/julian-date-converter::Title present (15–60 chars)",
@@ -5672,15 +5714,20 @@
       "severity": "high",
       "detail": "label (3)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "label (3)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -5688,7 +5735,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "calendar/persian-calendar-converter::Title present (15–60 chars)": {
       "id": "calendar/persian-calendar-converter::Title present (15–60 chars)",
@@ -5731,15 +5779,20 @@
       "severity": "high",
       "detail": "label (3)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "label (3)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -5747,7 +5800,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "charts/bar-chart-maker::Meta description (70–160 chars)": {
       "id": "charts/bar-chart-maker::Meta description (70–160 chars)",
@@ -6163,7 +6217,7 @@
       "fixType": "manual",
       "status": "open",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
@@ -6960,15 +7014,20 @@
       "severity": "high",
       "detail": "label (8)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "label (8)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -6976,7 +7035,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "chemistry/freezing-point-depression-calculator::Title present (15–60 chars)": {
       "id": "chemistry/freezing-point-depression-calculator::Title present (15–60 chars)",
@@ -7375,15 +7435,20 @@
       "severity": "high",
       "detail": "label-title-only (8)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "color-contrast (2), label-title-only (8)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -7391,7 +7456,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "chemistry/ideal-gas-law-calculator::Title present (15–60 chars)": {
       "id": "chemistry/ideal-gas-law-calculator::Title present (15–60 chars)",
@@ -7890,7 +7956,7 @@
       "fixType": "manual",
       "status": "open",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
@@ -8592,15 +8658,20 @@
       "severity": "high",
       "detail": "label (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "label (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -8608,7 +8679,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "cipher/atbash-cipher::No serious/critical axe violations": {
       "id": "cipher/atbash-cipher::No serious/critical axe violations",
@@ -8619,15 +8691,20 @@
       "severity": "high",
       "detail": "label (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "label (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -8635,7 +8712,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "cipher/atbash-cipher::Helpful-content depth (editorial ≥350 words)": {
       "id": "cipher/atbash-cipher::Helpful-content depth (editorial ≥350 words)",
@@ -8678,15 +8756,20 @@
       "severity": "high",
       "detail": "label (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "label (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -8694,7 +8777,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "cipher/binary-text-translator::No serious/critical axe violations": {
       "id": "cipher/binary-text-translator::No serious/critical axe violations",
@@ -8705,15 +8789,20 @@
       "severity": "high",
       "detail": "label (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "label (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -8721,7 +8810,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "cipher/braille-translator::No serious/critical axe violations": {
       "id": "cipher/braille-translator::No serious/critical axe violations",
@@ -8732,15 +8822,20 @@
       "severity": "high",
       "detail": "label (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "label (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -8748,7 +8843,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "cipher/caesar-cipher::No serious/critical axe violations": {
       "id": "cipher/caesar-cipher::No serious/critical axe violations",
@@ -8759,15 +8855,20 @@
       "severity": "high",
       "detail": "label (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "label (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -8775,7 +8876,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "cipher/morse-code-translator::No serious/critical axe violations": {
       "id": "cipher/morse-code-translator::No serious/critical axe violations",
@@ -8786,15 +8888,20 @@
       "severity": "high",
       "detail": "label (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "label (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -8802,7 +8909,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "cipher/nato-phonetic-alphabet::Title present (15–60 chars)": {
       "id": "cipher/nato-phonetic-alphabet::Title present (15–60 chars)",
@@ -8845,15 +8953,20 @@
       "severity": "high",
       "detail": "label (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "label (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -8861,7 +8974,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "cipher/rail-fence-cipher::Meta description (70–160 chars)": {
       "id": "cipher/rail-fence-cipher::Meta description (70–160 chars)",
@@ -8904,15 +9018,20 @@
       "severity": "high",
       "detail": "label (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "label (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -8920,7 +9039,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "cipher/rot13::No serious/critical axe violations": {
       "id": "cipher/rot13::No serious/critical axe violations",
@@ -8931,15 +9051,20 @@
       "severity": "high",
       "detail": "label (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "label (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -8947,7 +9072,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "cipher/rot13::Helpful-content depth (editorial ≥350 words)": {
       "id": "cipher/rot13::Helpful-content depth (editorial ≥350 words)",
@@ -8990,15 +9116,20 @@
       "severity": "high",
       "detail": "label (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "label (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -9006,7 +9137,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "cipher/rot47::Helpful-content depth (editorial ≥350 words)": {
       "id": "cipher/rot47::Helpful-content depth (editorial ≥350 words)",
@@ -9081,15 +9213,20 @@
       "severity": "high",
       "detail": "label (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "label (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -9097,7 +9234,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "color/accessible-color-generator::Title present (15–60 chars)": {
       "id": "color/accessible-color-generator::Title present (15–60 chars)",
@@ -9205,15 +9343,20 @@
       "severity": "high",
       "detail": "color-contrast (2)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "color-contrast (2)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -9221,7 +9364,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "color/analogous-colors::Helpful-content depth (editorial ≥350 words)": {
       "id": "color/analogous-colors::Helpful-content depth (editorial ≥350 words)",
@@ -9360,15 +9504,20 @@
       "severity": "high",
       "detail": "label (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "color-contrast (1), label (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -9376,7 +9525,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "color/color-converter::No serious/critical axe violations": {
       "id": "color/color-converter::No serious/critical axe violations",
@@ -9387,15 +9537,20 @@
       "severity": "high",
       "detail": "aria-prohibited-attr (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "aria-prohibited-attr (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -9403,7 +9558,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "color/color-harmony-generator::Meta description (70–160 chars)": {
       "id": "color/color-harmony-generator::Meta description (70–160 chars)",
@@ -9446,15 +9602,20 @@
       "severity": "high",
       "detail": "color-contrast (9)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "color-contrast (9)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -9462,7 +9623,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "color/color-mixer::No serious/critical axe violations": {
       "id": "color/color-mixer::No serious/critical axe violations",
@@ -9473,15 +9635,20 @@
       "severity": "high",
       "detail": "label (2)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "label (2)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -9489,7 +9656,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "color/color-mixer::Helpful-content depth (editorial ≥350 words)": {
       "id": "color/color-mixer::Helpful-content depth (editorial ≥350 words)",
@@ -9628,15 +9796,20 @@
       "severity": "high",
       "detail": "color-contrast (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "color-contrast (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -9644,7 +9817,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "color/complementary-color::Helpful-content depth (editorial ≥350 words)": {
       "id": "color/complementary-color::Helpful-content depth (editorial ≥350 words)",
@@ -9687,15 +9861,20 @@
       "severity": "high",
       "detail": "label (2)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "label (2)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -9703,7 +9882,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "color/contrast-grid::No serious/critical axe violations": {
       "id": "color/contrast-grid::No serious/critical axe violations",
@@ -9714,15 +9894,20 @@
       "severity": "high",
       "detail": "color-contrast (84)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "color-contrast (84)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -9730,7 +9915,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "color/css-gradient-generator::No serious/critical axe violations": {
       "id": "color/css-gradient-generator::No serious/critical axe violations",
@@ -9741,15 +9927,20 @@
       "severity": "high",
       "detail": "label (2)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "label (2)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -9757,7 +9948,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "color/css-gradient-generator::Helpful-content depth (editorial ≥350 words)": {
       "id": "color/css-gradient-generator::Helpful-content depth (editorial ≥350 words)",
@@ -9864,15 +10056,20 @@
       "severity": "high",
       "detail": "label (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "color-contrast (1), label (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -9880,7 +10077,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "color/deuteranopia-simulator::Helpful-content depth (editorial ≥350 words)": {
       "id": "color/deuteranopia-simulator::Helpful-content depth (editorial ≥350 words)",
@@ -9923,15 +10121,20 @@
       "severity": "high",
       "detail": "aria-prohibited-attr (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "aria-prohibited-attr (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -9939,7 +10142,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "color/hex-to-rgb::Helpful-content depth (editorial ≥350 words)": {
       "id": "color/hex-to-rgb::Helpful-content depth (editorial ≥350 words)",
@@ -10014,15 +10218,20 @@
       "severity": "high",
       "detail": "label (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "label (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -10030,7 +10239,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "color/oklch-color-picker::Meta description (70–160 chars)": {
       "id": "color/oklch-color-picker::Meta description (70–160 chars)",
@@ -10105,15 +10315,20 @@
       "severity": "high",
       "detail": "label (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "color-contrast (1), label (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -10121,7 +10336,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "color/protanopia-simulator::Helpful-content depth (editorial ≥350 words)": {
       "id": "color/protanopia-simulator::Helpful-content depth (editorial ≥350 words)",
@@ -10164,15 +10380,20 @@
       "severity": "high",
       "detail": "aria-prohibited-attr (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "aria-prohibited-attr (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -10180,7 +10401,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "color/rgb-to-hex::Helpful-content depth (editorial ≥350 words)": {
       "id": "color/rgb-to-hex::Helpful-content depth (editorial ≥350 words)",
@@ -10287,15 +10509,20 @@
       "severity": "high",
       "detail": "color-contrast (2), scrollable-region-focusable (2)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "color-contrast (2), scrollable-region-focusable (2)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -10303,7 +10530,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "color/tailwind-color-generator::No horizontal scroll on mobile": {
       "id": "color/tailwind-color-generator::No horizontal scroll on mobile",
@@ -10316,7 +10544,7 @@
       "fixType": "manual",
       "status": "open",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
@@ -10340,15 +10568,20 @@
       "severity": "high",
       "detail": "color-contrast (2)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "color-contrast (2)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -10356,7 +10589,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "color/triadic-colors::Helpful-content depth (editorial ≥350 words)": {
       "id": "color/triadic-colors::Helpful-content depth (editorial ≥350 words)",
@@ -10399,15 +10633,20 @@
       "severity": "high",
       "detail": "label (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "color-contrast (1), label (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -10415,7 +10654,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "color/tritanopia-simulator::Helpful-content depth (editorial ≥350 words)": {
       "id": "color/tritanopia-simulator::Helpful-content depth (editorial ≥350 words)",
@@ -10458,15 +10698,20 @@
       "severity": "high",
       "detail": "label (6)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "label (6)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -10474,7 +10719,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "cooking/bakers-percentage-calculator::Helpful-content depth (editorial ≥350 words)": {
       "id": "cooking/bakers-percentage-calculator::Helpful-content depth (editorial ≥350 words)",
@@ -11068,7 +11314,7 @@
       "fixType": "manual",
       "status": "open",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
@@ -11573,15 +11819,20 @@
       "severity": "high",
       "detail": "label (1), select-name (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "label (1), select-name (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -11589,7 +11840,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "dev/har-viewer::Meta description (70–160 chars)": {
       "id": "dev/har-viewer::Meta description (70–160 chars)",
@@ -12115,7 +12367,7 @@
       "fixType": "manual",
       "status": "open",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
@@ -12171,15 +12423,20 @@
       "severity": "high",
       "detail": "color-contrast (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "color-contrast (3)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -12187,7 +12444,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "dev/keccak-256-generator::Title present (15–60 chars)": {
       "id": "dev/keccak-256-generator::Title present (15–60 chars)",
@@ -12326,15 +12584,20 @@
       "severity": "high",
       "detail": "select-name (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "select-name (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -12342,7 +12605,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "dev/number-base-converter::Helpful-content depth (editorial ≥350 words)": {
       "id": "dev/number-base-converter::Helpful-content depth (editorial ≥350 words)",
@@ -14633,15 +14897,20 @@
       "severity": "high",
       "detail": "label (16)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "label (16)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -14649,7 +14918,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "finance/efficiency-ratios-calculator::Meta description (70–160 chars)": {
       "id": "finance/efficiency-ratios-calculator::Meta description (70–160 chars)",
@@ -15337,15 +15607,20 @@
       "severity": "high",
       "detail": "label (2)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "label (2)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -15353,7 +15628,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "fitness/vo2-max-calculator::Title present (15–60 chars)": {
       "id": "fitness/vo2-max-calculator::Title present (15–60 chars)",
@@ -15691,7 +15967,7 @@
       "fixType": "manual",
       "status": "open",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
@@ -15813,15 +16089,20 @@
       "severity": "high",
       "detail": "color-contrast (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "color-contrast (2)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -15829,7 +16110,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "fonts/emoji-letters-generator::No serious/critical axe violations": {
       "id": "fonts/emoji-letters-generator::No serious/critical axe violations",
@@ -16232,7 +16514,7 @@
       "fixType": "manual",
       "status": "open",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
@@ -16320,15 +16602,20 @@
       "severity": "high",
       "detail": "color-contrast (2)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "color-contrast (2)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -16336,7 +16623,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "fonts/mirror-text-generator::Title present (15–60 chars)": {
       "id": "fonts/mirror-text-generator::Title present (15–60 chars)",
@@ -16639,15 +16927,20 @@
       "severity": "high",
       "detail": "label (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "color-contrast (1), label (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -16655,7 +16948,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "fonts/text-repeater::Helpful-content depth (editorial ≥350 words)": {
       "id": "fonts/text-repeater::Helpful-content depth (editorial ≥350 words)",
@@ -16796,15 +17090,20 @@
       "severity": "high",
       "detail": "label (2), select-name (2)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "label (2), select-name (2)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -16812,7 +17111,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "garden/fertilizer-calculator::Title present (15–60 chars)": {
       "id": "garden/fertilizer-calculator::Title present (15–60 chars)",
@@ -17048,15 +17348,20 @@
       "severity": "high",
       "detail": "select-name (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "select-name (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -17064,7 +17369,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "garden/plant-spacing-calculator::No serious/critical axe violations": {
       "id": "garden/plant-spacing-calculator::No serious/critical axe violations",
@@ -17140,15 +17446,20 @@
       "severity": "high",
       "detail": "select-name (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "select-name (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -17156,7 +17467,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "garden/raised-bed-soil-calculator::No serious/critical axe violations": {
       "id": "garden/raised-bed-soil-calculator::No serious/critical axe violations",
@@ -17297,15 +17609,20 @@
       "severity": "high",
       "detail": "select-name (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "select-name (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -17313,7 +17630,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "generate/barcode-generator::Title present (15–60 chars)": {
       "id": "generate/barcode-generator::Title present (15–60 chars)",
@@ -17388,15 +17706,20 @@
       "severity": "high",
       "detail": "select-name (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "select-name (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -17404,7 +17727,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "generate/dice-roller::No placeholder text": {
       "id": "generate/dice-roller::No placeholder text",
@@ -17576,15 +17900,20 @@
       "severity": "high",
       "detail": "label (4)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "label (4)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -17592,7 +17921,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "generate/email-qr-code-generator::Helpful-content depth (editorial ≥350 words)": {
       "id": "generate/email-qr-code-generator::Helpful-content depth (editorial ≥350 words)",
@@ -17731,15 +18061,20 @@
       "severity": "high",
       "detail": "label (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "label (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -17747,7 +18082,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "generate/lorem-ipsum-generator::No placeholder text": {
       "id": "generate/lorem-ipsum-generator::No placeholder text",
@@ -17790,15 +18126,20 @@
       "severity": "high",
       "detail": "label (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "label (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -17806,7 +18147,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "generate/lorem-ipsum-generator::Helpful-content depth (editorial ≥350 words)": {
       "id": "generate/lorem-ipsum-generator::Helpful-content depth (editorial ≥350 words)",
@@ -18073,15 +18415,20 @@
       "severity": "high",
       "detail": "label (1), select-name (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "label (1), select-name (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -18089,7 +18436,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "generate/passphrase-generator::Helpful-content depth (editorial ≥350 words)": {
       "id": "generate/passphrase-generator::Helpful-content depth (editorial ≥350 words)",
@@ -18548,15 +18896,20 @@
       "severity": "high",
       "detail": "label (8)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "label (8)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -18564,7 +18917,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "generate/vcard-qr-code-generator::Helpful-content depth (editorial ≥350 words)": {
       "id": "generate/vcard-qr-code-generator::Helpful-content depth (editorial ≥350 words)",
@@ -19449,15 +19803,20 @@
       "severity": "high",
       "detail": "select-name (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "select-name (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -19465,7 +19824,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "home/stud-calculator::Meta description (70–160 chars)": {
       "id": "home/stud-calculator::Meta description (70–160 chars)",
@@ -19736,7 +20096,7 @@
       "fixType": "manual",
       "status": "open",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
@@ -19760,15 +20120,20 @@
       "severity": "high",
       "detail": "label (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "label (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -19776,7 +20141,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "image/combine-images::Helpful-content depth (editorial ≥350 words)": {
       "id": "image/combine-images::Helpful-content depth (editorial ≥350 words)",
@@ -19819,15 +20185,20 @@
       "severity": "high",
       "detail": "label (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "label (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -19835,7 +20206,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "image/flip-image::Helpful-content depth (editorial ≥350 words)": {
       "id": "image/flip-image::Helpful-content depth (editorial ≥350 words)",
@@ -20038,15 +20410,20 @@
       "severity": "high",
       "detail": "label (2)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "label (2)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -20054,7 +20431,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "image/watermark-image::Helpful-content depth (editorial ≥350 words)": {
       "id": "image/watermark-image::Helpful-content depth (editorial ≥350 words)",
@@ -20385,15 +20763,20 @@
       "severity": "high",
       "detail": "select-name (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "select-name (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -20401,7 +20784,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "math/logarithm-calculator::No serious/critical axe violations": {
       "id": "math/logarithm-calculator::No serious/critical axe violations",
@@ -20412,15 +20796,20 @@
       "severity": "high",
       "detail": "label (2)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "label (2)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -20428,7 +20817,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "math/long-division::Title present (15–60 chars)": {
       "id": "math/long-division::Title present (15–60 chars)",
@@ -20503,15 +20893,20 @@
       "severity": "high",
       "detail": "label (4), select-name (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "color-contrast (1), label (4), select-name (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -20519,7 +20914,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "math/matrix-calculator::Helpful-content depth (editorial ≥350 words)": {
       "id": "math/matrix-calculator::Helpful-content depth (editorial ≥350 words)",
@@ -21236,15 +21632,20 @@
       "severity": "high",
       "detail": "label (6)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "color-contrast (1), label (6)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -21252,7 +21653,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "music/audio-file-size-calculator::Helpful-content depth (editorial ≥350 words)": {
       "id": "music/audio-file-size-calculator::Helpful-content depth (editorial ≥350 words)",
@@ -21880,7 +22282,7 @@
       "fixType": "manual",
       "status": "open",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
@@ -22485,22 +22887,28 @@
       "severity": "high",
       "detail": "66 chars: \"Armenia Passport / ID Photo Maker — Size & Free Ed\"",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "66 chars: \"Armenia Passport / ID Photo Maker — Size & Free Ed\""
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "photo/armenia-passport::No horizontal scroll on mobile": {
       "id": "photo/armenia-passport::No horizontal scroll on mobile",
@@ -22575,22 +22983,28 @@
       "severity": "high",
       "detail": "63 chars: \"Australia Passport Photo Maker — Size & Free Edito\"",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "63 chars: \"Australia Passport Photo Maker — Size & Free Edito\""
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "photo/australia-passport::No horizontal scroll on mobile": {
       "id": "photo/australia-passport::No horizontal scroll on mobile",
@@ -22665,22 +23079,28 @@
       "severity": "high",
       "detail": "66 chars: \"Austria Passport / ID Photo Maker — Size & Free Ed\"",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "66 chars: \"Austria Passport / ID Photo Maker — Size & Free Ed\""
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "photo/austria-passport::Meta description (70–160 chars)": {
       "id": "photo/austria-passport::Meta description (70–160 chars)",
@@ -22755,22 +23175,28 @@
       "severity": "high",
       "detail": "67 chars: \"Belgium Passport / eID Photo Maker — Size & Free E\"",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "67 chars: \"Belgium Passport / eID Photo Maker — Size & Free E\""
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "photo/belgium-passport::Meta description (70–160 chars)": {
       "id": "photo/belgium-passport::Meta description (70–160 chars)",
@@ -22941,22 +23367,28 @@
       "severity": "high",
       "detail": "66 chars: \"Croatia Passport / ID Photo Maker — Size & Free Ed\"",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "66 chars: \"Croatia Passport / ID Photo Maker — Size & Free Ed\""
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "photo/croatia-passport::Meta description (70–160 chars)": {
       "id": "photo/croatia-passport::Meta description (70–160 chars)",
@@ -23127,22 +23559,28 @@
       "severity": "high",
       "detail": "73 chars: \"Czech Republic Passport / ID Photo Maker — Size & \"",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "73 chars: \"Czech Republic Passport / ID Photo Maker — Size & \""
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "photo/czech-passport::Meta description (70–160 chars)": {
       "id": "photo/czech-passport::Meta description (70–160 chars)",
@@ -23217,22 +23655,28 @@
       "severity": "high",
       "detail": "72 chars: \"Dominican Republic Passport Photo Maker — Size & F\"",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "72 chars: \"Dominican Republic Passport Photo Maker — Size & F\""
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "photo/dominican-republic-passport::Meta description (70–160 chars)": {
       "id": "photo/dominican-republic-passport::Meta description (70–160 chars)",
@@ -23339,22 +23783,28 @@
       "severity": "high",
       "detail": "66 chars: \"Estonia Passport / ID Photo Maker — Size & Free Ed\"",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "66 chars: \"Estonia Passport / ID Photo Maker — Size & Free Ed\""
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "photo/estonia-passport::No horizontal scroll on mobile": {
       "id": "photo/estonia-passport::No horizontal scroll on mobile",
@@ -23525,22 +23975,28 @@
       "severity": "high",
       "detail": "61 chars: \"Finland Passport Photo Maker — Size & Free Editor \"",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "61 chars: \"Finland Passport Photo Maker — Size & Free Editor \""
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "photo/finland-passport::No horizontal scroll on mobile": {
       "id": "photo/finland-passport::No horizontal scroll on mobile",
@@ -23615,22 +24071,28 @@
       "severity": "high",
       "detail": "65 chars: \"France Passport / ID Photo Maker — Size & Free Edi\"",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "65 chars: \"France Passport / ID Photo Maker — Size & Free Edi\""
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "photo/france-passport::Meta description (70–160 chars)": {
       "id": "photo/france-passport::Meta description (70–160 chars)",
@@ -23705,22 +24167,28 @@
       "severity": "high",
       "detail": "62 chars: \"Germany Biometric Photo Maker — Size & Free Editor\"",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "62 chars: \"Germany Biometric Photo Maker — Size & Free Editor\""
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "photo/germany-passport::Meta description (70–160 chars)": {
       "id": "photo/germany-passport::Meta description (70–160 chars)",
@@ -23891,22 +24359,28 @@
       "severity": "high",
       "detail": "63 chars: \"Hong Kong Passport Photo Maker — Size & Free Edito\"",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "63 chars: \"Hong Kong Passport Photo Maker — Size & Free Edito\""
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "photo/hong-kong-passport::No horizontal scroll on mobile": {
       "id": "photo/hong-kong-passport::No horizontal scroll on mobile",
@@ -24013,22 +24487,28 @@
       "severity": "high",
       "detail": "63 chars: \"Indonesia Passport Photo Maker — Size & Free Edito\"",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "63 chars: \"Indonesia Passport Photo Maker — Size & Free Edito\""
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "photo/indonesia-passport::Helpful-content depth (editorial ≥350 words)": {
       "id": "photo/indonesia-passport::Helpful-content depth (editorial ≥350 words)",
@@ -24071,22 +24551,28 @@
       "severity": "high",
       "detail": "61 chars: \"Ireland Passport Photo Maker — Size & Free Editor \"",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "61 chars: \"Ireland Passport Photo Maker — Size & Free Editor \""
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "photo/ireland-passport::No horizontal scroll on mobile": {
       "id": "photo/ireland-passport::No horizontal scroll on mobile",
@@ -24193,22 +24679,28 @@
       "severity": "high",
       "detail": "64 chars: \"Italy Passport / ID Photo Maker — Size & Free Edit\"",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "64 chars: \"Italy Passport / ID Photo Maker — Size & Free Edit\""
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "photo/italy-passport::No horizontal scroll on mobile": {
       "id": "photo/italy-passport::No horizontal scroll on mobile",
@@ -24251,22 +24743,28 @@
       "severity": "high",
       "detail": "61 chars: \"Jamaica Passport Photo Maker — Size & Free Editor \"",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "61 chars: \"Jamaica Passport Photo Maker — Size & Free Editor \""
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "photo/jamaica-passport::Meta description (70–160 chars)": {
       "id": "photo/jamaica-passport::Meta description (70–160 chars)",
@@ -24469,22 +24967,28 @@
       "severity": "high",
       "detail": "69 chars: \"Kazakhstan Passport / ID Photo Maker — Size & Free\"",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "69 chars: \"Kazakhstan Passport / ID Photo Maker — Size & Free\""
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "photo/kazakhstan-passport::Meta description (70–160 chars)": {
       "id": "photo/kazakhstan-passport::Meta description (70–160 chars)",
@@ -24623,22 +25127,28 @@
       "severity": "high",
       "detail": "68 chars: \"Lithuania Passport / ID Photo Maker — Size & Free \"",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "68 chars: \"Lithuania Passport / ID Photo Maker — Size & Free \""
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "photo/lithuania-passport::Meta description (70–160 chars)": {
       "id": "photo/lithuania-passport::Meta description (70–160 chars)",
@@ -24713,22 +25223,28 @@
       "severity": "high",
       "detail": "62 chars: \"Malaysia Passport Photo Maker — Size & Free Editor\"",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "62 chars: \"Malaysia Passport Photo Maker — Size & Free Editor\""
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "photo/malaysia-passport::Meta description (70–160 chars)": {
       "id": "photo/malaysia-passport::Meta description (70–160 chars)",
@@ -24803,22 +25319,28 @@
       "severity": "high",
       "detail": "62 chars: \"Maldives Passport Photo Maker — Size & Free Editor\"",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "62 chars: \"Maldives Passport Photo Maker — Size & Free Editor\""
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "photo/maldives-passport::No horizontal scroll on mobile": {
       "id": "photo/maldives-passport::No horizontal scroll on mobile",
@@ -25021,22 +25543,28 @@
       "severity": "high",
       "detail": "70 chars: \"Netherlands Passport / ID Photo Maker — Size & Fre\"",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "70 chars: \"Netherlands Passport / ID Photo Maker — Size & Fre\""
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "photo/netherlands-passport::Meta description (70–160 chars)": {
       "id": "photo/netherlands-passport::Meta description (70–160 chars)",
@@ -25111,22 +25639,28 @@
       "severity": "high",
       "detail": "65 chars: \"New Zealand Passport Photo Maker — Size & Free Edi\"",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "65 chars: \"New Zealand Passport Photo Maker — Size & Free Edi\""
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "photo/new-zealand-passport::Meta description (70–160 chars)": {
       "id": "photo/new-zealand-passport::Meta description (70–160 chars)",
@@ -25201,22 +25735,28 @@
       "severity": "high",
       "detail": "61 chars: \"Nigeria Passport Photo Maker — Size & Free Editor \"",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "61 chars: \"Nigeria Passport Photo Maker — Size & Free Editor \""
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "photo/nigeria-passport::No horizontal scroll on mobile": {
       "id": "photo/nigeria-passport::No horizontal scroll on mobile",
@@ -25291,22 +25831,28 @@
       "severity": "high",
       "detail": "62 chars: \"Pakistan Passport Photo Maker — Size & Free Editor\"",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "62 chars: \"Pakistan Passport Photo Maker — Size & Free Editor\""
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "photo/pakistan-passport::No horizontal scroll on mobile": {
       "id": "photo/pakistan-passport::No horizontal scroll on mobile",
@@ -25445,22 +25991,28 @@
       "severity": "high",
       "detail": "65 chars: \"Philippines Passport Photo Maker — Size & Free Edi\"",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "65 chars: \"Philippines Passport Photo Maker — Size & Free Edi\""
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "photo/philippines-passport::Meta description (70–160 chars)": {
       "id": "photo/philippines-passport::Meta description (70–160 chars)",
@@ -25567,22 +26119,28 @@
       "severity": "high",
       "detail": "65 chars: \"Poland Passport / ID Photo Maker — Size & Free Edi\"",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "65 chars: \"Poland Passport / ID Photo Maker — Size & Free Edi\""
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "photo/poland-passport::Meta description (70–160 chars)": {
       "id": "photo/poland-passport::Meta description (70–160 chars)",
@@ -25657,22 +26215,28 @@
       "severity": "high",
       "detail": "62 chars: \"Saudi Arabia Visa Photo Maker — Size & Free Editor\"",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "62 chars: \"Saudi Arabia Visa Photo Maker — Size & Free Editor\""
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "photo/saudi-visa::No horizontal scroll on mobile": {
       "id": "photo/saudi-visa::No horizontal scroll on mobile",
@@ -25811,22 +26375,28 @@
       "severity": "high",
       "detail": "68 chars: \"Singapore Passport / IC Photo Maker — Size & Free \"",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "68 chars: \"Singapore Passport / IC Photo Maker — Size & Free \""
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "photo/singapore-passport::No horizontal scroll on mobile": {
       "id": "photo/singapore-passport::No horizontal scroll on mobile",
@@ -25901,22 +26471,28 @@
       "severity": "high",
       "detail": "71 chars: \"South Africa Passport / ID Photo Maker — Size & Fr\"",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "71 chars: \"South Africa Passport / ID Photo Maker — Size & Fr\""
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "photo/south-africa-passport::Meta description (70–160 chars)": {
       "id": "photo/south-africa-passport::Meta description (70–160 chars)",
@@ -26023,22 +26599,28 @@
       "severity": "high",
       "detail": "65 chars: \"South Korea Passport Photo Maker — Size & Free Edi\"",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "65 chars: \"South Korea Passport Photo Maker — Size & Free Edi\""
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "photo/south-korea-passport::No horizontal scroll on mobile": {
       "id": "photo/south-korea-passport::No horizontal scroll on mobile",
@@ -26081,22 +26663,28 @@
       "severity": "high",
       "detail": "65 chars: \"Spain Passport / DNI Photo Maker — Size & Free Edi\"",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "65 chars: \"Spain Passport / DNI Photo Maker — Size & Free Edi\""
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "photo/spain-dni::No horizontal scroll on mobile": {
       "id": "photo/spain-dni::No horizontal scroll on mobile",
@@ -26139,22 +26727,28 @@
       "severity": "high",
       "detail": "70 chars: \"Switzerland Passport / ID Photo Maker — Size & Fre\"",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "70 chars: \"Switzerland Passport / ID Photo Maker — Size & Fre\""
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "photo/switzerland-passport::No horizontal scroll on mobile": {
       "id": "photo/switzerland-passport::No horizontal scroll on mobile",
@@ -26421,22 +27015,28 @@
       "severity": "high",
       "detail": "67 chars: \"Turkey Passport / Visa Photo Maker — Size & Free E\"",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "67 chars: \"Turkey Passport / Visa Photo Maker — Size & Free E\""
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "photo/turkey-passport::No horizontal scroll on mobile": {
       "id": "photo/turkey-passport::No horizontal scroll on mobile",
@@ -26511,22 +27111,28 @@
       "severity": "high",
       "detail": "67 chars: \"UAE Visa / Emirates ID Photo Maker — Size & Free E\"",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "67 chars: \"UAE Visa / Emirates ID Photo Maker — Size & Free E\""
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "photo/uae-visa::No horizontal scroll on mobile": {
       "id": "photo/uae-visa::No horizontal scroll on mobile",
@@ -26697,22 +27303,28 @@
       "severity": "high",
       "detail": "65 chars: \"US Visa / DV Lottery Photo Maker — Size & Free Edi\"",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "65 chars: \"US Visa / DV Lottery Photo Maker — Size & Free Edi\""
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "photo/us-visa::Meta description (70–160 chars)": {
       "id": "photo/us-visa::Meta description (70–160 chars)",
@@ -26787,22 +27399,28 @@
       "severity": "high",
       "detail": "68 chars: \"Vietnam Passport / Visa Photo Maker — Size & Free \"",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "68 chars: \"Vietnam Passport / Visa Photo Maker — Size & Free \""
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "photo/vietnam-visa::Helpful-content depth (editorial ≥350 words)": {
       "id": "photo/vietnam-visa::Helpful-content depth (editorial ≥350 words)",
@@ -27359,15 +27977,20 @@
       "severity": "high",
       "detail": "label (3)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "color-contrast (1), label (3)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -27375,7 +27998,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "physics/capacitor-calculator::Helpful-content depth (editorial ≥350 words)": {
       "id": "physics/capacitor-calculator::Helpful-content depth (editorial ≥350 words)",
@@ -27582,7 +28206,7 @@
       "fixType": "manual",
       "status": "open",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
@@ -27998,7 +28622,7 @@
       "fixType": "manual",
       "status": "open",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
@@ -29154,15 +29778,20 @@
       "severity": "high",
       "detail": "label (3)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "color-contrast (1), label (3)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -29170,7 +29799,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "physics/series-parallel-resistor-calculator::Helpful-content depth (editorial ≥350 words)": {
       "id": "physics/series-parallel-resistor-calculator::Helpful-content depth (editorial ≥350 words)",
@@ -29375,7 +30005,7 @@
       "fixType": "manual",
       "status": "open",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
@@ -29756,15 +30386,20 @@
       "severity": "high",
       "detail": "label (3)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "label (3)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -29772,7 +30407,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "productivity/countdown-timer::No serious/critical axe violations": {
       "id": "productivity/countdown-timer::No serious/critical axe violations",
@@ -29783,15 +30419,20 @@
       "severity": "high",
       "detail": "label (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "label (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -29799,7 +30440,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "productivity/decision-matrix::No serious/critical axe violations": {
       "id": "productivity/decision-matrix::No serious/critical axe violations",
@@ -29810,15 +30452,20 @@
       "severity": "high",
       "detail": "color-contrast (1), label (8)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "color-contrast (1), label (8)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -29826,7 +30473,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "productivity/decision-matrix::Helpful-content depth (editorial ≥350 words)": {
       "id": "productivity/decision-matrix::Helpful-content depth (editorial ≥350 words)",
@@ -29869,15 +30517,20 @@
       "severity": "high",
       "detail": "select-name (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "color-contrast (6), select-name (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -29885,7 +30538,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "productivity/flowchart-maker::No serious/critical axe violations": {
       "id": "productivity/flowchart-maker::No serious/critical axe violations",
@@ -29896,15 +30550,20 @@
       "severity": "high",
       "detail": "label (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "label (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -29912,7 +30571,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "productivity/gantt-chart-maker::No serious/critical axe violations": {
       "id": "productivity/gantt-chart-maker::No serious/critical axe violations",
@@ -29923,15 +30583,20 @@
       "severity": "high",
       "detail": "label (20), scrollable-region-focusable (1), select-name (4)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "label (20), scrollable-region-focusable (1), select-name (4)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -29939,7 +30604,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "productivity/kanban-board::No serious/critical axe violations": {
       "id": "productivity/kanban-board::No serious/critical axe violations",
@@ -29950,15 +30616,20 @@
       "severity": "high",
       "detail": "label (3)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "color-contrast (1), label (3)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -29966,7 +30637,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "productivity/kanban-board::Helpful-content depth (editorial ≥350 words)": {
       "id": "productivity/kanban-board::Helpful-content depth (editorial ≥350 words)",
@@ -30074,15 +30746,20 @@
       "severity": "high",
       "detail": "label-title-only (6), label (3)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "label-title-only (6), label (3)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -30090,7 +30767,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "productivity/pros-and-cons-list::No serious/critical axe violations": {
       "id": "productivity/pros-and-cons-list::No serious/critical axe violations",
@@ -30101,15 +30779,20 @@
       "severity": "high",
       "detail": "label-title-only (2)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "label-title-only (2)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -30117,7 +30800,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "productivity/random-name-picker-wheel::Produces output for its input": {
       "id": "productivity/random-name-picker-wheel::Produces output for its input",
@@ -30289,15 +30973,20 @@
       "severity": "high",
       "detail": "label (15)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "label (15)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -30305,7 +30994,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "productivity/rice-prioritization::Helpful-content depth (editorial ≥350 words)": {
       "id": "productivity/rice-prioritization::Helpful-content depth (editorial ≥350 words)",
@@ -30380,15 +31070,20 @@
       "severity": "high",
       "detail": "label (4), scrollable-region-focusable (1), select-name (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "label (4), scrollable-region-focusable (1), select-name (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -30396,7 +31091,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "productivity/swot-analysis::No serious/critical axe violations": {
       "id": "productivity/swot-analysis::No serious/critical axe violations",
@@ -30472,15 +31168,20 @@
       "severity": "high",
       "detail": "color-contrast (6), label (9), select-name (3)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "color-contrast (6), label (9), select-name (3)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -30488,7 +31189,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "productivity/time-blocking-planner::No horizontal scroll on mobile": {
       "id": "productivity/time-blocking-planner::No horizontal scroll on mobile",
@@ -30596,15 +31298,20 @@
       "severity": "high",
       "detail": "label-title-only (1), scrollable-region-focusable (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "label-title-only (1), scrollable-region-focusable (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -30612,7 +31319,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "productivity/whiteboard::Helpful-content depth (editorial ≥350 words)": {
       "id": "productivity/whiteboard::Helpful-content depth (editorial ≥350 words)",
@@ -30687,15 +31395,20 @@
       "severity": "high",
       "detail": "label (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "label (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -30703,7 +31416,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "security/certificate-decoder::No serious/critical axe violations": {
       "id": "security/certificate-decoder::No serious/critical axe violations",
@@ -30907,15 +31621,20 @@
       "severity": "high",
       "detail": "select-name (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "color-contrast (8), select-name (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -30923,7 +31642,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "security/totp-generator::Title present (15–60 chars)": {
       "id": "security/totp-generator::Title present (15–60 chars)",
@@ -30966,15 +31686,20 @@
       "severity": "high",
       "detail": "label (1), select-name (2)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "label (1), select-name (2)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -30982,7 +31707,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "size/bra-size-converter::No serious/critical axe violations": {
       "id": "size/bra-size-converter::No serious/critical axe violations",
@@ -31093,7 +31819,7 @@
       "fixType": "manual",
       "status": "open",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
@@ -31217,7 +31943,7 @@
       "fixType": "manual",
       "status": "open",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
@@ -31404,15 +32130,20 @@
       "severity": "high",
       "detail": "label (12), select-name (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "color-contrast (1), label (12), select-name (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -31420,7 +32151,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "solar/solar-panel-tilt-angle-calculator::Title present (15–60 chars)": {
       "id": "solar/solar-panel-tilt-angle-calculator::Title present (15–60 chars)",
@@ -31722,7 +32454,7 @@
       "fixType": "manual",
       "status": "open",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
@@ -32426,7 +33158,7 @@
       "fixType": "manual",
       "status": "open",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
@@ -32546,15 +33278,20 @@
       "severity": "high",
       "detail": "label (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "label (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -32562,7 +33299,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "text/invisible-character-detector::Title present (15–60 chars)": {
       "id": "text/invisible-character-detector::Title present (15–60 chars)",
@@ -32637,15 +33375,20 @@
       "severity": "high",
       "detail": "label (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "label (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -32653,7 +33396,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "text/line-tools::Title present (15–60 chars)": {
       "id": "text/line-tools::Title present (15–60 chars)",
@@ -33148,7 +33892,7 @@
       "fixType": "manual",
       "status": "open",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
@@ -33301,15 +34045,20 @@
       "severity": "high",
       "detail": "scrollable-region-focusable (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "color-contrast (4), scrollable-region-focusable (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -33317,7 +34066,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "text/word-frequency-counter::Helpful-content depth (editorial ≥350 words)": {
       "id": "text/word-frequency-counter::Helpful-content depth (editorial ≥350 words)",
@@ -33489,22 +34239,28 @@
       "severity": "high",
       "detail": "67 chars: \"Central Europe to Japan Time Converter — Live & Pr\"",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "67 chars: \"Central Europe to Japan Time Converter — Live & Pr\""
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "time/zones/cet-to-jst::No serious/critical axe violations": {
       "id": "time/zones/cet-to-jst::No serious/critical axe violations",
@@ -33515,15 +34271,20 @@
       "severity": "high",
       "detail": "scrollable-region-focusable (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "color-contrast (2), scrollable-region-focusable (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -33531,7 +34292,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "time/zones/est-to-cet::Title present (15–60 chars)": {
       "id": "time/zones/est-to-cet::Title present (15–60 chars)",
@@ -33542,22 +34304,28 @@
       "severity": "high",
       "detail": "72 chars: \"US Eastern to Central Europe Time Converter — Live\"",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "72 chars: \"US Eastern to Central Europe Time Converter — Live\""
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "time/zones/est-to-cet::No serious/critical axe violations": {
       "id": "time/zones/est-to-cet::No serious/critical axe violations",
@@ -33568,15 +34336,20 @@
       "severity": "high",
       "detail": "scrollable-region-focusable (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "color-contrast (2), scrollable-region-focusable (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -33584,7 +34357,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "time/zones/est-to-cst::Title present (15–60 chars)": {
       "id": "time/zones/est-to-cst::Title present (15–60 chars)",
@@ -33595,22 +34369,28 @@
       "severity": "high",
       "detail": "68 chars: \"US Eastern to US Central Time Converter — Live & P\"",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "68 chars: \"US Eastern to US Central Time Converter — Live & P\""
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "time/zones/est-to-cst::No serious/critical axe violations": {
       "id": "time/zones/est-to-cst::No serious/critical axe violations",
@@ -33621,15 +34401,20 @@
       "severity": "high",
       "detail": "scrollable-region-focusable (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "color-contrast (2), scrollable-region-focusable (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -33637,7 +34422,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "time/zones/est-to-gmt::No serious/critical axe violations": {
       "id": "time/zones/est-to-gmt::No serious/critical axe violations",
@@ -33648,15 +34434,20 @@
       "severity": "high",
       "detail": "scrollable-region-focusable (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "color-contrast (2), scrollable-region-focusable (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -33664,7 +34455,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "time/zones/est-to-pst::Title present (15–60 chars)": {
       "id": "time/zones/est-to-pst::Title present (15–60 chars)",
@@ -33675,22 +34467,28 @@
       "severity": "high",
       "detail": "68 chars: \"US Eastern to US Pacific Time Converter — Live & P\"",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "68 chars: \"US Eastern to US Pacific Time Converter — Live & P\""
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "time/zones/est-to-pst::No serious/critical axe violations": {
       "id": "time/zones/est-to-pst::No serious/critical axe violations",
@@ -33701,15 +34499,20 @@
       "severity": "high",
       "detail": "scrollable-region-focusable (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "color-contrast (2), scrollable-region-focusable (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -33717,7 +34520,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "time/zones/gmt-to-aest::Title present (15–60 chars)": {
       "id": "time/zones/gmt-to-aest::Title present (15–60 chars)",
@@ -33728,22 +34532,28 @@
       "severity": "high",
       "detail": "67 chars: \"UK to Australia Eastern Time Converter — Live & Pr\"",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "67 chars: \"UK to Australia Eastern Time Converter — Live & Pr\""
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "time/zones/gmt-to-aest::No serious/critical axe violations": {
       "id": "time/zones/gmt-to-aest::No serious/critical axe violations",
@@ -33754,15 +34564,20 @@
       "severity": "high",
       "detail": "scrollable-region-focusable (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "color-contrast (2), scrollable-region-focusable (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -33770,7 +34585,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "time/zones/gmt-to-cet::Title present (15–60 chars)": {
       "id": "time/zones/gmt-to-cet::Title present (15–60 chars)",
@@ -33781,22 +34597,28 @@
       "severity": "high",
       "detail": "64 chars: \"UK to Central Europe Time Converter — Live & Priva\"",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "64 chars: \"UK to Central Europe Time Converter — Live & Priva\""
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "time/zones/gmt-to-cet::No serious/critical axe violations": {
       "id": "time/zones/gmt-to-cet::No serious/critical axe violations",
@@ -33807,15 +34629,20 @@
       "severity": "high",
       "detail": "scrollable-region-focusable (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "color-contrast (2), scrollable-region-focusable (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -33823,7 +34650,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "time/zones/ist-to-aest::Title present (15–60 chars)": {
       "id": "time/zones/ist-to-aest::Title present (15–60 chars)",
@@ -33834,22 +34662,28 @@
       "severity": "high",
       "detail": "70 chars: \"India to Australia Eastern Time Converter — Live &\"",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "70 chars: \"India to Australia Eastern Time Converter — Live &\""
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "time/zones/ist-to-aest::No serious/critical axe violations": {
       "id": "time/zones/ist-to-aest::No serious/critical axe violations",
@@ -33860,15 +34694,20 @@
       "severity": "high",
       "detail": "scrollable-region-focusable (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "color-contrast (2), scrollable-region-focusable (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -33876,7 +34715,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "time/zones/ist-to-cet::Title present (15–60 chars)": {
       "id": "time/zones/ist-to-cet::Title present (15–60 chars)",
@@ -33887,22 +34727,28 @@
       "severity": "high",
       "detail": "67 chars: \"India to Central Europe Time Converter — Live & Pr\"",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "67 chars: \"India to Central Europe Time Converter — Live & Pr\""
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "time/zones/ist-to-cet::No serious/critical axe violations": {
       "id": "time/zones/ist-to-cet::No serious/critical axe violations",
@@ -33913,15 +34759,20 @@
       "severity": "high",
       "detail": "scrollable-region-focusable (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "color-contrast (2), scrollable-region-focusable (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -33929,7 +34780,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "time/zones/ist-to-cst::Title present (15–60 chars)": {
       "id": "time/zones/ist-to-cst::Title present (15–60 chars)",
@@ -33940,22 +34792,28 @@
       "severity": "high",
       "detail": "63 chars: \"India to US Central Time Converter — Live & Privat\"",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "63 chars: \"India to US Central Time Converter — Live & Privat\""
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "time/zones/ist-to-cst::No serious/critical axe violations": {
       "id": "time/zones/ist-to-cst::No serious/critical axe violations",
@@ -33966,15 +34824,20 @@
       "severity": "high",
       "detail": "scrollable-region-focusable (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "color-contrast (2), scrollable-region-focusable (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -33982,7 +34845,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "time/zones/ist-to-est::Title present (15–60 chars)": {
       "id": "time/zones/ist-to-est::Title present (15–60 chars)",
@@ -33993,22 +34857,28 @@
       "severity": "high",
       "detail": "63 chars: \"India to US Eastern Time Converter — Live & Privat\"",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "63 chars: \"India to US Eastern Time Converter — Live & Privat\""
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "time/zones/ist-to-est::No serious/critical axe violations": {
       "id": "time/zones/ist-to-est::No serious/critical axe violations",
@@ -34019,15 +34889,20 @@
       "severity": "high",
       "detail": "scrollable-region-focusable (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "color-contrast (2), scrollable-region-focusable (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -34035,7 +34910,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "time/zones/ist-to-gmt::No serious/critical axe violations": {
       "id": "time/zones/ist-to-gmt::No serious/critical axe violations",
@@ -34046,15 +34922,20 @@
       "severity": "high",
       "detail": "scrollable-region-focusable (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "color-contrast (2), scrollable-region-focusable (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -34062,7 +34943,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "time/zones/ist-to-gst::No serious/critical axe violations": {
       "id": "time/zones/ist-to-gst::No serious/critical axe violations",
@@ -34073,15 +34955,20 @@
       "severity": "high",
       "detail": "scrollable-region-focusable (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "color-contrast (2), scrollable-region-focusable (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -34089,7 +34976,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "time/zones/ist-to-jst::No serious/critical axe violations": {
       "id": "time/zones/ist-to-jst::No serious/critical axe violations",
@@ -34100,15 +34988,20 @@
       "severity": "high",
       "detail": "scrollable-region-focusable (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "color-contrast (2), scrollable-region-focusable (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -34116,7 +35009,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "time/zones/ist-to-pst::Title present (15–60 chars)": {
       "id": "time/zones/ist-to-pst::Title present (15–60 chars)",
@@ -34127,22 +35021,28 @@
       "severity": "high",
       "detail": "63 chars: \"India to US Pacific Time Converter — Live & Privat\"",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "63 chars: \"India to US Pacific Time Converter — Live & Privat\""
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "time/zones/ist-to-pst::No serious/critical axe violations": {
       "id": "time/zones/ist-to-pst::No serious/critical axe violations",
@@ -34153,15 +35053,20 @@
       "severity": "high",
       "detail": "scrollable-region-focusable (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "color-contrast (2), scrollable-region-focusable (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -34169,7 +35074,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "time/zones/ist-to-sgt::Title present (15–60 chars)": {
       "id": "time/zones/ist-to-sgt::Title present (15–60 chars)",
@@ -34180,22 +35086,28 @@
       "severity": "high",
       "detail": "62 chars: \"India to Singapore Time Converter — Live & Private\"",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "62 chars: \"India to Singapore Time Converter — Live & Private\""
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "time/zones/ist-to-sgt::No serious/critical axe violations": {
       "id": "time/zones/ist-to-sgt::No serious/critical axe violations",
@@ -34206,15 +35118,20 @@
       "severity": "high",
       "detail": "scrollable-region-focusable (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "color-contrast (2), scrollable-region-focusable (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -34222,7 +35139,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "time/zones/pst-to-cst::Title present (15–60 chars)": {
       "id": "time/zones/pst-to-cst::Title present (15–60 chars)",
@@ -34233,22 +35151,28 @@
       "severity": "high",
       "detail": "68 chars: \"US Pacific to US Central Time Converter — Live & P\"",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "68 chars: \"US Pacific to US Central Time Converter — Live & P\""
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "time/zones/pst-to-cst::No serious/critical axe violations": {
       "id": "time/zones/pst-to-cst::No serious/critical axe violations",
@@ -34259,15 +35183,20 @@
       "severity": "high",
       "detail": "scrollable-region-focusable (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "color-contrast (2), scrollable-region-focusable (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -34275,7 +35204,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "time/zones/pst-to-gmt::No serious/critical axe violations": {
       "id": "time/zones/pst-to-gmt::No serious/critical axe violations",
@@ -34286,15 +35216,20 @@
       "severity": "high",
       "detail": "scrollable-region-focusable (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "color-contrast (2), scrollable-region-focusable (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -34302,7 +35237,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "time/zones/pst-to-jst::Title present (15–60 chars)": {
       "id": "time/zones/pst-to-jst::Title present (15–60 chars)",
@@ -34313,22 +35249,28 @@
       "severity": "high",
       "detail": "63 chars: \"US Pacific to Japan Time Converter — Live & Privat\"",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "63 chars: \"US Pacific to Japan Time Converter — Live & Privat\""
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "time/zones/pst-to-jst::No serious/critical axe violations": {
       "id": "time/zones/pst-to-jst::No serious/critical axe violations",
@@ -34339,15 +35281,20 @@
       "severity": "high",
       "detail": "scrollable-region-focusable (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "color-contrast (2), scrollable-region-focusable (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -34355,7 +35302,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "travel/coordinate-converter::Title present (15–60 chars)": {
       "id": "travel/coordinate-converter::Title present (15–60 chars)",
@@ -34462,15 +35410,20 @@
       "severity": "high",
       "detail": "select-name (2)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "select-name (2)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -34478,7 +35431,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "travel/luggage-size-calculator::Title present (15–60 chars)": {
       "id": "travel/luggage-size-calculator::Title present (15–60 chars)",
@@ -34521,15 +35475,20 @@
       "severity": "high",
       "detail": "select-name (2)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "select-name (2)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -34537,7 +35496,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "travel/road-trip-calculator::Helpful-content depth (editorial ≥350 words)": {
       "id": "travel/road-trip-calculator::Helpful-content depth (editorial ≥350 words)",
@@ -36887,7 +37847,7 @@
       "fixType": "manual",
       "status": "open",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
@@ -36945,7 +37905,7 @@
       "fixType": "manual",
       "status": "open",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
@@ -45769,15 +46729,20 @@
       "severity": "high",
       "detail": "label (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
           "date": "2026-08-24",
           "event": "opened",
           "note": "label (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -45785,7 +46750,8 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     },
     "video/subtitle-shifter::Helpful-content depth (editorial ≥350 words)": {
       "id": "video/subtitle-shifter::Helpful-content depth (editorial ≥350 words)",
@@ -46510,7 +47476,7 @@
       "fixType": "manual",
       "status": "open",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
@@ -46536,7 +47502,7 @@
       "fixType": "manual",
       "status": "open",
       "firstSeen": "2026-08-24",
-      "lastSeen": "2026-08-24",
+      "lastSeen": "2026-08-25",
       "attempts": 0,
       "history": [
         {
@@ -46550,6 +47516,59 @@
       "dueBy": "2026-08-26",
       "sla": "on-track",
       "assignedTo": "fixer"
+    },
+    "photo/japan-visa::Core Web Vitals: LCP good (<2.5s)": {
+      "id": "photo/japan-visa::Core Web Vitals: LCP good (<2.5s)",
+      "tool": "photo/japan-visa",
+      "url": "https://lazytools.io/photo/japan-visa/",
+      "category": "google",
+      "check": "Core Web Vitals: LCP good (<2.5s)",
+      "severity": "medium",
+      "detail": "LCP 2756ms (lab)",
+      "fixType": "manual",
+      "status": "open",
+      "firstSeen": "2026-08-25",
+      "lastSeen": "2026-08-25",
+      "attempts": 0,
+      "history": [
+        {
+          "date": "2026-08-25",
+          "event": "opened",
+          "note": "LCP 2756ms (lab)"
+        }
+      ],
+      "effortHours": 6,
+      "eta": "~6h (1 day)",
+      "dueBy": "2026-08-30",
+      "sla": "on-track",
+      "assignedTo": "fixer"
+    },
+    "productivity/mind-map-maker::No serious/critical axe violations": {
+      "id": "productivity/mind-map-maker::No serious/critical axe violations",
+      "tool": "productivity/mind-map-maker",
+      "url": "https://lazytools.io/productivity/mind-map-maker/",
+      "category": "accessibility",
+      "check": "No serious/critical axe violations",
+      "severity": "high",
+      "detail": "aria-prohibited-attr (1)",
+      "fixType": "manual",
+      "status": "open",
+      "firstSeen": "2026-08-25",
+      "lastSeen": "2026-08-25",
+      "attempts": 0,
+      "history": [
+        {
+          "date": "2026-08-25",
+          "event": "opened",
+          "note": "aria-prohibited-attr (1)"
+        }
+      ],
+      "effortHours": 6,
+      "eta": "~6h (1 day)",
+      "dueBy": "2026-08-27",
+      "sla": "on-track",
+      "assignedTo": "fixer",
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
     }
   },
   "updated": "2026-08-25",
@@ -46583,11 +47602,11 @@
     },
     {
       "date": "2026-08-25",
-      "tools": 10,
+      "tools": 1073,
       "avg": 100,
-      "issues": 0,
-      "opened": 0,
-      "resolved": 0,
+      "issues": 41,
+      "opened": 2,
+      "resolved": 161,
       "challenged": 0
     }
   ],
@@ -47687,7 +48706,7 @@
       {
         "date": "2026-08-25",
         "auditor": 5,
-        "fixer": 4
+        "fixer": 4.7
       }
     ],
     "weekly": [
@@ -47700,7 +48719,7 @@
       {
         "week": "2026-W35",
         "auditor": 5,
-        "fixer": 4.5,
+        "fixer": 4.9,
         "days": 2
       }
     ]
@@ -47712,7 +48731,7 @@
       "task": "Reviewed 8 research idea(s) (avg 4/5); approved 0. Tokens 0/400000.",
       "kpis": {
         "overdue": 0,
-        "onTrack": 200,
+        "onTrack": 41,
         "slaPct": 100,
         "tokensToday": 0,
         "tokenCap": 400000,
@@ -47736,17 +48755,17 @@
     "fixer": {
       "role": "Senior dev — auto + LLM fixes, build-gated, 24/7",
       "status": "fixing",
-      "task": "Auto-fixing 50 title item(s), build-gated. Driving 111 systemic fix(es). 0 awaiting re-verify.",
+      "task": "Auto-fixing 0 title item(s), build-gated. Driving 1 systemic fix(es). 0 awaiting re-verify.",
       "kpis": {
-        "open": 200,
-        "fixable": 50,
-        "systemic": 111,
+        "open": 41,
+        "fixable": 0,
+        "systemic": 1,
         "verifying": 0,
-        "completed": 1279
+        "completed": 1440
       },
       "score": {
-        "daily": 4,
-        "weekly": 4.5
+        "daily": 4.7,
+        "weekly": 4.9
       }
     },
     "researcher": {
