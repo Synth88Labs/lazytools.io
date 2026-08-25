@@ -3724,7 +3724,7 @@
       "severity": "medium",
       "detail": "CLS 0.129",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-25",
       "attempts": 0,
@@ -3733,13 +3733,19 @@
           "date": "2026-08-24",
           "event": "opened",
           "note": "CLS 0.129"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-29",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "calc/age-calculator::Helpful-content depth (editorial ≥350 words)": {
       "id": "calc/age-calculator::Helpful-content depth (editorial ≥350 words)",
@@ -3820,7 +3826,7 @@
       "severity": "medium",
       "detail": "CLS 0.107",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-25",
       "attempts": 0,
@@ -3829,13 +3835,19 @@
           "date": "2026-08-24",
           "event": "opened",
           "note": "CLS 0.107"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-29",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "calc/blood-sugar-converter::Title present (15–60 chars)": {
       "id": "calc/blood-sugar-converter::Title present (15–60 chars)",
@@ -4006,7 +4018,7 @@
       "severity": "medium",
       "detail": "CLS 0.122",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-25",
       "attempts": 0,
@@ -4015,13 +4027,19 @@
           "date": "2026-08-24",
           "event": "opened",
           "note": "CLS 0.122"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-29",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "calc/conception-date-calculator::Helpful-content depth (editorial ≥350 words)": {
       "id": "calc/conception-date-calculator::Helpful-content depth (editorial ≥350 words)",
@@ -4166,7 +4184,7 @@
       "severity": "medium",
       "detail": "CLS 0.108",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-25",
       "attempts": 0,
@@ -4175,13 +4193,19 @@
           "date": "2026-08-24",
           "event": "opened",
           "note": "CLS 0.108"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-29",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "calc/days-until-date-calculator::Helpful-content depth (editorial ≥350 words)": {
       "id": "calc/days-until-date-calculator::Helpful-content depth (editorial ≥350 words)",
@@ -4262,7 +4286,7 @@
       "severity": "medium",
       "detail": "CLS 0.131",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-25",
       "attempts": 0,
@@ -4271,13 +4295,19 @@
           "date": "2026-08-24",
           "event": "opened",
           "note": "CLS 0.131"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-29",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "calc/discount-calculator::Helpful-content depth (editorial ≥350 words)": {
       "id": "calc/discount-calculator::Helpful-content depth (editorial ≥350 words)",
@@ -4390,7 +4420,7 @@
       "severity": "medium",
       "detail": "CLS 0.137",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-25",
       "attempts": 0,
@@ -4399,13 +4429,19 @@
           "date": "2026-08-24",
           "event": "opened",
           "note": "CLS 0.137"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-29",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "calc/fuel-cost-calculator::Core Web Vitals: CLS good (<0.1)": {
       "id": "calc/fuel-cost-calculator::Core Web Vitals: CLS good (<0.1)",
@@ -4416,7 +4452,7 @@
       "severity": "medium",
       "detail": "CLS 0.123",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-25",
       "attempts": 0,
@@ -4425,13 +4461,19 @@
           "date": "2026-08-24",
           "event": "opened",
           "note": "CLS 0.123"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-29",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "calc/fuel-cost-calculator::Helpful-content depth (editorial ≥350 words)": {
       "id": "calc/fuel-cost-calculator::Helpful-content depth (editorial ≥350 words)",
@@ -4614,7 +4656,7 @@
       "severity": "medium",
       "detail": "CLS 0.142",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-25",
       "attempts": 0,
@@ -4623,13 +4665,19 @@
           "date": "2026-08-24",
           "event": "opened",
           "note": "CLS 0.142"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-29",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "calc/hourly-to-salary-calculator::Helpful-content depth (editorial ≥350 words)": {
       "id": "calc/hourly-to-salary-calculator::Helpful-content depth (editorial ≥350 words)",
@@ -4672,7 +4720,7 @@
       "severity": "medium",
       "detail": "CLS 0.126",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-25",
       "attempts": 0,
@@ -4681,13 +4729,19 @@
           "date": "2026-08-24",
           "event": "opened",
           "note": "CLS 0.126"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-29",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "calc/iv-drip-rate-calculator::Title present (15–60 chars)": {
       "id": "calc/iv-drip-rate-calculator::Title present (15–60 chars)",
@@ -4730,7 +4784,7 @@
       "severity": "medium",
       "detail": "CLS 0.106",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-25",
       "attempts": 0,
@@ -4739,13 +4793,19 @@
           "date": "2026-08-24",
           "event": "opened",
           "note": "CLS 0.106"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-29",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "calc/mortgage-calculator::Meta description (70–160 chars)": {
       "id": "calc/mortgage-calculator::Meta description (70–160 chars)",
@@ -4827,7 +4887,7 @@
       "severity": "medium",
       "detail": "CLS 0.152",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-25",
       "attempts": 0,
@@ -4836,13 +4896,19 @@
           "date": "2026-08-24",
           "event": "opened",
           "note": "CLS 0.152"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-29",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "calc/overtime-pay-calculator::Core Web Vitals: CLS good (<0.1)": {
       "id": "calc/overtime-pay-calculator::Core Web Vitals: CLS good (<0.1)",
@@ -4853,7 +4919,7 @@
       "severity": "medium",
       "detail": "CLS 0.138",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-25",
       "attempts": 0,
@@ -4862,13 +4928,19 @@
           "date": "2026-08-24",
           "event": "opened",
           "note": "CLS 0.138"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-29",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "calc/overtime-pay-calculator::Helpful-content depth (editorial ≥350 words)": {
       "id": "calc/overtime-pay-calculator::Helpful-content depth (editorial ≥350 words)",
@@ -5013,7 +5085,7 @@
       "severity": "medium",
       "detail": "CLS 0.116",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-25",
       "attempts": 0,
@@ -5022,13 +5094,19 @@
           "date": "2026-08-24",
           "event": "opened",
           "note": "CLS 0.116"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-29",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "calc/simple-interest-calculator::Core Web Vitals: CLS good (<0.1)": {
       "id": "calc/simple-interest-calculator::Core Web Vitals: CLS good (<0.1)",
@@ -5039,7 +5117,7 @@
       "severity": "medium",
       "detail": "CLS 0.111",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-25",
       "attempts": 0,
@@ -5048,13 +5126,19 @@
           "date": "2026-08-24",
           "event": "opened",
           "note": "CLS 0.111"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-29",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "calc/simple-interest-calculator::Helpful-content depth (editorial ≥350 words)": {
       "id": "calc/simple-interest-calculator::Helpful-content depth (editorial ≥350 words)",
@@ -5130,7 +5214,7 @@
       "severity": "medium",
       "detail": "CLS 0.159",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-25",
       "attempts": 0,
@@ -5139,13 +5223,19 @@
           "date": "2026-08-24",
           "event": "opened",
           "note": "CLS 0.159"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-29",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "calc/square-footage-calculator::Meta description (70–160 chars)": {
       "id": "calc/square-footage-calculator::Meta description (70–160 chars)",
@@ -5194,7 +5284,7 @@
       "severity": "medium",
       "detail": "CLS 0.133",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-25",
       "attempts": 0,
@@ -5203,13 +5293,19 @@
           "date": "2026-08-24",
           "event": "opened",
           "note": "CLS 0.133"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-29",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "calc/tdee-calculator::Meta description (70–160 chars)": {
       "id": "calc/tdee-calculator::Meta description (70–160 chars)",
@@ -5290,7 +5386,7 @@
       "severity": "medium",
       "detail": "CLS 0.161",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-25",
       "attempts": 0,
@@ -5299,13 +5395,19 @@
           "date": "2026-08-24",
           "event": "opened",
           "note": "CLS 0.161"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-29",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "calc/test-grade-calculator::Helpful-content depth (editorial ≥350 words)": {
       "id": "calc/test-grade-calculator::Helpful-content depth (editorial ≥350 words)",
@@ -5412,7 +5514,7 @@
       "severity": "medium",
       "detail": "CLS 0.115",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-25",
       "attempts": 0,
@@ -5421,13 +5523,19 @@
           "date": "2026-08-24",
           "event": "opened",
           "note": "CLS 0.115"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-29",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "calc/unit-price-calculator::Helpful-content depth (editorial ≥350 words)": {
       "id": "calc/unit-price-calculator::Helpful-content depth (editorial ≥350 words)",
@@ -6215,7 +6323,7 @@
       "severity": "medium",
       "detail": "CLS 0.286",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-25",
       "attempts": 0,
@@ -6224,13 +6332,19 @@
           "date": "2026-08-24",
           "event": "opened",
           "note": "CLS 0.286"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-29",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "chemistry/arrhenius-equation-calculator::Helpful-content depth (editorial ≥350 words)": {
       "id": "chemistry/arrhenius-equation-calculator::Helpful-content depth (editorial ≥350 words)",
@@ -7954,7 +8068,7 @@
       "severity": "medium",
       "detail": "CLS 0.264",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-25",
       "attempts": 0,
@@ -7963,13 +8077,19 @@
           "date": "2026-08-24",
           "event": "opened",
           "note": "CLS 0.264"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-29",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "chemistry/nernst-equation-calculator::Helpful-content depth (editorial ≥350 words)": {
       "id": "chemistry/nernst-equation-calculator::Helpful-content depth (editorial ≥350 words)",
@@ -11312,7 +11432,7 @@
       "severity": "medium",
       "detail": "CLS 0.1",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-25",
       "attempts": 0,
@@ -11321,13 +11441,19 @@
           "date": "2026-08-24",
           "event": "opened",
           "note": "CLS 0.1"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-29",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "cooking/yeast-converter::Title present (15–60 chars)": {
       "id": "cooking/yeast-converter::Title present (15–60 chars)",
@@ -12365,7 +12491,7 @@
       "severity": "medium",
       "detail": "CLS 0.12",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-25",
       "attempts": 0,
@@ -12374,13 +12500,19 @@
           "date": "2026-08-24",
           "event": "opened",
           "note": "CLS 0.12"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-29",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "dev/jwt-decoder::Helpful-content depth (editorial ≥350 words)": {
       "id": "dev/jwt-decoder::Helpful-content depth (editorial ≥350 words)",
@@ -15965,7 +16097,7 @@
       "severity": "medium",
       "detail": "CLS 0.105",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-25",
       "attempts": 0,
@@ -15974,13 +16106,19 @@
           "date": "2026-08-24",
           "event": "opened",
           "note": "CLS 0.105"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-29",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "fonts/css-gradient-text-generator::No serious/critical axe violations": {
       "id": "fonts/css-gradient-text-generator::No serious/critical axe violations",
@@ -16512,7 +16650,7 @@
       "severity": "medium",
       "detail": "CLS 0.258",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-25",
       "attempts": 0,
@@ -16521,13 +16659,19 @@
           "date": "2026-08-24",
           "event": "opened",
           "note": "CLS 0.258"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-29",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "fonts/line-length-calculator::Title present (15–60 chars)": {
       "id": "fonts/line-length-calculator::Title present (15–60 chars)",
@@ -20094,7 +20238,7 @@
       "severity": "medium",
       "detail": "CLS 0.241",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-25",
       "attempts": 0,
@@ -20103,13 +20247,19 @@
           "date": "2026-08-24",
           "event": "opened",
           "note": "CLS 0.241"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-29",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "image/combine-images::No serious/critical axe violations": {
       "id": "image/combine-images::No serious/critical axe violations",
@@ -22280,7 +22430,7 @@
       "severity": "medium",
       "detail": "CLS 0.112",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-25",
       "attempts": 0,
@@ -22289,13 +22439,19 @@
           "date": "2026-08-24",
           "event": "opened",
           "note": "CLS 0.112"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-29",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "pdf/redaction-checker::Meta description (70–160 chars)": {
       "id": "pdf/redaction-checker::Meta description (70–160 chars)",
@@ -28204,7 +28360,7 @@
       "severity": "medium",
       "detail": "CLS 0.149",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-25",
       "attempts": 0,
@@ -28213,13 +28369,19 @@
           "date": "2026-08-24",
           "event": "opened",
           "note": "CLS 0.149"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-29",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "physics/coulombs-law-calculator::No serious/critical axe violations": {
       "id": "physics/coulombs-law-calculator::No serious/critical axe violations",
@@ -28620,7 +28782,7 @@
       "severity": "high",
       "detail": "80px overflow at 375px",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-25",
       "attempts": 0,
@@ -28629,13 +28791,19 @@
           "date": "2026-08-24",
           "event": "opened",
           "note": "80px overflow at 375px"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "physics/gravitational-force-calculator::Helpful-content depth (editorial ≥350 words)": {
       "id": "physics/gravitational-force-calculator::Helpful-content depth (editorial ≥350 words)",
@@ -30003,7 +30171,7 @@
       "severity": "medium",
       "detail": "CLS 0.18",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-25",
       "attempts": 0,
@@ -30012,13 +30180,19 @@
           "date": "2026-08-24",
           "event": "opened",
           "note": "CLS 0.18"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-29",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "physics/thermal-expansion-calculator::No serious/critical axe violations": {
       "id": "physics/thermal-expansion-calculator::No serious/critical axe violations",
@@ -31817,7 +31991,7 @@
       "severity": "medium",
       "detail": "CLS 0.118",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-25",
       "attempts": 0,
@@ -31826,13 +32000,19 @@
           "date": "2026-08-24",
           "event": "opened",
           "note": "CLS 0.118"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-29",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "size/hat-size-converter::No serious/critical axe violations": {
       "id": "size/hat-size-converter::No serious/critical axe violations",
@@ -31941,7 +32121,7 @@
       "severity": "medium",
       "detail": "CLS 0.142",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-25",
       "attempts": 0,
@@ -31950,13 +32130,19 @@
           "date": "2026-08-24",
           "event": "opened",
           "note": "CLS 0.142"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-29",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "size/ring-size-converter::No serious/critical axe violations": {
       "id": "size/ring-size-converter::No serious/critical axe violations",
@@ -32452,7 +32638,7 @@
       "severity": "medium",
       "detail": "CLS 0.387",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-25",
       "attempts": 0,
@@ -32461,13 +32647,19 @@
           "date": "2026-08-24",
           "event": "opened",
           "note": "CLS 0.387"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-29",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "statistics/kruskal-wallis-test-calculator::Title present (15–60 chars)": {
       "id": "statistics/kruskal-wallis-test-calculator::Title present (15–60 chars)",
@@ -33156,7 +33348,7 @@
       "severity": "medium",
       "detail": "CLS 0.125",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-25",
       "attempts": 0,
@@ -33165,13 +33357,19 @@
           "date": "2026-08-24",
           "event": "opened",
           "note": "CLS 0.125"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-29",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "text/fast-reading-bold::Helpful-content depth (editorial ≥350 words)": {
       "id": "text/fast-reading-bold::Helpful-content depth (editorial ≥350 words)",
@@ -33890,7 +34088,7 @@
       "severity": "medium",
       "detail": "CLS 0.122",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-25",
       "attempts": 0,
@@ -33899,13 +34097,19 @@
           "date": "2026-08-24",
           "event": "opened",
           "note": "CLS 0.122"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-29",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "text/unicode-normalizer::Title present (15–60 chars)": {
       "id": "text/unicode-normalizer::Title present (15–60 chars)",
@@ -37845,7 +38049,7 @@
       "severity": "medium",
       "detail": "CLS 0.236",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-25",
       "attempts": 0,
@@ -37854,13 +38058,19 @@
           "date": "2026-08-24",
           "event": "opened",
           "note": "CLS 0.236"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-29",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "units/fahrenheit-to-kelvin::Title present (15–60 chars)": {
       "id": "units/fahrenheit-to-kelvin::Title present (15–60 chars)",
@@ -37903,7 +38113,7 @@
       "severity": "medium",
       "detail": "CLS 0.23",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-25",
       "attempts": 0,
@@ -37912,13 +38122,19 @@
           "date": "2026-08-24",
           "event": "opened",
           "note": "CLS 0.23"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-29",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "units/feet-to-cm::Title present (15–60 chars)": {
       "id": "units/feet-to-cm::Title present (15–60 chars)",
@@ -47474,7 +47690,7 @@
       "severity": "medium",
       "detail": "0 FAQs",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-25",
       "attempts": 0,
@@ -47483,13 +47699,19 @@
           "date": "2026-08-24",
           "event": "opened",
           "note": "0 FAQs"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 8,
       "eta": "~8h (1 day)",
       "dueBy": "2026-08-29",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "dev/json-string-escape::Not thin/scaled content (≥200 words + FAQ)": {
       "id": "dev/json-string-escape::Not thin/scaled content (≥200 words + FAQ)",
@@ -47500,7 +47722,7 @@
       "severity": "high",
       "detail": "711 words, 0 FAQs",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-25",
       "attempts": 0,
@@ -47509,13 +47731,19 @@
           "date": "2026-08-24",
           "event": "opened",
           "note": "711 words, 0 FAQs"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "photo/japan-visa::Core Web Vitals: LCP good (<2.5s)": {
       "id": "photo/japan-visa::Core Web Vitals: LCP good (<2.5s)",
@@ -47526,7 +47754,7 @@
       "severity": "medium",
       "detail": "LCP 2756ms (lab)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-25",
       "lastSeen": "2026-08-25",
       "attempts": 0,
@@ -47535,13 +47763,19 @@
           "date": "2026-08-25",
           "event": "opened",
           "note": "LCP 2756ms (lab)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
       "eta": "~6h (1 day)",
       "dueBy": "2026-08-30",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "productivity/mind-map-maker::No serious/critical axe violations": {
       "id": "productivity/mind-map-maker::No serious/critical axe violations",
@@ -47552,7 +47786,7 @@
       "severity": "high",
       "detail": "aria-prohibited-attr (1)",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-25",
       "lastSeen": "2026-08-25",
       "attempts": 0,
@@ -47561,6 +47795,11 @@
           "date": "2026-08-25",
           "event": "opened",
           "note": "aria-prohibited-attr (1)"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 6,
@@ -47568,7 +47807,8 @@
       "dueBy": "2026-08-27",
       "sla": "on-track",
       "assignedTo": "fixer",
-      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated)."
+      "coordination": "Manager → Fixer: one global colour-contrast token fix clears all of these (build-gated).",
+      "resolvedOn": "2026-08-25"
     }
   },
   "updated": "2026-08-25",
@@ -47604,9 +47844,9 @@
       "date": "2026-08-25",
       "tools": 1073,
       "avg": 100,
-      "issues": 41,
-      "opened": 2,
-      "resolved": 161,
+      "issues": 1,
+      "opened": 0,
+      "resolved": 40,
       "challenged": 0
     }
   ],
@@ -48731,7 +48971,7 @@
       "task": "Reviewed 8 research idea(s) (avg 4/5); approved 0. Tokens 0/400000.",
       "kpis": {
         "overdue": 0,
-        "onTrack": 41,
+        "onTrack": 1,
         "slaPct": 100,
         "tokensToday": 0,
         "tokenCap": 400000,
@@ -48754,14 +48994,14 @@
     },
     "fixer": {
       "role": "Senior dev — auto + LLM fixes, build-gated, 24/7",
-      "status": "fixing",
-      "task": "Auto-fixing 0 title item(s), build-gated. Driving 1 systemic fix(es). 0 awaiting re-verify.",
+      "status": "standby",
+      "task": "Backlog clear — all findings resolved. Standing by for the next audit.",
       "kpis": {
-        "open": 41,
+        "open": 1,
         "fixable": 0,
-        "systemic": 1,
+        "systemic": 0,
         "verifying": 0,
-        "completed": 1440
+        "completed": 1480
       },
       "score": {
         "daily": 4.7,
