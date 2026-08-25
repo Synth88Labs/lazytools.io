@@ -10662,7 +10662,7 @@
       "severity": "high",
       "detail": "20px overflow at 375px",
       "fixType": "manual",
-      "status": "open",
+      "status": "complete",
       "firstSeen": "2026-08-24",
       "lastSeen": "2026-08-25",
       "attempts": 0,
@@ -10671,13 +10671,19 @@
           "date": "2026-08-24",
           "event": "opened",
           "note": "20px overflow at 375px"
+        },
+        {
+          "date": "2026-08-25",
+          "event": "verified-pass",
+          "note": "check now passes"
         }
       ],
       "effortHours": 4,
       "eta": "~4h (1 day)",
       "dueBy": "2026-08-26",
       "sla": "on-track",
-      "assignedTo": "fixer"
+      "assignedTo": "fixer",
+      "resolvedOn": "2026-08-25"
     },
     "color/triadic-colors::No serious/critical axe violations": {
       "id": "color/triadic-colors::No serious/critical axe violations",
@@ -47842,11 +47848,11 @@
     },
     {
       "date": "2026-08-25",
-      "tools": 1073,
+      "tools": 1,
       "avg": 100,
-      "issues": 1,
+      "issues": 0,
       "opened": 0,
-      "resolved": 40,
+      "resolved": 1,
       "challenged": 0
     }
   ],
@@ -48945,7 +48951,7 @@
       },
       {
         "date": "2026-08-25",
-        "auditor": 5,
+        "auditor": 4.1,
         "fixer": 4.7
       }
     ],
@@ -48958,7 +48964,7 @@
       },
       {
         "week": "2026-W35",
-        "auditor": 5,
+        "auditor": 4.6,
         "fixer": 4.9,
         "days": 2
       }
@@ -48971,7 +48977,7 @@
       "task": "Reviewed 8 research idea(s) (avg 4/5); approved 0. Tokens 0/400000.",
       "kpis": {
         "overdue": 0,
-        "onTrack": 1,
+        "onTrack": 0,
         "slaPct": 100,
         "tokensToday": 0,
         "tokenCap": 400000,
@@ -48988,8 +48994,8 @@
         "lastAvg": 100
       },
       "score": {
-        "daily": 5,
-        "weekly": 5
+        "daily": 4.1,
+        "weekly": 4.6
       }
     },
     "fixer": {
@@ -48997,11 +49003,11 @@
       "status": "standby",
       "task": "Backlog clear — all findings resolved. Standing by for the next audit.",
       "kpis": {
-        "open": 1,
+        "open": 0,
         "fixable": 0,
         "systemic": 0,
         "verifying": 0,
-        "completed": 1480
+        "completed": 1481
       },
       "score": {
         "daily": 4.7,
