@@ -101,7 +101,7 @@ export default function MindMapTool() {
         </div>
       )}
 
-      <div class={`overflow-auto rounded-xl border border-slate-200 bg-white ${fs.isFull ? 'flex-1' : ''}`} tabIndex={0} aria-label="Mind map canvas">
+      <div role="group" class={`overflow-auto rounded-xl border border-slate-200 bg-white ${fs.isFull ? 'flex-1' : ''}`} tabIndex={0} aria-label="Mind map canvas">
         <svg ref={svgRef} viewBox={`0 0 ${W} ${H}`} width={W} height={H} xmlns="http://www.w3.org/2000/svg" class="max-w-none touch-none select-none" style="font-family:'Plus Jakarta Sans','Segoe UI',Arial,sans-serif">
           <rect x="0" y="0" width={W} height={H} fill="#ffffff" />
           {nodes.filter((n) => n.parent).map((n) => {

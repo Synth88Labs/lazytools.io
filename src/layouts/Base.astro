@@ -72,7 +72,9 @@ const allSchema = [organizationSchema(), websiteSchema(), ...schema];
     {imageUrl && <meta name="twitter:image" content={imageUrl} />}
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    {allSchema.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
+    {/* Escape "<" as < so schema content containing "</script>" (or any "<") can't
+        break out of the JSON-LD <script> tag — keeps the JSON valid for crawlers. */}
+    {allSchema.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s).replace(/</g, '\\u003c')} />)}
     <slot name="head" />
   </head>
   <body class="flex min-h-screen flex-col">

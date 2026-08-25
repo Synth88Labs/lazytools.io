@@ -3,7 +3,14 @@ import { useMemo, useState } from 'preact/hooks';
 export interface SolverField { key: string; label: string; unit: string; initial?: string; placeholder?: string }
 
 const num = (s: string) => { const n = parseFloat(s); return isFinite(n) ? n : null; };
-const fmt = (x: number) => Number(x.toPrecision(6)).toString();
+const fmt = (x: number) => {
+  if (!isFinite(x)) return String(x);
+  const a = Math.abs(x);
+  // Very large / very small magnitudes render in compact exponential form — otherwise
+  // JS prints e.g. 1.98e20 as "198211000000000000000" (21 digits), which overflows the box.
+  if (a !== 0 && (a >= 1e12 || a < 1e-4)) return x.toExponential(4);
+  return Number(x.toPrecision(6)).toString();
+};
 
 /** Generic "solve for one variable" formula tool. */
 export default function SolverTool({
@@ -52,7 +59,7 @@ export default function SolverTool({
       {result ? (
         <div class="mt-4 rounded-xl bg-white p-4 text-center ring-2 ring-brand-200">
           <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">{targetField.label}</p>
-          <p class="mt-1 text-3xl font-extrabold text-brand-800">{fmt(result.value)} <span class="text-lg font-bold text-slate-500">{result.unit || resultUnit || targetField.unit}</span></p>
+          <p class="mt-1 break-words text-3xl font-extrabold text-brand-800">{fmt(result.value)} <span class="text-lg font-bold text-slate-500">{result.unit || resultUnit || targetField.unit}</span></p>
         </div>
       ) : (
         <p class="mt-4 text-sm text-slate-500">Fill in the other values to solve for {targetField.label.toLowerCase()}.</p>
