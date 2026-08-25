@@ -46552,7 +46552,7 @@
       "assignedTo": "fixer"
     }
   },
-  "updated": "2026-08-24",
+  "updated": "2026-08-25",
   "runs": [
     {
       "date": "2026-08-22",
@@ -47674,6 +47674,11 @@
         "date": "2026-08-24",
         "auditor": 5,
         "fixer": 5
+      },
+      {
+        "date": "2026-08-25",
+        "auditor": 3.3,
+        "fixer": 4
       }
     ],
     "weekly": [
@@ -47685,9 +47690,9 @@
       },
       {
         "week": "2026-W35",
-        "auditor": 5,
-        "fixer": 5,
-        "days": 1
+        "auditor": 4.2,
+        "fixer": 4.5,
+        "days": 2
       }
     ]
   },
@@ -47695,14 +47700,14 @@
     "manager": {
       "role": "Governance — SLAs, ratings, token budget",
       "status": "nominal",
-      "task": "Reviewed 8 research idea(s) (avg 4/5); approved 0. Tokens 42220/400000.",
+      "task": "Reviewed 8 research idea(s) (avg 4/5); approved 0. Tokens 0/400000.",
       "kpis": {
         "overdue": 0,
         "onTrack": 200,
         "slaPct": 100,
-        "tokensToday": 42220,
+        "tokensToday": 0,
         "tokenCap": 400000,
-        "costUsd": 0.53
+        "costUsd": 0
       }
     },
     "auditor": {
@@ -47715,8 +47720,8 @@
         "lastAvg": 99
       },
       "score": {
-        "daily": 5,
-        "weekly": 5
+        "daily": 3.3,
+        "weekly": 4.2
       }
     },
     "fixer": {
@@ -47731,8 +47736,8 @@
         "completed": 1279
       },
       "score": {
-        "daily": 5,
-        "weekly": 5
+        "daily": 4,
+        "weekly": 4.5
       }
     },
     "researcher": {
