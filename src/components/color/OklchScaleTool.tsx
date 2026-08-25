@@ -76,15 +76,15 @@ export default function OklchScaleTool() {
             ))}
           </div>
 
-          <div class="mt-4 grid gap-3 sm:grid-cols-2">
-            <div>
+          <div class="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
+            <div class="min-w-0">
               <div class="mb-1 flex items-center justify-between">
                 <span class="text-xs font-semibold uppercase tracking-wide text-slate-500">Tailwind 4 @theme (OKLCH)</span>
                 <button onClick={() => copy('theme', themeCss)} class="rounded px-2 py-0.5 text-xs font-semibold text-brand-700 ring-1 ring-brand-200 hover:bg-brand-50">{copied === 'theme' ? '✓' : 'Copy'}</button>
               </div>
               <pre tabIndex={0} aria-label="Tailwind theme CSS" class="max-h-56 overflow-auto rounded-lg bg-slate-900 p-3 text-xs leading-relaxed text-slate-100"><code>{themeCss}</code></pre>
             </div>
-            <div>
+            <div class="min-w-0">
               <div class="mb-1 flex items-center justify-between">
                 <span class="text-xs font-semibold uppercase tracking-wide text-slate-500">JS config (HEX)</span>
                 <button onClick={() => copy('js', jsConfig)} class="rounded px-2 py-0.5 text-xs font-semibold text-brand-700 ring-1 ring-brand-200 hover:bg-brand-50">{copied === 'js' ? '✓' : 'Copy'}</button>
