@@ -59,7 +59,7 @@ Your electricity company charges by the **kilowatt-hour (kWh)**, the energy of 1
 
 The first part (watts ÷ 1000 × hours) is the **energy in kWh**; multiplying by your rate turns it into money. The [electricity cost calculator](/calc/electricity-cost-calculator/) does it and projects the daily figure to a month and a year.
 
-Two numbers do all the work, and both are easy to find. The **wattage** comes from the appliance itself; the **price per kWh** comes from your latest bill (in many places a typical residential rate falls somewhere in the range of roughly $0.10–$0.35 per kWh, the [US Energy Information Administration](https://www.eia.gov/) publishes average rates, but yours may sit outside that, so always use your own figure). Everything else is just multiplication.
+Two numbers do all the work, and both are easy to find. The **wattage** comes from the appliance itself; the **price per kWh** comes from your latest bill (in many places a typical residential rate falls somewhere in the range of roughly $0.10–$0.35 per kWh, the [US Energy Information Administration](https://www.eia.gov/tools/faqs/faq.php?id=97&t=3) publishes average rates, but yours may sit outside that, so always use your own figure). Everything else is just multiplication.
 
 ### Why the ÷ 1000 step matters
 

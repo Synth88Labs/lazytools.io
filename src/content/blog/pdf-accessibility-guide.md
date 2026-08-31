@@ -94,7 +94,7 @@ readers skim, a 40-page report with no H1–H6 tags is a wall of undifferentiate
 ## The machine/human split
 
 The PDF accessibility standard, **PDF/UA** (ISO 14289), tested via the
-[Matterhorn Protocol](https://pdfa.org/resource/the-matterhorn-protocol-1-1/)'s 31 checkpoints,
+[Matterhorn Protocol](https://www.pdfa.org/resource/the-matterhorn-protocol/)'s 31 checkpoints,
 which expand into 136 individual failure conditions, divides cleanly into conditions software can
 verify and conditions requiring judgment. The Protocol itself flags each failure condition as
 machine-checkable or human-only, which is precisely why no tool can rubber-stamp a document on its
@@ -181,6 +181,6 @@ re-check, and reserve the heavy tooling and human review for the judgment calls 
 make.
 
 *Sources: [AccessibleEU, EAA in effect June 2025](https://accessible-eu-centre.ec.europa.eu/content-corner/news/eaa-comes-effect-june-2025-are-you-ready-2025-01-31_en) ·
-[PDF Association, Matterhorn Protocol](https://pdfa.org/resource/the-matterhorn-protocol-1-1/) ·
+[PDF Association, Matterhorn Protocol](https://www.pdfa.org/resource/the-matterhorn-protocol/) ·
 [PAC, PDF Accessibility Checker](https://pac.pdf-accessibility.org/en) ·
 [ISO 14289 (PDF/UA)](https://www.iso.org/standard/64599.html)*

@@ -189,4 +189,4 @@ matching; don't use them to impersonate. And remember the palette is a system th
 
 *Sources: [Qualitex Co. v. Jacobson Products Co. (U.S. Supreme Court, 1995)](https://supreme.justia.com/cases/federal/us/514/159/) ·
 [USPTO, Trademark basics](https://www.uspto.gov/trademarks/basics) ·
-[INTA, Color marks](https://www.inta.org/topics/color-marks/). This article is general information, not legal advice; consult a qualified attorney for specific situations.*
+[Wikipedia, Colour trade mark](https://en.wikipedia.org/wiki/Colour_trade_mark). This article is general information, not legal advice; consult a qualified attorney for specific situations.*

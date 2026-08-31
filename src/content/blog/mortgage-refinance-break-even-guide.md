@@ -41,7 +41,7 @@ draft: false
 - **Break-even months = closing costs ÷ monthly savings.** That single number decides most refinances.
 - **Worth it if** you keep the loan *past* the break-even month; **not worth it** if you might move or refinance again before then.
 - A **lower payment is not the same as saving money**, a longer term lowers the payment but can raise total interest. Compare the lifetime cost.
-- **Closing costs** are typically [2-5% of the loan](https://www.consumerfinance.gov/); enter your real total, not a guess.
+- **Closing costs** are typically [2-5% of the loan](https://www.consumerfinance.gov/owning-a-home/); enter your real total, not a guess.
 - Both payments use the standard [amortization](/blog/mortgage-amortization-guide/) formula: **M = P · i ÷ (1 − (1 + i)⁻ⁿ)**.
 
 </aside>

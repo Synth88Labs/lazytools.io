@@ -148,7 +148,7 @@ before measuring, and convert liquids exactly with the [cups to mL converter](/u
 For solids, volume needs density: use the grams table above, or better, a kitchen scale, weight is
 the only measurement that doesn't care how you scooped.
 
-*All volume conversions use exact [US customary definitions](https://www.nist.gov/) (1 US cup = 236.588 mL, derived from the
+*All volume conversions use exact [US customary definitions](https://www.nist.gov/pml/owm) (1 US cup = 236.588 mL, derived from the
 231-cubic-inch gallon), verified in [our public test suite](https://github.com/Synth88Labs/lazytools.io).
 Related: [mL to cups](/units/ml-to-cups/) · [fluid ounces to mL](/units/fl-oz-to-ml/) ·
 [liters to quarts](/units/liters-to-quarts/).*
