@@ -47,7 +47,7 @@ export default function PendulumTool() {
         <p class="mt-4 text-sm text-slate-500">Enter a positive pendulum length.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">A simple pendulum\'s period is T = 2π·√(L/g) — it depends only on the length and gravity, not on the mass of the bob or (for small swings) the amplitude. To double the period you need four times the length. This small-angle formula is accurate to about 1% for swings under ~20°. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">A simple pendulum\'s period is T = 2π·√(L/g). It depends only on the length and gravity, not on the mass of the bob or (for small swings) the amplitude. To double the period you need four times the length. This small-angle formula is accurate to about 1% for swings under ~20°. 🔒 In your browser.</p>
     </div>
   );
 }

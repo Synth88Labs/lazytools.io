@@ -14,7 +14,7 @@ export default function SlopeLineTool() {
   try {
     const X1 = Rat.parse(x1), Y1 = Rat.parse(y1), X2 = Rat.parse(x2), Y2 = Rat.parse(y2);
     const dx = X2.sub(X1), dy = Y2.sub(Y1);
-    if (dx.isZero() && dy.isZero()) throw new Error('The two points are identical — a line needs two distinct points.');
+    if (dx.isZero() && dy.isZero()) throw new Error('The two points are identical, a line needs two distinct points.');
     if (dx.isZero()) {
       body = (
         <>
@@ -22,7 +22,7 @@ export default function SlopeLineTool() {
             Vertical line: x = {X1.toFrac()}
           </p>
           <p class="mt-3 rounded-xl border border-slate-200 bg-white p-4 text-sm text-slate-700">
-            The x-coordinates are equal, so the slope is <strong>undefined</strong> (rise over a zero run) — a vertical line. It has no slope-intercept form; its equation is simply x = {X1.toFrac()}.
+            The x-coordinates are equal, so the slope is <strong>undefined</strong> (rise over a zero run), a vertical line. It has no slope-intercept form; its equation is simply x = {X1.toFrac()}.
           </p>
         </>
       );
@@ -91,7 +91,7 @@ export default function SlopeLineTool() {
 
       {error ? <p class="mt-4 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800">{error}</p> : body}
 
-      <p class="mt-4 text-xs text-slate-500">Exact fractions throughout — the slope through (1, 2) and (4, 4) is 2/3, not 0.6667. Runs locally.</p>
+      <p class="mt-4 text-xs text-slate-500">Exact fractions throughout, the slope through (1, 2) and (4, 4) is 2/3, not 0.6667. Runs locally.</p>
     </div>
   );
 }

@@ -120,7 +120,7 @@ function ShmMode() {
           </div>
         </div>
       ) : <p class="mt-4 text-sm text-slate-500">Enter positive values.</p>}
-      <p class="mt-3 text-xs text-slate-500">{type === 'pendulum' ? 'T = 2π·√(L/g) — small swings only (< ~15°).' : 'T = 2π·√(m/k).'}</p>
+      <p class="mt-3 text-xs text-slate-500">{type === 'pendulum' ? 'T = 2π·√(L/g), small swings only (< ~15°).' : 'T = 2π·√(m/k).'}</p>
     </>
   );
 }

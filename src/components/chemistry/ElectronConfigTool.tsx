@@ -44,7 +44,7 @@ export default function ElectronConfigTool() {
   return (
     <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
       <label class="block">
-        <span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Element — symbol, name or atomic number</span>
+        <span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Element, symbol, name or atomic number</span>
         <input value={raw} spellcheck={false} onInput={(e) => setRaw((e.target as HTMLInputElement).value)}
           class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 font-mono text-sm text-slate-900 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200" placeholder="Fe, iron or 26" />
       </label>
@@ -52,7 +52,7 @@ export default function ElectronConfigTool() {
       {el && r ? (
         <>
           <div class="mt-4 rounded-xl bg-white p-4 ring-2 ring-brand-200">
-            <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">{el.name} (Z = {el.z}) — full configuration</p>
+            <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">{el.name} (Z = {el.z}), full configuration</p>
             <p class="mt-1 font-mono text-lg font-bold text-brand-800 break-words">{r.actual}</p>
           </div>
           <div class="mt-3 grid gap-3 sm:grid-cols-2">

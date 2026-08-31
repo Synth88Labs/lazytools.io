@@ -48,7 +48,7 @@ export default function RetroTool() {
           </div>
         ))}
       </div>
-      <p class="mt-3 text-xs text-slate-500">Add notes to each column and upvote the ones the team cares about — they sort to the top. Saved in this browser only.</p>
+      <p class="mt-3 text-xs text-slate-500">Add notes to each column and upvote the ones the team cares about. They sort to the top. Saved in this browser only.</p>
     </div>
   );
 }

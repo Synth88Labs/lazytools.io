@@ -7,7 +7,7 @@ export default function WeekNumberTool() {
   const date = fromDateInputValue(dateStr);
   const wk = date ? isoWeek(date) : null;
 
-  // Monday–Sunday range of the ISO week containing `date`
+  // Monday, Sunday range of the ISO week containing `date`
   let monday: Date | null = null;
   let sunday: Date | null = null;
   if (date) {

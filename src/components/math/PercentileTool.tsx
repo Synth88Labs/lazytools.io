@@ -49,7 +49,7 @@ export default function PercentileTool() {
               <li>Rank position = (p/100)·(n − 1) = ({fmt(p)}/100)·{data.length - 1} = <strong>{fmt(rank)}</strong> (zero-based)</li>
               <li>{Number.isInteger(rank) ? `Whole rank → take the value at position ${rank}: ${fmt(vInc)}` : `Interpolate between positions ${Math.floor(rank)} (${fmt(data[Math.floor(rank)]!)}) and ${Math.ceil(rank)} (${fmt(data[Math.ceil(rank)]!)}): ${fmt(vInc)}`}</li>
             </ol>
-            <p class="mt-2 text-xs text-slate-500">The three methods disagree on small datasets by design — this is the #1 source of "my answer doesn't match Excel" confusion. Match the method your course or spreadsheet uses.</p>
+            <p class="mt-2 text-xs text-slate-500">The three methods disagree on small datasets by design. This is the #1 source of "my answer doesn't match Excel" confusion. Match the method your course or spreadsheet uses.</p>
           </div>
         </>
       );
@@ -80,7 +80,7 @@ export default function PercentileTool() {
   return (
     <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
       <label class="block">
-        <span class="text-xs font-semibold uppercase tracking-wide text-slate-500">Your data — commas, spaces or new lines</span>
+        <span class="text-xs font-semibold uppercase tracking-wide text-slate-500">Your data, commas, spaces or new lines</span>
         <textarea
           class="mt-1 h-20 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 font-mono text-sm text-slate-800 focus:border-brand-500 focus:outline-none"
           value={dataStr}
@@ -104,7 +104,7 @@ export default function PercentileTool() {
 
       {error ? <p class="mt-4 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800">{error}</p> : body}
 
-      <p class="mt-4 text-xs text-slate-500">Method stated on every answer — percentile definitions differ between textbooks, and knowing which one you're using is half the mark. Runs locally.</p>
+      <p class="mt-4 text-xs text-slate-500">Method stated on every answer, percentile definitions differ between textbooks, and knowing which one you're using is half the mark. Runs locally.</p>
     </div>
   );
 }

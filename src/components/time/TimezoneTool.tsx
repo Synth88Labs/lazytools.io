@@ -60,7 +60,7 @@ export default function TimezoneTool() {
           <p class="text-xs font-medium text-brand-700">{target?.offset}</p>
         </div>
       </div>
-      <p class="mt-2 text-xs text-slate-500">DST applied automatically from the browser's IANA timezone database — works offline.</p>
+      <p class="mt-2 text-xs text-slate-500">DST applied automatically from the browser's IANA timezone database, works offline.</p>
     </div>
   );
 }

@@ -50,7 +50,7 @@ export default function ChecksumTool() {
         <label class="block cursor-pointer rounded-xl border-2 border-dashed border-slate-300 bg-white px-4 py-6 text-center hover:border-brand-400">
           <input type="file" class="hidden" onChange={(e) => onFile((e.target as HTMLInputElement).files?.[0] ?? null)} />
           <span class="text-sm font-semibold text-slate-700">{fileResult ? `📄 ${fileResult.name}` : '📄 Choose a file'}</span>
-          <span class="mt-1 block text-xs text-slate-500">{busy ? 'Reading…' : 'Checksummed locally — nothing uploaded'}</span>
+          <span class="mt-1 block text-xs text-slate-500">{busy ? 'Reading…' : 'Checksummed locally, nothing uploaded'}</span>
         </label>
       )}
 
@@ -62,7 +62,7 @@ export default function ChecksumTool() {
         </div>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">CRC-32 and Adler-32 are fast, non-cryptographic checksums used to detect accidental corruption — CRC-32 is the one inside ZIP archives and PNG chunks; Adler-32 is used by zlib. They quickly tell you whether two copies of some data are byte-identical. They are NOT for security or passwords (they're easy to forge on purpose and can collide) — use SHA-256 for that. 🔒 Computed entirely in your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">CRC-32 and Adler-32 are fast, non-cryptographic checksums used to detect accidental corruption, CRC-32 is the one inside ZIP archives and PNG chunks; Adler-32 is used by zlib. They quickly tell you whether two copies of some data are byte-identical. They are NOT for security or passwords (they're easy to forge on purpose and can collide), use SHA-256 for that. 🔒 Computed entirely in your browser.</p>
     </div>
   );
 }

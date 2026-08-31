@@ -30,8 +30,8 @@ export default function WireGaugeTool() {
 
       {r.amp && (
         <div class="mt-3 grid gap-3 sm:grid-cols-2">
-          <div class="rounded-xl bg-white p-4 text-center ring-1 ring-slate-200"><p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Ampacity — single wire in free air</p><p class="mt-1 text-2xl font-extrabold text-slate-700">≈ {r.amp.chassis} A</p></div>
-          <div class="rounded-xl bg-white p-4 text-center ring-1 ring-amber-200"><p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Ampacity — bundled / in conduit</p><p class="mt-1 text-2xl font-extrabold text-amber-700">≈ {r.amp.power} A</p></div>
+          <div class="rounded-xl bg-white p-4 text-center ring-1 ring-slate-200"><p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Ampacity, single wire in free air</p><p class="mt-1 text-2xl font-extrabold text-slate-700">≈ {r.amp.chassis} A</p></div>
+          <div class="rounded-xl bg-white p-4 text-center ring-1 ring-amber-200"><p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Ampacity, bundled / in conduit</p><p class="mt-1 text-2xl font-extrabold text-amber-700">≈ {r.amp.power} A</p></div>
         </div>
       )}
 

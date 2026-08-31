@@ -73,7 +73,7 @@ export default function NotepadTool() {
         <span>~<b class="text-slate-700">{s.readingMinutes}</b> min read</span>
       </div>
 
-      <p class="mt-4 text-xs text-slate-500">A distraction-free notepad that autosaves to your browser as you type — reopen this page and your note is still here. Nothing is ever uploaded, so it works offline and keeps private jottings private. Download it as a .txt or copy it out any time. Note: because it&#39;s stored only in this browser, clearing your browser data or using a different device/browser starts a fresh note. 🔒 100% on your device.</p>
+      <p class="mt-4 text-xs text-slate-500">A distraction-free notepad that autosaves to your browser as you type, reopen this page and your note is still here. Nothing is ever uploaded, so it works offline and keeps private jottings private. Download it as a .txt or copy it out any time. Note: because it&#39;s stored only in this browser, clearing your browser data or using a different device/browser starts a fresh note. 🔒 100% on your device.</p>
     </div>
   );
 }

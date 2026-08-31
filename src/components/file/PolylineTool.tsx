@@ -80,7 +80,7 @@ export default function PolylineTool() {
         </div>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Encode a list of latitude/longitude points into a Google-encoded polyline string, or decode one back into coordinates (and GeoJSON). It&#39;s the compact format the Google Maps Directions API returns for routes. Remember polyline order is latitude, longitude — the reverse of GeoJSON&#39;s. Use precision 6 for the higher-precision variant some services use. Everything runs in your browser. 🔒</p>
+      <p class="mt-4 text-xs text-slate-500">Encode a list of latitude/longitude points into a Google-encoded polyline string, or decode one back into coordinates (and GeoJSON). It&#39;s the compact format the Google Maps Directions API returns for routes. Remember polyline order is latitude, longitude, the reverse of GeoJSON&#39;s. Use precision 6 for the higher-precision variant some services use. Everything runs in your browser. 🔒</p>
     </div>
   );
 }

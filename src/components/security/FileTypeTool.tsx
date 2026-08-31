@@ -35,7 +35,7 @@ export default function FileTypeTool() {
       <label class="block cursor-pointer rounded-xl border-2 border-dashed border-slate-300 bg-white px-4 py-6 text-center hover:border-brand-400">
         <input type="file" class="hidden" onChange={(e) => onFile((e.target as HTMLInputElement).files?.[0] ?? null)} />
         <span class="text-sm font-semibold text-slate-700">📂 Choose any file</span>
-        <span class="mt-1 block text-xs text-slate-500">Only the first 512 bytes are read — nothing is uploaded</span>
+        <span class="mt-1 block text-xs text-slate-500">Only the first 512 bytes are read, nothing is uploaded</span>
       </label>
 
       <div class="mt-3">
@@ -58,14 +58,14 @@ export default function FileTypeTool() {
           ) : (
             <div class="rounded-xl bg-slate-100 p-4 ring-1 ring-slate-200">
               <p class="text-lg font-bold text-slate-700">Unrecognized signature</p>
-              <p class="mt-1 text-sm text-slate-500">The leading bytes don't match a known format. It may be a plain-text file (CSV, JSON, HTML, source code) — those have no magic number — or an uncommon binary format.</p>
+              <p class="mt-1 text-sm text-slate-500">The leading bytes don't match a known format. It may be a plain-text file (CSV, JSON, HTML, source code). Those have no magic number, or an uncommon binary format.</p>
             </div>
           )}
 
           {result.extensionMatches === false && result.detected && (
             <div class="rounded-xl bg-amber-50 p-4 ring-2 ring-amber-300">
               <p class="text-sm font-semibold text-amber-800">⚠️ Extension mismatch</p>
-              <p class="mt-1 text-sm text-amber-700">The file is named <span class="font-mono">.{result.claimedExt}</span> but its bytes are actually a <strong>{result.detected.name}</strong>. A wrong extension is often harmless (a mislabelled download), but a deliberately disguised file can be a red flag — the content, not the name, is what actually opens.</p>
+              <p class="mt-1 text-sm text-amber-700">The file is named <span class="font-mono">.{result.claimedExt}</span> but its bytes are actually a <strong>{result.detected.name}</strong>. A wrong extension is often harmless (a mislabelled download), but a deliberately disguised file can be a red flag, the content, not the name, is what actually opens.</p>
             </div>
           )}
           {result.extensionMatches === true && (
@@ -79,7 +79,7 @@ export default function FileTypeTool() {
         </div>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Every binary format begins with a "magic number" — a fixed byte signature (PNG is 89 50 4E 47, PDF is %PDF, ZIP is PK…). This reads those leading bytes and reports the true type regardless of the file's name, and flags when a file's extension doesn't match its real content. Plain-text formats (CSV, JSON, HTML, code) have no magic number and read as "unrecognized." 🔒 Only the first bytes are read, entirely in your browser — nothing is uploaded.</p>
+      <p class="mt-4 text-xs text-slate-500">Every binary format begins with a "magic number", a fixed byte signature (PNG is 89 50 4E 47, PDF is %PDF, ZIP is PK…). This reads those leading bytes and reports the true type regardless of the file's name, and flags when a file's extension doesn't match its real content. Plain-text formats (CSV, JSON, HTML, code) have no magic number and read as "unrecognized." 🔒 Only the first bytes are read, entirely in your browser, nothing is uploaded.</p>
     </div>
   );
 }

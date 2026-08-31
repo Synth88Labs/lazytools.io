@@ -37,7 +37,7 @@ export default function SnowLoadTool() {
         </div>
       ) : <p class="mt-4 text-sm text-slate-500">Enter the snow depth and density.</p>}
 
-      <p class="mt-4 text-xs text-slate-500">Snow load on a flat roof is the snow depth times its density: mass per area = depth × density, and the pressure is that times gravity. Snow density varies hugely — fresh light snow around 50–100 kg/m³, settled 200–300, wet or packed 400–500, and ice near 900 — so depth alone can\'t tell you the load. For structural decisions, use your local building code\'s design snow load (e.g. ASCE 7), which also accounts for drifting and roof shape. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Snow load on a flat roof is the snow depth times its density: mass per area = depth × density, and the pressure is that times gravity. Snow density varies hugely, fresh light snow around 50-100 kg/m³, settled 200-300, wet or packed 400-500, and ice near 900, so depth alone can\'t tell you the load. For structural decisions, use your local building code\'s design snow load (e.g. ASCE 7), which also accounts for drifting and roof shape. 🔒 In your browser.</p>
     </div>
   );
 }

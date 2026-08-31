@@ -71,7 +71,7 @@ export default function WifiQrTool() {
           <button type="button" onClick={download} disabled={!ssid.trim() || !!error} class="mt-3 rounded-lg bg-brand-700 px-4 py-2 text-sm font-medium text-white transition hover:bg-brand-800 disabled:opacity-40">⬇ Download PNG</button>
         </div>
       </div>
-      <p class="mt-3 text-xs text-slate-500">Scanning this code connects a phone to your WiFi automatically — perfect for a guest network or a printed card. The password is encoded directly into the code and <strong>never leaves your browser</strong>; there's no tracking redirect, so it never expires.</p>
+      <p class="mt-3 text-xs text-slate-500">Scanning this code connects a phone to your WiFi automatically, perfect for a guest network or a printed card. The password is encoded directly into the code and <strong>never leaves your browser</strong>; there's no tracking redirect, so it never expires.</p>
     </div>
   );
 }

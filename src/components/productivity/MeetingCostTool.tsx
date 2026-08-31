@@ -90,7 +90,7 @@ export default function MeetingCostTool() {
         </div>
         <p class="mt-2 text-xs text-slate-500">Start it at the top of a real meeting and watch what it's costing in real time.</p>
       </div>
-      <p class="mt-3 text-xs text-slate-500">Inputs are saved in this browser only. A rough rule of thumb: fully-loaded cost is often ~1.3–1.4× salary once overheads are included.</p>
+      <p class="mt-3 text-xs text-slate-500">Inputs are saved in this browser only. A rough rule of thumb: fully-loaded cost is often ~1.3-1.4× salary once overheads are included.</p>
     </div>
   );
 }

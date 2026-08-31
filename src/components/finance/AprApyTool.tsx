@@ -52,7 +52,7 @@ export default function AprApyTool() {
         <p class="mt-4 text-sm text-slate-500">Enter a rate and compounding frequency.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">APY = (1 + APR/n)ⁿ − 1. APY includes compounding, so it’s always ≥ APR — compare savings and loans on the same basis. Educational, not advice. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">APY = (1 + APR/n)ⁿ − 1. APY includes compounding, so it’s always ≥ APR, compare savings and loans on the same basis. Educational, not advice. 🔒 In your browser.</p>
     </div>
   );
 }

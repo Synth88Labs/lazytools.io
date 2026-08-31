@@ -51,7 +51,7 @@ export default function BarcodeValidatorTool() {
           {result.complete && !result.gtin && (
             <div class="rounded-xl bg-brand-50 p-4 ring-2 ring-brand-200">
               <p class="text-sm font-semibold text-brand-800">Looks like a barcode missing its check digit</p>
-              <p class="mt-1 text-sm text-slate-700">The complete barcode would be <span class="font-mono text-base font-bold text-brand-800">{result.complete}</span> — the last digit is the calculated check digit.</p>
+              <p class="mt-1 text-sm text-slate-700">The complete barcode would be <span class="font-mono text-base font-bold text-brand-800">{result.complete}</span>, the last digit is the calculated check digit.</p>
             </div>
           )}
           {!result.gtin && !result.isbn && !result.issn && !result.complete && (
@@ -60,7 +60,7 @@ export default function BarcodeValidatorTool() {
         </div>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Validates the check digit of EAN-13, UPC-A, EAN-8 and GTIN-14 barcodes, plus ISBN-10/13 and ISSN. The check digit is the last digit, computed from all the others by a fixed formula (GS1 mod-10, or mod-11 for ISBN-10/ISSN) — so a single mistyped or transposed digit almost always fails the check. Enter the digits without the check digit and the tool tells you the complete barcode. 🔒 All computed in your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Validates the check digit of EAN-13, UPC-A, EAN-8 and GTIN-14 barcodes, plus ISBN-10/13 and ISSN. The check digit is the last digit, computed from all the others by a fixed formula (GS1 mod-10, or mod-11 for ISBN-10/ISSN), so a single mistyped or transposed digit almost always fails the check. Enter the digits without the check digit and the tool tells you the complete barcode. 🔒 All computed in your browser.</p>
     </div>
   );
 }

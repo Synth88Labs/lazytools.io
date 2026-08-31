@@ -92,11 +92,11 @@ export default function Base64FileTool({ mode }: Props) {
         <label class="block cursor-pointer rounded-xl border-2 border-dashed border-slate-300 bg-white px-4 py-8 text-center hover:border-brand-400">
           <input type="file" class="hidden" onChange={(e) => encode((e.target as HTMLInputElement).files?.[0] ?? null)} />
           <span class="text-sm font-semibold text-slate-700">{file ? `📄 ${file.name}` : '📄 Choose any file'}</span>
-          <span class="mt-1 block text-xs text-slate-500">{file ? `${file.type || 'unknown type'} · ${fmtSize(file.size)}` : 'images, PDFs, fonts, anything — nothing is uploaded'}</span>
+          <span class="mt-1 block text-xs text-slate-500">{file ? `${file.type || 'unknown type'} · ${fmtSize(file.size)}` : 'images, PDFs, fonts, anything, nothing is uploaded'}</span>
         </label>
 
         <label class="mt-3 flex items-center gap-1.5 text-sm text-slate-600">
-          <input type="checkbox" checked={asDataUri} onChange={(e) => setAsDataUri((e.target as HTMLInputElement).checked)} /> As data URI (data:…;base64,… — paste straight into CSS/HTML)
+          <input type="checkbox" checked={asDataUri} onChange={(e) => setAsDataUri((e.target as HTMLInputElement).checked)} /> As data URI (data:…;base64,…, paste straight into CSS/HTML)
         </label>
 
         {busy && <p class="mt-4 text-sm text-slate-500">Encoding…</p>}
@@ -112,7 +112,7 @@ export default function Base64FileTool({ mode }: Props) {
         )}
 
         <p class="mt-4 text-xs text-slate-500">
-          Base64 turns any file’s bytes into text so it can be embedded in JSON, HTML, CSS or a data URI. Output is about 33% larger than the file. 🔒 Encoding runs entirely in your browser — the file is never uploaded.
+          Base64 turns any file’s bytes into text so it can be embedded in JSON, HTML, CSS or a data URI. Output is about 33% larger than the file. 🔒 Encoding runs entirely in your browser, the file is never uploaded.
         </p>
       </div>
     );
@@ -138,7 +138,7 @@ export default function Base64FileTool({ mode }: Props) {
       {error && <p class="mt-4 rounded-lg bg-rose-50 px-3 py-2 text-sm text-rose-700 ring-1 ring-rose-200">{error}</p>}
 
       <p class="mt-4 text-xs text-slate-500">
-        Paste raw Base64 or a full <code>data:</code> URI and get the original file back. If you paste a data URI, its MIME type is detected automatically; otherwise pick a file name with the right extension. 🔒 Decoding runs entirely in your browser — nothing is uploaded.
+        Paste raw Base64 or a full <code>data:</code> URI and get the original file back. If you paste a data URI, its MIME type is detected automatically; otherwise pick a file name with the right extension. 🔒 Decoding runs entirely in your browser, nothing is uploaded.
       </p>
     </div>
   );

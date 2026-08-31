@@ -12,13 +12,13 @@ export const luminance: Quantity = {
   baseUnit: 'nit',
   icon: '🔆',
   description:
-    'Convert luminance (display brightness) units — nit (candela per square metre), kilonit, millinit, stilb and foot-lambert. Phone and TV brightness is measured in nits.',
+    'Convert luminance (display brightness) units, nit (candela per square metre), kilonit, millinit, stilb and foot-lambert. Phone and TV brightness is measured in nits.',
   units: [
-    { id: 'nit', name: 'Nit (cd/m²)', plural: 'nits', symbol: 'nit', slug: 'nit', factor: 1, system: 'si', definition: 'One candela per square metre — the standard unit of display brightness. A phone in sunlight hits 1,000+ nits; a typical laptop is 250–400; an HDR TV can reach 1,500 or more.' },
-    { id: 'cdm2', name: 'Candela / square metre', plural: 'candelas per square metre', symbol: 'cd/m²', slug: 'candela-per-square-metre', factor: 1, system: 'si', definition: 'The SI name for the nit — exactly the same unit (1 cd/m² = 1 nit). Spec sheets use either name interchangeably for screen brightness.' },
-    { id: 'knit', name: 'Kilonit', plural: 'kilonits', symbol: 'knit', slug: 'kilonit', factor: 1e3, system: 'si', definition: 'One thousand nits (10³ cd/m²). A tidy unit for very bright HDR displays and outdoor signage — a 1,600-nit TV is 1.6 knits.' },
+    { id: 'nit', name: 'Nit (cd/m²)', plural: 'nits', symbol: 'nit', slug: 'nit', factor: 1, system: 'si', definition: 'One candela per square metre, the standard unit of display brightness. A phone in sunlight hits 1,000+ nits; a typical laptop is 250-400; an HDR TV can reach 1,500 or more.' },
+    { id: 'cdm2', name: 'Candela / square metre', plural: 'candelas per square metre', symbol: 'cd/m²', slug: 'candela-per-square-metre', factor: 1, system: 'si', definition: 'The SI name for the nit, exactly the same unit (1 cd/m² = 1 nit). Spec sheets use either name interchangeably for screen brightness.' },
+    { id: 'knit', name: 'Kilonit', plural: 'kilonits', symbol: 'knit', slug: 'kilonit', factor: 1e3, system: 'si', definition: 'One thousand nits (10³ cd/m²). A tidy unit for very bright HDR displays and outdoor signage, a 1,600-nit TV is 1.6 knits.' },
     { id: 'mnit', name: 'Millinit', plural: 'millinits', symbol: 'mnit', slug: 'millinit', factor: 1e-3, system: 'si', definition: 'One-thousandth of a nit (10⁻³ cd/m²). Used for very dim luminances near the low end of what the eye can see.' },
-    { id: 'sb', name: 'Stilb', plural: 'stilbs', symbol: 'sb', slug: 'stilb', factor: 1e4, system: 'other', definition: 'The CGS unit — one candela per square centimetre, equal to 10,000 nits. Rarely used today but seen in older optics literature.' },
+    { id: 'sb', name: 'Stilb', plural: 'stilbs', symbol: 'sb', slug: 'stilb', factor: 1e4, system: 'other', definition: 'The CGS unit, one candela per square centimetre, equal to 10,000 nits. Rarely used today but seen in older optics literature.' },
     { id: 'fl', name: 'Foot-lambert', plural: 'foot-lamberts', symbol: 'fL', slug: 'foot-lambert', factor: 1 / (0.3048 ** 2 * Math.PI), system: 'us', definition: 'A US photometric unit for the luminance of a perfectly diffusing surface, about 3.426 nits. Still quoted for cinema and projector-screen brightness (SMPTE recommends ~14 fL).' },
   ],
   popularPairs: [

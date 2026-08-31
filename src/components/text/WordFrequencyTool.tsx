@@ -62,7 +62,7 @@ export default function WordFrequencyTool() {
         </table>
       </div>
       <p class="mt-2 font-mono text-xs text-slate-400">{rows.length} unique words · {total} counted</p>
-      <p class="mt-2 text-xs text-slate-500">Word frequency &amp; keyword density, exact and sortable — useful for SEO, writing analysis and NLP. 🔒 Your text never leaves the browser.</p>
+      <p class="mt-2 text-xs text-slate-500">Word frequency &amp; keyword density, exact and sortable, useful for SEO, writing analysis and NLP. 🔒 Your text never leaves the browser.</p>
     </div>
   );
 }

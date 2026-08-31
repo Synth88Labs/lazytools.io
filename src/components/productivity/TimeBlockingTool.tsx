@@ -88,7 +88,7 @@ export default function TimeBlockingTool() {
           </div>
         </div>
       </div>
-      <p class="mt-3 text-xs text-slate-500">Assign every block to a category and the totals show where your day actually goes — often a surprise. Saved in this browser only.</p>
+      <p class="mt-3 text-xs text-slate-500">Assign every block to a category and the totals show where your day actually goes, often a surprise. Saved in this browser only.</p>
     </div>
   );
 }

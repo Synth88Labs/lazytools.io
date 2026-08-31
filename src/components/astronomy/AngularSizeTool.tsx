@@ -48,7 +48,7 @@ export default function AngularSizeTool() {
         <p class="mt-4 text-sm text-slate-500">Enter the object's diameter and distance (in the same units).</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Angular (apparent) size is how large something looks: θ = 2·arctan(diameter ÷ 2·distance). For distant objects this is the small-angle rule, θ(arcsec) ≈ 206,265 × size ÷ distance. The Moon and Sun both span about half a degree — which is why eclipses fit so neatly. 1° = 60′ = 3,600″. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Angular (apparent) size is how large something looks: θ = 2·arctan(diameter ÷ 2·distance). For distant objects this is the small-angle rule, θ(arcsec) ≈ 206,265 × size ÷ distance. The Moon and Sun both span about half a degree, which is why eclipses fit so neatly. 1° = 60′ = 3,600″. 🔒 In your browser.</p>
     </div>
   );
 }

@@ -11,10 +11,10 @@ const crumbs = [
   { name: 'Gardening & Plants', url: '/garden/' },
 ];
 const faqs = [
-  { q: 'Are these gardening calculators accurate?', a: 'The maths is exact — plant-spacing geometry, fertilizer nitrogen rates, watering volumes and the DLI equation. The reference data (compost C:N ratios, frost-relative planting offsets, light targets) is from extension-service and horticulture sources cited on each tool page, and is presented as general guidance that varies by region and variety.' },
-  { q: 'Do they work in metric and imperial?', a: 'Yes — beds, spacing and water toggle between metres/centimetres and feet/inches, and results show litres and gallons, cubic metres and cubic yards.' },
-  { q: 'Do I need my local frost date?', a: 'For the planting-date calculator, yes — enter your average last spring frost date (from a regional extension service or frost-date lookup) and it works out the sowing and transplant dates. The other tools need no location data.' },
-  { q: 'Is my data uploaded?', a: 'No. Every tool runs entirely in your browser — nothing is sent to a server, and they work offline.' },
+  { q: 'Are these gardening calculators accurate?', a: 'The maths is exact, plant-spacing geometry, fertilizer nitrogen rates, watering volumes and the DLI equation. The reference data (compost C:N ratios, frost-relative planting offsets, light targets) is from extension-service and horticulture sources cited on each tool page, and is presented as general guidance that varies by region and variety.' },
+  { q: 'Do they work in metric and imperial?', a: 'Yes, beds, spacing and water toggle between metres/centimetres and feet/inches, and results show litres and gallons, cubic metres and cubic yards.' },
+  { q: 'Do I need my local frost date?', a: 'For the planting-date calculator, yes, enter your average last spring frost date (from a regional extension service or frost-date lookup) and it works out the sowing and transplant dates. The other tools need no location data.' },
+  { q: 'Is my data uploaded?', a: 'No. Every tool runs entirely in your browser, nothing is sent to a server, and they work offline.' },
 ];
 const schema = [
   breadcrumbSchema(crumbs),
@@ -24,7 +24,7 @@ const schema = [
 ---
 
 <Base
-  title="Gardening & Plants Calculators — Spacing, Soil, Planting Dates | LazyTools"
+  title="Gardening & Plants Calculators, Spacing, Soil, Planting Dates | LazyTools"
   description="Free gardening calculators that run in your browser: plant spacing, seed & row spacing, raised bed soil, fertilizer nitrogen rate, garden watering, planting dates from last frost, grow-light DLI and compost C:N ratio. Metric or imperial, sourced, no upload."
   schema={schema}
 >
@@ -32,7 +32,7 @@ const schema = [
     <Breadcrumbs items={crumbs} />
     <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Gardening & Plants Calculators</h1>
     <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
-      Plan and grow a better garden — work out plant spacing and seed counts, fill a raised bed, dial in
+      Plan and grow a better garden, work out plant spacing and seed counts, fill a raised bed, dial in
       fertilizer and watering, time your planting to the last frost, and balance a compost pile. Every tool
       uses exact maths or a sourced horticulture guideline and runs entirely in your browser.
     </p>

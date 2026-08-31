@@ -29,9 +29,9 @@ export default function CrateSizeTool() {
         ))}
       </div>
       <div class="grid gap-3 sm:grid-cols-2">
-        <label class="block"><span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Dog length — nose to base of tail ({u})</span>
+        <label class="block"><span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Dog length, nose to base of tail ({u})</span>
           <input type="number" step="any" value={length} onInput={(e) => setLength((e.target as HTMLInputElement).value)} class={inp} /></label>
-        <label class="block"><span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Dog height — floor to top of head ({u})</span>
+        <label class="block"><span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Dog height, floor to top of head ({u})</span>
           <input type="number" step="any" value={height} onInput={(e) => setHeight((e.target as HTMLInputElement).value)} class={inp} /></label>
       </div>
 
@@ -44,7 +44,7 @@ export default function CrateSizeTool() {
         <p class="mt-4 text-sm text-slate-500">Measure your dog and enter the two lengths.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">The AKC guideline: measure nose to the base of the tail (not the tail tip) for length, and floor to the top of the head (or ear tip for erect-eared breeds) for height, then add about 2–4 inches (5–10 cm) to each. Your dog should be able to stand, turn around and lie down comfortably. For a growing puppy, size for the adult dog and use a divider. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">The AKC guideline: measure nose to the base of the tail (not the tail tip) for length, and floor to the top of the head (or ear tip for erect-eared breeds) for height, then add about 2-4 inches (5-10 cm) to each. Your dog should be able to stand, turn around and lie down comfortably. For a growing puppy, size for the adult dog and use a divider. 🔒 In your browser.</p>
     </div>
   );
 }

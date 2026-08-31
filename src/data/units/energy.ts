@@ -7,11 +7,11 @@ export const energy: Quantity = {
   baseUnit: 'j',
   icon: '⚡',
   description:
-    'Convert between joules, calories, kilowatt-hours and BTU. Food energy, electricity bills and heating capacity each use different units — 1 food Calorie (kcal) = 4,184 joules.',
+    'Convert between joules, calories, kilowatt-hours and BTU. Food energy, electricity bills and heating capacity each use different units, 1 food Calorie (kcal) = 4,184 joules.',
   units: [
     {
       id: 'j', name: 'Joule', plural: 'joules', symbol: 'J', slug: 'joules', factor: 1, system: 'si',
-      definition: 'The joule (J) is the SI unit of energy — the work done by a one-newton force over one meter. All other energy units are defined in joules.',
+      definition: 'The joule (J) is the SI unit of energy, the work done by a one-newton force over one meter. All other energy units are defined in joules.',
     },
     {
       id: 'kj', name: 'Kilojoule', plural: 'kilojoules', symbol: 'kJ', slug: 'kj', factor: 1000, system: 'si',
@@ -19,23 +19,23 @@ export const energy: Quantity = {
     },
     {
       id: 'cal', name: 'Calorie (small)', plural: 'calories', symbol: 'cal', slug: 'calories', factor: 4.184, system: 'other',
-      definition: 'A small (gram) calorie (cal) is exactly 4.184 joules — the energy to heat 1 gram of water by 1 °C. Note that food "Calories" are actually kilocalories (1,000 small calories).',
+      definition: 'A small (gram) calorie (cal) is exactly 4.184 joules, the energy to heat 1 gram of water by 1 °C. Note that food "Calories" are actually kilocalories (1,000 small calories).',
     },
     {
       id: 'kcal', name: 'Kilocalorie', plural: 'kilocalories', symbol: 'kcal', slug: 'kcal', factor: 4184, system: 'other',
-      definition: 'A kilocalorie (kcal) is 4,184 joules — identical to the food "Calorie" (capital C) on US nutrition labels. A 2,000-Calorie diet is 2,000 kcal or 8,368 kJ.',
+      definition: 'A kilocalorie (kcal) is 4,184 joules, identical to the food "Calorie" (capital C) on US nutrition labels. A 2,000-Calorie diet is 2,000 kcal or 8,368 kJ.',
     },
     {
       id: 'wh', name: 'Watt-hour', plural: 'watt-hours', symbol: 'Wh', slug: 'wh', factor: 3600, system: 'si',
-      definition: 'A watt-hour (Wh) is 3,600 joules — one watt sustained for an hour. Phone and laptop battery capacities are commonly given in watt-hours.',
+      definition: 'A watt-hour (Wh) is 3,600 joules, one watt sustained for an hour. Phone and laptop battery capacities are commonly given in watt-hours.',
     },
     {
       id: 'kwh', name: 'Kilowatt-hour', plural: 'kilowatt-hours', symbol: 'kWh', slug: 'kwh', factor: 3600000, system: 'si',
-      definition: 'A kilowatt-hour (kWh) is 3.6 million joules — the unit on your electricity bill. Running a 1,000 W appliance for one hour uses exactly 1 kWh.',
+      definition: 'A kilowatt-hour (kWh) is 3.6 million joules, the unit on your electricity bill. Running a 1,000 W appliance for one hour uses exactly 1 kWh.',
     },
     {
       id: 'btu', name: 'British thermal unit', plural: 'BTU', symbol: 'BTU', slug: 'btu', factor: 1055.05585262, system: 'us',
-      definition: 'A British thermal unit (BTU) is about 1,055 joules — the energy to heat one pound of water by 1 °F. Air conditioners and heaters are rated in BTU per hour.',
+      definition: 'A British thermal unit (BTU) is about 1,055 joules, the energy to heat one pound of water by 1 °F. Air conditioners and heaters are rated in BTU per hour.',
     },
     {
       id: 'ftlb', name: 'Foot-pound', plural: 'foot-pounds', symbol: 'ft⋅lb', slug: 'ft-lb', factor: 1.3558179483314004, system: 'us',
@@ -55,7 +55,7 @@ export const energy: Quantity = {
       exampleValue: 2000,
       note: 'Kcal-to-kJ converts between the two food-energy units on nutrition labels. US labels use Calories (kcal); Australian, NZ and EU labels use kilojoules. A 2,000 kcal daily intake is 8,368 kJ. Multiply kcal by 4.184 for kJ.',
       faqs: [
-        { q: 'Are food Calories the same as kcal?', a: 'Yes — a food Calorie (capital C) is exactly one kilocalorie (kcal), which is 4.184 kJ. A 250-Calorie snack is 250 kcal or 1,046 kJ.' },
+        { q: 'Are food Calories the same as kcal?', a: 'Yes, a food Calorie (capital C) is exactly one kilocalorie (kcal), which is 4.184 kJ. A 250-Calorie snack is 250 kcal or 1,046 kJ.' },
       ],
     },
     'kwh-to-btu': {
@@ -71,7 +71,7 @@ export const energy: Quantity = {
     'calories-to-kcal': {
       slug: 'calories-to-kcal',
       exampleValue: 250000,
-      note: 'A food "Calorie" is 1,000 small (gram) calories — so 250,000 small calories is 250 kcal. This page converts the scientific small calorie; if you are reading a nutrition label, its Calories already ARE kilocalories.',
+      note: 'A food "Calorie" is 1,000 small (gram) calories, so 250,000 small calories is 250 kcal. This page converts the scientific small calorie; if you are reading a nutrition label, its Calories already ARE kilocalories.',
     },
     'kcal-to-calories': {
       slug: 'kcal-to-calories',
@@ -86,12 +86,12 @@ export const energy: Quantity = {
     'joules-to-kj': {
       slug: 'joules-to-kj',
       exampleValue: 4184,
-      note: 'Divide joules by 1,000: 4,184 J is 4.184 kJ — the energy in one food kilocalorie. Physics answers come out in joules; nutrition and appliance specs read better in kilojoules.',
+      note: 'Divide joules by 1,000: 4,184 J is 4.184 kJ, the energy in one food kilocalorie. Physics answers come out in joules; nutrition and appliance specs read better in kilojoules.',
     },
     'kcal-to-kwh': {
       slug: 'kcal-to-kwh',
       exampleValue: 2000,
-      note: 'A 2,000 kcal daily diet is just 2.33 kWh — the human body runs all day on less energy than a space heater uses in two hours. One kcal is 0.001163 kWh.',
+      note: 'A 2,000 kcal daily diet is just 2.33 kWh, the human body runs all day on less energy than a space heater uses in two hours. One kcal is 0.001163 kWh.',
     },
   },
 };

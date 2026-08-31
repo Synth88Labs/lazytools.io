@@ -35,7 +35,7 @@ export default function TextDiffTool() {
             : <div class="flex bg-emerald-50"><span class="w-6 select-none border-r border-emerald-100 px-1 text-center font-bold text-emerald-600">+</span><span class="whitespace-pre-wrap px-2 py-0.5 text-emerald-800">{r.b || ' '}</span></div>
         ))}
       </div>
-      <p class="mt-3 text-xs text-slate-500">Exact line-by-line comparison via a longest-common-subsequence diff. 🔒 Both texts are compared entirely in your browser — nothing is uploaded, which matters for contracts, code and drafts.</p>
+      <p class="mt-3 text-xs text-slate-500">Exact line-by-line comparison via a longest-common-subsequence diff. 🔒 Both texts are compared entirely in your browser, nothing is uploaded, which matters for contracts, code and drafts.</p>
     </div>
   );
 }

@@ -5,7 +5,7 @@ const num = (s: string) => { const n = parseFloat(s); return isFinite(n) ? n : n
 const fmt = (n: number, d = 1) => n.toLocaleString('en-US', { maximumFractionDigits: d });
 const C_TO_F = (c: number) => (c * 9) / 5 + 32;
 const F_TO_C = (f: number) => ((f - 32) * 5) / 9;
-// water:grain ratio conversions — L/kg to qt/lb: 1 L/kg = 0.479 qt/lb
+// water:grain ratio conversions, L/kg to qt/lb: 1 L/kg = 0.479 qt/lb
 const LKG_TO_QTLB = 0.479305;
 
 export default function StrikeWaterTool() {

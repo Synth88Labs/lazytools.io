@@ -84,7 +84,7 @@ export default function PdfRedactorTool() {
       setBytes(buf);
       await renderPage(buf, 0);
     } catch (err) {
-      setError('Could not read this PDF — it may be password-protected or corrupted.');
+      setError('Could not read this PDF. It may be password-protected or corrupted.');
     }
     (e.target as HTMLInputElement).value = '';
   }
@@ -165,7 +165,7 @@ export default function PdfRedactorTool() {
       a.download = fileName.replace(/\.pdf$/i, '') + '-redacted.pdf';
       a.click();
       URL.revokeObjectURL(url);
-      setDone(`✓ ${fileName.replace(/\.pdf$/i, '')}-redacted.pdf (${fmtSize(blob.size)}) — every page flattened to an image; no text layer, no metadata, no attachments survive. Verify it with the redaction checker.`);
+      setDone(`✓ ${fileName.replace(/\.pdf$/i, '')}-redacted.pdf (${fmtSize(blob.size)}), every page flattened to an image; no text layer, no metadata, no attachments survive. Verify it with the redaction checker.`);
     } catch (e) {
       setError(`Redaction failed: ${(e as Error).message}`);
     }
@@ -183,7 +183,7 @@ export default function PdfRedactorTool() {
       <label class="block cursor-pointer rounded-xl border-2 border-dashed border-slate-300 bg-white p-6 text-center transition hover:border-brand-400">
         <input type="file" accept=".pdf,application/pdf" onChange={onFile} class="sr-only" />
         <span class="text-sm font-semibold text-brand-700">{fileName || 'Choose a PDF to redact'}</span>
-        <span class="mt-1 block text-xs text-slate-500">Drawn boxes are burned in and pages flattened to images — locally, nothing uploaded</span>
+        <span class="mt-1 block text-xs text-slate-500">Drawn boxes are burned in and pages flattened to images, locally, nothing uploaded</span>
       </label>
 
       {bytes && (
@@ -238,7 +238,7 @@ export default function PdfRedactorTool() {
       </div>
 
       <p class="mt-4 rounded-lg bg-white px-3 py-2 text-xs text-slate-500 ring-1 ring-slate-200">
-        <strong class="text-slate-700">Safe by construction:</strong> instead of hiding text under boxes (the failure mode behind most redaction scandals), every page is re-rendered as a flat image with the boxes burned in — the underlying text, fonts, metadata and attachments simply don't exist in the output. Trade-off: the result is no longer searchable or selectable (like a scan), and it needs OCR to become accessible again. Verify any redaction with the <a href="/pdf/redaction-checker/" class="font-semibold text-brand-700 underline decoration-slate-300 underline-offset-2">redaction checker</a>.
+        <strong class="text-slate-700">Safe by construction:</strong> instead of hiding text under boxes (the failure mode behind most redaction scandals), every page is re-rendered as a flat image with the boxes burned in, the underlying text, fonts, metadata and attachments simply don't exist in the output. Trade-off: the result is no longer searchable or selectable (like a scan), and it needs OCR to become accessible again. Verify any redaction with the <a href="/pdf/redaction-checker/" class="font-semibold text-brand-700 underline decoration-slate-300 underline-offset-2">redaction checker</a>.
       </p>
     </div>
   );

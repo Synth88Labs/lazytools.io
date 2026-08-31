@@ -77,7 +77,7 @@ export default function BeerColorTool() {
         <p class="mt-2 text-sm text-slate-500">Enter at least one malt and a batch volume.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Beer colour uses the Morey equation: first the malt colour units MCU = Σ(malt °Lovibond × lb) ÷ volume in gallons, then SRM = 1.4922 × MCU^0.6859. EBC is the European scale (SRM × 1.97). The swatch is an approximation — actual colour also depends on boil, pH and oxidation. Add a row per malt in your grain bill. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Beer colour uses the Morey equation: first the malt colour units MCU = Σ(malt °Lovibond × lb) ÷ volume in gallons, then SRM = 1.4922 × MCU^0.6859. EBC is the European scale (SRM × 1.97). The swatch is an approximation, actual colour also depends on boil, pH and oxidation. Add a row per malt in your grain bill. 🔒 In your browser.</p>
     </div>
   );
 }

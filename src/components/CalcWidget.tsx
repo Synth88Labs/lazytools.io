@@ -115,7 +115,7 @@ export default function CalcWidget({ computeId, fields }: Props) {
             </div>
           </>
         ) : (
-          <p class="py-2 text-sm text-slate-500">Fill in the fields above — results appear instantly.</p>
+          <p class="py-2 text-sm text-slate-500">Fill in the fields above, results appear instantly.</p>
         )}
       </div>
     </div>

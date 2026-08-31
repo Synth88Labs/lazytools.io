@@ -17,7 +17,7 @@ export default function MeasureTool() {
   const widthRem = round(widthPx / 16, 2);
   const widthEm = round(cpl * CH_RATIO, 1); // in em, independent of font size
 
-  // Recommended band: 45–75 CPL for body text (Bringhurst / Baymard).
+  // Recommended band: 45-75 CPL for body text (Bringhurst / Baymard).
   const inBand = cpl >= 45 && cpl <= 75;
   const verdict = cpl < 45 ? 'Too narrow' : cpl > 75 ? 'Too wide' : 'Comfortable';
   const verdictClass = inBand ? 'text-mint-700 bg-mint-50 border-mint-200' : 'text-amber-800 bg-amber-50 border-amber-200';
@@ -58,7 +58,7 @@ export default function MeasureTool() {
         <div class={`rounded-xl border p-4 text-center ${verdictClass}`}>
           <p class="text-xs font-semibold uppercase tracking-wide">Readability</p>
           <p class="mt-1 text-lg font-bold">{verdict}</p>
-          <p class="text-xs">ideal 45–75</p>
+          <p class="text-xs">ideal 45-75</p>
         </div>
       </div>
 
@@ -70,7 +70,7 @@ export default function MeasureTool() {
       </div>
 
       <p class="mt-4 text-xs text-slate-500">
-        Long-standing typographic guidance (Bringhurst; usability research) puts comfortable reading at <strong>45–75 characters per line</strong>, ~66 being ideal. Set your text container to the width above (using <code>max-width</code> in em/ch keeps it correct if the font size changes). 🔒 Runs in your browser.
+        Long-standing typographic guidance (Bringhurst; usability research) puts comfortable reading at <strong>45-75 characters per line</strong>, ~66 being ideal. Set your text container to the width above (using <code>max-width</code> in em/ch keeps it correct if the font size changes). 🔒 Runs in your browser.
       </p>
     </div>
   );

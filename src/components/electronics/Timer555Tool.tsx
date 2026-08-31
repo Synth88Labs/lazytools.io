@@ -68,7 +68,7 @@ export default function Timer555Tool() {
 
       <p class="mt-4 text-xs text-slate-500">
         {mode === 'astable'
-          ? 'Astable: f = 1.44 ⁄ ((R1 + 2·R2)·C); duty = (R1 + R2) ⁄ (R1 + 2·R2). The standard 555 duty is always above 50% — add a diode across R2 for a symmetric square wave.'
+          ? 'Astable: f = 1.44 ⁄ ((R1 + 2·R2)·C); duty = (R1 + R2) ⁄ (R1 + 2·R2). The standard 555 duty is always above 50%, add a diode across R2 for a symmetric square wave.'
           : 'Monostable one-shot: a trigger pulse produces one output pulse of width t = 1.1 · R · C.'} 🔒 In your browser.
       </p>
     </div>

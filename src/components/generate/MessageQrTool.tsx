@@ -66,7 +66,7 @@ export default function MessageQrTool() {
           <button type="button" onClick={download} class="mt-3 rounded-lg bg-brand-700 px-4 py-2 text-sm font-medium text-white hover:bg-brand-800">⬇ Download PNG</button>
         </div>
       </div>
-      <p class="mt-3 text-xs text-slate-500">Encodes a <span class="font-mono">mailto:</span>, <span class="font-mono">SMSTO:</span>, <span class="font-mono">tel:</span> or <span class="font-mono">geo:</span> action directly — scanning opens the pre-filled email, text, dialler or map. No tracking redirect. 🔒 Generated in your browser.</p>
+      <p class="mt-3 text-xs text-slate-500">Encodes a <span class="font-mono">mailto:</span>, <span class="font-mono">SMSTO:</span>, <span class="font-mono">tel:</span> or <span class="font-mono">geo:</span> action directly, scanning opens the pre-filled email, text, dialler or map. No tracking redirect. 🔒 Generated in your browser.</p>
     </div>
   );
 }

@@ -20,7 +20,7 @@ async function loadQpdfFactory(): Promise<QpdfFactory> {
     const s = document.createElement('script');
     s.src = '/vendor/qpdf.js';
     s.onload = () => resolve();
-    s.onerror = () => reject(new Error('Could not load the qpdf engine — check your connection and retry.'));
+    s.onerror = () => reject(new Error('Could not load the qpdf engine, check your connection and retry.'));
     document.head.appendChild(s);
   });
   const factory = w.exports?.Module;
@@ -83,7 +83,7 @@ export default function CompressPdfTool() {
         }
         throw e;
       }
-      // Keep whichever is smaller — never hand back a bigger file.
+      // Keep whichever is smaller, never hand back a bigger file.
       const alreadyOptimal = out.byteLength >= input.byteLength;
       const bytes = alreadyOptimal ? input : out;
       const blob = new Blob([bytes], { type: 'application/pdf' });
@@ -108,7 +108,7 @@ export default function CompressPdfTool() {
       <label class="block cursor-pointer rounded-xl border-2 border-dashed border-slate-300 bg-white px-4 py-8 text-center hover:border-brand-400">
         <input type="file" accept="application/pdf,.pdf" class="hidden" onChange={(e) => onFile((e.target as HTMLInputElement).files?.[0] ?? null)} />
         <span class="text-sm font-semibold text-slate-700">{file ? `📄 ${file.name}` : '📄 Choose a PDF file'}</span>
-        <span class="mt-1 block text-xs text-slate-500">{file ? fmtSize(file.size) : 'or drag it onto this box — nothing is uploaded'}</span>
+        <span class="mt-1 block text-xs text-slate-500">{file ? fmtSize(file.size) : 'or drag it onto this box, nothing is uploaded'}</span>
       </label>
 
       <div class="mt-4">
@@ -123,11 +123,11 @@ export default function CompressPdfTool() {
         <div class="mt-4 rounded-xl bg-white p-4 ring-2 ring-brand-200">
           {result.alreadyOptimal ? (
             <p class="text-sm text-slate-700">
-              This PDF is already well-optimized — lossless recompression couldn’t make it meaningfully smaller ({fmtSize(result.inBytes)}). You can still download the processed copy below.
+              This PDF is already well-optimized, lossless recompression couldn’t make it meaningfully smaller ({fmtSize(result.inBytes)}). You can still download the processed copy below.
             </p>
           ) : (
             <p class="text-sm text-slate-700">
-              Reduced from <strong>{fmtSize(result.inBytes)}</strong> to <strong class="text-brand-800">{fmtSize(result.outBytes)}</strong> — <strong class="text-emerald-600">{pct}% smaller</strong>, with no loss of quality.
+              Reduced from <strong>{fmtSize(result.inBytes)}</strong> to <strong class="text-brand-800">{fmtSize(result.outBytes)}</strong>, <strong class="text-emerald-600">{pct}% smaller</strong>, with no loss of quality.
             </p>
           )}
           <a href={result.url} download={result.name} class="mt-3 inline-block rounded-xl bg-brand-700 px-5 py-2 text-sm font-semibold text-white hover:bg-brand-800">⬇ Download compressed PDF</a>
@@ -135,7 +135,7 @@ export default function CompressPdfTool() {
       )}
 
       <p class="mt-4 text-xs text-slate-500">
-        Compression is <strong>lossless</strong>: qpdf recompresses the PDF’s internal data streams at maximum level and consolidates objects, so text stays selectable and images keep their exact quality — nothing is rasterized or downsampled. Savings are largest on PDFs exported without optimization; already-optimized files may shrink little. 🔒 Runs entirely in your browser via qpdf (WebAssembly) — your document is never uploaded.
+        Compression is <strong>lossless</strong>: qpdf recompresses the PDF’s internal data streams at maximum level and consolidates objects, so text stays selectable and images keep their exact quality, nothing is rasterized or downsampled. Savings are largest on PDFs exported without optimization; already-optimized files may shrink little. 🔒 Runs entirely in your browser via qpdf (WebAssembly), your document is never uploaded.
       </p>
     </div>
   );

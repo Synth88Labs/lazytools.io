@@ -90,7 +90,7 @@ export default function SubtitleTool({ mode }: Props) {
         <div>
           <label class="mb-2 flex cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed border-slate-300 bg-white px-4 py-6 text-center text-sm text-slate-600 transition hover:border-brand-500 hover:bg-slate-50">
             <span class="font-medium text-slate-700">Choose a subtitle file</span>
-            <span class="mt-1 text-xs text-slate-500">.srt or .vtt — or paste below</span>
+            <span class="mt-1 text-xs text-slate-500">.srt or .vtt, or paste below</span>
             <input
               type="file"
               accept=".srt,.vtt,text/plain"
@@ -137,7 +137,7 @@ export default function SubtitleTool({ mode }: Props) {
           <label class="mb-1 block text-sm font-medium text-slate-700">Output</label>
           {noCues ? (
             <p class="rounded-xl border border-amber-200 bg-amber-50 px-3 py-2 text-xs text-amber-700">
-              No subtitle cues found — check the format.
+              No subtitle cues found, check the format.
             </p>
           ) : (
             <textarea
@@ -171,7 +171,7 @@ export default function SubtitleTool({ mode }: Props) {
         </div>
 
         <p class="text-xs text-slate-500">
-          Everything runs locally in your browser — your subtitles are never uploaded.
+          Everything runs locally in your browser, your subtitles are never uploaded.
         </p>
       </div>
     </div>

@@ -27,7 +27,7 @@ export default function MacFormatterTool() {
     <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
       <div class="flex flex-wrap items-end gap-3">
         <label class="block max-w-sm flex-1">
-          <span class="text-xs font-semibold uppercase tracking-wide text-slate-500">MAC address — any format</span>
+          <span class="text-xs font-semibold uppercase tracking-wide text-slate-500">MAC address, any format</span>
           <input
             class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 font-mono text-sm text-slate-800 focus:border-brand-500 focus:outline-none"
             value={input}
@@ -42,7 +42,7 @@ export default function MacFormatterTool() {
       </div>
 
       {!hex && input.trim() !== '' && (
-        <p class="mt-3 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800">Not a valid MAC — it needs exactly 12 hex digits (separators optional).</p>
+        <p class="mt-3 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800">Not a valid MAC. It needs exactly 12 hex digits (separators optional).</p>
       )}
 
       {hex && (
@@ -71,7 +71,7 @@ export default function MacFormatterTool() {
       )}
 
       <p class="mt-4 text-xs text-slate-500">
-        EUI-64 flips the universal/local bit and inserts ff:fe; the link-local address is fe80::/64 + EUI-64. Everything is computed locally — MAC addresses identify hardware, so they never leave your browser here.
+        EUI-64 flips the universal/local bit and inserts ff:fe; the link-local address is fe80::/64 + EUI-64. Everything is computed locally, MAC addresses identify hardware, so they never leave your browser here.
       </p>
     </div>
   );

@@ -20,20 +20,20 @@ faqs:
   - q: "What is the day of the year for a date?"
     a: "It's the ordinal count of days from January 1, which is day 1. So February 1 is day 32, and March 1 is day 60 in a common year or day 61 in a leap year (because February gains a 29th day). December 31 is day 365, or day 366 in a leap year. The LazyTools Day of the Year Calculator computes it for any date in your browser."
   - q: "Is the day-of-year the same as a Julian date?"
-    a: "In everyday use — logistics, manufacturing lot codes, spreadsheets — 'Julian date' usually means exactly this: the ordinal day-of-year, often zero-padded like 045. It is NOT the astronomical Julian Day Number, which is a continuous count of days since 4713 BC used in astronomy. The two share a name but are completely different numbers."
+    a: "In everyday use, logistics, manufacturing lot codes, spreadsheets, 'Julian date' usually means exactly this: the ordinal day-of-year, often zero-padded like 045. It is NOT the astronomical Julian Day Number, which is a continuous count of days since 4713 BC used in astronomy. The two share a name but are completely different numbers."
   - q: "How does the leap year rule work?"
     a: "A year is a leap year if it's divisible by 4, except century years, which must also be divisible by 400. So 2004, 2008 and 2000 are leap years, but 1900, 2100 and 2200 are not. This keeps the calendar aligned with the solar year, which is about 365.2425 days. Leap years have 366 days; February gains a 29th."
   - q: "How do I count business days between or from a date?"
-    a: "Business (working) days are Monday–Friday. To count them between two dates, tally the weekdays and exclude weekends; to add business days to a date, step forward day by day counting only weekdays. Neither excludes public holidays automatically — those vary by country, so subtract them separately. The LazyTools business-day tools handle the weekend math for you."
+    a: "Business (working) days are Monday, Friday. To count them between two dates, tally the weekdays and exclude weekends; to add business days to a date, step forward day by day counting only weekdays. Neither excludes public holidays automatically. Those vary by country, so subtract them separately. The LazyTools business-day tools handle the weekend math for you."
   - q: "What day of the week was I born?"
     a: "Enter your birth date into a day-of-the-week calculator and it returns the weekday using the Gregorian calendar. For example, January 1, 2000 was a Saturday. The LazyTools Day of the Week Calculator does this for any past or future date in your browser."
   - q: "Are these date calculations done privately?"
-    a: "Yes — the LazyTools day-of-year, day-of-week and business-day calculators all run entirely in your browser using JavaScript's date functions. Nothing you enter is uploaded, and they work offline."
+    a: "Yes, the LazyTools day-of-year, day-of-week and business-day calculators all run entirely in your browser using JavaScript's date functions. Nothing you enter is uploaded, and they work offline."
 draft: false
 ---
 
 **The day-of-year is simply the ordinal count of days from January 1 (day 1): March 1 is day 60 in a
-common year and day 61 in a leap year, and December 31 is day 365 — or 366 when February has 29
+common year and day 61 in a leap year, and December 31 is day 365, or 366 when February has 29
 days.** That one idea underlies a surprising amount of everyday date math: ordinal ("Julian") date
 codes, leap-year handling, and working out weekdays and business-day deadlines. The
 [Day of the Year Calculator](/time/day-of-year-calculator/),
@@ -46,9 +46,9 @@ codes, leap-year handling, and working out weekdays and business-day deadlines. 
 
 - The day-of-year is the ordinal count from January 1 (day 1) to December 31 (day 365, or 366 in a leap year).
 - From March onward, a leap year adds one to every date's number because February 29 sits ahead of it.
-- The leap-year rule: divisible by 4, but century years must also be divisible by 400 — so 2000 counted, 1900 and 2100 do not.
+- The leap-year rule: divisible by 4, but century years must also be divisible by 400, so 2000 counted, 1900 and 2100 do not.
 - "Julian date" in business usually means the ordinal day-of-year, not the astronomer's Julian Day Number.
-- Weekday lookups and business-day deadlines are the same date arithmetic in a different shape — and all of it runs in your browser.
+- Weekday lookups and business-day deadlines are the same date arithmetic in a different shape, and all of it runs in your browser.
 
 </aside>
 
@@ -94,7 +94,7 @@ by 4), so use the common column: October's offset is 273, plus 15, which gives *
 year 2024 the same date would be 274 + 15 = **day 289**, one higher because February 29 came first.
 
 **Reverse example.** Given day 100 of 2025, which date is it? Scan the common column for the largest
-offset below 100 — that's March (59) versus April (90). April 90 fits, and 100 − 90 = 10, so day 100 is
+offset below 100, that's March (59) versus April (90). April 90 fits, and 100 − 90 = 10, so day 100 is
 **April 10**. In a leap year the same day-100 lands on April 9, because every March-onward offset is one
 larger. The [Day of the Year Calculator](/time/day-of-year-calculator/) does both directions instantly,
 but the table is handy when you want to sanity-check a lot code by eye.
@@ -121,14 +121,14 @@ but the table is handy when you want to sanity-check a lot code by eye.
 </svg>
 </figure>
 
-## "Julian date" — two very different things
+## "Julian date", two very different things
 
 Watch out for a naming clash:
 
-- **Ordinal day-of-year** — the day 1–366 number above, often zero-padded (`2024045` = day 45 of
+- **Ordinal day-of-year**, the day 1-366 number above, often zero-padded (`2024045` = day 45 of
   2024). This is what a warehouse or a spreadsheet usually means by "Julian date," and it's what the
   [Day of the Year Calculator](/time/day-of-year-calculator/) gives you.
-- **[Astronomical Julian Day Number](https://en.wikipedia.org/wiki/Julian_day)** — a continuous count of days since January 1, 4713 BC, used in
+- **[Astronomical Julian Day Number](https://en.wikipedia.org/wiki/Julian_day)**, a continuous count of days since January 1, 4713 BC, used in
   astronomy (today is around 2.46 million). Completely different number, same word.
 
 If someone hands you a 5- or 7-digit "Julian date" for a product lot, they almost always mean the
@@ -152,14 +152,14 @@ Two related questions fall out of the same date arithmetic:
   Monday = 1 … Sunday = 7 (spreadsheets and most code use this), which differs from the US habit of
   starting the week on Sunday. The [Day of the Week Calculator](/time/day-of-week-calculator/) also
   tells you if it's a weekend and how far it is from today.
-- **What date is N working days away?** Business days are Monday–Friday. Adding, say, 10 business days
-  to a date means stepping forward and counting only weekdays — the basis of SLAs, net-terms payments
+- **What date is N working days away?** Business days are Monday, Friday. Adding, say, 10 business days
+  to a date means stepping forward and counting only weekdays, the basis of SLAs, net-terms payments
   and delivery estimates. The [Add Business Days Calculator](/time/add-business-days-calculator/) does
   this (it skips weekends; subtract public holidays yourself, since those vary by country).
 
 **Worked example.** A contract says payment is due "10 business days after invoice," and the invoice is
 dated Friday, October 3, 2025. Counting only weekdays: the following Monday (Oct 6) is business day 1,
-and stepping forward through two full work weeks lands day 10 on **Friday, October 17** — a plain
+and stepping forward through two full work weeks lands day 10 on **Friday, October 17**, a plain
 14-calendar-day gap that happens to contain two weekends. Note the convention question: does the start
 date count as day 0 or day 1? Most "add N business days" logic treats the start date as day 0 and begins
 counting the next working day, which is what the calculator assumes. If a public holiday falls inside
@@ -171,7 +171,7 @@ holiday calendar.
 The day-of-year isn't just a curiosity. A few places it turns up in practice:
 
 - **Manufacturing and food lot codes.** A stamp like `5288` often reads as year digit 5, day-of-year
-  288 — mid-October — letting a line print a compact date without a full calendar.
+  288, mid-October, letting a line print a compact date without a full calendar.
 - **Spreadsheets and data pipelines.** Grouping records by ordinal day makes year-over-year comparisons
   line up cleanly, and many systems store or export a padded day-of-year field.
 - **Aviation and logistics.** Ordinal "Julian" dates are common on shipping labels and flight paperwork
@@ -179,19 +179,19 @@ The day-of-year isn't just a curiosity. A few places it turns up in practice:
 - **Scientific and agricultural records.** Day-of-year is a natural x-axis for seasonal data such as
   growing-degree days or daily observations.
 
-In every case the underlying number is the same ordinal count — which is why one small idea covers so
+In every case the underlying number is the same ordinal count, which is why one small idea covers so
 much ground.
 
 ## Why do this in the browser?
 
-None of this needs a server — it's arithmetic on a date. Doing it locally means the dates you're
+None of this needs a server, it's arithmetic on a date. Doing it locally means the dates you're
 planning around (deadlines, birthdays, ship dates) never leave your device, and the tools keep working
 offline. All three LazyTools date calculators run entirely client-side.
 
 ## The bottom line
 
 The day-of-year is the ordinal count from January 1, leap years insert February 29 (shifting every
-later day by one), and "Julian date" usually means that ordinal number — not the astronomer's. Weekday
+later day by one), and "Julian date" usually means that ordinal number, not the astronomer's. Weekday
 and business-day questions are the same date math in a different shape. Reach for the
 [day-of-year](/time/day-of-year-calculator/), [weekday](/time/day-of-week-calculator/) and
 [business-day](/time/add-business-days-calculator/) calculators and let them handle the leap years and

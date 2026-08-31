@@ -50,7 +50,7 @@ export default function AudioFileSizeTool() {
         <p class="mt-4 text-sm text-slate-500">Enter a duration.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Size = sample rate × (bit depth ÷ 8) × channels × seconds — this is raw PCM (WAV/AIFF). CD quality is 44,100 Hz / 16-bit / stereo ≈ 10 MB per minute. Lossy formats (MP3, AAC) are far smaller. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Size = sample rate × (bit depth ÷ 8) × channels × seconds. This is raw PCM (WAV/AIFF). CD quality is 44,100 Hz / 16-bit / stereo ≈ 10 MB per minute. Lossy formats (MP3, AAC) are far smaller. 🔒 In your browser.</p>
     </div>
   );
 }

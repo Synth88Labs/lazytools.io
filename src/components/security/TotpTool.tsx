@@ -51,7 +51,7 @@ export default function TotpTool() {
       } catch {
         if (!cancelled) {
           setCode('');
-          setError('Not a valid Base32 secret — TOTP secrets use A–Z and 2–7.');
+          setError('Not a valid Base32 secret, TOTP secrets use A, Z and 2-7.');
           setRemaining(period);
         }
       } finally {
@@ -86,7 +86,7 @@ export default function TotpTool() {
       setCopied(true);
       setTimeout(() => setCopied(false), 1500);
     } catch {
-      /* clipboard unavailable — ignore */
+      /* clipboard unavailable, ignore */
     }
   }
 
@@ -117,7 +117,7 @@ export default function TotpTool() {
   return (
     <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
       <p class="mb-4 text-xs text-slate-500">
-        This runs entirely in your browser — your secret never leaves this page. Still, only paste a 2FA
+        This runs entirely in your browser, your secret never leaves this page. Still, only paste a 2FA
         secret into tools you trust and control.
       </p>
 
@@ -248,7 +248,7 @@ export default function TotpTool() {
           </button>
         </div>
         {checkResult === 'valid' && (
-          <p class="mt-2 text-sm font-medium text-green-600">✓ Valid — matches the current window (±1).</p>
+          <p class="mt-2 text-sm font-medium text-green-600">✓ Valid, matches the current window (±1).</p>
         )}
         {checkResult === 'invalid' && (
           <p class="mt-2 text-sm font-medium text-red-600">✗ No match for the current or adjacent windows.</p>

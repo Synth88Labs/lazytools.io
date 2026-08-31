@@ -1,5 +1,5 @@
 /**
- * LLM API pricing snapshot — used by the LLM token counter's cost panel.
+ * LLM API pricing snapshot, used by the LLM token counter's cost panel.
  *
  * MAINTENANCE RULE (see docs/research/2026-07-07-ai-calculators.md): these numbers
  * MUST be re-verified against the official pricing pages at least monthly and on
@@ -17,12 +17,12 @@ export const PRICE_SOURCES = [
 
 /**
  * tokenizer:
- *  - 'o200k'      — exact count in-browser via gpt-tokenizer (OpenAI o200k_base)
- *  - 'claude-new' — estimate: chars/4 × 1.3 (Anthropic: newer tokenizer ≈30% more tokens;
+ *  - 'o200k'     , exact count in-browser via gpt-tokenizer (OpenAI o200k_base)
+ *  - 'claude-new', estimate: chars/4 × 1.3 (Anthropic: newer tokenizer ≈30% more tokens;
  *                   applies to Opus 4.7 / 4.8 / 5, Fable/Mythos 5, Sonnet 5)
- *  - 'claude'     — estimate: chars/4 (Anthropic heuristic: 1 token ≈ 4 chars; Sonnet 4.6
+ *  - 'claude'    , estimate: chars/4 (Anthropic heuristic: 1 token ≈ 4 chars; Sonnet 4.6
  *                   and earlier, Haiku 4.5 use the previous tokenizer)
- *  - 'gemini-est' — estimate: chars/4 heuristic
+ *  - 'gemini-est', estimate: chars/4 heuristic
  */
 export type TokenizerKind = 'o200k' | 'claude-new' | 'claude' | 'gemini-est';
 
@@ -46,7 +46,7 @@ export const MODEL_PRICES: ModelPrice[] = [
   { id: 'claude-fable-5', name: 'Claude Fable 5', vendor: 'Anthropic', input: 10, output: 50, tokenizer: 'claude-new' },
   { id: 'claude-opus-5', name: 'Claude Opus 5', vendor: 'Anthropic', input: 5, output: 25, tokenizer: 'claude-new' },
   { id: 'claude-opus-4-8', name: 'Claude Opus 4.8', vendor: 'Anthropic', input: 5, output: 25, tokenizer: 'claude-new' },
-  { id: 'claude-sonnet-5', name: 'Claude Sonnet 5', vendor: 'Anthropic', input: 2, output: 10, tokenizer: 'claude-new', note: 'intro pricing — $3 / $15 from 1 Sept 2026' },
+  { id: 'claude-sonnet-5', name: 'Claude Sonnet 5', vendor: 'Anthropic', input: 2, output: 10, tokenizer: 'claude-new', note: 'intro pricing, $3 / $15 from 1 Sept 2026' },
   { id: 'claude-haiku-4-5', name: 'Claude Haiku 4.5', vendor: 'Anthropic', input: 1, output: 5, tokenizer: 'claude' },
   { id: 'gemini-3-6-flash', name: 'Gemini 3.6 Flash', vendor: 'Google', input: 1.5, output: 7.5, tokenizer: 'gemini-est' },
   { id: 'gemini-3-5-flash', name: 'Gemini 3.5 Flash', vendor: 'Google', input: 1.5, output: 9, tokenizer: 'gemini-est' },

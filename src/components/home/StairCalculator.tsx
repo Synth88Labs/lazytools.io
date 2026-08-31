@@ -41,11 +41,11 @@ export default function StairCalculator() {
             <div class="rounded-xl bg-white p-4 text-center ring-1 ring-slate-200"><p class="font-mono text-2xl font-bold text-slate-800">{fmt(res.run)} {unit}</p><p class="text-xs font-semibold uppercase tracking-wide text-slate-500">total run ({res.treads} treads)</p></div>
             <div class="rounded-xl bg-white p-4 text-center ring-1 ring-slate-200"><p class="font-mono text-2xl font-bold text-slate-800">{fmt(res.stringer)} {unit}</p><p class="text-xs font-semibold uppercase tracking-wide text-slate-500">stringer length</p></div>
           </div>
-          {(!riserOk || !treadOk) && <p class="mt-2 text-center text-xs font-semibold text-rose-700">{!riserOk ? `Riser exceeds the ~${maxRiser} ${unit} code maximum — add a riser. ` : ''}{!treadOk ? `Tread is below the ~${minTread} ${unit} code minimum.` : ''}</p>}
+          {(!riserOk || !treadOk) && <p class="mt-2 text-center text-xs font-semibold text-rose-700">{!riserOk ? `Riser exceeds the ~${maxRiser} ${unit} code maximum, add a riser. ` : ''}{!treadOk ? `Tread is below the ~${minTread} ${unit} code minimum.` : ''}</p>}
         </>
       ) : <p class="mt-4 text-sm text-slate-500">Enter the total rise, a target riser height and the tread depth.</p>}
 
-      <p class="mt-4 text-xs text-slate-500">The number of risers is the total rise divided by your target riser height, rounded to a whole number; the actual riser is the rise divided by that count. There\'s one fewer tread than risers, so the run is treads × tread depth, and the stringer length is √(rise² + run²). US IRC limits: riser ≤ 7¾″, tread ≥ 10″ — always confirm your local building code. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">The number of risers is the total rise divided by your target riser height, rounded to a whole number; the actual riser is the rise divided by that count. There\'s one fewer tread than risers, so the run is treads × tread depth, and the stringer length is √(rise² + run²). US IRC limits: riser ≤ 7¾″, tread ≥ 10″, always confirm your local building code. 🔒 In your browser.</p>
     </div>
   );
 }

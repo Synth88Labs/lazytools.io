@@ -94,7 +94,7 @@ export default function RetailCalendarTool() {
                 {cell('Fiscal year', `FY${pos.fy}`)}
               </div>
               <p class="mt-3 text-xs text-slate-500">
-                FY{pos.fy} runs {fmtUTCDate(pos.yearStart)} → {fmtUTCDate(pos.yearEnd)} ({pos.weeksInYear} weeks{pos.weeksInYear === 53 ? ' — a 53-week year' : ''}).
+                FY{pos.fy} runs {fmtUTCDate(pos.yearStart)} → {fmtUTCDate(pos.yearEnd)} ({pos.weeksInYear} weeks{pos.weeksInYear === 53 ? ', a 53-week year' : ''}).
               </p>
             </div>
           )}
@@ -143,7 +143,7 @@ export default function RetailCalendarTool() {
             </table>
           </div>
           <p class="mt-2 text-xs text-slate-500">
-            Pattern per quarter: {pattern} weeks{is53WeekYear(fy) ? ' — this 53-week year adds the extra week to January' : ''}. The 5-week months are highlighted.
+            Pattern per quarter: {pattern} weeks{is53WeekYear(fy) ? '. This 53-week year adds the extra week to January' : ''}. The 5-week months are highlighted.
           </p>
         </div>
       )}

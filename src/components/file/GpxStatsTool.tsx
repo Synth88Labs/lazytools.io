@@ -59,7 +59,7 @@ export default function GpxStatsTool() {
         </label>
         <button type="button" onClick={() => analyze(SAMPLE, 'sample-ride.gpx')} class="rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm font-medium text-slate-600 hover:border-brand-400 hover:text-brand-700">Try a sample</button>
       </div>
-      <p class="mt-1 text-xs text-slate-500">Your file is read locally in the browser — GPX files contain your exact locations, so nothing is uploaded.</p>
+      <p class="mt-1 text-xs text-slate-500">Your file is read locally in the browser, GPX files contain your exact locations, so nothing is uploaded.</p>
 
       {error && <p class="mt-4 rounded-lg bg-rose-50 px-3 py-2 text-sm text-rose-700 ring-1 ring-rose-200">{error}</p>}
 
@@ -77,7 +77,7 @@ export default function GpxStatsTool() {
         </div>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Distances use the haversine formula on the WGS-84 mean Earth radius (great-circle distance between consecutive track points), and elevation gain/loss sums every up/down step. Speed and pace need timestamps in the file; a device that logs points sparsely will read slightly short on distance. 🔒 Everything is computed in your browser — your track (which reveals where you live, work and train) never leaves your device.</p>
+      <p class="mt-4 text-xs text-slate-500">Distances use the haversine formula on the WGS-84 mean Earth radius (great-circle distance between consecutive track points), and elevation gain/loss sums every up/down step. Speed and pace need timestamps in the file; a device that logs points sparsely will read slightly short on distance. 🔒 Everything is computed in your browser, your track (which reveals where you live, work and train) never leaves your device.</p>
     </div>
   );
 }

@@ -26,7 +26,7 @@ export default function CoverageRatiosTool() {
 
       <RatioResults results={results} />
 
-      <p class="mt-4 text-xs text-slate-500">Coverage ratios show how comfortably earnings cover debt obligations — the ratios lenders lean on most. The rules of thumb here (interest coverage above ~2.5–3×, DSCR at or above 1.25×) are widely used loan-underwriting benchmarks, though stable-cash-flow sectors get more leeway. Educational information, not financial advice. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Coverage ratios show how comfortably earnings cover debt obligations, the ratios lenders lean on most. The rules of thumb here (interest coverage above ~2.5-3×, DSCR at or above 1.25×) are widely used loan-underwriting benchmarks, though stable-cash-flow sectors get more leeway. Educational information, not financial advice. 🔒 In your browser.</p>
     </div>
   );
 }

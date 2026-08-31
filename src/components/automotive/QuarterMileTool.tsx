@@ -42,7 +42,7 @@ export default function QuarterMileTool() {
         <p class="mt-4 text-sm text-slate-500">Enter power and weight.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Estimates from the classic empirical drag-racing formulas: ET ≈ 5.825 × (weight ÷ hp)^⅓ and trap speed ≈ 234 × (hp ÷ weight)^⅓ (pounds and horsepower). These assume a well-set-up rear-drive car with good traction — real times depend heavily on tyres, gearing, launch and aero, so treat them as a ballpark. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Estimates from the classic empirical drag-racing formulas: ET ≈ 5.825 × (weight ÷ hp)^⅓ and trap speed ≈ 234 × (hp ÷ weight)^⅓ (pounds and horsepower). These assume a well-set-up rear-drive car with good traction, real times depend heavily on tyres, gearing, launch and aero, so treat them as a ballpark. 🔒 In your browser.</p>
     </div>
   );
 }

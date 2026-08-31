@@ -16,10 +16,10 @@ const round = (x: number) => (Math.abs(x - Math.round(x)) < 1e-9 ? Math.round(x)
 const PRESETS: { label: string; w: number; h: number; note: string }[] = [
   { label: '16:9', w: 16, h: 9, note: 'HD / widescreen video, most displays' },
   { label: '4:3', w: 4, h: 3, note: 'Older TVs, many photos, slides' },
-  { label: '1:1', w: 1, h: 1, note: 'Square — Instagram, avatars' },
+  { label: '1:1', w: 1, h: 1, note: 'Square, Instagram, avatars' },
   { label: '3:2', w: 3, h: 2, note: '35mm & most DSLR photos' },
   { label: '21:9', w: 21, h: 9, note: 'Ultrawide / cinematic' },
-  { label: '9:16', w: 9, h: 16, note: 'Vertical — Reels, TikTok, Stories' },
+  { label: '9:16', w: 9, h: 16, note: 'Vertical, Reels, TikTok, Stories' },
   { label: '2:3', w: 2, h: 3, note: 'Portrait photo / Pinterest pins' },
   { label: '5:4', w: 5, h: 4, note: 'Print (8×10)' },
 ];
@@ -155,7 +155,7 @@ export default function AspectRatioCalc() {
       </div>
 
       <p class="mt-4 text-xs text-slate-500">
-        Pick a ratio (or type your own), then enter one pixel dimension — with the lock on, the other follows automatically so the image or video keeps its shape. 🔒 Runs entirely in your browser.
+        Pick a ratio (or type your own), then enter one pixel dimension, with the lock on, the other follows automatically so the image or video keeps its shape. 🔒 Runs entirely in your browser.
       </p>
     </div>
   );

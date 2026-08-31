@@ -177,7 +177,7 @@ export default function ChartMaker({ mode }: { mode: Mode }) {
           </label>
 
           <label class="block">
-            <span class={label}>Data — one “label, value” per line</span>
+            <span class={label}>Data, one “label, value” per line</span>
             <textarea value={data} rows={7} spellcheck={false} onInput={(e) => setData((e.target as HTMLTextAreaElement).value)} class={`${field} font-mono`} />
           </label>
 
@@ -191,7 +191,7 @@ export default function ChartMaker({ mode }: { mode: Mode }) {
               </select>
             </label>
             <label class="mt-2 block">
-              <span class={label}>Text size — {Math.round(fontScale * 100)}%</span>
+              <span class={label}>Text size, {Math.round(fontScale * 100)}%</span>
               <input type="range" min="0.75" max="1.5" step="0.05" value={fontScale} onInput={(e) => setFontScale(parseFloat((e.target as HTMLInputElement).value))} class="w-full accent-brand-600" />
             </label>
             <div class="mt-2 flex items-center gap-2">
@@ -290,13 +290,13 @@ export default function ChartMaker({ mode }: { mode: Mode }) {
       </div>
 
       <p class="mt-4 text-xs text-slate-500">
-        Fonts are self-hosted and <strong>embedded into the download</strong>, so your chart looks identical everywhere. Everything renders in your browser — the data you paste is never uploaded. 🔒
+        Fonts are self-hosted and <strong>embedded into the download</strong>, so your chart looks identical everywhere. Everything renders in your browser, the data you paste is never uploaded. 🔒
       </p>
     </div>
   );
 }
 
-/** Blend two hex colors — used to derive muted/grid tones from the text color. */
+/** Blend two hex colors, used to derive muted/grid tones from the text color. */
 function mix(a: string, b: string, t: number): string {
   const pa = hexToRgb(a), pb = hexToRgb(b);
   if (!pa || !pb) return b;
@@ -421,7 +421,7 @@ function renderPie(rows: Row[], W: number, H: number, titleH: number, s: Style, 
   return { nodes };
 }
 
-/** Funnel chart — stacked centred trapezoids, width proportional to value. */
+/** Funnel chart, stacked centred trapezoids, width proportional to value. */
 function renderFunnel(rows: Row[], W: number, H: number, titleH: number, s: Style) {
   const nodes: JSX.Element[] = [];
   const data = rows.filter((r) => r.value >= 0);
@@ -450,7 +450,7 @@ function renderFunnel(rows: Row[], W: number, H: number, titleH: number, s: Styl
   return { nodes };
 }
 
-/** Radar (spider) chart — one axis per row, values scaled to max. */
+/** Radar (spider) chart, one axis per row, values scaled to max. */
 function renderRadar(rows: Row[], W: number, H: number, titleH: number, s: Style) {
   const nodes: JSX.Element[] = [];
   const data = rows.slice(0, 12);
@@ -479,7 +479,7 @@ function renderRadar(rows: Row[], W: number, H: number, titleH: number, s: Style
   return { nodes };
 }
 
-/** Waterfall chart — floating bars showing a running total. */
+/** Waterfall chart, floating bars showing a running total. */
 function renderWaterfall(rows: Row[], W: number, H: number, titleH: number, s: Style) {
   const nodes: JSX.Element[] = [];
   if (rows.length === 0) return { nodes };

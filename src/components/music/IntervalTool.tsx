@@ -49,7 +49,7 @@ export default function IntervalTool() {
       </div>
       <p class="mt-3 text-center text-sm text-slate-500">{fmt(r.f1)} Hz → {fmt(r.f2)} Hz</p>
 
-      <p class="mt-4 text-xs text-slate-500">Semitones = 12 × log₂(f₂/f₁); cents = 1200 × log₂(f₂/f₁) (100 cents per semitone). The frequency ratio is the equal-temperament ratio 2^(semitones⁄12) — a perfect fifth is 1.498, close to the pure 3:2 = 1.5. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Semitones = 12 × log₂(f₂/f₁); cents = 1200 × log₂(f₂/f₁) (100 cents per semitone). The frequency ratio is the equal-temperament ratio 2^(semitones⁄12), a perfect fifth is 1.498, close to the pure 3:2 = 1.5. 🔒 In your browser.</p>
     </div>
   );
 }

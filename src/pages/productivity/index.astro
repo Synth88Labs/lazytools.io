@@ -13,16 +13,16 @@ const crumbs = [
 
 const faqs = [
   {
-    q: 'Where is my data stored — is anything uploaded?',
-    a: 'Nothing is uploaded. Your timers, tasks, habits and settings are saved in your browser (localStorage) and never leave your device. That makes these tools private by design — there is no account, no server, and no data to be breached. Export a JSON file whenever you want a backup or to move to another device.',
+    q: 'Where is my data stored, is anything uploaded?',
+    a: 'Nothing is uploaded. Your timers, tasks, habits and settings are saved in your browser (localStorage) and never leave your device. That makes these tools private by design. There is no account, no server, and no data to be breached. Export a JSON file whenever you want a backup or to move to another device.',
   },
   {
     q: 'How is this different from Notion, Trello or Todoist?',
-    a: 'Those are cloud apps: your data lives on their servers behind an account. These tools are the opposite — single-purpose, instant, no sign-up, and entirely local. You trade collaboration and sync for privacy, speed and simplicity, which is exactly the right trade for personal planning and focus.',
+    a: 'Those are cloud apps: your data lives on their servers behind an account. These tools are the opposite, single-purpose, instant, no sign-up, and entirely local. You trade collaboration and sync for privacy, speed and simplicity, which is exactly the right trade for personal planning and focus.',
   },
   {
     q: 'Do the tools work offline?',
-    a: 'Yes — once a tool has loaded it runs with no connection, since all the logic and your data are on your device.',
+    a: 'Yes, once a tool has loaded it runs with no connection, since all the logic and your data are on your device.',
   },
 ];
 
@@ -31,7 +31,7 @@ const schema = [
   collectionPageSchema({
     name: 'Productivity Tools',
     url: '/productivity/',
-    description: 'A Pomodoro timer, meeting cost calculator, Eisenhower matrix, habit tracker and more — private, no sign-up, saved in your browser.',
+    description: 'A Pomodoro timer, meeting cost calculator, Eisenhower matrix, habit tracker and more, private, no sign-up, saved in your browser.',
     items: PRODUCTIVITY_TOOLS.map((t) => ({ name: t.name, url: `/productivity/${t.slug}/` })),
   }),
   faqSchema(faqs),
@@ -39,7 +39,7 @@ const schema = [
 ---
 
 <Base
-  title="Productivity Tools — Pomodoro, Planners, Trackers | LazyTools"
+  title="Productivity Tools, Pomodoro, Planners, Trackers | LazyTools"
   description={`Free productivity tools that stay on your device: Pomodoro timer, countdown & stopwatch, meeting cost calculator, Eisenhower matrix, habit tracker. No sign-up, saved locally, works offline.`}
   schema={schema}
 >
@@ -48,7 +48,7 @@ const schema = [
 
     <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Productivity Tools</h1>
     <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
-      Focus timers, planners, trackers and decision tools — with none of the accounts, sync or
+      Focus timers, planners, trackers and decision tools, with none of the accounts, sync or
       surveillance. Your tasks, habits and settings are saved in your browser and never uploaded, so
       it's private by design. No sign-up, works offline, and you can export your data any time.
     </p>
@@ -71,7 +71,7 @@ const schema = [
 
     <section class="prose-lazy mt-10">
       <h2>Focus tools that stay on your device</h2>
-      <p>A Pomodoro timer, planners, a Kanban board, a Gantt chart and simple trackers — the difference here is that your data is saved in <strong>your browser's own storage</strong>, not an account on someone's server. There's no sign-up, no sync you didn't ask for, and nothing to leak: your tasks, boards and timers live on your device and you can clear them any time.</p>
+      <p>A Pomodoro timer, planners, a Kanban board, a Gantt chart and simple trackers, the difference here is that your data is saved in <strong>your browser's own storage</strong>, not an account on someone's server. There's no sign-up, no sync you didn't ask for, and nothing to leak: your tasks, boards and timers live on your device and you can clear them any time.</p>
       <p>That makes these genuinely private planning tools, and they keep working offline. Everything runs client-side, so opening a board is instant with no login screen in the way.</p>
     </section>
 

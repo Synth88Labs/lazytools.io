@@ -61,7 +61,7 @@ export default function PlantSpacingTool() {
         <p class="mt-4 text-sm text-slate-500">Enter the bed size and plant spacing.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Square grid = area ÷ spacing². Triangular (offset) rows fit about 15% more plants for the same spacing — area ÷ (spacing² × 0.866). Use the on-centre spacing from the seed packet. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Square grid = area ÷ spacing². Triangular (offset) rows fit about 15% more plants for the same spacing, area ÷ (spacing² × 0.866). Use the on-centre spacing from the seed packet. 🔒 In your browser.</p>
     </div>
   );
 }

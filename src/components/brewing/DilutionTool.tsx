@@ -37,7 +37,7 @@ export default function DilutionTool() {
         <p class="mt-4 text-sm text-slate-500">Enter your current volume and gravity, and a target gravity lower than the current one.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">If your wort came out stronger than planned, adding water dilutes it. This uses gravity points (the last two digits of the SG): points × volume is conserved, so water to add = current volume × (current points ÷ target points − 1). Add water gradually and re-measure — and remember diluting also lowers the bitterness and colour, not just the gravity. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">If your wort came out stronger than planned, adding water dilutes it. This uses gravity points (the last two digits of the SG): points × volume is conserved, so water to add = current volume × (current points ÷ target points − 1). Add water gradually and re-measure, and remember diluting also lowers the bitterness and colour, not just the gravity. 🔒 In your browser.</p>
     </div>
   );
 }

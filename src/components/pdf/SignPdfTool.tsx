@@ -113,7 +113,7 @@ export default function SignPdfTool() {
       <label class="block cursor-pointer rounded-xl border-2 border-dashed border-slate-300 bg-white p-6 text-center transition hover:border-brand-400">
         <input type="file" accept=".pdf,application/pdf" onChange={onFile} class="sr-only" />
         <span class="text-sm font-semibold text-brand-700">{fileName || 'Choose the PDF to sign'}</span>
-        <span class="mt-1 block text-xs text-slate-500">Signed on your device — the document is never uploaded</span>
+        <span class="mt-1 block text-xs text-slate-500">Signed on your device, the document is never uploaded</span>
       </label>
 
       <div class="mt-4 grid gap-4 lg:grid-cols-2">
@@ -170,7 +170,7 @@ export default function SignPdfTool() {
       )}
 
       <p class="mt-4 rounded-lg bg-white px-3 py-2 text-xs text-slate-500 ring-1 ring-slate-200">
-        Draw your signature, then drag it to exactly where it should go on the live page preview and resize it — what you see is where it lands. It\'s stamped onto the PDF with pdf-lib and downloaded, all in your browser, so a private contract never leaves your device. This is a visual signature for everyday forms, not a certificate-based digital signature. 🔒
+        Draw your signature, then drag it to exactly where it should go on the live page preview and resize it, what you see is where it lands. It\'s stamped onto the PDF with pdf-lib and downloaded, all in your browser, so a private contract never leaves your device. This is a visual signature for everyday forms, not a certificate-based digital signature. 🔒
       </p>
     </div>
   );

@@ -54,7 +54,7 @@ export default function HeatIndexTool() {
           </div>
         </div>
       ) : (
-        <p class="mt-4 text-sm text-slate-500">Enter the temperature and humidity (0–100%).</p>
+        <p class="mt-4 text-sm text-slate-500">Enter the temperature and humidity (0-100%).</p>
       )}
 
       <p class="mt-4 text-xs text-slate-500">The heat index is how hot it <em>feels</em> when humidity slows sweat evaporation, from the NWS Rothfusz regression. It applies in warm, humid conditions (roughly 80°F+ / 27°C+). In direct sun it can feel up to ~15°F hotter still. 🔒 In your browser.</p>

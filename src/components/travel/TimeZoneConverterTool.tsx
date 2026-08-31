@@ -42,7 +42,7 @@ export default function TimeZoneConverterTool() {
         <p class="mt-4 text-sm text-slate-500">Enter a valid 24-hour time like 09:15.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Converts a clock time between UTC offsets — enter the time, pick the source and destination zones, and the result shows the local time plus whether it lands on the previous, same or next day. This uses fixed UTC offsets, so for a specific date check whether daylight saving time is in effect at either end. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Converts a clock time between UTC offsets, enter the time, pick the source and destination zones, and the result shows the local time plus whether it lands on the previous, same or next day. This uses fixed UTC offsets, so for a specific date check whether daylight saving time is in effect at either end. 🔒 In your browser.</p>
     </div>
   );
 }

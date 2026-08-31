@@ -57,7 +57,7 @@ export default function CompostTool() {
         <p class="mt-4 text-sm text-slate-500">Add materials and their proportions.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">A compost pile decomposes fastest around a carbon-to-nitrogen ratio of 25–30:1 — roughly 2–3 parts "browns" (carbon) to 1 part "greens" (nitrogen) by volume. This is a parts-weighted estimate; moisture and turning matter too. C:N values from composting-science references. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">A compost pile decomposes fastest around a carbon-to-nitrogen ratio of 25-30:1, roughly 2-3 parts "browns" (carbon) to 1 part "greens" (nitrogen) by volume. This is a parts-weighted estimate; moisture and turning matter too. C:N values from composting-science references. 🔒 In your browser.</p>
     </div>
   );
 }

@@ -127,7 +127,7 @@ export default function QrScannerTool() {
         <span class="text-sm font-medium text-slate-700">
           Choose a QR image, or paste one (Ctrl/Cmd+V)
         </span>
-        <span class="text-xs text-slate-500">PNG, JPG, WebP, GIF — decoded on your device</span>
+        <span class="text-xs text-slate-500">PNG, JPG, WebP, GIF, decoded on your device</span>
         <input
           type="file"
           accept="image/*"
@@ -137,7 +137,7 @@ export default function QrScannerTool() {
       </label>
 
       <p class="mt-3 text-xs text-slate-500">
-        100% private: the image never leaves your browser — decoding happens locally.
+        100% private: the image never leaves your browser, decoding happens locally.
       </p>
 
       {fileMeta && (
@@ -196,7 +196,7 @@ export default function QrScannerTool() {
 
       {notFound && !scanning && (
         <p class="mt-4 text-sm text-slate-600">
-          No QR code detected — try a clearer or more tightly-cropped image.
+          No QR code detected, try a clearer or more tightly-cropped image.
         </p>
       )}
     </div>

@@ -70,7 +70,7 @@ export default function CompareListsTool() {
       </div>
 
       <p class="mt-4 text-xs text-slate-500">
-        Each list is de-duplicated first, then compared as sets: “common” is what appears in both, “only in A/B” are the differences, and “union” is every unique item across both. Duplicates within a single list are collapsed. 🔒 Runs entirely in your browser — nothing is uploaded.
+        Each list is de-duplicated first, then compared as sets: “common” is what appears in both, “only in A/B” are the differences, and “union” is every unique item across both. Duplicates within a single list are collapsed. 🔒 Runs entirely in your browser, nothing is uploaded.
       </p>
     </div>
   );

@@ -31,17 +31,17 @@ faqs:
 draft: false
 ---
 
-**IBU (International Bitterness Units) measures the concentration of iso-alpha acids in your finished beer, in milligrams per litre.** It's a real chemical measurement — but it is a poor predictor of how bitter a beer *tastes*, because malt sweetness pushes back against bitterness on the palate. A 60 IBU barleywine can taste sweeter than a 30 IBU dry pilsner. The ratio that actually predicts balance is **BU:GU** — bitterness units divided by gravity units.
+**IBU (International Bitterness Units) measures the concentration of iso-alpha acids in your finished beer, in milligrams per litre.** It's a real chemical measurement, but it is a poor predictor of how bitter a beer *tastes*, because malt sweetness pushes back against bitterness on the palate. A 60 IBU barleywine can taste sweeter than a 30 IBU dry pilsner. The ratio that actually predicts balance is **BU:GU**, bitterness units divided by gravity units.
 
 <aside class="key-takeaways">
 
 **Key takeaways**
 
 - **IBU = mg/L of iso-alpha acids.** A measurement, not a taste score.
-- Hop bitterness comes from **isomerisation** during the boil — it needs time and heat.
+- Hop bitterness comes from **isomerisation** during the boil. It needs time and heat.
 - **Higher wort gravity → lower utilisation.** A big IPA needs more hops for the same IBU.
 - **Late additions add flavour and aroma, not much bitterness.** A 5-minute hop contributes a fraction of a 60-minute one.
-- **BU:GU** predicts balance: **<0.5** malt-forward, **0.5–0.8** balanced, **>0.8** hop-forward.
+- **BU:GU** predicts balance: **<0.5** malt-forward, **0.5-0.8** balanced, **>0.8** hop-forward.
 - Sulfate:chloride, final gravity, roast malt and carbonation all shift *perceived* bitterness.
 
 </aside>
@@ -53,12 +53,12 @@ draft: false
 
 ## Where bitterness actually comes from
 
-Raw hops aren't very bitter. The alpha acids in them are barely soluble in wort — they have to be **isomerised** into iso-alpha acids by prolonged heat before they dissolve and taste bitter.
+Raw hops aren't very bitter. The alpha acids in them are barely soluble in wort. They have to be **isomerised** into iso-alpha acids by prolonged heat before they dissolve and taste bitter.
 
 That single fact drives everything about hopping:
 
 - **Boil time matters most.** Isomerisation takes time, so a 60-minute addition converts far more alpha acid than a 10-minute one.
-- **Late hops are for aroma.** A flameout or whirlpool addition contributes volatile oils — citrus, pine, tropical fruit — while adding comparatively little measurable bitterness.
+- **Late hops are for aroma.** A flameout or whirlpool addition contributes volatile oils, citrus, pine, tropical fruit, while adding comparatively little measurable bitterness.
 - **Dry hopping adds essentially no IBU.** There's no heat, so no isomerisation. A heavily dry-hopped IPA can smell intensely hoppy while measuring modestly.
 
 ## The Tinseth formula
@@ -76,7 +76,7 @@ Two behaviours fall out of that maths:
 
 **1. Denser wort extracts less.** The bigness factor shrinks as gravity rises, so a 1.070 IPA gets meaningfully less bitterness from the same hops than a 1.040 bitter would. Strong beers need disproportionately more hops to hit a given IBU.
 
-**2. Utilisation plateaus.** The boil-time factor is an exponential approach to a limit — most of the available bitterness is extracted in the first 45–60 minutes. Boiling for 90 minutes instead of 60 adds relatively little extra IBU, which is why 60 minutes is the conventional bittering addition.
+**2. Utilisation plateaus.** The boil-time factor is an exponential approach to a limit, most of the available bitterness is extracted in the first 45-60 minutes. Boiling for 90 minutes instead of 60 adds relatively little extra IBU, which is why 60 minutes is the conventional bittering addition.
 
 The [IBU calculator](/brewing/ibu-calculator/) runs Tinseth across your whole hop schedule.
 
@@ -91,7 +91,7 @@ The [IBU calculator](/brewing/ibu-calculator/) runs Tinseth across your whole ho
 | Whirlpool (sub-boiling) | Aroma, some isomerisation | Small but not zero |
 | Dry hop | Aroma only | Essentially none |
 
-## BU:GU — the number that predicts balance
+## BU:GU, the number that predicts balance
 
 Bitterness is only half the equation. Residual malt sugar tastes sweet and directly counteracts perceived bitterness, so the useful measure is bitterness **relative to** malt.
 
@@ -101,10 +101,10 @@ Bitterness is only half the equation. Residual malt sugar tastes sweet and direc
 | BU:GU | Character | Typical styles |
 | --- | --- | --- |
 | **< 0.5** | Malt-forward, sweeter | Barleywine, Scotch ale, bock |
-| **0.5 – 0.8** | Balanced | Pale ale, amber, many lagers |
+| **0.5-0.8** | Balanced | Pale ale, amber, many lagers |
 | **> 0.8** | Hop-forward, bitter | IPA, double IPA |
 
-This explains the headline. A 60 IBU barleywine at 1.100 (100 GU) has a BU:GU of 0.6 — balanced, even a touch malty. A 30 IBU pilsner at 1.045 (45 GU) sits at 0.67 and, with almost no residual sweetness, drinks noticeably crisp and bitter. The bigger IBU number is the *less* bitter-tasting beer.
+This explains the headline. A 60 IBU barleywine at 1.100 (100 GU) has a BU:GU of 0.6, balanced, even a touch malty. A 30 IBU pilsner at 1.045 (45 GU) sits at 0.67 and, with almost no residual sweetness, drinks noticeably crisp and bitter. The bigger IBU number is the *less* bitter-tasting beer.
 
 Calculate your gravity figures with the [ABV calculator](/brewing/abv-calculator/).
 
@@ -118,4 +118,4 @@ Even BU:GU is an approximation. Perceived bitterness is also pushed around by:
 - **Carbonation.** Higher carbonation makes bitterness read as sharper and more assertive.
 - **Hop character and age.** Old or poorly stored hops lose alpha acid, so your calculated IBU may overstate reality.
 
-There's also a practical ceiling: beer becomes saturated with iso-alpha acids somewhere in the region of 100 IBU, so a "1,000 IBU" claim on a can is marketing rather than a dissolved measurement — much of that hop matter never makes it into solution.
+There's also a practical ceiling: beer becomes saturated with iso-alpha acids somewhere in the region of 100 IBU, so a "1,000 IBU" claim on a can is marketing rather than a dissolved measurement, much of that hop matter never makes it into solution.

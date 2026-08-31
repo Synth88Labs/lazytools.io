@@ -12,12 +12,12 @@ export const kinematicViscosity: Quantity = {
   baseUnit: 'm2s',
   icon: '💧',
   description:
-    'Convert kinematic viscosity units — square metre per second, square millimetre per second, stokes and centistokes. 1 cSt = 1 mm²/s; oil viscosity grades are given in centistokes.',
+    'Convert kinematic viscosity units, square metre per second, square millimetre per second, stokes and centistokes. 1 cSt = 1 mm²/s; oil viscosity grades are given in centistokes.',
   units: [
-    { id: 'm2s', name: 'Square metre / second', plural: 'square metres per second', symbol: 'm²/s', slug: 'square-metre-per-second', factor: 1, system: 'si', definition: 'The SI unit of kinematic viscosity — dynamic viscosity divided by density. Most liquids are a tiny fraction of 1 m²/s (water is about 1×10⁻⁶ m²/s).' },
-    { id: 'mm2s', name: 'Square millimetre / second', plural: 'square millimetres per second', symbol: 'mm²/s', slug: 'square-millimetre-per-second', factor: 1e-6, system: 'si', definition: 'One millionth of a m²/s (10⁻⁶ m²/s), numerically identical to the centistokes. The practical SI unit — water at 20 °C is about 1 mm²/s.' },
-    { id: 'st', name: 'Stokes', plural: 'stokes', symbol: 'St', slug: 'stokes', factor: 1e-4, system: 'other', definition: 'The CGS unit of kinematic viscosity — one square centimetre per second, exactly 10⁻⁴ m²/s. Named after George Stokes.' },
-    { id: 'cst', name: 'Centistokes', plural: 'centistokes', symbol: 'cSt', slug: 'centistokes', factor: 1e-6, system: 'other', definition: 'One-hundredth of a stokes, equal to 1 mm²/s. The standard unit for lubricants — engine oils are typically rated by their centistokes at 40 °C and 100 °C.' },
+    { id: 'm2s', name: 'Square metre / second', plural: 'square metres per second', symbol: 'm²/s', slug: 'square-metre-per-second', factor: 1, system: 'si', definition: 'The SI unit of kinematic viscosity, dynamic viscosity divided by density. Most liquids are a tiny fraction of 1 m²/s (water is about 1×10⁻⁶ m²/s).' },
+    { id: 'mm2s', name: 'Square millimetre / second', plural: 'square millimetres per second', symbol: 'mm²/s', slug: 'square-millimetre-per-second', factor: 1e-6, system: 'si', definition: 'One millionth of a m²/s (10⁻⁶ m²/s), numerically identical to the centistokes. The practical SI unit, water at 20 °C is about 1 mm²/s.' },
+    { id: 'st', name: 'Stokes', plural: 'stokes', symbol: 'St', slug: 'stokes', factor: 1e-4, system: 'other', definition: 'The CGS unit of kinematic viscosity, one square centimetre per second, exactly 10⁻⁴ m²/s. Named after George Stokes.' },
+    { id: 'cst', name: 'Centistokes', plural: 'centistokes', symbol: 'cSt', slug: 'centistokes', factor: 1e-6, system: 'other', definition: 'One-hundredth of a stokes, equal to 1 mm²/s. The standard unit for lubricants, engine oils are typically rated by their centistokes at 40 °C and 100 °C.' },
   ],
   popularPairs: [
     ['cst', 'm2s'], ['m2s', 'cst'],

@@ -83,7 +83,7 @@ export default function KspTool() {
         <p class="mt-4 text-sm text-slate-500">Set the salt's ion subscripts and enter Ksp (or a measured solubility).</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">For a salt AₐBᵦ ⇌ a·Aⁿ⁺ + b·Bᵐ⁻, Ksp = (a·s)ᵃ·(b·s)ᵇ = aᵃ·bᵇ·s^(a+b), so s = (Ksp ÷ (aᵃ·bᵇ))^(1/(a+b)). A common ion (already in solution) shifts the equilibrium left and suppresses solubility — the tool solves that case numerically. Ksp values vary with temperature and source; enter the one from your data. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">For a salt AₐBᵦ ⇌ a·Aⁿ⁺ + b·Bᵐ⁻, Ksp = (a·s)ᵃ·(b·s)ᵇ = aᵃ·bᵇ·s^(a+b), so s = (Ksp ÷ (aᵃ·bᵇ))^(1/(a+b)). A common ion (already in solution) shifts the equilibrium left and suppresses solubility, the tool solves that case numerically. Ksp values vary with temperature and source; enter the one from your data. 🔒 In your browser.</p>
     </div>
   );
 }

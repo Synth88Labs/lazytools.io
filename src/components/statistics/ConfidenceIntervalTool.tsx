@@ -85,7 +85,7 @@ export default function ConfidenceIntervalTool() {
             <p class="mt-1 text-2xl font-extrabold text-brand-800 sm:text-3xl">
               {r.isProp ? `${fmt(r.lo)} to ${fmt(r.hi)}` : `${fmt(r.lo)} to ${fmt(r.hi)}`}
             </p>
-            <p class="mt-1 text-sm text-slate-500">{fmt(r.est)} ± {fmt(r.moe)}{r.isProp ? ` (${fmt(r.lo * 100)}% – ${fmt(r.hi * 100)}%)` : ''}</p>
+            <p class="mt-1 text-sm text-slate-500">{fmt(r.est)} ± {fmt(r.moe)}{r.isProp ? ` (${fmt(r.lo * 100)}%, ${fmt(r.hi * 100)}%)` : ''}</p>
           </div>
           <div class="mt-3 grid gap-3 sm:grid-cols-3 text-center">
             <div class="rounded-lg bg-white p-3 ring-1 ring-slate-200"><p class="font-mono text-lg font-bold text-slate-800">{fmt(r.crit)}</p><p class="text-xs text-slate-500">Critical {r.critLabel}</p></div>
@@ -98,7 +98,7 @@ export default function ConfidenceIntervalTool() {
       )}
 
       <p class="mt-3 text-xs text-slate-500">
-        Critical values are exact — the t critical uses the inverse regularized incomplete beta function, not a rounded table. 🔒 Computed in your browser.
+        Critical values are exact, the t critical uses the inverse regularized incomplete beta function, not a rounded table. 🔒 Computed in your browser.
       </p>
     </div>
   );

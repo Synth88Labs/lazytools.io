@@ -38,7 +38,7 @@ export default function StatsCalcTool() {
   return (
     <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
       <label class="block">
-        <span class="text-xs font-semibold uppercase tracking-wide text-slate-500">Your data — numbers separated by commas, spaces or new lines</span>
+        <span class="text-xs font-semibold uppercase tracking-wide text-slate-500">Your data, numbers separated by commas, spaces or new lines</span>
         <textarea
           class="mt-1 h-28 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 font-mono text-sm text-slate-800 focus:border-brand-500 focus:outline-none"
           value={input}
@@ -66,7 +66,7 @@ export default function StatsCalcTool() {
 
       {stats && (
         <div class="mt-4 rounded-xl border border-slate-200 bg-white p-4">
-          <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Z-score of a value — how many standard deviations from the mean?</p>
+          <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Z-score of a value, how many standard deviations from the mean?</p>
           <div class="mt-2 flex flex-wrap items-center gap-3">
             <input
               class="w-32 rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-center font-mono text-sm"
@@ -86,7 +86,7 @@ export default function StatsCalcTool() {
       )}
 
       <p class="mt-4 text-xs text-slate-500">
-        Quartiles use the median-of-halves method (Moore &amp; McCabe). Sample statistics divide by n−1 (Bessel's correction) — use them when your data is a sample of a larger population; population statistics divide by n. Computed locally.
+        Quartiles use the median-of-halves method (Moore &amp; McCabe). Sample statistics divide by n−1 (Bessel's correction), use them when your data is a sample of a larger population; population statistics divide by n. Computed locally.
       </p>
     </div>
   );

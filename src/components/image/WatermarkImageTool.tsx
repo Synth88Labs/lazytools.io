@@ -217,7 +217,7 @@ export default function WatermarkImageTool() {
         <span class="mt-1 block text-xs text-slate-500">
           {file
             ? `${fmtSize(file.size)} · ${dims.w}×${dims.h}px`
-            : 'JPEG, PNG, WebP — processed on your device'}
+            : 'JPEG, PNG, WebP, processed on your device'}
         </span>
       </label>
 
@@ -263,7 +263,7 @@ export default function WatermarkImageTool() {
 
               <label class="block">
                 <span class="mb-1 block text-sm font-medium text-slate-700">
-                  Font size — {fontPct}% of width
+                  Font size, {fontPct}% of width
                 </span>
                 <input
                   type="range"
@@ -280,7 +280,7 @@ export default function WatermarkImageTool() {
 
               <label class="block">
                 <span class="mb-1 block text-sm font-medium text-slate-700">
-                  Opacity — {opacity}%
+                  Opacity, {opacity}%
                 </span>
                 <input
                   type="range"
@@ -338,7 +338,7 @@ export default function WatermarkImageTool() {
                   onChange={(e) => setTile((e.target as HTMLInputElement).checked)}
                   class="h-4 w-4 accent-brand-700"
                 />
-                Tile — repeat diagonally across the whole image
+                Tile, repeat diagonally across the whole image
               </label>
 
               {!tile && (
@@ -390,7 +390,7 @@ export default function WatermarkImageTool() {
               </span>
             </div>
             <p class="mt-3 text-xs text-slate-500">
-              Nothing leaves your device — the image is watermarked entirely in
+              Nothing leaves your device, the image is watermarked entirely in
               your browser.
             </p>
           </div>

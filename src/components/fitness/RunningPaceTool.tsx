@@ -111,7 +111,7 @@ export default function RunningPaceTool() {
           )}
         </div>
       ) : (
-        <p class="mt-4 text-sm text-slate-500">Enter the two known values — times as mm:ss or h:mm:ss.</p>
+        <p class="mt-4 text-sm text-slate-500">Enter the two known values, times as mm:ss or h:mm:ss.</p>
       )}
 
       <p class="mt-4 text-xs text-slate-500">Pace = time ÷ distance. Enter a marathon time to see the pace you need to hold, or a pace to project a finish time. 🔒 In your browser.</p>

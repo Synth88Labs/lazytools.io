@@ -45,7 +45,7 @@ export default function DogAgeTool() {
         <p class="mt-4 text-sm text-slate-500">Enter your dog's age in years.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">The old "multiply by 7" rule is a myth — dogs mature fast early then slow down. The epigenetic formula (from a 2020 study comparing dog and human DNA methylation) captures that curve. The traditional estimate uses the AVMA figures (15 the first year, +9 the second); the per-size increments after that are a common convention reflecting that larger breeds age faster, not an official standard. Both are population estimates. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">The old "multiply by 7" rule is a myth, dogs mature fast early then slow down. The epigenetic formula (from a 2020 study comparing dog and human DNA methylation) captures that curve. The traditional estimate uses the AVMA figures (15 the first year, +9 the second); the per-size increments after that are a common convention reflecting that larger breeds age faster, not an official standard. Both are population estimates. 🔒 In your browser.</p>
     </div>
   );
 }

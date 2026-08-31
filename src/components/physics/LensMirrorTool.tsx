@@ -39,7 +39,7 @@ export default function LensMirrorTool() {
       {r ? (
         r.atInfinity ? (
           <div class="mt-4 rounded-xl bg-amber-50 p-4 text-center ring-2 ring-amber-200">
-            <p class="font-bold text-amber-800">Object at the focal point — image forms at infinity (rays emerge parallel).</p>
+            <p class="font-bold text-amber-800">Object at the focal point, image forms at infinity (rays emerge parallel).</p>
           </div>
         ) : (
           <>

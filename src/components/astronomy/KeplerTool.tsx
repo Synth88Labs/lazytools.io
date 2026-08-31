@@ -59,7 +59,7 @@ export default function KeplerTool() {
         <p class="mt-4 text-sm text-slate-500">Enter the values above.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Kepler\'s third law: P² = a³ ÷ M, with the period P in years, the semi-major axis a in astronomical units and the central mass M in solar masses. For the Sun (M = 1) it\'s simply P = √(a³) — Earth at 1 AU orbits in 1 year, Mars at 1.52 AU in 1.88 years. Set M to model other stars or planets. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Kepler\'s third law: P² = a³ ÷ M, with the period P in years, the semi-major axis a in astronomical units and the central mass M in solar masses. For the Sun (M = 1) it\'s simply P = √(a³), Earth at 1 AU orbits in 1 year, Mars at 1.52 AU in 1.88 years. Set M to model other stars or planets. 🔒 In your browser.</p>
     </div>
   );
 }

@@ -122,7 +122,7 @@ export default function ChmodCalculatorTool() {
         </div>
       </div>
 
-      <p class="mt-4 text-xs text-slate-500">Read = 4, write = 2, execute = 1 — each digit is the sum for owner, group, then others.</p>
+      <p class="mt-4 text-xs text-slate-500">Read = 4, write = 2, execute = 1, each digit is the sum for owner, group, then others.</p>
     </div>
   );
 }

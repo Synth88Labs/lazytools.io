@@ -3,7 +3,7 @@
  * the editor's crop geometry, the live preview, the exact export, the compliance
  * checks, and the on-page Do's/Don'ts + cited source card.
  *
- * SENSITIVITY NOTE: every dimension here is an official government requirement — a
+ * SENSITIVITY NOTE: every dimension here is an official government requirement, a
  * wrong value gets a real application rejected. No value ships without `source` +
  * `lastVerified`. When an authority specifies a field we cannot verify, leave it
  * undefined rather than guessing; the editor degrades gracefully.
@@ -30,7 +30,7 @@ export interface PhotoSpec {
   // ---- physical print size (the authoritative spec for most countries) ----
   widthMm: number;
   heightMm: number;
-  /** Set when the country specifies inches natively (US/India 2×2in) — display only. */
+  /** Set when the country specifies inches natively (US/India 2×2in), display only. */
   widthIn?: number;
   heightIn?: number;
 
@@ -40,7 +40,7 @@ export interface PhotoSpec {
   /** Exact pixel dimensions when the authority specifies them (China/US-digital/UK-online). */
   pixelWidth?: number;
   pixelHeight?: number;
-  /** Some authorities give a pixel RANGE (e.g. US 600–1200). Min/max square side or W/H. */
+  /** Some authorities give a pixel RANGE (e.g. US 600-1200). Min/max square side or W/H. */
   pixelMin?: number;
   pixelMax?: number;
 
@@ -48,10 +48,10 @@ export interface PhotoSpec {
   /** Head height (chin to crown) in mm, if specified. */
   headHeightMinMm?: number;
   headHeightMaxMm?: number;
-  /** Head height as a fraction of image height (0–1). Derived from mm if absent. */
+  /** Head height as a fraction of image height (0-1). Derived from mm if absent. */
   headHeightMinPct?: number;
   headHeightMaxPct?: number;
-  /** Eye line position as a fraction of image height measured from the BOTTOM (0–1). */
+  /** Eye line position as a fraction of image height measured from the BOTTOM (0-1). */
   eyeMinPctFromBottom?: number;
   eyeMaxPctFromBottom?: number;
 
@@ -66,7 +66,7 @@ export interface PhotoSpec {
   // ---- provenance (MANDATORY) ----
   /** Issuing authority, e.g. "U.S. Department of State". */
   sourceName: string;
-  /** Official government/consulate URL — never a photo-vendor blog. */
+  /** Official government/consulate URL, never a photo-vendor blog. */
   sourceUrl: string;
   /** ISO date the spec was last checked against the source. */
   lastVerified: string;

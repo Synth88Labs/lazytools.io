@@ -29,7 +29,7 @@ faqs:
 draft: false
 ---
 
-**The US Navy method estimates your body-fat percentage from a tape measure: men measure their neck and waist, women measure neck, waist and hips, and both use their height.** Those circumferences are put into a formula that returns a body-fat percentage — no scales, calipers or lab needed. It's an estimate, typically within about 3% of more precise methods for average builds, and it's the same approach the US military uses for routine screening.
+**The US Navy method estimates your body-fat percentage from a tape measure: men measure their neck and waist, women measure neck, waist and hips, and both use their height.** Those circumferences are put into a formula that returns a body-fat percentage, no scales, calipers or lab needed. It's an estimate, typically within about 3% of more precise methods for average builds, and it's the same approach the US military uses for routine screening.
 
 <aside class="key-takeaways">
 
@@ -40,7 +40,7 @@ draft: false
 - **Accuracy:** usually within ~3% of DEXA for typical builds; less accurate for very muscular or very lean people.
 - **Measure carefully:** snug, level tape; neck below the larynx; waist at the navel (men) or narrowest point (women).
 - It's a screening estimate and a great way to **track change over time**, not a medical diagnosis.
-- Body-measurement data is personal — a local calculator keeps it on your device.
+- Body-measurement data is personal, a local calculator keeps it on your device.
 
 </aside>
 
@@ -51,7 +51,7 @@ draft: false
 
 ## What you measure
 
-The method (developed by researchers Hodgdon and Beckett at the Naval Health Research Center in the 1980s) works because body fat tends to accumulate around the midsection. That makes waist circumference — read against the leaner reference points of the neck and your height — a surprisingly good proxy for overall body-fat percentage.
+The method (developed by researchers Hodgdon and Beckett at the Naval Health Research Center in the 1980s) works because body fat tends to accumulate around the midsection. That makes waist circumference, read against the leaner reference points of the neck and your height, a surprisingly good proxy for overall body-fat percentage.
 
 - **Men:** neck, waist, and height. The result is driven by **waist minus neck**.
 - **Women:** neck, waist, hips, and height. The result is driven by **waist plus hips minus neck**.
@@ -86,27 +86,27 @@ Body-fat percentage is often grouped into these bands ([American Council on Exer
 
 | Category | Men | Women |
 | --- | --- | --- |
-| Essential fat | 2–5% | 10–13% |
-| Athletes | 6–13% | 14–20% |
-| Fitness | 14–17% | 21–24% |
-| Average | 18–24% | 25–31% |
+| Essential fat | 2-5% | 10-13% |
+| Athletes | 6-13% | 14-20% |
+| Fitness | 14-17% | 21-24% |
+| Average | 18-24% | 25-31% |
 | Above average | 25%+ | 32%+ |
 
 Women carry more essential fat than men for normal physiological function, which is why the healthy ranges differ.
 
 ## A worked example
 
-Suppose a man is 178 cm tall (about 5 ft 10 in), with a neck of 38 cm and a waist of 90 cm at the navel. The engine of the calculation is the gap between his waist and neck — here **90 − 38 = 52 cm** — read against his height. A larger waist-minus-neck gap, for a given height, pushes the estimate up; a leaner waist pulls it down. Plugging those numbers into the [Navy body-fat calculator](/fitness/navy-body-fat-calculator/) returns roughly 20%, which sits in the "average" band in the table above.
+Suppose a man is 178 cm tall (about 5 ft 10 in), with a neck of 38 cm and a waist of 90 cm at the navel. The engine of the calculation is the gap between his waist and neck. Here **90 − 38 = 52 cm**, read against his height. A larger waist-minus-neck gap, for a given height, pushes the estimate up; a leaner waist pulls it down. Plugging those numbers into the [Navy body-fat calculator](/fitness/navy-body-fat-calculator/) returns roughly 20%, which sits in the "average" band in the table above.
 
-Now change one thing: trim the waist to 84 cm while everything else stays the same. The gap drops to 46 cm and the estimate falls by about four points into the mid-teens — the "fitness" band. That sensitivity is exactly why the waist reading deserves the most care: a centimetre or two of sloppy tape placement moves the result more than any other input.
+Now change one thing: trim the waist to 84 cm while everything else stays the same. The gap drops to 46 cm and the estimate falls by about four points into the mid-teens, the "fitness" band. That sensitivity is exactly why the waist reading deserves the most care: a centimetre or two of sloppy tape placement moves the result more than any other input.
 
-For a woman, the same logic applies but with hips added: the driver is **waist + hips − neck**. A woman who is 165 cm tall with a 32 cm neck, 74 cm waist and 98 cm hips has a driver of **74 + 98 − 32 = 140 cm**, which the formula reads against her height to return roughly 28% — the "average" band for women. Shrinking the waist while hips and neck hold steady lowers the estimate.
+For a woman, the same logic applies but with hips added: the driver is **waist + hips − neck**. A woman who is 165 cm tall with a 32 cm neck, 74 cm waist and 98 cm hips has a driver of **74 + 98 − 32 = 140 cm**, which the formula reads against her height to return roughly 28%, the "average" band for women. Shrinking the waist while hips and neck hold steady lowers the estimate.
 
 ## How accurate is it?
 
-For people of average build, the Navy method usually lands **within about 3 percentage points** of gold-standard methods like DEXA or hydrostatic weighing — good enough to track progress over weeks and months. Its weakness is that it infers fat from body measurements alone, so it can **overestimate** for very muscular people (a thick waist that's muscle, not fat) and **misjudge** very lean or unusual body shapes. Consistency matters more than a single reading: measure the same way each time and watch the trend.
+For people of average build, the Navy method usually lands **within about 3 percentage points** of gold-standard methods like DEXA or hydrostatic weighing, good enough to track progress over weeks and months. Its weakness is that it infers fat from body measurements alone, so it can **overestimate** for very muscular people (a thick waist that's muscle, not fat) and **misjudge** very lean or unusual body shapes. Consistency matters more than a single reading: measure the same way each time and watch the trend.
 
-Because it relies on your waist measurement, it also doubles as a rough health signal — a rising waist circumference is itself linked to metabolic risk, independent of the exact body-fat figure, and it pairs well with a [BMI reading](/blog/bmi-calculator-guide/) for a fuller picture.
+Because it relies on your waist measurement, it also doubles as a rough health signal, a rising waist circumference is itself linked to metabolic risk, independent of the exact body-fat figure, and it pairs well with a [BMI reading](/blog/bmi-calculator-guide/) for a fuller picture.
 
 ## How it compares to other methods
 
@@ -120,7 +120,7 @@ No at-home method matches a laboratory scan, but they differ a lot in cost, conv
 | DEXA scan | High | Clinic visit | Cost and access; small dose of radiation |
 | Hydrostatic weighing | High | Specialist facility | Requires full submersion; limited availability |
 
-The practical takeaway: pick one method and stick with it. Comparing a caliper reading one month to a smart-scale reading the next tells you almost nothing, because the errors point in different directions. Measured the same way each time, the tape method is one of the most repeatable options on this list — which is precisely what you want when the goal is tracking a trend rather than pinning down a single true number.
+The practical takeaway: pick one method and stick with it. Comparing a caliper reading one month to a smart-scale reading the next tells you almost nothing, because the errors point in different directions. Measured the same way each time, the tape method is one of the most repeatable options on this list, which is precisely what you want when the goal is tracking a trend rather than pinning down a single true number.
 
 ## When to be cautious with the result
 

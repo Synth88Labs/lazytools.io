@@ -70,7 +70,7 @@ export default function KanbanTool() {
               <label class="mt-1 flex items-center gap-1 text-[11px] text-slate-400">WIP limit
                 <input type="number" min={0} max={20} value={col.wip} onInput={(e) => setWip(col.id, parseInt((e.target as HTMLInputElement).value, 10) || 0)} class="w-12 rounded border border-slate-200 px-1 py-0.5 text-xs text-slate-700" />
               </label>
-              {over && <p class="mt-1 text-xs font-medium text-red-600">⚠ Over WIP limit — finish before starting more.</p>}
+              {over && <p class="mt-1 text-xs font-medium text-red-600">⚠ Over WIP limit, finish before starting more.</p>}
 
               <ul class="mt-2 flex-1 space-y-2">
                 {col.cards.map((card) => (

@@ -39,7 +39,7 @@ export default function RiceWaterTool() {
         <p class="mt-4 text-sm text-slate-500">Enter the amount of dry rice.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Water is in the same unit as the rice — the ratio is what matters (2:1 for white, 2.5:1 for brown, 1.5:1 for basmati/jasmine). Rinse the rice first for fluffier grains, bring to a boil then cover and simmer on low, and rest it off the heat for 5–10 minutes before fluffing. Times and absorption vary by pan and lid, so adjust to taste. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Water is in the same unit as the rice, the ratio is what matters (2:1 for white, 2.5:1 for brown, 1.5:1 for basmati/jasmine). Rinse the rice first for fluffier grains, bring to a boil then cover and simmer on low, and rest it off the heat for 5-10 minutes before fluffing. Times and absorption vary by pan and lid, so adjust to taste. 🔒 In your browser.</p>
     </div>
   );
 }

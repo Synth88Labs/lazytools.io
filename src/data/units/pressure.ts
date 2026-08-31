@@ -7,11 +7,11 @@ export const pressure: Quantity = {
   baseUnit: 'pa',
   icon: '🎈',
   description:
-    'Convert between PSI, bar, pascal, atmospheres and mmHg. Tire pressures, weather systems and medical readings all use different pressure units — 1 bar = 14.5038 psi.',
+    'Convert between PSI, bar, pascal, atmospheres and mmHg. Tire pressures, weather systems and medical readings all use different pressure units, 1 bar = 14.5038 psi.',
   units: [
     {
       id: 'pa', name: 'Pascal', plural: 'pascals', symbol: 'Pa', slug: 'pascal', factor: 1, system: 'si',
-      definition: 'The pascal (Pa) is the SI unit of pressure — one newton per square meter. It is small in everyday terms: atmospheric pressure is about 101,325 Pa.',
+      definition: 'The pascal (Pa) is the SI unit of pressure, one newton per square meter. It is small in everyday terms: atmospheric pressure is about 101,325 Pa.',
     },
     {
       id: 'kpa', name: 'Kilopascal', plural: 'kilopascals', symbol: 'kPa', slug: 'kpa', factor: 1000, system: 'si',
@@ -23,15 +23,15 @@ export const pressure: Quantity = {
     },
     {
       id: 'bar', name: 'Bar', plural: 'bars', symbol: 'bar', slug: 'bar', factor: 100000, system: 'metric',
-      definition: 'A bar is exactly 100,000 Pa — within 2% of one atmosphere. European tire pressures and scuba tank ratings are given in bar.',
+      definition: 'A bar is exactly 100,000 Pa, within 2% of one atmosphere. European tire pressures and scuba tank ratings are given in bar.',
     },
     {
       id: 'psi', name: 'Pound per square inch', plural: 'pounds per square inch', symbol: 'psi', slug: 'psi', factor: 6894.757293168, system: 'us',
-      definition: 'PSI (pound-force per square inch) is the US customary pressure unit, about 6,894.76 Pa. US tire pressures (typically 30–35 psi) and plumbing systems use psi.',
+      definition: 'PSI (pound-force per square inch) is the US customary pressure unit, about 6,894.76 Pa. US tire pressures (typically 30-35 psi) and plumbing systems use psi.',
     },
     {
       id: 'atm', name: 'Atmosphere', plural: 'atmospheres', symbol: 'atm', slug: 'atm', factor: 101325, system: 'other',
-      definition: 'A standard atmosphere (atm) is exactly 101,325 Pa — the average sea-level air pressure. Diving depth pressure is often expressed in atmospheres.',
+      definition: 'A standard atmosphere (atm) is exactly 101,325 Pa, the average sea-level air pressure. Diving depth pressure is often expressed in atmospheres.',
     },
     {
       id: 'torr', name: 'Torr', plural: 'torr', symbol: 'Torr', slug: 'torr', factor: 101325 / 760, system: 'other',
@@ -39,7 +39,7 @@ export const pressure: Quantity = {
     },
     {
       id: 'mmhg', name: 'Millimeter of mercury', plural: 'millimeters of mercury', symbol: 'mmHg', slug: 'mmhg', factor: 133.322387415, system: 'other',
-      definition: 'A millimeter of mercury (mmHg) is 133.322 Pa. Blood pressure worldwide is measured in mmHg — a healthy reading is around 120/80 mmHg.',
+      definition: 'A millimeter of mercury (mmHg) is 133.322 Pa. Blood pressure worldwide is measured in mmHg, a healthy reading is around 120/80 mmHg.',
     },
     {
       id: 'inhg', name: 'Inch of mercury', plural: 'inches of mercury', symbol: 'inHg', slug: 'inhg', factor: 3386.389, system: 'us',
@@ -60,7 +60,7 @@ export const pressure: Quantity = {
       note: 'PSI-to-bar is the classic tire-pressure conversion between US and European specifications. A typical car tire at 32 psi is 2.21 bar. 1 bar = 14.5038 psi, so dividing psi by 14.5 gives bar.',
       tableValues: [1, 5, 10, 15, 20, 25, 28, 30, 32, 35, 40, 50, 60, 80, 100, 150, 200, 3000],
       faqs: [
-        { q: 'What is normal tire pressure in psi and bar?', a: 'Most passenger cars specify 30–35 psi, which is 2.07–2.41 bar. Check the sticker inside the driver-side door for your vehicle’s exact spec.' },
+        { q: 'What is normal tire pressure in psi and bar?', a: 'Most passenger cars specify 30-35 psi, which is 2.07-2.41 bar. Check the sticker inside the driver-side door for your vehicle’s exact spec.' },
       ],
     },
     'bar-to-psi': {
@@ -72,7 +72,7 @@ export const pressure: Quantity = {
     'kpa-to-psi': {
       slug: 'kpa-to-psi',
       exampleValue: 220,
-      note: 'Kilopascals-to-psi converts the tire placards used in Canada, Australia and Japan to US units: 220 kPa is 31.9 psi. One kPa is 0.145 psi — a quick estimate is to divide kPa by 7.',
+      note: 'Kilopascals-to-psi converts the tire placards used in Canada, Australia and Japan to US units: 220 kPa is 31.9 psi. One kPa is 0.145 psi, a quick estimate is to divide kPa by 7.',
     },
     'psi-to-kpa': {
       slug: 'psi-to-kpa',
@@ -82,12 +82,12 @@ export const pressure: Quantity = {
     'bar-to-kpa': {
       slug: 'bar-to-kpa',
       exampleValue: 2.2,
-      note: 'One bar is exactly 100 kPa — the cleanest conversion in pressure. A 2.2 bar tire spec is 220 kPa; just shift the decimal two places.',
+      note: 'One bar is exactly 100 kPa, the cleanest conversion in pressure. A 2.2 bar tire spec is 220 kPa; just shift the decimal two places.',
     },
     'kpa-to-bar': {
       slug: 'kpa-to-bar',
       exampleValue: 240,
-      note: 'Divide kilopascals by 100 for bar: 240 kPa is 2.4 bar, exactly. Both are metric units — kPa appears on tire placards, bar on pumps and gauges in Europe.',
+      note: 'Divide kilopascals by 100 for bar: 240 kPa is 2.4 bar, exactly. Both are metric units, kPa appears on tire placards, bar on pumps and gauges in Europe.',
     },
     'atm-to-psi': {
       slug: 'atm-to-psi',
@@ -97,7 +97,7 @@ export const pressure: Quantity = {
     'mmhg-to-kpa': {
       slug: 'mmhg-to-kpa',
       exampleValue: 120,
-      note: 'Millimeters-of-mercury-to-kilopascals is a medical conversion — a 120/80 mmHg blood pressure is 16.0/10.7 kPa, the format some European and scientific records use. One mmHg is 0.1333 kPa.',
+      note: 'Millimeters-of-mercury-to-kilopascals is a medical conversion, a 120/80 mmHg blood pressure is 16.0/10.7 kPa, the format some European and scientific records use. One mmHg is 0.1333 kPa.',
     },
   },
 };

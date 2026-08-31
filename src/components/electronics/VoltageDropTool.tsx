@@ -58,13 +58,13 @@ export default function VoltageDropTool() {
             <div class="rounded-xl bg-white p-4 text-center ring-1 ring-slate-200"><p class="font-mono text-2xl font-extrabold text-slate-800">{fmt(res.atLoad)} V</p><p class="mt-1 text-xs font-semibold uppercase tracking-wide text-slate-500">Voltage at load</p></div>
           </div>
           <div class={`rounded-xl px-4 py-2.5 text-center text-sm font-bold ring-1 ${bad ? 'text-amber-800 bg-amber-50 ring-amber-200' : 'text-emerald-700 bg-emerald-50 ring-emerald-200'}`}>
-            {bad ? 'Over the recommended 3% — consider a thicker (lower-gauge) wire or shorter run.' : 'Within the recommended 3% limit.'}
+            {bad ? 'Over the recommended 3%, consider a thicker (lower-gauge) wire or shorter run.' : 'Within the recommended 3% limit.'}
           </div>
         </div>
       ) : <p class="mt-4 text-sm text-slate-500">Enter the wire gauge, length, current and voltage.</p>}
 
       <p class="mt-4 text-xs text-slate-500">
-        Voltage drop is the voltage lost to wire resistance over the run: drop = 2 × current × resistance-per-metre × one-way length (√3 instead of 2 for three-phase). The US National Electrical Code recommends keeping it under 3% on a branch circuit (5% total). Aluminium has about 1.6× the resistance of copper for the same gauge. Use for DC, solar and mains runs — but follow local electrical code and a licensed electrician for real installations. 🔒 In your browser.
+        Voltage drop is the voltage lost to wire resistance over the run: drop = 2 × current × resistance-per-metre × one-way length (√3 instead of 2 for three-phase). The US National Electrical Code recommends keeping it under 3% on a branch circuit (5% total). Aluminium has about 1.6× the resistance of copper for the same gauge. Use for DC, solar and mains runs, but follow local electrical code and a licensed electrician for real installations. 🔒 In your browser.
       </p>
     </div>
   );

@@ -29,8 +29,8 @@ export default function PuppyWeightTool() {
         <label class="block"><span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Adult size class</span>
           <select value={size} onChange={(e) => setSize((e.target as HTMLSelectElement).value)} class={`${sel} w-full py-2`}>
             <option value="small">Small (up to ~9 kg / 20 lb)</option>
-            <option value="medium">Medium (~9–23 kg / 20–50 lb)</option>
-            <option value="large">Large (~23–45 kg / 50–100 lb)</option>
+            <option value="medium">Medium (~9-23 kg / 20-50 lb)</option>
+            <option value="large">Large (~23-45 kg / 50-100 lb)</option>
             <option value="giant">Giant (over ~45 kg / 100 lb)</option>
           </select></label>
       </div>
@@ -43,7 +43,7 @@ export default function PuppyWeightTool() {
       ) : <p class="mt-4 text-sm text-slate-500">Enter your puppy\'s current weight, age and size class.</p>}
 
       <p class="mt-4 text-xs text-slate-500">
-        The estimate divides your puppy\'s current weight by the fraction of adult weight it has typically reached by this age for its size class. Small breeds finish growing by about 10–12 months; large and giant breeds keep growing to 18–24 months. This is an <strong>approximation</strong> based on breed-size growth curves — real adult size depends on breed, genetics and nutrition, so treat it as a guide, and ask your vet about healthy growth. 🔒 In your browser.
+        The estimate divides your puppy\'s current weight by the fraction of adult weight it has typically reached by this age for its size class. Small breeds finish growing by about 10-12 months; large and giant breeds keep growing to 18-24 months. This is an <strong>approximation</strong> based on breed-size growth curves, real adult size depends on breed, genetics and nutrition, so treat it as a guide, and ask your vet about healthy growth. 🔒 In your browser.
       </p>
     </div>
   );

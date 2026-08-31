@@ -125,7 +125,7 @@ export default function DiscordColorTool() {
       </div>
 
       <p class="mt-4 text-xs text-slate-500">
-        Discord colour needs an <strong>ANSI code block</strong>, which only renders on desktop and the web app (mobile shows plain text). The copied block already includes the escape characters — just paste and send. 🔒 Runs in your browser.
+        Discord colour needs an <strong>ANSI code block</strong>, which only renders on desktop and the web app (mobile shows plain text). The copied block already includes the escape characters, just paste and send. 🔒 Runs in your browser.
       </p>
     </div>
   );

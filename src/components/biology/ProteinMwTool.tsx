@@ -48,7 +48,7 @@ export default function ProteinMwTool() {
           ))}
         </div>
       )}
-      <p class="mt-3 text-xs text-slate-500">Sum of average residue masses + one water (18.02 Da). This is the unmodified-chain mass — post-translational modifications and disulfide bonds shift it. 🔒 Computed in your browser.</p>
+      <p class="mt-3 text-xs text-slate-500">Sum of average residue masses + one water (18.02 Da). This is the unmodified-chain mass, post-translational modifications and disulfide bonds shift it. 🔒 Computed in your browser.</p>
     </div>
   );
 }

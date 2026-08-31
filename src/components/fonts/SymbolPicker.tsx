@@ -7,7 +7,7 @@ const CATEGORIES: { name: string; symbols: string }[] = [
   { name: 'Currency', symbols: '$ ¢ £ ¥ € ₹ ₽ ₩ ₺ ₴ ₦ ₱ ฿ ₪ ₫ ₡ ₲ ₵ ₭ ₮ ¤ ₿ ﷼' },
   { name: 'Math', symbols: '± × ÷ ≠ ≈ ≤ ≥ ∞ √ ∛ ∜ ∑ ∏ ∫ ∂ ∆ ∇ ∈ ∉ ⊂ ⊃ ∪ ∩ ° π µ ∅ ∝ ∴ ∵ ≡ ⌀ ‰' },
   { name: 'Shapes', symbols: '● ○ ◉ ◍ ◎ ■ □ ▪ ▫ ◆ ◇ ▲ △ ▼ ▽ ◀ ▶ ⬟ ⬢ ⬣ ⭓ ⯃ ▬ ▮ ▰ ◢ ◣ ◤ ◥ ⏢' },
-  { name: 'Punctuation', symbols: '• ‣ ◦ ‧ · … — – ‑ ¡ ¿ « » ‹ › “ ” ‘ ’ „ ‟ § ¶ † ‡ ※ ‽ ⁓ ⸮ ⸜ ⸝' },
+  { name: 'Punctuation', symbols: '• ‣ ◦ ‧ · …, – ‑ ¡ ¿ « » ‹ › “ ” ‘ ’ „ ‟ § ¶ † ‡ ※ ‽ ⁓ ⸮ ⸜ ⸝' },
   { name: 'Brackets', symbols: '「 」 『 』 【 】 〔 〕 〖 〗 〘 〙 〚 〛 ⟨ ⟩ ⟪ ⟫ ⌈ ⌉ ⌊ ⌋ ⦃ ⦄ ❨ ❩ ❪ ❫ ❲ ❳ ⟦ ⟧' },
   { name: 'Lines & borders', symbols: '─ ━ │ ┃ ┄ ┅ ┈ ┉ ═ ║ ╌ ╍ ╭ ╮ ╯ ╰ ┌ ┐ └ ┘ ├ ┤ ┬ ┴ ┼ ╔ ╗ ╚ ╝ ▁ ▔ ▏ ▕' },
   { name: 'Weather & nature', symbols: '☀ ☁ ☂ ☃ ☄ ★ ☾ ☽ ❄ ❅ ❆ ☼ ☽ ⚡ ✿ ❀ ❁ ☘ ♧ ♣ ♠ ♤ ✾ ⚘ ☔ 🌙 ⛅' },
@@ -68,7 +68,7 @@ export default function SymbolPicker() {
       </div>
 
       <p class="mt-5 text-xs text-slate-500">
-        Click any symbol to copy it, then paste it anywhere. These are standard Unicode characters — a few render differently or in colour depending on your device. 🔒 Runs in your browser.
+        Click any symbol to copy it, then paste it anywhere. These are standard Unicode characters, a few render differently or in colour depending on your device. 🔒 Runs in your browser.
       </p>
     </div>
   );

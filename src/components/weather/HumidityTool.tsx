@@ -47,7 +47,7 @@ export default function HumidityTool() {
         <p class="mt-4 text-sm text-slate-500">Enter the air temperature and dew point.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Relative humidity is the ratio of the actual water vapour to the maximum the air can hold at that temperature. It's derived from the temperature and dew point via the Magnus saturation-vapour equation. When the dew point equals the temperature, the air is saturated — 100%. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Relative humidity is the ratio of the actual water vapour to the maximum the air can hold at that temperature. It's derived from the temperature and dew point via the Magnus saturation-vapour equation. When the dew point equals the temperature, the air is saturated, 100%. 🔒 In your browser.</p>
     </div>
   );
 }

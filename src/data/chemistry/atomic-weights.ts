@@ -1,5 +1,5 @@
 /**
- * Standard atomic weights — IUPAC / CIAAW 2021 abridged conventional values (4 sig figs).
+ * Standard atomic weights, IUPAC / CIAAW 2021 abridged conventional values (4 sig figs).
  * For elements with no stable nuclide, the mass number of the most stable / commonly
  * cited isotope is used, shown in the source note on-page. Pinned constant table.
  */

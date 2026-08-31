@@ -1,12 +1,12 @@
 ---
 title: "How to Convert a File to a Base64 Data URI (and Back)"
 seoTitle: 'File to Base64 Data URI: Convert & Decode'
-description: "A Base64 data URI embeds a whole file as text — data:<mime>;base64,<data> — so you can inline it in HTML, CSS or JSON with no separate request."
+description: "A Base64 data URI embeds a whole file as text, data:<mime>;base64,<data>, so you can inline it in HTML, CSS or JSON with no separate request."
 pubDate: 2026-08-01
 updatedDate: 2026-08-23
 archetype: explainer
 heroImage: /blog/file-to-base64-data-uri-guide.png
-heroAlt: "How a file becomes a Base64 data URI — bytes encoded to text, wrapped as data:mime;base64,data, and decoded back"
+heroAlt: "How a file becomes a Base64 data URI, bytes encoded to text, wrapped as data:mime;base64,data, and decoded back"
 tools: ["/file/file-to-base64/", "/file/base64-to-file/"]
 keywords:
   - file to base64
@@ -18,34 +18,33 @@ keywords:
   - embed image in css base64
 faqs:
   - q: "How do I convert a file to Base64?"
-    a: "Read the file's raw bytes and encode them with Base64, which maps every 3 bytes to 4 text characters from a 64-character alphabet. The LazyTools File to Base64 encoder does this in your browser — pick a file and it outputs the Base64, optionally wrapped as a data URI you can paste straight into HTML or CSS. The file is never uploaded."
+    a: "Read the file's raw bytes and encode them with Base64, which maps every 3 bytes to 4 text characters from a 64-character alphabet. The LazyTools File to Base64 encoder does this in your browser, pick a file and it outputs the Base64, optionally wrapped as a data URI you can paste straight into HTML or CSS. The file is never uploaded."
   - q: "What is a data URI?"
     a: "A data URI embeds a file's contents inline as text instead of linking to it, in the form data:<mime-type>;base64,<encoded-data>. For example data:image/png;base64,iVBORw0KGgo… is a PNG carried entirely in the string. Browsers treat it like a real file, so it works as an <img src>, a CSS background, or a link target with no separate HTTP request."
   - q: "How much bigger does Base64 make a file?"
-    a: "About 33% larger. Base64 encodes every 3 bytes as 4 ASCII characters, so the text is 4/3 the size of the original bytes, plus a little padding. That overhead is why data URIs suit small assets — icons, small images, fonts — rather than large media, which is better served by a normal file request that can be cached separately."
+    a: "About 33% larger. Base64 encodes every 3 bytes as 4 ASCII characters, so the text is 4/3 the size of the original bytes, plus a little padding. That overhead is why data URIs suit small assets, icons, small images, fonts, rather than large media, which is better served by a normal file request that can be cached separately."
   - q: "When should I use a Base64 data URI instead of a file?"
-    a: "Use one for small, rarely-changing assets you want to inline to save an HTTP request — a tiny logo in an HTML email, an icon in a CSS file, or a small image embedded in JSON. Avoid it for large files: the 33% size penalty, the fact that inlined data isn't cached separately, and larger HTML/CSS payloads outweigh the saved request."
+    a: "Use one for small, rarely-changing assets you want to inline to save an HTTP request, a tiny logo in an HTML email, an icon in a CSS file, or a small image embedded in JSON. Avoid it for large files: the 33% size penalty, the fact that inlined data isn't cached separately, and larger HTML/CSS payloads outweigh the saved request."
   - q: "How do I decode Base64 back into a file?"
-    a: "Reverse the encoding: turn the Base64 text back into the original bytes and save them with the right file extension. The LazyTools Base64 to File decoder accepts raw Base64 or a full data URI (it reads the MIME type automatically) and downloads the reconstructed file — all in your browser."
+    a: "Reverse the encoding: turn the Base64 text back into the original bytes and save them with the right file extension. The LazyTools Base64 to File decoder accepts raw Base64 or a full data URI (it reads the MIME type automatically) and downloads the reconstructed file, all in your browser."
   - q: "Is Base64 encoding secure or compressed?"
-    a: "Neither. Base64 is a reversible text encoding, not encryption — anyone can decode it — and it makes data larger, not smaller. Its only job is to represent binary bytes safely as text so they survive inside formats that expect text, like JSON, HTML, CSS and email."
+    a: "Neither. Base64 is a reversible text encoding, not encryption, anyone can decode it, and it makes data larger, not smaller. Its only job is to represent binary bytes safely as text so they survive inside formats that expect text, like JSON, HTML, CSS and email."
   - q: "Is my file uploaded when I encode or decode it?"
     a: "Not with the LazyTools tools. Both the File to Base64 encoder and the Base64 to File decoder use the browser's File API and run entirely on your device, so the file and its Base64 are never transmitted. That makes them safe for private documents, and they work offline."
 draft: false
 ---
 
-**A Base64 data URI packs an entire file into a single line of text — `data:<mime-type>;base64,<data>` —
-so you can drop it straight into HTML, CSS or JSON with no separate file request.** Converting a file
+**A Base64 data URI packs an entire file into a single line of text, `data:<mime-type>;base64,<data>`, so you can drop it straight into HTML, CSS or JSON with no separate file request.** Converting a file
 to that form means encoding its raw bytes as Base64; converting back means decoding the Base64 into
 bytes and saving them. Do both in your browser with the [File to Base64 encoder](/file/file-to-base64/)
-and the [Base64 to File decoder](/file/base64-to-file/) — the file never leaves your device.
+and the [Base64 to File decoder](/file/base64-to-file/), the file never leaves your device.
 
 <aside class="key-takeaways">
 
 **Key takeaways**
 
-- Base64 rewrites every 3 bytes of a file as 4 text characters, so the encoded text is about **33% larger** than the original — it is a text encoding, not compression or encryption.
-- A **data URI** wraps that text with a MIME type — `data:<mime-type>;base64,<data>` — so a browser can use it anywhere a URL is expected: `<img src>`, CSS `url()`, or a link.
+- Base64 rewrites every 3 bytes of a file as 4 text characters, so the encoded text is about **33% larger** than the original. It is a text encoding, not compression or encryption.
+- A **data URI** wraps that text with a MIME type, `data:<mime-type>;base64,<data>`, so a browser can use it anywhere a URL is expected: `<img src>`, CSS `url()`, or a link.
 - Inline data URIs shine for **small, stable assets** (icons, tiny logos, font subsets) where saving one HTTP request outweighs the size penalty; avoid them for large or frequently-changing media.
 - Decoding just reverses the process: read the MIME type, strip the header, turn the Base64 back into the exact original bytes.
 - Both directions are pure client-side math, so the [encoder](/file/file-to-base64/) and [decoder](/file/base64-to-file/) run entirely in your browser and work offline.
@@ -54,10 +53,10 @@ and the [Base64 to File decoder](/file/base64-to-file/) — the file never leave
 
 ## What Base64 actually does
 
-Computers store files as bytes, but many formats — JSON, HTML attributes, CSS, email — expect *text*.
+Computers store files as bytes, but many formats, JSON, HTML attributes, CSS, email, expect *text*.
 [Base64](https://en.wikipedia.org/wiki/Base64) bridges that gap. It takes every 3 bytes (24 bits) and rewrites them as 4 characters from a
-fixed 64-symbol alphabet (`A–Z`, `a–z`, `0–9`, `+`, `/`), padding the end with `=` when needed. The
-result is pure text that survives anywhere text is allowed — and it's perfectly reversible.
+fixed 64-symbol alphabet (`A, Z`, `a, z`, `0-9`, `+`, `/`), padding the end with `=` when needed. The
+result is pure text that survives anywhere text is allowed, and it's perfectly reversible.
 
 Two things follow immediately:
 
@@ -68,7 +67,7 @@ Two things follow immediately:
 ## A worked example, one group of 3 bytes
 
 The clearest way to see the mapping is to encode a short piece of text by hand. Take the three
-characters `Man`. In a file these are three bytes — the ASCII codes 77, 97 and 110:
+characters `Man`. In a file these are three bytes, the ASCII codes 77, 97 and 110:
 
 | Character | Decimal | 8-bit binary |
 |---|---|---|
@@ -83,12 +82,12 @@ Line those 24 bits up and re-slice them into four groups of **6** bits instead o
 010011 010110 000101 101110  ← four 6-bit groups = 19, 22, 5, 46
 ```
 
-Each 6-bit value (0–63) is an index into the 64-character alphabet, giving `T`, `W`, `F`, `u`. So
-`Man` encodes to `TWFu` — three input bytes, four output characters, exactly the 4/3 ratio.
+Each 6-bit value (0-63) is an index into the 64-character alphabet, giving `T`, `W`, `F`, `u`. So
+`Man` encodes to `TWFu`, three input bytes, four output characters, exactly the 4/3 ratio.
 
 Padding handles inputs that are not a multiple of 3 bytes. A single `M` (one byte) has only enough
 bits for two Base64 characters, so the encoder emits `TQ==`; two bytes emit three characters plus one
-`=`. The `=` signs are pure length bookkeeping — they tell a decoder how many real bytes the final
+`=`. The `=` signs are pure length bookkeeping. They tell a decoder how many real bytes the final
 group holds. Binary files work identically; text just makes the digits easy to read.
 
 ## From Base64 to a data URI
@@ -100,7 +99,7 @@ treat it as a real file:
 data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA…
 │    │         │      │
 │    │         │      └─ the Base64-encoded bytes
-│    │         └─ ";base64" — the data is Base64, not URL-encoded text
+│    │         └─ ";base64", the data is Base64, not URL-encoded text
 │    └─ the MIME type (image/png, application/pdf, font/woff2, …)
 └─ the "data:" scheme
 ```
@@ -142,10 +141,10 @@ why you can use a data URI anywhere a URL is expected:
 
   <!-- Embed + decode note -->
   <rect x="180" y="360" width="840" height="120" rx="16" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="2"/>
-  <text x="600" y="405" text-anchor="middle" font-family="system-ui,sans-serif" font-size="24" font-weight="700" fill="#334155">Embed in HTML / CSS / JSON — no separate request</text>
+  <text x="600" y="405" text-anchor="middle" font-family="system-ui,sans-serif" font-size="24" font-weight="700" fill="#334155">Embed in HTML / CSS / JSON, no separate request</text>
   <text x="600" y="445" text-anchor="middle" font-family="system-ui,sans-serif" font-size="23" fill="#475569">Decode the Base64 back to bytes to get the exact original file</text>
 
-  <text x="600" y="525" text-anchor="middle" font-family="system-ui,sans-serif" font-size="22" fill="#64748b">Base64 is reversible text encoding — not compression, not encryption</text>
+  <text x="600" y="525" text-anchor="middle" font-family="system-ui,sans-serif" font-size="22" fill="#64748b">Base64 is reversible text encoding, not compression, not encryption</text>
 </svg>
 </figure>
 
@@ -177,7 +176,7 @@ from a document. Which one fits depends on whether you need the bytes *inline* a
 | `svg+xml` data URI (unencoded) | Yes | ~same (text SVG) | No | Inlining SVG markup without the Base64 penalty |
 
 Two nuances are worth calling out. First, SVG is already text, so you can inline it in a data URI as
-URL-encoded markup (`data:image/svg+xml,...`) and skip the 33% Base64 overhead entirely — Base64 is
+URL-encoded markup (`data:image/svg+xml,...`) and skip the 33% Base64 overhead entirely, Base64 is
 only mandatory for genuinely binary formats like PNG, WOFF2 or PDF. Second, a plain file URL wins the
 moment an asset is reused across pages or changes often, because the browser can cache it once and
 reuse it, whereas an inlined copy is re-downloaded with every document that embeds it.
@@ -188,7 +187,7 @@ You rarely type Base64 by hand, but it turns up constantly once you know the sha
 
 - **HTML email**, where many clients block external images, so a small inlined logo renders reliably.
 - **CSS**, where a tiny icon or gradient texture is embedded with `url("data:...")` to cut a request.
-- **JSON and REST APIs**, which are text formats — a binary field (an avatar, a document) is carried as
+- **JSON and REST APIs**, which are text formats, a binary field (an avatar, a document) is carried as
   a Base64 string because raw bytes cannot live in JSON.
 - **Data-URI favicons and SVGs** in single-file HTML pages that must work with no external assets.
 - **Config and token formats** such as JWTs, which use a URL-safe Base64 variant for each segment.
@@ -202,7 +201,7 @@ Going the other way is just as mechanical. Given `data:application/pdf;base64,JV
 1. Reads the MIME type (`application/pdf`) from the prefix.
 2. Strips the `data:…;base64,` header.
 3. Decodes the remaining Base64 back into the original bytes.
-4. Saves them — here, as a `.pdf`.
+4. Saves them. Here, as a `.pdf`.
 
 Paste either a full data URI or just the raw Base64 into the
 [Base64 to File decoder](/file/base64-to-file/); if it's a data URI, the MIME type is detected for you,
@@ -211,7 +210,7 @@ pasted text are ignored, so multi-line blocks work.
 
 ## Why doing it in the browser matters
 
-The files people Base64-encode are often not throwaway test images — they're documents, signatures,
+The files people Base64-encode are often not throwaway test images, they're documents, signatures,
 internal assets. A "convert to Base64" site that uploads your file to a server has seen that content.
 The [encoder](/file/file-to-base64/) and [decoder](/file/base64-to-file/) here use the browser's File
 API and run entirely on your device: nothing is transmitted, and both work offline.
@@ -220,5 +219,5 @@ API and run entirely on your device: nothing is transmitted, and both work offli
 
 Converting a file to Base64 turns its bytes into text; wrapping that as `data:<mime>;base64,<data>`
 makes it an inline, self-describing file you can embed anywhere a URL goes. It's reversible, it's not
-encryption, and it's ~33% larger — so reach for it on small assets to save a request, and decode it
+encryption, and it's ~33% larger, so reach for it on small assets to save a request, and decode it
 back whenever a Base64 blob is really a file in disguise.

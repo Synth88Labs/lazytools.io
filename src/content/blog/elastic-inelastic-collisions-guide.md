@@ -17,7 +17,7 @@ heroImage: /blog/elastic-inelastic-collisions-guide.png
 heroAlt: "Elastic collision (objects bounce apart, momentum and kinetic energy conserved) versus perfectly inelastic (objects stick, only momentum conserved), with a worked 2 kg + 1 kg example"
 faqs:
   - q: "Is momentum conserved in an inelastic collision?"
-    a: "Yes. Momentum is conserved in every collision with no external forces — elastic or inelastic. What differs is kinetic energy: it's only conserved in an elastic collision. In an inelastic one, some kinetic energy becomes heat, sound and deformation."
+    a: "Yes. Momentum is conserved in every collision with no external forces, elastic or inelastic. What differs is kinetic energy: it's only conserved in an elastic collision. In an inelastic one, some kinetic energy becomes heat, sound and deformation."
   - q: "What is the difference between elastic and inelastic collisions?"
     a: "In an elastic collision both momentum and kinetic energy are conserved and the objects bounce apart. In an inelastic collision only momentum is conserved; a perfectly inelastic collision is the extreme where the objects stick together and the most kinetic energy is lost."
   - q: "How do I find the final velocities in an elastic collision?"
@@ -27,11 +27,11 @@ faqs:
   - q: "Where does the kinetic energy go in an inelastic collision?"
     a: "Into heat, sound, and permanent deformation of the objects. Momentum is still conserved because those processes don't exert a net external force, but the ordered kinetic energy is converted into disordered forms."
   - q: "What happens when two equal masses collide elastically?"
-    a: "They exchange velocities. A moving ball striking an identical stationary one stops dead while the other moves off at the original speed — the classic Newton's-cradle behaviour."
+    a: "They exchange velocities. A moving ball striking an identical stationary one stops dead while the other moves off at the original speed, the classic Newton's-cradle behaviour."
 draft: false
 ---
 
-**Every collision conserves momentum. Only some conserve kinetic energy.** That one distinction — which quantity survives — is the whole story of elastic versus inelastic collisions, and it's what lets you predict what happens when two things hit.
+**Every collision conserves momentum. Only some conserve kinetic energy.** That one distinction, which quantity survives, is the whole story of elastic versus inelastic collisions, and it's what lets you predict what happens when two things hit.
 
 <aside class="key-takeaways">
 
@@ -39,7 +39,7 @@ draft: false
 
 - **Momentum is conserved in every collision** (no external forces): m₁u₁ + m₂u₂ = m₁v₁ + m₂v₂.
 - **Kinetic energy is conserved only in an *elastic* collision** (e = 1); the objects bounce apart.
-- **A *perfectly inelastic* collision (e = 0)** loses the most kinetic energy — the objects stick together.
+- **A *perfectly inelastic* collision (e = 0)** loses the most kinetic energy, the objects stick together.
 - **The coefficient of restitution e** (0 to 1) says where a real collision falls.
 - **Equal masses, elastic** → they simply **swap velocities**.
 
@@ -47,7 +47,7 @@ draft: false
 
 <figure>
 <img src="/blog/infographic-elastic-inelastic-collisions.svg" alt="Two panels. Elastic (e=1): a 2 kg ball at 3 m/s hits a still 1 kg ball; afterward 1 m/s and 4 m/s, momentum 6 conserved, kinetic energy 9 J conserved, objects bounce apart. Perfectly inelastic (e=0): the two stick and move at 2 m/s together, momentum 6 conserved but kinetic energy drops 9 J to 6 J. Real collisions have 0 < e < 1." width="1200" height="640" loading="lazy" />
-<figcaption>Same momentum on both sides — but the elastic collision keeps its kinetic energy while the inelastic one loses it.</figcaption>
+<figcaption>Same momentum on both sides, but the elastic collision keeps its kinetic energy while the inelastic one loses it.</figcaption>
 </figure>
 
 ## The one law that always holds: momentum
@@ -58,7 +58,7 @@ In any collision with no outside forces, the total momentum before equals the to
 m₁u₁ + m₂u₂ = m₁v₁ + m₂v₂
 ```
 
-This is true whether the objects bounce, stick, shatter or explode. It's the anchor for every collision problem. But it's a single equation with two unknowns (v₁ and v₂), so momentum alone can't finish the job — you need a second condition. That condition is what separates elastic from inelastic.
+This is true whether the objects bounce, stick, shatter or explode. It's the anchor for every collision problem. But it's a single equation with two unknowns (v₁ and v₂), so momentum alone can't finish the job. You need a second condition. That condition is what separates elastic from inelastic.
 
 Momentum is a *vector*, so in one dimension you must respect signs: pick a positive direction and treat anything moving the other way as negative. A 2 kg cart at +3 m/s and a 1 kg cart at −1 m/s have a total momentum of 2×3 + 1×(−1) = 5 kg·m/s, not 7. Getting the signs right is where most collision mistakes actually happen.
 
@@ -77,16 +77,16 @@ v₁ = ((m₁ − m₂)u₁ + 2m₂u₂) / (m₁ + m₂)
 v₂ = ((m₂ − m₁)u₂ + 2m₁u₁) / (m₁ + m₂)
 ```
 
-Take a 2 kg ball at 3 m/s hitting a stationary 1 kg ball: v₁ = 1 m/s, v₂ = 4 m/s. Check it — momentum is 6 before (2×3) and 6 after (2×1 + 1×4), and kinetic energy is 9 J before and 9 J after. Both conserved; the balls bounce apart. Truly elastic collisions are an idealisation (billiard balls and atoms come close).
+Take a 2 kg ball at 3 m/s hitting a stationary 1 kg ball: v₁ = 1 m/s, v₂ = 4 m/s. Check it, momentum is 6 before (2×3) and 6 after (2×1 + 1×4), and kinetic energy is 9 J before and 9 J after. Both conserved; the balls bounce apart. Truly elastic collisions are an idealisation (billiard balls and atoms come close).
 
 A neat special case: **equal masses swap velocities**. That's why a Newton's cradle passes the motion straight through. Two more limits are worth memorising, because they explain everyday physics:
 
-- **A light object hitting a much heavier stationary one** (m₁ ≪ m₂) bounces almost straight back with nearly its original speed — like a ball off a wall. The wall barely moves.
+- **A light object hitting a much heavier stationary one** (m₁ ≪ m₂) bounces almost straight back with nearly its original speed, like a ball off a wall. The wall barely moves.
 - **A heavy object hitting a much lighter stationary one** (m₁ ≫ m₂) ploughs on almost undisturbed while the light object shoots off at close to *twice* the heavy object's speed. That factor of two is why a golf club (heavy) sends a ball (light) away faster than the clubhead itself was travelling.
 
 ## Inelastic: energy leaks away
 
-In an **inelastic** collision, kinetic energy is *not* conserved — some is converted to heat, sound and deformation as the objects crumple. Momentum still holds (those processes exert no net external force), but the objects come apart slower, or don't come apart at all.
+In an **inelastic** collision, kinetic energy is *not* conserved, some is converted to heat, sound and deformation as the objects crumple. Momentum still holds (those processes exert no net external force), but the objects come apart slower, or don't come apart at all.
 
 The extreme is a **perfectly inelastic** collision, where the objects **stick together** and move as one. Their common velocity is just the total momentum divided by the total mass:
 
@@ -94,13 +94,13 @@ The extreme is a **perfectly inelastic** collision, where the objects **stick to
 v = (m₁u₁ + m₂u₂) / (m₁ + m₂)
 ```
 
-For the same 2 kg + 1 kg example: v = 6 ÷ 3 = 2 m/s. Now the kinetic energy drops from 9 J to ½(3)(2²) = 6 J — **3 J vanished** into heat and sound. This is the most kinetic energy any collision of those two objects can lose while still conserving momentum.
+For the same 2 kg + 1 kg example: v = 6 ÷ 3 = 2 m/s. Now the kinetic energy drops from 9 J to ½(3)(2²) = 6 J, **3 J vanished** into heat and sound. This is the most kinetic energy any collision of those two objects can lose while still conserving momentum.
 
 Why can't *all* the kinetic energy disappear? Because the combined object still has to carry the original 6 kg·m/s of momentum, and a moving mass necessarily has kinetic energy. Momentum conservation sets a hard floor on how much energy a collision can shed. The leftover, unavoidable energy is the kinetic energy of the centre of mass; only the motion *relative* to the centre of mass is available to be lost.
 
 ## Why momentum survives but kinetic energy doesn't
 
-It feels strange that one conserved quantity can vanish while another is untouchable. The reason is the difference between the two quantities. Momentum change requires a net *external* force over time (an impulse). During a collision the forces the two objects exert on each other are equal and opposite (Newton's third law), so they cancel in the total — internal forces can never change the system's momentum. Kinetic energy has no such protection: internal forces do negative work as the objects deform, and that ordered energy of motion is converted into the disordered energy of jiggling molecules (heat), pressure waves (sound), and permanent bending. Energy overall is still conserved — it just leaves the "kinetic" column.
+It feels strange that one conserved quantity can vanish while another is untouchable. The reason is the difference between the two quantities. Momentum change requires a net *external* force over time (an impulse). During a collision the forces the two objects exert on each other are equal and opposite (Newton's third law), so they cancel in the total, internal forces can never change the system's momentum. Kinetic energy has no such protection: internal forces do negative work as the objects deform, and that ordered energy of motion is converted into the disordered energy of jiggling molecules (heat), pressure waves (sound), and permanent bending. Energy overall is still conserved. It just leaves the "kinetic" column.
 
 ## The dial between them: coefficient of restitution
 
@@ -110,7 +110,7 @@ Real collisions live between the two extremes, and the [**coefficient of restitu
 e = (relative speed after) / (relative speed before)
 ```
 
-**e = 1** is perfectly elastic, **e = 0** is perfectly inelastic, and most real objects sit in between — which is exactly why a dropped ball bounces back to less than its drop height. For a ball dropped onto a rigid floor, e is easy to measure: it equals √(bounce height ÷ drop height). A properly inflated basketball is quite bouncy, with e roughly around 0.8, while a regulation tennis ball rebounds a little less — the ITF drop test (about 254 cm onto concrete, rebounding roughly 135–147 cm) corresponds to e ≈ 0.73–0.76. Give the collision calculator an e and it solves that in-between case directly.
+**e = 1** is perfectly elastic, **e = 0** is perfectly inelastic, and most real objects sit in between, which is exactly why a dropped ball bounces back to less than its drop height. For a ball dropped onto a rigid floor, e is easy to measure: it equals √(bounce height ÷ drop height). A properly inflated basketball is quite bouncy, with e roughly around 0.8, while a regulation tennis ball rebounds a little less, the ITF drop test (about 254 cm onto concrete, rebounding roughly 135-147 cm) corresponds to e ≈ 0.73-0.76. Give the collision calculator an e and it solves that in-between case directly.
 
 ## A quick reference table
 
@@ -121,17 +121,17 @@ e = (relative speed after) / (relative speed before)
 | Perfectly inelastic | 0 | Yes | No (maximum lost) | Stick together |
 | Explosion / recoil | > 0 | Yes | *Increases* | Fly apart |
 
-The last row is the mirror image of a perfectly inelastic collision: a spring, an explosive, or a gun *adds* kinetic energy from stored chemical or elastic energy, yet momentum is still conserved. Start a rifle and bullet at rest (total momentum zero) and the forward momentum of the bullet must be balanced by the backward momentum of the recoiling rifle — that's the same law running in reverse.
+The last row is the mirror image of a perfectly inelastic collision: a spring, an explosive, or a gun *adds* kinetic energy from stored chemical or elastic energy, yet momentum is still conserved. Start a rifle and bullet at rest (total momentum zero) and the forward momentum of the bullet must be balanced by the backward momentum of the recoiling rifle, that's the same law running in reverse.
 
 ## Worked example: a real crash
 
 Momentum conservation is exactly how crash investigators reconstruct accidents. Suppose a 1,500 kg car travelling at 20 m/s rear-ends a stationary 1,000 kg car and the two lock bumpers and slide together. Their common speed is v = (1,500 × 20) ÷ (1,500 + 1,000) = 30,000 ÷ 2,500 = **12 m/s**.
 
-Now count the energy. Before: ½ × 1,500 × 20² = 300,000 J. After: ½ × 2,500 × 12² = 180,000 J. So **120,000 J — 40% of the kinetic energy — was absorbed** by crumpling metal, heat and sound in a fraction of a second. That is not a flaw; it is the *point* of a crumple zone. A more elastic collision would conserve that energy by throwing the occupants back the way they came, which is far more dangerous. Designing cars to be *more* inelastic is a deliberate safety choice.
+Now count the energy. Before: ½ × 1,500 × 20² = 300,000 J. After: ½ × 2,500 × 12² = 180,000 J. So **120,000 J, 40% of the kinetic energy, was absorbed** by crumpling metal, heat and sound in a fraction of a second. That is not a flaw; it is the *point* of a crumple zone. A more elastic collision would conserve that energy by throwing the occupants back the way they came, which is far more dangerous. Designing cars to be *more* inelastic is a deliberate safety choice.
 
 ## Solve any collision
 
-The [collision calculator](/physics/collision-calculator/) takes the two masses and initial velocities and returns the final velocities for an elastic, perfectly inelastic, or custom-e collision — along with the momentum (to see it's conserved) and the kinetic energy before, after and lost. Pair it with the [momentum](/physics/momentum-calculator/) and [kinetic energy](/physics/kinetic-energy-calculator/) calculators to check each piece. Like every LazyTools tool, it runs entirely in your browser.
+The [collision calculator](/physics/collision-calculator/) takes the two masses and initial velocities and returns the final velocities for an elastic, perfectly inelastic, or custom-e collision, along with the momentum (to see it's conserved) and the kinetic energy before, after and lost. Pair it with the [momentum](/physics/momentum-calculator/) and [kinetic energy](/physics/kinetic-energy-calculator/) calculators to check each piece. Like every LazyTools tool, it runs entirely in your browser.
 
 ---
 

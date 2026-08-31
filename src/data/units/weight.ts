@@ -59,10 +59,10 @@ export const weight: Quantity = {
     'kg-to-lbs': {
       slug: 'kg-to-lbs',
       exampleValue: 70,
-      note: 'Kilograms-to-pounds is the most searched weight conversion, usually for body weight, luggage allowances and gym plates. A quick mental estimate: double the kilograms and add 10% — 70 kg → 140 + 14 = 154 lbs (exact: 154.32 lbs).',
+      note: 'Kilograms-to-pounds is the most searched weight conversion, usually for body weight, luggage allowances and gym plates. A quick mental estimate: double the kilograms and add 10%, 70 kg → 140 + 14 = 154 lbs (exact: 154.32 lbs).',
       faqs: [
         { q: 'What is 1 kg in lbs for gym weights?', a: '1 kg is 2.2046 lbs. A 20 kg Olympic barbell is 44.09 lbs, and a 100 kg total is 220.46 lbs.' },
-        { q: 'How many kg is a 23 kg airline baggage allowance in pounds?', a: '23 kg is 50.71 lbs — which is why many airlines list the checked-bag limit as 50 lbs.' },
+        { q: 'How many kg is a 23 kg airline baggage allowance in pounds?', a: '23 kg is 50.71 lbs, which is why many airlines list the checked-bag limit as 50 lbs.' },
       ],
     },
     'lbs-to-kg': {
@@ -83,7 +83,7 @@ export const weight: Quantity = {
     'oz-to-g': {
       slug: 'oz-to-g',
       exampleValue: 4,
-      note: 'Ounces-to-grams converts US recipe weights to metric kitchen scales. One ounce is exactly 28.3495 g, so 4 oz — a standard stick of butter — is 113.4 g, and 8 oz is 226.8 g.',
+      note: 'Ounces-to-grams converts US recipe weights to metric kitchen scales. One ounce is exactly 28.3495 g, so 4 oz, a standard stick of butter, is 113.4 g, and 8 oz is 226.8 g.',
     },
     'lbs-to-stone': {
       slug: 'lbs-to-stone',
@@ -98,7 +98,7 @@ export const weight: Quantity = {
     'stone-to-kg': {
       slug: 'stone-to-kg',
       exampleValue: 10,
-      note: 'Stone-to-kilograms takes UK/Irish body weights to metric — for medical records, gyms and airlines. One stone is exactly 6.35029 kg, so 10 stone is 63.5 kg and "12 stone 8" is about 79.8 kg.',
+      note: 'Stone-to-kilograms takes UK/Irish body weights to metric, for medical records, gyms and airlines. One stone is exactly 6.35029 kg, so 10 stone is 63.5 kg and "12 stone 8" is about 79.8 kg.',
     },
     'oz-to-lbs': {
       slug: 'oz-to-lbs',
@@ -108,7 +108,7 @@ export const weight: Quantity = {
     'lbs-to-oz': {
       slug: 'lbs-to-oz',
       exampleValue: 7.5,
-      note: 'Multiply pounds by 16: 7.5 lbs is 120 oz. It also unpacks decimal pounds into the pounds-and-ounces format used for newborn weights — 7.5 lbs is 7 lb 8 oz.',
+      note: 'Multiply pounds by 16: 7.5 lbs is 120 oz. It also unpacks decimal pounds into the pounds-and-ounces format used for newborn weights, 7.5 lbs is 7 lb 8 oz.',
     },
     'g-to-kg': {
       slug: 'g-to-kg',
@@ -118,12 +118,12 @@ export const weight: Quantity = {
     'kg-to-g': {
       slug: 'kg-to-g',
       exampleValue: 1.5,
-      note: 'Multiply kilograms by 1,000: 1.5 kg is 1,500 g. Nutrition math often needs this — a 2 kg bag of rice is 2,000 g, or 25 servings of 80 g.',
+      note: 'Multiply kilograms by 1,000: 1.5 kg is 1,500 g. Nutrition math often needs this, a 2 kg bag of rice is 2,000 g, or 25 servings of 80 g.',
     },
     'g-to-lbs': {
       slug: 'g-to-lbs',
       exampleValue: 500,
-      note: 'Grams-to-pounds bridges metric product weights and US units: 500 g is 1.102 lbs — which is why a "metric pound" of 500 g is slightly heavier than a real pound (453.6 g).',
+      note: 'Grams-to-pounds bridges metric product weights and US units: 500 g is 1.102 lbs, which is why a "metric pound" of 500 g is slightly heavier than a real pound (453.6 g).',
     },
     'lbs-to-g': {
       slug: 'lbs-to-g',

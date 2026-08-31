@@ -86,7 +86,7 @@ export default function KidsShoeSizeTool() {
               ))}
             </div>
             <p class="mt-3 text-xs text-slate-500">
-              {row.group} range. Ages are guidance only — measure the foot and add ~0.8 cm of growing room.
+              {row.group} range. Ages are guidance only, measure the foot and add ~0.8 cm of growing room.
             </p>
           </>
         ) : (

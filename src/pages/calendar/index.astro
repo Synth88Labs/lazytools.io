@@ -14,15 +14,15 @@ const crumbs = [
 const faqs = [
   {
     q: 'How can these calendar conversions be accurate without a server?',
-    a: 'Modern browsers ship the full ICU/CLDR calendar database — the same data operating systems use — covering the Islamic, Hebrew, Persian, Indian, Buddhist, Japanese, Chinese and other calendars. These tools read that data directly, so conversions are authoritative and run entirely on your device, even offline.',
+    a: 'Modern browsers ship the full ICU/CLDR calendar database, the same data operating systems use, covering the Islamic, Hebrew, Persian, Indian, Buddhist, Japanese, Chinese and other calendars. These tools read that data directly, so conversions are authoritative and run entirely on your device, even offline.',
   },
   {
     q: 'Which calendar systems are covered?',
-    a: 'Gregorian, Islamic (Hijri, both Umm al-Qura and tabular), Persian (Solar Hijri/Jalali), Hebrew, Indian National (Saka), Buddhist, Coptic, Ethiopian, Minguo (ROC), Japanese era, Chinese, the Julian calendar and Julian Day Numbers — plus the NRF 4-5-4 retail calendar and a leap-year checker.',
+    a: 'Gregorian, Islamic (Hijri, both Umm al-Qura and tabular), Persian (Solar Hijri/Jalali), Hebrew, Indian National (Saka), Buddhist, Coptic, Ethiopian, Minguo (ROC), Japanese era, Chinese, the Julian calendar and Julian Day Numbers, plus the NRF 4-5-4 retail calendar and a leap-year checker.',
   },
   {
     q: 'Are religious dates like Ramadan exact?',
-    a: 'The tools give the civil (calculated) date — for Islam, the Umm al-Qura calendar. Religious observances are often fixed by moon sighting and can differ by a day and by country, so treat the civil date as a close reference, not a ruling.',
+    a: 'The tools give the civil (calculated) date, for Islam, the Umm al-Qura calendar. Religious observances are often fixed by moon sighting and can differ by a day and by country, so treat the civil date as a close reference, not a ruling.',
   },
 ];
 
@@ -31,7 +31,7 @@ const schema = [
   collectionPageSchema({
     name: 'Calendar Tools & Converters',
     url: '/calendar/',
-    description: 'Convert dates between the Gregorian, Islamic, Hebrew, Persian, Indian, Julian and other calendars, plus the 4-5-4 retail calendar and a leap-year checker — all in your browser.',
+    description: 'Convert dates between the Gregorian, Islamic, Hebrew, Persian, Indian, Julian and other calendars, plus the 4-5-4 retail calendar and a leap-year checker, all in your browser.',
     items: CALENDAR_TOOLS.map((t) => ({ name: t.name, url: `/calendar/${t.slug}/` })),
   }),
   faqSchema(faqs),
@@ -39,7 +39,7 @@ const schema = [
 ---
 
 <Base
-  title="Calendar Converters — Hijri, Hebrew, Persian & More | LazyTools"
+  title="Calendar Converters, Hijri, Hebrew, Persian & More | LazyTools"
   description={`${CALENDAR_TOOLS.length} free calendar tools: convert dates between the Gregorian, Islamic (Hijri), Hebrew, Persian, Indian and Julian calendars, compute Julian Day Numbers, map the 4-5-4 retail calendar and check leap years. All client-side.`}
   schema={schema}
 >
@@ -48,8 +48,8 @@ const schema = [
 
     <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Calendar Tools & Converters</h1>
     <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
-      Convert any date between the world's calendar systems — Islamic, Hebrew, Persian, Indian, Julian
-      and more — plus the retail 4-5-4 calendar and a leap-year checker. Every conversion uses the
+      Convert any date between the world's calendar systems, Islamic, Hebrew, Persian, Indian, Julian
+      and more, plus the retail 4-5-4 calendar and a leap-year checker. Every conversion uses the
       authoritative calendar data built into your browser, computed on your device and never uploaded.
     </p>
 
@@ -72,7 +72,7 @@ const schema = [
     <section class="prose-lazy mt-10">
       <h2>How the world keeps time</h2>
       <p>The Gregorian calendar is only one of many. The <strong>Hijri (Islamic)</strong> calendar is lunar and drifts against the seasons; the <strong>Hebrew</strong> calendar is lunisolar with leap months; the <strong>Persian (Solar Hijri)</strong> calendar is astronomically precise; and the <strong>Julian</strong> calendar still sets some religious dates. These converters translate a date between them using each system's own algorithm, so you can line up a birthday, holiday or historical event across calendars.</p>
-      <p>All conversions are computed in your browser from the calendrical rules — no lookup service, no upload — and work offline. For timestamps, time zones and everyday date math, see <a href="/time/">Date &amp; Time</a>.</p>
+      <p>All conversions are computed in your browser from the calendrical rules, no lookup service, no upload, and work offline. For timestamps, time zones and everyday date math, see <a href="/time/">Date &amp; Time</a>.</p>
     </section>
 
     <FaqSection faqs={faqs} />

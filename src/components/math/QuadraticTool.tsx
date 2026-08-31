@@ -21,7 +21,7 @@ export default function QuadraticTool() {
     rational: 'two rational roots (D is a perfect square)',
     irrational: 'two irrational real roots',
     complex: 'two complex roots (D < 0)',
-    double: 'one repeated (double) root — D = 0',
+    double: 'one repeated (double) root, D = 0',
   } as const;
 
   return (
@@ -62,7 +62,7 @@ export default function QuadraticTool() {
           </div>
         </>
       )}
-      <p class="mt-4 text-xs text-slate-500">Roots come out exact — simplified fractions and radicals like (3 + √89)/2, not just decimals. Runs locally.</p>
+      <p class="mt-4 text-xs text-slate-500">Roots come out exact, simplified fractions and radicals like (3 + √89)/2, not just decimals. Runs locally.</p>
     </div>
   );
 }

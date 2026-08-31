@@ -66,7 +66,7 @@ export default function RedshiftTool() {
         <p class="mt-4 text-sm text-slate-500">Enter a redshift or a recession velocity.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Cosmological redshift z stretches light to longer (redder) wavelengths as the universe expands: λ_observed = λ_rest × (1 + z). At small z the recession velocity is v ≈ cz; near light speed the relativistic relation 1 + z = √((1+β)/(1−β)) applies — tick the box for z ≳ 0.1. The Hubble distance v ÷ H₀ is a rough estimate (H₀ ≈ 70 km/s/Mpc); precise cosmological distances need a full model. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Cosmological redshift z stretches light to longer (redder) wavelengths as the universe expands: λ_observed = λ_rest × (1 + z). At small z the recession velocity is v ≈ cz; near light speed the relativistic relation 1 + z = √((1+β)/(1−β)) applies, tick the box for z ≳ 0.1. The Hubble distance v ÷ H₀ is a rough estimate (H₀ ≈ 70 km/s/Mpc); precise cosmological distances need a full model. 🔒 In your browser.</p>
     </div>
   );
 }

@@ -123,7 +123,7 @@ export default function GradientTextTool() {
       </div>
 
       <p class="mt-4 text-xs text-slate-500">
-        Gradient text uses <code>background-clip: text</code> with a transparent fill. Keep the plain text readable for accessibility — the gradient is decorative. PNG export renders in your browser; nothing is uploaded. 🔒
+        Gradient text uses <code>background-clip: text</code> with a transparent fill. Keep the plain text readable for accessibility, the gradient is decorative. PNG export renders in your browser; nothing is uploaded. 🔒
       </p>
     </div>
   );

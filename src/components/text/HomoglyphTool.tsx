@@ -20,7 +20,7 @@ export default function HomoglyphTool() {
         <p class={`text-lg font-bold ${res.hits.length ? 'text-red-800' : 'text-emerald-800'}`}>
           {res.hits.length ? `⚠ ${res.hits.length} lookalike character${res.hits.length > 1 ? 's' : ''} found` : '✓ No confusable characters detected'}
         </p>
-        {res.mixedScript && <p class="mt-1 text-sm font-semibold text-red-700">Mixed scripts detected — Latin letters mixed with Cyrillic/Greek. This is a classic spoofing/phishing signature.</p>}
+        {res.mixedScript && <p class="mt-1 text-sm font-semibold text-red-700">Mixed scripts detected, Latin letters mixed with Cyrillic/Greek. This is a classic spoofing/phishing signature.</p>}
       </div>
 
       {res.hits.length > 0 && (
@@ -44,7 +44,7 @@ export default function HomoglyphTool() {
           </div>
         </>
       )}
-      <p class="mt-3 text-xs text-slate-500">Homoglyphs are non-Latin characters that look identical to ASCII (Cyrillic <span class="font-mono">а</span>, Greek <span class="font-mono">ο</span>, fullwidth <span class="font-mono">Ａ</span>) — used to spoof domains and brand names. 🔒 Checked entirely in your browser.</p>
+      <p class="mt-3 text-xs text-slate-500">Homoglyphs are non-Latin characters that look identical to ASCII (Cyrillic <span class="font-mono">а</span>, Greek <span class="font-mono">ο</span>, fullwidth <span class="font-mono">Ａ</span>), used to spoof domains and brand names. 🔒 Checked entirely in your browser.</p>
     </div>
   );
 }

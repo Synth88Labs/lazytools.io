@@ -43,7 +43,7 @@ export default function FilamentCostTool() {
         <p class="mt-4 text-sm text-slate-500">Enter the grams used and the spool's price per kg.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Cost = grams used ÷ 1000 × price per kg. Your slicer reports the grams (or length) a print needs; enter that here. This is the material cost only — for the full picture add electricity (see the print energy cost tool) and a margin for failed prints and machine time. Amounts are in whatever currency you enter. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Cost = grams used ÷ 1000 × price per kg. Your slicer reports the grams (or length) a print needs; enter that here. This is the material cost only, for the full picture add electricity (see the print energy cost tool) and a margin for failed prints and machine time. Amounts are in whatever currency you enter. 🔒 In your browser.</p>
     </div>
   );
 }

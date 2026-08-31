@@ -57,13 +57,13 @@ export default function HessLawTool() {
         <div class="mt-4 rounded-xl bg-white p-4 text-center ring-2 ring-brand-200">
           <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Enthalpy of reaction ΔH°rxn</p>
           <p class={`mt-1 text-3xl font-extrabold ${dh < 0 ? 'text-emerald-700' : 'text-amber-700'}`}>{dh > 0 ? '+' : ''}{fmt(dh)} kJ/mol</p>
-          <p class="mt-1 text-sm text-slate-600">{dh < 0 ? 'Exothermic — releases heat.' : dh > 0 ? 'Endothermic — absorbs heat.' : 'Thermoneutral.'}</p>
+          <p class="mt-1 text-sm text-slate-600">{dh < 0 ? 'Exothermic, releases heat.' : dh > 0 ? 'Endothermic, absorbs heat.' : 'Thermoneutral.'}</p>
         </div>
       ) : (
         <p class="mt-4 text-sm text-slate-500">Add at least one reactant and one product with their ΔHf values.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Hess's law: ΔH°rxn = Σ(coeff · ΔHf° products) − Σ(coeff · ΔHf° reactants). Because enthalpy is a state function, the reaction enthalpy depends only on the difference between products and reactants, not the path. Use consistent ΔHf° values (kJ/mol) from one data table, and mind the physical state — H₂O(l) and H₂O(g) differ. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Hess's law: ΔH°rxn = Σ(coeff · ΔHf° products) − Σ(coeff · ΔHf° reactants). Because enthalpy is a state function, the reaction enthalpy depends only on the difference between products and reactants, not the path. Use consistent ΔHf° values (kJ/mol) from one data table, and mind the physical state, H₂O(l) and H₂O(g) differ. 🔒 In your browser.</p>
     </div>
   );
 }

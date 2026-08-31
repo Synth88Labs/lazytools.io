@@ -59,11 +59,11 @@ export default function ImageMetadataTool() {
       <label class="block cursor-pointer rounded-xl border-2 border-dashed border-slate-300 bg-white p-6 text-center transition hover:border-brand-400">
         <input type="file" accept="image/*" onChange={onFile} class="sr-only" />
         <span class="text-sm font-semibold text-brand-700">{fileName || 'Choose a photo to inspect its metadata'}</span>
-        <span class="mt-1 block text-xs text-slate-500">Read on your device — the image is never uploaded</span>
+        <span class="mt-1 block text-xs text-slate-500">Read on your device, the image is never uploaded</span>
       </label>
 
       {error && <p class="mt-3 text-sm font-medium text-red-700">✗ {error}</p>}
-      {empty && <div class="mt-4 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-800">No EXIF metadata found — this image has little or no embedded data (it may have been stripped already, or it\'s a format/screenshot that doesn\'t store EXIF).</div>}
+      {empty && <div class="mt-4 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-800">No EXIF metadata found. This image has little or no embedded data (it may have been stripped already, or it\'s a format/screenshot that doesn\'t store EXIF).</div>}
 
       {result && (
         <div class="mt-4 grid gap-4 sm:grid-cols-[auto_1fr]">
@@ -72,7 +72,7 @@ export default function ImageMetadataTool() {
             {result.gps && (
               <div class="mb-3 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm">
                 <p class="font-bold text-amber-900">⚠ This photo contains GPS location</p>
-                <p class="mt-0.5 text-amber-800">{result.gps.lat.toFixed(6)}, {result.gps.lng.toFixed(6)} — <a href={`https://www.openstreetmap.org/?mlat=${result.gps.lat}&mlon=${result.gps.lng}#map=15/${result.gps.lat}/${result.gps.lng}`} target="_blank" rel="noopener" class="font-semibold underline">view on map</a>. Remove it before sharing if you don\'t want to reveal where it was taken.</p>
+                <p class="mt-0.5 text-amber-800">{result.gps.lat.toFixed(6)}, {result.gps.lng.toFixed(6)}, <a href={`https://www.openstreetmap.org/?mlat=${result.gps.lat}&mlon=${result.gps.lng}#map=15/${result.gps.lat}/${result.gps.lng}`} target="_blank" rel="noopener" class="font-semibold underline">view on map</a>. Remove it before sharing if you don\'t want to reveal where it was taken.</p>
               </div>
             )}
             <table class="w-full text-left text-sm">
@@ -87,7 +87,7 @@ export default function ImageMetadataTool() {
       )}
 
       <p class="mt-4 rounded-lg bg-white px-3 py-2 text-xs text-slate-500 ring-1 ring-slate-200">
-        Shows the EXIF/metadata embedded in a photo — camera, settings, date and any GPS location — so you can see what a picture reveals before you share it. Everything is read locally and never uploaded. To strip this data, use the <a href="/security/image-metadata-remover/" class="font-semibold text-brand-700 underline decoration-slate-300 underline-offset-2">metadata remover</a>. 🔒
+        Shows the EXIF/metadata embedded in a photo, camera, settings, date and any GPS location, so you can see what a picture reveals before you share it. Everything is read locally and never uploaded. To strip this data, use the <a href="/security/image-metadata-remover/" class="font-semibold text-brand-700 underline decoration-slate-300 underline-offset-2">metadata remover</a>. 🔒
       </p>
     </div>
   );

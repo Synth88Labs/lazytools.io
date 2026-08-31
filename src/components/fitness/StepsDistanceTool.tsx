@@ -65,7 +65,7 @@ export default function StepsDistanceTool() {
         <p class="mt-4 text-sm text-slate-500">Enter your steps and either your height or stride length.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Distance = steps × stride length. Stride is estimated as about 0.414 × your height (a walking average) — your real stride varies with pace and terrain, so enter it directly if you know it. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Distance = steps × stride length. Stride is estimated as about 0.414 × your height (a walking average), your real stride varies with pace and terrain, so enter it directly if you know it. 🔒 In your browser.</p>
     </div>
   );
 }

@@ -84,7 +84,7 @@ export default function AudioMergerTool() {
       <label class="block cursor-pointer rounded-xl border-2 border-dashed border-slate-300 bg-white p-6 text-center transition hover:border-brand-400">
         <input type="file" accept="audio/*" multiple onChange={onFiles} class="sr-only" />
         <span class="text-sm font-semibold text-brand-700">{tracks.length ? 'Add more audio files' : 'Choose audio files to merge'}</span>
-        <span class="mt-1 block text-xs text-slate-500">MP3, WAV, OGG, M4A, FLAC — decoded locally, never uploaded</span>
+        <span class="mt-1 block text-xs text-slate-500">MP3, WAV, OGG, M4A, FLAC, decoded locally, never uploaded</span>
       </label>
 
       {busy && <p class="mt-3 text-sm text-slate-600">Working…</p>}
@@ -116,7 +116,7 @@ export default function AudioMergerTool() {
       )}
 
       <p class="mt-4 rounded-lg bg-white px-3 py-2 text-xs text-slate-500 ring-1 ring-slate-200">
-        Joins your audio files end to end in the order shown and exports a single 16-bit WAV. Files of different sample rates are resampled to match. Everything decodes and renders in your browser with the Web Audio API — nothing is uploaded. 🔒
+        Joins your audio files end to end in the order shown and exports a single 16-bit WAV. Files of different sample rates are resampled to match. Everything decodes and renders in your browser with the Web Audio API, nothing is uploaded. 🔒
       </p>
     </div>
   );

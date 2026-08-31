@@ -14,15 +14,15 @@ const crumbs = [
 const faqs = [
   {
     q: 'Which color format should I use in CSS?',
-    a: 'HEX for tokens and copy-paste portability, HSL when you need to derive variants (darker hover states by lowering L), RGB when you need alpha as rgba(). All three describe the same sRGB colors — the converter moves between them losslessly.',
+    a: 'HEX for tokens and copy-paste portability, HSL when you need to derive variants (darker hover states by lowering L), RGB when you need alpha as rgba(). All three describe the same sRGB colors, the converter moves between them losslessly.',
   },
   {
     q: 'What contrast do accessibility rules require?',
-    a: 'WCAG AA — the level referenced by the EU Accessibility Act and most regulations — requires 4.5:1 for normal text and 3:1 for large text and UI components. The contrast checker computes the official formula and shows pass/fail per level.',
+    a: 'WCAG AA, the level referenced by the EU Accessibility Act and most regulations, requires 4.5:1 for normal text and 3:1 for large text and UI components. The contrast checker computes the official formula and shows pass/fail per level.',
   },
   {
     q: 'Do these tools upload anything?',
-    a: 'No — parsing, conversion and contrast math all run in your browser and work offline.',
+    a: 'No, parsing, conversion and contrast math all run in your browser and work offline.',
   },
 ];
 
@@ -31,7 +31,7 @@ const schema = [
   collectionPageSchema({
     name: 'Free Online Color Tools',
     url: '/color/',
-    description: 'Color converter, WCAG contrast checker, shades generator, CSS gradients and color mixer — all in-browser.',
+    description: 'Color converter, WCAG contrast checker, shades generator, CSS gradients and color mixer, all in-browser.',
     items: COLOR_TOOLS.map((t) => ({ name: t.name, url: `/color/${t.slug}/` })),
   }),
   faqSchema(faqs),
@@ -39,7 +39,7 @@ const schema = [
 ---
 
 <Base
-  title="Color Tools — Converter, Contrast Checker & More | LazyTools"
+  title="Color Tools, Converter, Contrast Checker & More | LazyTools"
   description={`${COLOR_TOOLS.length} free color tools: HEX/RGB/HSL converter, WCAG contrast checker, shades & tints, CSS gradient generator, color mixer. 100% in your browser.`}
   schema={schema}
 >
@@ -48,7 +48,7 @@ const schema = [
 
     <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Color Tools</h1>
     <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
-      Convert between formats, check WCAG contrast, build ramps and gradients — with exact formulas and
+      Convert between formats, check WCAG contrast, build ramps and gradients, with exact formulas and
       copy-ready CSS. Everything computes in your browser, instantly.
     </p>
 
@@ -70,8 +70,8 @@ const schema = [
 
     <section class="prose-lazy mt-10">
       <h2>Colour, done accessibly</h2>
-      <p>Working with colour means juggling several models — HEX and RGB for the web, HSL for intuitive tweaks, and the newer <strong>OKLCH</strong> for perceptually even lightness. These tools convert between them precisely and build harmonious palettes, but they also take accessibility seriously: check any pair against the <strong>WCAG contrast</strong> thresholds (and the newer APCA), simulate the main types of colour-blindness, and pull a palette straight from an image.</p>
-      <p>Good contrast isn't optional — text that fails WCAG AA is genuinely hard for many people to read. Everything is computed locally, so you can drop in a screenshot of unreleased work to sample its colours without the image ever leaving your device.</p>
+      <p>Working with colour means juggling several models, HEX and RGB for the web, HSL for intuitive tweaks, and the newer <strong>OKLCH</strong> for perceptually even lightness. These tools convert between them precisely and build harmonious palettes, but they also take accessibility seriously: check any pair against the <strong>WCAG contrast</strong> thresholds (and the newer APCA), simulate the main types of colour-blindness, and pull a palette straight from an image.</p>
+      <p>Good contrast isn't optional, text that fails WCAG AA is genuinely hard for many people to read. Everything is computed locally, so you can drop in a screenshot of unreleased work to sample its colours without the image ever leaving your device.</p>
     </section>
 
     <FaqSection faqs={faqs} />

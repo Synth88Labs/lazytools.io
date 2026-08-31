@@ -57,7 +57,7 @@ export default function WallpaperCalculator() {
 
       {r ? (
         r.rolls == null ? (
-          <p class="mt-4 rounded-lg bg-amber-50 px-3 py-2 text-sm font-medium text-amber-800 ring-1 ring-amber-200">⚠ The roll is too short for one full-height drop — check the roll length and wall height.</p>
+          <p class="mt-4 rounded-lg bg-amber-50 px-3 py-2 text-sm font-medium text-amber-800 ring-1 ring-amber-200">⚠ The roll is too short for one full-height drop, check the roll length and wall height.</p>
         ) : (
           <div class="mt-4 grid gap-3 sm:grid-cols-3">
             <div class="rounded-xl bg-white p-4 text-center ring-2 ring-brand-200">

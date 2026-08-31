@@ -42,7 +42,7 @@ export default function FlowTool() {
         <p class="font-semibold text-slate-700">How to measure:</p>
         <ol class="mt-1 list-decimal space-y-0.5 pl-4">
           <li>Print a single-wall calibration cube (0 top/bottom layers, 0% infill, 1 perimeter) at your line width.</li>
-          <li>Measure the wall with calipers at several spots and average — that's the "measured wall".</li>
+          <li>Measure the wall with calipers at several spots and average, that's the "measured wall".</li>
           <li>The "target wall" is your slicer's line width (often the nozzle size, e.g. 0.40 mm).</li>
         </ol>
       </div>

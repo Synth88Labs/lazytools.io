@@ -113,8 +113,8 @@ export default function PeriodicTableTool() {
         <div class="min-w-[900px]"
           style="display:grid;grid-template-columns:repeat(18,minmax(0,1fr));grid-template-rows:repeat(7,minmax(0,1fr)) 0.35fr repeat(2,minmax(0,1fr));gap:3px">
           {/* group 3 placeholders for the f-block */}
-          <div style="grid-column:3;grid-row:6" class="flex items-center justify-center rounded bg-pink-100 text-[9px] font-semibold text-pink-800">57–71</div>
-          <div style="grid-column:3;grid-row:7" class="flex items-center justify-center rounded bg-fuchsia-100 text-[9px] font-semibold text-fuchsia-800">89–103</div>
+          <div style="grid-column:3;grid-row:6" class="flex items-center justify-center rounded bg-pink-100 text-[9px] font-semibold text-pink-800">57-71</div>
+          <div style="grid-column:3;grid-row:7" class="flex items-center justify-center rounded bg-fuchsia-100 text-[9px] font-semibold text-fuchsia-800">89-103</div>
 
           {ELEMENT_DATA.map((e) => {
             const { col, row } = gridPos(e);
@@ -123,7 +123,7 @@ export default function PeriodicTableTool() {
             return (
               <button
                 onClick={() => setSelected(e)}
-                title={`${e.name} — ${CATEGORY_COLORS[e.category].label}`}
+                title={`${e.name}, ${CATEGORY_COLORS[e.category].label}`}
                 style={`grid-column:${col};grid-row:${row};background:${bg};opacity:${on ? 1 : 0.18}`}
                 class="flex aspect-square flex-col items-center justify-center rounded p-0.5 text-slate-900 ring-1 ring-black/5 transition hover:z-10 hover:scale-110 hover:ring-2 hover:ring-brand-500"
               >

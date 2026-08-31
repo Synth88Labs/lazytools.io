@@ -39,7 +39,7 @@ export default function RandomLinePickerTool() {
         </div>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Randomly draws items from your list — for raffles, giveaways, picking a winner, assigning tasks or making a decision. Uses your browser\'s cryptographic random generator for a fair, unpredictable draw. "No repeats" draws distinct items (up to the list length); unchecking it allows the same item to be drawn more than once. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Randomly draws items from your list, for raffles, giveaways, picking a winner, assigning tasks or making a decision. Uses your browser\'s cryptographic random generator for a fair, unpredictable draw. "No repeats" draws distinct items (up to the list length); unchecking it allows the same item to be drawn more than once. 🔒 In your browser.</p>
     </div>
   );
 }

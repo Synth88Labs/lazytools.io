@@ -23,7 +23,7 @@ export default function PasswordStrengthTool() {
           type={show ? 'text' : 'password'}
           value={pw}
           onInput={(e) => setPw((e.target as HTMLInputElement).value)}
-          placeholder="Checked locally — never transmitted"
+          placeholder="Checked locally, never transmitted"
           class="w-full rounded-xl border border-slate-300 bg-white px-3 py-3 font-mono text-base text-slate-900 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200"
           autocomplete="off"
           spellcheck={false}
@@ -57,13 +57,12 @@ export default function PasswordStrengthTool() {
             </ul>
           ) : (
             <p class="mt-3 text-sm text-slate-600">
-              No weakness patterns detected. Remember the limit of any checker: it can prove weakness, not strength —
-              a <a href="/generate/password-generator/" class="font-medium text-brand-700 underline decoration-brand-300 underline-offset-2">generated random password</a> is the only kind whose entropy is guaranteed.
+              No weakness patterns detected. Remember the limit of any checker: it can prove weakness, not strength, a <a href="/generate/password-generator/" class="font-medium text-brand-700 underline decoration-brand-300 underline-offset-2">generated random password</a> is the only kind whose entropy is guaranteed.
             </p>
           )}
         </div>
       )}
-      <p class="mt-3 text-xs text-slate-500">Evaluated entirely in your browser — nothing typed here is transmitted, stored or logged.</p>
+      <p class="mt-3 text-xs text-slate-500">Evaluated entirely in your browser, nothing typed here is transmitted, stored or logged.</p>
     </div>
   );
 }

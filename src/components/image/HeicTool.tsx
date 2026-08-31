@@ -26,12 +26,12 @@ export default function HeicTool() {
     setError('');
     setBusy('Loading the HEIC decoder (first use only)…');
     try {
-      // ~1.2 MB wasm decoder — loaded only when someone actually converts
+      // ~1.2 MB wasm decoder, loaded only when someone actually converts
       const { isHeic, heicTo } = await import('heic-to');
       setBusy('Decoding…');
       if (!(await isHeic(file))) {
         setBusy('');
-        return setError('This file doesn\'t look like HEIC/HEIF — for JPG, PNG or WebP use the image converter instead.');
+        return setError('This file doesn\'t look like HEIC/HEIF, for JPG, PNG or WebP use the image converter instead.');
       }
       const out = (await heicTo({ blob: file, type: format, quality: quality / 100 })) as Blob;
       const url = URL.createObjectURL(out);
@@ -42,7 +42,7 @@ export default function HeicTool() {
       a.download = `${file.name.replace(/\.[^.]+$/, '')}.${format === 'image/png' ? 'png' : 'jpg'}`;
       a.click();
     } catch (e) {
-      setError((e as Error).message || 'Decoding failed — the file may be corrupted or use an unsupported HEIF variant.');
+      setError((e as Error).message || 'Decoding failed, the file may be corrupted or use an unsupported HEIF variant.');
     }
     setBusy('');
   }
@@ -52,7 +52,7 @@ export default function HeicTool() {
       <label class="block cursor-pointer rounded-xl border-2 border-dashed border-slate-300 bg-white p-6 text-center transition hover:border-brand-400">
         <input type="file" accept=".heic,.heif,image/heic,image/heif" onChange={onFile} class="sr-only" />
         <span class="text-sm font-semibold text-brand-700">{file ? file.name : 'Choose a HEIC / HEIF photo'}</span>
-        <span class="mt-1 block text-xs text-slate-500">{file ? fmtSize(file.size) : 'Straight from an iPhone — decoded on your device'}</span>
+        <span class="mt-1 block text-xs text-slate-500">{file ? fmtSize(file.size) : 'Straight from an iPhone, decoded on your device'}</span>
       </label>
 
       {file && (
@@ -65,8 +65,8 @@ export default function HeicTool() {
               onChange={(e) => setFormat((e.target as HTMLSelectElement).value as typeof format)}
               class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm font-medium text-slate-900 focus:border-brand-500 focus:outline-none"
             >
-              <option value="image/jpeg">JPG — universal, small</option>
-              <option value="image/png">PNG — lossless, larger</option>
+              <option value="image/jpeg">JPG, universal, small</option>
+              <option value="image/png">PNG, lossless, larger</option>
             </select>
           </div>
           {format === 'image/jpeg' && (
@@ -88,13 +88,13 @@ export default function HeicTool() {
         {error && <p class="mt-3 text-sm font-medium text-red-700">✗ {error}</p>}
         {resultUrl && !error && (
           <div class="mt-4 rounded-xl border border-brand-100 bg-white p-4">
-            <p class="text-sm font-medium text-mint-700">✓ {resultInfo} — download started.</p>
+            <p class="text-sm font-medium text-mint-700">✓ {resultInfo}, download started.</p>
             <img src={resultUrl} alt="Converted photo preview" class="mt-3 max-h-64 rounded-lg border border-slate-200 object-contain" />
           </div>
         )}
       </div>
       <p class="mt-3 text-xs text-slate-500">
-        Decoding uses libheif compiled to WebAssembly, fetched on first convert (~1 MB) and run entirely in your browser — photos are never uploaded.
+        Decoding uses libheif compiled to WebAssembly, fetched on first convert (~1 MB) and run entirely in your browser, photos are never uploaded.
       </p>
     </div>
   );

@@ -61,7 +61,7 @@ export default function TriangleSolverTool() {
         </div>
       ) : null}
 
-      <p class="mt-4 text-xs text-slate-500">Solves from any valid combination — three sides (SSS), two sides and the included angle (SAS), two angles and a side (ASA/AAS), or two sides and a non-included angle (SSA, which can give two triangles). Uses the laws of sines and cosines; angles sum to 180°. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Solves from any valid combination, three sides (SSS), two sides and the included angle (SAS), two angles and a side (ASA/AAS), or two sides and a non-included angle (SSA, which can give two triangles). Uses the laws of sines and cosines; angles sum to 180°. 🔒 In your browser.</p>
     </div>
   );
 }

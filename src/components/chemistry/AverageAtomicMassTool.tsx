@@ -18,7 +18,7 @@ export default function AverageAtomicMassTool() {
 
   return (
     <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
-      <p class="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">Isotopes — mass (u) and natural abundance (%)</p>
+      <p class="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">Isotopes, mass (u) and natural abundance (%)</p>
       <div class="space-y-2">
         {rows.map((row, i) => (
           <div class="flex items-center gap-2">
@@ -40,7 +40,7 @@ export default function AverageAtomicMassTool() {
             <p class="mt-1 text-3xl font-extrabold text-brand-800">{r.avg.toFixed(4)} <span class="text-lg font-bold text-slate-500">u</span></p>
           </div>
           {Math.abs(r.totalAbund - 100) > 0.5 && (
-            <p class="mt-2 text-center text-xs font-semibold text-amber-700">⚠ Abundances sum to {r.totalAbund.toFixed(2)}% — they should total 100% for a correct weighted average.</p>
+            <p class="mt-2 text-center text-xs font-semibold text-amber-700">⚠ Abundances sum to {r.totalAbund.toFixed(2)}%. They should total 100% for a correct weighted average.</p>
           )}
         </>
       ) : (

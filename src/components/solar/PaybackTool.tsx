@@ -38,7 +38,7 @@ export default function PaybackTool() {
         <p class="mt-4 text-sm text-slate-500">Enter the system cost, its annual production and your electricity rate.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Simple payback = net cost ÷ annual savings, where annual savings = production × your rate. It's a first-order estimate: it ignores electricity-price inflation (which shortens payback), panel degradation (~0.5%/yr) and the time-value of money, and assumes you use or are credited for all the energy. Use it to compare options, not as financial advice — get quotes and check local incentives and net-metering rules. Amounts are in whatever currency you enter. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Simple payback = net cost ÷ annual savings, where annual savings = production × your rate. It's a first-order estimate: it ignores electricity-price inflation (which shortens payback), panel degradation (~0.5%/yr) and the time-value of money, and assumes you use or are credited for all the energy. Use it to compare options, not as financial advice, get quotes and check local incentives and net-metering rules. Amounts are in whatever currency you enter. 🔒 In your browser.</p>
     </div>
   );
 }

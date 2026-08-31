@@ -63,7 +63,7 @@ export default function BikramTool() {
             <div>
               <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Month</label>
               <select value={bsM} onChange={(e) => setBsM((e.target as HTMLSelectElement).value)} aria-label="BS month" class={inputCls}>
-                {BS_MONTHS.map((name, i) => <option value={i + 1}>{i + 1} — {name}</option>)}
+                {BS_MONTHS.map((name, i) => <option value={i + 1}>{i + 1}, {name}</option>)}
               </select>
             </div>
             <div>

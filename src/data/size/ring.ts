@@ -10,7 +10,7 @@ export interface RingRow {
   uk: string;
   /** inner diameter, mm */
   diameter: number;
-  /** inner circumference, mm — also the EU/ISO size */
+  /** inner circumference, mm, also the EU/ISO size */
   circumference: number;
 }
 

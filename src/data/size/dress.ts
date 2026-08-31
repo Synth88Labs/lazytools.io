@@ -1,5 +1,5 @@
 /**
- * Women's clothing (dress/top) size conversion — the standard published chart.
+ * Women's clothing (dress/top) size conversion, the standard published chart.
  * Relations: UK = US + 4 · EU/DE = US + 30 · FR = US + 32 · IT = US + 36 ·
  * AU = UK · JP = US + 5. Letter sizes are the common retail mapping.
  */

@@ -7,7 +7,7 @@ export const length: Quantity = {
   baseUnit: 'm',
   icon: '📏',
   description:
-    'Convert between metric and imperial length units — millimeters, centimeters, meters, kilometers, inches, feet, yards and miles. All conversions use exact internationally agreed factors (1 inch = 25.4 mm exactly, since 1959).',
+    'Convert between metric and imperial length units, millimeters, centimeters, meters, kilometers, inches, feet, yards and miles. All conversions use exact internationally agreed factors (1 inch = 25.4 mm exactly, since 1959).',
   units: [
     {
       id: 'mm', name: 'Millimeter', plural: 'millimeters', symbol: 'mm', slug: 'mm', factor: 0.001, system: 'metric',
@@ -64,9 +64,9 @@ export const length: Quantity = {
     'cm-to-inches': {
       slug: 'cm-to-inches',
       exampleValue: 170,
-      note: 'Centimeters-to-inches is the most common length conversion for body height, clothing and screen sizes. Since 1 inch is defined as exactly 2.54 cm, dividing centimeters by 2.54 always gives an exact result — for example, an average adult height of 170 cm is 66.93 inches (about 5 feet 7 inches).',
+      note: 'Centimeters-to-inches is the most common length conversion for body height, clothing and screen sizes. Since 1 inch is defined as exactly 2.54 cm, dividing centimeters by 2.54 always gives an exact result, for example, an average adult height of 170 cm is 66.93 inches (about 5 feet 7 inches).',
       faqs: [
-        { q: 'How tall is 170 cm in inches and feet?', a: '170 cm equals 66.93 inches, which is 5 feet 6.9 inches — commonly rounded to 5′ 7″.' },
+        { q: 'How tall is 170 cm in inches and feet?', a: '170 cm equals 66.93 inches, which is 5 feet 6.9 inches, commonly rounded to 5′ 7″.' },
       ],
     },
     'inches-to-cm': {
@@ -90,12 +90,12 @@ export const length: Quantity = {
     'miles-to-km': {
       slug: 'miles-to-km',
       exampleValue: 60,
-      note: 'Miles-to-kilometers converts US/UK road distances and speed limits for the rest of the world. 60 miles is 96.56 km — which is why a 60 mph speed limit roughly equals 100 km/h.',
+      note: 'Miles-to-kilometers converts US/UK road distances and speed limits for the rest of the world. 60 miles is 96.56 km, which is why a 60 mph speed limit roughly equals 100 km/h.',
     },
     'mm-to-inches': {
       slug: 'mm-to-inches',
       exampleValue: 10,
-      note: 'Millimeters-to-inches comes up with metric hardware, jewelry and rainfall. Since 1 inch is exactly 25.4 mm, divide millimeters by 25.4: a 10 mm bolt is 0.394 in, and a 13 mm wrench is nearly identical to a 1/2-inch one (12.7 mm) — close enough that the two are often confused.',
+      note: 'Millimeters-to-inches comes up with metric hardware, jewelry and rainfall. Since 1 inch is exactly 25.4 mm, divide millimeters by 25.4: a 10 mm bolt is 0.394 in, and a 13 mm wrench is nearly identical to a 1/2-inch one (12.7 mm), close enough that the two are often confused.',
     },
     'inches-to-mm': {
       slug: 'inches-to-mm',
@@ -110,9 +110,9 @@ export const length: Quantity = {
     'cm-to-feet': {
       slug: 'cm-to-feet',
       exampleValue: 180,
-      note: 'Centimeters-to-feet is almost always a height question. One foot is exactly 30.48 cm, so 180 cm is 5.906 ft — read on a tape measure as 5 feet 10.9 inches. For height, the feet-and-inches form matters more than the decimal.',
+      note: 'Centimeters-to-feet is almost always a height question. One foot is exactly 30.48 cm, so 180 cm is 5.906 ft, read on a tape measure as 5 feet 10.9 inches. For height, the feet-and-inches form matters more than the decimal.',
       faqs: [
-        { q: 'What is 180 cm in feet and inches?', a: '180 cm is 5.906 feet, which is 5 feet 10.9 inches — usually stated as 5′ 11″.' },
+        { q: 'What is 180 cm in feet and inches?', a: '180 cm is 5.906 feet, which is 5 feet 10.9 inches, usually stated as 5′ 11″.' },
       ],
     },
     'feet-to-cm': {
@@ -133,7 +133,7 @@ export const length: Quantity = {
     'yards-to-meters': {
       slug: 'yards-to-meters',
       exampleValue: 100,
-      note: 'A yard is exactly 0.9144 m — just 8.6% shorter than a meter. A 100-yard American-football field is 91.44 m, and fabric sold by the yard is a little less material than the same number of meters.',
+      note: 'A yard is exactly 0.9144 m, just 8.6% shorter than a meter. A 100-yard American-football field is 91.44 m, and fabric sold by the yard is a little less material than the same number of meters.',
     },
     'meters-to-yards': {
       slug: 'meters-to-yards',
@@ -143,12 +143,12 @@ export const length: Quantity = {
     'cm-to-meters': {
       slug: 'cm-to-meters',
       exampleValue: 175,
-      note: 'Divide centimeters by 100: 175 cm is 1.75 m. The main use is switching between the cm heights on medical forms and the meter heights used in BMI formulas — BMI needs meters, and using centimeters is the most common BMI calculation error.',
+      note: 'Divide centimeters by 100: 175 cm is 1.75 m. The main use is switching between the cm heights on medical forms and the meter heights used in BMI formulas, BMI needs meters, and using centimeters is the most common BMI calculation error.',
     },
     'meters-to-cm': {
       slug: 'meters-to-cm',
       exampleValue: 1.75,
-      note: 'Multiply meters by 100: 1.75 m is 175 cm. Furniture and appliance specs often mix the two — a 0.6 m counter depth is the familiar 60 cm.',
+      note: 'Multiply meters by 100: 1.75 m is 175 cm. Furniture and appliance specs often mix the two, a 0.6 m counter depth is the familiar 60 cm.',
     },
   },
 };

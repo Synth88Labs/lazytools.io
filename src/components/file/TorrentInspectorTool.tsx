@@ -35,7 +35,7 @@ export default function TorrentInspectorTool() {
         <input type="file" class="hidden" accept=".torrent,application/x-bittorrent" onChange={(e) => onFile((e.target as HTMLInputElement).files?.[0] ?? null)} />
         <span class="block text-2xl">🧲</span>
         <span class="mt-1 block text-sm font-semibold text-slate-700">{fileName ? `📄 ${fileName}` : 'Choose a .torrent file'}</span>
-        <span class="mt-1 block text-xs text-slate-500">{busy ? 'Reading…' : 'Read locally — the file is never uploaded'}</span>
+        <span class="mt-1 block text-xs text-slate-500">{busy ? 'Reading…' : 'Read locally, the file is never uploaded'}</span>
       </label>
 
       {error && <p class="mt-4 rounded-lg bg-rose-50 px-3 py-2 text-sm text-rose-700 ring-1 ring-rose-200">⚠️ {error}</p>}
@@ -94,7 +94,7 @@ export default function TorrentInspectorTool() {
         </div>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Drop a .torrent file to read its contents — the name, file list, total size, piece length and trackers — and compute its info-hash, the SHA-1 of the torrent&#39;s info dictionary that uniquely identifies it (and forms the magnet link). It parses the bencoded file in your browser, so the .torrent is never uploaded and no download ever starts — it only reads the metadata. 🔒 100% client-side.</p>
+      <p class="mt-4 text-xs text-slate-500">Drop a .torrent file to read its contents, the name, file list, total size, piece length and trackers, and compute its info-hash, the SHA-1 of the torrent&#39;s info dictionary that uniquely identifies it (and forms the magnet link). It parses the bencoded file in your browser, so the .torrent is never uploaded and no download ever starts. It only reads the metadata. 🔒 100% client-side.</p>
     </div>
   );
 }

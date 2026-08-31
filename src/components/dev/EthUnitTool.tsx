@@ -47,10 +47,10 @@ export default function EthUnitTool() {
           </table>
         </div>
       )}
-      <p class="mt-2 text-xs text-slate-500">Exact conversion via BigInt fixed-point — no floating-point error even at 18 decimals. 1 ether = 10¹⁸ wei · 1 gwei = 10⁹ wei. 🔒 Computed in your browser.</p>
+      <p class="mt-2 text-xs text-slate-500">Exact conversion via BigInt fixed-point, no floating-point error even at 18 decimals. 1 ether = 10¹⁸ wei · 1 gwei = 10⁹ wei. 🔒 Computed in your browser.</p>
 
       <div class="mt-5 border-t border-slate-200 pt-4">
-        <p class="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">Bitcoin — satoshi ⇄ BTC</p>
+        <p class="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">Bitcoin, satoshi ⇄ BTC</p>
         <div class="grid grid-cols-2 gap-3">
           <div><label class="mb-1 block text-xs text-slate-500">BTC</label><input class={`${inputCls} font-mono`} aria-label="BTC" value={btc} placeholder="0.001" onInput={(e) => onBtc((e.target as HTMLInputElement).value)} /></div>
           <div><label class="mb-1 block text-xs text-slate-500">satoshi</label><input class={`${inputCls} font-mono`} aria-label="satoshi" value={sats} placeholder="100000" onInput={(e) => onSats((e.target as HTMLInputElement).value)} /></div>

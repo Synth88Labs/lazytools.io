@@ -16,37 +16,37 @@ keywords:
   - loan amortization explained
   - prepayment emi effect
 heroImage: /blog/emi-explained.png
-heroAlt: "EMI formula explained — P times r times (1+r)^n over ((1+r)^n minus 1)"
+heroAlt: "EMI formula explained, P times r times (1+r)^n over ((1+r)^n minus 1)"
 faqs:
   - q: "What is the EMI formula?"
     a: "EMI = P × r × (1+r)ⁿ ÷ ((1+r)ⁿ − 1), where P is the principal, r the monthly interest rate (annual rate ÷ 12 ÷ 100) and n the number of monthly installments. It is the standard reducing-balance formula used by banks worldwide."
   - q: "Why does most of my early EMI go to interest?"
     a: "Interest each month is charged on the outstanding balance, which is largest at the start. On a 20-year loan at 9%, roughly 83% of the first EMI is interest; the split reverses over time as the balance falls."
   - q: "What is the difference between flat rate and reducing balance?"
-    a: "A flat rate charges interest on the original principal for the whole tenure; reducing balance charges only on what you still owe. A 10% flat rate costs about the same as an 17–18% reducing-balance rate on a 5-year loan — always compare the reducing-balance equivalent (APR)."
+    a: "A flat rate charges interest on the original principal for the whole tenure; reducing balance charges only on what you still owe. A 10% flat rate costs about the same as an 17-18% reducing-balance rate on a 5-year loan, always compare the reducing-balance equivalent (APR)."
   - q: "Does a longer tenure make a loan cheaper?"
-    a: "It lowers the monthly EMI but raises total interest substantially. On 1,000,000 at 9%: 10 years costs ~520,000 in interest; 20 years costs ~1,159,000 — more than the principal itself."
+    a: "It lowers the monthly EMI but raises total interest substantially. On 1,000,000 at 9%: 10 years costs ~520,000 in interest; 20 years costs ~1,159,000, more than the principal itself."
   - q: "How does prepayment reduce interest?"
     a: "Every prepaid unit of principal stops accruing interest for the remaining tenure, so early prepayments save the most. Keeping the EMI constant and reducing tenure saves far more than reducing the EMI and keeping tenure."
   - q: "Is EMI simple or compound interest?"
-    a: "Neither exactly: it is amortization. Interest compounds monthly on the outstanding balance, while your fixed payment simultaneously reduces that balance — the formula balances the two so the loan reaches zero on the last payment."
+    a: "Neither exactly: it is amortization. Interest compounds monthly on the outstanding balance, while your fixed payment simultaneously reduces that balance, the formula balances the two so the loan reaches zero on the last payment."
 draft: false
 ---
 
-**A bank computes your EMI with one formula: EMI = P × r × (1+r)ⁿ ÷ ((1+r)ⁿ − 1)** — where P is the
+**A bank computes your EMI with one formula: EMI = P × r × (1+r)ⁿ ÷ ((1+r)ⁿ − 1)**, where P is the
 loan amount, r the *monthly* interest rate, and n the number of months. Everything about loans that
 surprises people (interest-heavy early years, the cost of long tenures, the flat-rate trick) falls out
-of this one equation. Run your own numbers in the [EMI calculator](/calc/emi-calculator/) — it shows
+of this one equation. Run your own numbers in the [EMI calculator](/calc/emi-calculator/). It shows
 this exact formula applied to your loan, entirely in your browser.
 
 <aside class="key-takeaways">
 <p class="kt-title">⚡ Key takeaways</p>
 <ul>
 <li><strong>The formula:</strong> EMI = P·r·(1+r)ⁿ ÷ ((1+r)ⁿ−1), with r = annual rate ÷ 12 ÷ 100</li>
-<li><strong>Early EMIs are ~80% interest</strong> on long loans — the split flips only in the second half</li>
+<li><strong>Early EMIs are ~80% interest</strong> on long loans, the split flips only in the second half</li>
 <li><strong>Tenure is the expensive lever:</strong> doubling it can more than double total interest</li>
-<li><strong>Flat rate ≠ reducing rate:</strong> 10% flat ≈ 17–18% reducing on a 5-year loan</li>
-<li><strong>Prepay early, shorten tenure</strong> — same money saves multiples more interest than trimming the EMI</li>
+<li><strong>Flat rate ≠ reducing rate:</strong> 10% flat ≈ 17-18% reducing on a 5-year loan</li>
+<li><strong>Prepay early, shorten tenure</strong>, same money saves multiples more interest than trimming the EMI</li>
 </ul>
 </aside>
 
@@ -60,14 +60,13 @@ Take a 1,000,000 loan at 9% per year for 20 years:
 4. **EMI** = 1,000,000 × 0.0075 × 6.0092 ÷ (6.0092 − 1) = **8,997 per month**
 5. **Total paid** = 8,997 × 240 = 2,159,342 → **interest = 1,159,342**
 
-Yes: on a standard 20-year loan at 9%, **total interest exceeds the principal**. That's not a scam —
-it's what renting 1,000,000 for two decades costs at that rate. The
+Yes: on a standard 20-year loan at 9%, **total interest exceeds the principal**. That's not a scam, it's what renting 1,000,000 for two decades costs at that rate. The
 [calculator](/calc/emi-calculator/) reproduces every line above for your own numbers.
 
 ## Why your early payments barely touch the principal
 
 Each month, interest is charged on the *outstanding balance*. In month 1 of the loan above, interest is
-1,000,000 × 0.0075 = 7,500 — so of the 8,997 EMI, only 1,497 reduces the debt. By the final year the
+1,000,000 × 0.0075 = 7,500, so of the 8,997 EMI, only 1,497 reduces the debt. By the final year the
 proportions reverse:
 
 | Point in loan | Interest share of EMI | Principal share |
@@ -82,7 +81,7 @@ This is also why selling a house after 5 years often surprises owners: the loan 
 moved compared to what's been paid.
 
 <figure>
-<img src="/blog/infographic-emi-split.svg" alt="Infographic: interest vs principal split of each EMI over a 20-year loan at 9% — month 1 is 83% interest, year 10 is 63%, the final year is 95% principal" width="1200" height="640" loading="lazy" />
+<img src="/blog/infographic-emi-split.svg" alt="Infographic: interest vs principal split of each EMI over a 20-year loan at 9%, month 1 is 83% interest, year 10 is 63%, the final year is 95% principal" width="1200" height="640" loading="lazy" />
 <figcaption>The same fixed EMI, but its composition flips over the life of the loan.</figcaption>
 </figure>
 
@@ -102,7 +101,7 @@ Same 1,000,000 at 9%, different tenures:
 | 20 years | 8,997 | 1,159,342 | 116% |
 | 30 years | 8,046 | 1,896,752 | 190% |
 
-Stretching from 20 to 30 years cuts the EMI by just 951 a month — but adds 737,000 of interest. The
+Stretching from 20 to 30 years cuts the EMI by just 951 a month, but adds 737,000 of interest. The
 honest way to choose: pick the *shortest tenure whose EMI you can safely afford*, not the longest one
 the bank approves.
 
@@ -114,21 +113,21 @@ computed on the *original* principal for the entire tenure, ignoring that you're
 A 5-year, 500,000 loan "at just 10% flat": interest = 500,000 × 10% × 5 = 250,000, EMI = 12,500. The
 same EMI under honest reducing-balance math corresponds to roughly a **17.9% annual rate**. Rule of
 thumb: a flat rate ≈ 1.8× its reducing-balance equivalent on mid-length loans. Always ask for the
-reducing-balance rate or [APR](https://en.wikipedia.org/wiki/Annual_percentage_rate) — and check any quote against the
+reducing-balance rate or [APR](https://en.wikipedia.org/wiki/Annual_percentage_rate), and check any quote against the
 [EMI calculator](/calc/emi-calculator/), which speaks only reducing-balance.
 
 <div class="callout warn">
-<p><span class="co-label">⚠️ Watch for</span> "Flat rate" or "on full amount" in loan quotes. 10% flat is not comparable to 10% reducing — it's nearly double the true cost. Regulated home loans are almost always reducing-balance; vehicle and appliance financing often isn't.</p>
+<p><span class="co-label">⚠️ Watch for</span> "Flat rate" or "on full amount" in loan quotes. 10% flat is not comparable to 10% reducing, it's nearly double the true cost. Regulated home loans are almost always reducing-balance; vehicle and appliance financing often isn't.</p>
 </div>
 
 ## Prepayment: why early and tenure-first wins
 
-Prepaying principal stops interest on that amount for every remaining month — so the earlier the
+Prepaying principal stops interest on that amount for every remaining month, so the earlier the
 prepayment, the more months of interest it kills. On the 20-year loan above, a single 100,000
 prepayment in year 2, keeping the EMI constant (so the *tenure* shortens), saves roughly **240,000**
 of interest and ends the loan ~3 years early. The same 100,000 in year 15 saves only ~35,000.
 
-Given the choice after prepaying, **reduce tenure, not EMI** — reducing the EMI feels nicer monthly but
+Given the choice after prepaying, **reduce tenure, not EMI**, reducing the EMI feels nicer monthly but
 gives most of the interest savings back to the bank.
 
 ## EMI vs the savings side of the same math
@@ -142,23 +141,22 @@ always seems to win: it borrows simple from you and lends compound to you.
 
 ## Common EMI mistakes
 
-1. **Comparing a flat rate to a reducing rate directly** — 10% flat costs nearly as much as 18%
+1. **Comparing a flat rate to a reducing rate directly**, 10% flat costs nearly as much as 18%
    reducing; always compare APRs.
-2. **Choosing tenure by EMI affordability alone** — the monthly figure hides total interest; check
+2. **Choosing tenure by EMI affordability alone**, the monthly figure hides total interest; check
    both columns of the tenure table above.
-3. **Reducing the EMI after prepaying instead of the tenure** — it feels better monthly but gives
+3. **Reducing the EMI after prepaying instead of the tenure**. It feels better monthly but gives
    most of the interest savings back.
-4. **Ignoring processing fees and insurance add-ons** — a 1% fee on day one is roughly equivalent to
+4. **Ignoring processing fees and insurance add-ons**, a 1% fee on day one is roughly equivalent to
    a 0.2%-higher rate on a 20-year loan; ask for the all-in APR.
-5. **Assuming the EMI is the loan's cost** — the cost is total interest (EMI × months − principal),
+5. **Assuming the EMI is the loan's cost**, the cost is total interest (EMI × months − principal),
    which the calculator reports directly.
 
 ## Quick summary
 
-Your EMI comes from one formula — P·r·(1+r)ⁿ ÷ ((1+r)ⁿ−1) — and everything counterintuitive about
+Your EMI comes from one formula, P·r·(1+r)ⁿ ÷ ((1+r)ⁿ−1), and everything counterintuitive about
 loans follows from it: early payments are mostly interest, long tenures multiply total cost, and
 early prepayments (taken as shorter tenure) save the most. Quote any loan in reducing-balance terms,
 and run your own numbers in the [EMI calculator](/calc/emi-calculator/) before signing anything.
 
-*The [EMI calculator](/calc/emi-calculator/) runs the exact reducing-balance formula in your browser —
-loan amounts are sensitive data, and here they never leave your device.*
+*The [EMI calculator](/calc/emi-calculator/) runs the exact reducing-balance formula in your browser, loan amounts are sensitive data, and here they never leave your device.*

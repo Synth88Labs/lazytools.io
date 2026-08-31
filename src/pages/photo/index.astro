@@ -20,19 +20,19 @@ const groups: { key: string; title: string; icon: string }[] = [
 const faqs = [
   {
     q: 'How can a passport photo tool work without uploading my photo?',
-    a: 'Your browser can crop, resize, re-encode and analyse images entirely on your device using the canvas API. This tool does exactly that — your photo never touches a server, which matters for something as sensitive as an ID photo. Most "online passport photo" sites upload to earn your traffic, not because a server is needed.',
+    a: 'Your browser can crop, resize, re-encode and analyse images entirely on your device using the canvas API. This tool does exactly that, your photo never touches a server, which matters for something as sensitive as an ID photo. Most "online passport photo" sites upload to earn your traffic, not because a server is needed.',
   },
   {
     q: 'Will the photo be accepted by the government?',
-    a: 'This tool produces the exact official dimensions, embeds the correct print resolution, and flags common detectable mistakes (background, exposure, head position). But no tool can guarantee acceptance — the issuing authority makes the final call, so always check your result against the official requirements linked on each country page.',
+    a: 'This tool produces the exact official dimensions, embeds the correct print resolution, and flags common detectable mistakes (background, exposure, head position). But no tool can guarantee acceptance, the issuing authority makes the final call, so always check your result against the official requirements linked on each country page.',
   },
   {
     q: 'Do different countries really need different photo sizes?',
-    a: 'Yes. Many countries follow the ICAO 35×45 mm biometric standard, but the US and India use 2×2 inches (51×51 mm), Canada uses 50×70 mm, and China uses 33×48 mm — and background colour, head-height and file-format rules vary too. Each page here carries that country\'s exact, source-cited specification.',
+    a: 'Yes. Many countries follow the ICAO 35×45 mm biometric standard, but the US and India use 2×2 inches (51×51 mm), Canada uses 50×70 mm, and China uses 33×48 mm, and background colour, head-height and file-format rules vary too. Each page here carries that country\'s exact, source-cited specification.',
   },
   {
     q: 'Why does each page show a "last verified" date?',
-    a: 'Government photo rules change. Every specification here is transcribed from the official issuing authority and stamped with the date we last checked it against the source, which is linked on the page. If the official page ever differs, the official page wins — and you can tell us to update it.',
+    a: 'Government photo rules change. Every specification here is transcribed from the official issuing authority and stamped with the date we last checked it against the source, which is linked on the page. If the official page ever differs, the official page wins, and you can tell us to update it.',
   },
 ];
 
@@ -41,7 +41,7 @@ const schema = [
   collectionPageSchema({
     name: 'Photo Size Maker',
     url: '/photo/',
-    description: 'Make compliant passport, visa and national ID photos for countries worldwide — crop, auto-check and export in your browser, never uploaded.',
+    description: 'Make compliant passport, visa and national ID photos for countries worldwide, crop, auto-check and export in your browser, never uploaded.',
     items: PHOTO_SPECS.map((s) => ({ name: `${s.label} Maker`, url: `/photo/${s.slug}/` })),
   }),
   faqSchema(faqs),
@@ -51,8 +51,8 @@ const countries = new Set(PHOTO_SPECS.map((s) => s.country)).size;
 ---
 
 <Base
-  title="Photo Size Maker — Passport, Visa & ID Photos | LazyTools"
-  description={`Free passport, visa and national ID photo maker. Crop to exact official sizes, auto-check background and head position, and export — 100% in your browser, never uploaded.`}
+  title="Photo Size Maker, Passport, Visa & ID Photos | LazyTools"
+  description={`Free passport, visa and national ID photo maker. Crop to exact official sizes, auto-check background and head position, and export, 100% in your browser, never uploaded.`}
   schema={schema}
 >
   <div class="mx-auto max-w-5xl px-4 py-6">
@@ -63,7 +63,7 @@ const countries = new Set(PHOTO_SPECS.map((s) => s.country)).size;
       Turn any photo into a compliant <strong>passport, visa or national ID photo</strong>. Pick your
       country, crop to the exact official size with on-screen guides, run an on-device compliance
       check, and download. Every specification is transcribed from the official issuing authority and
-      dated — and your photo is processed entirely in your browser, never uploaded.
+      dated, and your photo is processed entirely in your browser, never uploaded.
     </p>
 
     <div class="mt-5">
@@ -91,14 +91,14 @@ const countries = new Set(PHOTO_SPECS.map((s) => s.country)).size;
     })}
 
     <p class="mt-8 rounded-xl border border-slate-200 bg-slate-50 p-4 text-sm text-slate-600">
-      More countries are added in <strong>verified tranches</strong> — each spec checked against the
+      More countries are added in <strong>verified tranches</strong>, each spec checked against the
       official government source before it goes live, because a wrong dimension means a rejected
       application. Currently covering {PHOTO_SPECS.length} photo {PHOTO_SPECS.length === 1 ? 'type' : 'types'} across {countries} {countries === 1 ? 'country' : 'countries'}.
     </p>
 
     <section class="prose-lazy mt-10">
       <h2>Compliant ID photos, made privately</h2>
-      <p>Passport, visa and ID photos have exact, country-specific rules — the crop dimensions, head size, background and margins differ for each of <strong>80+ countries</strong>. This tool applies the correct specification, helps you position and crop the shot, and checks it against the requirements. The face detection runs as a <strong>self-hosted machine-learning model in your browser</strong>, so your photo is analysed on your own device and never uploaded.</p>
+      <p>Passport, visa and ID photos have exact, country-specific rules, the crop dimensions, head size, background and margins differ for each of <strong>80+ countries</strong>. This tool applies the correct specification, helps you position and crop the shot, and checks it against the requirements. The face detection runs as a <strong>self-hosted machine-learning model in your browser</strong>, so your photo is analysed on your own device and never uploaded.</p>
       <p>That privacy matters for a document photo of your own face: there's no server to receive it, and it works offline once the model has loaded. Export a print-ready or upload-ready image sized to the country you need.</p>
     </section>
 

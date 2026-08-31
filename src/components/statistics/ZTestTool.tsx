@@ -74,8 +74,8 @@ export default function ZTestTool() {
           <div class={`mt-3 rounded-xl p-4 ring-2 ${sig ? 'bg-emerald-50 ring-emerald-200' : 'bg-slate-100 ring-slate-200'}`}>
             <p class={`text-sm font-semibold ${sig ? 'text-emerald-800' : 'text-slate-700'}`}>{sig ? `Statistically significant at α = ${a}` : `Not significant at α = ${a}`}</p>
             <p class={`mt-1 text-sm ${sig ? 'text-emerald-700' : 'text-slate-600'}`}>{sig
-              ? `p = ${fmt(r.p, 4)} < ${a}, so you reject the null hypothesis — the difference is unlikely to be chance alone.`
-              : `p = ${fmt(r.p, 4)} ≥ ${a}, so you fail to reject the null hypothesis — not enough evidence of a real difference at this level.`}</p>
+              ? `p = ${fmt(r.p, 4)} < ${a}, so you reject the null hypothesis, the difference is unlikely to be chance alone.`
+              : `p = ${fmt(r.p, 4)} ≥ ${a}, so you fail to reject the null hypothesis, not enough evidence of a real difference at this level.`}</p>
           </div>
         </>
       ) : <p class="mt-4 text-sm text-slate-500">Enter the sample statistics and the known population σ.</p>}

@@ -7,7 +7,7 @@ type TurndownLike = { turndown: (html: string) => string };
 let cachedService: TurndownLike | null = null;
 
 const SAMPLE_HTML =
-  '<h1>Title</h1><p>Hello <strong>world</strong> — see <a href="https://example.com">this link</a>.</p><ul><li>one</li><li>two</li></ul>';
+  '<h1>Title</h1><p>Hello <strong>world</strong>, see <a href="https://example.com">this link</a>.</p><ul><li>one</li><li>two</li></ul>';
 
 async function getService(): Promise<TurndownLike> {
   if (cachedService) return cachedService;
@@ -21,7 +21,7 @@ async function getService(): Promise<TurndownLike> {
     bulletListMarker: '-',
   });
 
-  // Optionally enable GitHub-flavored tables/strikethrough — only if the
+  // Optionally enable GitHub-flavored tables/strikethrough, only if the
   // plugin happens to be installed. Never assume it is; swallow any failure.
   try {
     const gfm: any = await import('turndown-plugin-gfm' as any);
@@ -29,7 +29,7 @@ async function getService(): Promise<TurndownLike> {
       (service as any).use(gfm.gfm);
     }
   } catch {
-    // turndown-plugin-gfm not available — plain Turndown is fine.
+    // turndown-plugin-gfm not available, plain Turndown is fine.
   }
 
   cachedService = service;
@@ -178,7 +178,7 @@ export default function HtmlToMarkdownTool() {
         </div>
 
         <p class="text-xs text-slate-500">
-          Everything runs locally in your browser — nothing is uploaded. This is
+          Everything runs locally in your browser, nothing is uploaded. This is
           the inverse of the{' '}
           <a
             href="/file/markdown-to-html/"

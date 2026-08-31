@@ -105,7 +105,7 @@ export default function SleepCalc() {
           </div>
           <p class="mt-4 text-xs text-slate-500">
             Based on 90-minute sleep cycles plus {latency} min to fall asleep. Waking at the <strong>end</strong> of a cycle
-            leaves you less groggy — so 5 or 6 complete cycles (7.5–9 hours) suits most adults. 🔒 Runs in your browser.
+            leaves you less groggy, so 5 or 6 complete cycles (7.5-9 hours) suits most adults. 🔒 Runs in your browser.
           </p>
         </div>
       ) : (

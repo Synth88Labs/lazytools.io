@@ -110,7 +110,7 @@ export default function SciNotationTool() {
       )}
 
       <p class="mt-4 text-xs text-slate-500">
-        Conversion is done on the digits themselves, not via floating point — so 123456789012345678901 keeps every digit instead of becoming 1.2345678901234568e20. Runs locally.
+        Conversion is done on the digits themselves, not via floating point, so 123456789012345678901 keeps every digit instead of becoming 1.2345678901234568e20. Runs locally.
       </p>
     </div>
   );

@@ -42,7 +42,7 @@ export default function RegressionTool() {
   return (
     <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
       <label class="block">
-        <span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Paired data — one “x y” (or x,y) per line</span>
+        <span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Paired data, one “x y” (or x,y) per line</span>
         <textarea
           class="h-40 w-full rounded-xl border border-slate-300 bg-white px-3 py-2 font-mono text-sm text-slate-900 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200"
           value={raw} spellcheck={false}

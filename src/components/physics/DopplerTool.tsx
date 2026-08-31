@@ -60,7 +60,7 @@ export default function DopplerTool() {
       )}
 
       <p class="mt-4 text-xs text-slate-500">
-        f′ = f·(v ± v_observer)/(v ∓ v_source) — signs handled by the approaching/receding toggles. 🔒 Computed in your browser.
+        f′ = f·(v ± v_observer)/(v ∓ v_source), signs handled by the approaching/receding toggles. 🔒 Computed in your browser.
       </p>
     </div>
   );

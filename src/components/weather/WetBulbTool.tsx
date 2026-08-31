@@ -5,8 +5,8 @@ const num = (s: string) => { const n = parseFloat(s); return isFinite(n) ? n : n
 const fmt = (x: number) => Number(x.toFixed(1)).toString();
 
 function danger(twC: number): { label: string; color: string } {
-  if (twC >= 35) return { label: 'Lethal limit — survival threshold', color: 'text-red-700' };
-  if (twC >= 32) return { label: 'Extreme — dangerous even at rest', color: 'text-red-600' };
+  if (twC >= 35) return { label: 'Lethal limit, survival threshold', color: 'text-red-700' };
+  if (twC >= 32) return { label: 'Extreme, dangerous even at rest', color: 'text-red-600' };
   if (twC >= 28) return { label: 'High risk during exertion', color: 'text-orange-600' };
   if (twC >= 25) return { label: 'Caution with activity', color: 'text-amber-600' };
   return { label: 'Generally safe', color: 'text-emerald-600' };
@@ -54,10 +54,10 @@ export default function WetBulbTool() {
           </div>
         </div>
       ) : (
-        <p class="mt-4 text-sm text-slate-500">Enter the temperature and humidity (5–99%).</p>
+        <p class="mt-4 text-sm text-slate-500">Enter the temperature and humidity (5-99%).</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">The wet-bulb temperature is the lowest that evaporative cooling (sweating) can reach — so a high wet-bulb means your body can't cool down. A sustained 35°C (95°F) wet-bulb is considered the limit of human survival. From Stull's (2011) formula, valid −20 to 50°C and 5–99% humidity at sea level. Not a substitute for official heat warnings. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">The wet-bulb temperature is the lowest that evaporative cooling (sweating) can reach, so a high wet-bulb means your body can't cool down. A sustained 35°C (95°F) wet-bulb is considered the limit of human survival. From Stull's (2011) formula, valid −20 to 50°C and 5-99% humidity at sea level. Not a substitute for official heat warnings. 🔒 In your browser.</p>
     </div>
   );
 }

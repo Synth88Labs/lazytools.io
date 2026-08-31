@@ -44,7 +44,7 @@ export default function RefractometerTool() {
         <p class="mt-4 text-sm text-slate-500">Enter the original Brix, the current Brix reading and your refractometer's correction factor.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Alcohol bends light differently from sugar, so once fermentation starts a refractometer reads final gravity too high — you can't just convert the Brix. This applies the Wort Correction Factor (WCF, typically ~1.04, calibrate yours against a hydrometer) and Sean Terrill's cubic to estimate the true final gravity from the original and current Brix. It's an estimate; confirm important readings with a hydrometer. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Alcohol bends light differently from sugar, so once fermentation starts a refractometer reads final gravity too high. You can't just convert the Brix. This applies the Wort Correction Factor (WCF, typically ~1.04, calibrate yours against a hydrometer) and Sean Terrill's cubic to estimate the true final gravity from the original and current Brix. It's an estimate; confirm important readings with a hydrometer. 🔒 In your browser.</p>
     </div>
   );
 }

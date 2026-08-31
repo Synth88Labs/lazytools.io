@@ -61,7 +61,7 @@ export default function HorsepowerTool() {
         <p class="mt-4 text-sm text-slate-500">Enter the torque (or power) and engine speed.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Horsepower = torque (lb-ft) × RPM ÷ 5252 — the constant 5252 is where the torque and power curves always cross on a dyno. 1 hp = 0.7457 kW; 1 lb-ft = 1.356 N·m. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Horsepower = torque (lb-ft) × RPM ÷ 5252, the constant 5252 is where the torque and power curves always cross on a dyno. 1 hp = 0.7457 kW; 1 lb-ft = 1.356 N·m. 🔒 In your browser.</p>
     </div>
   );
 }

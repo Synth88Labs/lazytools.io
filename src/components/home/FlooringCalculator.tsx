@@ -40,7 +40,7 @@ export default function FlooringCalculator() {
       ) : <p class="mt-4 text-sm text-slate-500">Enter the room area, coverage per box and a waste %.</p>}
 
       <p class="mt-4 text-xs text-slate-500">
-        Works for laminate, vinyl plank (LVP/LVT), engineered and hardwood flooring. Add a waste allowance for offcuts and layout — 10% for a simple straight lay, 15% for diagonals or busy patterns, more for many doorways or an irregular room. The box coverage is printed on the flooring pack. Buy from the same batch/lot for a colour match. 🔒 In your browser.
+        Works for laminate, vinyl plank (LVP/LVT), engineered and hardwood flooring. Add a waste allowance for offcuts and layout, 10% for a simple straight lay, 15% for diagonals or busy patterns, more for many doorways or an irregular room. The box coverage is printed on the flooring pack. Buy from the same batch/lot for a colour match. 🔒 In your browser.
       </p>
     </div>
   );

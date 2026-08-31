@@ -56,7 +56,7 @@ export default function ParallaxTool() {
         <p class="mt-4 text-sm text-slate-500">Enter the parallax angle or the distance.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">As Earth orbits the Sun, nearby stars appear to shift against distant ones. Half that shift is the parallax angle, and distance (parsecs) = 1 ÷ parallax (arcseconds) — that\'s the very definition of a parsec. 1 parsec ≈ 3.26 light-years. Proxima Centauri\'s parallax of 0.77″ puts it 1.30 pc (4.24 ly) away. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">As Earth orbits the Sun, nearby stars appear to shift against distant ones. Half that shift is the parallax angle, and distance (parsecs) = 1 ÷ parallax (arcseconds), that\'s the very definition of a parsec. 1 parsec ≈ 3.26 light-years. Proxima Centauri\'s parallax of 0.77″ puts it 1.30 pc (4.24 ly) away. 🔒 In your browser.</p>
     </div>
   );
 }

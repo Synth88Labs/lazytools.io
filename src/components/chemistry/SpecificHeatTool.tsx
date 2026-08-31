@@ -53,7 +53,7 @@ export default function SpecificHeatTool() {
         <p class="mt-4 text-sm text-slate-500">Fill in the other three values. Water’s specific heat is 4.184 J/(g·°C).</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">q = mcΔT — with c in J/(g·°C), use grams and °C, giving q in joules. 🔒 Computed in your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">q = mcΔT, with c in J/(g·°C), use grams and °C, giving q in joules. 🔒 Computed in your browser.</p>
     </div>
   );
 }

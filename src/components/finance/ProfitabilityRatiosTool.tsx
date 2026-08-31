@@ -28,7 +28,7 @@ export default function ProfitabilityRatiosTool() {
 
       <RatioResults results={results} />
 
-      <p class="mt-4 text-xs text-slate-500">Profitability ratios show how much profit a company squeezes from its sales, assets and equity. There is no universal &ldquo;good&rdquo; number — software margins dwarf grocery margins, and asset-light firms post far higher returns than utilities — so the tool flags these to <strong>compare against industry peers and the company&rsquo;s own trend</strong> rather than an absolute cutoff. Educational information, not financial advice. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Profitability ratios show how much profit a company squeezes from its sales, assets and equity. There is no universal &ldquo;good&rdquo; number, software margins dwarf grocery margins, and asset-light firms post far higher returns than utilities, so the tool flags these to <strong>compare against industry peers and the company&rsquo;s own trend</strong> rather than an absolute cutoff. Educational information, not financial advice. 🔒 In your browser.</p>
     </div>
   );
 }

@@ -47,7 +47,7 @@ export default function NavyBodyFatTool() {
       ) : <p class="mt-4 text-sm text-slate-500">Enter your measurements. Measure the waist at the navel, the neck below the larynx{sex === 'female' ? ', and the hips at the widest point' : ''}.</p>}
 
       <p class="mt-4 text-xs text-slate-500">
-        Uses the US Navy circumference (tape) method — measure the neck just below the larynx, the waist at the navel{sex === 'female' ? ', and the hips at the widest point' : ''}, keeping the tape snug and level. It\'s a quick estimate (typically within a few percent of more precise methods) and body-measurement data stays on your device. Not medical advice — for clinical accuracy, use DEXA or hydrostatic weighing. 🔒 In your browser.
+        Uses the US Navy circumference (tape) method, measure the neck just below the larynx, the waist at the navel{sex === 'female' ? ', and the hips at the widest point' : ''}, keeping the tape snug and level. It\'s a quick estimate (typically within a few percent of more precise methods) and body-measurement data stays on your device. Not medical advice, for clinical accuracy, use DEXA or hydrostatic weighing. 🔒 In your browser.
       </p>
     </div>
   );

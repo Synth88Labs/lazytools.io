@@ -14,19 +14,19 @@ const crumbs = [
 const faqs = [
   {
     q: 'Are the IPs and network plans I enter uploaded anywhere?',
-    a: 'No. Every calculation — subnet math, CIDR conversion, cron parsing — runs in your browser. Internal addressing plans, MAC addresses and cron schedules are exactly the kind of infrastructure detail you should not paste into tools that log requests, which is why these don\'t have a server side at all.',
+    a: 'No. Every calculation, subnet math, CIDR conversion, cron parsing, runs in your browser. Internal addressing plans, MAC addresses and cron schedules are exactly the kind of infrastructure detail you should not paste into tools that log requests, which is why these don\'t have a server side at all.',
   },
   {
     q: 'Why use a subnet calculator instead of asking an AI chatbot?',
-    a: 'Subnet math is bit-exact, and language models routinely get subnet boundaries, usable-host counts and CIDR splits subtly wrong — errors you only discover when the firewall rule doesn\'t match. These calculators do the actual binary arithmetic, so the answer is exact every time.',
+    a: 'Subnet math is bit-exact, and language models routinely get subnet boundaries, usable-host counts and CIDR splits subtly wrong, errors you only discover when the firewall rule doesn\'t match. These calculators do the actual binary arithmetic, so the answer is exact every time.',
   },
   {
     q: 'Do the tools cover IPv6?',
-    a: 'Yes — there\'s a dedicated IPv6 subnet calculator with exact 128-bit math and an expand/compress normalizer implementing RFC 5952. With IPv6 now carrying the majority of traffic to major services, dual-stack fluency is the point.',
+    a: 'Yes. There\'s a dedicated IPv6 subnet calculator with exact 128-bit math and an expand/compress normalizer implementing RFC 5952. With IPv6 now carrying the majority of traffic to major services, dual-stack fluency is the point.',
   },
   {
     q: 'Do they work offline?',
-    a: 'Yes — once loaded, every tool runs without a connection, so they work in the server room where the Wi-Fi doesn\'t.',
+    a: 'Yes, once loaded, every tool runs without a connection, so they work in the server room where the Wi-Fi doesn\'t.',
   },
 ];
 
@@ -35,7 +35,7 @@ const schema = [
   collectionPageSchema({
     name: 'Network & IT Tools',
     url: '/network/',
-    description: 'Subnet calculators (IPv4 and IPv6), CIDR converters, chmod calculator, cron parser and MAC formatter — exact, private, in your browser.',
+    description: 'Subnet calculators (IPv4 and IPv6), CIDR converters, chmod calculator, cron parser and MAC formatter, exact, private, in your browser.',
     items: NETWORK_TOOLS.map((t) => ({ name: t.name, url: `/network/${t.slug}/` })),
   }),
   faqSchema(faqs),
@@ -43,7 +43,7 @@ const schema = [
 ---
 
 <Base
-  title="Network & IT Tools — Subnet Calculator, CIDR, Chmod, Cron | LazyTools"
+  title="Network & IT Tools, Subnet Calculator, CIDR, Chmod, Cron | LazyTools"
   description="Free network calculators that run in your browser: IPv4/IPv6 subnet calculators, CIDR to IP range, IP format converter, chmod calculator, cron expression parser, MAC formatter. Exact bit math, nothing uploaded."
   schema={schema}
 >
@@ -52,7 +52,7 @@ const schema = [
 
     <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Network & IT Tools</h1>
     <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
-      Subnetting, CIDR, permissions and scheduling — the daily calculators of network and system
+      Subnetting, CIDR, permissions and scheduling, the daily calculators of network and system
       administration, done with exact bit math in your browser. Your internal addressing plans, MAC
       addresses and cron schedules never touch a server, and everything works offline.
     </p>
@@ -75,7 +75,7 @@ const schema = [
 
     <section class="prose-lazy mt-10">
       <h2>For the terminal and the wiring closet</h2>
-      <p>Network and systems work runs on precise, unforgiving math: <strong>IPv4 and IPv6 subnetting</strong> (computed at exact 128-bit precision), CIDR ranges, chmod permission bits, cron expressions and MAC/EUI-64 addresses. A single wrong bit changes a whole subnet, so these tools give exact results and explain the breakdown — network, broadcast, usable hosts, wildcard mask and more.</p>
+      <p>Network and systems work runs on precise, unforgiving math: <strong>IPv4 and IPv6 subnetting</strong> (computed at exact 128-bit precision), CIDR ranges, chmod permission bits, cron expressions and MAC/EUI-64 addresses. A single wrong bit changes a whole subnet, so these tools give exact results and explain the breakdown, network, broadcast, usable hosts, wildcard mask and more.</p>
       <p>Everything is computed locally in your browser, so internal addressing plans never leave your device, and the tools work offline on a locked-down machine. For hashes, encoders and other build-time helpers, see <a href="/dev/">Developer Tools</a>.</p>
     </section>
 

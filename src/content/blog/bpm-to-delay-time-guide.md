@@ -29,7 +29,7 @@ faqs:
 draft: false
 ---
 
-**Quarter-note delay time in milliseconds = 60,000 ÷ BPM.** At 120 BPM that's 500 ms; at 90 BPM it's 667 ms. Every other subdivision comes from that one number — halve it for eighths, quarter it for sixteenths, multiply by 1.5 for dotted, by ⅔ for triplets. The reason 60,000 appears is simply that there are 60,000 milliseconds in a minute, and BPM is beats *per minute*.
+**Quarter-note delay time in milliseconds = 60,000 ÷ BPM.** At 120 BPM that's 500 ms; at 90 BPM it's 667 ms. Every other subdivision comes from that one number, halve it for eighths, quarter it for sixteenths, multiply by 1.5 for dotted, by ⅔ for triplets. The reason 60,000 appears is simply that there are 60,000 milliseconds in a minute, and BPM is beats *per minute*.
 
 <aside class="key-takeaways">
 
@@ -38,7 +38,7 @@ draft: false
 - **Quarter note (ms) = 60,000 ÷ BPM.** 120 BPM → 500 ms.
 - **Eighth** = ÷2, **sixteenth** = ÷4, **half** = ×2.
 - **Dotted** = ×1.5. **Triplet** = ×⅔.
-- **Dotted eighth = 45,000 ÷ BPM** — the classic rhythmic-echo delay.
+- **Dotted eighth = 45,000 ÷ BPM**, the classic rhythmic-echo delay.
 - Use it for delay, **reverb pre-delay**, sidechain release, tremolo and gate rates.
 - Tempo-synced times land *with* the groove; arbitrary times blur it.
 
@@ -51,7 +51,7 @@ draft: false
 
 ## Where the number comes from
 
-A minute is 60 seconds — **60,000 milliseconds**. BPM means beats per minute, and one beat is a quarter note in common time. So:
+A minute is 60 seconds, **60,000 milliseconds**. BPM means beats per minute, and one beat is a quarter note in common time. So:
 
 > **quarter note (ms) = 60,000 ÷ BPM**
 
@@ -82,18 +82,18 @@ The [BPM delay calculator](/music/bpm-delay-calculator/) prints the whole table 
 
 ## Why the dotted eighth is everywhere
 
-Set a [delay](https://en.wikipedia.org/wiki/Delay_(audio_effect)) to a **dotted eighth** (0.75 of a beat) and the echoes don't land on the beat — they land three sixteenths later, repeatedly, drifting across the bar before realigning. Against a straight eighth-note part, that creates the interlocking, galloping pattern heard on countless pop and rock records, most famously in U2's guitar sound.
+Set a [delay](https://en.wikipedia.org/wiki/Delay_(audio_effect)) to a **dotted eighth** (0.75 of a beat) and the echoes don't land on the beat. They land three sixteenths later, repeatedly, drifting across the bar before realigning. Against a straight eighth-note part, that creates the interlocking, galloping pattern heard on countless pop and rock records, most famously in U2's guitar sound.
 
 It's a rhythmic trick, not a timbral one: a single note becomes a pattern. That's why it's the first delay setting worth learning after the plain quarter.
 
-**Practical tip:** pair it with feedback around 25–40% and roll off some high end in the repeats so the echoes sit behind the dry signal rather than competing with it.
+**Practical tip:** pair it with feedback around 25-40% and roll off some high end in the repeats so the echoes sit behind the dry signal rather than competing with it.
 
 ## It's not just delay
 
 The same arithmetic drives most time-based settings in a mix:
 
-- **Reverb pre-delay.** A pre-delay of a sixteenth or a thirty-second (say 60–125 ms at 120 BPM) separates the dry signal from the tail, keeping vocals intelligible while still sounding large.
-- **Reverb decay.** Setting the tail so it has largely died away before the next downbeat keeps dense mixes from turning to mush. At 120 BPM a bar is 2 seconds — so a 1.8 s decay clears itself; a 4 s decay smears across bars. The [reverb time calculator](/music/reverb-time-calculator/) works this out.
+- **Reverb pre-delay.** A pre-delay of a sixteenth or a thirty-second (say 60-125 ms at 120 BPM) separates the dry signal from the tail, keeping vocals intelligible while still sounding large.
+- **Reverb decay.** Setting the tail so it has largely died away before the next downbeat keeps dense mixes from turning to mush. At 120 BPM a bar is 2 seconds, so a 1.8 s decay clears itself; a 4 s decay smears across bars. The [reverb time calculator](/music/reverb-time-calculator/) works this out.
 - **Sidechain / compressor release.** Matching release to an eighth or sixteenth lets the pump recover in time for the next hit.
 - **Tremolo, auto-pan and filter LFOs.** Rate in Hz = 1000 ÷ (delay time in ms), so a quarter-note LFO at 120 BPM is 2 Hz.
 - **Noise gates and stutter effects**, where the hold time is a subdivision.
@@ -102,8 +102,8 @@ The same arithmetic drives most time-based settings in a mix:
 
 Tempo-synced times aren't a rule, they're a default:
 
-- **Slapback echo** (roughly 60–120 ms) is usually set by ear, not by tempo — it's heard as thickening rather than rhythm.
-- **Doubling and chorus-style delays** (10–40 ms) are below the threshold where we perceive separate events at all.
+- **Slapback echo** (roughly 60-120 ms) is usually set by ear, not by tempo, it's heard as thickening rather than rhythm.
+- **Doubling and chorus-style delays** (10-40 ms) are below the threshold where we perceive separate events at all.
 - **Deliberate looseness.** Nudging a synced delay a few milliseconds off can make it feel more human, the same way a slightly-behind snare feels laid back.
 
 The rule of thumb: if you want the effect to be *heard as rhythm*, sync it. If you want it heard as *space or thickness*, set it by ear.

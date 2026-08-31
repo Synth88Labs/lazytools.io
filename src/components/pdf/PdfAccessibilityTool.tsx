@@ -45,14 +45,14 @@ async function runChecks(bytes: ArrayBuffer, onProgress: (s: string) => void): P
 
   // --- tagged? ---
   const markInfo = await doc.getMarkInfo();
-  if (markInfo?.Marked) add('pass', 'Tagged PDF', 'MarkInfo declares the document as tagged — the foundation of PDF accessibility');
-  else add('fail', 'Tagged PDF', 'the document is NOT marked as tagged — screen readers get no reliable structure (headings, reading order, tables). This is the first thing to fix, usually by re-exporting from the source application with accessibility enabled');
+  if (markInfo?.Marked) add('pass', 'Tagged PDF', 'MarkInfo declares the document as tagged, the foundation of PDF accessibility');
+  else add('fail', 'Tagged PDF', 'the document is NOT marked as tagged, screen readers get no reliable structure (headings, reading order, tables). This is the first thing to fix, usually by re-exporting from the source application with accessibility enabled');
 
   // --- title + metadata ---
   const meta = await doc.getMetadata().catch(() => null);
   const title = (meta?.info as any)?.Title?.trim?.() ?? '';
   if (title) add('pass', 'Document title', `"${title}" present in metadata`);
-  else add('fail', 'Document title', 'no Title in document metadata — screen readers announce the filename instead');
+  else add('fail', 'Document title', 'no Title in document metadata, screen readers announce the filename instead');
 
   // --- catalog entries via pdf-lib ---
   try {
@@ -60,17 +60,17 @@ async function runChecks(bytes: ArrayBuffer, onProgress: (s: string) => void): P
     const catalog = pl.catalog;
     const langObj = catalog.lookupMaybe(PDFName.of('Lang'), PDFString) ?? catalog.lookupMaybe(PDFName.of('Lang'), PDFHexString);
     const lang = langObj?.decodeText?.() ?? '';
-    if (lang) add('pass', 'Document language', `/Lang = "${lang}" — screen readers pick the right voice`);
-    else add('fail', 'Document language', 'no /Lang entry — screen readers can\'t know which language voice/pronunciation to use');
+    if (lang) add('pass', 'Document language', `/Lang = "${lang}", screen readers pick the right voice`);
+    else add('fail', 'Document language', 'no /Lang entry, screen readers can\'t know which language voice/pronunciation to use');
 
     const vp = catalog.lookupMaybe(PDFName.of('ViewerPreferences'), PDFDict);
     const ddt = vp?.lookupMaybe(PDFName.of('DisplayDocTitle'), PDFBool);
-    if (ddt?.asBoolean?.()) add('pass', 'Display document title', 'viewer preference set — the title (not filename) shows in the window bar');
-    else add(title ? 'warn' : 'info', 'Display document title', 'DisplayDocTitle viewer preference not set — PDF/UA requires the title, not the filename, to be shown');
+    if (ddt?.asBoolean?.()) add('pass', 'Display document title', 'viewer preference set, the title (not filename) shows in the window bar');
+    else add(title ? 'warn' : 'info', 'Display document title', 'DisplayDocTitle viewer preference not set, PDF/UA requires the title, not the filename, to be shown');
 
     const outlines = catalog.lookupMaybe(PDFName.of('Outlines'), PDFDict);
     if (outlines) add('pass', 'Bookmarks (outline)', 'the document has a bookmark tree for navigation');
-    else add(pages > 20 ? 'warn' : 'info', 'Bookmarks (outline)', pages > 20 ? `no bookmarks in a ${pages}-page document — long documents should offer outline navigation` : 'no bookmarks — fine for short documents');
+    else add(pages > 20 ? 'warn' : 'info', 'Bookmarks (outline)', pages > 20 ? `no bookmarks in a ${pages}-page document, long documents should offer outline navigation` : 'no bookmarks, fine for short documents');
   } catch {
     add('info', 'Catalog entries', 'could not inspect /Lang and viewer preferences (unusual document structure)');
   }
@@ -85,7 +85,7 @@ async function runChecks(bytes: ArrayBuffer, onProgress: (s: string) => void): P
     textChars += tc.items.reduce((a: number, it: any) => a + (it.str?.length ?? 0), 0);
   }
   if (textChars > 50) add('pass', 'Extractable text', `real text layer found (~${textChars.toLocaleString('en-US')} characters in the first ${sample} page${sample > 1 ? 's' : ''})`);
-  else add('fail', 'Extractable text', `almost no extractable text in the first ${sample} page${sample > 1 ? 's' : ''} — this looks like a scanned/image-only PDF, which is invisible to screen readers without OCR`);
+  else add('fail', 'Extractable text', `almost no extractable text in the first ${sample} page${sample > 1 ? 's' : ''}. This looks like a scanned/image-only PDF, which is invisible to screen readers without OCR`);
 
   // --- structure tree: headings + figure alt text ---
   onProgress('Walking structure tree…');
@@ -97,10 +97,10 @@ async function runChecks(bytes: ArrayBuffer, onProgress: (s: string) => void): P
   }
   if (acc.hasTree) {
     if (acc.headings.size > 0) add('pass', 'Headings', `heading tags present (${[...acc.headings].sort().join(', ')}) in the sampled pages`);
-    else add('warn', 'Headings', 'no H1–H6 tags found in the sampled pages — content may be tagged as plain paragraphs, losing document structure');
+    else add('warn', 'Headings', 'no H1–H6 tags found in the sampled pages, content may be tagged as plain paragraphs, losing document structure');
     if (acc.figures > 0) {
       if (acc.figuresWithAlt === acc.figures) add('pass', 'Image alt text', `all ${acc.figures} figure${acc.figures > 1 ? 's' : ''} in the sampled pages carry alt text`);
-      else add('fail', 'Image alt text', `${acc.figures - acc.figuresWithAlt} of ${acc.figures} figures in the sampled pages have NO alt text — those images are silent for screen-reader users`);
+      else add('fail', 'Image alt text', `${acc.figures - acc.figuresWithAlt} of ${acc.figures} figures in the sampled pages have NO alt text. Those images are silent for screen-reader users`);
     } else add('info', 'Image alt text', 'no tagged figures found in the sampled pages');
   } else if (markInfo?.Marked) {
     add('warn', 'Structure tree', 'document claims to be tagged but no structure tree was readable on the sampled pages');
@@ -140,7 +140,7 @@ export default function PdfAccessibilityTool() {
       <label class="block cursor-pointer rounded-xl border-2 border-dashed border-slate-300 bg-white p-6 text-center transition hover:border-brand-400">
         <input type="file" accept=".pdf,application/pdf" onChange={onFile} class="sr-only" />
         <span class="text-sm font-semibold text-brand-700">{fileName || 'Choose a PDF to check'}</span>
-        <span class="mt-1 block text-xs text-slate-500">Analysed entirely on your device — the document is never uploaded</span>
+        <span class="mt-1 block text-xs text-slate-500">Analysed entirely on your device, the document is never uploaded</span>
       </label>
 
       {busy && <p class="mt-3 text-sm text-slate-600">{busy}</p>}
@@ -149,7 +149,7 @@ export default function PdfAccessibilityTool() {
       {checks && (
         <div class="mt-4" aria-live="polite">
           <p class={`rounded-xl border px-4 py-3 text-sm font-semibold ${fails ? 'border-red-200 bg-red-50 text-red-900' : warns ? 'border-amber-200 bg-amber-50 text-amber-900' : 'border-emerald-200 bg-emerald-50 text-emerald-900'}`}>
-            {fails ? `${fails} accessibility problem${fails > 1 ? 's' : ''} found` : warns ? 'No hard failures — with items worth reviewing' : 'All quick checks passed'}
+            {fails ? `${fails} accessibility problem${fails > 1 ? 's' : ''} found` : warns ? 'No hard failures, with items worth reviewing' : 'All quick checks passed'}
             {' · '}{pages} page{pages > 1 ? 's' : ''} · {checks.length} checks
           </p>
           <ul class="mt-3 space-y-2">
@@ -164,7 +164,7 @@ export default function PdfAccessibilityTool() {
       )}
 
       <p class="mt-4 rounded-lg bg-white px-3 py-2 text-xs text-slate-500 ring-1 ring-slate-200">
-        <strong class="text-slate-700">Quick check, not certification.</strong> This verifies the machine-checkable foundations (tagging, language, title, text layer, alt text, headings — structure sampled from the first 5 pages). Full PDF/UA conformance also needs human judgment — logical reading order, meaningful alt text, correct table structure — via tools like PAC and manual review. Nothing you load here leaves your browser.
+        <strong class="text-slate-700">Quick check, not certification.</strong> This verifies the machine-checkable foundations (tagging, language, title, text layer, alt text, headings, structure sampled from the first 5 pages). Full PDF/UA conformance also needs human judgment, logical reading order, meaningful alt text, correct table structure, via tools like PAC and manual review. Nothing you load here leaves your browser.
       </p>
     </div>
   );

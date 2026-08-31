@@ -40,7 +40,7 @@ export default function AudioTool({ mode }: Props) {
         setPeak(p);
       }
     } catch {
-      setError('Your browser could not decode this file — MP3, WAV, OGG, M4A and FLAC usually work.');
+      setError('Your browser could not decode this file, MP3, WAV, OGG, M4A and FLAC usually work.');
       setBuffer(null);
     }
     setBusy(false);
@@ -88,7 +88,7 @@ export default function AudioTool({ mode }: Props) {
         <input type="file" accept="audio/*,.flac,.m4a" onChange={onFile} class="sr-only" />
         <span class="text-sm font-semibold text-brand-700">{file ? file.name : 'Choose an audio file'}</span>
         <span class="mt-1 block text-xs text-slate-500">
-          {buffer ? `${fmtDuration(buffer.duration)} · ${buffer.numberOfChannels === 2 ? 'stereo' : 'mono'} · ${(buffer.sampleRate / 1000).toFixed(1)} kHz` : 'MP3, WAV, OGG, M4A, FLAC — decoded locally'}
+          {buffer ? `${fmtDuration(buffer.duration)} · ${buffer.numberOfChannels === 2 ? 'stereo' : 'mono'} · ${(buffer.sampleRate / 1000).toFixed(1)} kHz` : 'MP3, WAV, OGG, M4A, FLAC, decoded locally'}
         </span>
       </label>
 
@@ -127,13 +127,13 @@ export default function AudioTool({ mode }: Props) {
               <input id="at-gain" type="range" min={-20} max={20} step={0.5} value={gainDb} onInput={(e) => setGainDb(parseFloat((e.target as HTMLInputElement).value))} class="w-full max-w-md accent-brand-600" />
               <p class={`mt-1 text-sm font-medium ${willClip ? 'text-amber-700' : 'text-slate-600'}`}>
                 {willClip
-                  ? `⚠ Peaks will clip — this file's maximum clean boost is about +${maxCleanDb} dB.`
+                  ? `⚠ Peaks will clip. This file's maximum clean boost is about +${maxCleanDb} dB.`
                   : `Measured headroom: up to about +${maxCleanDb} dB stays clean.`}
               </p>
             </div>
           )}
 
-          {mode === 'wav' && <p class="text-sm text-slate-600">Ready — converts to 16-bit PCM WAV at {(buffer.sampleRate / 1000).toFixed(1)} kHz (≈{fmtSize(buffer.duration * buffer.sampleRate * buffer.numberOfChannels * 2)}).</p>}
+          {mode === 'wav' && <p class="text-sm text-slate-600">Ready, converts to 16-bit PCM WAV at {(buffer.sampleRate / 1000).toFixed(1)} kHz (≈{fmtSize(buffer.duration * buffer.sampleRate * buffer.numberOfChannels * 2)}).</p>}
 
           <button type="button" onClick={run} disabled={busy} class="mt-4 rounded-xl bg-brand-700 px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-brand-800 disabled:opacity-40">
             {busy ? 'Rendering…' : mode === 'trim' ? '✂ Trim' : mode === 'speed' ? '⏩ Apply speed' : mode === 'volume' ? '🔊 Apply gain' : '🎚️ Convert to WAV'}
@@ -141,7 +141,7 @@ export default function AudioTool({ mode }: Props) {
 
           {resultUrl && (
             <div class="mt-4 rounded-xl border border-brand-100 bg-white p-4" aria-live="polite">
-              <p class="text-sm font-semibold text-slate-900">Result — {resultInfo}</p>
+              <p class="text-sm font-semibold text-slate-900">Result, {resultInfo}</p>
               <audio controls src={resultUrl} class="mt-2 w-full" />
               <button type="button" onClick={download} class="mt-3 rounded-lg bg-brand-700 px-4 py-2 text-sm font-medium text-white transition hover:bg-brand-800">
                 ⬇ Download WAV
@@ -150,7 +150,7 @@ export default function AudioTool({ mode }: Props) {
           )}
         </div>
       )}
-      <p class="mt-3 text-xs text-slate-500">Decoded, processed and encoded in your browser — recordings never touch a server.</p>
+      <p class="mt-3 text-xs text-slate-500">Decoded, processed and encoded in your browser, recordings never touch a server.</p>
     </div>
   );
 }

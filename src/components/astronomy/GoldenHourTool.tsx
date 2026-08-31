@@ -30,7 +30,7 @@ export default function GoldenHourTool() {
   }, [dateStr, lat, lon, tz]);
 
   const inp = 'w-full rounded-xl border border-slate-300 bg-white px-3 py-2 font-mono text-sm text-slate-900 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200';
-  const range = (a: [number | null, number | null]) => `${fmtMin(a[0])} – ${fmtMin(a[1])}`;
+  const range = (a: [number | null, number | null]) => `${fmtMin(a[0])}, ${fmtMin(a[1])}`;
 
   return (
     <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
@@ -54,12 +54,12 @@ export default function GoldenHourTool() {
         <>
           <div class="mt-4 grid gap-3 sm:grid-cols-2">
             <div class="rounded-xl bg-amber-50 p-4 ring-2 ring-amber-200">
-              <p class="text-xs font-semibold uppercase tracking-wide text-amber-700">Morning — golden hour</p>
+              <p class="text-xs font-semibold uppercase tracking-wide text-amber-700">Morning, golden hour</p>
               <p class="mt-1 text-2xl font-extrabold text-amber-800">{range(w.goldenAm)}</p>
               <p class="mt-1 text-xs text-slate-500">Blue hour {range(w.blueAm)} · sunrise {fmtMin(w.sunrise)}</p>
             </div>
             <div class="rounded-xl bg-orange-50 p-4 ring-2 ring-orange-200">
-              <p class="text-xs font-semibold uppercase tracking-wide text-orange-700">Evening — golden hour</p>
+              <p class="text-xs font-semibold uppercase tracking-wide text-orange-700">Evening, golden hour</p>
               <p class="mt-1 text-2xl font-extrabold text-orange-800">{range(w.goldenPm)}</p>
               <p class="mt-1 text-xs text-slate-500">Sunset {fmtMin(w.sunset)} · blue hour {range(w.bluePm)}</p>
             </div>
@@ -79,7 +79,7 @@ export default function GoldenHourTool() {
         <p class="mt-4 text-sm text-slate-500">Pick a city, or enter a date, latitude, longitude and UTC offset.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Times are local (24-hour), computed with the NOAA solar-position algorithm. Golden hour is when the sun sits between about −4° and +6° — warm, soft, directional light; blue hour is the −6° to −4° window of cool twilight. A dash means the sun never reaches that elevation that day (e.g. no true night in high-latitude summer). Enter east longitude as positive and your UTC offset (including DST). 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Times are local (24-hour), computed with the NOAA solar-position algorithm. Golden hour is when the sun sits between about −4° and +6°, warm, soft, directional light; blue hour is the −6° to −4° window of cool twilight. A dash means the sun never reaches that elevation that day (e.g. no true night in high-latitude summer). Enter east longitude as positive and your UTC offset (including DST). 🔒 In your browser.</p>
     </div>
   );
 }

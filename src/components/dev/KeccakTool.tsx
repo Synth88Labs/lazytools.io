@@ -38,10 +38,10 @@ export default function KeccakTool() {
           <label class="mt-4 block"><span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Text to hash</span>
             <textarea rows={3} class={inputCls} value={text} onInput={(e) => setText((e.target as HTMLTextAreaElement).value)} /></label>
           <div class="mt-3 space-y-2">
-            <Row label="Keccak-256 (Ethereum — pad byte 0x01)" value={keccak} />
-            <Row label="SHA3-256 (NIST FIPS 202 — pad byte 0x06)" value={sha3} />
+            <Row label="Keccak-256 (Ethereum, pad byte 0x01)" value={keccak} />
+            <Row label="SHA3-256 (NIST FIPS 202, pad byte 0x06)" value={sha3} />
           </div>
-          <p class="mt-3 rounded-lg bg-amber-50 px-3 py-2 text-xs text-amber-800">⚠ These differ! Ethereum uses <strong>Keccak-256</strong> (the original submission), which is <em>not</em> the same as the finalised NIST <strong>SHA3-256</strong> — they use a different padding byte and produce different hashes. Most tools blur this; pick the right one for your use.</p>
+          <p class="mt-3 rounded-lg bg-amber-50 px-3 py-2 text-xs text-amber-800">⚠ These differ! Ethereum uses <strong>Keccak-256</strong> (the original submission), which is <em>not</em> the same as the finalised NIST <strong>SHA3-256</strong>. They use a different padding byte and produce different hashes. Most tools blur this; pick the right one for your use.</p>
         </>
       ) : (
         <>

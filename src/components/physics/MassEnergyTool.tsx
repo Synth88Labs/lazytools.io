@@ -5,7 +5,7 @@ export default function MassEnergyTool() {
   return (
     <SolverTool
       defaultTarget="E"
-      formula="Mass–energy equivalence: E = m·c², with c = 299,792,458 m/s (exact). Energy also shown in eV."
+      formula="Mass, energy equivalence: E = m·c², with c = 299,792,458 m/s (exact). Energy also shown in eV."
       fields={[
         { key: 'm', label: 'Mass m', unit: 'kg', initial: '0.001' },
         { key: 'E', label: 'Energy E', unit: 'J' },

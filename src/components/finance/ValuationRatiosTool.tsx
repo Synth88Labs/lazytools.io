@@ -32,7 +32,7 @@ export default function ValuationRatiosTool() {
 
       <RatioResults results={results} />
 
-      <p class="mt-4 text-xs text-slate-500">Valuation (market) ratios relate a company&rsquo;s share price to its earnings, book value, sales and cash flow — telling you how expensive the stock is. They only mean something <strong>versus sector peers, the company&rsquo;s own history and its growth rate</strong>: a P/E of 30 is cheap for a fast grower and dear for a utility. Enterprise value = market cap + net debt. Educational information, not financial or investment advice. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Valuation (market) ratios relate a company&rsquo;s share price to its earnings, book value, sales and cash flow, telling you how expensive the stock is. They only mean something <strong>versus sector peers, the company&rsquo;s own history and its growth rate</strong>: a P/E of 30 is cheap for a fast grower and dear for a utility. Enterprise value = market cap + net debt. Educational information, not financial or investment advice. 🔒 In your browser.</p>
     </div>
   );
 }

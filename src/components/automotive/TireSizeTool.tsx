@@ -51,7 +51,7 @@ export default function TireSizeTool() {
           </div>
         </>
       ) : (
-        <p class="mt-4 text-sm text-slate-500">Enter a tire size like <code>225/45R17</code> — width (mm) / aspect ratio (%) R rim (inches).</p>
+        <p class="mt-4 text-sm text-slate-500">Enter a tire size like <code>225/45R17</code>, width (mm) / aspect ratio (%) R rim (inches).</p>
       )}
 
       <p class="mt-4 text-xs text-slate-500">Overall diameter = rim + 2 × sidewall, where sidewall = width × aspect ratio. All exact geometry. 🔒 In your browser.</p>

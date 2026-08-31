@@ -17,13 +17,13 @@ heroImage: /blog/suvat-equations-guide.png
 heroAlt: "The five SUVAT equations for constant-acceleration motion"
 faqs:
   - q: "What are the SUVAT equations?"
-    a: "The five kinematic equations for motion with constant acceleration: v = u + at; s = ½(u+v)t; v² = u² + 2as; s = ut + ½at²; and s = vt − ½at². SUVAT stands for the five variables — s (displacement), u (initial velocity), v (final velocity), a (acceleration) and t (time)."
+    a: "The five kinematic equations for motion with constant acceleration: v = u + at; s = ½(u+v)t; v² = u² + 2as; s = ut + ½at²; and s = vt − ½at². SUVAT stands for the five variables, s (displacement), u (initial velocity), v (final velocity), a (acceleration) and t (time)."
   - q: "How do I know which SUVAT equation to use?"
-    a: "List the three quantities you know and the one you want to find — that's four variables. Each equation leaves out exactly one variable, so choose the equation that leaves out the fifth (the one you neither know nor need). For example, if you don't know time, use v² = u² + 2as."
+    a: "List the three quantities you know and the one you want to find, that's four variables. Each equation leaves out exactly one variable, so choose the equation that leaves out the fifth (the one you neither know nor need). For example, if you don't know time, use v² = u² + 2as."
   - q: "How many variables do I need to solve a SUVAT problem?"
     a: "Three. With any three of the five known, the other two are fully determined for constant acceleration. A calculator can pick the equations for you once you enter three values."
   - q: "Do the SUVAT equations work for falling objects?"
-    a: "Yes — vertical motion under gravity has constant acceleration g (about 9.8 m/s²), so free fall and the vertical part of projectile motion are SUVAT problems. Set a = g (or −g if up is positive)."
+    a: "Yes, vertical motion under gravity has constant acceleration g (about 9.8 m/s²), so free fall and the vertical part of projectile motion are SUVAT problems. Set a = g (or −g if up is positive)."
   - q: "When do the SUVAT equations not apply?"
     a: "Only when acceleration is constant. If the acceleration changes with time (air resistance, a varying force), SUVAT is invalid and you need calculus instead."
   - q: "Why does v² = u² + 2as sometimes give two answers?"
@@ -32,17 +32,17 @@ draft: false
 ---
 
 **Almost every motion problem in introductory physics is a SUVAT problem.** If acceleration is constant,
-five variables — displacement `s`, initial velocity `u`, final velocity `v`, acceleration `a` and time
-`t` — are tied together by five [equations of motion](https://en.wikipedia.org/wiki/Equations_of_motion). **Know any three, and the other two are fixed.** The only skill
+five variables, displacement `s`, initial velocity `u`, final velocity `v`, acceleration `a` and time
+`t`, are tied together by five [equations of motion](https://en.wikipedia.org/wiki/Equations_of_motion). **Know any three, and the other two are fixed.** The only skill
 is picking the right equation, and there's a simple trick for that.
 
 <aside class="key-takeaways">
 
 **Key takeaways**
 
-- **SUVAT = s, u, v, a, t** — the five variables of constant-acceleration motion.
+- **SUVAT = s, u, v, a, t**, the five variables of constant-acceleration motion.
 - The five equations: `v = u+at` · `s = ½(u+v)t` · `v² = u²+2as` · `s = ut+½at²` · `s = vt−½at²`.
-- **Each equation leaves out one variable** — pick the one missing what you neither know nor want.
+- **Each equation leaves out one variable**, pick the one missing what you neither know nor want.
 - Know **any three** variables → solve the other two.
 - Valid **only for constant acceleration** (including gravity); not for changing acceleration.
 
@@ -71,7 +71,7 @@ That "missing variable" column is the whole trick.
 
 The reliable method:
 
-1. **Write down the three values you know** and mark **the one you want to find** — that's four of the
+1. **Write down the three values you know** and mark **the one you want to find**, that's four of the
    five variables.
 2. **The fifth variable** is the one you neither know nor need.
 3. **Choose the equation that leaves out that fifth variable.**
@@ -82,7 +82,7 @@ The reliable method:
 - The equation missing v is `s = ut + ½at²`.
 - `s = 0 × 5 + ½ × 2 × 5² = 25 m`.
 
-No guessing — the missing-variable rule points straight to the equation. The
+No guessing, the missing-variable rule points straight to the equation. The
 [SUVAT calculator](/physics/kinematic-equations-calculator/) does this selection for you: enter any three
 values and it solves the rest.
 
@@ -122,10 +122,10 @@ rule. That's the pattern to trust.
 
 ## The square-root one to watch
 
-`v² = u² + 2as` is the equation with no time in it — perfect for "how fast after this distance"
+`v² = u² + 2as` is the equation with no time in it, perfect for "how fast after this distance"
 questions. But it hides a trap: solving for `v` (or `u`) needs a **square root**, and taking a root gives
 **two answers**, `+` and `−`. Physically that's an object passing a point moving forwards or backwards.
-Pick the sign that matches your chosen positive direction — the other root is often the object's velocity
+Pick the sign that matches your chosen positive direction, the other root is often the object's velocity
 at the same height on the *way up* versus the *way down*, which is a real answer, just not the one the
 question asked for.
 
@@ -134,32 +134,32 @@ question asked for.
 Vertical motion under gravity is a SUVAT problem because gravity gives a **constant** acceleration
 `g ≈ 9.8 m/s²`. So:
 
-- **Free fall** — drop something and use `a = g`. The [free-fall calculator](/physics/free-fall-calculator/)
+- **Free fall**, drop something and use `a = g`. The [free-fall calculator](/physics/free-fall-calculator/)
   is SUVAT with u = 0.
-- **Projectile motion** — the vertical component is SUVAT with `a = −g`; the horizontal component has
+- **Projectile motion**, the vertical component is SUVAT with `a = −g`; the horizontal component has
   a = 0 (constant velocity). The [projectile calculator](/physics/projectile-motion-calculator/) runs
   both and plots the path.
 
 Just be consistent with signs: if you call *up* positive, then `g` is `−9.8` and downward displacement is
 negative.
 
-**Worked example — dropped stone.** You drop a stone into a well and it hits the water after `t = 2 s`.
+**Worked example, dropped stone.** You drop a stone into a well and it hits the water after `t = 2 s`.
 How deep is the well (ignoring air resistance)? Take *down* as positive, so `u = 0`, `a = g ≈ 9.8 m/s²`,
 `t = 2 s`, want s, missing v → `s = ut + ½at² = 0 + ½ × 9.8 × 2² ≈ 19.6 m`. The same setup with *up* as
-positive gives `s ≈ −19.6 m` — the same depth, just signed to say "below the start point."
+positive gives `s ≈ −19.6 m`, the same depth, just signed to say "below the start point."
 
 ## Where the five equations come from
 
 You don't have to memorise all five as unrelated facts. Two are definitions and the rest follow:
 
-- `v = u + at` is just the definition of constant acceleration — velocity changes by `a` every second.
+- `v = u + at` is just the definition of constant acceleration, velocity changes by `a` every second.
 - `s = ½(u + v)t` is the average-velocity idea: with a straight-line velocity graph, the average speed is
   the midpoint `½(u + v)`, and distance is average speed times time.
 - Substituting `v = u + at` into `s = ½(u + v)t` and simplifying gives `s = ut + ½at²`.
 - Doing the same substitution the other way gives `s = vt − ½at²`.
 - Eliminating `t` between the first two produces the time-free `v² = u² + 2as`.
 
-Seeing them as one family — not five to rote-learn — makes it obvious why "know any three" is enough:
+Seeing them as one family, not five to rote-learn, makes it obvious why "know any three" is enough:
 three independent values pin down the straight-line velocity graph completely, and everything else is read
 off it.
 
@@ -175,8 +175,8 @@ off it.
 
 ## When SUVAT doesn't work
 
-The one hard rule: **acceleration must be constant.** If it changes — air resistance that grows with
-speed, a varying applied force, circular motion — SUVAT is invalid, and you need calculus (integrating the
+The one hard rule: **acceleration must be constant.** If it changes, air resistance that grows with
+speed, a varying applied force, circular motion, SUVAT is invalid, and you need calculus (integrating the
 acceleration) instead. For the constant-acceleration world of most exam questions, though, the five
 equations cover everything.
 

@@ -57,7 +57,7 @@ export default function RelativityTool() {
         <p class="mt-4 text-sm text-slate-500">Enter a speed below c (as a fraction, e.g. 0.8), plus optional proper time, length and rest mass.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">The Lorentz factor γ = 1 ÷ √(1 − (v/c)²) governs special relativity. A moving clock runs slow (time dilation ×γ), a moving object shortens along its motion (length contraction ÷γ), and its kinetic energy is (γ−1)mc² — diverging from ½mv² as v approaches c. Nothing with mass can reach c, where γ → ∞. Speeds are entered as a fraction of the speed of light (299,792,458 m/s). 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">The Lorentz factor γ = 1 ÷ √(1 − (v/c)²) governs special relativity. A moving clock runs slow (time dilation ×γ), a moving object shortens along its motion (length contraction ÷γ), and its kinetic energy is (γ−1)mc², diverging from ½mv² as v approaches c. Nothing with mass can reach c, where γ → ∞. Speeds are entered as a fraction of the speed of light (299,792,458 m/s). 🔒 In your browser.</p>
     </div>
   );
 }

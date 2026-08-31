@@ -95,7 +95,7 @@ export default function Ieee754Tool() {
       {encoded?.formats && <div class="mt-4 space-y-3">{encoded.formats.map((f) => <FormatCard f={f} />)}</div>}
       {decoded?.format && <div class="mt-4"><FormatCard f={decoded.format} /></div>}
 
-      <p class="mt-4 text-xs text-slate-500">Convert a decimal number to its IEEE 754 half (16-bit), single (32-bit) and double (64-bit) representations — or paste a raw bit pattern to decode it. Each result breaks out the <span class="text-rose-700">sign</span>, <span class="text-sky-700">exponent</span> and <span class="text-emerald-700">mantissa</span> fields, the hex, the exact value that gets stored, and the rounding error versus your input (this is why 0.1 isn&#39;t exactly 0.1 in a computer). Single and double are byte-exact; everything runs in your browser. 🔒</p>
+      <p class="mt-4 text-xs text-slate-500">Convert a decimal number to its IEEE 754 half (16-bit), single (32-bit) and double (64-bit) representations, or paste a raw bit pattern to decode it. Each result breaks out the <span class="text-rose-700">sign</span>, <span class="text-sky-700">exponent</span> and <span class="text-emerald-700">mantissa</span> fields, the hex, the exact value that gets stored, and the rounding error versus your input (this is why 0.1 isn&#39;t exactly 0.1 in a computer). Single and double are byte-exact; everything runs in your browser. 🔒</p>
     </div>
   );
 }

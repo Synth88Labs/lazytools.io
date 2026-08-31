@@ -14,9 +14,9 @@ export default function KsefViewerTool() {
     setParsed(null);
     try {
       const dom = new DOMParser().parseFromString(await f.text(), 'application/xml');
-      if (dom.querySelector('parsererror')) throw new Error('Not well-formed XML — the file could not be parsed.');
+      if (dom.querySelector('parsererror')) throw new Error('Not well-formed XML, the file could not be parsed.');
       const root = dom.documentElement;
-      if (root.localName !== 'Faktura') throw new Error(`Root element is <${root.localName}> — expected <Faktura>. For XRechnung/Factur-X/Peppol invoices, use the e-invoice viewer instead.`);
+      if (root.localName !== 'Faktura') throw new Error(`Root element is <${root.localName}>, expected <Faktura>. For XRechnung/Factur-X/Peppol invoices, use the e-invoice viewer instead.`);
       setParsed(parseKsef(root));
     } catch (err) {
       setError((err as Error).message);
@@ -37,7 +37,7 @@ export default function KsefViewerTool() {
       <label class="block cursor-pointer rounded-xl border-2 border-dashed border-slate-300 bg-white p-6 text-center transition hover:border-brand-400">
         <input type="file" accept=".xml,application/xml,text/xml" onChange={onFile} class="sr-only" />
         <span class="text-sm font-semibold text-brand-700">{fileName || 'Choose a KSeF invoice (.xml)'}</span>
-        <span class="mt-1 block text-xs text-slate-500">FA(2) / FA(3) faktura ustrukturyzowana — read entirely on your device</span>
+        <span class="mt-1 block text-xs text-slate-500">FA(2) / FA(3) faktura ustrukturyzowana, read entirely on your device</span>
       </label>
 
       {error && <p class="mt-3 text-sm font-medium text-red-700" aria-live="polite">✗ {error}</p>}
@@ -109,7 +109,7 @@ export default function KsefViewerTool() {
           </div>
         </div>
       )}
-      <p class="mt-3 text-xs text-slate-500">Parsed with your browser's XML engine — invoice data (parties, NIPs, amounts, bank account) never leaves your device.</p>
+      <p class="mt-3 text-xs text-slate-500">Parsed with your browser's XML engine, invoice data (parties, NIPs, amounts, bank account) never leaves your device.</p>
     </div>
   );
 }

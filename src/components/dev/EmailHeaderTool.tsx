@@ -79,7 +79,7 @@ export default function EmailHeaderTool() {
         </div>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Paste an email&#39;s full headers (in most clients: "Show original" / "View source") to see the delivery path hop by hop with the delay at each server, and the SPF/DKIM/DMARC results the receiving server recorded. It parses the headers in your browser — nothing is uploaded. Note it reads the authentication results already written in the headers; it does not perform live DNS lookups, so it can&#39;t re-verify SPF/DKIM/DMARC itself. 🔒 100% client-side.</p>
+      <p class="mt-4 text-xs text-slate-500">Paste an email&#39;s full headers (in most clients: "Show original" / "View source") to see the delivery path hop by hop with the delay at each server, and the SPF/DKIM/DMARC results the receiving server recorded. It parses the headers in your browser, nothing is uploaded. Note it reads the authentication results already written in the headers; it does not perform live DNS lookups, so it can&#39;t re-verify SPF/DKIM/DMARC itself. 🔒 100% client-side.</p>
     </div>
   );
 }

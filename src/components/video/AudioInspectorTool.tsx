@@ -32,7 +32,7 @@ export default function AudioInspectorTool() {
         <input type="file" class="hidden" accept=".wav,.aif,.aiff,.aifc,audio/wav,audio/aiff,audio/x-aiff" onChange={(e) => onFile((e.target as HTMLInputElement).files?.[0] ?? null)} />
         <span class="block text-2xl">🎧</span>
         <span class="mt-1 block text-sm font-semibold text-slate-700">{file ? `📄 ${file.name}` : 'Choose a .wav / .aiff file'}</span>
-        <span class="mt-1 block text-xs text-slate-500">{busy ? 'Reading…' : 'Read locally — the file is never uploaded'}</span>
+        <span class="mt-1 block text-xs text-slate-500">{busy ? 'Reading…' : 'Read locally, the file is never uploaded'}</span>
       </label>
 
       {error && <p class="mt-4 rounded-lg bg-rose-50 px-3 py-2 text-sm text-rose-700 ring-1 ring-rose-200">⚠️ {error}</p>}
@@ -86,7 +86,7 @@ export default function AudioInspectorTool() {
         </div>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Drop a WAV (.wav) or AIFF (.aif/.aiff) file to read its sample rate, bit depth, channel count, codec and exact duration straight from the header chunks — no re-encoding. It parses the RIFF/AIFF structure in your browser, so the audio is never uploaded. It reads the header only, not the samples, so it works instantly even on large files. 🔒 100% client-side.</p>
+      <p class="mt-4 text-xs text-slate-500">Drop a WAV (.wav) or AIFF (.aif/.aiff) file to read its sample rate, bit depth, channel count, codec and exact duration straight from the header chunks, no re-encoding. It parses the RIFF/AIFF structure in your browser, so the audio is never uploaded. It reads the header only, not the samples, so it works instantly even on large files. 🔒 100% client-side.</p>
     </div>
   );
 }

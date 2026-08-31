@@ -24,7 +24,7 @@ export default function UuidGenTool() {
     <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
       <div class="flex flex-wrap items-end gap-4">
         <div>
-          <label for="uuid-count" class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">How many (1–1000)</label>
+          <label for="uuid-count" class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">How many (1-1000)</label>
           <input
             id="uuid-count"
             type="number"
@@ -61,7 +61,7 @@ export default function UuidGenTool() {
         spellcheck={false}
         aria-label="Generated UUIDs"
       />
-      <p class="mt-2 text-xs text-slate-500">RFC 4122 version 4, via crypto.randomUUID() — generated locally.</p>
+      <p class="mt-2 text-xs text-slate-500">RFC 4122 version 4, via crypto.randomUUID(), generated locally.</p>
     </div>
   );
 }

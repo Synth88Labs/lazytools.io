@@ -45,7 +45,7 @@ export default function PoolVolumeCalculator() {
       ) : <p class="mt-4 text-sm text-slate-500">Enter the pool dimensions.</p>}
 
       <p class="mt-4 text-xs text-slate-500">
-        Volume uses the average depth — for a pool that slopes from shallow to deep, average the two ends ((shallow + deep) ÷ 2). Knowing the gallons is the basis for dosing chlorine, shock, algaecide and other chemicals correctly. Round pools use the diameter; oval and rectangular use length × width. 🔒 In your browser.
+        Volume uses the average depth, for a pool that slopes from shallow to deep, average the two ends ((shallow + deep) ÷ 2). Knowing the gallons is the basis for dosing chlorine, shock, algaecide and other chemicals correctly. Round pools use the diameter; oval and rectangular use length × width. 🔒 In your browser.
       </p>
     </div>
   );

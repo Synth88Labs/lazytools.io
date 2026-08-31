@@ -87,17 +87,17 @@ export default function BraSizeTool() {
               <div class="mt-2 flex flex-wrap gap-2 text-sm">
                 {sisters.down && (
                   <span class="rounded-full bg-mint-500/10 px-3 py-1.5 font-medium text-mint-700">
-                    ↓ band: {sizeLabel(BANDS.find((b) => b.us === sisters.down!.band)!, sisters.down.cupIndex, system)} — if the band rides up
+                    ↓ band: {sizeLabel(BANDS.find((b) => b.us === sisters.down!.band)!, sisters.down.cupIndex, system)}, if the band rides up
                   </span>
                 )}
                 {sisters.up && (
                   <span class="rounded-full bg-mint-500/10 px-3 py-1.5 font-medium text-mint-700">
-                    ↑ band: {sizeLabel(BANDS.find((b) => b.us === sisters.up!.band)!, sisters.up.cupIndex, system)} — if the band digs in
+                    ↑ band: {sizeLabel(BANDS.find((b) => b.us === sisters.up!.band)!, sisters.up.cupIndex, system)}, if the band digs in
                   </span>
                 )}
               </div>
             </div>
-            <p class="mt-3 text-xs text-slate-500">Your measurements never leave this page — nothing is transmitted or stored.</p>
+            <p class="mt-3 text-xs text-slate-500">Your measurements never leave this page, nothing is transmitted or stored.</p>
           </>
         ) : (
           <p class="py-2 text-sm text-slate-500">Pick a band and cup to convert.</p>

@@ -11,20 +11,20 @@ const crumbs = [
   { name: 'Chemistry & Lab', url: '/chemistry/' },
 ];
 const faqs = [
-  { q: 'Are these chemistry calculators accurate?', a: 'Yes — they use exact, deterministic methods: molar mass sums IUPAC standard atomic weights, and equation balancing solves the reaction’s linear system for exact integer coefficients (no floating point). There are no lookup tables that drift, and the working is shown.' },
-  { q: 'Is my data uploaded?', a: 'No. Every calculation — formula parsing, balancing, molarity, gas law, pH — runs in your browser with JavaScript. Nothing is sent to a server.' },
+  { q: 'Are these chemistry calculators accurate?', a: 'Yes. They use exact, deterministic methods: molar mass sums IUPAC standard atomic weights, and equation balancing solves the reaction’s linear system for exact integer coefficients (no floating point). There are no lookup tables that drift, and the working is shown.' },
+  { q: 'Is my data uploaded?', a: 'No. Every calculation, formula parsing, balancing, molarity, gas law, pH, runs in your browser with JavaScript. Nothing is sent to a server.' },
   { q: 'Why build chemistry tools an AI could answer?', a: 'Because AI chatbots reliably get these wrong: the published record shows them mis-balancing equations, mis-parsing hydrates, and picking the wrong limiting reagent. A deterministic tool gives the exact answer every time, with the steps shown.' },
   { q: 'Do these work for coursework and the lab?', a: 'Both. Molar mass, balancing, molarity, the ideal gas law, specific heat and pH cover the core of secondary and introductory-undergraduate chemistry, and the bench calculations (molarity, dilution) are everyday lab work.' },
 ];
 const schema = [
   breadcrumbSchema(crumbs),
-  collectionPageSchema({ name: 'Chemistry & Lab Calculators', url: '/chemistry/', description: 'Free, private chemistry calculators: molar mass, chemical equation balancer, molarity, ideal gas law, specific heat and pH — exact and in your browser.', items: CHEM_TOOLS.map((t) => ({ name: t.name, url: `/chemistry/${t.slug}/` })) }),
+  collectionPageSchema({ name: 'Chemistry & Lab Calculators', url: '/chemistry/', description: 'Free, private chemistry calculators: molar mass, chemical equation balancer, molarity, ideal gas law, specific heat and pH, exact and in your browser.', items: CHEM_TOOLS.map((t) => ({ name: t.name, url: `/chemistry/${t.slug}/` })) }),
   faqSchema(faqs),
 ];
 ---
 
 <Base
-  title="Chemistry & Lab Calculators — Molar Mass, Equation Balancer, pH | LazyTools"
+  title="Chemistry & Lab Calculators, Molar Mass, Equation Balancer, pH | LazyTools"
   description="Free chemistry calculators that run in your browser: molar mass & percent composition, exact chemical equation balancer, molarity, ideal gas law (PV=nRT), specific heat and pH. Deterministic, private, no upload."
   schema={schema}
 >
@@ -32,7 +32,7 @@ const schema = [
     <Breadcrumbs items={crumbs} />
     <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Chemistry & Lab Calculators</h1>
     <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
-      Exact, deterministic chemistry tools — parse a formula for its molar mass, balance an equation to
+      Exact, deterministic chemistry tools, parse a formula for its molar mass, balance an equation to
       exact integer coefficients, or solve molarity, the gas law, specific heat and pH. Everything is
       computed in your browser, with the working shown, so the answers are byte-exact where a chatbot
       would drift.
@@ -57,7 +57,7 @@ const schema = [
     <section class="prose-lazy mt-10">
       <h2>Chemistry with the working shown</h2>
       <p>From the interactive periodic table to a redox-correct equation balancer, these tools give <strong>exact, deterministic</strong> answers rather than plausible-looking ones. The molar-mass parser handles nested groups and hydrates like CuSO₄·5H₂O; the balancer finds the smallest whole-number coefficients via exact BigInt linear algebra; and molarity, dilution, ideal-gas, pH and thermochemistry tools each print the formula and the arithmetic beneath the result.</p>
-      <p>That transparency is the difference from asking a chatbot: a calculator applies the same formula every time and lets you verify each step. It all runs in your browser, so it's fast, private and works offline — see also <a href="/physics/">Physics</a> and <a href="/biology/">Biology &amp; Lab</a>.</p>
+      <p>That transparency is the difference from asking a chatbot: a calculator applies the same formula every time and lets you verify each step. It all runs in your browser, so it's fast, private and works offline, see also <a href="/physics/">Physics</a> and <a href="/biology/">Biology &amp; Lab</a>.</p>
     </section>
 
     <FaqSection faqs={faqs} />

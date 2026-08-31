@@ -32,7 +32,7 @@ export default function FontInspectorTool() {
         <input type="file" class="hidden" accept=".ttf,.otf,.ttc,font/ttf,font/otf" onChange={(e) => onFile((e.target as HTMLInputElement).files?.[0] ?? null)} />
         <span class="block text-2xl">🔤</span>
         <span class="mt-1 block text-sm font-semibold text-slate-700">{fileName ? `📄 ${fileName}` : 'Choose a .ttf / .otf / .ttc font'}</span>
-        <span class="mt-1 block text-xs text-slate-500">{busy ? 'Reading…' : 'Read locally — the font is never uploaded'}</span>
+        <span class="mt-1 block text-xs text-slate-500">{busy ? 'Reading…' : 'Read locally, the font is never uploaded'}</span>
       </label>
 
       {error && <p class="mt-4 rounded-lg bg-rose-50 px-3 py-2 text-sm text-rose-700 ring-1 ring-rose-200">⚠️ {error}</p>}
@@ -75,7 +75,7 @@ export default function FontInspectorTool() {
         </div>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Drop a TrueType (.ttf) or OpenType (.otf) font to read its embedded metadata — the family and style names, version, designer, licence, glyph count, units-per-em, weight/width class and the embedding permission stored in the font’s OS/2 table. It parses the sfnt <code class="rounded bg-slate-200 px-1">name</code> and <code class="rounded bg-slate-200 px-1">head</code> tables directly in your browser, so the font file is never uploaded. WOFF/WOFF2 web fonts are compressed and aren’t read here — convert them to TTF/OTF first. 🔒 100% client-side.</p>
+      <p class="mt-4 text-xs text-slate-500">Drop a TrueType (.ttf) or OpenType (.otf) font to read its embedded metadata, the family and style names, version, designer, licence, glyph count, units-per-em, weight/width class and the embedding permission stored in the font’s OS/2 table. It parses the sfnt <code class="rounded bg-slate-200 px-1">name</code> and <code class="rounded bg-slate-200 px-1">head</code> tables directly in your browser, so the font file is never uploaded. WOFF/WOFF2 web fonts are compressed and aren’t read here, convert them to TTF/OTF first. 🔒 100% client-side.</p>
     </div>
   );
 }

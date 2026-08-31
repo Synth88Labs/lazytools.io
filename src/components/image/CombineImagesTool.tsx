@@ -146,7 +146,7 @@ export default function CombineImagesTool() {
         a.click();
         document.body.removeChild(a);
         URL.revokeObjectURL(url);
-        setDone(`✓ Downloaded — ${canvas.width}×${canvas.height} (${fmtSize(blob.size)})`);
+        setDone(`✓ Downloaded, ${canvas.width}×${canvas.height} (${fmtSize(blob.size)})`);
       },
       mime,
       format === 'jpeg' ? 0.92 : undefined,
@@ -185,7 +185,7 @@ export default function CombineImagesTool() {
             class="block w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm file:mr-3 file:rounded-lg file:border-0 file:bg-brand-700 file:px-3 file:py-1.5 file:text-white hover:file:bg-brand-800"
           />
           <p class="mt-1.5 text-xs text-slate-500">
-            Everything runs in your browser — no upload. Order = the order shown below. Add more to append.
+            Everything runs in your browser, no upload. Order = the order shown below. Add more to append.
           </p>
         </div>
 
@@ -309,7 +309,7 @@ export default function CombineImagesTool() {
             <span class="mb-1.5 block text-sm font-medium text-slate-700">
               Preview {outDims.w > 0 && (
                 <span class="font-normal text-slate-500">
-                  — {outDims.w}×{outDims.h}
+                 , {outDims.w}×{outDims.h}
                 </span>
               )}
             </span>

@@ -92,7 +92,7 @@ export default function AnnotateImageTool() {
         <label class="block cursor-pointer rounded-xl border-2 border-dashed border-slate-300 bg-white p-6 text-center transition hover:border-brand-400">
           <input type="file" accept="image/*" onChange={onFile} class="sr-only" />
           <span class="text-sm font-semibold text-brand-700">Choose a screenshot or image to annotate</span>
-          <span class="mt-1 block text-xs text-slate-500">Edited on your device — never uploaded</span>
+          <span class="mt-1 block text-xs text-slate-500">Edited on your device, never uploaded</span>
         </label>
       )}
 
@@ -114,7 +114,7 @@ export default function AnnotateImageTool() {
       )}
 
       <p class="mt-4 rounded-lg bg-white px-3 py-2 text-xs text-slate-500 ring-1 ring-slate-200">
-        Mark up screenshots and photos with arrows, boxes, freehand pen and text, then export a PNG — perfect for bug reports, how-to guides and feedback. Everything is drawn on a canvas in your browser, so internal screenshots never leave your device. 🔒
+        Mark up screenshots and photos with arrows, boxes, freehand pen and text, then export a PNG, perfect for bug reports, how-to guides and feedback. Everything is drawn on a canvas in your browser, so internal screenshots never leave your device. 🔒
       </p>
     </div>
   );

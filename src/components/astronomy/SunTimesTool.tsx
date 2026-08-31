@@ -65,7 +65,7 @@ export default function SunTimesTool() {
       ) : (
         <p class="mt-4 text-sm text-slate-500">Enter a date, latitude, longitude and UTC offset.</p>
       )}
-      {r && (r.sunriseMin == null) && <p class="mt-2 text-center text-sm text-amber-600">Polar day or night — the sun doesn't rise or set at this latitude on this date.</p>}
+      {r && (r.sunriseMin == null) && <p class="mt-2 text-center text-sm text-amber-600">Polar day or night, the sun doesn't rise or set at this latitude on this date.</p>}
 
       <p class="mt-4 text-xs text-slate-500">Times are local clock time, from the NOAA solar-position algorithm (using a 90.833° zenith to account for refraction and the sun's radius). Longitude is positive for east. Set the UTC offset for the date (remember daylight saving). Accurate to about a minute. 🔒 In your browser.</p>
     </div>

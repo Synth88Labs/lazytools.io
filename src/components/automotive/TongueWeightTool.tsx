@@ -19,9 +19,9 @@ export default function TongueWeightTool() {
 
   const badge = res?.verdict === 'ok' ? 'text-emerald-700 bg-emerald-50 ring-emerald-200'
     : 'text-amber-800 bg-amber-50 ring-amber-200';
-  const verdictText = res?.verdict === 'low' ? 'Too light — risk of trailer sway'
-    : res?.verdict === 'high' ? 'Too heavy — overloads the hitch & lightens steering'
-    : 'In the safe 10–15% range';
+  const verdictText = res?.verdict === 'low' ? 'Too light, risk of trailer sway'
+    : res?.verdict === 'high' ? 'Too heavy, overloads the hitch & lightens steering'
+    : 'In the safe 10-15% range';
 
   return (
     <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
@@ -37,14 +37,14 @@ export default function TongueWeightTool() {
         <div class="mt-4 space-y-3">
           <div class="grid gap-3 sm:grid-cols-2">
             <div class="rounded-xl bg-white p-4 text-center ring-2 ring-brand-200"><p class="font-mono text-3xl font-extrabold text-brand-800">{fmt(res.pct, 1)}%</p><p class="mt-1 text-xs font-semibold uppercase tracking-wide text-slate-500">Tongue weight percentage</p></div>
-            <div class="rounded-xl bg-white p-4 text-center ring-1 ring-slate-200"><p class="font-mono text-2xl font-extrabold text-slate-800">{fmt(res.lo)}–{fmt(res.hi)} {unit}</p><p class="mt-1 text-xs font-semibold uppercase tracking-wide text-slate-500">Recommended range (10–15%)</p></div>
+            <div class="rounded-xl bg-white p-4 text-center ring-1 ring-slate-200"><p class="font-mono text-2xl font-extrabold text-slate-800">{fmt(res.lo)}–{fmt(res.hi)} {unit}</p><p class="mt-1 text-xs font-semibold uppercase tracking-wide text-slate-500">Recommended range (10-15%)</p></div>
           </div>
           <div class={`rounded-xl px-4 py-3 text-center text-sm font-bold ring-1 ${badge}`}>{verdictText}</div>
         </div>
       ) : <p class="mt-4 text-sm text-slate-500">Enter the loaded trailer weight and the measured tongue weight.</p>}
 
       <p class="mt-4 text-xs text-slate-500">
-        Tongue weight is the downward force the trailer coupler puts on the hitch ball. For a conventional trailer it should be <strong>10–15%</strong> of the loaded trailer weight: too little invites dangerous sway, too much overloads the hitch and lightens the tow vehicle's steering. Adjust by moving cargo forward (more tongue weight) or back (less). Always stay within your hitch and vehicle ratings. 🔒 In your browser.
+        Tongue weight is the downward force the trailer coupler puts on the hitch ball. For a conventional trailer it should be <strong>10-15%</strong> of the loaded trailer weight: too little invites dangerous sway, too much overloads the hitch and lightens the tow vehicle's steering. Adjust by moving cargo forward (more tongue weight) or back (less). Always stay within your hitch and vehicle ratings. 🔒 In your browser.
       </p>
     </div>
   );

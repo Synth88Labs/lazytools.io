@@ -50,7 +50,7 @@ export default function ElementComparisonTool() {
             {suggestions.length > 0 && (
               <div class="absolute z-10 mt-1 w-48 overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-slate-200">
                 {suggestions.map((e) => (
-                  <button onClick={() => add(e.z)} class="block w-full px-3 py-1.5 text-left text-sm text-slate-700 hover:bg-brand-50">{e.symbol} — {e.name}</button>
+                  <button onClick={() => add(e.z)} class="block w-full px-3 py-1.5 text-left text-sm text-slate-700 hover:bg-brand-50">{e.symbol}, {e.name}</button>
                 ))}
               </div>
             )}

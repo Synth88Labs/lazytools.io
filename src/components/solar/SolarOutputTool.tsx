@@ -46,7 +46,7 @@ export default function SolarOutputTool() {
         <p class="mt-4 text-sm text-slate-500">Enter the panel wattage, count, peak sun hours and system efficiency.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Daily kWh = total watts × peak sun hours × system efficiency ÷ 1000. Peak sun hours are the equivalent hours of full (1 kW/m²) sun for your location — roughly 3–4 in cloudy northern regions and 5–6+ in sunny climates, and lower in winter; look yours up from a solar-irradiance map (e.g. NREL). System efficiency of ~75–85% accounts for inverter, wiring, heat, dust and mismatch losses. An estimate — real output varies with weather, shading and panel age. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Daily kWh = total watts × peak sun hours × system efficiency ÷ 1000. Peak sun hours are the equivalent hours of full (1 kW/m²) sun for your location, roughly 3-4 in cloudy northern regions and 5-6+ in sunny climates, and lower in winter; look yours up from a solar-irradiance map (e.g. NREL). System efficiency of ~75-85% accounts for inverter, wiring, heat, dust and mismatch losses. An estimate, real output varies with weather, shading and panel age. 🔒 In your browser.</p>
     </div>
   );
 }

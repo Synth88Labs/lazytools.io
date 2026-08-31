@@ -43,7 +43,7 @@ export default function FlightTimeTool() {
         <p class="mt-4 text-sm text-slate-500">Enter a distance and cruise speed.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">A rough estimate: cruise time is distance ÷ speed, plus about 30 minutes for taxi, climb, descent and approach. A typical jetliner cruises near 830 km/h (≈515 mph), but real ground speed swings ±100 km/h or more with head- and tail-winds — which is why the same route differs by direction. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">A rough estimate: cruise time is distance ÷ speed, plus about 30 minutes for taxi, climb, descent and approach. A typical jetliner cruises near 830 km/h (≈515 mph), but real ground speed swings ±100 km/h or more with head- and tail-winds, which is why the same route differs by direction. 🔒 In your browser.</p>
     </div>
   );
 }

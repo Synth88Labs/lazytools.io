@@ -51,7 +51,7 @@ export default function FilamentTool() {
         <p class="mt-4 text-sm text-slate-500">Enter a {mode === 'weight' ? 'weight' : 'length'}, material and diameter.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Filament is a cylinder, so weight = length × cross-section area (π·(d/2)²) × density. A 1 kg PLA (1.24 g/cm³) 1.75 mm spool is about 335 m. Densities vary a little by brand — check your spool's datasheet for precision. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Filament is a cylinder, so weight = length × cross-section area (π·(d/2)²) × density. A 1 kg PLA (1.24 g/cm³) 1.75 mm spool is about 335 m. Densities vary a little by brand, check your spool's datasheet for precision. 🔒 In your browser.</p>
     </div>
   );
 }

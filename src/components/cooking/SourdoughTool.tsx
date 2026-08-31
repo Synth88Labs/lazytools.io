@@ -40,7 +40,7 @@ export default function SourdoughTool() {
       ) : <p class="mt-4 text-sm text-slate-500">Enter how much starter you\'re keeping and your feed ratio.</p>}
 
       <p class="mt-4 text-xs text-slate-500">
-        A feed ratio of 1:2:2 means for every 1 g of starter you keep, add 2 g flour and 2 g water — a common maintenance feed. Higher ratios (1:5:5, 1:10:10) dilute the starter more, so it takes longer to peak but can go longer between feeds; lower ratios peak faster. Discard the rest before feeding, or use it in discard recipes. 🔒 In your browser.
+        A feed ratio of 1:2:2 means for every 1 g of starter you keep, add 2 g flour and 2 g water, a common maintenance feed. Higher ratios (1:5:5, 1:10:10) dilute the starter more, so it takes longer to peak but can go longer between feeds; lower ratios peak faster. Discard the rest before feeding, or use it in discard recipes. 🔒 In your browser.
       </p>
     </div>
   );

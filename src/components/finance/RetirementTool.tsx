@@ -52,7 +52,7 @@ export default function RetirementTool() {
         <p class="mt-4 text-sm text-slate-500">Enter your age, savings and contributions.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Projects savings and monthly contributions (plus employer match) forward at a constant assumed return — real returns vary, so treat it as an illustration. &ldquo;Your number&rdquo; uses the 4% safe-withdrawal rule (Bengen / Trinity study): annual expenses ÷ withdrawal rate, i.e. about 25× your yearly spending. It ignores inflation, tax and Social Security/pensions. Educational information, not financial advice. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Projects savings and monthly contributions (plus employer match) forward at a constant assumed return, real returns vary, so treat it as an illustration. &ldquo;Your number&rdquo; uses the 4% safe-withdrawal rule (Bengen / Trinity study): annual expenses ÷ withdrawal rate, i.e. about 25× your yearly spending. It ignores inflation, tax and Social Security/pensions. Educational information, not financial advice. 🔒 In your browser.</p>
     </div>
   );
 }

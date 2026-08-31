@@ -24,7 +24,7 @@ export default function LeapYearTool() {
           <p class={`text-2xl font-extrabold ${greg ? 'text-mint-700' : 'text-slate-900'}`}>
             {greg ? `✓ ${y} is a leap year` : `✗ ${y} is not a leap year`}
           </p>
-          <p class="mt-1 text-sm text-slate-600">{greg ? '366 days — February has 29.' : '365 days — February has 28.'}</p>
+          <p class="mt-1 text-sm text-slate-600">{greg ? '366 days, February has 29.' : '365 days, February has 28.'}</p>
           <p class="mt-3 rounded-lg bg-slate-50 px-3 py-2 text-sm text-slate-700">{gregorianLeapReason(y)}</p>
           <div class="mt-3 grid gap-2 text-sm sm:grid-cols-3">
             <div class="rounded-lg bg-slate-50 px-3 py-2"><span class="block text-xs font-semibold uppercase text-slate-500">Previous leap year</span><span class="font-mono font-bold text-slate-900">{prev}</span></div>
@@ -33,7 +33,7 @@ export default function LeapYearTool() {
           </div>
           {y % 100 === 0 && (
             <p class="mt-3 text-xs text-slate-500">
-              Century year: under the Gregorian rule it's a leap year only if divisible by 400 — the correction the old Julian calendar lacked, which is why the two disagree on years like 1700, 1800 and 1900.
+              Century year: under the Gregorian rule it's a leap year only if divisible by 400, the correction the old Julian calendar lacked, which is why the two disagree on years like 1700, 1800 and 1900.
             </p>
           )}
         </div>

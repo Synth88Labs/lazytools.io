@@ -6,9 +6,9 @@ const num = (s: string) => { const n = parseFloat(s); return isFinite(n) && n >=
 const fmt = (x: number) => Number(x.toFixed(1));
 
 function band(back: number) {
-  if (back <= 36) return { label: 'Healthy — within the 36% guideline', color: 'text-emerald-700' };
-  if (back <= 43) return { label: 'Caution — above 36%, but under the 43% qualified-mortgage limit', color: 'text-amber-700' };
-  return { label: 'High — above 43%, many lenders will decline', color: 'text-rose-700' };
+  if (back <= 36) return { label: 'Healthy, within the 36% guideline', color: 'text-emerald-700' };
+  if (back <= 43) return { label: 'Caution, above 36%, but under the 43% qualified-mortgage limit', color: 'text-amber-700' };
+  return { label: 'High, above 43%, many lenders will decline', color: 'text-rose-700' };
 }
 
 export default function DebtToIncomeTool() {

@@ -1,5 +1,5 @@
 /**
- * Periodic table dataset — 118 elements with standard, well-established properties.
+ * Periodic table dataset, 118 elements with standard, well-established properties.
  * Sources: IUPAC standard atomic weights; PubChem / CRC Handbook for physical
  * properties; electron configurations from standard references. Values that are
  * not reliably established (esp. superheavy synthetic elements) are null.
@@ -156,7 +156,7 @@ export const CATEGORY_COLORS: Record<Category, { bg: string; text: string; label
   'unknown': { bg: '#e2e8f0', text: '#334155', label: 'Unknown properties' },
 };
 
-/** Grid position (column 1–18, row 1–10) for the standard 18-column layout. */
+/** Grid position (column 1-18, row 1-10) for the standard 18-column layout. */
 export function gridPos(e: Element): { col: number; row: number } {
   if (e.z >= 57 && e.z <= 71) return { col: e.z - 57 + 3, row: 9 }; // lanthanides
   if (e.z >= 89 && e.z <= 103) return { col: e.z - 89 + 3, row: 10 }; // actinides

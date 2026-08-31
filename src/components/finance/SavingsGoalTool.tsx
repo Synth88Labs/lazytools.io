@@ -43,7 +43,7 @@ export default function SavingsGoalTool() {
       {r ? (
         r.pmt <= 0 ? (
           <div class="mt-4 rounded-xl bg-emerald-50 p-4 text-center ring-2 ring-emerald-200">
-            <p class="font-bold text-emerald-800">You’re already on track — your current savings alone will reach the goal.</p>
+            <p class="font-bold text-emerald-800">You’re already on track, your current savings alone will reach the goal.</p>
           </div>
         ) : (
           <div class="mt-4 grid gap-3 sm:grid-cols-3">

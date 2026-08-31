@@ -64,7 +64,7 @@ export default function ExposureTool() {
         <p class="mt-4 text-sm text-slate-500">Enter the aperture, shutter and ISO.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Exposure value EV = log₂(N²⁄t) at ISO 100 (N = f-number, t = shutter seconds); higher ISO lowers the scene EV needed. Each "stop" doubles or halves the light. The table lists equivalent aperture/shutter pairs that give the same exposure — trade depth of field against motion blur. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Exposure value EV = log₂(N²⁄t) at ISO 100 (N = f-number, t = shutter seconds); higher ISO lowers the scene EV needed. Each "stop" doubles or halves the light. The table lists equivalent aperture/shutter pairs that give the same exposure, trade depth of field against motion blur. 🔒 In your browser.</p>
     </div>
   );
 }

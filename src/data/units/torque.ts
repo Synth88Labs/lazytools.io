@@ -8,14 +8,14 @@ export const torque: Quantity = {
   baseUnit: 'nm',
   icon: '🔧',
   description:
-    'Convert torque units — newton-metres, kilonewton-metres, pound-feet, pound-inches, kilogram-force metres and ounce-inches. 1 lbf·ft ≈ 1.3558 N·m.',
+    'Convert torque units, newton-metres, kilonewton-metres, pound-feet, pound-inches, kilogram-force metres and ounce-inches. 1 lbf·ft ≈ 1.3558 N·m.',
   units: [
-    { id: 'nm', name: 'Newton-metre', plural: 'newton-metres', symbol: 'N·m', slug: 'nm', factor: 1, system: 'si', definition: 'The SI unit of torque — one newton of force at one metre from the axis. Engine and fastener torque is specified in N·m across most of the world.' },
-    { id: 'knm', name: 'Kilonewton-metre', plural: 'kilonewton-metres', symbol: 'kN·m', slug: 'knm', factor: 1e3, system: 'si', definition: 'A kilonewton-metre is 1,000 N·m — used for large machinery, structural connections and heavy industrial torque.' },
-    { id: 'lbf-ft', name: 'Pound-foot', plural: 'pound-feet', symbol: 'lbf·ft', slug: 'lbf-ft', factor: 0.45359237 * 9.80665 * 0.3048, system: 'us', definition: 'A pound-foot is the torque of one pound-force at one foot — the US car-spec unit (often written "ft-lb"). One lbf·ft is about 1.3558 N·m.' },
-    { id: 'lbf-in', name: 'Pound-inch', plural: 'pound-inches', symbol: 'lbf·in', slug: 'lbf-in', factor: (0.45359237 * 9.80665 * 0.3048) / 12, system: 'us', definition: 'A pound-inch is one-twelfth of a pound-foot (about 0.113 N·m) — used for small fasteners and precision assemblies.' },
-    { id: 'kgf-m', name: 'Kilogram-force metre', plural: 'kilogram-force metres', symbol: 'kgf·m', slug: 'kgf-m', factor: 9.80665, system: 'metric', definition: 'A kilogram-force metre is the torque of one kilogram-force at one metre — 9.80665 N·m exactly. Older European and Japanese specs use it.' },
-    { id: 'ozf-in', name: 'Ounce-inch', plural: 'ounce-inches', symbol: 'ozf·in', slug: 'ozf-in', factor: (0.45359237 * 9.80665 * 0.3048) / 12 / 16, system: 'us', definition: 'An ounce-inch is one-sixteenth of a pound-inch (about 0.00706 N·m) — the unit for small electric-motor and hobby-servo torque.' },
+    { id: 'nm', name: 'Newton-metre', plural: 'newton-metres', symbol: 'N·m', slug: 'nm', factor: 1, system: 'si', definition: 'The SI unit of torque, one newton of force at one metre from the axis. Engine and fastener torque is specified in N·m across most of the world.' },
+    { id: 'knm', name: 'Kilonewton-metre', plural: 'kilonewton-metres', symbol: 'kN·m', slug: 'knm', factor: 1e3, system: 'si', definition: 'A kilonewton-metre is 1,000 N·m, used for large machinery, structural connections and heavy industrial torque.' },
+    { id: 'lbf-ft', name: 'Pound-foot', plural: 'pound-feet', symbol: 'lbf·ft', slug: 'lbf-ft', factor: 0.45359237 * 9.80665 * 0.3048, system: 'us', definition: 'A pound-foot is the torque of one pound-force at one foot, the US car-spec unit (often written "ft-lb"). One lbf·ft is about 1.3558 N·m.' },
+    { id: 'lbf-in', name: 'Pound-inch', plural: 'pound-inches', symbol: 'lbf·in', slug: 'lbf-in', factor: (0.45359237 * 9.80665 * 0.3048) / 12, system: 'us', definition: 'A pound-inch is one-twelfth of a pound-foot (about 0.113 N·m), used for small fasteners and precision assemblies.' },
+    { id: 'kgf-m', name: 'Kilogram-force metre', plural: 'kilogram-force metres', symbol: 'kgf·m', slug: 'kgf-m', factor: 9.80665, system: 'metric', definition: 'A kilogram-force metre is the torque of one kilogram-force at one metre, 9.80665 N·m exactly. Older European and Japanese specs use it.' },
+    { id: 'ozf-in', name: 'Ounce-inch', plural: 'ounce-inches', symbol: 'ozf·in', slug: 'ozf-in', factor: (0.45359237 * 9.80665 * 0.3048) / 12 / 16, system: 'us', definition: 'An ounce-inch is one-sixteenth of a pound-inch (about 0.00706 N·m), the unit for small electric-motor and hobby-servo torque.' },
   ],
   popularPairs: [
     ['nm', 'lbf-ft'], ['lbf-ft', 'nm'],

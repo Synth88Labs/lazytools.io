@@ -41,7 +41,7 @@ export default function FileHashTool() {
       <label class="block cursor-pointer rounded-xl border-2 border-dashed border-slate-300 bg-white p-6 text-center transition hover:border-brand-400">
         <input type="file" onChange={onFile} class="sr-only" />
         <span class="text-sm font-semibold text-brand-700">Choose a file to hash</span>
-        <span class="mt-1 block text-xs text-slate-500">Any file type — it never leaves your browser</span>
+        <span class="mt-1 block text-xs text-slate-500">Any file type. It never leaves your browser</span>
       </label>
 
       {busy && <p class="mt-3 text-sm font-medium text-slate-600">Hashing…</p>}
@@ -75,7 +75,7 @@ export default function FileHashTool() {
           />
           {cleaned && (
             <p class={`mt-2 text-sm font-bold ${match ? 'text-mint-700' : 'text-red-700'}`} aria-live="polite">
-              {match ? `✓ Match — identical ${match.algo} checksum; the file is intact.` : '✗ No match against any computed hash — re-download and check you\'re comparing the right file/version.'}
+              {match ? `✓ Match, identical ${match.algo} checksum; the file is intact.` : '✗ No match against any computed hash, re-download and check you\'re comparing the right file/version.'}
             </p>
           )}
         </>

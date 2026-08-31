@@ -89,7 +89,7 @@ export default function MortgageCalc() {
 
           {calc.ex > 0 && calc.monthsActual < calc.nTotal && (
             <p class="mt-3 rounded-lg bg-emerald-50 px-3 py-2 text-sm text-emerald-800">
-              💡 The extra {money0(calc.ex)}/month pays the loan off in {Math.floor(calc.monthsActual / 12)} yr {calc.monthsActual % 12} mo — <strong>{calc.nTotal - calc.monthsActual} months early</strong>.
+              💡 The extra {money0(calc.ex)}/month pays the loan off in {Math.floor(calc.monthsActual / 12)} yr {calc.monthsActual % 12} mo, <strong>{calc.nTotal - calc.monthsActual} months early</strong>.
             </p>
           )}
 
@@ -126,7 +126,7 @@ export default function MortgageCalc() {
             </table>
           </div>
           <p class="mt-2 text-xs text-slate-500">
-            Notice payment #1 is mostly the red interest column and payment #{calc.monthsActual} is almost all green principal — that shift is the whole story of a mortgage. Principal &amp; interest only; taxes and insurance are separate. Computed locally; your figures never leave the browser.
+            Notice payment #1 is mostly the red interest column and payment #{calc.monthsActual} is almost all green principal, that shift is the whole story of a mortgage. Principal &amp; interest only; taxes and insurance are separate. Computed locally; your figures never leave the browser.
           </p>
         </>
       )}

@@ -9,8 +9,8 @@ interface Blank {
 
 // Characters that render as nothing (or empty width) yet are "real" text.
 const BLANKS: Blank[] = [
-  { id: 'hangul', name: 'Hangul filler', cp: 0x3164, note: 'Best all-round "blank" — accepted by most games and chat apps.' },
-  { id: 'braille', name: 'Braille blank', cp: 0x2800, note: 'Empty braille cell — visible-width but invisible mark.' },
+  { id: 'hangul', name: 'Hangul filler', cp: 0x3164, note: 'Best all-round "blank", accepted by most games and chat apps.' },
+  { id: 'braille', name: 'Braille blank', cp: 0x2800, note: 'Empty braille cell, visible-width but invisible mark.' },
   { id: 'zwsp', name: 'Zero-width space', cp: 0x200b, note: 'No width at all; some apps collapse or strip it.' },
   { id: 'nbsp', name: 'No-break space', cp: 0x00a0, note: 'A space that most systems keep instead of trimming.' },
   { id: 'ensp', name: 'Em / en space', cp: 0x2003, note: 'A wider blank space that survives trimming in many fields.' },
@@ -35,7 +35,7 @@ export default function BlankNameTool() {
   return (
     <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
       <p class="text-sm text-slate-600">
-        Copy an invisible character to use as a <strong>blank username, bio or message</strong> — in Free Fire, WhatsApp, Discord and more.
+        Copy an invisible character to use as a <strong>blank username, bio or message</strong>, in Free Fire, WhatsApp, Discord and more.
       </p>
 
       <fieldset class="mt-4">
@@ -61,7 +61,7 @@ export default function BlankNameTool() {
 
       <div class="mt-4 flex items-center gap-3 rounded-xl border border-dashed border-slate-300 bg-white p-4">
         <span class="flex-1 select-all font-mono text-sm text-slate-400">
-          [{out.length} invisible character{out.length === 1 ? '' : 's'} — nothing shows here]
+          [{out.length} invisible character{out.length === 1 ? '' : 's'}, nothing shows here]
         </span>
         <button
           type="button"
@@ -73,7 +73,7 @@ export default function BlankNameTool() {
       </div>
 
       <p class="mt-4 text-xs text-slate-500">
-        Some apps trim or reject blank names, and rules change often — if one character type is rejected, try another (Hangul filler works most widely). 🔒 Runs in your browser.
+        Some apps trim or reject blank names, and rules change often, if one character type is rejected, try another (Hangul filler works most widely). 🔒 Runs in your browser.
       </p>
     </div>
   );

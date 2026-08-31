@@ -45,7 +45,7 @@ export default function TapTempoTool() {
         )}
       </div>
 
-      <p class="mt-4 text-xs text-slate-500">Tap the button (or press Space) in time with the music — the BPM is the average of your last few taps. Pause over 2 seconds and it resets. The more evenly you tap, the more stable the reading. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Tap the button (or press Space) in time with the music, the BPM is the average of your last few taps. Pause over 2 seconds and it resets. The more evenly you tap, the more stable the reading. 🔒 In your browser.</p>
     </div>
   );
 }

@@ -48,7 +48,7 @@ export default function NdFilterTool() {
         <p class="mt-4 text-sm text-slate-500">Pick a base shutter and ND strength.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">A neutral-density filter cuts light so you can use a longer shutter for motion blur (silky water, cloud streaks) in daylight. Each stop doubles the exposure time, so new time = metered time × 2^stops — a 10-stop ND (ND1000) turns 1/60 s into about 17 seconds. Beyond ~30 s you\'ll need bulb mode and a remote. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">A neutral-density filter cuts light so you can use a longer shutter for motion blur (silky water, cloud streaks) in daylight. Each stop doubles the exposure time, so new time = metered time × 2^stops, a 10-stop ND (ND1000) turns 1/60 s into about 17 seconds. Beyond ~30 s you\'ll need bulb mode and a remote. 🔒 In your browser.</p>
     </div>
   );
 }

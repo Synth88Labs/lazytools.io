@@ -88,7 +88,7 @@ export default function DivisibilityTool() {
           <div class="mt-4 flex flex-wrap items-center gap-3">
             <div class="rounded-xl bg-white px-4 py-2.5 ring-1 ring-slate-200">
               <span class="text-xs font-semibold uppercase tracking-wide text-slate-500">Divisible by: </span>
-              <span class="font-mono text-lg font-extrabold text-brand-700">{out.results.filter((r) => r.divisible).map((r) => r.d).join(', ') || 'none of 2–13'}</span>
+              <span class="font-mono text-lg font-extrabold text-brand-700">{out.results.filter((r) => r.divisible).map((r) => r.d).join(', ') || 'none of 2-13'}</span>
             </div>
             <div class="rounded-xl bg-white px-4 py-2.5 ring-1 ring-slate-200">
               <span class="text-xs font-semibold uppercase tracking-wide text-slate-500">Digital root: </span>
@@ -117,7 +117,7 @@ export default function DivisibilityTool() {
         </>
       )}
       <p class="mt-4 text-xs text-slate-500">
-        Each verdict is exact BigInt arithmetic — the "working" column shows the classroom rule applied so you can do it by hand next time. The digital root (repeated digit sum) is what the 3 and 9 rules are really computing. Runs locally.
+        Each verdict is exact BigInt arithmetic, the "working" column shows the classroom rule applied so you can do it by hand next time. The digital root (repeated digit sum) is what the 3 and 9 rules are really computing. Runs locally.
       </p>
     </div>
   );

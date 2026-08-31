@@ -1,7 +1,7 @@
 ---
-title: "How to Edit a PDF Without Uploading It (Sign, Organize, Convert — Privately)"
-seoTitle: 'Edit a PDF Without Uploading It — Privately'
-description: 'Edit a PDF without uploading it — sign, merge, split, reorder and extract text entirely in your browser, so the file never leaves your device.'
+title: "How to Edit a PDF Without Uploading It (Sign, Organize, Convert, Privately)"
+seoTitle: 'Edit a PDF Without Uploading It, Privately'
+description: 'Edit a PDF without uploading it, sign, merge, split, reorder and extract text entirely in your browser, so the file never leaves your device.'
 pubDate: 2026-07-27
 updatedDate: 2026-07-27
 archetype: explainer
@@ -29,14 +29,14 @@ faqs:
 draft: false
 ---
 
-**You can sign, merge, split, reorder, number and extract text from a PDF entirely in your browser — with the file never leaving your device.** Most "free online PDF editor" sites work by uploading your document to their servers to process it, which means a copy of your contract, bank statement or ID ends up on someone else's computer. A browser-based editor does the same edits locally using the same PDF engines your browser already ships with, so nothing is uploaded.
+**You can sign, merge, split, reorder, number and extract text from a PDF entirely in your browser, with the file never leaving your device.** Most "free online PDF editor" sites work by uploading your document to their servers to process it, which means a copy of your contract, bank statement or ID ends up on someone else's computer. A browser-based editor does the same edits locally using the same PDF engines your browser already ships with, so nothing is uploaded.
 
 <aside class="key-takeaways">
 
 **Key takeaways**
 
 - **Server-based** PDF tools upload your file; **browser-based** tools keep it on your device.
-- Modern browsers can do the common edits locally via **pdf-lib** and **pdf.js** — no server needed.
+- Modern browsers can do the common edits locally via **pdf-lib** and **pdf.js**, no server needed.
 - This matters most for **sensitive documents**: contracts, statements, IDs, medical and legal files.
 - Local editing also works **offline** and has no file-size upload limits or queues.
 - The quick test: if a tool makes you wait while it "uploads" and "processes", your file left your device.
@@ -44,7 +44,7 @@ draft: false
 </aside>
 
 <figure>
-<img src="/blog/infographic-edit-pdf-private.svg" alt="Server-based PDF tools: you upload, their server edits, you download — a copy now lives on their computer. Browser-based tools: you open, your browser edits locally, you save — the file never leaves your device." width="1200" height="700" loading="lazy" />
+<img src="/blog/infographic-edit-pdf-private.svg" alt="Server-based PDF tools: you upload, their server edits, you download, a copy now lives on their computer. Browser-based tools: you open, your browser edits locally, you save, the file never leaves your device." width="1200" height="700" loading="lazy" />
 <figcaption>Same edits, two very different privacy outcomes. For anything confidential, keep it local.</figcaption>
 </figure>
 
@@ -54,11 +54,11 @@ PDFs are the format we reach for exactly when a document is important: signed ag
 
 - A copy is transmitted to and stored on their servers, at least temporarily.
 - It may be logged, cached, backed up, or retained longer than you'd expect.
-- You're trusting an unknown third party — and their security — with a private document.
+- You're trusting an unknown third party, and their security, with a private document.
 
 Editing in the browser sidesteps all of that. The file is read into your browser's memory, changed there, and saved back out. It never touches a server, so there's no copy to leak, and it works even with your network disconnected.
 
-## The common PDF edits — done locally
+## The common PDF edits, done locally
 
 Everything below runs entirely in your browser:
 
@@ -69,11 +69,11 @@ Everything below runs entirely in your browser:
 | **Extract the text** | [PDF to Text](/pdf/pdf-to-text/) | Pull the words out to copy or save |
 | **Fit more per sheet** | [PDF N-Up](/pdf/pdf-n-up/) | 2 or 4 pages per page to save paper |
 
-Merging, splitting, rotating, adding page numbers and watermarks all work the same way — locally, with no upload.
+Merging, splitting, rotating, adding page numbers and watermarks all work the same way, locally, with no upload.
 
 ### Signing a PDF privately
 
-Signing is the clearest case. A signature goes on a contract or form — precisely the kind of file you shouldn't hand to a stranger's server. A [browser-based signer](/pdf/sign-pdf/) lets you draw your signature (with a mouse, trackpad or finger) and stamp it onto the page, then download the signed PDF, all without an upload. Note this is a visual signature suitable for everyday forms — not a certificate-based cryptographic e-signature, which needs a dedicated service with identity verification.
+Signing is the clearest case. A signature goes on a contract or form, precisely the kind of file you shouldn't hand to a stranger's server. A [browser-based signer](/pdf/sign-pdf/) lets you draw your signature (with a mouse, trackpad or finger) and stamp it onto the page, then download the signed PDF, all without an upload. Note this is a visual signature suitable for everyday forms, not a certificate-based cryptographic e-signature, which needs a dedicated service with identity verification.
 
 ### Reorganizing pages
 
@@ -81,14 +81,14 @@ Need to drop a page, fix the order, or pull a section out? An [organizer](/pdf/o
 
 ### Getting the text out
 
-To reuse a PDF's words, a [text extractor](/pdf/pdf-to-text/) reads the document's text layer locally. (This works on digital PDFs; scanned/image PDFs need OCR — see our guide on [extracting text from a PDF](/blog/extract-text-from-pdf-guide/).)
+To reuse a PDF's words, a [text extractor](/pdf/pdf-to-text/) reads the document's text layer locally. (This works on digital PDFs; scanned/image PDFs need OCR, see our guide on [extracting text from a PDF](/blog/extract-text-from-pdf-guide/).)
 
 ## How browsers do it without a server
 
 Two mature JavaScript libraries make this possible, and they run in the page itself:
 
-- **[pdf.js](https://en.wikipedia.org/wiki/PDF.js)** (from Mozilla) — the same engine Firefox uses to *display* PDFs. It reads and renders pages, so it powers previews, thumbnails and text extraction.
-- **pdf-lib** — creates and modifies PDFs: adding pages, images and text, copying and reordering pages, and saving the result.
+- **[pdf.js](https://en.wikipedia.org/wiki/PDF.js)** (from Mozilla), the same engine Firefox uses to *display* PDFs. It reads and renders pages, so it powers previews, thumbnails and text extraction.
+- **pdf-lib**, creates and modifies PDFs: adding pages, images and text, copying and reordering pages, and saving the result.
 
 Between them, the browser can do the edits that used to require a desktop app or a server. The only things that still genuinely need heavier tooling are OCR of scans and certificate-based digital signatures.
 
@@ -100,7 +100,7 @@ Not every "online" tool is local. The tell-tale signs that your file is being up
 - The tool works on a phone with the page closed, or emails you a link to the result.
 - The site's own privacy policy mentions storing or processing your files on their servers.
 
-A truly local tool does its work the instant you choose the file, with no upload step — and keeps working if you go offline. When in doubt, disconnect from the internet and try it: if it still works, it's local.
+A truly local tool does its work the instant you choose the file, with no upload step, and keeps working if you go offline. When in doubt, disconnect from the internet and try it: if it still works, it's local.
 
 ## FAQ
 
@@ -114,7 +114,7 @@ Only if the signing happens locally. Many online signers upload your document. A
 If it shows an "uploading" or "processing" step before you can download, it's sending your file to a server. A local tool works instantly on file selection and keeps working offline. You can test by disconnecting from the internet.
 
 **Do browser-based PDF editors have file-size limits?**
-They're bounded by your device's memory rather than an upload cap, so they often handle large files that upload-based tools reject — though very large PDFs can be slow to render.
+They're bounded by your device's memory rather than an upload cap, so they often handle large files that upload-based tools reject, though very large PDFs can be slow to render.
 
 **Can I edit a scanned PDF this way?**
 You can reorder, sign and number it, but you can't extract text from a scan without OCR, because a scanned PDF is images with no text layer. OCR is the one common task that still needs extra tooling.

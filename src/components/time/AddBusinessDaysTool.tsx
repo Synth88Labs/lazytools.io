@@ -33,7 +33,7 @@ export default function AddBusinessDaysTool() {
           </>
         ) : <p class="text-sm text-slate-500">Enter a start date and a whole number of business days.</p>}
       </div>
-      <p class="mt-2 text-xs text-slate-500">Counts only Monday–Friday, skipping Saturdays and Sundays; the start day itself isn’t counted. Public holidays aren’t excluded — check your local calendar for those. 🔒 Computed in your browser.</p>
+      <p class="mt-2 text-xs text-slate-500">Counts only Monday, Friday, skipping Saturdays and Sundays; the start day itself isn’t counted. Public holidays aren’t excluded, check your local calendar for those. 🔒 Computed in your browser.</p>
     </div>
   );
 }

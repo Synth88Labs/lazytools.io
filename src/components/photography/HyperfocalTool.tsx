@@ -41,7 +41,7 @@ export default function HyperfocalTool() {
         <p class="mt-4 text-sm text-slate-500">Choose a sensor and enter the focal length and aperture.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Focus at the hyperfocal distance (H = focal²⁄(f-number × CoC) + focal) and everything from half that distance to infinity is acceptably sharp — the classic trick for maximising depth of field in landscapes. A wider lens and smaller aperture bring the hyperfocal distance closer. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Focus at the hyperfocal distance (H = focal²⁄(f-number × CoC) + focal) and everything from half that distance to infinity is acceptably sharp, the classic trick for maximising depth of field in landscapes. A wider lens and smaller aperture bring the hyperfocal distance closer. 🔒 In your browser.</p>
     </div>
   );
 }

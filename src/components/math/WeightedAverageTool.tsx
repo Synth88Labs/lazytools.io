@@ -20,7 +20,7 @@ export default function WeightedAverageTool() {
       .map((r) => ({ v: Rat.parse(r.v || '0'), w: Rat.parse(r.w || '0') }));
     if (parsed.length < 2) throw new Error('Enter at least two value/weight rows.');
     const sumW = parsed.reduce((a, r) => a.add(r.w), new Rat(0n));
-    if (sumW.isZero()) throw new Error('Weights sum to zero — at least one weight must be non-zero.');
+    if (sumW.isZero()) throw new Error('Weights sum to zero, at least one weight must be non-zero.');
     const sumWX = parsed.reduce((a, r) => a.add(r.v.mul(r.w)), new Rat(0n));
     result = { avg: sumWX.div(sumW), sumWX, sumW };
   } catch (e) {
@@ -76,11 +76,11 @@ export default function WeightedAverageTool() {
               <li>Add the weights: Σweight = <span class="font-mono">{result.sumW.toFrac()}</span></li>
               <li>Divide: {result.sumWX.toFrac()} ÷ {result.sumW.toFrac()} = <strong class="font-mono">{result.avg.toFrac()}</strong></li>
             </ol>
-            <p class="mt-2 text-xs text-slate-500">Weights don't need to sum to 100 — the division normalizes them. Grade example: 92 at 20%, 78 at 30%, 85 at 50% → the exact course grade.</p>
+            <p class="mt-2 text-xs text-slate-500">Weights don't need to sum to 100, the division normalizes them. Grade example: 92 at 20%, 78 at 30%, 85 at 50% → the exact course grade.</p>
           </div>
         </>
       )}
-      <p class="mt-4 text-xs text-slate-500">Exact rational arithmetic — no float drift when your weights are thirds. Runs locally.</p>
+      <p class="mt-4 text-xs text-slate-500">Exact rational arithmetic, no float drift when your weights are thirds. Runs locally.</p>
     </div>
   );
 }

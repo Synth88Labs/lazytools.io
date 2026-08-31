@@ -99,7 +99,7 @@ export default function PValueTool() {
           <p class="mt-1 text-3xl font-extrabold text-brand-800">{fmtP(r.p)}</p>
           {r.sig !== null && (
             <p class={`mt-2 inline-block rounded-full px-3 py-1 text-sm font-semibold ${r.sig ? 'bg-emerald-100 text-emerald-800' : 'bg-slate-100 text-slate-600'}`}>
-              {r.sig ? `p ≤ α — statistically significant, reject H₀` : `p > α — not significant, fail to reject H₀`}
+              {r.sig ? `p ≤ α, statistically significant, reject H₀` : `p > α, not significant, fail to reject H₀`}
             </p>
           )}
         </div>

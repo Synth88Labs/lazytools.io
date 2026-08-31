@@ -16,18 +16,18 @@ keywords:
   - treadmill kph to mph
   - running pace conversion
 heroImage: /blog/running-distances-miles.png
-heroAlt: "Running distances in miles — 5K is 3.11, 10K is 6.21, half marathon 13.11, marathon 26.22 miles"
+heroAlt: "Running distances in miles, 5K is 3.11, 10K is 6.21, half marathon 13.11, marathon 26.22 miles"
 faqs:
   - q: "How many miles is a 5K?"
     a: "A 5K is 3.107 miles (5 × 0.621371). On a standard 400 m track, that's 12.5 laps."
   - q: "How many miles is a 10K?"
-    a: "6.214 miles — almost exactly a quarter marathon. Popular 10K races like the Peachtree Road Race cover 6.2 miles."
+    a: "6.214 miles, almost exactly a quarter marathon. Popular 10K races like the Peachtree Road Race cover 6.2 miles."
   - q: "How long is a half marathon?"
-    a: "21.0975 km, which is 13.109 miles — universally rounded to 13.1. It is exactly half the marathon's 42.195 km."
+    a: "21.0975 km, which is 13.109 miles, universally rounded to 13.1. It is exactly half the marathon's 42.195 km."
   - q: "Why is a marathon 26.2 miles instead of a round number?"
     a: "The 1908 London Olympics stretched the course to 26 miles 385 yards so it could start at Windsor Castle and finish in front of the royal box at White City Stadium. That quirk was adopted as the official distance (42.195 km) by the IAAF in 1921."
   - q: "What is a good beginner finish time for a 5K?"
-    a: "A common first-timer range is 30–40 minutes (a 6:00–8:00 min/km pace). Run-walk finishers land around 40–45 minutes — every one of them counts as a 5K."
+    a: "A common first-timer range is 30-40 minutes (a 6:00-8:00 min/km pace). Run-walk finishers land around 40-45 minutes, every one of them counts as a 5K."
   - q: "How do I convert treadmill km/h to mph?"
     a: "Multiply by 0.621: a 10 km/h treadmill setting is 6.2 mph, which is a 6:00 min/km (9:39 min/mile) pace. The kmh-to-mph converter handles any speed."
 draft: false
@@ -35,16 +35,16 @@ draft: false
 
 **A 5K is 3.11 miles, a 10K is 6.21 miles, a half marathon is 13.11 miles, and a full marathon is
 26.22 miles (42.195 km exactly).** Every race distance below, with pace charts and the odd royal
-history of the 26.2 — and for any other distance, the [km to miles converter](/units/km-to-miles/)
+history of the 26.2, and for any other distance, the [km to miles converter](/units/km-to-miles/)
 gives exact numbers in your browser.
 
 <aside class="key-takeaways">
 <p class="kt-title">⚡ Key takeaways</p>
 <ul>
 <li><strong>5K = 3.11 mi</strong> (12.5 track laps) · <strong>10K = 6.21 mi</strong> · <strong>half = 13.11 mi</strong> · <strong>marathon = 26.22 mi</strong></li>
-<li><strong>42.195 km isn't math — it's monarchy:</strong> the 1908 London course ran Windsor Castle → the royal box</li>
+<li><strong>42.195 km isn't math, it's monarchy:</strong> the 1908 London course ran Windsor Castle → the royal box</li>
 <li><strong>1 km = 0.621371 mi</strong>, so a quick estimate is "miles ≈ km × 0.6"</li>
-<li><strong>Pace flips the ratio:</strong> min/mile ≈ min/km × 1.609 — a 6:00/km runner is on 9:39/mile</li>
+<li><strong>Pace flips the ratio:</strong> min/mile ≈ min/km × 1.609, a 6:00/km runner is on 9:39/mile</li>
 <li><strong>Treadmills:</strong> 10 km/h = 6.2 mph = 6:00 min/km pace</li>
 </ul>
 </aside>
@@ -67,13 +67,13 @@ The conversion behind the table: **1 km = 0.621371 miles** (1 mile = 1.609344 km
 [1959 international yard definition](https://en.wikipedia.org/wiki/International_yard_and_pound)). Quick estimate: multiply kilometers by 0.6 and nudge up.
 
 <figure>
-<img src="/blog/infographic-race-distances.svg" alt="Infographic: race distances drawn to scale — the 5K bar is 3.11 miles, 10K is 6.21, half marathon 13.11, and the marathon bar spans 26.22 miles" width="1200" height="620" loading="lazy" />
+<img src="/blog/infographic-race-distances.svg" alt="Infographic: race distances drawn to scale, the 5K bar is 3.11 miles, 10K is 6.21, half marathon 13.11, and the marathon bar spans 26.22 miles" width="1200" height="620" loading="lazy" />
 <figcaption>To scale: a 5K fits into a marathon eight and a half times.</figcaption>
 </figure>
 
 ## Why a marathon is 26.2 miles: blame the royal box
 
-The original Olympic marathons honored Pheidippides' legendary run from Marathon to Athens — roughly
+The original Olympic marathons honored Pheidippides' legendary run from Marathon to Athens, roughly
 40 km, and the early races varied. At the **1908 London Olympics**, the course was laid out to start on
 the lawn of **Windsor Castle** (so the royal children could watch) and finish in front of the **royal
 box** at White City Stadium: exactly **26 miles 385 yards**. After years of varying distances, the IAAF
@@ -96,9 +96,9 @@ US runners think in minutes per mile; most of the world in minutes per kilometer
 | 7:00 | 11:16 | 35:00 | 1:10:00 | 2:27:41 | 4:55:22 |
 | 8:00 | 12:52 | 40:00 | 1:20:00 | 2:48:47 | 5:37:34 |
 
-Reference points: the marathon world records sit near **2:00–2:10** (a scarcely believable ~2:52/km);
-a 4-hour marathon — the most common amateur goal — is 5:41/km (9:09/mile); most beginner 5K plans
-target the 30–40 minute band.
+Reference points: the marathon world records sit near **2:00-2:10** (a scarcely believable ~2:52/km);
+a 4-hour marathon, the most common amateur goal, is 5:41/km (9:09/mile); most beginner 5K plans
+target the 30-40 minute band.
 
 ### Worked example: turn a treadmill pace into a race prediction
 
@@ -106,11 +106,11 @@ Say the gym treadmill is set to **10 km/h** and it feels sustainable. Convert st
 
 1. **Speed to pace:** 60 ÷ 10 = **6:00 min/km**. In imperial, 10 × 0.621 = **6.2 mph**, and 6:00 × 1.609 = **9:39 min/mile**.
 2. **Pace to 5K:** 6:00 × 5 = **30:00**. That is squarely in the beginner band above.
-3. **Pace to 10K (naïve):** 6:00 × 10 = **1:00:00** — but real races slow slightly over distance, so treat this as a floor, not a promise.
+3. **Pace to 10K (naïve):** 6:00 × 10 = **1:00:00**, but real races slow slightly over distance, so treat this as a floor, not a promise.
 
 The naïve "pace × distance" math is exact for a *steady* effort, which is what a treadmill gives you.
 Outdoors, fatigue, hills and heat mean your longer-race pace usually drifts a few percent slower than
-your short-race pace — one reason race-predictor formulas exist rather than simple multiplication.
+your short-race pace, one reason race-predictor formulas exist rather than simple multiplication.
 
 ## Typical finish times by experience level
 
@@ -119,12 +119,12 @@ orientation rather than targets. They line up with the pace rows in the table ab
 
 | Level | 5K | 10K | Half marathon | Marathon |
 |---|---|---|---|---|
-| New runner (run-walk) | 35–45 min | 70–90 min | 2:30–3:00 | 5:30–6:30 |
-| Regular recreational | 25–32 min | 52–65 min | 1:55–2:20 | 4:00–4:45 |
-| Experienced club runner | 19–23 min | 40–48 min | 1:30–1:45 | 3:10–3:45 |
+| New runner (run-walk) | 35-45 min | 70-90 min | 2:30-3:00 | 5:30-6:30 |
+| Regular recreational | 25-32 min | 52-65 min | 1:55-2:20 | 4:00-4:45 |
+| Experienced club runner | 19-23 min | 40-48 min | 1:30-1:45 | 3:10-3:45 |
 | Competitive amateur | under 18 min | under 38 min | under 1:25 | under 3:00 |
 
-A widely used sanity check: a well-paced 10K takes a bit more than double a fresh 5K time — not exactly
+A widely used sanity check: a well-paced 10K takes a bit more than double a fresh 5K time, not exactly
 double, because you can't hold 5K intensity for twice the distance. The same logic scales up: a marathon
 is far more than "two half marathons" in effort, even though it is exactly two in distance.
 
@@ -148,16 +148,16 @@ a keystroke. (Physiology footnote: a 1% incline is commonly used to approximate 
 
 1. **Multiplying pace by 0.62 instead of 1.61.** Distances shrink from km to miles; *pace numbers grow*
    (fewer, longer miles). A 5:00/km runner is at 8:03/mile, not 3:06.
-2. **Treating "13.1" as exact.** The half is 13.109 miles — over a full race, GPS watches showing 13.15
+2. **Treating "13.1" as exact.** The half is 13.109 miles, over a full race, GPS watches showing 13.15
    are measuring your tangents, not lying.
 3. **Comparing 5K road and 5,000 m track times directly.** Same distance, but track racing is typically
-   faster — no turns lost, measured line, no crowd weaving.
+   faster, no turns lost, measured line, no crowd weaving.
 4. **Trusting GPS over certified courses.** Race courses are measured along the shortest possible path;
    you inevitably run slightly farther, so your watch reading past the official distance is normal.
 
 ## Quick summary
 
-5K = 3.11 miles, 10K = 6.21, half marathon = 13.11, marathon = 26.22 (42.195 km — a distance we owe
+5K = 3.11 miles, 10K = 6.21, half marathon = 13.11, marathon = 26.22 (42.195 km, a distance we owe
 to the 1908 royal box, not round numbers). Convert distances with ×0.621, but flip for pace: min/mile
 = min/km × 1.609. For treadmills, dashboards and any odd distance, the
 [km to miles converter](/units/km-to-miles/) has the exact figure.

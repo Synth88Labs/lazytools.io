@@ -45,7 +45,7 @@ export default function DistanceMidpointTool() {
               {pythMode === 'hyp' ? (
                 <>
                   <li>c² = a² + b² = ({A.toFrac()})² + ({B.toFrac()})² = {A.mul(A).toFrac()} + {B.mul(B).toFrac()} = <strong>{d2.toFrac()}</strong></li>
-                  <li>c = √{d2.toFrac()} = <span class="font-mono font-bold">{exact}</span>{radicand !== 1n ? ' — simplified radical form' : ' — a Pythagorean triple!'}</li>
+                  <li>c = √{d2.toFrac()} = <span class="font-mono font-bold">{exact}</span>{radicand !== 1n ? ', simplified radical form' : ', a Pythagorean triple!'}</li>
                 </>
               ) : (
                 <>
@@ -79,7 +79,7 @@ export default function DistanceMidpointTool() {
             </select>
           </div>
           {error ? <p class="mt-4 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800">{error}</p> : body}
-          <p class="mt-4 text-xs text-slate-500">Exact radical answers — legs 3 and 6 give c = 3√5, not 6.7082. Runs locally.</p>
+          <p class="mt-4 text-xs text-slate-500">Exact radical answers, legs 3 and 6 give c = 3√5, not 6.7082. Runs locally.</p>
         </div>
       );
     }
@@ -109,7 +109,7 @@ export default function DistanceMidpointTool() {
           <ol class="mt-2 list-decimal space-y-1 pl-5">
             <li>Differences: Δx = {X2.toFrac()} − {X1.toFrac()} = {dx.toFrac()}, Δy = {Y2.toFrac()} − {Y1.toFrac()} = {dy.toFrac()}</li>
             <li>Pythagoras: d² = Δx² + Δy² = {dx.mul(dx).toFrac()} + {dy.mul(dy).toFrac()} = <strong>{d2.toFrac()}</strong></li>
-            <li>Take the root and simplify: d = √{d2.toFrac()} = <span class="font-mono font-bold">{exact}</span>{radicand !== 1n ? ' (simplified radical form — the form homework answers expect)' : ''}</li>
+            <li>Take the root and simplify: d = √{d2.toFrac()} = <span class="font-mono font-bold">{exact}</span>{radicand !== 1n ? ' (simplified radical form, the form homework answers expect)' : ''}</li>
             <li>Midpoint = averages of the coordinates: ((x₁+x₂)/2, (y₁+y₂)/2) = ({mx.toFrac()}, {my.toFrac()})</li>
           </ol>
         </div>
@@ -140,7 +140,7 @@ export default function DistanceMidpointTool() {
 
       {error ? <p class="mt-4 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800">{error}</p> : body}
 
-      <p class="mt-4 text-xs text-slate-500">Distance comes out in simplified radical form — 2√13, not 7.2111 — with the decimal alongside. Runs locally.</p>
+      <p class="mt-4 text-xs text-slate-500">Distance comes out in simplified radical form, 2√13, not 7.2111, with the decimal alongside. Runs locally.</p>
     </div>
   );
 }

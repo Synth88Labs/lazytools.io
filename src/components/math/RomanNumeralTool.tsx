@@ -30,7 +30,7 @@ export default function RomanNumeralTool() {
     <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
       <div class="grid max-w-2xl gap-4 sm:grid-cols-2">
         <label class="block">
-          <span class="text-xs font-semibold uppercase tracking-wide text-slate-500">Number (1–3999)</span>
+          <span class="text-xs font-semibold uppercase tracking-wide text-slate-500">Number (1-3999)</span>
           <input class={inputCls} value={last === 'num' ? numStr : num} onInput={(e) => { setNumStr((e.target as HTMLInputElement).value); setLast('num'); }} placeholder="2026" />
         </label>
         <label class="block">

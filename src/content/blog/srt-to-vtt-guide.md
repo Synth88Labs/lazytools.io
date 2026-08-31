@@ -1,7 +1,7 @@
 ---
 title: "How to Convert SRT to VTT for HTML5 Video"
 seoTitle: 'Convert SRT to VTT for HTML5 Video'
-description: "To convert SRT to VTT, add a WEBVTT header, change the millisecond comma to a dot, and drop the cue numbers. Do it free, in your browser — nothing uploaded."
+description: "To convert SRT to VTT, add a WEBVTT header, change the millisecond comma to a dot, and drop the cue numbers. Do it free, in your browser, nothing uploaded."
 pubDate: 2026-07-28
 updatedDate: 2026-07-28
 archetype: how-to
@@ -24,7 +24,7 @@ faqs:
   - q: "What's the difference between SRT and VTT?"
     a: "Both are plain-text lists of timed cues, but they differ in three ways: VTT starts with a WEBVTT header line, VTT uses a dot before the milliseconds while SRT uses a comma, and SRT requires numeric cue indices while VTT makes them optional. VTT also supports cue positioning, styling and NOTE/STYLE blocks that SRT has no equivalent for."
   - q: "Does converting SRT to VTT change the timings?"
-    a: "No. Converting preserves the cue timings and the caption text exactly. Only the header, the millisecond separator and the cue indices change — every subtitle still appears at the same moment for the same duration."
+    a: "No. Converting preserves the cue timings and the caption text exactly. Only the header, the millisecond separator and the cue indices change, every subtitle still appears at the same moment for the same duration."
   - q: "How do I add the .vtt file to an HTML5 video?"
     a: "Place a <track> element inside your <video> element and point its src at the .vtt file, for example <track kind=\"subtitles\" src=\"subs.vtt\" srclang=\"en\" label=\"English\">. Set kind to subtitles or captions and give srclang the correct language code so the browser shows it in the captions menu."
   - q: "Is my subtitle file uploaded when I convert it?"
@@ -32,17 +32,17 @@ faqs:
 draft: false
 ---
 
-**To convert an SRT subtitle file to VTT, you make three small edits: add a `WEBVTT` header line at the top, change the comma before the milliseconds in each timestamp to a dot, and (optionally) delete the numeric cue indices.** That is the whole of how to convert SRT to VTT — the timings and the caption text never change. You need this because the HTML5 `<track>` element that puts subtitles on web video only accepts WebVTT, and SRT is the format almost everything else hands you.
+**To convert an SRT subtitle file to VTT, you make three small edits: add a `WEBVTT` header line at the top, change the comma before the milliseconds in each timestamp to a dot, and (optionally) delete the numeric cue indices.** That is the whole of how to convert SRT to VTT, the timings and the caption text never change. You need this because the HTML5 `<track>` element that puts subtitles on web video only accepts WebVTT, and SRT is the format almost everything else hands you.
 
 <aside class="key-takeaways">
 
 **Key takeaways**
 
-- **SRT and VTT are both plain-text cue lists** — converting is a text edit, not a re-encode.
+- **SRT and VTT are both plain-text cue lists**, converting is a text edit, not a re-encode.
 - **Three changes:** add a `WEBVTT` header, comma → dot before milliseconds, indices optional.
 - **HTML5 `<track>` needs WebVTT**, which is why SRT files so often need converting.
-- **Timings and text are preserved exactly** — only header, separator and indices change.
-- **LazyTools converts in your browser** — nothing is uploaded, works offline.
+- **Timings and text are preserved exactly**, only header, separator and indices change.
+- **LazyTools converts in your browser**, nothing is uploaded, works offline.
 
 </aside>
 
@@ -57,13 +57,13 @@ SubRip (`.srt`) and WebVTT (`.vtt`) are close cousins. Both are plain-text files
 
 | Aspect | SRT (.srt) | VTT (.vtt) |
 | --- | --- | --- |
-| Header line | none — file starts with the first cue | must start with `WEBVTT` |
+| Header line | none, file starts with the first cue | must start with `WEBVTT` |
 | Millisecond separator | comma: `00:00:01,000` | dot: `00:00:01.000` |
 | Cue indices | required numeric index before each cue | optional |
 
-WebVTT can do more on top of this — it allows cue positioning and styling, plus `NOTE` comments and `STYLE` blocks that SRT has no equivalent for. But for a straight conversion you only need to handle the three rows above. Get those right and the file is valid VTT.
+WebVTT can do more on top of this. It allows cue positioning and styling, plus `NOTE` comments and `STYLE` blocks that SRT has no equivalent for. But for a straight conversion you only need to handle the three rows above. Get those right and the file is valid VTT.
 
-It helps to remember why the formats diverged. SRT came out of desktop video players, where a numbered list of cues was all anyone needed. WebVTT was designed for the web, so it borrowed SRT's simple cue structure but added a header to identify the format and a few features browsers could hang styling off. The dot-versus-comma difference is the most easily overlooked, because it is a single character buried in every timestamp — which is exactly why a manual find-and-replace so often misses one.
+It helps to remember why the formats diverged. SRT came out of desktop video players, where a numbered list of cues was all anyone needed. WebVTT was designed for the web, so it borrowed SRT's simple cue structure but added a header to identify the format and a few features browsers could hang styling off. The dot-versus-comma difference is the most easily overlooked, because it is a single character buried in every timestamp, which is exactly why a manual find-and-replace so often misses one.
 
 ## Convert SRT to VTT, step by step
 
@@ -84,9 +84,9 @@ WEBVTT
 Hello world
 ```
 
-That is it. The text `Hello world` is untouched, and the cue still starts at one second and ends at four. For a whole file you repeat the timestamp fix on every line that contains `-->`, which is tedious by hand and easy to get wrong — one missed comma and the browser rejects the cue.
+That is it. The text `Hello world` is untouched, and the cue still starts at one second and ends at four. For a whole file you repeat the timestamp fix on every line that contains `-->`, which is tedious by hand and easy to get wrong, one missed comma and the browser rejects the cue.
 
-A real file has many cues stacked one after another, separated by blank lines. The same three edits apply to the whole file — the header goes on once at the very top, and the comma-to-dot fix repeats on every timestamp line. Here is a two-cue SRT and the VTT it becomes:
+A real file has many cues stacked one after another, separated by blank lines. The same three edits apply to the whole file, the header goes on once at the very top, and the comma-to-dot fix repeats on every timestamp line. Here is a two-cue SRT and the VTT it becomes:
 
 ```srt
 1
@@ -108,26 +108,26 @@ Hello world
 Second line of dialogue
 ```
 
-Notice that only the header and the two timestamp lines changed. The blank line between cues, the wording and the ordering are all identical. That is the whole job — but with dozens or hundreds of cues, a hand edit will eventually leave one comma behind, and one bad timestamp is enough for a browser to drop that cue silently.
+Notice that only the header and the two timestamp lines changed. The blank line between cues, the wording and the ordering are all identical. That is the whole job, but with dozens or hundreds of cues, a hand edit will eventually leave one comma behind, and one bad timestamp is enough for a browser to drop that cue silently.
 
-The [SRT to VTT converter](/video/srt-to-vtt/) does the entire file in one step, in your browser, so nothing is uploaded. If you ever need to go the other direction — say a desktop player only wants SubRip — the [VTT to SRT converter](/video/vtt-to-srt/) reverses the process.
+The [SRT to VTT converter](/video/srt-to-vtt/) does the entire file in one step, in your browser, so nothing is uploaded. If you ever need to go the other direction, say a desktop player only wants SubRip, the [VTT to SRT converter](/video/vtt-to-srt/) reverses the process.
 
 ## Encoding and formatting details that bite
 
 Two things trip people up beyond the three obvious edits, and both come down to how the text itself is stored.
 
-The first is character encoding. WebVTT files must be encoded as UTF-8 — that is fixed by the format, not optional. SRT has no official specification, so an SRT file exported by an older desktop tool can arrive in a legacy encoding like Windows-1252. If accented characters (é, ñ, ü) or non-Latin scripts show up as mojibake after conversion, the source SRT was almost certainly not UTF-8. Re-saving the SRT as UTF-8 before converting fixes it. A WebVTT file may optionally start with a byte-order mark, but it is not required.
+The first is character encoding. WebVTT files must be encoded as UTF-8, that is fixed by the format, not optional. SRT has no official specification, so an SRT file exported by an older desktop tool can arrive in a legacy encoding like Windows-1252. If accented characters (é, ñ, ü) or non-Latin scripts show up as mojibake after conversion, the source SRT was almost certainly not UTF-8. Re-saving the SRT as UTF-8 before converting fixes it. A WebVTT file may optionally start with a byte-order mark, but it is not required.
 
 The second is inline text styling. Both formats let you mark up cue text, but they do not use the same tags. Basic emphasis carries over cleanly, while a few SRT-only tags have no WebVTT equivalent and are simply ignored by the browser:
 
 | Inline tag | In SRT | In WebVTT |
 | --- | --- | --- |
 | `<b>` bold, `<i>` italic, `<u>` underline | supported | supported |
-| `<font color="...">` | common in SRT | not supported — use a `STYLE` block instead |
+| `<font color="...">` | common in SRT | not supported, use a `STYLE` block instead |
 | `<c.classname>` voice/class span | not available | supported |
 | `<v Speaker>` voice tag | not available | supported |
 
-For the vast majority of subtitle files — plain text with the odd italic — none of this matters and the conversion is lossless. It only surfaces if your SRT leans on coloured `<font>` tags, which WebVTT expects you to handle through a `STYLE` block near the top of the file instead.
+For the vast majority of subtitle files, plain text with the odd italic, none of this matters and the conversion is lossless. It only surfaces if your SRT leans on coloured `<font>` tags, which WebVTT expects you to handle through a `STYLE` block near the top of the file instead.
 
 ## Add the subtitles to your HTML5 video
 
@@ -152,7 +152,7 @@ The `kind` tells the browser what the file is. It accepts several values, and pi
 
 For ordinary captions and subtitles you will only ever use the first two. `srclang` is the language code (for example `en`, `es`, `fr`), and `label` is the human-readable name shown in the player's captions menu. Point `src` at your converted `.vtt` file and the subtitles appear in the built-in controls.
 
-You can add more than one `<track>` — one per language — and mark a preferred one with the `default` attribute so it shows automatically. Each still points at its own `.vtt` file with its own `srclang` and `label`, which is why getting the conversion and the language codes right for every file matters once you go beyond a single caption track.
+You can add more than one `<track>`, one per language, and mark a preferred one with the `default` attribute so it shows automatically. Each still points at its own `.vtt` file with its own `srclang` and `label`, which is why getting the conversion and the language codes right for every file matters once you go beyond a single caption track.
 
 ## Common mistakes
 
@@ -161,13 +161,13 @@ A few errors account for almost every "my captions won't show" problem:
 - **Leaving the comma millisecond separator.** `00:00:01,000` is still SRT syntax; WebVTT needs the dot. A single stray comma can invalidate a cue.
 - **Missing the `WEBVTT` header.** Without that first line the file is not recognised as WebVTT at all, no matter how correct the cues are.
 - **Wrong `<track>` attributes.** Forgetting `kind`, or giving `srclang` a bad or missing language code, keeps the track out of the captions menu.
-- **Serving `.vtt` with the wrong MIME type.** The file should be served as `text/vtt`. If your server sends it as `text/plain` or `application/octet-stream`, some browsers refuse to load it — a server config fix, not a file fix.
+- **Serving `.vtt` with the wrong MIME type.** The file should be served as `text/vtt`. If your server sends it as `text/plain` or `application/octet-stream`, some browsers refuse to load it, a server config fix, not a file fix.
 
-If your subtitles load but appear at the wrong moments, that is a timing problem, not a format one — the [subtitle shifter](/video/subtitle-shifter/) nudges every cue earlier or later to resync them.
+If your subtitles load but appear at the wrong moments, that is a timing problem, not a format one, the [subtitle shifter](/video/subtitle-shifter/) nudges every cue earlier or later to resync them.
 
 ## Convert it locally
 
-Converting SRT to VTT is a plain-text transformation: header, separator, indices. Because there is no media to re-encode, there is no reason for the file to leave your machine. The [SRT to VTT converter](/video/srt-to-vtt/) runs entirely in your browser and works offline — useful when the subtitles belong to an unreleased cut or a client project you would rather not upload anywhere. Fix the three things, drop the `.vtt` into your `<track>`, and your HTML5 video has captions.
+Converting SRT to VTT is a plain-text transformation: header, separator, indices. Because there is no media to re-encode, there is no reason for the file to leave your machine. The [SRT to VTT converter](/video/srt-to-vtt/) runs entirely in your browser and works offline, useful when the subtitles belong to an unreleased cut or a client project you would rather not upload anywhere. Fix the three things, drop the `.vtt` into your `<track>`, and your HTML5 video has captions.
 
 ---
 

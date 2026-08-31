@@ -48,7 +48,7 @@ export default function ScaleTool() {
             <div class="rounded-xl bg-white p-4 text-center ring-1 ring-slate-200"><p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Volume / material change</p><p class="mt-1 text-2xl font-extrabold text-slate-700">×{fmt(r.volumeFactor, 3)}</p></div>
             <div class="rounded-xl bg-white p-4 text-center ring-1 ring-slate-200"><p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Linear factor</p><p class="mt-1 text-2xl font-extrabold text-slate-700">×{fmt(r.factor, 3)}</p></div>
           </div>
-          <p class="mt-2 text-xs text-slate-500">Scaling to {fmt(r.factor * 100, 0)}% multiplies each dimension by {fmt(r.factor, 2)}, but uses about <strong>{fmt(r.volumeFactor, 2)}×</strong> the filament — volume grows with the cube of the scale.</p>
+          <p class="mt-2 text-xs text-slate-500">Scaling to {fmt(r.factor * 100, 0)}% multiplies each dimension by {fmt(r.factor, 2)}, but uses about <strong>{fmt(r.volumeFactor, 2)}×</strong> the filament, volume grows with the cube of the scale.</p>
         </>
       ) : (
         <p class="mt-4 text-sm text-slate-500">Enter a scale percentage (and optionally the original dimensions).</p>
@@ -65,7 +65,7 @@ export default function ScaleTool() {
         </div>
       </div>
 
-      <p class="mt-4 text-xs text-slate-500">The key gotcha: doubling a model's size (200%) makes it eight times the volume, so it needs roughly 8× the filament and print time — not twice. Slicing the scaled model gives the exact figures. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">The key gotcha: doubling a model's size (200%) makes it eight times the volume, so it needs roughly 8× the filament and print time, not twice. Slicing the scaled model gives the exact figures. 🔒 In your browser.</p>
     </div>
   );
 }

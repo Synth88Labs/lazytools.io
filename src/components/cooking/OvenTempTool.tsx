@@ -46,7 +46,7 @@ export default function OvenTempTool() {
       )}
       {r && (
         <p class="mt-2 text-center text-sm text-slate-500">
-          {r.desc} oven — nearest standard setting{r.exact != null && Math.abs(r.exact - r.c) >= 1 ? ` (exact maths: ${round5(r.exact)} °C)` : ''}
+          {r.desc} oven, nearest standard setting{r.exact != null && Math.abs(r.exact - r.c) >= 1 ? ` (exact maths: ${round5(r.exact)} °C)` : ''}
         </p>
       )}
 
@@ -58,7 +58,7 @@ export default function OvenTempTool() {
         </table></div>
       </details>
 
-      <p class="mt-4 text-xs text-slate-500">°C = (°F − 32) × 5⁄9 (exact); gas marks and descriptions are the conventional UK values, rounded to practical oven settings. Fan (convection) ovens run about 20 °C cooler — drop the temperature or shorten the time. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">°C = (°F − 32) × 5⁄9 (exact); gas marks and descriptions are the conventional UK values, rounded to practical oven settings. Fan (convection) ovens run about 20 °C cooler, drop the temperature or shorten the time. 🔒 In your browser.</p>
     </div>
   );
 }

@@ -10,7 +10,7 @@ const STEPS: { step: number; L: number }[] = [
   { step: 600, L: 0.55 }, { step: 700, L: 0.47 }, { step: 800, L: 0.4 },
   { step: 900, L: 0.33 }, { step: 950, L: 0.24 },
 ];
-// chroma envelope — muted at the extremes, fuller in the middle
+// chroma envelope, muted at the extremes, fuller in the middle
 const chromaFactor = (L: number) => {
   const d = 1 - Math.abs((L - 0.62) / 0.62);
   return 0.35 + 0.65 * Math.max(0, d);

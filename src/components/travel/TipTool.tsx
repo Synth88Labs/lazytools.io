@@ -31,7 +31,7 @@ export default function TipTool() {
     <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
       <label class="block"><span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Country (sets a customary tip)</span>
         <select class={sel} value={country} onChange={(e) => applyCustom((e.target as HTMLSelectElement).value)}>
-          <option value="">Custom — set your own %</option>
+          <option value="">Custom, set your own %</option>
           {TIP_CUSTOMS.map((c) => <option value={c.country}>{c.country}</option>)}
         </select></label>
 
@@ -60,7 +60,7 @@ export default function TipTool() {
         <p class="mt-4 text-sm text-slate-500">Enter the bill, tip percent and how many people are splitting.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Amounts are in whatever currency you enter — no conversion. Tipping is cultural and varies by setting and service; where a service charge is already on the bill (common in France, Brazil, the UAE and parts of the UK), an extra tip is optional. Customary figures are guidance from travel-etiquette references, not fixed rules. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Amounts are in whatever currency you enter, no conversion. Tipping is cultural and varies by setting and service; where a service charge is already on the bill (common in France, Brazil, the UAE and parts of the UK), an extra tip is optional. Customary figures are guidance from travel-etiquette references, not fixed rules. 🔒 In your browser.</p>
     </div>
   );
 }

@@ -39,7 +39,7 @@ export default function MetadataRemoverTool() {
       const isPng = file.type === 'image/png';
       canvas.toBlob(
         (blob) => {
-          if (!blob) return setError('Re-encoding failed — the format may not be supported.');
+          if (!blob) return setError('Re-encoding failed, the format may not be supported.');
           const url = URL.createObjectURL(blob);
           const a = document.createElement('a');
           const base = file.name.replace(/\.[^.]+$/, '');
@@ -47,7 +47,7 @@ export default function MetadataRemoverTool() {
           a.download = `${base}-clean.${isPng ? 'png' : 'jpg'}`;
           a.click();
           URL.revokeObjectURL(url);
-          setDone(`✓ Clean copy downloaded — ${fmtSize(file.size)} → ${fmtSize(blob.size)}, metadata stripped.`);
+          setDone(`✓ Clean copy downloaded, ${fmtSize(file.size)} → ${fmtSize(blob.size)}, metadata stripped.`);
         },
         isPng ? 'image/png' : 'image/jpeg',
         quality / 100
@@ -62,7 +62,7 @@ export default function MetadataRemoverTool() {
       <label class="block cursor-pointer rounded-xl border-2 border-dashed border-slate-300 bg-white p-6 text-center transition hover:border-brand-400">
         <input type="file" accept="image/*" onChange={onFile} class="sr-only" />
         <span class="text-sm font-semibold text-brand-700">{file ? file.name : 'Choose a photo'}</span>
-        <span class="mt-1 block text-xs text-slate-500">{file ? fmtSize(file.size) : 'JPEG, PNG, WebP — scanned and cleaned locally'}</span>
+        <span class="mt-1 block text-xs text-slate-500">{file ? fmtSize(file.size) : 'JPEG, PNG, WebP, scanned and cleaned locally'}</span>
       </label>
 
       {file && (
@@ -103,7 +103,7 @@ export default function MetadataRemoverTool() {
           </div>
         </div>
       )}
-      <p class="mt-3 text-xs text-slate-500">The clean copy contains pixels only — canvas re-encoding never carries metadata across.</p>
+      <p class="mt-3 text-xs text-slate-500">The clean copy contains pixels only, canvas re-encoding never carries metadata across.</p>
     </div>
   );
 }

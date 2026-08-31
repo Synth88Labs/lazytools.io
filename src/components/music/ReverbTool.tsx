@@ -14,11 +14,11 @@ const ROOMS = [
 ];
 
 function verdict(rt: number): string {
-  if (rt < 0.3) return 'Very dead — good for close-mic recording, may feel unnatural to talk in.';
-  if (rt < 0.6) return 'Fairly controlled — suits studios, home theatres and critical listening.';
-  if (rt < 1.0) return 'Lively but usable — typical living room / small hall.';
-  if (rt < 2.0) return 'Reverberant — like a large hall; speech clarity starts to suffer.';
-  return 'Very reverberant — cathedral-like; hard for speech, dramatic for music.';
+  if (rt < 0.3) return 'Very dead, good for close-mic recording, may feel unnatural to talk in.';
+  if (rt < 0.6) return 'Fairly controlled, suits studios, home theatres and critical listening.';
+  if (rt < 1.0) return 'Lively but usable, typical living room / small hall.';
+  if (rt < 2.0) return 'Reverberant, like a large hall; speech clarity starts to suffer.';
+  return 'Very reverberant, cathedral-like; hard for speech, dramatic for music.';
 }
 
 export default function ReverbTool() {
@@ -62,7 +62,7 @@ export default function ReverbTool() {
         <p class="mt-4 text-sm text-slate-500">Enter the room dimensions.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">RT60 is the time for sound to fade by 60 dB (to near silence). The Sabine equation estimates it as RT60 = 0.161 × room volume ÷ total absorption, where absorption = surface area × the average absorption coefficient. Soft, porous materials absorb more (higher coefficient) and shorten the reverb; hard surfaces reflect and lengthen it. This uses one average coefficient — real rooms vary by frequency and material. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">RT60 is the time for sound to fade by 60 dB (to near silence). The Sabine equation estimates it as RT60 = 0.161 × room volume ÷ total absorption, where absorption = surface area × the average absorption coefficient. Soft, porous materials absorb more (higher coefficient) and shorten the reverb; hard surfaces reflect and lengthen it. This uses one average coefficient, real rooms vary by frequency and material. 🔒 In your browser.</p>
     </div>
   );
 }

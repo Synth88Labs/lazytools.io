@@ -14,11 +14,11 @@ const crumbs = [
 const faqs = [
   {
     q: 'Are my files uploaded to convert them?',
-    a: 'No — the "Open file" button reads the file into your browser\'s memory only. Parsing and conversion run locally, nothing is transmitted, and the tools work offline. Business data, configs and exports stay on your machine.',
+    a: 'No, the "Open file" button reads the file into your browser\'s memory only. Parsing and conversion run locally, nothing is transmitted, and the tools work offline. Business data, configs and exports stay on your machine.',
   },
   {
     q: 'Is there a file-size limit or paid tier?',
-    a: 'Neither. Because conversion is local there are no upload caps — multi-megabyte exports convert instantly, free. (Several competitor tools cap free conversions at 1 MB per day.)',
+    a: 'Neither. Because conversion is local there are no upload caps, multi-megabyte exports convert instantly, free. (Several competitor tools cap free conversions at 1 MB per day.)',
   },
   {
     q: 'How accurate are the conversions?',
@@ -31,7 +31,7 @@ const schema = [
   collectionPageSchema({
     name: 'Free File & Data Converters',
     url: '/file/',
-    description: 'CSV, JSON, YAML, XML and Markdown converters plus a JSON formatter — open files, download results, no uploads, no size limits.',
+    description: 'CSV, JSON, YAML, XML and Markdown converters plus a JSON formatter, open files, download results, no uploads, no size limits.',
     items: FILE_TOOLS.map((t) => ({ name: t.name, url: `/file/${t.slug}/` })),
   }),
   faqSchema(faqs),
@@ -39,8 +39,8 @@ const schema = [
 ---
 
 <Base
-  title="File & Data Converters — CSV, JSON, YAML, XML | LazyTools"
-  description={`${FILE_TOOLS.length} free data converters: CSV↔JSON, JSON↔YAML, XML↔JSON, Markdown, JSON formatter. Open files and download results — nothing is uploaded, no size limits.`}
+  title="File & Data Converters, CSV, JSON, YAML, XML | LazyTools"
+  description={`${FILE_TOOLS.length} free data converters: CSV↔JSON, JSON↔YAML, XML↔JSON, Markdown, JSON formatter. Open files and download results, nothing is uploaded, no size limits.`}
   schema={schema}
 >
   <div class="mx-auto max-w-5xl px-4 py-6">
@@ -48,7 +48,7 @@ const schema = [
 
     <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">File & Data Converters</h1>
     <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
-      Convert between CSV, JSON, YAML, XML and Markdown — open a file, convert, download the result.
+      Convert between CSV, JSON, YAML, XML and Markdown, open a file, convert, download the result.
       Exports and configs are business data: here they never touch a server, and there are no size
       limits or paid tiers.
     </p>
@@ -71,7 +71,7 @@ const schema = [
 
     <section class="prose-lazy mt-10">
       <h2>Convert data without uploading it</h2>
-      <p>Moving structured data between formats — <strong>CSV, JSON, XML, YAML and Markdown</strong> — is a routine chore that most online converters do by uploading your file to a server. These do it in your browser instead, parsing and re-serialising locally so the conversion is instant and your data never leaves the page. Delimiters, nesting and types are preserved, and you can paste or drop a file either way.</p>
+      <p>Moving structured data between formats, <strong>CSV, JSON, XML, YAML and Markdown</strong>, is a routine chore that most online converters do by uploading your file to a server. These do it in your browser instead, parsing and re-serialising locally so the conversion is instant and your data never leaves the page. Delimiters, nesting and types are preserved, and you can paste or drop a file either way.</p>
       <p>That matters when the "data" is a customer export, a financial extract or an internal config: there's no server to receive it, cache it or leak it. Round-trip a file to check it survives, and everything works offline once loaded.</p>
     </section>
 

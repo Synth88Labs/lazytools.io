@@ -33,7 +33,7 @@ export default function AbsoluteHumidityTool() {
           <p class="mt-1 font-mono text-3xl font-extrabold text-brand-800">{fmt(res)} g/m³</p>
           <p class="mt-1 text-xs text-slate-500">= {fmt(res * 0.4370)} grains/ft³</p>
         </div>
-      ) : <p class="mt-4 text-sm text-slate-500">Enter a temperature and a relative humidity (0–100%).</p>}
+      ) : <p class="mt-4 text-sm text-slate-500">Enter a temperature and a relative humidity (0-100%).</p>}
 
       <p class="mt-4 text-xs text-slate-500">Absolute humidity is the actual mass of water vapour in a cubic metre of air (g/m³), unlike relative humidity which is a percentage of the maximum. It's computed from the Magnus saturation vapour pressure at your temperature times the relative humidity. Warm air can hold far more, so the same RH means more water when it's hot. 🔒 In your browser.</p>
     </div>

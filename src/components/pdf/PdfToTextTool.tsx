@@ -93,7 +93,7 @@ export default function PdfToTextTool() {
       <label class="block cursor-pointer rounded-xl border-2 border-dashed border-slate-300 bg-white p-6 text-center transition hover:border-brand-400">
         <input type="file" accept=".pdf,application/pdf" onChange={onFile} class="sr-only" />
         <span class="text-sm font-semibold text-brand-700">{fileName || 'Choose a PDF to extract text from'}</span>
-        <span class="mt-1 block text-xs text-slate-500">Read on your device — the document is never uploaded</span>
+        <span class="mt-1 block text-xs text-slate-500">Read on your device, the document is never uploaded</span>
       </label>
 
       {busy && <p class="mt-3 text-sm text-slate-600">Extracting the text layer…</p>}
@@ -101,7 +101,7 @@ export default function PdfToTextTool() {
 
       {empty && (
         <div class="mt-4 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
-          No selectable text found. This PDF is likely <strong>scanned or image-only</strong> — the pages are pictures, not text. Extracting words from images needs OCR, which this tool doesn't do.
+          No selectable text found. This PDF is likely <strong>scanned or image-only</strong>, the pages are pictures, not text. Extracting words from images needs OCR, which this tool doesn't do.
         </div>
       )}
 
@@ -128,7 +128,7 @@ export default function PdfToTextTool() {
       )}
 
       <p class="mt-4 rounded-lg bg-white px-3 py-2 text-xs text-slate-500 ring-1 ring-slate-200">
-        Extracts the embedded text layer from digital PDFs, preserving line breaks as closely as the file allows. It doesn't OCR scanned pages (image-only PDFs return no text). Everything runs in your browser — the file never leaves your device. 🔒
+        Extracts the embedded text layer from digital PDFs, preserving line breaks as closely as the file allows. It doesn't OCR scanned pages (image-only PDFs return no text). Everything runs in your browser, the file never leaves your device. 🔒
       </p>
     </div>
   );

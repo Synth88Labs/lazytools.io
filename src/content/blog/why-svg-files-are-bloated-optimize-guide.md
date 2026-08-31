@@ -1,12 +1,12 @@
 ---
-title: "Why Your SVG Files Are Bloated — and How to Optimize Them Safely"
+title: "Why Your SVG Files Are Bloated, and How to Optimize Them Safely"
 seoTitle: 'Why SVG Files Are Bloated & How to Optimize Them'
-description: "SVGs from Illustrator or Figma are often 2–5× too big — full of editor metadata and extra precision. What the junk is and how to strip it losslessly."
+description: "SVGs from Illustrator or Figma are often 2-5× too big, full of editor metadata and extra precision. What the junk is and how to strip it losslessly."
 pubDate: 2026-08-02
 updatedDate: 2026-08-23
 archetype: explainer
 heroImage: /blog/why-svg-files-are-bloated-optimize-guide.png
-heroAlt: "The junk inside an exported SVG — editor metadata, comments, whitespace — stripped to leave the actual drawing"
+heroAlt: "The junk inside an exported SVG, editor metadata, comments, whitespace, stripped to leave the actual drawing"
 tools: ["/file/svg-optimizer/"]
 keywords:
   - optimize svg
@@ -18,21 +18,21 @@ keywords:
   - reduce svg size
 faqs:
   - q: "Why are SVG files exported from Illustrator or Figma so big?"
-    a: "Because design tools embed a lot that has nothing to do with the drawing: editor metadata, layer names, canvas guides, generator comments, and coordinates with many decimal places. A simple icon can easily be 2–5× larger than the handful of shapes it actually contains. None of that extra data affects how the SVG renders, so it can be removed safely."
+    a: "Because design tools embed a lot that has nothing to do with the drawing: editor metadata, layer names, canvas guides, generator comments, and coordinates with many decimal places. A simple icon can easily be 2-5× larger than the handful of shapes it actually contains. None of that extra data affects how the SVG renders, so it can be removed safely."
   - q: "How do I optimize (minify) an SVG safely?"
-    a: "Strip the non-visual parts — the XML declaration and DOCTYPE, comments, <metadata>/<title>/<desc>, and editor-specific inkscape:/sodipodi: elements and attributes — then collapse whitespace. Optionally round coordinates to fewer decimals. Done conservatively, the rendered image is pixel-identical. The LazyTools SVG Optimizer does this in your browser."
+    a: "Strip the non-visual parts, the XML declaration and DOCTYPE, comments, <metadata>/<title>/<desc>, and editor-specific inkscape:/sodipodi: elements and attributes, then collapse whitespace. Optionally round coordinates to fewer decimals. Done conservatively, the rendered image is pixel-identical. The LazyTools SVG Optimizer does this in your browser."
   - q: "Will minifying an SVG change how it looks?"
-    a: "Not if you stick to removing metadata, comments and whitespace — those don't affect rendering, so the image is identical. The only step that can alter anything is rounding coordinates, and even 2–3 decimals is usually invisible. Keep coordinate rounding off (the safe default) if the artwork is tiny or very precise."
+    a: "Not if you stick to removing metadata, comments and whitespace. Those don't affect rendering, so the image is identical. The only step that can alter anything is rounding coordinates, and even 2-3 decimals is usually invisible. Keep coordinate rounding off (the safe default) if the artwork is tiny or very precise."
   - q: "What are the inkscape: and sodipodi: attributes in my SVG?"
-    a: "They're editor bookkeeping that Inkscape adds — layer labels, canvas guides, the document's zoom and version. (Illustrator and Figma add their own equivalents.) Browsers ignore all of it, so removing these namespaces and their xmlns declarations shrinks the file with zero visual downside."
+    a: "They're editor bookkeeping that Inkscape adds, layer labels, canvas guides, the document's zoom and version. (Illustrator and Figma add their own equivalents.) Browsers ignore all of it, so removing these namespaces and their xmlns declarations shrinks the file with zero visual downside."
   - q: "Does rounding SVG coordinates hurt quality?"
-    a: "Rarely, and only if you round too aggressively. Exporters often write coordinates like 10.123456 when 10.12 renders identically at any normal size. Rounding to 2–3 decimals is a safe way to save more bytes; rounding to 0–1 decimals can visibly shift points on small or detailed paths, so preview the result."
+    a: "Rarely, and only if you round too aggressively. Exporters often write coordinates like 10.123456 when 10.12 renders identically at any normal size. Rounding to 2-3 decimals is a safe way to save more bytes; rounding to 0-1 decimals can visibly shift points on small or detailed paths, so preview the result."
   - q: "Is my SVG uploaded when I optimize it?"
-    a: "Not with the LazyTools SVG Optimizer — it runs entirely in your browser, so your artwork (which may be unreleased brand or product design) never leaves your device, and it works offline."
+    a: "Not with the LazyTools SVG Optimizer. It runs entirely in your browser, so your artwork (which may be unreleased brand or product design) never leaves your device, and it works offline."
 draft: false
 ---
 
-**An SVG that an editor exports is often 2–5× larger than the drawing inside it — the bulk is
+**An SVG that an editor exports is often 2-5× larger than the drawing inside it, the bulk is
 metadata, comments, editor bookkeeping and needlessly precise numbers, none of which affect how the
 image renders.** Strip that safely and you get a smaller, cleaner file that looks pixel-for-pixel
 identical. Do it in your browser with the [SVG Optimizer](/file/svg-optimizer/).
@@ -41,12 +41,12 @@ identical. Do it in your browser with the [SVG Optimizer](/file/svg-optimizer/).
 
 **Key takeaways**
 
-- SVG is plain XML text, so anything the exporter writes into it — layer names, licences, editor
-  version strings — ships to every visitor even though the browser never draws it.
+- SVG is plain XML text, so anything the exporter writes into it, layer names, licences, editor
+  version strings, ships to every visitor even though the browser never draws it.
 - Removing the XML declaration, DOCTYPE, comments, `<metadata>`/`<title>`/`<desc>`, and
   `inkscape:`/`sodipodi:` data is completely lossless: those bytes never reach the renderer.
 - Collapsing whitespace is lossless too; only *coordinate rounding* can shift a point, and only if you
-  round too hard — 2–3 decimals is a safe extra saving.
+  round too hard, 2-3 decimals is a safe extra saving.
 - The savings compound. One icon might drop a few hundred bytes; a 200-icon set drops tens of
   kilobytes, and inlined icons stop bloating your HTML.
 - The [SVG Optimizer](/file/svg-optimizer/) does all of this in your browser, so unreleased artwork
@@ -56,7 +56,7 @@ identical. Do it in your browser with the [SVG Optimizer](/file/svg-optimizer/).
 
 ## Why SVG gets fat in the first place
 
-SVG is not a compiled binary like PNG or WebP — it is a [plain-text XML document](https://developer.mozilla.org/en-US/docs/Web/SVG). That is its great
+SVG is not a compiled binary like PNG or WebP. It is a [plain-text XML document](https://developer.mozilla.org/en-US/docs/Web/SVG). That is its great
 strength (it scales, it diffs, you can edit it by hand) and also the reason it bloats. Every design
 tool treats the SVG file as a place to stash whatever it needs to reopen the artwork later: which
 layer a shape belonged to, where the canvas guides sat, what zoom level you left the document at, and
@@ -64,7 +64,7 @@ a note about which version of the software wrote the file. None of that is part 
 because it all lives in the same text file, it rides along to every browser that loads it.
 
 There is a second, quieter source of weight: precision. When you drag a point in a vector editor, the
-tool stores the exact floating-point coordinate — `10.1234567` — even though the shape looks identical
+tool stores the exact floating-point coordinate, `10.1234567`, even though the shape looks identical
 whether that number has seven decimals or two. Multiply that across hundreds of path points and the
 decimals alone can account for a large slice of the file.
 
@@ -92,12 +92,12 @@ The only line that draws anything is the `<path>`. Everything else is overhead.
 
 | Junk | What it is | Safe to remove? |
 |---|---|---|
-| **XML declaration + DOCTYPE** | Legacy boilerplate | Yes — browsers don't need it for inline/loaded SVG |
-| **Comments + `<metadata>`/`<title>`/`<desc>`** | Generator notes, licences, RDF | Yes — non-visual |
-| **`inkscape:` / `sodipodi:` data** | Editor guides, layers, zoom | Yes — browsers ignore it |
+| **XML declaration + DOCTYPE** | Legacy boilerplate | Yes, browsers don't need it for inline/loaded SVG |
+| **Comments + `<metadata>`/`<title>`/`<desc>`** | Generator notes, licences, RDF | Yes, non-visual |
+| **`inkscape:` / `sodipodi:` data** | Editor guides, layers, zoom | Yes, browsers ignore it |
 | **Whitespace + long decimals** | Pretty-printing, `10.123456` | Yes (round decimals with care) |
 
-Removing the first three is **completely lossless** — the rendered pixels can't change because none of
+Removing the first three is **completely lossless**, the rendered pixels can't change because none of
 that data reaches the renderer. The fourth (whitespace) is lossless too; only *coordinate rounding*
 can, if overdone, nudge a point.
 
@@ -116,7 +116,7 @@ can, if overdone, nudge a point.
   <!-- after bar -->
   <text x="80" y="250" font-family="system-ui,sans-serif" font-size="22" font-weight="700" fill="#334155">Optimized</text>
   <rect x="230" y="222" width="120" height="44" fill="#86efac"/>
-  <text x="370" y="254" font-family="ui-monospace,monospace" font-size="20" fill="#334155"> ~25–50%</text>
+  <text x="370" y="254" font-family="ui-monospace,monospace" font-size="20" fill="#334155"> ~25-50%</text>
 
   <!-- legend -->
   <rect x="230" y="320" width="22" height="22" fill="#fca5a5"/><text x="262" y="338" font-family="system-ui,sans-serif" font-size="19" fill="#475569">metadata / RDF</text>
@@ -155,7 +155,7 @@ After a conservative pass, only the parts a browser actually reads remain:
 The generator comment, `<title>`, `<desc>`, `<metadata>`, the unused `xlink` namespace, the wrapping
 `<g id="Layer_1">`, the redundant `x`/`y`/`version`/`enable-background` attributes and the pretty-print
 whitespace are all gone. Coordinates went from seven decimals to two. The rendered logo is
-byte-for-byte identical on screen — but the file is a fraction of the size.
+byte-for-byte identical on screen, but the file is a fraction of the size.
 
 ## How much smaller, realistically
 
@@ -169,7 +169,7 @@ suspicion. As a rough guide:
 | Figma export | Extra attributes, nested groups, verbose whitespace | Moderate to substantial |
 | Already hand-written / clean | Little to none | Small |
 
-The only honest measure is the byte count on *your* file before and after — which is exactly what the
+The only honest measure is the byte count on *your* file before and after, which is exactly what the
 optimizer reports.
 
 ## Why it's worth doing
@@ -178,11 +178,11 @@ optimizer reports.
   into every page that uses it, and that weight can't be cached separately the way an external file
   can.
 - **Icon sets multiply the waste.** A few hundred bytes of editor junk per icon is invisible on one
-  icon and painful across a 200-icon set — that's tens of kilobytes of pure overhead your visitors
+  icon and painful across a 200-icon set, that's tens of kilobytes of pure overhead your visitors
   download.
 - **Cleaner diffs.** Stripped SVGs are readable and version nicely in Git; editor exports churn on
   every save because the embedded zoom level or timestamp changes even when the drawing didn't.
-- **Gzip isn't a substitute.** Your server likely gzips SVG on the way out, which helps — but gzip
+- **Gzip isn't a substitute.** Your server likely gzips SVG on the way out, which helps, but gzip
   compresses redundant *bytes*, it doesn't remove structure. A smaller, cleaner source compresses to a
   smaller result, and inlined SVG in your HTML benefits before compression anyway.
 
@@ -193,7 +193,7 @@ The [SVG Optimizer](/file/svg-optimizer/) takes the conservative path by default
 1. Removes the XML declaration, DOCTYPE, comments, `<metadata>`/`<title>`/`<desc>`, and the
    `inkscape:`/`sodipodi:` namespaces and attributes.
 2. Collapses whitespace.
-3. Leaves coordinates untouched — unless you opt into rounding (2–3 decimals is a safe extra saving).
+3. Leaves coordinates untouched, unless you opt into rounding (2-3 decimals is a safe extra saving).
 
 It reports the bytes saved, and because it never restructures paths, the image is identical. A couple
 of practical cautions:
@@ -202,14 +202,14 @@ of practical cautions:
   assistive technology as the accessible name. If your icon has no adjacent text label and leans on
   that title, strip metadata but keep the meaningful title, or move the label to `aria-label` on the
   element that uses the icon.
-- **Watch coordinate rounding on tiny or highly detailed art.** Rounding to 2–3 decimals is safe at
-  normal sizes; rounding to 0–1 decimals can visibly nudge points on small paths, so preview before
+- **Watch coordinate rounding on tiny or highly detailed art.** Rounding to 2-3 decimals is safe at
+  normal sizes; rounding to 0-1 decimals can visibly nudge points on small paths, so preview before
   you commit.
 - **For the last few percent, reach for a full pipeline.** A tool like SVGO goes further with path
   rewriting and shape merging; that's more aggressive and occasionally alters rendering, so it's worth
   it only when every byte counts. The conservative pass here covers the safe, high-value majority.
 
-And since your artwork — possibly unreleased brand or product design — is processed **in your
+And since your artwork, possibly unreleased brand or product design, is processed **in your
 browser**, nothing is uploaded and the tool works with no network at all.
 
 ## The bottom line

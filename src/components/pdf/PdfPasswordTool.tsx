@@ -27,7 +27,7 @@ async function loadQpdfFactory(): Promise<QpdfFactory> {
     const s = document.createElement('script');
     s.src = '/vendor/qpdf.js';
     s.onload = () => resolve();
-    s.onerror = () => reject(new Error('Could not load the qpdf engine — check your connection and retry.'));
+    s.onerror = () => reject(new Error('Could not load the qpdf engine, check your connection and retry.'));
     document.head.appendChild(s);
   });
   const factory = w.exports?.Module;
@@ -104,16 +104,16 @@ export default function PdfPasswordTool({ mode }: Props) {
       a.download = mode === 'unlock' ? `${base}-unlocked.pdf` : `${base}-protected.pdf`;
       a.click();
       URL.revokeObjectURL(url);
-      setDone(`✓ ${a.download} (${fmtSize(blob.size)}) — download started.`);
+      setDone(`✓ ${a.download} (${fmtSize(blob.size)}), download started.`);
     } catch (e) {
       const err = e as QpdfError;
       const wrongPw = err instanceof QpdfError && (/invalid password/i.test(err.stderr) || (mode === 'unlock' && err.code === 2));
       if (wrongPw) {
         setError(password
-          ? 'Wrong password — that password does not decrypt this PDF. Check it and try again.'
-          : 'This PDF needs a password to open — enter it above. (Leave empty only for files that open freely but restrict printing/copying.)');
+          ? 'Wrong password, that password does not decrypt this PDF. Check it and try again.'
+          : 'This PDF needs a password to open, enter it above. (Leave empty only for files that open freely but restrict printing/copying.)');
       } else {
-        setError(err.message || 'Processing failed — the file may be damaged or use an unsupported encryption.');
+        setError(err.message || 'Processing failed, the file may be damaged or use an unsupported encryption.');
       }
     }
     setBusy(false);
@@ -154,7 +154,7 @@ export default function PdfPasswordTool({ mode }: Props) {
         </div>
         {mode === 'protect' && (
           <div>
-            <label for="pp-owner" class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Owner password (optional — defaults to the same)</label>
+            <label for="pp-owner" class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Owner password (optional, defaults to the same)</label>
             <input
               id="pp-owner"
               type={show ? 'text' : 'password'}
@@ -182,7 +182,7 @@ export default function PdfPasswordTool({ mode }: Props) {
         {done && <p class="mt-3 text-sm font-medium text-mint-700">{done}</p>}
       </div>
       <p class="mt-3 text-xs text-slate-500">
-        Runs qpdf (the standard PDF transformation engine) compiled to WebAssembly, on your device — neither the document nor the password is ever transmitted.
+        Runs qpdf (the standard PDF transformation engine) compiled to WebAssembly, on your device, neither the document nor the password is ever transmitted.
         {mode === 'unlock' && ' Only unlock documents you have the legal right to open.'}
       </p>
     </div>

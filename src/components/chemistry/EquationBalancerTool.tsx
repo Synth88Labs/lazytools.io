@@ -34,7 +34,7 @@ export default function EquationBalancerTool() {
   return (
     <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
       <label class="block">
-        <span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Unbalanced equation — use + and -&gt; (or =)</span>
+        <span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Unbalanced equation, use + and -&gt; (or =)</span>
         <input
           value={raw} spellcheck={false}
           onInput={(e) => setRaw((e.target as HTMLInputElement).value)}
@@ -77,7 +77,7 @@ export default function EquationBalancerTool() {
       )}
 
       <p class="mt-4 text-xs text-slate-500">
-        Exact integer coefficients from the reaction’s null-space (BigInt rational Gaussian elimination — no floating point). 🔒 Computed in your browser.
+        Exact integer coefficients from the reaction’s null-space (BigInt rational Gaussian elimination, no floating point). 🔒 Computed in your browser.
       </p>
     </div>
   );

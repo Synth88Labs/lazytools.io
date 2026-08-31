@@ -44,7 +44,7 @@ export default function WaterIntakeTool() {
         <p class="mt-4 text-sm text-slate-500">Enter your pet's weight.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">A rough guideline of about 50–60 ml per kg of body weight per day (dogs) — wet food, heat and exercise raise it. Persistent big changes in drinking (much more or much less) can signal a health issue; check with your vet. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">A rough guideline of about 50-60 ml per kg of body weight per day (dogs), wet food, heat and exercise raise it. Persistent big changes in drinking (much more or much less) can signal a health issue; check with your vet. 🔒 In your browser.</p>
     </div>
   );
 }

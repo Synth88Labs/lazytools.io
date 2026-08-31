@@ -96,7 +96,7 @@ export default function DecisionMatrixTool() {
           </tbody>
         </table>
       </div>
-      <p class="mt-3 text-xs text-slate-500">Score each option 0–10 on each criterion; the weighted total ranks them. Weight the criteria by how much they matter. Saved in this browser.</p>
+      <p class="mt-3 text-xs text-slate-500">Score each option 0-10 on each criterion; the weighted total ranks them. Weight the criteria by how much they matter. Saved in this browser.</p>
     </div>
   );
 }

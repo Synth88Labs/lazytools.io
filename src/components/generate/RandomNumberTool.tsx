@@ -17,7 +17,7 @@ export default function RandomNumberTool() {
     const n = Math.max(1, Math.min(count, 1000));
     if (unique && n > span) return setError(`Can't draw ${n} unique values from a range of ${span}.`);
     if (unique) {
-      // partial Fisher–Yates over the range
+      // partial Fisher, Yates over the range
       const pool = Array.from({ length: span }, (_, i) => min + i);
       for (let i = 0; i < n; i++) {
         const j = i + randInt(pool.length - i);
@@ -83,7 +83,7 @@ export default function RandomNumberTool() {
           </>
         )}
       </div>
-      <p class="mt-2 text-xs text-slate-500">crypto.getRandomValues + rejection sampling — every value equally likely, drawn on your device.</p>
+      <p class="mt-2 text-xs text-slate-500">crypto.getRandomValues + rejection sampling, every value equally likely, drawn on your device.</p>
     </div>
   );
 }

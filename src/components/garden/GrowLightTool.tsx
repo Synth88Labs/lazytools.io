@@ -46,7 +46,7 @@ export default function GrowLightTool() {
         </tbody></table>
       </div>
 
-      <p class="mt-4 text-xs text-slate-500">DLI = PPFD × hours × 3,600 ÷ 1,000,000 — the total moles of light photons per m² per day. PPFD is on your grow light's spec sheet at a given distance. Target ranges are general horticulture guidelines. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">DLI = PPFD × hours × 3,600 ÷ 1,000,000, the total moles of light photons per m² per day. PPFD is on your grow light's spec sheet at a given distance. Target ranges are general horticulture guidelines. 🔒 In your browser.</p>
     </div>
   );
 }

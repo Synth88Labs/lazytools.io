@@ -59,8 +59,8 @@ export default function ReactanceTool() {
       )}
 
       <p class="mt-4 text-xs text-slate-500">{mode === 'cap'
-        ? 'Capacitive reactance Xc = 1 ÷ (2πfC) falls as frequency rises — a capacitor passes high frequencies and blocks DC.'
-        : 'Inductive reactance Xʟ = 2πfL rises with frequency — an inductor passes DC and blocks high frequencies.'} Reactance is the frequency-dependent AC "resistance" of the component, in ohms. 🔒 In your browser.</p>
+        ? 'Capacitive reactance Xc = 1 ÷ (2πfC) falls as frequency rises, a capacitor passes high frequencies and blocks DC.'
+        : 'Inductive reactance Xʟ = 2πfL rises with frequency, an inductor passes DC and blocks high frequencies.'} Reactance is the frequency-dependent AC "resistance" of the component, in ohms. 🔒 In your browser.</p>
     </div>
   );
 }

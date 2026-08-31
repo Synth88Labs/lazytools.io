@@ -37,7 +37,7 @@ export default function MeansTool() {
         <p class="mt-4 text-sm text-slate-500">Enter some numbers.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">The <strong>geometric mean</strong> is the nth root of the product — the right average for growth rates, ratios and things that multiply (like investment returns). The <strong>harmonic mean</strong> is n divided by the sum of reciprocals — the right average for rates over a fixed distance (like average speed) and for ratios such as P/E. The arithmetic mean is shown for comparison. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">The <strong>geometric mean</strong> is the nth root of the product, the right average for growth rates, ratios and things that multiply (like investment returns). The <strong>harmonic mean</strong> is n divided by the sum of reciprocals, the right average for rates over a fixed distance (like average speed) and for ratios such as P/E. The arithmetic mean is shown for comparison. 🔒 In your browser.</p>
     </div>
   );
 }

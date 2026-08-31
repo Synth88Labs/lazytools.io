@@ -16,24 +16,24 @@ keywords:
   - measure ring size secretly
   - ring size conversion
 heroImage: /blog/ring-size-guide.png
-heroAlt: "Ring size measurement guide — US 7 equals UK N equals EU 54.4"
+heroAlt: "Ring size measurement guide, US 7 equals UK N equals EU 54.4"
 faqs:
   - q: "How do I measure my ring size with paper?"
-    a: "Cut a 5 mm-wide strip of paper, wrap it snugly around the base of your finger, mark the overlap, and measure to the mark in millimeters. That circumference is your EU/ISO size directly — 54 mm ≈ US 7 ≈ UK N."
+    a: "Cut a 5 mm-wide strip of paper, wrap it snugly around the base of your finger, mark the overlap, and measure to the mark in millimeters. That circumference is your EU/ISO size directly, 54 mm ≈ US 7 ≈ UK N."
   - q: "What is the average ring size?"
-    a: "Commonly cited averages: US 6–6.5 for women (EU 52–53) and US 9–10 for men (EU 59–62). Averages are only a fallback for surprise purchases — measuring beats guessing."
+    a: "Commonly cited averages: US 6-6.5 for women (EU 52-53) and US 9-10 for men (EU 59-62). Averages are only a fallback for surprise purchases, measuring beats guessing."
   - q: "When is the best time to measure?"
-    a: "End of the day, at normal room temperature. Fingers are smallest in the cold morning and largest after heat, salt or exercise — measuring at both extremes and averaging is the jeweler's trick."
+    a: "End of the day, at normal room temperature. Fingers are smallest in the cold morning and largest after heat, salt or exercise, measuring at both extremes and averaging is the jeweler's trick."
   - q: "Should wide rings be sized up?"
-    a: "Yes — bands wider than about 6 mm contact more skin and fit tighter, so go up roughly half a size (one UK letter)."
+    a: "Yes, bands wider than about 6 mm contact more skin and fit tighter, so go up roughly half a size (one UK letter)."
   - q: "How can I find someone's ring size secretly?"
     a: "Borrow a ring they wear on the target finger and measure its inner diameter against the chart (or trace its inner circle on paper). The right hand runs about half a size different from the left, so match the finger too."
   - q: "Do ring sizes differ for men and women?"
-    a: "No — the scale is the same physical measurement for everyone. Only the typical range differs."
+    a: "No, the scale is the same physical measurement for everyone. Only the typical range differs."
 draft: false
 ---
 
-**Your ring size is just a length: the inner circumference of the band in millimeters — and that number
+**Your ring size is just a length: the inner circumference of the band in millimeters, and that number
 is literally your EU/ISO size.** Measure it with a strip of paper in two minutes, then read every other
 system off the chart: 54 mm ≈ **US 7 ≈ UK N**. The
 [ring size converter](/size/ring-size-converter/) does the mapping instantly, in your browser.
@@ -41,27 +41,27 @@ system off the chart: 54 mm ≈ **US 7 ≈ UK N**. The
 <aside class="key-takeaways">
 <p class="kt-title">⚡ Key takeaways</p>
 <ul>
-<li><strong>EU/ISO size = circumference in mm</strong> (ISO 8653) — measure with paper, get your size directly</li>
+<li><strong>EU/ISO size = circumference in mm</strong> (ISO 8653), measure with paper, get your size directly</li>
 <li><strong>US 7 = UK N = EU 54.4</strong> = 17.3 mm inner diameter; one UK letter = half a US size</li>
-<li><strong>Measure at day's end</strong> — fingers swell up to half a size through the day</li>
+<li><strong>Measure at day's end</strong>, fingers swell up to half a size through the day</li>
 <li><strong>Wide bands (&gt;6 mm): size up</strong> half a size</li>
-<li><strong>Between sizes → choose larger</strong> — resizing down is easier than a stuck ring</li>
+<li><strong>Between sizes → choose larger</strong>, resizing down is easier than a stuck ring</li>
 </ul>
 </aside>
 
 ## The three sizing systems, one measurement
 
-Every system labels the same physical thing — the ring's inner size:
+Every system labels the same physical thing, the ring's inner size:
 
 | System | What the number means | Example |
 |---|---|---|
 | EU / ISO 8653 | inner circumference in mm | 54.4 |
 | US / Canada | numeric scale, 0.5 steps | 7 |
-| UK / Australia | letters A–Z, half sizes | N |
+| UK / Australia | letters A, Z, half sizes | N |
 | Jewelers' mm | inner diameter | 17.3 mm |
 
 The scales lock together arithmetically. One full US size is about 0.83 mm of inner diameter, so a
-half US size ≈ 0.4 mm of diameter ≈ **1.3 mm of circumference** — and that half-step is also almost
+half US size ≈ 0.4 mm of diameter ≈ **1.3 mm of circumference**, and that half-step is also almost
 exactly one UK letter. That's why a single paper-strip measurement resolves everything: the
 [converter](/size/ring-size-converter/) accepts circumference, diameter, US or UK and returns the rest.
 
@@ -70,24 +70,24 @@ exactly one UK letter. That's why a single paper-strip measurement resolves ever
 Say your paper strip reads **54 mm** where it overlaps. Because EU/ISO size *is* the circumference,
 you are an **EU 54** on the nose. To get the diameter, divide by π: 54 ÷ 3.1416 ≈ **17.2 mm**. On the
 chart that lands you at **US 7 / UK N**. Now suppose you measured on a cold morning and got 52.5 mm
-instead — that's roughly a size and a quarter smaller (about **US 6¼**), which is exactly why timing
+instead, that's roughly a size and a quarter smaller (about **US 6¼**), which is exactly why timing
 matters. Averaging a warm-evening reading with a cool-morning reading gets you closer to the size the
 ring will actually feel like most of the time.
 
 ## Measuring at home: the paper strip method
 
 <figure>
-<img src="/blog/infographic-ring-measure.svg" alt="Infographic: measuring ring size in three steps — wrap a paper strip around the finger base, measure to the overlap mark in millimeters (54 mm), read the result in every system: US 7, UK N, EU/ISO 54.4" width="1200" height="640" loading="lazy" />
-<figcaption>One strip of paper resolves every sizing system — the millimeter reading is your EU size directly.</figcaption>
+<img src="/blog/infographic-ring-measure.svg" alt="Infographic: measuring ring size in three steps, wrap a paper strip around the finger base, measure to the overlap mark in millimeters (54 mm), read the result in every system: US 7, UK N, EU/ISO 54.4" width="1200" height="640" loading="lazy" />
+<figcaption>One strip of paper resolves every sizing system, the millimeter reading is your EU size directly.</figcaption>
 </figure>
 
-1. Cut a strip of paper ~5 mm wide (string works but stretches — paper is more accurate).
+1. Cut a strip of paper ~5 mm wide (string works but stretches, paper is more accurate).
 2. Wrap it around the **base** of the finger, snug but not tight, and mark exactly where it overlaps.
 3. Measure from end to mark in millimeters. **That's your EU size.**
 4. Check the knuckle: if it's clearly larger than the base, measure it too and pick a size between the two.
 
 <div class="callout tip">
-<p><span class="co-label">💡 Timing matters</span> Fingers change size by up to half a size within a day — smallest in a cold morning, largest in evening warmth or after exercise and salty food. Measure at the end of a normal day; for an important ring, measure on two or three days and take the middle value.</p>
+<p><span class="co-label">💡 Timing matters</span> Fingers change size by up to half a size within a day, smallest in a cold morning, largest in evening warmth or after exercise and salty food. Measure at the end of a normal day; for an important ring, measure on two or three days and take the middle value.</p>
 </div>
 
 ## Measuring an existing ring instead
@@ -95,7 +95,7 @@ ring will actually feel like most of the time.
 For a ring that already fits the target finger: place it on a ruler and measure the **inner diameter**
 (widest inside distance) in mm, then use the converter's diameter mode. 17.3 mm → US 7. This is also
 the secret-proposal method: borrow a ring they wear on the *ring finger of the correct hand* (left and
-right differ by about half a size for most people) and measure it — or press it gently onto paper and
+right differ by about half a size for most people) and measure it, or press it gently onto paper and
 trace the inner circle.
 
 ## Quick reference chart
@@ -112,14 +112,14 @@ trace the inner circle.
 | 11 | V | 64.6 | 20.6 |
 | 12 | X | 67.2 | 21.4 |
 
-The [full chart with half sizes](/size/ring-size-converter/) covers US 3–13.
+The [full chart with half sizes](/size/ring-size-converter/) covers US 3-13.
 
 ## Band width and comfort fit
 
 Two rings that share a nominal size can feel completely different because of **width** and **profile**.
 A wide band presses against more of your finger, so it grips more and slides over the knuckle less
 easily. A common jeweler's rule is to add roughly **half a size for every ~2 mm of extra width** beyond
-a thin (2 mm) band — a 6 mm band typically wants about half a size up, and a chunky 8 mm band closer to
+a thin (2 mm) band, a 6 mm band typically wants about half a size up, and a chunky 8 mm band closer to
 a full size.
 
 Profile matters too. A **comfort-fit** (domed interior) band slips on more easily and generally fits
@@ -140,35 +140,34 @@ If your measurement falls between two sizes, **round up**. A ring that is a touc
 down or fitted with a small sizing bead or bar; a ring that won't clear the knuckle is a daily
 frustration and risks getting stuck. Most solid metal bands (gold, platinum, silver) can be resized up
 or down by one to two sizes at a jeweler. Bands that **cannot** be easily resized include full
-eternity rings set all the way around, tension settings, and rings in tungsten, titanium, or ceramic —
-for those, getting the size right the first time is essential, so measure on more than one day.
+eternity rings set all the way around, tension settings, and rings in tungsten, titanium, or ceramic, for those, getting the size right the first time is essential, so measure on more than one day.
 
 ## A note on other countries
 
 The US, UK/Australia, and EU/ISO systems above cover most of the world, but a few markets number rings
-differently — Japan and China, for example, use their own numeric scales. When in doubt, the safest
+differently, Japan and China, for example, use their own numeric scales. When in doubt, the safest
 common language is the **inner circumference in millimeters**: it is unambiguous everywhere and is the
 basis of the [ISO 8653 standard](https://en.wikipedia.org/wiki/Ring_size), so a jeweler in any country can work from it. The
 [converter](/size/ring-size-converter/) always shows the millimeter value alongside each named size.
 
 ## Common ring-sizing mistakes
 
-1. **Measuring with stretched string** — it reads large; the ring arrives loose. Use paper.
-2. **Ignoring the knuckle** — a ring must pass it. If knuckle ≫ base, size between them and consider
+1. **Measuring with stretched string**. It reads large; the ring arrives loose. Use paper.
+2. **Ignoring the knuckle**, a ring must pass it. If knuckle ≫ base, size between them and consider
    a ring with a slightly euro-shaped (flattened) bottom.
-3. **Cold-hands measuring** — winter measurements run half a size small.
-4. **Forgetting band width** — wide bands (6 mm+) need ~half a size up.
-5. **Assuming both hands match** — they don't; measure the hand that will wear it.
+3. **Cold-hands measuring**, winter measurements run half a size small.
+4. **Forgetting band width**, wide bands (6 mm+) need ~half a size up.
+5. **Assuming both hands match**. They don't; measure the hand that will wear it.
 
 ## Quick summary
 
-Wrap paper around the finger, measure the overlap in millimeters — that circumference is your EU size,
+Wrap paper around the finger, measure the overlap in millimeters, that circumference is your EU size,
 and the [converter](/size/ring-size-converter/) maps it to US and UK instantly (54 mm ≈ US 7 ≈ UK N).
 Measure at day's end, account for the knuckle and band width, and when in doubt between two sizes,
 take the larger.
 
 *Conversions use the standard jewelers' chart on the ISO 8653 circumference scale. Sizes and
-measurements you enter never leave your browser — try the
+measurements you enter never leave your browser, try the
 [ring size converter](/size/ring-size-converter/), and see the
 [shoe](/size/shoe-size-converter/) and [bra](/size/bra-size-converter/) converters for the rest of the
 sizing family.*

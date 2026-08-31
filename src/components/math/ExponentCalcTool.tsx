@@ -23,7 +23,7 @@ export default function ExponentCalcTool() {
       const p = parseInt(fracExp[1]!, 10), k = parseInt(fracExp[2]!, 10);
       if (k < 2 || k > 20) throw new Error('Keep the root index between 2 and 20.');
       if (Math.abs(p) > 50) throw new Error('Keep the numerator of the exponent within ±50.');
-      if (!base.isInt() || base.sign() < 0) throw new Error('For fractional exponents, use a non-negative whole-number base (roots of fractions and negatives get hairy — simplify those by hand first).');
+      if (!base.isInt() || base.sign() < 0) throw new Error('For fractional exponents, use a non-negative whole-number base (roots of fractions and negatives get hairy, simplify those by hand first).');
       const powered = ratPow(base, Math.abs(p));
       const [outside, inside] = nthRootSimplified(powered.n, k);
       const surd = inside === 1n ? String(outside) : `${outside === 1n ? '' : outside}${rootSym(k)}${inside}`;
@@ -39,7 +39,7 @@ export default function ExponentCalcTool() {
             <ol class="mt-2 list-decimal space-y-1 pl-5">
               <li>A fractional exponent is a root: x^({p}/{k}) = {rootSym(k)}(x^{Math.abs(p)}){p < 0 ? ', inverted for the negative sign' : ''}</li>
               <li>{baseStr}^{Math.abs(p)} = {bigDisplay(powered.toFrac())}</li>
-              <li>Simplify the {k === 2 ? 'square' : k === 3 ? 'cube' : `${k}th`} root by extracting {k}th-power factors: <strong class="font-mono">{display}</strong>{inside === 1n ? ' — a perfect power' : ''}</li>
+              <li>Simplify the {k === 2 ? 'square' : k === 3 ? 'cube' : `${k}th`} root by extracting {k}th-power factors: <strong class="font-mono">{display}</strong>{inside === 1n ? ', a perfect power' : ''}</li>
             </ol>
           </div>
         </>
@@ -61,7 +61,7 @@ export default function ExponentCalcTool() {
             {r.d === 1n && (
               <div class="rounded-xl bg-white px-4 py-2.5 text-center ring-1 ring-slate-200">
                 <p class="font-mono text-2xl font-extrabold text-slate-800">{digits.toLocaleString('en-US')}</p>
-                <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">digits — every one exact</p>
+                <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">digits, every one exact</p>
               </div>
             )}
             {r.d !== 1n && (
@@ -73,7 +73,7 @@ export default function ExponentCalcTool() {
           </div>
           {e < 0 && (
             <p class="mt-3 rounded-xl border border-slate-200 bg-white p-4 text-sm text-slate-700">
-              A negative exponent is a reciprocal: {baseStr}^{e} = 1 / {baseStr}^{-e} = <strong class="font-mono">{r.toFrac()}</strong> — an exact fraction, not 0.125000001.
+              A negative exponent is a reciprocal: {baseStr}^{e} = 1 / {baseStr}^{-e} = <strong class="font-mono">{r.toFrac()}</strong>, an exact fraction, not 0.125000001.
             </p>
           )}
         </>

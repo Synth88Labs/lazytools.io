@@ -45,7 +45,7 @@ export default function TimeLapseTool() {
         <p class="mt-4 text-sm text-slate-500">Enter the shooting time, interval and playback frame rate.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Photos = shooting time ÷ interval; clip length = photos ÷ playback fps. A shorter interval gives smoother, longer footage but needs more shots and card space. For a 24–30 fps clip you need a lot of frames — an hour at 5-second intervals makes only about 24 seconds of video. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Photos = shooting time ÷ interval; clip length = photos ÷ playback fps. A shorter interval gives smoother, longer footage but needs more shots and card space. For a 24-30 fps clip you need a lot of frames, an hour at 5-second intervals makes only about 24 seconds of video. 🔒 In your browser.</p>
     </div>
   );
 }

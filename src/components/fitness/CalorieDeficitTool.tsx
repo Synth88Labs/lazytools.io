@@ -43,7 +43,7 @@ export default function CalorieDeficitTool() {
         <p class="mt-4 text-sm text-slate-500">Enter a weight to lose and a timeframe.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Based on roughly 7,700 kcal per kg (3,500 per lb) of body fat: total deficit = weight × that figure, spread over your timeframe. Subtract the daily deficit from your maintenance calories (TDEE) to set your intake. This is a simplified estimate — real loss varies with water, muscle and metabolic adaptation. Not medical advice; consult a professional for a plan. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Based on roughly 7,700 kcal per kg (3,500 per lb) of body fat: total deficit = weight × that figure, spread over your timeframe. Subtract the daily deficit from your maintenance calories (TDEE) to set your intake. This is a simplified estimate, real loss varies with water, muscle and metabolic adaptation. Not medical advice; consult a professional for a plan. 🔒 In your browser.</p>
     </div>
   );
 }

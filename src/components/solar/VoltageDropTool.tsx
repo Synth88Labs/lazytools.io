@@ -31,7 +31,7 @@ export default function VoltageDropTool() {
   const inp = 'w-full rounded-xl border border-slate-300 bg-white px-3 py-2 font-mono text-sm text-slate-900 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200';
   const sel = 'w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200';
 
-  const status = r ? (r.percent <= 2 ? { c: 'emerald', t: 'Excellent — under the 2% solar best-practice target.' } : r.percent <= 3 ? { c: 'amber', t: 'Acceptable — within NEC 3%, but solar best practice is ≤2%.' } : { c: 'rose', t: 'Too high — over 3%. Use thicker wire, a shorter run, or a higher system voltage.' }) : null;
+  const status = r ? (r.percent <= 2 ? { c: 'emerald', t: 'Excellent, under the 2% solar best-practice target.' } : r.percent <= 3 ? { c: 'amber', t: 'Acceptable, within NEC 3%, but solar best practice is ≤2%.' } : { c: 'rose', t: 'Too high, over 3%. Use thicker wire, a shorter run, or a higher system voltage.' }) : null;
 
   return (
     <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
@@ -63,7 +63,7 @@ export default function VoltageDropTool() {
         <p class="mt-4 text-sm text-slate-500">Enter the one-way run length, the current, the wire gauge and the system voltage.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Drop = 2 × length × current × copper resistivity ÷ wire area (the 2 is the round trip out and back). Low-voltage DC is very sensitive to drop, which is why thick wire and short runs matter — and why higher system voltages (24/48 V) cut the current and the loss. NEC allows up to 3%; solar best practice targets ≤2% on the main run to preserve harvest. Assumes copper at ~room temperature. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Drop = 2 × length × current × copper resistivity ÷ wire area (the 2 is the round trip out and back). Low-voltage DC is very sensitive to drop, which is why thick wire and short runs matter, and why higher system voltages (24/48 V) cut the current and the loss. NEC allows up to 3%; solar best practice targets ≤2% on the main run to preserve harvest. Assumes copper at ~room temperature. 🔒 In your browser.</p>
     </div>
   );
 }

@@ -108,7 +108,7 @@ export default function GramsToCupsTool() {
       )}
 
       <p class="mt-4 text-xs text-slate-500">
-        {item.name}: {item.gPerCup} g per US cup{item.note ? ` — ${item.note}` : ''} Weights from King Arthur Baking's Ingredient Weight Chart. 🔒 In your browser.
+        {item.name}: {item.gPerCup} g per US cup{item.note ? `, ${item.note}` : ''} Weights from King Arthur Baking's Ingredient Weight Chart. 🔒 In your browser.
       </p>
     </div>
   );

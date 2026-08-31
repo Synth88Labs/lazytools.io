@@ -31,11 +31,11 @@ export const time: Quantity = {
     },
     {
       id: 'h', name: 'Hour', plural: 'hours', symbol: 'h', slug: 'hours', factor: 3600, system: 'other',
-      definition: 'An hour (h) is 60 minutes or 3,600 seconds — one 24th of a day. Work time, travel time and billing commonly use hours.',
+      definition: 'An hour (h) is 60 minutes or 3,600 seconds, one 24th of a day. Work time, travel time and billing commonly use hours.',
     },
     {
       id: 'd', name: 'Day', plural: 'days', symbol: 'd', slug: 'days', factor: 86400, system: 'other',
-      definition: 'A day (d) is 24 hours or 86,400 seconds — one rotation of the Earth. Calendar calculations and durations build on days.',
+      definition: 'A day (d) is 24 hours or 86,400 seconds, one rotation of the Earth. Calendar calculations and durations build on days.',
     },
     {
       id: 'wk', name: 'Week', plural: 'weeks', symbol: 'wk', slug: 'weeks', factor: 604800, system: 'other',
@@ -43,7 +43,7 @@ export const time: Quantity = {
     },
     {
       id: 'mo', name: 'Month (average)', plural: 'months', symbol: 'mo', slug: 'months', factor: 2629746, system: 'other',
-      definition: 'An average Gregorian month is 30.44 days (2,629,746 seconds) — one twelfth of the average year. Individual calendar months range from 28 to 31 days.',
+      definition: 'An average Gregorian month is 30.44 days (2,629,746 seconds), one twelfth of the average year. Individual calendar months range from 28 to 31 days.',
     },
     {
       id: 'yr', name: 'Year (Gregorian)', plural: 'years', symbol: 'yr', slug: 'years', factor: 31556952, system: 'other',
@@ -63,7 +63,7 @@ export const time: Quantity = {
     'minutes-to-hours': {
       slug: 'minutes-to-hours',
       exampleValue: 90,
-      note: 'Minutes-to-hours converts durations for timesheets, payroll and planning. 90 minutes is 1.5 hours; 100 minutes is 1.667 hours (1 h 40 min). For payroll, decimal hours are what timesheet systems expect — 7 h 45 min is 7.75 hours.',
+      note: 'Minutes-to-hours converts durations for timesheets, payroll and planning. 90 minutes is 1.5 hours; 100 minutes is 1.667 hours (1 h 40 min). For payroll, decimal hours are what timesheet systems expect, 7 h 45 min is 7.75 hours.',
       faqs: [
         { q: 'How do I convert minutes to decimal hours for payroll?', a: 'Divide the minutes by 60. Example: 7 hours 45 minutes = 7 + 45/60 = 7.75 decimal hours.' },
       ],
@@ -76,27 +76,27 @@ export const time: Quantity = {
     'days-to-hours': {
       slug: 'days-to-hours',
       exampleValue: 3,
-      note: 'One day is 24 hours, so 3 days is 72 hours — the classic deadline arithmetic ("within 72 hours" = 3 days). A 30-day month is 720 hours.',
+      note: 'One day is 24 hours, so 3 days is 72 hours, the classic deadline arithmetic ("within 72 hours" = 3 days). A 30-day month is 720 hours.',
     },
     'hours-to-days': {
       slug: 'hours-to-days',
       exampleValue: 100,
-      note: 'Divide hours by 24: 100 hours is 4.17 days. Common for battery-life claims and SLA math — a "72-hour response window" is 3 days, but 100 work-hours at 8 h/day is 12.5 working days, a different quantity worth keeping straight.',
+      note: 'Divide hours by 24: 100 hours is 4.17 days. Common for battery-life claims and SLA math, a "72-hour response window" is 3 days, but 100 work-hours at 8 h/day is 12.5 working days, a different quantity worth keeping straight.',
     },
     'seconds-to-minutes': {
       slug: 'seconds-to-minutes',
       exampleValue: 300,
-      note: 'Divide seconds by 60: 300 s is 5 minutes. Video lengths, API timeouts and workout intervals are often specified in raw seconds — 90 s is 1.5 min, 3,600 s is exactly one hour.',
+      note: 'Divide seconds by 60: 300 s is 5 minutes. Video lengths, API timeouts and workout intervals are often specified in raw seconds, 90 s is 1.5 min, 3,600 s is exactly one hour.',
     },
     'minutes-to-seconds': {
       slug: 'minutes-to-seconds',
       exampleValue: 5,
-      note: 'Multiply minutes by 60: 5 minutes is 300 seconds. Programming and configuration files usually want seconds — a 15-minute cache TTL is 900 s.',
+      note: 'Multiply minutes by 60: 5 minutes is 300 seconds. Programming and configuration files usually want seconds, a 15-minute cache TTL is 900 s.',
     },
     'days-to-weeks': {
       slug: 'days-to-weeks',
       exampleValue: 90,
-      note: 'Divide days by 7: 90 days is 12.86 weeks. Pregnancy math is the everyday case — the standard 280-day term is exactly 40 weeks — along with notice periods and return windows.',
+      note: 'Divide days by 7: 90 days is 12.86 weeks. Pregnancy math is the everyday case, the standard 280-day term is exactly 40 weeks, along with notice periods and return windows.',
     },
     'weeks-to-days': {
       slug: 'weeks-to-days',
@@ -106,7 +106,7 @@ export const time: Quantity = {
     'ms-to-seconds': {
       slug: 'ms-to-seconds',
       exampleValue: 2500,
-      note: 'Divide milliseconds by 1,000: 2,500 ms is 2.5 s. Web performance metrics live in milliseconds — Google’s "good" Largest Contentful Paint threshold of 2,500 ms is 2.5 seconds.',
+      note: 'Divide milliseconds by 1,000: 2,500 ms is 2.5 s. Web performance metrics live in milliseconds, Google’s "good" Largest Contentful Paint threshold of 2,500 ms is 2.5 seconds.',
     },
     'seconds-to-ms': {
       slug: 'seconds-to-ms',
@@ -116,7 +116,7 @@ export const time: Quantity = {
     'days-to-months': {
       slug: 'days-to-months',
       exampleValue: 90,
-      note: 'Using the average Gregorian month of 30.44 days, 90 days is 2.96 months — which is why "90 days" and "3 months" are treated as equivalent in contracts even though calendar quarters range from 90 to 92 days.',
+      note: 'Using the average Gregorian month of 30.44 days, 90 days is 2.96 months, which is why "90 days" and "3 months" are treated as equivalent in contracts even though calendar quarters range from 90 to 92 days.',
     },
     'months-to-days': {
       slug: 'months-to-days',
@@ -126,7 +126,7 @@ export const time: Quantity = {
     'days-to-years': {
       slug: 'days-to-years',
       exampleValue: 10000,
-      note: 'Divide days by 365.2425 (the Gregorian average): 10,000 days is 27.4 years. A fun milestone — your 10,000th day falls a few months after your 27th birthday.',
+      note: 'Divide days by 365.2425 (the Gregorian average): 10,000 days is 27.4 years. A fun milestone, your 10,000th day falls a few months after your 27th birthday.',
     },
   },
 };

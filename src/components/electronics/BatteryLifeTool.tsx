@@ -43,7 +43,7 @@ export default function BatteryLifeTool() {
         <p class="mt-4 text-sm text-slate-500">Enter the capacity, current draw and efficiency.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Life ≈ capacity (mAh) ÷ current draw (mA), then multiplied by an efficiency factor (~70–85%) for real-world losses. It's a rough estimate: actual runtime also depends on discharge rate (the Peukert effect), temperature, the cutoff voltage and how the load varies over time. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Life ≈ capacity (mAh) ÷ current draw (mA), then multiplied by an efficiency factor (~70-85%) for real-world losses. It's a rough estimate: actual runtime also depends on discharge rate (the Peukert effect), temperature, the cutoff voltage and how the load varies over time. 🔒 In your browser.</p>
     </div>
   );
 }

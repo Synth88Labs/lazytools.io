@@ -88,13 +88,13 @@ export default function ChordScaleTool() {
             {matches.length ? (
               <div class="mt-2 flex flex-wrap gap-1.5">{matches.map((m) => <span class={`${chip} bg-emerald-50 text-emerald-800 ring-emerald-200`} title={m.name}>{m.symbol}</span>)}</div>
             ) : (
-              <p class="mt-1 text-sm text-slate-500">{pcSet([...picked]).length < 2 ? 'Pick at least two notes.' : 'That exact set isn\'t a named chord here — try adding or removing a note.'}</p>
+              <p class="mt-1 text-sm text-slate-500">{pcSet([...picked]).length < 2 ? 'Pick at least two notes.' : 'That exact set isn\'t a named chord here, try adding or removing a note.'}</p>
             )}
           </div>
         </>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Chords and scales are built from fixed semitone formulas (e.g. major = root, +4, +7). "Identify" matches your exact set of notes to a chord regardless of octave or inversion — symmetric shapes like the diminished 7th return several enharmonic names. Equal-tempered, spelled with sharps or flats. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Chords and scales are built from fixed semitone formulas (e.g. major = root, +4, +7). "Identify" matches your exact set of notes to a chord regardless of octave or inversion, symmetric shapes like the diminished 7th return several enharmonic names. Equal-tempered, spelled with sharps or flats. 🔒 In your browser.</p>
     </div>
   );
 }

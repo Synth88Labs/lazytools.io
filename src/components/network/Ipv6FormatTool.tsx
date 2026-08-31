@@ -24,7 +24,7 @@ export default function Ipv6FormatTool() {
       </div>
 
       <label class="mt-4 block">
-        <span class="text-xs font-semibold uppercase tracking-wide text-slate-500">IPv6 addresses — one per line</span>
+        <span class="text-xs font-semibold uppercase tracking-wide text-slate-500">IPv6 addresses, one per line</span>
         <textarea
           class="mt-1 h-32 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 font-mono text-sm text-slate-800 focus:border-brand-500 focus:outline-none"
           value={input}
@@ -64,7 +64,7 @@ export default function Ipv6FormatTool() {
         </button>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Parsing and normalization run locally — paste internal addresses without worry.</p>
+      <p class="mt-4 text-xs text-slate-500">Parsing and normalization run locally, paste internal addresses without worry.</p>
     </div>
   );
 }

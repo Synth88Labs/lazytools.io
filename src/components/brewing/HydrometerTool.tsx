@@ -46,7 +46,7 @@ export default function HydrometerTool() {
         <p class="mt-4 text-sm text-slate-500">Enter the reading, the sample temperature and the hydrometer's calibration temperature.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Hydrometers are calibrated at one temperature (commonly 20 °C / 68 °F, or 15.5 °C / 60 °F). A warm sample is less dense, so the hydrometer reads low — this adds the correction back. The effect is small near calibration temperature but grows for hot wort straight off the boil. Check your hydrometer's calibration temperature (printed on the scale) and set it above. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Hydrometers are calibrated at one temperature (commonly 20 °C / 68 °F, or 15.5 °C / 60 °F). A warm sample is less dense, so the hydrometer reads low. This adds the correction back. The effect is small near calibration temperature but grows for hot wort straight off the boil. Check your hydrometer's calibration temperature (printed on the scale) and set it above. 🔒 In your browser.</p>
     </div>
   );
 }

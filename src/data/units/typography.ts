@@ -13,12 +13,12 @@ export const typography: Quantity = {
   baseUnit: 'pt',
   icon: '🔠',
   description:
-    'Convert typography and print units — points, picas, pixels, inches and millimetres. Based on the standard 1 pt = 1/72 inch and 1 CSS px = 1/96 inch (96 px = 72 pt).',
+    'Convert typography and print units, points, picas, pixels, inches and millimetres. Based on the standard 1 pt = 1/72 inch and 1 CSS px = 1/96 inch (96 px = 72 pt).',
   units: [
     { id: 'pt', name: 'Point', plural: 'points', symbol: 'pt', slug: 'point', factor: 1, system: 'other', definition: 'The desktop-publishing and CSS point, defined as exactly 1/72 of an inch. Font sizes and leading are measured in points.' },
     { id: 'px', name: 'Pixel', plural: 'pixels', symbol: 'px', slug: 'pixel', factor: 0.75, system: 'other', definition: 'The CSS reference pixel, defined as 1/96 of an inch, so 96 px = 72 pt and 1 px = 0.75 pt. It is a fixed physical reference in CSS, independent of screen density.' },
     { id: 'pc', name: 'Pica', plural: 'picas', symbol: 'pc', slug: 'pica', factor: 12, system: 'other', definition: 'A typography unit equal to 12 points (1/6 of an inch). Column widths and layout measures are often given in picas.' },
-    { id: 'in', name: 'Inch', plural: 'inches', symbol: 'in', slug: 'inch', factor: 72, system: 'imperial', definition: 'One inch equals exactly 72 points or 96 CSS pixels — the anchor that ties typographic units to physical length.' },
+    { id: 'in', name: 'Inch', plural: 'inches', symbol: 'in', slug: 'inch', factor: 72, system: 'imperial', definition: 'One inch equals exactly 72 points or 96 CSS pixels, the anchor that ties typographic units to physical length.' },
     { id: 'mm', name: 'Millimetre', plural: 'millimetres', symbol: 'mm', slug: 'millimeter', factor: 72 / 25.4, system: 'metric', definition: 'One millimetre is 1/25.4 inch, which is 72/25.4 ≈ 2.8346 points. Used for print margins and bleed in metric workflows.' },
     { id: 'cm', name: 'Centimetre', plural: 'centimetres', symbol: 'cm', slug: 'centimeter', factor: 720 / 25.4, system: 'metric', definition: 'One centimetre is 10 mm, or 720/25.4 ≈ 28.346 points.' },
   ],

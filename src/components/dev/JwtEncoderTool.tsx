@@ -170,8 +170,7 @@ export default function JwtEncoderTool() {
 
         <p class="text-xs text-slate-500">
           This creates (signs) a token. To read one, use the JWT decoder to
-          inspect a token. Your secret and payload never leave your browser —
-          signing happens entirely on your device.
+          inspect a token. Your secret and payload never leave your browser, signing happens entirely on your device.
         </p>
       </div>
     </div>

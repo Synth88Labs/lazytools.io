@@ -37,7 +37,7 @@ export default function DensityAltitudeTool() {
         </div>
       ) : <p class="mt-4 text-sm text-slate-500">Enter the field elevation, altimeter setting and temperature.</p>}
 
-      <p class="mt-4 text-xs text-slate-500">Density altitude is the altitude the air "feels like" to a wing or propeller — pressure altitude corrected for temperature. Pressure altitude = elevation + (29.92 − altimeter) × 1,000 ft; density altitude ≈ PA + 120 × (OAT − ISA temp), where the ISA temperature drops about 2 °C per 1,000 ft. High density altitude (hot, high, humid) reduces engine power, lift and climb. This is the standard pilot approximation — use official performance charts for flight planning. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Density altitude is the altitude the air "feels like" to a wing or propeller, pressure altitude corrected for temperature. Pressure altitude = elevation + (29.92 − altimeter) × 1,000 ft; density altitude ≈ PA + 120 × (OAT − ISA temp), where the ISA temperature drops about 2 °C per 1,000 ft. High density altitude (hot, high, humid) reduces engine power, lift and climb. This is the standard pilot approximation, use official performance charts for flight planning. 🔒 In your browser.</p>
     </div>
   );
 }

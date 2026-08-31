@@ -72,7 +72,7 @@ export default function RoofingCalculator() {
         <p class="mt-4 text-sm text-slate-500">Enter the roof footprint and pitch (rise per 12 of run).</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Roof area = footprint × √(1 + (rise/12)²). 1 square = 100 sq ft ≈ 9.29 m², usually 3 shingle bundles. Add ~10–15% for ridges/valleys. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Roof area = footprint × √(1 + (rise/12)²). 1 square = 100 sq ft ≈ 9.29 m², usually 3 shingle bundles. Add ~10-15% for ridges/valleys. 🔒 In your browser.</p>
     </div>
   );
 }

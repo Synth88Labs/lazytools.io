@@ -44,7 +44,7 @@ export default function CropFactorTool() {
         <p class="mt-4 text-sm text-slate-500">Choose a sensor and enter the lens focal length.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Crop factor = 43.3 mm (full-frame diagonal) ÷ your sensor's diagonal. Multiply your lens's focal length by it for the full-frame-equivalent field of view. The equivalent aperture (× crop) matches the depth of field and total light — but not the exposure, which the crop doesn't change. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Crop factor = 43.3 mm (full-frame diagonal) ÷ your sensor's diagonal. Multiply your lens's focal length by it for the full-frame-equivalent field of view. The equivalent aperture (× crop) matches the depth of field and total light, but not the exposure, which the crop doesn't change. 🔒 In your browser.</p>
     </div>
   );
 }

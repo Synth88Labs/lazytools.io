@@ -63,7 +63,7 @@ export default function OffGridLoadTool() {
         <div class="rounded-xl bg-white p-4 text-center ring-1 ring-slate-200"><p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Per month · year</p><p class="mt-1 text-xl font-extrabold text-slate-700">{fmt(totalWh * 30.4368 / 1000)} · {fmt(totalWh * 365.25 / 1000)} kWh</p></div>
       </div>
 
-      <p class="mt-4 text-xs text-slate-500">Daily energy is the sum of each appliance's watts × quantity × hours run per day. This total is the starting point for sizing an off-grid system: feed it into the battery-bank and solar-panel calculators. Preset wattages are typical starting points — real appliances vary, and motor-driven ones (fridges, pumps) cycle on and off, so use their average daily run-time. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Daily energy is the sum of each appliance's watts × quantity × hours run per day. This total is the starting point for sizing an off-grid system: feed it into the battery-bank and solar-panel calculators. Preset wattages are typical starting points, real appliances vary, and motor-driven ones (fridges, pumps) cycle on and off, so use their average daily run-time. 🔒 In your browser.</p>
     </div>
   );
 }

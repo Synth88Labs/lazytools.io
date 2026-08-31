@@ -42,12 +42,12 @@ export default function EffectSizeTool() {
           </div>
           <div class={`mt-3 rounded-xl p-4 ring-2 ${TONE[r.magnitude]}`}>
             <p class="text-sm font-semibold capitalize">{r.magnitude} effect size</p>
-            <p class="mt-1 text-sm">By Cohen's conventional benchmarks (|d| ≈ 0.2 small, 0.5 medium, 0.8 large), a d of {fmt(r.d, 2)} is a <strong>{r.magnitude}</strong> effect — the group means differ by about {fmt(Math.abs(r.d), 2)} pooled standard deviations.</p>
+            <p class="mt-1 text-sm">By Cohen's conventional benchmarks (|d| ≈ 0.2 small, 0.5 medium, 0.8 large), a d of {fmt(r.d, 2)} is a <strong>{r.magnitude}</strong> effect, the group means differ by about {fmt(Math.abs(r.d), 2)} pooled standard deviations.</p>
           </div>
         </>
       ) : <p class="mt-4 text-sm text-slate-500">Enter the mean, SD and size for each group.</p>}
 
-      <p class="mt-4 text-xs text-slate-500">Cohen's d expresses the difference between two group means in units of their pooled standard deviation, giving the <em>magnitude</em> of an effect independent of sample size — a useful complement to a p-value, which only tells you whether an effect is detectable. The small/medium/large labels are rules of thumb, not hard cut-offs; interpret them in your field's context. 🔒 Computed in your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Cohen's d expresses the difference between two group means in units of their pooled standard deviation, giving the <em>magnitude</em> of an effect independent of sample size, a useful complement to a p-value, which only tells you whether an effect is detectable. The small/medium/large labels are rules of thumb, not hard cut-offs; interpret them in your field's context. 🔒 Computed in your browser.</p>
     </div>
   );
 }

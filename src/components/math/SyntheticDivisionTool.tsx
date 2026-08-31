@@ -94,12 +94,12 @@ export default function SyntheticDivisionTool() {
                       Divide the leading terms → quotient term <span class="font-mono font-bold">{polyToString([s.factor[0], ...Array(s.factor[1]).fill(new Rat(0n))])}</span>; multiply the divisor by it, subtract → remainder so far: <span class="font-mono">{polyToString(s.after)}</span>
                     </li>
                   ))}
-                  <li>The remainder's degree is below the divisor's — stop. Result: quotient <span class="font-mono font-bold">{polyToString(longResult.quotient)}</span>, remainder <span class="font-mono font-bold">{polyToString(longResult.remainder)}</span>.</li>
+                  <li>The remainder's degree is below the divisor's, stop. Result: quotient <span class="font-mono font-bold">{polyToString(longResult.quotient)}</span>, remainder <span class="font-mono font-bold">{polyToString(longResult.remainder)}</span>.</li>
                 </ol>
               </div>
             </>
           )}
-          <p class="mt-4 text-xs text-slate-500">Exact rational coefficients at every step — works for any divisor degree, where synthetic division needs (x − r). Runs locally.</p>
+          <p class="mt-4 text-xs text-slate-500">Exact rational coefficients at every step, works for any divisor degree, where synthetic division needs (x − r). Runs locally.</p>
         </div>
       )}
 
@@ -166,11 +166,11 @@ export default function SyntheticDivisionTool() {
 
           <div class="mt-4 rounded-xl border border-slate-200 bg-white p-4 text-sm text-slate-700">
             <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">How to read the table</p>
-            <p class="mt-1">Bring the first coefficient down. Then repeatedly: multiply the bottom number by r (middle row) and add it to the next coefficient (bottom row). The last bottom number is the remainder — which by the remainder theorem equals p(r){result.remainder.isZero() ? `, and it's 0 here, so (x − ${r.toFrac()}) is a factor.` : '.'}</p>
+            <p class="mt-1">Bring the first coefficient down. Then repeatedly: multiply the bottom number by r (middle row) and add it to the next coefficient (bottom row). The last bottom number is the remainder, which by the remainder theorem equals p(r){result.remainder.isZero() ? `, and it's 0 here, so (x − ${r.toFrac()}) is a factor.` : '.'}</p>
           </div>
         </>
       )}
-      <p class="mt-4 text-xs text-slate-500">Exact rational arithmetic — r can be a fraction like 1/2 (testing the rational-root candidates). Runs locally.</p>
+      <p class="mt-4 text-xs text-slate-500">Exact rational arithmetic, r can be a fraction like 1/2 (testing the rational-root candidates). Runs locally.</p>
       </div>)}
     </div>
   );

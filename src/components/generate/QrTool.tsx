@@ -45,7 +45,7 @@ export default function QrTool() {
         rows={3}
         value={text}
         onInput={(e) => setText((e.target as HTMLTextAreaElement).value)}
-        placeholder="https://example.com — or any text, WiFi string, vCard…"
+        placeholder="https://example.com, or any text, WiFi string, vCard…"
         class="w-full rounded-xl border border-slate-300 bg-white px-3 py-3 font-mono text-sm text-slate-900 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200"
         spellcheck={false}
       />
@@ -58,10 +58,10 @@ export default function QrTool() {
         <div>
           <label for="qr-level" class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Error correction</label>
           <select id="qr-level" value={level} onChange={(e) => setLevel((e.target as HTMLSelectElement).value as typeof level)} class={inputCls}>
-            <option value="L">L — 7% (max capacity)</option>
-            <option value="M">M — 15% (default)</option>
-            <option value="Q">Q — 25%</option>
-            <option value="H">H — 30% (print / logo overlay)</option>
+            <option value="L">L, 7% (max capacity)</option>
+            <option value="M">M, 15% (default)</option>
+            <option value="Q">Q, 25%</option>
+            <option value="H">H, 30% (print / logo overlay)</option>
           </select>
         </div>
       </div>
@@ -72,7 +72,7 @@ export default function QrTool() {
         <button type="button" onClick={download} disabled={!text.trim() || !!error} class="mt-3 rounded-lg bg-brand-700 px-4 py-2 text-sm font-medium text-white transition hover:bg-brand-800 disabled:opacity-40">
           ⬇ Download PNG
         </button>
-        <p class="mt-2 text-xs text-slate-500">Encodes your content directly — no tracking redirect, so the code never expires.</p>
+        <p class="mt-2 text-xs text-slate-500">Encodes your content directly, no tracking redirect, so the code never expires.</p>
       </div>
     </div>
   );

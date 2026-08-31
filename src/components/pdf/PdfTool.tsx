@@ -85,7 +85,7 @@ export default function PdfTool({ mode }: Props) {
           .catch((err) => { console.error('pdf preview failed:', err); setThumbs([]); })
           .finally(() => setPreviewBusy(false));
       } catch {
-        setError('Could not read this PDF — it may be password-protected or corrupted.');
+        setError('Could not read this PDF. It may be password-protected or corrupted.');
         setFiles([]);
         setPageCount(0);
       }
@@ -148,7 +148,7 @@ export default function PdfTool({ mode }: Props) {
         const src = await PDFDocument.load(await files[0]!.arrayBuffer());
         if (mode === 'split') {
           const indices = parseRange(range, src.getPageCount());
-          if (!indices.length) throw new Error('No valid pages in that range — use forms like 3-9 or 1, 4, 7.');
+          if (!indices.length) throw new Error('No valid pages in that range, use forms like 3-9 or 1, 4, 7.');
           out = await PDFDocument.create();
           const pages = await out.copyPages(src, indices);
           pages.forEach((p) => out.addPage(p));
@@ -228,9 +228,9 @@ export default function PdfTool({ mode }: Props) {
       a.download = outName;
       a.click();
       URL.revokeObjectURL(url);
-      setDone(`✓ ${outName} (${fmtSize(blob.size)}) — download started.`);
+      setDone(`✓ ${outName} (${fmtSize(blob.size)}), download started.`);
     } catch (e) {
-      setError((e as Error).message || 'Processing failed — the file may be encrypted or damaged.');
+      setError((e as Error).message || 'Processing failed, the file may be encrypted or damaged.');
     }
     setBusy(false);
   }
@@ -248,7 +248,7 @@ export default function PdfTool({ mode }: Props) {
           {multi ? `Add ${mode === 'merge' ? 'PDF files' : 'JPG / PNG images'}` : files[0] ? files[0].name : 'Choose a PDF'}
         </span>
         <span class="mt-1 block text-xs text-slate-500">
-          {!multi && files[0] ? `${fmtSize(files[0].size)} · ${pageCount} pages` : 'Processed in your browser — nothing is uploaded'}
+          {!multi && files[0] ? `${fmtSize(files[0].size)} · ${pageCount} pages` : 'Processed in your browser, nothing is uploaded'}
         </span>
       </label>
 
@@ -325,7 +325,7 @@ export default function PdfTool({ mode }: Props) {
               <input id="pt-wmrange" type="text" value={range} onInput={(e) => setRange((e.target as HTMLInputElement).value)} placeholder="e.g. 1-5" class={`${inputCls} w-44`} spellcheck={false} />
             </div>
           </div>
-          <p class="text-xs text-slate-500">The watermark is drawn into the page content — it is not a removable layer, but it also does not encrypt or protect the file.</p>
+          <p class="text-xs text-slate-500">The watermark is drawn into the page content. It is not a removable layer, but it also does not encrypt or protect the file.</p>
         </div>
       )}
 
@@ -357,7 +357,7 @@ export default function PdfTool({ mode }: Props) {
           {thumbs.length > 0 && (
             <>
               <p class="mb-1.5 text-xs font-semibold uppercase tracking-wide text-slate-500">
-                Live preview{mode === 'split' ? ' — click pages to select' : rotateAll ? ' — all pages rotate' : ' — click pages to choose which rotate'}
+                Live preview{mode === 'split' ? ', click pages to select' : rotateAll ? ', all pages rotate' : ', click pages to choose which rotate'}
               </p>
               <ul class="grid max-h-96 grid-cols-3 gap-2 overflow-y-auto rounded-xl border border-slate-200 bg-white p-2 sm:grid-cols-5 lg:grid-cols-6">
                 {thumbs.map((t, i) => {
@@ -391,7 +391,7 @@ export default function PdfTool({ mode }: Props) {
                 })}
               </ul>
               {pageCount > THUMB_PAGE_CAP && (
-                <p class="mt-1.5 text-xs text-slate-500">Previewing the first {THUMB_PAGE_CAP} of {pageCount} pages — the range field still addresses every page.</p>
+                <p class="mt-1.5 text-xs text-slate-500">Previewing the first {THUMB_PAGE_CAP} of {pageCount} pages, the range field still addresses every page.</p>
               )}
             </>
           )}

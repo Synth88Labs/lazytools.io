@@ -43,7 +43,7 @@ export default function HashTool({ sample = '' }: { sample?: string }) {
         rows={5}
         value={input}
         onInput={(e) => setInput((e.target as HTMLTextAreaElement).value)}
-        placeholder="Type or paste — hashes update live, locally…"
+        placeholder="Type or paste, hashes update live, locally…"
         class="w-full rounded-xl border border-slate-300 bg-white px-3 py-3 font-mono text-sm text-slate-900 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200"
         spellcheck={false}
       />
@@ -66,7 +66,7 @@ export default function HashTool({ sample = '' }: { sample?: string }) {
         ))}
       </div>
       <p class="mt-3 text-xs text-slate-500">
-        Computed with the browser's Web Crypto API (crypto.subtle) — the input never leaves your device. MD5 is
+        Computed with the browser's Web Crypto API (crypto.subtle), the input never leaves your device. MD5 is
         intentionally absent: it's cryptographically broken and excluded from Web Crypto.
       </p>
     </div>

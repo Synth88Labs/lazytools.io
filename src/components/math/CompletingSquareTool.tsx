@@ -68,7 +68,7 @@ export default function CompletingSquareTool() {
 
       {error ? <p class="mt-4 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800">{error}</p> : body}
 
-      <p class="mt-4 text-xs text-slate-500">Vertex form with exact fractions — 2x² − 4x + 5 becomes 2(x − 1)² + 3, every constant exact. Runs locally.</p>
+      <p class="mt-4 text-xs text-slate-500">Vertex form with exact fractions, 2x² − 4x + 5 becomes 2(x − 1)² + 3, every constant exact. Runs locally.</p>
     </div>
   );
 }

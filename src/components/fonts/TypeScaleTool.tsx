@@ -99,7 +99,7 @@ export default function TypeScaleTool() {
       </div>
 
       <p class="mt-4 text-xs text-slate-500">
-        A <strong>modular scale</strong> multiplies the base size by a fixed ratio for each step, so headings relate to body text by a consistent proportion — the typographic equivalent of a musical scale. Smaller ratios (1.125–1.25) suit dense UI; larger ones (1.333–1.618) give dramatic editorial contrast. 🔒
+        A <strong>modular scale</strong> multiplies the base size by a fixed ratio for each step, so headings relate to body text by a consistent proportion, the typographic equivalent of a musical scale. Smaller ratios (1.125-1.25) suit dense UI; larger ones (1.333-1.618) give dramatic editorial contrast. 🔒
       </p>
     </div>
   );

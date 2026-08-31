@@ -67,7 +67,7 @@ export default function JwkThumbprintTool() {
         </div>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Compute the RFC 7638 thumbprint of a JSON Web Key — a stable identifier often used as a <code>kid</code>. It takes the key&#39;s required public members in lexicographic order as compact JSON, hashes them (SHA-256 by default), and base64url-encodes the result, then also builds the RFC 9278 thumbprint URI. Private-key members are ignored in the hash (and flagged), so the same thumbprint identifies a key pair whether you feed it the public or private JWK. Everything runs in your browser — the key is never uploaded. 🔒</p>
+      <p class="mt-4 text-xs text-slate-500">Compute the RFC 7638 thumbprint of a JSON Web Key, a stable identifier often used as a <code>kid</code>. It takes the key&#39;s required public members in lexicographic order as compact JSON, hashes them (SHA-256 by default), and base64url-encodes the result, then also builds the RFC 9278 thumbprint URI. Private-key members are ignored in the hash (and flagged), so the same thumbprint identifies a key pair whether you feed it the public or private JWK. Everything runs in your browser, the key is never uploaded. 🔒</p>
     </div>
   );
 }

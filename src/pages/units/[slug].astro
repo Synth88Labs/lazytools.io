@@ -70,7 +70,7 @@ if (type === 'pair' && pair) {
   const { from, to, quantity: q } = pair;
   const oneAsTo = convert(1, from, to);
   pageTitle = seoTitle(`Convert ${from.symbol} to ${to.symbol} (${q.name})`);
-  pageDescription = `Convert ${from.plural} to ${to.plural} instantly. 1 ${from.symbol} = ${formatNumber(oneAsTo, 6)} ${to.symbol}. Formula, conversion table and examples — runs 100% in your browser, nothing uploaded.`;
+  pageDescription = `Convert ${from.plural} to ${to.plural} instantly. 1 ${from.symbol} = ${formatNumber(oneAsTo, 6)} ${to.symbol}. Formula, conversion table and examples, runs 100% in your browser, nothing uploaded.`;
   crumbs = [
     { name: 'Home', url: '/' },
     { name: 'Unit Converters', url: '/units/' },
@@ -81,7 +81,7 @@ if (type === 'pair' && pair) {
 
 if (type === 'quantity' && quantity) {
   pageTitle = seoTitle(`${quantity.name} Converter`);
-  pageDescription = `${quantity.description.split('.')[0]}. Instant, accurate and 100% in your browser — nothing is uploaded.`;
+  pageDescription = `${quantity.description.split('.')[0]}. Instant, accurate and 100% in your browser, nothing is uploaded.`;
   crumbs = [
     { name: 'Home', url: '/' },
     { name: 'Unit Converters', url: '/units/' },
@@ -120,7 +120,7 @@ const pairData = (() => {
       : []),
     {
       q: `Is this ${from.symbol}-to-${to.symbol} converter accurate and private?`,
-      a: `Yes. It uses the exact internationally defined conversion factors and computes results locally in your browser — your input is never sent to a server, and the page keeps working offline.`,
+      a: `Yes. It uses the exact internationally defined conversion factors and computes results locally in your browser, your input is never sent to a server, and the page keeps working offline.`,
     },
     ...(meta?.faqs ?? []),
   ];
@@ -169,11 +169,11 @@ const hubData = (() => {
   const unitSummary =
     unitList.length <= 4 ? unitList.join(', ') : `${unitList.slice(0, 4).join(', ')} and ${unitList.length - 4} more`;
   const top = pairs[0];
-  // FAQs are built from this quantity's own data (unit list, count, top pair) — no invented facts.
+  // FAQs are built from this quantity's own data (unit list, count, top pair), no invented facts.
   const faqs: { q: string; a: string }[] = [
     {
       q: `How do I convert ${qn} units?`,
-      a: `Choose your two units in the converter above and type a value — the result updates instantly, entirely in your browser. All ${quantity.units.length} ${qn} units on this page are interchangeable, so you can convert in either direction.`,
+      a: `Choose your two units in the converter above and type a value, the result updates instantly, entirely in your browser. All ${quantity.units.length} ${qn} units on this page are interchangeable, so you can convert in either direction.`,
     },
     {
       q: `Which ${qn} units can I convert here?`,
@@ -189,7 +189,7 @@ const hubData = (() => {
       : []),
     {
       q: `Is this ${quantity.name} Converter free and private?`,
-      a: `Yes. It is free with no sign-up, uses the exact internationally defined conversion factors, and computes every result locally in your browser — nothing you type is uploaded, and the page keeps working offline.`,
+      a: `Yes. It is free with no sign-up, uses the exact internationally defined conversion factors, and computes every result locally in your browser, nothing you type is uploaded, and the page keeps working offline.`,
     },
   ];
 
@@ -225,7 +225,7 @@ const hubData = (() => {
 
         <p class="mt-3 text-lg leading-relaxed text-slate-700">
           <strong class="font-semibold text-slate-900">{factSentence(pair!)}</strong>{' '}
-          Type a value below — the conversion happens instantly, entirely on your device.
+          Type a value below, the conversion happens instantly, entirely on your device.
         </p>
 
         <div class="mt-6">

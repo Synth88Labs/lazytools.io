@@ -12,7 +12,7 @@ export default function TextRepeater() {
   const [text, setText] = useState('Hello');
   const [count, setCount] = useState(10);
   const [sepId, setSepId] = useState('newline');
-  const [custom, setCustom] = useState(' — ');
+  const [custom, setCustom] = useState(', ');
   const [numbered, setNumbered] = useState(false);
   const [copied, setCopied] = useState(false);
 
@@ -105,7 +105,7 @@ export default function TextRepeater() {
       </div>
 
       <p class="mt-4 text-xs text-slate-500">
-        Repeats up to 10,000 times. Handy for test data, filling a field, or a bit of fun — all generated in your browser. 🔒
+        Repeats up to 10,000 times. Handy for test data, filling a field, or a bit of fun, all generated in your browser. 🔒
       </p>
     </div>
   );

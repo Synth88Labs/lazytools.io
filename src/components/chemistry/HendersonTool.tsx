@@ -3,7 +3,7 @@ import SolverTool from './SolverTool';
 export default function HendersonTool() {
   return (
     <SolverTool
-      formula="Henderson–Hasselbalch: pH = pKa + log₁₀([A⁻] / [HA]) — buffer pH from the conjugate base/acid ratio."
+      formula="Henderson, Hasselbalch: pH = pKa + log₁₀([A⁻] / [HA]), buffer pH from the conjugate base/acid ratio."
       fields={[
         { key: 'pKa', label: 'pKa', unit: '', initial: '4.76' },
         { key: 'base', label: 'Conjugate base [A⁻]', unit: 'M', initial: '0.1' },

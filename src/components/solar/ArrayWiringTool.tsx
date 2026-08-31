@@ -46,7 +46,7 @@ export default function ArrayWiringTool() {
         <p class="mt-4 text-sm text-slate-500">Enter the panel specs and wiring counts.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Wiring panels in series adds their voltages (Voc × number in series) while the current stays the same; wiring strings in parallel adds their currents (Isc × strings) at the same voltage. Total power is the sum of all panels. Check the array Voc against the maximum input voltage of your charge controller or inverter — cold weather pushes Voc higher, so leave margin. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Wiring panels in series adds their voltages (Voc × number in series) while the current stays the same; wiring strings in parallel adds their currents (Isc × strings) at the same voltage. Total power is the sum of all panels. Check the array Voc against the maximum input voltage of your charge controller or inverter, cold weather pushes Voc higher, so leave margin. 🔒 In your browser.</p>
     </div>
   );
 }

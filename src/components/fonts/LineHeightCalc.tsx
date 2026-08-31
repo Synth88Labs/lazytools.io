@@ -17,11 +17,11 @@ export default function LineHeightCalc() {
   const lh = num(unitless);
   const px = fs && lh ? round1(fs * lh) : null;
 
-  // Recommendation band: body text reads best around 1.4–1.6; larger type can go tighter.
+  // Recommendation band: body text reads best around 1.4-1.6; larger type can go tighter.
   const rec = fs
-    ? fs >= 32 ? { lo: 1.1, hi: 1.25, note: 'Headings / display — tighter looks intentional' }
-      : fs >= 20 ? { lo: 1.25, hi: 1.4, note: 'Sub-headings — a little tighter than body' }
-        : { lo: 1.4, hi: 1.6, note: 'Body text — the comfortable reading range' }
+    ? fs >= 32 ? { lo: 1.1, hi: 1.25, note: 'Headings / display, tighter looks intentional' }
+      : fs >= 20 ? { lo: 1.25, hi: 1.4, note: 'Sub-headings, a little tighter than body' }
+        : { lo: 1.4, hi: 1.6, note: 'Body text, the comfortable reading range' }
     : null;
   const inBand = lh && rec ? lh >= rec.lo && lh <= rec.hi : false;
 
@@ -64,7 +64,7 @@ export default function LineHeightCalc() {
       </div>
 
       <p class="mt-4 text-xs text-slate-500">
-        A <strong>unitless</strong> line-height (like <code>1.5</code>) scales with the font size and is what you almost always want — it means "1.5× the current font size", so nested elements inherit sensibly. Body text reads best around 1.4–1.6; large headings can go tighter. In CSS: <code>line-height: {round2(lh ?? 1.5)};</code> 🔒
+        A <strong>unitless</strong> line-height (like <code>1.5</code>) scales with the font size and is what you almost always want. It means "1.5× the current font size", so nested elements inherit sensibly. Body text reads best around 1.4-1.6; large headings can go tighter. In CSS: <code>line-height: {round2(lh ?? 1.5)};</code> 🔒
       </p>
     </div>
   );

@@ -50,14 +50,14 @@ export default function RestrictionDigestTool() {
         <div class="rounded-xl bg-white p-4 ring-2 ring-brand-200">
           <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">{result.cuts.length} cut{result.cuts.length === 1 ? '' : 's'} → {result.fragments.length} fragment{result.fragments.length === 1 ? '' : 's'}</p>
           <p class="mt-1 font-mono text-sm text-slate-800">{result.fragments.length ? result.fragments.map((f) => `${f} bp`).join('  ·  ') : '—'}</p>
-          {result.cuts.length === 0 && seq.length > 0 && <p class="mt-1 text-xs text-slate-500">No selected enzyme cuts this sequence — it stays intact ({seq.length} bp).</p>}
+          {result.cuts.length === 0 && seq.length > 0 && <p class="mt-1 text-xs text-slate-500">No selected enzyme cuts this sequence. It stays intact ({seq.length} bp).</p>}
         </div>
         <div class="rounded-xl bg-white p-4 ring-1 ring-slate-200">
           <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Cut positions ({circular ? 'circular' : 'linear'})</p>
           {result.cuts.length ? (
             <ul class="mt-1 max-h-28 space-y-0.5 overflow-y-auto text-xs text-slate-700">
               {result.cuts.map((c) => (
-                <li class="font-mono">{c.enzyme} — site @ {c.site}, cuts after base {c.cutAt}</li>
+                <li class="font-mono">{c.enzyme}, site @ {c.site}, cuts after base {c.cutAt}</li>
               ))}
             </ul>
           ) : <p class="mt-1 text-xs text-slate-400">—</p>}

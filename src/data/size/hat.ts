@@ -1,6 +1,5 @@
 /**
- * Hat size conversion. US fitted hat size ≈ head circumference (inches) ÷ π —
- * i.e. the head's "diameter" in inches, in eighths. UK sizes run 1/8 smaller.
+ * Hat size conversion. US fitted hat size ≈ head circumference (inches) ÷ π, * i.e. the head's "diameter" in inches, in eighths. UK sizes run 1/8 smaller.
  * Letter sizes are the common retail mapping.
  */
 

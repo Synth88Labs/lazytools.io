@@ -42,7 +42,7 @@ export default function EvChargingTool() {
         </div>
       ) : <p class="mt-4 text-sm text-slate-500">Enter the battery, charge levels and charger power (target must exceed start).</p>}
 
-      <p class="mt-4 text-xs text-slate-500">Charging time = energy needed ÷ (charger power × efficiency), where energy needed = battery capacity × the change in state of charge. Real charging slows as the battery fills — DC rapid charging tapers sharply above ~80%, so this is an average estimate. AC charging is limited by the car's onboard charger, not just the wall unit. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Charging time = energy needed ÷ (charger power × efficiency), where energy needed = battery capacity × the change in state of charge. Real charging slows as the battery fills, DC rapid charging tapers sharply above ~80%, so this is an average estimate. AC charging is limited by the car's onboard charger, not just the wall unit. 🔒 In your browser.</p>
     </div>
   );
 }

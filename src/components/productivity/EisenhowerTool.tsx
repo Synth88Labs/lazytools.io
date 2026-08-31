@@ -6,7 +6,7 @@ interface Task { id: string; text: string; q: Quad; }
 
 const QUAD: Record<Quad, { title: string; sub: string; advice: string; box: string; head: string }> = {
   do: { title: 'Do first', sub: 'Urgent · Important', advice: 'Tackle these now.', box: 'border-red-200 bg-red-50', head: 'text-red-800' },
-  schedule: { title: 'Schedule', sub: 'Not urgent · Important', advice: 'Plan time for these — this is where good work lives.', box: 'border-brand-200 bg-brand-50', head: 'text-brand-800' },
+  schedule: { title: 'Schedule', sub: 'Not urgent · Important', advice: 'Plan time for these. This is where good work lives.', box: 'border-brand-200 bg-brand-50', head: 'text-brand-800' },
   delegate: { title: 'Delegate', sub: 'Urgent · Not important', advice: 'Hand these off if you can.', box: 'border-amber-200 bg-amber-50', head: 'text-amber-800' },
   delete: { title: 'Delete', sub: 'Not urgent · Not important', advice: 'Drop these without guilt.', box: 'border-slate-200 bg-slate-100', head: 'text-slate-600' },
 };

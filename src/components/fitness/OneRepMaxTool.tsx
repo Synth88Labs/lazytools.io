@@ -55,10 +55,10 @@ export default function OneRepMaxTool() {
           </div>
         </>
       ) : (
-        <p class="mt-4 text-sm text-slate-500">Enter the weight and reps of a set (works best for 1–10 reps).</p>
+        <p class="mt-4 text-sm text-slate-500">Enter the weight and reps of a set (works best for 1-10 reps).</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Averages the Epley (w × (1 + reps⁄30)), Brzycki (w × 36⁄(37−reps)) and Lombardi (w × reps^0.1) estimates. Accuracy drops above ~10 reps. Estimates only — lift within your ability and use a spotter. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Averages the Epley (w × (1 + reps⁄30)), Brzycki (w × 36⁄(37−reps)) and Lombardi (w × reps^0.1) estimates. Accuracy drops above ~10 reps. Estimates only, lift within your ability and use a spotter. 🔒 In your browser.</p>
     </div>
   );
 }

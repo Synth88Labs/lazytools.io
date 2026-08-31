@@ -66,7 +66,7 @@ export default function GravelCalculator() {
         <p class="mt-4 text-sm text-slate-500">Enter the area dimensions and depth of gravel.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Weight = volume × density (gravel ≈ 1.4–1.6 t/m³). Order by the tonne or bulk bag (~0.5–0.8 m³). 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Weight = volume × density (gravel ≈ 1.4-1.6 t/m³). Order by the tonne or bulk bag (~0.5-0.8 m³). 🔒 In your browser.</p>
     </div>
   );
 }

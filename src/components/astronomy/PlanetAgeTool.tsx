@@ -58,7 +58,7 @@ export default function PlanetAgeTool() {
         <p class="mt-4 text-sm text-slate-500">Enter your age or birthday.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">A "year" is one orbit of the Sun, and every planet takes a different time — so your age varies wildly. On fast-orbiting Mercury you're nearly 4× older; on Neptune you haven't finished one year unless you're over 164. Orbital periods from NASA. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">A "year" is one orbit of the Sun, and every planet takes a different time, so your age varies wildly. On fast-orbiting Mercury you're nearly 4× older; on Neptune you haven't finished one year unless you're over 164. Orbital periods from NASA. 🔒 In your browser.</p>
     </div>
   );
 }

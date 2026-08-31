@@ -3,11 +3,11 @@ import JsBarcode from 'jsbarcode';
 
 const FORMATS = [
   { value: 'CODE128', label: 'Code 128 (any text)', ph: 'LAZYTOOLS-123' },
-  { value: 'EAN13', label: 'EAN-13 (retail, 12–13 digits)', ph: '400638133393' },
-  { value: 'UPC', label: 'UPC-A (US retail, 11–12 digits)', ph: '03600029145' },
-  { value: 'EAN8', label: 'EAN-8 (7–8 digits)', ph: '9638507' },
+  { value: 'EAN13', label: 'EAN-13 (retail, 12-13 digits)', ph: '400638133393' },
+  { value: 'UPC', label: 'UPC-A (US retail, 11-12 digits)', ph: '03600029145' },
+  { value: 'EAN8', label: 'EAN-8 (7-8 digits)', ph: '9638507' },
   { value: 'CODE39', label: 'Code 39 (alphanumeric)', ph: 'ABC-123' },
-  { value: 'ITF14', label: 'ITF-14 (shipping, 13–14 digits)', ph: '1540014128876' },
+  { value: 'ITF14', label: 'ITF-14 (shipping, 13-14 digits)', ph: '1540014128876' },
 ];
 const inputCls = 'w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm font-medium text-slate-900 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200';
 
@@ -68,7 +68,7 @@ export default function BarcodeTool() {
           </div>
         )}
       </div>
-      <p class="mt-3 text-xs text-slate-500">EAN, UPC, EAN-8 and ITF-14 include the correct <strong>mod-10 check digit</strong> automatically — enter one digit short and it's computed for you. Vector SVG export is print-crisp. 🔒 Generated in your browser; internal SKUs never leave your device.</p>
+      <p class="mt-3 text-xs text-slate-500">EAN, UPC, EAN-8 and ITF-14 include the correct <strong>mod-10 check digit</strong> automatically, enter one digit short and it's computed for you. Vector SVG export is print-crisp. 🔒 Generated in your browser; internal SKUs never leave your device.</p>
     </div>
   );
 }

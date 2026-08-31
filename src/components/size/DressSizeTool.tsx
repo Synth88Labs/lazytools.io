@@ -67,7 +67,7 @@ export default function DressSizeTool() {
               ))}
             </div>
             <p class="mt-3 text-xs text-slate-500">
-              Standard chart — vanity sizing means brands drift by a full size either way; check garment measurements for anything fitted.
+              Standard chart, vanity sizing means brands drift by a full size either way; check garment measurements for anything fitted.
             </p>
           </>
         ) : (

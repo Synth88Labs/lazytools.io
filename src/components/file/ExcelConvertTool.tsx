@@ -12,8 +12,8 @@ const ACCEPT_MAP: Record<Props['mode'], string> = {
 };
 
 const HINT_MAP: Record<Props['mode'], string> = {
-  'excel-to-csv': 'Excel (.xlsx / .xls) or .csv — up to a few MB',
-  'excel-to-json': 'Excel (.xlsx / .xls) or .csv — first row is the header',
+  'excel-to-csv': 'Excel (.xlsx / .xls) or .csv, up to a few MB',
+  'excel-to-json': 'Excel (.xlsx / .xls) or .csv, first row is the header',
   'csv-to-excel': 'A .csv file, or paste CSV below',
 };
 
@@ -131,7 +131,7 @@ export default function ExcelConvertTool({ mode }: Props) {
       setCopied(true);
       setTimeout(() => setCopied(false), 1500);
     } catch {
-      setError('Copy failed — you can select the text manually.');
+      setError('Copy failed. You can select the text manually.');
     }
   }
 
@@ -277,7 +277,7 @@ export default function ExcelConvertTool({ mode }: Props) {
       )}
 
       <p class="mt-4 text-xs text-slate-400">
-        Everything runs in your browser — nothing is uploaded to any server.
+        Everything runs in your browser, nothing is uploaded to any server.
       </p>
     </div>
   );

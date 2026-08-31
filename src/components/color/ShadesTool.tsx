@@ -59,7 +59,7 @@ export default function ShadesTool() {
       {data ? (
         <div class="mt-5 space-y-4">
           <div>
-            <p class="mb-1.5 text-xs font-semibold uppercase tracking-wide text-slate-500">Tints (toward white) — hover to see, click to copy</p>
+            <p class="mb-1.5 text-xs font-semibold uppercase tracking-wide text-slate-500">Tints (toward white), hover to see, click to copy</p>
             <div class="flex gap-1.5">{data.tints.map((h) => <Swatch hex={h} />)}</div>
           </div>
           <div>

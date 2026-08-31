@@ -1,12 +1,12 @@
 ---
 title: "How to Convert a curl Command to JavaScript fetch()"
 seoTitle: 'curl to fetch: Convert a curl Command to JS'
-description: "Convert a curl command to JavaScript fetch(): -X becomes method, each -H a headers entry, -d the body — the full mapping and gotchas."
+description: "Convert a curl command to JavaScript fetch(): -X becomes method, each -H a headers entry, -d the body, the full mapping and gotchas."
 pubDate: 2026-08-01
 updatedDate: 2026-08-23
 archetype: explainer
 heroImage: /blog/curl-to-javascript-fetch-guide.png
-heroAlt: "How a curl command maps to a JavaScript fetch call — -X to method, -H to headers, -d to body"
+heroAlt: "How a curl command maps to a JavaScript fetch call, -X to method, -H to headers, -d to body"
 tools: ["/dev/curl-to-code/"]
 keywords:
   - curl to fetch
@@ -18,7 +18,7 @@ keywords:
   - copy as curl to javascript
 faqs:
   - q: "How do I convert a curl command to fetch()?"
-    a: "Map each curl flag to its fetch equivalent: -X/--request becomes the method option, every -H/--header becomes an entry in the headers object, and -d/--data becomes the body. If there's a body but no -X, the method is POST. The LazyTools curl to fetch converter does this automatically in your browser — paste the command and copy the fetch() call."
+    a: "Map each curl flag to its fetch equivalent: -X/--request becomes the method option, every -H/--header becomes an entry in the headers object, and -d/--data becomes the body. If there's a body but no -X, the method is POST. The LazyTools curl to fetch converter does this automatically in your browser, paste the command and copy the fetch() call."
   - q: "What does curl -d become in fetch?"
     a: "The request body. curl -d 'a=1&b=2' becomes body: \"a=1&b=2\" in fetch, and the presence of -d makes the method POST unless you set another with -X. Multiple -d flags are joined with & just as curl does. For form data, a Content-Type of application/x-www-form-urlencoded is assumed unless you set one with -H."
   - q: "How do curl headers map to fetch?"
@@ -26,14 +26,14 @@ faqs:
   - q: "How does curl -u (basic auth) translate to fetch?"
     a: "curl -u user:pass sends HTTP Basic authentication, which in fetch is an Authorization header: Authorization: Basic <base64 of user:pass>. The converter base64-encodes the credentials and adds that header for you, since fetch has no direct -u equivalent."
   - q: "Which curl features don't convert to fetch?"
-    a: "Multipart file uploads (-F), cookie jars (-c/-b to files), and client certificates don't map cleanly onto a single fetch() call and are left out deliberately. The everyday flags from API docs and the browser's Copy as cURL — method, headers, JSON or form body, and basic auth — all convert."
+    a: "Multipart file uploads (-F), cookie jars (-c/-b to files), and client certificates don't map cleanly onto a single fetch() call and are left out deliberately. The everyday flags from API docs and the browser's Copy as cURL, method, headers, JSON or form body, and basic auth, all convert."
   - q: "Is my curl command uploaded when I convert it?"
     a: "Not with the LazyTools converter. It parses the command entirely in your browser, so any API keys, bearer tokens or credentials in the command never leave your device. It also works offline."
 draft: false
 ---
 
 **A curl command maps almost one-to-one onto a JavaScript `fetch()` call: `-X` sets the `method`,
-each `-H` becomes an entry in the `headers` object, and `-d` becomes the `body` — with the method
+each `-H` becomes an entry in the `headers` object, and `-d` becomes the `body`, with the method
 defaulting to `POST` whenever a body is present.** Once you know that mapping, translating the curl
 snippets in API docs (or your browser's "Copy as cURL") into `fetch()` is mechanical. Paste one into
 the [curl to fetch converter](/dev/curl-to-code/) and it does the translation in your browser, so any
@@ -45,10 +45,10 @@ tokens in the command stay on your machine.
 
 - The mapping is fixed: `-X` → `method`, each `-H` → a `headers` entry, `-d` → `body`, the URL → the first argument to `fetch()`.
 - A `-d` body with no `-X` means `POST`; with no body and no `-X`, the method is `GET`.
-- `-u user:pass` has no direct fetch equivalent — it becomes an `Authorization: Basic <base64>` header.
+- `-u user:pass` has no direct fetch equivalent. It becomes an `Authorization: Basic <base64>` header.
 - Transport-only flags (`-L`, `-s`, `-k`, `--compressed`) affect curl, not the request, so they are dropped.
 - Multipart uploads (`-F`), file-based cookie jars, and client certificates don't fit one `fetch()` call and are left out on purpose.
-- Converting locally keeps API keys and tokens on your device — a command pasted into a server-side converter has just been handed those secrets.
+- Converting locally keeps API keys and tokens on your device, a command pasted into a server-side converter has just been handed those secrets.
 
 </aside>
 
@@ -64,7 +64,7 @@ tokens in the command stay on your machine.
 | (no `-X`, but has `-d`) | `method: "POST"` |
 | (no `-X`, no `-d`) | `method: "GET"` |
 
-Everything else in a typical command — `-L`, `--compressed`, `-s`, `-k` — is about how curl itself
+Everything else in a typical command, `-L`, `--compressed`, `-s`, `-k`, is about how curl itself
 behaves and has no bearing on the request `fetch()` makes, so it's dropped.
 
 ## A worked example
@@ -92,7 +92,7 @@ fetch("https://api.example.com/login", {
 ```
 
 The URL moves to the first argument, the header becomes a `headers` entry, and the `-d` payload
-becomes the `body` string. Note that the JSON body stays a *string* — `fetch()` does not serialise
+becomes the `body` string. Note that the JSON body stays a *string*, `fetch()` does not serialise
 objects for you, so the double quotes inside the payload are escaped rather than replaced with a
 JavaScript object literal. If you would rather pass an object, you wrap it yourself with
 `body: JSON.stringify({ user: "ada", pass: "secret" })`, which produces the same bytes on the wire.
@@ -128,7 +128,7 @@ JavaScript object literal. If you would rather pass an object, you wrap it yours
 ## A second example: authenticated GET
 
 Not every command has a body. A read-only request with a bearer token is even simpler, because there
-is no `method` or `body` to set — only the header survives:
+is no `method` or `body` to set, only the header survives:
 
 ```bash
 curl https://api.example.com/me \
@@ -149,11 +149,10 @@ fetch("https://api.example.com/me", {
   .then(console.log);
 ```
 
-With no `-X` and no `-d`, the method defaults to `GET`, so it can be omitted entirely — the
+With no `-X` and no `-d`, the method defaults to `GET`, so it can be omitted entirely, the
 [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) uses `GET` by default. If the
 same endpoint used HTTP Basic auth instead (`-u ada:secret`), the converter would replace it with
-`"Authorization": "Basic YWRhOnNlY3JldA=="` — the [base64](/dev/base64-encode-decode/) of `ada:secret`
-— since `fetch()` has no credentials shorthand of its own.
+`"Authorization": "Basic YWRhOnNlY3JldA=="`, the [base64](/dev/base64-encode-decode/) of `ada:secret`, since `fetch()` has no credentials shorthand of its own.
 
 ## A flag-by-flag reference
 
@@ -168,8 +167,8 @@ cURL" output land in a `fetch()` call:
 | `--data-urlencode` | URL-encoded body field | Encoded, then appended to `body` |
 | `-u` / `--user` | HTTP Basic auth | `Authorization: Basic <base64>` header |
 | `-b` / `--cookie` (inline) | Cookie header | `Cookie` header (string form) |
-| `-L` / `--location` | Follow redirects | Dropped — `fetch()` follows by default |
-| `-s`, `-v`, `-k`, `--compressed` | curl transport/output behaviour | Dropped — no effect on the request |
+| `-L` / `--location` | Follow redirects | Dropped, `fetch()` follows by default |
+| `-s`, `-v`, `-k`, `--compressed` | curl transport/output behaviour | Dropped, no effect on the request |
 | `-F` / `--form` | Multipart upload | Not emitted (needs `FormData`) |
 
 The rule of thumb: flags that describe the *request the server sees* convert; flags that describe *how
@@ -177,13 +176,13 @@ curl behaves on your machine* do not.
 
 ## The gotchas worth knowing
 
-- **A body implies POST.** In curl, `-d` alone switches the request to `POST` — you don't need `-X POST`.
+- **A body implies POST.** In curl, `-d` alone switches the request to `POST`. You don't need `-X POST`.
   fetch has no such default, so the converter sets `method: "POST"` for you.
 - **Multiple `-d` flags join with `&`.** `curl -d name=ada -d age=36` sends `name=ada&age=36`; the same
   concatenation applies in the fetch `body`.
 - **Form data gets a default Content-Type.** When you send `-d` without a `Content-Type` header, curl
   uses `application/x-www-form-urlencoded`. To send JSON, set `-H "Content-Type: application/json"`
-  explicitly — otherwise your API may misread the body.
+  explicitly, otherwise your API may misread the body.
 - **`-u` is base64 Basic auth.** `-u user:pass` becomes `Authorization: Basic <base64(user:pass)>`.
   Bearer tokens are just a normal header (`-H "Authorization: Bearer …"`) and carry through unchanged.
 
@@ -191,24 +190,24 @@ curl behaves on your machine* do not.
 
 Some curl features don't have a clean one-line `fetch()` equivalent:
 
-- **`-F` multipart uploads** — these need a `FormData` object built field by field, which depends on
+- **`-F` multipart uploads**. These need a `FormData` object built field by field, which depends on
   where your files come from in the browser or Node.
-- **Cookie jars** (`-c`/`-b` writing to files) — fetch manages cookies through the environment, not a file.
-- **Client certificates** — configured at the agent/environment level, not in a `fetch()` call.
+- **Cookie jars** (`-c`/`-b` writing to files), fetch manages cookies through the environment, not a file.
+- **Client certificates**, configured at the agent/environment level, not in a `fetch()` call.
 
 Leaving these out keeps the generated code honest rather than emitting something that looks right but
 won't run.
 
 ## Why convert it in the browser
 
-curl commands from real work carry real secrets — API keys, bearer tokens, basic-auth credentials.
+curl commands from real work carry real secrets, API keys, bearer tokens, basic-auth credentials.
 A converter that sends the command to a server has just been handed those secrets. The
 [curl to fetch converter](/dev/curl-to-code/) parses everything locally with a shell-aware tokenizer,
-so the command — and anything sensitive in it — never leaves your browser, and it works offline.
+so the command, and anything sensitive in it, never leaves your browser, and it works offline.
 
 ## The bottom line
 
 Converting curl to `fetch()` is a fixed mapping: `-X` → `method`, `-H` → `headers`, `-d` → `body`,
 URL → first argument, with `POST` implied by a body. Know that and you can translate any everyday curl
-command by hand — or paste it into the [converter](/dev/curl-to-code/) and copy the `fetch()` call
+command by hand, or paste it into the [converter](/dev/curl-to-code/) and copy the `fetch()` call
 straight into your code.

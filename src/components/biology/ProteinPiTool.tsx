@@ -89,7 +89,7 @@ export default function ProteinPiTool() {
         <p class="mt-4 text-sm text-slate-500">Paste a protein sequence to compute its isoelectric point and charge.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">The pI is the pH where the protein's net charge is zero, found from the ionizable groups (N/C-termini and D, E, C, Y, H, K, R side chains) via Henderson–Hasselbalch. Uses the EMBOSS pKa set; other pKa sets shift the pI by ~0.1–0.3. Ignores modifications and 3D environment. 🔒 Computed in your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">The pI is the pH where the protein's net charge is zero, found from the ionizable groups (N/C-termini and D, E, C, Y, H, K, R side chains) via Henderson, Hasselbalch. Uses the EMBOSS pKa set; other pKa sets shift the pI by ~0.1-0.3. Ignores modifications and 3D environment. 🔒 Computed in your browser.</p>
     </div>
   );
 }

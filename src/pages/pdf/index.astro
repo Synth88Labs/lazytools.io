@@ -14,15 +14,15 @@ const crumbs = [
 const faqs = [
   {
     q: 'Why does local processing matter most for PDFs?',
-    a: 'Because of what PDFs are: contracts, IDs, tax forms, medical records, signed agreements. Free "upload your PDF" sites receive exactly the documents people should share least. These tools parse and rebuild PDFs in your browser\'s memory — disconnect from the internet and they work identically.',
+    a: 'Because of what PDFs are: contracts, IDs, tax forms, medical records, signed agreements. Free "upload your PDF" sites receive exactly the documents people should share least. These tools parse and rebuild PDFs in your browser\'s memory, disconnect from the internet and they work identically.',
   },
   {
     q: 'Do these tools reduce PDF quality?',
-    a: 'No — merging, splitting and rotating are structural operations that copy or annotate page objects without re-rendering them. Text stays selectable, vectors stay sharp, images keep their original compression.',
+    a: 'No, merging, splitting and rotating are structural operations that copy or annotate page objects without re-rendering them. Text stays selectable, vectors stay sharp, images keep their original compression.',
   },
   {
     q: 'Can I work with password-protected PDFs?',
-    a: 'Not directly — encrypted PDFs can\'t be parsed without their password. Open the file in your PDF viewer with the password, save an unprotected copy, then use the tools.',
+    a: 'Not directly, encrypted PDFs can\'t be parsed without their password. Open the file in your PDF viewer with the password, save an unprotected copy, then use the tools.',
   },
 ];
 
@@ -31,7 +31,7 @@ const schema = [
   collectionPageSchema({
     name: 'Free PDF Tools',
     url: '/pdf/',
-    description: 'Merge, split, rotate PDFs and convert images to PDF — processed locally in your browser, so documents are never uploaded.',
+    description: 'Merge, split, rotate PDFs and convert images to PDF, processed locally in your browser, so documents are never uploaded.',
     items: PDF_TOOLS.map((t) => ({ name: t.name, url: `/pdf/${t.slug}/` })),
   }),
   faqSchema(faqs),
@@ -39,8 +39,8 @@ const schema = [
 ---
 
 <Base
-  title="PDF Tools — Merge, Split, Rotate Without Uploading | LazyTools"
-  description={`${PDF_TOOLS.length} free PDF tools: merge files, extract page ranges, rotate pages, convert images to PDF. Contracts and records are processed in your browser — never uploaded.`}
+  title="PDF Tools, Merge, Split, Rotate Without Uploading | LazyTools"
+  description={`${PDF_TOOLS.length} free PDF tools: merge files, extract page ranges, rotate pages, convert images to PDF. Contracts and records are processed in your browser, never uploaded.`}
   schema={schema}
 >
   <div class="mx-auto max-w-5xl px-4 py-6">
@@ -48,7 +48,7 @@ const schema = [
 
     <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">PDF Tools</h1>
     <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
-      Merge, split, rotate and build PDFs — in your browser's memory, not on someone's server. The
+      Merge, split, rotate and build PDFs, in your browser's memory, not on someone's server. The
       documents people run through PDF tools are contracts, IDs and records; here they never leave
       your device, and every operation is structural, so quality is untouched.
     </p>
@@ -71,8 +71,8 @@ const schema = [
 
     <section class="prose-lazy mt-10">
       <h2>Handle documents privately</h2>
-      <p>Merging, splitting and rotating PDFs is the kind of task where uploading is genuinely risky — contracts, statements, medical forms and IDs are exactly the documents that shouldn't sit on a stranger's server. These tools use the <strong>pdf-lib</strong> library in your browser, so pages are rearranged on your own device and the file is never transmitted.</p>
-      <p>Combine several PDFs into one, pull out a range of pages, or fix a sideways scan — then download the result, which is assembled locally. Nothing is uploaded, and the tools keep working with your connection off.</p>
+      <p>Merging, splitting and rotating PDFs is the kind of task where uploading is genuinely risky, contracts, statements, medical forms and IDs are exactly the documents that shouldn't sit on a stranger's server. These tools use the <strong>pdf-lib</strong> library in your browser, so pages are rearranged on your own device and the file is never transmitted.</p>
+      <p>Combine several PDFs into one, pull out a range of pages, or fix a sideways scan, then download the result, which is assembled locally. Nothing is uploaded, and the tools keep working with your connection off.</p>
     </section>
 
     <FaqSection faqs={faqs} />

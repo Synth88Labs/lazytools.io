@@ -30,7 +30,7 @@ export default function MassPercentTool() {
         </div>
       ) : <p class="mt-4 text-sm text-slate-500">Enter the solute and solvent masses.</p>}
 
-      <p class="mt-4 text-xs text-slate-500">Mass percent by weight (%w/w) = mass of solute ÷ total mass of solution × 100, where the solution mass is solute + solvent. It's the concentration on nutrition and reagent labels — a 10 g solute in 90 g water is a 10% (w/w) solution. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Mass percent by weight (%w/w) = mass of solute ÷ total mass of solution × 100, where the solution mass is solute + solvent. It's the concentration on nutrition and reagent labels, a 10 g solute in 90 g water is a 10% (w/w) solution. 🔒 In your browser.</p>
     </div>
   );
 }

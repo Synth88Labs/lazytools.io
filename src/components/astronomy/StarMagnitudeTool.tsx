@@ -75,7 +75,7 @@ export default function StarMagnitudeTool() {
         </div>
       </div>
 
-      <p class="mt-4 text-xs text-slate-500">Apparent magnitude (m) is how bright a star looks from Earth; absolute magnitude (M) is how bright it would look at 10 parsecs — a fair comparison of true luminosity. They relate through the distance: m − M = 5·log₁₀(d) − 5. The magnitude scale is backwards (smaller = brighter) and logarithmic: every 5 magnitudes is exactly a 100× brightness ratio, so one magnitude ≈ 2.512×. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Apparent magnitude (m) is how bright a star looks from Earth; absolute magnitude (M) is how bright it would look at 10 parsecs, a fair comparison of true luminosity. They relate through the distance: m − M = 5·log₁₀(d) − 5. The magnitude scale is backwards (smaller = brighter) and logarithmic: every 5 magnitudes is exactly a 100× brightness ratio, so one magnitude ≈ 2.512×. 🔒 In your browser.</p>
     </div>
   );
 }

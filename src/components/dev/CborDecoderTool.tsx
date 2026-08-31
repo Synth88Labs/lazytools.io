@@ -79,7 +79,7 @@ export default function CborDecoderTool() {
         </div>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Paste a CBOR (Concise Binary Object Representation, RFC 8949) message as hex or base64 to decode it into readable diagnostic notation and a typed structure tree. CBOR is a compact binary format used by WebAuthn/passkeys (COSE), IoT protocols and more. The decoder handles integers (exact to 64 bits), byte and text strings, arrays, maps, tags, half/single/double floats and indefinite-length items — all in your browser, with nothing uploaded. 🔒 100% client-side.</p>
+      <p class="mt-4 text-xs text-slate-500">Paste a CBOR (Concise Binary Object Representation, RFC 8949) message as hex or base64 to decode it into readable diagnostic notation and a typed structure tree. CBOR is a compact binary format used by WebAuthn/passkeys (COSE), IoT protocols and more. The decoder handles integers (exact to 64 bits), byte and text strings, arrays, maps, tags, half/single/double floats and indefinite-length items, all in your browser, with nothing uploaded. 🔒 100% client-side.</p>
     </div>
   );
 }

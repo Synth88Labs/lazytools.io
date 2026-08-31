@@ -101,7 +101,7 @@ export default function AsciiArtTool() {
       </div>
 
       <p class="mt-4 text-xs text-slate-500">
-        Best pasted into a <strong>monospace</strong> context — a README, code comment, terminal or <code>&lt;pre&gt;</code> block — so the columns line up. All 10 fonts render in your browser; nothing is uploaded. 🔒
+        Best pasted into a <strong>monospace</strong> context, a README, code comment, terminal or <code>&lt;pre&gt;</code> block, so the columns line up. All 10 fonts render in your browser; nothing is uploaded. 🔒
       </p>
     </div>
   );

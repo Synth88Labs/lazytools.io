@@ -5,7 +5,7 @@ import { rgbToLab, deltaE2000, deltaE76 } from '../../lib/color-advanced';
 const inp = 'w-full rounded-xl border border-slate-300 bg-white px-3 py-2 font-mono text-sm text-slate-900 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200';
 
 function interpret(de: number) {
-  if (de < 1) return { label: 'Not perceptible — below the just-noticeable difference', color: 'text-emerald-700' };
+  if (de < 1) return { label: 'Not perceptible, below the just-noticeable difference', color: 'text-emerald-700' };
   if (de < 2) return { label: 'Perceptible on close inspection', color: 'text-emerald-700' };
   if (de < 10) return { label: 'Perceptible at a glance', color: 'text-amber-700' };
   if (de < 50) return { label: 'Clearly different colours', color: 'text-rose-700' };
@@ -41,7 +41,7 @@ export default function DeltaETool() {
         </>
       ) : <p class="mt-4 rounded-lg bg-amber-50 p-3 text-sm text-amber-700 ring-1 ring-amber-200">Enter two valid colours (HEX, rgb() or names).</p>}
 
-      <p class="mt-4 text-xs text-slate-500">Delta-E (ΔE) measures how different two colours look, in CIELAB space. A ΔE of about 1 is the "just-noticeable difference" — below it, most people can\'t tell the colours apart; around 2–3 is a close match; large values are clearly different. CIEDE2000 is the modern, perceptually-accurate formula; the older CIE76 is a simple Euclidean distance shown for comparison. Used in print, QA and brand-colour matching. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Delta-E (ΔE) measures how different two colours look, in CIELAB space. A ΔE of about 1 is the "just-noticeable difference", below it, most people can\'t tell the colours apart; around 2-3 is a close match; large values are clearly different. CIEDE2000 is the modern, perceptually-accurate formula; the older CIE76 is a simple Euclidean distance shown for comparison. Used in print, QA and brand-colour matching. 🔒 In your browser.</p>
     </div>
   );
 }

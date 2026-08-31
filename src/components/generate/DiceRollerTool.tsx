@@ -34,7 +34,7 @@ export default function DiceRollerTool() {
       )}
       {coin && <div class="mt-4 rounded-xl bg-white p-6 text-center ring-2 ring-brand-200"><p class="font-mono text-4xl font-extrabold text-brand-800">{coin}</p></div>}
 
-      <p class="mt-4 text-xs text-slate-500">Rolls virtual dice (d4 to d100) or flips a coin using your browser\'s cryptographic random generator, so every result is fair and unpredictable — good for tabletop and board games, D&D, or any decision. Roll up to 100 dice at once and it totals them. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Rolls virtual dice (d4 to d100) or flips a coin using your browser\'s cryptographic random generator, so every result is fair and unpredictable, good for tabletop and board games, D&D, or any decision. Roll up to 100 dice at once and it totals them. 🔒 In your browser.</p>
     </div>
   );
 }

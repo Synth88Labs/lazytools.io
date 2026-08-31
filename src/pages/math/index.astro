@@ -14,19 +14,19 @@ const crumbs = [
 const faqs = [
   {
     q: 'What makes these different from other math calculator sites?',
-    a: 'Exactness. These tools compute with arbitrary-precision integers and true rational arithmetic — fractions stay fractions, roots come out in simplified radical form like (3 + √89)/2, and 1000! is produced digit-perfect. Ordinary calculators (and spreadsheet formulas) work in floating point, which silently rounds past 15–17 significant digits and turns 1/3 + 2/3 into 0.9999999999999999.',
+    a: 'Exactness. These tools compute with arbitrary-precision integers and true rational arithmetic, fractions stay fractions, roots come out in simplified radical form like (3 + √89)/2, and 1000! is produced digit-perfect. Ordinary calculators (and spreadsheet formulas) work in floating point, which silently rounds past 15-17 significant digits and turns 1/3 + 2/3 into 0.9999999999999999.',
   },
   {
     q: 'Why not just ask an AI chatbot?',
-    a: 'Language models are notoriously unreliable at arithmetic — they generate plausible-looking numbers rather than computing them, and you can\'t tell a right answer from a confident wrong one. These calculators run the actual algorithms (Euclid, Miller–Rabin, the quadratic formula) and show the working, so the answer is checkable, not just believable.',
+    a: 'Language models are notoriously unreliable at arithmetic. They generate plausible-looking numbers rather than computing them, and you can\'t tell a right answer from a confident wrong one. These calculators run the actual algorithms (Euclid, Miller, Rabin, the quadratic formula) and show the working, so the answer is checkable, not just believable.',
   },
   {
     q: 'Do the tools show the steps?',
-    a: 'Where steps are the point, yes — the fraction calculator shows the common-denominator working, the GCD calculator writes out the Euclidean algorithm line by line, and the quadratic solver walks from discriminant to simplified roots. The answer alone teaches nothing; the working is what you check homework against.',
+    a: 'Where steps are the point, yes, the fraction calculator shows the common-denominator working, the GCD calculator writes out the Euclidean algorithm line by line, and the quadratic solver walks from discriminant to simplified roots. The answer alone teaches nothing; the working is what you check homework against.',
   },
   {
     q: 'Do they work offline?',
-    a: 'Yes — every computation runs in your browser with no server involved, so once a page has loaded it works with the connection off.',
+    a: 'Yes, every computation runs in your browser with no server involved, so once a page has loaded it works with the connection off.',
   },
 ];
 
@@ -43,7 +43,7 @@ const schema = [
 ---
 
 <Base
-  title="Mathematics Tools — Exact Calculators That Show Their Working | LazyTools"
+  title="Mathematics Tools, Exact Calculators That Show Their Working | LazyTools"
   description="Free math calculators that compute exactly: fraction arithmetic with steps, GCD/LCM via Euclid, prime factorization, quadratic roots in radical form, statistics, Roman numerals, scientific notation, nCr/nPr. No floating-point rounding, no upload."
   schema={schema}
 >
@@ -52,8 +52,8 @@ const schema = [
 
     <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Mathematics Tools</h1>
     <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
-      Calculators that compute <strong>exactly</strong> — true fractions, arbitrary-precision
-      integers, simplified radicals — and show their working step by step. No floating-point
+      Calculators that compute <strong>exactly</strong>, true fractions, arbitrary-precision
+      integers, simplified radicals, and show their working step by step. No floating-point
       rounding, no "0.9999999999", and nothing you type leaves your browser.
     </p>
 
@@ -75,7 +75,7 @@ const schema = [
 
     <section class="prose-lazy mt-10">
       <h2>Exact math, with the steps</h2>
-      <p>Most calculators quietly round; these don't. Fractions are added and simplified <strong>exactly</strong> with the steps shown, repeating decimals convert back to exact fractions, primality uses Miller–Rabin, quadratics keep radical roots, and combinatorics and exponents run at <strong>BigInt</strong> scale, so 2¹⁰⁰ is digit-for-digit correct. Where a topic has a method — long division, synthetic division, completing the square — the working is laid out, not hidden.</p>
+      <p>Most calculators quietly round; these don't. Fractions are added and simplified <strong>exactly</strong> with the steps shown, repeating decimals convert back to exact fractions, primality uses Miller, Rabin, quadratics keep radical roots, and combinatorics and exponents run at <strong>BigInt</strong> scale, so 2¹⁰⁰ is digit-for-digit correct. Where a topic has a method, long division, synthetic division, completing the square, the working is laid out, not hidden.</p>
       <p>That makes these useful for learning as well as answers, and it all runs in your browser: private, instant and offline. For applied number-crunching see <a href="/calc/">Calculators</a>, <a href="/statistics/">Statistics</a> and <a href="/finance/">Finance</a>.</p>
     </section>
 

@@ -39,7 +39,7 @@ export default function WheelOffsetTool() {
         <label class="block"><span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Wheel width (inches)</span>
           <input type="number" step="any" value={width} onInput={(e) => setWidth((e.target as HTMLInputElement).value)} class={inp} /></label>
         {solve === 'backspacing' ? (
-          <label class="block"><span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Offset (mm, ET — can be negative)</span>
+          <label class="block"><span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Offset (mm, ET, can be negative)</span>
             <input type="number" step="any" value={offset} onInput={(e) => setOffset((e.target as HTMLInputElement).value)} class={inp} /></label>
         ) : (
           <label class="block"><span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Backspacing (inches)</span>

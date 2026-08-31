@@ -28,13 +28,13 @@ faqs:
   - q: "What is the EIA-96 code on very small resistors?"
     a: "A compact 1% marking of two digits plus a letter. The two digits are a position in the standard E96 value table (01 = 100, 68 = 499…) and the letter is a power-of-ten multiplier (A = ×1, B = ×10, C = ×100, R = ×0.01, and so on). So 01C = 100 × 100 = 10 kΩ and 68X = 499 × 0.1 = 49.9 Ω."
   - q: "What is a 000 or 0 resistor for?"
-    a: "It's a zero-ohm resistor — a wire link in the same package as a resistor, used as a jumper to route a track over others, or as a place to fit a real value later. It has essentially no resistance."
+    a: "It's a zero-ohm resistor, a wire link in the same package as a resistor, used as a jumper to route a track over others, or as a place to fit a real value later. It has essentially no resistance."
   - q: "How do I tell an EIA-96 code from R-notation?"
-    a: "If the letter is anything other than an R sitting between digits, it's EIA-96 (the leading two digits are a lookup index). An R placed where a decimal point belongs — R47, 4R7 — is R-notation, and the digits are the value directly."
+    a: "If the letter is anything other than an R sitting between digits, it's EIA-96 (the leading two digits are a lookup index). An R placed where a decimal point belongs, R47, 4R7, is R-notation, and the digits are the value directly."
 draft: false
 ---
 
-**A surface-mount resistor is too small for color bands, so it prints a short number instead — and `103`, `4700`, `01C` and `R47` are all valid ways to write a resistance.** The rules aren't intuitive, and the most common mistake (reading `470` as 470 Ω when it means 47 Ω) can quietly break a circuit. Here's how each format works.
+**A surface-mount resistor is too small for color bands, so it prints a short number instead, and `103`, `4700`, `01C` and `R47` are all valid ways to write a resistance.** The rules aren't intuitive, and the most common mistake (reading `470` as 470 Ω when it means 47 Ω) can quietly break a circuit. Here's how each format works.
 
 <aside class="key-takeaways">
 
@@ -50,7 +50,7 @@ draft: false
 
 <figure>
 <img src="/blog/infographic-smd-resistor-codes.svg" alt="3-digit codes are two significant figures plus a zero-count (103 = 10 kΩ, so 470 = 47 Ω not 470). 4-digit 1% codes use three figures (1002 = 10 kΩ). R-notation puts the R where the decimal point goes (R47 = 0.47 Ω, 4R7 = 4.7 Ω). EIA-96 is two digits that index the 1% value table plus a letter multiplier (01C = 10 kΩ). A code of 0, 00 or 000 is a zero-ohm jumper." width="1200" height="660" loading="lazy" />
-<figcaption>Four ways a chip resistor prints its value — and the mistake to avoid.</figcaption>
+<figcaption>Four ways a chip resistor prints its value, and the mistake to avoid.</figcaption>
 </figure>
 
 ## The 3-digit code (the common one)
@@ -61,7 +61,7 @@ Most chip resistors carry a **3-digit** code that works exactly like the old res
 - `472` &#8594; `47` + 2 zeros = **4,700 &#937; = 4.7 k&#937;**
 - `220` &#8594; `22` + 0 zeros = **22 &#937;**
 
-That last one is the trap. **`470` is not 470 &#937;** — it's `47` with zero extra zeros = **47 &#937;**. If you actually want 470 &#937;, the code is `471` (47 &times; 10&#185;). When a value looks "off by a decade," this is almost always why.
+That last one is the trap. **`470` is not 470 &#937;**, it's `47` with zero extra zeros = **47 &#937;**. If you actually want 470 &#937;, the code is `471` (47 &times; 10&#185;). When a value looks "off by a decade," this is almost always why.
 
 ## The 4-digit code (1% parts)
 
@@ -71,7 +71,7 @@ Precision **1% resistors** need more resolution than two figures allow, so they 
 - `4700` &#8594; `470` + 0 zeros = **470 &#937;**
 - `1000` &#8594; `100` + 0 zeros = **100 &#937;**
 
-Same idea as the 3-digit code, one more figure of precision. The catch is that a 4-digit and a 3-digit code can look alike out of context: `4700` on a 1% part is **470 &#937;**, but a lone `470` on a general-purpose part is **47 &#937;**. When the ambiguity matters, the tolerance (marked on the reel or datasheet, not the body) tells you which system applies — 1% and tighter parts use the 4-digit scheme.
+Same idea as the 3-digit code, one more figure of precision. The catch is that a 4-digit and a 3-digit code can look alike out of context: `4700` on a 1% part is **470 &#937;**, but a lone `470` on a general-purpose part is **47 &#937;**. When the ambiguity matters, the tolerance (marked on the reel or datasheet, not the body) tells you which system applies, 1% and tighter parts use the 4-digit scheme.
 
 ## R-notation for small values
 
@@ -85,7 +85,7 @@ Wherever you see the `R`, put a decimal point and read the digits straight off.
 
 ## EIA-96: two digits and a letter
 
-The tiniest 1% resistors use the compact **EIA-96** code: **two digits + one letter**. The two digits aren't the value — they're a **position (01&#8211;96) in the standard E96 1% value table**, and the **letter is a power-of-ten multiplier**.
+The tiniest 1% resistors use the compact **EIA-96** code: **two digits + one letter**. The two digits aren't the value, they're a **position (01&#8211;96) in the standard E96 1% value table**, and the **letter is a power-of-ten multiplier**.
 
 | Code digits &#8594; value | | Letter &#8594; multiplier | |
 |---|---|---|---|
@@ -93,28 +93,28 @@ The tiniest 1% resistors use the compact **EIA-96** code: **two digits + one let
 | `47` = 301 | `68` = 499 | `B` = &times;10 | `E` = &times;10000 |
 | `96` = 976 | &hellip; | `C` = &times;100 | `R` = &times;0.01 |
 
-So `01C` = 100 &times; 100 = **10 k&#937;**, and `68X` = 499 &times; 0.1 = **49.9 &#937;** (`X` = &times;0.1). The [SMD resistor code calculator](/electronics/smd-resistor-code-calculator/) has the full table built in — type the code and it detects the format for you.
+So `01C` = 100 &times; 100 = **10 k&#937;**, and `68X` = 499 &times; 0.1 = **49.9 &#937;** (`X` = &times;0.1). The [SMD resistor code calculator](/electronics/smd-resistor-code-calculator/) has the full table built in, type the code and it detects the format for you.
 
 ## The zero-ohm jumper
 
-A code of **`0`, `00` or `000`** isn't a resistance at all — it's a **zero-ohm resistor**, a wire link in resistor form. Boards use them to hop one track over another, or to leave a spot where a real value can be fitted later. A zero-ohm link isn't perfectly resistance-free — datasheets typically spec a maximum around a few tens of milliohms and a current rating — but for signal routing it behaves as a plain wire.
+A code of **`0`, `00` or `000`** isn't a resistance at all, it's a **zero-ohm resistor**, a wire link in resistor form. Boards use them to hop one track over another, or to leave a spot where a real value can be fitted later. A zero-ohm link isn't perfectly resistance-free, datasheets typically spec a maximum around a few tens of milliohms and a current rating, but for signal routing it behaves as a plain wire.
 
 ## A quick decision flow
 
 When you're staring at a code and not sure which system it belongs to, work through it in this order:
 
 1. **Is it `0`, `00` or `000`?** Zero-ohm jumper. Done.
-2. **Is there an `R` sitting where a decimal point would go** (`R47`, `4R7`, `47R0`)? R-notation — drop the `R` in as a decimal and read the digits straight off.
-3. **Is there a letter that isn't `R`-as-decimal**, with two digits in front (`01C`, `68X`)? EIA-96 — the two digits index the E96 table, the letter multiplies.
+2. **Is there an `R` sitting where a decimal point would go** (`R47`, `4R7`, `47R0`)? R-notation, drop the `R` in as a decimal and read the digits straight off.
+3. **Is there a letter that isn't `R`-as-decimal**, with two digits in front (`01C`, `68X`)? EIA-96, the two digits index the E96 table, the letter multiplies.
 4. **All digits?** Count them: **three digits** is the common two-figures-plus-zeros scheme; **four digits** is the three-figures-plus-zeros 1% scheme.
 
 The only genuinely tricky case is telling a 3-digit `4R7`-style code apart from a same-length all-digit one, and the `R` makes that obvious. Everything else falls out of the digit count.
 
 ## Worked example: decode `2R2`, `331` and `49R9`
 
-- **`2R2`** — an `R` between two digits, so it's R-notation: **2.2 &#937;**.
-- **`331`** — three digits, no letter: two figures (`33`) plus one zero = **330 &#937;**. Note it is *not* 331 &#937;.
-- **`49R9`** — the `R` is the decimal point, giving **49.9 &#937;**, a common 1% value.
+- **`2R2`**, an `R` between two digits, so it's R-notation: **2.2 &#937;**.
+- **`331`**, three digits, no letter: two figures (`33`) plus one zero = **330 &#937;**. Note it is *not* 331 &#937;.
+- **`49R9`**, the `R` is the decimal point, giving **49.9 &#937;**, a common 1% value.
 
 The recurring lesson: the last all-digit position is almost always a *multiplier*, not a value digit, so `331` is 330 &#937; and `470` is 47 &#937;.
 
@@ -124,24 +124,24 @@ A short reference spanning the four systems for values you'll meet constantly:
 
 | Resistance | 3-digit | 4-digit (1%) | R-notation | EIA-96 |
 |---|---|---|---|---|
-| 4.7 &#937; | — | — | `4R7` | — |
-| 47 &#937; | `470` | — | `47R0` | — |
-| 100 &#937; | `101` | `1000` | — | `01A` |
-| 1 k&#937; | `102` | `1001` | — | `01B` |
-| 4.7 k&#937; | `472` | `4701` | — | — |
-| 10 k&#937; | `103` | `1002` | — | `01C` |
-| 100 k&#937; | `104` | `1003` | — | `01D` |
-| 1 M&#937; | `105` | `1004` | — | `01E` |
+| 4.7 &#937; |, |, | `4R7` |, |
+| 47 &#937; | `470` |, | `47R0` |, |
+| 100 &#937; | `101` | `1000` |, | `01A` |
+| 1 k&#937; | `102` | `1001` |, | `01B` |
+| 4.7 k&#937; | `472` | `4701` |, |, |
+| 10 k&#937; | `103` | `1002` |, | `01C` |
+| 100 k&#937; | `104` | `1003` |, | `01D` |
+| 1 M&#937; | `105` | `1004` |, | `01E` |
 
-Dashes mark combinations that system doesn't naturally express — sub-10-&#937; values fall to R-notation, and EIA-96 only covers standard E96 figures.
+Dashes mark combinations that system doesn't naturally express, sub-10-&#937; values fall to R-notation, and EIA-96 only covers standard E96 figures.
 
 ## Why some chips have no marking at all
 
-Very small packages simply run out of room. Parts in the **0402** (roughly 1.0 &times; 0.5 mm) case and smaller are frequently left **unmarked**, and 0201 and 01005 sizes essentially always are. If a resistor carries no printed code, you can't decode it from the body — identify it from the board's bill of materials or by measuring it with a multimeter across the desoldered part. Marked codes live mostly on **0603, 0805 and 1206** and larger cases, where there's space for the three or four characters.
+Very small packages simply run out of room. Parts in the **0402** (roughly 1.0 &times; 0.5 mm) case and smaller are frequently left **unmarked**, and 0201 and 01005 sizes essentially always are. If a resistor carries no printed code, you can't decode it from the body, identify it from the board's bill of materials or by measuring it with a multimeter across the desoldered part. Marked codes live mostly on **0603, 0805 and 1206** and larger cases, where there's space for the three or four characters.
 
 ## Reading it without the arithmetic
 
-The formats overlap enough to be genuinely confusing at a glance, so the [SMD resistor code calculator](/electronics/smd-resistor-code-calculator/) decodes any of them and tells you which format it recognised — all in your browser, nothing uploaded. For through-hole parts with colored stripes instead, use the [resistor color code calculator](/electronics/resistor-color-code-calculator/); and if those resistors are feeding a tuned circuit, the [LC resonant frequency calculator](/electronics/lc-resonant-frequency-calculator/) covers the L&#8211;C side.
+The formats overlap enough to be genuinely confusing at a glance, so the [SMD resistor code calculator](/electronics/smd-resistor-code-calculator/) decodes any of them and tells you which format it recognised, all in your browser, nothing uploaded. For through-hole parts with colored stripes instead, use the [resistor color code calculator](/electronics/resistor-color-code-calculator/); and if those resistors are feeding a tuned circuit, the [LC resonant frequency calculator](/electronics/lc-resonant-frequency-calculator/) covers the L&#8211;C side.
 
 ---
 

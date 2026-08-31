@@ -59,7 +59,7 @@ export default function DebtPayoffTool() {
       {result && !('error' in result) ? (
         <>
           <div class="mt-4 grid gap-3 sm:grid-cols-2">
-            {([['Avalanche', result.aval, 'highest APR first — least interest', 'ring-emerald-300'], ['Snowball', result.snow, 'smallest balance first — quick wins', 'ring-brand-200']] as const).map(([label, d, sub, ring]) => (
+            {([['Avalanche', result.aval, 'highest APR first, least interest', 'ring-emerald-300'], ['Snowball', result.snow, 'smallest balance first, quick wins', 'ring-brand-200']] as const).map(([label, d, sub, ring]) => (
               <div class={`rounded-xl bg-white p-4 ring-2 ${ring}`}>
                 <p class="text-sm font-bold text-slate-900">{label}</p>
                 <p class="text-xs text-slate-500">{sub}</p>
@@ -69,7 +69,7 @@ export default function DebtPayoffTool() {
             ))}
           </div>
           <div class="mt-3 rounded-xl bg-emerald-50 p-3 text-center ring-1 ring-emerald-200">
-            <p class="text-sm text-emerald-800">Avalanche saves <strong>${money(Math.max(0, result.saved))}</strong> in interest{result.sooner > 0 ? ` and clears ${result.sooner} month${result.sooner === 1 ? '' : 's'} sooner` : ''} versus snowball. Snowball can be easier to stick with — the best plan is the one you’ll follow.</p>
+            <p class="text-sm text-emerald-800">Avalanche saves <strong>${money(Math.max(0, result.saved))}</strong> in interest{result.sooner > 0 ? ` and clears ${result.sooner} month${result.sooner === 1 ? '' : 's'} sooner` : ''} versus snowball. Snowball can be easier to stick with, the best plan is the one you’ll follow.</p>
           </div>
           <div class="mt-3 overflow-x-auto rounded-xl border border-slate-200 bg-white" role="group" tabIndex={0} aria-label="Payoff order table">
             <table class="w-full text-sm">
@@ -79,12 +79,12 @@ export default function DebtPayoffTool() {
           </div>
         </>
       ) : result ? (
-        <p class="mt-4 rounded-lg bg-amber-50 px-3 py-2 text-sm font-medium text-amber-800 ring-1 ring-amber-200">⚠ These payments never clear the debt — the minimums plus extra don’t cover the interest. Increase the monthly amount.</p>
+        <p class="mt-4 rounded-lg bg-amber-50 px-3 py-2 text-sm font-medium text-amber-800 ring-1 ring-amber-200">⚠ These payments never clear the debt, the minimums plus extra don’t cover the interest. Increase the monthly amount.</p>
       ) : (
         <p class="mt-4 text-sm text-slate-500">Add your debts with balances, APRs and minimum payments.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Month-by-month simulation of both strategies. Educational — not financial advice. 🔒 Your debt figures never leave your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Month-by-month simulation of both strategies. Educational, not financial advice. 🔒 Your debt figures never leave your browser.</p>
     </div>
   );
 }

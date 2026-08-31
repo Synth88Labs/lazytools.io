@@ -31,24 +31,24 @@ faqs:
 draft: false
 ---
 
-**Relative humidity is a percentage *of what the air could hold at that temperature* — so it moves when the temperature moves, even if the moisture doesn't.** Dew point measures the actual amount of water vapour in the air, and it doesn't care what the thermometer says. That's why a 30°F morning at 100% relative humidity feels crisp and dry, while an 80°F afternoon at just 50% feels sticky and oppressive. [Meteorologists](https://www.weather.gov/) quote dew point for comfort because it's the number that actually tracks how the air feels.
+**Relative humidity is a percentage *of what the air could hold at that temperature*, so it moves when the temperature moves, even if the moisture doesn't.** Dew point measures the actual amount of water vapour in the air, and it doesn't care what the thermometer says. That's why a 30°F morning at 100% relative humidity feels crisp and dry, while an 80°F afternoon at just 50% feels sticky and oppressive. [Meteorologists](https://www.weather.gov/) quote dew point for comfort because it's the number that actually tracks how the air feels.
 
 <aside class="key-takeaways">
 
 **Key takeaways**
 
 - **Relative humidity is temperature-dependent.** Dew point is an absolute measure of moisture.
-- **Dew point ≤ 55°F (13°C)** — comfortable. **60–65°F** — noticeably sticky. **65°F+** — muggy. **70°F+** — tropical.
+- **Dew point ≤ 55°F (13°C)**, comfortable. **60-65°F**, noticeably sticky. **65°F+**, muggy. **70°F+**, tropical.
 - 100% RH at 30°F holds **far less water** than 50% RH at 80°F.
 - The mechanism is **evaporation**: high dew point stops sweat evaporating, so you can't cool down.
 - Dew point can **never exceed** the air temperature. When they meet, you get fog, dew or saturation.
-- RH is still the right metric **indoors** — for mould, comfort and instruments in a controlled space.
+- RH is still the right metric **indoors**, for mould, comfort and instruments in a controlled space.
 
 </aside>
 
 <figure>
 <img src="/blog/infographic-dew-point.svg" alt="At 30 degrees Fahrenheit with a 30 degree dew point, relative humidity is 100 percent but the air is dry. At 80 degrees with a 60 degree dew point, relative humidity is only 50 percent but the air feels muggy. The dew point comfort scale runs from comfortable below 55 to tropical above 70." width="1200" height="700" loading="lazy" />
-<figcaption>Same person, opposite experience — and the higher humidity percentage is the comfortable one.</figcaption>
+<figcaption>Same person, opposite experience, and the higher humidity percentage is the comfortable one.</figcaption>
 </figure>
 
 ## What each number actually means
@@ -68,7 +68,7 @@ This means **RH can swing wildly through a single day while the actual moisture 
 | **Relative humidity** | **100%** | **50%** |
 | How it feels | Crisp, dry | Sticky, humid |
 
-The 100% reading is the *comfortable* one. At 30°F the air is saturated — but saturated cold air contains very little actual water. At 80°F with a 60°F dew point, the air is only half "full", yet it holds far more moisture in absolute terms.
+The 100% reading is the *comfortable* one. At 30°F the air is saturated, but saturated cold air contains very little actual water. At 80°F with a 60°F dew point, the air is only half "full", yet it holds far more moisture in absolute terms.
 
 Ask "how much water is in the air?" and RH can't answer without also knowing the temperature. Dew point answers directly. Convert between them with the [dew point calculator](/weather/dew-point-calculator/).
 
@@ -77,33 +77,33 @@ Ask "how much water is in the air?" and RH can't answer without also knowing the
 | Dew point | Feels like |
 | --- | --- |
 | Below 50°F (10°C) | Dry, pleasant |
-| 50–55°F (10–13°C) | Comfortable |
-| 55–60°F (13–16°C) | Getting noticeable |
-| 60–65°F (16–18°C) | Sticky, humid |
-| 65–70°F (18–21°C) | Muggy, uncomfortable |
+| 50-55°F (10-13°C) | Comfortable |
+| 55-60°F (13-16°C) | Getting noticeable |
+| 60-65°F (16-18°C) | Sticky, humid |
+| 65-70°F (18-21°C) | Muggy, uncomfortable |
 | Above 70°F (21°C) | Oppressive, tropical |
 
 Most people find the transition point sits right around **60°F**. Below it, summer air feels manageable; above it, the same temperature starts to feel like work.
 
 ## Why it's about sweat, not water
 
-Your body cools itself mainly by **evaporating sweat** — the phase change carries heat away from your skin. Evaporation depends on the difference between the moisture on your skin and the moisture already in the air.
+Your body cools itself mainly by **evaporating sweat**, the phase change carries heat away from your skin. Evaporation depends on the difference between the moisture on your skin and the moisture already in the air.
 
 When the dew point is high, the air is already carrying a lot of vapour, so sweat evaporates slowly or barely at all. It sits on your skin, you stay hot, and you feel sticky. Nothing is cooling you.
 
-This is also why high dew points are genuinely dangerous, not just unpleasant: they disable the body's main cooling mechanism. That's the physiology behind **heat index**, which combines temperature and humidity into an apparent temperature — see the [heat index calculator](/weather/heat-index-calculator/) — and behind **wet-bulb temperature**, the measure used to identify conditions where sweating can no longer keep a person cool at all.
+This is also why high dew points are genuinely dangerous, not just unpleasant: they disable the body's main cooling mechanism. That's the physiology behind **heat index**, which combines temperature and humidity into an apparent temperature, see the [heat index calculator](/weather/heat-index-calculator/), and behind **wet-bulb temperature**, the measure used to identify conditions where sweating can no longer keep a person cool at all.
 
 ## Two things dew point tells you for free
 
-**1. It can never exceed the air temperature.** If they're equal, the air is saturated (100% RH) — which is what produces fog, dew on grass, and condensation on a cold drink. The gap between temperature and dew point is a quick read on how close the air is to saturation.
+**1. It can never exceed the air temperature.** If they're equal, the air is saturated (100% RH), which is what produces fog, dew on grass, and condensation on a cold drink. The gap between temperature and dew point is a quick read on how close the air is to saturation.
 
 **2. It predicts the overnight low.** Air generally can't cool much below its dew point, because condensation releases heat as it happens. So on a calm, clear night, tonight's dew point is a decent first guess at tomorrow morning's minimum temperature.
 
 ## When relative humidity *is* the right number
 
-RH isn't useless — it's just the wrong tool for outdoor comfort. It's the correct metric when the temperature is controlled and what you care about is saturation relative to that temperature:
+RH isn't useless, it's just the wrong tool for outdoor comfort. It's the correct metric when the temperature is controlled and what you care about is saturation relative to that temperature:
 
-- **Indoor comfort and health** — roughly 30–50% RH is the usual target range
-- **Mould and condensation risk** — mould growth tracks surface RH
-- **Musical instruments, wood, paper and artwork** — all respond to RH
-- **Greenhouses and growing** — though growers increasingly use **VPD** (vapour pressure deficit), which combines temperature and humidity into how hard plants must work to transpire
+- **Indoor comfort and health**, roughly 30-50% RH is the usual target range
+- **Mould and condensation risk**, mould growth tracks surface RH
+- **Musical instruments, wood, paper and artwork**, all respond to RH
+- **Greenhouses and growing**, though growers increasingly use **VPD** (vapour pressure deficit), which combines temperature and humidity into how hard plants must work to transpire

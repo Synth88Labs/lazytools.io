@@ -146,7 +146,7 @@ export function getQuantity(slug: string): Quantity | undefined {
 export function formulaText(pair: Pair): string {
   if (pair.meta?.formulaText) return pair.meta.formulaText;
   const f = factorBetween(pair.from, pair.to);
-  return `${pair.to.plural} = ${pair.from.plural} × ${formatNumber(f, 10)} — multiply the ${pair.from.name.toLowerCase()} value by ${formatNumber(f, 6)}.`;
+  return `${pair.to.plural} = ${pair.from.plural} × ${formatNumber(f, 10)}, multiply the ${pair.from.name.toLowerCase()} value by ${formatNumber(f, 6)}.`;
 }
 
 export function reverseFormulaText(pair: Pair): string {
@@ -162,7 +162,7 @@ export function factSentence(pair: Pair): string {
     return `1 ${pair.from.name.toLowerCase()} (${pair.from.symbol}) = ${formatNumber(f, 10)} ${pair.to.plural} (${pair.to.symbol}).`;
   }
   const converted = convert(1, pair.from, pair.to);
-  return `1 ${pair.from.symbol} equals ${formatNumber(converted, 10)} ${pair.to.symbol} — note this scale uses an offset formula, not simple multiplication.`;
+  return `1 ${pair.from.symbol} equals ${formatNumber(converted, 10)} ${pair.to.symbol}, note this scale uses an offset formula, not simple multiplication.`;
 }
 
 /** Default from-values for the conversion table. */
@@ -180,7 +180,7 @@ export function relatedPairs(pair: Pair, limit = 10): Pair[] {
   return all.slice(0, limit);
 }
 
-/** Flagship pairs for the homepage — first pair of each quantity, then depth. */
+/** Flagship pairs for the homepage, first pair of each quantity, then depth. */
 export function popularPairsGlobal(limit = 12): Pair[] {
   const byQuantity = QUANTITIES.map((q) => allPairs().filter((p) => p.quantity.id === q.id));
   const out: Pair[] = [];

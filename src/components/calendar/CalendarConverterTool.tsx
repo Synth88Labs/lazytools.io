@@ -139,7 +139,7 @@ export default function CalendarConverterTool({ mode, system }: Props) {
             )}
           </div>
           {!isJdn && curSys.months === undefined && (
-            <p class="mt-2 text-xs text-slate-500">This calendar's month count varies by year — the resolved date above confirms which month your number maps to.</p>
+            <p class="mt-2 text-xs text-slate-500">This calendar's month count varies by year, the resolved date above confirms which month your number maps to.</p>
           )}
         </div>
       )}

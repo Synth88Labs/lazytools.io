@@ -23,7 +23,7 @@ export default function PrintEnergyTool() {
       <div class="grid gap-3 sm:grid-cols-4">
         <label class="block"><span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Printer power (W)</span>
           <input type="number" step="any" value={watts} onInput={(e) => setWatts((e.target as HTMLInputElement).value)} class={inp} /></label>
-        <label class="block"><span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Print time — hours</span>
+        <label class="block"><span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Print time, hours</span>
           <input type="number" step="1" value={hours} onInput={(e) => setHours((e.target as HTMLInputElement).value)} class={inp} /></label>
         <label class="block"><span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">…minutes</span>
           <input type="number" step="1" value={mins} onInput={(e) => setMins((e.target as HTMLInputElement).value)} class={inp} /></label>
@@ -40,7 +40,7 @@ export default function PrintEnergyTool() {
         <p class="mt-4 text-sm text-slate-500">Enter the printer's power, the print time and your electricity rate.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Cost = power (kW) × time (h) × rate. A typical FDM printer averages about 50–150 W during a print (the heated bed dominates), so 100 W is a reasonable default — but measure yours with a plug meter for accuracy, as bed temperature and enclosure change it a lot. Amounts are in whatever currency you enter. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Cost = power (kW) × time (h) × rate. A typical FDM printer averages about 50-150 W during a print (the heated bed dominates), so 100 W is a reasonable default, but measure yours with a plug meter for accuracy, as bed temperature and enclosure change it a lot. Amounts are in whatever currency you enter. 🔒 In your browser.</p>
     </div>
   );
 }

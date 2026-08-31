@@ -73,7 +73,7 @@ export default function LawnCalculator() {
         <p class="mt-4 text-sm text-slate-500">Enter your lawn dimensions.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Sod ≈ area ÷ roll (+5% trim); new-lawn seed ≈ 35 g/m² (1.5–2 lb/1000 sq ft), overseeding about half. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Sod ≈ area ÷ roll (+5% trim); new-lawn seed ≈ 35 g/m² (1.5-2 lb/1000 sq ft), overseeding about half. 🔒 In your browser.</p>
     </div>
   );
 }

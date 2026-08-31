@@ -47,11 +47,11 @@ export default function RoastTimeTool() {
         <div class="mt-4 rounded-xl bg-white p-4 text-center ring-2 ring-brand-200">
           <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Approximate roasting time at {meat.oven}°F</p>
           <p class="mt-1 font-mono text-3xl font-extrabold text-brand-800">{fmtMin(res)}</p>
-          <p class="mt-2 text-xs text-slate-500">Cook to a safe internal temperature of <span class="font-semibold text-slate-700">{meat.safe}</span> — always check with a thermometer.</p>
+          <p class="mt-2 text-xs text-slate-500">Cook to a safe internal temperature of <span class="font-semibold text-slate-700">{meat.safe}</span>, always check with a thermometer.</p>
         </div>
       ) : <p class="mt-4 text-sm text-slate-500">Enter the weight and choose the meat.</p>}
 
-      <p class="mt-4 text-xs text-slate-500">Roasting time is estimated as weight × minutes-per-pound for the cut and oven temperature (e.g. an unstuffed turkey at 325 °F is about 13 min/lb). Times are guidelines — the real doneness test is the internal temperature (USDA safe minimums shown), since shape, starting temperature and oven accuracy all vary. Let roasts rest before carving. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Roasting time is estimated as weight × minutes-per-pound for the cut and oven temperature (e.g. an unstuffed turkey at 325 °F is about 13 min/lb). Times are guidelines, the real doneness test is the internal temperature (USDA safe minimums shown), since shape, starting temperature and oven accuracy all vary. Let roasts rest before carving. 🔒 In your browser.</p>
     </div>
   );
 }

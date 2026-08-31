@@ -17,24 +17,24 @@ keywords:
   - compute jwk thumbprint
 faqs:
   - q: "What is a JWK thumbprint?"
-    a: "A JWK thumbprint is a reproducible fingerprint of a JSON Web Key, defined by RFC 7638. It's computed by taking the key's required members in a canonical form and hashing them with SHA-256, then base64url-encoding the result. Because the process is exact and deterministic, anyone who has the same key computes the same thumbprint — which makes it a reliable identifier for the key."
+    a: "A JWK thumbprint is a reproducible fingerprint of a JSON Web Key, defined by RFC 7638. It's computed by taking the key's required members in a canonical form and hashing them with SHA-256, then base64url-encoding the result. Because the process is exact and deterministic, anyone who has the same key computes the same thumbprint, which makes it a reliable identifier for the key."
   - q: "What is a JWK thumbprint used for?"
     a: "Most commonly as the key ID (kid) in a JWKS (JSON Web Key Set), so a JWT's header can point at the exact key that signed it and a verifier can find the right key. Thumbprints are also used for key matching in OAuth and OpenID Connect, in DPoP proof-of-possession, and anywhere a canonical, collision-resistant name for a key is needed."
   - q: "How is a JWK thumbprint calculated?"
     a: "RFC 7638 specifies it precisely: take only the key's required members (for RSA that's e, kty and n; for EC it's crv, kty, x and y), place them in lexicographic order in a JSON object with no whitespace and no extra members, encode that string as UTF-8, hash it with SHA-256, and base64url-encode the digest (no padding). The exactness of the canonical form is what makes the result reproducible."
   - q: "Does the private key affect the thumbprint?"
-    a: "No. Only the required public members are hashed — never the private components like d, p or q. So the public JWK and the private JWK of the same key pair produce an identical thumbprint. That's deliberate: it lets the thumbprint identify a key consistently whether you're holding the public or private half."
+    a: "No. Only the required public members are hashed, never the private components like d, p or q. So the public JWK and the private JWK of the same key pair produce an identical thumbprint. That's deliberate: it lets the thumbprint identify a key consistently whether you're holding the public or private half."
   - q: "Why does the exact JSON formatting matter?"
-    a: "Because the thumbprint is a hash of the JSON bytes, any difference — a space, a different member order, an extra field like kid or use — changes the hash and produces a different thumbprint. RFC 7638 removes that ambiguity by fixing the members, their order (lexicographic) and the formatting (no whitespace), so every correct implementation agrees."
+    a: "Because the thumbprint is a hash of the JSON bytes, any difference, a space, a different member order, an extra field like kid or use, changes the hash and produces a different thumbprint. RFC 7638 removes that ambiguity by fixing the members, their order (lexicographic) and the formatting (no whitespace), so every correct implementation agrees."
   - q: "Is it safe to compute a thumbprint online?"
-    a: "The thumbprint only uses public members, so it doesn't hash your private key material — but you still shouldn't paste real private keys into tools you don't control. The LazyTools JWK Thumbprint Calculator runs entirely in your browser with the built-in Web Crypto API, uploads nothing, and warns you if the JWK you pasted contains private members."
+    a: "The thumbprint only uses public members, so it doesn't hash your private key material, but you still shouldn't paste real private keys into tools you don't control. The LazyTools JWK Thumbprint Calculator runs entirely in your browser with the built-in Web Crypto API, uploads nothing, and warns you if the JWK you pasted contains private members."
 draft: false
 ---
 
-**When a service publishes its signing keys at a JWKS endpoint, each key needs a name — and that name is
+**When a service publishes its signing keys at a JWKS endpoint, each key needs a name, and that name is
 usually its *thumbprint*, a reproducible fingerprint defined by [RFC 7638](https://datatracker.ietf.org/doc/html/rfc7638).** It's how a [JWT](/blog/how-to-create-a-jwt-guide/) says "I was
 signed by *this* key." The thumbprint is computed by reducing a JSON Web Key to its required members, in a
-strictly canonical form, and hashing them with SHA-256 — so anyone holding the same key derives the exact
+strictly canonical form, and hashing them with SHA-256, so anyone holding the same key derives the exact
 same identifier. Here's precisely how the thumbprint is built and how to compute one with the
 [JWK Thumbprint Calculator](/dev/jwk-thumbprint/).
 
@@ -43,10 +43,10 @@ same identifier. Here's precisely how the thumbprint is built and how to compute
 **Key takeaways**
 
 - A JWK thumbprint is a SHA-256 hash of a JSON Web Key's *required* members, canonicalised exactly as RFC 7638 prescribes, then base64url-encoded without padding.
-- Only the required **public** members are hashed — the public and private halves of a key pair share one thumbprint.
-- Canonicalisation removes every degree of freedom: fixed member set, lexicographic order, no whitespace — so every correct implementation agrees on the result.
+- Only the required **public** members are hashed, the public and private halves of a key pair share one thumbprint.
+- Canonicalisation removes every degree of freedom: fixed member set, lexicographic order, no whitespace, so every correct implementation agrees on the result.
 - The most common use is as the `kid` in a JWKS; it also anchors OAuth/OIDC key matching, DPoP, and the RFC 9278 thumbprint URI.
-- Because the thumbprint is derived, you can generate it entirely in your browser with the Web Crypto API — no server, no upload.
+- Because the thumbprint is derived, you can generate it entirely in your browser with the Web Crypto API, no server, no upload.
 
 </aside>
 
@@ -57,8 +57,8 @@ same identifier. Here's precisely how the thumbprint is built and how to compute
 
 ## The problem: naming a key
 
-A JSON Web Key (JWK) is a JSON object describing a cryptographic key. To reference a specific key — say,
-to tell a verifier which one signed a token — you need a stable identifier (a **kid**). You *could* make
+A JSON Web Key (JWK) is a JSON object describing a cryptographic key. To reference a specific key, say,
+to tell a verifier which one signed a token. You need a stable identifier (a **kid**). You *could* make
 one up, but then two parties might disagree, or a key rotation could reuse a name and point verifiers at
 the wrong material. RFC 7638 avoids all of that by defining a way to **derive** the identifier from the
 key itself, so it's always the same for the same key and never accidentally collides for different keys.
@@ -70,13 +70,13 @@ Connect, and JOSE proof-of-possession.
 
 ## The algorithm, exactly
 
-The thumbprint is a hash, and hashes are unforgiving about input — so the spec pins down the input
+The thumbprint is a hash, and hashes are unforgiving about input, so the spec pins down the input
 precisely. To compute it:
 
 1. **Keep only the required members.** Each key type has a fixed set (see the table below). Everything
-   else — `kid`, `use`, `alg`, and any private members — is dropped.
+   else, `kid`, `use`, `alg`, and any private members, is dropped.
 2. **Sort the members** into lexicographic (alphabetical) order by member name.
-3. **Serialize as compact JSON** — no whitespace, no extra characters, member values as strings.
+3. **Serialize as compact JSON**, no whitespace, no extra characters, member values as strings.
 4. **Hash** the UTF-8 bytes with **SHA-256**.
 5. **base64url-encode** the digest, with no padding.
 
@@ -96,7 +96,7 @@ string sort, so `crv` precedes `kty` precedes `x` precedes `y`, and `e` precedes
 
 ### A worked EC example
 
-Start with a fuller EC key — the kind you might see in a JWKS, with extra metadata:
+Start with a fuller EC key, the kind you might see in a JWKS, with extra metadata:
 
 ```json
 {
@@ -117,7 +117,7 @@ Step 3 produces exactly this canonical string:
 {"crv":"P-256","kty":"EC","x":"f83OJ3D2xF1Bg8vub9tLe1gHMzV76e8Tus9uPHvRVEU","y":"x_FEzRu9m36HLN_tue659LNpXW6pCyStikYjKIWI5a0"}
 ```
 
-Hashing those UTF-8 bytes with SHA-256 and base64url-encoding the digest gives the thumbprint — a fixed
+Hashing those UTF-8 bytes with SHA-256 and base64url-encoding the digest gives the thumbprint, a fixed
 43-character base64url string (a 256-bit digest, unpadded). The
 [calculator](/dev/jwk-thumbprint/) shows this canonical string alongside the digest so you can see
 precisely what was hashed, which makes it easy to confirm your own implementation agrees byte-for-byte.
@@ -130,7 +130,7 @@ It's tempting to think "it's just JSON," but the byte-level details are everythi
 - Put the members in a different order, and the hash changes.
 - Add a single space, and the hash changes.
 
-RFC 7638 eliminates every degree of freedom — fixed members, fixed order, no whitespace — so that a key
+RFC 7638 eliminates every degree of freedom, fixed members, fixed order, no whitespace, so that a key
 has exactly **one** thumbprint and every implementation computes it identically. That determinism is what
 makes it usable as an identifier at all.
 
@@ -144,28 +144,28 @@ share them.)
 
 ## Thumbprint vs a hand-picked kid
 
-The `kid` field in a JWK is free-form — you can set it to anything. So why derive one? The trade-offs make
+The `kid` field in a JWK is free-form. You can set it to anything. So why derive one? The trade-offs make
 the case:
 
 | Aspect | Hand-picked `kid` | RFC 7638 thumbprint |
 | --- | --- | --- |
 | Uniqueness | Up to you to guarantee | Effectively guaranteed by SHA-256 |
-| Agreement between parties | Requires coordination | Automatic — both sides compute it |
-| Ties the name to the key | No — a name can outlive its key | Yes — a new key gets a new name |
+| Agreement between parties | Requires coordination | Automatic, both sides compute it |
+| Ties the name to the key | No, a name can outlive its key | Yes, a new key gets a new name |
 | Human-readability | Can be friendly (`2026-signing`) | Opaque base64url string |
 | Reuse risk on rotation | Easy to reuse a name by mistake | Impossible for a genuinely new key |
 
 A common pattern is to use the thumbprint *as* the `kid` when publishing a JWKS: you get guaranteed
-uniqueness and zero-coordination matching, at the cost of a non-friendly name — usually a worthwhile deal
+uniqueness and zero-coordination matching, at the cost of a non-friendly name, usually a worthwhile deal
 for machine-to-machine flows.
 
 ## Where you'll use it
 
-- **`kid` in a JWKS** — the most common use, so a token's header can point at the exact signing key.
-- **OAuth / OIDC key matching** and key rotation — when a provider rotates keys, thumbprints let clients
+- **`kid` in a JWKS**, the most common use, so a token's header can point at the exact signing key.
+- **OAuth / OIDC key matching** and key rotation, when a provider rotates keys, thumbprints let clients
   track which key is which without a shared naming scheme.
 - **DPoP** and other JOSE proof-of-possession flows, where a token is bound to a specific client key.
-- **RFC 9278 thumbprint URI** — `urn:ietf:params:oauth:jwk-thumbprint:sha-256:<thumbprint>` — a standard
+- **RFC 9278 thumbprint URI**, `urn:ietf:params:oauth:jwk-thumbprint:sha-256:<thumbprint>`, a standard
   URI form that names the hash algorithm explicitly, which the calculator also generates.
 
 ## A few things that trip people up
@@ -173,12 +173,12 @@ for machine-to-machine flows.
 - **Base64url, not standard base64.** The digest uses the URL-safe alphabet (`-` and `_`) with padding
   stripped, so a thumbprint is safe to drop into a URL or a header without escaping.
 - **The hash algorithm is not baked into the raw thumbprint.** RFC 7638 defines the *procedure* with
-  SHA-256 as the canonical hash, but the bare string doesn't announce which hash produced it — that's
+  SHA-256 as the canonical hash, but the bare string doesn't announce which hash produced it, that's
   exactly why the RFC 9278 URI carries `sha-256` in it.
 - **Symmetric keys hash secret material.** For an `oct` key the required member `k` *is* the secret. A
   thumbprint of a symmetric key is therefore not something to publish casually.
 - **Whitespace and ordering from your JSON library.** Many serializers add spaces or preserve insertion
-  order. The canonical form needs neither — this is the single most common reason two implementations
+  order. The canonical form needs neither. This is the single most common reason two implementations
   disagree.
 
 ## Compute one privately
@@ -186,4 +186,4 @@ for machine-to-machine flows.
 Since the thumbprint is derived from the key, you can generate it locally with no server involved. The
 [JWK Thumbprint Calculator](/dev/jwk-thumbprint/) takes a JWK, shows the canonical JSON it hashes,
 computes the SHA-256 thumbprint and the RFC 9278 URI in your browser with the Web Crypto API, and warns if
-the key includes private members — with nothing ever uploaded.
+the key includes private members, with nothing ever uploaded.

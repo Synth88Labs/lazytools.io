@@ -8,7 +8,7 @@ function frostbite(wcF: number): { label: string; color: string } {
   if (wcF <= -60) return { label: 'Frostbite in ~5 min', color: 'text-red-700' };
   if (wcF <= -35) return { label: 'Frostbite in ~10 min', color: 'text-red-600' };
   if (wcF <= -18) return { label: 'Frostbite in ~30 min', color: 'text-orange-600' };
-  if (wcF <= 20) return { label: 'Cold — cover up', color: 'text-amber-600' };
+  if (wcF <= 20) return { label: 'Cold, cover up', color: 'text-amber-600' };
   return { label: 'Low risk', color: 'text-emerald-600' };
 }
 
@@ -55,7 +55,7 @@ export default function WindChillTool() {
               <p class={`mt-1 text-2xl font-extrabold ${r.fb.color}`}>{r.fb.label}</p>
             </div>
           </div>
-          {!r.applies && <p class="mt-2 text-center text-xs text-amber-600">Wind chill only applies at or below 50°F (10°C) with wind over 3 mph — showing the actual temperature.</p>}
+          {!r.applies && <p class="mt-2 text-center text-xs text-amber-600">Wind chill only applies at or below 50°F (10°C) with wind over 3 mph, showing the actual temperature.</p>}
         </>
       ) : (
         <p class="mt-4 text-sm text-slate-500">Enter the temperature and wind speed.</p>

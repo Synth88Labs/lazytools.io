@@ -62,7 +62,7 @@ export default function PdfToJpgTool() {
       }
       setBusy('');
     } catch (e) {
-      setError('Could not read that PDF — it may be encrypted or damaged.');
+      setError('Could not read that PDF. It may be encrypted or damaged.');
       setBusy('');
     }
   }
@@ -137,7 +137,7 @@ export default function PdfToJpgTool() {
         </>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Renders each PDF page to an image with pdf.js and lets you save them as JPG or PNG — the whole conversion happens in your browser, so the PDF is never uploaded. Higher resolution gives sharper images but larger files; JPG is smaller, PNG is lossless (best for text and line art). For a scanned document, "High" resolution keeps the text readable. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Renders each PDF page to an image with pdf.js and lets you save them as JPG or PNG, the whole conversion happens in your browser, so the PDF is never uploaded. Higher resolution gives sharper images but larger files; JPG is smaller, PNG is lossless (best for text and line art). For a scanned document, "High" resolution keeps the text readable. 🔒 In your browser.</p>
     </div>
   );
 }

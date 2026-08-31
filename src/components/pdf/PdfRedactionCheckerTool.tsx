@@ -90,7 +90,7 @@ export default function PdfRedactionCheckerTool() {
       <label class="block cursor-pointer rounded-xl border-2 border-dashed border-slate-300 bg-white p-6 text-center transition hover:border-brand-400">
         <input type="file" accept=".pdf,application/pdf" onChange={onFile} class="sr-only" />
         <span class="text-sm font-semibold text-brand-700">{fileName || 'Choose the "redacted" PDF to test'}</span>
-        <span class="mt-1 block text-xs text-slate-500">Analysed on your device — the document is never uploaded</span>
+        <span class="mt-1 block text-xs text-slate-500">Analysed on your device, the document is never uploaded</span>
       </label>
 
       {busy && <p class="mt-3 text-sm text-slate-600">Extracting everything a copy-paste can still read…</p>}
@@ -102,7 +102,7 @@ export default function PdfRedactionCheckerTool() {
             <p class="text-sm font-bold text-slate-900">
               {findings.totalChars > 0
                 ? `⚠ ${findings.totalChars.toLocaleString('en-US')} characters of machine-readable text remain in this file.`
-                : '✅ No extractable text found — the pages are image-only.'}
+                : '✅ No extractable text found, the pages are image-only.'}
             </p>
             <p class="mt-1 text-xs text-slate-600">
               {findings.totalChars > 0
@@ -114,7 +114,7 @@ export default function PdfRedactionCheckerTool() {
           {findings.totalChars > 0 && (
             <div>
               <label class="block max-w-md">
-                <span class="text-xs font-semibold uppercase tracking-wide text-slate-500">Search the hidden layer — try the name/number you redacted</span>
+                <span class="text-xs font-semibold uppercase tracking-wide text-slate-500">Search the hidden layer, try the name/number you redacted</span>
                 <input
                   class="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-800 focus:border-brand-500 focus:outline-none"
                   value={query}
@@ -126,7 +126,7 @@ export default function PdfRedactionCheckerTool() {
                 <div class={`mt-2 rounded-lg border px-3 py-2 text-sm ${hits.length ? 'border-red-200 bg-red-50' : 'border-emerald-200 bg-emerald-50'}`}>
                   {hits.length ? (
                     <>
-                      <p class="font-bold text-red-900">❌ Found on {hits.length} page{hits.length > 1 ? 's' : ''} — the redaction is cosmetic, not real:</p>
+                      <p class="font-bold text-red-900">❌ Found on {hits.length} page{hits.length > 1 ? 's' : ''}, the redaction is cosmetic, not real:</p>
                       <ul class="mt-1 space-y-1">
                         {hits.slice(0, 5).map((h) => (
                           <li class="text-red-800"><strong>p. {h.page}:</strong> <span class="font-mono text-xs">{h.snippet}</span></li>
@@ -146,8 +146,8 @@ export default function PdfRedactionCheckerTool() {
               <p class="font-bold text-slate-900">Overlay annotations</p>
               <p class="mt-1 text-slate-600">
                 {overlayAnnots.length
-                  ? `${overlayAnnots.length} drawing/markup annotation${overlayAnnots.length > 1 ? 's' : ''} (${[...new Set(overlayAnnots.map((a) => a.type))].join(', ')}) — black boxes drawn as annotations can be deleted by any PDF editor, revealing what's underneath.`
-                  : 'none found — no removable markup boxes.'}
+                  ? `${overlayAnnots.length} drawing/markup annotation${overlayAnnots.length > 1 ? 's' : ''} (${[...new Set(overlayAnnots.map((a) => a.type))].join(', ')}), black boxes drawn as annotations can be deleted by any PDF editor, revealing what's underneath.`
+                  : 'none found, no removable markup boxes.'}
               </p>
             </div>
             <div class={`rounded-xl border p-3 text-sm ${findings.meta.length ? 'border-amber-200 bg-amber-50' : 'border-slate-200 bg-white'}`}>
@@ -165,7 +165,7 @@ export default function PdfRedactionCheckerTool() {
             <div class={`rounded-xl border p-3 text-sm ${findings.attachments.length ? 'border-red-200 bg-red-50' : 'border-slate-200 bg-white'}`}>
               <p class="font-bold text-slate-900">Embedded files</p>
               <p class="mt-1 text-slate-600">
-                {findings.attachments.length ? `${findings.attachments.length} attachment(s): ${findings.attachments.join(', ')} — attachments travel with the PDF unredacted.` : 'none.'}
+                {findings.attachments.length ? `${findings.attachments.length} attachment(s): ${findings.attachments.join(', ')}, attachments travel with the PDF unredacted.` : 'none.'}
               </p>
             </div>
           </div>
@@ -184,7 +184,7 @@ export default function PdfRedactionCheckerTool() {
       )}
 
       <p class="mt-4 rounded-lg bg-white px-3 py-2 text-xs text-slate-500 ring-1 ring-slate-200">
-        This checks the classic redaction failures — text hidden under drawn boxes, removable annotations, metadata and attachments. It cannot prove a negative (e.g. content encoded in images still needs human review). To redact for real, use the <a href="/pdf/redact-pdf/" class="font-semibold text-brand-700 underline decoration-slate-300 underline-offset-2">rasterizing redactor</a>. Nothing you load here leaves your browser.
+        This checks the classic redaction failures, text hidden under drawn boxes, removable annotations, metadata and attachments. It cannot prove a negative (e.g. content encoded in images still needs human review). To redact for real, use the <a href="/pdf/redact-pdf/" class="font-semibold text-brand-700 underline decoration-slate-300 underline-offset-2">rasterizing redactor</a>. Nothing you load here leaves your browser.
       </p>
     </div>
   );

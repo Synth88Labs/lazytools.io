@@ -83,7 +83,7 @@ export default function CoordinateConverterTool() {
         </div>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Converts a WGS-84 location between decimal degrees, DMS, DDM, UTM, MGRS and geohash. UTM/MGRS use the Karney Transverse Mercator series (sub-millimetre) and are defined between 80°S and 84°N; geohash length 11 pins a spot to about a metre. Paste coordinates in any degree format (51.5074, 51°30′26″N, or 51 30 26 N) or switch to geohash to decode one. 🔒 All math runs in your browser — your location is never sent anywhere.</p>
+      <p class="mt-4 text-xs text-slate-500">Converts a WGS-84 location between decimal degrees, DMS, DDM, UTM, MGRS and geohash. UTM/MGRS use the Karney Transverse Mercator series (sub-millimetre) and are defined between 80°S and 84°N; geohash length 11 pins a spot to about a metre. Paste coordinates in any degree format (51.5074, 51°30′26″N, or 51 30 26 N) or switch to geohash to decode one. 🔒 All math runs in your browser, your location is never sent anywhere.</p>
     </div>
   );
 }

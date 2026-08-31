@@ -144,7 +144,7 @@ export default function GanttTool() {
                     <rect x={x1} y={cy - 10} width={(w * Math.max(0, Math.min(100, t.pct))) / 100} height={20} rx={5} fill="#1d87f1" />
                     {/* drag zones: middle = move, edges = resize */}
                     <rect x={x1 + 5} y={cy - 10} width={Math.max(0, w - 10)} height={20} fill="transparent" style="cursor:grab" onPointerDown={(ev) => onBarDown(ev as unknown as PointerEvent, t, 'move')}>
-                      <title>{t.name} — drag to move</title>
+                      <title>{t.name}, drag to move</title>
                     </rect>
                     <rect x={x1} y={cy - 10} width={6} height={20} fill="transparent" style="cursor:ew-resize" onPointerDown={(ev) => onBarDown(ev as unknown as PointerEvent, t, 'start')} />
                     <rect x={x1 + w - 6} y={cy - 10} width={6} height={20} fill="transparent" style="cursor:ew-resize" onPointerDown={(ev) => onBarDown(ev as unknown as PointerEvent, t, 'end')} />

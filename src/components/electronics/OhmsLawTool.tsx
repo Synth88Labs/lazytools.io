@@ -34,7 +34,7 @@ export default function OhmsLawTool() {
 
   return (
     <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
-      <p class="mb-3 text-sm text-slate-600">Enter <strong>any two</strong> values — leave the other two blank.</p>
+      <p class="mb-3 text-sm text-slate-600">Enter <strong>any two</strong> values, leave the other two blank.</p>
       <div class="grid gap-3 sm:grid-cols-4">
         {field('Voltage V', 'volts', v, setV)}
         {field('Current I', 'amps', i, setI)}
@@ -50,10 +50,10 @@ export default function OhmsLawTool() {
           {cell('Power', 'W', res.p)}
         </div>
       ) : (
-        <p class="mt-4 text-sm text-slate-500">{knownCount < 2 ? 'Enter exactly two values.' : knownCount > 2 ? 'Enter only two values — clear the others.' : 'That pair is unsolvable (check for zero or negative values).'}</p>
+        <p class="mt-4 text-sm text-slate-500">{knownCount < 2 ? 'Enter exactly two values.' : knownCount > 2 ? 'Enter only two values, clear the others.' : 'That pair is unsolvable (check for zero or negative values).'}</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Ohm's law ties voltage, current and resistance together (V = I × R), and power adds a fourth (P = V × I = I²R = V²/R). Give any two and the other two are fixed. Use consistent units — volts, amps, ohms and watts. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Ohm's law ties voltage, current and resistance together (V = I × R), and power adds a fourth (P = V × I = I²R = V²/R). Give any two and the other two are fixed. Use consistent units, volts, amps, ohms and watts. 🔒 In your browser.</p>
     </div>
   );
 }

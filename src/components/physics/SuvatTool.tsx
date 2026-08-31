@@ -26,11 +26,11 @@ export default function SuvatTool() {
 
   return (
     <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
-      <p class="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">Enter any three of the five — leave two blank</p>
+      <p class="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">Enter any three of the five, leave two blank</p>
       <div class="grid gap-3 sm:grid-cols-3 lg:grid-cols-5">
         {VARS.map((V) => (
           <label class="block">
-            <span class="mb-1 block text-xs font-semibold text-slate-600"><span class="font-mono text-brand-700">{V.label}</span> — {V.desc} <span class="text-slate-400">({V.unit})</span></span>
+            <span class="mb-1 block text-xs font-semibold text-slate-600"><span class="font-mono text-brand-700">{V.label}</span>, {V.desc} <span class="text-slate-400">({V.unit})</span></span>
             <input type="number" step="any" value={vals[V.key] ?? ''} onInput={(e) => setVals({ ...vals, [V.key]: (e.target as HTMLInputElement).value })}
               class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 font-mono text-sm text-slate-900 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200" />
           </label>
@@ -38,7 +38,7 @@ export default function SuvatTool() {
       </div>
 
       {count > 3 && <p class="mt-3 text-sm text-amber-700">Enter exactly three values (you have {count}). Clear {count - 3} to solve.</p>}
-      {count === 3 && !result && <p class="mt-3 text-sm text-amber-700">These three values have no real solution (check signs — e.g. a negative under the square root).</p>}
+      {count === 3 && !result && <p class="mt-3 text-sm text-amber-700">These three values have no real solution (check signs, e.g. a negative under the square root).</p>}
 
       {result && count === 3 && (
         <>

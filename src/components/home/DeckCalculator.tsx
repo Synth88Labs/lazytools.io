@@ -63,7 +63,7 @@ export default function DeckCalculator() {
         <p class="mt-4 text-sm text-slate-500">Enter the deck size and board dimensions.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Rows = width ÷ (board width + gap); boards = rows × length ÷ board length, + ~10% waste. Leave a 3–5 mm gap for drainage. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Rows = width ÷ (board width + gap); boards = rows × length ÷ board length, + ~10% waste. Leave a 3-5 mm gap for drainage. 🔒 In your browser.</p>
     </div>
   );
 }

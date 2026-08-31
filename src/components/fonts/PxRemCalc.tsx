@@ -91,7 +91,7 @@ export default function PxRemCalc() {
       </div>
 
       <p class="mt-4 text-xs text-slate-500">
-        <strong>rem</strong> is relative to the <em>root</em> font size; <strong>em</strong> is relative to the element's own font size — the maths is identical, only the reference differs. Using rem for type keeps layouts scalable when a user changes their browser's default size. 🔒
+        <strong>rem</strong> is relative to the <em>root</em> font size; <strong>em</strong> is relative to the element's own font size, the maths is identical, only the reference differs. Using rem for type keeps layouts scalable when a user changes their browser's default size. 🔒
       </p>
     </div>
   );

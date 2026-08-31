@@ -1,4 +1,4 @@
-/** SVG → PNG rasterizer. 100% client-side — nothing is uploaded. */
+/** SVG → PNG rasterizer. 100% client-side, nothing is uploaded. */
 import { useState, useRef, useEffect } from 'preact/hooks';
 import { fmtSize } from '../../lib/audio-compute';
 
@@ -113,12 +113,12 @@ export default function SvgToPngTool() {
         setError('');
         done?.(target);
       } catch {
-        setError("Couldn't render this SVG — check the markup.");
+        setError("Couldn't render this SVG, check the markup.");
       }
       URL.revokeObjectURL(url);
     };
     img.onerror = () => {
-      setError("Couldn't render this SVG — check the markup.");
+      setError("Couldn't render this SVG, check the markup.");
       URL.revokeObjectURL(url);
     };
     img.src = url;
@@ -161,7 +161,7 @@ export default function SvgToPngTool() {
         <div>
           <label class="flex cursor-pointer flex-col items-center justify-center gap-1 rounded-xl border-2 border-dashed border-slate-300 bg-white px-4 py-6 text-center text-sm text-slate-600 transition hover:border-brand-500 hover:bg-slate-50">
             <span class="font-medium text-slate-700">Choose an SVG file</span>
-            <span class="text-xs text-slate-500">or drop the markup below — nothing leaves your browser</span>
+            <span class="text-xs text-slate-500">or drop the markup below, nothing leaves your browser</span>
             <input
               type="file"
               accept="image/svg+xml,.svg"
@@ -187,7 +187,7 @@ export default function SvgToPngTool() {
             <p class="mt-1.5 text-xs text-slate-500">
               {intrinsic.source
                 ? `Detected size: ${intrinsic.w} × ${intrinsic.h} (from ${intrinsic.source})`
-                : 'No intrinsic size found — using 512 × 512 default.'}
+                : 'No intrinsic size found, using 512 × 512 default.'}
             </p>
           )}
         </div>

@@ -7,15 +7,15 @@ export const dataStorage: Quantity = {
   baseUnit: 'b',
   icon: '💾',
   description:
-    'Convert between bits, bytes, kilobytes, megabytes, gigabytes and terabytes — in both decimal (1 MB = 1,000,000 bytes, used by drive makers) and binary (1 MiB = 1,048,576 bytes, used by operating systems) standards. The two standards are why a "1 TB" drive shows as ~931 GB in Windows.',
+    'Convert between bits, bytes, kilobytes, megabytes, gigabytes and terabytes, in both decimal (1 MB = 1,000,000 bytes, used by drive makers) and binary (1 MiB = 1,048,576 bytes, used by operating systems) standards. The two standards are why a "1 TB" drive shows as ~931 GB in Windows.',
   units: [
     {
       id: 'bit', name: 'Bit', plural: 'bits', symbol: 'bit', slug: 'bits', factor: 0.125, system: 'si',
-      definition: 'A bit is the smallest unit of digital information — a single 0 or 1. Network speeds (Mbps, Gbps) are measured in bits per second, which is why a 100 Mbps connection downloads at most 12.5 MB/s.',
+      definition: 'A bit is the smallest unit of digital information, a single 0 or 1. Network speeds (Mbps, Gbps) are measured in bits per second, which is why a 100 Mbps connection downloads at most 12.5 MB/s.',
     },
     {
       id: 'b', name: 'Byte', plural: 'bytes', symbol: 'B', slug: 'bytes', factor: 1, system: 'si',
-      definition: 'A byte (B) is 8 bits — historically the storage needed for one text character. File sizes and storage capacities are measured in bytes and their multiples.',
+      definition: 'A byte (B) is 8 bits, historically the storage needed for one text character. File sizes and storage capacities are measured in bytes and their multiples.',
     },
     {
       id: 'kb', name: 'Kilobyte', plural: 'kilobytes', symbol: 'KB', slug: 'kb', factor: 1000, system: 'si',
@@ -23,7 +23,7 @@ export const dataStorage: Quantity = {
     },
     {
       id: 'mb', name: 'Megabyte', plural: 'megabytes', symbol: 'MB', slug: 'mb', factor: 1000000, system: 'si',
-      definition: 'A megabyte (MB) is 1,000,000 bytes (decimal standard). A smartphone photo is typically 2–5 MB; an MP3 song about 1 MB per minute.',
+      definition: 'A megabyte (MB) is 1,000,000 bytes (decimal standard). A smartphone photo is typically 2-5 MB; an MP3 song about 1 MB per minute.',
     },
     {
       id: 'gb', name: 'Gigabyte', plural: 'gigabytes', symbol: 'GB', slug: 'gb', factor: 1000000000, system: 'si',
@@ -31,11 +31,11 @@ export const dataStorage: Quantity = {
     },
     {
       id: 'tb', name: 'Terabyte', plural: 'terabytes', symbol: 'TB', slug: 'tb', factor: 1000000000000, system: 'si',
-      definition: 'A terabyte (TB) is 1,000 gigabytes (decimal standard). Hard drives and cloud storage tiers are commonly 1–4 TB; a 1 TB drive appears as about 931 GiB in Windows.',
+      definition: 'A terabyte (TB) is 1,000 gigabytes (decimal standard). Hard drives and cloud storage tiers are commonly 1-4 TB; a 1 TB drive appears as about 931 GiB in Windows.',
     },
     {
       id: 'kib', name: 'Kibibyte', plural: 'kibibytes', symbol: 'KiB', slug: 'kib', factor: 1024, system: 'other',
-      definition: 'A kibibyte (KiB) is 1,024 bytes — the binary unit operating systems traditionally called a "kilobyte". The Ki prefix (2¹⁰) was standardized in 1998 to end the ambiguity.',
+      definition: 'A kibibyte (KiB) is 1,024 bytes, the binary unit operating systems traditionally called a "kilobyte". The Ki prefix (2¹⁰) was standardized in 1998 to end the ambiguity.',
     },
     {
       id: 'mib', name: 'Mebibyte', plural: 'mebibytes', symbol: 'MiB', slug: 'mib', factor: 1048576, system: 'other',
@@ -43,7 +43,7 @@ export const dataStorage: Quantity = {
     },
     {
       id: 'gib', name: 'Gibibyte', plural: 'gibibytes', symbol: 'GiB', slug: 'gib', factor: 1073741824, system: 'other',
-      definition: 'A gibibyte (GiB) is 1,073,741,824 bytes (2³⁰) — about 7.4% larger than a decimal gigabyte. The gap between GB and GiB explains "missing" drive space.',
+      definition: 'A gibibyte (GiB) is 1,073,741,824 bytes (2³⁰), about 7.4% larger than a decimal gigabyte. The gap between GB and GiB explains "missing" drive space.',
     },
     {
       id: 'tib', name: 'Tebibyte', plural: 'tebibytes', symbol: 'TiB', slug: 'tib', factor: 1099511627776, system: 'other',
@@ -62,7 +62,7 @@ export const dataStorage: Quantity = {
     'mb-to-gb': {
       slug: 'mb-to-gb',
       exampleValue: 512,
-      note: 'MB-to-GB uses the decimal standard: 1 GB = 1,000 MB, so 512 MB is 0.512 GB. If your operating system shows different numbers, it is reporting binary mebibytes/gibibytes (1 GiB = 1,024 MiB) while drive makers use decimal — both are "correct", they just use different standards.',
+      note: 'MB-to-GB uses the decimal standard: 1 GB = 1,000 MB, so 512 MB is 0.512 GB. If your operating system shows different numbers, it is reporting binary mebibytes/gibibytes (1 GiB = 1,024 MiB) while drive makers use decimal, both are "correct", they just use different standards.',
       faqs: [
         { q: 'Is 1 GB equal to 1000 MB or 1024 MB?', a: 'Under the SI decimal standard used by storage manufacturers, 1 GB = 1,000 MB. The 1,024 figure belongs to the binary units (1 GiB = 1,024 MiB) that operating systems traditionally reported. This page converts using the decimal standard.' },
       ],
@@ -75,7 +75,7 @@ export const dataStorage: Quantity = {
     'gb-to-mb': {
       slug: 'gb-to-mb',
       exampleValue: 1.5,
-      note: 'Multiply gigabytes by 1,000 (decimal standard): a 1.5 GB data plan is 1,500 MB. Handy for estimating what fits — at ~5 MB per photo, that plan uploads about 300 photos.',
+      note: 'Multiply gigabytes by 1,000 (decimal standard): a 1.5 GB data plan is 1,500 MB. Handy for estimating what fits, at ~5 MB per photo, that plan uploads about 300 photos.',
     },
     'kb-to-mb': {
       slug: 'kb-to-mb',
@@ -90,7 +90,7 @@ export const dataStorage: Quantity = {
     'tb-to-gb': {
       slug: 'tb-to-gb',
       exampleValue: 2,
-      note: 'Multiply terabytes by 1,000: a 2 TB drive is 2,000 GB (decimal). Your operating system may show it as ~1,863 GiB — that gap is the decimal-vs-binary standards difference, not missing space.',
+      note: 'Multiply terabytes by 1,000: a 2 TB drive is 2,000 GB (decimal). Your operating system may show it as ~1,863 GiB, that gap is the decimal-vs-binary standards difference, not missing space.',
     },
     'bytes-to-mb': {
       slug: 'bytes-to-mb',
@@ -105,20 +105,20 @@ export const dataStorage: Quantity = {
     'gib-to-gb': {
       slug: 'gib-to-gb',
       exampleValue: 16,
-      note: 'One gibibyte is 1.0737 GB, so 16 GiB of RAM is 17.18 decimal GB. RAM is one of the few products still genuinely sized in binary units — a "16 GB" memory kit really is 16 GiB.',
+      note: 'One gibibyte is 1.0737 GB, so 16 GiB of RAM is 17.18 decimal GB. RAM is one of the few products still genuinely sized in binary units, a "16 GB" memory kit really is 16 GiB.',
     },
     'gb-to-gib': {
       slug: 'gb-to-gib',
       exampleValue: 1000,
-      note: 'One decimal gigabyte is 0.9313 GiB — so a "1 TB" (1,000 GB) drive shows as about 931 GiB in Windows. Nothing is missing; the drive maker and the OS are just using different standards.',
+      note: 'One decimal gigabyte is 0.9313 GiB, so a "1 TB" (1,000 GB) drive shows as about 931 GiB in Windows. Nothing is missing; the drive maker and the OS are just using different standards.',
       faqs: [
-        { q: 'Why does my 1 TB drive show only 931 GB?', a: 'The drive contains 1,000,000,000,000 bytes (1 TB decimal). Windows divides by 1,073,741,824 (binary GiB) and displays 931 — labelled "GB" but actually GiB. Both figures describe the same number of bytes.' },
+        { q: 'Why does my 1 TB drive show only 931 GB?', a: 'The drive contains 1,000,000,000,000 bytes (1 TB decimal). Windows divides by 1,073,741,824 (binary GiB) and displays 931, labelled "GB" but actually GiB. Both figures describe the same number of bytes.' },
       ],
     },
     'bits-to-bytes': {
       slug: 'bits-to-bytes',
       exampleValue: 100000000,
-      note: 'Divide bits by 8: 100 million bits is 12.5 million bytes. This is why a 100 Mbps internet connection downloads at most 12.5 MB/s — network speeds are quoted in bits, file sizes in bytes.',
+      note: 'Divide bits by 8: 100 million bits is 12.5 million bytes. This is why a 100 Mbps internet connection downloads at most 12.5 MB/s, network speeds are quoted in bits, file sizes in bytes.',
     },
   },
 };

@@ -1,7 +1,7 @@
 ---
 title: "Aspect Ratio Explained: What 16:9 Means and How to Resize Without Stretching"
 seoTitle: 'What Does 16:9 Mean? Aspect Ratio Explained'
-description: "Aspect ratio is the width-to-height proportion — 16:9, 4:3, 1:1 — independent of pixel size. Resize without stretching and pick the right ratio."
+description: "Aspect ratio is the width-to-height proportion, 16:9, 4:3, 1:1, independent of pixel size. Resize without stretching and pick the right ratio."
 pubDate: 2026-07-25
 updatedDate: 2026-07-25
 archetype: explainer
@@ -31,35 +31,35 @@ faqs:
 draft: false
 ---
 
-**Aspect ratio is the proportion between width and height, written as two numbers with a colon — 16:9, 4:3, 1:1 — and it's independent of the actual pixel size.** 1280×720, 1920×1080 and 3840×2160 are all 16:9, because each is 16 units wide for every 9 tall. To find a matching dimension for a ratio, cross-multiply: at 16:9, a width of 1280 gives a height of 1280 × 9 ÷ 16 = 720. To turn a pixel size *into* a ratio, divide both numbers by their greatest common divisor.
+**Aspect ratio is the proportion between width and height, written as two numbers with a colon, 16:9, 4:3, 1:1, and it's independent of the actual pixel size.** 1280×720, 1920×1080 and 3840×2160 are all 16:9, because each is 16 units wide for every 9 tall. To find a matching dimension for a ratio, cross-multiply: at 16:9, a width of 1280 gives a height of 1280 × 9 ÷ 16 = 720. To turn a pixel size *into* a ratio, divide both numbers by their greatest common divisor.
 
 <aside class="key-takeaways">
 
 **Key takeaways**
 
-- **Ratio = width : height**, a proportion — not a fixed pixel size.
+- **Ratio = width : height**, a proportion, not a fixed pixel size.
 - **Find a dimension:** new height = new width × H ÷ W (and vice versa).
 - **Find the ratio:** reduce width×height by its greatest common divisor (GCD).
 - **Keep the ratio locked** when resizing, or the image stretches.
 - **16:9** landscape video/screens · **9:16** Reels/TikTok/Stories · **1:1** & **4:5** feed posts · **4:3** slides/old TV.
-- Scaling up to the same ratio doesn't add detail — it just enlarges existing pixels.
+- Scaling up to the same ratio doesn't add detail. It just enlarges existing pixels.
 
 </aside>
 
 <figure>
-<img src="/blog/infographic-aspect-ratio.svg" alt="Three rectangles of increasing size — 1280x720, 1920x1080 and 3840x2160 — all share the 16:9 shape, because aspect ratio is width divided by height and is independent of resolution. To find a side, new height equals new width times 9 divided by 16." width="1200" height="700" loading="lazy" />
-<figcaption>Same shape, three sizes — aspect ratio is proportion, not pixels.</figcaption>
+<img src="/blog/infographic-aspect-ratio.svg" alt="Three rectangles of increasing size, 1280x720, 1920x1080 and 3840x2160, all share the 16:9 shape, because aspect ratio is width divided by height and is independent of resolution. To find a side, new height equals new width times 9 divided by 16." width="1200" height="700" loading="lazy" />
+<figcaption>Same shape, three sizes, aspect ratio is proportion, not pixels.</figcaption>
 </figure>
 
 ## What the numbers mean
 
-An aspect ratio compares width to height. "16:9" means the frame is **16 units wide for every 9 units tall** — where a "unit" is just a shared scale factor, not a fixed measurement. Multiply both by 80 and you get 1280×720; by 120 and you get 1920×1080. Both are 16:9.
+An aspect ratio compares width to height. "16:9" means the frame is **16 units wide for every 9 units tall**, where a "unit" is just a shared scale factor, not a fixed measurement. Multiply both by 80 and you get 1280×720; by 120 and you get 1920×1080. Both are 16:9.
 
-That's the idea people most often miss: **a ratio has no inherent size.** Asking "how many pixels is 16:9?" has no single answer — it's a family of resolutions that all share the same shape.
+That's the idea people most often miss: **a ratio has no inherent size.** Asking "how many pixels is 16:9?" has no single answer, it's a family of resolutions that all share the same shape.
 
 ## Finding a missing dimension
 
-The everyday task is "I want this at 16:9 and I know one side — what's the other?" Cross-multiply:
+The everyday task is "I want this at 16:9 and I know one side, what's the other?" Cross-multiply:
 
 > **new height = new width × (H ÷ W)**
 > **new width = new height × (W ÷ H)**
@@ -68,7 +68,7 @@ At **16:9**, a width of 1280 gives a height of 1280 × (9 ÷ 16) = **720**. A he
 
 ## Turning a resolution into a ratio
 
-To go the other way — you have a pixel size and want to know its ratio — divide both dimensions by their **greatest common divisor** (GCD), the largest number that divides both evenly:
+To go the other way. You have a pixel size and want to know its ratio, divide both dimensions by their **greatest common divisor** (GCD), the largest number that divides both evenly:
 
 - 1920×1080 → GCD is 120 → 1920÷120 : 1080÷120 → **16:9**
 - 1600×900 → GCD is 100 → **16:9**
@@ -93,10 +93,10 @@ The calculator's "get ratio from these dimensions" button does exactly this redu
 
 ## Why locking the ratio matters when you resize
 
-If you change width and height **independently** to a ratio that isn't the original, the image is squashed or stretched — circles become ovals and faces distort. "Constraining proportions," "lock aspect ratio" or `object-fit: contain` in CSS all describe the same protection: set one dimension, and the software recalculates the other from the original ratio so the shape is preserved.
+If you change width and height **independently** to a ratio that isn't the original, the image is squashed or stretched, circles become ovals and faces distort. "Constraining proportions," "lock aspect ratio" or `object-fit: contain` in CSS all describe the same protection: set one dimension, and the software recalculates the other from the original ratio so the shape is preserved.
 
-The rule: **resize proportionally.** Only change the ratio deliberately, and when you do, **crop** rather than stretch — cropping removes pixels but keeps everything sharp and undistorted, whereas stretching warps what's there. To resize an actual image file proportionally, the [image resizer](/image/image-resizer/) locks the ratio for you; for a round avatar with transparency, the [circle crop tool](/image/circle-crop-image/) centre-crops to a square first.
+The rule: **resize proportionally.** Only change the ratio deliberately, and when you do, **crop** rather than stretch, cropping removes pixels but keeps everything sharp and undistorted, whereas stretching warps what's there. To resize an actual image file proportionally, the [image resizer](/image/image-resizer/) locks the ratio for you; for a round avatar with transparency, the [circle crop tool](/image/circle-crop-image/) centre-crops to a square first.
 
 ## One thing a ratio can't do
 
-Matching an aspect ratio and enlarging to a bigger size are different things. Scaling a 1280×720 image up to 1920×1080 keeps it at 16:9 — but it does **not** add real detail. The tool just spreads the existing 720p of information across more pixels, which looks softer. Aspect ratio governs *shape*; it says nothing about how much genuine resolution you have.
+Matching an aspect ratio and enlarging to a bigger size are different things. Scaling a 1280×720 image up to 1920×1080 keeps it at 16:9, but it does **not** add real detail. The tool just spreads the existing 720p of information across more pixels, which looks softer. Aspect ratio governs *shape*; it says nothing about how much genuine resolution you have.

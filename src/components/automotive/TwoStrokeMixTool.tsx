@@ -38,7 +38,7 @@ export default function TwoStrokeMixTool() {
       ) : <p class="mt-4 text-sm text-slate-500">Enter the fuel amount and pick a ratio.</p>}
 
       <p class="mt-4 text-xs text-slate-500">
-        Add this much two-stroke oil to your petrol, then mix well before filling. The ratio is parts fuel to one part oil — a 50:1 mix is 50 parts petrol to 1 part oil, so oil = fuel ÷ 50. Always use the ratio your engine's manufacturer specifies (common for chainsaws, trimmers, outboards and dirt bikes), and a quality two-stroke oil. 🔒 In your browser.
+        Add this much two-stroke oil to your petrol, then mix well before filling. The ratio is parts fuel to one part oil, a 50:1 mix is 50 parts petrol to 1 part oil, so oil = fuel ÷ 50. Always use the ratio your engine's manufacturer specifies (common for chainsaws, trimmers, outboards and dirt bikes), and a quality two-stroke oil. 🔒 In your browser.
       </p>
     </div>
   );

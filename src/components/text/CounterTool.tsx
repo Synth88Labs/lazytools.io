@@ -46,7 +46,7 @@ export default function CounterTool({ focus }: { focus: 'words' | 'chars' }) {
         rows={8}
         value={text}
         onInput={(e) => setText((e.target as HTMLTextAreaElement).value)}
-        placeholder="Type or paste here — everything updates live and nothing leaves your browser…"
+        placeholder="Type or paste here, everything updates live and nothing leaves your browser…"
         class="w-full rounded-xl border border-slate-300 bg-white px-3 py-3 text-base text-slate-900 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200"
       />
 

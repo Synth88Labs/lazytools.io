@@ -103,7 +103,7 @@ export default function ZalgoTool() {
       </div>
 
       <p class="mt-4 text-xs text-slate-500">
-        Zalgo stacks Unicode <strong>combining marks</strong> on each letter. Some apps limit how many marks they render, so extreme settings may look tamer once pasted — and a few platforms strip the marks entirely. 🔒 Runs in your browser.
+        Zalgo stacks Unicode <strong>combining marks</strong> on each letter. Some apps limit how many marks they render, so extreme settings may look tamer once pasted, and a few platforms strip the marks entirely. 🔒 Runs in your browser.
       </p>
     </div>
   );

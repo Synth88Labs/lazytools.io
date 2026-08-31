@@ -29,7 +29,7 @@ export default function WilcoxonTool() {
         <label class="block"><span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Condition A (before)</span><textarea rows={3} value={rawA} onInput={(e) => setRawA((e.target as HTMLTextAreaElement).value)} class={inp} /></label>
         <label class="block"><span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Condition B (after)</span><textarea rows={3} value={rawB} onInput={(e) => setRawB((e.target as HTMLTextAreaElement).value)} class={inp} /></label>
       </div>
-      <p class="mt-1 text-xs text-slate-500">Enter the two measurements for each subject in the same order — value 1 in A pairs with value 1 in B.</p>
+      <p class="mt-1 text-xs text-slate-500">Enter the two measurements for each subject in the same order, value 1 in A pairs with value 1 in B.</p>
       <div class="mt-2 flex flex-wrap items-center gap-3">
         <label class="text-sm text-slate-600">Tail <select class={sel} value={tail} onChange={(e) => setTail((e.target as HTMLSelectElement).value as Tail)}><option value="two">Two-tailed (≠)</option><option value="right">Right (A &gt; B)</option><option value="left">Left (A &lt; B)</option></select></label>
         <label class="text-sm text-slate-600">α <input type="number" step="0.01" value={alpha} onInput={(e) => setAlpha((e.target as HTMLInputElement).value)} class={`${inp} inline-block w-20`} /></label>
@@ -46,13 +46,13 @@ export default function WilcoxonTool() {
           <div class={`mt-3 rounded-xl p-4 ring-2 ${sig ? 'bg-emerald-50 ring-emerald-200' : 'bg-slate-100 ring-slate-200'}`}>
             <p class={`text-sm font-semibold ${sig ? 'text-emerald-800' : 'text-slate-700'}`}>{sig ? `Significant difference at α = ${a}` : `No significant difference at α = ${a}`}</p>
             <p class={`mt-1 text-sm ${sig ? 'text-emerald-700' : 'text-slate-600'}`}>{sig
-              ? `p = ${fmt(res.p, 4)} < ${a}, so you reject the null hypothesis that the paired differences are symmetric around zero — the two conditions differ.`
+              ? `p = ${fmt(res.p, 4)} < ${a}, so you reject the null hypothesis that the paired differences are symmetric around zero, the two conditions differ.`
               : `p = ${fmt(res.p, 4)} ≥ ${a}, so there isn't enough evidence of a difference between the paired conditions.`}</p>
           </div>
         </>
       ) : <p class="mt-4 text-sm text-slate-500">{'err' in r && r.err ? r.err : 'Enter paired values for both conditions.'}</p>}
 
-      <p class="mt-4 text-xs text-slate-500">The Wilcoxon signed-rank test is the non-parametric alternative to the paired t-test: it works on the ranks of the paired differences, so it doesn't assume those differences are normally distributed — good for small samples, skewed data or ordinal ratings. Zero differences are dropped; ties share average ranks. This uses the normal approximation with a tie correction (accurate for moderate-to-large n; small samples are better checked against an exact table). 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">The Wilcoxon signed-rank test is the non-parametric alternative to the paired t-test: it works on the ranks of the paired differences, so it doesn't assume those differences are normally distributed, good for small samples, skewed data or ordinal ratings. Zero differences are dropped; ties share average ranks. This uses the normal approximation with a tie correction (accurate for moderate-to-large n; small samples are better checked against an exact table). 🔒 In your browser.</p>
     </div>
   );
 }

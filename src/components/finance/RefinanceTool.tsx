@@ -78,7 +78,7 @@ export default function RefinanceTool() {
             {r.worthIt
               ? `You'd save ${usd(r.monthlySavings)}/month and recoup the ${usd(parseFloat(closing))} closing costs in about ${Math.ceil(r.breakEvenMonths!)} months.`
               : r.monthlySavings > 0
-                ? `The lower payment partly comes from a longer term — check the lifetime difference, not just the monthly saving.`
+                ? `The lower payment partly comes from a longer term, check the lifetime difference, not just the monthly saving.`
                 : `At these terms the new payment isn't lower, so refinancing doesn't save month-to-month.`}
           </p>
         </div>

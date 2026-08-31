@@ -74,7 +74,7 @@ export default function HatSizeTool() {
                 </div>
               ))}
             </div>
-            <p class="mt-3 text-xs text-slate-500">Between sizes? Choose the larger — hats shrink slightly and heads don't.</p>
+            <p class="mt-3 text-xs text-slate-500">Between sizes? Choose the larger, hats shrink slightly and heads don't.</p>
           </>
         ) : (
           <p class="py-2 text-sm text-slate-500">Enter your head circumference to find your size.</p>

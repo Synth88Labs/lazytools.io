@@ -114,11 +114,11 @@ export default function DeviceTestTool() {
           </div>
         </div>
         {micError && <p class="mt-3 rounded-lg bg-rose-50 px-3 py-2 text-sm text-rose-700 ring-1 ring-rose-200">⚠️ {micError}</p>}
-        {micOn && <p class="mt-3 text-sm text-slate-600">Speak — the bars should react. Level: <span class="font-mono font-semibold text-slate-800">{Math.round(level * 100)}%</span></p>}
+        {micOn && <p class="mt-3 text-sm text-slate-600">Speak, the bars should react. Level: <span class="font-mono font-semibold text-slate-800">{Math.round(level * 100)}%</span></p>}
         {!micOn && !micError && <p class="mt-3 text-sm text-slate-500">Click Start mic and speak; the meter shows your input level. Audio is analysed live in your browser and never recorded or uploaded.</p>}
       </div>
 
-      <p class="text-xs text-slate-500 md:col-span-2">Test that your camera and microphone work before a call or recording — see a live preview, your camera&#39;s resolution, and a real-time mic level meter. Everything runs in your browser using your device directly; nothing is ever recorded, saved, or uploaded, and access stops the moment you click Stop or leave the page. 🔒 100% on your device.</p>
+      <p class="text-xs text-slate-500 md:col-span-2">Test that your camera and microphone work before a call or recording, see a live preview, your camera&#39;s resolution, and a real-time mic level meter. Everything runs in your browser using your device directly; nothing is ever recorded, saved, or uploaded, and access stops the moment you click Stop or leave the page. 🔒 100% on your device.</p>
     </div>
   );
 }

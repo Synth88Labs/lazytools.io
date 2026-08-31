@@ -46,7 +46,7 @@ export default function InvisibleCharTool() {
           <textarea class={`${ta} border-brand-200`} rows={6} readOnly value={cleaned} aria-label="Cleaned text" />
         </div>
       )}
-      <p class="mt-3 text-xs text-slate-500">Detects zero-width spaces, non-breaking spaces, bidirectional controls, the BOM, and the tag/variation-selector characters increasingly used to invisibly watermark AI-generated text. 🔒 Everything runs in your browser — your text is never uploaded.</p>
+      <p class="mt-3 text-xs text-slate-500">Detects zero-width spaces, non-breaking spaces, bidirectional controls, the BOM, and the tag/variation-selector characters increasingly used to invisibly watermark AI-generated text. 🔒 Everything runs in your browser, your text is never uploaded.</p>
     </div>
   );
 }

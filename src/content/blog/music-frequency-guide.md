@@ -17,7 +17,7 @@ heroImage: /blog/music-frequency-guide.png
 heroAlt: "One octave C4 to C5 with frequencies; C5 (523 Hz) is exactly double C4 (261.6 Hz)"
 faqs:
   - q: "Why is A tuned to 440 Hz?"
-    a: "440 Hz for the A above middle C (A4) is the modern international standard, ISO 16, adopted so instruments everywhere agree on pitch. It's a convention, not a law of physics — some orchestras use 442 or 443 Hz, and 432 Hz is a popular alternative tuning."
+    a: "440 Hz for the A above middle C (A4) is the modern international standard, ISO 16, adopted so instruments everywhere agree on pitch. It's a convention, not a law of physics, some orchestras use 442 or 443 Hz, and 432 Hz is a popular alternative tuning."
   - q: "Why does an octave double the frequency?"
     a: "Because our ears perceive pitch logarithmically: notes an octave apart sound like 'the same note, higher,' and that always corresponds to a 2:1 frequency ratio. A4 is 440 Hz, so A5 is 880 Hz and A3 is 220 Hz."
   - q: "What is equal temperament?"
@@ -25,15 +25,15 @@ faqs:
   - q: "How do I calculate a note's frequency?"
     a: "Use f = 440 × 2^((n − 69)/12), where n is the note's MIDI number (A4 = 69). Middle C (C4, MIDI 60) works out to about 261.63 Hz. A note frequency calculator does it instantly for any note."
   - q: "What is a cent in music?"
-    a: "One hundredth of a semitone, so 1,200 cents to an octave. Cents measure tiny tuning differences — a note 5 cents flat is only just detectable, while 20 cents is clearly out of tune."
+    a: "One hundredth of a semitone, so 1,200 cents to an octave. Cents measure tiny tuning differences, a note 5 cents flat is only just detectable, while 20 cents is clearly out of tune."
   - q: "Why aren't a piano's intervals perfectly in tune?"
-    a: "Equal temperament is a compromise. A pure perfect fifth is a 3:2 frequency ratio (1.5), but equal temperament makes it 2^(7/12) ≈ 1.4983 — about 2 cents flat. That tiny error is what lets a piano sound acceptable in all 12 keys instead of perfect in one."
+    a: "Equal temperament is a compromise. A pure perfect fifth is a 3:2 frequency ratio (1.5), but equal temperament makes it 2^(7/12) ≈ 1.4983, about 2 cents flat. That tiny error is what lets a piano sound acceptable in all 12 keys instead of perfect in one."
   - q: "What is A = 432 Hz tuning?"
     a: "An alternative reference that tunes A4 to 432 Hz instead of 440, shifting every note down slightly. Some listeners prefer it, though claims of special properties aren't scientifically supported. A note frequency calculator can retune every note to a 432 reference."
 draft: false
 ---
 
-**Every musical note is just a frequency — a number of vibrations per second — and the whole system runs on two simple rules.** Rule one: an **octave doubles the frequency**. Rule two: that octave is split into **twelve equal steps**, each multiplying the frequency by the same small factor. From those two ideas you can calculate the pitch of every note on every instrument.
+**Every musical note is just a frequency, a number of vibrations per second, and the whole system runs on two simple rules.** Rule one: an **octave doubles the frequency**. Rule two: that octave is split into **twelve equal steps**, each multiplying the frequency by the same small factor. From those two ideas you can calculate the pitch of every note on every instrument.
 
 <aside class="key-takeaways">
 
@@ -49,20 +49,20 @@ draft: false
 
 ## Pitch is a frequency, and octaves double it
 
-A musical note is a sound wave vibrating at a steady rate, measured in hertz (Hz). The magic of the octave is that two notes an octave apart — say the low and high A of a scale — sound like "the same note," and that perception always maps to an exact **doubling** of frequency. A4 is 440 Hz; the A an octave up is 880 Hz; an octave down is 220 Hz. Our hearing is logarithmic, so equal *musical* steps are equal *ratios*, not equal differences.
+A musical note is a sound wave vibrating at a steady rate, measured in hertz (Hz). The magic of the octave is that two notes an octave apart, say the low and high A of a scale, sound like "the same note," and that perception always maps to an exact **doubling** of frequency. A4 is 440 Hz; the A an octave up is 880 Hz; an octave down is 220 Hz. Our hearing is logarithmic, so equal *musical* steps are equal *ratios*, not equal differences.
 
 <figure>
 <img src="/blog/infographic-music-frequency.svg" alt="Bar chart of one octave from C4 (261.6 Hz) to C5 (523.3 Hz), showing all twelve semitones with frequencies rising by a constant ratio, and C5 being exactly double C4." width="1200" height="640" loading="lazy" />
-<figcaption>Twelve equal steps take you from C4 to C5 — and C5 is exactly double C4.</figcaption>
+<figcaption>Twelve equal steps take you from C4 to C5, and C5 is exactly double C4.</figcaption>
 </figure>
 
 ## Twelve equal steps: the twelfth root of two
 
-To divide that doubling into the twelve semitones of Western music *equally*, each step must multiply the frequency by the same factor — and twelve of those factors must multiply to 2. That factor is the **twelfth root of two**, 2^(1/12) ≈ **1.05946**. Go up one semitone, multiply by 1.0595; go up twelve, and you've multiplied by 2 — a full octave. This is **equal temperament**, and it gives the master formula for any note:
+To divide that doubling into the twelve semitones of Western music *equally*, each step must multiply the frequency by the same factor, and twelve of those factors must multiply to 2. That factor is the **twelfth root of two**, 2^(1/12) ≈ **1.05946**. Go up one semitone, multiply by 1.0595; go up twelve, and you've multiplied by 2, a full octave. This is **equal temperament**, and it gives the master formula for any note:
 
 > **f = 440 × 2^((n − 69) / 12)**
 
-where **n** is the note's MIDI number and 69 is A4 (440 Hz). Middle C is C4, MIDI 60, which comes out to `440 × 2^((60−69)/12) ≈ 261.63 Hz`. The [note frequency calculator](/music/note-frequency-calculator/) runs this for any note — and lets you change the 440 reference for A=432 or historical pitches.
+where **n** is the note's MIDI number and 69 is A4 (440 Hz). Middle C is C4, MIDI 60, which comes out to `440 × 2^((60−69)/12) ≈ 261.63 Hz`. The [note frequency calculator](/music/note-frequency-calculator/) runs this for any note, and lets you change the 440 reference for A=432 or historical pitches.
 
 ### A worked example, step by step
 
@@ -73,7 +73,7 @@ Say you want the frequency of **E5**, the top string on a violin. Its MIDI numbe
 3. Raise 2 to that power: 2^0.5833 ≈ **1.4983**.
 4. Multiply by 440: 440 × 1.4983 ≈ **659.3 Hz**.
 
-That's it — E5 is about 659.3 Hz. Notice step 3 gave 1.4983, the same factor you'll meet again below as the equal-tempered fifth. Going up seven semitones from A to E *is* a fifth, so the number is no coincidence.
+That's it, E5 is about 659.3 Hz. Notice step 3 gave 1.4983, the same factor you'll meet again below as the equal-tempered fifth. Going up seven semitones from A to E *is* a fifth, so the number is no coincidence.
 
 ## A one-octave frequency reference
 
@@ -95,17 +95,17 @@ Here is a full octave built from A4 = 440 Hz, each note the one before it multip
 | G♯5 | 11 | 830.61 |
 | A5  | 12 | 880.00 |
 
-Multiply any row by two to jump an octave up, or halve it to drop an octave down — that single operation moves you between all the A's, all the C's, and so on across the whole keyboard. The [transpose calculator](/music/transpose-calculator/) does this shifting for a whole set of notes at once, handy for capo positions or moving a part to a singer's range.
+Multiply any row by two to jump an octave up, or halve it to drop an octave down, that single operation moves you between all the A's, all the C's, and so on across the whole keyboard. The [transpose calculator](/music/transpose-calculator/) does this shifting for a whole set of notes at once, handy for capo positions or moving a part to a singer's range.
 
 ## Why A = 440 Hz?
 
-There's nothing physically special about 440 Hz — it's a **standard**, agreed so that instruments built and played around the world are in tune with each other. It was fixed internationally as [**ISO 16**](https://en.wikipedia.org/wiki/A440_(pitch_standard)). Before standardisation, "A" varied widely between cities and eras, which made travelling musicians' lives difficult. Some orchestras still tune slightly higher (442–443 Hz) for brilliance, and **A = 432 Hz** has a following as a warmer alternative — the calculator retunes every note if you change the reference.
+There's nothing physically special about 440 Hz, it's a **standard**, agreed so that instruments built and played around the world are in tune with each other. It was fixed internationally as [**ISO 16**](https://en.wikipedia.org/wiki/A440_(pitch_standard)). Before standardisation, "A" varied widely between cities and eras, which made travelling musicians' lives difficult. Some orchestras still tune slightly higher (442-443 Hz) for brilliance, and **A = 432 Hz** has a following as a warmer alternative, the calculator retunes every note if you change the reference.
 
 ## Cents, and the piano's tiny white lie
 
-To measure tuning finer than a semitone, musicians use **cents**: 100 cents to a semitone, 1,200 to an octave. They're how you say a note is "5 cents flat" — just barely noticeable — versus "20 cents flat," which sounds wrong.
+To measure tuning finer than a semitone, musicians use **cents**: 100 cents to a semitone, 1,200 to an octave. They're how you say a note is "5 cents flat", just barely noticeable, versus "20 cents flat," which sounds wrong.
 
-Cents also reveal equal temperament's clever compromise. Before equal temperament, tuning aimed at the **pure** intervals of just intonation — simple whole-number frequency ratios like 3:2 and 5:4, which sound smooth because their waveforms lock together. Equal temperament nudges each of those ratios slightly off so that the *same* twelve notes work in every key. The table below compares the pure ratios with their equal-tempered stand-ins.
+Cents also reveal equal temperament's clever compromise. Before equal temperament, tuning aimed at the **pure** intervals of just intonation, simple whole-number frequency ratios like 3:2 and 5:4, which sound smooth because their waveforms lock together. Equal temperament nudges each of those ratios slightly off so that the *same* twelve notes work in every key. The table below compares the pure ratios with their equal-tempered stand-ins.
 
 | Interval | Pure (just) ratio | Equal-tempered value | Error vs pure |
 | --- | --- | --- | --- |
@@ -115,16 +115,16 @@ Cents also reveal equal temperament's clever compromise. Before equal temperamen
 | Major third   | 5:4  (1.2500)   | 2^(4/12) ≈ 1.2599  | ≈ 14 cents sharp |
 | Minor third   | 6:5  (1.2000)   | 2^(3/12) ≈ 1.1892  | ≈ 16 cents flat |
 
-The octave stays perfectly pure — that 2:1 is the one ratio equal temperament refuses to bend. The fifth and fourth are off by only about 2 cents, well below the roughly 5-cent threshold where most listeners start to notice, which is why chords built on fifths still sound solid. The **thirds** take the biggest hit: an equal-tempered major third is around 14 cents sharp of pure, the main reason barbershop and a cappella singers, freed from fixed frets, instinctively pull their thirds lower toward the sweeter just ratio.
+The octave stays perfectly pure, that 2:1 is the one ratio equal temperament refuses to bend. The fifth and fourth are off by only about 2 cents, well below the roughly 5-cent threshold where most listeners start to notice, which is why chords built on fifths still sound solid. The **thirds** take the biggest hit: an equal-tempered major third is around 14 cents sharp of pure, the main reason barbershop and a cappella singers, freed from fixed frets, instinctively pull their thirds lower toward the sweeter just ratio.
 
 Spread across all twelve keys, those tiny errors are the price of being able to play in *every* key on one fixed set of strings or frets. Tune a piano to make one key perfectly just and the distant keys would sound painfully out; equal temperament makes them all equally, imperceptibly imperfect. The [interval calculator](/music/interval-calculator/) shows the exact ratio and cents for any two notes.
 
 ## Where the math meets the instrument
 
-These aren't just abstractions — they explain things you can hear and see. A guitar's frets get visibly closer together as you move up the neck because each fret raises the pitch by one semitone, a *ratio* of 1.0595, so each step covers less physical string than the last. The twelfth fret sits exactly halfway along the string, because halving the vibrating length doubles the frequency: one octave. A piano tuner, meanwhile, deliberately stretches the top and bottom octaves a few cents wide to counter the physics of real strings, proof that even "equal" temperament bends to the instrument in practice.
+These aren't just abstractions. They explain things you can hear and see. A guitar's frets get visibly closer together as you move up the neck because each fret raises the pitch by one semitone, a *ratio* of 1.0595, so each step covers less physical string than the last. The twelfth fret sits exactly halfway along the string, because halving the vibrating length doubles the frequency: one octave. A piano tuner, meanwhile, deliberately stretches the top and bottom octaves a few cents wide to counter the physics of real strings, proof that even "equal" temperament bends to the instrument in practice.
 
 Understanding the frequency behind each note also demystifies studio work. When a producer transposes a sample up three semitones, they're multiplying every frequency by 2^(3/12) ≈ 1.19; a pitch-shift of exactly 12 semitones is a clean doubling with no change in "note name." And when a tuner app reports you're 10 cents flat, it's comparing your actual frequency against the equal-tempered target from the very formula above.
 
 ---
 
-*All figures use equal temperament with A4 = 440 Hz (ISO 16) and middle C = C4 = MIDI 60 (scientific pitch notation) — the standard conventions. These are exact mathematical relationships, computed in your browser.*
+*All figures use equal temperament with A4 = 440 Hz (ISO 16) and middle C = C4 = MIDI 60 (scientific pitch notation), the standard conventions. These are exact mathematical relationships, computed in your browser.*

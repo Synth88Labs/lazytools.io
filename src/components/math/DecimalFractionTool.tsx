@@ -69,7 +69,7 @@ export default function DecimalFractionTool() {
 
       {mode === 'd2f' ? (
         <label class="mt-4 block max-w-xs">
-          <span class="text-xs font-semibold uppercase tracking-wide text-slate-500">Decimal — use (…) for repeating digits</span>
+          <span class="text-xs font-semibold uppercase tracking-wide text-slate-500">Decimal, use (…) for repeating digits</span>
           <input class={inputCls} value={decStr} onInput={(e) => setDecStr((e.target as HTMLInputElement).value)} placeholder="0.625 or 0.1(6)" />
         </label>
       ) : (
@@ -93,7 +93,7 @@ export default function DecimalFractionTool() {
       )}
 
       <p class="mt-4 text-xs text-slate-500">
-        Repeating decimals convert exactly: 0.1(6) means 0.1666… = 1/6, and 0.(3) = 1/3. Every fraction's decimal either terminates or repeats — this tool shows which, with the repetend in parentheses. Exact arithmetic, computed locally.
+        Repeating decimals convert exactly: 0.1(6) means 0.1666… = 1/6, and 0.(3) = 1/3. Every fraction's decimal either terminates or repeats. This tool shows which, with the repetend in parentheses. Exact arithmetic, computed locally.
       </p>
     </div>
   );

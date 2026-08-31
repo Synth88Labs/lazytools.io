@@ -39,7 +39,7 @@ export default function FileEncryptTool() {
       a.download = outName;
       a.click();
       URL.revokeObjectURL(url);
-      setDone(`✓ ${mode === 'encrypt' ? 'Encrypted' : 'Decrypted'} → ${outName} (${fmtSize(blob.size)}) — download started.`);
+      setDone(`✓ ${mode === 'encrypt' ? 'Encrypted' : 'Decrypted'} → ${outName} (${fmtSize(blob.size)}), download started.`);
     } catch (e) {
       setError((e as Error).message);
     }
@@ -59,7 +59,7 @@ export default function FileEncryptTool() {
       <label class="mt-4 block cursor-pointer rounded-xl border-2 border-dashed border-slate-300 bg-white p-6 text-center transition hover:border-brand-400">
         <input type="file" onChange={onFile} class="sr-only" accept={mode === 'decrypt' ? '.enc' : undefined} />
         <span class="text-sm font-semibold text-brand-700">{file ? file.name : `Choose a file to ${mode}`}</span>
-        <span class="mt-1 block text-xs text-slate-500">{file ? fmtSize(file.size) : mode === 'decrypt' ? 'A .enc file made with this tool' : 'Any file type — processed locally'}</span>
+        <span class="mt-1 block text-xs text-slate-500">{file ? fmtSize(file.size) : mode === 'decrypt' ? 'A .enc file made with this tool' : 'Any file type, processed locally'}</span>
       </label>
 
       <label for="fe-pass" class="mt-4 mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Password</label>
@@ -69,7 +69,7 @@ export default function FileEncryptTool() {
           type={show ? 'text' : 'password'}
           value={password}
           onInput={(e) => setPassword((e.target as HTMLInputElement).value)}
-          placeholder={mode === 'encrypt' ? 'Use a long, generated password — there is no recovery' : 'The password used to encrypt'}
+          placeholder={mode === 'encrypt' ? 'Use a long, generated password. There is no recovery' : 'The password used to encrypt'}
           class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 font-mono text-sm text-slate-900 focus:border-brand-500 focus:outline-none"
           autocomplete="off"
         />

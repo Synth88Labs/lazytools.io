@@ -7,7 +7,7 @@ export const speed: Quantity = {
   baseUnit: 'mps',
   icon: '🚀',
   description:
-    'Convert between miles per hour, kilometers per hour, knots, meters per second and feet per second. Useful for driving abroad, aviation, sailing and physics — 1 mph = 1.60934 km/h exactly.',
+    'Convert between miles per hour, kilometers per hour, knots, meters per second and feet per second. Useful for driving abroad, aviation, sailing and physics, 1 mph = 1.60934 km/h exactly.',
   units: [
     {
       id: 'mps', name: 'Meter per second', plural: 'meters per second', symbol: 'm/s', slug: 'mps', factor: 1, system: 'si',
@@ -31,7 +31,7 @@ export const speed: Quantity = {
     },
     {
       id: 'mach', name: 'Mach (sea level)', plural: 'Mach', symbol: 'Ma', slug: 'mach', factor: 340.29, system: 'other',
-      definition: 'Mach number expresses speed relative to the speed of sound — Mach 1 ≈ 340.29 m/s (1,225 km/h) at sea level and 15 °C. The true value varies with altitude and temperature.',
+      definition: 'Mach number expresses speed relative to the speed of sound, Mach 1 ≈ 340.29 m/s (1,225 km/h) at sea level and 15 °C. The true value varies with altitude and temperature.',
     },
   ],
   popularPairs: [
@@ -67,7 +67,7 @@ export const speed: Quantity = {
     'knots-to-kmh': {
       slug: 'knots-to-kmh',
       exampleValue: 20,
-      note: 'One knot is exactly 1.852 km/h (one nautical mile per hour), so a 20-knot wind is 37 km/h. Weather services outside the US often publish marine winds in knots and land winds in km/h — this is the bridge between them.',
+      note: 'One knot is exactly 1.852 km/h (one nautical mile per hour), so a 20-knot wind is 37 km/h. Weather services outside the US often publish marine winds in knots and land winds in km/h. This is the bridge between them.',
     },
     'kmh-to-knots': {
       slug: 'kmh-to-knots',
@@ -77,7 +77,7 @@ export const speed: Quantity = {
     'mps-to-kmh': {
       slug: 'mps-to-kmh',
       exampleValue: 10,
-      note: 'Meters-per-second to km/h is an exact ×3.6: a 10 m/s sprint is 36 km/h. Scientific wind reports use m/s while road signs use km/h — a 25 m/s storm gust is 90 km/h.',
+      note: 'Meters-per-second to km/h is an exact ×3.6: a 10 m/s sprint is 36 km/h. Scientific wind reports use m/s while road signs use km/h, a 25 m/s storm gust is 90 km/h.',
     },
     'kmh-to-mps': {
       slug: 'kmh-to-mps',
@@ -87,7 +87,7 @@ export const speed: Quantity = {
     'mps-to-mph': {
       slug: 'mps-to-mph',
       exampleValue: 10,
-      note: 'One meter per second is 2.237 mph, so 10 m/s is 22.4 mph. Elite sprinters average over 10 m/s in a 100 m race — faster than the speed limit in many residential zones.',
+      note: 'One meter per second is 2.237 mph, so 10 m/s is 22.4 mph. Elite sprinters average over 10 m/s in a 100 m race, faster than the speed limit in many residential zones.',
     },
   },
 };

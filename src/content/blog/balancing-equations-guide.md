@@ -21,31 +21,31 @@ faqs:
   - q: "What is the algebra (algebraic) method of balancing?"
     a: "A systematic approach: label each species with a variable (a, b, c…), set up an equation for each element requiring equal atoms on both sides, and solve the homogeneous linear system. Because it is exact linear algebra, it finds the unique smallest-integer solution for any balanceable equation."
   - q: "How do you balance redox equations?"
-    a: "The same algebra method balances redox reactions directly — no half-reactions needed for the atom balance. For KMnO₄ + HCl → KCl + MnCl₂ + H₂O + Cl₂ the coefficients are 2, 16, 2, 2, 8, 5. (Half-reaction methods are still useful for understanding electron transfer.)"
+    a: "The same algebra method balances redox reactions directly, no half-reactions needed for the atom balance. For KMnO₄ + HCl → KCl + MnCl₂ + H₂O + Cl₂ the coefficients are 2, 16, 2, 2, 8, 5. (Half-reaction methods are still useful for understanding electron transfer.)"
   - q: "Why can't I always balance by inspection?"
-    a: "Inspection — adjusting coefficients by trial and error — works for simple equations but becomes unreliable for reactions with many species or shared elements, like redox reactions. The algebra method never gets stuck because it solves the exact system rather than guessing."
+    a: "Inspection, adjusting coefficients by trial and error, works for simple equations but becomes unreliable for reactions with many species or shared elements, like redox reactions. The algebra method never gets stuck because it solves the exact system rather than guessing."
   - q: "What does it mean if an equation can't be balanced?"
-    a: "If the linear system has no positive solution, the equation is wrong as written — a species is missing or a formula is mistyped. If it has more than one independent solution, it is under-determined (for example, a reaction that could proceed in multiple independent ways), and you need additional information."
+    a: "If the linear system has no positive solution, the equation is wrong as written, a species is missing or a formula is mistyped. If it has more than one independent solution, it is under-determined (for example, a reaction that could proceed in multiple independent ways), and you need additional information."
   - q: "Are the coefficients always whole numbers?"
     a: "The convention is the smallest set of whole numbers. The algebra method may give fractions first (e.g. 1, ½, 1); multiplying through by the lowest common denominator clears them, and dividing by the greatest common divisor gives the simplest integer ratio."
 draft: false
 ---
 
-**Balancing a chemical equation is not guesswork — it's algebra.** Give each species an unknown
+**Balancing a chemical equation is not guesswork, it's algebra.** Give each species an unknown
 coefficient, write one equation per element (atoms in must equal atoms out), and solve for the smallest
 whole numbers. That method never gets stuck, and it's exactly how a reliable
-[equation balancer](/chemistry/chemical-equation-balancer/) works — including on redox reactions that
+[equation balancer](/chemistry/chemical-equation-balancer/) works, including on redox reactions that
 trip up trial-and-error and chatbots alike.
 
 <aside class="key-takeaways">
 
 **Key takeaways**
 
-- **One unknown per species, one equation per element** — then solve the linear system.
+- **One unknown per species, one equation per element**, then solve the linear system.
 - Works when **inspection fails**: redox, many species, shared elements.
 - The answer is the **smallest whole-number ratio** (clear fractions, divide by the GCD).
 - **KMnO₄ + HCl → KCl + MnCl₂ + H₂O + Cl₂** balances to **2, 16, 2, 2, 8, 5**.
-- It's **exact linear algebra** — one right answer, which is why a tool beats a chatbot's guess.
+- It's **exact linear algebra**, one right answer, which is why a tool beats a chatbot's guess.
 
 </aside>
 
@@ -58,22 +58,22 @@ trip up trial-and-error and chatbots alike.
 
 Take the classic `H₂ + O₂ → H₂O`.
 
-**Step 1 — assign an unknown to each species:**
+**Step 1, assign an unknown to each species:**
 
 > `a` H₂ + `b` O₂ → `c` H₂O
 
-**Step 2 — write one conservation equation per element.** The number of atoms of each element must be
+**Step 2, write one conservation equation per element.** The number of atoms of each element must be
 equal on both sides:
 
 - Hydrogen: `2a = 2c`
 - Oxygen: `2b = c`
 
-**Step 3 — solve for the smallest whole numbers.** From the hydrogen equation `a = c`; pick `c = 2` so
+**Step 3, solve for the smallest whole numbers.** From the hydrogen equation `a = c`; pick `c = 2` so
 oxygen gives `b = 1` and hydrogen gives `a = 2`:
 
 > **2 H₂ + O₂ → 2 H₂O**
 
-That's the whole method. It scales to any equation — you just get a bigger linear system. Notice what it
+That's the whole method. It scales to any equation. You just get a bigger linear system. Notice what it
 rests on: the **[law of conservation of mass](https://en.wikipedia.org/wiki/Conservation_of_mass)**. Atoms are neither created nor destroyed in a chemical
 reaction, so every element that enters as a reactant must leave as a product in equal number. Each
 element gives you one equation; each species gives you one unknown. Balancing is simply solving that
@@ -81,7 +81,7 @@ system.
 
 ## Why not just balance by inspection?
 
-Inspection — nudging coefficients until it works — is fine for `2 H₂ + O₂ → 2 H₂O`. But add more species,
+Inspection, nudging coefficients until it works, is fine for `2 H₂ + O₂ → 2 H₂O`. But add more species,
 or an element that appears in several compounds, and trial and error stalls. The algebra method doesn't
 care how tangled the reaction is: it's a system of linear equations with a unique smallest-integer
 solution, and solving the system always finds it.
@@ -106,16 +106,16 @@ types. In each case you can confirm the balance by counting atoms on both sides.
 Take the combustion row in detail. Assign `a` C₃H₈ + `b` O₂ → `c` CO₂ + `d` H₂O and write one equation
 per element: carbon `3a = c`, hydrogen `8a = 2d`, oxygen `2b = 2c + d`. Set `a = 1`, and carbon gives
 `c = 3`, hydrogen gives `d = 4`, and oxygen gives `2b = 6 + 4 = 10`, so `b = 5`. Every coefficient is a
-whole number already, so nothing needs clearing — the answer is `C₃H₈ + 5 O₂ → 3 CO₂ + 4 H₂O`.
+whole number already, so nothing needs clearing, the answer is `C₃H₈ + 5 O₂ → 3 CO₂ + 4 H₂O`.
 
 ## The hard case: redox
 
-Consider the permanganate–hydrochloric acid reaction:
+Consider the permanganate, hydrochloric acid reaction:
 
 > KMnO₄ + HCl → KCl + MnCl₂ + H₂O + Cl₂
 
 Six species, four elements, chlorine appearing in three products. Inspection is painful; this is where
-people — and language models — go wrong. The algebra method sets up the element-balance system and
+people, and language models, go wrong. The algebra method sets up the element-balance system and
 solves it exactly:
 
 > **2 KMnO₄ + 16 HCl → 2 KCl + 2 MnCl₂ + 8 H₂O + 5 Cl₂**
@@ -123,7 +123,7 @@ solves it exactly:
 The [equation balancer](/chemistry/chemical-equation-balancer/) does precisely this: it turns each
 species into an element-count vector, builds the stoichiometric matrix, and solves it with **exact
 fraction arithmetic** (no floating-point rounding), then scales the answer to the smallest whole
-numbers. There's one correct result, and it returns it every time — unlike a chatbot, which pattern-matches
+numbers. There's one correct result, and it returns it every time, unlike a chatbot, which pattern-matches
 and regularly produces coefficients that don't actually balance.
 
 ## How the three methods compare
@@ -134,18 +134,18 @@ without special handling.
 
 | Method | Best for | Where it struggles | Guaranteed? |
 | --- | --- | --- | --- |
-| Inspection | Simple synthesis/decomposition | Redox, shared elements, many species | No — can stall |
+| Inspection | Simple synthesis/decomposition | Redox, shared elements, many species | No, can stall |
 | Half-reaction | Understanding electron transfer in redox | Slow; needs oxidation states and a medium (acid/base) | For redox, with care |
-| Algebra (matrix) | Any balanceable equation | Nothing structural — it always solves the system | Yes |
+| Algebra (matrix) | Any balanceable equation | Nothing structural. It always solves the system | Yes |
 
-The half-reaction method is genuinely valuable when you care *why* electrons move — it splits the reaction
+The half-reaction method is genuinely valuable when you care *why* electrons move. It splits the reaction
 into oxidation and reduction halves and balances charge explicitly. But if you only need correct
 coefficients, the algebra method reaches the same answer faster and never asks you to assign oxidation
 numbers.
 
 ## Clearing fractions and simplifying
 
-The raw solution sometimes comes out fractional — say `1, ½, 1`. Two clean-up moves finish the job:
+The raw solution sometimes comes out fractional, say `1, ½, 1`. Two clean-up moves finish the job:
 
 1. **Multiply through by the lowest common denominator** to clear fractions (`1, ½, 1` → `2, 1, 2`).
 2. **Divide by the greatest common divisor** so the coefficients are the simplest ratio.
@@ -163,10 +163,10 @@ The method also tells you when something is wrong:
 
 ## Why balancing has to come first
 
-A balanced equation is not the end of the problem — it is the entry ticket to every quantitative
+A balanced equation is not the end of the problem. It is the entry ticket to every quantitative
 calculation that follows. The coefficients are **mole ratios**: `C₃H₈ + 5 O₂ → 3 CO₂ + 4 H₂O` says one
 mole of propane needs five moles of oxygen and yields three moles of carbon dioxide. Get a coefficient
-wrong and every downstream number — moles, masses, volumes, concentrations — is wrong with it.
+wrong and every downstream number, moles, masses, volumes, concentrations, is wrong with it.
 
 That is why balancing sits at the head of a short workflow:
 
@@ -183,7 +183,7 @@ foundation you can trust.
 ## Quick summary
 
 To balance any chemical equation, give each species an unknown coefficient, write one atom-conservation
-equation per element, and solve the linear system for the smallest whole numbers — clearing fractions and
+equation per element, and solve the linear system for the smallest whole numbers, clearing fractions and
 dividing by the GCD. It's exact algebra, so it succeeds where inspection fails (redox, many species) and
 gives one correct answer. Balance yours with the
 [chemical equation balancer](/chemistry/chemical-equation-balancer/), then find masses with the

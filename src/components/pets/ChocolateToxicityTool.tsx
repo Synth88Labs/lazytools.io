@@ -5,11 +5,11 @@ const num = (s: string) => { const n = parseFloat(s); return isFinite(n) && n > 
 const fmt = (x: number, d = 0) => Number(x.toFixed(d)).toLocaleString();
 
 const RISK: Record<ChocRisk, { label: string; ring: string; text: string; bg: string; msg: string }> = {
-  none: { label: 'Low risk', ring: 'ring-emerald-300', text: 'text-emerald-800', bg: 'bg-emerald-50', msg: 'Below the ~20 mg/kg level where signs usually begin. Watch for vomiting or restlessness and keep water available — but still call your vet if you\'re worried or the dog is small.' },
+  none: { label: 'Low risk', ring: 'ring-emerald-300', text: 'text-emerald-800', bg: 'bg-emerald-50', msg: 'Below the ~20 mg/kg level where signs usually begin. Watch for vomiting or restlessness and keep water available, but still call your vet if you\'re worried or the dog is small.' },
   mild: { label: 'Mild toxicity', ring: 'ring-amber-300', text: 'text-amber-800', bg: 'bg-amber-50', msg: 'Enough for vomiting, diarrhoea, restlessness and increased thirst. Call your vet or a pet poison line now for advice.' },
-  moderate: { label: 'Moderate — call your vet now', ring: 'ring-orange-400', text: 'text-orange-900', bg: 'bg-orange-50', msg: 'Risk of a racing heart, tremors and agitation. Contact your vet or emergency clinic immediately.' },
-  severe: { label: 'Severe — emergency', ring: 'ring-rose-400', text: 'text-rose-900', bg: 'bg-rose-50', msg: 'Seizures and dangerous heart rhythms are possible. Get to an emergency vet right away.' },
-  lethal: { label: 'Potentially fatal — emergency', ring: 'ring-red-500', text: 'text-red-900', bg: 'bg-red-100', msg: 'This dose can be fatal. Go to an emergency vet immediately — do not wait for symptoms.' },
+  moderate: { label: 'Moderate, call your vet now', ring: 'ring-orange-400', text: 'text-orange-900', bg: 'bg-orange-50', msg: 'Risk of a racing heart, tremors and agitation. Contact your vet or emergency clinic immediately.' },
+  severe: { label: 'Severe, emergency', ring: 'ring-rose-400', text: 'text-rose-900', bg: 'bg-rose-50', msg: 'Seizures and dangerous heart rhythms are possible. Get to an emergency vet right away.' },
+  lethal: { label: 'Potentially fatal, emergency', ring: 'ring-red-500', text: 'text-red-900', bg: 'bg-red-100', msg: 'This dose can be fatal. Go to an emergency vet immediately, do not wait for symptoms.' },
 };
 
 export default function ChocolateToxicityTool() {
@@ -58,7 +58,7 @@ export default function ChocolateToxicityTool() {
 
       <div class="mt-4 rounded-lg bg-rose-50 p-3 text-sm text-rose-800 ring-1 ring-rose-200">⚠️ <strong>This is an estimate, not veterinary advice.</strong> Chocolate content varies and dogs differ. If your dog has eaten any chocolate, call your vet or a pet poison helpline (US: ASPCA Animal Poison Control 888-426-4435; UK: Animal PoisonLine 01202 509000). Don't wait for symptoms.</div>
 
-      <p class="mt-3 text-xs text-slate-500">Theobromine (plus some caffeine) is what makes chocolate toxic to dogs; they metabolise it far more slowly than people. Dose is estimated from typical theobromine content per gram (Merck Veterinary Manual / Pet Poison Helpline) and banded by the usual thresholds — signs from ~20 mg/kg, serious effects ~40–60 mg/kg, potentially fatal ~100+ mg/kg. 🔒 In your browser.</p>
+      <p class="mt-3 text-xs text-slate-500">Theobromine (plus some caffeine) is what makes chocolate toxic to dogs; they metabolise it far more slowly than people. Dose is estimated from typical theobromine content per gram (Merck Veterinary Manual / Pet Poison Helpline) and banded by the usual thresholds, signs from ~20 mg/kg, serious effects ~40-60 mg/kg, potentially fatal ~100+ mg/kg. 🔒 In your browser.</p>
     </div>
   );
 }

@@ -52,13 +52,13 @@ export default function TwoPropTool() {
           <div class={`mt-3 rounded-xl p-4 ring-2 ${sig ? 'bg-emerald-50 ring-emerald-200' : 'bg-slate-100 ring-slate-200'}`}>
             <p class={`text-sm font-semibold ${sig ? 'text-emerald-800' : 'text-slate-700'}`}>{sig ? `Significant difference at α = ${a}` : `No significant difference at α = ${a}`}</p>
             <p class={`mt-1 text-sm ${sig ? 'text-emerald-700' : 'text-slate-600'}`}>{sig
-              ? `The ${fmt(Math.abs(r.diff) * 100, 2)} percentage-point difference is statistically significant (p = ${fmt(r.p, 4)} < ${a}) — variant ${r.diff > 0 ? 'A' : 'B'} converts higher.`
-              : `The ${fmt(Math.abs(r.diff) * 100, 2)} percentage-point difference could plausibly be chance (p = ${fmt(r.p, 4)} ≥ ${a}) — collect more data before calling a winner.`}</p>
+              ? `The ${fmt(Math.abs(r.diff) * 100, 2)} percentage-point difference is statistically significant (p = ${fmt(r.p, 4)} < ${a}), variant ${r.diff > 0 ? 'A' : 'B'} converts higher.`
+              : `The ${fmt(Math.abs(r.diff) * 100, 2)} percentage-point difference could plausibly be chance (p = ${fmt(r.p, 4)} ≥ ${a}), collect more data before calling a winner.`}</p>
           </div>
         </>
       ) : <p class="mt-4 text-sm text-slate-500">Enter conversions and totals for each variant.</p>}
 
-      <p class="mt-4 text-xs text-slate-500">The two-proportion z-test compares two conversion rates (the standard A/B-test significance test), using a pooled proportion for the standard error. It assumes independent visitors and enough conversions per group (a common rule: at least ~5–10 in each cell). Statistical significance isn't the same as a meaningful business effect. 🔒 Computed in your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">The two-proportion z-test compares two conversion rates (the standard A/B-test significance test), using a pooled proportion for the standard error. It assumes independent visitors and enough conversions per group (a common rule: at least ~5-10 in each cell). Statistical significance isn't the same as a meaningful business effect. 🔒 Computed in your browser.</p>
     </div>
   );
 }

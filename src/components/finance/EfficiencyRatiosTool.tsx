@@ -28,7 +28,7 @@ export default function EfficiencyRatiosTool() {
 
       <RatioResults results={results} />
 
-      <p class="mt-4 text-xs text-slate-500">Efficiency (activity) ratios show how well a company turns its assets and working capital into sales and cash. &ldquo;Fast&rdquo; is relative — grocers turn inventory many times a year, heavy-equipment makers slowly — so benchmark against the industry and your own payment terms. A shorter (or negative) cash conversion cycle frees up working capital. Educational information, not financial advice. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Efficiency (activity) ratios show how well a company turns its assets and working capital into sales and cash. &ldquo;Fast&rdquo; is relative, grocers turn inventory many times a year, heavy-equipment makers slowly, so benchmark against the industry and your own payment terms. A shorter (or negative) cash conversion cycle frees up working capital. Educational information, not financial advice. 🔒 In your browser.</p>
     </div>
   );
 }

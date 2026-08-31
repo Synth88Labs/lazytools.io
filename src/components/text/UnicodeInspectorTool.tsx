@@ -60,7 +60,7 @@ export default function UnicodeInspectorTool() {
           </tbody>
         </table>
       </div>
-      <p class="mt-3 text-xs text-slate-500">Every character’s exact Unicode code point, decimal value, UTF-8 byte encoding, HTML entity and category — the details a chatbot can’t reliably give. 🔒 Computed in your browser.</p>
+      <p class="mt-3 text-xs text-slate-500">Every character’s exact Unicode code point, decimal value, UTF-8 byte encoding, HTML entity and category, the details a chatbot can’t reliably give. 🔒 Computed in your browser.</p>
     </div>
   );
 }

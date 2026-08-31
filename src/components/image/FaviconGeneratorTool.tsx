@@ -22,7 +22,7 @@ const HTML_SNIPPET = [
   '<link rel="manifest" href="/site.webmanifest">',
 ].join('\n');
 
-const README = `LazyTools — Favicon set
+const README = `LazyTools, Favicon set
 ========================
 
 Drop these files in your site's web root (the folder that serves "/"), then
@@ -42,7 +42,7 @@ Everything was generated in your browser. Nothing was uploaded.
 `;
 
 /**
- * Favicon generator — load one square-ish image and get a full favicon set
+ * Favicon generator, load one square-ish image and get a full favicon set
  * (PNGs at standard sizes, a multi-resolution favicon.ico, a web manifest and
  * the HTML snippet) bundled into a ZIP. 100% client-side: JSZip is the only
  * dependency and it is dynamically imported so it loads on this page alone.
@@ -188,7 +188,7 @@ export default function FaviconGeneratorTool() {
       a.remove();
       URL.revokeObjectURL(url);
 
-      setDone(`✓ Generated ${count} files — favicons.zip downloaded`);
+      setDone(`✓ Generated ${count} files, favicons.zip downloaded`);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Something went wrong generating the favicons.');
     } finally {
@@ -222,7 +222,7 @@ export default function FaviconGeneratorTool() {
           <span class="mt-1 block text-xs text-slate-500">
             {file
               ? `${fmtSize(file.size)} · ${dims.w}×${dims.h}px`
-              : 'PNG, JPG, WebP or SVG — a square image works best'}
+              : 'PNG, JPG, WebP or SVG, a square image works best'}
           </span>
         </label>
 

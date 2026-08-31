@@ -44,7 +44,7 @@ export default function FirewoodTool() {
         <p class="mt-4 text-sm text-slate-500">Enter the stack\'s length, height and depth.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">A <strong>full cord</strong> is a stack measuring 4 ft × 4 ft × 8 ft = 128 cubic feet of wood, air gaps included. A <strong>face cord</strong> (or "rick") is 4 ft high × 8 ft long but only one log deep — so for 16-inch logs it\'s about a third of a full cord. Measure the neatly stacked pile, not a loose heap. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">A <strong>full cord</strong> is a stack measuring 4 ft × 4 ft × 8 ft = 128 cubic feet of wood, air gaps included. A <strong>face cord</strong> (or "rick") is 4 ft high × 8 ft long but only one log deep, so for 16-inch logs it\'s about a third of a full cord. Measure the neatly stacked pile, not a loose heap. 🔒 In your browser.</p>
     </div>
   );
 }

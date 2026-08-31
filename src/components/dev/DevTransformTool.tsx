@@ -89,7 +89,7 @@ export default function DevTransformTool({ computeId, options = [], sample = '' 
             rows={8}
             value={input}
             onInput={(e) => setInput((e.target as HTMLTextAreaElement).value)}
-            placeholder="Type or paste here — nothing is uploaded…"
+            placeholder="Type or paste here, nothing is uploaded…"
             class="w-full rounded-xl border border-slate-300 bg-white px-3 py-3 font-mono text-sm text-slate-900 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200"
             spellcheck={false}
           />

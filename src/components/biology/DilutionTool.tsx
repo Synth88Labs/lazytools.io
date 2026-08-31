@@ -8,7 +8,7 @@ const fmt = (x: number) => (Number.isFinite(x) ? x.toLocaleString('en-US', { max
 
 export default function DilutionTool() {
   const [mode, setMode] = useState<Mode>('c1v1');
-  // C1V1=C2V2 — leave exactly one blank
+  // C1V1=C2V2, leave exactly one blank
   const [f, setF] = useState({ c1: '10', v1: '', c2: '1', v2: '100' });
   // serial
   const [s, setS] = useState({ stock: '1000', fold: '10', tubes: '5', vol: '1' });
@@ -38,11 +38,11 @@ export default function DilutionTool() {
 
       {mode === 'c1v1' && (
         <>
-          <p class="mt-4 text-sm text-slate-500">Enter any three — leave the one you want to solve for blank.</p>
+          <p class="mt-4 text-sm text-slate-500">Enter any three, leave the one you want to solve for blank.</p>
           <div class="mt-2 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {(['c1', 'v1', 'c2', 'v2'] as const).map((k) => (
               <label class="block">
-                <span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">{k.toUpperCase()} — {label[k]}</span>
+                <span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">{k.toUpperCase()}, {label[k]}</span>
                 <input class={inputCls} type="number" placeholder="solve" value={f[k]} onInput={(e) => setF({ ...f, [k]: (e.target as HTMLInputElement).value })} />
               </label>
             ))}

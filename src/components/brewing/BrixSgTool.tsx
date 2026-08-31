@@ -40,7 +40,7 @@ export default function BrixSgTool() {
         <p class="mt-4 text-sm text-slate-500">Enter a {mode === 'brix' ? 'Brix' : 'gravity'} value.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">°Brix (and the near-identical °Plato) measures dissolved sugar as a percentage by weight; specific gravity measures density relative to water. Refractometers read in Brix, hydrometers in gravity — this converts between them using the standard cubic formulas. Note: on <em>fermenting</em> or finished beer, alcohol skews refractometer Brix, so use the refractometer correction tool for final gravity. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">°Brix (and the near-identical °Plato) measures dissolved sugar as a percentage by weight; specific gravity measures density relative to water. Refractometers read in Brix, hydrometers in gravity. This converts between them using the standard cubic formulas. Note: on <em>fermenting</em> or finished beer, alcohol skews refractometer Brix, so use the refractometer correction tool for final gravity. 🔒 In your browser.</p>
     </div>
   );
 }

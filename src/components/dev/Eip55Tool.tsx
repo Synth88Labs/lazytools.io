@@ -28,7 +28,7 @@ export default function Eip55Tool() {
         <>
           {result.wasMixed && (
             <div class={`mt-4 rounded-xl p-3 text-sm font-semibold ring-2 ${result.alreadyValid ? 'bg-emerald-50 text-emerald-800 ring-emerald-200' : 'bg-red-50 text-red-800 ring-red-200'}`}>
-              {result.alreadyValid ? '✓ Valid EIP-55 checksum — this address is correctly formatted.' : '✗ Invalid checksum — the mixed-case does not match EIP-55. This address may be mistyped.'}
+              {result.alreadyValid ? '✓ Valid EIP-55 checksum. This address is correctly formatted.' : '✗ Invalid checksum, the mixed-case does not match EIP-55. This address may be mistyped.'}
             </div>
           )}
           <div class="mt-3 rounded-xl bg-white p-4 ring-2 ring-brand-200">
@@ -40,7 +40,7 @@ export default function Eip55Tool() {
           </div>
         </>
       ))}
-      <p class="mt-3 text-xs text-slate-500">EIP-55 encodes a checksum in the letter casing of a hex address — each letter is uppercased when the matching nibble of the address’s Keccak-256 hash is ≥ 8. Wallets use it to catch typos. This validates and converts any address, entirely in your browser. Public addresses only — never paste a private key or seed phrase anywhere.</p>
+      <p class="mt-3 text-xs text-slate-500">EIP-55 encodes a checksum in the letter casing of a hex address, each letter is uppercased when the matching nibble of the address’s Keccak-256 hash is ≥ 8. Wallets use it to catch typos. This validates and converts any address, entirely in your browser. Public addresses only, never paste a private key or seed phrase anywhere.</p>
     </div>
   );
 }

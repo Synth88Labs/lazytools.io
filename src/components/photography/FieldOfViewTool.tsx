@@ -44,7 +44,7 @@ export default function FieldOfViewTool() {
         <p class="mt-4 text-sm text-slate-500">Enter the sensor, focal length and distance.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Angle of view = 2 × arctan(sensor dimension ÷ (2 × focal length)) — narrower for longer lenses and smaller sensors. A 50mm lens is a "normal" ~47° diagonal on full frame. The frame size shows how much of a scene fits at a given distance. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Angle of view = 2 × arctan(sensor dimension ÷ (2 × focal length)), narrower for longer lenses and smaller sensors. A 50mm lens is a "normal" ~47° diagonal on full frame. The frame size shows how much of a scene fits at a given distance. 🔒 In your browser.</p>
     </div>
   );
 }

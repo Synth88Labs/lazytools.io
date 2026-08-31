@@ -35,7 +35,7 @@ export default function Mp4BoxTool() {
         <input type="file" class="hidden" accept=".mp4,.m4a,.m4v,.mov,.heic,.heif,video/mp4,audio/mp4,video/quicktime" onChange={(e) => onFile((e.target as HTMLInputElement).files?.[0] ?? null)} />
         <span class="block text-2xl">🎬</span>
         <span class="mt-1 block text-sm font-semibold text-slate-700">{file ? `📄 ${file.name}` : 'Choose an .mp4 / .mov / .m4a file'}</span>
-        <span class="mt-1 block text-xs text-slate-500">{busy ? 'Reading…' : 'Read locally — the file is never uploaded'}</span>
+        <span class="mt-1 block text-xs text-slate-500">{busy ? 'Reading…' : 'Read locally, the file is never uploaded'}</span>
       </label>
 
       {error && <p class="mt-4 rounded-lg bg-rose-50 px-3 py-2 text-sm text-rose-700 ring-1 ring-rose-200">⚠️ {error}</p>}
@@ -71,7 +71,7 @@ export default function Mp4BoxTool() {
         </div>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Drop an MP4, MOV, M4A or HEIF file to see its internal box (atom) structure — the tree of ftyp, moov, trak, mdia and the rest — with each box&#39;s type, size and offset, plus the brand, duration and track types decoded from the headers. It&#39;s the quickest way to see why an MP4 won&#39;t play or where its metadata sits. Only the header region is read, in your browser, so the file is never uploaded and nothing is decoded. 🔒 100% client-side.</p>
+      <p class="mt-4 text-xs text-slate-500">Drop an MP4, MOV, M4A or HEIF file to see its internal box (atom) structure, the tree of ftyp, moov, trak, mdia and the rest, with each box&#39;s type, size and offset, plus the brand, duration and track types decoded from the headers. It&#39;s the quickest way to see why an MP4 won&#39;t play or where its metadata sits. Only the header region is read, in your browser, so the file is never uploaded and nothing is decoded. 🔒 100% client-side.</p>
     </div>
   );
 }

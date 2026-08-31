@@ -18,11 +18,11 @@ const faqs = [
   },
   {
     q: 'Can I download the charts as PNG and SVG?',
-    a: 'Yes — every chart maker exports a crisp 2× PNG for slides and documents, and an editable, infinitely scalable SVG for design tools like Figma, Illustrator and Inkscape.',
+    a: 'Yes, every chart maker exports a crisp 2× PNG for slides and documents, and an editable, infinitely scalable SVG for design tools like Figma, Illustrator and Inkscape.',
   },
   {
     q: 'Is there a watermark or sign-up?',
-    a: 'Neither. There is no account, no watermark and no limit — just paste your data, style it and download.',
+    a: 'Neither. There is no account, no watermark and no limit, just paste your data, style it and download.',
   },
   {
     q: 'Can I change the font and colours?',
@@ -30,7 +30,7 @@ const faqs = [
   },
   {
     q: 'Will the font survive the download?',
-    a: 'Yes — the font is embedded directly into the exported SVG and PNG, so the chart looks identical on any device, even one that does not have that font installed. The fonts are self-hosted, so nothing is ever requested from a third-party CDN.',
+    a: 'Yes, the font is embedded directly into the exported SVG and PNG, so the chart looks identical on any device, even one that does not have that font installed. The fonts are self-hosted, so nothing is ever requested from a third-party CDN.',
   },
   {
     q: 'Which chart type should I use?',
@@ -43,7 +43,7 @@ const schema = [
   collectionPageSchema({
     name: 'Charts & Design Tools',
     url: '/charts/',
-    description: 'Free chart makers — bar, line, pie and donut charts from your own data, downloaded as PNG or SVG, all in your browser with no upload.',
+    description: 'Free chart makers, bar, line, pie and donut charts from your own data, downloaded as PNG or SVG, all in your browser with no upload.',
     items: CHART_TOOLS.map((t) => ({ name: t.name, url: `/charts/${t.slug}/` })),
   }),
   faqSchema(faqs),
@@ -51,8 +51,8 @@ const schema = [
 ---
 
 <Base
-  title="Charts & Design — Free Chart Makers (PNG & SVG) | LazyTools"
-  description={`Free chart makers: bar, line, pie and donut charts from your own data, downloaded as PNG or SVG. Paste “label, value” lines — everything renders in your browser, nothing is uploaded.`}
+  title="Charts & Design, Free Chart Makers (PNG & SVG) | LazyTools"
+  description={`Free chart makers: bar, line, pie and donut charts from your own data, downloaded as PNG or SVG. Paste “label, value” lines, everything renders in your browser, nothing is uploaded.`}
   schema={schema}
 >
   <div class="mx-auto max-w-5xl px-4 py-6">
@@ -60,8 +60,7 @@ const schema = [
 
     <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Charts &amp; Design</h1>
     <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
-      Turn a few lines of data into a clean chart and download it as a crisp PNG or an editable SVG —
-      bar, line, pie, donut, funnel, radar and waterfall. Style it with <strong>ten professional
+      Turn a few lines of data into a clean chart and download it as a crisp PNG or an editable SVG, bar, line, pie, donut, funnel, radar and waterfall. Style it with <strong>ten professional
       fonts</strong>, your own text and chart colours and a transparent background. Everything is
       drawn in your browser, so the numbers you paste are never uploaded.
     </p>
@@ -84,7 +83,7 @@ const schema = [
 
     <section class="prose-lazy mt-10">
       <h2>Make charts in the browser, not the cloud</h2>
-      <p>Most online chart makers ask you to paste your figures into someone else's server, then hand back an image — often watermarked, behind a sign-up, or capped until you pay. That trade never made sense for a job the browser can do itself. These chart makers draw everything with <strong>SVG on your own device</strong>: paste “label, value” lines straight from a spreadsheet, pick a color palette, add a title, and download a sharp <strong>2× PNG</strong> or a vector <strong>SVG</strong> you can edit in Figma or Illustrator.</p>
+      <p>Most online chart makers ask you to paste your figures into someone else's server, then hand back an image, often watermarked, behind a sign-up, or capped until you pay. That trade never made sense for a job the browser can do itself. These chart makers draw everything with <strong>SVG on your own device</strong>: paste “label, value” lines straight from a spreadsheet, pick a color palette, add a title, and download a sharp <strong>2× PNG</strong> or a vector <strong>SVG</strong> you can edit in Figma or Illustrator.</p>
       <p>Because nothing is uploaded, they're safe for private, unpublished or sensitive numbers, and they keep working offline once the page has loaded. For color palettes and contrast, see the <a href="/color/">Color Tools</a>; for exact data crunching, the <a href="/statistics/">Statistics</a> tools.</p>
     </section>
 

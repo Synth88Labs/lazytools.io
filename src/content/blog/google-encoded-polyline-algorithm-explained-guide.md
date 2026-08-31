@@ -19,19 +19,19 @@ faqs:
   - q: "What is a Google encoded polyline?"
     a: "It's a compact ASCII string that represents a series of latitude/longitude points, defined by Google's Encoded Polyline Algorithm. Instead of a long list of coordinates, a route's path is squeezed into a short string of printable characters. The Google Maps Directions API returns routes this way, and most mapping libraries can read it."
   - q: "How do I decode an encoded polyline?"
-    a: "Run it through a decoder that reverses the algorithm: it reads base-32 chunks, reassembles each number, undoes the zig-zag sign encoding, divides by the precision factor, and adds each delta to the running position. The result is the original list of latitude/longitude points. A polyline decoder does this instantly — you just need the right precision."
+    a: "Run it through a decoder that reverses the algorithm: it reads base-32 chunks, reassembles each number, undoes the zig-zag sign encoding, divides by the precision factor, and adds each delta to the running position. The result is the original list of latitude/longitude points. A polyline decoder does this instantly. You just need the right precision."
   - q: "What does polyline precision (5 vs 6) mean?"
     a: "Precision is how many decimal places of coordinate are preserved, set by the scaling factor (10^precision). Precision 5 (Google's default) keeps roughly 1-metre resolution; precision 6 keeps about 10 centimetres and is used by routing engines like OSRM and Valhalla. You must decode with the same precision the string was encoded at, or the points come out ten times too large or small."
   - q: "Why do my decoded coordinates look swapped?"
-    a: "Encoded polylines store coordinates in latitude, longitude order. GeoJSON and many mapping APIs use the opposite — longitude, latitude. If your points land in the wrong hemisphere, the lat/lng order was probably flipped somewhere. A good decoder labels the order and outputs correctly-ordered GeoJSON."
+    a: "Encoded polylines store coordinates in latitude, longitude order. GeoJSON and many mapping APIs use the opposite, longitude, latitude. If your points land in the wrong hemisphere, the lat/lng order was probably flipped somewhere. A good decoder labels the order and outputs correctly-ordered GeoJSON."
   - q: "Why does the algorithm use deltas?"
     a: "Consecutive points on a route are close together, so storing each point as the small difference from the previous one produces small numbers, which encode to fewer characters. It's a form of delta compression: the first point is stored in full, and every point after it is just the change, which is why the format is so compact."
   - q: "Is it safe to decode a polyline online?"
-    a: "A polyline encodes a path — potentially where someone went or a planned route — so prefer a client-side tool. The LazyTools Polyline Encoder / Decoder runs entirely in your browser and never uploads the string or the coordinates, so the location data stays on your device."
+    a: "A polyline encodes a path, potentially where someone went or a planned route, so prefer a client-side tool. The LazyTools Polyline Encoder / Decoder runs entirely in your browser and never uploads the string or the coordinates, so the location data stays on your device."
 draft: false
 ---
 
-**Ask a maps API for directions and part of the response is a string like `_p~iF~ps|U_ulLnnqC…` — not
+**Ask a maps API for directions and part of the response is a string like `_p~iF~ps|U_ulLnnqC…`, not
 an error, but an entire route's path compressed into a few characters.** That's a Google *encoded
 polyline*, and the algorithm behind it is a neat piece of delta compression: it turns a long list of
 latitude/longitude points into a short run of printable ASCII. Here's how it works, the two gotchas that
@@ -57,7 +57,7 @@ trip people up, and how to decode one privately with the
 ## The problem: coordinates are verbose
 
 A route can have hundreds of points, each a latitude and longitude carried to several decimal places. Sent
-as raw JSON — `[[38.50000, -120.20000], …]` — that adds up to a lot of bytes, and every byte counts when a
+as raw JSON, `[[38.50000, -120.20000], …]`, that adds up to a lot of bytes, and every byte counts when a
 mobile app is redrawing a route or a tile server is shipping thousands of geometries. Google's Encoded
 Polyline Algorithm shrinks the payload dramatically by exploiting two facts about map data: consecutive
 points on a path are **close together**, and coordinates only need about **five decimal places** of
@@ -65,10 +65,10 @@ precision for street-level accuracy. Everything the format does follows from tho
 
 ## The algorithm, step by step
 
-Encoding is done on each coordinate value independently — latitude and longitude are run through the same
+Encoding is done on each coordinate value independently, latitude and longitude are run through the same
 pipeline, latitude first for each point. For a single value:
 
-1. **Scale and round.** Multiply by 10⁵ and round to the nearest integer — `38.5 → 3850000`. This is where
+1. **Scale and round.** Multiply by 10⁵ and round to the nearest integer, `38.5 → 3850000`. This is where
    precision is fixed: five decimals survive, the rest are discarded.
 2. **Delta.** Subtract the previous point's value so you store only the *change*. The first point is
    measured against 0, so it is stored in full; every later point is a small difference.
@@ -104,19 +104,19 @@ The classic worked example from Google's own documentation strings three points 
 _p~iF~ps|U_ulLnnqC_mqNvxq`@
 ```
 
-Notice how each point after the first contributes only a few characters — that is the delta compression
+Notice how each point after the first contributes only a few characters, that is the delta compression
 paying off.
 
 ## Two gotchas that bite everyone
 
 **Precision.** The scaling factor in step 1 is `10^precision`. Google's Maps APIs use **precision 5**
-(~1 m at the equator). Several open routing engines — OSRM and Valhalla among them — default to
+(~1 m at the equator). Several open routing engines, OSRM and Valhalla among them, default to
 **precision 6** (~10 cm). Decode a precision-6 string as precision 5 and every coordinate comes out ten
 times too large; the route jumps off the map or lands in the ocean. If a decoded path looks wildly wrong,
 switching precision is the first thing to try.
 
 **Latitude/longitude order.** Encoded polylines store each point as **latitude, then longitude**. GeoJSON,
-Leaflet's GeoJSON layer, and many SDKs expect the opposite — **longitude, latitude**. Mix them up and your
+Leaflet's GeoJSON layer, and many SDKs expect the opposite, **longitude, latitude**. Mix them up and your
 points land in the wrong hemisphere. When you convert a decoded polyline into GeoJSON, the pair must be
 **swapped**; a good converter does this and labels which order it is emitting.
 
@@ -130,12 +130,12 @@ Here is how the common variants line up:
 
 ## Polyline vs GeoJSON: when to use which
 
-The two formats answer different needs. A polyline is a **transport** format — small, opaque, ideal for
-squeezing a route into an API response or a URL. GeoJSON is a **working** format — verbose but
+The two formats answer different needs. A polyline is a **transport** format, small, opaque, ideal for
+squeezing a route into an API response or a URL. GeoJSON is a **working** format, verbose but
 human-readable, self-describing, and understood natively by nearly every mapping library and GIS tool. A
 common workflow is to receive a polyline from a routing API, decode it once, and keep working in GeoJSON
-from there — see [WKT vs GeoJSON geometry formats](/blog/wkt-vs-geojson-geometry-formats-explained-guide/) for how that representation is structured. Because the polyline throws away everything past the chosen number of decimals, re-encoding
-GeoJSON back to a polyline is lossy — expect coordinates to be rounded to the precision you pick.
+from there, see [WKT vs GeoJSON geometry formats](/blog/wkt-vs-geojson-geometry-formats-explained-guide/) for how that representation is structured. Because the polyline throws away everything past the chosen number of decimals, re-encoding
+GeoJSON back to a polyline is lossy, expect coordinates to be rounded to the precision you pick.
 
 ## Why deltas make it compact
 
@@ -151,5 +151,5 @@ A polyline can represent where someone travelled or a route they plan to take, s
 locally rather than pasting into an unknown server. The
 [Polyline Encoder / Decoder](/file/polyline-encoder-decoder/) implements the algorithm exactly in your
 browser: paste an encoded string to get back the coordinate list and a correctly-ordered GeoJSON
-`LineString`, or paste a list of lat/lng points to encode them — with a precision switch for the 5 and 6
+`LineString`, or paste a list of lat/lng points to encode them, with a precision switch for the 5 and 6
 variants, and nothing ever uploaded. The location data never leaves your device.

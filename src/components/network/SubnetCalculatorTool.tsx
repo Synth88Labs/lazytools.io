@@ -24,7 +24,7 @@ export default function SubnetCalculatorTool() {
         ['CIDR notation', `${ipv4ToString(info.network)}/${info.prefix}`],
         ['Network address', ipv4ToString(info.network)],
         ['Broadcast address', info.prefix >= 31 ? '— (RFC 3021 point-to-point)' : ipv4ToString(info.broadcast)],
-        ['Usable host range', info.hostCount > 0 ? `${ipv4ToString(info.firstHost!)} – ${ipv4ToString(info.lastHost!)}` : ipv4ToString(info.network)],
+        ['Usable host range', info.hostCount > 0 ? `${ipv4ToString(info.firstHost!)}, ${ipv4ToString(info.lastHost!)}` : ipv4ToString(info.network)],
         ['Usable hosts', info.hostCount.toLocaleString('en-US')],
         ['Subnet mask', ipv4ToString(info.mask)],
         ['Wildcard mask', ipv4ToString(info.wildcard)],
@@ -43,7 +43,7 @@ export default function SubnetCalculatorTool() {
       const s = subnetInfo((info.network + i * size) >>> 0, splitPrefix);
       subnets.push({
         net: `${ipv4ToString(s.network)}/${splitPrefix}`,
-        range: s.hostCount > 0 ? `${ipv4ToString(s.firstHost!)} – ${ipv4ToString(s.lastHost!)}` : ipv4ToString(s.network),
+        range: s.hostCount > 0 ? `${ipv4ToString(s.firstHost!)}, ${ipv4ToString(s.lastHost!)}` : ipv4ToString(s.network),
         hosts: s.hostCount,
       });
     }
@@ -60,7 +60,7 @@ export default function SubnetCalculatorTool() {
           <span class="text-xs font-semibold uppercase tracking-wide text-slate-500">Prefix length</span>
           <select class={inputCls} value={prefix} onChange={(e) => setPrefix(parseInt((e.target as HTMLSelectElement).value, 10))}>
             {Array.from({ length: 32 }, (_, i) => i + 1).map((p) => (
-              <option value={p}>/{p} — {ipv4ToString(prefixToMask(p))}</option>
+              <option value={p}>/{p}, {ipv4ToString(prefixToMask(p))}</option>
             ))}
           </select>
         </label>
@@ -70,7 +70,7 @@ export default function SubnetCalculatorTool() {
         </label>
       </div>
 
-      {ip === null && <p class="mt-4 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800">Enter a valid IPv4 address (four numbers 0–255 separated by dots).</p>}
+      {ip === null && <p class="mt-4 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800">Enter a valid IPv4 address (four numbers 0-255 separated by dots).</p>}
 
       {info && (
         <div class="mt-5 overflow-x-auto rounded-xl border border-slate-200 bg-white">
@@ -122,7 +122,7 @@ export default function SubnetCalculatorTool() {
         </div>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">All subnet math runs in your browser — addresses and network plans are never uploaded.</p>
+      <p class="mt-4 text-xs text-slate-500">All subnet math runs in your browser, addresses and network plans are never uploaded.</p>
     </div>
   );
 }

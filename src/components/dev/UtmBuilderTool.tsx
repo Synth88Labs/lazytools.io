@@ -3,11 +3,11 @@ import { useMemo, useState } from 'preact/hooks';
 interface Param { id: string; label: string; hint: string; placeholder: string; required?: boolean }
 
 const PARAMS: Param[] = [
-  { id: 'utm_source', label: 'Campaign Source', hint: 'utm_source — where the traffic comes from', placeholder: 'newsletter', required: true },
-  { id: 'utm_medium', label: 'Campaign Medium', hint: 'utm_medium — the marketing channel', placeholder: 'email', required: true },
-  { id: 'utm_campaign', label: 'Campaign Name', hint: 'utm_campaign — the specific campaign', placeholder: 'summer_sale', required: true },
-  { id: 'utm_term', label: 'Campaign Term', hint: 'utm_term — paid-search keyword (optional)', placeholder: 'running+shoes' },
-  { id: 'utm_content', label: 'Campaign Content', hint: 'utm_content — differentiate ads/links (optional)', placeholder: 'logolink' },
+  { id: 'utm_source', label: 'Campaign Source', hint: 'utm_source, where the traffic comes from', placeholder: 'newsletter', required: true },
+  { id: 'utm_medium', label: 'Campaign Medium', hint: 'utm_medium, the marketing channel', placeholder: 'email', required: true },
+  { id: 'utm_campaign', label: 'Campaign Name', hint: 'utm_campaign, the specific campaign', placeholder: 'summer_sale', required: true },
+  { id: 'utm_term', label: 'Campaign Term', hint: 'utm_term, paid-search keyword (optional)', placeholder: 'running+shoes' },
+  { id: 'utm_content', label: 'Campaign Content', hint: 'utm_content, differentiate ads/links (optional)', placeholder: 'logolink' },
 ];
 
 export default function UtmBuilderTool() {
@@ -67,7 +67,7 @@ export default function UtmBuilderTool() {
       </div>
 
       <label class="mt-3 flex items-center gap-1.5 text-sm text-slate-600">
-        <input type="checkbox" checked={lower} onChange={(e) => setLower((e.target as HTMLInputElement).checked)} /> Force lowercase (recommended — UTM values are case-sensitive in analytics)
+        <input type="checkbox" checked={lower} onChange={(e) => setLower((e.target as HTMLInputElement).checked)} /> Force lowercase (recommended, UTM values are case-sensitive in analytics)
       </label>
 
       {error && <p class="mt-4 rounded-lg bg-rose-50 px-3 py-2 text-sm text-rose-700 ring-1 ring-rose-200">{error}</p>}
@@ -86,7 +86,7 @@ export default function UtmBuilderTool() {
       )}
 
       <p class="mt-4 text-xs text-slate-500">
-        UTM parameters are tags added to a link’s query string so analytics tools (GA4 and others) can attribute a visit to a specific source, channel and campaign. Values are automatically URL-encoded so spaces and symbols are safe. 🔒 Nothing is uploaded — the URL is assembled entirely in your browser.
+        UTM parameters are tags added to a link’s query string so analytics tools (GA4 and others) can attribute a visit to a specific source, channel and campaign. Values are automatically URL-encoded so spaces and symbols are safe. 🔒 Nothing is uploaded, the URL is assembled entirely in your browser.
       </p>
     </div>
   );

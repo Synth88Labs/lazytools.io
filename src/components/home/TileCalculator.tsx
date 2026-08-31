@@ -74,7 +74,7 @@ export default function TileCalculator() {
         <p class="mt-4 text-sm text-slate-500">Enter the area and tile dimensions.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Tiles = area ÷ tile area, + waste (10% straight, 15–20% diagonal/herringbone). Buy from one batch. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Tiles = area ÷ tile area, + waste (10% straight, 15-20% diagonal/herringbone). Buy from one batch. 🔒 In your browser.</p>
     </div>
   );
 }

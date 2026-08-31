@@ -1,7 +1,7 @@
 import { useState } from 'preact/hooks';
 import { sigFigCount, sigFigRound, Rat } from '../../lib/mathx';
 
-/** Round to N decimal places (half-up) or to the nearest multiple of `step` — exact rational path. */
+/** Round to N decimal places (half-up) or to the nearest multiple of `step`, exact rational path. */
 function roundExtra(numStr: string, places: string, stepStr: string): { places?: string; nearest?: string } {
   const out: { places?: string; nearest?: string } = {};
   try {
@@ -127,13 +127,13 @@ export default function SigFigsTool() {
             <ul class="mt-2 list-disc space-y-1 pl-5">
               <li>Non-zero digits are always significant.</li>
               <li>Zeros between non-zero digits are significant (105 has three).</li>
-              <li>Leading zeros never are — they only place the decimal point (0.004560 starts counting at the 4).</li>
-              <li>Trailing zeros are significant only with a decimal point (100.0 has four; 1200 is ambiguous — use scientific notation to be explicit).</li>
+              <li>Leading zeros never are. They only place the decimal point (0.004560 starts counting at the 4).</li>
+              <li>Trailing zeros are significant only with a decimal point (100.0 has four; 1200 is ambiguous, use scientific notation to be explicit).</li>
             </ul>
           </div>
         </>
       )}
-      <p class="mt-4 text-xs text-slate-500">Counting and rounding are done on the digit string itself — no floating-point re-formatting to corrupt the answer. Runs locally.</p>
+      <p class="mt-4 text-xs text-slate-500">Counting and rounding are done on the digit string itself, no floating-point re-formatting to corrupt the answer. Runs locally.</p>
     </div>
   );
 }

@@ -47,7 +47,7 @@ export default function DownloadTimeTool() {
         <p class="mt-4 text-sm text-slate-500">Enter a file size and a connection speed.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Time = file size in bits ÷ speed in bits per second. Watch the units: speeds are quoted in <strong>bits</strong> (Mbps) but files in <strong>bytes</strong> (MB), and there are 8 bits per byte — so a 1 GB file on a 100 Mbps line takes about 80 seconds, not 10. Real transfers run ~10–20% slower than the theoretical rate because of protocol overhead and congestion. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Time = file size in bits ÷ speed in bits per second. Watch the units: speeds are quoted in <strong>bits</strong> (Mbps) but files in <strong>bytes</strong> (MB), and there are 8 bits per byte, so a 1 GB file on a 100 Mbps line takes about 80 seconds, not 10. Real transfers run ~10-20% slower than the theoretical rate because of protocol overhead and congestion. 🔒 In your browser.</p>
     </div>
   );
 }

@@ -67,7 +67,7 @@ export default function SqlFormatterTool() {
       </div>
 
       <p class="mt-4 text-xs text-slate-500">
-        Beautifies (pretty-prints) SQL with consistent indentation, line breaks and keyword casing, for the dialect you choose. Great for cleaning up generated or minified queries and making them readable in code review. Your SQL — which can reveal schema and data — is formatted entirely in your browser and never uploaded. 🔒
+        Beautifies (pretty-prints) SQL with consistent indentation, line breaks and keyword casing, for the dialect you choose. Great for cleaning up generated or minified queries and making them readable in code review. Your SQL, which can reveal schema and data, is formatted entirely in your browser and never uploaded. 🔒
       </p>
     </div>
   );

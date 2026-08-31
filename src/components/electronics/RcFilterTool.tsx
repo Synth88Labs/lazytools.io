@@ -51,7 +51,7 @@ export default function RcFilterTool() {
         <p class="mt-4 text-sm text-slate-500">Enter the resistance and capacitance.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Time constant τ = R × C (the capacitor reaches ~63% of its final voltage in one τ, and is essentially fully charged after 5τ). The −3 dB cutoff of an RC filter is fₒ = 1 ÷ (2π·R·C) — below it a low-pass passes signals, above it an RC high-pass does. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Time constant τ = R × C (the capacitor reaches ~63% of its final voltage in one τ, and is essentially fully charged after 5τ). The −3 dB cutoff of an RC filter is fₒ = 1 ÷ (2π·R·C), below it a low-pass passes signals, above it an RC high-pass does. 🔒 In your browser.</p>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import { useState } from 'preact/hooks';
 
 type BcryptModule = {
-  // Sync API — reliable in the browser (the async variants depend on
+  // Sync API, reliable in the browser (the async variants depend on
   // setImmediate and don't resolve in some browser bundles).
   hashSync: (data: string, saltOrRounds: string | number) => string;
   compareSync: (data: string, encrypted: string) => boolean;
@@ -42,7 +42,7 @@ export default function BcryptTool() {
       const bcrypt = await loadBcrypt();
       setHashResult(bcrypt.hashSync(hashPassword, cost));
     } catch {
-      setHashError('Hashing failed in this browser — try a lower cost factor.');
+      setHashError('Hashing failed in this browser, try a lower cost factor.');
     } finally {
       setHashing(false);
     }
@@ -164,7 +164,7 @@ export default function BcryptTool() {
               </div>
               <p class="mt-2 text-xs text-slate-500">
                 bcrypt embeds a random salt, so hashing the same password twice produces different
-                <span class="font-mono"> $2b$…</span> hashes. That is expected and correct — each
+                <span class="font-mono"> $2b$…</span> hashes. That is expected and correct, each
                 hash still verifies against the original password.
               </p>
             </div>
@@ -228,7 +228,7 @@ export default function BcryptTool() {
         <p>
           <strong class="text-slate-600">What is bcrypt?</strong> A deliberately slow
           password-hashing function with a built-in random salt and a tunable cost factor, used to
-          store passwords safely. It is not a general-purpose or reversible hash — you cannot decode
+          store passwords safely. It is not a general-purpose or reversible hash. You cannot decode
           a password from its hash, only verify a guess against it. Higher cost makes brute-forcing
           harder but each hash slower to compute.
         </p>

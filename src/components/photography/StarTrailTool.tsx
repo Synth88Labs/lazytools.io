@@ -5,9 +5,9 @@ const num = (s: string) => { const n = parseFloat(s); return isFinite(n) && n > 
 const fmt = (x: number, d = 1) => Number(x.toFixed(d)).toString();
 
 const RULES = [
-  { n: 500, label: '500 (lenient — small prints/web)' },
+  { n: 500, label: '500 (lenient, small prints/web)' },
   { n: 300, label: '300 (balanced)' },
-  { n: 200, label: '200 (strict — high-res/pixel peeping)' },
+  { n: 200, label: '200 (strict, high-res/pixel peeping)' },
 ];
 
 export default function StarTrailTool() {

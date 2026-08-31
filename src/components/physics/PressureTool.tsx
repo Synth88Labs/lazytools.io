@@ -30,7 +30,7 @@ export default function PressureTool() {
         </div>
       ) : <p class="mt-4 text-sm text-slate-500">Enter two values to solve the third.</p>}
 
-      <p class="mt-4 text-xs text-slate-500">Pressure is force spread over area: P = F ÷ A, measured in pascals (1 Pa = 1 N/m²). The same force over a smaller area gives higher pressure — why a sharp knife or a stiletto heel presses so hard. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Pressure is force spread over area: P = F ÷ A, measured in pascals (1 Pa = 1 N/m²). The same force over a smaller area gives higher pressure, why a sharp knife or a stiletto heel presses so hard. 🔒 In your browser.</p>
     </div>
   );
 }

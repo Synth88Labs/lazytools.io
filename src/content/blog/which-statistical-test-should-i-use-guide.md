@@ -20,21 +20,21 @@ faqs:
   - q: "How do I choose the right statistical test?"
     a: "Start with three questions: what kind of data do you have (numbers or categories), how many groups are you comparing, and can you assume the data is roughly normal? Categorical counts point to a chi-square test; comparing two normal groups points to a t-test; three or more groups to ANOVA; and non-normal or ordinal data to a non-parametric test like Mann-Whitney. Each of these has a LazyTools calculator that runs in your browser."
   - q: "What's the difference between a t-test and ANOVA?"
-    a: "A t-test compares the means of two groups; ANOVA compares three or more at once. You could run many t-tests instead, but each carries its own false-positive risk and running lots of them inflates the overall error rate — ANOVA tests all groups together at one significance level, which is why it's the correct tool for 3+ groups."
+    a: "A t-test compares the means of two groups; ANOVA compares three or more at once. You could run many t-tests instead, but each carries its own false-positive risk and running lots of them inflates the overall error rate, ANOVA tests all groups together at one significance level, which is why it's the correct tool for 3+ groups."
   - q: "When should I use a non-parametric test like Mann-Whitney?"
-    a: "When the assumption that your data is roughly normal is doubtful — small samples, skewed distributions, ordinal ratings (like 1–5 scales), or data with strong outliers. The Mann-Whitney U test compares two groups using ranks instead of raw values, so it doesn't need normality. Its 3-plus-group counterpart is the Kruskal-Wallis test."
+    a: "When the assumption that your data is roughly normal is doubtful, small samples, skewed distributions, ordinal ratings (like 1-5 scales), or data with strong outliers. The Mann-Whitney U test compares two groups using ranks instead of raw values, so it doesn't need normality. Its 3-plus-group counterpart is the Kruskal-Wallis test."
   - q: "What's the difference between a z-test and a t-test?"
     a: "Both compare means, but a z-test assumes the population standard deviation is known (or the sample is large enough that it's effectively known) and uses the normal distribution, while a t-test estimates the standard deviation from the sample and uses the t-distribution to account for that extra uncertainty. In practice, use a t-test unless you truly know the population SD or have proportion data (where a z-test applies)."
   - q: "Which test do I use for categorical data like yes/no or counts?"
-    a: "A chi-square test. Use goodness-of-fit to compare observed counts against expected proportions, and the test of independence to check whether two categorical variables (rows and columns of a contingency table) are related. For two proportions specifically — like an A/B conversion test — a two-proportion z-test is the standard choice."
+    a: "A chi-square test. Use goodness-of-fit to compare observed counts against expected proportions, and the test of independence to check whether two categorical variables (rows and columns of a contingency table) are related. For two proportions specifically, like an A/B conversion test, a two-proportion z-test is the standard choice."
   - q: "Are these calculators private?"
-    a: "Yes — every LazyTools statistics calculator runs entirely in your browser using JavaScript. Your data is never uploaded, and the tools work offline."
+    a: "Yes, every LazyTools statistics calculator runs entirely in your browser using JavaScript. Your data is never uploaded, and the tools work offline."
 draft: false
 ---
 
 **The right [statistical test](https://en.wikipedia.org/wiki/Statistical_hypothesis_testing) comes down to three questions: is your data numeric or categorical, how
 many groups are you comparing, and can you assume it's roughly normal?** Answer those three and the
-choice — t-test, z-test, ANOVA, Mann-Whitney or chi-square — is almost automatic. This guide walks the
+choice, t-test, z-test, ANOVA, Mann-Whitney or chi-square, is almost automatic. This guide walks the
 decision path, adds worked examples, and links a browser-based calculator for each, so nothing you
 enter leaves your device.
 
@@ -44,7 +44,7 @@ enter leaves your device.
 
 - Three questions settle almost every choice: *data type* (numbers vs categories), *group count* (one, two, or three-plus), and *normality* (roughly bell-shaped or not).
 - Counts and categories go to a chi-square test; two numeric groups go to a t-test; three or more go to ANOVA; anything skewed, ordinal, or tiny goes to a rank-based non-parametric test.
-- Also ask whether your two samples are *paired* (same subjects measured twice) — that switches you to a paired t-test or Wilcoxon signed-rank test.
+- Also ask whether your two samples are *paired* (same subjects measured twice), that switches you to a paired t-test or Wilcoxon signed-rank test.
 - A p-value only says a difference is *detectable*; always report an effect size beside it so you also know whether the difference is *meaningful*.
 
 </aside>
@@ -97,8 +97,8 @@ enter leaves your device.
 
 ## Parametric or non-parametric? The normality question
 
-The word *parametric* just means a test assumes your data follows a known distribution shape — usually
-the normal (bell) curve — and works from summary parameters like the mean and standard deviation.
+The word *parametric* just means a test assumes your data follows a known distribution shape, usually
+the normal (bell) curve, and works from summary parameters like the mean and standard deviation.
 Parametric tests (t-test, z-test, ANOVA) are more powerful when that assumption holds: they can detect
 a real difference with a smaller sample. When the assumption is shaky, they can mislead.
 
@@ -106,9 +106,9 @@ a real difference with a smaller sample. When the assumption is shaky, they can 
 convert values to ranks and compare those, so a single wild outlier or a skewed tail can't drag the
 result around. Reach for them when any of these is true:
 
-- Your sample is small (say, fewer than ~15–20 per group) and you can't verify normality.
+- Your sample is small (say, fewer than ~15-20 per group) and you can't verify normality.
 - The data is visibly skewed or has heavy outliers.
-- The data is *ordinal* — ranks or ratings like a 1–5 satisfaction scale, where the gap between 4 and 5
+- The data is *ordinal*, ranks or ratings like a 1-5 satisfaction scale, where the gap between 4 and 5
   isn't guaranteed to equal the gap between 1 and 2.
 
 A practical rule: if you're unsure and the sample is small, the non-parametric test is the safer
@@ -117,16 +117,16 @@ it wasn't.
 
 ## Categorical data → chi-square
 
-If you're counting things in categories — how many users chose A vs B vs C, or whether an outcome
-relates to a group — you want a [chi-square test](/statistics/chi-square-test-calculator/).
+If you're counting things in categories, how many users chose A vs B vs C, or whether an outcome
+relates to a group. You want a [chi-square test](/statistics/chi-square-test-calculator/).
 Goodness-of-fit compares observed counts to expected proportions; the test of independence checks
 whether two categorical variables are related.
 
 **Worked example.** You survey 200 visitors and record which of three plans they picked: 90 Basic, 70
 Pro, 40 Team. Are those preferences different from an even 1/3-each split? Goodness-of-fit compares the
 observed counts (90, 70, 40) against the expected 66.7 each and returns a p-value. A small p-value says
-the uneven split is unlikely to be chance. If instead you had a two-way table — say plan choice (rows)
-by device type (columns) — the test of independence tells you whether choice and device are linked.
+the uneven split is unlikely to be chance. If instead you had a two-way table, say plan choice (rows)
+by device type (columns), the test of independence tells you whether choice and device are linked.
 
 The one special case: comparing exactly **two proportions** (an A/B conversion test) is cleaner with a
 [two-proportion z-test](/statistics/ab-test-significance-calculator/).
@@ -138,7 +138,7 @@ Comparing two groups of measurements:
 - **Roughly normal, σ unknown** → the [t-test](/statistics/t-test-calculator/). This is the default for
   most real data, because you almost never know the true population standard deviation.
 - **σ known or very large sample** → the [z-test](/statistics/z-test-calculator/).
-- **Not normal — skewed, ordinal, small, or outlier-heavy** → the
+- **Not normal, skewed, ordinal, small, or outlier-heavy** → the
   [Mann-Whitney U test](/statistics/mann-whitney-u-test-calculator/), which compares groups by rank and
   needs no normality assumption.
 
@@ -147,12 +147,12 @@ version B takes 9, 10, 8, 11, 10. Both samples look roughly symmetric with no wi
 don't know the true spread of load times, so a two-sample t-test is the right call. It compares the two
 means (13.0 vs 9.6) relative to the variation within each group and reports whether that 3.4-second gap
 is bigger than you'd expect from noise. Had one user in A taken 60 seconds (a stuck request), the
-mean would lurch and normality would be doubtful — that's when you'd switch to Mann-Whitney.
+mean would lurch and normality would be doubtful, that's when you'd switch to Mann-Whitney.
 
 ## Paired data → paired t-test or Wilcoxon signed-rank
 
 Before you settle on a two-group test, ask whether the two sets of numbers are *independent* or
-*paired*. Paired means each value in one group is tied to a specific value in the other — the **same**
+*paired*. Paired means each value in one group is tied to a specific value in the other, the **same**
 subjects measured twice (before vs after a change), or matched pairs. Blood pressure for 20 patients
 before and after a drug is paired; heights of 20 men and 20 unrelated women are not.
 
@@ -164,7 +164,7 @@ and can hide a real effect.
 
 ## Three or more groups → ANOVA (not many t-tests)
 
-With 3+ groups, don't run a t-test on every pair — each comparison carries its own false-positive risk,
+With 3+ groups, don't run a t-test on every pair, each comparison carries its own false-positive risk,
 and doing many inflates the overall error rate. One-way [ANOVA](https://en.wikipedia.org/wiki/Analysis_of_variance) ([calculator](/statistics/anova-calculator/)) tests
 all groups at once with a single F test. A significant result says the groups aren't all equal; a
 follow-up **post-hoc test** (e.g. Tukey's HSD) tells you which ones differ. If the groups are clearly
@@ -172,7 +172,7 @@ non-normal, the rank-based [Kruskal-Wallis test](/statistics/kruskal-wallis-test
 non-parametric counterpart.
 
 **Worked example.** You test three landing-page headlines and measure time-on-page for visitors in
-each. That's three numeric groups, so ANOVA is the tool — not three separate t-tests. If ANOVA returns
+each. That's three numeric groups, so ANOVA is the tool, not three separate t-tests. If ANOVA returns
 a significant F, a Tukey post-hoc test then pins down whether headline C beat both A and B, or only A.
 If the time-on-page values were badly skewed (a common shape for durations), Kruskal-Wallis would
 replace ANOVA.
@@ -181,9 +181,9 @@ replace ANOVA.
 
 | Your situation | Test | Parametric? |
 |---|---|---|
-| Category counts, 1 variable vs expected | Chi-square goodness-of-fit | — |
-| Two categorical variables related? | Chi-square independence | — |
-| Two proportions (A/B) | Two-proportion z-test | — |
+| Category counts, 1 variable vs expected | Chi-square goodness-of-fit |, |
+| Two categorical variables related? | Chi-square independence |, |
+| Two proportions (A/B) | Two-proportion z-test |, |
 | Two independent numeric groups, normal | t-test | Yes |
 | Two independent numeric groups, σ known | z-test | Yes |
 | Two independent numeric groups, non-normal | Mann-Whitney U | No |
@@ -202,16 +202,15 @@ A few traps catch people far more often than picking the "wrong" family of test:
   source of power you have. Match the test to the design.
 - **Assuming normality on tiny samples.** With a handful of points you usually can't confirm the
   bell-curve shape, so a rank-based test is the honest choice.
-- **Reading only the p-value.** Statistical significance is not the same as practical importance —
-  which is the next section.
+- **Reading only the p-value.** Statistical significance is not the same as practical importance, which is the next section.
 
 ## Don't forget effect size
 
 Effect size is the most common gap in reported results. A p-value answers "could this
 be chance?" but says nothing about *magnitude*. With a large enough sample, a trivially small
 difference becomes "significant." Pair every test with an [effect
-size](/statistics/effect-size-calculator/) — Cohen's d for mean differences, or the appropriate
-measure for your test — so a reader can see whether a detectable difference is also a difference worth
+size](/statistics/effect-size-calculator/), Cohen's d for mean differences, or the appropriate
+measure for your test, so a reader can see whether a detectable difference is also a difference worth
 acting on.
 
 ## The bottom line
@@ -219,4 +218,4 @@ acting on.
 Pick your test from **data type → group count → normality**: categories go to chi-square, two normal
 groups to a t-test, three-plus to ANOVA, and anything non-normal to a rank-based test like
 Mann-Whitney. Then read the p-value next to an effect size. Run any of them locally with the LazyTools
-[statistics calculators](/statistics/) — your data never leaves the browser.
+[statistics calculators](/statistics/), your data never leaves the browser.

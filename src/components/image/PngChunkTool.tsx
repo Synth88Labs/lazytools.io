@@ -26,7 +26,7 @@ export default function PngChunkTool() {
         <input type="file" class="hidden" accept=".png,image/png" onChange={(e) => onFile((e.target as HTMLInputElement).files?.[0] ?? null)} />
         <span class="block text-2xl">🖼️</span>
         <span class="mt-1 block text-sm font-semibold text-slate-700">{file ? `📄 ${file.name}` : 'Choose a .png file'}</span>
-        <span class="mt-1 block text-xs text-slate-500">{busy ? 'Reading…' : 'Read locally — the image is never uploaded'}</span>
+        <span class="mt-1 block text-xs text-slate-500">{busy ? 'Reading…' : 'Read locally, the image is never uploaded'}</span>
       </label>
 
       {error && <p class="mt-4 rounded-lg bg-rose-50 px-3 py-2 text-sm text-rose-700 ring-1 ring-rose-200">⚠️ {error}</p>}
@@ -71,7 +71,7 @@ export default function PngChunkTool() {
         </div>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Drop a PNG to inspect its internal chunk structure — the IHDR header (dimensions, bit depth, color type), physical resolution (pHYs), any embedded text metadata (tEXt/iTXt), and every other chunk — and verify each chunk&#39;s stored CRC-32 against a freshly computed one to catch corruption or hidden edits. It parses the file in your browser, so the image is never uploaded. 🔒 100% client-side.</p>
+      <p class="mt-4 text-xs text-slate-500">Drop a PNG to inspect its internal chunk structure, the IHDR header (dimensions, bit depth, color type), physical resolution (pHYs), any embedded text metadata (tEXt/iTXt), and every other chunk, and verify each chunk&#39;s stored CRC-32 against a freshly computed one to catch corruption or hidden edits. It parses the file in your browser, so the image is never uploaded. 🔒 100% client-side.</p>
     </div>
   );
 }

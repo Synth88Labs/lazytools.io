@@ -6,7 +6,7 @@ const num = (s: string) => { const n = parseFloat(s); return isFinite(n) ? n : n
 const fmt = (x: number) => {
   if (!isFinite(x)) return String(x);
   const a = Math.abs(x);
-  // Very large / very small magnitudes render in compact exponential form — otherwise
+  // Very large / very small magnitudes render in compact exponential form, otherwise
   // JS prints e.g. 1.98e20 as "198211000000000000000" (21 digits), which overflows the box.
   if (a !== 0 && (a >= 1e12 || a < 1e-4)) return x.toExponential(4);
   return Number(x.toPrecision(6)).toString();

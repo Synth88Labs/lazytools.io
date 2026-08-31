@@ -37,7 +37,7 @@ export default function InverterTool() {
         <p class="mt-4 text-sm text-slate-500">Enter your total running watts and the biggest startup surge.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">The inverter's continuous rating must cover all loads running at once, plus headroom (~25%) so it isn't maxed out; its surge (peak) rating must cover the brief startup spike of your largest motor. Motors — fridges, pumps, power tools — draw roughly 2–3× their running watts for a moment on startup (some compressors more), so check that figure on the nameplate. Add up only what runs simultaneously, not everything you own. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">The inverter's continuous rating must cover all loads running at once, plus headroom (~25%) so it isn't maxed out; its surge (peak) rating must cover the brief startup spike of your largest motor. Motors, fridges, pumps, power tools, draw roughly 2-3× their running watts for a moment on startup (some compressors more), so check that figure on the nameplate. Add up only what runs simultaneously, not everything you own. 🔒 In your browser.</p>
     </div>
   );
 }

@@ -33,7 +33,7 @@ export default function DateDiffTool() {
               {d.totalDays.toLocaleString()} <span class="text-base font-semibold text-slate-500">days</span>
             </p>
             <div class="mt-3 grid gap-2 text-sm sm:grid-cols-2 lg:grid-cols-4">
-              <div class="rounded-lg bg-slate-50 px-3 py-2"><span class="block text-xs font-semibold uppercase text-slate-500">Weekdays (Mon–Fri)</span><span class="font-mono font-bold text-slate-900">{d.weekdays.toLocaleString()}</span></div>
+              <div class="rounded-lg bg-slate-50 px-3 py-2"><span class="block text-xs font-semibold uppercase text-slate-500">Weekdays (Mon, Fri)</span><span class="font-mono font-bold text-slate-900">{d.weekdays.toLocaleString()}</span></div>
               <div class="rounded-lg bg-slate-50 px-3 py-2"><span class="block text-xs font-semibold uppercase text-slate-500">Weekend days</span><span class="font-mono font-bold text-slate-900">{d.weekendDays.toLocaleString()}</span></div>
               <div class="rounded-lg bg-slate-50 px-3 py-2"><span class="block text-xs font-semibold uppercase text-slate-500">Weeks + days</span><span class="font-mono font-bold text-slate-900">{d.totalWeeks}w {d.remainderDays}d</span></div>
               <div class="rounded-lg bg-slate-50 px-3 py-2"><span class="block text-xs font-semibold uppercase text-slate-500">Calendar breakdown</span><span class="font-bold text-slate-900">{d.years}y {d.months}m {d.days}d</span></div>

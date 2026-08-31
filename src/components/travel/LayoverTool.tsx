@@ -44,9 +44,9 @@ export default function LayoverTool() {
             <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Layover</p>
             <p class={`mt-1 text-3xl font-extrabold ${r.negative ? 'text-rose-700' : r.ok ? 'text-emerald-700' : 'text-amber-700'}`}>{r.negative ? '−' : ''}{r.hm.h} h {r.hm.m} m</p>
             <p class="mt-2 text-sm font-medium text-slate-700">
-              {r.negative ? 'The departure is before the arrival — check the times (or tick "next day").'
-                : r.ok ? `Comfortable — about ${Math.floor(r.margin / 60)} h ${r.margin % 60} m above the typical ${r.min}-minute minimum.`
-                : `Tight — below the typical ${r.min}-minute minimum connection time for this type.`}
+              {r.negative ? 'The departure is before the arrival, check the times (or tick "next day").'
+                : r.ok ? `Comfortable, about ${Math.floor(r.margin / 60)} h ${r.margin % 60} m above the typical ${r.min}-minute minimum.`
+                : `Tight, below the typical ${r.min}-minute minimum connection time for this type.`}
             </p>
           </div>
         </div>

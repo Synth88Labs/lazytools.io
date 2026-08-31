@@ -31,7 +31,7 @@ export default function GestationTool() {
       <div class="grid gap-3 sm:grid-cols-2">
         <label class="block"><span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Animal</span>
           <select value={species} onChange={(e) => setSpecies((e.target as HTMLSelectElement).value)} class={inp}>
-            {GESTATION.map((s) => <option value={s.id}>{s.name} — {s.days} days</option>)}
+            {GESTATION.map((s) => <option value={s.id}>{s.name}, {s.days} days</option>)}
           </select></label>
         <label class="block"><span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Breeding / conception date</span>
           <input type="date" value={bred} onInput={(e) => setBred((e.target as HTMLInputElement).value)} class={inp} /></label>
@@ -44,14 +44,14 @@ export default function GestationTool() {
             <p class="mt-1 text-2xl font-extrabold text-brand-800">{fmtDate(r.due)}</p>
           </div>
           {r.early && r.late && (
-            <p class="mt-3 text-center text-sm text-slate-600">Likely window ({r.sp.range} days): <strong>{fmtDate(r.early)}</strong> — <strong>{fmtDate(r.late)}</strong></p>
+            <p class="mt-3 text-center text-sm text-slate-600">Likely window ({r.sp.range} days): <strong>{fmtDate(r.early)}</strong>, <strong>{fmtDate(r.late)}</strong></p>
           )}
         </div>
       ) : (
         <p class="mt-4 text-sm text-slate-500">Choose the animal and enter the breeding date.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Due date = breeding date + the species' average gestation. Actual delivery varies within the normal range shown. For dogs, dating from ovulation (via progesterone testing) is more precise than from mating. Not veterinary advice — consult your vet for a pregnancy plan. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Due date = breeding date + the species' average gestation. Actual delivery varies within the normal range shown. For dogs, dating from ovulation (via progesterone testing) is more precise than from mating. Not veterinary advice, consult your vet for a pregnancy plan. 🔒 In your browser.</p>
     </div>
   );
 }

@@ -150,7 +150,7 @@ export default function CipherTool({ mode }: Props) {
 
       {mode === 'caesar' && (
         <details class="mt-3 rounded-xl border border-slate-200 bg-white p-3">
-          <summary class="cursor-pointer text-sm font-semibold text-slate-700">🔓 Crack it — try all 25 shifts</summary>
+          <summary class="cursor-pointer text-sm font-semibold text-slate-700">🔓 Crack it, try all 25 shifts</summary>
           <div class="mt-2 max-h-56 overflow-y-auto font-mono text-xs">
             {caesarBruteForce(input).map((r) => (
               <div class="flex gap-3 border-b border-slate-100 py-1 last:border-0">
@@ -164,7 +164,7 @@ export default function CipherTool({ mode }: Props) {
 
       {mode === 'binary' && <p class="mt-2 text-xs text-slate-500">8 bits per byte (UTF-8), space-separated. Decoding accepts any whitespace-separated binary bytes.</p>}
       {mode === 'nato' && <p class="mt-2 text-xs text-slate-500">Uses the ICAO/NATO spelling alphabet; word breaks are shown as “|”.</p>}
-      <p class="mt-2 text-xs text-slate-500">Transformed in your browser — nothing you type is uploaded.</p>
+      <p class="mt-2 text-xs text-slate-500">Transformed in your browser, nothing you type is uploaded.</p>
     </div>
   );
 }

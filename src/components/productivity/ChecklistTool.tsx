@@ -54,7 +54,7 @@ export default function ChecklistTool() {
         <button type="button" onClick={() => pickJson().then((d) => d && setSt(d as State)).catch(() => {})} class={btn}>⬆ Import</button>
         <button type="button" onClick={() => window.print()} class={btn}>🖨 Print / Save as PDF</button>
       </div>
-      <p class="mt-3 text-xs text-slate-500">A reusable checklist / SOP — tick items off, then "Reset" to run the whole procedure again. Saved in this browser only.</p>
+      <p class="mt-3 text-xs text-slate-500">A reusable checklist / SOP, tick items off, then "Reset" to run the whole procedure again. Saved in this browser only.</p>
     </div>
   );
 }

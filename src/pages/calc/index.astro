@@ -14,15 +14,15 @@ const crumbs = [
 const faqs = [
   {
     q: 'Are these calculators accurate?',
-    a: 'Yes — each uses the standard published formula (EMI amortization, WHO BMI ranges, compound interest), states it on the page, and shows the arithmetic under every result so you can verify it.',
+    a: 'Yes, each uses the standard published formula (EMI amortization, WHO BMI ranges, compound interest), states it on the page, and shows the arithmetic under every result so you can verify it.',
   },
   {
     q: 'Is my financial or health data uploaded anywhere?',
-    a: 'No. Every calculator runs as JavaScript in your browser. Loan amounts, body measurements and birthdates never leave your device — the pages even work offline.',
+    a: 'No. Every calculator runs as JavaScript in your browser. Loan amounts, body measurements and birthdates never leave your device, the pages even work offline.',
   },
   {
     q: 'Why use these instead of asking an AI chatbot?',
-    a: 'Deterministic math: a calculator applies the exact formula every time and shows its working. Language models can make arithmetic slips, and typing your salary or health details into a chatbot shares them with a server — these tools don’t.',
+    a: 'Deterministic math: a calculator applies the exact formula every time and shows its working. Language models can make arithmetic slips, and typing your salary or health details into a chatbot shares them with a server. These tools don’t.',
   },
 ];
 
@@ -31,7 +31,7 @@ const schema = [
   collectionPageSchema({
     name: 'Free Online Calculators',
     url: '/calc/',
-    description: 'Free, privacy-first calculators: percentage, EMI, BMI, age, tip, discount, interest and salary — all running in your browser.',
+    description: 'Free, privacy-first calculators: percentage, EMI, BMI, age, tip, discount, interest and salary, all running in your browser.',
     items: CALCULATORS.map((c) => ({ name: c.name, url: `/calc/${c.slug}/` })),
   }),
   faqSchema(faqs),
@@ -39,7 +39,7 @@ const schema = [
 ---
 
 <Base
-  title="Calculators — Free, Instant & Private | LazyTools"
+  title="Calculators, Free, Instant & Private | LazyTools"
   description={`${CALCULATORS.length} free online calculators: percentage, EMI, BMI, age, tip, discount, compound interest and salary. Formulas shown, results instant, 100% in your browser.`}
   schema={schema}
 >
@@ -48,7 +48,7 @@ const schema = [
 
     <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Calculators</h1>
     <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
-      Everyday math with the formula shown and the working visible — percentages, loans, health, dates and
+      Everyday math with the formula shown and the working visible, percentages, loans, health, dates and
       pay. Your numbers are processed entirely in your browser; financial and health inputs never touch a
       server.
     </p>
@@ -75,16 +75,15 @@ const schema = [
     <section class="prose-lazy mt-10">
       <h2>What you can work out here</h2>
       <p>
-        These calculators cover the everyday math most people reach for: <strong>money</strong> —
-        percentages, tips and discounts, loan and mortgage payments (with a full amortization schedule),
-        and simple or compound interest; <strong>health</strong> — BMI against the WHO ranges, calorie and
-        macro needs, and body measurements; <strong>time</strong> — your exact age, date differences and
-        deadlines; and <strong>work and study</strong> — hourly-to-salary conversions and GPA. Each one
+        These calculators cover the everyday math most people reach for: <strong>money</strong>, percentages, tips and discounts, loan and mortgage payments (with a full amortization schedule),
+        and simple or compound interest; <strong>health</strong>, BMI against the WHO ranges, calorie and
+        macro needs, and body measurements; <strong>time</strong>, your exact age, date differences and
+        deadlines; and <strong>work and study</strong>, hourly-to-salary conversions and GPA. Each one
         applies the recognised formula and prints the arithmetic beneath the answer, so you can follow
         exactly how the result was reached rather than trust a black box.
       </p>
       <p>
-        Every calculation happens in your browser, which matters most for the sensitive numbers — a salary,
+        Every calculation happens in your browser, which matters most for the sensitive numbers, a salary,
         a loan balance, a due date, a body measurement. Those values are never sent anywhere, so there's
         nothing to leak, and the pages keep working even with your connection switched off. For deeper or
         more specialised math, see the <a href="/math/">Mathematics</a>, <a href="/finance/">Finance</a> and

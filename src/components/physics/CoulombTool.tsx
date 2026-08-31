@@ -43,7 +43,7 @@ export default function CoulombTool() {
         <p class="mt-4 text-sm text-slate-500">Enter the two charges (coulombs, e.g. 1e-6 for 1 µC) and their separation.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Coulomb's law: F = k·q₁·q₂ ÷ r², with k = 8.99×10⁹ N·m²/C². The force is repulsive when the charges have the same sign and attractive when opposite. Charges are in coulombs — use scientific notation for the usual micro- (1e-6) and nano- (1e-9) coulomb values. The field each charge creates at that distance is E = k·q ÷ r². 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Coulomb's law: F = k·q₁·q₂ ÷ r², with k = 8.99×10⁹ N·m²/C². The force is repulsive when the charges have the same sign and attractive when opposite. Charges are in coulombs, use scientific notation for the usual micro- (1e-6) and nano- (1e-9) coulomb values. The field each charge creates at that distance is E = k·q ÷ r². 🔒 In your browser.</p>
     </div>
   );
 }

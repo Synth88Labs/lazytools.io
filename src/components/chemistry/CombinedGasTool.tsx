@@ -4,7 +4,7 @@ export default function CombinedGasTool() {
   return (
     <SolverTool
       defaultTarget="V2"
-      formula="Combined gas law: P₁V₁/T₁ = P₂V₂/T₂ — temperatures in kelvin. Covers Boyle’s, Charles’s and Gay-Lussac’s laws."
+      formula="Combined gas law: P₁V₁/T₁ = P₂V₂/T₂, temperatures in kelvin. Covers Boyle’s, Charles’s and Gay-Lussac’s laws."
       fields={[
         { key: 'P1', label: 'Pressure P₁', unit: 'atm', initial: '1' },
         { key: 'V1', label: 'Volume V₁', unit: 'L', initial: '2' },

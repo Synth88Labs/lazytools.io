@@ -72,7 +72,7 @@ export default function CoffeeRatioTool() {
         </div>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">The "golden ratio" is about 1:15 to 1:18 (coffee:water) by weight — lower is stronger. Water is measured by weight; 1 g ≈ 1 mL. Weighing beats scooping for consistency. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">The "golden ratio" is about 1:15 to 1:18 (coffee:water) by weight, lower is stronger. Water is measured by weight; 1 g ≈ 1 mL. Weighing beats scooping for consistency. 🔒 In your browser.</p>
     </div>
   );
 }

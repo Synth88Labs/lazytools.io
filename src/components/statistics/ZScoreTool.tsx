@@ -42,7 +42,7 @@ export default function ZScoreTool() {
         <p class="mt-4 text-sm text-slate-500">Enter a value, mean and a positive standard deviation.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">A z-score (standard score) is how many standard deviations a value sits from the mean: z = (x − μ) ÷ σ. A positive z is above the mean, negative below. Assuming a normal distribution, the percentile is the area to the left under the bell curve — so z = 0 is the 50th percentile and z = 1.96 is about the 97.5th. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">A z-score (standard score) is how many standard deviations a value sits from the mean: z = (x − μ) ÷ σ. A positive z is above the mean, negative below. Assuming a normal distribution, the percentile is the area to the left under the bell curve, so z = 0 is the 50th percentile and z = 1.96 is about the 97.5th. 🔒 In your browser.</p>
     </div>
   );
 }

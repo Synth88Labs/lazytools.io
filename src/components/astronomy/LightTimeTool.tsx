@@ -72,7 +72,7 @@ export default function LightTimeTool() {
         <p class="mt-4 text-sm text-slate-500">Enter a distance.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Light travels 299,792.458 km every second. So you see the Moon as it was 1.3 seconds ago, the Sun 8.3 minutes ago, and the nearest star over 4 years ago. Units: 1 AU = Earth–Sun distance, 1 light-year ≈ 9.46 trillion km, 1 parsec ≈ 3.26 ly. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Light travels 299,792.458 km every second. So you see the Moon as it was 1.3 seconds ago, the Sun 8.3 minutes ago, and the nearest star over 4 years ago. Units: 1 AU = Earth, Sun distance, 1 light-year ≈ 9.46 trillion km, 1 parsec ≈ 3.26 ly. 🔒 In your browser.</p>
     </div>
   );
 }

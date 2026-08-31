@@ -3,15 +3,15 @@ import ContentPage from '../layouts/ContentPage.astro';
 ---
 
 <ContentPage
-  title="Privacy Policy — What We Collect (Almost Nothing) | LazyTools"
-  description="LazyTools processes your files and inputs entirely in your browser — they are never uploaded. We use Google Analytics to measure page visits, which sets cookies; we run no ads and never sell data. Here's exactly what is and isn't collected, and how to opt out."
+  title="Privacy Policy, What We Collect (Almost Nothing) | LazyTools"
+  description="LazyTools processes your files and inputs entirely in your browser. They are never uploaded. We use Google Analytics to measure page visits, which sets cookies; we run no ads and never sell data. Here's exactly what is and isn't collected, and how to opt out."
   heading="Privacy Policy"
   updated="July 12, 2026"
 >
   <p>
     <strong>Plain-English summary:</strong> anything you type into a tool or any file you process stays on your
-    device — we never receive it, so we can't store, sell or leak it. Separately, to understand which tools people
-    find useful, we use <strong>Google Analytics</strong> to measure page visits — but <strong>only if you accept
+    device. We never receive it, so we can't store, sell or leak it. Separately, to understand which tools people
+    find useful, we use <strong>Google Analytics</strong> to measure page visits, but <strong>only if you accept
     our cookie banner</strong>. Analytics is off by default; until you consent, no analytics cookie is set and no
     usage data is sent. If you accept, it sets cookies and sends usage data (such as the pages you view and a
     truncated IP) to Google. We run <strong>no advertising</strong> and never sell your data, and you can
@@ -20,44 +20,44 @@ import ContentPage from '../layouts/ContentPage.astro';
 
   <h2>1. What we never collect</h2>
   <ul>
-    <li>The values you type into tools, the files you process, and any results — all processing happens locally in your browser (<a href="/how-it-works/">how it works</a>), and none of it is ever transmitted to us or to Google. Analytics records that you <em>visited</em> a tool's page, never the content you work with on it.</li>
-    <li>Accounts, names, or email addresses — there is no sign-up, and we hold no customer data.</li>
-    <li>Advertising or cross-site ad-targeting — we run no ad networks and do not sell or share your data for advertising.</li>
+    <li>The values you type into tools, the files you process, and any results, all processing happens locally in your browser (<a href="/how-it-works/">how it works</a>), and none of it is ever transmitted to us or to Google. Analytics records that you <em>visited</em> a tool's page, never the content you work with on it.</li>
+    <li>Accounts, names, or email addresses. There is no sign-up, and we hold no customer data.</li>
+    <li>Advertising or cross-site ad-targeting. We run no ad networks and do not sell or share your data for advertising.</li>
   </ul>
 
   <h2>2. What we do handle</h2>
   <ul>
     <li>
-      <strong>Google Analytics (GA4).</strong> We include Google's analytics tag on our pages to understand how the site is used and which tools are worth improving — but it stays dormant until you accept our cookie banner (we use Google Consent Mode, which defaults <code>analytics_storage</code> to denied). Once you consent, it sets first-party cookies (for example <code>_ga</code> and <code>_ga_&lt;id&gt;</code>) and sends usage data to Google LLC, which processes it as our data processor. With GA4's default "enhanced measurement," this can include:
+      <strong>Google Analytics (GA4).</strong> We include Google's analytics tag on our pages to understand how the site is used and which tools are worth improving, but it stays dormant until you accept our cookie banner (we use Google Consent Mode, which defaults <code>analytics_storage</code> to denied). Once you consent, it sets first-party cookies (for example <code>_ga</code> and <code>_ga_&lt;id&gt;</code>) and sends usage data to Google LLC, which processes it as our data processor. With GA4's default "enhanced measurement," this can include:
       <ul>
         <li>pages you view, and referring links that brought you;</li>
-        <li>engagement signals — how long you're active on a page, how far you scroll, clicks on outbound links, site-search queries typed into our search box, and file downloads;</li>
+        <li>engagement signals, how long you're active on a page, how far you scroll, clicks on outbound links, site-search queries typed into our search box, and file downloads;</li>
         <li>general device and browser information (type, operating system, screen size, language);</li>
         <li>an <strong>approximate, city-level location</strong> derived from your IP address (Google does not log the full IP address for EU/EEA/UK traffic);</li>
         <li>a pseudonymous identifier stored in the cookie so returning visits can be recognised.</li>
       </ul>
-      This measures how you use the pages — <strong>never the content you type into a tool or the files you process</strong>, which stay on your device. Google may process this data on servers outside your country, including the United States, under its own <a href="https://business.safety.google/adsprocessorterms/" rel="noopener">data-processing terms</a>. Data is retained for the period configured in Google Analytics (GA4 offers retention windows of 2 to 14 months for user-level data). You can <a href="#optout">opt out</a> at any time, as described below.
+      This measures how you use the pages, <strong>never the content you type into a tool or the files you process</strong>, which stay on your device. Google may process this data on servers outside your country, including the United States, under its own <a href="https://business.safety.google/adsprocessorterms/" rel="noopener">data-processing terms</a>. Data is retained for the period configured in Google Analytics (GA4 offers retention windows of 2 to 14 months for user-level data). You can <a href="#optout">opt out</a> at any time, as described below.
     </li>
-    <li><strong>Standard server logs.</strong> Like every website, our hosting provider (Namecheap) automatically records basic web-server logs — IP address, requested URL and timestamp — for security and reliability. These are ordinary host logs, retained for a limited period; we do not use them to build profiles.</li>
-    <li><strong>Opt-in anonymous ratings.</strong> If — and only if — you click to rate a tool, we store just the tool's name and your star value (1–5), plus a timestamp. As the <a href="https://github.com/Synth88Labs/lazytools.io" rel="noopener">source code</a> shows, this records <strong>no IP address, no cookie, no user agent and no identifier</strong>. Whether you've rated a tool is remembered only in your own browser's local storage, never sent to us.</li>
+    <li><strong>Standard server logs.</strong> Like every website, our hosting provider (Namecheap) automatically records basic web-server logs, IP address, requested URL and timestamp, for security and reliability. These are ordinary host logs, retained for a limited period; we do not use them to build profiles.</li>
+    <li><strong>Opt-in anonymous ratings.</strong> If, and only if. You click to rate a tool, we store just the tool's name and your star value (1-5), plus a timestamp. As the <a href="https://github.com/Synth88Labs/lazytools.io" rel="noopener">source code</a> shows, this records <strong>no IP address, no cookie, no user agent and no identifier</strong>. Whether you've rated a tool is remembered only in your own browser's local storage, never sent to us.</li>
   </ul>
 
   <h2 id="optout">3. How to opt out of analytics</h2>
   <ul>
-    <li><strong>Decline the cookie banner</strong> — analytics stays off, which is the default until you accept. To withdraw consent after accepting, clear this site's cookies/site data (which resets the banner) and choose Decline.</li>
+    <li><strong>Decline the cookie banner</strong>, analytics stays off, which is the default until you accept. To withdraw consent after accepting, clear this site's cookies/site data (which resets the banner) and choose Decline.</li>
     <li>Install Google's official <a href="https://tools.google.com/dlpage/gaoptout" rel="noopener">Analytics Opt-out Browser Add-on</a>, which stops GA on every site you visit.</li>
     <li>Use your browser's tracking protection or a content blocker (most block Google Analytics), or block third-party/analytics cookies in your browser settings.</li>
     <li>Clearing your cookies removes the analytics identifiers stored on your device.</li>
   </ul>
-  <p>The tools themselves work identically whether or not analytics is blocked — none of them depend on it.</p>
+  <p>The tools themselves work identically whether or not analytics is blocked, none of them depend on it.</p>
 
   <h2>4. Legal bases and your rights (GDPR/CCPA)</h2>
   <p>
-    Analytics cookies are set only after your <strong>prior consent</strong> — we ask via a cookie banner and, using
+    Analytics cookies are set only after your <strong>prior consent</strong>. We ask via a cookie banner and, using
     Google Consent Mode, keep analytics denied by default until you accept, satisfying the EU ePrivacy requirement.
     The standard host logs are handled under legitimate interest (operating and securing a free service), and the
     ratings you voluntarily submit are handled with your consent. You have the right to access, delete or object
-    to processing — though because we hold no accounts and no directly identifying data, most such requests have
+    to processing, though because we hold no accounts and no directly identifying data, most such requests have
     little to act on beyond the analytics data held by Google. You can exercise the analytics opt-out above at any
     time, and you can always <a href="/contact/">contact us</a> with any privacy question or concern.
   </p>

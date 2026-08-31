@@ -26,7 +26,7 @@ export default function EyeRestTool() {
   useEffect(() => {
     if (left > 0) return;
     if (cfg.sound) chime(phase === 'work' ? 620 : 480);
-    if (typeof Notification !== 'undefined' && Notification.permission === 'granted') new Notification(phase === 'work' ? '👀 Look 20 feet away for 20 seconds' : 'Break over — back to it');
+    if (typeof Notification !== 'undefined' && Notification.permission === 'granted') new Notification(phase === 'work' ? '👀 Look 20 feet away for 20 seconds' : 'Break over, back to it');
     if (phase === 'work') { setPhase('rest'); setLeft(cfg.rest); } else { setPhase('work'); setLeft(cfg.work * 60); }
   }, [left]);
 
@@ -38,7 +38,7 @@ export default function EyeRestTool() {
     <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
       <div class={`rounded-2xl border p-6 text-center ${phase === 'rest' ? 'border-mint-300 bg-mint-50' : 'border-slate-200 bg-white'}`}>
         <p class={`text-sm font-bold uppercase tracking-widest ${phase === 'rest' ? 'text-mint-700' : 'text-slate-500'}`}>
-          {phase === 'rest' ? '👀 Rest your eyes — look ~20 ft (6 m) away' : '💻 Focus time'}
+          {phase === 'rest' ? '👀 Rest your eyes, look ~20 ft (6 m) away' : '💻 Focus time'}
         </p>
         <p class="mt-2 font-mono text-6xl font-extrabold tabular-nums text-slate-900">{mm}:{ss}</p>
         <p class="mt-1 text-sm text-slate-500">{phase === 'work' ? `next eye break in ${mm}:${ss}` : `look away for ${left}s`}</p>

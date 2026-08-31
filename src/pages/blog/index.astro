@@ -16,7 +16,7 @@ function categoryOf(post: (typeof posts)[number]): { slug: string; name: string 
   return cat ? { slug: cat.slug, name: cat.name } : { slug: 'general', name: 'General' };
 }
 
-/** A handful of broad topic groups for the filter pills — all tool categories roll up into these. */
+/** A handful of broad topic groups for the filter pills, all tool categories roll up into these. */
 const GROUP_ORDER = ['science', 'home', 'money', 'files', 'dev', 'everyday'] as const;
 const GROUP_NAME: Record<string, string> = {
   science: 'Science & Math', home: 'Home & Auto', money: 'Money & Health',
@@ -46,7 +46,7 @@ const crumbs = [
 ---
 
 <Base
-  title="Blog — Guides & Explainers | LazyTools"
+  title="Blog, Guides & Explainers | LazyTools"
   description="Practical guides for everyday conversions, honest tool comparisons, and explainers on online-tool privacy from LazyTools."
   schema={[breadcrumbSchema(crumbs)]}
   noindex={!hasLivePosts}
@@ -58,7 +58,7 @@ const crumbs = [
       Practical guides for everyday conversions, and honest explainers on how online tools handle your data.
     </p>
     <p class="mt-1 text-sm text-slate-500">
-      Posts are contributed and editorially reviewed — corrections and suggestions welcome via the
+      Posts are contributed and editorially reviewed, corrections and suggestions welcome via the
       <a href="/contact/" class="font-medium text-brand-700 underline decoration-slate-300 underline-offset-2 hover:text-brand-800">contact page</a>.
     </p>
 

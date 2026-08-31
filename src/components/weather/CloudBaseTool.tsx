@@ -41,14 +41,14 @@ export default function CloudBaseTool() {
         ) : (
           <div class="mt-4 grid gap-3 sm:grid-cols-2">
             <div class="rounded-xl bg-white p-4 text-center ring-2 ring-brand-200"><p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Estimated cloud base (AGL)</p><p class="mt-1 text-4xl font-extrabold text-brand-800">{fmt(r.ft)} <span class="text-lg text-slate-500">ft</span></p><p class="mt-1 text-xs text-slate-400">{fmt(r.m)} m above ground</p></div>
-            <div class="rounded-xl bg-white p-4 text-center ring-1 ring-slate-200"><p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Temp–dew point spread</p><p class="mt-1 text-3xl font-extrabold text-slate-700">{fmt(r.spreadF)}°F</p></div>
+            <div class="rounded-xl bg-white p-4 text-center ring-1 ring-slate-200"><p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Temp, dew point spread</p><p class="mt-1 text-3xl font-extrabold text-slate-700">{fmt(r.spreadF)}°F</p></div>
           </div>
         )
       ) : (
         <p class="mt-4 text-sm text-slate-500">Enter the surface temperature and dew point.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">A pilot's rule of thumb: cumulus cloud base ≈ (temperature − dew point in °F) ÷ 4.4 × 1,000 feet, or about 400 ft per °C of spread. It works best for fair-weather convective (cumulus) cloud on a well-mixed afternoon — it's an estimate, not for stratus, fronts or stable air, and not a substitute for aviation weather reports. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">A pilot's rule of thumb: cumulus cloud base ≈ (temperature − dew point in °F) ÷ 4.4 × 1,000 feet, or about 400 ft per °C of spread. It works best for fair-weather convective (cumulus) cloud on a well-mixed afternoon, it's an estimate, not for stratus, fronts or stable air, and not a substitute for aviation weather reports. 🔒 In your browser.</p>
     </div>
   );
 }

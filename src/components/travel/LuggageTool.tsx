@@ -57,7 +57,7 @@ export default function LuggageTool() {
         <p class="mt-4 text-sm text-slate-500">Enter your bag's three dimensions.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Limits vary by airline and fare — these are common industry references: cabin bags around 56 × 36 × 23 cm (US legacy) or the IATA ~55 × 40 × 20 cm guideline, and checked bags to a 158 cm (62 in) linear total. Budget carriers (Ryanair, easyJet) and weight limits (cabin ~7–10 kg, checked ~23 kg) differ — always check your airline before you pack. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Limits vary by airline and fare. These are common industry references: cabin bags around 56 × 36 × 23 cm (US legacy) or the IATA ~55 × 40 × 20 cm guideline, and checked bags to a 158 cm (62 in) linear total. Budget carriers (Ryanair, easyJet) and weight limits (cabin ~7-10 kg, checked ~23 kg) differ, always check your airline before you pack. 🔒 In your browser.</p>
     </div>
   );
 }

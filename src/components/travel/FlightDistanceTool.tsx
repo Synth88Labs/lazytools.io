@@ -98,7 +98,7 @@ export default function FlightDistanceTool() {
         <p class="mt-4 text-sm text-slate-500">Pick two cities, or enter valid latitudes (−90 to 90) and longitudes (−180 to 180).</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">This is the <strong>great-circle (straight-line)</strong> distance — the shortest path over a spherical Earth (mean radius 6,371 km). Real flights are longer because of airways, air-traffic routing and winds, so the flight time (distance ÷ ~830 km/h cruise + ~30 min for taxi/climb/descent) is a rough estimate only. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">This is the <strong>great-circle (straight-line)</strong> distance, the shortest path over a spherical Earth (mean radius 6,371 km). Real flights are longer because of airways, air-traffic routing and winds, so the flight time (distance ÷ ~830 km/h cruise + ~30 min for taxi/climb/descent) is a rough estimate only. 🔒 In your browser.</p>
     </div>
   );
 }

@@ -104,7 +104,7 @@ export default function ResizeToKbTool() {
           break;
         }
 
-        // Even minimum quality is too big — shrink and try again.
+        // Even minimum quality is too big, shrink and try again.
         const nextScale = scale * SCALE_STEP;
         const nextW = Math.round(dims.w * nextScale);
         if (nextScale < MIN_SCALE || nextW < MIN_WIDTH) break;
@@ -131,7 +131,7 @@ export default function ResizeToKbTool() {
       } else if (best) {
         const smallestKb = Math.max(1, Math.round(best.bytes / 1024));
         setError(
-          `Smallest achievable ≈ ${smallestKb} KB — lower the target or crop the image first.`,
+          `Smallest achievable ≈ ${smallestKb} KB, lower the target or crop the image first.`,
         );
       } else {
         setError('Could not compress this image.');
@@ -160,7 +160,7 @@ export default function ResizeToKbTool() {
         <input type="file" accept="image/*" onChange={onFile} class="sr-only" />
         <span class="text-sm font-semibold text-brand-700">{file ? file.name : 'Choose an image'}</span>
         <span class="mt-1 block text-xs text-slate-500">
-          {file ? `${fmtSize(file.size)} · ${dims.w}×${dims.h}px` : 'JPEG, PNG, WebP — processed on your device'}
+          {file ? `${fmtSize(file.size)} · ${dims.w}×${dims.h}px` : 'JPEG, PNG, WebP, processed on your device'}
         </span>
       </label>
 

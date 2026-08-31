@@ -35,10 +35,10 @@ export default function MolalityTool() {
           <div class="rounded-xl bg-white p-4 text-center ring-1 ring-slate-200"><p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Molar mass</p><p class="mt-1 font-mono text-2xl font-bold text-slate-800">{fmt(res.mm)} g/mol</p></div>
         </div>
       ) : res && 'error' in res ? (
-        <p class="mt-4 rounded-lg bg-amber-50 p-3 text-sm text-amber-700 ring-1 ring-amber-200">Couldn't read that formula — check the element symbols (e.g. NaCl, C6H12O6, CaCl2).</p>
+        <p class="mt-4 rounded-lg bg-amber-50 p-3 text-sm text-amber-700 ring-1 ring-amber-200">Couldn't read that formula, check the element symbols (e.g. NaCl, C6H12O6, CaCl2).</p>
       ) : <p class="mt-4 text-sm text-slate-500">Enter a formula, solute mass and solvent mass.</p>}
 
-      <p class="mt-4 text-xs text-slate-500">Molality is moles of solute per kilogram of solvent: b = (mass ÷ molar mass) ÷ kg solvent. Unlike molarity (per litre of solution), molality uses solvent mass, so it doesn't change with temperature — which is why colligative-property work uses it. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Molality is moles of solute per kilogram of solvent: b = (mass ÷ molar mass) ÷ kg solvent. Unlike molarity (per litre of solution), molality uses solvent mass, so it doesn't change with temperature, which is why colligative-property work uses it. 🔒 In your browser.</p>
     </div>
   );
 }

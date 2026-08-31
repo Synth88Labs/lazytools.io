@@ -11,10 +11,10 @@ const crumbs = [
   { name: 'Astronomy & Space', url: '/astronomy/' },
 ];
 const faqs = [
-  { q: 'Are these astronomy calculators accurate?', a: 'Yes — they use established astronomical constants and algorithms: the synodic month for lunar phase, the NOAA solar-position algorithm for sunrise/sunset (±1 minute), NASA planetary data for gravity and orbits, and the IAU-defined light-year and parsec. Sources are cited on each tool.' },
-  { q: 'Do the sunrise and moon tools use my location?', a: 'You enter your latitude, longitude and date yourself (or pick a city) — nothing is fetched or tracked. The moon phase needs only a date.' },
-  { q: 'Is this real-time astronomical data?', a: 'No — these are calculators. They compute phases, times, distances and optics from the values you enter and fixed astronomical constants, not a live feed.' },
-  { q: 'Is my data uploaded?', a: 'No. Every tool runs entirely in your browser — nothing is sent to a server, and they work offline.' },
+  { q: 'Are these astronomy calculators accurate?', a: 'Yes. They use established astronomical constants and algorithms: the synodic month for lunar phase, the NOAA solar-position algorithm for sunrise/sunset (±1 minute), NASA planetary data for gravity and orbits, and the IAU-defined light-year and parsec. Sources are cited on each tool.' },
+  { q: 'Do the sunrise and moon tools use my location?', a: 'You enter your latitude, longitude and date yourself (or pick a city), nothing is fetched or tracked. The moon phase needs only a date.' },
+  { q: 'Is this real-time astronomical data?', a: 'No. These are calculators. They compute phases, times, distances and optics from the values you enter and fixed astronomical constants, not a live feed.' },
+  { q: 'Is my data uploaded?', a: 'No. Every tool runs entirely in your browser, nothing is sent to a server, and they work offline.' },
 ];
 const schema = [
   breadcrumbSchema(crumbs),
@@ -24,7 +24,7 @@ const schema = [
 ---
 
 <Base
-  title="Astronomy & Space Calculators — Moon Phase, Sunrise, Planets | LazyTools"
+  title="Astronomy & Space Calculators, Moon Phase, Sunrise, Planets | LazyTools"
   description="Free astronomy calculators that run in your browser: moon phase, sunrise & sunset (NOAA algorithm), weight and age on other planets, light travel time, angular size, telescope magnification and stellar parallax. Sourced constants, no upload."
   schema={schema}
 >
@@ -32,7 +32,7 @@ const schema = [
     <Breadcrumbs items={crumbs} />
     <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Astronomy & Space Calculators</h1>
     <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
-      Explore the sky by the numbers — find the moon phase and sunrise for any date, discover your weight and
+      Explore the sky by the numbers, find the moon phase and sunrise for any date, discover your weight and
       age across the solar system, work out light travel times and angular sizes, and size up a telescope.
       Real astronomical algorithms and NASA data, running entirely in your browser.
     </p>

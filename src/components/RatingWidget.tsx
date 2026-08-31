@@ -49,7 +49,7 @@ export default function RatingWidget({ toolSlug, avg, count }: Props) {
     <div class="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-slate-200 bg-white px-4 py-3">
       <div class="flex items-center gap-3">
         <span class="text-sm font-medium text-slate-600">
-          {state === 'done' ? 'Thanks for rating!' : state === 'error' ? "Couldn't save — try again later" : 'Rate this tool:'}
+          {state === 'done' ? 'Thanks for rating!' : state === 'error' ? "Couldn't save, try again later" : 'Rate this tool:'}
         </span>
         <div class="flex" role="radiogroup" aria-label="Rate this tool from 1 to 5 stars" onMouseLeave={() => setHover(0)}>
           {[1, 2, 3, 4, 5].map((s) => (
@@ -72,7 +72,7 @@ export default function RatingWidget({ toolSlug, avg, count }: Props) {
         </div>
       </div>
       <span class="text-xs text-slate-400">
-        {avg && count ? `${avg.toFixed(1)} ★ · ${count.toLocaleString()} ratings · ` : ''}Anonymous — no account, no identifier
+        {avg && count ? `${avg.toFixed(1)} ★ · ${count.toLocaleString()} ratings · ` : ''}Anonymous, no account, no identifier
       </span>
     </div>
   );

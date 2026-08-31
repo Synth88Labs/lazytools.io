@@ -38,7 +38,7 @@ export default function AirFryerTool() {
         </div>
       ) : <p class="mt-4 text-sm text-slate-500">Enter the oven temperature and time.</p>}
 
-      <p class="mt-4 text-xs text-slate-500">The common rule for converting an oven recipe to an air fryer is to lower the temperature by about 25 °F (≈15 °C) and cut the time by roughly 20%, because an air fryer\'s rapid convection cooks faster and browns more. Air fryers vary, so check for doneness early the first time and adjust — think of it as a compact convection oven. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">The common rule for converting an oven recipe to an air fryer is to lower the temperature by about 25 °F (≈15 °C) and cut the time by roughly 20%, because an air fryer\'s rapid convection cooks faster and browns more. Air fryers vary, so check for doneness early the first time and adjust, think of it as a compact convection oven. 🔒 In your browser.</p>
     </div>
   );
 }

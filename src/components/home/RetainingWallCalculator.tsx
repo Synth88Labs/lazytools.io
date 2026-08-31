@@ -70,7 +70,7 @@ export default function RetainingWallCalculator() {
         <p class="mt-4 text-sm text-slate-500">Enter the wall length and height.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Blocks = ⌈length ÷ block width⌉ per course × ⌈height ÷ block height⌉ courses, plus one cap course. Base allows ~6″ (15 cm) of compacted gravel. Walls over ~3–4 ft usually need engineering, geogrid and a permit — check local codes. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Blocks = ⌈length ÷ block width⌉ per course × ⌈height ÷ block height⌉ courses, plus one cap course. Base allows ~6″ (15 cm) of compacted gravel. Walls over ~3-4 ft usually need engineering, geogrid and a permit, check local codes. 🔒 In your browser.</p>
     </div>
   );
 }

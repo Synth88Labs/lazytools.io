@@ -5,7 +5,7 @@ const M_PER_MILE = 1609.344;
 const num = (s: string) => { const n = parseFloat(s); return isFinite(n) && n > 0 ? n : null; };
 const fmt = (x: number) => Number(x.toFixed(1)).toString();
 
-// Fitness rating bands (ml/kg/min) — indicative, general adult reference.
+// Fitness rating bands (ml/kg/min), indicative, general adult reference.
 function rating(vo2: number): string {
   if (vo2 >= 60) return 'Elite';
   if (vo2 >= 52) return 'Excellent';
@@ -51,7 +51,7 @@ export default function Vo2MaxTool() {
         <p class="mt-4 text-sm text-slate-500">Enter the distance you covered in 12 minutes.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Cooper formula: VO₂ max = (distance in metres − 504.9) ÷ 44.73. An estimate from a field test — actual VO₂ max needs lab testing, and ratings vary with age and sex. Only attempt a maximal effort if you're healthy and cleared to exercise. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Cooper formula: VO₂ max = (distance in metres − 504.9) ÷ 44.73. An estimate from a field test, actual VO₂ max needs lab testing, and ratings vary with age and sex. Only attempt a maximal effort if you're healthy and cleared to exercise. 🔒 In your browser.</p>
     </div>
   );
 }

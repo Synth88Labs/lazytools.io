@@ -28,7 +28,7 @@ export default function BakersPercentageTool() {
 
   return (
     <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
-      <label class="block"><span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Flour (100% — the baseline)</span>
+      <label class="block"><span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Flour (100%, the baseline)</span>
         <input type="number" step="any" min="0" value={flour} onInput={(e) => setFlour((e.target as HTMLInputElement).value)} class={`${cell} w-40 font-mono`} /> <span class="text-sm text-slate-500">g</span></label>
 
       <div class="mt-4 overflow-x-auto" role="group" tabIndex={0} aria-label="Baker's percentage table">
@@ -65,7 +65,7 @@ export default function BakersPercentageTool() {
         </div>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Baker's percentages express every ingredient relative to the flour (always 100%). Hydration counts rows named water/milk/juice/beer. A lean bread is ~60–65% hydration; ciabatta and focaccia run 75%+. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Baker's percentages express every ingredient relative to the flour (always 100%). Hydration counts rows named water/milk/juice/beer. A lean bread is ~60-65% hydration; ciabatta and focaccia run 75%+. 🔒 In your browser.</p>
     </div>
   );
 }

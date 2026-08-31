@@ -31,7 +31,7 @@ export default function ColorTempTool() {
         </div>
       </div>
 
-      <p class="mt-4 text-xs text-slate-500">Colour temperature describes the colour of light on the Kelvin scale: low values are warm and orange (candlelight ~1900 K), around 5000–6500 K is neutral daylight white, and higher values are cool and blue. This converts a temperature to an approximate on-screen sRGB colour using the widely-used Tanner Helland approximation — a visual guide, not a calibrated blackbody spectrum. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Colour temperature describes the colour of light on the Kelvin scale: low values are warm and orange (candlelight ~1900 K), around 5000-6500 K is neutral daylight white, and higher values are cool and blue. This converts a temperature to an approximate on-screen sRGB colour using the widely-used Tanner Helland approximation, a visual guide, not a calibrated blackbody spectrum. 🔒 In your browser.</p>
     </div>
   );
 }

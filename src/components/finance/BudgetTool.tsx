@@ -40,7 +40,7 @@ export default function BudgetTool() {
         </div>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">The 50/30/20 rule (popularised by Senator Elizabeth Warren) splits after-tax income into 50% needs, 30% wants and 20% savings and debt repayment — a simple starting framework, not a strict rule. High-cost-of-living areas often can&rsquo;t hit 50% needs; adjust the split to your situation and prioritise an emergency fund and any high-interest debt. Educational information, not financial advice. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">The 50/30/20 rule (popularised by Senator Elizabeth Warren) splits after-tax income into 50% needs, 30% wants and 20% savings and debt repayment, a simple starting framework, not a strict rule. High-cost-of-living areas often can&rsquo;t hit 50% needs; adjust the split to your situation and prioritise an emergency fund and any high-interest debt. Educational information, not financial advice. 🔒 In your browser.</p>
     </div>
   );
 }

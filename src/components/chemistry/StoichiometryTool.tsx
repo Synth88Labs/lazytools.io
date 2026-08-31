@@ -34,7 +34,7 @@ export default function StoichiometryTool() {
         <>
           <p class="mt-2 text-center font-mono text-sm text-slate-700">Balanced: <span class="font-bold text-brand-700">{balanced.data.balancedString}</span></p>
 
-          <p class="mt-4 mb-1 text-xs font-semibold uppercase tracking-wide text-slate-500">Reactant amounts (grams) — enter one or more</p>
+          <p class="mt-4 mb-1 text-xs font-semibold uppercase tracking-wide text-slate-500">Reactant amounts (grams), enter one or more</p>
           <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {reactants.map((r) => (
               <label class="block">
@@ -71,7 +71,7 @@ export default function StoichiometryTool() {
                         <td class="px-3 py-2 text-right font-mono text-slate-700">{fmt(s.producedMoles)}</td>
                         <td class="px-3 py-2 text-right font-mono font-bold text-brand-700">{fmt(s.producedMass)}</td>
                         <td class="px-3 py-2 text-xs text-slate-500">
-                          {s.role === 'product' ? 'produced' : s.formula === result.limiting ? 'limiting — fully consumed' : s.remainingMass != null ? `${fmt(s.remainingMass)} g left over` : 'reactant'}
+                          {s.role === 'product' ? 'produced' : s.formula === result.limiting ? 'limiting, fully consumed' : s.remainingMass != null ? `${fmt(s.remainingMass)} g left over` : 'reactant'}
                         </td>
                       </tr>
                     ))}

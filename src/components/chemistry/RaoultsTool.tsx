@@ -29,7 +29,7 @@ export default function RaoultsTool() {
         </div>
       ) : <p class="mt-4 rounded-lg bg-amber-50 p-3 text-sm text-amber-700 ring-1 ring-amber-200">Enter P° and a solvent mole fraction between 0 and 1.</p>}
 
-      <p class="mt-4 text-xs text-slate-500">Raoult\'s law: the vapour pressure of an ideal solution equals the solvent\'s mole fraction times its pure vapour pressure, P = X<sub>solvent</sub> × P°. A non-volatile solute lowers the vapour pressure by ΔP = X<sub>solute</sub> × P° — a colligative effect that also raises boiling point and lowers freezing point. The pressure units of the result match whatever units you enter for P° (e.g. mmHg, kPa). Real solutions deviate from ideal behaviour. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Raoult\'s law: the vapour pressure of an ideal solution equals the solvent\'s mole fraction times its pure vapour pressure, P = X<sub>solvent</sub> × P°. A non-volatile solute lowers the vapour pressure by ΔP = X<sub>solute</sub> × P°, a colligative effect that also raises boiling point and lowers freezing point. The pressure units of the result match whatever units you enter for P° (e.g. mmHg, kPa). Real solutions deviate from ideal behaviour. 🔒 In your browser.</p>
     </div>
   );
 }

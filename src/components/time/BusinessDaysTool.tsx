@@ -25,7 +25,7 @@ export default function BusinessDaysTool() {
       {r ? (
         <div class="mt-4 grid gap-3 sm:grid-cols-4">
           <div class="rounded-xl bg-white p-4 text-center ring-2 ring-brand-200"><p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Business days</p><p class="mt-1 text-3xl font-extrabold text-brand-800">{r.businessDays.toLocaleString()}</p></div>
-          <div class="rounded-xl bg-white p-4 text-center ring-1 ring-slate-200"><p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Weekdays (Mon–Fri)</p><p class="mt-1 text-2xl font-extrabold text-slate-700">{r.weekdays.toLocaleString()}</p></div>
+          <div class="rounded-xl bg-white p-4 text-center ring-1 ring-slate-200"><p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Weekdays (Mon, Fri)</p><p class="mt-1 text-2xl font-extrabold text-slate-700">{r.weekdays.toLocaleString()}</p></div>
           <div class="rounded-xl bg-white p-4 text-center ring-1 ring-slate-200"><p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Weekend days</p><p class="mt-1 text-2xl font-extrabold text-slate-700">{r.weekendDays.toLocaleString()}</p></div>
           <div class="rounded-xl bg-white p-4 text-center ring-1 ring-slate-200"><p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Total days</p><p class="mt-1 text-2xl font-extrabold text-slate-700">{r.totalDays.toLocaleString()}</p></div>
         </div>
@@ -33,7 +33,7 @@ export default function BusinessDaysTool() {
         <p class="mt-4 text-sm text-slate-500">Pick a start and end date.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Counts working days (Monday–Friday) from the start date to the end date, <strong>including both</strong> — useful for project deadlines, delivery estimates and leave. Weekends are excluded automatically; enter the number of public holidays that fall on weekdays in the range to subtract them (this tool doesn't know your country's holiday calendar). 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Counts working days (Monday, Friday) from the start date to the end date, <strong>including both</strong>, useful for project deadlines, delivery estimates and leave. Weekends are excluded automatically; enter the number of public holidays that fall on weekdays in the range to subtract them (this tool doesn't know your country's holiday calendar). 🔒 In your browser.</p>
     </div>
   );
 }

@@ -160,7 +160,7 @@ export default function CropImageTool() {
       a.click();
       a.remove();
       URL.revokeObjectURL(blobUrl);
-      setDone(`✓ Downloaded — ${c.w}×${c.h} px (${fmtSize(blob.size)})`);
+      setDone(`✓ Downloaded, ${c.w}×${c.h} px (${fmtSize(blob.size)})`);
     }, 'image/png');
   }
 
@@ -174,7 +174,7 @@ export default function CropImageTool() {
         <span class="mt-1 block text-xs text-slate-500">
           {file
             ? `${fmtSize(file.size)} · ${dims.w}×${dims.h}px`
-            : 'JPEG, PNG, WebP — processed on your device'}
+            : 'JPEG, PNG, WebP, processed on your device'}
         </span>
       </label>
 

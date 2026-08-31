@@ -14,15 +14,15 @@ const crumbs = [
 const faqs = [
   {
     q: 'Why do clothing and jewelry sizes differ between countries?',
-    a: 'Each region built its scale on different historical units — EU shoe sizes count Paris points, UK sizes count barleycorns, ring sizes range from US numbers to UK letters to ISO millimeters. The converters map between them using the standard published charts.',
+    a: 'Each region built its scale on different historical units, EU shoe sizes count Paris points, UK sizes count barleycorns, ring sizes range from US numbers to UK letters to ISO millimeters. The converters map between them using the standard published charts.',
   },
   {
     q: 'Are my measurements uploaded anywhere?',
-    a: 'No. Body measurements are exactly the kind of personal data that shouldn’t touch a server — these tools run entirely in your browser, transmit nothing, and work offline.',
+    a: 'No. Body measurements are exactly the kind of personal data that shouldn’t touch a server. These tools run entirely in your browser, transmit nothing, and work offline.',
   },
   {
     q: 'How accurate are converted sizes?',
-    a: 'Ring conversions are exact (all systems measure the same circumference). Shoe and bra conversions follow the standard charts, but manufacturers vary — the measurement-based inputs (foot length in cm, finger circumference in mm) are the most reliable route.',
+    a: 'Ring conversions are exact (all systems measure the same circumference). Shoe and bra conversions follow the standard charts, but manufacturers vary, the measurement-based inputs (foot length in cm, finger circumference in mm) are the most reliable route.',
   },
 ];
 
@@ -31,7 +31,7 @@ const schema = [
   collectionPageSchema({
     name: 'Size Converters',
     url: '/size/',
-    description: 'Ring, shoe and bra size converters across US, UK, EU and more — with measure-at-home guides. Private, in-browser.',
+    description: 'Ring, shoe and bra size converters across US, UK, EU and more, with measure-at-home guides. Private, in-browser.',
     items: SIZE_TOOLS.map((t) => ({ name: t.name, url: `/size/${t.slug}/` })),
   }),
   faqSchema(faqs),
@@ -39,15 +39,15 @@ const schema = [
 ---
 
 <Base
-  title="Size Converters — Ring, Shoe & Bra Sizes | LazyTools"
-  description="Convert ring, shoe and bra sizes between US, UK, EU and international systems — with measure-at-home guides and full charts. 100% in your browser."
+  title="Size Converters, Ring, Shoe & Bra Sizes | LazyTools"
+  description="Convert ring, shoe and bra sizes between US, UK, EU and international systems, with measure-at-home guides and full charts. 100% in your browser."
   schema={schema}
 >
   <div class="mx-auto max-w-5xl px-4 py-6">
     <Breadcrumbs items={crumbs} />
     <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Size Converters</h1>
     <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
-      International sizing, translated — rings, shoes and bras across US, UK, EU and more, plus
+      International sizing, translated, rings, shoes and bras across US, UK, EU and more, plus
       measure-at-home guides. Body measurements are personal data: here they never leave your browser.
     </p>
 
@@ -70,7 +70,7 @@ const schema = [
     <section class="prose-lazy mt-10">
       <h2>Why sizes never quite match</h2>
       <p>Clothing and accessory sizes are the least standardised numbers in everyday life: a US women's 8, a UK 12 and an EU 40 can all be the same dress, and shoe sizes shift by roughly a full size between US, UK and EU scales. Vanity sizing and brand-to-brand variation make the printed label only a starting point. These converters map between the common regional systems for <strong>ring, shoe, bra, clothing and hat sizes</strong>, so you can shop across borders with fewer returns.</p>
-      <p>The reliable approach is to measure and convert rather than guess: your foot length in millimetres, your ring's inside diameter, your band and cup measurements. Enter a measurement or a known size in one system and read off the equivalent in the others — instantly, and entirely in your browser.</p>
+      <p>The reliable approach is to measure and convert rather than guess: your foot length in millimetres, your ring's inside diameter, your band and cup measurements. Enter a measurement or a known size in one system and read off the equivalent in the others, instantly, and entirely in your browser.</p>
     </section>
 
     <FaqSection faqs={faqs} />

@@ -33,7 +33,7 @@ export default function OklchTool({ dir = 'hex-to-oklch' as Dir }: { dir?: Dir }
     <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
       <label class="block">
         <span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">
-          Color — HEX, RGB, HSL or oklch()
+          Color, HEX, RGB, HSL or oklch()
         </span>
         <div class="flex items-center gap-2">
           <ColorSwatchInput rgb={parsed?.rgb ?? null} onPick={setRaw} size="lg" />
@@ -53,7 +53,7 @@ export default function OklchTool({ dir = 'hex-to-oklch' as Dir }: { dir?: Dir }
               <p class="font-mono text-lg font-bold text-slate-900">{rgbToHex(parsed.rgb)}</p>
               {!parsed.inGamut && (
                 <p class="mt-1 rounded-full bg-amber-100 px-2 py-0.5 text-xs font-semibold text-amber-800">
-                  ⚠ Out of sRGB gamut — chroma reduced for this HEX fallback
+                  ⚠ Out of sRGB gamut, chroma reduced for this HEX fallback
                 </p>
               )}
             </div>
@@ -72,7 +72,7 @@ export default function OklchTool({ dir = 'hex-to-oklch' as Dir }: { dir?: Dir }
         </>
       ) : (
         <p class="mt-4 text-sm text-slate-500">
-          Enter a color as HEX (#1d87f1), rgb(…), hsl(…) or oklch(L% C H) — e.g. <code class="font-mono">oklch(62.8% 0.2577 29.2)</code>.
+          Enter a color as HEX (#1d87f1), rgb(…), hsl(…) or oklch(L% C H), e.g. <code class="font-mono">oklch(62.8% 0.2577 29.2)</code>.
         </p>
       )}
 

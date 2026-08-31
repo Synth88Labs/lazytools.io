@@ -3,7 +3,7 @@ import SolverTool from './SolverTool';
 export default function BeerLambertTool() {
   return (
     <SolverTool
-      formula="Beer–Lambert law: A = ε·l·c (absorbance = molar absorptivity × path length × concentration)."
+      formula="Beer, Lambert law: A = ε·l·c (absorbance = molar absorptivity × path length × concentration)."
       fields={[
         { key: 'A', label: 'Absorbance (A)', unit: '', initial: '0.65' },
         { key: 'eps', label: 'Molar absorptivity (ε)', unit: 'M⁻¹cm⁻¹', initial: '13000' },

@@ -67,7 +67,7 @@ export default function PrimingSugarTool() {
         <p class="mt-4 text-sm text-slate-500">Enter your target carbonation, beer temperature, batch volume and sugar.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Beer already holds dissolved CO₂ that depends on temperature — warmer beer holds less — so you only prime for the difference to your target. Use the highest temperature the beer reached after fermentation. Sugar factors are derived from CO₂ stoichiometry (corn sugar is dextrose monohydrate, so slightly more than table sugar by weight); published values vary a little. Dissolve the sugar in boiled water and mix gently to avoid oxidation. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Beer already holds dissolved CO₂ that depends on temperature, warmer beer holds less, so you only prime for the difference to your target. Use the highest temperature the beer reached after fermentation. Sugar factors are derived from CO₂ stoichiometry (corn sugar is dextrose monohydrate, so slightly more than table sugar by weight); published values vary a little. Dissolve the sugar in boiled water and mix gently to avoid oxidation. 🔒 In your browser.</p>
     </div>
   );
 }

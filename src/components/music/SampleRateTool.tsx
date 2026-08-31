@@ -32,7 +32,7 @@ export default function SampleRateTool() {
         <div class="rounded-xl bg-white p-4 text-center ring-1 ring-slate-200"><p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Data rate (mono)</p><p class="mt-1 text-2xl font-extrabold text-slate-700">{fmt(r.dataRateMono / 1000, 0)} <span class="text-base text-slate-500">kbps</span></p></div>
       </div>
 
-      <p class="mt-4 text-xs text-slate-500">The Nyquist–Shannon theorem says a sample rate can only represent frequencies up to half of it — the Nyquist frequency. So 44.1 kHz (CD) captures up to 22.05 kHz, just above human hearing. Bit depth sets the dynamic range at about 6.02 dB per bit, so 16-bit gives ~96 dB and 24-bit ~144 dB of range between the quietest and loudest sound. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">The Nyquist, Shannon theorem says a sample rate can only represent frequencies up to half of it, the Nyquist frequency. So 44.1 kHz (CD) captures up to 22.05 kHz, just above human hearing. Bit depth sets the dynamic range at about 6.02 dB per bit, so 16-bit gives ~96 dB and 24-bit ~144 dB of range between the quietest and loudest sound. 🔒 In your browser.</p>
     </div>
   );
 }

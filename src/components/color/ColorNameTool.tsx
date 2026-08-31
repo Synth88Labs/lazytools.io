@@ -6,7 +6,7 @@ import ColorSwatchInput from './ColorSwatchInput';
 
 // precompute Lab for the named set once
 const NAMED = CSS_COLOR_NAMES.map((c) => ({ ...c, rgb: parseColor(c.hex)!, lab: rgbToLab(parseColor(c.hex)!) }));
-// de-dup exact hex aliases (aqua/cyan, magenta/fuchsia) — keep both names shown when identical
+// de-dup exact hex aliases (aqua/cyan, magenta/fuchsia), keep both names shown when identical
 function nearest(rgb: RGB, n = 5) {
   const lab = rgbToLab(rgb);
   return NAMED
@@ -24,7 +24,7 @@ export default function ColorNameTool() {
   return (
     <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
       <label class="block">
-        <span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Color — HEX, RGB or HSL</span>
+        <span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Color, HEX, RGB or HSL</span>
         <div class="flex items-center gap-2">
           <ColorSwatchInput rgb={rgb} onPick={setRaw} size="lg" />
           <input value={raw} spellcheck={false} onInput={(e) => setRaw((e.target as HTMLInputElement).value)}
@@ -62,7 +62,7 @@ export default function ColorNameTool() {
       )}
 
       <p class="mt-4 text-xs text-slate-500">
-        Nearest of the {CSS_COLOR_NAMES.length} CSS Color 4 named colors by CIEDE2000 (ΔE00) perceptual distance — a chatbot guesses; this measures. 🔒 Computed in your browser.
+        Nearest of the {CSS_COLOR_NAMES.length} CSS Color 4 named colors by CIEDE2000 (ΔE00) perceptual distance, a chatbot guesses; this measures. 🔒 Computed in your browser.
       </p>
     </div>
   );

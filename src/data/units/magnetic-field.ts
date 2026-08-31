@@ -11,12 +11,12 @@ export const magneticField: Quantity = {
   baseUnit: 't',
   icon: '🧲',
   description:
-    'Convert magnetic flux density (magnetic field) units — tesla, gauss, millitesla, microtesla, milligauss and nanotesla. 1 tesla = 10,000 gauss.',
+    'Convert magnetic flux density (magnetic field) units, tesla, gauss, millitesla, microtesla, milligauss and nanotesla. 1 tesla = 10,000 gauss.',
   units: [
-    { id: 't', name: 'Tesla', plural: 'teslas', symbol: 'T', slug: 'tesla', factor: 1, system: 'si', definition: 'The SI unit of magnetic flux density. A fridge magnet is a few millitesla; an MRI scanner runs at 1.5–3 T. Earth\'s field is only about 50 microtesla.' },
+    { id: 't', name: 'Tesla', plural: 'teslas', symbol: 'T', slug: 'tesla', factor: 1, system: 'si', definition: 'The SI unit of magnetic flux density. A fridge magnet is a few millitesla; an MRI scanner runs at 1.5-3 T. Earth\'s field is only about 50 microtesla.' },
     { id: 'mt', name: 'Millitesla', plural: 'milliteslas', symbol: 'mT', slug: 'millitesla', factor: 1e-3, system: 'si', definition: 'One-thousandth of a tesla (10⁻³ T), equal to 10 gauss. Handy for everyday magnets, which sit in the single-to-hundreds of millitesla range.' },
-    { id: 'ut', name: 'Microtesla', plural: 'microteslas', symbol: 'µT', slug: 'microtesla', factor: 1e-6, system: 'si', definition: 'One-millionth of a tesla (10⁻⁶ T). Earth\'s magnetic field at the surface is about 25–65 µT, so this unit suits geomagnetic and biomagnetic measurements.' },
-    { id: 'g', name: 'Gauss', plural: 'gauss', symbol: 'G', slug: 'gauss', factor: 1e-4, system: 'other', definition: 'The CGS unit of magnetic flux density — exactly 10⁻⁴ tesla, so 1 T = 10,000 G. Still widely used for magnet ratings and Earth\'s field (~0.5 G).' },
+    { id: 'ut', name: 'Microtesla', plural: 'microteslas', symbol: 'µT', slug: 'microtesla', factor: 1e-6, system: 'si', definition: 'One-millionth of a tesla (10⁻⁶ T). Earth\'s magnetic field at the surface is about 25-65 µT, so this unit suits geomagnetic and biomagnetic measurements.' },
+    { id: 'g', name: 'Gauss', plural: 'gauss', symbol: 'G', slug: 'gauss', factor: 1e-4, system: 'other', definition: 'The CGS unit of magnetic flux density, exactly 10⁻⁴ tesla, so 1 T = 10,000 G. Still widely used for magnet ratings and Earth\'s field (~0.5 G).' },
     { id: 'mg', name: 'Milligauss', plural: 'milligauss', symbol: 'mG', slug: 'milligauss', factor: 1e-7, system: 'other', definition: 'One-thousandth of a gauss (10⁻⁷ T). EMF meters and power-line field measurements are usually quoted in milligauss.' },
     { id: 'nt', name: 'Nanotesla', plural: 'nanoteslas', symbol: 'nT', slug: 'nanotesla', factor: 1e-9, system: 'si', definition: 'One-billionth of a tesla (10⁻⁹ T), also called a gamma (γ) in geophysics. Used for small variations in Earth\'s field and magnetic surveying.' },
   ],

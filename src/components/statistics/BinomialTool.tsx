@@ -101,7 +101,7 @@ export default function BinomialTool() {
       )}
 
       <p class="mt-3 text-xs text-slate-500">
-        Binomial coefficients are computed with exact BigInt arithmetic — no floating-point overflow at large n. 🔒 Computed in your browser.
+        Binomial coefficients are computed with exact BigInt arithmetic, no floating-point overflow at large n. 🔒 Computed in your browser.
       </p>
     </div>
   );

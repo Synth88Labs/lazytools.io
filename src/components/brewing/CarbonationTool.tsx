@@ -5,9 +5,9 @@ const num = (s: string) => { const n = parseFloat(s); return isFinite(n) ? n : n
 const fmt = (x: number, d = 1) => Number(x.toFixed(d)).toString();
 
 const STYLES = [
-  { label: 'British ales', vols: '1.5–2.0' },
-  { label: 'American ales / lagers', vols: '2.2–2.7' },
-  { label: 'Wheat / Belgian', vols: '3.0–4.0' },
+  { label: 'British ales', vols: '1.5-2.0' },
+  { label: 'American ales / lagers', vols: '2.2-2.7' },
+  { label: 'Wheat / Belgian', vols: '3.0-4.0' },
 ];
 
 export default function CarbonationTool() {
@@ -43,7 +43,7 @@ export default function CarbonationTool() {
         <div class="mt-4 rounded-xl bg-white p-5 text-center ring-2 ring-brand-200">
           <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Regulator pressure</p>
           <p class="mt-1 text-4xl font-extrabold text-brand-800">{r.psi > 0 ? fmt(r.psi) : '0'} <span class="text-xl text-slate-500">PSI</span></p>
-          <p class="mt-1 text-xs text-slate-400">{fmt(r.kpa, 0)} kPa · {fmt(r.bar, 2)} bar{r.psi <= 0 ? ' — beer this cold already holds that much CO₂' : ''}</p>
+          <p class="mt-1 text-xs text-slate-400">{fmt(r.kpa, 0)} kPa · {fmt(r.bar, 2)} bar{r.psi <= 0 ? ', beer this cold already holds that much CO₂' : ''}</p>
         </div>
       ) : (
         <p class="mt-4 text-sm text-slate-500">Enter a temperature and a positive CO₂ volume.</p>
@@ -53,7 +53,7 @@ export default function CarbonationTool() {
         {STYLES.map((s) => <div class="rounded-lg bg-slate-50 p-2 ring-1 ring-slate-200"><span class="font-semibold text-slate-700">{s.label}</span><br />{s.vols} vols</div>)}
       </div>
 
-      <p class="mt-4 text-xs text-slate-500">To force-carbonate in a keg, set your CO₂ regulator to this pressure and leave the beer at that temperature until it reaches equilibrium (about a week, or faster if you shake/rock the keg). Colder beer absorbs CO₂ more readily, so it needs less pressure for the same carbonation. Typical targets run 2.0–2.7 volumes for most beers. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">To force-carbonate in a keg, set your CO₂ regulator to this pressure and leave the beer at that temperature until it reaches equilibrium (about a week, or faster if you shake/rock the keg). Colder beer absorbs CO₂ more readily, so it needs less pressure for the same carbonation. Typical targets run 2.0-2.7 volumes for most beers. 🔒 In your browser.</p>
     </div>
   );
 }

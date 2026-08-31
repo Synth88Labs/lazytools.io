@@ -59,7 +59,7 @@ export default function BionicReadingTool() {
         </div>
         <div ref={previewRef} class="rounded-xl border border-brand-200 bg-white px-4 py-3 text-lg leading-relaxed text-slate-800" style="font-weight:400" dangerouslySetInnerHTML={{ __html: html }} />
       </div>
-      <p class="mt-3 text-xs text-slate-500">Bolds the first part of each word to give your eyes a fixation point — a fast-reading aid many readers with ADHD or dyslexia find helpful. “Copy formatted” pastes the bold styling into rich-text editors. 🔒 Processed entirely in your browser. <span class="text-slate-400">(A generic implementation of the fixation-bolding idea; “Bionic Reading” is a trademark of its owner and is not affiliated.)</span></p>
+      <p class="mt-3 text-xs text-slate-500">Bolds the first part of each word to give your eyes a fixation point, a fast-reading aid many readers with ADHD or dyslexia find helpful. “Copy formatted” pastes the bold styling into rich-text editors. 🔒 Processed entirely in your browser. <span class="text-slate-400">(A generic implementation of the fixation-bolding idea; “Bionic Reading” is a trademark of its owner and is not affiliated.)</span></p>
     </div>
   );
 }

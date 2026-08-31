@@ -67,7 +67,7 @@ export default function FlashGuideNumberTool() {
         <p class="mt-4 text-sm text-slate-500">Enter the guide number and the remaining value.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Guide number ties flash power to aperture and distance: GN = f-number × distance. So aperture = GN ÷ distance and reach = GN ÷ f-number, using the flash\'s rated GN (quoted at ISO 100 in metres or feet). Raising ISO increases effective GN by √(ISO ÷ 100) — ISO 400 doubles it. This is for direct, manual flash; bounced or diffused light needs more power. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Guide number ties flash power to aperture and distance: GN = f-number × distance. So aperture = GN ÷ distance and reach = GN ÷ f-number, using the flash\'s rated GN (quoted at ISO 100 in metres or feet). Raising ISO increases effective GN by √(ISO ÷ 100), ISO 400 doubles it. This is for direct, manual flash; bounced or diffused light needs more power. 🔒 In your browser.</p>
     </div>
   );
 }

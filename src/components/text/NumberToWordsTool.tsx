@@ -35,7 +35,7 @@ export default function NumberToWordsTool() {
         </div>
       ) : <p class="mt-4 rounded-lg bg-amber-50 p-3 text-sm text-amber-700 ring-1 ring-amber-200">Enter a number.</p>}
 
-      <p class="mt-4 text-xs text-slate-500">Converts a number to English words — for cheques, contracts, invoices and legal documents where amounts must be spelled out. The "amount in words" line uses the cheque convention, writing the whole part in words and the cents as a fraction over 100 (e.g. "and 50/100"). Handles negatives and decimals. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Converts a number to English words, for cheques, contracts, invoices and legal documents where amounts must be spelled out. The "amount in words" line uses the cheque convention, writing the whole part in words and the cents as a fraction over 100 (e.g. "and 50/100"). Handles negatives and decimals. 🔒 In your browser.</p>
     </div>
   );
 }

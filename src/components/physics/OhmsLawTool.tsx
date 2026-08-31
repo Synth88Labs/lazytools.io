@@ -44,7 +44,7 @@ export default function OhmsLawTool() {
 
   const cell = (sym: string, name: string, unit: string, val: number | undefined, given: boolean) => (
     <div class={`rounded-xl p-4 text-center ${given ? 'bg-white ring-1 ring-slate-200' : 'bg-white ring-2 ring-brand-200'}`}>
-      <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">{sym} — {name}</p>
+      <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">{sym}, {name}</p>
       <p class={`mt-1 font-mono text-xl font-bold ${given ? 'text-slate-700' : 'text-brand-800'}`}>{val != null ? fmt(val) : '—'} <span class="text-xs font-normal text-slate-400">{unit}</span></p>
     </div>
   );

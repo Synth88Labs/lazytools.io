@@ -1,4 +1,4 @@
-/** Timezone city-pair landing pages (issue #6) — data + pure Intl helpers, no tz DB shipped. */
+/** Timezone city-pair landing pages (issue #6), data + pure Intl helpers, no tz DB shipped. */
 
 export interface Zone {
   /** search abbreviation, lowercase (ist, est, gmt…) */

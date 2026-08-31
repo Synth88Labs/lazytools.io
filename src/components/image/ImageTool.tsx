@@ -65,7 +65,7 @@ export default function ImageTool({ mode }: Props) {
       // A circle crop only makes sense with transparency, so it forces PNG.
       const outFormat = mode === 'circle' ? 'image/png' : format;
       if (outFormat === 'image/jpeg') {
-        // JPEG has no alpha — flatten transparency onto white
+        // JPEG has no alpha, flatten transparency onto white
         ctx.fillStyle = '#ffffff';
         ctx.fillRect(0, 0, targetW, targetH);
       }
@@ -94,7 +94,7 @@ export default function ImageTool({ mode }: Props) {
         : 'converted';
       canvas.toBlob(
         (blob) => {
-          if (!blob) return setError('Encoding failed — this browser may not support the chosen format.');
+          if (!blob) return setError('Encoding failed. This browser may not support the chosen format.');
           const ext = outFormat === 'image/png' ? 'png' : outFormat === 'image/webp' ? 'webp' : 'jpg';
           const url = URL.createObjectURL(blob);
           const a = document.createElement('a');
@@ -103,7 +103,7 @@ export default function ImageTool({ mode }: Props) {
           a.click();
           URL.revokeObjectURL(url);
           const delta = file.size > 0 ? Math.round((1 - blob.size / file.size) * 100) : 0;
-          setOutInfo(`✓ Downloaded — ${fmtSize(file.size)} → ${fmtSize(blob.size)}${delta > 0 ? ` (${delta}% smaller)` : ''}`);
+          setOutInfo(`✓ Downloaded, ${fmtSize(file.size)} → ${fmtSize(blob.size)}${delta > 0 ? ` (${delta}% smaller)` : ''}`);
         },
         outFormat,
         outFormat === 'image/png' ? undefined : quality / 100
@@ -129,7 +129,7 @@ export default function ImageTool({ mode }: Props) {
         <input type="file" accept="image/*" onChange={onFile} class="sr-only" />
         <span class="text-sm font-semibold text-brand-700">{file ? file.name : 'Choose an image'}</span>
         <span class="mt-1 block text-xs text-slate-500">
-          {file ? `${fmtSize(file.size)}${dims.w ? ` · ${dims.w}×${dims.h}px` : ''}` : 'JPEG, PNG, WebP — processed on your device'}
+          {file ? `${fmtSize(file.size)}${dims.w ? ` · ${dims.w}×${dims.h}px` : ''}` : 'JPEG, PNG, WebP, processed on your device'}
         </span>
       </label>
 
@@ -161,7 +161,7 @@ export default function ImageTool({ mode }: Props) {
                   <input type="checkbox" checked={lockAspect} onChange={(e) => setLockAspect((e.target as HTMLInputElement).checked)} class="h-4 w-4 rounded border-slate-300 text-brand-600" />
                   Lock aspect ratio
                 </label>
-                {width > dims.w && <p class="w-full text-xs font-medium text-amber-700">⚠ Upscaling beyond {dims.w}px invents pixels — expect softness.</p>}
+                {width > dims.w && <p class="w-full text-xs font-medium text-amber-700">⚠ Upscaling beyond {dims.w}px invents pixels, expect softness.</p>}
               </div>
             )}
 
@@ -189,7 +189,7 @@ export default function ImageTool({ mode }: Props) {
                   </label>
                 </div>
                 {(rotation === 90 || rotation === 270) && (
-                  <p class="text-xs text-slate-500">Output will be {dims.h}×{dims.w}px — a quarter-turn swaps width and height.</p>
+                  <p class="text-xs text-slate-500">Output will be {dims.h}×{dims.w}px, a quarter-turn swaps width and height.</p>
                 )}
               </div>
             )}
@@ -200,11 +200,11 @@ export default function ImageTool({ mode }: Props) {
                 <div class="flex flex-wrap gap-4">
                   <label class="flex items-center gap-2 text-sm font-medium text-slate-700">
                     <input type="checkbox" checked={flipH} onChange={(e) => setFlipH((e.target as HTMLInputElement).checked)} class="h-4 w-4 rounded border-slate-300 text-brand-600" />
-                    Flip horizontally (mirror left–right)
+                    Flip horizontally (mirror left, right)
                   </label>
                   <label class="flex items-center gap-2 text-sm font-medium text-slate-700">
                     <input type="checkbox" checked={flipV} onChange={(e) => setFlipV((e.target as HTMLInputElement).checked)} class="h-4 w-4 rounded border-slate-300 text-brand-600" />
-                    Flip vertically (top–bottom)
+                    Flip vertically (top, bottom)
                   </label>
                 </div>
                 {!flipH && !flipV && <p class="text-xs text-slate-500">Tick an axis to mirror the image; the output keeps the same dimensions and format.</p>}
@@ -213,8 +213,7 @@ export default function ImageTool({ mode }: Props) {
 
             {mode === 'circle' && (
               <p class="text-sm text-slate-600">
-                The image is centre-cropped to a square, then masked to a circle. Output is always <strong>PNG</strong>, since the corners need transparency —
-                {dims.w === dims.h ? ' your image is already square.' : ` a ${Math.min(dims.w, dims.h)}×${Math.min(dims.w, dims.h)}px circle from the middle.`}
+                The image is centre-cropped to a square, then masked to a circle. Output is always <strong>PNG</strong>, since the corners need transparency, {dims.w === dims.h ? ' your image is already square.' : ` a ${Math.min(dims.w, dims.h)}×${Math.min(dims.w, dims.h)}px circle from the middle.`}
               </p>
             )}
 
@@ -222,11 +221,11 @@ export default function ImageTool({ mode }: Props) {
               <div class="mt-3">
                 <label for="it-fmt" class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Output format</label>
                 <select id="it-fmt" value={format} onChange={(e) => setFormat((e.target as HTMLSelectElement).value as typeof format)} class={`${inputCls} max-w-xs`}>
-                  <option value="image/jpeg">JPEG — photos, universal</option>
-                  <option value="image/webp">WebP — smaller, transparency OK</option>
-                  <option value="image/png">PNG — lossless, transparency</option>
+                  <option value="image/jpeg">JPEG, photos, universal</option>
+                  <option value="image/webp">WebP, smaller, transparency OK</option>
+                  <option value="image/png">PNG, lossless, transparency</option>
                 </select>
-                {format === 'image/jpeg' && <p class="mt-1 text-xs text-slate-500">JPEG has no transparency — transparent areas are flattened to white.</p>}
+                {format === 'image/jpeg' && <p class="mt-1 text-xs text-slate-500">JPEG has no transparency, transparent areas are flattened to white.</p>}
               </div>
             )}
 
@@ -256,7 +255,7 @@ export default function ImageTool({ mode }: Props) {
             </button>
           </div>
           <textarea readOnly rows={6} value={b64} aria-label="Base64 data URL" class="mt-2 w-full rounded-xl border border-brand-200 bg-white px-3 py-2 font-mono text-xs text-slate-800" spellcheck={false} />
-          {b64.length > 100_000 && <p class="mt-1 text-xs font-medium text-amber-700">⚠ Over 100 KB — consider linking the file instead of embedding it.</p>}
+          {b64.length > 100_000 && <p class="mt-1 text-xs font-medium text-amber-700">⚠ Over 100 KB, consider linking the file instead of embedding it.</p>}
         </div>
       )}
     </div>

@@ -21,7 +21,7 @@ const faqs = [
   },
   {
     q: 'Is anything I type sent to a server?',
-    a: 'No. All conversions run as JavaScript in your browser. LazyTools has no conversion server — the pages even work offline once loaded.',
+    a: 'No. All conversions run as JavaScript in your browser. LazyTools has no conversion server, the pages even work offline once loaded.',
   },
   {
     q: 'Why use this instead of asking an AI chatbot?',
@@ -34,7 +34,7 @@ const schema = [
   collectionPageSchema({
     name: 'Unit & Measurement Converters',
     url: '/units/',
-    description: `Free online unit converters for ${QUANTITIES.length} measurement categories — length, weight, temperature, volume, area, speed and more.`,
+    description: `Free online unit converters for ${QUANTITIES.length} measurement categories, length, weight, temperature, volume, area, speed and more.`,
     items: QUANTITIES.map((q) => ({ name: `${q.name} Converter`, url: `/units/${q.slug}/` })),
   }),
   faqSchema(faqs),
@@ -42,8 +42,8 @@ const schema = [
 ---
 
 <Base
-  title="Unit Converters — Free, Instant & Private | LazyTools"
-  description={`Free online unit converters: length, weight, temperature, volume, area, speed, pressure and more. ${totalPairs}+ conversions with exact factors, formulas and tables — 100% in your browser.`}
+  title="Unit Converters, Free, Instant & Private | LazyTools"
+  description={`Free online unit converters: length, weight, temperature, volume, area, speed, pressure and more. ${totalPairs}+ conversions with exact factors, formulas and tables, 100% in your browser.`}
   schema={schema}
 >
   <div class="mx-auto max-w-5xl px-4 py-6">
@@ -52,7 +52,7 @@ const schema = [
     <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Unit & Measurement Converters</h1>
     <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
       Convert between metric, imperial and US units instantly. Every converter uses the exact internationally
-      defined factors, shows you the formula, and runs entirely in your browser — nothing is uploaded, ever.
+      defined factors, shows you the formula, and runs entirely in your browser, nothing is uploaded, ever.
     </p>
 
     <div class="mt-5">
@@ -92,17 +92,16 @@ const schema = [
     <section class="prose-lazy mt-10">
       <h2>Convert with confidence</h2>
       <p>
-        A unit conversion is only as good as the factor behind it, and small errors compound — mixing up US
+        A unit conversion is only as good as the factor behind it, and small errors compound, mixing up US
         and imperial gallons, or fluid ounces of weight and volume, is a classic source of ruined recipes and
         wrong dosages. Every converter here uses the exact, internationally-defined factor (NIST and BIPM
-        values), so a mile is precisely 1.609344 km and a US gallon is exactly 3.785411784 litres — not a
+        values), so a mile is precisely 1.609344 km and a US gallon is exactly 3.785411784 litres, not a
         rounded approximation. Where two systems share a name but differ, such as the US versus UK gallon or
         the metric versus US cup, the tools keep them distinct and flag the difference.
       </p>
       <p>
         Each conversion is instant and two-way: type a value on either side and the other updates, with the
-        factor and a short explanation shown so you can see how it was derived. It all runs in your browser —
-        nothing is uploaded, and the pages work offline. For cooking-specific measures see
+        factor and a short explanation shown so you can see how it was derived. It all runs in your browser, nothing is uploaded, and the pages work offline. For cooking-specific measures see
         <a href="/cooking/">Cooking &amp; Kitchen</a>, and for ring, shoe and clothing sizes across regions see
         <a href="/size/">Size Converters</a>.
       </p>

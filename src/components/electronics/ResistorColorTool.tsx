@@ -68,7 +68,7 @@ export default function ResistorColorTool() {
         <div class="mt-4 grid gap-3 sm:grid-cols-3">
           <div class="rounded-xl bg-white p-4 text-center ring-2 ring-brand-200"><p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Resistance</p><p class="mt-1 text-3xl font-extrabold text-brand-800">{fmtOhms(r.ohms)}</p></div>
           <div class="rounded-xl bg-white p-4 text-center ring-1 ring-slate-200"><p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Tolerance</p><p class="mt-1 text-2xl font-extrabold text-slate-700">±{r.tolerance}%</p></div>
-          <div class="rounded-xl bg-white p-4 text-center ring-1 ring-slate-200"><p class="text-xs font-semibold uppercase tracking-wide text-slate-500">{r.tempco != null ? 'Temp. coeff.' : 'Range'}</p><p class="mt-1 text-lg font-extrabold text-slate-700">{r.tempco != null ? `${r.tempco} ppm/K` : `${fmtOhms(r.ohms * (1 - (r.tolerance ?? 0) / 100))} – ${fmtOhms(r.ohms * (1 + (r.tolerance ?? 0) / 100))}`}</p></div>
+          <div class="rounded-xl bg-white p-4 text-center ring-1 ring-slate-200"><p class="text-xs font-semibold uppercase tracking-wide text-slate-500">{r.tempco != null ? 'Temp. coeff.' : 'Range'}</p><p class="mt-1 text-lg font-extrabold text-slate-700">{r.tempco != null ? `${r.tempco} ppm/K` : `${fmtOhms(r.ohms * (1 - (r.tolerance ?? 0) / 100))}, ${fmtOhms(r.ohms * (1 + (r.tolerance ?? 0) / 100))}`}</p></div>
         </div>
       ) : (
         <p class="mt-4 text-sm text-slate-500">Pick a color for each band.</p>

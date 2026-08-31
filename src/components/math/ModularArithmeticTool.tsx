@@ -50,7 +50,7 @@ export default function ModularArithmeticTool() {
             </table>
           </div>
           <p class="mt-2 text-xs text-slate-500">
-            Square-and-multiply reads the exponent in binary ({E.toString(2)}) — {steps.length} steps instead of {e} multiplications. This is the same algorithm inside RSA and Diffie–Hellman.
+            Square-and-multiply reads the exponent in binary ({E.toString(2)}), {steps.length} steps instead of {e} multiplications. This is the same algorithm inside RSA and Diffie, Hellman.
           </p>
         </>
       );
@@ -124,7 +124,7 @@ export default function ModularArithmeticTool() {
 
       {error ? <p class="mt-4 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800">{error}</p> : body}
 
-      <p class="mt-4 text-xs text-slate-500">Exact BigInt arithmetic with the full algorithm trace — the working your cryptography or number-theory course wants to see. Runs locally.</p>
+      <p class="mt-4 text-xs text-slate-500">Exact BigInt arithmetic with the full algorithm trace, the working your cryptography or number-theory course wants to see. Runs locally.</p>
     </div>
   );
 }

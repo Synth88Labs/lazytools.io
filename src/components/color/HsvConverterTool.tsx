@@ -33,9 +33,9 @@ export default function HsvConverterTool() {
             <div class={row}><span class="text-slate-500">RGB</span><span>{res.rgb.r}, {res.rgb.g}, {res.rgb.b}</span></div>
           </div>
         </>
-      ) : <p class="mt-4 rounded-lg bg-amber-50 p-3 text-sm text-amber-700 ring-1 ring-amber-200">Enter a valid color — e.g. #1d87f1, rgb(29,135,241) or "dodgerblue".</p>}
+      ) : <p class="mt-4 rounded-lg bg-amber-50 p-3 text-sm text-amber-700 ring-1 ring-amber-200">Enter a valid color, e.g. #1d87f1, rgb(29,135,241) or "dodgerblue".</p>}
 
-      <p class="mt-4 text-xs text-slate-500">HSV (also called HSB) describes a color by hue (0–360° around the color wheel), saturation (0–100%, how vivid) and value/brightness (0–100%, how light). It\'s the model most colour pickers use. HSV differs from HSL: in HSV, full value with full saturation is the pure vivid hue, while HSL\'s 100% lightness is always white. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">HSV (also called HSB) describes a color by hue (0-360° around the color wheel), saturation (0-100%, how vivid) and value/brightness (0-100%, how light). It\'s the model most colour pickers use. HSV differs from HSL: in HSV, full value with full saturation is the pure vivid hue, while HSL\'s 100% lightness is always white. 🔒 In your browser.</p>
     </div>
   );
 }

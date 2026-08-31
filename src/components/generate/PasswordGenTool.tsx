@@ -88,15 +88,15 @@ export default function PasswordGenTool() {
       </div>
 
       <div class="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-        {check('Lowercase (a–z)', lower, setLower, 'l')}
-        {check('Uppercase (A–Z)', upper, setUpper, 'u')}
-        {check('Digits (0–9)', digits, setDigits, 'd')}
+        {check('Lowercase (a, z)', lower, setLower, 'l')}
+        {check('Uppercase (A, Z)', upper, setUpper, 'u')}
+        {check('Digits (0-9)', digits, setDigits, 'd')}
         {check('Symbols (!@#$…)', symbols, setSymbols, 's')}
         {check('Exclude ambiguous (l 1 I O 0)', noAmbiguous, setNoAmbiguous, 'na')}
       </div>
 
       <p class="mt-4 text-xs text-slate-500">
-        Generated with crypto.getRandomValues on your device — never transmitted, never stored. Entropy = length ×
+        Generated with crypto.getRandomValues on your device, never transmitted, never stored. Entropy = length ×
         log₂(alphabet): each extra character beats any complexity rule.
       </p>
     </div>

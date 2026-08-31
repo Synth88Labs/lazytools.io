@@ -95,7 +95,7 @@ export default function SampleSizeTool() {
 
       <p class="mt-3 text-xs text-slate-500">
         {kind === 'proportion'
-          ? 'n = z²·p(1−p) / E². Use 50% for the expected proportion if unknown — it gives the most conservative (largest) sample.'
+          ? 'n = z²·p(1−p) / E². Use 50% for the expected proportion if unknown. It gives the most conservative (largest) sample.'
           : 'n = (z·σ / E)². Provide the population standard deviation and desired margin in the same units as your measurement.'}
         {' '}🔒 Computed in your browser.
       </p>

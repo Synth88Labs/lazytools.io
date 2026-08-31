@@ -66,7 +66,7 @@ export default function PiiRedactorTool() {
         <p class="whitespace-pre-wrap break-words font-mono text-sm leading-relaxed text-slate-800">{r.text}</p>
       </div>
 
-      <p class="mt-4 text-xs text-slate-500">Detects and masks emails, phone numbers, US SSNs, credit-card numbers (checked with the Luhn algorithm to avoid false positives), IPv4/IPv6 addresses and IBANs — so you can strip personal data before pasting text into a chatbot, ticket or forum. Everything runs in your browser; the text is never uploaded. Detection is pattern-based and best-effort — always review the output, as it can miss names, addresses or unusual formats. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Detects and masks emails, phone numbers, US SSNs, credit-card numbers (checked with the Luhn algorithm to avoid false positives), IPv4/IPv6 addresses and IBANs, so you can strip personal data before pasting text into a chatbot, ticket or forum. Everything runs in your browser; the text is never uploaded. Detection is pattern-based and best-effort, always review the output, as it can miss names, addresses or unusual formats. 🔒 In your browser.</p>
     </div>
   );
 }

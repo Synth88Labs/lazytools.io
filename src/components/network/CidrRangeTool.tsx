@@ -23,7 +23,7 @@ export default function CidrRangeTool() {
       const info = subnetInfo(ip, prefix);
       const total = prefix === 0 ? 4294967296 : 2 ** (32 - prefix);
       cidrRows = [
-        ['Range', `${ipv4ToString(info.network)} – ${ipv4ToString(info.broadcast)}`],
+        ['Range', `${ipv4ToString(info.network)}, ${ipv4ToString(info.broadcast)}`],
         ['First address', ipv4ToString(info.network)],
         ['Last address', ipv4ToString(info.broadcast)],
         ['Total addresses', total.toLocaleString('en-US')],
@@ -114,7 +114,7 @@ export default function CidrRangeTool() {
         </div>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Both conversions run locally — nothing you enter is uploaded.</p>
+      <p class="mt-4 text-xs text-slate-500">Both conversions run locally, nothing you enter is uploaded.</p>
     </div>
   );
 }

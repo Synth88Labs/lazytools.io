@@ -1,6 +1,6 @@
 /**
  * Adult shoe size conversion charts (the widely used standard chart;
- * individual brands deviate by up to half a size — foot length in cm is
+ * individual brands deviate by up to half a size, foot length in cm is
  * the reliable ground truth, per ISO 19407's Mondopoint approach).
  */
 
@@ -12,7 +12,7 @@ export interface ShoeRow {
   cm: number;
 }
 
-// Men: US 6–14. UK = US − 1; EU and cm per standard chart.
+// Men: US 6-14. UK = US − 1; EU and cm per standard chart.
 export const SHOE_MEN: ShoeRow[] = [
   { us: 6, uk: 5, eu: 38.5, cm: 24.0 },
   { us: 6.5, uk: 5.5, eu: 39, cm: 24.4 },
@@ -31,7 +31,7 @@ export const SHOE_MEN: ShoeRow[] = [
   { us: 14, uk: 13, eu: 48.5, cm: 30.7 },
 ];
 
-// Women: US 5–12. UK = US − 2; EU per standard chart.
+// Women: US 5-12. UK = US − 2; EU per standard chart.
 export const SHOE_WOMEN: ShoeRow[] = [
   { us: 5, uk: 3, eu: 35.5, cm: 21.6 },
   { us: 5.5, uk: 3.5, eu: 36, cm: 22.0 },

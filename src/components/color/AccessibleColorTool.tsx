@@ -93,7 +93,7 @@ export default function AccessibleColorTool() {
           <div class={`mt-4 rounded-xl p-4 text-center ring-2 ${result.passes ? 'bg-emerald-50 ring-emerald-200' : 'bg-amber-50 ring-amber-200'}`}>
             <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Current contrast</p>
             <p class={`mt-1 text-3xl font-extrabold ${result.passes ? 'text-emerald-700' : 'text-amber-700'}`}>{result.current.toFixed(2)}:1</p>
-            <p class="mt-1 text-sm font-semibold">{result.passes ? '✓ Already meets your target' : '✗ Below target — nearest fixes below'}</p>
+            <p class="mt-1 text-sm font-semibold">{result.passes ? '✓ Already meets your target' : '✗ Below target, nearest fixes below'}</p>
           </div>
 
           {!result.passes && (
@@ -101,7 +101,7 @@ export default function AccessibleColorTool() {
               {result.darker && <Swatch label="Nearest darker" color={result.darker} bg={bg!} ratio={contrastRatio(result.darker, bg!)} />}
               {result.lighter && <Swatch label="Nearest lighter" color={result.lighter} bg={bg!} ratio={contrastRatio(result.lighter, bg!)} />}
               {!result.darker && !result.lighter && (
-                <p class="text-sm text-slate-500 sm:col-span-2">No color at this hue reaches the target against this background — try a different background or a lower target.</p>
+                <p class="text-sm text-slate-500 sm:col-span-2">No color at this hue reaches the target against this background, try a different background or a lower target.</p>
               )}
             </div>
           )}

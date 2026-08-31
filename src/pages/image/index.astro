@@ -18,7 +18,7 @@ const faqs = [
   },
   {
     q: 'Is there a file size limit?',
-    a: 'Only your device\'s memory — there\'s no artificial cap, no queue and no watermark. Typical phone photos (3–15 MB) process instantly.',
+    a: 'Only your device\'s memory. There\'s no artificial cap, no queue and no watermark. Typical phone photos (3-15 MB) process instantly.',
   },
   {
     q: 'Do these tools keep my photo\'s metadata?',
@@ -31,7 +31,7 @@ const schema = [
   collectionPageSchema({
     name: 'Free Image Tools',
     url: '/image/',
-    description: 'Compress, convert, resize and Base64-encode images — JPEG, PNG and WebP, processed locally in your browser with no upload.',
+    description: 'Compress, convert, resize and Base64-encode images, JPEG, PNG and WebP, processed locally in your browser with no upload.',
     items: IMAGE_TOOLS.map((t) => ({ name: t.name, url: `/image/${t.slug}/` })),
   }),
   faqSchema(faqs),
@@ -39,7 +39,7 @@ const schema = [
 ---
 
 <Base
-  title="Image Tools — Compress, Convert, Resize | LazyTools"
+  title="Image Tools, Compress, Convert, Resize | LazyTools"
   description={`${IMAGE_TOOLS.length} free image tools: compressor with live quality preview, PNG/JPEG/WebP converter, pixel-exact resizer, Base64 encoder. Photos never leave your browser.`}
   schema={schema}
 >
@@ -48,7 +48,7 @@ const schema = [
 
     <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Image Tools</h1>
     <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
-      Compress, convert and resize with the browser's own image codecs — no upload queue, no
+      Compress, convert and resize with the browser's own image codecs, no upload queue, no
       watermark, no size cap. Your photos are processed in memory on your device and nowhere else.
     </p>
 
@@ -70,8 +70,8 @@ const schema = [
 
     <section class="prose-lazy mt-10">
       <h2>Edit photos in the browser, not the cloud</h2>
-      <p>Compressing, converting and resizing images normally means uploading them — exactly what you don't want for a screenshot of unreleased work, a document photo or a private picture. These tools run the image codecs (including <strong>HEIC/HEIF and WebP</strong>) as WebAssembly inside your browser, so your photo is processed on your own device and never uploaded. The decoder downloads once on first use and then works offline.</p>
-      <p>You can shrink a file to hit an email or upload limit, convert an iPhone HEIC to a universally-readable JPG, or resize for the web — all locally. For passport and visa photos with country-specific crops, see the <a href="/photo/">Photo Size Maker</a>.</p>
+      <p>Compressing, converting and resizing images normally means uploading them, exactly what you don't want for a screenshot of unreleased work, a document photo or a private picture. These tools run the image codecs (including <strong>HEIC/HEIF and WebP</strong>) as WebAssembly inside your browser, so your photo is processed on your own device and never uploaded. The decoder downloads once on first use and then works offline.</p>
+      <p>You can shrink a file to hit an email or upload limit, convert an iPhone HEIC to a universally-readable JPG, or resize for the web, all locally. For passport and visa photos with country-specific crops, see the <a href="/photo/">Photo Size Maker</a>.</p>
     </section>
 
     <FaqSection faqs={faqs} />

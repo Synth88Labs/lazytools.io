@@ -26,7 +26,7 @@ export default function PoissonTool() {
 
       {r ? (
         <>
-          <div class="mt-4 rounded-xl bg-white p-4 text-center ring-2 ring-brand-200"><p class="text-xs font-semibold uppercase tracking-wide text-slate-500">P(X = {k}) — exactly {k} events</p><p class="mt-1 text-3xl font-extrabold text-brand-800">{p(r.pEqual)}</p></div>
+          <div class="mt-4 rounded-xl bg-white p-4 text-center ring-2 ring-brand-200"><p class="text-xs font-semibold uppercase tracking-wide text-slate-500">P(X = {k}), exactly {k} events</p><p class="mt-1 text-3xl font-extrabold text-brand-800">{p(r.pEqual)}</p></div>
           <div class="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
             <div class="rounded-xl bg-white p-3 text-center ring-1 ring-slate-200"><p class="text-xs font-semibold uppercase tracking-wide text-slate-500">P(X ≤ {k})</p><p class="mt-1 text-lg font-extrabold text-slate-700">{p(r.pLessEqual)}</p></div>
             <div class="rounded-xl bg-white p-3 text-center ring-1 ring-slate-200"><p class="text-xs font-semibold uppercase tracking-wide text-slate-500">P(X ≥ {k})</p><p class="mt-1 text-lg font-extrabold text-slate-700">{p(r.pGreaterEqual)}</p></div>
@@ -39,7 +39,7 @@ export default function PoissonTool() {
         <p class="mt-4 text-sm text-slate-500">Enter a positive rate λ and a whole-number count k.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">The Poisson distribution models the number of independent events in a fixed interval when they happen at a constant average rate λ — arrivals in a queue, defects per batch, calls per hour. P(X = k) = e^(−λ)·λ^k ÷ k!. Its defining feature is that the mean and variance are both λ. Use it when events are rare and independent; if the variance is much larger than the mean, a different model may fit better. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">The Poisson distribution models the number of independent events in a fixed interval when they happen at a constant average rate λ, arrivals in a queue, defects per batch, calls per hour. P(X = k) = e^(−λ)·λ^k ÷ k!. Its defining feature is that the mean and variance are both λ. Use it when events are rare and independent; if the variance is much larger than the mean, a different model may fit better. 🔒 In your browser.</p>
     </div>
   );
 }

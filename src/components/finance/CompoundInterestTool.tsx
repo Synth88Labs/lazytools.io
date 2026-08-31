@@ -87,7 +87,7 @@ export default function CompoundInterestTool() {
         <p class="mt-4 text-sm text-slate-500">Enter an amount, rate and number of years.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">FV = P(1+i)ⁿ + contributions × [((1+i)ⁿ−1)/i]. Educational estimate — not investment advice; real returns vary. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">FV = P(1+i)ⁿ + contributions × [((1+i)ⁿ−1)/i]. Educational estimate, not investment advice; real returns vary. 🔒 In your browser.</p>
     </div>
   );
 }

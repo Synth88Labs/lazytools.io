@@ -38,9 +38,9 @@ export default function NpvIrrTool() {
         <div class="rounded-xl bg-white p-4 text-center ring-2 ring-brand-200"><p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Net present value (NPV)</p><p class={`mt-1 font-mono text-3xl font-extrabold ${res.npv != null && res.npv >= 0 ? 'text-emerald-700' : 'text-rose-700'}`}>{res.npv != null ? money(res.npv) : '—'}</p></div>
         <div class="rounded-xl bg-white p-4 text-center ring-1 ring-slate-200"><p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Internal rate of return (IRR)</p><p class="mt-1 font-mono text-3xl font-extrabold text-slate-800">{res.irr != null ? `${res.irr.toFixed(2)}%` : 'n/a'}</p></div>
       </div>
-      {res.npv != null && <p class="mt-2 text-center text-xs text-slate-500">{res.npv >= 0 ? 'Positive NPV — the return beats your discount rate.' : 'Negative NPV — the return falls short of your discount rate.'}</p>}
+      {res.npv != null && <p class="mt-2 text-center text-xs text-slate-500">{res.npv >= 0 ? 'Positive NPV, the return beats your discount rate.' : 'Negative NPV, the return falls short of your discount rate.'}</p>}
 
-      <p class="mt-4 text-xs text-slate-500">NPV discounts every future cash flow back to today: NPV = Σ CFₜ ÷ (1 + rate)ᵗ. A positive NPV means the investment earns more than your discount rate. IRR is the discount rate at which NPV equals zero — the project's own rate of return (n/a if the cash flows never change sign). Educational, not investment advice. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">NPV discounts every future cash flow back to today: NPV = Σ CFₜ ÷ (1 + rate)ᵗ. A positive NPV means the investment earns more than your discount rate. IRR is the discount rate at which NPV equals zero, the project's own rate of return (n/a if the cash flows never change sign). Educational, not investment advice. 🔒 In your browser.</p>
     </div>
   );
 }

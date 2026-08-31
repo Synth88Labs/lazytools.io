@@ -51,7 +51,7 @@ export default function FuelEconomyTool() {
         <p class="mt-4 text-sm text-slate-500">Enter a fuel-economy figure.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">The US and UK gallons differ (3.785 L vs 4.546 L), so US MPG and UK MPG are NOT the same — 30 US mpg is about 36 UK mpg. L/100 km is an inverse measure: lower is better. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">The US and UK gallons differ (3.785 L vs 4.546 L), so US MPG and UK MPG are NOT the same, 30 US mpg is about 36 UK mpg. L/100 km is an inverse measure: lower is better. 🔒 In your browser.</p>
     </div>
   );
 }

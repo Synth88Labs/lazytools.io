@@ -14,7 +14,7 @@ export default function EpubMetaTool() {
       const { default: JSZip } = await import('jszip');
       const zip = await JSZip.loadAsync(await f.arrayBuffer());
       const container = zip.file('META-INF/container.xml');
-      if (!container) throw new Error('No META-INF/container.xml — this does not look like a valid EPUB.');
+      if (!container) throw new Error('No META-INF/container.xml. This does not look like a valid EPUB.');
       const opfPath = opfPathFromContainer(await container.async('string'));
       if (!opfPath) throw new Error('Could not find the OPF package path in container.xml.');
       const opfFile = zip.file(opfPath);
@@ -39,7 +39,7 @@ export default function EpubMetaTool() {
         <input type="file" class="hidden" accept=".epub,application/epub+zip" onChange={(e) => onFile((e.target as HTMLInputElement).files?.[0] ?? null)} />
         <span class="block text-2xl">📖</span>
         <span class="mt-1 block text-sm font-semibold text-slate-700">{fileName ? `📄 ${fileName}` : 'Choose an .epub file'}</span>
-        <span class="mt-1 block text-xs text-slate-500">{busy ? 'Reading…' : 'Read locally — the book is never uploaded'}</span>
+        <span class="mt-1 block text-xs text-slate-500">{busy ? 'Reading…' : 'Read locally, the book is never uploaded'}</span>
       </label>
 
       {error && <p class="mt-4 rounded-lg bg-rose-50 px-3 py-2 text-sm text-rose-700 ring-1 ring-rose-200">⚠️ {error}</p>}
@@ -76,7 +76,7 @@ export default function EpubMetaTool() {
         </div>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Drop an EPUB (.epub) to read its embedded metadata — title, author, series, publisher, publication date, language, ISBN, subjects and description — from the book’s OPF package inside the ZIP. It reads the file in your browser and never uploads it. This shows the metadata; it doesn’t change the book. 🔒 100% client-side.</p>
+      <p class="mt-4 text-xs text-slate-500">Drop an EPUB (.epub) to read its embedded metadata, title, author, series, publisher, publication date, language, ISBN, subjects and description, from the book’s OPF package inside the ZIP. It reads the file in your browser and never uploads it. This shows the metadata; it doesn’t change the book. 🔒 100% client-side.</p>
     </div>
   );
 }

@@ -5,11 +5,11 @@ const num = (s: string) => { const n = parseFloat(s); return isFinite(n) && n > 
 const fmt = (x: number, d = 1) => Number(x.toFixed(d)).toString();
 
 function verdict(eff: number): { label: string; cls: string } {
-  if (eff >= 90) return { label: 'Unusually high — double-check your numbers', cls: 'bg-amber-50 text-amber-800 ring-amber-200' };
+  if (eff >= 90) return { label: 'Unusually high, double-check your numbers', cls: 'bg-amber-50 text-amber-800 ring-amber-200' };
   if (eff >= 75) return { label: 'Excellent efficiency', cls: 'bg-emerald-50 text-emerald-800 ring-emerald-200' };
   if (eff >= 65) return { label: 'Good, typical all-grain efficiency', cls: 'bg-emerald-50 text-emerald-800 ring-emerald-200' };
-  if (eff >= 55) return { label: 'A bit low — check crush, mash pH and sparge', cls: 'bg-amber-50 text-amber-800 ring-amber-200' };
-  return { label: 'Low — finer crush, longer mash or better sparge may help', cls: 'bg-rose-50 text-rose-900 ring-rose-200' };
+  if (eff >= 55) return { label: 'A bit low, check crush, mash pH and sparge', cls: 'bg-amber-50 text-amber-800 ring-amber-200' };
+  return { label: 'Low, finer crush, longer mash or better sparge may help', cls: 'bg-rose-50 text-rose-900 ring-rose-200' };
 }
 
 export default function MashEfficiencyTool() {
@@ -59,7 +59,7 @@ export default function MashEfficiencyTool() {
         <p class="mt-4 text-sm text-slate-500">Enter your OG, grain bill and batch volume.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Efficiency = the gravity points you got ÷ the most the grain could give. Actual points are (OG − 1) × 1000; the maximum is grain weight × its potential (PPG, ~36–37 for base malt) ÷ batch volume in gallons. Most all-grain brewers land at 65–80%. A finer crush, correct mash pH, full 60-minute mash and efficient sparge all raise it. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Efficiency = the gravity points you got ÷ the most the grain could give. Actual points are (OG − 1) × 1000; the maximum is grain weight × its potential (PPG, ~36-37 for base malt) ÷ batch volume in gallons. Most all-grain brewers land at 65-80%. A finer crush, correct mash pH, full 60-minute mash and efficient sparge all raise it. 🔒 In your browser.</p>
     </div>
   );
 }

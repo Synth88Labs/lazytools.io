@@ -44,7 +44,7 @@ export default function HumidexTool() {
         <p class="mt-4 text-sm text-slate-500">Enter the temperature and a dew point no higher than it.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Humidex is Environment Canada\'s "feels-like" index for humid heat: humidex = T + 0.5555 × (e − 10), where e is the vapour pressure from the dew point. It\'s unitless but read on the same scale as temperature. Guidance: under 30 comfortable, 30–39 some discomfort, 40–45 great discomfort, 46+ dangerous. Unlike the US heat index it uses dew point rather than relative humidity. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Humidex is Environment Canada\'s "feels-like" index for humid heat: humidex = T + 0.5555 × (e − 10), where e is the vapour pressure from the dew point. It\'s unitless but read on the same scale as temperature. Guidance: under 30 comfortable, 30-39 some discomfort, 40-45 great discomfort, 46+ dangerous. Unlike the US heat index it uses dew point rather than relative humidity. 🔒 In your browser.</p>
     </div>
   );
 }

@@ -66,7 +66,7 @@ export default function DrywallCalculator() {
         <p class="mt-4 text-sm text-slate-500">Enter the total area to board and your sheet size.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Sheets = area ÷ sheet area, + waste (~10–15%). Compound estimate is approximate — check product coverage. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Sheets = area ÷ sheet area, + waste (~10-15%). Compound estimate is approximate, check product coverage. 🔒 In your browser.</p>
     </div>
   );
 }

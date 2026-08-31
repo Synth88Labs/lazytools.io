@@ -111,7 +111,7 @@ export default function FileConvertTool({ computeId, options = [], sample = '', 
             rows={10}
             value={input}
             onInput={(e) => setInput((e.target as HTMLTextAreaElement).value)}
-            placeholder="Paste here or open a file — nothing is uploaded…"
+            placeholder="Paste here or open a file, nothing is uploaded…"
             class="w-full rounded-xl border border-slate-300 bg-white px-3 py-3 font-mono text-sm text-slate-900 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200"
             spellcheck={false}
           />

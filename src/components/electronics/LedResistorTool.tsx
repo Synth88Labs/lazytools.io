@@ -58,7 +58,7 @@ export default function LedResistorTool() {
         <p class="mt-4 text-sm text-slate-500">Enter the supply voltage, LED forward voltage and current.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">R = (supply − LED forward voltage) ÷ current (Ohm's law). Round up to the nearest standard value so the current stays at or below the LED's rating. Pick a resistor rated well above the power shown — a ¼ W part is usually plenty. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">R = (supply − LED forward voltage) ÷ current (Ohm's law). Round up to the nearest standard value so the current stays at or below the LED's rating. Pick a resistor rated well above the power shown, a ¼ W part is usually plenty. 🔒 In your browser.</p>
     </div>
   );
 }

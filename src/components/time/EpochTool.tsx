@@ -37,7 +37,7 @@ export default function EpochTool() {
               <div class={rowCls}><span class={keyCls}>ISO 8601</span><span class={valCls}>{parsed.date.toISOString()}</span></div>
             </>
           ) : (
-            <p class="py-2 text-sm text-slate-500">Enter a whole number — e.g. 1720224000 (seconds) or 1720224000000 (ms).</p>
+            <p class="py-2 text-sm text-slate-500">Enter a whole number, e.g. 1720224000 (seconds) or 1720224000000 (ms).</p>
           )}
         </div>
       </div>

@@ -26,7 +26,7 @@ export default function MeatTempTool() {
       </div>
 
       <div class="mt-3 rounded-lg bg-amber-50 px-3 py-2 text-xs text-amber-800 ring-1 ring-amber-200">
-        These are <strong>USDA/FoodSafety.gov safe minimum</strong> internal temperatures — measured with a food thermometer in the thickest part, away from bone. They are safety floors, not doneness preferences. Precooked hams repackaged in a USDA-inspected plant may be reheated to 140 °F; reheat all others to 165 °F.
+        These are <strong>USDA/FoodSafety.gov safe minimum</strong> internal temperatures, measured with a food thermometer in the thickest part, away from bone. They are safety floors, not doneness preferences. Precooked hams repackaged in a USDA-inspected plant may be reheated to 140 °F; reheat all others to 165 °F.
       </div>
 
       <button onClick={() => setShowDoneness(!showDoneness)} class="mt-4 rounded-lg bg-white px-3 py-1.5 text-sm font-semibold text-brand-700 ring-1 ring-brand-200 hover:bg-brand-50">
@@ -51,7 +51,7 @@ export default function MeatTempTool() {
         </div>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Source: FoodSafety.gov (USDA/HHS). Carry-over cooking raises the temperature a few degrees after you pull it from the heat — rest before carving. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Source: FoodSafety.gov (USDA/HHS). Carry-over cooking raises the temperature a few degrees after you pull it from the heat, rest before carving. 🔒 In your browser.</p>
     </div>
   );
 }

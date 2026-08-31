@@ -22,7 +22,7 @@ export default function LeverageRatiosTool() {
 
       <RatioResults results={results} />
 
-      <p class="mt-4 text-xs text-slate-500">Leverage (solvency) ratios show how much a company relies on debt versus owners&rsquo; money. Whether a level is risky depends heavily on the sector — utilities, telecom and banks run structurally high leverage — so compare to industry peers. Note: some sources use total liabilities for debt-to-equity, others only interest-bearing debt; enter whichever you mean. Educational information, not financial advice. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Leverage (solvency) ratios show how much a company relies on debt versus owners&rsquo; money. Whether a level is risky depends heavily on the sector, utilities, telecom and banks run structurally high leverage, so compare to industry peers. Note: some sources use total liabilities for debt-to-equity, others only interest-bearing debt; enter whichever you mean. Educational information, not financial advice. 🔒 In your browser.</p>
     </div>
   );
 }

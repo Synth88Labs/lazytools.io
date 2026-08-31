@@ -36,7 +36,7 @@ export default function ZipCreatorTool() {
       const name = (zipName.replace(/[^a-z0-9._-]+/gi, '-').replace(/^-|-$/g, '') || 'archive') + '.zip';
       setDone({ url: URL.createObjectURL(blob), name, size: blob.size });
     } catch (e) {
-      setError('Could not create the ZIP — ' + (e as Error).message);
+      setError('Could not create the ZIP, ' + (e as Error).message);
     } finally { setBusy(false); }
   };
 
@@ -47,7 +47,7 @@ export default function ZipCreatorTool() {
       <label class="block cursor-pointer rounded-xl border-2 border-dashed border-slate-300 bg-white px-4 py-7 text-center hover:border-brand-400">
         <input type="file" multiple class="hidden" onChange={(e) => addFiles((e.target as HTMLInputElement).files)} />
         <span class="text-sm font-semibold text-slate-700">{files.length ? '➕ Add more files' : '📁 Choose files to zip'}</span>
-        <span class="mt-1 block text-xs text-slate-500">Select several at once — everything is zipped in your browser, nothing uploaded</span>
+        <span class="mt-1 block text-xs text-slate-500">Select several at once, everything is zipped in your browser, nothing uploaded</span>
       </label>
 
       {files.length > 0 && (
@@ -80,12 +80,12 @@ export default function ZipCreatorTool() {
 
       {done && (
         <div class="mt-4 rounded-xl bg-white p-4 ring-2 ring-brand-200">
-          <p class="text-sm text-slate-700">Created <strong>{done.name}</strong> — {fmtSize(done.size)}{totalIn > 0 && done.size < totalIn ? ` (${Math.round((1 - done.size / totalIn) * 100)}% smaller)` : ''}.</p>
+          <p class="text-sm text-slate-700">Created <strong>{done.name}</strong>, {fmtSize(done.size)}{totalIn > 0 && done.size < totalIn ? ` (${Math.round((1 - done.size / totalIn) * 100)}% smaller)` : ''}.</p>
           <a href={done.url} download={done.name} class="mt-3 inline-block rounded-xl bg-brand-700 px-5 py-2 text-sm font-semibold text-white hover:bg-brand-800">⬇ Download ZIP</a>
         </div>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Bundles any files into a single standard .zip — for emailing a batch, backing up, or uploading where only one file is allowed. Compression (DEFLATE) shrinks text and documents a lot and already-compressed files (JPEG, PNG, MP4) barely at all; untick it to store files as-is (faster). 🔒 The ZIP is built entirely in your browser with JSZip, so your files are never uploaded.</p>
+      <p class="mt-4 text-xs text-slate-500">Bundles any files into a single standard .zip, for emailing a batch, backing up, or uploading where only one file is allowed. Compression (DEFLATE) shrinks text and documents a lot and already-compressed files (JPEG, PNG, MP4) barely at all; untick it to store files as-is (faster). 🔒 The ZIP is built entirely in your browser with JSZip, so your files are never uploaded.</p>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 ---
-title: "The 1 Inch Per Gallon Rule Is Wrong — What Actually Limits Fish Stocking"
+title: "The 1 Inch Per Gallon Rule Is Wrong, What Actually Limits Fish Stocking"
 seoTitle: 'Inch Per Gallon Rule: What Really Limits Stocking'
-description: "The 1 inch per gallon rule fails: fish waste scales with body mass, not length. What really limits stocking — adult size, bioload, surface area and filtration."
+description: "The 1 inch per gallon rule fails: fish waste scales with body mass, not length. What really limits stocking, adult size, bioload, surface area and filtration."
 pubDate: 2026-07-18
 updatedDate: 2026-07-18
 archetype: explainer
@@ -31,7 +31,7 @@ faqs:
 draft: false
 ---
 
-**The "one inch of fish per gallon" rule is unreliable because waste production scales with a fish's body mass, not its length.** A 10-inch fish is roughly a *thousand* times the volume of a 1-inch fish, not ten times — so it produces vastly more waste than ten small tetras. The rule also ignores adult size, oxygen exchange, filtration capacity and territory. What actually limits stocking is bioload versus your filter, surface area for gas exchange, and each species' space needs.
+**The "one inch of fish per gallon" rule is unreliable because waste production scales with a fish's body mass, not its length.** A 10-inch fish is roughly a *thousand* times the volume of a 1-inch fish, not ten times, so it produces vastly more waste than ten small tetras. The rule also ignores adult size, oxygen exchange, filtration capacity and territory. What actually limits stocking is bioload versus your filter, surface area for gas exchange, and each species' space needs.
 
 > General fishkeeping information, not veterinary advice. Research each species' requirements before buying, and consult an aquatic vet or experienced retailer for health concerns.
 
@@ -41,7 +41,7 @@ draft: false
 
 - **Waste scales with mass, not length.** Double the length ≈ **8× the volume**.
 - **Stock for adult size**, not the juvenile in the shop bag.
-- **Surface area drives oxygen exchange** — a wide, shallow tank beats a tall, narrow one of equal volume.
+- **Surface area drives oxygen exchange**, a wide, shallow tank beats a tall, narrow one of equal volume.
 - **Filter capacity is the real ceiling**, not gallons.
 - **Schooling fish need groups** (often 6+), so they're bought in blocks, not singly.
 - Territory and swim footprint matter as much as volume for many species.
@@ -57,7 +57,7 @@ draft: false
 
 The rule counts **length**. Fish produce waste in proportion to **body mass**, and mass grows roughly with the *cube* of length.
 
-Double a fish's length and — for a similar body shape — you get about **8× the volume**. Ten times the length gives on the order of **1,000×**. So:
+Double a fish's length and, for a similar body shape. You get about **8× the volume**. Ten times the length gives on the order of **1,000×**. So:
 
 - **Ten 1-inch tetras** ≈ ten small bodies, modest total mass, modest waste.
 - **One 10-inch oscar** ≈ one very large body, far greater mass, eats far more, produces dramatically more waste.
@@ -70,18 +70,18 @@ This is the mistake that causes most genuine suffering. Fish are sold as juvenil
 
 A common pleco sold at 2 inches reaches well over a foot. A goldfish sold at 1 inch is a large, extremely messy fish at maturity. An oscar sold at 2 inches becomes a foot-long territorial cichlid.
 
-**Always stock for the adult size of the species**, checked before purchase — not what fits today. "I'll upgrade the tank later" is a plan that frequently doesn't survive contact with reality.
+**Always stock for the adult size of the species**, checked before purchase, not what fits today. "I'll upgrade the tank later" is a plan that frequently doesn't survive contact with reality.
 
 ## Surface area, not just volume
 
 Oxygen enters and carbon dioxide leaves at the **water's surface**. Two tanks of identical volume can have very different gas exchange:
 
-- A **wide, shallow** 30-gallon "breeder" has a large surface area — good exchange.
-- A **tall, narrow** 30-gallon column has much less — poorer exchange, and a real constraint on how many fish it can support.
+- A **wide, shallow** 30-gallon "breeder" has a large surface area, good exchange.
+- A **tall, narrow** 30-gallon column has much less, poorer exchange, and a real constraint on how many fish it can support.
 
 Surface agitation from a filter outflow or air stone increases exchange considerably, which is why a well-circulated tank supports more life than a still one of the same size.
 
-Tall tanks also give less **swim footprint**, which matters for active, horizontally-swimming species regardless of how many gallons the label claims. Work out your real volume with the [aquarium volume calculator](/pets/aquarium-volume-calculator/) — and remember substrate, rock and décor displace water, so actual water volume is usually 10–15% below the nominal rating.
+Tall tanks also give less **swim footprint**, which matters for active, horizontally-swimming species regardless of how many gallons the label claims. Work out your real volume with the [aquarium volume calculator](/pets/aquarium-volume-calculator/), and remember substrate, rock and décor displace water, so actual water volume is usually 10-15% below the nominal rating.
 
 ## Filtration is the real ceiling
 
@@ -89,18 +89,18 @@ The [nitrogen cycle](https://en.wikipedia.org/wiki/Nitrogen_cycle) is what keeps
 
 A 20-gallon tank with generous, well-maintained filtration can safely hold more than a 30-gallon with an undersized filter. Gallons don't process ammonia; bacteria do.
 
-This is also why **a new tank can't be stocked to capacity immediately**. The bacterial colony has to establish first — cycling a tank before adding fish, then stocking gradually, is what prevents the ammonia spike that kills fish in new setups.
+This is also why **a new tank can't be stocked to capacity immediately**. The bacterial colony has to establish first, cycling a tank before adding fish, then stocking gradually, is what prevents the ammonia spike that kills fish in new setups.
 
 ## What to use instead
 
 There's no single number, but a workable approach:
 
 1. **Look up adult size and temperament** for every species you're considering.
-2. **Check the minimum tank size** the species needs — this is often about footprint and territory, not volume.
+2. **Check the minimum tank size** the species needs. This is often about footprint and territory, not volume.
 3. **Respect schooling requirements.** Many tetras, rasboras and corydoras need groups of six or more to behave normally; a lone schooling fish is a stressed fish.
 4. **Match filtration generously** to the messiest fish you keep, not the average.
 5. **Stock slowly**, testing water as you go.
-6. **Let your test kit decide.** Persistent ammonia or nitrite above zero, or nitrate climbing fast between water changes, means you're overstocked or under-filtered — whatever the arithmetic said.
+6. **Let your test kit decide.** Persistent ammonia or nitrite above zero, or nitrate climbing fast between water changes, means you're overstocked or under-filtered, whatever the arithmetic said.
 
 The [aquarium stocking calculator](/pets/aquarium-stocking-calculator/) weighs volume against filtration and species load rather than counting inches.
 
@@ -118,7 +118,7 @@ The [aquarium stocking calculator](/pets/aquarium-stocking-calculator/) weighs v
 No. It counts length while waste production scales with body mass, which grows roughly with the cube of length. It also ignores adult size, body shape, filtration capacity, surface area and territorial needs, so it routinely suggests dangerous stocking levels.
 
 ### How many fish can I put in a 10 gallon tank?
-It depends entirely on species. A 10-gallon might suit a small school of six or so nano fish with good filtration — or a single betta. It's unsuitable for goldfish, plecos or cichlids at any number, because those species outgrow it. Check each species' adult size and minimum tank size.
+It depends entirely on species. A 10-gallon might suit a small school of six or so nano fish with good filtration, or a single betta. It's unsuitable for goldfish, plecos or cichlids at any number, because those species outgrow it. Check each species' adult size and minimum tank size.
 
 ### Why does fish size matter more than fish count?
 Because mass, not length, drives waste. Doubling length gives roughly eight times the body volume, so a large fish eats far more and produces far more ammonia than several small ones of the same combined length.
@@ -127,7 +127,7 @@ Because mass, not length, drives waste. Doubling length gives roughly eight time
 Yes. Oxygen exchange happens at the water surface, so a wide, shallow tank supports more fish than a tall, narrow one of the same volume. Tall tanks also offer less swimming footprint for active species.
 
 ### Can a bigger filter let me keep more fish?
-Up to a point — filtration capacity is usually the binding constraint, so a generously filtered tank supports more life than an under-filtered one of the same volume. But filtration can't create swimming space or territory, so it won't make a small tank suitable for a large or territorial species.
+Up to a point, filtration capacity is usually the binding constraint, so a generously filtered tank supports more life than an under-filtered one of the same volume. But filtration can't create swimming space or territory, so it won't make a small tank suitable for a large or territorial species.
 
 ### How do I know if my tank is overstocked?
 Test the water. Any detectable ammonia or nitrite in an established tank, or nitrate rising quickly between water changes, indicates the bioload exceeds your filtration. Fish gasping at the surface and rising aggression are other warning signs.

@@ -15,12 +15,12 @@ keywords:
   - profit margin formula
   - retail pricing math
 heroImage: /blog/markup-vs-margin-guide.png
-heroAlt: "Markup vs margin — the same profit as a percentage of cost versus as a percentage of price"
+heroAlt: "Markup vs margin, the same profit as a percentage of cost versus as a percentage of price"
 faqs:
   - q: "What's the difference between markup and margin?"
-    a: "They measure the same profit against different bases. Markup is profit ÷ cost — how much you added on top of what you paid. Margin is profit ÷ selling price — the share of the sale price you keep. Buy for $60, sell for $100: the $40 profit is a 66.7% markup (40/60) but a 40% margin (40/100). Markup is always the larger number."
+    a: "They measure the same profit against different bases. Markup is profit ÷ cost, how much you added on top of what you paid. Margin is profit ÷ selling price, the share of the sale price you keep. Buy for $60, sell for $100: the $40 profit is a 66.7% markup (40/60) but a 40% margin (40/100). Markup is always the larger number."
   - q: "How do I calculate markup?"
-    a: "Markup % = (selling price − cost) ÷ cost × 100. If cost is $60 and price is $100, that's ($100 − $60) ÷ $60 = 40 ÷ 60 = 66.7%. To go the other way — set a price from a target markup — multiply cost by (1 + markup): $60 × 1.667 ≈ $100."
+    a: "Markup % = (selling price − cost) ÷ cost × 100. If cost is $60 and price is $100, that's ($100 − $60) ÷ $60 = 40 ÷ 60 = 66.7%. To go the other way, set a price from a target markup, multiply cost by (1 + markup): $60 × 1.667 ≈ $100."
   - q: "How do I calculate margin?"
     a: "Margin % = (selling price − cost) ÷ selling price × 100. With cost $60 and price $100 that's ($100 − $60) ÷ $100 = 40 ÷ 100 = 40%. To price from a target margin, divide cost by (1 − margin): $60 ÷ (1 − 0.40) = $60 ÷ 0.60 = $100."
   - q: "Why is markup always bigger than margin?"
@@ -28,12 +28,12 @@ faqs:
   - q: "How do I convert markup to margin?"
     a: "margin = markup ÷ (1 + markup), and markup = margin ÷ (1 − margin). So a 66.7% markup converts to 0.667 ÷ 1.667 = 40% margin; a 50% margin converts to 0.5 ÷ 0.5 = 100% markup. The markup & margin calculator shows both figures at once so you never have to convert by hand."
   - q: "What's the costly mistake people make with markup and margin?"
-    a: "Confusing the two when pricing. If you want a 40% margin but apply a 40% markup instead, you'll sell at $60 × 1.40 = $84 — which is only a 28.6% margin, not 40%. Across a whole catalogue that gap quietly erases a big chunk of expected profit. Always be explicit about which one your target refers to."
+    a: "Confusing the two when pricing. If you want a 40% margin but apply a 40% markup instead, you'll sell at $60 × 1.40 = $84, which is only a 28.6% margin, not 40%. Across a whole catalogue that gap quietly erases a big chunk of expected profit. Always be explicit about which one your target refers to."
 draft: false
 ---
 
 **Buy something for $60 and sell it for $100, and you've earned a 66.7% markup and a 40% margin at the
-same time — the identical $40 of profit, measured once against your cost and once against your selling
+same time, the identical $40 of profit, measured once against your cost and once against your selling
 price.** They're never equal, markup is always the bigger number, and mixing them up is one of the
 most expensive small mistakes in pricing. Compute both instantly for any cost and price in the
 [markup & margin calculator](/calc/markup-margin-calculator/); here's the logic underneath.
@@ -41,8 +41,8 @@ most expensive small mistakes in pricing. Compute both instantly for any cost an
 <aside class="key-takeaways">
 <p class="kt-title">⚡ Key takeaways</p>
 <ul>
-<li><strong>Markup</strong> = profit ÷ <em>cost</em> — what you add on top of what you paid</li>
-<li><strong>Margin</strong> = profit ÷ <em>price</em> — the share of the sale you keep</li>
+<li><strong>Markup</strong> = profit ÷ <em>cost</em>, what you add on top of what you paid</li>
+<li><strong>Margin</strong> = profit ÷ <em>price</em>, the share of the sale you keep</li>
 <li>Same $40 profit on $60→$100: <strong>66.7% markup, 40% margin</strong></li>
 <li>Markup is <strong>always larger</strong> (it divides by the smaller number)</li>
 <li>Convert: <strong>margin = markup ÷ (1 + markup)</strong></li>
@@ -56,8 +56,8 @@ most expensive small mistakes in pricing. Compute both instantly for any cost an
 <figcaption>The profit is the same $40. Markup measures it against cost; margin measures it against price.</figcaption>
 </figure>
 
-The whole confusion dissolves once you see that markup and margin ask the same question — *how much
-profit?* — but divide by different things:
+The whole confusion dissolves once you see that markup and margin ask the same question, *how much
+profit?*, but divide by different things:
 
 - **Markup** looks backward at what you paid: profit as a percentage of **cost**.
 - **Margin** looks at what you charged: profit as a percentage of **selling price**.
@@ -76,7 +76,7 @@ Two to *measure* an existing price, two to *set* a price from a target:
 | Cost & target markup | Price | cost × (1 + markup) | 60 × 1.667 = $100 |
 | Cost & target margin | Price | cost ÷ (1 − margin) | 60 ÷ 0.60 = $100 |
 
-Note the last two both land on $100 here — but only because 66.7% markup and 40% margin *are* the same
+Note the last two both land on $100 here, but only because 66.7% markup and 40% margin *are* the same
 deal expressed two ways. Feed a cost and a price into the
 [markup & margin calculator](/calc/markup-margin-calculator/) and it returns the profit, both
 percentages, and the price/cost split in one go.
@@ -92,7 +92,7 @@ That second one is worth remembering as a sanity anchor: *doubling your money is
 a 50% margin.*
 
 It helps to keep a few common pairings in your head so a number never surprises you. Notice how the two
-figures start out close for small markups and then drift far apart as the markup climbs — because the
+figures start out close for small markups and then drift far apart as the markup climbs, because the
 bigger the profit, the more the two denominators (cost vs. price) diverge:
 
 | Markup | Margin | Price on $60 cost |
@@ -107,12 +107,12 @@ bigger the profit, the more the two denominators (cost vs. price) diverge:
 | 200% | 66.7% | $180.00 |
 
 A margin can never reach 100% (you would have to sell at an infinite price relative to cost), but a
-markup has no ceiling — a $1 item sold for $10 is a 900% markup and a 90% margin. That asymmetry is the
+markup has no ceiling, a $1 item sold for $10 is a 900% markup and a 90% margin. That asymmetry is the
 whole story in one line.
 
 ## Which one should you actually use?
 
-Neither is "more correct" — they answer different business questions, and mature operations track both:
+Neither is "more correct". They answer different business questions, and mature operations track both:
 
 - **Markup is a pricing lever.** It starts from what you paid and asks "how much do I add?" That is how
   buyers, wholesalers, and anyone working up from a supplier invoice tends to think. Category markup
@@ -133,7 +133,7 @@ that cost you $60. If you absent-mindedly apply a **40% markup** instead:
 - Wrong (40% markup): $60 × 1.40 = **$84** → that's only a **28.6% margin**
 - Right (40% margin): $60 ÷ 0.60 = **$100** → a true **40% margin**
 
-You'd have underpriced by $16 on a single item — and believed you hit your target. To see why that
+You'd have underpriced by $16 on a single item, and believed you hit your target. To see why that
 matters at scale, price a three-item order both ways. Say each product cost $60 and you plan to sell one
 unit of each:
 
@@ -145,7 +145,7 @@ unit of each:
 | **Total** | **$180** | **$252.00** | **$300.00** | **$48.00** |
 
 The mislabelled prices bring in $72 of gross profit ($252 − $180); the correct margin prices bring in
-$120 ($300 − $180). You collected only 60% of the profit you budgeted — a full 40% shortfall — purely
+$120 ($300 − $180). You collected only 60% of the profit you budgeted, a full 40% shortfall, purely
 from applying the right number against the wrong base. Across hundreds of SKUs that error compounds into
 a serious hole, and because every individual price still *looks* reasonable, it rarely gets caught by
 eye. The fix is simply to be explicit about which basis a percentage refers to, and to let the
@@ -153,7 +153,7 @@ calculator show both figures side by side so the gap is impossible to miss.
 
 ## A note on tax and the "keep" figure
 
-Margin is the share of the *selling price* you keep as gross profit — before overheads, and before
+Margin is the share of the *selling price* you keep as gross profit, before overheads, and before
 sales tax, which isn't yours to keep at all. If your displayed price includes tax, strip it out before
 computing margin, or you'll flatter your numbers. The [sales tax calculator](/calc/sales-tax-calculator/)
 does that reverse step (price ÷ (1 + rate)) so your margin is measured on the real, pre-tax revenue.
@@ -161,12 +161,12 @@ does that reverse step (price ÷ (1 + rate)) so your margin is measured on the r
 ## Quick summary
 
 Markup and margin are the same profit over different bases: markup divides by cost, margin divides by
-price. Because cost is the smaller number, markup is always the bigger percentage — $60→$100 is a
+price. Because cost is the smaller number, markup is always the bigger percentage, $60→$100 is a
 66.7% markup but a 40% margin. Convert with margin = markup ÷ (1 + markup), price from a target margin
 with cost ÷ (1 − margin), and never set a markup when you meant a margin (40% markup on $60 is only a
 28.6% margin). Get every figure at once, privately in your browser, from the
 [markup & margin calculator](/calc/markup-margin-calculator/).
 
 *Sources: standard retail and accounting definitions of gross margin and markup ·
-[Investopedia — Margin vs. Markup](https://www.investopedia.com/ask/answers/043015/what-difference-between-gross-margin-and-markup.asp) ·
-[Corporate Finance Institute — Gross Margin](https://corporatefinanceinstitute.com/resources/accounting/gross-margin-ratio/).*
+[Investopedia, Margin vs. Markup](https://www.investopedia.com/ask/answers/043015/what-difference-between-gross-margin-and-markup.asp) ·
+[Corporate Finance Institute, Gross Margin](https://corporatefinanceinstitute.com/resources/accounting/gross-margin-ratio/).*

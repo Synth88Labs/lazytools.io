@@ -25,14 +25,14 @@ export default function SlowCookerTool() {
 
       {r ? (
         <div class="mt-4 grid gap-3 sm:grid-cols-2">
-          <div class="rounded-xl bg-white p-4 text-center ring-2 ring-brand-200"><p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Slow cooker — Low</p><p class="mt-1 text-3xl font-extrabold text-brand-800">{hr(r.lowHours)}</p></div>
-          <div class="rounded-xl bg-white p-4 text-center ring-1 ring-slate-200"><p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Slow cooker — High</p><p class="mt-1 text-3xl font-extrabold text-slate-700">{hr(r.highHours)}</p></div>
+          <div class="rounded-xl bg-white p-4 text-center ring-2 ring-brand-200"><p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Slow cooker, Low</p><p class="mt-1 text-3xl font-extrabold text-brand-800">{hr(r.lowHours)}</p></div>
+          <div class="rounded-xl bg-white p-4 text-center ring-1 ring-slate-200"><p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Slow cooker, High</p><p class="mt-1 text-3xl font-extrabold text-slate-700">{hr(r.highHours)}</p></div>
         </div>
       ) : (
         <p class="mt-4 text-sm text-slate-500">Enter the recipe's conventional cooking time.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">A rough conversion from oven/stovetop time to a slow cooker: roughly 1 hour of conventional cooking becomes about 4–6 hours on Low or 1.5–2.5 on High. Low and High reach the same temperature (~90–100°C); High just gets there faster. Reduce added liquid by about a third (the lid traps steam), and add dairy or delicate vegetables near the end. Times vary with your cooker and how full it is — check for doneness. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">A rough conversion from oven/stovetop time to a slow cooker: roughly 1 hour of conventional cooking becomes about 4-6 hours on Low or 1.5-2.5 on High. Low and High reach the same temperature (~90-100°C); High just gets there faster. Reduce added liquid by about a third (the lid traps steam), and add dairy or delicate vegetables near the end. Times vary with your cooker and how full it is, check for doneness. 🔒 In your browser.</p>
     </div>
   );
 }

@@ -14,7 +14,7 @@ interface ParseResult {
 
 function parseSide(text: string): { value?: unknown; error: string | null } {
   const trimmed = text.trim();
-  if (!trimmed) return { error: 'Empty — paste or type JSON here.' };
+  if (!trimmed) return { error: 'Empty, paste or type JSON here.' };
   try {
     return { value: JSON.parse(trimmed), error: null };
   } catch (e) {
@@ -54,7 +54,7 @@ export default function JsonDiffTool() {
       setCopied(true);
       setTimeout(() => setCopied(false), 1500);
     } catch {
-      /* clipboard unavailable — ignore */
+      /* clipboard unavailable, ignore */
     }
   }
 
@@ -95,7 +95,7 @@ export default function JsonDiffTool() {
           <p class="text-sm text-slate-500">Fix the JSON above to see a structural diff.</p>
         ) : total === 0 ? (
           <p class="rounded-xl border border-green-200 bg-green-50 px-3 py-2 text-sm text-green-700">
-            ✓ No differences — the documents are structurally identical (key order and formatting are ignored).
+            ✓ No differences, the documents are structurally identical (key order and formatting are ignored).
           </p>
         ) : (
           <>
@@ -154,14 +154,14 @@ export default function JsonDiffTool() {
         {showNote && (
           <p class="mt-2 text-xs leading-relaxed text-slate-600">
             This is a <strong>semantic (structural)</strong> diff: it compares the parsed data, not the text.
-            Reformatting, whitespace, or reordering object keys is <strong>not</strong> reported as a change — only
+            Reformatting, whitespace, or reordering object keys is <strong>not</strong> reported as a change, only
             keys and values that were actually added, removed, or altered. Arrays are compared by position.
           </p>
         )}
       </div>
 
       <p class="mt-3 text-xs text-slate-500">
-        Everything runs in your browser — nothing is uploaded.
+        Everything runs in your browser, nothing is uploaded.
       </p>
     </div>
   );

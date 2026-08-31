@@ -49,7 +49,7 @@ export default function SolarBatteryTool() {
       )}
 
       <p class="mt-2 text-xs text-slate-600"><strong>{preset.name}:</strong> {preset.note}</p>
-      <p class="mt-3 text-xs text-slate-500">Bank size = daily load × days of autonomy ÷ depth of discharge, then ÷ system voltage for Amp-hours. Depth of discharge protects battery life — ~50% for lead-acid, ~80% for lithium (LiFePO4). "Days of autonomy" is how long the bank runs with no charging (cloudy days); 1–3 is common. Note: lead-acid loses usable capacity in the cold (only ~80% near 0°C), and lithium must not be charged below freezing — size up in cold climates. 🔒 In your browser.</p>
+      <p class="mt-3 text-xs text-slate-500">Bank size = daily load × days of autonomy ÷ depth of discharge, then ÷ system voltage for Amp-hours. Depth of discharge protects battery life, ~50% for lead-acid, ~80% for lithium (LiFePO4). "Days of autonomy" is how long the bank runs with no charging (cloudy days); 1-3 is common. Note: lead-acid loses usable capacity in the cold (only ~80% near 0°C), and lithium must not be charged below freezing, size up in cold climates. 🔒 In your browser.</p>
     </div>
   );
 }

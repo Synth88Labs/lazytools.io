@@ -62,7 +62,7 @@ export default function HeartRateZoneTool() {
         <p class="mt-4 text-sm text-slate-500">Enter your age. Add a resting heart rate for more personalised (Karvonen) zones.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Max-HR formulas are population estimates — an actual max can vary ±10–12 bpm. With a resting HR, zones use the Karvonen heart-rate-reserve method: target = (max − rest) × %intensity + rest. Not medical advice. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Max-HR formulas are population estimates, an actual max can vary ±10-12 bpm. With a resting HR, zones use the Karvonen heart-rate-reserve method: target = (max − rest) × %intensity + rest. Not medical advice. 🔒 In your browser.</p>
     </div>
   );
 }

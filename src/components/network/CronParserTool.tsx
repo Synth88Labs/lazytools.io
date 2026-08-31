@@ -12,11 +12,11 @@ const PRESETS: [string, string][] = [
 ];
 
 const FIELD_INFO = [
-  ['Minute', '0–59'],
-  ['Hour', '0–23'],
-  ['Day of month', '1–31'],
-  ['Month', '1–12 or JAN–DEC'],
-  ['Day of week', '0–7 or SUN–SAT (0 and 7 = Sunday)'],
+  ['Minute', '0-59'],
+  ['Hour', '0-23'],
+  ['Day of month', '1-31'],
+  ['Month', '1-12 or JAN, DEC'],
+  ['Day of week', '0-7 or SUN, SAT (0 and 7 = Sunday)'],
 ];
 
 export default function CronParserTool() {
@@ -53,7 +53,7 @@ export default function CronParserTool() {
 
       {!parsed && expr.trim() !== '' && (
         <p class="mt-4 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800">
-          Not a valid 5-field cron expression. Fields are minute, hour, day-of-month, month, day-of-week — separated by spaces.
+          Not a valid 5-field cron expression. Fields are minute, hour, day-of-month, month, day-of-week, separated by spaces.
         </p>
       )}
 
@@ -99,7 +99,7 @@ export default function CronParserTool() {
       )}
 
       <p class="mt-4 text-xs text-slate-500">
-        Next-run times use your browser's timezone — the machine running the real crontab may use another (often UTC). Parsed entirely locally.
+        Next-run times use your browser's timezone, the machine running the real crontab may use another (often UTC). Parsed entirely locally.
       </p>
     </div>
   );

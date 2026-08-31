@@ -34,10 +34,10 @@ export default function ReadabilityTool() {
             <table class="w-full text-right text-sm">
               <thead class="bg-slate-50 text-xs font-semibold uppercase tracking-wide text-slate-500"><tr><th class="px-3 py-2 text-left">Index</th><th class="px-3 py-2">Score</th><th class="px-3 py-2 text-left">Meaning</th></tr></thead>
               <tbody class="divide-y divide-slate-100 font-mono">
-                <tr><td class="px-3 py-1.5 text-left">Flesch–Kincaid Grade</td><td class="px-3 py-1.5 font-semibold">{r.scores.fleschKincaidGrade.toFixed(1)}</td><td class="px-3 py-1.5 text-left text-slate-500">US grade level</td></tr>
+                <tr><td class="px-3 py-1.5 text-left">Flesch, Kincaid Grade</td><td class="px-3 py-1.5 font-semibold">{r.scores.fleschKincaidGrade.toFixed(1)}</td><td class="px-3 py-1.5 text-left text-slate-500">US grade level</td></tr>
                 <tr><td class="px-3 py-1.5 text-left">Gunning Fog</td><td class="px-3 py-1.5 font-semibold">{r.scores.gunningFog.toFixed(1)}</td><td class="px-3 py-1.5 text-left text-slate-500">years of education</td></tr>
                 <tr><td class="px-3 py-1.5 text-left">SMOG</td><td class="px-3 py-1.5 font-semibold">{r.scores.smog.toFixed(1)}</td><td class="px-3 py-1.5 text-left text-slate-500">years of education</td></tr>
-                <tr><td class="px-3 py-1.5 text-left">Coleman–Liau</td><td class="px-3 py-1.5 font-semibold">{r.scores.colemanLiau.toFixed(1)}</td><td class="px-3 py-1.5 text-left text-slate-500">US grade level</td></tr>
+                <tr><td class="px-3 py-1.5 text-left">Coleman, Liau</td><td class="px-3 py-1.5 font-semibold">{r.scores.colemanLiau.toFixed(1)}</td><td class="px-3 py-1.5 text-left text-slate-500">US grade level</td></tr>
                 <tr><td class="px-3 py-1.5 text-left">Automated Readability (ARI)</td><td class="px-3 py-1.5 font-semibold">{r.scores.ari.toFixed(1)}</td><td class="px-3 py-1.5 text-left text-slate-500">US grade level</td></tr>
               </tbody>
             </table>
@@ -45,7 +45,7 @@ export default function ReadabilityTool() {
           <p class="mt-2 font-mono text-xs text-slate-400">{r.stats.words} words · {r.stats.sentences} sentences · {r.stats.syllables} syllables · {r.stats.complexWords} complex (3+ syllable) words</p>
         </>
       )}
-      <p class="mt-3 text-xs text-slate-500">Six standard formulas, computed exactly in your browser. Aim for Flesch Reading Ease 60+ (grade 8–9) for general audiences. 🔒 Your text is never uploaded.</p>
+      <p class="mt-3 text-xs text-slate-500">Six standard formulas, computed exactly in your browser. Aim for Flesch Reading Ease 60+ (grade 8-9) for general audiences. 🔒 Your text is never uploaded.</p>
     </div>
   );
 }

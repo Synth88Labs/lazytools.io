@@ -5,7 +5,7 @@
  * long-standing community color references. Hex values are facts about the brands,
  * not creative content; trademarks and brand names belong to their owners and are
  * used here nominatively (to identify whose colors these are). Brands evolve their
- * palettes — corrections welcome via /contact/.
+ * palettes, corrections welcome via /contact/.
  *
  * Format: n = brand name, c = colors (primary first).
  */

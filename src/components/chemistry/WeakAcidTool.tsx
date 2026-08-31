@@ -4,7 +4,7 @@ import { weakAcidPh, weakBasePh, kaToPka } from '../../lib/equilibrium';
 const num = (s: string) => { const n = parseFloat(s); return isFinite(n) && n > 0 ? n : null; };
 const fmt = (n: number, d = 2) => n.toLocaleString('en-US', { maximumFractionDigits: d });
 
-// A few common weak acids/bases (Ka/Kb) as quick presets — values are textbook standards.
+// A few common weak acids/bases (Ka/Kb) as quick presets, values are textbook standards.
 const ACID_PRESETS = [
   { name: 'Acetic acid (CH₃COOH)', k: 1.8e-5 },
   { name: 'Formic acid (HCOOH)', k: 1.8e-4 },

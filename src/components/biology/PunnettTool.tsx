@@ -24,7 +24,7 @@ export default function PunnettTool() {
   }, [p1, p2]);
 
   // Order genotypes/phenotypes canonically (most-dominant first) so ratios read the
-  // conventional way — 1:2:1 for AA:Aa:aa, not sorted by frequency.
+  // conventional way, 1:2:1 for AA:Aa:aa, not sorted by frequency.
   const upper = (s: string) => (s.match(/[A-Z]/g) || []).length;
   const canonSort = (a: [string, number], b: [string, number]) => upper(b[0]) - upper(a[0]) || (a[0] < b[0] ? -1 : 1);
   const genoEntries = result ? Object.entries(result.genoTally).sort(canonSort) : [];
@@ -66,14 +66,14 @@ export default function PunnettTool() {
               <p class="text-sm font-semibold text-slate-900">Genotype ratio</p>
               <p class="mt-1 font-mono text-lg font-bold text-brand-800">{ratio(genoEntries.map((e) => e[1]))}</p>
               <ul class="mt-2 space-y-1 text-sm text-slate-600">
-                {genoEntries.map(([g, n]) => <li><span class="font-mono font-semibold text-slate-800">{g}</span> — {n}/{result.total} ({((n / result.total) * 100).toFixed(1)}%)</li>)}
+                {genoEntries.map(([g, n]) => <li><span class="font-mono font-semibold text-slate-800">{g}</span>, {n}/{result.total} ({((n / result.total) * 100).toFixed(1)}%)</li>)}
               </ul>
             </div>
             <div class="rounded-xl bg-white p-4 ring-1 ring-slate-200">
               <p class="text-sm font-semibold text-slate-900">Phenotype ratio</p>
               <p class="mt-1 font-mono text-lg font-bold text-brand-800">{ratio(phenoEntries.map((e) => e[1]))}</p>
               <ul class="mt-2 space-y-1 text-sm text-slate-600">
-                {phenoEntries.map(([g, n]) => <li><span class="font-mono font-semibold text-slate-800">{g}</span> — {n}/{result.total} ({((n / result.total) * 100).toFixed(1)}%)</li>)}
+                {phenoEntries.map(([g, n]) => <li><span class="font-mono font-semibold text-slate-800">{g}</span>, {n}/{result.total} ({((n / result.total) * 100).toFixed(1)}%)</li>)}
               </ul>
             </div>
           </div>

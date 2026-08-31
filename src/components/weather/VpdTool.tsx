@@ -8,11 +8,11 @@ const fmt = (x: number) => Number(x.toPrecision(3)).toString();
 
 // grow-stage VPD guidance (kPa)
 function zone(v: number) {
-  if (v < 0.4) return { label: 'Too humid — disease/mould risk', color: 'text-blue-700' };
+  if (v < 0.4) return { label: 'Too humid, disease/mould risk', color: 'text-blue-700' };
   if (v < 0.8) return { label: 'Propagation / early veg', color: 'text-emerald-700' };
   if (v < 1.2) return { label: 'Vegetative growth', color: 'text-emerald-700' };
   if (v < 1.6) return { label: 'Flowering / fruiting', color: 'text-amber-700' };
-  return { label: 'Too dry — plant stress risk', color: 'text-rose-700' };
+  return { label: 'Too dry, plant stress risk', color: 'text-rose-700' };
 }
 
 export default function VpdTool() {
@@ -47,7 +47,7 @@ export default function VpdTool() {
         </div>
       ) : <p class="mt-4 text-sm text-slate-500">Enter air temperature and relative humidity.</p>}
 
-      <p class="mt-4 text-xs text-slate-500">VPD is the gap between how much moisture the air holds and how much it could hold at leaf temperature — the "drying power" that drives transpiration. VPD = SVP(leaf) − SVP(air)×RH. Growers target roughly 0.4–0.8 kPa for clones/seedlings, 0.8–1.2 for veg and 1.2–1.6 for flower. Set a leaf offset (leaves often run 1–3° cooler than the air). 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">VPD is the gap between how much moisture the air holds and how much it could hold at leaf temperature, the "drying power" that drives transpiration. VPD = SVP(leaf) − SVP(air)×RH. Growers target roughly 0.4-0.8 kPa for clones/seedlings, 0.8-1.2 for veg and 1.2-1.6 for flower. Set a leaf offset (leaves often run 1-3° cooler than the air). 🔒 In your browser.</p>
     </div>
   );
 }

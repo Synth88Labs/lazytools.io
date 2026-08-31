@@ -54,7 +54,7 @@ export default function HarmonyTool({ preset = 'all' as Preset }: { preset?: Pre
   return (
     <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
       <label class="block">
-        <span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Base color — HEX, RGB or HSL</span>
+        <span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Base color, HEX, RGB or HSL</span>
         <div class="flex items-center gap-2">
           <ColorSwatchInput rgb={base} onPick={setRaw} size="lg" />
           <input value={raw} spellcheck={false} onInput={(e) => setRaw((e.target as HTMLInputElement).value)}

@@ -104,7 +104,7 @@ export default function CircleCalcTool() {
       {error ? <p class="mt-4 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800">{error}</p> : body}
 
       <p class="mt-4 text-xs text-slate-500">
-        Answers "in terms of π" — r = 6 gives area 36π, exactly what the homework asks for — with decimals alongside. Runs locally.
+        Answers "in terms of π", r = 6 gives area 36π, exactly what the homework asks for, with decimals alongside. Runs locally.
       </p>
     </div>
   );

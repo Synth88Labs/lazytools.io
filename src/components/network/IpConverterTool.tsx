@@ -49,7 +49,7 @@ export default function IpConverterTool() {
 
       {n === null && input.trim() !== '' && (
         <p class="mt-3 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800">
-          Not recognized — enter dotted decimal (192.168.1.1), an integer (0–4294967295), hex (0xC0A80101) or 32 binary bits.
+          Not recognized, enter dotted decimal (192.168.1.1), an integer (0-4294967295), hex (0xC0A80101) or 32 binary bits.
         </p>
       )}
 

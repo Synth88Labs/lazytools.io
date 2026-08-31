@@ -49,7 +49,7 @@ export default function SchwarzschildTool() {
         <p class="mt-4 text-sm text-slate-500">Enter a mass.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">The Schwarzschild radius is how small a mass must be squeezed to become a (non-rotating) black hole — the radius of its event horizon: r = 2GM ÷ c². It works out to about 2.95 km per solar mass, so the Sun would need to collapse to under 3 km across, and the whole Earth to about 9 mm. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">The Schwarzschild radius is how small a mass must be squeezed to become a (non-rotating) black hole, the radius of its event horizon: r = 2GM ÷ c². It works out to about 2.95 km per solar mass, so the Sun would need to collapse to under 3 km across, and the whole Earth to about 9 mm. 🔒 In your browser.</p>
     </div>
   );
 }

@@ -14,15 +14,15 @@ const crumbs = [
 const faqs = [
   {
     q: 'Why does it matter that generators run client-side?',
-    a: 'Because generated output is often a secret from the moment it exists: a password, an API identifier, a QR code pointing at a private link. A server-backed generator has seen every one it ever produced. These run on your device — the output exists only in your browser\'s memory until you copy it.',
+    a: 'Because generated output is often a secret from the moment it exists: a password, an API identifier, a QR code pointing at a private link. A server-backed generator has seen every one it ever produced. These run on your device, the output exists only in your browser\'s memory until you copy it.',
   },
   {
     q: 'Is the randomness actually secure?',
-    a: 'The password, UUID and random-number tools use crypto.getRandomValues and crypto.randomUUID — the browser\'s cryptographically secure random source, the same one TLS uses — with rejection sampling to avoid modulo bias. None of them touch Math.random().',
+    a: 'The password, UUID and random-number tools use crypto.getRandomValues and crypto.randomUUID, the browser\'s cryptographically secure random source, the same one TLS uses, with rejection sampling to avoid modulo bias. None of them touch Math.random().',
   },
   {
     q: 'Do the QR codes expire?',
-    a: 'No. Many "free" QR services encode a redirect through their own domain so they can track scans — and the code dies if their service does. Ours encodes your content directly, so the code works forever and nobody counts the scans.',
+    a: 'No. Many "free" QR services encode a redirect through their own domain so they can track scans, and the code dies if their service does. Ours encodes your content directly, so the code works forever and nobody counts the scans.',
   },
 ];
 
@@ -31,7 +31,7 @@ const schema = [
   collectionPageSchema({
     name: 'Free Generators',
     url: '/generate/',
-    description: 'Password, UUID, QR code, random number and lorem ipsum generators — cryptographically random where it matters, all running locally in your browser.',
+    description: 'Password, UUID, QR code, random number and lorem ipsum generators, cryptographically random where it matters, all running locally in your browser.',
     items: GEN_TOOLS.map((t) => ({ name: t.name, url: `/generate/${t.slug}/` })),
   }),
   faqSchema(faqs),
@@ -39,7 +39,7 @@ const schema = [
 ---
 
 <Base
-  title="Generators — Passwords, UUIDs, QR Codes | LazyTools"
+  title="Generators, Passwords, UUIDs, QR Codes | LazyTools"
   description={`${GEN_TOOLS.length} free generators: strong passwords, UUID v4, QR codes without tracking redirects, unbiased random numbers, lorem ipsum. Everything generated on your device.`}
   schema={schema}
 >
@@ -48,7 +48,7 @@ const schema = [
 
     <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Generators</h1>
     <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
-      Passwords, UUIDs, QR codes, random numbers and placeholder text — generated with the
+      Passwords, UUIDs, QR codes, random numbers and placeholder text, generated with the
       browser's cryptographic randomness where it matters, on your device. A password a server
       generated is a password a server has seen; here, nothing leaves your browser.
     </p>
@@ -71,8 +71,8 @@ const schema = [
 
     <section class="prose-lazy mt-10">
       <h2>Generate locally, share deliberately</h2>
-      <p>QR codes, strong passwords, UUIDs, barcodes, and Wi-Fi and vCard QR codes are all produced <strong>on your device</strong>. That's more important than it sounds: many online QR generators encode your Wi-Fi password or contact details on their servers, where the payload can be logged. Here the code is drawn in your browser, so the thing you're encoding — a password, a network key, a private address — is never transmitted.</p>
-      <p>Passwords and UUIDs use the browser's cryptographically-secure random source, not a weak <code>Math.random()</code>. Generate what you need, then choose to share it — nothing is sent anywhere by default, and it all works offline.</p>
+      <p>QR codes, strong passwords, UUIDs, barcodes, and Wi-Fi and vCard QR codes are all produced <strong>on your device</strong>. That's more important than it sounds: many online QR generators encode your Wi-Fi password or contact details on their servers, where the payload can be logged. Here the code is drawn in your browser, so the thing you're encoding, a password, a network key, a private address, is never transmitted.</p>
+      <p>Passwords and UUIDs use the browser's cryptographically-secure random source, not a weak <code>Math.random()</code>. Generate what you need, then choose to share it, nothing is sent anywhere by default, and it all works offline.</p>
     </section>
 
     <FaqSection faqs={faqs} />

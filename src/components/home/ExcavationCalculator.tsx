@@ -68,7 +68,7 @@ export default function ExcavationCalculator() {
         <p class="mt-4 text-sm text-slate-500">Enter the dig’s length, width and depth.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Volume = length × width × depth. Excavated soil bulks up (swells) about 20–30% once loose, so haul volume exceeds the hole. Density varies: dry soil ≈ 2,200 lb/yd³ (1,600 kg/m³), wet or clay soil more. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Volume = length × width × depth. Excavated soil bulks up (swells) about 20-30% once loose, so haul volume exceeds the hole. Density varies: dry soil ≈ 2,200 lb/yd³ (1,600 kg/m³), wet or clay soil more. 🔒 In your browser.</p>
     </div>
   );
 }

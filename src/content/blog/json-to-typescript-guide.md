@@ -1,7 +1,7 @@
 ---
 title: "How to Convert JSON to TypeScript Interfaces"
 seoTitle: 'JSON to TypeScript: Generate Interfaces'
-description: "JSON to TypeScript: map each value to a type, break nested objects into their own interface, and mark missing keys optional — instantly in your browser."
+description: "JSON to TypeScript: map each value to a type, break nested objects into their own interface, and mark missing keys optional, instantly in your browser."
 pubDate: 2026-07-28
 updatedDate: 2026-08-23
 archetype: explainer
@@ -31,7 +31,7 @@ faqs:
 draft: false
 ---
 
-**To convert JSON into TypeScript, infer a type for every value: strings become `string`, numbers `number`, booleans `boolean`, arrays `T[]`, and each nested object becomes its own named interface.** Paste a JSON object into a [JSON-to-TypeScript generator](/dev/json-to-typescript/) and it walks the structure and writes the interfaces for you — including optional keys and unions where an array's objects differ. It's the fastest way to get typed models for an API response.
+**To convert JSON into TypeScript, infer a type for every value: strings become `string`, numbers `number`, booleans `boolean`, arrays `T[]`, and each nested object becomes its own named interface.** Paste a JSON object into a [JSON-to-TypeScript generator](/dev/json-to-typescript/) and it walks the structure and writes the interfaces for you, including optional keys and unions where an array's objects differ. It's the fastest way to get typed models for an API response.
 
 <aside class="key-takeaways">
 
@@ -55,7 +55,7 @@ draft: false
 
 Writing interfaces by hand for a real API response is slow and error-prone. A single endpoint can return dozens of fields, several levels of nesting, and arrays whose elements do not all share the same keys. Miss one optional field and TypeScript will happily let an `undefined` slip through until it crashes at runtime. Inference from a concrete sample removes the guesswork: the shape you paste *is* the contract, so the generated types match the data exactly rather than matching what you remembered the data to be.
 
-JSON has only six value kinds — string, number, boolean, null, array, and object — and TypeScript has a natural home for each. That small, fixed mapping is what makes reliable automatic conversion possible.
+JSON has only six value kinds, string, number, boolean, null, array, and object, and TypeScript has a natural home for each. That small, fixed mapping is what makes reliable automatic conversion possible.
 
 ## How the conversion works
 
@@ -71,7 +71,7 @@ A generator parses your JSON and walks it recursively, choosing a TypeScript typ
 | Array of objects | `[{…}, {…}]` | `Thing[]` + a `Thing` interface |
 | Object | `{ "kind": "cat" }` | a new named interface, referenced by field |
 
-Note that JSON has no integer/float distinction and no date type: `42` and `3.14` both become `number`, and an ISO date string like `"2026-08-23"` becomes plain `string` — TypeScript cannot tell a date from any other string at the type level, so you narrow those by hand if it matters.
+Note that JSON has no integer/float distinction and no date type: `42` and `3.14` both become `number`, and an ISO date string like `"2026-08-23"` becomes plain `string`, TypeScript cannot tell a date from any other string at the type level, so you narrow those by hand if it matters.
 
 So this JSON:
 
@@ -152,7 +152,7 @@ interface Item {
 }
 ```
 
-Notice three things at once: `customer` became its own `Customer` interface, `items` became `Item[]` from a single merged `Item` shape, and `giftWrap` is optional because it appears in only one of the two items. That is the whole value of inference in one example — you would have had to spot the missing key yourself.
+Notice three things at once: `customer` became its own `Customer` interface, `items` became `Item[]` from a single merged `Item` shape, and `giftWrap` is optional because it appears in only one of the two items. That is the whole value of inference in one example. You would have had to spot the missing key yourself.
 
 ## interface vs type alias
 
@@ -165,20 +165,20 @@ Most generators let you emit either an `interface` or a `type` alias, and for a 
 | Unions / intersections at top level | No | Yes (`type Id = string \| number`) |
 | Extending | `extends` | `&` intersection |
 
-A common convention (echoed in the [TypeScript handbook](https://www.typescriptlang.org/)) is to prefer `interface` for object models and reach for `type` when you need a union, a tuple, or a mapped type. Pick whichever matches your codebase's existing style — consistency matters more than the choice itself.
+A common convention (echoed in the [TypeScript handbook](https://www.typescriptlang.org/)) is to prefer `interface` for object models and reach for `type` when you need a union, a tuple, or a mapped type. Pick whichever matches your codebase's existing style, consistency matters more than the choice itself.
 
 ## The limits of inference
 
 Types are only as good as the **sample** you paste:
 
-- A field whose only value is `null` is typed `null` — widen it by hand if it can hold other values.
+- A field whose only value is `null` is typed `null`, widen it by hand if it can hold other values.
 - **Empty arrays** become `any[]`, since there's no element to infer from.
 - The generator can't know about fields that never appear in your sample.
 
 Treat the output as a strong starting point, then adjust nullable and union types to match the real API contract. For the broader workflow of turning API payloads into typed models, see [generating typed models from JSON](/blog/generate-typed-models-from-json-guide/).
 
-A practical habit: paste the **largest, most complete** sample you have — ideally one that exercises optional fields and every variant. The more the sample resembles the full range of real responses, the fewer manual fixes you make afterward. If your API documents nullable fields, reconcile the generated `null` types against that documentation rather than trusting a single lucky response.
+A practical habit: paste the **largest, most complete** sample you have, ideally one that exercises optional fields and every variant. The more the sample resembles the full range of real responses, the fewer manual fixes you make afterward. If your API documents nullable fields, reconcile the generated `null` types against that documentation rather than trusting a single lucky response.
 
 ## Do it privately
 
-API responses can contain sensitive data — tokens, personal details, internal IDs. A [browser-based JSON-to-TypeScript tool](/dev/json-to-typescript/) does the inference **locally in your browser**, so the JSON you paste is never uploaded to a server. You can also switch the output between `interface` and `type` aliases to match your codebase's style.
+API responses can contain sensitive data, tokens, personal details, internal IDs. A [browser-based JSON-to-TypeScript tool](/dev/json-to-typescript/) does the inference **locally in your browser**, so the JSON you paste is never uploaded to a server. You can also switch the output between `interface` and `type` aliases to match your codebase's style.

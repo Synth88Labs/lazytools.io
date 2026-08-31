@@ -49,7 +49,7 @@ export default function PomodoroTool() {
     // phase complete
     if (settings.sound) beep();
     if (typeof Notification !== 'undefined' && Notification.permission === 'granted') {
-      new Notification(phase === 'work' ? 'Focus session done — take a break' : 'Break over — back to work');
+      new Notification(phase === 'work' ? 'Focus session done, take a break' : 'Break over, back to work');
     }
     if (phase === 'work') {
       setStats((s) => ({ date: todayKey(), done: (s.date === todayKey() ? s.done : 0) + 1 }));
@@ -64,8 +64,8 @@ export default function PomodoroTool() {
 
   const mmss = `${String(Math.floor(Math.max(0, remaining) / 60)).padStart(2, '0')}:${String(Math.max(0, remaining) % 60).padStart(2, '0')}`;
   useEffect(() => {
-    document.title = running ? `${mmss} · ${phase === 'work' ? 'Focus' : 'Break'} — LazyTools` : 'Pomodoro Timer — Free & Private | LazyTools';
-    return () => { document.title = 'Pomodoro Timer — Free & Private | LazyTools'; };
+    document.title = running ? `${mmss} · ${phase === 'work' ? 'Focus' : 'Break'}, LazyTools` : 'Pomodoro Timer, Free & Private | LazyTools';
+    return () => { document.title = 'Pomodoro Timer, Free & Private | LazyTools'; };
   }, [mmss, running, phase]);
 
   function start() {
@@ -128,7 +128,7 @@ export default function PomodoroTool() {
           Sound when a phase ends
         </label>
       </div>
-      <p class="mt-3 text-xs text-slate-500">Your settings and today's count are saved in this browser only — nothing is uploaded.</p>
+      <p class="mt-3 text-xs text-slate-500">Your settings and today's count are saved in this browser only, nothing is uploaded.</p>
     </div>
   );
 }

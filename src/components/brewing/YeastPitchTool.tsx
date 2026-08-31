@@ -5,11 +5,11 @@ const num = (s: string) => { const n = parseFloat(s); return isFinite(n) && n > 
 const fmt = (x: number, d = 1) => Number(x.toFixed(d)).toLocaleString();
 
 const RATES = [
-  { rate: 0.5, label: '0.5 — ale, low (light/session)' },
-  { rate: 0.75, label: '0.75 — ale, standard' },
-  { rate: 1.0, label: '1.0 — ale, high gravity' },
-  { rate: 1.5, label: '1.5 — lager, standard' },
-  { rate: 2.0, label: '2.0 — lager, high gravity' },
+  { rate: 0.5, label: '0.5, ale, low (light/session)' },
+  { rate: 0.75, label: '0.75, ale, standard' },
+  { rate: 1.0, label: '1.0, ale, high gravity' },
+  { rate: 1.5, label: '1.5, lager, standard' },
+  { rate: 2.0, label: '2.0, lager, high gravity' },
 ];
 
 export default function YeastPitchTool() {

@@ -55,7 +55,7 @@ export default function HmacTool() {
       setCopied(true);
       setTimeout(() => setCopied(false), 1200);
     } catch {
-      /* clipboard unavailable — ignore */
+      /* clipboard unavailable, ignore */
     }
   };
 
@@ -136,7 +136,7 @@ export default function HmacTool() {
 
         <div class="rounded-xl border border-slate-200 bg-white p-3 text-xs leading-relaxed text-slate-600">
           <p class="mb-2">
-            <strong class="text-slate-700">HMAC needs both a message and a secret key</strong> — unlike a plain
+            <strong class="text-slate-700">HMAC needs both a message and a secret key</strong>, unlike a plain
             hash. It proves the message came from someone who knows the key. A common use is verifying webhook
             signatures: services like Stripe and GitHub sign each payload with your secret so you can confirm it is
             genuine and untampered.

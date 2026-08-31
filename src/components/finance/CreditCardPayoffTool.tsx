@@ -53,7 +53,7 @@ export default function CreditCardPayoffTool() {
 
       {r ? (
         'never' in r ? (
-          <p class="mt-4 rounded-lg bg-amber-50 px-3 py-2 text-sm font-medium text-amber-800 ring-1 ring-amber-200">⚠ That payment barely covers the interest — the balance will never clear. Pay more than ${money((num(balance)! * (num(apr)! / 100)) / 12)}/mo (this month’s interest).</p>
+          <p class="mt-4 rounded-lg bg-amber-50 px-3 py-2 text-sm font-medium text-amber-800 ring-1 ring-amber-200">⚠ That payment barely covers the interest, the balance will never clear. Pay more than ${money((num(balance)! * (num(apr)! / 100)) / 12)}/mo (this month’s interest).</p>
         ) : (
           <div class="mt-4 grid gap-3 sm:grid-cols-3">
             <div class="rounded-xl bg-white p-4 text-center ring-2 ring-brand-200"><p class="text-xs font-semibold uppercase tracking-wide text-slate-500">{mode === 'payment' ? 'Debt-free in' : 'Pay each month'}</p><p class="mt-1 text-3xl font-extrabold text-brand-800">{mode === 'payment' ? monthsToYM(r.months) : `$${money(r.payment)}`}</p></div>

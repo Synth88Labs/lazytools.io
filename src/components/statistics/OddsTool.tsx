@@ -58,7 +58,7 @@ export default function OddsTool() {
         <p class="mt-4 text-sm text-slate-500">{dir === 'oddsToProb' ? 'Enter the for and against values.' : 'Enter a probability between 0 and 100%.'}</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Odds of A:B "in favour" mean A chances to win for every B to lose, so the probability is A ÷ (A + B). A 3:1 favourite therefore has a 75% chance. Decimal (European) odds are 1 ÷ probability — the total payout per unit staked. Fractional and American odds are just other ways of writing the same ratio. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Odds of A:B "in favour" mean A chances to win for every B to lose, so the probability is A ÷ (A + B). A 3:1 favourite therefore has a 75% chance. Decimal (European) odds are 1 ÷ probability, the total payout per unit staked. Fractional and American odds are just other ways of writing the same ratio. 🔒 In your browser.</p>
     </div>
   );
 }

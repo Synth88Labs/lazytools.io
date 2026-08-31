@@ -49,7 +49,7 @@ export default function MannWhitneyTool() {
         </>
       ) : <p class="mt-4 text-sm text-slate-500">Enter numbers for both groups (comma or space separated).</p>}
 
-      <p class="mt-4 text-xs text-slate-500">The Mann-Whitney U test (Wilcoxon rank-sum) is the non-parametric alternative to the two-sample t-test: it compares two independent groups by ranking all values together, so it doesn't assume the data are normally distributed — useful for ordinal data, skewed data or outliers. This tool uses the normal approximation with a tie correction, which is accurate for moderate-to-large samples; for very small samples an exact table is more precise. 🔒 Computed in your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">The Mann-Whitney U test (Wilcoxon rank-sum) is the non-parametric alternative to the two-sample t-test: it compares two independent groups by ranking all values together, so it doesn't assume the data are normally distributed, useful for ordinal data, skewed data or outliers. This tool uses the normal approximation with a tie correction, which is accurate for moderate-to-large samples; for very small samples an exact table is more precise. 🔒 Computed in your browser.</p>
     </div>
   );
 }

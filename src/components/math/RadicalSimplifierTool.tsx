@@ -46,7 +46,7 @@ export default function RadicalSimplifierTool() {
             <ol class="mt-2 list-decimal space-y-1 pl-5">
               <li>Prime-factorize: {s} = <span class="font-mono">{factors.map(([pp, e]) => e === 1n ? String(pp) : `${pp}${sup(e)}`).join(' × ')}</span></li>
               <li>Pull each pair of primes out of the root (a pair p² contributes p outside): outside = <span class="font-mono">{String(k)}</span>, left inside = <span class="font-mono">{String(m)}</span></li>
-              <li>√{s} = √({k}² × {String(m)}) = <span class="font-mono font-bold">{radicalToString(new Rat(k), m)}</span>{m === 1n ? ' — a perfect square' : ''}</li>
+              <li>√{s} = √({k}² × {String(m)}) = <span class="font-mono font-bold">{radicalToString(new Rat(k), m)}</span>{m === 1n ? ', a perfect square' : ''}</li>
             </ol>
           </div>
         </>
@@ -71,7 +71,7 @@ export default function RadicalSimplifierTool() {
             <ol class="mt-2 list-decimal space-y-1 pl-5">
               <li>Prime-factorize: {s} = <span class="font-mono">{factors.map(([pp, e]) => e === 1n ? String(pp) : `${pp}^${e}`).join(' × ')}</span></li>
               <li>Each group of {k} identical primes leaves the root as one factor: outside = <span class="font-mono">{String(out)}</span>, left inside = <span class="font-mono">{String(inside)}</span></li>
-              <li>{rootSym(k)}{s} = <span class="font-mono font-bold">{disp}</span>{inside === 1n ? ` — a perfect ${k === 2 ? 'square' : k === 3 ? 'cube' : `${k}th power`}` : ''}</li>
+              <li>{rootSym(k)}{s} = <span class="font-mono font-bold">{disp}</span>{inside === 1n ? `, a perfect ${k === 2 ? 'square' : k === 3 ? 'cube' : `${k}th power`}` : ''}</li>
             </ol>
           </div>
         </>
@@ -82,7 +82,7 @@ export default function RadicalSimplifierTool() {
       if (M <= 0n) throw new Error('The radicand m must be a positive integer.');
       // c / (a + b√m) × (a − b√m)/(a − b√m) = c(a − b√m) / (a² − b²m)
       const den = A.mul(A).sub(B.mul(B).mul(new Rat(M)));
-      if (den.isZero()) throw new Error('a² − b²·m = 0 — the denominator is zero after rationalizing (a + b√m must not be 0).');
+      if (den.isZero()) throw new Error('a² − b²·m = 0, the denominator is zero after rationalizing (a + b√m must not be 0).');
       const coefA = C.mul(A).div(den); // rational part
       const coefB = C.mul(B).div(den).neg(); // coefficient of √m
       const [k2, m2] = extractSquare(M);
@@ -96,7 +96,7 @@ export default function RadicalSimplifierTool() {
           <div class="mt-4 rounded-xl border border-slate-200 bg-white p-4 text-sm text-slate-700">
             <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Working (multiply by the conjugate)</p>
             <ol class="mt-2 list-decimal space-y-1 pl-5">
-              <li>Multiply top and bottom by the conjugate ({A.toFrac()} − {B.toFrac()}√{String(M)}) — the difference of squares removes the root from the denominator.</li>
+              <li>Multiply top and bottom by the conjugate ({A.toFrac()} − {B.toFrac()}√{String(M)}), the difference of squares removes the root from the denominator.</li>
               <li>Denominator: a² − b²·m = {A.mul(A).toFrac()} − {B.mul(B).toFrac()}·{String(M)} = <span class="font-mono">{den.toFrac()}</span></li>
               <li>Numerator: c·a − c·b·√m = {C.mul(A).toFrac()} − {C.mul(B).toFrac()}√{String(M)}, then divide through and simplify the surd.</li>
             </ol>
@@ -144,7 +144,7 @@ export default function RadicalSimplifierTool() {
                 {like ? (
                   <li>The radicands match (√{String(mx)}), so combine like terms: ({cx.toFrac()} {op} {cy.toFrac()})√{String(mx)} = <span class="font-mono font-bold">{radicalToString(sum, mx)}</span></li>
                 ) : (
-                  <li>The simplified radicands differ (√{String(mx)} vs √{String(my)}) — unlike surds cannot be combined; the simplified sum above is the final exact form.</li>
+                  <li>The simplified radicands differ (√{String(mx)} vs √{String(my)}), unlike surds cannot be combined; the simplified sum above is the final exact form.</li>
                 )}
               </ol>
             </div>
@@ -208,7 +208,7 @@ export default function RadicalSimplifierTool() {
 
       {error ? <p class="mt-4 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800">{error}</p> : body}
 
-      <p class="mt-4 text-xs text-slate-500">Exact symbolic results — √180 becomes 6√5 via prime factorization, never 13.416…. Runs locally.</p>
+      <p class="mt-4 text-xs text-slate-500">Exact symbolic results, √180 becomes 6√5 via prime factorization, never 13.416…. Runs locally.</p>
     </div>
   );
 }

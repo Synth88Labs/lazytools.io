@@ -50,7 +50,7 @@ export default function HeaterWattageTool() {
         <p class="mt-4 text-sm text-slate-500">Enter the tank volume and temperatures (target must be above room temp).</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">A common rule of thumb is 2.5–5 watts per gallon, scaled by how far above room temperature you need to heat: about 2.5 W/gal for a small rise, 5 W/gal for a large one in a cold room. For tanks over ~40 gallons, two smaller heaters give more even heat and a safety margin if one fails. Always use a separate thermometer to confirm. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">A common rule of thumb is 2.5-5 watts per gallon, scaled by how far above room temperature you need to heat: about 2.5 W/gal for a small rise, 5 W/gal for a large one in a cold room. For tanks over ~40 gallons, two smaller heaters give more even heat and a safety margin if one fails. Always use a separate thermometer to confirm. 🔒 In your browser.</p>
     </div>
   );
 }

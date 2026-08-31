@@ -28,11 +28,11 @@ export default function JetLagTool() {
       </div>
 
       {r ? (
-        r.zero ? <p class="mt-4 text-sm text-slate-600">No time zones crossed — no jet lag expected.</p> : (
+        r.zero ? <p class="mt-4 text-sm text-slate-600">No time zones crossed, no jet lag expected.</p> : (
           <div class="mt-4 rounded-xl bg-white p-4 text-center ring-2 ring-brand-200">
             <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Estimated time to adjust</p>
             <p class="mt-1 text-3xl font-extrabold text-brand-800">≈ {r.days} {r.days === 1 ? 'day' : 'days'}</p>
-            <p class="mt-2 text-sm text-slate-600">Rule of thumb: about {r.rate === 1.5 ? '1½ days' : '1 day'} per time zone travelling {dir === 'east' ? 'eastward — which shortens your day and is usually harder' : 'westward — which lengthens your day and is usually easier'}.</p>
+            <p class="mt-2 text-sm text-slate-600">Rule of thumb: about {r.rate === 1.5 ? '1½ days' : '1 day'} per time zone travelling {dir === 'east' ? 'eastward, which shortens your day and is usually harder' : 'westward, which lengthens your day and is usually easier'}.</p>
           </div>
         )
       ) : (
@@ -43,7 +43,7 @@ export default function JetLagTool() {
         <p class="font-semibold text-slate-700">Easing it:</p>
         <ul class="mt-1 list-disc space-y-0.5 pl-4">
           <li>Shift your sleep schedule an hour a day toward the destination before you leave.</li>
-          <li>Get bright daylight at the right time — morning light helps after eastward flights, evening light after westward.</li>
+          <li>Get bright daylight at the right time, morning light helps after eastward flights, evening light after westward.</li>
           <li>Adopt local meal and sleep times on arrival; stay hydrated and go easy on alcohol and late caffeine.</li>
         </ul>
       </div>

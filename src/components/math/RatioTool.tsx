@@ -69,7 +69,7 @@ export default function RatioTool() {
           <p class="mt-1 font-mono">{solveOut.cross} = {solveOut.x.toFrac()}{!dec!.exact || solveOut.x.d !== 1n ? ` ${dec!.exact ? '=' : '≈'} ${dec!.text}` : ''}</p>
         </div>
       )}
-      <p class="mt-4 text-xs text-slate-500">Exact rational arithmetic — 2 : 3 = 5 : x gives x = 15/2, not 7.4999…. Recipes, map scales, aspect ratios, mixing. Runs locally.</p>
+      <p class="mt-4 text-xs text-slate-500">Exact rational arithmetic, 2 : 3 = 5 : x gives x = 15/2, not 7.4999…. Recipes, map scales, aspect ratios, mixing. Runs locally.</p>
     </div>
   );
 }

@@ -28,7 +28,7 @@ function sniffMime(clean: string): string {
     if (b(0) === 0x42 && b(1) === 0x4d) return 'image/bmp';
     if (b(0) === 0x52 && b(1) === 0x49 && b(2) === 0x46 && b(3) === 0x46) return 'image/webp';
   } catch {
-    /* ignore — will default below */
+    /* ignore, will default below */
   }
   return 'image/png';
 }
@@ -62,7 +62,7 @@ function normalise(raw: string): Decoded | null {
   const b64 = clean.replace(/-/g, '+').replace(/_/g, '/');
 
   if (!mime || !mime.startsWith('image/')) {
-    // No usable image mime declared — sniff from the bytes.
+    // No usable image mime declared, sniff from the bytes.
     mime = sniffMime(b64);
   }
 
@@ -179,8 +179,7 @@ export default function Base64ToImageTool() {
 
       <p class="mt-4 rounded-lg bg-white px-3 py-2 text-xs text-slate-500 ring-1 ring-slate-200">
         Paste a Base64 string or a full <code class="font-mono">data:image/…</code> URL to preview and download the
-        original image. The format is auto-detected from the data. Everything is decoded locally in your browser —
-        nothing is ever uploaded. 🔒
+        original image. The format is auto-detected from the data. Everything is decoded locally in your browser, nothing is ever uploaded. 🔒
       </p>
     </div>
   );

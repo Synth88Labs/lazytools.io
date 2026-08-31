@@ -38,7 +38,7 @@ export default function MoonPhaseTool() {
         <p class="mt-4 text-sm text-slate-500">Pick a date.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">The moon cycles through its phases every 29.53 days (the synodic month). Illumination is the lit fraction of the disc you see. Computed from the mean synodic period anchored to a known new moon — accurate to within a few hours, which is plenty for the phase. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">The moon cycles through its phases every 29.53 days (the synodic month). Illumination is the lit fraction of the disc you see. Computed from the mean synodic period anchored to a known new moon, accurate to within a few hours, which is plenty for the phase. 🔒 In your browser.</p>
     </div>
   );
 }

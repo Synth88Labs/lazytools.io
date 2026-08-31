@@ -63,7 +63,7 @@ export default function CertDecoderTool() {
           <div class={`rounded-xl p-4 ring-1 ${expired ? 'bg-rose-50 ring-rose-200' : notYet ? 'bg-amber-50 ring-amber-200' : 'bg-emerald-50 ring-emerald-200'}`}>
             <p class="text-sm font-bold text-slate-800">
               {expired ? '⛔ Expired' : notYet ? '⏳ Not yet valid' : '✅ Currently valid'}
-              {!expired && !notYet && daysLeft <= 30 && <span class="ml-1 font-normal text-amber-700"> — expires in {daysLeft} day{daysLeft === 1 ? '' : 's'}</span>}
+              {!expired && !notYet && daysLeft <= 30 && <span class="ml-1 font-normal text-amber-700">, expires in {daysLeft} day{daysLeft === 1 ? '' : 's'}</span>}
             </p>
             <p class="mt-0.5 text-xs text-slate-600">{cert.notBefore} → {cert.notAfter}{!expired && !notYet ? ` · ${daysLeft} days left` : ''}</p>
           </div>
@@ -95,7 +95,7 @@ export default function CertDecoderTool() {
         </div>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Paste a PEM certificate (the <code class="rounded bg-slate-200 px-1">-----BEGIN CERTIFICATE-----</code> block) to read its subject, issuer, validity window, key and extensions. The tool parses the ASN.1/DER structure directly in your browser — the certificate is never uploaded. Certificates are public by design, but decoding locally means even an internal cert stays on your machine. 🔒 100% client-side.</p>
+      <p class="mt-4 text-xs text-slate-500">Paste a PEM certificate (the <code class="rounded bg-slate-200 px-1">-----BEGIN CERTIFICATE-----</code> block) to read its subject, issuer, validity window, key and extensions. The tool parses the ASN.1/DER structure directly in your browser, the certificate is never uploaded. Certificates are public by design, but decoding locally means even an internal cert stays on your machine. 🔒 100% client-side.</p>
     </div>
   );
 }

@@ -111,7 +111,7 @@ export default function NormalDistTool() {
         </label>
         {mode === 'inverse' ? (
           <label class="block sm:col-span-2">
-            <span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Probability p (0–1)</span>
+            <span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Probability p (0-1)</span>
             <input type="number" step="0.01" value={prob} onInput={(e) => setProb((e.target as HTMLInputElement).value)}
               class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 font-mono text-sm text-slate-900 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200" />
           </label>

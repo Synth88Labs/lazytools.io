@@ -15,13 +15,13 @@ export interface Unit {
   plural: string;
   /** Symbol shown next to values, e.g. "kg" */
   symbol: string;
-  /** URL token used in pair slugs — must match how people search, e.g. "kg", "inches" */
+  /** URL token used in pair slugs, must match how people search, e.g. "kg", "inches" */
   slug: string;
   /** baseValue = value * factor + offset */
   factor: number;
   offset?: number;
   system: 'metric' | 'imperial' | 'us' | 'uk' | 'si' | 'other';
-  /** 1–2 sentence citable definition. Rendered on pair pages — must be accurate and self-contained. */
+  /** 1-2 sentence citable definition. Rendered on pair pages, must be accurate and self-contained. */
   definition: string;
 }
 
@@ -34,7 +34,7 @@ export interface PairMeta {
   reverseFormulaText?: string;
   /** A realistic worked example input value, e.g. 70 for kg→lbs (body weight). */
   exampleValue?: number;
-  /** Real-world context paragraph — makes the page genuinely unique. */
+  /** Real-world context paragraph, makes the page genuinely unique. */
   note?: string;
   /** Override the from-values used in the conversion table. */
   tableValues?: number[];
@@ -53,7 +53,7 @@ export interface Quantity {
   baseUnit: string;
   /** Icon emoji for hubs/cards */
   icon: string;
-  /** 1–2 sentence hub description, citable */
+  /** 1-2 sentence hub description, citable */
   description: string;
   units: Unit[];
   /**

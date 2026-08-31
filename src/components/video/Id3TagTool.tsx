@@ -40,7 +40,7 @@ export default function Id3TagTool() {
         <input type="file" class="hidden" accept=".mp3,audio/mpeg" onChange={(e) => onFile((e.target as HTMLInputElement).files?.[0] ?? null)} />
         <span class="block text-2xl">🎵</span>
         <span class="mt-1 block text-sm font-semibold text-slate-700">{file ? `📄 ${file.name}` : 'Choose an .mp3 file'}</span>
-        <span class="mt-1 block text-xs text-slate-500">{busy ? 'Reading…' : 'Read locally — the file is never uploaded'}</span>
+        <span class="mt-1 block text-xs text-slate-500">{busy ? 'Reading…' : 'Read locally, the file is never uploaded'}</span>
       </label>
 
       {error && <p class="mt-4 rounded-lg bg-rose-50 px-3 py-2 text-sm text-rose-700 ring-1 ring-rose-200">⚠️ {error}</p>}
@@ -69,7 +69,7 @@ export default function Id3TagTool() {
               </div>
             </div>
           ) : (
-            <p class="rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-700 ring-1 ring-amber-200">No ID3 tags found — this MP3 has no embedded title/artist metadata.</p>
+            <p class="rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-700 ring-1 ring-amber-200">No ID3 tags found. This MP3 has no embedded title/artist metadata.</p>
           )}
 
           {audio.some(([, v]) => v) && (
@@ -92,7 +92,7 @@ export default function Id3TagTool() {
         </div>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Drop an MP3 to read its ID3 tags (title, artist, album, year, genre, track and more) and its MPEG audio details — bitrate, sample rate, channel mode and duration — parsed from the file’s ID3v2/ID3v1 and MPEG frame headers. Everything is read in your browser, so the file is never uploaded. It reads tags, it doesn’t change them. 🔒 100% client-side.</p>
+      <p class="mt-4 text-xs text-slate-500">Drop an MP3 to read its ID3 tags (title, artist, album, year, genre, track and more) and its MPEG audio details, bitrate, sample rate, channel mode and duration, parsed from the file’s ID3v2/ID3v1 and MPEG frame headers. Everything is read in your browser, so the file is never uploaded. It reads tags, it doesn’t change them. 🔒 100% client-side.</p>
     </div>
   );
 }

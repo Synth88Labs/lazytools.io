@@ -5,8 +5,7 @@ import { fmtSize } from '../../lib/audio-compute';
  * Grabs a still frame from a local video using a <video> element and a canvas.
  *
  * Deliberately avoids ffmpeg.wasm: that needs SharedArrayBuffer, which needs
- * COOP/COEP headers, which would block third-party scripts on these routes —
- * and costs a ~25 MB core download. Decoding is already in the browser, so for
+ * COOP/COEP headers, which would block third-party scripts on these routes, * and costs a ~25 MB core download. Decoding is already in the browser, so for
  * a still frame none of that is necessary.
  */
 const pad = (n: number, w = 2) => String(Math.floor(n)).padStart(w, '0');
@@ -76,7 +75,7 @@ export default function VideoFrameTool() {
       ctx.drawImage(v, 0, 0, meta.w, meta.h);
       canvas.toBlob(
         (blob) => {
-          if (!blob) return setError('Could not encode the frame — try PNG, or a different browser.');
+          if (!blob) return setError('Could not encode the frame, try PNG, or a different browser.');
           const ext = format === 'image/png' ? 'png' : 'jpg';
           const stamp = timecode(v.currentTime).replace(/[:.]/g, '-');
           const url = URL.createObjectURL(blob);
@@ -85,7 +84,7 @@ export default function VideoFrameTool() {
           a.download = `${(file?.name ?? 'frame').replace(/\.[^.]+$/, '')}-${stamp}.${ext}`;
           a.click();
           URL.revokeObjectURL(url);
-          setDone(`✓ Frame at ${timecode(v.currentTime)} — ${meta.w}×${meta.h}px, ${fmtSize(blob.size)}`);
+          setDone(`✓ Frame at ${timecode(v.currentTime)}, ${meta.w}×${meta.h}px, ${fmtSize(blob.size)}`);
         },
         format,
         format === 'image/png' ? undefined : quality / 100
@@ -104,7 +103,7 @@ export default function VideoFrameTool() {
         <input type="file" accept="video/*" onChange={onFile} class="sr-only" />
         <span class="text-sm font-semibold text-brand-700">{file ? file.name : 'Choose a video'}</span>
         <span class="mt-1 block text-xs text-slate-500">
-          {file ? `${fmtSize(file.size)}${meta ? ` · ${meta.w}×${meta.h} · ${timecode(meta.dur)}` : ''}` : 'MP4, WebM, MOV — decoded on your device, never uploaded'}
+          {file ? `${fmtSize(file.size)}${meta ? ` · ${meta.w}×${meta.h} · ${timecode(meta.dur)}` : ''}` : 'MP4, WebM, MOV, decoded on your device, never uploaded'}
         </span>
       </label>
 
@@ -127,7 +126,7 @@ export default function VideoFrameTool() {
             <>
               <div class="mt-3">
                 <label for="vf-seek" class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">
-                  Position — {timecode(time)} of {timecode(meta.dur)}
+                  Position, {timecode(time)} of {timecode(meta.dur)}
                 </label>
                 <input
                   id="vf-seek" type="range" min={0} max={meta.dur} step={0.01} value={time}
@@ -146,8 +145,8 @@ export default function VideoFrameTool() {
                   <div>
                     <label for="vf-fmt" class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Format</label>
                     <select id="vf-fmt" value={format} onChange={(e) => setFormat((e.target as HTMLSelectElement).value as typeof format)} class={inputCls}>
-                      <option value="image/png">PNG — lossless</option>
-                      <option value="image/jpeg">JPEG — smaller</option>
+                      <option value="image/png">PNG, lossless</option>
+                      <option value="image/jpeg">JPEG, smaller</option>
                     </select>
                   </div>
                   {format === 'image/jpeg' && (
@@ -164,7 +163,7 @@ export default function VideoFrameTool() {
               </button>
               {done && <p class="mt-2 text-sm font-medium text-mint-700" aria-live="polite">{done}</p>}
               <p class="mt-2 text-xs text-slate-500">
-                *Frame steps assume ~30 fps — browsers don't expose exact frame boundaries, so use the slider to fine-tune. The capture is taken at the video's full {meta.w}×{meta.h} resolution, not the preview size.
+                *Frame steps assume ~30 fps, browsers don't expose exact frame boundaries, so use the slider to fine-tune. The capture is taken at the video's full {meta.w}×{meta.h} resolution, not the preview size.
               </p>
             </>
           )}

@@ -111,7 +111,7 @@ export default function FractionCalcTool() {
           </div>
         </>
       )}
-      <p class="mt-4 text-xs text-slate-500">Computed with exact integer arithmetic — no floating-point rounding, ever. Runs locally.</p>
+      <p class="mt-4 text-xs text-slate-500">Computed with exact integer arithmetic, no floating-point rounding, ever. Runs locally.</p>
     </div>
   );
 }

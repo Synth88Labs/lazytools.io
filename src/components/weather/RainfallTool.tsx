@@ -41,7 +41,7 @@ export default function RainfallTool() {
         </div>
       ) : <p class="mt-4 text-sm text-slate-500">Enter your roof area, the rainfall and a runoff coefficient.</p>}
 
-      <p class="mt-4 text-xs text-slate-500">Rainwater harvested = roof footprint area × rainfall depth × runoff coefficient. One millimetre of rain on one square metre is exactly one litre; one inch on one square foot is about 0.623 gallons. Use the horizontal footprint (not the sloped surface), and a runoff coefficient around 0.8–0.9 for a typical roof to account for splash, evaporation and first-flush losses. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Rainwater harvested = roof footprint area × rainfall depth × runoff coefficient. One millimetre of rain on one square metre is exactly one litre; one inch on one square foot is about 0.623 gallons. Use the horizontal footprint (not the sloped surface), and a runoff coefficient around 0.8-0.9 for a typical roof to account for splash, evaporation and first-flush losses. 🔒 In your browser.</p>
     </div>
   );
 }

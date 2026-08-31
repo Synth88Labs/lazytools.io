@@ -60,7 +60,7 @@ export default function FancyTextTool({ styles, placeholder }: Props) {
       </div>
 
       <p class="mt-4 text-xs text-slate-500">
-        These are <strong>Unicode characters</strong>, not a real font — so they paste into bios, usernames and messages that don't allow formatting.
+        These are <strong>Unicode characters</strong>, not a real font, so they paste into bios, usernames and messages that don't allow formatting.
         Heads-up: screen readers can't read them properly, so don't use them for anything that must stay accessible. 🔒 Runs in your browser.
       </p>
     </div>

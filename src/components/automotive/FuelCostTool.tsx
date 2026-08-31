@@ -53,7 +53,7 @@ export default function FuelCostTool() {
         <p class="mt-4 text-sm text-slate-500">Enter distance, efficiency and fuel price.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Cost = fuel used × price, where fuel used is distance ÷ efficiency (mpg or km/L) or distance ÷ 100 × L/100km. Enter the price in your own currency — the result comes out in the same currency, so there\'s no exchange-rate or location data involved. For a round trip, double the distance. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Cost = fuel used × price, where fuel used is distance ÷ efficiency (mpg or km/L) or distance ÷ 100 × L/100km. Enter the price in your own currency, the result comes out in the same currency, so there\'s no exchange-rate or location data involved. For a round trip, double the distance. 🔒 In your browser.</p>
     </div>
   );
 }

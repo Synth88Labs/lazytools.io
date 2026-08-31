@@ -70,7 +70,7 @@ export default function MulchCalculator() {
         <p class="mt-4 text-sm text-slate-500">Enter the bed dimensions and the depth of mulch or soil.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Volume = area × depth. Mulch is usually 5–8 cm (2–3 in) deep. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Volume = area × depth. Mulch is usually 5-8 cm (2-3 in) deep. 🔒 In your browser.</p>
     </div>
   );
 }

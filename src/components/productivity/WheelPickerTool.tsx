@@ -94,7 +94,7 @@ export default function WheelPickerTool() {
     <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
       <div class="grid gap-6 md:grid-cols-[1fr_auto]">
         <div>
-          <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Entries (one per line) — {entries.length}</label>
+          <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Entries (one per line), {entries.length}</label>
           <textarea rows={10} class={inp} value={text} onInput={(e) => setText((e.target as HTMLTextAreaElement).value)} placeholder={'Alice\nBob\nCharlie'} aria-label="Entries (one per line)" />
           <label class="mt-2 flex items-center gap-2 text-sm text-slate-600">
             <input type="checkbox" checked={removeAfter} onChange={(e) => setRemoveAfter((e.target as HTMLInputElement).checked)} />
@@ -123,7 +123,7 @@ export default function WheelPickerTool() {
         </div>
       </div>
 
-      <p class="mt-4 text-xs text-slate-500">Paste any list — names, options, prizes — and spin for a fair random pick. The winner shown is exactly the segment under the pointer (the wheel targets a uniformly random entry, then spins to it). Turn on “remove the winner” for raffles and draws without repeats. Everything runs in your browser; your list is never uploaded. 🔒</p>
+      <p class="mt-4 text-xs text-slate-500">Paste any list, names, options, prizes, and spin for a fair random pick. The winner shown is exactly the segment under the pointer (the wheel targets a uniformly random entry, then spins to it). Turn on “remove the winner” for raffles and draws without repeats. Everything runs in your browser; your list is never uploaded. 🔒</p>
     </div>
   );
 }

@@ -93,15 +93,15 @@ export default function TTestTool() {
           <div class={`mt-3 rounded-xl p-4 ring-2 ${sig ? 'bg-emerald-50 ring-emerald-200' : 'bg-slate-100 ring-slate-200'}`}>
             <p class={`text-sm font-semibold ${sig ? 'text-emerald-800' : 'text-slate-700'}`}>{sig ? `Statistically significant at α = ${a}` : `Not significant at α = ${a}`}</p>
             <p class={`mt-1 text-sm ${sig ? 'text-emerald-700' : 'text-slate-600'}`}>{sig
-              ? `p = ${fmt(r.p, 4)} < ${a}, so you reject the null hypothesis — the observed difference is unlikely to be due to chance alone.`
-              : `p = ${fmt(r.p, 4)} ≥ ${a}, so you fail to reject the null hypothesis — there isn't enough evidence of a real difference at this level.`}</p>
+              ? `p = ${fmt(r.p, 4)} < ${a}, so you reject the null hypothesis, the observed difference is unlikely to be due to chance alone.`
+              : `p = ${fmt(r.p, 4)} ≥ ${a}, so you fail to reject the null hypothesis. There isn't enough evidence of a real difference at this level.`}</p>
           </div>
         </>
       ) : (
         <p class="mt-4 text-sm text-slate-500">Enter the sample statistics (means, standard deviations and sizes).</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Uses Student's t-test with exact t-distribution p-values. The two-sample test defaults to Welch's (unequal-variance) form, which is safer when the group sizes or spreads differ; tick "equal variances" for the classic pooled test. Enter summary statistics (mean, SD, n) — for a paired test, use the mean and SD of the paired differences. "Fail to reject" is not proof of no effect, only insufficient evidence. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Uses Student's t-test with exact t-distribution p-values. The two-sample test defaults to Welch's (unequal-variance) form, which is safer when the group sizes or spreads differ; tick "equal variances" for the classic pooled test. Enter summary statistics (mean, SD, n), for a paired test, use the mean and SD of the paired differences. "Fail to reject" is not proof of no effect, only insufficient evidence. 🔒 In your browser.</p>
     </div>
   );
 }

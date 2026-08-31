@@ -14,17 +14,17 @@ const catCount = live.length;
 const toolCount = Math.floor(allowlist.length / 10) * 10; // rounded-down floor, e.g. 780
 
 const faqs = [
-  { q: 'Are LazyTools really free?', a: 'Yes — every tool is completely free, with no sign-up, no account, no trial, no usage limits and no paywalled features. There\'s nothing to install either; each tool opens instantly in your browser.' },
-  { q: 'Do my files or data get uploaded to a server?', a: 'No. Every tool runs entirely in your browser using JavaScript and WebAssembly, so the files you open and the values you type are processed on your own device and never sent anywhere. You can prove it: switch off your internet connection mid-use and the tools keep working, or watch your browser\'s network tab — you\'ll see the page and an analytics tag load, but nothing carrying your files or inputs.' },
-  { q: 'Does LazyTools track me or use cookies?', a: 'Only if you accept our cookie banner. We use Google Analytics to measure page visits, but it stays off by default (Google Consent Mode) — no cookies are set and no data is sent until you consent, and you can decline. Even when enabled, analytics only records that you visited a page; it never sees the files or values you enter into a tool, which stay on your device. We run no ads and never sell your data.' },
-  { q: 'Do the tools work offline?', a: 'Yes. Because the processing happens in your browser, most tools keep working with no internet connection once the page has loaded — handy on a plane or with a patchy signal.' },
-  { q: 'How many tools are there, and what kinds?', a: `Over ${toolCount} tools across ${catCount} categories — unit and size converters, everyday and financial calculators, exact math, chemistry, physics, biology and statistics, cooking, automotive, fitness, pet, gardening, music, weather, astronomy, photography and electronics calculators, travel and trip planners, 3D-printing, solar/off-grid energy and homebrewing calculators, developer utilities, text and color tools, generators, PDF and image tools, and a passport/visa photo maker.` },
-  { q: 'How accurate are the calculators?', a: 'They\'re built for exactness — using precise NIST/BIPM conversion factors, published scientific and engineering formulas, and BigInt or exact-fraction math where rounding would otherwise creep in. Many categories were checked against authoritative sources (NASA, NOAA, USDA, King Arthur Baking and others), and the harder libraries are unit-tested.' },
-  { q: 'Do I need to create an account?', a: 'Never. LazyTools has no accounts and holds no personal data — you just open a tool and use it. Some tools optionally remember your preferences in your browser\'s own local storage, which stays on your device.' },
-  { q: 'Is LazyTools open source?', a: 'Yes — the site is open source on GitHub, so you can read exactly how every tool works and verify the privacy claims for yourself. It\'s a project of Synth88 Labs.' },
+  { q: 'Are LazyTools really free?', a: 'Yes, every tool is completely free, with no sign-up, no account, no trial, no usage limits and no paywalled features. There\'s nothing to install either; each tool opens instantly in your browser.' },
+  { q: 'Do my files or data get uploaded to a server?', a: 'No. Every tool runs entirely in your browser using JavaScript and WebAssembly, so the files you open and the values you type are processed on your own device and never sent anywhere. You can prove it: switch off your internet connection mid-use and the tools keep working, or watch your browser\'s network tab. You\'ll see the page and an analytics tag load, but nothing carrying your files or inputs.' },
+  { q: 'Does LazyTools track me or use cookies?', a: 'Only if you accept our cookie banner. We use Google Analytics to measure page visits, but it stays off by default (Google Consent Mode), no cookies are set and no data is sent until you consent, and you can decline. Even when enabled, analytics only records that you visited a page; it never sees the files or values you enter into a tool, which stay on your device. We run no ads and never sell your data.' },
+  { q: 'Do the tools work offline?', a: 'Yes. Because the processing happens in your browser, most tools keep working with no internet connection once the page has loaded, handy on a plane or with a patchy signal.' },
+  { q: 'How many tools are there, and what kinds?', a: `Over ${toolCount} tools across ${catCount} categories, unit and size converters, everyday and financial calculators, exact math, chemistry, physics, biology and statistics, cooking, automotive, fitness, pet, gardening, music, weather, astronomy, photography and electronics calculators, travel and trip planners, 3D-printing, solar/off-grid energy and homebrewing calculators, developer utilities, text and color tools, generators, PDF and image tools, and a passport/visa photo maker.` },
+  { q: 'How accurate are the calculators?', a: 'They\'re built for exactness, using precise NIST/BIPM conversion factors, published scientific and engineering formulas, and BigInt or exact-fraction math where rounding would otherwise creep in. Many categories were checked against authoritative sources (NASA, NOAA, USDA, King Arthur Baking and others), and the harder libraries are unit-tested.' },
+  { q: 'Do I need to create an account?', a: 'Never. LazyTools has no accounts and holds no personal data. You just open a tool and use it. Some tools optionally remember your preferences in your browser\'s own local storage, which stays on your device.' },
+  { q: 'Is LazyTools open source?', a: 'Yes, the site is open source on GitHub, so you can read exactly how every tool works and verify the privacy claims for yourself. It\'s a project of Synth88 Labs.' },
 ];
 
-/** Flagship tools across categories — hand-picked, highest-intent entries. */
+/** Flagship tools across categories, hand-picked, highest-intent entries. */
 const flagship = [
   { icon: '🪪', name: 'Passport Photo Maker', url: '/photo/' },
   { icon: '📶', name: 'WiFi QR Code Generator', url: '/generate/wifi-qr-code-generator/' },
@@ -62,7 +62,7 @@ const flagship = [
   { icon: '％', name: 'Percentage Calculator', url: '/calc/percentage-calculator/' },
 ];
 
-/** Recently shipped tools — newest first. Keep to the last ~10 additions. */
+/** Recently shipped tools, newest first. Keep to the last ~10 additions. */
 const newTools = [
   { icon: '🔊', name: 'Text to Speech (read aloud)', tag: 'Text Tools', url: '/text/text-to-speech/' },
   { icon: '📷', name: 'Webcam & Microphone Test', tag: 'Productivity', url: '/productivity/webcam-microphone-test/' },
@@ -78,8 +78,8 @@ const newTools = [
 ---
 
 <Base
-  title="LazyTools — Free Online Tools That Never Upload Your Data"
-  description={`${toolCount}+ free, privacy-first online tools across ${catCount} categories: unit converters, calculators, finance, exact math, chemistry & physics, cooking, automotive, fitness, pets, gardening, music, weather, astronomy, photography & electronics calculators, travel & trip planners, 3D-printing, solar/off-grid energy & homebrewing calculators, biology & lab tools, passport & visa photo makers, text-forensics and developer utilities, QR & barcode generators, PDF and image tools, and more. Everything runs in your browser — your files and inputs are never uploaded or sent to any server. No sign-up, no limits.`}
+  title="LazyTools, Free Online Tools That Never Upload Your Data"
+  description={`${toolCount}+ free, privacy-first online tools across ${catCount} categories: unit converters, calculators, finance, exact math, chemistry & physics, cooking, automotive, fitness, pets, gardening, music, weather, astronomy, photography & electronics calculators, travel & trip planners, 3D-printing, solar/off-grid energy & homebrewing calculators, biology & lab tools, passport & visa photo makers, text-forensics and developer utilities, QR & barcode generators, PDF and image tools, and more. Everything runs in your browser, your files and inputs are never uploaded or sent to any server. No sign-up, no limits.`}
   schema={[faqSchema(faqs)]}
 >
   <!-- Hero -->
@@ -90,7 +90,7 @@ const newTools = [
       </h1>
       <p class="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-slate-600">
         Every LazyTools utility runs entirely in your browser. No uploads, no accounts, and your content never
-        leaves your device — open a tool and it even works offline. Private by architecture, not by promise.
+        leaves your device, open a tool and it even works offline. Private by architecture, not by promise.
       </p>
       <div class="mt-7 flex flex-wrap items-center justify-center gap-3">
         <a
@@ -121,7 +121,7 @@ const newTools = [
       <span class="rounded-full bg-emerald-100 px-2.5 py-0.5 text-xs font-bold uppercase tracking-wide text-emerald-700">New</span>
       <h2 class="text-2xl font-bold text-slate-900">Recently added</h2>
     </div>
-    <p class="mt-2 text-sm text-slate-600">The latest tools to land on LazyTools — freshly built and privacy-first like the rest.</p>
+    <p class="mt-2 text-sm text-slate-600">The latest tools to land on LazyTools, freshly built and privacy-first like the rest.</p>
     <ul class="mt-5 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
       {newTools.map((t) => (
         <li>
@@ -204,7 +204,7 @@ const newTools = [
       <p class="mx-auto mt-3 max-w-2xl leading-relaxed text-slate-300">
         Most "free online tools" upload your files to their servers, process them there, and promise to delete
         them later. {SITE.name} is built differently: the processing code downloads to <em>your</em> device and
-        runs there. There is no server to upload to — you can verify it yourself in your browser's network tab,
+        runs there. There is no server to upload to. You can verify it yourself in your browser's network tab,
         or by switching off your internet connection mid-use.
       </p>
       <a
@@ -220,11 +220,11 @@ const newTools = [
   <section class="mx-auto max-w-5xl px-4 pb-4">
     <h2 class="text-2xl font-bold text-slate-900">One toolbox for the whole day</h2>
     <div class="mt-4 grid gap-4 text-sm leading-relaxed text-slate-600 sm:grid-cols-2 lg:grid-cols-3">
-      <p><strong class="text-slate-900">Convert anything.</strong> Length, weight, temperature, volume, data and hundreds more unit pairs with exact NIST/BIPM factors — plus ring, shoe and clothing sizes across US, UK and EU systems.</p>
+      <p><strong class="text-slate-900">Convert anything.</strong> Length, weight, temperature, volume, data and hundreds more unit pairs with exact NIST/BIPM factors, plus ring, shoe and clothing sizes across US, UK and EU systems.</p>
       <p><strong class="text-slate-900">Do the math, exactly.</strong> Percentages, loans and mortgages, fractions with steps, primes, quadratics, statistics and BigInt-scale arithmetic that never silently rounds.</p>
-      <p><strong class="text-slate-900">Run the lab.</strong> Balance chemical equations, compute molar mass, solve SUVAT and Ohm's law, and work through biology and statistics — each showing the working, not just an answer.</p>
+      <p><strong class="text-slate-900">Run the lab.</strong> Balance chemical equations, compute molar mass, solve SUVAT and Ohm's law, and work through biology and statistics, each showing the working, not just an answer.</p>
       <p><strong class="text-slate-900">Handle everyday life.</strong> Plan finances, scale a recipe, size a tire, pace a run, tell your dog's age in human years, space a garden bed, tune an instrument or read the weather's "feels like."</p>
-      <p><strong class="text-slate-900">Work with files, privately.</strong> Merge and split PDFs, compress and convert images, clean metadata, and make passport & visa photos for 80+ countries — all without an upload.</p>
+      <p><strong class="text-slate-900">Work with files, privately.</strong> Merge and split PDFs, compress and convert images, clean metadata, and make passport & visa photos for 80+ countries, all without an upload.</p>
       <p><strong class="text-slate-900">Build and inspect.</strong> Format and encode data, hash and check text, generate QR codes, passwords and UUIDs, and detect invisible characters or AI watermarks in text.</p>
     </div>
   </section>

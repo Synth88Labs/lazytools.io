@@ -31,7 +31,7 @@ export default function CapacitorCodeTool() {
           <div class="rounded-xl bg-white p-4 text-center ring-1 ring-slate-200"><p class="text-xs font-semibold uppercase tracking-wide text-slate-500">nF / µF</p><p class="mt-1 text-lg font-extrabold text-slate-700">{Number(r.nf.toPrecision(4))} nF · {Number(r.uf.toPrecision(4))} µF</p></div>
         </div>
       ) : (
-        <p class="mt-4 text-sm text-slate-500">Enter a 3-digit ceramic capacitor code, or a 1–2 digit value in pF.</p>
+        <p class="mt-4 text-sm text-slate-500">Enter a 3-digit ceramic capacitor code, or a 1-2 digit value in pF.</p>
       )}
 
       <p class="mt-4 text-xs text-slate-500">A 3-digit ceramic code is read like the resistor code: the first two digits, then the number of zeros. So 104 = 10 followed by 4 zeros = 100,000 pF = 100 nF. A trailing letter (if present) is the tolerance. 1 µF = 1,000 nF = 1,000,000 pF. 🔒 In your browser.</p>

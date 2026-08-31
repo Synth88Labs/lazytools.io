@@ -5,11 +5,11 @@ const num = (s: string) => { const n = parseFloat(s); return isFinite(n) && n > 
 const fmt = (x: number, d = 1) => Number(x.toFixed(d)).toLocaleString();
 
 const SLOPES = [
-  { ratio: 12, label: '1:12 — ADA (public, unassisted)' },
-  { ratio: 10, label: '1:10 — occupied, assisted' },
-  { ratio: 8, label: '1:8 — unoccupied only (steep)' },
-  { ratio: 15, label: '1:15 — gentle / long ramp' },
-  { ratio: 20, label: '1:20 — no handrail needed' },
+  { ratio: 12, label: '1:12, ADA (public, unassisted)' },
+  { ratio: 10, label: '1:10, occupied, assisted' },
+  { ratio: 8, label: '1:8, unoccupied only (steep)' },
+  { ratio: 15, label: '1:15, gentle / long ramp' },
+  { ratio: 20, label: '1:20, no handrail needed' },
 ];
 
 export default function RampTool() {
@@ -41,14 +41,14 @@ export default function RampTool() {
             <div class="rounded-xl bg-white p-4 text-center ring-1 ring-slate-200"><p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Incline angle</p><p class="mt-1 text-2xl font-extrabold text-slate-700">{fmt(r.angleDeg, 1)}°</p></div>
           </div>
           <p class={`mt-3 rounded-lg p-3 text-sm ring-1 ${r.adaCompliant ? 'bg-emerald-50 text-emerald-800 ring-emerald-200' : 'bg-amber-50 text-amber-800 ring-amber-200'}`}>
-            {r.adaCompliant ? '✓ Meets the ADA 1:12 maximum slope for public wheelchair ramps.' : '⚠️ Steeper than the ADA 1:12 maximum — not compliant for public unassisted use. Use a longer run for a gentler slope.'}
+            {r.adaCompliant ? '✓ Meets the ADA 1:12 maximum slope for public wheelchair ramps.' : '⚠️ Steeper than the ADA 1:12 maximum, not compliant for public unassisted use. Use a longer run for a gentler slope.'}
           </p>
         </>
       ) : (
         <p class="mt-4 text-sm text-slate-500">Enter the vertical rise the ramp must climb.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">A ramp\'s run is the rise times the slope ratio (1:12 means 12 units of run per 1 of rise), and the sloped ramp length is √(rise² + run²). The ADA limit for public ramps is 1:12 (≈4.8°), with a maximum 30-inch rise before a level landing. Check your local building code — requirements vary. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">A ramp\'s run is the rise times the slope ratio (1:12 means 12 units of run per 1 of rise), and the sloped ramp length is √(rise² + run²). The ADA limit for public ramps is 1:12 (≈4.8°), with a maximum 30-inch rise before a level landing. Check your local building code, requirements vary. 🔒 In your browser.</p>
     </div>
   );
 }

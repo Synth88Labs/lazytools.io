@@ -7,7 +7,7 @@ export default function TrimCalculator() {
   const [unit, setUnit] = useState<'ft' | 'm'>('ft');
   const [L, setL] = useState('12');
   const [W, setW] = useState('10');
-  const [doors, setDoors] = useState('1'); // openings to subtract (baseboard) — door width each
+  const [doors, setDoors] = useState('1'); // openings to subtract (baseboard), door width each
   const [doorW, setDoorW] = useState(''); // door width in small unit
   const [stock, setStock] = useState(''); // stock piece length in big unit
   const [waste, setWaste] = useState('10');

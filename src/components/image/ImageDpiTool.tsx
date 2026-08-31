@@ -42,7 +42,7 @@ export default function ImageDpiTool() {
       <label class="block cursor-pointer rounded-xl border-2 border-dashed border-slate-300 bg-white px-4 py-7 text-center hover:border-brand-400">
         <input type="file" accept="image/png,image/jpeg,.png,.jpg,.jpeg" class="hidden" onChange={(e) => onFile((e.target as HTMLInputElement).files?.[0] ?? null)} />
         <span class="text-sm font-semibold text-slate-700">{file ? `🖼️ ${file.name}` : '🖼️ Choose a PNG or JPEG'}</span>
-        <span class="mt-1 block text-xs text-slate-500">{file ? `${format?.toUpperCase()} · ${fmtSize(file.size)}` : 'DPI is metadata — the pixels are never changed'}</span>
+        <span class="mt-1 block text-xs text-slate-500">{file ? `${format?.toUpperCase()} · ${fmtSize(file.size)}` : 'DPI is metadata, the pixels are never changed'}</span>
       </label>
 
       {error && <p class="mt-4 rounded-lg bg-rose-50 px-3 py-2 text-sm text-rose-700 ring-1 ring-rose-200">{error}</p>}
@@ -52,7 +52,7 @@ export default function ImageDpiTool() {
           <div class="mt-4 rounded-xl bg-white p-4 ring-1 ring-slate-200">
             <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Current DPI</p>
             <p class="mt-1 text-2xl font-extrabold text-slate-800">{currentDpi != null ? `${currentDpi} DPI` : 'Not set'}</p>
-            {currentDpi == null && <p class="mt-0.5 text-xs text-slate-400">The file has no density metadata yet — most apps then assume 72 or 96.</p>}
+            {currentDpi == null && <p class="mt-0.5 text-xs text-slate-400">The file has no density metadata yet, most apps then assume 72 or 96.</p>}
           </div>
 
           <div class="mt-3">
@@ -70,13 +70,13 @@ export default function ImageDpiTool() {
 
       {result && (
         <div class="mt-4 rounded-xl bg-white p-4 ring-2 ring-brand-200">
-          <p class="text-sm text-slate-700">Saved a copy at <strong class="text-brand-800">{result.dpi} DPI</strong> — same pixels, updated print resolution.</p>
+          <p class="text-sm text-slate-700">Saved a copy at <strong class="text-brand-800">{result.dpi} DPI</strong>, same pixels, updated print resolution.</p>
           <a href={result.url} download={result.name} class="mt-3 inline-block rounded-xl bg-brand-700 px-5 py-2 text-sm font-semibold text-white hover:bg-brand-800">⬇ Download {result.dpi} DPI image</a>
         </div>
       )}
 
       <p class="mt-4 text-xs text-slate-500">
-        DPI (dots per inch) tells a printer how large to print an image; it doesn’t change the pixels or the file’s appearance on screen. This edits the density metadata directly — PNG’s <span class="font-mono">pHYs</span> chunk or JPEG’s JFIF header — without re-encoding, so quality is untouched (unlike “resize to 300 DPI” tools that resample). For a specific <em>print size</em> you also need enough pixels: a 4×6&quot; photo at 300 DPI needs 1200×1800 pixels. 🔒 Runs entirely in your browser — the image is never uploaded.
+        DPI (dots per inch) tells a printer how large to print an image; it doesn’t change the pixels or the file’s appearance on screen. This edits the density metadata directly, PNG’s <span class="font-mono">pHYs</span> chunk or JPEG’s JFIF header, without re-encoding, so quality is untouched (unlike “resize to 300 DPI” tools that resample). For a specific <em>print size</em> you also need enough pixels: a 4×6&quot; photo at 300 DPI needs 1200×1800 pixels. 🔒 Runs entirely in your browser, the image is never uploaded.
       </p>
     </div>
   );

@@ -26,7 +26,7 @@ export default function CaloriesBurnedTool() {
     <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
       <label class="block"><span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Activity</span>
         <select value={activity} onChange={(e) => setActivity((e.target as HTMLSelectElement).value)} class={sel}>
-          {ACTIVITIES.map((a) => <option value={a.id}>{a.name} — {a.met} MET</option>)}
+          {ACTIVITIES.map((a) => <option value={a.id}>{a.name}, {a.met} MET</option>)}
         </select></label>
       <div class="mt-3 flex gap-2">
         {(['kg', 'lb'] as const).map((u) => (
@@ -49,7 +49,7 @@ export default function CaloriesBurnedTool() {
         <p class="mt-4 text-sm text-slate-500">Pick an activity and enter your weight and duration.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Uses the ACSM MET formula: kcal/min = MET × 3.5 × weight(kg) ÷ 200. MET values are representative figures from the Compendium of Physical Activities — actual burn varies with intensity, fitness and body composition, so treat this as an estimate. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Uses the ACSM MET formula: kcal/min = MET × 3.5 × weight(kg) ÷ 200. MET values are representative figures from the Compendium of Physical Activities, actual burn varies with intensity, fitness and body composition, so treat this as an estimate. 🔒 In your browser.</p>
     </div>
   );
 }

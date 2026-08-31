@@ -36,7 +36,7 @@ export default function SpringOscillationTool() {
         <p class="mt-4 text-sm text-slate-500">Enter a positive mass and spring constant.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">A mass on a spring oscillates with period T = 2π·√(m/k), where m is the mass and k the spring stiffness. A heavier mass or a softer spring gives a slower oscillation; the angular frequency is ω = √(k/m) = 2πf. Gravity doesn\'t affect the period — it only shifts the equilibrium point. This assumes an ideal, massless spring and no damping. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">A mass on a spring oscillates with period T = 2π·√(m/k), where m is the mass and k the spring stiffness. A heavier mass or a softer spring gives a slower oscillation; the angular frequency is ω = √(k/m) = 2πf. Gravity doesn\'t affect the period. It only shifts the equilibrium point. This assumes an ideal, massless spring and no damping. 🔒 In your browser.</p>
     </div>
   );
 }

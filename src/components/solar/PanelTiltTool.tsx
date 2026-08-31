@@ -18,7 +18,7 @@ export default function PanelTiltTool() {
     <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
       <label class="block sm:w-64"><span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Your latitude (degrees)</span>
         <input type="number" step="any" value={lat} onInput={(e) => setLat((e.target as HTMLInputElement).value)} class={inp} /></label>
-      <p class="mt-1 text-xs text-slate-400">Positive for the northern hemisphere, negative for southern — the tilt is the same magnitude.</p>
+      <p class="mt-1 text-xs text-slate-400">Positive for the northern hemisphere, negative for southern, the tilt is the same magnitude.</p>
 
       {r ? (
         <div class="mt-4 grid gap-3 sm:grid-cols-3">

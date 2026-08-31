@@ -14,11 +14,11 @@ const crumbs = [
 const faqs = [
   {
     q: 'Are these calculations accurate across leap years and DST?',
-    a: 'Yes — everything runs on the browser\'s own calendar and timezone engines: leap days come from real calendar arithmetic, and timezone conversions use the IANA database your operating system also uses, so daylight-saving transitions are applied automatically.',
+    a: 'Yes, everything runs on the browser\'s own calendar and timezone engines: leap days come from real calendar arithmetic, and timezone conversions use the IANA database your operating system also uses, so daylight-saving transitions are applied automatically.',
   },
   {
     q: 'Why run date tools client-side?',
-    a: 'Dates are quietly personal — birthdates, deadlines, medical appointments, contract dates. There is no reason a subtraction between two dates should travel to a server. Here it never does; the tools even work offline.',
+    a: 'Dates are quietly personal, birthdates, deadlines, medical appointments, contract dates. There is no reason a subtraction between two dates should travel to a server. Here it never does; the tools even work offline.',
   },
   {
     q: 'Do the tools use my computer\'s timezone?',
@@ -31,7 +31,7 @@ const schema = [
   collectionPageSchema({
     name: 'Free Date & Time Tools',
     url: '/time/',
-    description: 'Unix timestamp converter, age calculator, days between dates, date add/subtract, ISO week numbers and timezone converter — all running locally in your browser.',
+    description: 'Unix timestamp converter, age calculator, days between dates, date add/subtract, ISO week numbers and timezone converter, all running locally in your browser.',
     items: TIME_TOOLS.map((t) => ({ name: t.name, url: `/time/${t.slug}/` })),
   }),
   faqSchema(faqs),
@@ -39,7 +39,7 @@ const schema = [
 ---
 
 <Base
-  title="Date & Time Tools — Timestamps, Age, Durations | LazyTools"
+  title="Date & Time Tools, Timestamps, Age, Durations | LazyTools"
   description={`${TIME_TOOLS.length} free date & time tools: Unix timestamp converter, exact age calculator, days between dates, date arithmetic, ISO week numbers, timezone converter. All client-side.`}
   schema={schema}
 >
@@ -48,7 +48,7 @@ const schema = [
 
     <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Date & Time Tools</h1>
     <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
-      Timestamps, ages, durations, deadlines and timezones — computed with the browser's own
+      Timestamps, ages, durations, deadlines and timezones, computed with the browser's own
       calendar and IANA timezone engines, so leap years and daylight saving are handled the way
       your operating system handles them. Nothing you enter leaves your device.
     </p>
@@ -71,8 +71,8 @@ const schema = [
 
     <section class="prose-lazy mt-10">
       <h2>Dates and time zones, without the traps</h2>
-      <p>Time is deceptively tricky: Unix timestamps, ISO strings, leap years, and the ever-present <strong>time-zone and daylight-saving</strong> pitfalls that cause off-by-an-hour bugs and missed meetings. These tools convert timestamps, do date arithmetic (add or subtract days, find the gap between two dates, work out an exact age), and compare times across zones — using your device's own time-zone database.</p>
-      <p>Everything is computed locally in your browser, so a birthdate or a deadline you enter isn't sent anywhere. For converting between world calendar systems — Hijri, Hebrew, Persian, Julian and more — see the <a href="/calendar/">Calendars</a> category.</p>
+      <p>Time is deceptively tricky: Unix timestamps, ISO strings, leap years, and the ever-present <strong>time-zone and daylight-saving</strong> pitfalls that cause off-by-an-hour bugs and missed meetings. These tools convert timestamps, do date arithmetic (add or subtract days, find the gap between two dates, work out an exact age), and compare times across zones, using your device's own time-zone database.</p>
+      <p>Everything is computed locally in your browser, so a birthdate or a deadline you enter isn't sent anywhere. For converting between world calendar systems, Hijri, Hebrew, Persian, Julian and more, see the <a href="/calendar/">Calendars</a> category.</p>
     </section>
 
     <FaqSection faqs={faqs} />

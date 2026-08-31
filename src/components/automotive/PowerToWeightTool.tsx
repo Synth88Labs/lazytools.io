@@ -39,7 +39,7 @@ export default function PowerToWeightTool() {
         </div>
       ) : <p class="mt-4 text-sm text-slate-500">Enter the power and weight.</p>}
 
-      <p class="mt-4 text-xs text-slate-500">Power-to-weight ratio is how much power moves each unit of mass — the best single predictor of acceleration. It's shown here as hp per tonne, watts per kilogram, hp per pound and kW per tonne. A hot hatch is around 150 hp/tonne; a supercar 400+; and cycling power is compared in W/kg. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Power-to-weight ratio is how much power moves each unit of mass, the best single predictor of acceleration. It's shown here as hp per tonne, watts per kilogram, hp per pound and kW per tonne. A hot hatch is around 150 hp/tonne; a supercar 400+; and cycling power is compared in W/kg. 🔒 In your browser.</p>
     </div>
   );
 }

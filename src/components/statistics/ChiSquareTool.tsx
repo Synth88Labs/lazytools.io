@@ -41,7 +41,7 @@ export default function ChiSquareTool() {
           <label class="block"><span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Expected counts</span><input type="text" value={expected} onInput={(e) => setExpected((e.target as HTMLInputElement).value)} class={inp} /></label>
         </div>
       ) : (
-        <label class="block"><span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Contingency table — one row per line, values separated by spaces or commas</span>
+        <label class="block"><span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Contingency table, one row per line, values separated by spaces or commas</span>
           <textarea rows={4} value={table} onInput={(e) => setTable((e.target as HTMLTextAreaElement).value)} class={ta} /></label>
       )}
       <label class="mt-2 inline-block text-sm text-slate-600">α <input type="number" step="0.01" value={alpha} onInput={(e) => setAlpha((e.target as HTMLInputElement).value)} class={`${inp} inline-block w-20`} /></label>
@@ -56,10 +56,10 @@ export default function ChiSquareTool() {
           <div class={`mt-3 rounded-xl p-4 ring-2 ${sig ? 'bg-emerald-50 ring-emerald-200' : 'bg-slate-100 ring-slate-200'}`}>
             <p class={`text-sm font-semibold ${sig ? 'text-emerald-800' : 'text-slate-700'}`}>{sig ? `Significant at α = ${a}` : `Not significant at α = ${a}`}</p>
             <p class={`mt-1 text-sm ${sig ? 'text-emerald-700' : 'text-slate-600'}`}>{mode === 'gof'
-              ? (sig ? `p = ${fmt(r.p, 4)} < ${a}: the observed counts differ significantly from what was expected — the distribution does not fit.`
+              ? (sig ? `p = ${fmt(r.p, 4)} < ${a}: the observed counts differ significantly from what was expected, the distribution does not fit.`
                 : `p = ${fmt(r.p, 4)} ≥ ${a}: the observed counts are consistent with the expected distribution.`)
               : (sig ? `p = ${fmt(r.p, 4)} < ${a}: the two variables are significantly associated (not independent).`
-                : `p = ${fmt(r.p, 4)} ≥ ${a}: no significant association — the variables appear independent.`)}</p>
+                : `p = ${fmt(r.p, 4)} ≥ ${a}: no significant association, the variables appear independent.`)}</p>
           </div>
           {r.expected && (
             <details class="mt-3 rounded-xl bg-white p-3 text-sm ring-1 ring-slate-200">

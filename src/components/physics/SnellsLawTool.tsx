@@ -47,7 +47,7 @@ export default function SnellsLawTool() {
           {r.tir ? (
             <div class="mt-4 rounded-xl bg-amber-50 p-4 text-center ring-2 ring-amber-200">
               <p class="text-lg font-extrabold text-amber-800">Total internal reflection</p>
-              <p class="mt-1 text-sm text-amber-700">The angle exceeds the critical angle{r.crit != null ? ` (${fmt(r.crit)}°)` : ''}, so no light refracts — it all reflects back.</p>
+              <p class="mt-1 text-sm text-amber-700">The angle exceeds the critical angle{r.crit != null ? ` (${fmt(r.crit)}°)` : ''}, so no light refracts. It all reflects back.</p>
             </div>
           ) : (
             <div class="mt-4 rounded-xl bg-white p-4 text-center ring-2 ring-brand-200">

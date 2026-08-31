@@ -79,7 +79,7 @@ export default function MetronomeTool() {
         {playing ? '■ Stop' : '▶ Start'}
       </button>
 
-      <p class="mt-4 text-xs text-slate-500">A precise Web Audio metronome — the first beat of each bar is accented. Scheduling is sample-accurate, not setTimeout-jittery. Audio starts only when you press Start. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">A precise Web Audio metronome, the first beat of each bar is accented. Scheduling is sample-accurate, not setTimeout-jittery. Audio starts only when you press Start. 🔒 In your browser.</p>
     </div>
   );
 }

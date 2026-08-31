@@ -55,7 +55,7 @@ export default function PlantingDateTool() {
         <p class="mt-4 text-sm text-slate-500">Pick a crop and enter your local last-frost date (from your regional extension service or a frost-date lookup).</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Dates are offsets from your average last spring frost — the single most useful date for planning. These are general guidelines that vary by region and variety; check your local extension service and the seed packet. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Dates are offsets from your average last spring frost, the single most useful date for planning. These are general guidelines that vary by region and variety; check your local extension service and the seed packet. 🔒 In your browser.</p>
     </div>
   );
 }

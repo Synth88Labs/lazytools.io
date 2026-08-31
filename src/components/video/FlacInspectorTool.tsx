@@ -39,7 +39,7 @@ export default function FlacInspectorTool() {
         <input type="file" class="hidden" accept=".flac,audio/flac,audio/x-flac" onChange={(e) => onFile((e.target as HTMLInputElement).files?.[0] ?? null)} />
         <span class="block text-2xl">🎼</span>
         <span class="mt-1 block text-sm font-semibold text-slate-700">{file ? `📄 ${file.name}` : 'Choose a .flac file'}</span>
-        <span class="mt-1 block text-xs text-slate-500">{busy ? 'Reading…' : 'Read locally — the file is never uploaded'}</span>
+        <span class="mt-1 block text-xs text-slate-500">{busy ? 'Reading…' : 'Read locally, the file is never uploaded'}</span>
       </label>
 
       {error && <p class="mt-4 rounded-lg bg-rose-50 px-3 py-2 text-sm text-rose-700 ring-1 ring-rose-200">⚠️ {error}</p>}
@@ -75,7 +75,7 @@ export default function FlacInspectorTool() {
         </div>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Drop a FLAC file to read its STREAMINFO (sample rate, bit depth, channels and exact duration) and its Vorbis comment tags (title, artist, album, date and more), plus the audio MD5 and whether cover art is embedded. It parses the metadata blocks in your browser — the audio is never decoded or uploaded, so it&#39;s instant even on large lossless files. 🔒 100% client-side.</p>
+      <p class="mt-4 text-xs text-slate-500">Drop a FLAC file to read its STREAMINFO (sample rate, bit depth, channels and exact duration) and its Vorbis comment tags (title, artist, album, date and more), plus the audio MD5 and whether cover art is embedded. It parses the metadata blocks in your browser, the audio is never decoded or uploaded, so it&#39;s instant even on large lossless files. 🔒 100% client-side.</p>
     </div>
   );
 }

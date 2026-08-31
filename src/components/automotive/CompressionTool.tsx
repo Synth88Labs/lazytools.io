@@ -34,7 +34,7 @@ export default function CompressionTool() {
         <p class="mt-4 text-sm text-slate-500">Enter the swept and clearance volumes.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Compression ratio = (swept volume + clearance volume) ÷ clearance volume. The clearance volume is the total space above the piston at top dead centre — combustion chamber, head gasket, deck and piston-dish volumes combined. Higher ratios extract more power but need higher-octane fuel. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Compression ratio = (swept volume + clearance volume) ÷ clearance volume. The clearance volume is the total space above the piston at top dead centre, combustion chamber, head gasket, deck and piston-dish volumes combined. Higher ratios extract more power but need higher-octane fuel. 🔒 In your browser.</p>
     </div>
   );
 }

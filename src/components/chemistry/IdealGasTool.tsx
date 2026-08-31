@@ -54,7 +54,7 @@ export default function IdealGasTool() {
         <p class="mt-4 text-sm text-slate-500">Fill in the other three values. Temperature must be in kelvin (°C + 273.15).</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">PV = nRT with R = 0.082057 L·atm·K⁻¹·mol⁻¹ — use atm, L, mol, K. 🔒 Computed in your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">PV = nRT with R = 0.082057 L·atm·K⁻¹·mol⁻¹, use atm, L, mol, K. 🔒 Computed in your browser.</p>
     </div>
   );
 }

@@ -43,7 +43,7 @@ export default function Ipv6SubnetTool() {
         </label>
       </div>
 
-      {addr === null && <p class="mt-4 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800">Enter a valid IPv6 address — e.g. 2001:db8::1, fe80::1, or ::ffff:192.0.2.1.</p>}
+      {addr === null && <p class="mt-4 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800">Enter a valid IPv6 address, e.g. 2001:db8::1, fe80::1, or ::ffff:192.0.2.1.</p>}
 
       {rows.length > 0 && (
         <div class="mt-5 overflow-x-auto rounded-xl border border-slate-200 bg-white">
@@ -61,9 +61,9 @@ export default function Ipv6SubnetTool() {
       )}
 
       <div class="mt-4 grid gap-2 text-xs text-slate-500 sm:grid-cols-3">
-        <p class="rounded-lg bg-white px-3 py-2 ring-1 ring-slate-200"><strong class="text-slate-700">/48</strong> — typical site allocation: 65,536 LANs</p>
-        <p class="rounded-lg bg-white px-3 py-2 ring-1 ring-slate-200"><strong class="text-slate-700">/56</strong> — typical home delegation: 256 LANs</p>
-        <p class="rounded-lg bg-white px-3 py-2 ring-1 ring-slate-200"><strong class="text-slate-700">/64</strong> — one LAN segment, always</p>
+        <p class="rounded-lg bg-white px-3 py-2 ring-1 ring-slate-200"><strong class="text-slate-700">/48</strong>, typical site allocation: 65,536 LANs</p>
+        <p class="rounded-lg bg-white px-3 py-2 ring-1 ring-slate-200"><strong class="text-slate-700">/56</strong>, typical home delegation: 256 LANs</p>
+        <p class="rounded-lg bg-white px-3 py-2 ring-1 ring-slate-200"><strong class="text-slate-700">/64</strong>, one LAN segment, always</p>
       </div>
       <p class="mt-3 text-xs text-slate-500">Exact 128-bit arithmetic (BigInt), entirely in your browser.</p>
     </div>

@@ -8,7 +8,7 @@ export default function CarnotTool() {
       fields={[
         { key: 'Tc', label: 'Cold reservoir T_c', unit: 'K', initial: '300' },
         { key: 'Th', label: 'Hot reservoir T_h', unit: 'K', initial: '600' },
-        { key: 'eff', label: 'Efficiency η', unit: '(0–1)' },
+        { key: 'eff', label: 'Efficiency η', unit: '(0-1)' },
       ]}
       solve={(v, t) => {
         const { Tc, Th, eff } = v;

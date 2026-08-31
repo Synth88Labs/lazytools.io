@@ -30,7 +30,7 @@ export default function ZipExtractorTool() {
       setEntries(list);
       setName(f.name);
     } catch (e) {
-      setError('Could not read this ZIP — it may be corrupt, encrypted (password-protected ZIPs aren\'t supported), or not a ZIP file.');
+      setError('Could not read this ZIP. It may be corrupt, encrypted (password-protected ZIPs aren\'t supported), or not a ZIP file.');
     } finally {
       setBusy(false);
     }
@@ -53,7 +53,7 @@ export default function ZipExtractorTool() {
       <label class="block cursor-pointer rounded-xl border-2 border-dashed border-slate-300 bg-white px-4 py-7 text-center hover:border-brand-400">
         <input type="file" accept=".zip,application/zip,application/x-zip-compressed" class="hidden" onChange={(e) => onFile((e.target as HTMLInputElement).files?.[0] ?? null)} />
         <span class="text-sm font-semibold text-slate-700">{name ? `🗜️ ${name}` : '🗜️ Choose a .zip file'}</span>
-        <span class="mt-1 block text-xs text-slate-500">Opened in your browser — no software, nothing uploaded</span>
+        <span class="mt-1 block text-xs text-slate-500">Opened in your browser, no software, nothing uploaded</span>
       </label>
 
       {busy && <p class="mt-4 text-sm text-slate-500">Reading archive…</p>}
@@ -81,7 +81,7 @@ export default function ZipExtractorTool() {
         </div>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Lists everything inside a ZIP archive and lets you save any file out of it — no unzip software needed, and no upload. Works with standard ZIP files from any tool; encrypted (password-protected) archives and formats like RAR or 7z aren\'t supported. 🔒 The archive is read entirely in your browser with JSZip; nothing is transmitted.</p>
+      <p class="mt-4 text-xs text-slate-500">Lists everything inside a ZIP archive and lets you save any file out of it, no unzip software needed, and no upload. Works with standard ZIP files from any tool; encrypted (password-protected) archives and formats like RAR or 7z aren\'t supported. 🔒 The archive is read entirely in your browser with JSZip; nothing is transmitted.</p>
     </div>
   );
 }

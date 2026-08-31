@@ -85,8 +85,8 @@ export default function GpaCalc() {
               <span class={`text-3xl font-extrabold ${needed !== null && needed > 100 ? 'text-red-600' : 'text-brand-800'}`}>{needed !== null ? `${needed.toFixed(1)}%` : '—'}</span>
             </div>
             <p class="mt-1 font-mono text-xs text-slate-400">(target − current × (1 − weight)) ÷ weight</p>
-            {needed !== null && needed > 100 && <p class="mt-2 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800">That would need over 100% — the target isn't reachable from this final alone.</p>}
-            {needed !== null && needed <= 0 && <p class="mt-2 rounded-lg bg-emerald-50 px-3 py-2 text-sm text-emerald-800">You've already secured the target — even a 0 on the final keeps you at or above it.</p>}
+            {needed !== null && needed > 100 && <p class="mt-2 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800">That would need over 100%, the target isn't reachable from this final alone.</p>}
+            {needed !== null && needed <= 0 && <p class="mt-2 rounded-lg bg-emerald-50 px-3 py-2 text-sm text-emerald-800">You've already secured the target, even a 0 on the final keeps you at or above it.</p>}
           </div>
         </>
       )}

@@ -92,7 +92,7 @@ export default function IcsGenTool() {
         </div>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Generates a standard RFC 5545 .ics file that opens in Apple Calendar, Google Calendar, Outlook and any calendar app. Special characters in the title and description are escaped, long lines are folded, and times are written as “floating” local times (no timezone), so the event shows at the same clock time wherever it’s opened. 🔒 Built entirely in your browser — nothing is uploaded.</p>
+      <p class="mt-4 text-xs text-slate-500">Generates a standard RFC 5545 .ics file that opens in Apple Calendar, Google Calendar, Outlook and any calendar app. Special characters in the title and description are escaped, long lines are folded, and times are written as “floating” local times (no timezone), so the event shows at the same clock time wherever it’s opened. 🔒 Built entirely in your browser, nothing is uploaded.</p>
     </div>
   );
 }

@@ -52,7 +52,7 @@ export default function LongDivisionTool() {
             {result.remainder !== 0n && (
               <div class="rounded-xl bg-white px-5 py-3 text-center ring-1 ring-slate-200">
                 <p class="break-all font-mono text-3xl font-extrabold text-slate-800">{String(result.quotient)}.{dec}</p>
-                <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">{result.repeatStart >= 0 ? 'exact decimal — repetend in ( )' : result.truncated ? 'decimal (first 60 digits)' : 'exact decimal'}</p>
+                <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">{result.repeatStart >= 0 ? 'exact decimal, repetend in ( )' : result.truncated ? 'decimal (first 60 digits)' : 'exact decimal'}</p>
               </div>
             )}
           </div>
@@ -88,7 +88,7 @@ export default function LongDivisionTool() {
           </p>
         </>
       )}
-      <p class="mt-4 text-xs text-slate-500">BigInt arithmetic — 30-digit dividends divide exactly. Repeating decimals are detected and shown with the repetend in parentheses. Runs locally.</p>
+      <p class="mt-4 text-xs text-slate-500">BigInt arithmetic, 30-digit dividends divide exactly. Repeating decimals are detected and shown with the repetend in parentheses. Runs locally.</p>
     </div>
   );
 }

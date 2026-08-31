@@ -36,7 +36,7 @@ export default function AffordabilityTool() {
             <div class="rounded-xl bg-white p-4 text-center ring-1 ring-slate-200"><p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Max loan</p><p class="mt-1 text-2xl font-extrabold text-slate-700">${money(r.maxLoan)}</p></div>
             <div class="rounded-xl bg-white p-4 text-center ring-1 ring-slate-200"><p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Max housing payment</p><p class="mt-1 text-2xl font-extrabold text-slate-700">${money(r.maxHousingPayment)}/mo</p></div>
           </div>
-          <p class="mt-2 text-sm text-slate-600">You&rsquo;re limited by the <strong>{r.limitedBy}</strong> guideline. This is the affordability ceiling — many buyers deliberately borrow less for breathing room.</p>
+          <p class="mt-2 text-sm text-slate-600">You&rsquo;re limited by the <strong>{r.limitedBy}</strong> guideline. This is the affordability ceiling, many buyers deliberately borrow less for breathing room.</p>
         </>
       ) : (
         <p class="mt-4 text-sm text-slate-500">Enter your gross monthly income and other details.</p>

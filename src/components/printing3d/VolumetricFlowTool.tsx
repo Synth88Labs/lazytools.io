@@ -39,13 +39,13 @@ export default function VolumetricFlowTool() {
             <div class={`rounded-xl p-4 text-center ring-2 ${r.exceeds ? 'bg-amber-50 ring-amber-200' : 'bg-white ring-brand-200'}`}><p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Required volumetric flow</p><p class={`mt-1 text-3xl font-extrabold ${r.exceeds ? 'text-amber-700' : 'text-brand-800'}`}>{fmt(r.q, 2)} mm³/s</p></div>
             <div class="rounded-xl bg-white p-4 text-center ring-1 ring-slate-200"><p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Max speed at this line</p><p class="mt-1 text-2xl font-extrabold text-slate-700">{r.maxSpeed != null ? `${fmt(r.maxSpeed, 0)} mm/s` : '—'}</p></div>
           </div>
-          {r.exceeds && <p class="mt-2 text-sm font-medium text-amber-700">⚠️ This exceeds your hotend's {r.mf} mm³/s limit — expect under-extrusion. Slow down, use a thinner layer or narrower line, or fit a high-flow hotend.</p>}
+          {r.exceeds && <p class="mt-2 text-sm font-medium text-amber-700">⚠️ This exceeds your hotend's {r.mf} mm³/s limit, expect under-extrusion. Slow down, use a thinner layer or narrower line, or fit a high-flow hotend.</p>}
         </>
       ) : (
         <p class="mt-4 text-sm text-slate-500">Enter your layer height, line width and print speed.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Volumetric flow = layer height × line width × speed — the plastic your hotend must melt each second. A standard hotend manages roughly 10–15 mm³/s; high-flow / Volcano-style hotends reach 20–40+. If your required flow tops your hotend's limit, the print under-extrudes no matter what the speed says. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Volumetric flow = layer height × line width × speed, the plastic your hotend must melt each second. A standard hotend manages roughly 10-15 mm³/s; high-flow / Volcano-style hotends reach 20-40+. If your required flow tops your hotend's limit, the print under-extrudes no matter what the speed says. 🔒 In your browser.</p>
     </div>
   );
 }

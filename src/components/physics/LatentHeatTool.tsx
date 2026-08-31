@@ -6,9 +6,9 @@ const n = (s: string) => { const v = parseFloat(s); return isFinite(v) && v > 0 
 const fmt = (x: number) => Number(x.toPrecision(5)).toLocaleString('en-US', { maximumSignificantDigits: 5 });
 // [label, L in J/kg]
 const PRESETS: [string, number][] = [
-  ['Water — melt (Lf)', 334000], ['Water — boil (Lv)', 2260000],
-  ['Ethanol — melt', 108000], ['Ethanol — boil', 855000],
-  ['Aluminium — melt', 397000], ['Iron — melt', 247000],
+  ['Water, melt (Lf)', 334000], ['Water, boil (Lv)', 2260000],
+  ['Ethanol, melt', 108000], ['Ethanol, boil', 855000],
+  ['Aluminium, melt', 397000], ['Iron, melt', 247000],
 ];
 
 export default function LatentHeatTool() {

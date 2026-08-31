@@ -16,27 +16,27 @@ keywords:
   - bikram sambat to gregorian
   - nepali new year date
 heroImage: /blog/nepali-date-bs-ad-guide.png
-heroAlt: "Bikram Sambat explained — Nepal's calendar is about 56 years 8 months ahead of AD"
+heroAlt: "Bikram Sambat explained, Nepal's calendar is about 56 years 8 months ahead of AD"
 faqs:
   - q: "How many years ahead of AD is Bikram Sambat?"
     a: "About 56 years and 8 months. Because the offset includes a partial year, the exact gap depends on the date: for most of a Gregorian year the BS year is 57 ahead, dropping to 56 before the Nepali new year in mid-April. For example, mid-2026 AD is 2083 BS."
   - q: "How do I convert a BS date to AD?"
     a: "Enter the Bikram Sambat year, month and day into a Nepali date converter and it returns the Gregorian (AD) equivalent. Because BS month lengths vary year to year and aren't given by a formula, accurate conversion relies on an official month-length table rather than simple arithmetic."
   - q: "When is Nepali New Year?"
-    a: "On 1 Baishakh, the first day of Bikram Sambat, which falls around 13–14 April in the Gregorian calendar. 1 Baishakh 2081 BS was 13 April 2024 AD; 1 Baishakh 2082 was 14 April 2025."
+    a: "On 1 Baishakh, the first day of Bikram Sambat, which falls around 13-14 April in the Gregorian calendar. 1 Baishakh 2081 BS was 13 April 2024 AD; 1 Baishakh 2082 was 14 April 2025."
   - q: "Why don't Bikram Sambat months have a fixed number of days?"
-    a: "BS is a solar calendar whose months are tied to the sun's position through the zodiac, so a month lasts however long the sun takes to cross a sign — between 29 and 32 days. The lengths are calculated astronomically each year and published in official almanacs (patro), which is why there's no simple day-count rule."
+    a: "BS is a solar calendar whose months are tied to the sun's position through the zodiac, so a month lasts however long the sun takes to cross a sign, between 29 and 32 days. The lengths are calculated astronomically each year and published in official almanacs (patro), which is why there's no simple day-count rule."
   - q: "What are the months of the Nepali calendar?"
     a: "In order from the new year: Baishakh, Jestha, Ashadh, Shrawan, Bhadra, Ashwin, Kartik, Mangsir, Poush, Magh, Falgun and Chaitra."
   - q: "What date range can be converted reliably?"
     a: "Roughly BS 1975 to 2099 (about AD 1918 to 2043), the span for which validated official month-length data exists. Dates outside that range can't be converted accurately because the underlying almanac data doesn't cover them."
   - q: "Is the conversion done privately?"
-    a: "Yes — the calendar data is bundled into your browser, so the Nepali date converter runs entirely on your device and works offline. No date you enter is uploaded."
+    a: "Yes, the calendar data is bundled into your browser, so the Nepali date converter runs entirely on your device and works offline. No date you enter is uploaded."
 draft: false
 ---
 
 **Nepal's official calendar is Bikram Sambat (BS), a solar calendar running about 56 years and 8
-months ahead of the Gregorian (AD) calendar — so mid-2026 AD is 2083 BS — and because its month
+months ahead of the Gregorian (AD) calendar, so mid-2026 AD is 2083 BS, and because its month
 lengths are set astronomically rather than by a fixed rule, converting BS ⇄ AD needs a real calendar
 table, not a formula.** Convert any date both ways in the
 [Nepali date converter](/calendar/bikram-sambat-converter/).
@@ -44,18 +44,17 @@ table, not a formula.** Convert any date both ways in the
 <aside class="key-takeaways">
 <p class="kt-title">⚡ Key takeaways</p>
 <ul>
-<li><strong>BS is ~56 years 8 months ahead of AD</strong> — 2024 AD ≈ 2081 BS</li>
-<li><strong>Solar calendar,</strong> new year on 1 Baishakh (~13–14 April)</li>
-<li><strong>Months vary 29–32 days,</strong> fixed astronomically each year — no simple formula</li>
-<li><strong>Conversion needs an official month-length table</strong> (validated ~BS 1975–2099)</li>
+<li><strong>BS is ~56 years 8 months ahead of AD</strong>, 2024 AD ≈ 2081 BS</li>
+<li><strong>Solar calendar,</strong> new year on 1 Baishakh (~13-14 April)</li>
+<li><strong>Months vary 29-32 days,</strong> fixed astronomically each year, no simple formula</li>
+<li><strong>Conversion needs an official month-length table</strong> (validated ~BS 1975-2099)</li>
 <li><strong>Used for</strong> civil dates, Nepal's fiscal year and festivals like Dashain and Tihar</li>
 </ul>
 </aside>
 
 ## What Bikram Sambat is
 
-Bikram Sambat (विक्रम संवत्) is the official calendar of Nepal and is used across daily life there —
-government paperwork, newspapers, festivals, birthdays and the national fiscal year. Traditionally
+Bikram Sambat (विक्रम संवत्) is the official calendar of Nepal and is used across daily life there, government paperwork, newspapers, festivals, birthdays and the national fiscal year. Traditionally
 attributed to King Vikramaditya, its era begins in 57 BCE, which is why its year number runs well
 ahead of the Gregorian one: **2081 BS corresponds to 2024 AD**, a gap of about 56 years and 8 months.
 
@@ -71,14 +70,13 @@ Seeing the two windows side by side makes the rule concrete:
 | 1 Jan → ~mid-April (before new year) | **56 years** | 1 Feb 2024 AD → falls in 2080 BS |
 | ~mid-April → 31 Dec (after new year) | **57 years** | 1 Aug 2024 AD → falls in 2081 BS |
 
-So a single AD calendar year straddles two BS years, and a single BS year straddles two AD years —
-which is exactly why a flat "+57" gets roughly a third of dates wrong.
+So a single AD calendar year straddles two BS years, and a single BS year straddles two AD years, which is exactly why a flat "+57" gets roughly a third of dates wrong.
 
 ## Why the months don't have fixed lengths
 
 Here's the part that surprises people used to the Gregorian calendar. Bikram Sambat is a **solar**
 calendar, but its months are defined by the sun's passage through the signs of the zodiac rather than
-by a fixed count of days. A month lasts exactly as long as the sun spends in one sign — which varies
+by a fixed count of days. A month lasts exactly as long as the sun spends in one sign, which varies
 between **29 and 32 days**. So the length of, say, Jestha isn't the same every year, and there's no
 "30 days hath September" rule to memorise.
 
@@ -89,7 +87,7 @@ Good converters embed a validated table covering roughly **BS 1975 to 2099** (ab
 
 <figure>
 <img src="/blog/infographic-bikram-sambat.svg" alt="Infographic: Bikram Sambat is about 56 years 8 months ahead of AD, so 2024 AD equals 2081 BS; the new year 1 Baishakh falls around 13-14 April; the twelve months Baishakh through Chaitra have variable lengths of 29 to 32 days set astronomically; conversion needs an official month-length table because there is no fixed formula" width="1200" height="640" loading="lazy" />
-<figcaption>Why "just add 57" doesn't work — a partial-year offset and months of variable length.</figcaption>
+<figcaption>Why "just add 57" doesn't work, a partial-year offset and months of variable length.</figcaption>
 </figure>
 
 ## The Nepali months
@@ -112,8 +110,8 @@ The twelve months, from the new year:
 | 12 | Chaitra | mid-Mar → mid-Apr |
 
 Nepal's **fiscal year** runs from 1 Shrawan to the end of Ashadh (roughly mid-July to mid-July), and
-the major festivals track the BS calendar — **Dashain** falls in Ashwin/Kartik and **Tihar** shortly
-after — which is why their Gregorian dates move each year.
+the major festivals track the BS calendar, **Dashain** falls in Ashwin/Kartik and **Tihar** shortly
+after, which is why their Gregorian dates move each year.
 
 ## Converting a date, both ways
 
@@ -121,30 +119,30 @@ after — which is why their Gregorian dates move each year.
   the Bikram Sambat year, month and day, with the weekday. Handy for turning an English-calendar
   birthday or deadline into its Nepali date.
 - **BS → AD:** enter the BS year, choose the month (Baishakh…Chaitra) and the day, and get the
-  Gregorian equivalent — for filling in English-calendar forms, visa dates or international bookings.
+  Gregorian equivalent, for filling in English-calendar forms, visa dates or international bookings.
 
 A worked anchor to sanity-check any converter: **1 Baishakh 2081 BS = 13 April 2024 AD** (a Saturday,
-Nepali New Year 2081). Everything runs in your browser from the embedded calendar table — nothing you
+Nepali New Year 2081). Everything runs in your browser from the embedded calendar table, nothing you
 enter is uploaded, and it works offline.
 
 ### A step-by-step BS → AD example
 
 Suppose you have a Nepali document dated **15 Kartik 2081 BS** and need the English date for a form.
-You can't get there by arithmetic alone — you have to walk the calendar table:
+You can't get there by arithmetic alone. You have to walk the calendar table:
 
 1. Start from the anchor **1 Baishakh 2081 = 13 April 2024**.
 2. Add the *actual* lengths of the intervening months for the year 2081, not a guessed 30. Baishakh
-   through Ashwin (months 1–6) are the six months before Kartik; their lengths that year come straight
-   from the almanac, each somewhere in the 29–32 range.
+   through Ashwin (months 1-6) are the six months before Kartik; their lengths that year come straight
+   from the almanac, each somewhere in the 29-32 range.
 3. Then add the 14 days from 1 Kartik to 15 Kartik.
 
 A converter does all three steps for you in one lookup and returns the Gregorian date and weekday.
-The takeaway isn't the specific answer — it's *why* you needed the table: skip step 2's real month
+The takeaway isn't the specific answer, it's *why* you needed the table: skip step 2's real month
 lengths and you can be off by several days by the time you reach Kartik.
 
 ### Reading a full BS date
 
-A Bikram Sambat date is written in the order **year – month – day**, e.g. *2081/07/15* for 15 Kartik
+A Bikram Sambat date is written in the order **year, month, day**, e.g. *2081/07/15* for 15 Kartik
 2081. Watch two traps when converting:
 
 - **Month numbering starts at Baishakh, not January.** Kartik is month **7** in BS, even though it
@@ -154,40 +152,40 @@ A Bikram Sambat date is written in the order **year – month – day**, e.g. *2
 
 ## Where Bikram Sambat actually shows up
 
-For anyone dealing with Nepal, BS isn't a curiosity — it's the default date on most official life. You
+For anyone dealing with Nepal, BS isn't a curiosity, it's the default date on most official life. You
 meet it in:
 
-- **Government and legal paperwork** — citizenship certificates, land deeds, court dates and licences
+- **Government and legal paperwork**, citizenship certificates, land deeds, court dates and licences
   are issued in BS, so verifying someone's date of birth against an AD passport means converting.
-- **The national fiscal year** — Nepal budgets and reports taxes on the Shrawan-to-Ashadh year, so
+- **The national fiscal year**, Nepal budgets and reports taxes on the Shrawan-to-Ashadh year, so
   financial deadlines rarely line up with a Gregorian quarter.
-- **Festivals and holidays** — Dashain, Tihar, Holi and others are set on the BS (or lunar) calendar,
+- **Festivals and holidays**, Dashain, Tihar, Holi and others are set on the BS (or lunar) calendar,
   which is why their AD dates drift each year and why planning a trip needs a conversion.
-- **Newspapers, birthdays and everyday scheduling** — most people in Nepal think of their birthday in
+- **Newspapers, birthdays and everyday scheduling**, most people in Nepal think of their birthday in
   BS, so "what's that in English?" is an everyday question.
 
 Because Nepal is one of the few countries whose *civil* calendar is neither Gregorian nor a pure lunar
-system, off-the-shelf date libraries usually can't help — which is the whole reason a dedicated
+system, off-the-shelf date libraries usually can't help, which is the whole reason a dedicated
 [Nepali date converter](/calendar/bikram-sambat-converter/) exists.
 
 ## Common BS ⇄ AD mistakes
 
-1. **Adding a flat 57 years** — the offset is 56 *or* 57 depending on whether the date is before or
+1. **Adding a flat 57 years**, the offset is 56 *or* 57 depending on whether the date is before or
    after the mid-April new year.
-2. **Assuming fixed month lengths** — BS months run 29–32 days and change year to year; only a real
+2. **Assuming fixed month lengths**, BS months run 29-32 days and change year to year; only a real
    table converts them correctly.
-3. **Converting dates outside ~1918–2043 AD** — the validated almanac data doesn't extend there, so
+3. **Converting dates outside ~1918-2043 AD**, the validated almanac data doesn't extend there, so
    results become unreliable.
-4. **Mixing up the fiscal and calendar year** — Nepal's fiscal year starts in Shrawan, not on 1
+4. **Mixing up the fiscal and calendar year**, Nepal's fiscal year starts in Shrawan, not on 1
    Baishakh.
-5. **Expecting festival dates to be fixed in AD** — Dashain and Tihar track BS, so their Gregorian
+5. **Expecting festival dates to be fixed in AD**, Dashain and Tihar track BS, so their Gregorian
    dates shift annually.
 
 ## Quick summary
 
 Bikram Sambat is Nepal's official solar calendar, about **56 years 8 months** ahead of AD (2024 AD ≈
-2081 BS), with a new year on **1 Baishakh** around mid-April and months of **variable 29–32-day**
-length set by astronomy — which is exactly why conversion needs an official month-length table rather
+2081 BS), with a new year on **1 Baishakh** around mid-April and months of **variable 29-32-day**
+length set by astronomy, which is exactly why conversion needs an official month-length table rather
 than arithmetic. Convert any date both directions in the
 [Nepali date converter](/calendar/bikram-sambat-converter/), computed locally in your browser.
 

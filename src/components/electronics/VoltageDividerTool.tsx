@@ -24,9 +24,9 @@ export default function VoltageDividerTool() {
       <div class="grid gap-3 sm:grid-cols-3">
         <label class="block"><span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Input voltage Vin (V)</span>
           <input type="number" step="any" value={vin} onInput={(e) => setVin((e.target as HTMLInputElement).value)} class={inp} /></label>
-        <label class="block"><span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">R1 — top (Ω)</span>
+        <label class="block"><span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">R1, top (Ω)</span>
           <input type="number" step="any" value={r1} onInput={(e) => setR1((e.target as HTMLInputElement).value)} class={inp} /></label>
-        <label class="block"><span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">R2 — bottom (Ω)</span>
+        <label class="block"><span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">R2, bottom (Ω)</span>
           <input type="number" step="any" value={r2} onInput={(e) => setR2((e.target as HTMLInputElement).value)} class={inp} /></label>
       </div>
 
@@ -40,7 +40,7 @@ export default function VoltageDividerTool() {
         <p class="mt-4 text-sm text-slate-500">Enter Vin, R1 and R2.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Vout = Vin × R2 ÷ (R1 + R2), measured across R2. This holds only when the load draws negligible current — for a real load, its resistance sits in parallel with R2 and lowers Vout, so use a buffer or a proper regulator for anything that draws power. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Vout = Vin × R2 ÷ (R1 + R2), measured across R2. This holds only when the load draws negligible current, for a real load, its resistance sits in parallel with R2 and lowers Vout, so use a buffer or a proper regulator for anything that draws power. 🔒 In your browser.</p>
     </div>
   );
 }

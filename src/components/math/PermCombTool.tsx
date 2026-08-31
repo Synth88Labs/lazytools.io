@@ -17,7 +17,7 @@ export default function PermCombTool() {
   let error = '';
   if (!Number.isInteger(n) || !Number.isInteger(r) || n < 0 || r < 0) error = 'Enter whole numbers n ≥ 0 and r ≥ 0.';
   else if (r > n) error = 'r cannot exceed n (you cannot choose more items than exist).';
-  else if (n > 5000) error = 'Keep n ≤ 5000 — beyond that even exact integers stop being readable.';
+  else if (n > 5000) error = 'Keep n ≤ 5000, beyond that even exact integers stop being readable.';
 
   const comb = !error ? nCr(n, r) : 0n;
   const perm = !error ? nPr(n, r) : 0n;
@@ -42,12 +42,12 @@ export default function PermCombTool() {
         <>
           <div class="mt-5 grid gap-3 sm:grid-cols-2">
             <div class="rounded-xl bg-white p-4 ring-1 ring-slate-200">
-              <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Combinations — order doesn't matter</p>
+              <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Combinations, order doesn't matter</p>
               <p class="mt-1 font-mono text-sm text-slate-500">C({n}, {r}) = {n}! / ({r}!({n}−{r})!)</p>
               <p class="mt-1 break-all font-mono text-2xl font-extrabold text-brand-700">{big(comb)}</p>
             </div>
             <div class="rounded-xl bg-white p-4 ring-1 ring-slate-200">
-              <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Permutations — order matters</p>
+              <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Permutations, order matters</p>
               <p class="mt-1 font-mono text-sm text-slate-500">P({n}, {r}) = {n}! / ({n}−{r})!</p>
               <p class="mt-1 break-all font-mono text-2xl font-extrabold text-slate-800">{big(perm)}</p>
             </div>
@@ -62,7 +62,7 @@ export default function PermCombTool() {
       )}
 
       <p class="mt-4 text-xs text-slate-500">
-        Exact BigInt arithmetic — C(52, 5) = 2,598,960 poker hands, and even 1000! comes out digit-perfect where ordinary calculators overflow at 170!. Runs locally.
+        Exact BigInt arithmetic, C(52, 5) = 2,598,960 poker hands, and even 1000! comes out digit-perfect where ordinary calculators overflow at 170!. Runs locally.
       </p>
     </div>
   );

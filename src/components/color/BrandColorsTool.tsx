@@ -37,7 +37,7 @@ export default function BrandColorsTool() {
     <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
       <div class="flex flex-wrap items-end gap-3">
         <label class="block max-w-md flex-1">
-          <span class="text-xs font-semibold uppercase tracking-wide text-slate-500">Search {BRANDS.length.toLocaleString('en-US')} brands — by name or hex</span>
+          <span class="text-xs font-semibold uppercase tracking-wide text-slate-500">Search {BRANDS.length.toLocaleString('en-US')} brands, by name or hex</span>
           <input
             class="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-800 focus:border-brand-500 focus:outline-none"
             value={query}
@@ -60,7 +60,7 @@ export default function BrandColorsTool() {
                   style={`background:${hex}`}
                   onClick={() => copy(hex, b.n)}
                   title={`Copy ${hex}`}
-                  aria-label={`${b.n} ${hex} — copy`}
+                  aria-label={`${b.n} ${hex}, copy`}
                 >
                   <span
                     class="absolute inset-0 flex items-center justify-center font-mono text-[10px] font-bold opacity-0 transition group-hover:opacity-100"
@@ -92,7 +92,7 @@ export default function BrandColorsTool() {
       )}
 
       <p class="mt-4 rounded-lg bg-white px-3 py-2 text-xs text-slate-500 ring-1 ring-slate-200">
-        Click any swatch to copy its hex. Colors are compiled from publicly documented brand guidelines and long-standing community references; brands evolve their palettes, so treat these as excellent starting points rather than official assets — and <a href="/contact/" class="font-semibold text-brand-700 underline decoration-slate-300 underline-offset-2">report corrections</a>. All trademarks and brand names belong to their respective owners and are used only to identify whose colors are shown. Search runs locally.
+        Click any swatch to copy its hex. Colors are compiled from publicly documented brand guidelines and long-standing community references; brands evolve their palettes, so treat these as excellent starting points rather than official assets, and <a href="/contact/" class="font-semibold text-brand-700 underline decoration-slate-300 underline-offset-2">report corrections</a>. All trademarks and brand names belong to their respective owners and are used only to identify whose colors are shown. Search runs locally.
       </p>
     </div>
   );

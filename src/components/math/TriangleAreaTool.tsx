@@ -38,9 +38,9 @@ export default function TriangleAreaTool() {
         <div class="mt-4 rounded-xl border border-slate-200 bg-white p-4 text-sm text-slate-700">
           <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Working (Heron's formula, integer-safe form)</p>
           <ol class="mt-2 list-decimal space-y-1 pl-5">
-            <li>16A² = (a+b+c)(−a+b+c)(a−b+c)(a+b−c) — Heron's formula with the fractions cleared</li>
+            <li>16A² = (a+b+c)(−a+b+c)(a−b+c)(a+b−c), Heron's formula with the fractions cleared</li>
             <li>16A² = ({a.add(b).add(c).toFrac()})({b.add(c).sub(a).toFrac()})({a.add(c).sub(b).toFrac()})({a.add(b).sub(c).toFrac()}) = <strong class="font-mono">{sixteenASq.toFrac()}</strong></li>
-            <li>A = √({sixteenASq.toFrac()}) / 4 = <strong class="font-mono">{exact}</strong>{radicand !== 1n ? ' — simplified radical form' : ' — a whole area (Heronian triangle!)'}</li>
+            <li>A = √({sixteenASq.toFrac()}) / 4 = <strong class="font-mono">{exact}</strong>{radicand !== 1n ? ', simplified radical form' : ', a whole area (Heronian triangle!)'}</li>
           </ol>
         </div>
       </>
@@ -62,7 +62,7 @@ export default function TriangleAreaTool() {
       {error ? <p class="mt-4 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800">{error}</p> : body}
 
       <p class="mt-4 text-xs text-slate-500">
-        Exact areas: sides 3, 5, 6 give exactly 2√14, and 3-4-5 gives exactly 6 — where every decimal calculator prints 7.4833…. Runs locally.
+        Exact areas: sides 3, 5, 6 give exactly 2√14, and 3-4-5 gives exactly 6, where every decimal calculator prints 7.4833…. Runs locally.
       </p>
     </div>
   );

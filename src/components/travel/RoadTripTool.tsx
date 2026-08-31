@@ -49,7 +49,7 @@ export default function RoadTripTool() {
         <p class="mt-4 text-sm text-slate-500">Enter the distance and your average speed.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Driving time is distance ÷ average speed, plus the breaks you add. Use a realistic <em>average</em> speed — well below the limit once you allow for towns, traffic, fuel stops and slow stretches — for a trustworthy arrival time. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Driving time is distance ÷ average speed, plus the breaks you add. Use a realistic <em>average</em> speed, well below the limit once you allow for towns, traffic, fuel stops and slow stretches, for a trustworthy arrival time. 🔒 In your browser.</p>
     </div>
   );
 }

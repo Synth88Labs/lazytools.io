@@ -5,13 +5,13 @@ const num = (s: string) => { const n = parseFloat(s); return isFinite(n) ? n : n
 const fmt = (x: number) => Number(x.toFixed(1)).toString();
 
 function comfort(tdC: number): string {
-  if (tdC < 10) return 'Dry — very comfortable';
+  if (tdC < 10) return 'Dry, very comfortable';
   if (tdC < 13) return 'Comfortable';
   if (tdC < 16) return 'Pleasant';
   if (tdC < 18) return 'Slightly humid';
-  if (tdC < 21) return 'Humid — sticky';
-  if (tdC < 24) return 'Very humid — oppressive';
-  return 'Extremely humid — dangerous';
+  if (tdC < 21) return 'Humid, sticky';
+  if (tdC < 24) return 'Very humid, oppressive';
+  return 'Extremely humid, dangerous';
 }
 
 export default function DewPointTool() {
@@ -56,10 +56,10 @@ export default function DewPointTool() {
           </div>
         </div>
       ) : (
-        <p class="mt-4 text-sm text-slate-500">Enter the temperature and humidity (1–100%).</p>
+        <p class="mt-4 text-sm text-slate-500">Enter the temperature and humidity (1-100%).</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">The dew point is the temperature at which air becomes saturated and dew forms — a better measure of "muggy" than humidity alone. Computed with the Magnus formula (Alduchov–Eskridge coefficients). Above about 18°C (65°F) it starts to feel sticky; above 24°C (75°F) is oppressive. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">The dew point is the temperature at which air becomes saturated and dew forms, a better measure of "muggy" than humidity alone. Computed with the Magnus formula (Alduchov, Eskridge coefficients). Above about 18°C (65°F) it starts to feel sticky; above 24°C (75°F) is oppressive. 🔒 In your browser.</p>
     </div>
   );
 }

@@ -42,7 +42,7 @@ export default function CollisionTool() {
           <input type="number" step="any" value={u2} onInput={(ev) => setU2((ev.target as HTMLInputElement).value)} class={inp} /></label>
       </div>
       {type === 'custom' && (
-        <label class="mt-3 block max-w-xs"><span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Coefficient of restitution e (0–1)</span>
+        <label class="mt-3 block max-w-xs"><span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Coefficient of restitution e (0-1)</span>
           <input type="number" step="0.05" min="0" max="1" value={e} onInput={(ev) => setE((ev.target as HTMLInputElement).value)} class={inp} /></label>
       )}
 

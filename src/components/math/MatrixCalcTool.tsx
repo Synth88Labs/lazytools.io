@@ -74,11 +74,11 @@ export default function MatrixCalcTool() {
             {result.matrix.flatMap((row, i) => row.map((v, j) => <span key={`${i}-${j}`} class="w-16 rounded-md bg-brand-50 px-1 py-1.5 text-center font-mono text-sm font-semibold text-brand-800 ring-1 ring-brand-100">{fmt(v)}</span>))}
           </div>
         ) : (
-          <p class="text-sm text-rose-700">{op === 'inv' ? 'This matrix is singular (determinant 0) — it has no inverse.' : 'Undefined for these matrices.'}</p>
+          <p class="text-sm text-rose-700">{op === 'inv' ? 'This matrix is singular (determinant 0). It has no inverse.' : 'Undefined for these matrices.'}</p>
         )}
       </div>
 
-      <p class="mt-4 text-xs text-slate-500">Determinant by cofactor expansion; inverse by Gauss–Jordan elimination (a singular matrix, determinant 0, has none). Multiplication is row-by-column. All exact arithmetic runs in your browser. 🔒</p>
+      <p class="mt-4 text-xs text-slate-500">Determinant by cofactor expansion; inverse by Gauss, Jordan elimination (a singular matrix, determinant 0, has none). Multiplication is row-by-column. All exact arithmetic runs in your browser. 🔒</p>
     </div>
   );
 }

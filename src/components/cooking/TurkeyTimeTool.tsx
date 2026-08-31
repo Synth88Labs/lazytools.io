@@ -48,7 +48,7 @@ export default function TurkeyTimeTool() {
       ) : <p class="mt-4 text-sm text-slate-500">Enter the turkey weight.</p>}
 
       <p class="mt-4 text-xs text-slate-500">
-        Based on USDA guidance: thaw in the fridge about <strong>24 hours per 4–5 lb</strong>, or in cold water (changed every 30 min) about <strong>30 minutes per lb</strong>. Roast unstuffed ≈ 13 min/lb, stuffed ≈ 15 min/lb at 325°F. Times are estimates — always cook until a thermometer in the thickest part of the breast and innermost thigh reads <strong>165°F (74°C)</strong>. 🔒 In your browser.
+        Based on USDA guidance: thaw in the fridge about <strong>24 hours per 4-5 lb</strong>, or in cold water (changed every 30 min) about <strong>30 minutes per lb</strong>. Roast unstuffed ≈ 13 min/lb, stuffed ≈ 15 min/lb at 325°F. Times are estimates, always cook until a thermometer in the thickest part of the breast and innermost thigh reads <strong>165°F (74°C)</strong>. 🔒 In your browser.
       </p>
     </div>
   );

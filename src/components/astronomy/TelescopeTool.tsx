@@ -41,7 +41,7 @@ export default function TelescopeTool() {
         <p class="mt-4 text-sm text-slate-500">Enter the telescope's focal length and aperture.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Magnification = scope FL ÷ eyepiece FL; focal ratio = FL ÷ aperture. Resolving power: Dawes' limit (116⁄aperture-mm, empirical double-star) and Rayleigh (138⁄aperture-mm, diffraction). "Max useful" ≈ 2× aperture in mm is a rule of thumb — seeing usually caps it lower. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Magnification = scope FL ÷ eyepiece FL; focal ratio = FL ÷ aperture. Resolving power: Dawes' limit (116⁄aperture-mm, empirical double-star) and Rayleigh (138⁄aperture-mm, diffraction). "Max useful" ≈ 2× aperture in mm is a rule of thumb, seeing usually caps it lower. 🔒 In your browser.</p>
     </div>
   );
 }

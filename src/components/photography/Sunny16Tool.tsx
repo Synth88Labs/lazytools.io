@@ -54,7 +54,7 @@ export default function Sunny16Tool() {
         <p class="mt-4 text-sm text-slate-500">Enter your ISO and aperture.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">The Sunny 16 rule: in bright sun at f/16, the shutter is about 1⁄ISO seconds (ISO 100 → 1/100 s). The table adjusts that for softer light and your chosen aperture — a handy way to nail exposure without a meter. It measures incident light, so it\'s a starting point, not a substitute for metering. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">The Sunny 16 rule: in bright sun at f/16, the shutter is about 1⁄ISO seconds (ISO 100 → 1/100 s). The table adjusts that for softer light and your chosen aperture, a handy way to nail exposure without a meter. It measures incident light, so it\'s a starting point, not a substitute for metering. 🔒 In your browser.</p>
     </div>
   );
 }

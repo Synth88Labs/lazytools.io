@@ -54,12 +54,12 @@ export default function BinomialExpansionTool() {
           </p>
         ) : (
           <p class="mt-5 rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700">
-            Full expansion has {n + 1} terms — too long to display readably. Use the term finder below; every coefficient is still computed exactly.
+            Full expansion has {n + 1} terms, too long to display readably. Use the term finder below; every coefficient is still computed exactly.
           </p>
         )}
 
         <div class="mt-4 rounded-xl border border-slate-200 bg-white p-4">
-          <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Term finder — term with x{sup(n)}⁻ᵏ (choose k = 0…{n})</p>
+          <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Term finder, term with x{sup(n)}⁻ᵏ (choose k = 0…{n})</p>
           <div class="mt-2 flex items-center gap-2">
             <span class="text-sm font-semibold text-slate-600">k =</span>
             <input class={inputCls} value={kStr} onInput={(e) => setKStr((e.target as HTMLInputElement).value)} aria-label="k" />
@@ -98,7 +98,7 @@ export default function BinomialExpansionTool() {
 
       {error ? <p class="mt-4 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800">{error}</p> : body}
 
-      <p class="mt-4 text-xs text-slate-500">Coefficients are exact BigInt/rational values via the binomial theorem — (2x − 3)⁴ expands with every sign and coefficient right. Runs locally.</p>
+      <p class="mt-4 text-xs text-slate-500">Coefficients are exact BigInt/rational values via the binomial theorem, (2x − 3)⁴ expands with every sign and coefficient right. Runs locally.</p>
     </div>
   );
 }

@@ -54,7 +54,7 @@ export default function PetFoodTool({ species }: { species: 'dog' | 'cat' }) {
         <p class="mt-4 text-sm text-slate-500">Enter your {species}'s weight and pick its status.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Resting energy (RER) = 70 × weight(kg)^0.75; daily need (MER) = RER × a life-stage factor. Cups use the calories printed on your food's label (kcal/cup varies a lot). A guideline — your vet's advice and your pet's body condition come first. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Resting energy (RER) = 70 × weight(kg)^0.75; daily need (MER) = RER × a life-stage factor. Cups use the calories printed on your food's label (kcal/cup varies a lot). A guideline, your vet's advice and your pet's body condition come first. 🔒 In your browser.</p>
     </div>
   );
 }

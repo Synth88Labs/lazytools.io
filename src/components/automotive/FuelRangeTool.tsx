@@ -51,7 +51,7 @@ export default function FuelRangeTool() {
         <p class="mt-4 text-sm text-slate-500">Enter your tank capacity and fuel economy.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Range is tank capacity × fuel economy (or tank ÷ L/100km × 100 for that unit). Real-world range is usually lower than this best case — highway driving, cold, headwinds, loads and city stop-start all cut economy. Keeping a reserve (10–15%) means you don\'t run the tank dry, which can also stress the fuel pump. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Range is tank capacity × fuel economy (or tank ÷ L/100km × 100 for that unit). Real-world range is usually lower than this best case, highway driving, cold, headwinds, loads and city stop-start all cut economy. Keeping a reserve (10-15%) means you don\'t run the tank dry, which can also stress the fuel pump. 🔒 In your browser.</p>
     </div>
   );
 }

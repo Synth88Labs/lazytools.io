@@ -30,7 +30,7 @@ export default function StoppingDistanceTool() {
           <div class="flex gap-1"><input type="number" step="any" value={speed} onInput={(e) => setSpeed((e.target as HTMLInputElement).value)} class={inp} />
             <select value={speedUnit} onChange={(e) => setSpeedUnit((e.target as HTMLSelectElement).value as 'kmh' | 'mph')} class={sel}><option value="kmh">km/h</option><option value="mph">mph</option></select></div></label>
         <label class="block"><span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Reaction time (s)</span><input type="number" step="any" value={reaction} onInput={(e) => setReaction((e.target as HTMLInputElement).value)} class={inp} /></label>
-        <label class="block"><span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Tyre–road grip (μ)</span><input type="number" step="any" value={mu} onInput={(e) => setMu((e.target as HTMLInputElement).value)} class={inp} />
+        <label class="block"><span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Tyre, road grip (μ)</span><input type="number" step="any" value={mu} onInput={(e) => setMu((e.target as HTMLInputElement).value)} class={inp} />
           <div class="mt-1 flex flex-wrap gap-1">{GRIP.map(([l, v]) => <button onClick={() => setMu(String(v))} class="rounded border border-slate-300 bg-white px-1.5 py-0.5 text-[10px] text-slate-600 hover:border-brand-400">{l}</button>)}</div></label>
       </div>
 
@@ -42,7 +42,7 @@ export default function StoppingDistanceTool() {
         </div>
       ) : <p class="mt-4 text-sm text-slate-500">Enter speed, reaction time and grip.</p>}
 
-      <p class="mt-4 text-xs text-slate-500">Total stopping distance is reaction distance (speed × reaction time) plus braking distance (v² ÷ 2μg), where μ is the tyre–road friction coefficient. Braking distance grows with the square of speed — doubling your speed quadruples it — and grip falls sharply in the wet, snow and ice. Real distances also depend on the vehicle, tyres and brakes; this is a physics estimate. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Total stopping distance is reaction distance (speed × reaction time) plus braking distance (v² ÷ 2μg), where μ is the tyre, road friction coefficient. Braking distance grows with the square of speed, doubling your speed quadruples it, and grip falls sharply in the wet, snow and ice. Real distances also depend on the vehicle, tyres and brakes; this is a physics estimate. 🔒 In your browser.</p>
     </div>
   );
 }

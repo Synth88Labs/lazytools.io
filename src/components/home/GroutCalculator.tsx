@@ -41,7 +41,7 @@ export default function GroutCalculator() {
       ) : <p class="mt-4 text-sm text-slate-500">Enter the area, tile size and joint dimensions.</p>}
 
       <p class="mt-4 text-xs text-slate-500">
-        Grout fills the joints between tiles, so the amount depends on tile size (smaller tiles = more joints), joint width and joint depth (about the tile thickness). Weight assumes a cementitious grout at ≈1.6 kg per litre — check your product\'s coverage chart and add ~10% for waste and partial tiles. 🔒 In your browser.
+        Grout fills the joints between tiles, so the amount depends on tile size (smaller tiles = more joints), joint width and joint depth (about the tile thickness). Weight assumes a cementitious grout at ≈1.6 kg per litre, check your product\'s coverage chart and add ~10% for waste and partial tiles. 🔒 In your browser.
       </p>
     </div>
   );

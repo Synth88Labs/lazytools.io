@@ -29,7 +29,7 @@ faqs:
 draft: false
 ---
 
-**Voltage drop is the voltage lost to a wire's resistance over the run, and it equals the current times the wire's resistance times the total conductor length — for DC and single-phase that's 2 × current × resistance-per-metre × the one-way length (use √3 instead of 2 for three-phase).** The US National Electrical Code recommends keeping it **under 3%** on a branch circuit. Excess drop dims lights, slows motors and wastes energy as heat.
+**Voltage drop is the voltage lost to a wire's resistance over the run, and it equals the current times the wire's resistance times the total conductor length, for DC and single-phase that's 2 × current × resistance-per-metre × the one-way length (use √3 instead of 2 for three-phase).** The US National Electrical Code recommends keeping it **under 3%** on a branch circuit. Excess drop dims lights, slows motors and wastes energy as heat.
 
 <aside class="key-takeaways">
 
@@ -45,12 +45,12 @@ draft: false
 
 <figure>
 <img src="/blog/infographic-voltage-drop.svg" alt="drop = factor × current × resistance-per-metre × one-way length; factor 2 for DC/single-phase, √3 for three-phase. Keep under 3% (NEC); reduce with thicker wire, shorter run, copper, or higher voltage." width="1200" height="700" loading="lazy" />
-<figcaption>Voltage drop rises with current and length — and with thinner or aluminium wire.</figcaption>
+<figcaption>Voltage drop rises with current and length, and with thinner or aluminium wire.</figcaption>
 </figure>
 
 ## Why voltage drops
 
-No conductor is perfect: every wire has a small resistance, and pushing current through a resistance loses some voltage (Ohm's law, V = I × R). Over a short run it's negligible, but over a **long cable carrying significant current**, the loss adds up — and it's paid twice, because the current has to travel out to the load *and* back.
+No conductor is perfect: every wire has a small resistance, and pushing current through a resistance loses some voltage (Ohm's law, V = I × R). Over a short run it's negligible, but over a **long cable carrying significant current**, the loss adds up, and it's paid twice, because the current has to travel out to the load *and* back.
 
 That's the factor of **2** in the single-phase and DC formula (out and back along both conductors). Three-phase systems share the return across phases, so they use **√3** instead.
 
@@ -60,17 +60,17 @@ The resistance-per-metre depends on the **wire gauge** (thicker wire = lower res
 
 ## Wire resistance by gauge
 
-The resistance-per-metre is the number that turns the formula into a real answer. In the American Wire Gauge (AWG) system, **a smaller number means a thicker wire**, and every 3-gauge step roughly doubles or halves the cross-sectional area — so it roughly halves or doubles the resistance. The values below are approximate DC resistances for solid, uncoated copper at around 20 °C; aluminium of the same gauge runs about 1.6× higher.
+The resistance-per-metre is the number that turns the formula into a real answer. In the American Wire Gauge (AWG) system, **a smaller number means a thicker wire**, and every 3-gauge step roughly doubles or halves the cross-sectional area, so it roughly halves or doubles the resistance. The values below are approximate DC resistances for solid, uncoated copper at around 20 °C; aluminium of the same gauge runs about 1.6× higher.
 
 | Wire size (AWG) | Copper resistance (Ω per km) | Copper resistance (Ω per 1000 ft) | Typical use |
 |---|---|---|---|
 | 14 | ~8.3 | ~2.5 | 15 A lighting/receptacle circuits |
 | 12 | ~5.2 | ~1.6 | 20 A general-purpose circuits |
 | 10 | ~3.3 | ~1.0 | 30 A dryers, water heaters |
-| 8 | ~2.1 | ~0.63 | 40–50 A ranges, sub-feeds |
-| 6 | ~1.3 | ~0.40 | 55–65 A feeders, EV chargers |
+| 8 | ~2.1 | ~0.63 | 40-50 A ranges, sub-feeds |
+| 6 | ~1.3 | ~0.40 | 55-65 A feeders, EV chargers |
 
-Treat these as guide figures for estimating drop, not as ampacity ratings. The exact resistance shifts with temperature (hotter wire has more resistance), with stranding, and with tinned versus bare copper — which is why a good [voltage drop calculator](/electronics/voltage-drop-calculator/) and your local code tables are the right authority for a real install.
+Treat these as guide figures for estimating drop, not as ampacity ratings. The exact resistance shifts with temperature (hotter wire has more resistance), with stranding, and with tinned versus bare copper, which is why a good [voltage drop calculator](/electronics/voltage-drop-calculator/) and your local code tables are the right authority for a real install.
 
 ## The 3% rule
 
@@ -79,7 +79,7 @@ The [National Electrical Code (NEC)](https://www.nfpa.org/), published by the NF
 - **≤ 3%** voltage drop on a branch circuit, and
 - **≤ 5%** total including the feeder.
 
-Strictly speaking, these are **recommendations carried in the NEC's informational notes**, not hard rules the code enforces — but most designers and inspectors treat them as the practical target because they keep equipment inside its rated operating window. Many solar and low-voltage DC designers go tighter and target **2% or less**, because low-voltage systems feel a given voltage loss more (a 1 V drop is a big deal at 12 V, trivial at 240 V). Excess drop causes real problems: dim or flickering lights, motors and compressors that run hot and struggle to start, sensitive electronics misbehaving, and energy simply wasted as heat in the cable.
+Strictly speaking, these are **recommendations carried in the NEC's informational notes**, not hard rules the code enforces, but most designers and inspectors treat them as the practical target because they keep equipment inside its rated operating window. Many solar and low-voltage DC designers go tighter and target **2% or less**, because low-voltage systems feel a given voltage loss more (a 1 V drop is a big deal at 12 V, trivial at 240 V). Excess drop causes real problems: dim or flickering lights, motors and compressors that run hot and struggle to start, sensitive electronics misbehaving, and energy simply wasted as heat in the cable.
 
 ## A worked example
 
@@ -87,7 +87,7 @@ Suppose you run a **20 A, 120 V single-phase** circuit **30 m** (about 100 ft) o
 
 > drop = 2 × 20 A × 0.0033 Ω/m × 30 m ≈ **3.9 V**
 
-That is 3.9 V ÷ 120 V ≈ **3.3%** — just over the 3% target, and only 116 V actually reaches the load. Step up one common size to **8 AWG** (~2.1 Ω/km, 0.0021 Ω/m) and the same run drops to about **2.5 V, or 2.1%** — comfortably inside the limit. This is the single most common real-world fix: the current, length and voltage are fixed by the job, so you buy back margin with a thicker conductor.
+That is 3.9 V ÷ 120 V ≈ **3.3%**, just over the 3% target, and only 116 V actually reaches the load. Step up one common size to **8 AWG** (~2.1 Ω/km, 0.0021 Ω/m) and the same run drops to about **2.5 V, or 2.1%**, comfortably inside the limit. This is the single most common real-world fix: the current, length and voltage are fixed by the job, so you buy back margin with a thicker conductor.
 
 For a **three-phase** contrast, take **30 A at 400 V** over **50 m** of 6 AWG copper (0.0013 Ω/m). Because three-phase uses the √3 factor:
 
@@ -99,15 +99,15 @@ Notice how much healthier three-phase looks: higher voltage plus the √3 factor
 
 If your run exceeds the limit, you have four levers:
 
-1. **Use a thicker wire** (a lower AWG number). Roughly doubling the cross-sectional area halves the drop — the most common fix.
+1. **Use a thicker wire** (a lower AWG number). Roughly doubling the cross-sectional area halves the drop, the most common fix.
 2. **Shorten the run** where you can, or move the source closer to the load.
-3. **Use copper instead of aluminium** — copper has ~1.6× less resistance for the same gauge.
+3. **Use copper instead of aluminium**, copper has ~1.6× less resistance for the same gauge.
 4. **Raise the system voltage** if the design allows, since the same watts at a higher voltage means less current and less drop.
 
 ## Voltage drop is not the same as ampacity
 
-A wire has two separate size limits, and it is easy to confuse them. **Ampacity** is how much current the conductor can carry before it overheats — a safety limit set by insulation temperature ratings. **Voltage drop** is a performance limit about how much voltage survives the trip. A conductor can be perfectly safe on ampacity yet still drop too much voltage on a long run, which is exactly why a 30 m branch circuit sometimes needs a wire larger than the breaker alone would suggest. Always size for the *stricter* of the two: pick the gauge that satisfies ampacity **and** keeps drop under your target.
+A wire has two separate size limits, and it is easy to confuse them. **Ampacity** is how much current the conductor can carry before it overheats, a safety limit set by insulation temperature ratings. **Voltage drop** is a performance limit about how much voltage survives the trip. A conductor can be perfectly safe on ampacity yet still drop too much voltage on a long run, which is exactly why a 30 m branch circuit sometimes needs a wire larger than the breaker alone would suggest. Always size for the *stricter* of the two: pick the gauge that satisfies ampacity **and** keeps drop under your target.
 
-The dropped voltage also has a real energy cost. The voltage lost across the cable, multiplied by the current, is power dissipated as heat (P = drop × current, equivalently I²R). In the first worked example above, 3.9 V across 20 A is roughly 78 W turned into heat in the wire — energy you pay for but never use. Cutting voltage drop cuts that waste at the same time.
+The dropped voltage also has a real energy cost. The voltage lost across the cable, multiplied by the current, is power dissipated as heat (P = drop × current, equivalently I²R). In the first worked example above, 3.9 V across 20 A is roughly 78 W turned into heat in the wire, energy you pay for but never use. Cutting voltage drop cuts that waste at the same time.
 
 *This is a design aid. Always follow your local electrical code and use a licensed electrician for real installations.*

@@ -35,7 +35,7 @@ export default function InflationTool() {
         </div>
       ) : <p class="mt-4 text-sm text-slate-500">Enter an amount, an average inflation rate and a number of years.</p>}
 
-      <p class="mt-4 text-xs text-slate-500">Inflation erodes what money can buy: the real value after N years is amount ÷ (1 + rate)ᴺ. At 3% a year, money loses about a quarter of its purchasing power over 10 years and nearly half over 20. The "needed to keep pace" figure is the future amount that would buy the same as your amount does today. Uses the rate you enter — no fixed CPI table. Educational, not financial advice. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Inflation erodes what money can buy: the real value after N years is amount ÷ (1 + rate)ᴺ. At 3% a year, money loses about a quarter of its purchasing power over 10 years and nearly half over 20. The "needed to keep pace" figure is the future amount that would buy the same as your amount does today. Uses the rate you enter, no fixed CPI table. Educational, not financial advice. 🔒 In your browser.</p>
     </div>
   );
 }

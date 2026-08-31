@@ -1,6 +1,6 @@
 ---
 import { CATEGORIES, SITE } from '../lib/site';
-/** A diversified spread of flagship categories in the footer — the full list lives at /tools/. */
+/** A diversified spread of flagship categories in the footer, the full list lives at /tools/. */
 const FEATURED = ['units', 'calc', 'finance', 'cooking', 'automotive', 'photo', 'pdf', 'dev'];
 const featured = FEATURED.map((slug) => CATEGORIES.find((c) => c.slug === slug)!).filter(Boolean);
 const year = new Date().getFullYear();
@@ -14,7 +14,7 @@ const year = new Date().getFullYear();
         Lazy<span class="text-brand-700">Tools</span>
       </p>
       <p class="mt-2 text-sm leading-relaxed text-slate-600">
-        {SITE.tagline}. Every tool runs in your browser — your files and inputs are never uploaded. No ads, and we never sell your data.
+        {SITE.tagline}. Every tool runs in your browser, your files and inputs are never uploaded. No ads, and we never sell your data.
       </p>
     </div>
     <div>
@@ -35,7 +35,7 @@ const year = new Date().getFullYear();
         <li><a href="/blog/" class="hover:text-brand-700">Blog</a></li>
         <li><a href="/how-it-works/" class="hover:text-brand-700">How it works</a></li>
         <li><a href="/contact/" class="hover:text-brand-700">Contact</a></li>
-        <li><a href={SITE.github} rel="noopener" class="hover:text-brand-700">GitHub — we're open source</a></li>
+        <li><a href={SITE.github} rel="noopener" class="hover:text-brand-700">GitHub, we're open source</a></li>
         <li><a href="/licenses/" class="hover:text-brand-700">Open-source licenses</a></li>
       </ul>
     </div>

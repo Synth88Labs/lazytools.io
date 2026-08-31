@@ -169,7 +169,7 @@ export default function PhotoMaker({ spec }: { spec: PhotoSpec }) {
       res.push(...checkDimensions(spec, blob.size, format));
       const fm = await analyzeFace(c);
       if (fm) res.unshift(...faceChecks(fm, spec));
-      else res.push({ id: 'face', label: 'Face position', status: 'skip', detail: 'On-device face detection is unavailable in this browser — align your head to the blue guides manually.' });
+      else res.push({ id: 'face', label: 'Face position', status: 'skip', detail: 'On-device face detection is unavailable in this browser, align your head to the blue guides manually.' });
       // order: fails first
       const rank = { fail: 0, warn: 1, skip: 2, pass: 3 } as const;
       res.sort((a, b) => rank[a.status] - rank[b.status]);
@@ -266,7 +266,7 @@ export default function PhotoMaker({ spec }: { spec: PhotoSpec }) {
       </div>
 
       <p class="mt-4 border-t border-slate-200 pt-3 text-center text-xs text-slate-500">
-        🔒 Your photo is processed entirely on your device and never uploaded. The compliance check catches common mistakes but does not guarantee acceptance — always confirm against the official requirements below.
+        🔒 Your photo is processed entirely on your device and never uploaded. The compliance check catches common mistakes but does not guarantee acceptance, always confirm against the official requirements below.
       </p>
     </div>
   );

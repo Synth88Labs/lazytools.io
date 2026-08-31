@@ -36,7 +36,7 @@ export default function SprayMixTool() {
         </div>
       ) : <p class="mt-4 text-sm text-slate-500">Enter the tank volume and the label rate.</p>}
 
-      <p class="mt-4 text-xs text-slate-500">The amount of product is simply the tank volume × the label rate: a 2 oz-per-gallon rate in a 5-gallon sprayer needs 10 fl oz. Always follow the product label — rates and safety directions there take precedence — and never exceed the maximum rate. Measure concentrates carefully and wear the protective equipment the label specifies. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">The amount of product is simply the tank volume × the label rate: a 2 oz-per-gallon rate in a 5-gallon sprayer needs 10 fl oz. Always follow the product label, rates and safety directions there take precedence, and never exceed the maximum rate. Measure concentrates carefully and wear the protective equipment the label specifies. 🔒 In your browser.</p>
     </div>
   );
 }

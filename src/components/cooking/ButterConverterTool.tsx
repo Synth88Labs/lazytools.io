@@ -47,7 +47,7 @@ export default function ButterConverterTool() {
         <p class="mt-4 text-sm text-slate-500">Enter an amount.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">1 US stick = ½ cup = 8 tbsp = 4 oz = 113 g. In the UK, Europe and Australia butter is sold by weight, not sticks — use grams. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">1 US stick = ½ cup = 8 tbsp = 4 oz = 113 g. In the UK, Europe and Australia butter is sold by weight, not sticks, use grams. 🔒 In your browser.</p>
     </div>
   );
 }

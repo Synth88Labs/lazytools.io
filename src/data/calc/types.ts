@@ -1,4 +1,4 @@
-/** Calculator registry model — one entry drives page, widget, search index and schema. */
+/** Calculator registry model, one entry drives page, widget, search index and schema. */
 
 export interface CalcField {
   id: string;
@@ -14,7 +14,7 @@ export interface CalcField {
 }
 
 export interface CalcDef {
-  /** URL: /calc/{slug}/ — matches how people search, e.g. "percentage-calculator" */
+  /** URL: /calc/{slug}/, matches how people search, e.g. "percentage-calculator" */
   slug: string;
   /** H1 & card name, e.g. "Percentage Calculator" */
   name: string;

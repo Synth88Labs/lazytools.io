@@ -63,7 +63,7 @@ export default function PdfImpositionTool() {
       <label class="block cursor-pointer rounded-xl border-2 border-dashed border-slate-300 bg-white p-6 text-center transition hover:border-brand-400">
         <input type="file" accept=".pdf,application/pdf" onChange={onFile} class="sr-only" />
         <span class="text-sm font-semibold text-brand-700">{fileName || 'Choose a PDF to place multiple pages per sheet'}</span>
-        <span class="mt-1 block text-xs text-slate-500">Imposed on your device — never uploaded</span>
+        <span class="mt-1 block text-xs text-slate-500">Imposed on your device, never uploaded</span>
       </label>
 
       {pageCount > 0 && (
@@ -78,7 +78,7 @@ export default function PdfImpositionTool() {
       {error && <p class="mt-3 text-sm font-medium text-red-700">✗ {error}</p>}
 
       <p class="mt-4 rounded-lg bg-white px-3 py-2 text-xs text-slate-500 ring-1 ring-slate-200">
-        Places 2 or 4 of your PDF\'s pages, scaled down, onto each output sheet — handy for saving paper, printing handouts, or thumbnailing a document. Pages are embedded (not rasterised), so text stays crisp. Everything runs in your browser and the file is never uploaded. 🔒
+        Places 2 or 4 of your PDF\'s pages, scaled down, onto each output sheet, handy for saving paper, printing handouts, or thumbnailing a document. Pages are embedded (not rasterised), so text stays crisp. Everything runs in your browser and the file is never uploaded. 🔒
       </p>
     </div>
   );

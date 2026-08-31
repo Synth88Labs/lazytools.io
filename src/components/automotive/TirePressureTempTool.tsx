@@ -44,7 +44,7 @@ export default function TirePressureTempTool() {
         <p class="mt-4 text-sm text-slate-500">Enter your set pressure and the two temperatures.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Tire pressure follows Gay-Lussac\'s law: for a fixed volume of air, pressure rises and falls with absolute temperature. As a rule of thumb it changes about 1 psi for every 10 °F (roughly 0.07 bar per 5 °C). A cold snap drops your pressure — so check and top up, since low pressure hurts handling, wear and fuel economy. Always set pressure on cold tires. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Tire pressure follows Gay-Lussac\'s law: for a fixed volume of air, pressure rises and falls with absolute temperature. As a rule of thumb it changes about 1 psi for every 10 °F (roughly 0.07 bar per 5 °C). A cold snap drops your pressure, so check and top up, since low pressure hurts handling, wear and fuel economy. Always set pressure on cold tires. 🔒 In your browser.</p>
     </div>
   );
 }

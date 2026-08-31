@@ -31,11 +31,11 @@ export default function OxidationNumberTool() {
       else unknown.push(el);
     }
     if (unknown.length === 0) {
-      // all fixed — just report
+      // all fixed, just report
       return { ok: true as const, counts, ox: known, solvedFor: null as string | null };
     }
     if (unknown.length > 1) {
-      return { ok: false as const, error: `Two or more elements have no standard rule (${unknown.join(', ')}) — the oxidation states can’t be assigned uniquely from rules alone.` };
+      return { ok: false as const, error: `Two or more elements have no standard rule (${unknown.join(', ')}), the oxidation states can’t be assigned uniquely from rules alone.` };
     }
     // solve the single unknown: Σ(ox·count) = overall
     const u = unknown[0]!;
@@ -82,7 +82,7 @@ export default function OxidationNumberTool() {
       )}
 
       <p class="mt-4 text-xs text-slate-500">
-        Uses standard rules (group 1 = +1, group 2 = +2, F = −1, O = −2, H = +1, …) and solves the remaining element by charge balance. Peroxides, metal hydrides and O–F compounds are exceptions. 🔒 In your browser.
+        Uses standard rules (group 1 = +1, group 2 = +2, F = −1, O = −2, H = +1, …) and solves the remaining element by charge balance. Peroxides, metal hydrides and O, F compounds are exceptions. 🔒 In your browser.
       </p>
     </div>
   );

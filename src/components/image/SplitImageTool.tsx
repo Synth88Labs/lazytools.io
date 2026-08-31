@@ -70,8 +70,8 @@ export default function SplitImageTool() {
     <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
       <label class="block cursor-pointer rounded-xl border-2 border-dashed border-slate-300 bg-white p-6 text-center transition hover:border-brand-400">
         <input type="file" accept="image/*" onChange={onFile} class="sr-only" />
-        <span class="text-sm font-semibold text-brand-700">{loaded ? `${loaded.name} — ${loaded.w}×${loaded.h}` : 'Choose an image to split'}</span>
-        <span class="mt-1 block text-xs text-slate-500">Split on your device — the image is never uploaded</span>
+        <span class="text-sm font-semibold text-brand-700">{loaded ? `${loaded.name}, ${loaded.w}×${loaded.h}` : 'Choose an image to split'}</span>
+        <span class="mt-1 block text-xs text-slate-500">Split on your device, the image is never uploaded</span>
       </label>
 
       {error && <p class="mt-3 text-sm font-medium text-red-700">✗ {error}</p>}

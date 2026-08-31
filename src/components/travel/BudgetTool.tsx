@@ -67,7 +67,7 @@ export default function BudgetTool() {
         <p class="mt-4 text-sm text-slate-500">Enter your total budget, trip length and number of travellers.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Amounts are in whatever currency you enter — no conversion. The category split is a rough starting point (accommodation and food usually dominate); adjust it to your trip. Keep a contingency of ~10–15% for the unexpected. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Amounts are in whatever currency you enter, no conversion. The category split is a rough starting point (accommodation and food usually dominate); adjust it to your trip. Keep a contingency of ~10-15% for the unexpected. 🔒 In your browser.</p>
     </div>
   );
 }

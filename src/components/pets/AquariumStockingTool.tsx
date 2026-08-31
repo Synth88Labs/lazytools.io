@@ -5,10 +5,10 @@ const num = (s: string) => { const n = parseFloat(s); return isFinite(n) && n >=
 const fmt = (x: number, d = 1) => Number(x.toFixed(d)).toString();
 
 const STATUS: Record<StockingResult['status'], { label: string; ring: string; text: string; bg: string }> = {
-  understocked: { label: 'Understocked — room for more', ring: 'ring-sky-300', text: 'text-sky-800', bg: 'bg-sky-50' },
+  understocked: { label: 'Understocked, room for more', ring: 'ring-sky-300', text: 'text-sky-800', bg: 'bg-sky-50' },
   ok: { label: 'Well stocked', ring: 'ring-emerald-300', text: 'text-emerald-800', bg: 'bg-emerald-50' },
-  'fully stocked': { label: 'Fully stocked — at capacity', ring: 'ring-amber-300', text: 'text-amber-800', bg: 'bg-amber-50' },
-  overstocked: { label: 'Overstocked — reduce or upgrade', ring: 'ring-rose-400', text: 'text-rose-900', bg: 'bg-rose-50' },
+  'fully stocked': { label: 'Fully stocked, at capacity', ring: 'ring-amber-300', text: 'text-amber-800', bg: 'bg-amber-50' },
+  overstocked: { label: 'Overstocked, reduce or upgrade', ring: 'ring-rose-400', text: 'text-rose-900', bg: 'bg-rose-50' },
 };
 
 export default function AquariumStockingTool() {
@@ -40,7 +40,7 @@ export default function AquariumStockingTool() {
         <>
           <div class={`mt-4 rounded-xl p-4 ring-2 ${STATUS[r.status].ring} ${STATUS[r.status].bg}`}>
             <p class={`text-lg font-extrabold ${STATUS[r.status].text}`}>{STATUS[r.status].label}</p>
-            <p class="mt-1 text-sm text-slate-700"><strong>{fmt(r.percent, 0)}%</strong> of capacity — {fmt(r.usedInches)}″ of a suggested {fmt(r.maxInchesRule)}″ (net {fmt(r.netGallons)} gal).</p>
+            <p class="mt-1 text-sm text-slate-700"><strong>{fmt(r.percent, 0)}%</strong> of capacity, {fmt(r.usedInches)}″ of a suggested {fmt(r.maxInchesRule)}″ (net {fmt(r.netGallons)} gal).</p>
           </div>
           <div class="mt-3 h-3 w-full overflow-hidden rounded-full bg-slate-200">
             <div class="h-full rounded-full bg-brand-500" style={`width:${Math.min(100, r.percent)}%`}></div>

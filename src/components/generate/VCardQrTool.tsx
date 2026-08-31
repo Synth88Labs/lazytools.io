@@ -57,7 +57,7 @@ export default function VCardQrTool() {
           <button type="button" onClick={download} class="mt-3 rounded-lg bg-brand-700 px-4 py-2 text-sm font-medium text-white hover:bg-brand-800">⬇ Download PNG</button>
         </div>
       </div>
-      <p class="mt-3 text-xs text-slate-500">Scanning adds you straight to a phone's contacts (vCard 3.0). The details are encoded directly into the code — <strong>never uploaded</strong>, and with no tracking redirect that could expire.</p>
+      <p class="mt-3 text-xs text-slate-500">Scanning adds you straight to a phone's contacts (vCard 3.0). The details are encoded directly into the code, <strong>never uploaded</strong>, and with no tracking redirect that could expire.</p>
     </div>
   );
 }

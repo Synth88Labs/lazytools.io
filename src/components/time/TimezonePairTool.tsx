@@ -14,7 +14,7 @@ interface Props {
 }
 
 const BIZ_START = 9;
-const BIZ_END = 17; // 9:00–17:00 local business window
+const BIZ_END = 17; // 9:00-17:00 local business window
 
 function nowInZone(iana: string, date: Date) {
   const p = new Intl.DateTimeFormat('en-US', {
@@ -28,7 +28,7 @@ function nowInZone(iana: string, date: Date) {
   return p;
 }
 
-/** Hour-of-day (0–23) in a zone for an instant. */
+/** Hour-of-day (0-23) in a zone for an instant. */
 function zoneHour(iana: string, date: Date): number {
   return Number(
     new Intl.DateTimeFormat('en-US', { timeZone: iana, hour: '2-digit', hour12: false }).format(date).replace(/\D/g, '')
@@ -97,7 +97,7 @@ export default function TimezonePairTool({ aAbbr, bAbbr }: Props) {
           </p>
         ) : (
           <p class="rounded-lg border border-amber-300 bg-amber-50 px-4 py-2.5 text-sm font-medium text-amber-800">
-            ⚠ No 9–5 overlap — one side is always outside business hours. Try early morning or late evening for one party.
+            ⚠ No 9-5 overlap, one side is always outside business hours. Try early morning or late evening for one party.
           </p>
         )}
 
@@ -126,12 +126,12 @@ export default function TimezonePairTool({ aAbbr, bAbbr }: Props) {
         </div>
         {Math.abs(diff % 1) > 0.01 && (
           <p class="mt-2 text-xs text-slate-500">
-            Note: the offset includes a half-hour, so the table rounds to the nearest hour — read the live clocks above for the exact minute.
+            Note: the offset includes a half-hour, so the table rounds to the nearest hour, read the live clocks above for the exact minute.
           </p>
         )}
       </div>
       <p class="mt-3 text-xs text-slate-500">
-        Live from your device's clock via the browser's IANA timezone data — DST for both zones is applied automatically, and it works offline.
+        Live from your device's clock via the browser's IANA timezone data, DST for both zones is applied automatically, and it works offline.
       </p>
     </div>
   );

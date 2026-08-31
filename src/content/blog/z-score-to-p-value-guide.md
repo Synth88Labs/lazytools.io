@@ -23,9 +23,9 @@ faqs:
   - q: "What is the difference between a one-tailed and two-tailed p-value?"
     a: "A one-tailed test looks for an effect in a single direction (only greater, or only smaller) and takes the area in one tail. A two-tailed test looks for any difference and takes both tails, so its p-value is double the one-tailed value for a symmetric distribution like the normal."
   - q: "Is a z-score the same as a p-value?"
-    a: "No. A z-score is how many standard deviations a value is from the mean; a p-value is the probability of a result at least that extreme. You convert one to the other through the normal distribution — the z-score is the position, the p-value is the tail area beyond it."
+    a: "No. A z-score is how many standard deviations a value is from the mean; a p-value is the probability of a result at least that extreme. You convert one to the other through the normal distribution, the z-score is the position, the p-value is the tail area beyond it."
   - q: "Why not just use a z-table?"
-    a: "A printed z-table is rounded to two decimals of z and requires interpolation, so it loses precision. Computing the p-value directly from the normal CDF gives an exact value for any z-score — for example P(Z > 2.13) to many decimals rather than the nearest table cell."
+    a: "A printed z-table is rounded to two decimals of z and requires interpolation, so it loses precision. Computing the p-value directly from the normal CDF gives an exact value for any z-score, for example P(Z > 2.13) to many decimals rather than the nearest table cell."
   - q: "When is a p-value statistically significant?"
     a: "When it is at or below your chosen significance level α, most commonly 0.05. A p-value of 0.03 is significant at α = 0.05 (you reject the null hypothesis); a p-value of 0.08 is not. The threshold should be chosen before you see the data."
 draft: false
@@ -42,7 +42,7 @@ numbers everyone remembers: **z = 1.96 → two-tailed p = 0.05**, and **z = 1.64
 - A **z-score** is a position (standard deviations from the mean); a **p-value** is the tail area beyond it.
 - **Right-tailed:** P(Z > z). **Left-tailed:** P(Z < z). **Two-tailed:** 2 × P(Z > |z|).
 - **z = 1.96 → p = 0.05** (two-tailed); **z = 2.576 → p = 0.01** (two-tailed); **z = 1.645 → p = 0.05** (one-tailed).
-- The normal CDF has no closed form — an exact tool uses the **error function (erf)**, not a rounded table.
+- The normal CDF has no closed form, an exact tool uses the **error function (erf)**, not a rounded table.
 - Significant when **p ≤ α** (usually 0.05), with α chosen before seeing the data.
 
 </aside>
@@ -51,7 +51,7 @@ numbers everyone remembers: **z = 1.96 → two-tailed p = 0.05**, and **z = 1.64
 
 <figure>
 <img src="/blog/infographic-z-score-p-value.svg" alt="Infographic: the p-value is the shaded tail area of the standard normal curve beyond the z-score. Right-tailed is P(Z greater than z), left-tailed is P(Z less than z), two-tailed is twice P(Z greater than absolute z). z of 1.645 gives one-tailed p 0.05, z of 1.96 gives two-tailed p 0.05, z of 2.576 gives two-tailed p 0.01. About 68, 95 and 99.7 percent of values fall within one, two and three standard deviations." width="1200" height="640" loading="lazy" />
-<figcaption>The p-value is the shaded tail — how far out your statistic lands.</figcaption>
+<figcaption>The p-value is the shaded tail, how far out your statistic lands.</figcaption>
 </figure>
 
 A **[z-score](https://en.wikipedia.org/wiki/Standard_score)** answers "how unusual is this value?" in units of standard deviations:
@@ -60,7 +60,7 @@ A **[z-score](https://en.wikipedia.org/wiki/Standard_score)** answers "how unusu
 
 A z of +1 sits one standard deviation above the mean; a z of −2.5 sits two-and-a-half below. The
 **[p-value](https://en.wikipedia.org/wiki/P-value)** turns that position into a probability: the chance of landing at least that far out in the
-tail if nothing but random variation were at work. Position in, probability out — that is the whole
+tail if nothing but random variation were at work. Position in, probability out, that is the whole
 conversion, and the [normal distribution calculator](/statistics/normal-distribution-calculator/) shows
 it with the tail shaded so you can see the area you are measuring.
 
@@ -68,9 +68,9 @@ it with the tail shaded so you can see the area you are measuring.
 
 The one detail that trips people up is *which* area to take.
 
-- **Right-tailed** — you only care about values *larger* than expected: `p = P(Z > z)`.
-- **Left-tailed** — you only care about values *smaller*: `p = P(Z < z)`.
-- **Two-tailed** — you care about any difference in *either* direction: `p = 2 × P(Z > |z|)`.
+- **Right-tailed**. You only care about values *larger* than expected: `p = P(Z > z)`.
+- **Left-tailed**. You only care about values *smaller*: `p = P(Z < z)`.
+- **Two-tailed**. You care about any difference in *either* direction: `p = 2 × P(Z > |z|)`.
 
 Because the normal curve is symmetric, the two-tailed p-value is exactly double the one-tailed value.
 That is why one significance level, 0.05, maps to two different critical z-scores: **1.645** if you are
@@ -79,14 +79,14 @@ testing in one direction, **1.96** if you are testing in both.
 A quick way to see it: a z of 2.0 puts about 2.28% of the area in the upper tail. If your hypothesis
 only asks "is it bigger?", that 2.28% is your whole p-value. If it asks "is it different in either
 direction?", you also count the symmetric 2.28% in the lower tail, giving about 4.55%. Same z, same
-curve — the tail rule you pick doubles or halves the answer.
+curve, the tail rule you pick doubles or halves the answer.
 
 ## A z-score to tail-area reference
 
 The table below reads left to right: pick a z, read the one-tailed area beyond it, then double it for the
 two-tailed p-value. These are the exact tail areas of the standard normal distribution, rounded.
 
-| z-score | One-tailed p — P(Z > z) | Two-tailed p — 2 × P(Z > \|z\|) |
+| z-score | One-tailed p, P(Z > z) | Two-tailed p, 2 × P(Z > \|z\|) |
 |---|---|---|
 | 1.000 | 0.1587 | 0.3173 |
 | 1.282 | 0.1000 | 0.2000 |
@@ -125,32 +125,32 @@ average, or just normal sampling wobble?
    hypothesis ("this class scores higher"), the one-tailed p is **≈ 0.023**. If you were simply testing
    for any difference, the two-tailed p is 2 × 0.0228 = **≈ 0.046**.
 4. **Decide.** Against the conventional α = 0.05, both p-values fall below the threshold, so you would
-   reject the null hypothesis of "no difference" — the gap is larger than chance comfortably explains.
+   reject the null hypothesis of "no difference", the gap is larger than chance comfortably explains.
 
 The only judgement call is step 3's tail choice, and you should make it *before* seeing the data. Had the
-average been 104 instead, z would be (104 − 100) / 3 ≈ 1.33, a two-tailed p of about 0.18 — not
+average been 104 instead, z would be (104 − 100) / 3 ≈ 1.33, a two-tailed p of about 0.18, not
 significant. Small shifts in the statistic move you across the threshold, which is exactly why the exact
 area matters more than a rounded lookup.
 
 ## Why a table is not enough
 
-The normal cumulative distribution function — the "area so far" under the curve — has **no elementary
+The normal cumulative distribution function, the "area so far" under the curve, has **no elementary
 closed form**. Every exact tool computes it through the **error function (erf)**, a high-accuracy series
 that pins the area to about seven decimal places. A printed z-table, by contrast, is rounded to two
 decimals of z and forces you to interpolate between cells; and a chatbot asked for P(Z > 2.13) will
-often quote a plausible-but-wrong figure. Computing it directly avoids both problems — enter any z into
+often quote a plausible-but-wrong figure. Computing it directly avoids both problems, enter any z into
 the [p-value calculator](/statistics/p-value-calculator/) and it returns the exact tail area (and it also
 handles t, χ² and F statistics, not just z).
 
 ## Turning the p-value into a decision
 
 A p-value on its own is just an area. It becomes a decision when you compare it to your **significance
-level α** — the threshold you set *before* looking at the data, conventionally 0.05.
+level α**, the threshold you set *before* looking at the data, conventionally 0.05.
 
 - **p ≤ α** → the result is statistically significant; you reject the null hypothesis.
 - **p > α** → not significant; you fail to reject it.
 
-A small p-value means your statistic sits far out in the tail — the kind of value that would rarely occur
+A small p-value means your statistic sits far out in the tail, the kind of value that would rarely occur
 by chance alone. It does **not** measure the size or importance of an effect, only how surprising the
 data would be if the null hypothesis were true.
 
@@ -160,14 +160,14 @@ The z-to-p conversion is arithmetic, but the interpretation is where people slip
 straight:
 
 - **A p-value is not the probability the null hypothesis is true.** It is the probability of data at
-  least this extreme *assuming* the null is true — a subtle but important reversal. A p of 0.03 does not
+  least this extreme *assuming* the null is true, a subtle but important reversal. A p of 0.03 does not
   mean "3% chance there is no effect."
 - **"Not significant" is not "no effect."** A p above α means the data did not clear your evidence bar,
   often because the sample was small, not because the true effect is zero.
 - **A tiny p-value does not mean a big effect.** With a large enough sample, a trivial difference can
   produce a large z and a minuscule p. Report an effect size or confidence interval alongside it.
 - **The z-to-p link assumes a valid z.** The conversion only makes sense if the sampling distribution is
-  approximately normal — reasonable for large samples or known-variance means, less so for small samples
+  approximately normal, reasonable for large samples or known-variance means, less so for small samples
   where a t-distribution fits better.
 
 ## Quick summary
@@ -180,5 +180,4 @@ computes the exact area via erf rather than a rounded table. Try it on the
 [p-value calculator](/statistics/p-value-calculator/).
 
 *Sources: the standard normal distribution and its cumulative distribution function (the error function,
-erf); conventional significance testing as taught in introductory statistics. Educational information —
-not statistical consulting.*
+erf); conventional significance testing as taught in introductory statistics. Educational information, not statistical consulting.*

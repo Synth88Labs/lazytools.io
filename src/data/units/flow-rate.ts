@@ -8,15 +8,15 @@ export const flowRate: Quantity = {
   baseUnit: 'm3-s',
   icon: '🚰',
   description:
-    'Convert volumetric flow-rate units — litres per second and minute, cubic metres per hour, US gallons per minute (GPM), cubic feet per minute (CFM) and per second.',
+    'Convert volumetric flow-rate units, litres per second and minute, cubic metres per hour, US gallons per minute (GPM), cubic feet per minute (CFM) and per second.',
   units: [
-    { id: 'm3-s', name: 'Cubic metre per second', plural: 'cubic metres per second', symbol: 'm³/s', slug: 'm3-s', factor: 1, system: 'si', definition: 'The SI unit of volumetric flow — a cubic metre passing a point each second. A large unit: rivers and industrial flows.' },
+    { id: 'm3-s', name: 'Cubic metre per second', plural: 'cubic metres per second', symbol: 'm³/s', slug: 'm3-s', factor: 1, system: 'si', definition: 'The SI unit of volumetric flow, a cubic metre passing a point each second. A large unit: rivers and industrial flows.' },
     { id: 'm3-h', name: 'Cubic metre per hour', plural: 'cubic metres per hour', symbol: 'm³/h', slug: 'm3-h', factor: 1 / 3600, system: 'si', definition: 'A cubic metre per hour is 1/3600 m³/s. Pumps, HVAC and water systems are often rated in m³/h.' },
     { id: 'l-s', name: 'Litre per second', plural: 'litres per second', symbol: 'L/s', slug: 'l-s', factor: 1e-3, system: 'metric', definition: 'One litre per second is 0.001 m³/s. A common unit for pumps and plumbing flows.' },
     { id: 'l-min', name: 'Litre per minute', plural: 'litres per minute', symbol: 'L/min', slug: 'l-min', factor: 1e-3 / 60, system: 'metric', definition: 'A litre per minute is 1/60 L/s. Taps, showers and small pumps are rated in L/min.' },
-    { id: 'gpm', name: 'US gallon per minute', plural: 'US gallons per minute', symbol: 'GPM', slug: 'gpm', factor: 0.003785411784 / 60, system: 'us', definition: 'US gallons per minute — the standard US pump and plumbing rate. One GPM is about 3.785 L/min.' },
-    { id: 'cfm', name: 'Cubic foot per minute', plural: 'cubic feet per minute', symbol: 'CFM', slug: 'cfm', factor: (0.3048 ** 3) / 60, system: 'us', definition: 'Cubic feet per minute — the US airflow unit for fans, HVAC and compressors. One CFM is about 1.699 m³/h or 0.472 L/s.' },
-    { id: 'ft3-s', name: 'Cubic foot per second', plural: 'cubic feet per second', symbol: 'ft³/s', slug: 'ft3-s', factor: 0.3048 ** 3, system: 'us', definition: 'Cubic feet per second ("cusec") — used for river and channel discharge. One ft³/s is about 28.32 L/s.' },
+    { id: 'gpm', name: 'US gallon per minute', plural: 'US gallons per minute', symbol: 'GPM', slug: 'gpm', factor: 0.003785411784 / 60, system: 'us', definition: 'US gallons per minute, the standard US pump and plumbing rate. One GPM is about 3.785 L/min.' },
+    { id: 'cfm', name: 'Cubic foot per minute', plural: 'cubic feet per minute', symbol: 'CFM', slug: 'cfm', factor: (0.3048 ** 3) / 60, system: 'us', definition: 'Cubic feet per minute, the US airflow unit for fans, HVAC and compressors. One CFM is about 1.699 m³/h or 0.472 L/s.' },
+    { id: 'ft3-s', name: 'Cubic foot per second', plural: 'cubic feet per second', symbol: 'ft³/s', slug: 'ft3-s', factor: 0.3048 ** 3, system: 'us', definition: 'Cubic feet per second ("cusec"), used for river and channel discharge. One ft³/s is about 28.32 L/s.' },
   ],
   popularPairs: [
     ['l-min', 'gpm'], ['gpm', 'l-min'],

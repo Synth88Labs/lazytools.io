@@ -52,7 +52,7 @@ export default function AgeTool() {
           <p class="text-sm text-slate-500">Enter a date of birth on or before the "age at" date.</p>
         )}
       </div>
-      <p class="mt-2 text-xs text-slate-500">Calculated on your device — your birthdate is never transmitted.</p>
+      <p class="mt-2 text-xs text-slate-500">Calculated on your device, your birthdate is never transmitted.</p>
     </div>
   );
 }

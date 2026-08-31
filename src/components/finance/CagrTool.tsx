@@ -45,7 +45,7 @@ export default function CagrTool() {
         <p class="mt-4 text-sm text-slate-500">Enter the start and end values and the number of years.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">CAGR = (end ÷ start)^(1/years) − 1 — the smoothed annual growth rate. Educational, not advice. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">CAGR = (end ÷ start)^(1/years) − 1, the smoothed annual growth rate. Educational, not advice. 🔒 In your browser.</p>
     </div>
   );
 }

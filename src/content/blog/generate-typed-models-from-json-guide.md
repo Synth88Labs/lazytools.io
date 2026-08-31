@@ -1,7 +1,7 @@
 ---
 title: "Generate Typed Models from JSON: TypeScript, Go, Python, Rust & C#"
 seoTitle: 'Generate Typed Models from JSON: 5 Languages'
-description: "Turn a JSON sample into typed models — a TypeScript interface, Go struct, Python dataclass, Rust struct or C# class. How the mapping works, in your browser."
+description: "Turn a JSON sample into typed models, a TypeScript interface, Go struct, Python dataclass, Rust struct or C# class. How the mapping works, in your browser."
 pubDate: 2026-08-01
 updatedDate: 2026-08-23
 archetype: explainer
@@ -18,17 +18,17 @@ keywords:
   - typed models from json
 faqs:
   - q: "How do I generate typed models from a JSON sample?"
-    a: "Paste a representative JSON example into a converter for your language: it infers each field's type, turns nested objects into their own types, and marks fields that aren't always present as optional. LazyTools has one for each language — TypeScript interfaces, Go structs, Python dataclasses, Rust serde structs, and C# classes — and each runs entirely in your browser."
+    a: "Paste a representative JSON example into a converter for your language: it infers each field's type, turns nested objects into their own types, and marks fields that aren't always present as optional. LazyTools has one for each language, TypeScript interfaces, Go structs, Python dataclasses, Rust serde structs, and C# classes, and each runs entirely in your browser."
   - q: "How are numbers typed when generating models from JSON?"
     a: "JSON has a single number type, so converters infer from the value: a whole number becomes an integer type (int, i64) and a number with a decimal point becomes a floating type (float, float64, f64, double). Because inference only sees your sample, widen the type by hand when a field can be fractional or exceed 32 bits."
   - q: "How do converters decide which fields are optional?"
-    a: "For a single object, every key present is treated as required. For an array of objects, a field is optional if it's missing from any element — those become Optional[...] in Python, Option<...> in Rust, nullable/`?` in others. A field that's always present is required."
+    a: "For a single object, every key present is treated as required. For an array of objects, a field is optional if it's missing from any element. Those become Optional[...] in Python, Option<...> in Rust, nullable/`?` in others. A field that's always present is required."
   - q: "Do the generated models keep the original JSON key names?"
-    a: "Yes. Where a language renames a field to its own convention — Go and C# PascalCase, Rust snake_case — the converter adds a tag or attribute that preserves the original key: a Go json:\"key\" tag, a Rust #[serde(rename=\"key\")] attribute, or a C# [JsonPropertyName(\"key\")] attribute, so (de)serialization still matches the JSON."
+    a: "Yes. Where a language renames a field to its own convention, Go and C# PascalCase, Rust snake_case, the converter adds a tag or attribute that preserves the original key: a Go json:\"key\" tag, a Rust #[serde(rename=\"key\")] attribute, or a C# [JsonPropertyName(\"key\")] attribute, so (de)serialization still matches the JSON."
   - q: "Are generated models ready to use as-is?"
     a: "They're a strong scaffold, not a final contract. Inference can't see string formats (dates, emails), numeric ranges, enums, or which fields are truly optional beyond your sample. Feed the converter a rich example covering optional fields, then tighten types, nullability and names by hand."
   - q: "Is my JSON uploaded to generate the models?"
-    a: "Not with the LazyTools converters. Every one runs entirely in your browser using the File and JSON APIs, so your data — which is often a real API response — never leaves your device, and they work offline."
+    a: "Not with the LazyTools converters. Every one runs entirely in your browser using the File and JSON APIs, so your data, which is often a real API response, never leaves your device, and they work offline."
 draft: false
 ---
 
@@ -36,19 +36,18 @@ draft: false
 object becomes a struct/class/interface, each key becomes a typed field, nested objects become their
 own types, and arrays become typed lists.** Once you see the mapping, generating a TypeScript
 interface, a Go struct, a Python dataclass, a Rust serde struct, or a C# class from JSON is the same
-job with different syntax. Paste your JSON into the converter for your language —
-[TypeScript](/dev/json-to-typescript/), [Go](/dev/json-to-go/), [Python](/dev/json-to-python/),
-[Rust](/dev/json-to-rust/) or [C#](/dev/json-to-csharp/) — and it runs entirely in your browser.
+job with different syntax. Paste your JSON into the converter for your language, [TypeScript](/dev/json-to-typescript/), [Go](/dev/json-to-go/), [Python](/dev/json-to-python/),
+[Rust](/dev/json-to-rust/) or [C#](/dev/json-to-csharp/), and it runs entirely in your browser.
 
 <aside class="key-takeaways">
 
 **Key takeaways**
 
 - One JSON shape maps to a typed model in every language: object → type, key → typed field, nested object → nested type, array → typed list.
-- Because JSON has a single number type, converters guess `int` from whole numbers and a float type from decimals — widen these by hand when the data can exceed the guess.
+- Because JSON has a single number type, converters guess `int` from whole numbers and a float type from decimals, widen these by hand when the data can exceed the guess.
 - A field is only marked optional when your sample proves it can be absent, so feed the tool a representative example that actually includes the optional fields.
 - Go, Rust and C# rename fields to their own casing but attach a tag/attribute (`json:"…"`, `#[serde(rename=…)]`, `[JsonPropertyName("…")]`) so serialization still round-trips.
-- Inference can't see dates, emails, enums or numeric ranges — treat the output as a scaffold and tighten it afterward.
+- Inference can't see dates, emails, enums or numeric ranges, treat the output as a scaffold and tighten it afterward.
 
 </aside>
 
@@ -127,8 +126,8 @@ Take the same object again:
 { "id": 42, "user_name": "ada", "is_active": true, "scores": [10, 20] }
 ```
 
-Here is what each converter emits. The syntax differs, but the *shape* — four fields, one of them a
-list of integers — is identical everywhere.
+Here is what each converter emits. The syntax differs, but the *shape*, four fields, one of them a
+list of integers, is identical everywhere.
 
 **TypeScript**
 
@@ -204,10 +203,10 @@ Languages disagree on casing. Go and C# want `PascalCase` fields; Rust wants `sn
 generated field name differs from the JSON key, a good converter preserves the original key so
 serialization still round-trips:
 
-- **Go** — a struct tag: `UserName string \`json:"user_name"\``
-- **Rust** — an attribute: `#[serde(rename = "userName")]`
-- **C#** — an attribute: `[JsonPropertyName("user_name")]`
-- **Python / TypeScript** — the key is usually a valid identifier already, so it's kept as-is.
+- **Go**, a struct tag: `UserName string \`json:"user_name"\``
+- **Rust**, an attribute: `#[serde(rename = "userName")]`
+- **C#**, an attribute: `[JsonPropertyName("user_name")]`
+- **Python / TypeScript**, the key is usually a valid identifier already, so it's kept as-is.
 
 That detail is easy to forget by hand and is exactly where mismatches (a field that silently
 deserializes to its default) come from.
@@ -223,7 +222,7 @@ where the elements don't all share the same keys:
 
 Here `id` is in every element (required) but `nickname` is not (optional). Converters express that as
 `Optional[...]` in Python, `Option<...>` in Rust, and nullable/`?` fields elsewhere. Feeding the
-converter a **representative** sample — one that includes the optional fields — is what makes this
+converter a **representative** sample, one that includes the optional fields, is what makes this
 accurate.
 
 Each language spells "this might be absent" differently. When you review the output, this is the
@@ -245,24 +244,23 @@ distinction matters to your API, decide it deliberately rather than accepting th
 
 Type inference is a scaffold, not a spec. Plan to adjust:
 
-- **Number width** — a whole number becomes `int`/`i64`; widen to `long`/`u64`/`float` where the data
+- **Number width**, a whole number becomes `int`/`i64`; widen to `long`/`u64`/`float` where the data
   demands.
-- **String formats** — a date or email is just `string`; the JSON gives no hint. Add validation
+- **String formats**, a date or email is just `string`; the JSON gives no hint. Add validation
   separately.
-- **Nullability & defaults** — decide which optional fields need a default value versus a nullable type.
-- **Enums** — a field that's really one of a fixed set is inferred as `string`; promote it to an enum.
+- **Nullability & defaults**, decide which optional fields need a default value versus a nullable type.
+- **Enums**, a field that's really one of a fixed set is inferred as `string`; promote it to an enum.
 
 ## Why generate them in the browser
 
-The JSON you paste is usually a **real API response** — sometimes from an internal or authenticated
-endpoint. A generator that uploads it to a server has seen that payload. Every LazyTools converter —
-[TypeScript](/dev/json-to-typescript/), [Go](/dev/json-to-go/), [Python](/dev/json-to-python/),
-[Rust](/dev/json-to-rust/), [C#](/dev/json-to-csharp/) — parses and generates entirely in your
+The JSON you paste is usually a **real API response**, sometimes from an internal or authenticated
+endpoint. A generator that uploads it to a server has seen that payload. Every LazyTools converter, [TypeScript](/dev/json-to-typescript/), [Go](/dev/json-to-go/), [Python](/dev/json-to-python/),
+[Rust](/dev/json-to-rust/), [C#](/dev/json-to-csharp/), parses and generates entirely in your
 browser, so nothing leaves your device and it all works offline.
 
 ## The bottom line
 
-Generating typed models from JSON is one mapping — object → type, key → typed field, nested → nested
-type, array → typed list, "missing sometimes" → optional — expressed in whichever language you're
+Generating typed models from JSON is one mapping, object → type, key → typed field, nested → nested
+type, array → typed list, "missing sometimes" → optional, expressed in whichever language you're
 working in. Start from a representative sample, let the converter write the boilerplate, and spend
 your time on the parts inference can't see: formats, ranges, enums and true nullability.

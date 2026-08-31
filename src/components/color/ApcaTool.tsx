@@ -39,7 +39,7 @@ export default function ApcaTool() {
         <>
           <div class="mt-4 rounded-xl p-5 text-center ring-2 ring-brand-200" style={txt && bg ? `background:${rgbToHex(bg)}` : ''}>
             <p class="text-lg font-bold" style={txt && bg ? `color:${rgbToHex(txt)}` : ''}>The quick brown fox jumps</p>
-            <p class="text-sm" style={txt && bg ? `color:${rgbToHex(txt)}` : ''}>over the lazy dog — 16px body sample</p>
+            <p class="text-sm" style={txt && bg ? `color:${rgbToHex(txt)}` : ''}>over the lazy dog, 16px body sample</p>
           </div>
 
           <div class="mt-4 grid gap-3 sm:grid-cols-2">
@@ -57,11 +57,11 @@ export default function ApcaTool() {
 
           <div class="mt-3 grid gap-3 sm:grid-cols-2">
             <div class="rounded-lg bg-white p-3 ring-1 ring-slate-200">
-              <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Min size — regular (400)</p>
+              <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Min size, regular (400)</p>
               <p class="mt-0.5 font-semibold text-slate-800">{r.normal}</p>
             </div>
             <div class="rounded-lg bg-white p-3 ring-1 ring-slate-200">
-              <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Min size — bold (700)</p>
+              <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Min size, bold (700)</p>
               <p class="mt-0.5 font-semibold text-slate-800">{r.bold}</p>
             </div>
           </div>

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
 import { MODEL_PRICES, PRICES_VERIFIED, PRICE_SOURCES, estimateTokens, type TokenizerKind } from '../../data/dev/llm-pricing';
 
-const SAMPLE = 'Paste or type your prompt here. Token counts update live — OpenAI counts are exact (the real o200k tokenizer runs in your browser); Claude and Gemini counts are clearly-labelled estimates, because those tokenizers are not public.';
+const SAMPLE = 'Paste or type your prompt here. Token counts update live, OpenAI counts are exact (the real o200k tokenizer runs in your browser); Claude and Gemini counts are clearly-labelled estimates, because those tokenizers are not public.';
 
 const CONTEXT_SIZES = [
   { label: '128k tokens', value: 128000 },
@@ -51,7 +51,7 @@ export default function LlmTokenCounterTool() {
   return (
     <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
       <label class="block">
-        <span class="text-xs font-semibold uppercase tracking-wide text-slate-500">Your text / prompt — never uploaded</span>
+        <span class="text-xs font-semibold uppercase tracking-wide text-slate-500">Your text / prompt, never uploaded</span>
         <textarea
           class="mt-1 h-40 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-800 focus:border-brand-500 focus:outline-none"
           value={text}
@@ -93,7 +93,7 @@ export default function LlmTokenCounterTool() {
           <div class={`h-full rounded-full ${fitPct > 90 ? 'bg-red-500' : fitPct > 70 ? 'bg-amber-500' : 'bg-emerald-500'}`} style={`width:${Math.max(fitPct, exact > 0 ? 1 : 0)}%`} />
         </div>
         <p class="mt-1.5 text-xs text-slate-500">
-          {exact.toLocaleString('en-US')} of {context.toLocaleString('en-US')} tokens ({fitPct < 0.1 && exact > 0 ? '<0.1' : fitPct.toFixed(1)}%) — using the exact o200k count; leave headroom for the system prompt and the reply.
+          {exact.toLocaleString('en-US')} of {context.toLocaleString('en-US')} tokens ({fitPct < 0.1 && exact > 0 ? '<0.1' : fitPct.toFixed(1)}%), using the exact o200k count; leave headroom for the system prompt and the reply.
         </p>
       </div>
 
@@ -153,7 +153,7 @@ export default function LlmTokenCounterTool() {
               {i < PRICE_SOURCES.length - 1 ? ' · ' : ''}
             </>
           ))}
-          . † Claude Sonnet 5 is introductory pricing — $3/$15 per MTok from 1 September 2026. Standard API rates; caching/batch discounts not included.
+          . † Claude Sonnet 5 is introductory pricing, $3/$15 per MTok from 1 September 2026. Standard API rates; caching/batch discounts not included.
         </p>
         <p class="mt-1">
           <strong class="text-emerald-700">EXACT</strong> = the real OpenAI o200k_base tokenizer running in your browser.{' '}

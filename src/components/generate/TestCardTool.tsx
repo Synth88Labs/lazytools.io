@@ -38,7 +38,7 @@ export default function TestCardTool() {
 
       {cards.length > 0 && <ul class="mt-4 space-y-1 rounded-xl bg-white p-4 font-mono text-sm ring-1 ring-slate-200">{cards.map((c) => <li class="text-slate-800">{group(c)}</li>)}</ul>}
 
-      <p class="mt-4 text-xs text-slate-500">Generates card numbers that pass the Luhn check-digit algorithm and start with a real network prefix, so payment forms accept them as syntactically valid during development and QA. They are randomly generated and correspond to no real account — for live testing use the official test cards from your payment processor (Stripe, PayPal, etc.). Never enter a real card here. 🔒 Generated in your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Generates card numbers that pass the Luhn check-digit algorithm and start with a real network prefix, so payment forms accept them as syntactically valid during development and QA. They are randomly generated and correspond to no real account, for live testing use the official test cards from your payment processor (Stripe, PayPal, etc.). Never enter a real card here. 🔒 Generated in your browser.</p>
     </div>
   );
 }

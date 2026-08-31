@@ -18,7 +18,7 @@ export default function ChargeTimeTool() {
     return { ...res, h, m };
   }, [ah, current, ineff]);
 
-  const cRateNote = r ? (r.cRate <= 0.3 ? 'gentle — fine for any battery including lead-acid' : r.cRate <= 0.5 ? 'moderate — good for lithium, high for lead-acid' : 'fast — suitable for lithium (LiFePO4); too high for lead-acid') : '';
+  const cRateNote = r ? (r.cRate <= 0.3 ? 'gentle, fine for any battery including lead-acid' : r.cRate <= 0.5 ? 'moderate, good for lithium, high for lead-acid' : 'fast, suitable for lithium (LiFePO4); too high for lead-acid') : '';
 
   const inp = 'w-full rounded-xl border border-slate-300 bg-white px-3 py-2 font-mono text-sm text-slate-900 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200';
 
@@ -42,7 +42,7 @@ export default function ChargeTimeTool() {
         <p class="mt-4 text-sm text-slate-500">Enter the battery capacity, the charge current and a losses allowance.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Time ≈ capacity ÷ charge current, plus ~10–20% for charging losses. The C-rate is the current relative to capacity (a 100 Ah battery at 20 A = 0.2C). Keep it gentle for lead-acid (~0.1–0.3C); lithium (LiFePO4) accepts faster charging (0.5C and up). For solar, the "charge current" is what your panels/controller actually deliver, which varies through the day — so real charging takes longer than this best-case figure. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Time ≈ capacity ÷ charge current, plus ~10-20% for charging losses. The C-rate is the current relative to capacity (a 100 Ah battery at 20 A = 0.2C). Keep it gentle for lead-acid (~0.1-0.3C); lithium (LiFePO4) accepts faster charging (0.5C and up). For solar, the "charge current" is what your panels/controller actually deliver, which varies through the day, so real charging takes longer than this best-case figure. 🔒 In your browser.</p>
     </div>
   );
 }

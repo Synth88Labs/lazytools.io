@@ -1,7 +1,7 @@
 ---
 title: "How to Calculate Square Footage of a Room (Including L-Shapes and Odd Angles)"
 seoTitle: 'How to Calculate Square Footage of a Room'
-description: "Square footage is length × width — a 12 × 10 ft room is 120 sq ft. How to handle L-shaped rooms, circles, triangles, flooring waste and square metres."
+description: "Square footage is length × width, a 12 × 10 ft room is 120 sq ft. How to handle L-shaped rooms, circles, triangles, flooring waste and square metres."
 pubDate: 2026-07-14
 updatedDate: 2026-07-14
 archetype: explainer
@@ -31,7 +31,7 @@ faqs:
 draft: false
 ---
 
-**Square footage is length times width: measure both sides of a room in feet and multiply them.** A room that is 12 feet by 10 feet is 12 × 10 = **120 square feet**. For rooms that aren't a simple rectangle, split the space into rectangles, work out each one, and add them together — that single trick handles L-shaped rooms, alcoves and open-plan spaces. To convert to square metres, multiply the square feet by 0.0929.
+**Square footage is length times width: measure both sides of a room in feet and multiply them.** A room that is 12 feet by 10 feet is 12 × 10 = **120 square feet**. For rooms that aren't a simple rectangle, split the space into rectangles, work out each one, and add them together, that single trick handles L-shaped rooms, alcoves and open-plan spaces. To convert to square metres, multiply the square feet by 0.0929.
 
 <aside class="key-takeaways">
 
@@ -41,7 +41,7 @@ draft: false
 - **Odd shapes:** break them into rectangles, add the areas. It's that simple.
 - **Circle** = π × radius²; **triangle** = ½ × base × height.
 - **1 square metre = 10.764 square feet**; 1 sq ft = 0.0929 m².
-- For flooring, **add 5–10% waste** on top of the bare square footage before buying.
+- For flooring, **add 5-10% waste** on top of the bare square footage before buying.
 - Inches? Divide by 12 to get feet *before* multiplying.
 
 </aside>
@@ -63,7 +63,7 @@ If your tape reads in feet **and inches**, convert the inches to a decimal first
 
 ## L-shaped and irregular rooms
 
-Most "hard" rooms aren't hard at all — they're just two or three rectangles stuck together. The method never changes:
+Most "hard" rooms aren't hard at all, they're just two or three rectangles stuck together. The method never changes:
 
 1. **Divide** the floor plan into rectangles with straight lines.
 2. **Measure and calculate** each rectangle's area separately.
@@ -95,16 +95,16 @@ So that 120 sq ft room is 120 × 0.0929 ≈ **11.15 m²**. Our [square footage c
 
 ## How much extra to buy for flooring
 
-The bare square footage is what the room *is* — but it's not how much flooring to **buy**. Cuts, offcuts, mistakes and future repairs all eat material, so add a **waste allowance** on top:
+The bare square footage is what the room *is*, but it's not how much flooring to **buy**. Cuts, offcuts, mistakes and future repairs all eat material, so add a **waste allowance** on top:
 
 | Flooring type / layout | Typical waste to add |
 | --- | --- |
-| Straight lay (planks, tile) | 5–10% |
-| Diagonal or herringbone | 15–20% |
+| Straight lay (planks, tile) | 5-10% |
+| Diagonal or herringbone | 15-20% |
 | Highly patterned / many cuts | up to 20% |
 
-Multiply your square footage by 1.05–1.20 accordingly, then round **up** to whole boxes. For 120 sq ft of straight-lay flooring at 10% waste, buy for 120 × 1.10 = **132 sq ft**. Keeping a spare box from the same batch is smart for later repairs, since colours shift between production runs.
+Multiply your square footage by 1.05-1.20 accordingly, then round **up** to whole boxes. For 120 sq ft of straight-lay flooring at 10% waste, buy for 120 × 1.10 = **132 sq ft**. Keeping a spare box from the same batch is smart for later repairs, since colours shift between production runs.
 
 ## Square footage and price
 
-Once you have the area, **price per square foot** lets you compare homes, rentals or materials of very different sizes on a fair basis — it's total price ÷ area. A \$350,000 home of 1,800 sq ft works out to about \$194 per square foot. Our [cost per square foot calculator](/calc/cost-per-square-foot-calculator/) does this and shows the per-square-metre figure too.
+Once you have the area, **price per square foot** lets you compare homes, rentals or materials of very different sizes on a fair basis, it's total price ÷ area. A \$350,000 home of 1,800 sq ft works out to about \$194 per square foot. Our [cost per square foot calculator](/calc/cost-per-square-foot-calculator/) does this and shows the per-square-metre figure too.

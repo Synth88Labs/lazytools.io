@@ -40,7 +40,7 @@ export default function RiceTool() {
             <tr class="border-b border-slate-200 bg-slate-50 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">
               <th class="px-3 py-2">#</th><th class="px-3 py-2">Item</th>
               <th class="px-2 py-2 text-center" title="How many people it affects in a period">Reach</th>
-              <th class="px-2 py-2 text-center" title="Per-person impact — e.g. 3 massive, 2 high, 1 medium, 0.5 low">Impact</th>
+              <th class="px-2 py-2 text-center" title="Per-person impact, e.g. 3 massive, 2 high, 1 medium, 0.5 low">Impact</th>
               <th class="px-2 py-2 text-center" title="How sure you are, as a %">Confid.</th>
               <th class="px-2 py-2 text-center" title="Person-effort (e.g. months)">Effort</th>
               <th class="px-3 py-2 text-right">RICE</th><th></th>
@@ -62,7 +62,7 @@ export default function RiceTool() {
           </tbody>
         </table>
       </div>
-      <p class="mt-3 text-xs text-slate-500">RICE = Reach × Impact × Confidence ÷ Effort — a single score to rank ideas. Higher is better; the top row is highlighted. Saved locally.</p>
+      <p class="mt-3 text-xs text-slate-500">RICE = Reach × Impact × Confidence ÷ Effort, a single score to rank ideas. Higher is better; the top row is highlighted. Saved locally.</p>
     </div>
   );
 }

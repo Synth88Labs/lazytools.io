@@ -54,13 +54,13 @@ export default function ImeiValidatorTool() {
           {luhn && (
             <div class={`mt-4 rounded-xl bg-white p-4 ring-2 ${luhn.valid ? 'ring-emerald-200' : 'ring-rose-200'}`}>
               <div class="flex items-center justify-between"><p class="font-semibold text-slate-800">{luhn.len}-digit number</p>{badge(luhn.valid)}</div>
-              <p class="mt-1 text-sm text-slate-600">{luhn.valid ? 'The Luhn checksum is satisfied — the number is well-formed.' : `The Luhn checksum fails. To make these digits valid, the check digit should be ${luhn.nextCheck}.`}</p>
+              <p class="mt-1 text-sm text-slate-600">{luhn.valid ? 'The Luhn checksum is satisfied, the number is well-formed.' : `The Luhn checksum fails. To make these digits valid, the check digit should be ${luhn.nextCheck}.`}</p>
             </div>
           )}
         </>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Checks the Luhn checksum — the same formula that guards credit-card numbers, IMEIs, and many ID numbers: doubling every second digit from the right (subtracting 9 if over 9) and confirming the total is a multiple of 10. It catches most single-digit typos and adjacent transpositions. Note a passing checksum only means the number is <em>well-formed</em>, not that it's real, active or issued. 🔒 Computed in your browser — nothing is sent anywhere.</p>
+      <p class="mt-4 text-xs text-slate-500">Checks the Luhn checksum, the same formula that guards credit-card numbers, IMEIs, and many ID numbers: doubling every second digit from the right (subtracting 9 if over 9) and confirming the total is a multiple of 10. It catches most single-digit typos and adjacent transpositions. Note a passing checksum only means the number is <em>well-formed</em>, not that it's real, active or issued. 🔒 Computed in your browser, nothing is sent anywhere.</p>
     </div>
   );
 }

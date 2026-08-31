@@ -28,7 +28,7 @@ export default function ProsConsTool() {
         {st[side].map((i) => (
           <li class="group flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-800">
             <span class="min-w-0 flex-1 break-words">{i.text}</span>
-            <select value={i.weight} onChange={(e) => setW(side, i.id, parseInt((e.target as HTMLSelectElement).value, 10))} aria-label="Importance" class="rounded border border-slate-200 bg-white px-1 py-0.5 text-xs" title="Importance 1–5">
+            <select value={i.weight} onChange={(e) => setW(side, i.id, parseInt((e.target as HTMLSelectElement).value, 10))} aria-label="Importance" class="rounded border border-slate-200 bg-white px-1 py-0.5 text-xs" title="Importance 1-5">
               {[1, 2, 3, 4, 5].map((w) => <option value={w}>{w}</option>)}
             </select>
             <button type="button" onClick={() => del(side, i.id)} class="text-slate-300 opacity-0 transition group-hover:opacity-100 hover:text-red-600" aria-label="Delete">✕</button>
@@ -58,7 +58,7 @@ export default function ProsConsTool() {
         <p class={`mt-1 text-2xl font-extrabold ${pTotal > cTotal ? 'text-mint-700' : pTotal < cTotal ? 'text-red-700' : 'text-slate-700'}`}>{verdict}</p>
         <p class="text-sm text-slate-500">Pros {pTotal} · Cons {cTotal} {pTotal !== cTotal ? `· margin ${Math.abs(pTotal - cTotal)}` : ''}</p>
       </div>
-      <p class="mt-3 text-xs text-slate-500">Rate each point's importance 1–5; the weighted totals give a verdict. It's a nudge, not a ruling. Saved in this browser.</p>
+      <p class="mt-3 text-xs text-slate-500">Rate each point's importance 1-5; the weighted totals give a verdict. It's a nudge, not a ruling. Saved in this browser.</p>
     </div>
   );
 }

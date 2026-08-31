@@ -11,10 +11,10 @@ const crumbs = [
   { name: 'Solar & Energy', url: '/solar/' },
 ];
 const faqs = [
-  { q: 'Are these solar calculators accurate?', a: 'The formulas are the standard ones used across the solar industry — production from peak sun hours, battery Amp-hours from load and depth of discharge, inverter sizing, DC voltage drop, and charge time. The reference values (peak sun hours, system derate, depth of discharge, voltage-drop limits) were verified against NREL/PVWatts and battery-manufacturer references and are cited on each tool, with the site-specific ones left for you to enter.' },
-  { q: 'Do I need my exact location or an account?', a: 'No. Every tool runs entirely in your browser — no location access, no accounts, nothing uploaded. Where a figure depends on where you live (like peak sun hours or your electricity rate), you enter it, and the tools do the maths. They work offline.' },
+  { q: 'Are these solar calculators accurate?', a: 'The formulas are the standard ones used across the solar industry, production from peak sun hours, battery Amp-hours from load and depth of discharge, inverter sizing, DC voltage drop, and charge time. The reference values (peak sun hours, system derate, depth of discharge, voltage-drop limits) were verified against NREL/PVWatts and battery-manufacturer references and are cited on each tool, with the site-specific ones left for you to enter.' },
+  { q: 'Do I need my exact location or an account?', a: 'No. Every tool runs entirely in your browser, no location access, no accounts, nothing uploaded. Where a figure depends on where you live (like peak sun hours or your electricity rate), you enter it, and the tools do the maths. They work offline.' },
   { q: 'How do I size a whole off-grid system?', a: 'Work through the tools in order: total your daily energy use (load calculator), size the battery bank for the days of backup you want, size the solar array to replace that energy plus losses, then size the inverter for your peak simultaneous load. Each tool produces the input the next one needs.' },
-  { q: 'Is the payback calculator financial advice?', a: 'No — it\'s a simplified estimate for comparing options. It ignores electricity-price inflation, panel degradation, maintenance and the time-value of money. Use it to get a feel for the numbers, then get real quotes and check local incentives and net-metering rules.' },
+  { q: 'Is the payback calculator financial advice?', a: 'No. It\'s a simplified estimate for comparing options. It ignores electricity-price inflation, panel degradation, maintenance and the time-value of money. Use it to get a feel for the numbers, then get real quotes and check local incentives and net-metering rules.' },
 ];
 const schema = [
   breadcrumbSchema(crumbs),
@@ -24,7 +24,7 @@ const schema = [
 ---
 
 <Base
-  title="Solar & Off-Grid Energy Calculators — Panel, Battery, Inverter | LazyTools"
+  title="Solar & Off-Grid Energy Calculators, Panel, Battery, Inverter | LazyTools"
   description="Free solar and off-grid calculators that run in your browser: solar panel output, off-grid load, battery bank sizing, inverter size, appliance energy cost, solar payback, DC voltage drop and battery charge time. Industry-standard formulas, cited values, no sign-up."
   schema={schema}
 >
@@ -32,7 +32,7 @@ const schema = [
     <Breadcrumbs items={crumbs} />
     <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Solar & Off-Grid Energy Calculators</h1>
     <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
-      Plan a solar or off-grid setup end to end — estimate how much energy your panels will make, total your
+      Plan a solar or off-grid setup end to end, estimate how much energy your panels will make, total your
       daily power use, size the battery bank and inverter, check a wire run for voltage drop, work out charge
       times, and see what an appliance costs to run or how long a system takes to pay back. Industry-standard
       formulas with cited reference values, running entirely in your browser.
@@ -58,7 +58,7 @@ const schema = [
       <h2>Size an off-grid system, step by step</h2>
       <p>
         Every off-grid or solar-plus-battery design is built from a handful of numbers that flow into each
-        other. Start by totalling your <a href="/solar/off-grid-load-calculator/">daily energy use</a> — watts
+        other. Start by totalling your <a href="/solar/off-grid-load-calculator/">daily energy use</a>, watts
         times hours for every appliance. That figure sizes two things: the
         <a href="/solar/solar-battery-bank-calculator/">battery bank</a> (enough usable storage for the cloudy
         days you want to ride out) and the <a href="/solar/solar-panel-output-calculator/">solar array</a>
@@ -69,13 +69,13 @@ const schema = [
       <p>
         The rest is getting the details right so the system actually delivers. The
         <a href="/solar/dc-voltage-drop-calculator/">voltage-drop calculator</a> keeps your wiring losses in
-        check — low-voltage DC is unforgiving over distance — and the
+        check, low-voltage DC is unforgiving over distance, and the
         <a href="/solar/battery-charge-time-calculator/">charge-time calculator</a> checks you're charging at a
         rate your batteries can handle. For grid-tied decisions, the
         <a href="/solar/appliance-energy-cost-calculator/">appliance cost</a> and
         <a href="/solar/solar-payback-calculator/">payback</a> tools turn kilowatt-hours into money. The
         formulas are the industry-standard ones and the reference values are cited (NREL/PVWatts, battery
-        manufacturers); the site-specific figures — your peak sun hours, your electricity rate — are yours to
+        manufacturers); the site-specific figures, your peak sun hours, your electricity rate, are yours to
         enter. For the underlying electrical maths, see the <a href="/electronics/">Electronics</a> and
         <a href="/physics/">Physics</a> categories.
       </p>

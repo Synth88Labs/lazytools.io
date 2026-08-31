@@ -41,7 +41,7 @@ export default function PartyFoodTool() {
       ) : <p class="mt-4 text-sm text-slate-500">Enter the number of guests and how long the event runs.</p>}
 
       <p class="mt-4 text-xs text-slate-500">
-        Quantities are per-guest rules of thumb from common party-planning charts, scaled by your guest count and event length — treat them as a shopping starting point and adjust for your crowd (bigger appetites, kids, dietary needs). Appetizer counts assume more finger food when there\'s no full meal. Always drink responsibly and offer plenty of water and non-alcoholic options. 🔒 In your browser.
+        Quantities are per-guest rules of thumb from common party-planning charts, scaled by your guest count and event length, treat them as a shopping starting point and adjust for your crowd (bigger appetites, kids, dietary needs). Appetizer counts assume more finger food when there\'s no full meal. Always drink responsibly and offer plenty of water and non-alcoholic options. 🔒 In your browser.
       </p>
     </div>
   );

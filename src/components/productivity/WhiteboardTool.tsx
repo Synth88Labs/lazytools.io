@@ -92,7 +92,7 @@ export default function WhiteboardTool() {
           style={`cursor:crosshair;width:${CW}px;height:${CH}px`}
         />
       </div>
-      <p class="mt-3 text-xs text-slate-500">A quick sketch pad — draw with the pen, wipe with the eraser, undo strokes, export a PNG. Auto-saved in this browser only.</p>
+      <p class="mt-3 text-xs text-slate-500">A quick sketch pad, draw with the pen, wipe with the eraser, undo strokes, export a PNG. Auto-saved in this browser only.</p>
     </div>
   );
 }

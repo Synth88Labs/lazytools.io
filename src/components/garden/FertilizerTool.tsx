@@ -40,7 +40,7 @@ export default function FertilizerTool() {
         <p class="mt-4 text-sm text-slate-500">Enter the target rate, area and the fertilizer's %N.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Product needed = (target lb N per 1,000 ft² × area ÷ 1,000) ÷ (%N ÷ 100). The %N is the first number in the N-P-K analysis (e.g. 20 in 20-5-10). A typical lawn rate is about 1 lb N per 1,000 ft² per feeding — don't over-apply. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Product needed = (target lb N per 1,000 ft² × area ÷ 1,000) ÷ (%N ÷ 100). The %N is the first number in the N-P-K analysis (e.g. 20 in 20-5-10). A typical lawn rate is about 1 lb N per 1,000 ft² per feeding, don't over-apply. 🔒 In your browser.</p>
     </div>
   );
 }

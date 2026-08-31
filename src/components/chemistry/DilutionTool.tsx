@@ -4,7 +4,7 @@ export default function DilutionTool() {
   return (
     <SolverTool
       defaultTarget="V1"
-      formula="C₁V₁ = C₂V₂ — stock concentration × stock volume = final concentration × final volume."
+      formula="C₁V₁ = C₂V₂, stock concentration × stock volume = final concentration × final volume."
       fields={[
         { key: 'C1', label: 'Stock conc. (C₁)', unit: 'M', initial: '2' },
         { key: 'V1', label: 'Stock volume (V₁)', unit: 'mL' },

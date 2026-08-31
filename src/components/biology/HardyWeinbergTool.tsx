@@ -32,7 +32,7 @@ export default function HardyWeinbergTool() {
             <div class={`rounded-xl p-4 ring-2 ${r.inEquilibrium ? 'bg-emerald-50 ring-emerald-200' : 'bg-red-50 ring-red-200'}`}>
               <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">χ² goodness-of-fit</p>
               <p class="mt-1 font-mono text-lg font-bold text-slate-800">χ² = {fmt(r.chi)} · df {r.df} · p = {fmt(r.pValue)}</p>
-              <p class={`mt-1 text-sm font-semibold ${r.inEquilibrium ? 'text-emerald-800' : 'text-red-800'}`}>{r.inEquilibrium ? '✓ Consistent with Hardy–Weinberg equilibrium (p > 0.05)' : '✗ Significant departure from equilibrium (p ≤ 0.05)'}</p>
+              <p class={`mt-1 text-sm font-semibold ${r.inEquilibrium ? 'text-emerald-800' : 'text-red-800'}`}>{r.inEquilibrium ? '✓ Consistent with Hardy, Weinberg equilibrium (p > 0.05)' : '✗ Significant departure from equilibrium (p ≤ 0.05)'}</p>
             </div>
           </div>
 

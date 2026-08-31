@@ -20,7 +20,7 @@ export default function KruskalTool() {
   return (
     <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm sm:p-6">
       <label class="block">
-        <span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Groups — one group per line (comma or space separated)</span>
+        <span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Groups, one group per line (comma or space separated)</span>
         <textarea rows={5} value={raw} onInput={(e) => setRaw((e.target as HTMLTextAreaElement).value)} class={inp} />
       </label>
       <label class="mt-2 inline-block text-sm text-slate-600">Significance α <input type="number" step="0.01" value={alpha} onInput={(e) => setAlpha((e.target as HTMLInputElement).value)} class={`${inp} inline-block w-20`} /></label>
@@ -36,13 +36,13 @@ export default function KruskalTool() {
           <div class={`mt-3 rounded-xl p-4 ring-2 ${sig ? 'bg-emerald-50 ring-emerald-200' : 'bg-slate-100 ring-slate-200'}`}>
             <p class={`text-sm font-semibold ${sig ? 'text-emerald-800' : 'text-slate-700'}`}>{sig ? `At least one group differs (significant at α = ${a})` : `No significant difference between groups at α = ${a}`}</p>
             <p class={`mt-1 text-sm ${sig ? 'text-emerald-700' : 'text-slate-600'}`}>{sig
-              ? `p = ${fmt(r.p, 4)} < ${a}, so you reject the null hypothesis that all ${r.k} groups have the same distribution. Like ANOVA, it doesn't say which groups differ — use a post-hoc test (e.g. Dunn's test).`
+              ? `p = ${fmt(r.p, 4)} < ${a}, so you reject the null hypothesis that all ${r.k} groups have the same distribution. Like ANOVA, it doesn't say which groups differ, use a post-hoc test (e.g. Dunn's test).`
               : `p = ${fmt(r.p, 4)} ≥ ${a}, so there isn't enough evidence that the ${r.k} groups differ.`}</p>
           </div>
         </>
       ) : <p class="mt-4 text-sm text-slate-500">Enter at least two groups (one per line), each with one or more numbers.</p>}
 
-      <p class="mt-4 text-xs text-slate-500">The Kruskal-Wallis H test is the non-parametric alternative to one-way ANOVA: it compares three or more groups by ranking all values together, so it doesn't assume the data are normally distributed — useful for skewed data, ordinal ratings or outliers. The H statistic is compared to a chi-square distribution (with a tie correction). A significant result means the groups aren't all alike but not which ones differ. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">The Kruskal-Wallis H test is the non-parametric alternative to one-way ANOVA: it compares three or more groups by ranking all values together, so it doesn't assume the data are normally distributed, useful for skewed data, ordinal ratings or outliers. The H statistic is compared to a chi-square distribution (with a tie correction). A significant result means the groups aren't all alike but not which ones differ. 🔒 In your browser.</p>
     </div>
   );
 }

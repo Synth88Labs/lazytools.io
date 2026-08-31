@@ -65,7 +65,7 @@ export default function GcdLcmTool() {
           )}
         </>
       )}
-      <p class="mt-4 text-xs text-slate-500">Arbitrary-precision integers (BigInt) — works far beyond the 15-digit limit where ordinary calculators silently round. Runs locally.</p>
+      <p class="mt-4 text-xs text-slate-500">Arbitrary-precision integers (BigInt), works far beyond the 15-digit limit where ordinary calculators silently round. Runs locally.</p>
     </div>
   );
 }

@@ -37,7 +37,7 @@ export default function DegreesRadiansTool() {
           </p>
           <div class="mt-4 rounded-xl border border-slate-200 bg-white p-4 text-sm text-slate-700">
             <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Working</p>
-            <p class="mt-1">Multiply by π/180 and reduce the fraction: {deg}° × π/180 = {d.toFrac()}π/180 = <strong class="font-mono">{piFracToString(f)}</strong>. The exact π form is what trigonometry and calculus expect — sin(π/4), not sin(0.7854).</p>
+            <p class="mt-1">Multiply by π/180 and reduce the fraction: {deg}° × π/180 = {d.toFrac()}π/180 = <strong class="font-mono">{piFracToString(f)}</strong>. The exact π form is what trigonometry and calculus expect, sin(π/4), not sin(0.7854).</p>
           </div>
         </>
       );
@@ -67,7 +67,7 @@ export default function DegreesRadiansTool() {
           </p>
           <div class="mt-4 rounded-xl border border-slate-200 bg-white p-4 text-sm text-slate-700">
             <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Working</p>
-            <p class="mt-1">A minute is 1/60 of a degree and a second 1/3600: {dd} + {dm}/60 + {ds}/3600 = <strong class="font-mono">{decDeg.toFrac()}°</strong> — kept exact as a fraction, the way GPS coordinates should be converted.</p>
+            <p class="mt-1">A minute is 1/60 of a degree and a second 1/3600: {dd} + {dm}/60 + {ds}/3600 = <strong class="font-mono">{decDeg.toFrac()}°</strong>, kept exact as a fraction, the way GPS coordinates should be converted.</p>
           </div>
         </>
       );
@@ -92,7 +92,7 @@ export default function DegreesRadiansTool() {
       {mode === 'r2d' && (
         <label class="mt-4 flex items-center gap-2 text-xl font-bold text-slate-500">
           <input class={inputCls} value={piCoef} onInput={(e) => setPiCoef((e.target as HTMLInputElement).value)} aria-label="coefficient of pi" />
-          <span>× π rad — e.g. 5/6 for 5π/6</span>
+          <span>× π rad, e.g. 5/6 for 5π/6</span>
         </label>
       )}
       {mode === 'dms' && (
@@ -117,7 +117,7 @@ export default function DegreesRadiansTool() {
           </div>
         </div>
       )}
-      <p class="mt-4 text-xs text-slate-500">Exact π fractions — 45° is π/4, never 0.7853981634. Runs locally.</p>
+      <p class="mt-4 text-xs text-slate-500">Exact π fractions, 45° is π/4, never 0.7853981634. Runs locally.</p>
     </div>
   );
 }

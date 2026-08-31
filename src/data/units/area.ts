@@ -7,7 +7,7 @@ export const area: Quantity = {
   baseUnit: 'sqm',
   icon: '🗺️',
   description:
-    'Convert between square meters, square feet, acres, hectares and other area units. Real-estate and land measurements are the most common use — 1 square meter equals 10.7639 square feet.',
+    'Convert between square meters, square feet, acres, hectares and other area units. Real-estate and land measurements are the most common use, 1 square meter equals 10.7639 square feet.',
   units: [
     {
       id: 'sqcm', name: 'Square centimeter', plural: 'square centimeters', symbol: 'cm²', slug: 'square-cm', factor: 0.0001, system: 'metric',
@@ -15,11 +15,11 @@ export const area: Quantity = {
     },
     {
       id: 'sqm', name: 'Square meter', plural: 'square meters', symbol: 'm²', slug: 'square-meters', factor: 1, system: 'si',
-      definition: 'A square meter (m²) is the SI unit of area — a 1 m × 1 m square. Apartment and house sizes are quoted in square meters in most of the world.',
+      definition: 'A square meter (m²) is the SI unit of area, a 1 m × 1 m square. Apartment and house sizes are quoted in square meters in most of the world.',
     },
     {
       id: 'ha', name: 'Hectare', plural: 'hectares', symbol: 'ha', slug: 'hectares', factor: 10000, system: 'metric',
-      definition: 'A hectare (ha) is 10,000 square meters — a 100 m × 100 m square, about 2.47 acres. It is the standard metric unit for land and farm area.',
+      definition: 'A hectare (ha) is 10,000 square meters, a 100 m × 100 m square, about 2.47 acres. It is the standard metric unit for land and farm area.',
     },
     {
       id: 'sqkm', name: 'Square kilometer', plural: 'square kilometers', symbol: 'km²', slug: 'square-km', factor: 1000000, system: 'metric',
@@ -39,7 +39,7 @@ export const area: Quantity = {
     },
     {
       id: 'acre', name: 'Acre', plural: 'acres', symbol: 'ac', slug: 'acres', factor: 4046.8564224, system: 'imperial',
-      definition: 'An acre is 43,560 square feet, exactly 4,046.8564224 m² — roughly the area of an American football field without the end zones. It is the customary land unit in the US and UK.',
+      definition: 'An acre is 43,560 square feet, exactly 4,046.8564224 m², roughly the area of an American football field without the end zones. It is the customary land unit in the US and UK.',
     },
     {
       id: 'sqmi', name: 'Square mile', plural: 'square miles', symbol: 'mi²', slug: 'square-miles', factor: 2589988.110336, system: 'imperial',
@@ -76,7 +76,7 @@ export const area: Quantity = {
     'square-meters-to-square-feet': {
       slug: 'square-meters-to-square-feet',
       exampleValue: 100,
-      note: 'Square-meters-to-square-feet makes metric property listings readable for US/Indian buyers: a 100 m² apartment is 1,076 ft². One square meter is 10.764 ft² — roughly, multiply by 10.75.',
+      note: 'Square-meters-to-square-feet makes metric property listings readable for US/Indian buyers: a 100 m² apartment is 1,076 ft². One square meter is 10.764 ft², roughly, multiply by 10.75.',
     },
     'hectares-to-acres': {
       slug: 'hectares-to-acres',
@@ -91,17 +91,17 @@ export const area: Quantity = {
     'square-km-to-square-miles': {
       slug: 'square-km-to-square-miles',
       exampleValue: 100,
-      note: 'One square kilometer is 0.3861 square miles, so 100 km² is 38.6 mi². Geographic statistics use both — a quick sanity check: a square mile is about 2.6 km², not 1.6 (the linear factor squared, a classic error).',
+      note: 'One square kilometer is 0.3861 square miles, so 100 km² is 38.6 mi². Geographic statistics use both, a quick sanity check: a square mile is about 2.6 km², not 1.6 (the linear factor squared, a classic error).',
     },
     'square-miles-to-square-km': {
       slug: 'square-miles-to-square-km',
       exampleValue: 10,
-      note: 'One square mile is 2.59 km² — the linear miles-to-km factor (1.609) squared. A 10 mi² county district is 25.9 km².',
+      note: 'One square mile is 2.59 km², the linear miles-to-km factor (1.609) squared. A 10 mi² county district is 25.9 km².',
     },
     'square-yards-to-square-meters': {
       slug: 'square-yards-to-square-meters',
       exampleValue: 100,
-      note: 'A square yard — known as a "gaj" in South Asian real estate — is exactly 0.8361 m², so a 100 gaj plot is 83.6 m². Carpet sold by the square yard converts the same way.',
+      note: 'A square yard, known as a "gaj" in South Asian real estate, is exactly 0.8361 m², so a 100 gaj plot is 83.6 m². Carpet sold by the square yard converts the same way.',
     },
     'square-meters-to-square-yards': {
       slug: 'square-meters-to-square-yards',
@@ -111,7 +111,7 @@ export const area: Quantity = {
     'square-feet-to-square-yards': {
       slug: 'square-feet-to-square-yards',
       exampleValue: 900,
-      note: 'Nine square feet make one square yard, so 900 ft² is exactly 100 yd². Flooring and carpet estimates commonly need this — measure rooms in feet, buy carpet in square yards.',
+      note: 'Nine square feet make one square yard, so 900 ft² is exactly 100 yd². Flooring and carpet estimates commonly need this, measure rooms in feet, buy carpet in square yards.',
     },
     'square-yards-to-square-feet': {
       slug: 'square-yards-to-square-feet',

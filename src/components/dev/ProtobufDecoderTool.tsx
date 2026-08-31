@@ -54,7 +54,7 @@ export default function ProtobufDecoderTool() {
         </div>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Paste a Protocol Buffers message as hex or base64 to decode its structure — like <code class="rounded bg-slate-200 px-1">protoc --decode_raw</code>. The wire format is self-describing for field numbers and types, so you get each field&#39;s number, wire type and the plausible readings of its value (a length-delimited field is shown as a nested message when it parses, otherwise as a string or raw bytes). Without the <code class="rounded bg-slate-200 px-1">.proto</code> schema, field names and exact types (int vs sint, string vs bytes) can&#39;t be recovered — that&#39;s a property of the format, not a limit of the tool. 🔒 Decoded entirely in your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Paste a Protocol Buffers message as hex or base64 to decode its structure, like <code class="rounded bg-slate-200 px-1">protoc --decode_raw</code>. The wire format is self-describing for field numbers and types, so you get each field&#39;s number, wire type and the plausible readings of its value (a length-delimited field is shown as a nested message when it parses, otherwise as a string or raw bytes). Without the <code class="rounded bg-slate-200 px-1">.proto</code> schema, field names and exact types (int vs sint, string vs bytes) can&#39;t be recovered, that&#39;s a property of the format, not a limit of the tool. 🔒 Decoded entirely in your browser.</p>
     </div>
   );
 }

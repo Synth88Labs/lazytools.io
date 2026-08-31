@@ -65,7 +65,7 @@ export default function PassphraseTool() {
         <label class="flex items-center gap-2 text-sm text-slate-600"><input type="checkbox" checked={cap} onChange={(e) => setCap((e.target as HTMLInputElement).checked)} class="accent-brand-600" /> Capitalise each word</label>
         <label class="flex items-center gap-2 text-sm text-slate-600"><input type="checkbox" checked={addNum} onChange={(e) => setAddNum((e.target as HTMLInputElement).checked)} class="accent-brand-600" /> Append a number</label>
       </div>
-      <p class="mt-3 text-xs text-slate-500">True <strong>diceware</strong>: each word is chosen from the 7,776-word EFF list with <span class="font-mono">crypto.getRandomValues</span> (rejection-sampled, so every word is equally likely). Each word adds ~12.9 bits of entropy — a memorable 6-word passphrase is stronger than most random passwords. 🔒 Generated entirely in your browser.</p>
+      <p class="mt-3 text-xs text-slate-500">True <strong>diceware</strong>: each word is chosen from the 7,776-word EFF list with <span class="font-mono">crypto.getRandomValues</span> (rejection-sampled, so every word is equally likely). Each word adds ~12.9 bits of entropy, a memorable 6-word passphrase is stronger than most random passwords. 🔒 Generated entirely in your browser.</p>
     </div>
   );
 }

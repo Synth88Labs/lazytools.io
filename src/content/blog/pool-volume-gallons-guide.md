@@ -32,14 +32,14 @@ faqs:
 draft: false
 ---
 
-**Your pool's volume is its surface area times its average depth: length × width × average depth for a rectangular pool, or π × radius² × average depth for a round one — then convert to gallons.** An 8 × 4 metre pool averaging 1.5 m deep holds 48 m³, which is about **12,680 US gallons**. Knowing that number accurately is the foundation for dosing chlorine, shock and every other pool chemical correctly.
+**Your pool's volume is its surface area times its average depth: length × width × average depth for a rectangular pool, or π × radius² × average depth for a round one, then convert to gallons.** An 8 × 4 metre pool averaging 1.5 m deep holds 48 m³, which is about **12,680 US gallons**. Knowing that number accurately is the foundation for dosing chlorine, shock and every other pool chemical correctly.
 
 <aside class="key-takeaways">
 
 **Key takeaways**
 
 - **Rectangular:** length × width × average depth. **Round:** π × radius² × depth. **Oval:** π × (length ÷ 2) × (width ÷ 2) × depth.
-- Always use the **average depth** — for a sloped pool, (shallow + deep) ÷ 2.
+- Always use the **average depth**, for a sloped pool, (shallow + deep) ÷ 2.
 - **Conversions:** 1 m³ = 264 US gallons = 1000 litres; 1 cubic foot = 7.48 US gallons.
 - The volume in gallons is what **every pool chemical dose** is based on.
 - Round pools use the **diameter** (halve it for the radius); oval/rectangular use length × width.
@@ -48,7 +48,7 @@ draft: false
 
 <figure>
 <img src="/blog/infographic-pool-volume.svg" alt="Rectangular pool = length × width × depth (8 × 4 × 1.5 m = 48 m³ ≈ 12,680 US gallons); round = π × radius² × depth. Use average depth. 1 m³ = 264 US gallons = 1000 litres." width="1200" height="700" loading="lazy" />
-<figcaption>Surface area times average depth gives the volume — then convert to gallons.</figcaption>
+<figcaption>Surface area times average depth gives the volume, then convert to gallons.</figcaption>
 </figure>
 
 ## The formulas by shape
@@ -75,13 +75,13 @@ Numbers make the formulas concrete. Here are three pools, one per shape, worked 
 
 ## The average-depth trick
 
-Most pools aren't a uniform depth — they slope from a shallow to a deep end. Using the deep-end depth overstates the volume; using the shallow end understates it. Instead, use the **average**:
+Most pools aren't a uniform depth. They slope from a shallow to a deep end. Using the deep-end depth overstates the volume; using the shallow end understates it. Instead, use the **average**:
 
 > average depth = (shallow-end depth + deep-end depth) ÷ 2
 
 A pool that's 1 m at the shallow end and 2 m at the deep end has an average depth of 1.5 m. For pools with a more complex bottom (a spoon or hopper shape), the simple average is a good approximation.
 
-The catch is that many pools don't slope evenly from end to end. A common design is a long flat shallow section, then a short slope down to a deep well. If two-thirds of the floor sits at the shallow depth, a plain shallow-plus-deep average overstates the water. When accuracy matters, split the pool into sections — shallow flat, sloped, and deep flat — calculate each one's volume separately, and add them. For chlorine and shock, though, the simple average is usually close enough; pool chemistry tolerates being within a few percent.
+The catch is that many pools don't slope evenly from end to end. A common design is a long flat shallow section, then a short slope down to a deep well. If two-thirds of the floor sits at the shallow depth, a plain shallow-plus-deep average overstates the water. When accuracy matters, split the pool into sections, shallow flat, sloped, and deep flat, calculate each one's volume separately, and add them. For chlorine and shock, though, the simple average is usually close enough; pool chemistry tolerates being within a few percent.
 
 ## Unit conversions
 
@@ -98,7 +98,7 @@ One more distinction worth knowing: a **US gallon** and an **imperial (UK) [gall
 
 ## Typical pool sizes for reference
 
-If you can't measure yet, these ballpark figures show the range you're likely in. Always calculate from your own dimensions before dosing — this table is only a sanity check.
+If you can't measure yet, these ballpark figures show the range you're likely in. Always calculate from your own dimensions before dosing. This table is only a sanity check.
 
 | Pool | Dimensions (approx.) | Average depth | Volume |
 | --- | --- | --- | --- |
@@ -112,7 +112,7 @@ If you can't measure yet, these ballpark figures show the range you're likely in
 
 Pool chemistry is entirely **dose-per-volume**. Chlorine, shock, algaecide, pH increaser/decreaser, stabiliser and clarifier are all specified as an amount per so many gallons or litres. Get the volume wrong and you'll either **under-dose** (cloudy, unsafe water) or **over-dose** (wasted product, irritated eyes and skin, damaged surfaces). An accurate gallon figure, measured once, makes every future chemical calculation right.
 
-Volume drives more than chemicals. Your **filter and pump** are sized to "turn over" the whole pool in a target window — often around one full circulation every 8 hours — so the right pump flow depends directly on total gallons. Heater run-time and the cost of heating scale with volume too. Because the number gets used again and again, it pays to measure carefully once and write it on the equipment-pad wall or save it in the calculator.
+Volume drives more than chemicals. Your **filter and pump** are sized to "turn over" the whole pool in a target window, often around one full circulation every 8 hours, so the right pump flow depends directly on total gallons. Heater run-time and the cost of heating scale with volume too. Because the number gets used again and again, it pays to measure carefully once and write it on the equipment-pad wall or save it in the calculator.
 
 ## Common mistakes to avoid
 

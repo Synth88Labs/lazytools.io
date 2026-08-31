@@ -38,7 +38,7 @@ export default function UnitConverter({ units, initialFromId, initialToId, initi
     const t = units.find((u) => u.id === initialToId)!;
     return format(convert(initialValue, f, t), 8);
   });
-  /** which side the user last typed in — the other side is derived */
+  /** which side the user last typed in, the other side is derived */
   const [lastEdited, setLastEdited] = useState<'from' | 'to'>('from');
   const [sig, setSig] = useState(8);
   const [copied, setCopied] = useState(false);
@@ -124,7 +124,7 @@ export default function UnitConverter({ units, initialFromId, initialToId, initi
       setCopied(true);
       setTimeout(() => setCopied(false), 1500);
     } catch {
-      /* clipboard unavailable — ignore */
+      /* clipboard unavailable, ignore */
     }
   }
 
@@ -159,7 +159,7 @@ export default function UnitConverter({ units, initialFromId, initialToId, initi
       : `${format(v, 8)} × ${mF} = ${dstText}`;
     const why = hasOffset
       ? `These scales have different zero points, so the conversion multiplies by ${mF} and then shifts by ${c >= 0 ? '+' : '−'}${cF}.`
-      : `1 ${src.symbol} equals ${mF} ${dst.symbol}, so multiplying by ${mF} converts the value. The result describes the exact same quantity — only the measuring stick changes.`;
+      : `1 ${src.symbol} equals ${mF} ${dst.symbol}, so multiplying by ${mF} converts the value. The result describes the exact same quantity, only the measuring stick changes.`;
 
     return { math, why, src, dst, srcVal: format(v, 8), dstVal: dstText };
   }, [from, to, fromText, toText, lastEdited]);

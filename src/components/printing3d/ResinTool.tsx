@@ -43,7 +43,7 @@ export default function ResinTool() {
         <p class="mt-4 text-sm text-slate-500">Enter the resin volume your slicer reports and the resin's price per litre.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Cost = volume (with waste) ÷ 1000 × price per litre. Your MSLA slicer reports the resin volume a print needs; the waste allowance covers what clings to the build plate, supports and vat. Standard photopolymer is about 1.10 g/mL (Formlabs standard ~1.08) — override for specialty resins. Amounts are in whatever currency you enter. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Cost = volume (with waste) ÷ 1000 × price per litre. Your MSLA slicer reports the resin volume a print needs; the waste allowance covers what clings to the build plate, supports and vat. Standard photopolymer is about 1.10 g/mL (Formlabs standard ~1.08), override for specialty resins. Amounts are in whatever currency you enter. 🔒 In your browser.</p>
     </div>
   );
 }

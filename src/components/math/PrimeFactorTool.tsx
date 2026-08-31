@@ -110,7 +110,7 @@ export default function PrimeFactorTool() {
         </>
       )}
       <p class="mt-4 text-xs text-slate-500">
-        Primality via deterministic Miller–Rabin; factoring via trial division + Pollard's rho — exact for inputs up to ~10¹⁹. Runs locally, works offline.
+        Primality via deterministic Miller, Rabin; factoring via trial division + Pollard's rho, exact for inputs up to ~10¹⁹. Runs locally, works offline.
       </p>
     </div>
   );

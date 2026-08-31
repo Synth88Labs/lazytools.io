@@ -45,14 +45,14 @@ export default function DiffractionTool() {
             <div class="rounded-xl bg-white p-4 text-center ring-1 ring-slate-200"><p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Airy disk at f/{fmt(num(fNumber) ?? 0, 1)}</p><p class="mt-1 text-2xl font-extrabold text-slate-700">{fmt(r.airy)} µm</p></div>
           </div>
           <p class={`mt-3 rounded-lg p-3 text-sm ring-1 ${r.limited ? 'bg-amber-50 text-amber-800 ring-amber-200' : 'bg-emerald-50 text-emerald-800 ring-emerald-200'}`}>
-            {r.limited ? `⚠️ At f/${fmt(num(fNumber) ?? 0, 1)} the Airy disk is larger than a pixel — you're in the diffraction-softened range. For maximum per-pixel sharpness, stay near f/${fmt(r.dla, 1)} or wider.` : `✓ At f/${fmt(num(fNumber) ?? 0, 1)} the Airy disk still fits within a pixel — diffraction isn't limiting sharpness yet.`}
+            {r.limited ? `⚠️ At f/${fmt(num(fNumber) ?? 0, 1)} the Airy disk is larger than a pixel, you're in the diffraction-softened range. For maximum per-pixel sharpness, stay near f/${fmt(r.dla, 1)} or wider.` : `✓ At f/${fmt(num(fNumber) ?? 0, 1)} the Airy disk still fits within a pixel, diffraction isn't limiting sharpness yet.`}
           </p>
         </>
       ) : (
         <p class="mt-4 text-sm text-slate-500">Choose a sensor, resolution and aperture.</p>
       )}
 
-      <p class="mt-4 text-xs text-slate-500">Stopping down (higher f-number) increases depth of field but also grows the Airy disk — the blur circle from diffraction — as d = 2.44 · λ · N (λ ≈ 0.55 µm). When it exceeds the pixel pitch, fine detail softens. The diffraction-limited aperture is where the Airy disk first equals a pixel; it\'s a guide, not a hard cutoff, and stopping down a little past it is often worth it for the extra depth of field. 🔒 In your browser.</p>
+      <p class="mt-4 text-xs text-slate-500">Stopping down (higher f-number) increases depth of field but also grows the Airy disk, the blur circle from diffraction, as d = 2.44 · λ · N (λ ≈ 0.55 µm). When it exceeds the pixel pitch, fine detail softens. The diffraction-limited aperture is where the Airy disk first equals a pixel; it\'s a guide, not a hard cutoff, and stopping down a little past it is often worth it for the extra depth of field. 🔒 In your browser.</p>
     </div>
   );
 }

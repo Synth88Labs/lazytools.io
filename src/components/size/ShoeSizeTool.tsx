@@ -84,7 +84,7 @@ export default function ShoeSizeTool() {
               ))}
             </div>
             <p class="mt-3 text-xs text-slate-500">
-              Brands vary by up to half a size — when in doubt, trust the centimeter measurement. Add ~0.5 cm for running shoes.
+              Brands vary by up to half a size, when in doubt, trust the centimeter measurement. Add ~0.5 cm for running shoes.
             </p>
           </>
         ) : (

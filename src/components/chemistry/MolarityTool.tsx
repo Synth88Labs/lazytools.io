@@ -52,7 +52,7 @@ export default function MolarityTool() {
 
       {solve !== 'molarMass' && (
         <label class="mb-3 block">
-          <span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Formula (optional — auto-fills molar mass)</span>
+          <span class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Formula (optional, auto-fills molar mass)</span>
           <div class="flex gap-2">
             <input value={formula} spellcheck={false} onInput={(e) => setFormula((e.target as HTMLInputElement).value)}
               class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 font-mono text-sm text-slate-900 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200" />
