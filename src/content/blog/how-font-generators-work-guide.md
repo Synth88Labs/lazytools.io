@@ -36,7 +36,7 @@ draft: false
 **Key takeaways**
 
 - "Fonts" from a generator are **Unicode characters**, not fonts. Nothing is downloaded or installed.
-- Most styles come from the **Mathematical Alphanumeric Symbols** block (U+1D400–U+1D7FF): ready-made bold, italic, script, fraktur, double-struck, sans-serif and monospace alphabets.
+- Most styles come from the **Mathematical Alphanumeric Symbols** block (U+1D400-U+1D7FF): ready-made bold, italic, script, fraktur, double-struck, sans-serif and monospace alphabets.
 - They work in bios and captions because the characters live **in the text itself**, no CSS or app support required.
 - The trade-off is **accessibility**: a screen reader reads the character's real name ("mathematical bold small h…"), not "h". Keep names and key facts in plain text.
 - Not every character exists in every style, and some platforms strip certain characters, which is why a few letters occasionally fall back to plain text.

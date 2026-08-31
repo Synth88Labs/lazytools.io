@@ -26,7 +26,7 @@ faqs:
   - q: "Do passport photos have to be on a white background?"
     a: "Usually, but not always. Most countries want plain white or off-white, but France and Germany forbid white and require light grey or light blue, New Zealand requires a light background that is not white, and Indonesia's citizen passport uses a red background. Background colour is one of the most common reasons a photo is rejected."
   - q: "What resolution or file size does a digital passport photo need?"
-    a: "It varies by country's online portal. Examples: the US wants 600-1200 px square; the UK wants at least 600×750 px (50 KB–10 MB); India wants 630×810 px under 250 KB; Singapore wants 400×514 px; Saudi Arabia's e-Visa wants 200×200 px, 5-100 KB. Each country page in the Photo Size Maker lists the exact figures."
+    a: "It varies by country's online portal. Examples: the US wants 600-1200 px square; the UK wants at least 600×750 px (50 KB-10 MB); India wants 630×810 px under 250 KB; Singapore wants 400×514 px; Saudi Arabia's e-Visa wants 200×200 px, 5-100 KB. Each country page in the Photo Size Maker lists the exact figures."
   - q: "Can I use the same photo for a passport and a visa?"
     a: "Sometimes, but not always, the specs can differ. Japan is the clearest example: its passport photo is 35×45 mm but its visa photo is a 45×45 mm square. Always check the specific document type you're applying for."
 draft: false
@@ -151,7 +151,7 @@ so you catch this before you submit.
 ## Digital rules also vary
 
 If you're uploading rather than printing, each country's online portal sets its own pixel and
-file-size limits, for example the US (600-1200 px), the UK (≥600×750 px, 50 KB–10 MB), India
+file-size limits, for example the US (600-1200 px), the UK (≥600×750 px, 50 KB-10 MB), India
 (630×810 px, ≤250 KB), Singapore (400×514 px) and Saudi Arabia's e-Visa (200×200 px, 5-100 KB). Each
 country page lists the exact numbers and the tool exports to them, embedding the correct print
 resolution.

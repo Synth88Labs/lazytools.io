@@ -28,7 +28,7 @@ const allSchema = [organizationSchema(), websiteSchema(), ...schema];
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Google tag (gtag.js) with Consent Mode v2 — analytics denied until the visitor accepts -->
+    <!-- Google tag (gtag.js) with Consent Mode v2, analytics denied until the visitor accepts -->
     <script async is:inline src="https://www.googletagmanager.com/gtag/js?id=G-ZXNK938YR8"></script>
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
@@ -73,7 +73,7 @@ const allSchema = [organizationSchema(), websiteSchema(), ...schema];
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     {/* Escape "<" as < so schema content containing "</script>" (or any "<") can't
-        break out of the JSON-LD <script> tag — keeps the JSON valid for crawlers. */}
+        break out of the JSON-LD <script> tag, keeps the JSON valid for crawlers. */}
     {allSchema.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s).replace(/</g, '\\u003c')} />)}
     <slot name="head" />
   </head>

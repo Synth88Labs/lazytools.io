@@ -357,7 +357,7 @@ export const PHOTO_SPECS: PhotoSpec[] = [
     allowedFormats: ['jpeg'], fileSizeMinKb: 100, fileSizeMaxKb: 1000,
     sourceName: 'Immigration Department of Malaysia (JIM) / KLN', sourceUrl: 'https://www.imi.gov.my/index.php/en/main-services/passport/malaysian-international-passport/', lastVerified: '2026-07-10',
     lead: 'Malaysia trips people up twice. It is 35×50 mm (not 45), and the old blue background is now rejected; use white.',
-    dos: ['35×50 mm (413×591 px), about 10 mm clearance above the head', 'Plain white background', 'Head 25-30 mm, neutral expression, eyes open', 'JPEG 100 KB–1 MB for online', 'Taken within the last 6 months'],
+    dos: ['35×50 mm (413×591 px), about 10 mm clearance above the head', 'Plain white background', 'Head 25-30 mm, neutral expression, eyes open', 'JPEG 100 KB-1 MB for online', 'Taken within the last 6 months'],
     donts: ['No blue background (retired with the e-Passport)', 'Do not use 35×45 (Malaysia is 35×50)', 'No smiling', 'No non-religious headwear', 'No shadows'],
     notes: ['Malaysia switched from the old blue background to white with the e-Passport.'],
   },

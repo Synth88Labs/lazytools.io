@@ -21,13 +21,13 @@ faqs:
   - q: "How do I blur the background of a photo?"
     a: "Use a wide aperture (a low f-number like f/1.8), a longer lens, and get close to your subject, and put distance between the subject and the background. A larger sensor helps too. All of these shrink the depth of field."
   - q: "What aperture gives a blurry background?"
-    a: "A wide one, f/1.4, f/1.8 or f/2.8 give a noticeably shallow depth of field and soft background. The higher the f-number, the more comes into focus, so f/8–f/16 keeps backgrounds sharp."
+    a: "A wide one, f/1.4, f/1.8 or f/2.8 give a noticeably shallow depth of field and soft background. The higher the f-number, the more comes into focus, so f/8-f/16 keeps backgrounds sharp."
   - q: "Does focal length affect depth of field?"
     a: "Yes, for the same aperture and framing distance, a longer lens (say 85mm) gives a shallower depth of field and more background blur than a wide lens (24mm). It's why portrait lenses are longer."
   - q: "Why does my phone struggle to blur backgrounds?"
     a: "Because its sensor is tiny. Small sensors use very short lenses to get their field of view, and short lenses have a lot of depth of field, so everything tends to look sharp. Phones fake the blur with software 'portrait mode.'"
   - q: "How do I get everything in focus for a landscape?"
-    a: "Use a small aperture (f/8–f/16), a wide lens, and focus at the hyperfocal distance rather than the horizon. That maximises the depth of field so foreground and background are both sharp."
+    a: "Use a small aperture (f/8-f/16), a wide lens, and focus at the hyperfocal distance rather than the horizon. That maximises the depth of field so foreground and background are both sharp."
   - q: "What is bokeh?"
     a: "The aesthetic quality of the out-of-focus blur, the soft rendering of background highlights into smooth circles. It comes with a shallow depth of field, and its look depends on the lens's aperture design."
 draft: false
@@ -42,7 +42,7 @@ draft: false
 - **Depth of field** = the zone that looks sharp. Shallow = blurry background.
 - **Four controls:** aperture, focal length, subject distance, sensor size.
 - **Blurry background:** wide aperture (low f-number), long lens, get close, big sensor.
-- **Everything sharp:** small aperture (f/8–f/16), wide lens, step back, focus at the hyperfocal distance.
+- **Everything sharp:** small aperture (f/8-f/16), wide lens, step back, focus at the hyperfocal distance.
 - Phones blur *in software* because their tiny sensors have huge depth of field.
 
 </aside>
@@ -97,7 +97,7 @@ The shorthand photographers use is *equivalent aperture*: multiply the f-number 
 Put the four together and you get a simple recipe for either extreme:
 
 - **For a blurry background:** wide aperture (low f-number) · long lens · get close · big sensor · lots of distance to the background.
-- **For everything sharp** (landscapes): small aperture (f/8–f/16) · wide lens · step back · and focus at the **hyperfocal distance** rather than the horizon, to squeeze out the maximum front-to-back sharpness.
+- **For everything sharp** (landscapes): small aperture (f/8-f/16) · wide lens · step back · and focus at the **hyperfocal distance** rather than the horizon, to squeeze out the maximum front-to-back sharpness.
 
 ### A worked portrait
 
@@ -105,7 +105,7 @@ Say you want a classic headshot with a melted background. Reach for an 85mm lens
 
 ### A worked landscape
 
-Now the opposite. Fit a 24mm lens, stop down to f/11, and instead of focusing on the distant mountains, focus at the hyperfocal distance, the closest point you can focus while still keeping the horizon acceptably sharp. Everything from roughly half that distance out to infinity lands inside the depth of field, so the pebbles at your feet and the ridge line are both crisp. Going past f/16 usually backfires: diffraction begins to soften the whole frame, so f/8–f/11 is the sweet spot on most lenses.
+Now the opposite. Fit a 24mm lens, stop down to f/11, and instead of focusing on the distant mountains, focus at the hyperfocal distance, the closest point you can focus while still keeping the horizon acceptably sharp. Everything from roughly half that distance out to infinity lands inside the depth of field, so the pebbles at your feet and the ridge line are both crisp. Going past f/16 usually backfires: diffraction begins to soften the whole frame, so f/8-f/11 is the sweet spot on most lenses.
 
 Want the exact numbers for your gear? The [depth of field calculator](/photography/depth-of-field-calculator/) gives the near and far limits for any sensor, lens and aperture, and the [hyperfocal distance calculator](/photography/hyperfocal-distance-calculator/) finds the perfect landscape focus point, all worked out privately in your browser.
 

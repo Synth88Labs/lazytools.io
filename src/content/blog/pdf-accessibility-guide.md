@@ -89,7 +89,7 @@ pronunciation rules to load, a German document read with English phonetics is te
 replaces `final_v3_FINAL.pdf` in what gets announced. **A real text layer** separates a document
 from a photograph of one: scanned pages are silent until OCR. **Alt text** on figures is the most
 commonly missed item in otherwise-tagged documents. **Headings and bookmarks** are how non-visual
-readers skim, a 40-page report with no H1–H6 tags is a wall of undifferentiated prose.
+readers skim, a 40-page report with no H1-H6 tags is a wall of undifferentiated prose.
 
 ## The machine/human split
 
@@ -155,7 +155,7 @@ keep next to the checker output:
 | No `/Lang` | Wrong pronunciation engine | Set document language in the authoring tool |
 | Missing / filename title | Announces the file name | Fill the Title field; enable **DisplayDocTitle** |
 | No alt text on figures | Says "image" or skips it | Add alt text to meaningful images; mark decorative ones as artifacts |
-| No headings | No way to skim; wall of text | Apply real heading styles (H1–H6) before export |
+| No headings | No way to skim; wall of text | Apply real heading styles (H1-H6) before export |
 
 ## Fixing what the checks find
 

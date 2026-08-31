@@ -18,11 +18,11 @@ heroImage: /blog/invisible-characters-guide.png
 heroAlt: "Invisible characters in text, zero-width spaces, the BOM, and AI watermark tag characters, revealed"
 faqs:
   - q: "What are invisible characters in text?"
-    a: "Unicode code points that render as nothing, or as a deceptive space. The most common are the zero-width space (U+200B), zero-width joiner (U+200D), non-breaking space (U+00A0), the byte-order mark (U+FEFF), bidirectional controls, and the tag characters (U+E0000–E007F). They're invisible on screen but very real in the underlying bytes."
+    a: "Unicode code points that render as nothing, or as a deceptive space. The most common are the zero-width space (U+200B), zero-width joiner (U+200D), non-breaking space (U+00A0), the byte-order mark (U+FEFF), bidirectional controls, and the tag characters (U+E0000-E007F). They're invisible on screen but very real in the underlying bytes."
   - q: "How do I remove a zero-width space?"
     a: "Paste the text into an invisible-character detector, which finds every hidden code point and gives you a cleaned copy with them removed. You can't reliably do it by hand because you can't see them, and find-and-replace only works if you can type the character."
   - q: "Do AI tools add invisible watermarks to text?"
-    a: "They can. Some systems embed invisible tag or variation-selector characters (in ranges like U+E0000–E007F) to fingerprint AI-generated output. Because these characters render as nothing, you'd never notice them, but a code-point scanner flags them, and removing them is trivial once detected."
+    a: "They can. Some systems embed invisible tag or variation-selector characters (in ranges like U+E0000-E007F) to fingerprint AI-generated output. Because these characters render as nothing, you'd never notice them, but a code-point scanner flags them, and removing them is trivial once detected."
   - q: "Why does a hidden character break my code or spreadsheet?"
     a: "A zero-width space inside a keyword stops an exact match or an if-statement from matching; a non-breaking space (U+00A0) looks like a normal space but breaks CSV parsing, number formatting and trimming. The text looks right but behaves wrong, which makes these bugs maddening to track down."
   - q: "Can an AI chatbot find invisible characters for me?"
@@ -44,7 +44,7 @@ here's what's hiding and why it matters.
 <ul>
 <li><strong>Zero-width space (U+200B)</strong> and friends render as nothing but exist in the bytes</li>
 <li><strong>Non-breaking space (U+00A0)</strong> looks normal but breaks CSV, search and trimming</li>
-<li><strong>Tag characters (U+E0000–E007F)</strong> can invisibly <strong>watermark AI text</strong></li>
+<li><strong>Tag characters (U+E0000-E007F)</strong> can invisibly <strong>watermark AI text</strong></li>
 <li>An <strong>LLM can't see them</strong>, a deterministic code-point scanner can</li>
 <li>Detect and strip them in your browser, the text is <strong>never uploaded</strong></li>
 </ul>
@@ -65,9 +65,9 @@ The usual suspects fall into a few groups:
   ideographic space (U+3000). They look like a normal space but aren't.
 - **The byte-order mark (U+FEFF)**, often left at the very start of a file; it silently corrupts the
   first field of a CSV or the first line of code.
-- **Bidirectional controls (U+202A–202E)**, can reorder how text displays, which has been used to
+- **Bidirectional controls (U+202A-202E)**, can reorder how text displays, which has been used to
   disguise filenames and code.
-- **Tag characters (U+E0000–E007F) and variation selectors**, increasingly used to **invisibly
+- **Tag characters (U+E0000-E007F) and variation selectors**, increasingly used to **invisibly
   watermark AI-generated text** by encoding a hidden fingerprint.
 
 ### A quick reference table
@@ -85,7 +85,7 @@ The characters you are most likely to run into, what they look like, and what th
 | Ideographic space | U+3000 | A wide space | Pasted from CJK sources; fails whitespace checks |
 | Byte-order mark | U+FEFF | Nothing | Corrupts the first CSV field or first line of code |
 | Right-to-left override | U+202E | Nothing | Reverses displayed order to disguise filenames |
-| Tag characters | U+E0000–E007F | Nothing | Carry hidden watermark or smuggled payloads |
+| Tag characters | U+E0000-E007F | Nothing | Carry hidden watermark or smuggled payloads |
 
 Code points are shown in the standard Unicode `U+` notation. The names come from the Unicode
 Standard; the "typical problem" column reflects common text-processing experience rather than any single

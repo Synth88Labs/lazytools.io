@@ -361,7 +361,7 @@ export const CALCULATORS: CalcDef[] = [
     formula:
       'The classic formulas take a base weight at 5 ft (60 in) plus a per-inch increment: Devine (men 50 kg + 2.3 kg/in), Robinson, Miller and Hamwi use slightly different constants. The healthy BMI range is 18.5-24.9 × height² (metres).',
     example: 'A man 175 cm (69 in) tall: Devine ≈ 70.7 kg; healthy BMI range ≈ 56.7-76.3 kg.',
-    note: 'These formulas date from the 1960s–80s and were built for medication dosing and insurance tables, not as health targets. They ignore muscle, frame size and body composition entirely (a muscular athlete can be "overweight" by every one). The healthy BMI range is usually the more useful guide, and even that is a population tool, not a diagnosis. Not medical advice.',
+    note: 'These formulas date from the 1960s-80s and were built for medication dosing and insurance tables, not as health targets. They ignore muscle, frame size and body composition entirely (a muscular athlete can be "overweight" by every one). The healthy BMI range is usually the more useful guide, and even that is a population tool, not a diagnosis. Not medical advice.',
     faqs: [
       { q: 'Is there one correct ideal weight?', a: 'No. The four formulas here give slightly different numbers, and none accounts for muscle mass or frame size. Treat the results as a rough band, and lean on the healthy BMI range, 18.5 to 24.9, as the more practical target.' },
       { q: 'What is the Devine formula?', a: 'The most widely used: for men, 50 kg + 2.3 kg for each inch over 5 feet; for women, 45.5 kg + 2.3 kg/inch. It was created in 1974 for calculating drug dosages and remains the clinical standard for that.' },

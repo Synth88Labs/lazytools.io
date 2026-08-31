@@ -55,7 +55,7 @@ export const COLOR_TOOLS: ColorToolDef[] = [
     lead: 'A HEX code is RGB in base-16: #1d87f1 converts to rgb(29, 135, 241), paste any code and read the channels.',
     widget: 'converter',
     presetInput: 'hex',
-    how: 'Each pair of HEX digits is one channel in base-16: the first pair red, the second green, the third blue. To read one pair, multiply its first digit by 16 and add the second, where the letters a, f stand for 10-15: 1d = 1×16 + 13 = 29, 87 = 8×16 + 7 = 135, f1 = 15×16 + 1 = 241, giving rgb(29, 135, 241). Two HEX digits span 00–ff, exactly the 0-255 range of an 8-bit channel, so the mapping is lossless. Three-digit shorthand doubles each digit (#fa0 = #ffaa00).',
+    how: 'Each pair of HEX digits is one channel in base-16: the first pair red, the second green, the third blue. To read one pair, multiply its first digit by 16 and add the second, where the letters a, f stand for 10-15: 1d = 1×16 + 13 = 29, 87 = 8×16 + 7 = 135, f1 = 15×16 + 1 = 241, giving rgb(29, 135, 241). Two HEX digits span 00-ff, exactly the 0-255 range of an 8-bit channel, so the mapping is lossless. Three-digit shorthand doubles each digit (#fa0 = #ffaa00).',
     note: 'You need this conversion any time CSS or a design tool wants numeric channels, rgba() with transparency being the everyday case: take the RGB values and add your alpha, e.g. rgba(29, 135, 241, 0.5).',
     faqs: [
       { q: 'How do I convert HEX to RGB manually?', a: 'Split the six digits into three pairs and convert each from base-16: multiply the first digit by 16 and add the second (letters a, f are 10-15). f1 = 15×16 + 1 = 241.' },

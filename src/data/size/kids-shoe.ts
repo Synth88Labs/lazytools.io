@@ -1,6 +1,6 @@
 /**
  * Children's shoe size conversion (the standard published chart).
- * US kids' sizes run 0C–13.5C ("C" = child), then restart at 1Y–7Y ("Y" = youth).
+ * US kids' sizes run 0C-13.5C ("C" = child), then restart at 1Y-7Y ("Y" = youth).
  * UK ≈ US − 1 (kids), EU is length-based, cm ≈ foot length. Ages are guidance only, * children's feet vary widely and grow up to a size per few months when small.
  */
 

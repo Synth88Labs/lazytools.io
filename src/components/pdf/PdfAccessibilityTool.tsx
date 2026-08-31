@@ -97,7 +97,7 @@ async function runChecks(bytes: ArrayBuffer, onProgress: (s: string) => void): P
   }
   if (acc.hasTree) {
     if (acc.headings.size > 0) add('pass', 'Headings', `heading tags present (${[...acc.headings].sort().join(', ')}) in the sampled pages`);
-    else add('warn', 'Headings', 'no H1–H6 tags found in the sampled pages, content may be tagged as plain paragraphs, losing document structure');
+    else add('warn', 'Headings', 'no H1-H6 tags found in the sampled pages, content may be tagged as plain paragraphs, losing document structure');
     if (acc.figures > 0) {
       if (acc.figuresWithAlt === acc.figures) add('pass', 'Image alt text', `all ${acc.figures} figure${acc.figures > 1 ? 's' : ''} in the sampled pages carry alt text`);
       else add('fail', 'Image alt text', `${acc.figures - acc.figuresWithAlt} of ${acc.figures} figures in the sampled pages have NO alt text. Those images are silent for screen-reader users`);

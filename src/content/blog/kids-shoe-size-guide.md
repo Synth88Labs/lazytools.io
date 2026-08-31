@@ -1,7 +1,7 @@
 ---
 title: "Kids' Shoe Sizes by Age: US, UK, EU Charts, and the 13C-to-1Y Mystery"
 seoTitle: "Kids' Shoe Sizes by Age: US, UK, EU Charts"
-description: "Kids' shoe sizes run 2C–13.5C then restart at 1Y (which is bigger). Full US/UK/EU chart with ages and cm, measuring method, and growing-room rules."
+description: "Kids' shoe sizes run 2C-13.5C then restart at 1Y (which is bigger). Full US/UK/EU chart with ages and cm, measuring method, and growing-room rules."
 pubDate: 2026-07-05
 updatedDate: 2026-08-23
 archetype: how-to
@@ -21,7 +21,7 @@ faqs:
   - q: "Why do kids' sizes go from 13C to 1Y?"
     a: "The child (C) scale ends at 13.5C and the youth (Y) scale restarts at 1, an artifact of the old barleycorn sizing system. 1Y is one step LARGER than 13.5C, not a step down. Youth sizes run to 7Y."
   - q: "What shoe size is a 2-year-old?"
-    a: "Typically US 6C–8C (EU 22-25, foot 13-14.6 cm), but healthy feet vary enormously, measure in cm rather than buying by age."
+    a: "Typically US 6C-8C (EU 22-25, foot 13-14.6 cm), but healthy feet vary enormously, measure in cm rather than buying by age."
   - q: "How much growing room do kids' shoes need?"
     a: "About 0.8 cm, a thumb's width, beyond the longest toe. Less gets outgrown in weeks; much more than 1.5 cm causes tripping and poor gait."
   - q: "How often should I measure my child's feet?"
@@ -97,7 +97,7 @@ same foot is roughly **UK 13** and **EU 32**. Feed the raw 19.0 cm into the
 rollover for you, so you never have to remember which side of the 13C-to-1Y seam you are on.
 
 <div class="callout cite">
-<p><span class="co-label">📌 Citable fact</span> US children's shoe sizes run 0C–13.5C ("child") and then restart at 1Y–7Y ("youth"); 1Y (≈19.7 cm foot) is one step larger than 13.5C. Women's US sizes correspond to youth sizes plus ≈1.5, a 5Y equals about a women's 6.5.</p>
+<p><span class="co-label">📌 Citable fact</span> US children's shoe sizes run 0C-13.5C ("child") and then restart at 1Y-7Y ("youth"); 1Y (≈19.7 cm foot) is one step larger than 13.5C. Women's US sizes correspond to youth sizes plus ≈1.5, a 5Y equals about a women's 6.5.</p>
 </div>
 
 ## Measuring a child's foot (the only reliable method)
@@ -165,7 +165,7 @@ decide whether the kids'-price version actually works for an adult foot.
 
 ## Quick summary
 
-Kids' US sizes climb 2C–13.5C and then restart at 1Y, which is one step *bigger*, the restart, not
+Kids' US sizes climb 2C-13.5C and then restart at 1Y, which is one step *bigger*, the restart, not
 the sizes, is what confuses everyone. Skip age-based buying entirely: measure the foot in centimeters,
 add 0.8 cm of growing room, and let the
 [kids' shoe size converter](/size/kids-shoe-size-converter/) find the size in every system.

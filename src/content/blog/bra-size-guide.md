@@ -41,7 +41,7 @@ difference between bust and band).** That's why a US 34DD, an EU 75E and a FR 90
 <p class="kt-title">⚡ Key takeaways</p>
 <ul>
 <li><strong>Bands convert cleanly:</strong> US/UK 34 = EU 75 = FR 90 (FR is always EU + 15)</li>
-<li><strong>Cups fork after D:</strong> US D, DD, DDD, G vs UK D, DD, E–F, FF, count steps, don't match letters</li>
+<li><strong>Cups fork after D:</strong> US D, DD, DDD, G vs UK D, DD, E-F, FF, count steps, don't match letters</li>
 <li><strong>Sister sizes = same volume:</strong> 32DDD ↔ 34DD ↔ 36D</li>
 <li><strong>One cup step ≈ 1 inch (2.5 cm)</strong> of bust-minus-band difference</li>
 <li><strong>The band gives ~80% of support</strong>, most fit problems are band problems</li>

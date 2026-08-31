@@ -132,7 +132,7 @@ The percentage is fixed, so the apparent loss scales with capacity:
 
 If the displayed number is ~93.1% of the advertised one, you're seeing the unit gap, not lost storage.
 On top of it, *real* deductions exist: file-system structures (NTFS/APFS metadata), recovery
-partitions (typically 500 MB–15 GB on laptops), and on SSDs a slice of over-provisioning. Check any
+partitions (typically 500 MB-15 GB on laptops), and on SSDs a slice of over-provisioning. Check any
 size with the [GB to GiB converter](/units/gb-to-gib/).
 
 ## Windows vs macOS vs Linux: same bytes, three answers

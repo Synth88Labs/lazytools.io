@@ -38,7 +38,7 @@ draft: false
 **Key takeaways**
 
 - **MCT is set by airlines, not regulators**, and assumes everything goes right.
-- **Domestic:** MCT 30 min–2 hr; realistic **60-90 minutes**.
+- **Domestic:** MCT 30 min-2 hr; realistic **60-90 minutes**.
 - **International:** MCT 1-3 hr; realistic **2-3 hours**, more with immigration.
 - **One ticket = the airline owes you a rebook** if you misconnect. **Separate tickets = you own the loss.**
 - Add time for: customs/immigration, terminal changes, checked bags, large hub airports.

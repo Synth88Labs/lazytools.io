@@ -89,7 +89,7 @@ export default function TimezonePairTool({ aAbbr, bAbbr }: Props) {
       </p>
 
       <div class="mt-5">
-        <p class="mb-2 text-sm font-semibold text-slate-900">Meeting-hours overlap (9am–5pm in both)</p>
+        <p class="mb-2 text-sm font-semibold text-slate-900">Meeting-hours overlap (9am-5pm in both)</p>
         {overlap.length > 0 ? (
           <p class="rounded-lg border border-mint-500 bg-mint-50 px-4 py-2.5 text-sm font-medium text-mint-800">
             ✓ Best window: <strong>{label12(overlap[0]!.ah)}–{label12((overlap[overlap.length - 1]!.ah + 1) % 24)}</strong> {a.label} ={' '}

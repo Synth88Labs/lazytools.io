@@ -187,7 +187,7 @@ SIZE_TOOLS.push(
     icon: '👶',
     description:
       "Convert children's shoe sizes between US (C/Y), UK, EU and foot length in cm, with typical ages from baby to big kid. Measure-and-fit guidance included.",
-    lead: "Kids' US sizes run 0C–13.5C then restart at 1Y–7Y, a US 10C is a UK 9, an EU 27, and fits a ~16.5 cm foot (age 3.5-4.5, typically).",
+    lead: "Kids' US sizes run 0C-13.5C then restart at 1Y-7Y, a US 10C is a UK 9, an EU 27, and fits a ~16.5 cm foot (age 3.5-4.5, typically).",
     measureSteps: [
       'Stand the child on paper against a wall (heel touching), mark the longest toe, and measure in cm, afternoon is best, feet swell during the day.',
       'Measure both feet and use the larger; add about 0.8 cm (a thumb’s width) of growing room.',
@@ -203,7 +203,7 @@ SIZE_TOOLS.push(
       },
       {
         q: 'What size shoe for a 2-year-old?',
-        a: 'Typically US 6C–8C (EU 22-25, foot 13-14.6 cm), but the range is wide. Measure the foot in cm and add 0.8 cm of room rather than buying by age.',
+        a: 'Typically US 6C-8C (EU 22-25, foot 13-14.6 cm), but the range is wide. Measure the foot in cm and add 0.8 cm of room rather than buying by age.',
       },
       {
         q: 'How much growing room should kids\' shoes have?',
