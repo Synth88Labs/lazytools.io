@@ -1,10 +1,10 @@
 /**
- * Unicode "font" transforms — the pseudo-fonts behind fancy-text generators.
+ * Unicode "font" transforms, the pseudo-fonts behind fancy-text generators.
  *
- * These are NOT real fonts: they map A–Z, a–z and 0–9 onto look-alike Unicode
+ * These are NOT real fonts: they map A-Z, a-z and 0 to 9 onto look-alike Unicode
  * code points (mostly the Mathematical Alphanumeric Symbols block, U+1D400+),
  * so the styled text copies and pastes into places that don't allow font
- * changes — social bios, usernames, messages. The trade-off is accessibility:
+ * changes, social bios, usernames, messages. The trade-off is accessibility:
  * screen readers announce 𝗯𝗼𝗹𝗱 as "mathematical bold b, o, l, d" (or skip it),
  * so this styling should never carry meaning a plain-text reader would miss.
  *
@@ -57,14 +57,14 @@ const circled = (ch: string): string => {
 const fullwidth = (ch: string): string => {
   const code = ch.codePointAt(0)!;
   if (ch === ' ') return '　';
-  if (code >= 0x21 && code <= 0x7e) return String.fromCodePoint(0xff01 + (code - 0x21)); // ！..～ incl. A–z, 0–9
+  if (code >= 0x21 && code <= 0x7e) return String.fromCodePoint(0xff01 + (code - 0x21)); // ！..～ incl. A-z, 0 to 9
   return ch;
 };
 
 // Combining-mark overlays (applied to every non-space char).
 const combining = (mark: string) => (ch: string): string => (ch === ' ' ? ch : ch + mark);
 
-// Superscript — irregular code points; many letters exist, a few don't (fall back).
+// Superscript, irregular code points; many letters exist, a few don't (fall back).
 const SUPERSCRIPT: Record<string, string> = {
   a: 'ᵃ', b: 'ᵇ', c: 'ᶜ', d: 'ᵈ', e: 'ᵉ', f: 'ᶠ', g: 'ᵍ', h: 'ʰ', i: 'ⁱ', j: 'ʲ',
   k: 'ᵏ', l: 'ˡ', m: 'ᵐ', n: 'ⁿ', o: 'ᵒ', p: 'ᵖ', q: 'q', r: 'ʳ', s: 'ˢ', t: 'ᵗ',
@@ -77,7 +77,7 @@ const SUPERSCRIPT: Record<string, string> = {
 };
 const superscript = (ch: string): string => SUPERSCRIPT[ch] ?? ch;
 
-// Subscript — Unicode only defines a limited set of letters; the rest fall back.
+// Subscript, Unicode only defines a limited set of letters; the rest fall back.
 const SUBSCRIPT: Record<string, string> = {
   a: 'ₐ', e: 'ₑ', h: 'ₕ', i: 'ᵢ', j: 'ⱼ', k: 'ₖ', l: 'ₗ', m: 'ₘ', n: 'ₙ', o: 'ₒ',
   p: 'ₚ', r: 'ᵣ', s: 'ₛ', t: 'ₜ', u: 'ᵤ', v: 'ᵥ', x: 'ₓ',

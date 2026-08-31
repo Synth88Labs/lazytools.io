@@ -1,12 +1,12 @@
 /**
- * Self-hosted chart fonts (via @fontsource — bundled, never fetched from a CDN,
+ * Self-hosted chart fonts (via @fontsource, bundled, never fetched from a CDN,
  * so the no-external-requests promise holds).
  *
  * Two jobs:
- *  1. Preview — inject @font-face rules pointing at the bundled woff2 URLs. The
+ *  1. Preview, inject @font-face rules pointing at the bundled woff2 URLs. The
  *     browser only downloads a face once it is actually applied to rendered text,
  *     so listing ten fonts costs nothing until one is picked.
- *  2. Export — an SVG rasterised through `new Image()` runs in an isolated
+ *  2. Export, an SVG rasterised through `new Image()` runs in an isolated
  *     context that cannot see the document's @font-face rules, so the chosen
  *     font must be inlined into the SVG as base64 or the PNG/SVG silently falls
  *     back to a system font. `embedFontCss()` does that.
@@ -87,7 +87,7 @@ function toBase64(buf: ArrayBuffer): string {
 const embedCache = new Map<string, string>();
 
 /**
- * CSS with the font inlined as base64 — must be injected INTO the SVG so the
+ * CSS with the font inlined as base64, must be injected INTO the SVG so the
  * font survives SVG download and canvas rasterisation. Returns '' for the
  * system stack (system fonts resolve natively when the SVG is rendered).
  */

@@ -1,6 +1,6 @@
 /**
- * Readability scoring — deterministic, staleness-proof text formulas.
- * Flesch Reading Ease, Flesch–Kincaid Grade, Gunning Fog, SMOG, Coleman–Liau, ARI.
+ * Readability scoring, deterministic, staleness-proof text formulas.
+ * Flesch Reading Ease, Flesch-Kincaid Grade, Gunning Fog, SMOG, Coleman-Liau, ARI.
  * All are standard published formulas; the only heuristic is syllable counting,
  * which every readability tool approximates the same way. Node-tested.
  */
@@ -47,7 +47,7 @@ export function analyzeText(text: string): TextStats {
 }
 
 export interface ReadabilityScores {
-  fleschReadingEase: number;   // 0–100, higher = easier
+  fleschReadingEase: number;   // 0 to 100, higher = easier
   fleschKincaidGrade: number;  // US grade level
   gunningFog: number;          // years of education
   smog: number;                // years of education
@@ -84,11 +84,11 @@ export function readability(text: string): { stats: TextStats; scores: Readabili
 
 /** Plain-English band for a Flesch Reading Ease score. */
 export function fleschBand(score: number): { label: string; note: string } {
-  if (score >= 90) return { label: 'Very easy', note: '5th grade — easily understood by an 11-year-old' };
-  if (score >= 80) return { label: 'Easy', note: '6th grade — conversational English' };
+  if (score >= 90) return { label: 'Very easy', note: '5th grade, easily understood by an 11-year-old' };
+  if (score >= 80) return { label: 'Easy', note: '6th grade, conversational English' };
   if (score >= 70) return { label: 'Fairly easy', note: '7th grade' };
-  if (score >= 60) return { label: 'Standard', note: '8th–9th grade — plain English' };
-  if (score >= 50) return { label: 'Fairly difficult', note: '10th–12th grade' };
+  if (score >= 60) return { label: 'Standard', note: '8th-9th grade, plain English' };
+  if (score >= 50) return { label: 'Fairly difficult', note: '10th-12th grade' };
   if (score >= 30) return { label: 'Difficult', note: 'College level' };
   return { label: 'Very difficult', note: 'College graduate / professional' };
 }

@@ -73,7 +73,7 @@ export function webApplicationSchema(opts: {
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     featureList: [
       'Runs 100% in your browser',
-      'No file or data upload — private by architecture',
+      'No file or data upload, private by architecture',
       'Free, no sign-up, no limits',
       'Works offline after first load',
     ],

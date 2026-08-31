@@ -184,7 +184,7 @@ export const TRANSFORM: Record<string, (input: string, opts: Opts) => TransformR
     if (opts.invisible !== false) t = t.replace(/[​‌‍⁠﻿­᠎⁡-⁤]/g, ''); // zero-width & format
     if (opts.collapse === true) t = t.replace(/[ \t]{2,}/g, ' ').replace(/[ \t]+$/gm, '');            // collapse runs + trailing
     if (before !== t) changed = 1;
-    return { output: t, info: changed ? 'Cleaned: normalised dashes/quotes/spaces and removed hidden characters.' : 'No changes needed — text is already clean.' };
+    return { output: t, info: changed ? 'Cleaned: normalised dashes/quotes/spaces and removed hidden characters.' : 'No changes needed, text is already clean.' };
   },
 
   /** Unicode normalization (NFC/NFD/NFKC/NFKD) with optional diacritic stripping. */

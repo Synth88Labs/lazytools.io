@@ -2,7 +2,7 @@
  * A dependency-free reader for FLAC metadata: the STREAMINFO block (sample
  * rate, channels, bit depth, duration, MD5 of the audio) and the Vorbis comment
  * block (TITLE/ARTIST/ALBUM… tags and the encoder vendor string), plus a note
- * of embedded pictures. Read-only and pure — it parses the metadata blocks, not
+ * of embedded pictures. Read-only and pure, it parses the metadata blocks, not
  * the audio frames. Completes the audio-metadata trio with the WAV and MP3
  * inspectors.
  */
@@ -33,7 +33,7 @@ const u24be = (b: Uint8Array, o: number) => (b[o]! << 16) | (b[o + 1]! << 8) | b
 /** Parse a FLAC file's metadata. */
 export function parseFlac(bytes: Uint8Array): FlacInfo {
   if (!(bytes[0] === 0x66 && bytes[1] === 0x4c && bytes[2] === 0x61 && bytes[3] === 0x43)) {
-    throw new Error('Not a FLAC file — the "fLaC" marker is missing.');
+    throw new Error('Not a FLAC file, the "fLaC" marker is missing.');
   }
   const info: FlacInfo = {
     sampleRate: 0, channels: 0, bitsPerSample: 0, totalSamples: 0, durationSec: 0,
@@ -76,6 +76,6 @@ export function parseFlac(bytes: Uint8Array): FlacInfo {
     }
     p = body + size;
   }
-  if (info.sampleRate === 0) throw new Error('No STREAMINFO block found — file may be truncated.');
+  if (info.sampleRate === 0) throw new Error('No STREAMINFO block found, file may be truncated.');
   return info;
 }

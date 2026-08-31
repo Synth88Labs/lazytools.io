@@ -2,7 +2,7 @@
  * Parse raw email headers (or a pasted .eml) into a readable analysis: the
  * Received-hop delivery timeline with per-hop delays, the authentication
  * results (SPF / DKIM / DMARC) that are ALREADY present in the headers, and the
- * key identity headers. Strictly parse-only — it reads what the mail servers
+ * key identity headers. Strictly parse-only, it reads what the mail servers
  * wrote; it performs no live DNS lookups (SPF/DKIM/DMARC records aren't
  * checked, only the results the receiving server recorded). Pure and
  * deterministic apart from Date string parsing.
@@ -80,7 +80,7 @@ function parseAuthResults(value: string): { spf?: string; dkim?: string; dmarc?:
 
 export function analyzeEmail(raw: string): EmailAnalysis {
   const headers = parseHeaders(raw);
-  if (headers.length === 0) throw new Error('No email headers found — paste the full headers (or a .eml file).');
+  if (headers.length === 0) throw new Error('No email headers found, paste the full headers (or a .eml file).');
 
   // Received headers are listed newest-first; reverse for a chronological path.
   const received = getAll(headers, 'Received').map(parseReceived).reverse();

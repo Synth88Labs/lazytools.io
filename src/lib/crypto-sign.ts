@@ -1,5 +1,5 @@
 /**
- * HMAC and JWT (HS256/384/512) signing via Web Crypto — available in browsers
+ * HMAC and JWT (HS256/384/512) signing via Web Crypto, available in browsers
  * and Node. Deterministic, so Node-tested against an independent oracle
  * (Node's crypto for HMAC) and the well-known jwt.io example token for JWT.
  * Secrets never leave the device.
@@ -40,7 +40,7 @@ const JWT_HASH: Record<JwtAlgo, HmacAlgo> = { HS256: 'SHA-256', HS384: 'SHA-384'
 /**
  * Build and HMAC-sign a compact JWT. `header` is generated as
  * {alg, typ:"JWT"}; `payload` is any JSON-serialisable object. Returns the
- * three-segment token. (HS algorithms only — no private-key material.)
+ * three-segment token. (HS algorithms only, no private-key material.)
  */
 export async function signJwt(payload: Record<string, unknown>, secret: string, algo: JwtAlgo = 'HS256'): Promise<string> {
   const header = { alg: algo, typ: 'JWT' };

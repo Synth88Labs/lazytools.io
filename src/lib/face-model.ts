@@ -40,7 +40,7 @@ export async function detectFaceMetrics(canvas: HTMLCanvasElement): Promise<Face
   // The detection box spans roughly brow→chin; scale ~1.4× to approximate crown→chin.
   const headHeightPct = Math.min(1, (bb.height * 1.4) / H);
 
-  // BlazeFace keypoints (normalised 0–1): [rightEye, leftEye, noseTip, mouth, rightEar, leftEar].
+  // BlazeFace keypoints (normalised 0 to 1): [rightEye, leftEye, noseTip, mouth, rightEar, leftEar].
   const kp: any[] = d.keypoints || [];
   let eyeY = (bb.originY + bb.height * 0.4) / H;
   let cx = (bb.originX + bb.width / 2) / W;

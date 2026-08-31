@@ -1,5 +1,5 @@
 /**
- * Personal-finance math — deterministic, no live data. Educational, not advice.
+ * Personal-finance math, deterministic, no live data. Educational, not advice.
  * All rates are decimals (0.05 = 5%). Monthly compounding unless noted.
  */
 
@@ -58,7 +58,7 @@ export interface DebtResult {
 export function simulateDebts(debts: Debt[], extra: number, strategy: 'snowball' | 'avalanche'): DebtResult | null {
   const list = debts.map((d) => ({ ...d, bal: d.balance, interestPaid: 0, payoffMonth: 0 }));
   if (list.some((d) => d.bal > 0 && d.minPayment <= (d.bal * d.apr) / 12)) {
-    // a min payment doesn't even cover interest — only solvable if extra helps; check overall below
+    // a min payment doesn't even cover interest, only solvable if extra helps; check overall below
   }
   let month = 0, totalInterest = 0;
   const sortActive = () => {

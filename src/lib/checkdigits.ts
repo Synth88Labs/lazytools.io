@@ -1,7 +1,7 @@
 /**
  * Check-digit validation for barcodes/GTINs (EAN-13, UPC-A, EAN-8, GTIN-14,
  * ITF-14), ISBN-10/13, ISSN, and Luhn-based identifiers (IMEI, and generic
- * Luhn e.g. credit-card format). Pure and deterministic — every algorithm is a
+ * Luhn e.g. credit-card format). Pure and deterministic, every algorithm is a
  * fixed, published checksum, so results are exact and Node-testable.
  */
 

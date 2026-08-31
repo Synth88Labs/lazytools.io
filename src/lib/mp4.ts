@@ -3,7 +3,7 @@
  * M4A, HEIF…). These formats are a tree of "boxes" (a.k.a. atoms): a size, a
  * four-character type, and either child boxes or data. This walks the tree,
  * decodes the useful headers (ftyp brands, mvhd/mdhd duration, hdlr handler,
- * tkhd), and reports the structure. Read-only and pure — it parses boxes, not
+ * tkhd), and reports the structure. Read-only and pure, it parses boxes, not
  * media samples.
  */
 
@@ -102,11 +102,11 @@ export function parseMp4(bytes: Uint8Array): Mp4Info {
   const firstType = ascii(bytes, 4, 4);
   if (!/^[\x20-\x7e]{4}$/.test(firstType) || u32(bytes, 0) < 8 || u32(bytes, 0) > bytes.length) {
     // Allow size==1 (64-bit) first box; otherwise reject.
-    if (u32(bytes, 0) !== 1) throw new Error('Not an ISOBMFF (MP4/MOV) file — no valid box header at the start.');
+    if (u32(bytes, 0) !== 1) throw new Error('Not an ISOBMFF (MP4/MOV) file, no valid box header at the start.');
   }
   const info: Mp4Info = { compatibleBrands: [], boxes: [], handlers: [] };
   info.boxes = parseBoxes(bytes, 0, bytes.length, 0, info);
-  if (info.boxes.length === 0) throw new Error('No valid boxes found — file may be truncated or not an MP4.');
+  if (info.boxes.length === 0) throw new Error('No valid boxes found, file may be truncated or not an MP4.');
   return info;
 }
 

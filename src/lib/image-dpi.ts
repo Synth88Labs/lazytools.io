@@ -1,6 +1,6 @@
 /**
  * Read and set the DPI (print resolution) metadata of PNG and JPEG files by
- * direct byte editing — no canvas, no re-encoding, so image pixels are untouched.
+ * direct byte editing, no canvas, no re-encoding, so image pixels are untouched.
  * PNG stores density in a `pHYs` chunk (pixels-per-metre); JPEG in the JFIF APP0
  * segment (X/Y density + unit). Pure and deterministic → byte-verifiable in Node.
  */

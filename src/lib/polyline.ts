@@ -1,5 +1,5 @@
 /**
- * Google's Encoded Polyline Algorithm — encode and decode. A polyline is a
+ * Google's Encoded Polyline Algorithm, encode and decode. A polyline is a
  * compact ASCII string representing a list of latitude/longitude points, used
  * by the Google Maps Directions API and many mapping tools. Coordinates are
  * stored as base-32 varint deltas, scaled by 10^precision (5 by default; 6 for

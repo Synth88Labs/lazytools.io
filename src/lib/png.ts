@@ -42,7 +42,7 @@ const latin1 = (b: Uint8Array) => { let s = ''; for (const c of b) s += String.f
 
 export function parsePng(bytes: Uint8Array): PngInfo {
   const signatureValid = PNG_SIG.every((v, i) => bytes[i] === v);
-  if (!signatureValid) throw new Error('Not a PNG file — the 8-byte PNG signature is missing.');
+  if (!signatureValid) throw new Error('Not a PNG file, the 8-byte PNG signature is missing.');
 
   const info: PngInfo = { signatureValid: true, chunks: [], text: [], totalIdatBytes: 0 };
   let p = 8;

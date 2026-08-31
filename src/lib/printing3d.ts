@@ -3,7 +3,7 @@
  * ↔ volume follow from density and diameter) plus standard maker calibration
  * formulas (E-steps, flow / extrusion multiplier, volumetric flow). Material
  * densities and typical printer power are reference values cited on each tool
- * page — do not invent them; verify against manufacturer datasheets.
+ * page, do not invent them; verify against manufacturer datasheets.
  */
 
 export interface Material { name: string; density: number; note?: string; } // density g/cm³
@@ -22,8 +22,8 @@ export const MATERIALS: Material[] = [
   { name: 'PC (polycarbonate)', density: 1.20 },
   { name: 'HIPS', density: 1.05 },
   { name: 'PVA', density: 1.23 },
-  { name: 'Wood-fill PLA', density: 1.20, note: 'Varies a lot with wood-fibre loading (~1.15–1.28).' },
-  { name: 'Carbon-fibre-filled', density: 1.30, note: 'Rises with carbon-fibre content (~1.29–1.31).' },
+  { name: 'Wood-fill PLA', density: 1.20, note: 'Varies a lot with wood-fibre loading (~1.15 to 1.28).' },
+  { name: 'Carbon-fibre-filled', density: 1.30, note: 'Rises with carbon-fibre content (~1.29 to 1.31).' },
 ];
 export const materialByName = (n: string) => MATERIALS.find((m) => m.name === n);
 
@@ -131,7 +131,7 @@ export function maxSpeedForFlow(maxFlowMm3s: number, layerHeight: number, lineWi
 }
 
 /** Reference resin density (g/mL) for SLA/MSLA photopolymer. Brands vary. */
-export const RESIN_DENSITY = 1.10; // typical standard photopolymer ~1.05–1.25 (Formlabs standard ~1.08)
+export const RESIN_DENSITY = 1.10; // typical standard photopolymer ~1.05 to 1.25 (Formlabs standard ~1.08)
 
 /** Resin cost + weight for a print volume (mL). */
 export function resinCost(volumeMl: number, pricePerLitre: number, density = RESIN_DENSITY, wastePct = 0): { volumeMl: number; weightG: number; cost: number } | null {

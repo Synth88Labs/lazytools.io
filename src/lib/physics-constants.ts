@@ -1,4 +1,4 @@
-/** Physics constants — CODATA / SI 2019 exact values where defined. Pinned. */
+/** Physics constants, CODATA / SI 2019 exact values where defined. Pinned. */
 
 export const G_EARTH = 9.80665;   // standard gravity, m/s²
 export const G_MOON = 1.62;       // m/s²

@@ -1,6 +1,6 @@
 /**
  * Identify a file's true type from its magic bytes (signature), independent of
- * its extension. Pure and deterministic — the signature table is a frozen set
+ * its extension. Pure and deterministic, the signature table is a frozen set
  * of well-documented format signatures, so this is fully unit-testable and never
  * goes stale. Each signature is one or more (offset, bytes) matches that must all
  * hold. Multi-part checks (e.g. RIFF containers) use a second match at offset 8.

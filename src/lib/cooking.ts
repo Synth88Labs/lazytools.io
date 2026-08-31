@@ -1,10 +1,10 @@
 /**
  * Cooking & Kitchen shared data + helpers. Everything is deterministic and runs
  * in the browser. Volume-unit millilitre values are the site's canonical exact
- * factors (see src/data/units/volume.ts — NIST/BIPM based). Ingredient densities
+ * factors (see src/data/units/volume.ts, NIST/BIPM based). Ingredient densities
  * are sourced from King Arthur Baking's Ingredient Weight Chart (see the /cooking/
  * grams-to-cups page for the citation); each is grams per US customary cup
- * (236.588 mL). Do NOT invent values here — every number must trace to a source.
+ * (236.588 mL). Do NOT invent values here, every number must trace to a source.
  */
 
 /** Millilitres per unit of volume. */
@@ -23,7 +23,7 @@ export const VOLUME_ML = {
   metric_tsp: 5,
   metric_tbsp: 15,
   metric_cup: 250,
-  au_tbsp: 20, // Australian tablespoon — a common recipe pitfall
+  au_tbsp: 20, // Australian tablespoon, a common recipe pitfall
   // Imperial (UK)
   imp_tsp: 5.91939047,
   imp_tbsp: 17.7581714,
@@ -66,7 +66,7 @@ export const INGREDIENTS: Ingredient[] = [
   { id: 'rice-white', name: 'Rice, long-grain (uncooked)', gPerCup: 198 },
   { id: 'cornstarch', name: 'Cornstarch', gPerCup: 112 },
   { id: 'cocoa-chips', name: 'Chocolate chips, semisweet', gPerCup: 170 },
-  { id: 'salt-table', name: 'Salt, table', gPerCup: 288, note: 'Salt and leaveners are normally measured by the teaspoon, not the cup — kosher salt weighs far less per volume and differs sharply by brand.' },
+  { id: 'salt-table', name: 'Salt, table', gPerCup: 288, note: 'Salt and leaveners are normally measured by the teaspoon, not the cup, kosher salt weighs far less per volume and differs sharply by brand.' },
   { id: 'salt-kosher-diamond', name: 'Salt, Diamond Crystal kosher', gPerCup: 128, note: "Morton kosher salt is nearly double (256 g/cup) — the two brands are NOT interchangeable by volume." },
   { id: 'salt-kosher-morton', name: 'Salt, Morton kosher', gPerCup: 256 },
   { id: 'baking-soda', name: 'Baking soda', gPerCup: 288 },
@@ -126,7 +126,7 @@ export const OVEN_TABLE: OvenRow[] = [
 
 export const fToC = (f: number) => ((f - 32) * 5) / 9;
 export const cToF = (c: number) => (c * 9) / 5 + 32;
-/** Fan/convection ovens run ~20 °C (about 25–50 °F) cooler than conventional. */
+/** Fan/convection ovens run ~20 °C (about 25 to 50 °F) cooler than conventional. */
 export const fanC = (conventionalC: number) => conventionalC - 20;
 
 /**
@@ -164,7 +164,7 @@ export interface MeatTemp { food: string; f: number; c: number; rest?: string }
 export const MEAT_TEMPS: MeatTemp[] = [
   { food: 'Poultry (chicken, turkey, duck) — whole & ground', f: 165, c: 74 },
   { food: 'Ground meats (beef, pork, lamb, veal)', f: 160, c: 71 },
-  { food: 'Beef, pork, lamb, veal — steaks, chops, roasts', f: 145, c: 63, rest: 'Rest 3 minutes before carving' },
+  { food: 'Beef, pork, lamb, veal, steaks, chops, roasts', f: 145, c: 63, rest: 'Rest 3 minutes before carving' },
   { food: 'Ham, fresh or smoked (uncooked)', f: 145, c: 63, rest: 'Rest 3 minutes' },
   { food: 'Fish & shellfish', f: 145, c: 63 },
   { food: 'Eggs & egg dishes', f: 160, c: 71 },
@@ -173,7 +173,7 @@ export const MEAT_TEMPS: MeatTemp[] = [
 
 /** Common doneness temperatures for red meat (cook's reference, below well-done). */
 export const DONENESS: { label: string; f: number; c: number; note?: string }[] = [
-  { label: 'Rare', f: 125, c: 52, note: 'Below the USDA 145 °F safe minimum — cook at your own risk.' },
+  { label: 'Rare', f: 125, c: 52, note: 'Below the USDA 145 °F safe minimum, cook at your own risk.' },
   { label: 'Medium-rare', f: 135, c: 57, note: 'Below the USDA 145 °F safe minimum.' },
   { label: 'Medium', f: 145, c: 63, note: 'Meets the USDA safe minimum (with a 3-minute rest).' },
   { label: 'Medium-well', f: 150, c: 66 },
@@ -208,7 +208,7 @@ export interface SlowCookerResult {
 /**
  * Convert a conventional oven/stovetop cooking time (minutes) to slow-cooker
  * time ranges on Low and High. Uses the widely-published Crock-Pot conversion
- * bands (e.g. a 15–30 min recipe ≈ 4–6 h Low or 1.5–2.5 h High). An estimate —
+ * bands (e.g. a 15 to 30 min recipe ≈ 4 to 6 h Low or 1.5 to 2.5 h High). An estimate —
  * recipes with lots of liquid or dense ingredients vary.
  */
 export function slowCookerConvert(conventionalMin: number): SlowCookerResult | null {

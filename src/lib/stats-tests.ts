@@ -1,6 +1,6 @@
 /**
  * Hypothesis tests for the /statistics/ category: Student's t-test (one-sample,
- * two-sample independent — pooled or Welch — and paired), the chi-square test
+ * two-sample independent, pooled or Welch, and paired), the chi-square test
  * (goodness-of-fit and independence), and a Poisson probability summary. Built
  * on the exact distribution functions in stats.ts (tCdf, chiSqCdf, poisson*).
  */
@@ -212,7 +212,7 @@ export interface MannWhitneyResult {
 /**
  * Mann-Whitney U test (a.k.a. Wilcoxon rank-sum), the non-parametric two-sample
  * test. Uses average ranks for ties and the normal approximation (with a tie
- * correction) for the p-value — appropriate for moderate-to-large samples.
+ * correction) for the p-value, appropriate for moderate-to-large samples.
  */
 export function mannWhitneyU(a: number[], b: number[], tail: Tail = 'two'): MannWhitneyResult | null {
   const n1 = a.length, n2 = b.length;

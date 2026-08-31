@@ -1,7 +1,7 @@
 /**
- * Biology & Lab compute library — pure, deterministic, staleness-proof functions.
+ * Biology & Lab compute library, pure, deterministic, staleness-proof functions.
  * Sequence operations, dilution/molarity, primer Tm, molecular weight, genetics
- * (Punnett, Hardy–Weinberg) and growth. No external data; the only reference
+ * (Punnett, Hardy-Weinberg) and growth. No external data; the only reference
  * constants (genetic code, nucleotide masses, A260 factors) are fixed physical
  * values that do not change. Node-tested in test/biology.test.mjs.
  */
@@ -82,7 +82,7 @@ export function translate(seq: string, frame = 0): { protein: string; stops: num
   return { protein, stops };
 }
 
-/** GC content as a percentage (0–100), counting only G/C/A/T/U. */
+/** GC content as a percentage (0 to 100), counting only G/C/A/T/U. */
 export function gcContent(seq: string): { gc: number; at: number; gcPct: number; length: number } {
   let g = 0, c = 0, a = 0, t = 0;
   for (const b of seq) {
@@ -112,7 +112,7 @@ export function meltingTemp(seq: string): { tm: number; method: string } {
   const n = a + t + g + c;
   if (n === 0) return { tm: 0, method: '—' };
   if (n < 14) return { tm: 2 * (a + t) + 4 * (g + c), method: 'Wallace rule (2·AT + 4·GC)' };
-  return { tm: 64.9 + (41 * (g + c - 16.4)) / n, method: 'Salt-adjusted GC (Marmur–Doty)' };
+  return { tm: 64.9 + (41 * (g + c - 16.4)) / n, method: 'Salt-adjusted GC (Marmur-Doty)' };
 }
 
 // ───────────────────────── molecular weight & mass↔mole ─────────────────────────
@@ -265,7 +265,7 @@ export function digest(rawSeq: string, enzymeNames: string[], circular = false) 
 
 /**
  * pKa values for ionizable groups (EMBOSS set, as tabulated on the Wikipedia
- * "Isoelectric point" article). Different pKa sets shift pI by ~0.1–0.3.
+ * "Isoelectric point" article). Different pKa sets shift pI by ~0.1 to 0.3.
  */
 export const PKA = { nterm: 8.6, cterm: 3.6, C: 8.5, D: 3.9, E: 4.1, H: 6.5, K: 10.8, R: 12.5, Y: 10.1 } as const;
 
@@ -281,7 +281,7 @@ export function chargeCounts(seq: string) {
 
 type ChargeCounts = ReturnType<typeof chargeCounts>;
 
-/** Net charge of the protein at a given pH (Henderson–Hasselbalch over all groups). */
+/** Net charge of the protein at a given pH (Henderson-Hasselbalch over all groups). */
 export function netCharge(c: ChargeCounts, pH: number): number {
   const pos = (pk: number) => 1 / (1 + Math.pow(10, pH - pk)); // fraction protonated (positive groups)
   const neg = (pk: number) => 1 / (1 + Math.pow(10, pk - pH)); // fraction deprotonated (negative groups)
@@ -290,7 +290,7 @@ export function netCharge(c: ChargeCounts, pH: number): number {
   return positive - negative;
 }
 
-/** Isoelectric point: the pH at which net charge is zero (bisection over pH 0–14). */
+/** Isoelectric point: the pH at which net charge is zero (bisection over pH 0 to 14). */
 export function isoelectricPoint(c: ChargeCounts): number {
   let lo = 0, hi = 14;
   for (let i = 0; i < 100; i++) {
@@ -350,10 +350,10 @@ export const logisticGrowth = (n0: number, r: number, t: number, k: number) =>
 /** OD600 → cells/mL using an organism factor (E. coli ≈ 8e8, yeast ≈ 3e7 per OD). */
 export const od600Cells = (od: number, factor: number, dilution = 1) => od * factor * dilution;
 
-// ───────────────────────── genetics: Hardy–Weinberg ─────────────────────────
+// ───────────────────────── genetics: Hardy-Weinberg ─────────────────────────
 
 /**
- * Hardy–Weinberg from genotype counts. Returns allele freqs, expected counts,
+ * Hardy-Weinberg from genotype counts. Returns allele freqs, expected counts,
  * χ² goodness-of-fit (df=1), and a p-value via the caller-supplied chi-square CDF.
  */
 export function hardyWeinberg(aa: number, ab: number, bb: number, chiSqCdf: (x: number, df: number) => number) {

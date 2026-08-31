@@ -205,7 +205,7 @@ export const CONVERT: Record<string, (input: string, opts: Opts) => ConvertResul
     const mode = String(opts.mode ?? 'format');
     if (mode === 'minify') {
       const output = JSON.stringify(data);
-      return { output, info: `valid JSON — minified to ${output.length.toLocaleString()} characters` };
+      return { output, info: `valid JSON, minified to ${output.length.toLocaleString()} characters` };
     }
     const indent = opts.indent === 'tab' ? '\t' : Number(opts.indent ?? 2);
     return { output: JSON.stringify(data, null, indent), info: 'valid JSON ✓' };
@@ -292,7 +292,7 @@ export const CONVERT: Record<string, (input: string, opts: Opts) => ConvertResul
     const data = jsonParse(input);
     const rootName = String(opts.root ?? 'root') || 'root';
     const xml = `<?xml version="1.0" encoding="UTF-8"?>\n` + valueToXml(data, rootName, '');
-    return { output: xml, info: 'attributes are not generated — keys become elements' };
+    return { output: xml, info: 'attributes are not generated, keys become elements' };
   },
 
   csvToMarkdown: (input, opts) => {
@@ -331,7 +331,7 @@ export const CONVERT: Record<string, (input: string, opts: Opts) => ConvertResul
   jsonToToml: (input) => {
     const data = jsonParse(input);
     if (data === null || typeof data !== 'object' || Array.isArray(data)) {
-      throw new Error('A TOML document must be a JSON object at the top level — not an array, string or number.');
+      throw new Error('A TOML document must be a JSON object at the top level, not an array, string or number.');
     }
     try {
       return { output: TOML.stringify(data as Record<string, unknown>), info: 'serialized with @iarna/toml' };
@@ -408,7 +408,7 @@ export const CONVERT: Record<string, (input: string, opts: Opts) => ConvertResul
   jsonToJsonl: (input) => {
     const data = jsonParse(input);
     if (!Array.isArray(data)) {
-      throw new Error('Input must be a JSON array — each element becomes one line of JSONL/NDJSON.');
+      throw new Error('Input must be a JSON array, each element becomes one line of JSONL/NDJSON.');
     }
     return { output: data.map((x) => JSON.stringify(x)).join('\n'), info: `${data.length} item${data.length === 1 ? '' : 's'} → JSONL (one per line)` };
   },

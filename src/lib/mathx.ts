@@ -1,4 +1,4 @@
-/** Exact-arithmetic helpers for the Mathematics tools. BigInt/rational throughout — no floating point where it matters. */
+/** Exact-arithmetic helpers for the Mathematics tools. BigInt/rational throughout, no floating point where it matters. */
 
 // ---------- BigInt basics ----------
 
@@ -153,7 +153,7 @@ export function powmod(b: bigint, e: bigint, m: bigint): bigint {
   return r;
 }
 
-/** Deterministic Miller–Rabin for n < 3.3·10^24 (fixed witness set). */
+/** Deterministic Miller-Rabin for n < 3.3·10^24 (fixed witness set). */
 export function isPrime(n: bigint): boolean {
   if (n < 2n) return false;
   for (const p of [2n, 3n, 5n, 7n, 11n, 13n, 17n, 19n, 23n, 29n, 31n, 37n]) {
@@ -334,7 +334,7 @@ export function egcd(aIn: bigint, bIn: bigint): { g: bigint; x: bigint; y: bigin
 /** Modular inverse of a mod n (throws when gcd(a,n) ≠ 1). */
 export function modInverse(a: bigint, n: bigint): bigint {
   const { g, x } = egcd(((a % n) + n) % n, n);
-  if (g !== 1n) throw new Error(`No inverse: gcd(${a}, ${n}) = ${g} ≠ 1 — inverses exist only when a and n are coprime.`);
+  if (g !== 1n) throw new Error(`No inverse: gcd(${a}, ${n}) = ${g} ≠ 1, inverses exist only when a and n are coprime.`);
   return ((x % n) + n) % n;
 }
 
@@ -449,7 +449,7 @@ export function sigFigCount(sRaw: string): SigFigAnalysis {
   return { count, marks, note };
 }
 
-/** Round a decimal string to n significant figures — pure string/BigInt arithmetic. */
+/** Round a decimal string to n significant figures, pure string/BigInt arithmetic. */
 export function sigFigRound(sRaw: string, nSig: number): string {
   const s = sRaw.trim();
   const m = s.match(/^(-?)(\d*)\.?(\d*)$/);
@@ -615,7 +615,7 @@ export function divisorsOf(n: bigint, cap = 1024): bigint[] {
   const factors = factorize(n);
   let count = 1n;
   for (const [, e] of factors) count *= e + 1n;
-  if (count > BigInt(cap)) throw new Error(`This number has ${count} divisors — more than the ${cap} this view lists.`);
+  if (count > BigInt(cap)) throw new Error(`This number has ${count} divisors, more than the ${cap} this view lists.`);
   let divs: bigint[] = [1n];
   for (const [p, e] of factors) {
     const next: bigint[] = [];
@@ -657,7 +657,7 @@ export function heronExact(a: Rat, b: Rat, c: Rat): { coef: Rat; radicand: bigin
   const t3 = a.add(c).sub(b);
   const t4 = a.add(b).sub(c);
   if (t2.sign() <= 0 || t3.sign() <= 0 || t4.sign() <= 0)
-    throw new Error('These lengths violate the triangle inequality — no triangle has these sides.');
+    throw new Error('These lengths violate the triangle inequality, no triangle has these sides.');
   const sixteenASq = t1.mul(t2).mul(t3).mul(t4);
   const { coef, radicand } = sqrtRatSimplified(sixteenASq);
   return { coef: coef.div(new Rat(4n)), radicand, sixteenASq };
@@ -671,7 +671,7 @@ const ROMAN: [number, string][] = [
 ];
 
 export function toRoman(nIn: number): string {
-  if (!Number.isInteger(nIn) || nIn < 1 || nIn > 3999) throw new Error('Standard Roman numerals cover 1–3999.');
+  if (!Number.isInteger(nIn) || nIn < 1 || nIn > 3999) throw new Error('Standard Roman numerals cover 1 to 3999.');
   let n = nIn;
   let out = '';
   for (const [v, sym] of ROMAN) while (n >= v) { out += sym; n -= v; }

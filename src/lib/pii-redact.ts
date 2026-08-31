@@ -1,7 +1,7 @@
 /**
  * Client-side PII detection and redaction for the /security/ category. Finds
  * emails, phone numbers, US SSNs, credit-card numbers (Luhn-validated), IPv4/6
- * addresses and IBANs in free text and masks them — so a user can scrub
+ * addresses and IBANs in free text and masks them, so a user can scrub
  * personal data before pasting it into a chatbot or ticket. Pure regex + Luhn;
  * nothing leaves the browser. Detection is best-effort, not a guarantee.
  */

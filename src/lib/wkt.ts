@@ -64,7 +64,7 @@ function splitTopLevel(s: string): string[] {
 export function wktToGeoJSON(wkt: string): Geometry {
   const s = wkt.trim();
   const m = s.match(/^([A-Za-z]+)\s*(ZM|Z|M)?\s*/);
-  if (!m) throw new Error('Not a WKT geometry — expected a type like POINT or POLYGON.');
+  if (!m) throw new Error('Not a WKT geometry, expected a type like POINT or POLYGON.');
   const type = m[1]!.toUpperCase();
   const rest = s.slice(m[0].length).trim();
 

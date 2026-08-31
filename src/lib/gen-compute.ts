@@ -1,4 +1,4 @@
-/** Generator helpers — cryptographic randomness with rejection sampling (no modulo bias). */
+/** Generator helpers, cryptographic randomness with rejection sampling (no modulo bias). */
 
 /** Unbiased random integer in [0, maxExclusive). */
 export function randInt(maxExclusive: number): number {
@@ -82,7 +82,7 @@ export function generateLorem(mode: 'paragraphs' | 'sentences' | 'words', count:
 
 const hex = (b: number) => b.toString(16).padStart(2, '0');
 
-/** RFC 9562 UUID v7 — 48-bit Unix-ms timestamp + version/variant + secure random, time-sortable. */
+/** RFC 9562 UUID v7 to 48-bit Unix-ms timestamp + version/variant + secure random, time-sortable. */
 export function uuidV7(ts = Date.now()): string {
   const b = new Uint8Array(16);
   crypto.getRandomValues(b);
@@ -100,7 +100,7 @@ export function uuidV7(ts = Date.now()): string {
 
 const CROCKFORD = '0123456789ABCDEFGHJKMNPQRSTVWXYZ';
 
-/** ULID — 48-bit ms timestamp + 80-bit randomness, Crockford base32 (26 chars, sortable). */
+/** ULID, 48-bit ms timestamp + 80-bit randomness, Crockford base32 (26 chars, sortable). */
 export function ulid(ts = Date.now()): string {
   let t = ts, time = '';
   for (let i = 0; i < 10; i++) { time = CROCKFORD[t % 32] + time; t = Math.floor(t / 32); }
@@ -113,7 +113,7 @@ export function ulid(ts = Date.now()): string {
 
 const NANO_ALPHABET = 'useandom-26T198340PX75pxJACKVERYMINDBUSHWOLF_GQZbfghjklqvwyzrict';
 
-/** NanoID — URL-safe, cryptographically random. Default 21 chars from a 64-char alphabet. */
+/** NanoID, URL-safe, cryptographically random. Default 21 chars from a 64-char alphabet. */
 export function nanoid(size = 21, alphabet = NANO_ALPHABET): string {
   const len = alphabet.length;
   const bytes = new Uint8Array(size * 2 + 16);
@@ -141,7 +141,7 @@ export function decodeId(raw: string): IdInfo | null {
       const ms = parseInt(s.replace(/-/g, '').slice(0, 12), 16);
       info.timestamp = new Date(ms).toISOString();
     } else if (ver === 4) {
-      info.note = 'Random UUID — no embedded timestamp.';
+      info.note = 'Random UUID, no embedded timestamp.';
     }
     return info;
   }

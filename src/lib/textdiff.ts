@@ -1,5 +1,5 @@
 /**
- * Exact text diff via longest-common-subsequence — deterministic, staleness-proof.
+ * Exact text diff via longest-common-subsequence, deterministic, staleness-proof.
  * Line-level diff for the whole text, plus word-level diff within a changed line.
  * Runs entirely in the browser: sensitive text (contracts, code, drafts) is never
  * uploaded. Node-tested.

@@ -165,7 +165,7 @@ export function pendulumLength(periodS: number, g = G_EARTH): number | null {
   return g * (periodS / (2 * Math.PI)) ** 2;
 }
 /**
- * Mass–spring oscillator period T = 2π·√(m/k), from mass m (kg) and spring
+ * Mass-spring oscillator period T = 2π·√(m/k), from mass m (kg) and spring
  * constant k (N/m). The frequency is 1/T; heavier mass or softer spring gives
  * a longer period.
  */

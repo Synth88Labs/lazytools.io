@@ -1,4 +1,4 @@
-/** Date & Time compute helpers — pure functions, all local. */
+/** Date & Time compute helpers, pure functions, all local. */
 
 /** Parse an epoch input; auto-detects seconds vs milliseconds. */
 export function parseEpoch(raw: string): { date: Date; unit: 'seconds' | 'milliseconds' } | null {
@@ -184,7 +184,7 @@ export interface BusinessDaysResult {
 }
 /**
  * Count business (working) days between two ISO dates (YYYY-MM-DD), inclusive
- * of both endpoints. Weekdays are Mon–Fri; an optional whole-number `holidays`
+ * of both endpoints. Weekdays are Mon-Fri; an optional whole-number `holidays`
  * count (that fall on weekdays) is subtracted. Order-independent. Uses UTC to
  * avoid timezone drift.
  */
@@ -247,7 +247,7 @@ export interface DayOfYearResult {
   dayOfYear: number;   // 1-based ordinal (Jan 1 = 1)
   daysInYear: number;
   daysRemaining: number; // after this day, to Dec 31 inclusive of Dec 31
-  percentElapsed: number; // 0–100, share of the year completed at end of this day
+  percentElapsed: number; // 0 to 100, share of the year completed at end of this day
   weekday: string;
 }
 /** Ordinal day-of-year for a local Date, plus days remaining and % of year. */

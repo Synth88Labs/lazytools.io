@@ -1,5 +1,5 @@
 /**
- * Advanced color-space math — OKLab/OKLCH, CIELAB/LCH, XYZ, HWB, gamut mapping,
+ * Advanced color-space math, OKLab/OKLCH, CIELAB/LCH, XYZ, HWB, gamut mapping,
  * APCA (WCAG 3) contrast, and colour-vision-deficiency simulation.
  * All exact, published algorithms. Pure functions, no DOM.
  */
@@ -209,7 +209,7 @@ export function apcaContrast(text: RGB, bg: RGB): number {
 /** Minimum font size (px) per APCA font lookup, given |Lc| and weight (400/700). Coarse public bronze table. */
 export function apcaMinFont(lc: number, weight: 400 | 700 = 400): string {
   const a = Math.abs(lc);
-  if (a < 15) return 'fails — invisible';
+  if (a < 15) return 'fails, invisible';
   if (a < 30) return 'non-text / decorative only';
   if (a < 45) return weight >= 700 ? '≈ 24px+' : '≈ 36px+ (large only)';
   if (a < 60) return weight >= 700 ? '≈ 16px+' : '≈ 18px+';
@@ -266,13 +266,13 @@ export const fmtLab = ({ L, a, b }: LAB): string =>
 export const fmtLch = ({ L, C, h }: { L: number; C: number; h: number }): string =>
   `lch(${L.toFixed(2)} ${C.toFixed(2)} ${h.toFixed(1)})`;
 
-/** CIE76 colour difference — Euclidean distance in Lab. */
+/** CIE76 colour difference, Euclidean distance in Lab. */
 export function deltaE76(a: LAB, b: LAB): number {
   return Math.hypot(a.L - b.L, a.a - b.a, a.b - b.b);
 }
 
 
-/** Colour temperature (Kelvin) → approximate sRGB (Tanner Helland algorithm), 1000–40000 K. */
+/** Colour temperature (Kelvin) → approximate sRGB (Tanner Helland algorithm), 1000 to 40000 K. */
 export function kelvinToRgb(kelvin: number): RGB {
   const t = Math.max(1000, Math.min(40000, kelvin)) / 100;
   const cl = (x: number) => Math.max(0, Math.min(255, Math.round(x)));

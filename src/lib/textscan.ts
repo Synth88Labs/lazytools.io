@@ -1,10 +1,10 @@
 /**
- * Text-hygiene scanners — reveal what's invisible or deceptive in text.
+ * Text-hygiene scanners, reveal what's invisible or deceptive in text.
  * Everything runs in the browser; sensitive text is never uploaded. Node-tested.
  *
- * (1) Invisible / hidden character detection & removal — zero-width chars, bidi
+ * (1) Invisible / hidden character detection & removal, zero-width chars, bidi
  *     controls, non-breaking spaces, BOM, tag characters used for LLM watermarking.
- * (2) Homoglyph / confusable detection — non-ASCII characters that look like ASCII
+ * (2) Homoglyph / confusable detection, non-ASCII characters that look like ASCII
  *     (Cyrillic а, Greek ο, fullwidth Ａ) used in spoofing and phishing.
  */
 
@@ -42,7 +42,7 @@ export const INVISIBLE: Record<number, CharInfo> = {
 
 export interface InvisibleHit { index: number; codepoint: number; hex: string; name: string; kind: string }
 
-/** True for tag characters (U+E0000–E007F) and variation selectors used in LLM watermarking. */
+/** True for tag characters (U+E0000-E007F) and variation selectors used in LLM watermarking. */
 function isWatermarkTag(cp: number): boolean {
   return (cp >= 0xe0000 && cp <= 0xe007f) || (cp >= 0xfe00 && cp <= 0xfe0f) || (cp >= 0xe0100 && cp <= 0xe01ef);
 }

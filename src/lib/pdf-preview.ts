@@ -2,7 +2,7 @@
 
 /**
  * pdf.js drives its canvas paint loop with requestAnimationFrame, which browsers
- * pause while a tab is backgrounded — so a render started in a hidden tab (e.g. the
+ * pause while a tab is backgrounded, so a render started in a hidden tab (e.g. the
  * user switches tabs mid-conversion) stalls until they come back. This makes progress
  * continue in a hidden tab by falling back to setTimeout only while document.hidden is
  * true; visible-tab behaviour is untouched. Installed once per page, globally idempotent.
@@ -38,7 +38,7 @@ export interface PdfThumbs {
   thumbs: string[];
 }
 
-/** Render page thumbnails (~`width`px wide) for a PDF. Never throws on render of a single page — skips it. */
+/** Render page thumbnails (~`width`px wide) for a PDF. Never throws on render of a single page, skips it. */
 export async function renderPdfThumbs(bytes: ArrayBuffer, width = 140, maxPages = THUMB_PAGE_CAP): Promise<PdfThumbs> {
   const pdfjs = await getPdfjs();
   const task = pdfjs.getDocument({ data: bytes.slice(0), useSystemFonts: true });

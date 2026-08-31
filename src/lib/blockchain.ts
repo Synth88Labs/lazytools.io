@@ -1,6 +1,6 @@
 /**
- * Blockchain/Web3 developer utilities — DETERMINISTIC, exact, staleness-proof.
- * No keys, no seeds, no live data — purely spec-based conversions and checks.
+ * Blockchain/Web3 developer utilities, DETERMINISTIC, exact, staleness-proof.
+ * No keys, no seeds, no live data, purely spec-based conversions and checks.
  * Exact decimal math uses BigInt so 18-decimal wei↔ether never loses precision
  * (floating point cannot represent these values). Node-tested.
  */

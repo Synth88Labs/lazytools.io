@@ -1,7 +1,7 @@
 /**
  * Shared helpers for the Productivity category: local-only persistence
  * (localStorage) plus JSON export/import so users own and can move their data.
- * Everything stays on the device — nothing is ever uploaded.
+ * Everything stays on the device, nothing is ever uploaded.
  */
 import { useEffect, useRef, useState } from 'preact/hooks';
 import type { RefObject } from 'preact';
@@ -47,7 +47,7 @@ export function usePersistentState<T>(key: string, initial: T): [T, (v: T | ((pr
     try {
       window.localStorage.setItem(key, JSON.stringify(state));
     } catch {
-      /* quota / private mode — tool still works for the session */
+      /* quota / private mode, tool still works for the session */
     }
   }, [key, state]);
   return [state, setState];

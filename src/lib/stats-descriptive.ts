@@ -1,5 +1,5 @@
 /**
- * Descriptive statistics for a numeric data set — the summary numbers behind a
+ * Descriptive statistics for a numeric data set, the summary numbers behind a
  * "5-number summary" plus mean, variance and standard deviation. Quartiles and
  * percentiles use linear interpolation between order statistics (the inclusive
  * "R-7" method, matching Excel's PERCENTILE.INC), the most common convention.

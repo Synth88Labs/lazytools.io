@@ -4,7 +4,7 @@
  *
  * NOTE on years/months: a duration has no fixed anchor date, so calendar years
  * and months are ambiguous. This uses the common convention of 1 year = 365
- * days and 1 month = 30 days for those components — surfaced to the user.
+ * days and 1 month = 30 days for those components, surfaced to the user.
  */
 
 const YEAR = 365 * 86400;

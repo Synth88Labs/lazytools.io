@@ -1,5 +1,5 @@
 /**
- * Chemistry compute — formula parsing, molar mass, percent composition,
+ * Chemistry compute, formula parsing, molar mass, percent composition,
  * exact chemical-equation balancing (BigInt rational nullspace), and
  * stoichiometry / solution helpers. Deterministic, no floating-point balancing.
  */
@@ -116,7 +116,7 @@ export const osmoticPressure = (i: number, molarity: number, tempK: number): num
 /**
  * Titration: unknown concentration from the equivalence point.
  * C_unknown = C_known × V_known × moleRatio ÷ V_unknown, where
- * moleRatio = (moles unknown ÷ moles known) from the balanced equation (1 for a 1:1 acid–base).
+ * moleRatio = (moles unknown ÷ moles known) from the balanced equation (1 for a 1:1 acid-base).
  */
 export function titrationConc(cKnown: number, vKnown: number, vUnknown: number, moleRatio = 1): number | null {
   if (vUnknown <= 0 || moleRatio <= 0) return null;
@@ -203,8 +203,8 @@ export function balanceEquation(eq: string): BalanceResult {
   }
 
   const freeCols = [...Array(cols).keys()].filter((c) => !pivotCols.includes(c));
-  if (freeCols.length === 0) throw new Error('No solution — equation cannot be balanced');
-  if (freeCols.length > 1) throw new Error('Underdetermined — multiple independent balances exist');
+  if (freeCols.length === 0) throw new Error('No solution, equation cannot be balanced');
+  if (freeCols.length > 1) throw new Error('Underdetermined, multiple independent balances exist');
 
   // set the single free variable = 1, solve pivots
   const free = freeCols[0]!;
@@ -222,7 +222,7 @@ export function balanceEquation(eq: string): BalanceResult {
   let ints = x.map((f) => (f.n * lcm) / f.d);
   // make all positive (flip sign if needed)
   if (ints.some((v) => v < 0n) && ints.every((v) => v <= 0n)) ints = ints.map((v) => -v);
-  // if mixed signs, the free-var choice was wrong direction — flip whole vector to make reactants positive
+  // if mixed signs, the free-var choice was wrong direction, flip whole vector to make reactants positive
   if (ints.some((v) => v < 0n)) ints = ints.map((v) => -v);
   let g = 0n;
   for (const v of ints) g = gcd(g, v);

@@ -1,4 +1,4 @@
-/** Privacy & Security helpers — Web Crypto only, everything local. */
+/** Privacy & Security helpers, Web Crypto only, everything local. */
 
 const MAGIC = new TextEncoder().encode('LZENC1'); // format marker for encrypted files
 const PBKDF2_ITERS = 310_000;
@@ -34,7 +34,7 @@ export async function decryptBytes(data: ArrayBuffer, password: string): Promise
   try {
     return await crypto.subtle.decrypt({ name: 'AES-GCM', iv: iv as BufferSource }, key, bytes.slice(34) as BufferSource);
   } catch {
-    throw new Error('Decryption failed — wrong password or corrupted file.');
+    throw new Error('Decryption failed, wrong password or corrupted file.');
   }
 }
 
@@ -50,7 +50,7 @@ export function detectJpegMetadata(bytes: Uint8Array): string[] {
   let i = 2;
   while (i + 4 < bytes.length && bytes[i] === 0xff) {
     const marker = bytes[i + 1]!;
-    if (marker === 0xda) break; // start of scan — no more headers
+    if (marker === 0xda) break; // start of scan, no more headers
     const len = (bytes[i + 2]! << 8) | bytes[i + 3]!;
     const seg = bytes.slice(i + 4, i + 4 + Math.min(len, 24));
     const head = new TextDecoder('ascii', { fatal: false }).decode(seg);
@@ -63,7 +63,7 @@ export function detectJpegMetadata(bytes: Uint8Array): string[] {
   return found;
 }
 
-/** Frequently cracked passwords — presence check only, tiny local list. */
+/** Frequently cracked passwords, presence check only, tiny local list. */
 const COMMON = new Set([
   'password', '123456', '12345678', '123456789', 'qwerty', 'abc123', '111111', 'letmein', 'iloveyou',
   'admin', 'welcome', 'monkey', 'dragon', 'master', 'sunshine', 'princess', 'football', 'baseball',
@@ -90,16 +90,16 @@ export function assessPassword(pw: string): StrengthResult {
 
   const lower = pw.toLowerCase();
   if (COMMON.has(lower)) {
-    warnings.push('This is one of the most-cracked passwords in existence — it falls instantly.');
+    warnings.push('This is one of the most-cracked passwords in existence, it falls instantly.');
     bits = Math.min(bits, 1);
   }
-  if (pw.length > 0 && pw.length < 8) warnings.push('Under 8 characters — too short regardless of complexity.');
+  if (pw.length > 0 && pw.length < 8) warnings.push('Under 8 characters, too short regardless of complexity.');
   if (/(.)\1{2,}/.test(pw)) warnings.push('Repeated runs (aaa, 111) add length but little strength.');
   if (/(?:abc|bcd|cde|def|123|234|345|456|567|678|789|012|qwe|wer|ert|asd|sdf|zxc)/i.test(pw))
     warnings.push('Sequential runs (abc, 123, qwe) are the first patterns crackers try.');
-  if (/(?:19|20)\d{2}/.test(pw)) warnings.push('Contains a year — one of the most common human patterns.');
+  if (/(?:19|20)\d{2}/.test(pw)) warnings.push('Contains a year, one of the most common human patterns.');
   if (/^[A-Z][a-z]+\d{1,4}[!.?]?$/.test(pw))
-    warnings.push('Word + digits (+ optional !) is the single most common password shape — mangling rules crack it fast.');
+    warnings.push('Word + digits (+ optional !) is the single most common password shape, mangling rules crack it fast.');
   if (warnings.length > 1) bits = bits * 0.6; // patterned passwords are far below their formula entropy
 
   const label: StrengthResult['label'] =

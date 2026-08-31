@@ -16,7 +16,7 @@ export const HUBBLE_DEFAULT = 70;
 
 /**
  * The two clock times (minutes after local midnight) when the sun reaches a
- * given elevation angle — morning (rising) and evening (setting). Reuses
+ * given elevation angle, morning (rising) and evening (setting). Reuses
  * sunTimes for solar noon and declination, then solves the hour angle for the
  * target elevation. Returns null for an event the sun never reaches that day.
  */

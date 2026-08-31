@@ -1,5 +1,5 @@
 /**
- * A dependency-free Protocol Buffers wire-format decoder — the equivalent of
+ * A dependency-free Protocol Buffers wire-format decoder, the equivalent of
  * `protoc --decode_raw`. Without a .proto schema you can't recover field names
  * or exact declared types, but the wire format is fully self-describing for
  * field numbers and wire types, so we decode the structure and offer the

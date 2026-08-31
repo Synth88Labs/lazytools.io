@@ -129,7 +129,7 @@ export function baseXDecode(str: string, alphabet: string): Uint8Array {
 export function base62Encode(bytes: Uint8Array): string { return baseXEncode(bytes, BASE62_ALPHABET); }
 export function base62Decode(str: string): Uint8Array { return baseXDecode(str, BASE62_ALPHABET); }
 
-// Base58 — the Bitcoin/IPFS alphabet (no 0, O, I, l to avoid look-alikes).
+// Base58, the Bitcoin/IPFS alphabet (no 0, O, I, l to avoid look-alikes).
 export const BASE58_ALPHABET = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz';
 
 export function base58Encode(bytes: Uint8Array): string { return baseXEncode(bytes, BASE58_ALPHABET); }

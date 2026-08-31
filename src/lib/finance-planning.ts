@@ -169,7 +169,7 @@ export function npv(ratePct: number, cashflows: number[]): number {
   return cashflows.reduce((sum, cf, t) => sum + cf / Math.pow(1 + r, t), 0);
 }
 
-/** Internal rate of return (%) — the rate where NPV = 0 — via bisection. Null if no sign change. */
+/** Internal rate of return (%) — the rate where NPV = 0, via bisection. Null if no sign change. */
 export function irr(cashflows: number[]): number | null {
   const f = (r: number) => cashflows.reduce((s, cf, t) => s + cf / Math.pow(1 + r, t), 0);
   let lo = -0.9999, hi = 10;

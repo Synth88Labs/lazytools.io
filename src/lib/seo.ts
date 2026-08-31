@@ -1,5 +1,5 @@
 /**
- * SEO title/description helpers — keep <title> ≤ 60 chars and
+ * SEO title/description helpers, keep <title> ≤ 60 chars and
  * <meta name="description"> ≤ 160 chars (Google SERP display limits),
  * which is also what the in-house UX auditor checks for.
  */

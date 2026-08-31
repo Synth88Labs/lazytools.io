@@ -1,5 +1,5 @@
 /**
- * Weather & Atmosphere math. These are published meteorological formulas — the
+ * Weather & Atmosphere math. These are published meteorological formulas, the
  * NWS Rothfusz heat-index regression, the 2001 NWS wind-chill formula, the
  * Magnus dew-point equation, Stull's (2011) wet-bulb approximation, the Beaufort
  * scale and the dew-point-spread cloud-base rule. Each is cited on its tool page.
@@ -146,7 +146,7 @@ export function snowLoad(depthM: number, densityKgM3: number) {
 /* ---------------- Humidex (Environment Canada) ---------------- */
 
 /**
- * Humidex — Environment Canada's humidity index — from air temperature and
+ * Humidex, Environment Canada's humidity index, from air temperature and
  * dew point (°C): humidex = T + 0.5555 × (e − 10), where the vapour pressure
  * e = 6.11 × exp(5417.7530 × (1/273.16 − 1/(dewpoint + 273.16))) hPa. Defined
  * for warm, humid conditions; below the dew-point/temperature threshold it just

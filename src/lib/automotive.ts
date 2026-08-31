@@ -164,7 +164,7 @@ export function stoppingDistance(speedKmh: number, reactionS: number, mu: number
 /**
  * Estimated 1/4-mile elapsed time (seconds) from power and weight, by the
  * widely-used empirical "Fox" equation: ET = 5.825 × (weight_lb ÷ hp)^(1/3).
- * A rough real-world estimate — traction, gearing, aerodynamics and driver all
+ * A rough real-world estimate, traction, gearing, aerodynamics and driver all
  * shift the actual number.
  */
 export function quarterMileET(hp: number, weightLb: number): number | null {
@@ -250,7 +250,7 @@ export function twoStrokeMix(fuel: number, ratioN: number, unit: 'l' | 'gal'): {
 
 /**
  * Tongue-weight percentage = tongue weight ÷ loaded trailer weight × 100.
- * The safe range for a conventional trailer is 10–15%; too little causes
+ * The safe range for a conventional trailer is 10 to 15%; too little causes
  * sway, too much overloads the hitch and unloads the tow vehicle's steering.
  */
 export function tongueWeight(trailerWeight: number, tongue: number): { pct: number; lo: number; hi: number; verdict: 'low' | 'ok' | 'high' } | null {

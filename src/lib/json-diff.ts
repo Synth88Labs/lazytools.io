@@ -1,5 +1,5 @@
 /**
- * Structural (semantic) JSON diff — key-aware, order-insensitive for object
+ * Structural (semantic) JSON diff, key-aware, order-insensitive for object
  * keys, index-based for arrays. Pure and deterministic, so it is Node-tested.
  * Distinct from a line-based text diff: it compares the parsed data, not the
  * text, so reformatting or key reordering produces "no changes".
@@ -71,7 +71,7 @@ export function diffJson(a: unknown, b: unknown, path = ''): Change[] {
 
 /** Human-readable summary of the changes. */
 export function formatDiff(changes: Change[]): string {
-  if (changes.length === 0) return 'No differences — the two JSON documents are structurally identical.';
+  if (changes.length === 0) return 'No differences, the two JSON documents are structurally identical.';
   const j = (v: unknown) => JSON.stringify(v);
   return changes
     .map((c) => {

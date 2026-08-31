@@ -3,7 +3,7 @@
  * industry (daily production from peak sun hours, battery-bank Amp-hours from
  * load and depth of discharge, inverter sizing, DC voltage drop, charge time).
  * Reference values (peak sun hours, system derate, depth of discharge) are
- * cited on each tool page — do not invent them; verify against NREL/PVWatts and
+ * cited on each tool page, do not invent them; verify against NREL/PVWatts and
  * battery-manufacturer references, and note that they vary by site and product.
  */
 

@@ -4,7 +4,7 @@
  * Enough of RFC 5280 to render a certificate's human-readable fields:
  * version, serial, signature algorithm, issuer/subject DN, validity window,
  * public-key algorithm and size, and the common extensions (SAN, key usage,
- * basic constraints, SKI/AKI). Pure and deterministic — no crypto, no network.
+ * basic constraints, SKI/AKI). Pure and deterministic, no crypto, no network.
  */
 
 // ---------------------------------------------------------------------------

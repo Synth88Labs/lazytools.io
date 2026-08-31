@@ -2,7 +2,7 @@
  * Pure geometry for a spinning name-picker wheel. Segments are drawn clockwise
  * from the top; a fixed pointer sits at the top (0°). To guarantee the announced
  * winner is exactly the segment under the pointer, we pick the target segment
- * first and compute the rotation that lands it there — rather than reading a
+ * first and compute the rotation that lands it there, rather than reading a
  * segment off a floating-point final angle. Deterministic and unit-testable.
  */
 

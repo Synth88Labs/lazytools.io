@@ -1,5 +1,5 @@
 /**
- * Minimal, self-contained FIGlet renderer — no runtime dependency.
+ * Minimal, self-contained FIGlet renderer, no runtime dependency.
  *
  * Parses the classic .flf font files (bundled in ../data/fonts/figlet) and
  * lays glyphs out with collision-safe kerning. Everything runs client-side;

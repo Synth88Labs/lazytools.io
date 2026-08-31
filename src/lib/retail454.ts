@@ -1,7 +1,7 @@
 /**
  * NRF 4-5-4 retail calendar (deterministic, date-only, all local).
  *
- * Rules (National Retail Federation): retail weeks run Sunday–Saturday; the
+ * Rules (National Retail Federation): retail weeks run Sunday-Saturday; the
  * retail year ends on the Saturday nearest to January 31 and begins the next
  * day. Quarters are 13 weeks split into months of 4, 5 and 4 weeks (Q1 = Feb,
  * Mar, Apr; Q2 = May, Jun, Jul; Q3 = Aug, Sep, Oct; Q4 = Nov, Dec, Jan). When
@@ -58,9 +58,9 @@ export function monthWeekPattern(fy: number, pattern: RetailPattern = '4-5-4'): 
 }
 
 export interface RetailMonth {
-  index: number; // 1–12
+  index: number; // 1 to 12
   name: string;
-  quarter: number; // 1–4
+  quarter: number; // 1 to 4
   weeks: number; // 4 or 5
   start: Date;
   end: Date;
@@ -96,9 +96,9 @@ export interface RetailPosition {
   quarter: number;
   monthIndex: number;
   monthName: string;
-  weekOfYear: number; // 1–52/53
-  weekOfMonth: number; // 1–5
-  weekOfQuarter: number; // 1–13/14
+  weekOfYear: number; // 1 to 52/53
+  weekOfMonth: number; // 1 to 5
+  weekOfQuarter: number; // 1 to 13/14
   dayOfWeek: string;
   yearStart: Date;
   yearEnd: Date;

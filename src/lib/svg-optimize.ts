@@ -3,7 +3,7 @@
  * DOM, no dependency) so it runs in Node tests and the browser identically. It
  * removes the cruft that editors (Illustrator, Inkscape, Figma) leave behind —
  * comments, metadata, editor-specific namespaces, the XML declaration and
- * DOCTYPE — and collapses inter-tag whitespace, optionally rounding coordinate
+ * DOCTYPE, and collapses inter-tag whitespace, optionally rounding coordinate
  * numbers. It deliberately does NOT restructure paths or merge shapes, so the
  * rendered image is unchanged.
  */
@@ -11,7 +11,7 @@
 export interface SvgOptOptions {
   removeComments?: boolean;      // default true
   removeMetadata?: boolean;      // default true — <metadata>, <title>, <desc>
-  removeEditorData?: boolean;    // default true — inkscape:/sodipodi: elements & attrs
+  removeEditorData?: boolean;    // default true, inkscape:/sodipodi: elements & attrs
   removeXmlDecl?: boolean;       // default true — <?xml …?> and <!DOCTYPE …>
   collapseWhitespace?: boolean;  // default true
   roundPrecision?: number;       // e.g. 2 to round decimals; 0/undefined = leave numbers

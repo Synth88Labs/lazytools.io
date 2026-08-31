@@ -1,4 +1,4 @@
-/** Physics compute — SUVAT kinematics solver. Deterministic; positive-root convention on √. */
+/** Physics compute, SUVAT kinematics solver. Deterministic; positive-root convention on √. */
 
 export interface Suvat { u?: number; v?: number; a?: number; s?: number; t?: number }
 export interface SuvatSolution { u: number; v: number; a: number; s: number; t: number; note?: string }

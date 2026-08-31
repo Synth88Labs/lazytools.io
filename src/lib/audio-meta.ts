@@ -2,7 +2,7 @@
  * A small, dependency-free reader for the headers of uncompressed audio
  * containers: RIFF/WAVE (.wav) and AIFF / AIFF-C (.aif/.aiff/.aifc). Reads the
  * format chunk to report sample rate, bit depth, channel count, codec and
- * duration, plus any embedded INFO/name tags. Read-only and pure — it parses
+ * duration, plus any embedded INFO/name tags. Read-only and pure, it parses
  * the header chunks, it does not decode the audio samples.
  */
 
@@ -135,7 +135,7 @@ export function parseAudio(bytes: Uint8Array): AudioMeta {
     if (form === 'AIFC') return parseAiff(r, bytes.length, true);
   }
   if (magic === 'RIFF') throw new Error('This is a RIFF file but not WAVE audio (perhaps AVI or WebP).');
-  throw new Error('Not a WAV or AIFF file — expected a RIFF/WAVE or FORM/AIFF signature.');
+  throw new Error('Not a WAV or AIFF file, expected a RIFF/WAVE or FORM/AIFF signature.');
 }
 
 /** Human-readable duration mm:ss(.ms). */

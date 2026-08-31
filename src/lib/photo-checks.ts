@@ -1,7 +1,7 @@
 /**
  * Client-side photo-compliance heuristics for the Photo Size Maker.
  *
- * Everything here runs on a <canvas> in the browser — the photo is NEVER uploaded.
+ * Everything here runs on a <canvas> in the browser, the photo is NEVER uploaded.
  * These checks are ASSISTIVE, not a guarantee of acceptance: they catch the common,
  * mechanically-detectable mistakes (non-uniform / wrong-colour background, under/over
  * exposure, wrong output size or format) and, where the browser supports on-device
@@ -64,7 +64,7 @@ export function checkBackground(ctx: CanvasRenderingContext2D, w: number, h: num
   return { id: 'bg', label: 'Plain background', status: 'pass', detail: `Uniform background detected, close to the required ${spec.backgroundLabel.toLowerCase()}.` };
 }
 
-/** Overall exposure — flag photos that are too dark or blown-out. */
+/** Overall exposure, flag photos that are too dark or blown-out. */
 export function checkBrightness(ctx: CanvasRenderingContext2D, w: number, h: number): CheckResult {
   const px = ctx.getImageData(0, 0, w, h).data;
   let s = 0, n = 0;
@@ -75,7 +75,7 @@ export function checkBrightness(ctx: CanvasRenderingContext2D, w: number, h: num
   return { id: 'exposure', label: 'Exposure', status: 'pass', detail: 'Brightness is within a normal range.' };
 }
 
-/** The output is generated at the exact spec — this documents that it conforms by construction. */
+/** The output is generated at the exact spec, this documents that it conforms by construction. */
 export function checkDimensions(spec: PhotoSpec, blobBytes: number, format: string): CheckResult[] {
   const { w, h } = outputPixels(spec);
   const out: CheckResult[] = [
@@ -117,7 +117,7 @@ export interface FaceMetrics {
 /**
  * Detect the face on the cropped canvas. Prefers the self-hosted MediaPipe BlazeFace
  * model (works in every modern browser, ~230 KB, lazy-loaded on first use); falls back
- * to the browser's native Shape Detection API, then to null — in which case the UI
+ * to the browser's native Shape Detection API, then to null, in which case the UI
  * shows the manual guide overlay instead. The image never leaves the device.
  */
 export async function analyzeFace(canvas: HTMLCanvasElement): Promise<FaceMetrics | null> {
@@ -162,7 +162,7 @@ export async function analyzeFace(canvas: HTMLCanvasElement): Promise<FaceMetric
 export function faceChecks(m: FaceMetrics, spec: PhotoSpec): CheckResult[] {
   if (m.faces === 0) return [{ id: 'face', label: 'Face detected', status: 'fail', detail: 'No face was detected. Make sure your full head is inside the frame, facing forward.' }];
   const out: CheckResult[] = [];
-  if (m.faces > 1) out.push({ id: 'faces', label: 'Single subject', status: 'fail', detail: `${m.faces} faces detected — the photo must contain only you.` });
+  if (m.faces > 1) out.push({ id: 'faces', label: 'Single subject', status: 'fail', detail: `${m.faces} faces detected, the photo must contain only you.` });
 
   const band = headHeightBand(spec);
   if (band) {
@@ -181,7 +181,7 @@ export function faceChecks(m: FaceMetrics, spec: PhotoSpec): CheckResult[] {
   out.push({
     id: 'center', label: 'Centred',
     status: Math.abs(m.centerX - 0.5) < 0.08 ? 'pass' : 'warn',
-    detail: Math.abs(m.centerX - 0.5) < 0.08 ? 'Face is horizontally centred.' : 'Face looks off-centre — pan so it sits in the middle.',
+    detail: Math.abs(m.centerX - 0.5) < 0.08 ? 'Face is horizontally centred.' : 'Face looks off-centre, pan so it sits in the middle.',
   });
   out.push({
     id: 'tilt', label: 'Head level',

@@ -1,5 +1,5 @@
 /**
- * SRT ⇄ WebVTT parsing, conversion and time-shifting — pure string logic so it
+ * SRT ⇄ WebVTT parsing, conversion and time-shifting, pure string logic so it
  * can be Node-tested. Both formats are cue lists; they differ in the header
  * (VTT starts with `WEBVTT`), the millisecond separator (SRT uses a comma,
  * VTT a dot), and cue indices (required in SRT, optional in VTT).

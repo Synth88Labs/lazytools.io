@@ -1,4 +1,4 @@
-/** Developer-tool transforms — all client-side, standard Web APIs only. */
+/** Developer-tool transforms, all client-side, standard Web APIs only. */
 import { base32Encode, base32Decode, ibanValidate, isbnInfo, domainToAscii, domainToUnicode } from './dev-encoders.ts';
 import { ascii85Encode, ascii85Decode, base62Encode, base62Decode, base58Encode, base58Decode } from './base-x.ts';
 import { parseIso8601Duration, secondsToIso8601, secondsToHms, secondsToHuman } from './iso-duration.ts';
@@ -70,7 +70,7 @@ export const DEV: Record<string, (input: string, opts: Opts) => DevResult> = {
       const output = new TextDecoder('utf-8', { fatal: false }).decode(base32Decode(input, hex));
       return { output, info: 'decoded as UTF-8' };
     } catch (e) {
-      throw new Error(e instanceof Error ? e.message : 'Not valid Base32 — check for stray characters.');
+      throw new Error(e instanceof Error ? e.message : 'Not valid Base32, check for stray characters.');
     }
   },
 
@@ -85,7 +85,7 @@ export const DEV: Record<string, (input: string, opts: Opts) => DevResult> = {
       const output = new TextDecoder('utf-8', { fatal: false }).decode(ascii85Decode(input));
       return { output, info: 'decoded as UTF-8 (Adobe Ascii85)' };
     } catch (e) {
-      throw new Error(e instanceof Error ? e.message : 'Not valid Ascii85 — check for stray characters.');
+      throw new Error(e instanceof Error ? e.message : 'Not valid Ascii85, check for stray characters.');
     }
   },
 
@@ -94,12 +94,12 @@ export const DEV: Record<string, (input: string, opts: Opts) => DevResult> = {
     try {
       if (mode === 'encode') {
         const output = base62Encode(new TextEncoder().encode(input));
-        return { output, info: `${input.length} chars → ${output.length} Base62 chars (0–9 A–Z a–z)` };
+        return { output, info: `${input.length} chars → ${output.length} Base62 chars (0 to 9 A-Z a-z)` };
       }
       const output = new TextDecoder('utf-8', { fatal: false }).decode(base62Decode(input.trim()));
       return { output, info: 'decoded as UTF-8 (Base62)' };
     } catch (e) {
-      throw new Error(e instanceof Error ? e.message : 'Not valid Base62 — use only 0–9, A–Z and a–z.');
+      throw new Error(e instanceof Error ? e.message : 'Not valid Base62, use only 0 to 9, A-Z and a-z.');
     }
   },
 
@@ -113,7 +113,7 @@ export const DEV: Record<string, (input: string, opts: Opts) => DevResult> = {
       const output = new TextDecoder('utf-8', { fatal: false }).decode(base58Decode(input.trim()));
       return { output, info: 'decoded as UTF-8 (Base58)' };
     } catch (e) {
-      throw new Error(e instanceof Error ? e.message : 'Not valid Base58 — the alphabet excludes 0, O, I and l.');
+      throw new Error(e instanceof Error ? e.message : 'Not valid Base58, the alphabet excludes 0, O, I and l.');
     }
   },
 
@@ -167,7 +167,7 @@ export const DEV: Record<string, (input: string, opts: Opts) => DevResult> = {
       const output = b64decode(input);
       return { output, info: 'decoded as UTF-8' };
     } catch {
-      throw new Error('Not valid Base64 — check for stray characters or truncation.');
+      throw new Error('Not valid Base64, check for stray characters or truncation.');
     }
   },
 
@@ -177,11 +177,11 @@ export const DEV: Record<string, (input: string, opts: Opts) => DevResult> = {
       if (mode === 'encode') {
         const full = Boolean(opts.component);
         const output = full ? encodeURIComponent(input) : encodeURI(input);
-        return { output, info: full ? 'encodeURIComponent — safe for query values' : 'encodeURI — preserves URL structure (/, ?, &)' };
+        return { output, info: full ? 'encodeURIComponent, safe for query values' : 'encodeURI, preserves URL structure (/, ?, &)' };
       }
       return { output: decodeURIComponent(input.replace(/\+/g, '%20')), info: '+ treated as space (form encoding)' };
     } catch {
-      throw new Error('Malformed percent-encoding — a % must be followed by two hex digits.');
+      throw new Error('Malformed percent-encoding, a % must be followed by two hex digits.');
     }
   },
 
@@ -208,7 +208,7 @@ export const DEV: Record<string, (input: string, opts: Opts) => DevResult> = {
     }
     const lines: string[] = [];
     lines.push('— HEADER —', JSON.stringify(header, null, 2), '', '— PAYLOAD —', JSON.stringify(payload, null, 2));
-    let info = 'decoded locally — signature NOT verified (that requires the secret/key)';
+    let info = 'decoded locally, signature NOT verified (that requires the secret/key)';
     if (typeof payload.exp === 'number') {
       const expDate = new Date(payload.exp * 1000);
       const expired = Date.now() > payload.exp * 1000;
@@ -329,7 +329,7 @@ export const DEV: Record<string, (input: string, opts: Opts) => DevResult> = {
       const parsed = JSON.parse('"' + input + '"');
       return { output: String(parsed), info: 'unescaped from a JSON string literal' };
     } catch {
-      throw new Error('Not a valid JSON string body — check for unescaped quotes or backslashes. Paste the text between the quotes, without the surrounding quotes.');
+      throw new Error('Not a valid JSON string body, check for unescaped quotes or backslashes. Paste the text between the quotes, without the surrounding quotes.');
     }
   },
 
@@ -358,7 +358,7 @@ export const DEV: Record<string, (input: string, opts: Opts) => DevResult> = {
     // decode: strip anything that isn't a hex digit (spaces, 0x, colons, commas), pair up.
     const clean = input.replace(/0x/gi, '').replace(/[^0-9a-fA-F]/g, '');
     if (clean.length === 0) return { output: '', info: 'no hex digits found' };
-    if (clean.length % 2 !== 0) throw new Error('Hex input has an odd number of digits — each byte needs two hex digits.');
+    if (clean.length % 2 !== 0) throw new Error('Hex input has an odd number of digits, each byte needs two hex digits.');
     const bytes = new Uint8Array(clean.length / 2);
     for (let i = 0; i < bytes.length; i++) bytes[i] = parseInt(clean.slice(i * 2, i * 2 + 2), 16);
     try {
@@ -521,7 +521,7 @@ export const HTTP_STATUS: Record<string, { name: string; desc: string }> = {
   '308': { name: 'Permanent Redirect', desc: 'Like 301, but the method must not change on redirect.' },
   '400': { name: 'Bad Request', desc: 'The server could not understand the request due to malformed syntax.' },
   '401': { name: 'Unauthorized', desc: 'Authentication is required and has failed or not been provided.' },
-  '403': { name: 'Forbidden', desc: 'The server understood the request but refuses to authorize it — you lack permission.' },
+  '403': { name: 'Forbidden', desc: 'The server understood the request but refuses to authorize it, you lack permission.' },
   '404': { name: 'Not Found', desc: 'The server cannot find the requested resource; the URL may be broken or the resource removed.' },
   '405': { name: 'Method Not Allowed', desc: 'The HTTP method is not supported for this resource.' },
   '408': { name: 'Request Timeout', desc: 'The server timed out waiting for the request.' },

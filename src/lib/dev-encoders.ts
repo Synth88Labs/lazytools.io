@@ -1,5 +1,5 @@
 /**
- * Deterministic encoders / validators for developer tools — all pure,
+ * Deterministic encoders / validators for developer tools, all pure,
  * dependency-free, and covered by Node tests against official vectors
  * (RFC 4648 Base32, ISO 13616 IBAN mod-97, ISBN check digits, RFC 3492
  * Punycode). No network, no browser APIs required.
@@ -49,7 +49,7 @@ export function base32Decode(str: string, hex = false): Uint8Array {
 
 /* ------------------------------- IBAN (ISO 13616) ------------------------------- */
 
-/** Expected total length per country (subset — length is validated when known). */
+/** Expected total length per country (subset, length is validated when known). */
 const IBAN_LENGTHS: Record<string, number> = {
   AD: 24, AE: 23, AT: 20, BE: 16, BG: 22, CH: 21, CZ: 24, DE: 22, DK: 18, EE: 20,
   ES: 24, FI: 18, FR: 27, GB: 22, GR: 27, HU: 28, IE: 22, IT: 27, LU: 20, NL: 18,
@@ -90,7 +90,7 @@ export function ibanValidate(input: string): IbanResult {
     for (const d of chunk) remainder = (remainder * 10 + (d.charCodeAt(0) - 48)) % 97;
   }
   const valid = remainder === 1;
-  return { valid, formatted, country, lengthOk, reason: valid ? undefined : 'Checksum failed — the mod-97 remainder is not 1.' };
+  return { valid, formatted, country, lengthOk, reason: valid ? undefined : 'Checksum failed, the mod-97 remainder is not 1.' };
 }
 
 /* ------------------------------- ISBN-10 / ISBN-13 ------------------------------- */

@@ -3,7 +3,7 @@
  * font (sfnt). Parses the table directory and pulls the human-readable fields
  * from the `name` table plus a few facts from `head`, `maxp` and `OS/2`:
  * family, subfamily, version, designer, license, glyph count, units-per-em,
- * weight/width and outline type. Read-only and pure — no glyph rendering.
+ * weight/width and outline type. Read-only and pure, no glyph rendering.
  */
 
 export interface NameRecord { nameId: number; label: string; value: string; }
@@ -70,7 +70,7 @@ function decodeName(bytes: Uint8Array, platformId: number, encodingId: number): 
 
 const FSTYPE = (v: number): string => {
   if (v === 0) return 'Installable (no embedding restriction)';
-  if (v & 0x0002) return 'Restricted — no embedding allowed';
+  if (v & 0x0002) return 'Restricted, no embedding allowed';
   const parts: string[] = [];
   if (v & 0x0004) parts.push('preview & print only');
   if (v & 0x0008) parts.push('editable embedding');
@@ -96,8 +96,8 @@ function readDirectory(r: Reader, base: number): { tables: Map<string, { offset:
 export function parseFont(bytes: Uint8Array): FontInfo {
   const r = new Reader(bytes);
   const sig = r.tag(0);
-  if (sig === 'wOFF') throw new Error('This is a WOFF font (web font). Convert it to TTF/OTF first — WOFF tables are compressed and not read here.');
-  if (sig === 'wOF2') throw new Error('This is a WOFF2 font (web font). Convert it to TTF/OTF first — WOFF2 uses Brotli compression, not read here.');
+  if (sig === 'wOFF') throw new Error('This is a WOFF font (web font). Convert it to TTF/OTF first, WOFF tables are compressed and not read here.');
+  if (sig === 'wOF2') throw new Error('This is a WOFF2 font (web font). Convert it to TTF/OTF first, WOFF2 uses Brotli compression, not read here.');
 
   let base = 0;
   let format: string;
@@ -109,7 +109,7 @@ export function parseFont(bytes: Uint8Array): FontInfo {
   } else if (sig === '\x00\x01\x00\x00' || sig === 'true' || sig === 'typ1') {
     format = 'TrueType';
   } else {
-    throw new Error('Not a TrueType/OpenType font — the file does not start with a known sfnt signature.');
+    throw new Error('Not a TrueType/OpenType font, the file does not start with a known sfnt signature.');
   }
 
   const { tables, count } = readDirectory(r, base);

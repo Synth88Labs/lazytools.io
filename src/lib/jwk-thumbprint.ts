@@ -14,7 +14,7 @@ const REQUIRED: Record<string, string[]> = {
   oct: ['k', 'kty'],
 };
 
-// Members that must never appear in a thumbprint input — they are private.
+// Members that must never appear in a thumbprint input, they are private.
 export const PRIVATE_MEMBERS = ['d', 'p', 'q', 'dp', 'dq', 'qi', 'oth', 'k'];
 
 /** Build the exact canonical JSON string RFC 7638 hashes for a JWK. */

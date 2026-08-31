@@ -1,7 +1,7 @@
 /**
  * A dependency-free bencode decoder and .torrent metadata inspector. Reads the
  * announce URLs, name, file tree, piece length and piece count, and computes
- * the info-hash — the SHA-1 of the exact bencoded bytes of the "info"
+ * the info-hash, the SHA-1 of the exact bencoded bytes of the "info"
  * dictionary, which is what identifies a torrent. Decoding is pure; the
  * info-hash uses the Web Crypto SubtleCrypto digest (available in browsers and
  * Node). Read-only.
@@ -86,7 +86,7 @@ const str = (v: BValue | undefined) => (v instanceof Uint8Array ? utf8(v) : unde
 
 /** Parse a .torrent file's bytes into readable metadata (async: computes SHA-1). */
 export async function parseTorrent(bytes: Uint8Array): Promise<TorrentInfo> {
-  if (bytes[0] !== 0x64) throw new Error('Not a .torrent file — it should be a bencoded dictionary starting with "d".');
+  if (bytes[0] !== 0x64) throw new Error('Not a .torrent file, it should be a bencoded dictionary starting with "d".');
   // Manually walk the top dict so we can capture the exact byte range of "info".
   let p = 1, infoStart = -1, infoEnd = -1;
   const top = new Map<string, BValue>();

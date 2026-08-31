@@ -1,9 +1,9 @@
 /**
- * Homebrewing math. Established brewing formulas — ABV from gravity, Brix↔SG,
+ * Homebrewing math. Established brewing formulas, ABV from gravity, Brix↔SG,
  * hydrometer/refractometer correction, the Tinseth IBU model, priming sugar,
  * and strike-water temperature. Constants trace to standard references (Palmer
  * "How to Brew", Glenn Tinseth's utilization model, Sean Terrill's refractometer
- * work); cited on each tool page. Do not invent values — verify against them.
+ * work); cited on each tool page. Do not invent values, verify against them.
  */
 
 /** ABV, simple estimate: (OG − FG) × 131.25. Good to ~ ±0.2% at normal strengths. */
@@ -158,7 +158,7 @@ export function carbonationPressurePsi(tempF: number, volumesCO2: number): numbe
   if (volumesCO2 <= 0) return null;
   const henry = 0.01821 + 0.09011 * Math.exp(-(tempF - 32) / 43.11);
   const p = (volumesCO2 + 0.003342) / henry - 14.695;
-  return p; // may be negative for very cold beer / low target — caller can clamp
+  return p; // may be negative for very cold beer / low target, caller can clamp
 }
 
 /* ---------------- Beer colour (SRM / EBC) ---------------- */
@@ -182,7 +182,7 @@ export const srmToEbc = (srm: number) => srm * 1.97;
  * Mash (brewhouse) efficiency as a percentage: the gravity points actually
  * achieved ÷ the maximum the grain could give. Actual points = (OG − 1)×1000;
  * max points = (grain weight lb × potential PPG) ÷ batch volume gal. Typical
- * all-grain efficiency is 65–80%.
+ * all-grain efficiency is 65 to 80%.
  */
 export function mashEfficiency(og: number, grainLb: number, ppg: number, volumeGal: number): number | null {
   if (og <= 1 || grainLb <= 0 || ppg <= 0 || volumeGal <= 0) return null;

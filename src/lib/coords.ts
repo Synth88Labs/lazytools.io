@@ -1,7 +1,7 @@
 /**
  * Geographic coordinate conversions between decimal degrees (DD), degrees-
  * minutes-seconds (DMS), degrees-decimal-minutes (DDM), UTM, MGRS, geohash and
- * Plus Codes (Open Location Code). Pure and deterministic — WGS-84 throughout.
+ * Plus Codes (Open Location Code). Pure and deterministic, WGS-84 throughout.
  *
  * The Transverse Mercator series (UTM) follows Karney's / Chris Veness's
  * public-domain formulation, accurate to well under a millimetre.

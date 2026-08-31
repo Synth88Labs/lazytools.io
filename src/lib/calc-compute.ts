@@ -1,6 +1,6 @@
 /**
  * Pure compute functions for every calculator, keyed by computeId.
- * Bundled into the client widget — everything runs in the browser.
+ * Bundled into the client widget, everything runs in the browser.
  */
 
 export interface ResultRow {
@@ -21,7 +21,7 @@ export function fmt(x: number, digits = 2): string {
   return x.toLocaleString('en-US', { maximumFractionDigits: digits, minimumFractionDigits: 0 });
 }
 
-/** Count Mon–Fri days strictly between two dates (order-independent). */
+/** Count Mon-Fri days strictly between two dates (order-independent). */
 function countWeekdays(a: Date, b: Date): number {
   let start = new Date(Math.min(a.getTime(), b.getTime()));
   const end = new Date(Math.max(a.getTime(), b.getTime()));
@@ -271,8 +271,8 @@ export const COMPUTE: Record<string, (v: Values) => ResultRow[] | null> = {
     const [actLabel, factor] = factors[v.activity ?? 'moderate'] ?? factors.moderate!;
     const tdee = bmr * factor;
     return [
-      { label: 'TDEE — maintenance calories', value: `${fmt(tdee, 0)} kcal/day`, hint: `BMR ${fmt(bmr, 0)} × ${factor} (${actLabel})` },
-      { label: 'BMR (at complete rest)', value: `${fmt(bmr, 0)} kcal/day`, hint: 'Mifflin–St Jeor equation' },
+      { label: 'TDEE, maintenance calories', value: `${fmt(tdee, 0)} kcal/day`, hint: `BMR ${fmt(bmr, 0)} × ${factor} (${actLabel})` },
+      { label: 'BMR (at complete rest)', value: `${fmt(bmr, 0)} kcal/day`, hint: 'Mifflin-St Jeor equation' },
       { label: 'Mild loss (−0.25 kg/wk)', value: `${fmt(tdee - 250, 0)} kcal/day`, hint: '≈ 250 kcal deficit' },
       { label: 'Weight loss (−0.5 kg/wk)', value: `${fmt(tdee - 500, 0)} kcal/day`, hint: '≈ 500 kcal deficit' },
       { label: 'Weight gain (+0.5 kg/wk)', value: `${fmt(tdee + 500, 0)} kcal/day`, hint: '≈ 500 kcal surplus' },
@@ -317,7 +317,7 @@ export const COMPUTE: Record<string, (v: Values) => ResultRow[] | null> = {
       { label: 'Robinson (1983)', value: disp(kg(base.rob, perIn.rob)) },
       { label: 'Miller (1983)', value: disp(kg(base.mil, perIn.mil)) },
       { label: 'Hamwi (1964)', value: disp(kg(base.ham, perIn.ham)) },
-      { label: 'Healthy BMI range (18.5–24.9)', value: `${disp(18.5 * hm * hm)} – ${disp(24.9 * hm * hm)}`, hint: 'often more useful than a single "ideal" number' },
+      { label: 'Healthy BMI range (18.5 to 24.9)', value: `${disp(18.5 * hm * hm)} – ${disp(24.9 * hm * hm)}`, hint: 'often more useful than a single "ideal" number' },
     ];
   },
 
@@ -385,8 +385,8 @@ export const COMPUTE: Record<string, (v: Values) => ResultRow[] | null> = {
     const margin = price > 0 ? (profit / price) * 100 : NaN;
     return [
       { label: 'Profit per unit', value: fmt(profit), hint: `price ${fmt(price)} − cost ${fmt(cost)}` },
-      { label: 'Markup (on cost)', value: Number.isFinite(markup) ? `${fmt(markup, 1)}%` : '—', hint: 'profit ÷ cost — what you add on top of cost' },
-      { label: 'Margin (on price)', value: Number.isFinite(margin) ? `${fmt(margin, 1)}%` : '—', hint: 'profit ÷ price — the share of revenue you keep' },
+      { label: 'Markup (on cost)', value: Number.isFinite(markup) ? `${fmt(markup, 1)}%` : '—', hint: 'profit ÷ cost, what you add on top of cost' },
+      { label: 'Margin (on price)', value: Number.isFinite(margin) ? `${fmt(margin, 1)}%` : '—', hint: 'profit ÷ price, the share of revenue you keep' },
     ];
   },
 
@@ -436,10 +436,10 @@ export const COMPUTE: Record<string, (v: Values) => ResultRow[] | null> = {
     const pA = n(v.priceA), qA = n(v.qtyA), pB = n(v.priceB), qB = n(v.qtyB);
     if (!Number.isFinite(pA) || !Number.isFinite(qA) || qA <= 0) return null;
     const uA = pA / qA;
-    const rows: ResultRow[] = [{ label: 'Item A — price per unit', value: fmt(uA, 4), hint: `${fmt(pA)} ÷ ${fmt(qA)}` }];
+    const rows: ResultRow[] = [{ label: 'Item A, price per unit', value: fmt(uA, 4), hint: `${fmt(pA)} ÷ ${fmt(qA)}` }];
     if (Number.isFinite(pB) && Number.isFinite(qB) && qB > 0) {
       const uB = pB / qB;
-      rows.push({ label: 'Item B — price per unit', value: fmt(uB, 4), hint: `${fmt(pB)} ÷ ${fmt(qB)}` });
+      rows.push({ label: 'Item B, price per unit', value: fmt(uB, 4), hint: `${fmt(pB)} ÷ ${fmt(qB)}` });
       const save = (Math.abs(uA - uB) / Math.max(uA, uB)) * 100;
       rows.push({ label: 'Better value', value: uA === uB ? 'Same price' : `Item ${uA < uB ? 'A' : 'B'}`, hint: uA === uB ? '' : `${fmt(save)}% cheaper per unit` });
     }
@@ -536,10 +536,10 @@ export const COMPUTE: Record<string, (v: Values) => ResultRow[] | null> = {
     const w = weight / 100;
     const needed = (target - current * (1 - w)) / w;
     const verdict = needed > 100
-      ? `Not reachable with this final alone — you'd need ${fmt(needed, 1)}% (over 100%).`
+      ? `Not reachable with this final alone, you'd need ${fmt(needed, 1)}% (over 100%).`
       : needed <= 0
-        ? `Already secured — even a 0% final keeps you at or above ${fmt(target, 1)}%.`
-        : `Achievable — you need ${fmt(needed, 1)}% or higher.`;
+        ? `Already secured, even a 0% final keeps you at or above ${fmt(target, 1)}%.`
+        : `Achievable, you need ${fmt(needed, 1)}% or higher.`;
     return [
       { label: 'Score needed on the final', value: `${fmt(needed, 1)}%`, hint: `(target ${fmt(target)}% − current ${fmt(current)}% × ${fmt(1 - w, 2)}) ÷ ${fmt(w, 2)}` },
       { label: 'Verdict', value: verdict },
@@ -641,7 +641,7 @@ export const COMPUTE: Record<string, (v: Values) => ResultRow[] | null> = {
     return [
       { label: 'Days', value: label, hint: target.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) },
       { label: 'Weeks', value: `${fmt(abs / 7, 1)} weeks ${dir}`.trim(), hint: `${fmt(abs, 0)} ÷ 7` },
-      { label: 'Weekdays (Mon–Fri)', value: `${fmt(countWeekdays(today, target), 0)} weekdays`, hint: 'excludes weekends' },
+      { label: 'Weekdays (Mon-Fri)', value: `${fmt(countWeekdays(today, target), 0)} weekdays`, hint: 'excludes weekends' },
     ];
   },
 

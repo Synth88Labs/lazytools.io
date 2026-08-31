@@ -1,7 +1,7 @@
 /**
  * Calendar-system conversions. Forward (Gregorian -> other) uses the browser's
- * own ICU/CLDR calendar data via Intl — the same authoritative source operating
- * systems use — so no calendar algorithm is invented. Reverse (other ->
+ * own ICU/CLDR calendar data via Intl, the same authoritative source operating
+ * systems use, so no calendar algorithm is invented. Reverse (other ->
  * Gregorian) inverts Intl by binary search over the Gregorian day number, which
  * is exact because each calendar's (year, month, day) tuple is monotonic in
  * time. Julian calendar and Julian Day Number use the standard integer
@@ -23,17 +23,17 @@ export interface CalendarSystem {
 
 export const CALENDAR_SYSTEMS: CalendarSystem[] = [
   { id: 'gregory', name: 'Gregorian', note: 'The civil calendar used worldwide.', reversible: false, months: 12 },
-  { id: 'islamic-umalqura', name: 'Islamic (Umm al-Qura)', note: 'Saudi civil Hijri calendar — the common "Hijri date".', eraHint: 'AH', reversible: true, months: 12 },
+  { id: 'islamic-umalqura', name: 'Islamic (Umm al-Qura)', note: 'Saudi civil Hijri calendar, the common "Hijri date".', eraHint: 'AH', reversible: true, months: 12 },
   { id: 'islamic-civil', name: 'Islamic (tabular)', note: 'Arithmetic Hijri calendar (no moon sighting).', eraHint: 'AH', reversible: true, months: 12 },
   { id: 'persian', name: 'Persian (Solar Hijri)', note: 'Iranian/Jalali calendar; new year at the spring equinox (Nowruz).', eraHint: 'SH', reversible: true, months: 12 },
   { id: 'hebrew', name: 'Hebrew', note: 'Jewish lunisolar calendar; leap years add a 13th month (Adar I/II).', eraHint: 'AM', reversible: false },
   { id: 'indian', name: 'Indian National (Saka)', note: 'Official civil calendar of India.', eraHint: 'Saka', reversible: true, months: 12 },
   { id: 'buddhist', name: 'Buddhist (Thai)', note: 'Thai solar calendar; year = Gregorian + 543.', eraHint: 'BE', reversible: true, months: 12 },
   { id: 'coptic', name: 'Coptic', note: 'Egyptian Christian calendar; 12 months of 30 days + a short 13th.', eraHint: 'AM', reversible: true },
-  { id: 'ethiopic', name: 'Ethiopian', note: 'Calendar of Ethiopia; ~7–8 years behind Gregorian.', eraHint: 'EE', reversible: true },
+  { id: 'ethiopic', name: 'Ethiopian', note: 'Calendar of Ethiopia; ~7 to 8 years behind Gregorian.', eraHint: 'EE', reversible: true },
   { id: 'roc', name: 'Minguo (ROC)', note: 'Taiwan calendar; year = Gregorian − 1911.', reversible: true, months: 12 },
   { id: 'japanese', name: 'Japanese (era)', note: 'Gregorian months with Japanese era years (Reiwa…).', reversible: false, months: 12 },
-  { id: 'chinese', name: 'Chinese', note: 'Traditional lunisolar calendar (display only — has leap months).', reversible: false },
+  { id: 'chinese', name: 'Chinese', note: 'Traditional lunisolar calendar (display only, has leap months).', reversible: false },
   { id: 'julian', name: 'Julian', note: 'The pre-1582 Western calendar; now ~13 days behind Gregorian.', reversible: true, months: 12 },
   { id: 'jdn', name: 'Julian Day Number', note: 'Continuous day count used in astronomy (day changes at noon UT).', reversible: true },
 ];

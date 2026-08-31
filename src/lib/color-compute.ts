@@ -1,4 +1,4 @@
-/** Color parsing, conversion and WCAG math — all client-side, all exact formulas. */
+/** Color parsing, conversion and WCAG math, all client-side, all exact formulas. */
 
 export interface RGB {
   r: number;
@@ -85,7 +85,7 @@ export function luminance({ r, g, b }: RGB): number {
   return 0.2126 * lin(r) + 0.7152 * lin(g) + 0.0722 * lin(b);
 }
 
-/** WCAG contrast ratio, 1–21. */
+/** WCAG contrast ratio, 1 to 21. */
 export function contrastRatio(a: RGB, b: RGB): number {
   const l1 = luminance(a), l2 = luminance(b);
   const [hi, lo] = l1 >= l2 ? [l1, l2] : [l2, l1];
@@ -112,7 +112,7 @@ export function tintsAndShades(base: RGB, n = 9): { tints: RGB[]; shades: RGB[] 
   };
 }
 
-/** RGB (0–255) → HSV (h 0–360, s/v 0–100). */
+/** RGB (0 to 255) → HSV (h 0 to 360, s/v 0 to 100). */
 export function rgbToHsv({ r, g, b }: RGB): { h: number; s: number; v: number } {
   r /= 255; g /= 255; b /= 255;
   const mx = Math.max(r, g, b), mn = Math.min(r, g, b), d = mx - mn;
@@ -125,7 +125,7 @@ export function rgbToHsv({ r, g, b }: RGB): { h: number; s: number; v: number } 
   }
   return { h, s: mx === 0 ? 0 : (d / mx) * 100, v: mx * 100 };
 }
-/** HSV (h 0–360, s/v 0–100) → RGB (0–255). */
+/** HSV (h 0 to 360, s/v 0 to 100) → RGB (0 to 255). */
 export function hsvToRgb(h: number, s: number, v: number): RGB {
   s /= 100; v /= 100;
   const c = v * s, x = c * (1 - Math.abs(((h / 60) % 2) - 1)), m = v - c;

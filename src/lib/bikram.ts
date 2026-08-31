@@ -1,11 +1,11 @@
 /**
  * Bikram Sambat (Nepali) ⇄ Gregorian (AD) conversion.
  *
- * Bikram Sambat is not in the browser's Intl/ICU data — its month lengths are
+ * Bikram Sambat is not in the browser's Intl/ICU data, its month lengths are
  * astronomically determined and published in official tables rather than
- * derived by a formula — so this wraps @remotemerge/nepali-date-converter,
- * whose tabulated data is validated across its whole range (1975–2099 BS ≈
- * 1918–2043 AD). Verified against known anchors (1 Baishakh 2081 BS =
+ * derived by a formula, so this wraps @remotemerge/nepali-date-converter,
+ * whose tabulated data is validated across its whole range (1975 to 2099 BS ≈
+ * 1918 to 2043 AD). Verified against known anchors (1 Baishakh 2081 BS =
  * 13 April 2024 AD).
  */
 import DateConverter from '@remotemerge/nepali-date-converter';
@@ -21,7 +21,7 @@ export const AD_RANGE = { minYear: 1918, maxYear: 2043 };
 
 export interface ConvResult {
   year: number;
-  month: number; // 1–12
+  month: number; // 1 to 12
   day: number; // day of month
   weekday: string;
   monthName: string;

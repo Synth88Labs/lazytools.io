@@ -4,7 +4,7 @@
  * time, budget split, luggage volume, layover gap) and lightly reference-backed
  * estimators (flight time, jet-lag adjustment, tipping customs). Constants that
  * depend on the real world (cruise speed, baggage limits, tipping norms) are
- * cited on each tool page; do not invent them — verify against authoritative
+ * cited on each tool page; do not invent them, verify against authoritative
  * references and caveat that they vary.
  */
 
@@ -34,7 +34,7 @@ export function haversineKm(a: Coord, b: Coord): number {
   return EARTH_RADIUS_KM * c;
 }
 
-/** Initial (forward) great-circle bearing from a to b, degrees 0–360 (0 = north). */
+/** Initial (forward) great-circle bearing from a to b, degrees 0 to 360 (0 = north). */
 export function initialBearing(a: Coord, b: Coord): number {
   const la1 = toRad(a.lat);
   const la2 = toRad(b.lat);
@@ -55,9 +55,9 @@ export function compassPoint(deg: number): string {
 /**
  * Rough flight-time estimate from a great-circle distance. Uses a typical
  * jetliner cruise ground speed and a fixed ground/climb/descent overhead.
- * Deliberately approximate — real times depend on winds, routing and ATC.
+ * Deliberately approximate, real times depend on winds, routing and ATC.
  */
-export const CRUISE_SPEED_KMH = 830; // typical 737/A320-family cruise ≈ M0.78 ≈ 828–840 km/h TAS
+export const CRUISE_SPEED_KMH = 830; // typical 737/A320-family cruise ≈ M0.78 ≈ 828 to 840 km/h TAS
 export const FLIGHT_OVERHEAD_MIN = 30; // modeling convention for taxi + climb + descent + approach
 
 export function flightTimeMinutes(distanceKm: number, cruiseKmh = CRUISE_SPEED_KMH, overheadMin = FLIGHT_OVERHEAD_MIN): number {
@@ -151,11 +151,11 @@ export function luggageLitres(l: number, w: number, h: number): number | null {
 }
 
 /**
- * Common airline baggage reference limits. Highly airline-dependent — the site
+ * Common airline baggage reference limits. Highly airline-dependent, the site
  * page carries a prominent "always check your airline" caveat.
  */
 export const BAGGAGE = {
-  carryOn: { l: 56, w: 36, h: 23, linearCm: 115, weightKg: 10 }, // IATA cabin guideline 55×35×20–56×36×23
+  carryOn: { l: 56, w: 36, h: 23, linearCm: 115, weightKg: 10 }, // IATA cabin guideline 55×35×20 to 56×36×23
   checked: { linearCm: 158, weightKg: 23 }, // 62 in linear, 50 lb economy
 };
 
@@ -184,22 +184,22 @@ export interface TipCustom { country: string; low: number; high: number; note: s
 /**
  * Customary restaurant tipping by country. Tipping is cultural and varies by
  * setting and service; these are typical ranges as guidance only. Cited on the
- * page. `low`/`high` are percent; a 0–0 range means tipping is not expected.
+ * page. `low`/`high` are percent; a 0 to 0 range means tipping is not expected.
  */
 export const TIP_CUSTOMS: TipCustom[] = [
-  { country: 'United States', low: 15, high: 20, note: 'Expected; 18–20% for good service. Often not included in the bill.' },
+  { country: 'United States', low: 15, high: 20, note: 'Expected; 18 to 20% for good service. Often not included in the bill.' },
   { country: 'Canada', low: 15, high: 20, note: 'Expected, similar to the US.' },
   { country: 'United Kingdom', low: 10, high: 15, note: 'Common if service is not already included (check for a service charge).' },
-  { country: 'France', low: 0, high: 5, note: 'Service compris — service is included by law. Round up or leave small change for good service.' },
-  { country: 'Germany', low: 5, high: 10, note: 'Round up or add ~5–10%, handed directly to the server.' },
+  { country: 'France', low: 0, high: 5, note: 'Service compris, service is included by law. Round up or leave small change for good service.' },
+  { country: 'Germany', low: 5, high: 10, note: 'Round up or add ~5 to 10%, handed directly to the server.' },
   { country: 'Italy', low: 0, high: 10, note: 'A coperto (cover charge) is common; extra tip optional, round up or up to 10%.' },
   { country: 'Spain', low: 0, high: 10, note: 'Not obligatory; round up or leave small change, up to ~10% for good service.' },
-  { country: 'Japan', low: 0, high: 0, note: 'No tipping — it can cause confusion or offence. Excellent service is standard.' },
+  { country: 'Japan', low: 0, high: 0, note: 'No tipping, it can cause confusion or offence. Excellent service is standard.' },
   { country: 'China', low: 0, high: 0, note: 'Generally not expected, especially outside high-end/international hotels.' },
   { country: 'Australia', low: 0, high: 10, note: 'Not expected (staff are paid a living wage); ~10% appreciated for great service.' },
   { country: 'United Arab Emirates', low: 10, high: 15, note: 'A 10% service charge is often added; an extra ~10% is common if not.' },
   { country: 'India', low: 5, high: 10, note: 'Common in restaurants; check whether a service charge is already added.' },
-  { country: 'Mexico', low: 10, high: 15, note: 'Expected (propina); ~10–15% is standard.' },
+  { country: 'Mexico', low: 10, high: 15, note: 'Expected (propina); ~10 to 15% is standard.' },
   { country: 'Brazil', low: 0, high: 10, note: 'A 10% service charge (serviço) is usually added to the bill; extra optional.' },
 ];
 
@@ -207,7 +207,7 @@ export const TIP_CUSTOMS: TipCustom[] = [
 
 export interface SDT { distance: number; speed: number; hours: number; }
 /**
- * Solve the speed–distance–time identity distance = speed × time. Provide
+ * Solve the speed-distance-time identity distance = speed × time. Provide
  * exactly two of {distance, speed, hours} (pass null for the unknown) and the
  * third is returned, in consistent units (e.g. km, km/h, hours). Returns null
  * if not exactly two are given or the inputs are unsolvable.

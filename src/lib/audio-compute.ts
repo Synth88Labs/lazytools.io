@@ -1,4 +1,4 @@
-/** Audio helpers — Web Audio decode/process, 16-bit PCM WAV encode. All local. */
+/** Audio helpers, Web Audio decode/process, 16-bit PCM WAV encode. All local. */
 
 export async function decodeAudio(data: ArrayBuffer): Promise<AudioBuffer> {
   const ctx = new AudioContext();

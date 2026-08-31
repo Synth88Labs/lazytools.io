@@ -1,4 +1,4 @@
-/** Codes & ciphers — deterministic text transforms, all local. */
+/** Codes & ciphers, deterministic text transforms, all local. */
 
 // ---- Morse ----
 export const MORSE: Record<string, string> = {

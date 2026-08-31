@@ -95,13 +95,13 @@ export const SCALE_TYPES: ScaleType[] = [
   { id: 'chromatic', name: 'Chromatic', intervals: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] },
 ];
 
-/** Note names for a chord/scale from a root pitch-class (0–11) and interval list. */
+/** Note names for a chord/scale from a root pitch-class (0 to 11) and interval list. */
 export function notesFromIntervals(rootPc: number, intervals: number[], flat = false): string[] {
   const names = flat ? NOTE_NAMES_FLAT : NOTE_NAMES;
   return intervals.map((i) => names[(((rootPc + i) % 12) + 12) % 12]);
 }
 
-/** Unique, sorted pitch-class set (0–11) from a list of pitch classes. */
+/** Unique, sorted pitch-class set (0 to 11) from a list of pitch classes. */
 export function pcSet(pcs: number[]): number[] {
   return [...new Set(pcs.map((p) => (((p % 12) + 12) % 12)))].sort((a, b) => a - b);
 }
@@ -184,7 +184,7 @@ export function bufferLatencyMs(bufferSamples: number, sampleRate: number): numb
 /* ---------------- Key signatures (circle of fifths) ---------------- */
 
 export interface KeySig {
-  /** Number of accidentals (0–7). */
+  /** Number of accidentals (0 to 7). */
   count: number;
   /** 'sharp', 'flat' or 'none'. */
   type: 'sharp' | 'flat' | 'none';
@@ -260,7 +260,7 @@ export interface ReverbResult {
  * Reverberation time RT60 (s) by the Sabine equation: RT60 = 0.161 · V / A,
  * with V the room volume (m³) and A the total absorption (sabins) = surface
  * area × average absorption coefficient. Inputs are room length, width and
- * height in metres and an average absorption coefficient (0–1).
+ * height in metres and an average absorption coefficient (0 to 1).
  */
 export function reverbRT60(lengthM: number, widthM: number, heightM: number, absorption: number): ReverbResult | null {
   if (lengthM <= 0 || widthM <= 0 || heightM <= 0 || absorption <= 0 || absorption > 1) return null;

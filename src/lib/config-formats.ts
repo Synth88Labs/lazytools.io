@@ -43,7 +43,7 @@ export function parseIni(text: string): Record<string, unknown> {
 /** Remove an unquoted inline comment ( value ; comment  /  value # comment ). */
 function stripInlineComment(val: string): string {
   if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) {
-    return val; // fully quoted — leave as-is
+    return val; // fully quoted, leave as-is
   }
   const m = val.match(/\s+[;#]/);
   if (m && m.index !== undefined) return val.slice(0, m.index).trim();
@@ -249,7 +249,7 @@ function escapePropVal(v: unknown): string {
 
 export function requireObject(data: unknown, fmt: string): Record<string, unknown> {
   if (data === null || typeof data !== 'object' || Array.isArray(data)) {
-    throw new Error(`A ${fmt} document is a set of key/value pairs, so the JSON must be an object at the top level — not an array, string or number.`);
+    throw new Error(`A ${fmt} document is a set of key/value pairs, so the JSON must be an object at the top level, not an array, string or number.`);
   }
   return data as Record<string, unknown>;
 }

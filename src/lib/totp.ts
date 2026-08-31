@@ -2,7 +2,7 @@
  * RFC 4226 HOTP / RFC 6238 TOTP using Web Crypto (crypto.subtle), available in
  * modern browsers and Node. Deterministic when the time is injected, so it is
  * Node-tested against the RFC 6238 Appendix B test vectors. No secret ever
- * leaves the device — that is the whole point of doing this locally.
+ * leaves the device, that is the whole point of doing this locally.
  */
 
 export type TotpAlgo = 'SHA-1' | 'SHA-256' | 'SHA-512';

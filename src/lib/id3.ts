@@ -2,7 +2,7 @@
  * A small, dependency-free reader for MP3 metadata: ID3v2 (2.2/2.3/2.4) and
  * ID3v1 tags, plus the first MPEG audio frame header (version, layer, bitrate,
  * sample rate, channel mode) and Xing/Info VBR detection for an accurate
- * duration. Read-only and pure — it parses headers, not audio samples.
+ * duration. Read-only and pure, it parses headers, not audio samples.
  */
 
 export interface Mp3Info {
@@ -189,7 +189,7 @@ export function parseMp3(bytes: Uint8Array): Mp3Info {
   }
   parseId3v1(bytes, info);
   if (bytes.length < 4 || (audioStart === 0 && !(bytes[0] === 0xff && (bytes[1]! & 0xe0) === 0xe0) && info.tags.length === 0)) {
-    if (info.tags.length === 0) throw new Error('No ID3 tags or MPEG audio frame found — this may not be an MP3 file.');
+    if (info.tags.length === 0) throw new Error('No ID3 tags or MPEG audio frame found, this may not be an MP3 file.');
   }
   parseMpegFrame(bytes, audioStart, info);
   return info;

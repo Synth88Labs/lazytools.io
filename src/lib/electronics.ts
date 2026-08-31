@@ -75,8 +75,8 @@ export function fmtCapacitance(pf: number): string {
 /* ---------------- SMD resistor code ---------------- */
 
 /**
- * EIA-96 3-significant-figure lookup, code 01–96 → value (the E96 1% series).
- * Standard EIA/IEC table — do not alter values.
+ * EIA-96 3-significant-figure lookup, code 01 to 96 → value (the E96 1% series).
+ * Standard EIA/IEC table, do not alter values.
  */
 export const EIA96: number[] = [
   100, 102, 105, 107, 110, 113, 115, 118, 121, 124, 127, 130, 133, 137, 140, 143,

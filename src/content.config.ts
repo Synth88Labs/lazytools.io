@@ -14,7 +14,7 @@ const blog = defineCollection({
     archetype: z.string(),
     /** tool URLs this post promotes, e.g. /units/kg-to-lbs/ */
     tools: z.array(z.string()),
-    /** primary first, then secondaries — the coverage checklist and BlogPosting keywords */
+    /** primary first, then secondaries, the coverage checklist and BlogPosting keywords */
     keywords: z.array(z.string()).default([]),
     /** 1200×630 branded feature image (also og:image), e.g. /blog/kg-to-lbs-guide.png */
     heroImage: z.string().optional(),

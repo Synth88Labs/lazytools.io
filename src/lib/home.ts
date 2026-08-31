@@ -1,5 +1,5 @@
 /**
- * Home & DIY math — staircase geometry, wall-stud counts and room AC sizing.
+ * Home & DIY math, staircase geometry, wall-stud counts and room AC sizing.
  * Pure geometry plus widely-published sizing conventions (IRC stair limits,
  * ENERGY STAR ~20 BTU/ft²). Node-tested in scripts/test-home.ts.
  */

@@ -1,5 +1,5 @@
 /**
- * Generators — pure, testable helpers for the /generate/ tools.
+ * Generators, pure, testable helpers for the /generate/ tools.
  * Randomness is injectable (rand: () => number in [0,1)) so results are testable;
  * widgets pass a crypto-backed rand. Luhn is the standard mod-10 checksum.
  */

@@ -1,6 +1,6 @@
 /**
  * Networking math: download/upload time and bandwidth-unit conversion. Pure
- * arithmetic on the standard bit/byte definitions — a byte is 8 bits, network
+ * arithmetic on the standard bit/byte definitions, a byte is 8 bits, network
  * speeds are quoted in decimal bits per second (kilo = 1000), and file sizes
  * are given in either decimal (MB = 10⁶ B) or binary (MiB = 2²⁰ B) units.
  */
@@ -20,8 +20,8 @@ export const SPEED_BPS: Record<string, number> = {
 
 /**
  * Download/upload time in seconds for a file of `bytes` over a link of
- * `speedBps` bits per second. An optional `efficiency` (0–1) models real-world
- * throughput after protocol overhead — e.g. 0.9 for ~10% TCP/IP overhead.
+ * `speedBps` bits per second. An optional `efficiency` (0 to 1) models real-world
+ * throughput after protocol overhead, e.g. 0.9 for ~10% TCP/IP overhead.
  */
 export function downloadSeconds(bytes: number, speedBps: number, efficiency = 1): number {
   if (bytes <= 0 || speedBps <= 0 || efficiency <= 0) return 0;

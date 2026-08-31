@@ -1,5 +1,5 @@
 /**
- * Generate SQL from data — JSON or CSV to INSERT statements, and a list to an
+ * Generate SQL from data, JSON or CSV to INSERT statements, and a list to an
  * IN (...) clause. Pure and deterministic. Values are typed and escaped: numbers
  * and booleans stay literal, empty/null become NULL, everything else is a
  * single-quoted string with '' escaping. Identifiers are lightly sanitized.

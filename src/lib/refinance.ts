@@ -1,4 +1,4 @@
-/** Mortgage refinance break-even math (client-side, educational — not advice). */
+/** Mortgage refinance break-even math (client-side, educational, not advice). */
 
 /** Fixed monthly payment to amortize `principal` at `annualRatePct` over `months`. */
 export function monthlyPayment(principal: number, annualRatePct: number, months: number): number {

@@ -1,7 +1,7 @@
 /**
  * Fitness & Exercise math. These are published exercise-science formulas
  * (Epley, Brzycki, Tanaka, Karvonen, Riegel, Cooper) and the standard MET
- * energy equation — each cited on its tool page. MET values are from the
+ * energy equation, each cited on its tool page. MET values are from the
  * Compendium of Physical Activities (Ainsworth et al.). Do not invent constants.
  */
 
@@ -66,7 +66,7 @@ export function repWeight(oneRM: number, reps: number) {
 
 /* ---------------- Heart rate ---------------- */
 
-/** Traditional (Fox/Haskell) max HR — a rough approximation. */
+/** Traditional (Fox/Haskell) max HR, a rough approximation. */
 export const maxHrTraditional = (age: number) => 220 - age;
 /** Tanaka, Monahan & Seals (2001): HRmax = 208 − 0.7 × age. */
 export const maxHrTanaka = (age: number) => 208 - 0.7 * age;
@@ -80,11 +80,11 @@ export function karvonen(maxHr: number, restHr: number, intensity: number) {
 
 export interface HrZone { name: string; lo: number; hi: number; desc: string }
 export const HR_ZONES: { name: string; lo: number; hi: number; desc: string }[] = [
-  { name: 'Zone 1', lo: 0.5, hi: 0.6, desc: 'Very light — warm-up, recovery' },
-  { name: 'Zone 2', lo: 0.6, hi: 0.7, desc: 'Light — fat burn, base endurance' },
-  { name: 'Zone 3', lo: 0.7, hi: 0.8, desc: 'Moderate — aerobic, stamina' },
-  { name: 'Zone 4', lo: 0.8, hi: 0.9, desc: 'Hard — anaerobic threshold' },
-  { name: 'Zone 5', lo: 0.9, hi: 1.0, desc: 'Maximum — VO₂ max, sprints' },
+  { name: 'Zone 1', lo: 0.5, hi: 0.6, desc: 'Very light, warm-up, recovery' },
+  { name: 'Zone 2', lo: 0.6, hi: 0.7, desc: 'Light, fat burn, base endurance' },
+  { name: 'Zone 3', lo: 0.7, hi: 0.8, desc: 'Moderate, aerobic, stamina' },
+  { name: 'Zone 4', lo: 0.8, hi: 0.9, desc: 'Hard, anaerobic threshold' },
+  { name: 'Zone 5', lo: 0.9, hi: 1.0, desc: 'Maximum, VO₂ max, sprints' },
 ];
 
 /* ---------------- Race prediction (Riegel) ---------------- */
@@ -108,25 +108,25 @@ export function cooperVo2(distanceM: number) {
 export interface Activity { id: string; name: string; met: number }
 /**
  * Representative MET values, Compendium of Physical Activities (Ainsworth et al.,
- * Med Sci Sports Exerc 2011;43(8):1575–1581 / pacompendium.com). METs vary with
- * intensity — these are single representative values.
+ * Med Sci Sports Exerc 2011;43(8):1575 to 1581 / pacompendium.com). METs vary with
+ * intensity, these are single representative values.
  */
 export const ACTIVITIES: Activity[] = [
   { id: 'walk-25', name: 'Walking, 2.5 mph (level)', met: 3.0 },
   { id: 'walk-mod', name: 'Walking, 3.0 mph (moderate)', met: 3.5 },
-  { id: 'walk-brisk', name: 'Walking, 3.5–3.9 mph (brisk)', met: 4.8 },
+  { id: 'walk-brisk', name: 'Walking, 3.5 to 3.9 mph (brisk)', met: 4.8 },
   { id: 'run-5', name: 'Running, 5 mph (12 min/mile)', met: 8.5 },
   { id: 'run-6', name: 'Running, 6 mph (10 min/mile)', met: 9.3 },
   { id: 'run-7', name: 'Running, 7 mph (8.5 min/mile)', met: 11.0 },
   { id: 'run-8', name: 'Running, 8 mph (7.5 min/mile)', met: 12.0 },
-  { id: 'cycle-mod', name: 'Cycling, 12–13.9 mph (moderate)', met: 8.0 },
-  { id: 'cycle-vig', name: 'Cycling, 14–15.9 mph (vigorous)', met: 10.0 },
+  { id: 'cycle-mod', name: 'Cycling, 12 to 13.9 mph (moderate)', met: 8.0 },
+  { id: 'cycle-vig', name: 'Cycling, 14 to 15.9 mph (vigorous)', met: 10.0 },
   { id: 'cycle-stationary', name: 'Stationary cycling, moderate', met: 6.0 },
   { id: 'swim', name: 'Swimming laps, freestyle (recreational)', met: 5.8 },
-  { id: 'row-mod', name: 'Rowing machine, 100–149 W (moderate)', met: 7.5 },
-  { id: 'row-vig', name: 'Rowing machine, 150–199 W (vigorous)', met: 11.0 },
+  { id: 'row-mod', name: 'Rowing machine, 100 to 149 W (moderate)', met: 7.5 },
+  { id: 'row-vig', name: 'Rowing machine, 150 to 199 W (vigorous)', met: 11.0 },
   { id: 'elliptical', name: 'Elliptical trainer, moderate', met: 5.0 },
-  { id: 'weights', name: 'Weight training, light/moderate (8–15 reps)', met: 3.5 },
+  { id: 'weights', name: 'Weight training, light/moderate (8 to 15 reps)', met: 3.5 },
   { id: 'weights-vig', name: 'Weight training, vigorous (powerlifting)', met: 6.0 },
   { id: 'yoga', name: 'Yoga, hatha', met: 2.5 },
   { id: 'hike', name: 'Hiking, cross-country', met: 6.0 },
@@ -181,7 +181,7 @@ export interface DeficitResult {
 /**
  * Daily calorie deficit to lose `amount` of weight over `days`, using ~7,700
  * kcal per kg (or 3,500 per lb) of fat. Returns the total and per-day deficit
- * and the implied weekly rate. A simplified model — real loss varies.
+ * and the implied weekly rate. A simplified model, real loss varies.
  */
 export function calorieDeficit(amount: number, days: number, unit: 'kg' | 'lb'): DeficitResult | null {
   if (amount <= 0 || days <= 0) return null;

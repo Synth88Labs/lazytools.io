@@ -36,8 +36,8 @@ export function dogAgeTraditional(dogYears: number, size: DogSize): number | nul
 }
 export const DOG_SIZES: { id: DogSize; label: string }[] = [
   { id: 'small', label: 'Small (up to ~9 kg / 20 lb)' },
-  { id: 'medium', label: 'Medium (~9–23 kg / 20–50 lb)' },
-  { id: 'large', label: 'Large (~23–41 kg / 50–90 lb)' },
+  { id: 'medium', label: 'Medium (~9 to 23 kg / 20 to 50 lb)' },
+  { id: 'large', label: 'Large (~23 to 41 kg / 50 to 90 lb)' },
   { id: 'giant', label: 'Giant (over ~41 kg / 90 lb)' },
 ];
 
@@ -69,8 +69,8 @@ export const DOG_MER: MerFactor[] = [
   { id: 'light', label: 'Light work / active', factor: 2.0 },
   { id: 'moderate', label: 'Moderate work', factor: 3.0 },
   { id: 'heavy', label: 'Heavy / sled work', factor: 5.0 },
-  { id: 'puppy-young', label: 'Puppy, 0–4 months', factor: 3.0 },
-  { id: 'puppy-old', label: 'Puppy, 4 months–adult', factor: 2.0 },
+  { id: 'puppy-young', label: 'Puppy, 0 to 4 months', factor: 3.0 },
+  { id: 'puppy-old', label: 'Puppy, 4 months-adult', factor: 2.0 },
 ];
 /** MER multipliers for CATS (WSAVA/veterinary-nutrition convention). */
 export const CAT_MER: MerFactor[] = [
@@ -88,19 +88,19 @@ export function mer(weightKg: number, factor: number): number { return rer(weigh
 export interface Species { id: string; name: string; days: number; range: string }
 /** Average gestation periods (days). */
 export const GESTATION: Species[] = [
-  { id: 'dog', name: 'Dog', days: 63, range: '58–68' },
-  { id: 'cat', name: 'Cat', days: 65, range: '63–67' },
-  { id: 'rabbit', name: 'Rabbit', days: 31, range: '28–33' },
-  { id: 'guinea-pig', name: 'Guinea pig', days: 65, range: '59–72' },
-  { id: 'hamster', name: 'Hamster (Syrian)', days: 16, range: '16–19' },
-  { id: 'rat', name: 'Rat', days: 22, range: '21–23' },
-  { id: 'mouse', name: 'Mouse', days: 20, range: '19–21' },
-  { id: 'ferret', name: 'Ferret', days: 42, range: '41–43' },
-  { id: 'horse', name: 'Horse', days: 340, range: '330–345' },
-  { id: 'cow', name: 'Cow', days: 283, range: '279–287' },
-  { id: 'pig', name: 'Pig', days: 114, range: '112–115' },
-  { id: 'sheep', name: 'Sheep', days: 147, range: '144–151' },
-  { id: 'goat', name: 'Goat', days: 150, range: '145–155' },
+  { id: 'dog', name: 'Dog', days: 63, range: '58 to 68' },
+  { id: 'cat', name: 'Cat', days: 65, range: '63 to 67' },
+  { id: 'rabbit', name: 'Rabbit', days: 31, range: '28 to 33' },
+  { id: 'guinea-pig', name: 'Guinea pig', days: 65, range: '59 to 72' },
+  { id: 'hamster', name: 'Hamster (Syrian)', days: 16, range: '16 to 19' },
+  { id: 'rat', name: 'Rat', days: 22, range: '21 to 23' },
+  { id: 'mouse', name: 'Mouse', days: 20, range: '19 to 21' },
+  { id: 'ferret', name: 'Ferret', days: 42, range: '41 to 43' },
+  { id: 'horse', name: 'Horse', days: 340, range: '330 to 345' },
+  { id: 'cow', name: 'Cow', days: 283, range: '279 to 287' },
+  { id: 'pig', name: 'Pig', days: 114, range: '112 to 115' },
+  { id: 'sheep', name: 'Sheep', days: 147, range: '144 to 151' },
+  { id: 'goat', name: 'Goat', days: 150, range: '145 to 155' },
 ];
 export const getSpecies = (id: string) => GESTATION.find((s) => s.id === id);
 
@@ -157,8 +157,8 @@ export interface ChocResult {
  * Estimate a dog's theobromine dose (mg per kg body weight) from a chocolate
  * type, amount eaten and the dog's weight, and band the risk. Published
  * veterinary thresholds (theobromine, per kg): signs from ~20 mg/kg, serious
- * cardiac/neurologic effects ~40–50 mg/kg, seizures ~60 mg/kg, potentially
- * fatal ~100–200 mg/kg. Not a substitute for a vet or poison-control call.
+ * cardiac/neurologic effects ~40 to 50 mg/kg, seizures ~60 mg/kg, potentially
+ * fatal ~100 to 200 mg/kg. Not a substitute for a vet or poison-control call.
  */
 export function chocolateToxicity(type: string, amountG: number, dogKg: number): ChocResult | null {
   const t = THEOBROMINE_MG_PER_G[type];
@@ -185,7 +185,7 @@ export interface StockingResult {
 /**
  * Freshwater stocking estimate by the classic "1 inch of adult fish per (net)
  * gallon" guideline. Net volume is ~85% of the tank's rated volume once
- * substrate and décor are accounted for. A rough guide only — real capacity
+ * substrate and décor are accounted for. A rough guide only, real capacity
  * depends on fish body mass, waste output, filtration and surface area.
  */
 export function aquariumStocking(grossGallons: number, totalFishInches: number): StockingResult | null {
@@ -206,7 +206,7 @@ export function aquariumStocking(grossGallons: number, totalFishInches: number):
 /**
  * Suggested aquarium heater wattage from tank volume (US gallons) and the
  * temperature rise needed above room temperature (°F). Uses the standard
- * hobby guideline of roughly 2.5–5 watts per gallon scaled by the rise:
+ * hobby guideline of roughly 2.5 to 5 watts per gallon scaled by the rise:
  * ~2.5 W/gal for a small rise, ~3.5 for moderate, ~5 for a large rise.
  */
 export function heaterWatts(gallons: number, tempRiseF: number): number | null {
@@ -223,7 +223,7 @@ export function heaterWatts(gallons: number, tempRiseF: number): number | null {
 /**
  * Percent of adult weight a puppy has typically reached by a given age, by
  * size class. Interpolated between anchor points (age in weeks → % of adult
- * weight), based on published breed-size growth curves. Approximate — real
+ * weight), based on published breed-size growth curves. Approximate, real
  * growth varies by breed and individual.
  */
 const GROWTH: Record<string, [number, number][]> = {

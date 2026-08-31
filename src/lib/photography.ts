@@ -151,7 +151,7 @@ export function pixelPitchUm(sensorWidthMm: number, horizontalPixels: number): n
   return (sensorWidthMm / horizontalPixels) * 1000;
 }
 /**
- * Diffraction-limited aperture — the f-number where the Airy disk diameter
+ * Diffraction-limited aperture, the f-number where the Airy disk diameter
  * first equals the pixel pitch, i.e. where stopping down further starts to
  * soften per-pixel detail: N = pixelPitch ÷ (2.44 · λ).
  */

@@ -1,7 +1,7 @@
 /**
  * Statistical special functions and distribution CDF/PDF/quantiles for the Statistics category.
  * Pure JS, double precision. Accuracy targeted to ~1e-10 for the core functions where feasible;
- * tails and extreme parameters degrade gracefully — every tool that uses these states its limits.
+ * tails and extreme parameters degrade gracefully, every tool that uses these states its limits.
  *
  * References: Abramowitz & Stegun; Numerical Recipes (incomplete beta/gamma via continued fractions);
  * Acklam's inverse-normal rational approximation refined by one Halley step.

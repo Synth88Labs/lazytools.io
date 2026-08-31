@@ -1,7 +1,7 @@
 /**
  * Additional math: triangle solving (law of sines/cosines), matrix operations
  * (determinant, inverse, multiply…) and logarithms. Pure mathematical
- * identities — no sourced data. Node-tested in scripts/test-math-extra.ts.
+ * identities, no sourced data. Node-tested in scripts/test-math-extra.ts.
  */
 
 /* ───────────────────────── Triangle solver ───────────────────────── */
@@ -18,7 +18,7 @@ export function solveTriangle(inp: TriangleInput): { solutions: TriangleSolution
   const nS = s.filter((x) => x != null).length;
   const nA = ang.filter((x) => x != null).length;
   if (nS + nA < 3) return { solutions: [], error: 'Enter at least 3 values, including at least one side.' };
-  if (nS === 0) return { solutions: [], error: 'Three angles fix the shape but not the size — enter at least one side.' };
+  if (nS === 0) return { solutions: [], error: 'Three angles fix the shape but not the size, enter at least one side.' };
   const angSum = ang.filter((x): x is number => x != null).reduce((p, q) => p + q, 0);
   if (nA >= 2 && angSum >= Math.PI - 1e-12) return { solutions: [], error: 'The given angles must sum to less than 180°.' };
 
@@ -36,7 +36,7 @@ export function solveTriangle(inp: TriangleInput): { solutions: TriangleSolution
     return { solutions: [build([a, b, c], [A, B, Math.PI - A - B])] };
   }
 
-  // ASA / AAS — two or more angles + a side
+  // ASA / AAS, two or more angles + a side
   if (nA >= 2) {
     const angs = ang.slice() as (number | null)[];
     const known = [0, 1, 2].filter((i) => angs[i] != null);
@@ -62,7 +62,7 @@ export function solveTriangle(inp: TriangleInput): { solutions: TriangleSolution
   const other = knownSides.find((i) => i !== ai)!;
   const X = ang[ai] as number, x = s[ai] as number, y = s[other] as number;
   const sinY = (y * Math.sin(X)) / x;
-  if (sinY > 1 + 1e-9) return { solutions: [], error: 'No triangle fits those values (the side is too short to reach — SSA).' };
+  if (sinY > 1 + 1e-9) return { solutions: [], error: 'No triangle fits those values (the side is too short to reach, SSA).' };
   const Y1 = Math.asin(Math.min(1, sinY));
   const zi = [0, 1, 2].find((i) => i !== ai && i !== other)!;
   const cand = Math.abs(Math.PI - 2 * Y1) < 1e-9 ? [Y1] : [Y1, Math.PI - Y1];
@@ -112,7 +112,7 @@ export function matDet(A: Matrix): number | null {
   }
   return det;
 }
-/** Inverse of a square matrix via Gauss–Jordan; null if singular or non-square. */
+/** Inverse of a square matrix via Gauss-Jordan; null if singular or non-square. */
 export function matInverse(A: Matrix): Matrix | null {
   const n = A.length;
   if (n === 0 || A.some((row) => row.length !== n)) return null;

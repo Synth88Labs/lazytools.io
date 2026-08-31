@@ -130,7 +130,7 @@ export interface KsefCheck {
   detail: string;
 }
 
-/** Rule-based pre-checks — explicitly NOT official KSeF/MF validation. */
+/** Rule-based pre-checks, explicitly NOT official KSeF/MF validation. */
 export function checkKsef(root: Element, parsed: KsefParsed): KsefCheck[] {
   const out: KsefCheck[] = [];
   const add = (level: KsefCheck['level'], name: string, detail: string) => out.push({ level, name, detail });
@@ -139,7 +139,7 @@ export function checkKsef(root: Element, parsed: KsefParsed): KsefCheck[] {
   else add('fail', 'Root element', `<${root.localName}> — expected <Faktura>`);
 
   const nag = elK(root, 'Naglowek');
-  if (!nag) add('fail', 'Naglowek (header)', 'missing — required element');
+  if (!nag) add('fail', 'Naglowek (header)', 'missing, required element');
   else {
     const variant = parsed.variant || '(none)';
     if (/FA \(3\)/.test(variant) || txtK(nag, 'WariantFormularza') === '3') add('pass', 'Schema variant', `${variant} — the current FA(3) structure (mandatory since 1 Feb 2026)`);
@@ -148,14 +148,14 @@ export function checkKsef(root: Element, parsed: KsefParsed): KsefCheck[] {
   }
 
   // parties
-  if (!elK(root, 'Podmiot1')) add('fail', 'Podmiot1 (seller)', 'missing — required element');
+  if (!elK(root, 'Podmiot1')) add('fail', 'Podmiot1 (seller)', 'missing, required element');
   else {
     if (!parsed.seller.name) add('warn', 'Seller name', 'Podmiot1 has no Nazwa');
-    if (!parsed.seller.nip) add('fail', 'Seller NIP', 'missing — Podmiot1 must carry the seller’s NIP');
+    if (!parsed.seller.nip) add('fail', 'Seller NIP', 'missing, Podmiot1 must carry the seller’s NIP');
     else if (nipValid(parsed.seller.nip)) add('pass', 'Seller NIP checksum', `${parsed.seller.nip} — valid mod-11 check digit`);
     else add('fail', 'Seller NIP checksum', `${parsed.seller.nip} — check digit does not match (typo?)`);
   }
-  if (!elK(root, 'Podmiot2')) add('fail', 'Podmiot2 (buyer)', 'missing — required element');
+  if (!elK(root, 'Podmiot2')) add('fail', 'Podmiot2 (buyer)', 'missing, required element');
   else if (parsed.buyer.nip) {
     if (nipValid(parsed.buyer.nip)) add('pass', 'Buyer NIP checksum', `${parsed.buyer.nip} — valid mod-11 check digit`);
     else add('fail', 'Buyer NIP checksum', `${parsed.buyer.nip} — check digit does not match`);
@@ -163,7 +163,7 @@ export function checkKsef(root: Element, parsed: KsefParsed): KsefCheck[] {
 
   // Fa essentials
   const fa = elK(root, 'Fa');
-  if (!fa) add('fail', 'Fa (invoice data)', 'missing — required element');
+  if (!fa) add('fail', 'Fa (invoice data)', 'missing, required element');
   else {
     if (/^\d{4}-\d{2}-\d{2}$/.test(parsed.issueDate)) add('pass', 'P_1 issue date', parsed.issueDate);
     else add('fail', 'P_1 issue date', parsed.issueDate ? `"${parsed.issueDate}" — expected YYYY-MM-DD` : 'missing');
@@ -174,7 +174,7 @@ export function checkKsef(root: Element, parsed: KsefParsed): KsefCheck[] {
     if (parsed.total && !isNaN(Number(parsed.total))) add('pass', 'P_15 total due', `${parsed.total} ${parsed.currency}`);
     else add('fail', 'P_15 total due', parsed.total ? `"${parsed.total}" — not numeric` : 'missing');
     if (parsed.lines.length > 0) add('pass', 'FaWiersz line items', `${parsed.lines.length} line${parsed.lines.length > 1 ? 's' : ''}`);
-    else add('warn', 'FaWiersz line items', 'none found — unusual except for some correction invoices');
+    else add('warn', 'FaWiersz line items', 'none found, unusual except for some correction invoices');
 
     // consistency: sum of line nets vs P_13_* sum (informational)
     const lineSum = parsed.lines.reduce((a, l) => a + (Number(l.net) || 0), 0);
