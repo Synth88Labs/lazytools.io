@@ -94,7 +94,7 @@ The rule works well for the things air fryers are famous for, anything you'd nor
 
 - **Very saucy or liquid dishes** (stews, brothy bakes, anything with a lot of loose liquid) don't transfer well. Rushing air can't do much with a pool of sauce, and splatter is a real risk. These are usually better left in the oven.
 - **Delicate batters** (thin, wet, unset batters) can blow around or cook unevenly in the moving air. If you're unsure, the oven is the safer bet.
-- **Meat and poultry.** The conversion gets you close on timing, but for anything where safety matters, confirm doneness with an instant-read thermometer against a [safe internal temperature](https://www.usda.gov/). **Temperature, not time, is the true test.** If you're roasting a joint or a bird, our [roast cooking time calculator](/cooking/roast-cooking-time-calculator/) and [turkey cooking time calculator](/cooking/turkey-cooking-time-calculator/) give you weight-based timing and safe internal temperatures to aim for.
+- **Meat and poultry.** The conversion gets you close on timing, but for anything where safety matters, confirm doneness with an instant-read thermometer against a [safe internal temperature](https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-temperature-chart). **Temperature, not time, is the true test.** If you're roasting a joint or a bird, our [roast cooking time calculator](/cooking/roast-cooking-time-calculator/) and [turkey cooking time calculator](/cooking/turkey-cooking-time-calculator/) give you weight-based timing and safe internal temperatures to aim for.
 
 ## Common mistakes
 

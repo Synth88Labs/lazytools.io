@@ -176,6 +176,6 @@ genetic code. Do all four, exactly and privately, with the
 [sequence tool](/biology/reverse-complement/), and check primer stats with the
 [GC content & Tm tool](/biology/gc-content-tm/).
 
-*Sources: [NCBI, nucleotide base pairing and strand orientation](https://www.ncbi.nlm.nih.gov/) ·
+*Sources: [NCBI Bookshelf, The Structure and Function of DNA (base pairing and antiparallel strand orientation)](https://www.ncbi.nlm.nih.gov/books/NBK26821/) ·
 standard IUPAC nucleotide nomenclature · the standard genetic code (NCBI Taxonomy translation table 1).
 General educational information.*

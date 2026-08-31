@@ -177,5 +177,5 @@ rule with the [significant figures calculator](/math/significant-figures/), and 
 [scientific notation](/math/scientific-notation/) whenever a trailing zero needs to speak.
 
 *Sources: [NIST, Uncertainty of measurement results](https://physics.nist.gov/cuu/Uncertainty/) ·
-[IUPAC Gold Book, significant figures](https://goldbook.iupac.org/) ·
+[Wikipedia, significant figures](https://en.wikipedia.org/wiki/Significant_figures) ·
 standard analytical-chemistry conventions (Harris, *Quantitative Chemical Analysis*).*

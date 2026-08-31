@@ -74,7 +74,7 @@ The [turkey cooking time calculator](/cooking/turkey-cooking-time-calculator/) r
 
 ## Why 325°F is the standard
 
-[USDA/FSIS guidance](https://www.fsis.usda.gov/) is to cook a whole turkey at an oven temperature of **no lower than 325°F**. Lower temperatures leave the bird in the bacterial "danger zone" (roughly 40°F to 140°F) for too long. Higher temperatures, some cooks start at 425°F to crisp the skin, then drop to 325°F, cook faster but risk a dry breast before the thighs finish. The per-pound estimates in this guide assume a steady 325°F throughout; if you use a hotter start, your total time will be shorter, which makes the thermometer even more important.
+[USDA/FSIS guidance](https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/poultry/lets-talk-turkey-roasting) is to cook a whole turkey at an oven temperature of **no lower than 325°F**. Lower temperatures leave the bird in the bacterial "danger zone" (roughly 40°F to 140°F) for too long. Higher temperatures, some cooks start at 425°F to crisp the skin, then drop to 325°F, cook faster but risk a dry breast before the thighs finish. The per-pound estimates in this guide assume a steady 325°F throughout; if you use a hotter start, your total time will be shorter, which makes the thermometer even more important.
 
 Roasting the bird **breast-side up** and **uncovered** gives the most even browning. A loose foil tent over the breast partway through slows it down if the skin darkens before the interior is done.
 

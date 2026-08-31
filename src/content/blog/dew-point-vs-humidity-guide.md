@@ -31,7 +31,7 @@ faqs:
 draft: false
 ---
 
-**Relative humidity is a percentage *of what the air could hold at that temperature*, so it moves when the temperature moves, even if the moisture doesn't.** Dew point measures the actual amount of water vapour in the air, and it doesn't care what the thermometer says. That's why a 30°F morning at 100% relative humidity feels crisp and dry, while an 80°F afternoon at just 50% feels sticky and oppressive. [Meteorologists](https://www.weather.gov/) quote dew point for comfort because it's the number that actually tracks how the air feels.
+**Relative humidity is a percentage *of what the air could hold at that temperature*, so it moves when the temperature moves, even if the moisture doesn't.** Dew point measures the actual amount of water vapour in the air, and it doesn't care what the thermometer says. That's why a 30°F morning at 100% relative humidity feels crisp and dry, while an 80°F afternoon at just 50% feels sticky and oppressive. [Meteorologists](https://www.weather.gov/arx/why_dewpoint_vs_humidity) quote dew point for comfort because it's the number that actually tracks how the air feels.
 
 <aside class="key-takeaways">
 

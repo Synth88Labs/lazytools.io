@@ -93,7 +93,7 @@ The corollary: **rebar must be held up off the ground.** Bar laid on the subgrad
 
 Rebar comes in fixed lengths (commonly 20 ft), so long runs need overlapping, a **lap splice**, so the two bars act as one. The load transfers through the concrete between them, which is why the overlap has to be long enough.
 
-The widely quoted rule of thumb is **40 × bar diameter** for Grade 60 steel, though the governing standard is [ACI 318](https://www.concrete.org/), the American Concrete Institute's building code for structural concrete:
+The widely quoted rule of thumb is **40 × bar diameter** for Grade 60 steel, though the governing standard is [ACI 318](https://www.concrete.org/topicsinconcrete/318buildingcodeportal.aspx), the American Concrete Institute's building code for structural concrete:
 
 | Size | 40 × diameter rule | Typical ACI 318 value* |
 | --- | --- | --- |

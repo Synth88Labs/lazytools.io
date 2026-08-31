@@ -85,7 +85,7 @@ Well-designed check digits catch **every single-digit error** and **almost all "
 
 ## GS1 mod-10 (barcodes and ISBN-13)
 
-The barcodes on retail products are administered by [GS1](https://www.gs1.org/), the standards body
+The barcodes on retail products are administered by [GS1](https://www.gs1.org/services/check-digit-calculator), the standards body
 behind EAN and UPC. Take an EAN-13 like `4006381333931`. Drop the last digit (the check, `1`) and, reading the remaining 12
 from the right, multiply alternately by 3 and 1, add them, and the check digit is whatever makes the
 total a multiple of 10. Scanners do this on every beep, it's why a smudged or mis-scanned barcode

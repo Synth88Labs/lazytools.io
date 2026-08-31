@@ -85,7 +85,7 @@ Suppose you have a 4-year-old dog and want the epigenetic estimate by hand. Take
 
 ## The traditional method: size matters
 
-The other common approach is the **size-based chart** used by many vets (and published by groups like the [American Veterinary Medical Association](https://www.avma.org/)): about **15** human years for the first year, **+9** for the second (so ~24 at age two), then a yearly amount that depends on the dog's **size**. Larger breeds have shorter lifespans and age faster, so a giant breed gains more human-equivalent years per calendar year than a toy breed. That's why a 10-year-old Great Dane is "older" than a 10-year-old Chihuahua.
+The other common approach is the **size-based chart** used by many vets (and published by groups like the [American Veterinary Medical Association](https://www.avma.org/resources-tools/pet-owners/petcare/senior-pets)): about **15** human years for the first year, **+9** for the second (so ~24 at age two), then a yearly amount that depends on the dog's **size**. Larger breeds have shorter lifespans and age faster, so a giant breed gains more human-equivalent years per calendar year than a toy breed. That's why a 10-year-old Great Dane is "older" than a 10-year-old Chihuahua.
 
 Here is how the same calendar age lands very differently by size under the traditional convention:
 

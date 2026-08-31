@@ -56,7 +56,7 @@ The key insight is that toxicity is a **dose per body weight** problem, measured
 
 ## The risk thresholds vets use
 
-Published veterinary references (the [Merck Veterinary Manual](https://www.merckvetmanual.com/) and pet poison-control services) band the risk roughly like this, per kilogram of the dog's weight:
+Published veterinary references (the [Merck Veterinary Manual, Chocolate Toxicosis in Animals](https://www.merckvetmanual.com/toxicology/food-hazards/chocolate-toxicosis-in-animals) and pet poison-control services) band the risk roughly like this, per kilogram of the dog's weight:
 
 | Theobromine dose | What tends to happen |
 | --- | --- |
@@ -100,7 +100,7 @@ The [dog chocolate toxicity calculator](/pets/dog-chocolate-toxicity-calculator/
 
 1. **Don't wait for symptoms**, theobromine is slow, so signs can be hours away. Act now.
 2. **Work out what and how much:** the type of chocolate, roughly how much, and your dog's weight. Keep the wrapper.
-3. **Call for advice:** your vet, or a pet poison line, US [ASPCA](https://www.aspca.org/) Animal Poison Control **888-426-4435**, UK Animal PoisonLine **01202 509000**.
+3. **Call for advice:** your vet, or a pet poison line, US [ASPCA Animal Poison Control](https://www.aspca.org/pet-care/aspca-poison-control) **888-426-4435**, UK Animal PoisonLine **01202 509000**.
 4. **Follow their instructions.** Don't try to make your dog vomit unless a professional tells you to.
 5. **Watch for signs** over the next 24-72 hours: vomiting, diarrhoea, hyperactivity, a pounding heart, tremors or seizures.
 

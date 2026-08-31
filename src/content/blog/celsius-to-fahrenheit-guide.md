@@ -160,7 +160,7 @@ you subtract two temperatures).
 |---|---|---|
 | 36.1-37.2 | 97.0-99.0 | normal range |
 | 37.5-37.9 | 99.5-100.3 | low-grade elevation |
-| **38.0** | **100.4** | **fever threshold ([CDC](https://www.cdc.gov/), most hospitals)** |
+| **38.0** | **100.4** | **fever threshold ([CDC, fever definition](https://www.cdc.gov/port-health/php/definitions-symptoms-reportable-illness/index.html), most hospitals)** |
 | 39.4 | 103.0 | high fever, seek advice |
 | 40.0 | 104.0 | medical attention |
 | 35.0 and below | 95.0 and below | hypothermia, emergency |

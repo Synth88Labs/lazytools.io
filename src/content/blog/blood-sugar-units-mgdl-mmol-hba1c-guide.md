@@ -172,7 +172,7 @@ glucose because red-cell turnover varies. Treat it as a helpful translation, not
 ## Reference ranges for context
 
 Conversions only tell you the *number*, not what it signifies. For orientation, the table below shows the
-broad categories the [American Diabetes Association](https://diabetes.org/) uses, on every scale at once. These are general
+broad categories the [American Diabetes Association, Diagnosis and Classification of Diabetes](https://diabetesjournals.org/care/article/49/Supplement_1/S27/163926/2-Diagnosis-and-Classification-of-Diabetes) uses, on every scale at once. These are general
 diagnostic thresholds, a clinician interprets them alongside your history, symptoms and repeat testing,
 and some conditions (pregnancy, anaemia, certain haemoglobin variants) shift how the numbers behave.
 

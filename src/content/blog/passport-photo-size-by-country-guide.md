@@ -60,7 +60,7 @@ browser, with the [Photo Size Maker](/photo/).
 Most passport photo questions come down to which of three groups your country is in:
 
 - **The ICAO 35×45 mm group**, the majority of the world, because countries inherit the same
-  biometric-portrait standard (ICAO Document 9303, from the [International Civil Aviation Organization](https://www.icao.int/)).
+  biometric-portrait standard (ICAO Document 9303, from the [International Civil Aviation Organization, Doc 9303](https://www.icao.int/publications/doc-series/doc-9303)).
 - **The 2×2 inch square**, the United States (51×51 mm). India *used* to be here but switched to
   35×45 mm in September 2025.
 - **The outliers**, countries with their own size, which is exactly where applications get rejected

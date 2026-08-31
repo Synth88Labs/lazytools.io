@@ -104,7 +104,7 @@ The last frost date marks when a killing frost becomes unlikely, but tender crop
 
 ## Turn the offsets into real dates
 
-The one thing you have to supply is your **local average last-frost date**, look it up from a regional [extension service](https://www.usda.gov/) or a frost-date tool for your area. Once you have it, the [planting date calculator](/garden/planting-date-calculator/) turns each crop's offset into an actual calendar date to start seeds, transplant and direct-sow. From there, the [plant spacing](/garden/plant-spacing-calculator/) and [seed spacing](/garden/seed-spacing-calculator/) calculators tell you how many plants and seeds you'll need for your beds, all worked out privately in your browser.
+The one thing you have to supply is your **local average last-frost date**, look it up from a regional [extension service](https://en.wikipedia.org/wiki/Cooperative_extension_service) or a frost-date tool for your area. Once you have it, the [planting date calculator](/garden/planting-date-calculator/) turns each crop's offset into an actual calendar date to start seeds, transplant and direct-sow. From there, the [plant spacing](/garden/plant-spacing-calculator/) and [seed spacing](/garden/seed-spacing-calculator/) calculators tell you how many plants and seeds you'll need for your beds, all worked out privately in your browser.
 
 ---
 

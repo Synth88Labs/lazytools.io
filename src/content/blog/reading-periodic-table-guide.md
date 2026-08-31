@@ -222,5 +222,5 @@ and ionisation energy rise up and to the right; atomic radius rises down and lef
 nonmetals upper-right, metalloids on the staircase. Explore it all in the
 [interactive periodic table](/chemistry/periodic-table/).
 
-*Sources: standard chemistry ([IUPAC](https://iupac.org/) periodic table organisation and periodic trends). Educational
+*Sources: standard chemistry ([IUPAC Periodic Table of Elements](https://iupac.org/what-we-do/periodic-table-of-elements/) periodic table organisation and periodic trends). Educational
 information.*

@@ -109,7 +109,7 @@ certs before they lapse is worth the thirty seconds.
 
 Validity windows have shrunk sharply over the years. Publicly trusted TLS certificates issued today are
 capped at a maximum of about 398 days (roughly 13 months) under the
-[CA/Browser Forum](https://cabforum.org/) Baseline Requirements, down from the multi-year lifetimes
+[CA/Browser Forum](https://cabforum.org/working-groups/server/baseline-requirements/requirements/) Baseline Requirements, down from the multi-year lifetimes
 common a decade ago, and industry plans are moving the
 ceiling lower still. The practical lesson is the same either way: renewal is frequent enough that manual
 tracking is unreliable, automate it, and use a quick decode as a spot check.

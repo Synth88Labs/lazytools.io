@@ -53,7 +53,7 @@ draft: false
 
 ## The 20 BTU per square foot rule
 
-The [ENERGY STAR](https://www.energystar.gov/) guideline is about **20 BTU per hour for every square foot** of floor area. Measure the room (length × width in feet), multiply by 20, and you have a starting capacity:
+The [ENERGY STAR, "How To Choose the Right Sized Window AC"](https://www.energystar.gov/products/ask-the-experts/how-choose-right-sized-window-ac) guideline is about **20 BTU per hour for every square foot** of floor area. Measure the room (length × width in feet), multiply by 20, and you have a starting capacity:
 
 > baseline BTU/h = floor area (ft²) × 20
 

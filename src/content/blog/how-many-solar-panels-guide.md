@@ -123,4 +123,4 @@ The [solar panel output calculator](/solar/solar-panel-output-calculator/) does 
 
 ---
 
-*This is a planning estimate using the standard solar production formula (daily kWh = panel watts × peak sun hours × system efficiency ÷ 1000). System efficiency of ~0.8 reflects typical real-world losses; NREL's PVWatts uses about 14% DC losses plus inverter losses. Actual output varies with weather, shading, orientation and equipment, get a site-specific quote for a real install. Source: [NREL PVWatts](https://pvwatts.nrel.gov/).*
+*This is a planning estimate using the standard solar production formula (daily kWh = panel watts × peak sun hours × system efficiency ÷ 1000). System efficiency of ~0.8 reflects typical real-world losses; NREL's PVWatts uses about 14% DC losses plus inverter losses. Actual output varies with weather, shading, orientation and equipment, get a site-specific quote for a real install. Source: [NREL PVWatts calculator](https://pvwatts.nrel.gov/).*

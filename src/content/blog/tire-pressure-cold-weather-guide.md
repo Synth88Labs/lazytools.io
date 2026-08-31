@@ -68,7 +68,7 @@ Run your own numbers with the [tire pressure temperature calculator](/automotive
 
 ## Why the warning light picks winter
 
-A [Tire Pressure Monitoring System](https://www.nhtsa.gov/) triggers its warning at roughly **25% below** the vehicle's recommended pressure. On a 35 PSI placard that's about 26 PSI.
+A [Tire Pressure Monitoring System](https://www.nhtsa.gov/sites/nhtsa.gov/files/fmvss/TPMS-2005-FMVSS-No138.pdf) triggers its warning at roughly **25% below** the vehicle's recommended pressure. On a 35 PSI placard that's about 26 PSI.
 
 Now stack the effects. A tire sitting at 31 PSI in autumn, already a little low, not low enough to warn, meets a 40°F cold snap and drops to about 27 PSI. One more cold night and the light comes on. Nothing failed; a slightly soft tire simply crossed the threshold as the season turned.
 

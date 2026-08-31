@@ -77,7 +77,7 @@ When you decode a QR with a reader, you see this raw content directly, which is 
 
 ## Is it safe to open a QR link?
 
-Here's the security point most people miss: **a QR code is just text, so a link inside one can point anywhere, including a malicious site.** There's nothing about a QR code that guarantees where it goes. Scammers exploit this by pasting fake QR stickers over real ones on parking meters, restaurant tables, and posters, a scam the [FBI has warned about](https://www.fbi.gov/) ("quishing").
+Here's the security point most people miss: **a QR code is just text, so a link inside one can point anywhere, including a malicious site.** There's nothing about a QR code that guarantees where it goes. Scammers exploit this by pasting fake QR stickers over real ones on parking meters, restaurant tables, and posters, a scam the [FBI has warned about](https://www.ic3.gov/PSA/2022/PSA220118) ("quishing").
 
 The safe habit is to **read the URL before you open it.** A reader that shows you the decoded address first lets you inspect it, check the domain, watch for lookalike spellings and odd link shorteners, and only follow it if you trust it. That's a real advantage over pointing a phone camera at a code, where the link may open automatically before you've seen where it leads. Decode first, look, then decide.
 

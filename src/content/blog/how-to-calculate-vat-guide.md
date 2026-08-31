@@ -108,7 +108,7 @@ VAT (value-added tax) and GST (goods and services tax) are the same kind of tax,
 | India | GST | commonly 18% |
 | Singapore | GST | 9% |
 
-These are standard rates; many countries apply **reduced or zero rates** to categories like food, books, children's goods and medicine. Rates also change over time. Treat this table as a starting point and confirm the current official rate for your country and product before relying on a figure, for authoritative rates see your national tax authority (e.g. [HMRC](https://www.gov.uk/vat-rates) in the UK or the [European Commission VAT rates database](https://taxation-customs.ec.europa.eu/)).
+These are standard rates; many countries apply **reduced or zero rates** to categories like food, books, children's goods and medicine. Rates also change over time. Treat this table as a starting point and confirm the current official rate for your country and product before relying on a figure, for authoritative rates see your national tax authority (e.g. [HMRC](https://www.gov.uk/vat-rates) in the UK or the [European Commission VAT rates database](https://taxation-customs.ec.europa.eu/taxation/vat/vat-directive/vat-rates/country-specific-information-vat_en)).
 
 ## Calculate it instantly
 

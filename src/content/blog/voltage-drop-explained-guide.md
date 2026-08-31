@@ -74,7 +74,7 @@ Treat these as guide figures for estimating drop, not as ampacity ratings. The e
 
 ## The 3% rule
 
-The [National Electrical Code (NEC)](https://www.nfpa.org/), published by the NFPA, recommends:
+The [National Electrical Code (NEC)](https://www.nfpa.org/education-and-research/electrical/understanding-nfpa-70-national-electrical-code), published by the NFPA, recommends:
 
 - **≤ 3%** voltage drop on a branch circuit, and
 - **≤ 5%** total including the feeder.

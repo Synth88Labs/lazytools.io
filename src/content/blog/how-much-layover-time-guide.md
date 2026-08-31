@@ -57,7 +57,7 @@ Every airport, airline pairing has a published MCT: the shortest gap the reserva
 
 Two things it does **not** account for:
 
-1. **Your inbound flight being late.** This is the single most common cause of a missed connection, not slow passengers. [US Department of Transportation](https://www.transportation.gov/) air-travel data consistently shows late-arriving aircraft as a leading driver of onward disruption. A tight-but-legal connection assumes an on-time arrival you can't control.
+1. **Your inbound flight being late.** This is the single most common cause of a missed connection, not slow passengers. [US DOT Bureau of Transportation Statistics, Causes of Flight Delays](https://www.bts.gov/explore-topics-and-geography/topics/airline-time-performance-and-causes-flight-delays) air-travel data consistently shows late-arriving aircraft as a leading driver of onward disruption. A tight-but-legal connection assumes an on-time arrival you can't control.
 2. **You, specifically.** MCT assumes a passenger who moves briskly and knows where they're going, not someone with a stroller, mobility needs, or a first visit to a sprawling hub.
 
 So an MCT-legal connection is *bookable*, not *comfortable*.
