@@ -8,6 +8,16 @@ export const SITE = {
   github: 'https://github.com/Synth88Labs/lazytools.io',
   parent: { name: 'Synth88 Labs Inc.', url: 'https://synth88.com' },
   email: 'synth88labs@gmail.com',
+  founder: {
+    name: 'Uttam Regmi',
+    jobTitle: 'Founder',
+    location: 'Dubai, UAE',
+    // Uttam's professional / writing profiles (personal LinkedIn + Medium).
+    sameAs: [
+      'https://www.linkedin.com/in/uttam-regmi-373926370/',
+      'https://medium.com/@excelguru',
+    ],
+  },
 } as const;
 
 export interface CategoryDef {

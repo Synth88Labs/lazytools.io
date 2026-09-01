@@ -3,7 +3,7 @@ import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import FaqSection from '../../components/FaqSection.astro';
-import { breadcrumbSchema, faqSchema } from '../../lib/schema';
+import { breadcrumbSchema, faqSchema, founderPerson } from '../../lib/schema';
 import { seoTitle } from '../../lib/seo';
 import { SITE } from '../../lib/site';
 import { allPairs, titleNoun } from '../../data/units';
@@ -61,7 +61,7 @@ const schema: Record<string, unknown>[] = [
       url: SITE.url,
       logo: { '@type': 'ImageObject', url: `${SITE.url}/icon-512.png`, width: 512, height: 512 },
     },
-    author: { '@type': 'Organization', name: SITE.name, url: SITE.url },
+    author: founderPerson(),
     isPartOf: { '@type': 'Blog', name: `${SITE.name} Blog`, url: `${SITE.url}/blog/` },
   },
 ];
@@ -82,7 +82,7 @@ if (post.data.faqs.length > 0) schema.push(faqSchema(post.data.faqs));
       <p class="text-xs font-semibold uppercase tracking-wide text-brand-700">{post.data.archetype}</p>
       <h1 class="mt-1 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">{post.data.title}</h1>
       <p class="mt-3 text-sm text-slate-500">
-        By <a href="/about/" class="font-medium text-slate-700 underline decoration-slate-300 underline-offset-2 hover:text-brand-700">the LazyTools team</a>
+        By <a href="/about/" class="font-medium text-slate-700 underline decoration-slate-300 underline-offset-2 hover:text-brand-700">Uttam Regmi</a>
         · Published {dateFmt(post.data.pubDate)}
         {post.data.updatedDate && <> · Updated {dateFmt(post.data.updatedDate)}</>}
         · {readingMinutes} min read

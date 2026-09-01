@@ -2,6 +2,19 @@ import { SITE } from './site';
 
 type JsonLd = Record<string, unknown>;
 
+/** The real person behind the site — a named, verifiable author/founder (E-E-A-T). */
+export function founderPerson(): JsonLd {
+  return {
+    '@type': 'Person',
+    name: SITE.founder.name,
+    jobTitle: SITE.founder.jobTitle,
+    url: `${SITE.url}/about/`,
+    worksFor: { '@type': 'Organization', name: SITE.parent.name, url: SITE.parent.url },
+    address: { '@type': 'PostalAddress', addressLocality: 'Dubai', addressCountry: 'AE' },
+    sameAs: [...SITE.founder.sameAs],
+  };
+}
+
 export function organizationSchema(): JsonLd {
   return {
     '@context': 'https://schema.org',
@@ -13,6 +26,7 @@ export function organizationSchema(): JsonLd {
     email: SITE.email,
     slogan: SITE.tagline,
     foundingDate: '2026',
+    founder: founderPerson(),
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'customer support',
