@@ -55,7 +55,12 @@ const schema: Record<string, unknown>[] = [
     url: `${SITE.url}/blog/${post.id}/`,
     wordCount: words,
     keywords: post.data.keywords.join(', '),
-    publisher: { '@type': 'Organization', name: SITE.parent.name, url: SITE.parent.url },
+    publisher: {
+      '@type': 'Organization',
+      name: SITE.name,
+      url: SITE.url,
+      logo: { '@type': 'ImageObject', url: `${SITE.url}/icon-512.png`, width: 512, height: 512 },
+    },
     author: { '@type': 'Organization', name: SITE.name, url: SITE.url },
     isPartOf: { '@type': 'Blog', name: `${SITE.name} Blog`, url: `${SITE.url}/blog/` },
   },
