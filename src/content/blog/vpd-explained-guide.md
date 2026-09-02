@@ -2,6 +2,8 @@
 title: "What Is VPD? Vapor Pressure Deficit Explained (with Target Ranges)"
 seoTitle: 'VPD Explained: Target Ranges by Growth Stage'
 description: "VPD (vapor pressure deficit) is the number growers tune instead of humidity because it includes temperature. What it means and target ranges by stage."
+heroImage: /blog/vpd-explained-guide.png
+heroAlt: "Vapor pressure deficit (VPD) explained with target ranges for growing"
 pubDate: 2026-07-12
 updatedDate: 2026-08-23
 archetype: explainer

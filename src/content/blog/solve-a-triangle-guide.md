@@ -2,6 +2,8 @@
 title: "How to Solve a Triangle (Law of Sines & Law of Cosines)"
 seoTitle: 'How to Solve a Triangle: Sines & Cosines'
 description: "Solve a triangle: how to pick between the law of sines and law of cosines for each case (SSS, SAS, ASA, AAS), and why SSA is the ambiguous one."
+heroImage: /blog/solve-a-triangle-guide.png
+heroAlt: "How to solve a triangle with the law of sines and law of cosines"
 pubDate: 2026-07-12
 updatedDate: 2026-08-23
 archetype: explainer

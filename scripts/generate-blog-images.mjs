@@ -7,6 +7,20 @@ import sharp from 'sharp';
 
 const POSTS = [
   {
+    slug: 'solve-a-triangle-guide',
+    kicker: 'MATH & GEOMETRY GUIDE',
+    lines: ['How to solve', 'a triangle: sines', '& cosines'],
+    fact: 'pick by case · SSS, SAS, ASA, AAS · SSA is ambiguous',
+    icon: '📐',
+  },
+  {
+    slug: 'vpd-explained-guide',
+    kicker: 'GROWING & CLIMATE GUIDE',
+    lines: ['What is VPD?', 'Vapor pressure', 'deficit, explained'],
+    fact: 'VPD folds temperature + humidity into one number',
+    icon: '🌱',
+  },
+  {
     slug: 'paper-sizes-a4-letter-explained-guide',
     kicker: 'PAPER & PRINT GUIDE',
     lines: ['Paper sizes:', 'A4 vs Letter in', 'mm, inches, pixels'],
