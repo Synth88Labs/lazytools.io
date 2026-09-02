@@ -64,7 +64,7 @@ The telescope's focal length is fixed; the eyepiece is what you change. That's w
 Aperture, the diameter of the main lens or mirror, sets two hard physical limits:
 
 1. **Light grasp.** Area scales with the square of the diameter, so a 6″ scope collects over twice the light of a 4″. More light means fainter objects are visible.
-2. **Resolving power.** Diffraction means a given aperture can only separate detail down to a certain angular size. No eyepiece can add detail the aperture never captured.
+2. **Resolving power.** Diffraction means a given aperture can only separate detail down to a certain [angular size](/astronomy/angular-size-calculator/). No eyepiece can add detail the aperture never captured.
 
 Magnification just spreads the light your aperture already collected across a larger apparent image. Push too far and you're enlarging blur while making everything dimmer, because the same photons now cover more area.
 

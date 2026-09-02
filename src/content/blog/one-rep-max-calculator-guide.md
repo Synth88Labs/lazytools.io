@@ -33,7 +33,7 @@ faqs:
 draft: false
 ---
 
-**To find your one-rep max, don't try to lift it, estimate it from a set taken close to failure using a formula like Epley: 1RM = weight × (1 + reps ÷ 30).** That single equation turns a safer, submaximal set into a reliable strength number. If you bench 100 kg for 5 solid reps, Epley estimates your bench press max at about 117 kg, no grinding single, no spotter emergency required. Below is how the math works, how to use the number, and the mistakes that make people trust a bad estimate. You can run your own lifts through the [one-rep max calculator](/fitness/one-rep-max-calculator/) as you read.
+**To find your one-rep max, don't try to lift it, estimate it from a set taken close to failure using a formula like [Epley](https://en.wikipedia.org/wiki/One-repetition_maximum): 1RM = weight × (1 + reps ÷ 30).** That single equation turns a safer, submaximal set into a reliable strength number. If you bench 100 kg for 5 solid reps, Epley estimates your bench press max at about 117 kg, no grinding single, no spotter emergency required. Below is how the math works, how to use the number, and the mistakes that make people trust a bad estimate. You can run your own lifts through the [one-rep max calculator](/fitness/one-rep-max-calculator/) as you read.
 
 <aside class="key-takeaways">
 <p class="kt-title">⚡ Key takeaways</p>

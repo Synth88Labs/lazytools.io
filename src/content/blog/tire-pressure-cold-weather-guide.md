@@ -105,7 +105,7 @@ Equally, the number moulded into the **sidewall is a maximum**, not a recommenda
 
 ## What underinflation actually costs
 
-Beyond the warning light, running soft has real running costs. Underinflated tires flex more, which raises rolling resistance and **fuel consumption**, builds heat that accelerates wear, and wears the **shoulders** of the tread faster than the centre. Severe underinflation at speed is a genuine blowout risk because of that heat build-up.
+Beyond the warning light, running soft has real running costs. Underinflated tires flex more, which raises rolling resistance and [**fuel consumption**](/automotive/fuel-economy-converter/), builds heat that accelerates wear, and wears the **shoulders** of the tread faster than the centre. Severe underinflation at speed is a genuine blowout risk because of that heat build-up.
 
 The same physics runs in reverse in summer: a tire set correctly on a cold morning gains pressure through a hot afternoon. That's expected and designed for, which is exactly why the specification is a *cold* pressure.
 

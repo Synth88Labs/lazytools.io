@@ -55,7 +55,7 @@ draft: false
 
 ## The 3-digit code (the common one)
 
-Most chip resistors carry a **3-digit** code that works exactly like the old resistor color bands: the **first two digits are significant figures**, and the **third is the number of zeros** to add (a ×10&#8319; multiplier). The result is in ohms.
+Most chip resistors carry a **3-digit** code that works exactly like the old resistor color bands: the **first two digits are significant figures**, and the **third is the number of zeros** to add (a ×10&#8319; multiplier). The result is in ohms ([electronic color code](https://en.wikipedia.org/wiki/Electronic_color_code), Wikipedia).
 
 - `103` &#8594; `10` + 3 zeros = **10,000 &#937; = 10 k&#937;**
 - `472` &#8594; `47` + 2 zeros = **4,700 &#937; = 4.7 k&#937;**

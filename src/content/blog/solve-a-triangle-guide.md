@@ -68,7 +68,7 @@ The rest of this guide walks each solvable case with real numbers.
 
 ## Law of cosines: SSS and SAS
 
-The **law of cosines** generalises Pythagoras to any triangle:
+The **[law of cosines](https://en.wikipedia.org/wiki/Law_of_cosines)** generalises Pythagoras to any triangle:
 
 > c² = a² + b² − 2ab·cos C
 

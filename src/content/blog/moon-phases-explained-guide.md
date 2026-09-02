@@ -86,6 +86,8 @@ Check tonight's phase with the [moon phase calculator](/astronomy/moon-phase-cal
 - **Waxing**, the lit fraction is *growing*, from new toward full. Waxing moons are visible in the **evening** sky.
 - **Waning**, the lit fraction is *shrinking*, from full back toward new. Waning moons are visible in the **early morning** sky.
 
+Because a full moon rises around sunset and a new moon rises with the Sun, the Moon's rise and set times shift steadily through the cycle; you can line them up against your local [sunrise and sunset times](/astronomy/sunrise-sunset-calculator/).
+
 A field trick for the Northern Hemisphere: if the Moon's **right** side is lit, it's waxing; if the **left** side is lit, it's waning. In the Southern Hemisphere it's reversed, because you're looking at the same Moon from an effectively upside-down vantage point.
 
 ## Why 29.5 days and not 27.3

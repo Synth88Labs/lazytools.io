@@ -102,7 +102,7 @@ The probability isn't flat across those six days. It's low at the start of the w
 | Ovulation day | High |
 | Day after ovulation | Very low |
 
-This is why timing intercourse in the couple of days *before* the expected ovulation day, rather than waiting for the day itself, tends to give the best odds. By the time many signs confirm ovulation has happened, the most fertile part of the window may already be closing.
+This is why timing intercourse in the couple of days *before* the expected ovulation day, rather than waiting for the day itself, tends to give the best odds. By the time many signs confirm ovulation has happened, the most fertile part of the window may already be closing. If a cycle does result in conception, you can turn that same estimated ovulation date into a projected due date with the [due date calculator](/calc/due-date-calculator/).
 
 ## The limits of the calendar method
 

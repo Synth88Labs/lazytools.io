@@ -60,7 +60,7 @@ Some enzymes have recognition sites with ambiguity: HinfI cuts `GANTC`, where `N
 
 ### How often does an enzyme cut?
 
-Before you even scan the sequence, the *length* of the recognition site tells you roughly how many cuts to expect. If the four bases occurred at random and in equal proportions, a specific site of length *n* would appear on average once every 4ⁿ bases. That gives a useful rule of thumb:
+Before you even scan the sequence, the *length* of the recognition site tells you roughly how many cuts to expect. If the four bases occurred at random and in equal proportions, a specific [restriction site](https://en.wikipedia.org/wiki/Restriction_site) of length *n* would appear on average once every 4ⁿ bases. That gives a useful rule of thumb:
 
 | Recognition length | Example enzyme | Average spacing | Cuts in a ~5 kb plasmid |
 | --- | --- | --- | --- |

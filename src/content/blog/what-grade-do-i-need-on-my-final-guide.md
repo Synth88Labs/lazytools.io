@@ -40,7 +40,7 @@ draft: false
 - Your current grade covers **(1 − w)** of the course; the final covers **w**.
 - If the answer is **over 100%**, the target isn't reachable from the final alone.
 - If it's **0 or negative**, you've already secured the target regardless of the final.
-- This answers "what do I need on my final", different from scoring a test you've already taken.
+- This answers "what do I need on my final", different from scoring a test you've already taken with the [test grade calculator](/calc/test-grade-calculator/).
 
 </aside>
 
@@ -125,23 +125,3 @@ Two common snags worth avoiding. First, make sure your weights add to 100%, if h
 ## When the final can't do it alone
 
 If the answer comes back above 100%, don't just accept the lower grade without checking your options. Extra-credit assignments, a dropped-lowest-score policy, or a curve can all shift the math in your favor, and rounding rules sometimes turn an 89.5% into an A−. It's worth an email to your instructor to confirm exactly how the final is weighted and whether any of these apply before you write a target off. Run the numbers again with the corrected weight or an added extra-credit slice, and a target that looked impossible can come back into range.
-
-## FAQ
-
-**How do I calculate what I need on my final?**
-Use needed = (target − current × (1 − w)) ÷ w, where w is the final's weight as a decimal. Or enter your current grade, target and the final's weight into the [calculator](/calc/final-grade-calculator/) and it solves it and tells you if it's achievable.
-
-**What if it says I need more than 100%?**
-Then your target can't be reached from the final alone, you'd need extra credit or a lower goal. Try entering a lower target to find the best grade that's still attainable.
-
-**What does the "weight" of the final mean?**
-It's the percentage of your overall course grade that the final exam counts for, entered as a decimal (a final worth 30% is 0.30). Your other work covers the remaining 70%.
-
-**Does my current grade include the final?**
-No, enter your grade on all the work you've done so far, not counting the final. The final is the remaining portion the formula solves for.
-
-**Can I already have passed no matter what?**
-Yes. If the formula returns zero or a negative number, your current grade is high enough that even a 0% on the final still meets your target. The calculator flags this.
-
-**Is this the same as a test grade calculator?**
-No. A test grade (EZ grader) tells you the percentage for a test you've already taken. This tool answers the forward-looking question: what score do I still need on the final to reach my goal.

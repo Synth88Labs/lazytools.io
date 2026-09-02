@@ -31,7 +31,7 @@ faqs:
 draft: false
 ---
 
-**IBU (International Bitterness Units) measures the concentration of iso-alpha acids in your finished beer, in milligrams per litre.** It's a real chemical measurement, but it is a poor predictor of how bitter a beer *tastes*, because malt sweetness pushes back against bitterness on the palate. A 60 IBU barleywine can taste sweeter than a 30 IBU dry pilsner. The ratio that actually predicts balance is **BU:GU**, bitterness units divided by gravity units.
+**IBU ([International Bitterness Units](https://en.wikipedia.org/wiki/Beer_measurement)) measures the concentration of iso-alpha acids in your finished beer, in milligrams per litre.** It's a real chemical measurement, but it is a poor predictor of how bitter a beer *tastes*, because malt sweetness pushes back against bitterness on the palate. A 60 IBU barleywine can taste sweeter than a 30 IBU dry pilsner. The ratio that actually predicts balance is **BU:GU**, bitterness units divided by gravity units.
 
 <aside class="key-takeaways">
 

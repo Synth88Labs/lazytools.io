@@ -76,7 +76,7 @@ Order your debts by **APR**, highest to lowest, and ignore the balances. Every s
 
 Because interest is what makes debt grow, killing the highest rate first means **the least money is lost to interest overall**, for a fixed monthly budget, this ordering minimises total interest. The trade-off: if your highest-rate debt also has a big balance, it can take a while before you see your first debt disappear, which some people find discouraging.
 
-Avalanche tends to suit you if you're comfortable being guided by the numbers, or if one debt, usually a credit card at 20%+ APR, sits far above everything else. In that case the interest saving isn't marginal, and there's little behavioural downside to postponing a "win" you'd only get a month or two sooner anyway.
+Avalanche tends to suit you if you're comfortable being guided by the numbers, or if one debt, usually a [credit card at 20%+ APR](/finance/credit-card-payoff-calculator/), sits far above everything else. In that case the interest saving isn't marginal, and there's little behavioural downside to postponing a "win" you'd only get a month or two sooner anyway.
 
 ## Side by side
 

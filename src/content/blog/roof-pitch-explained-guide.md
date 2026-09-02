@@ -61,7 +61,7 @@ Roof slope can be described three ways, and they all say the same thing:
 
 The 12 is a convention, not a measurement: fixing the run at 12 inches means a single number communicates the whole slope. It also makes framing arithmetic easy, since carpenters' squares and rafter tables are all built around a 12-inch run.
 
-To convert a pitch to degrees: **angle = arctan(rise ÷ run)**. To go the other way: **rise = tan(angle) × 12**. The [roof pitch calculator](/home/roof-pitch-calculator/) does both, plus the slope percentage and rafter length.
+To convert a pitch to degrees: **angle = arctan(rise ÷ run)** ([roof pitch](https://en.wikipedia.org/wiki/Roof_pitch), Wikipedia). To go the other way: **rise = tan(angle) × 12**. The [roof pitch calculator](/home/roof-pitch-calculator/) does both, plus the slope percentage and rafter length.
 
 ## Pitch-to-degrees chart
 
@@ -121,27 +121,4 @@ A common estimating error is assuming the rafter equals the horizontal run. It d
 
 > **rafter length = √(rise² + run²)**
 
-For a 4/12 pitch, that's √(4² + 12²) ÷ 12 ≈ **1.054**, so every foot of run needs about 1.054 ft of rafter. Across a 24 ft span (12 ft run each side), each rafter is roughly 12.65 ft before you add overhang and subtract for the ridge board. The same multiplier explains why steep roofs need more material: a 12/12 roof's surface is about 1.414× its footprint.
-
-## Frequently asked questions
-
-### What is a 4/12 roof pitch in degrees?
-About **18.4°**. The pitch means the roof rises 4 inches for every 12 inches of horizontal run, and the angle is arctan(4 ÷ 12) = 18.43°. Its slope percentage is 33.3%.
-
-### What is the minimum roof pitch for asphalt shingles?
-**2/12**, but only when a doubled layer of underlayment is used. At **4/12 and above**, standard single underlayment applies. Below 2/12, shingles aren't appropriate and a low-slope membrane system should be used instead. Always confirm against the shingle manufacturer's instructions and your local code.
-
-### What roof pitch is walkable?
-Roofs up to roughly **4/12 (18.4°)** are generally considered walkable with proper footwear. From 4/12 to 6/12 you should be using fall protection, and above 6/12 (26.6°) the work calls for specialist equipment or a professional. Moisture, moss and frost reduce these thresholds significantly.
-
-### How do I convert roof pitch to degrees?
-Take the arctangent of rise divided by run: angle = arctan(rise ÷ 12). A 6/12 pitch is arctan(0.5) ≈ 26.57°. To reverse it, rise = tan(angle) × 12.
-
-### What is considered a low-slope roof?
-Broadly, anything below about **3/12**. Low-slope roofs drain slowly and let wind drive water back under overlapping courses, so they're usually finished with a membrane system (EPDM, TPO, modified bitumen) rather than shingles or tile.
-
-### Does a steeper roof cost more?
-Yes, for two reasons. The surface area grows relative to the footprint, a 12/12 roof has about 1.41× the area of its floor plan, so you buy more material. And above roughly 6/12, labour slows and staging plus fall-arrest equipment is required, which raises the installed cost per square.
-
-### How do I work out rafter length from the pitch?
-Rafter length per unit of run is √(rise² + run²) ÷ run. For 4/12 that's about 1.054, so multiply the horizontal run by 1.054. Add your overhang and subtract half the ridge-board thickness separately.
+For a 4/12 pitch, that's √(4² + 12²) ÷ 12 ≈ **1.054**, so every foot of run needs about 1.054 ft of rafter. Across a 24 ft span (12 ft run each side), each rafter is roughly 12.65 ft before you add overhang and subtract for the ridge board. The same multiplier explains why steep roofs need more material: a 12/12 roof's surface is about 1.414× its footprint, which is why the [roofing calculator](/home/roofing-calculator/) works from slope rather than footprint alone.

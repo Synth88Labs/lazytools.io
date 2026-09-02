@@ -66,7 +66,7 @@ Published veterinary references (the [Merck Veterinary Manual, Chocolate Toxicos
 | **60-100 mg/kg** | Seizures, dangerous heart rhythms |
 | **Over ~100 mg/kg** | Potentially fatal |
 
-These are guidelines, not guarantees, individual dogs vary, and older dogs or those with heart conditions are more vulnerable.
+These are guidelines, not guarantees, individual dogs vary, and older dogs (you can estimate a dog's age in human-equivalent years with the [dog age calculator](/pets/dog-age-calculator/)) or those with heart conditions are more vulnerable.
 
 ## How much theobromine is in each chocolate type
 
