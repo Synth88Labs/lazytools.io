@@ -47817,7 +47817,7 @@
       "resolvedOn": "2026-08-25"
     }
   },
-  "updated": "2026-09-13",
+  "updated": "2026-09-14",
   "runs": [
     {
       "date": "2026-08-22",
@@ -49219,6 +49219,11 @@
         "date": "2026-09-13",
         "auditor": 5,
         "fixer": 4
+      },
+      {
+        "date": "2026-09-14",
+        "auditor": 3.3,
+        "fixer": 4
       }
     ],
     "weekly": [
@@ -49245,6 +49250,12 @@
         "auditor": 5,
         "fixer": 4,
         "days": 7
+      },
+      {
+        "week": "2026-W38",
+        "auditor": 3.3,
+        "fixer": 4,
+        "days": 1
       }
     ]
   },
@@ -49272,8 +49283,8 @@
         "lastAvg": 100
       },
       "score": {
-        "daily": 5,
-        "weekly": 5
+        "daily": 3.3,
+        "weekly": 3.3
       }
     },
     "fixer": {
