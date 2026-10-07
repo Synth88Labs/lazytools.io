@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-label="Three Google editor export endpoints. Sheets export produces CSV, XLSX and PDF. Docs export produces DOCX, PDF and TXT. Slides export produces PPTX and PDF. Each uses the pattern docs.google.com slash type slash d slash FILE ID slash export question mark format equals.">
+  <defs>
+    <style>
+      .h { font: 800 42px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill: #0f172a; }
+      .pat { font: 700 26px Consolas,Menlo,monospace; fill: #0f172a; }
+      .ct { font: 800 34px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill: #1e3a8a; }
+      .fmt { font: 700 26px Consolas,Menlo,monospace; fill: #ffffff; }
+      .lab { font: 600 25px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill: #334155; }
+      .foot { font: 600 26px Consolas,Menlo,monospace; fill: #ffffff; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="700" fill="#f8fafc"/>
+  <text x="600" y="62" text-anchor="middle" class="h">Export Google editors by URL</text>
+
+  <!-- pattern bar -->
+  <rect x="90" y="92" width="1020" height="58" rx="12" fill="#e2e8f0"/>
+  <text x="600" y="130" text-anchor="middle" class="pat">docs.google.com/<tspan fill="#1e3a8a" font-weight="800">{type}</tspan>/d/FILE_ID/export?format=<tspan fill="#059669" font-weight="800">{fmt}</tspan></text>
+
+  <!-- Sheets card -->
+  <g transform="translate(60 190)">
+    <rect x="0" y="0" width="340" height="340" rx="20" fill="#ffffff" stroke="#bbf7d0" stroke-width="3"/>
+    <text x="170" y="60" text-anchor="middle" class="ct">Sheets</text>
+    <text x="170" y="96" text-anchor="middle" class="lab">spreadsheets</text>
+    <g>
+      <rect x="40" y="128" width="260" height="46" rx="10" fill="#059669"/><text x="170" y="160" text-anchor="middle" class="fmt">csv</text>
+      <rect x="40" y="184" width="260" height="46" rx="10" fill="#059669"/><text x="170" y="216" text-anchor="middle" class="fmt">xlsx</text>
+      <rect x="40" y="240" width="260" height="46" rx="10" fill="#059669"/><text x="170" y="272" text-anchor="middle" class="fmt">pdf</text>
+    </g>
+    <text x="170" y="316" text-anchor="middle" class="lab">+ &amp;gid= for one tab</text>
+  </g>
+
+  <!-- Docs card -->
+  <g transform="translate(430 190)">
+    <rect x="0" y="0" width="340" height="340" rx="20" fill="#ffffff" stroke="#bfdbfe" stroke-width="3"/>
+    <text x="170" y="60" text-anchor="middle" class="ct">Docs</text>
+    <text x="170" y="96" text-anchor="middle" class="lab">document</text>
+    <g>
+      <rect x="40" y="128" width="260" height="46" rx="10" fill="#1e3a8a"/><text x="170" y="160" text-anchor="middle" class="fmt">docx</text>
+      <rect x="40" y="184" width="260" height="46" rx="10" fill="#1e3a8a"/><text x="170" y="216" text-anchor="middle" class="fmt">pdf</text>
+      <rect x="40" y="240" width="260" height="46" rx="10" fill="#1e3a8a"/><text x="170" y="272" text-anchor="middle" class="fmt">txt</text>
+    </g>
+    <text x="170" y="316" text-anchor="middle" class="lab">+ rtf, odt, html, epub</text>
+  </g>
+
+  <!-- Slides card -->
+  <g transform="translate(800 190)">
+    <rect x="0" y="0" width="340" height="340" rx="20" fill="#ffffff" stroke="#fed7aa" stroke-width="3"/>
+    <text x="170" y="60" text-anchor="middle" class="ct">Slides</text>
+    <text x="170" y="96" text-anchor="middle" class="lab">presentation</text>
+    <g>
+      <rect x="40" y="128" width="260" height="46" rx="10" fill="#ea580c"/><text x="170" y="160" text-anchor="middle" class="fmt">pptx</text>
+      <rect x="40" y="184" width="260" height="46" rx="10" fill="#ea580c"/><text x="170" y="216" text-anchor="middle" class="fmt">pdf</text>
+    </g>
+    <text x="170" y="316" text-anchor="middle" class="lab">always the current version</text>
+  </g>
+
+  <text x="600" y="596" text-anchor="middle" class="lab">A public Sheet&#8217;s csv URL can be fetched from code as a read-only data source</text>
+
+  <rect x="330" y="626" width="540" height="50" rx="14" fill="#1e3a8a"/>
+  <text x="600" y="660" text-anchor="middle" class="foot">lazytools.io/links</text>
+</svg>

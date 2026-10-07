@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" role="img" aria-label="A github.com blob URL github.com slash owner slash repo slash blob slash main slash path serves an HTML viewer page. Changing the host to raw.githubusercontent.com and removing the blob segment gives raw.githubusercontent.com slash owner slash repo slash main slash path, which serves the file bytes directly.">
+  <defs>
+    <style>
+      .h { font: 800 42px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill: #0f172a; }
+      .cap { font: 800 28px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill: #1e3a8a; }
+      .capw { font: 800 28px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill: #7ef0c0; }
+      .code { font: 700 25px Consolas,Menlo,monospace; fill: #0f172a; }
+      .codew { font: 700 25px Consolas,Menlo,monospace; fill: #ffffff; }
+      .lab { font: 600 26px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill: #334155; }
+      .foot { font: 600 26px Consolas,Menlo,monospace; fill: #ffffff; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="680" fill="#f8fafc"/>
+  <text x="600" y="64" text-anchor="middle" class="h">GitHub: blob page &#8594; raw file</text>
+
+  <!-- blob card -->
+  <g transform="translate(60 110)">
+    <rect x="0" y="0" width="1080" height="150" rx="18" fill="#ffffff" stroke="#e2e8f0" stroke-width="3"/>
+    <text x="30" y="46" class="cap">blob URL = HTML viewer page</text>
+    <rect x="30" y="66" width="1020" height="58" rx="10" fill="#f1f5f9"/>
+    <text x="48" y="104" class="code"><tspan fill="#dc2626" font-weight="800">github.com</tspan>/owner/repo/<tspan fill="#dc2626" font-weight="800">blob/</tspan>main/src/app.js</text>
+  </g>
+
+  <!-- arrow -->
+  <g transform="translate(600 290)">
+    <text x="0" y="24" text-anchor="middle" class="lab">change the host &#183; drop /blob</text>
+    <polygon points="-22,36 22,36 0,70" fill="#1e3a8a"/>
+  </g>
+
+  <!-- raw card -->
+  <g transform="translate(60 380)">
+    <rect x="0" y="0" width="1080" height="150" rx="18" fill="#0c3f85" stroke="#1d87f1" stroke-width="3"/>
+    <text x="30" y="46" class="capw">raw URL = the file&#8217;s bytes</text>
+    <rect x="30" y="66" width="1020" height="58" rx="10" fill="#0a2d5f"/>
+    <text x="48" y="104" class="codew"><tspan fill="#7ef0c0" font-weight="800">raw.githubusercontent.com</tspan>/owner/repo/main/src/app.js</text>
+  </g>
+
+  <text x="600" y="578" text-anchor="middle" class="lab">Branch = latest &#183; tag or commit SHA = permanent &#183; not a CDN</text>
+
+  <rect x="330" y="608" width="540" height="50" rx="14" fill="#1e3a8a"/>
+  <text x="600" y="642" text-anchor="middle" class="foot">lazytools.io/links</text>
+</svg>

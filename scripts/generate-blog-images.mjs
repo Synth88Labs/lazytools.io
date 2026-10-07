@@ -1420,6 +1420,41 @@ const POSTS = [
     fact: 'speechSynthesis · local OS voices · rate · pitch · offline',
     icon: '🔊',
   },
+  {
+    slug: 'how-to-create-google-drive-direct-download-link-guide',
+    kicker: 'LINKS & SHARING GUIDE',
+    lines: ['Google Drive', 'direct download link:', 'the uc?export trick'],
+    fact: 'drive.google.com/uc?export=download&id=FILE_ID',
+    icon: '📥',
+  },
+  {
+    slug: 'google-sheets-docs-slides-export-url-guide',
+    kicker: 'LINKS & SHARING GUIDE',
+    lines: ['Export Sheets, Docs', '& Slides by URL:', 'CSV, XLSX, PDF'],
+    fact: '{type}/d/FILE_ID/export?format={fmt}',
+    icon: '📊',
+  },
+  {
+    slug: 'dropbox-direct-download-link-guide',
+    kicker: 'LINKS & SHARING GUIDE',
+    lines: ['Dropbox direct', 'download links:', 'dl=1 & raw hosting'],
+    fact: '?dl=0 → ?dl=1 · dl.dropboxusercontent.com for raw',
+    icon: '📦',
+  },
+  {
+    slug: 'github-raw-links-explained-guide',
+    kicker: 'LINKS & SHARING GUIDE',
+    lines: ['GitHub raw links:', 'raw.githubusercontent', '.com explained'],
+    fact: 'drop /blob, change host · branch = latest, SHA = frozen',
+    icon: '🐙',
+  },
+  {
+    slug: 'utm-parameters-click-ids-explained-guide',
+    kicker: 'LINKS & SHARING GUIDE',
+    lines: ['UTM & click IDs:', 'clean the tracking', 'out of your links'],
+    fact: 'utm_* · fbclid · gclid — metadata, not the address',
+    icon: '🧼',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
