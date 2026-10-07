@@ -59,6 +59,7 @@ export const CATEGORIES: CategoryDef[] = [
   { slug: 'file', name: 'File Converters', icon: '🔄', description: 'CSV, JSON, XML, YAML and Markdown conversion.', status: 'live' },
   { slug: 'text', name: 'Text Tools', icon: '✍️', description: 'Counters, case converters, sorting and clean-up.', status: 'live' },
   { slug: 'generate', name: 'Generators', icon: '✨', description: 'QR codes, passwords, UUIDs and more.', status: 'live' },
+  { slug: 'links', name: 'Links & Sharing', icon: '🔗', description: 'Direct-download link generators (Drive, Dropbox, GitHub) and a URL tracking cleaner.', status: 'live' },
   { slug: 'time', name: 'Date & Time', icon: '📅', description: 'Timestamps, date math and timezone tools.', status: 'live' },
   { slug: 'calendar', name: 'Calendars', icon: '🗓️', description: 'Convert between world calendars, Hijri, Hebrew, Persian, Julian and more.', status: 'live' },
   { slug: 'color', name: 'Color Tools', icon: '🎨', description: 'Color conversion, contrast and palettes.', status: 'live' },
@@ -105,7 +106,7 @@ export const CATEGORY_GROUPS: CategoryGroup[] = [
   {
     slug: 'dev', name: 'Developer & Privacy', icon: '⌨️',
     blurb: 'Dev utilities, network, ciphers, generators, security',
-    categories: ['dev', 'network', 'cipher', 'generate', 'security'],
+    categories: ['dev', 'network', 'cipher', 'generate', 'links', 'security'],
   },
 ];
 

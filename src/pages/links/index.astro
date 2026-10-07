@@ -1,0 +1,80 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PrivacyStrip from '../../components/PrivacyStrip.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { LINK_TOOLS } from '../../data/links/index';
+import { breadcrumbSchema, collectionPageSchema, faqSchema } from '../../lib/schema';
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Links & Sharing', url: '/links/' },
+];
+
+const faqs = [
+  {
+    q: 'Why run link tools in the browser instead of a web service?',
+    a: 'A share link can reveal what you are working on — an unpublished landing page, a private file, a campaign you have not launched. Server-based "link generators" see every URL you paste. These tools do the whole transform in your browser with JavaScript, so your link is never sent to LazyTools or anyone else, and they keep working offline.',
+  },
+  {
+    q: 'Do these direct-download links work for private files?',
+    a: 'No — Google Drive and Dropbox still enforce their sharing permissions. A direct link only downloads for people if the file is shared as "Anyone with the link". The tool builds the correct URL; the file owner controls who can open it.',
+  },
+  {
+    q: 'Are these official Google / Dropbox URLs?',
+    a: 'They are built on the providers\' own public endpoints (Drive\'s export and uc?export=download, Dropbox\'s dl parameter), the same ones the services use behind their Download menus. They are reliable conveniences rather than contractual APIs, so a provider could change them.',
+  },
+];
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  collectionPageSchema({
+    name: 'Links & Sharing Tools',
+    url: '/links/',
+    description: 'Client-side link tools: Google Drive & Dropbox direct-download link generators, a GitHub raw link generator and a URL tracking-parameter cleaner. Everything runs in your browser.',
+    items: LINK_TOOLS.map((t) => ({ name: t.name, url: `/links/${t.slug}/` })),
+  }),
+  faqSchema(faqs),
+];
+---
+
+<Base
+  title="Links & Sharing Tools | LazyTools"
+  description={`${LINK_TOOLS.length} free link tools: Google Drive & Dropbox direct-download link generators, a GitHub raw link generator and a URL tracking-parameter cleaner. All in your browser, nothing uploaded.`}
+  schema={schema}
+>
+  <div class="mx-auto max-w-5xl px-4 py-6">
+    <Breadcrumbs items={crumbs} />
+
+    <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Links &amp; Sharing</h1>
+    <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
+      Turn share links into direct downloads, tag campaign URLs, and strip tracking junk — all
+      transformed <strong class="font-semibold text-slate-900">in your browser</strong>. A link
+      generator on someone's server sees every URL you paste; here nothing is sent anywhere.
+    </p>
+
+    <div class="mt-5">
+      <PrivacyStrip />
+    </div>
+
+    <ul class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {LINK_TOOLS.map((t) => (
+        <li>
+          <a href={`/links/${t.slug}/`} class="flex h-full flex-col rounded-xl border border-slate-200 p-4 transition hover:border-brand-400 hover:shadow-sm">
+            <span class="text-2xl" aria-hidden="true">{t.icon}</span>
+            <span class="mt-2 font-semibold text-slate-900">{t.name}</span>
+            <span class="mt-1 text-sm text-slate-600">{t.lead.split('—')[0]}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <section class="prose-lazy mt-10">
+      <h2>Share links, kept private</h2>
+      <p>Direct-download and export links from <strong>Google Drive, Docs, Sheets and Slides</strong> and <strong>Dropbox</strong> are built by parsing the file ID or rewriting a single parameter — operations that need no server. The <strong>GitHub raw link generator</strong> rebuilds a blob URL into its raw.githubusercontent.com form, and the <strong>tracking-parameter cleaner</strong> strips the <code>utm_*</code> tags, <code>fbclid</code>, <code>gclid</code> and other click IDs that platforms bolt onto links.</p>
+      <p>All of it runs on your device. That matters for a link tool: the URLs you paste often point at things that are not public yet, and a privacy tool that uploaded them would defeat its own purpose. Everything here works offline and sends nothing anywhere.</p>
+    </section>
+
+    <FaqSection faqs={faqs} />
+  </div>
+</Base>

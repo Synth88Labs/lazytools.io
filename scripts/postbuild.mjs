@@ -18,6 +18,7 @@ import { COLOR_TOOLS } from '../src/data/color/index.ts';
 import { FILE_TOOLS } from '../src/data/file/index.ts';
 import { DEV_TOOLS } from '../src/data/dev/index.ts';
 import { GEN_TOOLS } from '../src/data/generate/index.ts';
+import { LINK_TOOLS } from '../src/data/links/index.ts';
 import { TIME_TOOLS } from '../src/data/time/index.ts';
 import { SECURITY_TOOLS } from '../src/data/security/index.ts';
 import { IMAGE_TOOLS } from '../src/data/image/index.ts';
@@ -145,6 +146,7 @@ const slugs = [
   ...FILE_TOOLS.map((t) => `file/${t.slug}`),
   ...DEV_TOOLS.map((t) => `dev/${t.slug}`),
   ...GEN_TOOLS.map((t) => `generate/${t.slug}`),
+  ...LINK_TOOLS.map((t) => `links/${t.slug}`),
   ...TIME_TOOLS.map((t) => `time/${t.slug}`),
   ...SECURITY_TOOLS.map((t) => `security/${t.slug}`),
   ...IMAGE_TOOLS.map((t) => `image/${t.slug}`),
