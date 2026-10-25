@@ -3,24 +3,24 @@ import ContentPage from '../layouts/ContentPage.astro';
 ---
 
 <ContentPage
-  title="Cookie Statement, Analytics Cookies Only | LazyTools"
-  description="LazyTools uses one set of cookies: Google Analytics, to measure page visits. We set no advertising cookies and do no cross-site ad-targeting. Some tools also save your preferences in your browser's own local storage, which never leaves your device."
+  title="Cookie Statement | LazyTools"
+  description="LazyTools uses Google Analytics cookies to measure page visits and shows third-party ads (Adsterra) that may set their own advertising cookies. The files and values you enter into a tool never reach a server. How to limit or opt out."
   heading="Cookie Statement"
-  updated="July 12, 2026"
+  updated="October 25, 2026"
 >
   <p>
-    <strong>The only cookies LazyTools sets are analytics cookies</strong>, from Google Analytics, which we use to
-    measure how many people visit each tool, and they are set <strong>only if you accept our cookie banner</strong>.
-    Analytics is off by default (Google Consent Mode, denied until you consent), so if you decline or ignore the
-    banner, no cookies are set. We set <strong>no advertising or marketing cookies</strong> and do no cross-site
-    ad-targeting. The tools work exactly the same either way.
+    LazyTools uses cookies in two places: <strong>our own analytics</strong> (Google Analytics), set only if you
+    accept the cookie banner, and <strong>a third-party advertising network (Adsterra)</strong> whose ads keep the
+    tools free and which may set its own cookies. Crucially, neither touches the content of the tools:
+    <strong>the files and values you enter into any tool are processed in your browser and never reach a server</strong>,
+    so they are never available to us, to Google, or to any advertiser. The tools work the same whatever you choose.
   </p>
 
-  <h2>The cookies we set</h2>
+  <h2>1. Our analytics cookies (first-party)</h2>
   <p>
-    Once you accept, these are the analytics cookies Google Analytics (GA4) places to measure page visits and
-    engagement. They record how the site is used, never the content you enter into a tool. If you decline, none
-    of these are set.
+    Once you accept the banner, Google Analytics (GA4) sets these to measure page visits and engagement. They are
+    off by default (Google Consent Mode, denied until you consent), so if you decline or ignore the banner, none
+    are set. They record how the site is used, never what you enter into a tool.
   </p>
   <div class="overflow-x-auto">
     <table>
@@ -33,9 +33,20 @@ import ContentPage from '../layouts/ContentPage.astro';
       </tbody>
     </table>
   </div>
+
+  <h2>2. Advertising cookies (third-party, Adsterra)</h2>
   <p>
-    Durations are the defaults Google sets and are refreshed on each visit. See the
-    <a href="/privacy/">privacy policy</a> for what GA measures and <a href="/privacy/#optout">how to opt out</a>.
+    To keep every tool free, LazyTools shows ads served by <strong>Adsterra</strong>, a third-party advertising
+    network. When an ad loads, Adsterra and its advertising partners may set their own cookies and use similar
+    technologies to measure ad performance and target ads, which can include <strong>cross-site targeting</strong>.
+    These cookies are set by Adsterra, not by us, and we do not control or have access to them. Some ad formats on
+    the site are more intrusive than a plain banner: a <strong>pop-under</strong> may open an advertiser's page in a
+    separate tab, a <strong>floating social bar</strong> may appear, and Adsterra may <strong>ask your permission to
+    send browser push notifications</strong> (you can always decline, and revoke it in your browser's site
+    settings). None of these can see the files or values you enter into a tool.
+  </p>
+  <p>
+    Adsterra describes its own data practices in its <a href="https://adsterra.com/privacy-policy/" rel="noopener nofollow">privacy policy</a>.
   </p>
 
   <h2>What isn't a cookie</h2>
@@ -43,20 +54,20 @@ import ContentPage from '../layouts/ContentPage.astro';
     <li><strong>Local storage, kept locally.</strong> Some tools remember your preferences or saved data, Pomodoro settings, Kanban boards, a saved unit, whether you've rated a tool, using your browser's own local storage. This is <em>not</em> a cookie: it stays on your device, is never transmitted to us, and you can clear it any time via your browser settings.</li>
   </ul>
 
-  <h2>What we don't use</h2>
+  <h2>What we still don't do</h2>
   <ul>
-    <li>No advertising or marketing cookies.</li>
-    <li>No cross-site ad-targeting, and we do not sell or share your data for advertising.</li>
-    <li>No cookies tied to your tool content, the files and values you process never reach a server in the first place.</li>
+    <li>We never upload, store or sell the files and values you enter into a tool, they do not leave your device.</li>
+    <li>We do not share your tool content with advertisers or anyone else, because we never receive it in the first place.</li>
+    <li>We do not set our own advertising cookies; ad cookies come from Adsterra under its own policy.</li>
   </ul>
 
-  <h2>How to opt out</h2>
-  <p>
-    Install Google's <a href="https://tools.google.com/dlpage/gaoptout" rel="noopener">Analytics Opt-out Add-on</a>,
-    use your browser's tracking protection or a content blocker, or block analytics cookies in your browser
-    settings. Clearing cookies removes the identifiers already stored. Full details are in the
-    <a href="/privacy/#optout">privacy policy</a>.
-  </p>
+  <h2>How to opt out or limit cookies</h2>
+  <ul>
+    <li><strong>Analytics:</strong> decline the cookie banner, install Google's <a href="https://tools.google.com/dlpage/gaoptout" rel="noopener">Analytics Opt-out Add-on</a>, or block analytics cookies in your browser.</li>
+    <li><strong>Advertising:</strong> use your browser's tracking protection or a content/ad blocker, block third-party cookies, and decline the push-notification prompt if it appears. Clearing cookies removes identifiers already stored.</li>
+    <li><strong>Everywhere:</strong> private/incognito windows and most privacy-focused browsers limit or discard these cookies automatically.</li>
+  </ul>
+  <p>Full details are in the <a href="/privacy/#optout">privacy policy</a>.</p>
 
   <h2>A note on server logs</h2>
   <p>

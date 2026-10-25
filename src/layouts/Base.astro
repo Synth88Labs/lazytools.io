@@ -5,6 +5,9 @@ import { clampDescription } from '../lib/seo';
 import { organizationSchema, websiteSchema } from '../lib/schema';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import AdsterraGlobal from '../components/ads/AdsterraGlobal.astro';
+import AdsterraSlot from '../components/ads/AdsterraSlot.astro';
+import { AD_UNITS } from '../lib/ads';
 
 interface Props {
   title: string;
@@ -85,6 +88,16 @@ const allSchema = [organizationSchema(), websiteSchema(), ...schema];
     </main>
     <Footer />
 
+    <!-- Adsterra (popunder / social bar). Production builds only. -->
+    <AdsterraGlobal />
+
+    <!-- Fixed skyscraper rail, only on very wide screens so it never overlaps the centered content. -->
+    <div class="pointer-events-none fixed right-2 top-1/2 z-40 hidden -translate-y-1/2 min-[1400px]:block">
+      <div class="pointer-events-auto">
+        <AdsterraSlot desktop={AD_UNITS.skyscraper} media="(min-width: 1400px)" label={false} class="my-0" />
+      </div>
+    </div>
+
     <!-- Cookie consent banner (Consent Mode v2). Hidden until JS confirms no prior choice. -->
     <div
       id="cookie-consent"
@@ -93,7 +106,7 @@ const allSchema = [organizationSchema(), websiteSchema(), ...schema];
     >
       <div class="mx-auto flex max-w-5xl flex-col gap-3 px-4 py-3 sm:flex-row sm:items-center">
         <p class="flex-1 text-sm text-slate-600">
-          🍪 We use <strong class="font-semibold text-slate-800">Google Analytics</strong> cookies to measure page visits. Anything you type or process in a tool stays on your device either way. <a href="/cookies/" class="underline underline-offset-2 hover:text-brand-700">Details</a>.
+          🍪 We use <strong class="font-semibold text-slate-800">Google Analytics</strong> and show third-party <strong class="font-semibold text-slate-800">ads (Adsterra)</strong>, which may set their own cookies. Anything you type or process in a tool stays on your device either way. <a href="/cookies/" class="underline underline-offset-2 hover:text-brand-700">Details</a>.
         </p>
         <div class="flex gap-2">
           <button id="cc-decline" class="rounded-lg border border-slate-300 bg-white px-4 py-1.5 text-sm font-semibold text-slate-700 hover:border-brand-400">Decline</button>

@@ -6,6 +6,9 @@ import FaqSection from '../../components/FaqSection.astro';
 import { breadcrumbSchema, faqSchema, founderPerson } from '../../lib/schema';
 import { seoTitle } from '../../lib/seo';
 import { SITE } from '../../lib/site';
+import AdsterraSlot from '../../components/ads/AdsterraSlot.astro';
+import AdsterraNative from '../../components/ads/AdsterraNative.astro';
+import { AD_UNITS } from '../../lib/ads';
 import { allPairs, titleNoun } from '../../data/units';
 
 /** Human label for a tool CTA, e.g. "Kilograms → Pounds converter" */
@@ -123,9 +126,13 @@ if (post.data.faqs.length > 0) schema.push(faqSchema(post.data.faqs));
       )
     }
 
+    <AdsterraSlot desktop={AD_UNITS.leaderboard} mobile={AD_UNITS.mobile} class="mt-6" />
+
     <div class="prose-lazy mt-8">
       <Content />
     </div>
+
+    <AdsterraNative />
 
     {post.data.faqs.length > 0 && <FaqSection faqs={post.data.faqs} />}
 

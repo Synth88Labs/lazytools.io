@@ -4,9 +4,9 @@ import ContentPage from '../layouts/ContentPage.astro';
 
 <ContentPage
   title="Privacy Policy, What We Collect (Almost Nothing) | LazyTools"
-  description="LazyTools processes your files and inputs entirely in your browser. They are never uploaded. We use Google Analytics to measure page visits, which sets cookies; we run no ads and never sell data. Here's exactly what is and isn't collected, and how to opt out."
+  description="LazyTools processes your files and inputs entirely in your browser; they are never uploaded. We use Google Analytics for page visits and show third-party ads (Adsterra) that may set advertising cookies. Here's exactly what is and isn't collected, and how to opt out."
   heading="Privacy Policy"
-  updated="July 12, 2026"
+  updated="October 25, 2026"
 >
   <p>
     <strong>Plain-English summary:</strong> anything you type into a tool or any file you process stays on your
@@ -14,15 +14,16 @@ import ContentPage from '../layouts/ContentPage.astro';
     find useful, we use <strong>Google Analytics</strong> to measure page visits, but <strong>only if you accept
     our cookie banner</strong>. Analytics is off by default; until you consent, no analytics cookie is set and no
     usage data is sent. If you accept, it sets cookies and sends usage data (such as the pages you view and a
-    truncated IP) to Google. We run <strong>no advertising</strong> and never sell your data, and you can
-    <a href="#optout">change your choice</a> at any time.
+    truncated IP) to Google. To keep the tools free, the site also shows <strong>third-party ads (Adsterra)</strong>,
+    which may set their own advertising cookies and use cross-site targeting; that is separate from the tools, and
+    we never sell your data. You can <a href="#optout">change your choices</a> at any time.
   </p>
 
   <h2>1. What we never collect</h2>
   <ul>
     <li>The values you type into tools, the files you process, and any results, all processing happens locally in your browser (<a href="/how-it-works/">how it works</a>), and none of it is ever transmitted to us or to Google. Analytics records that you <em>visited</em> a tool's page, never the content you work with on it.</li>
     <li>Accounts, names, or email addresses. There is no sign-up, and we hold no customer data.</li>
-    <li>Advertising or cross-site ad-targeting. We run no ad networks and do not sell or share your data for advertising.</li>
+    <li>Your tool content for advertising. We show third-party ads (see below), but the files and values you enter into a tool are never shared with advertisers, because they never leave your device in the first place.</li>
   </ul>
 
   <h2>2. What we do handle</h2>
@@ -38,18 +39,37 @@ import ContentPage from '../layouts/ContentPage.astro';
       </ul>
       This measures how you use the pages, <strong>never the content you type into a tool or the files you process</strong>, which stay on your device. Google may process this data on servers outside your country, including the United States, under its own <a href="https://business.safety.google/adsprocessorterms/" rel="noopener">data-processing terms</a>. Data is retained for the period configured in Google Analytics (GA4 offers retention windows of 2 to 14 months for user-level data). You can <a href="#optout">opt out</a> at any time, as described below.
     </li>
+    <li>
+      <strong>Third-party advertising (Adsterra).</strong> To keep every tool free, we display ads served by
+      <strong>Adsterra</strong>, a third-party ad network. When an ad loads, Adsterra and its advertising partners
+      may set their own cookies and use similar technologies to measure and target ads, which can include
+      <strong>cross-site targeting</strong>, device and approximate-location signals, and a pseudonymous ad
+      identifier. These are Adsterra's cookies, set under <a href="https://adsterra.com/privacy-policy/" rel="noopener nofollow">Adsterra's privacy policy</a>; we do not control them or receive the data. Some ad
+      formats are more intrusive than a standard banner: a <strong>pop-under</strong> can open an advertiser's page
+      in a new tab, a <strong>floating social bar</strong> may appear, and Adsterra may <strong>ask to send browser
+      push notifications</strong> (you can decline, and revoke it in your browser site settings). None of this can
+      access the files or values you enter into a tool. See <a href="#optout">how to limit it</a> below.
+    </li>
     <li><strong>Standard server logs.</strong> Like every website, our hosting provider (Namecheap) automatically records basic web-server logs, IP address, requested URL and timestamp, for security and reliability. These are ordinary host logs, retained for a limited period; we do not use them to build profiles.</li>
     <li><strong>Opt-in anonymous ratings.</strong> If, and only if. You click to rate a tool, we store just the tool's name and your star value (1-5), plus a timestamp. As the <a href="https://github.com/Synth88Labs/lazytools.io" rel="noopener">source code</a> shows, this records <strong>no IP address, no cookie, no user agent and no identifier</strong>. Whether you've rated a tool is remembered only in your own browser's local storage, never sent to us.</li>
   </ul>
 
-  <h2 id="optout">3. How to opt out of analytics</h2>
+  <h2 id="optout">3. How to opt out or limit tracking and ads</h2>
+  <p><strong>Analytics:</strong></p>
   <ul>
     <li><strong>Decline the cookie banner</strong>, analytics stays off, which is the default until you accept. To withdraw consent after accepting, clear this site's cookies/site data (which resets the banner) and choose Decline.</li>
     <li>Install Google's official <a href="https://tools.google.com/dlpage/gaoptout" rel="noopener">Analytics Opt-out Browser Add-on</a>, which stops GA on every site you visit.</li>
     <li>Use your browser's tracking protection or a content blocker (most block Google Analytics), or block third-party/analytics cookies in your browser settings.</li>
     <li>Clearing your cookies removes the analytics identifiers stored on your device.</li>
   </ul>
-  <p>The tools themselves work identically whether or not analytics is blocked, none of them depend on it.</p>
+  <p><strong>Advertising (Adsterra):</strong></p>
+  <ul>
+    <li>Use a content/ad blocker and your browser's tracking protection, which stop most ad scripts and cookies.</li>
+    <li>Block third-party cookies in your browser settings, and clear cookies to remove ad identifiers already stored.</li>
+    <li>Decline the browser push-notification prompt if it appears; if you previously allowed it, revoke it under the site's notification settings in your browser.</li>
+    <li>Private/incognito windows and privacy-focused browsers limit or discard these cookies automatically.</li>
+  </ul>
+  <p>The tools themselves work identically whether or not analytics and ads are blocked, none of them depend on it.</p>
 
   <h2>4. Legal bases and your rights (GDPR/CCPA)</h2>
   <p>
@@ -65,9 +85,11 @@ import ContentPage from '../layouts/ContentPage.astro';
   <h2>5. Third parties</h2>
   <p>
     We use <strong>Google Analytics</strong> (Google LLC) as described above, under Google's own terms and privacy
-    commitments. Our hosting provider processes standard access logs. We do not use advertisers, and we do not
-    sell or share your data. If our data practices change materially, we'll update this policy and note the change
-    in plain language.
+    commitments, and <strong>Adsterra</strong> as our third-party advertising provider, under
+    <a href="https://adsterra.com/privacy-policy/" rel="noopener nofollow">Adsterra's privacy policy</a>. Our hosting
+    provider processes standard access logs. We never sell your data, and because your tool content never leaves your
+    device, it is never available to these third parties. If our data practices change materially, we'll update this
+    policy and note the change in plain language.
   </p>
 
   <h2>6. Changes</h2>

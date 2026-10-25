@@ -31,7 +31,11 @@ const MAX_ATTEMPTS = 3;
 const ALLOWED_HOSTS = [/(^|\.)lazytools\.io$/, /(^|\.)googletagmanager\.com$/, /(^|\.)google-analytics\.com$/, /(^|\.)analytics\.google\.com$/, /(^|\.)gstatic\.com$/, /(^|\.)googleapis\.com$/,
   // Owner-accepted: Mediavine "Grow.me" audience-engagement + its Unified-ID stack + Recombee
   // recommendation API (intentional monetization; see Base.astro). Remove if the script is ever removed.
-  /(^|\.)grow\.me$/, /(^|\.)growplow\.events$/, /(^|\.)uidapi\.com$/, /(^|\.)recombee\.com$/];
+  /(^|\.)grow\.me$/, /(^|\.)growplow\.events$/, /(^|\.)uidapi\.com$/, /(^|\.)recombee\.com$/,
+  // Owner-accepted: Adsterra ad-network script hosts (popunder, social bar, native, banners; see
+  // src/components/ads/*). Ad creatives load inside ad iframes, which the privacy check ignores
+  // (main-frame only). Remove these if Adsterra is ever removed.
+  /(^|\.)lightlyenergeticevolution\.com$/, /(^|\.)bauval\.org$/];
 const hostAllowed = (h) => ALLOWED_HOSTS.some((re) => re.test(h));
 
 const readJSON = async (p, fb) => { try { return JSON.parse(await readFile(p, 'utf8')); } catch { return fb; } };
@@ -87,7 +91,10 @@ for (const slug of toAudit) {
   page.on('console', (m) => { if (m.type() === 'error') consoleErrors.push(m.text().slice(0, 200)); });
   page.on('pageerror', (e) => pageErrors.push(String(e).slice(0, 200)));
   page.on('requestfailed', (r) => { const f = r.failure(); if (f && !/ERR_ABORTED/.test(f.errorText)) badRequests.push(`${r.url().slice(0, 80)} (${f.errorText})`); });
-  page.on('request', (r) => { try { const h = new URL(r.url()).hostname; if (!hostAllowed(h)) { const m = r.method(); if (m !== 'GET' || r.postData()) externalPosts.push(`${m} ${h}`); else externalPosts.push(`GET ${h}`); } } catch {} });
+  // Only main-frame requests count: this check guards against the PAGE/TOOL phoning home with
+  // your data. Third-party ads (Adsterra) run in their own ad iframes and pull creatives from
+  // many ad domains; those sub-frame requests are expected and are not a privacy regression.
+  page.on('request', (r) => { try { if (r.frame() !== page.mainFrame()) return; const h = new URL(r.url()).hostname; if (!hostAllowed(h)) { const m = r.method(); if (m !== 'GET' || r.postData()) externalPosts.push(`${m} ${h}`); else externalPosts.push(`GET ${h}`); } } catch {} });
 
   const checks = [];
   let status = 0, loadMs = 0, ok = true;

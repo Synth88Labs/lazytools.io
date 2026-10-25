@@ -1,0 +1,26 @@
+---
+/**
+ * Site-wide Adsterra scripts (popunder, social bar, push).
+ *
+ * These are "one tag per site" formats that Adsterra loads globally rather than
+ * in a placed slot. Banner / native units are separate placed components.
+ *
+ * Guarded by import.meta.env.PROD so the tags are emitted ONLY in production
+ * builds — dev and local testing never load them, which avoids generating
+ * invalid impressions/clicks against the Adsterra account (a ToS risk) and
+ * keeps the dev console clean. The scripts are third-party and opaque; they are
+ * emitted verbatim with is:inline so Astro does not try to bundle them.
+ */
+const enabled = import.meta.env.PROD;
+---
+{
+  enabled && (
+    <>
+      {/* Popunder */}
+      <script is:inline src="https://lightlyenergeticevolution.com/8a/d9/2c/8ad92c1f9159e30fecf6fa78f7d03c69.js" />
+
+      {/* Social Bar (floating) */}
+      <script is:inline src="https://lightlyenergeticevolution.com/af/80/57/af8057ed10ab0ac07b9be7ba1b12f072.js" />
+    </>
+  )
+}

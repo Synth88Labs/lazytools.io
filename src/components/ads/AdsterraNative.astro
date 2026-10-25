@@ -1,0 +1,26 @@
+---
+/**
+ * Adsterra Native Banner.
+ *
+ * Unlike the atOptions banners, this one injects into a uniquely-IDed container
+ * div via invoke.js, so it can coexist with other units without the global
+ * clobbering problem. Production builds only.
+ */
+import { ADS_ENABLED, NATIVE_UNIT } from '../../lib/ads';
+
+interface Props {
+  label?: boolean;
+  class?: string;
+}
+const { label = true, class: cls = '' } = Astro.props;
+---
+
+{
+  ADS_ENABLED && (
+    <div class={`not-prose my-8 ${cls}`}>
+      {label && <div class="mb-1 text-center text-[10px] font-medium uppercase tracking-wider text-slate-400">Advertisement</div>}
+      <script async is:inline data-cfasync="false" src={NATIVE_UNIT.src} />
+      <div id={`container-${NATIVE_UNIT.key}`} />
+    </div>
+  )
+}

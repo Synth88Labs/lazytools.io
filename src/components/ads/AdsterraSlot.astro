@@ -1,0 +1,85 @@
+---
+/**
+ * A single Adsterra banner slot.
+ *
+ * Each atOptions banner is injected into its OWN isolated <iframe> (srcdoc), so
+ * multiple banners on one page cannot clobber the single global `atOptions`
+ * variable — the standard multi-banner Adsterra pattern.
+ *
+ * The slot reserves its height up front (no layout shift) and injects the ad
+ * client-side only when its media query matches, so hidden/off-breakpoint ads
+ * are never requested. Pass `mobile` for a responsive pair (mobile unit under
+ * 768px, desktop unit at/above), or `media` to show a unit only on some widths.
+ */
+import { ADS_ENABLED, type AdUnit } from '../../lib/ads';
+
+interface Props {
+  desktop: AdUnit;
+  /** Optional smaller unit shown below 768px instead of `desktop`. */
+  mobile?: AdUnit;
+  /** Optional media query; the slot only renders an ad when it matches. */
+  media?: string;
+  label?: boolean;
+  class?: string;
+}
+
+const { desktop, mobile, media, label = true, class: cls = '' } = Astro.props;
+const cfg = JSON.stringify({ d: desktop, m: mobile ?? null, q: media ?? null });
+// Reserve the tallest possible height so the ad never shifts content as it loads.
+const reserve = (label ? 18 : 0) + Math.max(desktop.height, mobile?.height ?? 0);
+---
+
+{
+  ADS_ENABLED && (
+    <div
+      class={`adsterra-slot not-prose my-6 flex flex-col items-center justify-start ${cls}`}
+      data-ad={cfg}
+      style={`min-height:${reserve}px`}
+    >
+      {label && <div class="mb-1 text-[10px] font-medium uppercase tracking-wider text-slate-400">Advertisement</div>}
+      <div class="ad-mount" />
+    </div>
+  )
+}
+
+<script>
+  // Runs once per page (Astro dedupes this bundled script). Scans every slot and
+  // injects the right isolated-iframe banner for the current viewport.
+  function mountAdsterra() {
+    const slots = document.querySelectorAll<HTMLElement>('.adsterra-slot[data-ad]');
+    slots.forEach((slot) => {
+      let cfg: any;
+      try {
+        cfg = JSON.parse(slot.getAttribute('data-ad') || '');
+      } catch {
+        return;
+      }
+      slot.removeAttribute('data-ad'); // mount once
+      if (cfg.q && !window.matchMedia(cfg.q).matches) {
+        slot.style.display = 'none'; // off-breakpoint: don't request, don't reserve space
+        return;
+      }
+      const unit = cfg.m && window.matchMedia('(max-width: 767px)').matches ? cfg.m : cfg.d;
+      const opts = JSON.stringify({ key: unit.key, format: 'iframe', height: unit.height, width: unit.width, params: {} });
+      const html =
+        '<!doctype html><meta charset="utf-8"><style>html,body{margin:0;padding:0;overflow:hidden}</style>' +
+        '<scr' + 'ipt>atOptions=' + opts + ';</scr' + 'ipt>' +
+        '<scr' + 'ipt src="' + unit.src + '"></scr' + 'ipt>';
+      const f = document.createElement('iframe');
+      f.title = 'Advertisement';
+      f.width = String(unit.width);
+      f.height = String(unit.height);
+      f.scrolling = 'no';
+      f.loading = 'lazy';
+      f.style.cssText = `width:${unit.width}px;height:${unit.height}px;border:0;overflow:hidden;max-width:100%`;
+      f.srcdoc = html;
+      const mount = slot.querySelector('.ad-mount');
+      if (mount) mount.appendChild(f);
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', mountAdsterra);
+  } else {
+    mountAdsterra();
+  }
+</script>

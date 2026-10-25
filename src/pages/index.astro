@@ -5,6 +5,8 @@ import { CATEGORIES, SITE } from '../lib/site';
 import { popularPairsGlobal, titleNoun } from '../data/units';
 import { faqSchema } from '../lib/schema';
 import allowlist from '../../api/tools-allowlist.json';
+import AdsterraSlot from '../components/ads/AdsterraSlot.astro';
+import { AD_UNITS } from '../lib/ads';
 
 const popularPairs = popularPairsGlobal(4);
 const live = CATEGORIES.filter((c) => c.status === 'live');
@@ -15,8 +17,8 @@ const toolCount = Math.floor(allowlist.length / 10) * 10; // rounded-down floor,
 
 const faqs = [
   { q: 'Are LazyTools really free?', a: 'Yes, every tool is completely free, with no sign-up, no account, no trial, no usage limits and no paywalled features. There\'s nothing to install either; each tool opens instantly in your browser.' },
-  { q: 'Do my files or data get uploaded to a server?', a: 'No. Every tool runs entirely in your browser using JavaScript and WebAssembly, so the files you open and the values you type are processed on your own device and never sent anywhere. You can prove it: switch off your internet connection mid-use and the tools keep working, or watch your browser\'s network tab. You\'ll see the page and an analytics tag load, but nothing carrying your files or inputs.' },
-  { q: 'Does LazyTools track me or use cookies?', a: 'Only if you accept our cookie banner. We use Google Analytics to measure page visits, but it stays off by default (Google Consent Mode), no cookies are set and no data is sent until you consent, and you can decline. Even when enabled, analytics only records that you visited a page; it never sees the files or values you enter into a tool, which stay on your device. We run no ads and never sell your data.' },
+  { q: 'Do my files or data get uploaded to a server?', a: 'No. Every tool runs entirely in your browser using JavaScript and WebAssembly, so the files you open and the values you type are processed on your own device and never sent anywhere. You can prove it: switch off your internet connection mid-use and the tools keep working, or watch your browser\'s network tab. You\'ll see the page load, along with analytics and third-party ad scripts, but nothing carrying your files or the values you enter into a tool.' },
+  { q: 'Does LazyTools track me, show ads, or use cookies?', a: 'The tools themselves never send your files or inputs anywhere, that stays true always. Separately, the site uses Google Analytics to measure page visits (off by default until you accept the cookie banner) and shows ads from Adsterra, a third-party ad network, to keep the tools free. Adsterra may set its own cookies and use them for advertising, including cross-site targeting, and some ad formats open additional pages or ask to send browser notifications. None of that can see the files or values you enter into a tool. See our cookie statement and privacy policy for details and how to limit it.' },
   { q: 'Do the tools work offline?', a: 'Yes. Because the processing happens in your browser, most tools keep working with no internet connection once the page has loaded, handy on a plane or with a patchy signal.' },
   { q: 'How many tools are there, and what kinds?', a: `Over ${toolCount} tools across ${catCount} categories, unit and size converters, everyday and financial calculators, exact math, chemistry, physics, biology and statistics, cooking, automotive, fitness, pet, gardening, music, weather, astronomy, photography and electronics calculators, travel and trip planners, 3D-printing, solar/off-grid energy and homebrewing calculators, developer utilities, text and color tools, generators, PDF and image tools, and a passport/visa photo maker.` },
   { q: 'How accurate are the calculators?', a: 'They\'re built for exactness, using precise NIST/BIPM conversion factors, published scientific and engineering formulas, and BigInt or exact-fraction math where rounding would otherwise creep in. Many categories were checked against authoritative sources (NASA, NOAA, USDA, King Arthur Baking and others), and the harder libraries are unit-tested.' },
@@ -140,6 +142,10 @@ const newTools = [
       ))}
     </ul>
   </section>
+
+  <div class="mx-auto max-w-5xl px-4 pt-6">
+    <AdsterraSlot desktop={AD_UNITS.leaderboard} mobile={AD_UNITS.mobile} />
+  </div>
 
   <!-- Categories -->
   <section class="mx-auto max-w-5xl px-4 py-12">
