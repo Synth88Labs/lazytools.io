@@ -196,7 +196,10 @@ export default function PhotoMaker({ spec }: { spec: PhotoSpec }) {
       <div class="grid grid-cols-1 gap-6 lg:grid-cols-[auto_1fr]">
         {/* editor */}
         <div>
-          <div class="relative mx-auto w-full" style={`max-width:${dispW}px;aspect-ratio:${dispW}/${dispH}`}>
+          {/* Explicit width (not just max-width) so the lg:[auto_1fr] grid track
+              sizes to the editor — the canvas/overlay/label are all position:absolute
+              and give the auto track no intrinsic width, which would collapse it. */}
+          <div class="relative mx-auto" style={`width:${dispW}px;max-width:100%;aspect-ratio:${dispW}/${dispH}`}>
             <canvas
               ref={canvasRef} width={dispW} height={dispH}
               class="absolute inset-0 h-full w-full rounded-lg border border-slate-300 bg-white shadow-inner touch-none"
