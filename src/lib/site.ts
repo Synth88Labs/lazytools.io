@@ -67,6 +67,7 @@ export const CATEGORIES: CategoryDef[] = [
   { slug: 'fonts', name: 'Fonts & Typography', icon: '🔤', description: 'Fancy text & font generators (bold, cursive, small caps) plus px-to-rem, type-scale and line-height tools.', status: 'live' },
   { slug: 'cipher', name: 'Codes & Ciphers', icon: '📡', description: 'Morse code, NATO alphabet, binary and classic ciphers.', status: 'live' },
   { slug: 'productivity', name: 'Productivity', icon: '🚀', description: 'Pomodoro, planners, trackers and decision tools, saved locally.', status: 'live' },
+  { slug: 'tests', name: 'Typing & Reflex Tests', icon: '⌨️', description: 'Typing speed (WPM), reaction time, click speed (CPS) and number memory tests, measured in your browser.', status: 'live' },
   { slug: 'network', name: 'Network & IT', icon: '🌐', description: 'Subnet calculators, CIDR, chmod, cron and MAC tools.', status: 'live' },
   { slug: 'security', name: 'Privacy & Security', icon: '🔐', description: 'Metadata cleaners, encryption and password tools.', status: 'live' },
   { slug: 'image', name: 'Image Tools', icon: '🖼️', description: 'Compress, convert and resize images locally.', status: 'live' },
@@ -86,7 +87,7 @@ export const CATEGORY_GROUPS: CategoryGroup[] = [
   {
     slug: 'everyday', name: 'Everyday & Money', icon: '🧮',
     blurb: 'Converters, calculators, finance and planning',
-    categories: ['units', 'calc', 'finance', 'size', 'time', 'calendar', 'travel', 'text', 'productivity'],
+    categories: ['units', 'calc', 'finance', 'size', 'time', 'calendar', 'travel', 'text', 'productivity', 'tests'],
   },
   {
     slug: 'science', name: 'Science & Engineering', icon: '🔬',

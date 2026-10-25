@@ -1,0 +1,84 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PrivacyStrip from '../../components/PrivacyStrip.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import AdsterraSlot from '../../components/ads/AdsterraSlot.astro';
+import { AD_UNITS } from '../../lib/ads';
+import { TEST_TOOLS } from '../../data/tests/index';
+import { breadcrumbSchema, collectionPageSchema, faqSchema } from '../../lib/schema';
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Typing & Reflex Tests', url: '/tests/' },
+];
+
+const faqs = [
+  {
+    q: 'Are these tests accurate?',
+    a: 'They use your browser\'s high-resolution timer and the same standard formulas the whole web uses (WPM as 5 characters per word, CPS as clicks ÷ seconds, reaction time in milliseconds, digit span for memory). Absolute numbers include your screen and input latency, so they are most useful for tracking yourself over time and comparing with friends.',
+  },
+  {
+    q: 'Do I need an account or to install anything?',
+    a: 'No. Every test runs instantly in your browser, with no sign-up and nothing to install. They even work offline once the page has loaded.',
+  },
+  {
+    q: 'Is anything I do recorded or uploaded?',
+    a: 'No. Your keystrokes, clicks and scores are processed on your own device and never sent to LazyTools or anyone else. These tests are private by design.',
+  },
+];
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  collectionPageSchema({
+    name: 'Typing & Reflex Tests',
+    url: '/tests/',
+    description: 'Free in-browser typing speed, reaction time, click speed and number memory tests. Measure and improve, nothing uploaded.',
+    items: TEST_TOOLS.map((t) => ({ name: t.name, url: `/tests/${t.slug}/` })),
+  }),
+  faqSchema(faqs),
+];
+---
+
+<Base
+  title="Typing & Reflex Tests | LazyTools"
+  description={`${TEST_TOOLS.length} free in-browser tests: typing speed (WPM), reaction time, click speed (CPS) and number memory. Measure your skills, nothing uploaded.`}
+  schema={schema}
+>
+  <div class="mx-auto max-w-5xl px-4 py-6">
+    <Breadcrumbs items={crumbs} />
+
+    <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Typing &amp; Reflex Tests</h1>
+    <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
+      Measure your typing speed, reaction time, click speed and memory, then try to beat your best. Every
+      test runs <strong class="font-semibold text-slate-900">in your browser</strong>, with nothing to install
+      and nothing uploaded.
+    </p>
+
+    <div class="mt-5">
+      <PrivacyStrip />
+    </div>
+
+    <ul class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {TEST_TOOLS.map((t) => (
+        <li>
+          <a href={`/tests/${t.slug}/`} class="flex h-full flex-col rounded-xl border border-slate-200 p-4 transition hover:border-brand-400 hover:shadow-sm">
+            <span class="text-2xl" aria-hidden="true">{t.icon}</span>
+            <span class="mt-2 font-semibold text-slate-900">{t.name}</span>
+            <span class="mt-1 text-sm text-slate-600">{t.lead.split(/[.—]/)[0]}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <AdsterraSlot desktop={AD_UNITS.leaderboard} mobile={AD_UNITS.mobile} />
+
+    <section class="prose-lazy mt-8">
+      <h2>Measure, then improve</h2>
+      <p>These are quick, repeatable benchmarks for the small skills behind using a computer well: how fast and accurately you type, how quickly you react, how fast you can click, and how many digits you can hold in mind. Each one gives a single clear number you can track over time or use to challenge friends.</p>
+      <p>Because they run entirely on your device, there is no lag from a server and nothing you do is uploaded. The results reflect your own hardware too, your monitor and mouse add a little latency, so treat the numbers as a fair way to measure your progress rather than a laboratory instrument.</p>
+    </section>
+
+    <FaqSection faqs={faqs} />
+  </div>
+</Base>

@@ -1455,6 +1455,13 @@ const POSTS = [
     fact: 'utm_* · fbclid · gclid — metadata, not the address',
     icon: '🧼',
   },
+  {
+    slug: 'average-typing-speed-wpm-guide',
+    kicker: 'TYPING & REFLEX TESTS',
+    lines: ['What is a good', 'typing speed?', 'Average WPM explained'],
+    fact: 'average ~40 WPM · good 50–60 · fast 70–80 · pro 90+',
+    icon: '⌨️',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-label="Typing speed ladder. Beginner under 30 WPM, average about 40 WPM, good 50 to 60 WPM, fast 70 to 80 WPM, professional 90 to 120 WPM. Net WPM equals correct characters divided by 5 divided by minutes.">
+  <defs>
+    <style>
+      .h { font: 800 44px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill: #0f172a; }
+      .lvl { font: 800 28px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill: #0f172a; }
+      .wpm { font: 700 26px Consolas,Menlo,monospace; fill: #ffffff; }
+      .rng { font: 600 24px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill: #475569; }
+      .note { font: 700 26px Consolas,Menlo,monospace; fill: #7ef0c0; }
+      .foot { font: 600 26px Consolas,Menlo,monospace; fill: #ffffff; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="720" fill="#f8fafc"/>
+  <text x="600" y="66" text-anchor="middle" class="h">Typing speed: where do you land?</text>
+
+  <!-- rows -->
+  <!-- Beginner -->
+  <text x="300" y="158" text-anchor="end" class="lvl">Beginner</text>
+  <rect x="320" y="128" width="200" height="50" rx="10" fill="#94a3b8"/>
+  <text x="340" y="162" class="wpm">&lt; 30</text>
+  <text x="540" y="162" class="rng">finding keys, looking down</text>
+
+  <!-- Average -->
+  <text x="300" y="238" text-anchor="end" class="lvl">Average</text>
+  <rect x="320" y="208" width="280" height="50" rx="10" fill="#1d87f1"/>
+  <text x="340" y="242" class="wpm">~ 40 WPM</text>
+  <text x="620" y="242" class="rng">typical computer user</text>
+
+  <!-- Good -->
+  <text x="300" y="318" text-anchor="end" class="lvl">Good</text>
+  <rect x="320" y="288" width="420" height="50" rx="10" fill="#1e3a8a"/>
+  <text x="340" y="322" class="wpm">50 &#8211; 60</text>
+  <text x="760" y="322" class="rng">comfortable for office work</text>
+
+  <!-- Fast -->
+  <text x="300" y="398" text-anchor="end" class="lvl">Fast</text>
+  <rect x="320" y="368" width="560" height="50" rx="10" fill="#059669"/>
+  <text x="340" y="402" class="wpm">70 &#8211; 80</text>
+  <text x="900" y="402" class="rng">smooth touch typing</text>
+
+  <!-- Pro -->
+  <text x="300" y="478" text-anchor="end" class="lvl">Professional</text>
+  <rect x="320" y="448" width="760" height="50" rx="10" fill="#047857"/>
+  <text x="340" y="482" class="wpm">90 &#8211; 120+</text>
+  <text x="1092" y="482" text-anchor="end" class="rng" fill="#ffffff">transcription &amp; data entry</text>
+
+  <!-- formula bar -->
+  <rect x="160" y="548" width="880" height="64" rx="16" fill="#0c3f85"/>
+  <text x="600" y="590" text-anchor="middle" class="note">net WPM = correct chars &#247; 5 &#247; minutes</text>
+
+  <!-- footer -->
+  <rect x="300" y="640" width="600" height="52" rx="14" fill="#1e3a8a"/>
+  <text x="600" y="675" text-anchor="middle" class="foot">lazytools.io/tests/typing-speed-test</text>
+</svg>
