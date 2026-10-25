@@ -44,6 +44,8 @@ import { TRAVEL_TOOLS } from '../data/travel/index';
 import { PRINTING3D_TOOLS } from '../data/printing3d/index';
 import { SOLAR_TOOLS } from '../data/solar/index';
 import { BREWING_TOOLS } from '../data/brewing/index';
+import { LINK_TOOLS } from '../data/links/index';
+import { TEST_TOOLS } from '../data/tests/index';
 
 export interface SearchUnit {
   id: string;
@@ -298,6 +300,12 @@ export function buildSearchPages(): SearchPage[] {
   for (const t of PDF_TOOLS) {
     pages.push({ title: t.name, url: `/pdf/${t.slug}/`, keywords: [...t.keywords, 'pdf', t.name.toLowerCase()] });
   }
+  for (const t of LINK_TOOLS) {
+    pages.push({ title: t.name, url: `/links/${t.slug}/`, keywords: [...t.keywords, 'link', 'direct link', 'download link', 'sharing', t.name.toLowerCase()] });
+  }
+  for (const t of TEST_TOOLS) {
+    pages.push({ title: t.name, url: `/tests/${t.slug}/`, keywords: [...t.keywords, 'test', 'speed test', 'online test', t.name.toLowerCase()] });
+  }
   for (const t of AUDIO_TOOLS) {
     pages.push({ title: t.name, url: `/video/${t.slug}/`, keywords: [...t.keywords, 'audio', 'sound', t.name.toLowerCase()] });
   }
@@ -343,6 +351,8 @@ export function buildSearchPages(): SearchPage[] {
     { title: 'All Fonts & Typography Tools', url: '/fonts/', keywords: ['fonts', 'font generator', 'fancy text', 'bold text', 'italic', 'cursive', 'small caps', 'bubble text', 'typography', 'px to rem', 'type scale', 'line height'] },
     { title: 'All Size Converters', url: '/size/', keywords: ['size', 'sizes', 'sizing', 'ring', 'shoe', 'bra', 'clothing'] },
     { title: 'All Calculators', url: '/calc/', keywords: ['calculator', 'calculators', 'calculate', 'math'] },
+    { title: 'All Links & Sharing Tools', url: '/links/', keywords: ['links', 'sharing', 'direct download link', 'direct link generator', 'google drive link', 'google sheets to csv', 'dropbox link', 'dropbox direct download', 'github raw link', 'url cleaner', 'remove tracking', 'utm cleaner', 'strip utm'] },
+    { title: 'All Typing & Reflex Tests', url: '/tests/', keywords: ['typing test', 'typing speed test', 'wpm test', 'words per minute', 'how fast can i type', 'reaction time test', 'reaction speed', 'reflex test', 'click speed test', 'cps test', 'clicks per second', 'how fast can i click', 'number memory test', 'digit span', 'memory test'] },
     { title: 'All Tools Directory', url: '/tools/', keywords: ['all tools', 'directory', 'list', 'tools'] },
     { title: 'Unit Converters', url: '/units/', keywords: ['unit', 'units', 'measurement', 'converter', 'convert'] },
     { title: 'How LazyTools Protects Your Privacy', url: '/how-it-works/', keywords: ['privacy', 'how it works', 'offline', 'browser', 'upload', 'safe', 'secure'] },
