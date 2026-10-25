@@ -1,6 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
+import AdsterraSlot from '../../components/ads/AdsterraSlot.astro';
+import { AD_UNITS } from '../../lib/ads';
 import { seoTitle } from '../../lib/seo';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import PrivacyStrip from '../../components/PrivacyStrip.astro';
@@ -112,6 +114,8 @@ const schema = [
         count={ratingFor(`productivity/${tool.slug}`)?.count}
       />
     </div>
+
+    <AdsterraSlot desktop={AD_UNITS.leaderboard} mobile={AD_UNITS.mobile} />
 
     <section class="prose-lazy mt-6">
       <h2>How the {tool.name.toLowerCase()} works</h2>

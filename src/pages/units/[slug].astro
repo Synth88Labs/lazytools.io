@@ -1,6 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
+import AdsterraSlot from '../../components/ads/AdsterraSlot.astro';
+import { AD_UNITS } from '../../lib/ads';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import PrivacyStrip from '../../components/PrivacyStrip.astro';
 import FaqSection from '../../components/FaqSection.astro';
@@ -250,6 +252,8 @@ const hubData = (() => {
             count={ratingFor(`units/${pair!.slug}`)?.count}
           />
         </div>
+
+        <AdsterraSlot desktop={AD_UNITS.leaderboard} mobile={AD_UNITS.mobile} />
 
         <section class="prose-lazy mt-6">
           <h2>How to convert {pairData.from.plural} to {pairData.to.plural}</h2>
