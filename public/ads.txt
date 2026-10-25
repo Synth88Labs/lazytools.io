@@ -1,0 +1,3 @@
+# LazyTools authorized digital sellers (IAB ads.txt)
+# Adsterra — direct publisher relationship
+adsterra.com, 3382006, DIRECT
