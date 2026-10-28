@@ -7,6 +7,7 @@ import { faqSchema } from '../lib/schema';
 import allowlist from '../../api/tools-allowlist.json';
 import AdsterraSlot from '../components/ads/AdsterraSlot.astro';
 import { AD_UNITS } from '../lib/ads';
+import { recentTools } from '../lib/recent-tools';
 
 const popularPairs = popularPairsGlobal(4);
 const live = CATEGORIES.filter((c) => c.status === 'live');
@@ -64,19 +65,8 @@ const flagship = [
   { icon: '％', name: 'Percentage Calculator', url: '/calc/percentage-calculator/' },
 ];
 
-/** Recently shipped tools, newest first. Keep to the last ~10 additions. */
-const newTools = [
-  { icon: '🌫️', name: 'CSS Box Shadow Generator', tag: 'CSS & Design', url: '/css/box-shadow-generator/' },
-  { icon: '🔲', name: 'CSS Grid Generator', tag: 'CSS & Design', url: '/css/css-grid-generator/' },
-  { icon: '🧊', name: 'Glassmorphism Generator', tag: 'CSS & Design', url: '/css/glassmorphism-generator/' },
-  { icon: '🖱️', name: 'Mouse Sensitivity Converter', tag: 'Gaming', url: '/gaming/mouse-sensitivity-converter/' },
-  { icon: '🔴', name: 'Pokémon Type Calculator', tag: 'Gaming', url: '/gaming/pokemon-type-calculator/' },
-  { icon: '🟩', name: 'Minecraft Circle Generator', tag: 'Gaming', url: '/gaming/minecraft-circle-generator/' },
-  { icon: '💬', name: 'Engagement Rate Calculator', tag: 'Social & Creator', url: '/social/engagement-rate-calculator/' },
-  { icon: '▶️', name: 'YouTube Money Calculator', tag: 'Social & Creator', url: '/social/youtube-money-calculator/' },
-  { icon: '⌨️', name: 'Typing Speed Test', tag: 'Typing & Reflex Tests', url: '/tests/typing-speed-test/' },
-  { icon: '⚡', name: 'Reaction Time Test', tag: 'Typing & Reflex Tests', url: '/tests/reaction-time-test/' },
-];
+/** Recently shipped tools, auto-derived from the registry (see lib/recent-tools.ts). */
+const newTools = recentTools(10);
 ---
 
 <Base
