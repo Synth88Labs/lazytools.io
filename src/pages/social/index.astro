@@ -1,0 +1,75 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PrivacyStrip from '../../components/PrivacyStrip.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import AdsterraSlot from '../../components/ads/AdsterraSlot.astro';
+import { AD_UNITS } from '../../lib/ads';
+import { SOCIAL_TOOLS } from '../../data/social/index';
+import { breadcrumbSchema, collectionPageSchema, faqSchema } from '../../lib/schema';
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Social & Creator', url: '/social/' },
+];
+
+const faqs = [
+  { q: 'Are these calculators accurate?', a: 'The marketing-metric calculators (engagement rate, CPM, CPC, CTR, ROAS, CPA) use the exact standard formulas, so they are precise. The earnings and rate estimators (YouTube, TikTok, influencer rate) are ballpark tools based on widely-cited ranges you can adjust, since real payouts and prices vary a lot.' },
+  { q: 'Is anything I enter uploaded?', a: 'No. Every calculator runs in your browser; your numbers are never sent to a server. They work offline.' },
+  { q: 'Who are these tools for?', a: 'Creators, marketers, social media managers and anyone buying or selling attention online, whether you are reporting campaign performance, pricing a sponsorship or projecting audience growth.' },
+];
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  collectionPageSchema({
+    name: 'Social & Creator Tools',
+    url: '/social/',
+    description: 'Free social media and creator calculators: engagement rate, CPM, CPC, CTR, ROAS, CPA, YouTube and TikTok earnings, follower growth and influencer rates.',
+    items: SOCIAL_TOOLS.map((t) => ({ name: t.name, url: `/social/${t.slug}/` })),
+  }),
+  faqSchema(faqs),
+];
+---
+
+<Base
+  title="Social & Creator Tools | LazyTools"
+  description={`${SOCIAL_TOOLS.length} free social media & creator calculators: engagement rate, CPM, CPC, CTR, ROAS, CPA, YouTube & TikTok earnings, follower growth and influencer rates. In your browser.`}
+  schema={schema}
+>
+  <div class="mx-auto max-w-5xl px-4 py-6">
+    <Breadcrumbs items={crumbs} />
+
+    <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Social &amp; Creator Tools</h1>
+    <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
+      Calculators for creators and marketers, engagement rate, ad metrics (CPM, CPC, CTR, ROAS, CPA),
+      YouTube and TikTok earnings, follower growth and influencer rates. All run
+      <strong class="font-semibold text-slate-900">in your browser</strong>.
+    </p>
+
+    <div class="mt-5">
+      <PrivacyStrip />
+    </div>
+
+    <ul class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {SOCIAL_TOOLS.map((t) => (
+        <li>
+          <a href={`/social/${t.slug}/`} class="flex h-full flex-col rounded-xl border border-slate-200 p-4 transition hover:border-brand-400 hover:shadow-sm">
+            <span class="text-2xl" aria-hidden="true">{t.icon}</span>
+            <span class="mt-2 font-semibold text-slate-900">{t.name}</span>
+            <span class="mt-1 text-sm text-slate-600">{t.lead.split(/[.—]/)[0]}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <AdsterraSlot desktop={AD_UNITS.leaderboard} mobile={AD_UNITS.mobile} />
+
+    <section class="prose-lazy mt-8">
+      <h2>Measure, price and grow</h2>
+      <p>Whether you are reporting on a paid campaign, pricing a brand deal or planning your audience, these tools turn the standard creator and marketing formulas into instant answers. The ad-metric calculators are exact; the earnings and rate estimators give realistic ranges you can adjust to your niche.</p>
+      <p>Everything runs on your device, so your numbers stay private and the tools work offline. Use them to benchmark, negotiate and set goals with real figures instead of guesswork.</p>
+    </section>
+
+    <FaqSection faqs={faqs} />
+  </div>
+</Base>

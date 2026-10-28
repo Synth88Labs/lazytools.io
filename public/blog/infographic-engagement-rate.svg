@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-label="Engagement rate benchmark ladder. Under 1 percent is low, 1 to 3 percent is average, 3 to 6 percent is strong, above 6 percent is excellent. Formula: likes plus comments plus shares divided by followers times 100.">
+  <defs>
+    <style>
+      .h { font: 800 44px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill: #0f172a; }
+      .rng { font: 800 30px Consolas,Menlo,monospace; fill: #ffffff; }
+      .lvl { font: 700 28px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill: #ffffff; }
+      .note { font: 700 26px Consolas,Menlo,monospace; fill: #7ef0c0; }
+      .foot { font: 600 26px Consolas,Menlo,monospace; fill: #ffffff; }
+    </style>
+  </defs>
+  <rect x="0" y="0" width="1200" height="700" fill="#f8fafc"/>
+  <text x="600" y="64" text-anchor="middle" class="h">What is a good engagement rate?</text>
+
+  <!-- ladder bars -->
+  <g transform="translate(160 110)">
+    <rect x="0" y="0" width="880" height="72" rx="12" fill="#94a3b8"/>
+    <text x="24" y="48" class="rng">&lt; 1%</text><text x="860" y="48" text-anchor="end" class="lvl">Low</text>
+
+    <rect x="0" y="88" width="880" height="72" rx="12" fill="#38bdf8"/>
+    <text x="24" y="136" class="rng">1% &#8211; 3%</text><text x="860" y="136" text-anchor="end" class="lvl">Average</text>
+
+    <rect x="0" y="176" width="880" height="72" rx="12" fill="#1d87f1"/>
+    <text x="24" y="224" class="rng">3% &#8211; 6%</text><text x="860" y="224" text-anchor="end" class="lvl">Strong</text>
+
+    <rect x="0" y="264" width="880" height="72" rx="12" fill="#059669"/>
+    <text x="24" y="312" class="rng">6%+</text><text x="860" y="312" text-anchor="end" class="lvl">Excellent</text>
+  </g>
+
+  <!-- formula -->
+  <rect x="120" y="500" width="960" height="70" rx="16" fill="#0c3f85"/>
+  <text x="600" y="544" text-anchor="middle" class="note">(likes + comments + shares) &#247; followers &#215; 100</text>
+  <text x="600" y="600" text-anchor="middle" font-family="'Plus Jakarta Sans','Segoe UI',Arial,sans-serif" font-size="24" font-weight="600" fill="#475569">Smaller accounts usually score higher &#183; compare like with like</text>
+
+  <rect x="340" y="628" width="520" height="52" rx="14" fill="#1e3a8a"/>
+  <text x="600" y="663" text-anchor="middle" class="foot">lazytools.io/social</text>
+</svg>

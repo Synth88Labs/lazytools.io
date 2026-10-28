@@ -46,6 +46,9 @@ import { SOLAR_TOOLS } from '../data/solar/index';
 import { BREWING_TOOLS } from '../data/brewing/index';
 import { LINK_TOOLS } from '../data/links/index';
 import { TEST_TOOLS } from '../data/tests/index';
+import { CSS_TOOLS } from '../data/css/index';
+import { SOCIAL_TOOLS } from '../data/social/index';
+import { GAMING_TOOLS } from '../data/gaming/index';
 
 export interface SearchUnit {
   id: string;
@@ -306,6 +309,15 @@ export function buildSearchPages(): SearchPage[] {
   for (const t of TEST_TOOLS) {
     pages.push({ title: t.name, url: `/tests/${t.slug}/`, keywords: [...t.keywords, 'test', 'speed test', 'online test', t.name.toLowerCase()] });
   }
+  for (const t of CSS_TOOLS) {
+    pages.push({ title: t.name, url: `/css/${t.slug}/`, keywords: [...t.keywords, 'css', 'generator', 'css generator', t.name.toLowerCase()] });
+  }
+  for (const t of SOCIAL_TOOLS) {
+    pages.push({ title: t.name, url: `/social/${t.slug}/`, keywords: [...t.keywords, 'social media', 'creator', 'marketing', 'calculator', t.name.toLowerCase()] });
+  }
+  for (const t of GAMING_TOOLS) {
+    pages.push({ title: t.name, url: `/gaming/${t.slug}/`, keywords: [...t.keywords, 'gaming', 'game', 'calculator', t.name.toLowerCase()] });
+  }
   for (const t of AUDIO_TOOLS) {
     pages.push({ title: t.name, url: `/video/${t.slug}/`, keywords: [...t.keywords, 'audio', 'sound', t.name.toLowerCase()] });
   }
@@ -353,6 +365,9 @@ export function buildSearchPages(): SearchPage[] {
     { title: 'All Calculators', url: '/calc/', keywords: ['calculator', 'calculators', 'calculate', 'math'] },
     { title: 'All Links & Sharing Tools', url: '/links/', keywords: ['links', 'sharing', 'direct download link', 'direct link generator', 'google drive link', 'google sheets to csv', 'dropbox link', 'dropbox direct download', 'github raw link', 'url cleaner', 'remove tracking', 'utm cleaner', 'strip utm'] },
     { title: 'All Typing & Reflex Tests', url: '/tests/', keywords: ['typing test', 'typing speed test', 'wpm test', 'words per minute', 'how fast can i type', 'reaction time test', 'reaction speed', 'reflex test', 'click speed test', 'cps test', 'clicks per second', 'how fast can i click', 'number memory test', 'digit span', 'memory test'] },
+    { title: 'All CSS & Design Generators', url: '/css/', keywords: ['css generator', 'css tools', 'box shadow generator', 'border radius generator', 'text shadow', 'css filter', 'flexbox generator', 'css grid generator', 'cubic bezier', 'easing', 'glassmorphism', 'frosted glass', 'clip path generator', 'css transform', 'css animation'] },
+    { title: 'All Social & Creator Tools', url: '/social/', keywords: ['social media calculator', 'engagement rate', 'cpm', 'cpc', 'ctr', 'roas', 'cpa', 'youtube money', 'youtube earnings', 'tiktok money', 'follower growth', 'influencer rate', 'sponsored post price', 'creator tools', 'marketing calculator'] },
+    { title: 'All Gaming Tools', url: '/gaming/', keywords: ['gaming tools', 'mouse sensitivity converter', 'edpi calculator', 'kda calculator', 'pokemon type', 'minecraft circle generator', 'minecraft stacks', 'gacha calculator', 'dice probability', 'fov calculator', 'random team generator'] },
     { title: 'All Tools Directory', url: '/tools/', keywords: ['all tools', 'directory', 'list', 'tools'] },
     { title: 'Unit Converters', url: '/units/', keywords: ['unit', 'units', 'measurement', 'converter', 'convert'] },
     { title: 'How LazyTools Protects Your Privacy', url: '/how-it-works/', keywords: ['privacy', 'how it works', 'offline', 'browser', 'upload', 'safe', 'secure'] },

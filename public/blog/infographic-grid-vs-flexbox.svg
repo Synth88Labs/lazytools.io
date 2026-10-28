@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" role="img" aria-label="CSS Grid versus Flexbox. CSS Grid is two-dimensional, laying out rows and columns together, best for page layouts and galleries. Flexbox is one-dimensional, laying out items along a single axis, best for navbars and toolbars.">
+  <defs>
+    <style>
+      .h { font: 800 44px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill: #0f172a; }
+      .ct { font: 800 34px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill: #1e3a8a; }
+      .tag { font: 700 24px Consolas,Menlo,monospace; fill: #ffffff; }
+      .lab { font: 600 24px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill: #475569; }
+      .foot { font: 600 26px Consolas,Menlo,monospace; fill: #ffffff; }
+    </style>
+  </defs>
+  <rect x="0" y="0" width="1200" height="680" fill="#f8fafc"/>
+  <text x="600" y="62" text-anchor="middle" class="h">CSS Grid vs Flexbox</text>
+
+  <!-- Grid card -->
+  <g transform="translate(60 100)">
+    <rect x="0" y="0" width="520" height="440" rx="20" fill="#ffffff" stroke="#bfdbfe" stroke-width="3"/>
+    <rect x="30" y="26" width="200" height="40" rx="10" fill="#1e3a8a"/>
+    <text x="130" y="54" text-anchor="middle" class="tag">2D</text>
+    <text x="30" y="110" class="ct">CSS Grid</text>
+    <text x="30" y="146" class="lab">rows AND columns</text>
+    <!-- mini grid -->
+    <g transform="translate(40 170)">
+      <rect x="0" y="0" width="440" height="230" rx="8" fill="#eff6ff"/>
+      <g fill="#3b82f6">
+        <rect x="14" y="14" width="130" height="64" rx="6"/>
+        <rect x="156" y="14" width="130" height="64" rx="6"/>
+        <rect x="298" y="14" width="128" height="64" rx="6"/>
+        <rect x="14" y="90" width="130" height="64" rx="6"/>
+        <rect x="156" y="90" width="130" height="64" rx="6"/>
+        <rect x="298" y="90" width="128" height="64" rx="6"/>
+        <rect x="14" y="166" width="130" height="50" rx="6"/>
+        <rect x="156" y="166" width="130" height="50" rx="6"/>
+        <rect x="298" y="166" width="128" height="50" rx="6"/>
+      </g>
+    </g>
+    <text x="260" y="428" text-anchor="middle" class="lab">page layouts &#183; galleries &#183; dashboards</text>
+  </g>
+
+  <!-- Flexbox card -->
+  <g transform="translate(620 100)">
+    <rect x="0" y="0" width="520" height="440" rx="20" fill="#ffffff" stroke="#bbf7d0" stroke-width="3"/>
+    <rect x="30" y="26" width="200" height="40" rx="10" fill="#059669"/>
+    <text x="130" y="54" text-anchor="middle" class="tag">1D</text>
+    <text x="30" y="110" class="ct" fill="#047857">Flexbox</text>
+    <text x="30" y="146" class="lab">one axis: a row OR column</text>
+    <!-- mini flex row -->
+    <g transform="translate(40 230)">
+      <rect x="0" y="0" width="440" height="110" rx="8" fill="#ecfdf5"/>
+      <g fill="#10b981">
+        <rect x="16" y="30" width="80" height="50" rx="6"/>
+        <rect x="108" y="30" width="110" height="50" rx="6"/>
+        <rect x="230" y="30" width="70" height="50" rx="6"/>
+        <rect x="340" y="30" width="84" height="50" rx="6"/>
+      </g>
+    </g>
+    <text x="260" y="428" text-anchor="middle" class="lab">navbars &#183; toolbars &#183; centring</text>
+  </g>
+
+  <!-- footer -->
+  <rect x="330" y="600" width="540" height="52" rx="14" fill="#1e3a8a"/>
+  <text x="600" y="635" text-anchor="middle" class="foot">lazytools.io/css</text>
+</svg>

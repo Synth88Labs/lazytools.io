@@ -1,0 +1,128 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import AdsterraSlot from '../../components/ads/AdsterraSlot.astro';
+import { AD_UNITS } from '../../lib/ads';
+import { seoTitle } from '../../lib/seo';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PrivacyStrip from '../../components/PrivacyStrip.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import RatingWidget from '../../components/RatingWidget.tsx';
+import BoxShadowTool from '../../components/css/BoxShadowTool.tsx';
+import BorderRadiusTool from '../../components/css/BorderRadiusTool.tsx';
+import TextShadowTool from '../../components/css/TextShadowTool.tsx';
+import CssFilterTool from '../../components/css/CssFilterTool.tsx';
+import FlexboxTool from '../../components/css/FlexboxTool.tsx';
+import CssGridTool from '../../components/css/CssGridTool.tsx';
+import CubicBezierTool from '../../components/css/CubicBezierTool.tsx';
+import GlassmorphismTool from '../../components/css/GlassmorphismTool.tsx';
+import ClipPathTool from '../../components/css/ClipPathTool.tsx';
+import CssTransformTool from '../../components/css/CssTransformTool.tsx';
+import { CSS_TOOLS, type CssToolDef } from '../../data/css/index';
+import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
+import { ratingFor } from '../../lib/ratings';
+
+export function getStaticPaths() {
+  return CSS_TOOLS.map((t) => ({ params: { slug: t.slug }, props: { slug: t.slug } }));
+}
+
+const { slug } = Astro.props;
+const tool: CssToolDef = CSS_TOOLS.find((t) => t.slug === slug)!;
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'CSS & Design', url: '/css/' },
+  { name: tool.name, url: `/css/${tool.slug}/` },
+];
+
+const related = CSS_TOOLS.filter((t) => t.slug !== tool.slug).slice(0, 6);
+const allBlogPosts = await getCollection('blog');
+const blogPosts = allBlogPosts.filter((p) => p.data.tools.includes(`/css/${tool.slug}/`));
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  webApplicationSchema({ name: tool.name, url: `/css/${tool.slug}/`, description: tool.description, rating: ratingFor(`css/${tool.slug}`) }),
+  faqSchema(tool.faqs),
+];
+---
+
+<Base title={seoTitle(tool.name)} description={tool.description} schema={schema}>
+  <article class="mx-auto max-w-5xl px-4 py-6">
+    <Breadcrumbs items={crumbs} />
+
+    <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+      {tool.icon} {tool.name}
+    </h1>
+
+    <p class="mt-3 text-lg leading-relaxed text-slate-700">
+      <strong class="font-semibold text-slate-900">{tool.lead}</strong>
+    </p>
+
+    <div class="mt-6">
+      {tool.widget === 'box-shadow' && <BoxShadowTool client:load />}
+      {tool.widget === 'border-radius' && <BorderRadiusTool client:load />}
+      {tool.widget === 'text-shadow' && <TextShadowTool client:load />}
+      {tool.widget === 'filter' && <CssFilterTool client:load />}
+      {tool.widget === 'flexbox' && <FlexboxTool client:load />}
+      {tool.widget === 'grid' && <CssGridTool client:load />}
+      {tool.widget === 'bezier' && <CubicBezierTool client:load />}
+      {tool.widget === 'glass' && <GlassmorphismTool client:load />}
+      {tool.widget === 'clip-path' && <ClipPathTool client:load />}
+      {tool.widget === 'transform' && <CssTransformTool client:load />}
+    </div>
+
+    <div class="mt-4">
+      <PrivacyStrip />
+    </div>
+
+    <div class="mt-3">
+      <RatingWidget client:idle toolSlug={`css/${tool.slug}`} avg={ratingFor(`css/${tool.slug}`)?.avg} count={ratingFor(`css/${tool.slug}`)?.count} />
+    </div>
+
+    <AdsterraSlot desktop={AD_UNITS.leaderboard} mobile={AD_UNITS.mobile} />
+
+    <section class="prose-lazy mt-6">
+      <h2>How the {tool.name.toLowerCase()} works</h2>
+      <p>{tool.how}</p>
+      {tool.note && <p>{tool.note}</p>}
+    </section>
+
+    <FaqSection faqs={tool.faqs} />
+
+    <section class="mt-10">
+      <h2 class="text-2xl font-bold text-slate-900">More CSS &amp; design tools</h2>
+      <ul class="mt-4 grid gap-2 sm:grid-cols-2">
+        {related.map((r) => (
+          <li>
+            <a href={`/css/${r.slug}/`} class="block rounded-lg border border-slate-200 px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:border-brand-400 hover:text-brand-700">
+              {r.icon} {r.name}
+            </a>
+          </li>
+        ))}
+        <li>
+          <a href="/css/" class="block rounded-lg border border-brand-200 bg-brand-50 px-4 py-2.5 text-sm font-semibold text-brand-800 transition hover:border-brand-400">
+            All CSS &amp; design tools →
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    {
+      blogPosts.length > 0 && (
+        <section class="mt-10">
+          <h2 class="text-2xl font-bold text-slate-900">From the blog</h2>
+          <ul class="mt-4 space-y-3">
+            {blogPosts.map((post) => (
+              <li>
+                <a href={`/blog/${post.id}/`} class="block rounded-xl border border-slate-200 p-4 transition hover:border-brand-400 hover:shadow-sm">
+                  <p class="font-semibold text-slate-900">{post.data.title}</p>
+                  <p class="mt-1 text-sm text-slate-600">{post.data.description}</p>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+  </article>
+</Base>

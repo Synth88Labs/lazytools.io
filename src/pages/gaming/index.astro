@@ -1,0 +1,75 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PrivacyStrip from '../../components/PrivacyStrip.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import AdsterraSlot from '../../components/ads/AdsterraSlot.astro';
+import { AD_UNITS } from '../../lib/ads';
+import { GAMING_TOOLS } from '../../data/gaming/index';
+import { breadcrumbSchema, collectionPageSchema, faqSchema } from '../../lib/schema';
+
+const crumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Gaming', url: '/gaming/' },
+];
+
+const faqs = [
+  { q: 'Are these gaming tools accurate?', a: 'Yes. The converters and calculators use the real formulas and data, the standard mouse-yaw model for sensitivity, the Gen 6+ Pokémon type chart, exact dice combinatorics and the Hor+ FOV formula. Earnings-style estimates are not involved here.' },
+  { q: 'Do I need an account or to install anything?', a: 'No. Every tool runs instantly in your browser, with no sign-up and nothing to install, and most work offline.' },
+  { q: 'Is anything I enter uploaded?', a: 'No. Your settings, names and numbers stay on your device and are never sent to a server.' },
+];
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  collectionPageSchema({
+    name: 'Gaming Tools',
+    url: '/gaming/',
+    description: 'Free gaming calculators and generators: mouse sensitivity converter, eDPI, KDA, Pokémon type chart, Minecraft circle and stacks, gacha and dice odds, FOV and random teams.',
+    items: GAMING_TOOLS.map((t) => ({ name: t.name, url: `/gaming/${t.slug}/` })),
+  }),
+  faqSchema(faqs),
+];
+---
+
+<Base
+  title="Gaming Tools | LazyTools"
+  description={`${GAMING_TOOLS.length} free gaming tools: mouse sensitivity converter, eDPI, KDA, Pokémon type chart, Minecraft circle & stacks, gacha & dice odds, FOV and team randomizer. In your browser.`}
+  schema={schema}
+>
+  <div class="mx-auto max-w-5xl px-4 py-6">
+    <Breadcrumbs items={crumbs} />
+
+    <h1 class="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Gaming Tools</h1>
+    <p class="mt-3 max-w-3xl text-lg leading-relaxed text-slate-700">
+      Calculators, converters and generators for gamers, mouse sensitivity and eDPI, KDA, Pokémon type
+      matchups, Minecraft circles and stacks, gacha and dice odds, FOV and team randomizing. All run
+      <strong class="font-semibold text-slate-900">in your browser</strong>.
+    </p>
+
+    <div class="mt-5">
+      <PrivacyStrip />
+    </div>
+
+    <ul class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {GAMING_TOOLS.map((t) => (
+        <li>
+          <a href={`/gaming/${t.slug}/`} class="flex h-full flex-col rounded-xl border border-slate-200 p-4 transition hover:border-brand-400 hover:shadow-sm">
+            <span class="text-2xl" aria-hidden="true">{t.icon}</span>
+            <span class="mt-2 font-semibold text-slate-900">{t.name}</span>
+            <span class="mt-1 text-sm text-slate-600">{t.lead.split(/[.—]/)[0]}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <AdsterraSlot desktop={AD_UNITS.leaderboard} mobile={AD_UNITS.mobile} />
+
+    <section class="prose-lazy mt-8">
+      <h2>Tools for players, by the numbers</h2>
+      <p>From carrying your aim between games to planning a Minecraft dome, working out gacha odds or splitting a lobby into fair teams, these tools do the gaming maths so you can get back to playing. The converters and calculators use real formulas and data, not guesswork.</p>
+      <p>Everything runs on your device, so there is no lag and nothing you enter is uploaded. Bookmark the ones you use and tweak the numbers as much as you like.</p>
+    </section>
+
+    <FaqSection faqs={faqs} />
+  </div>
+</Base>

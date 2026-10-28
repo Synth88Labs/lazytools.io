@@ -64,10 +64,13 @@ export const CATEGORIES: CategoryDef[] = [
   { slug: 'calendar', name: 'Calendars', icon: '🗓️', description: 'Convert between world calendars, Hijri, Hebrew, Persian, Julian and more.', status: 'live' },
   { slug: 'color', name: 'Color Tools', icon: '🎨', description: 'Color conversion, contrast and palettes.', status: 'live' },
   { slug: 'charts', name: 'Charts & Design', icon: '📊', description: 'Bar, line, pie and donut chart makers, from your data to PNG or SVG, in your browser.', status: 'live' },
+  { slug: 'css', name: 'CSS & Design', icon: '🖌️', description: 'Visual CSS generators with live preview: box-shadow, border-radius, flexbox, grid, filters, glassmorphism, clip-path and more.', status: 'live' },
   { slug: 'fonts', name: 'Fonts & Typography', icon: '🔤', description: 'Fancy text & font generators (bold, cursive, small caps) plus px-to-rem, type-scale and line-height tools.', status: 'live' },
   { slug: 'cipher', name: 'Codes & Ciphers', icon: '📡', description: 'Morse code, NATO alphabet, binary and classic ciphers.', status: 'live' },
   { slug: 'productivity', name: 'Productivity', icon: '🚀', description: 'Pomodoro, planners, trackers and decision tools, saved locally.', status: 'live' },
   { slug: 'tests', name: 'Typing & Reflex Tests', icon: '⌨️', description: 'Typing speed (WPM), reaction time, click speed (CPS) and number memory tests, measured in your browser.', status: 'live' },
+  { slug: 'social', name: 'Social & Creator', icon: '📱', description: 'Engagement rate, CPM/CPC/CTR/ROAS/CPA, YouTube & TikTok earnings, follower growth and influencer rate calculators.', status: 'live' },
+  { slug: 'gaming', name: 'Gaming', icon: '🎮', description: 'Mouse sensitivity & eDPI, KDA, Pokémon types, Minecraft circles & stacks, gacha & dice odds, FOV and team randomizer.', status: 'live' },
   { slug: 'network', name: 'Network & IT', icon: '🌐', description: 'Subnet calculators, CIDR, chmod, cron and MAC tools.', status: 'live' },
   { slug: 'security', name: 'Privacy & Security', icon: '🔐', description: 'Metadata cleaners, encryption and password tools.', status: 'live' },
   { slug: 'image', name: 'Image Tools', icon: '🖼️', description: 'Compress, convert and resize images locally.', status: 'live' },
@@ -87,7 +90,7 @@ export const CATEGORY_GROUPS: CategoryGroup[] = [
   {
     slug: 'everyday', name: 'Everyday & Money', icon: '🧮',
     blurb: 'Converters, calculators, finance and planning',
-    categories: ['units', 'calc', 'finance', 'size', 'time', 'calendar', 'travel', 'text', 'productivity', 'tests'],
+    categories: ['units', 'calc', 'finance', 'size', 'time', 'calendar', 'travel', 'text', 'productivity', 'tests', 'social'],
   },
   {
     slug: 'science', name: 'Science & Engineering', icon: '🔬',
@@ -97,12 +100,12 @@ export const CATEGORY_GROUPS: CategoryGroup[] = [
   {
     slug: 'home', name: 'Home & Lifestyle', icon: '🏡',
     blurb: 'DIY, garden, kitchen, car, pets and hobbies',
-    categories: ['home', 'garden', 'cooking', 'pets', 'automotive', 'solar', 'brewing', '3d-printing', 'weather', 'fitness'],
+    categories: ['home', 'garden', 'cooking', 'pets', 'automotive', 'solar', 'brewing', '3d-printing', 'weather', 'fitness', 'gaming'],
   },
   {
     slug: 'media', name: 'Media & Files', icon: '🎨',
     blurb: 'Color, charts, fonts, music, photos, images, PDFs and converters',
-    categories: ['color', 'charts', 'fonts', 'music', 'photography', 'photo', 'image', 'video', 'pdf', 'file'],
+    categories: ['color', 'charts', 'css', 'fonts', 'music', 'photography', 'photo', 'image', 'video', 'pdf', 'file'],
   },
   {
     slug: 'dev', name: 'Developer & Privacy', icon: '⌨️',

@@ -1462,6 +1462,27 @@ const POSTS = [
     fact: 'average ~40 WPM · good 50–60 · fast 70–80 · pro 90+',
     icon: '⌨️',
   },
+  {
+    slug: 'css-grid-vs-flexbox-guide',
+    kicker: 'CSS & DESIGN GUIDE',
+    lines: ['CSS Grid vs', 'Flexbox: when', 'to use each'],
+    fact: 'Grid = 2D (rows + columns) · Flexbox = 1D (one axis)',
+    icon: '🖌️',
+  },
+  {
+    slug: 'good-engagement-rate-guide',
+    kicker: 'SOCIAL & CREATOR GUIDE',
+    lines: ['What is a good', 'engagement rate?', 'By platform & size'],
+    fact: '<1% low · 1–3% average · 3–6% strong · 6%+ excellent',
+    icon: '💬',
+  },
+  {
+    slug: 'edpi-sensitivity-guide',
+    kicker: 'GAMING GUIDE',
+    lines: ['eDPI & mouse', 'sensitivity:', 'keep your aim'],
+    fact: 'eDPI = DPI × sens · cm/360 carries aim across games',
+    icon: '🎯',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

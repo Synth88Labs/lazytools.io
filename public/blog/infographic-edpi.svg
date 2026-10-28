@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" role="img" aria-label="eDPI equals mouse DPI times in-game sensitivity. Example 800 DPI times 1.6 equals 1280 eDPI. cm per 360 is the true cross-game measure of sensitivity: the centimetres of mouse travel for a full turn.">
+  <defs>
+    <style>
+      .h { font: 800 44px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill: #0f172a; }
+      .big { font: 800 40px Consolas,Menlo,monospace; fill: #0f172a; }
+      .bigw { font: 800 44px Consolas,Menlo,monospace; fill: #ffffff; }
+      .cap { font: 800 28px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill: #1e3a8a; }
+      .lab { font: 600 24px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill: #475569; }
+      .foot { font: 600 26px Consolas,Menlo,monospace; fill: #ffffff; }
+    </style>
+  </defs>
+  <rect x="0" y="0" width="1200" height="680" fill="#f8fafc"/>
+  <text x="600" y="64" text-anchor="middle" class="h">eDPI &amp; mouse sensitivity</text>
+
+  <!-- eDPI formula card -->
+  <g transform="translate(60 110)">
+    <rect x="0" y="0" width="1080" height="180" rx="20" fill="#ffffff" stroke="#bfdbfe" stroke-width="3"/>
+    <text x="40" y="60" class="cap">eDPI = compare settings within a game</text>
+    <rect x="40" y="86" width="1000" height="64" rx="12" fill="#eff6ff"/>
+    <text x="540" y="128" text-anchor="middle" class="big">eDPI = DPI &#215; in-game sens &#8594; 800 &#215; 1.6 = 1280</text>
+  </g>
+
+  <!-- cm/360 card -->
+  <g transform="translate(60 320)">
+    <rect x="0" y="0" width="1080" height="180" rx="20" fill="#0c3f85" stroke="#1d87f1" stroke-width="3"/>
+    <text x="40" y="60" class="cap" fill="#7ef0c0">cm/360 = carry your aim between games</text>
+    <rect x="40" y="86" width="1000" height="64" rx="12" fill="#0a2d5f"/>
+    <text x="540" y="130" text-anchor="middle" class="bigw">newSens = oldSens &#215; oldYaw &#247; newYaw</text>
+  </g>
+
+  <text x="600" y="556" text-anchor="middle" class="lab">Low eDPI = precise aim &#183; most FPS pros &#183; consistency beats the &#8220;perfect&#8221; number</text>
+
+  <rect x="340" y="600" width="520" height="52" rx="14" fill="#1e3a8a"/>
+  <text x="600" y="635" text-anchor="middle" class="foot">lazytools.io/gaming</text>
+</svg>
