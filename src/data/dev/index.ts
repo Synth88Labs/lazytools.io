@@ -16,7 +16,7 @@ export interface DevToolDef {
   description: string;
   lead: string;
   /** 'transform' uses DevTransformTool; 'hash' uses HashTool; 'llm-tokens' uses LlmTokenCounterTool */
-  widget: 'transform' | 'hash' | 'llm-tokens' | 'eth-units' | 'keccak' | 'eip55' | 'har' | 'sqlformat' | 'jsondiff' | 'hmac' | 'jwtenc' | 'utm' | 'barcodeval' | 'imeival' | 'snowflake' | 'checksum' | 'protobuf' | 'cbor' | 'ieee754' | 'emailheaders' | 'jwkthumb';
+  widget: 'transform' | 'hash' | 'llm-tokens' | 'eth-units' | 'keccak' | 'eip55' | 'har' | 'sqlformat' | 'jsondiff' | 'hmac' | 'jwtenc' | 'utm' | 'barcodeval' | 'imeival' | 'snowflake' | 'checksum' | 'protobuf' | 'cbor' | 'ieee754' | 'emailheaders' | 'jwkthumb' | 'metatags';
   computeId?: string;
   options?: DevToolOption[];
   sample?: string;
@@ -24,9 +24,30 @@ export interface DevToolDef {
   note?: string;
   faqs: { q: string; a: string }[];
   keywords: string[];
+  /** ISO date; surfaces the tool in the homepage "Recently added" list. */
+  added?: string;
 }
 
 export const DEV_TOOLS: DevToolDef[] = [
+  {
+    slug: 'meta-tag-generator',
+    name: 'Meta Tag Generator',
+    icon: '🏷️',
+    description: 'Generate SEO meta tags, title, description, Open Graph and Twitter cards, with a live Google and social preview. Copy the HTML. In your browser.',
+    lead: 'Fill in your title, description, URL and image to generate complete SEO, Open Graph and Twitter card tags, with a live Google and social-card preview.',
+    widget: 'metatags',
+    added: '2026-11-13',
+    how: 'Search engines and social platforms read special HTML tags in your page\'s <head> to decide how your link looks when it is found or shared. This generator builds the full set: the <title> and meta description for Google, the Open Graph tags (og:title, og:description, og:image, og:url) that Facebook, LinkedIn, WhatsApp and most platforms use, and the Twitter Card tags for X. It shows a live Google result preview and a social-card preview as you type, and outputs clean, copy-ready HTML. Everything is generated in your browser; nothing you enter is uploaded.',
+    note: 'Keep the title near 50 to 60 characters and the description near 150 to 160 so they are not truncated in search results. The og:image should be 1200×630 for a large social card. Open Graph tags double as the fallback for most platforms, so you rarely need separate tags for each network beyond Twitter. Values are HTML-escaped so quotes and angle brackets in your text do not break the markup.',
+    faqs: [
+      { q: 'What are meta tags and why do they matter?', a: 'Meta tags are HTML tags in your page\'s <head> that tell search engines and social platforms how to display your link, the clickable title, the description snippet, and the preview image and text when shared. Good meta tags improve click-through from search and make shared links look professional.' },
+      { q: 'What is the difference between Open Graph and Twitter Card tags?', a: 'Open Graph (og:) tags are the standard used by Facebook, LinkedIn, WhatsApp, Discord and most platforms. Twitter (now X) uses its own twitter: tags, though it falls back to Open Graph if they are missing. This tool outputs both so your link looks right everywhere.' },
+      { q: 'What size should the og:image be?', a: 'Use 1200×630 pixels for a large, summary_large_image card, the format that shows a big preview image. Smaller or wrongly-proportioned images may be cropped or shown as a small thumbnail. The tool previews how your image will appear.' },
+      { q: 'How long should my title and description be?', a: 'Aim for roughly 50 to 60 characters for the title and 150 to 160 for the meta description, so Google does not cut them off. The live preview truncates like Google does, so you can see when you are over the limit.' },
+      { q: 'Is anything I enter uploaded?', a: 'No. The tags are generated in your browser and the previews render locally; nothing you type is sent to a server.' },
+    ],
+    keywords: ['meta tag generator', 'open graph generator', 'og tags generator', 'twitter card generator', 'seo meta tags', 'meta description generator'],
+  },
   {
     slug: 'base64-encode-decode',
     name: 'Base64 Encoder / Decoder',

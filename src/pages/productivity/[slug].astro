@@ -9,6 +9,7 @@ import PrivacyStrip from '../../components/PrivacyStrip.astro';
 import FaqSection from '../../components/FaqSection.astro';
 import RatingWidget from '../../components/RatingWidget.tsx';
 import PomodoroTool from '../../components/productivity/PomodoroTool.tsx';
+import StopwatchTool from '../../components/productivity/StopwatchTool.tsx';
 import CountdownTool from '../../components/productivity/CountdownTool.tsx';
 import MeetingCostTool from '../../components/productivity/MeetingCostTool.tsx';
 import EisenhowerTool from '../../components/productivity/EisenhowerTool.tsx';
@@ -78,6 +79,7 @@ const schema = [
 
     <div class="mt-6">
       {tool.widget === 'pomodoro' && <PomodoroTool client:load />}
+      {tool.widget === 'stopwatch' && <StopwatchTool client:load />}
       {tool.widget === 'countdown' && <CountdownTool client:load />}
       {tool.widget === 'meeting-cost' && <MeetingCostTool client:load />}
       {tool.widget === 'eisenhower' && <EisenhowerTool client:load />}

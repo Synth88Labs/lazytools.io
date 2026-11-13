@@ -14,6 +14,8 @@ import { SOCIAL_TOOLS } from '../data/social/index';
 import { GAMING_TOOLS } from '../data/gaming/index';
 import { TEST_TOOLS } from '../data/tests/index';
 import { LINK_TOOLS } from '../data/links/index';
+import { DEV_TOOLS } from '../data/dev/index';
+import { PRODUCTIVITY_TOOLS } from '../data/productivity/index';
 
 export interface RecentTool {
   icon: string;
@@ -36,6 +38,8 @@ interface Source {
   tag: string;
   /** Category launch date (ISO), used when a tool has no own `added`. */
   added: string;
+  /** For large existing categories: only include tools that carry their own `added`. */
+  explicitOnly?: boolean;
 }
 
 /** Newest categories/tranches first. Add a line when you ship new tools. */
@@ -45,11 +49,14 @@ const SOURCES: Source[] = [
   { tools: GAMING_TOOLS, prefix: 'gaming', tag: 'Gaming', added: '2026-10-28' },
   { tools: TEST_TOOLS, prefix: 'tests', tag: 'Typing & Reflex Tests', added: '2026-10-25' },
   { tools: LINK_TOOLS, prefix: 'links', tag: 'Links & Sharing', added: '2026-10-07' },
+  // Big existing categories: only tools that carry their own `added` date show here.
+  { tools: DEV_TOOLS, prefix: 'dev', tag: 'Developer Tools', added: '2000-01-01', explicitOnly: true },
+  { tools: PRODUCTIVITY_TOOLS, prefix: 'productivity', tag: 'Productivity', added: '2000-01-01', explicitOnly: true },
 ];
 
 export function recentTools(limit = 10): RecentTool[] {
   const lists = SOURCES.map((s) =>
-    s.tools.map(
+    (s.explicitOnly ? s.tools.filter((t) => t.added) : s.tools).map(
       (t): RecentTool => ({ icon: t.icon, name: t.name, tag: s.tag, url: `/${s.prefix}/${t.slug}/`, added: t.added ?? s.added }),
     ),
   );

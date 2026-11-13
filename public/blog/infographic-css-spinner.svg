@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" role="img" aria-label="A pure CSS ring spinner: a square with a border, one side coloured, rounded to a circle with border-radius 50 percent, rotated with a keyframes animation. No image, no JavaScript.">
+  <defs>
+    <style>
+      .h { font: 800 44px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill: #0f172a; }
+      .code { font: 700 23px Consolas,Menlo,monospace; fill: #e2e8f0; }
+      .lab { font: 600 24px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill: #475569; }
+      .foot { font: 600 26px Consolas,Menlo,monospace; fill: #ffffff; }
+    </style>
+  </defs>
+  <rect x="0" y="0" width="1200" height="680" fill="#f8fafc"/>
+  <text x="600" y="62" text-anchor="middle" class="h">A CSS spinner in 6 lines</text>
+
+  <!-- spinner visual -->
+  <g transform="translate(180 300)">
+    <circle cx="0" cy="0" r="90" fill="none" stroke="#e2e8f0" stroke-width="18"/>
+    <path d="M 0 -90 A 90 90 0 0 1 90 0" fill="none" stroke="#1d87f1" stroke-width="18" stroke-linecap="round"/>
+  </g>
+  <text x="180" y="430" text-anchor="middle" class="lab">border + 50% radius + rotate</text>
+
+  <!-- code -->
+  <g transform="translate(360 180)">
+    <rect x="0" y="0" width="780" height="250" rx="16" fill="#0f172a"/>
+    <text x="28" y="50" class="code">.loader {</text>
+    <text x="28" y="86" class="code">  width: 48px; height: 48px;</text>
+    <text x="28" y="122" class="code">  border: 6px solid #e2e8f0;</text>
+    <text x="28" y="158" class="code">  border-top-color: #1d87f1;</text>
+    <text x="28" y="194" class="code">  border-radius: 50%;</text>
+    <text x="28" y="230" class="code">  animation: spin 1s linear infinite; }</text>
+  </g>
+
+  <text x="600" y="520" text-anchor="middle" class="lab">No image &#183; no JavaScript &#183; crisp at any size &#183; recolour with one value</text>
+
+  <rect x="330" y="574" width="540" height="52" rx="14" fill="#1e3a8a"/>
+  <text x="600" y="609" text-anchor="middle" class="foot">lazytools.io/css/css-loader-generator</text>
+</svg>

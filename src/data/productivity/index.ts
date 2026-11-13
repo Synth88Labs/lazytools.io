@@ -6,14 +6,35 @@ export interface ProductivityToolDef {
   icon: string;
   description: string;
   lead: string;
-  widget: 'pomodoro' | 'countdown' | 'meeting-cost' | 'eisenhower' | 'habit' | 'kanban' | 'mindmap' | 'gantt' | 'decision-matrix' | 'rice' | 'swot' | 'pros-cons' | 'flowchart' | 'whiteboard' | 'time-blocking' | 'okr' | 'checklist' | 'retro' | 'eye-rest' | 'swimlane' | 'wheel' | 'notepad' | 'device-test';
+  widget: 'pomodoro' | 'countdown' | 'meeting-cost' | 'eisenhower' | 'habit' | 'kanban' | 'mindmap' | 'gantt' | 'decision-matrix' | 'rice' | 'swot' | 'pros-cons' | 'flowchart' | 'whiteboard' | 'time-blocking' | 'okr' | 'checklist' | 'retro' | 'eye-rest' | 'swimlane' | 'wheel' | 'notepad' | 'device-test' | 'stopwatch';
   how: string;
   note?: string;
   faqs: { q: string; a: string }[];
   keywords: string[];
+  /** ISO date; surfaces the tool in the homepage "Recently added" list. */
+  added?: string;
 }
 
 export const PRODUCTIVITY_TOOLS: ProductivityToolDef[] = [
+  {
+    slug: 'stopwatch',
+    name: 'Online Stopwatch',
+    icon: '⏱️',
+    description: 'A free online stopwatch that counts up with lap and split times. Precise to the centisecond, runs in your browser, works offline.',
+    lead: 'Start, stop, record laps and reset, a precise count-up stopwatch with split times, right in your browser.',
+    widget: 'stopwatch',
+    added: '2026-11-13',
+    how: 'A stopwatch counts time upward from zero, the opposite of a countdown timer. This one uses your browser\'s high-resolution clock, so it stays accurate to the centisecond even if the tab is busy, and a smooth animation frame loop keeps the display updating without drift. Start and stop as many times as you like (the elapsed time accumulates), press Lap to record a split without stopping the clock, and Reset to clear everything. Each lap shows both its own split time and the running total. It all runs locally and works offline.',
+    note: 'Laps capture the moment you press the button: the split is the time since the previous lap, and the total is the time since you started, which is exactly how you time repeated efforts like laps of a track or sets of an exercise. Because the timing comes from the browser\'s performance clock rather than a plain interval, brief background throttling does not make it lose time, the elapsed total is always measured from the real start.',
+    faqs: [
+      { q: 'What is the difference between a stopwatch and a timer?', a: 'A stopwatch counts up from zero to measure how long something takes. A countdown timer counts down from a set time to zero and alerts you when it ends. Use a stopwatch to time an activity, and a timer to limit one.' },
+      { q: 'How accurate is this online stopwatch?', a: 'It is precise to the centisecond and uses the browser\'s high-resolution performance clock, which measures elapsed time from the real start rather than counting ticks. That means brief background throttling will not make it drift, the total stays accurate.' },
+      { q: 'What do the lap and split times mean?', a: 'A lap records the current time without stopping the clock. The split is the time since your previous lap (how long that segment took), and the total is the overall time since you started. This is how you compare repeated efforts like laps or sets.' },
+      { q: 'Does the stopwatch work offline?', a: 'Yes. Once the page has loaded it runs entirely in your browser with no network needed, so it keeps timing even with no connection.' },
+      { q: 'Is my timing data saved or uploaded?', a: 'No. Your times and laps stay in the page and are never sent anywhere. Reloading the page clears them.' },
+    ],
+    keywords: ['online stopwatch', 'stopwatch', 'stopwatch with laps', 'count up timer', 'lap timer', 'free online stopwatch'],
+  },
   {
     slug: 'pomodoro-timer',
     name: 'Pomodoro Timer',

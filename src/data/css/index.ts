@@ -10,7 +10,9 @@ export type CssWidget =
   | 'bezier'
   | 'glass'
   | 'clip-path'
-  | 'transform';
+  | 'transform'
+  | 'animation'
+  | 'loader';
 
 export interface CssToolDef {
   slug: string;
@@ -23,6 +25,8 @@ export interface CssToolDef {
   note?: string;
   faqs: { q: string; a: string }[];
   keywords: string[];
+  /** ISO date; surfaces the tool in the homepage "Recently added" list. */
+  added?: string;
 }
 
 export const CSS_TOOLS: CssToolDef[] = [
@@ -205,5 +209,43 @@ export const CSS_TOOLS: CssToolDef[] = [
       { q: 'Is anything uploaded?', a: 'No. The transform CSS is generated locally in your browser.' },
     ],
     keywords: ['css transform generator', 'transform generator', 'css rotate scale translate', 'css skew generator', 'transform css', 'css 2d transform'],
+  },
+  {
+    slug: 'css-animation-generator',
+    name: 'CSS Animation Generator',
+    icon: '🎞️',
+    description: 'Build a CSS @keyframes animation, fade, slide, bounce, pulse, spin and more, with a live preview and copyable code. In your browser.',
+    lead: 'Pick an animation preset, tune the duration, timing and iterations, and copy the @keyframes and animation CSS. The preview plays it live.',
+    widget: 'animation',
+    added: '2026-11-13',
+    how: 'A CSS animation has two parts: a @keyframes rule that defines what changes over time, and the animation property that applies it with a duration, timing function, delay and iteration count. This generator gives you a set of common presets (fade-in, slide-in, bounce, pulse, spin, shake, flip and more), lets you adjust the timing, and plays the result live so you can feel it before you ship it. It outputs the full @keyframes block plus the animation shorthand, ready to paste. Everything runs in your browser.',
+    note: 'Animate transform and opacity wherever possible, they are GPU-composited and smooth, unlike animating layout properties such as width, height, top or left, which force the browser to recalculate layout each frame. Set iterations to infinite for loaders and spinners, or 1 for a one-shot entrance effect. The timing function shapes the acceleration; pair this with the cubic-bezier generator for custom easing.',
+    faqs: [
+      { q: 'How do CSS animations work?', a: 'You define a @keyframes rule describing the changes (for example from opacity 0 to 1), then apply it with the animation property, which sets the duration, timing function, delay, iteration count and the keyframes name. This tool writes both parts for you.' },
+      { q: 'What is the difference between a CSS animation and a transition?', a: 'A transition animates between two states triggered by a change (like hover), start and end only. An animation uses @keyframes to move through many steps and can loop, run on load, and play without any trigger. Use transitions for simple state changes and animations for multi-step or looping motion.' },
+      { q: 'How do I make an animation loop forever?', a: 'Set the iteration count to infinite. This tool has an infinite option; the resulting CSS is animation: ... infinite, which is how spinners and pulsing effects run continuously.' },
+      { q: 'Which properties are smooth to animate?', a: 'transform (translate, scale, rotate) and opacity, because the browser can composite them on the GPU without recalculating layout. Avoid animating width, height, top, left, margin or padding, which trigger layout on every frame and can cause jank.' },
+      { q: 'Is my animation uploaded?', a: 'No. The CSS is generated and previewed entirely in your browser; nothing is sent to a server.' },
+    ],
+    keywords: ['css animation generator', 'keyframes generator', 'css keyframe animation', 'css fade in animation', 'css bounce animation', 'animation css generator'],
+  },
+  {
+    slug: 'css-loader-generator',
+    name: 'CSS Loader / Spinner Generator',
+    icon: '⏳',
+    description: 'Create a pure-CSS loading spinner, ring, dots, bars or pulse, with adjustable size, colour and speed. Copy the HTML and CSS. In your browser.',
+    lead: 'Pick a spinner style and set its size, colour and speed, then copy the HTML and CSS. No images or libraries, just CSS.',
+    widget: 'loader',
+    added: '2026-11-13',
+    how: 'Loading spinners are made entirely with CSS animations, no images, fonts or JavaScript libraries needed, which keeps them tiny and crisp at any size. This generator offers several styles (a spinning ring, a dual ring, bouncing dots, pulsing bars and a pulse circle), each built from an element and a @keyframes rule, and lets you set the size, colour and speed. It outputs the small HTML snippet and the CSS together, so you can drop a loader into any page. It runs in your browser.',
+    note: 'Pure-CSS spinners are resolution-independent and theme-friendly: change one colour value and the whole spinner updates. They animate transform, so they stay smooth. For accessibility, pair a visible spinner with an aria-live region or aria-busy on the container so screen-reader users know content is loading, a spinner alone is invisible to them.',
+    faqs: [
+      { q: 'How do I make a CSS loading spinner?', a: 'A classic ring spinner is a square element with a border, one border side coloured, border-radius 50% to make it a circle, and a keyframes animation that rotates it 360 degrees. This tool builds that and several other styles for you with adjustable size, colour and speed.' },
+      { q: 'Do CSS spinners need JavaScript or images?', a: 'No. They are built purely from an HTML element and a CSS @keyframes animation, so there are no image requests or libraries. That makes them lightweight, crisp at any size, and easy to recolour.' },
+      { q: 'How do I change a spinner\'s speed?', a: 'Adjust the animation duration: a smaller value spins faster, a larger one slower. This generator has a speed slider that sets the duration in the output CSS.' },
+      { q: 'Are CSS loaders accessible?', a: 'A spinner alone is not announced to screen readers. Add aria-busy="true" to the loading container or an aria-live region with loading text, so assistive technology users know content is on the way. The visual spinner then complements, rather than replaces, that signal.' },
+      { q: 'Is anything uploaded?', a: 'No. The HTML and CSS are generated in your browser and never sent to a server.' },
+    ],
+    keywords: ['css loader generator', 'css spinner generator', 'loading spinner css', 'css loading animation', 'pure css spinner', 'css loader'],
   },
 ];

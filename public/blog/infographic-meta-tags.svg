@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-label="Meta tags map to output: the title and meta description shape a Google result, while Open Graph tags og:title, og:description and og:image build a social share card.">
+  <defs>
+    <style>
+      .h { font: 800 44px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill: #0f172a; }
+      .cap { font: 800 26px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill: #1e3a8a; }
+      .code { font: 700 22px Consolas,Menlo,monospace; fill: #e2e8f0; }
+      .glab { font: 700 24px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill: #1a0dab; }
+      .gurl { font: 600 18px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill: #006621; }
+      .gdesc { font: 400 18px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill: #4d5156; }
+      .foot { font: 600 26px Consolas,Menlo,monospace; fill: #ffffff; }
+    </style>
+  </defs>
+  <rect x="0" y="0" width="1200" height="700" fill="#f8fafc"/>
+  <text x="600" y="60" text-anchor="middle" class="h">What meta tags control</text>
+
+  <!-- head tags -->
+  <g transform="translate(60 96)">
+    <rect x="0" y="0" width="1080" height="150" rx="16" fill="#0f172a"/>
+    <text x="28" y="44" class="code">&lt;title&gt;Your page title&lt;/title&gt;</text>
+    <text x="28" y="80" class="code">&lt;meta name="description" content="…"&gt;</text>
+    <text x="28" y="116" class="code">&lt;meta property="og:title|og:description|og:image" …&gt;</text>
+  </g>
+
+  <!-- Google result -->
+  <g transform="translate(60 290)">
+    <text x="0" y="24" class="cap">Google result</text>
+    <rect x="0" y="40" width="520" height="150" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+    <text x="24" y="78" class="gurl">example.com</text>
+    <text x="24" y="110" class="glab">Your page title shows here</text>
+    <text x="24" y="140" class="gdesc">The meta description becomes the</text>
+    <text x="24" y="164" class="gdesc">grey snippet beneath the title.</text>
+  </g>
+
+  <!-- Social card -->
+  <g transform="translate(620 290)">
+    <text x="0" y="24" class="cap">Social share card</text>
+    <rect x="0" y="40" width="520" height="150" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+    <rect x="0" y="40" width="190" height="150" rx="12" fill="#1e3a8a"/>
+    <text x="95" y="122" text-anchor="middle" font-family="Consolas,Menlo,monospace" font-size="18" fill="#bfdbfe">og:image</text>
+    <text x="210" y="80" font-family="'Plus Jakarta Sans','Segoe UI',Arial,sans-serif" font-size="14" fill="#94a3b8">EXAMPLE.COM</text>
+    <text x="210" y="112" font-family="'Plus Jakarta Sans','Segoe UI',Arial,sans-serif" font-size="20" font-weight="700" fill="#0f172a">Your page title</text>
+    <text x="210" y="142" class="gdesc">og:description text</text>
+  </g>
+
+  <text x="600" y="548" text-anchor="middle" font-family="'Plus Jakarta Sans','Segoe UI',Arial,sans-serif" font-size="24" font-weight="600" fill="#475569">Title ~50&#8211;60 chars &#183; description ~150&#8211;160 &#183; og:image 1200&#215;630</text>
+
+  <rect x="320" y="606" width="560" height="52" rx="14" fill="#1e3a8a"/>
+  <text x="600" y="641" text-anchor="middle" class="foot">lazytools.io/dev/meta-tag-generator</text>
+</svg>

@@ -18,6 +18,8 @@ import CubicBezierTool from '../../components/css/CubicBezierTool.tsx';
 import GlassmorphismTool from '../../components/css/GlassmorphismTool.tsx';
 import ClipPathTool from '../../components/css/ClipPathTool.tsx';
 import CssTransformTool from '../../components/css/CssTransformTool.tsx';
+import CssAnimationTool from '../../components/css/CssAnimationTool.tsx';
+import CssLoaderTool from '../../components/css/CssLoaderTool.tsx';
 import { CSS_TOOLS, type CssToolDef } from '../../data/css/index';
 import { breadcrumbSchema, webApplicationSchema, faqSchema } from '../../lib/schema';
 import { ratingFor } from '../../lib/ratings';
@@ -69,6 +71,8 @@ const schema = [
       {tool.widget === 'glass' && <GlassmorphismTool client:load />}
       {tool.widget === 'clip-path' && <ClipPathTool client:load />}
       {tool.widget === 'transform' && <CssTransformTool client:load />}
+      {tool.widget === 'animation' && <CssAnimationTool client:load />}
+      {tool.widget === 'loader' && <CssLoaderTool client:load />}
     </div>
 
     <div class="mt-4">

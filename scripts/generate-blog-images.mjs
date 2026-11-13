@@ -1483,6 +1483,34 @@ const POSTS = [
     fact: 'eDPI = DPI × sens · cm/360 carries aim across games',
     icon: '🎯',
   },
+  {
+    slug: 'meta-tags-seo-open-graph-guide',
+    kicker: 'SEO & DEV GUIDE',
+    lines: ['Meta tags for SEO:', 'title, description,', 'Open Graph & cards'],
+    fact: 'title ~55 · description ~155 · og:image 1200×630',
+    icon: '🏷️',
+  },
+  {
+    slug: 'css-keyframes-animation-guide',
+    kicker: 'CSS & DESIGN GUIDE',
+    lines: ['CSS animations', 'with @keyframes:', 'a practical guide'],
+    fact: '@keyframes + animation · transform & opacity = smooth',
+    icon: '🎞️',
+  },
+  {
+    slug: 'css-loading-spinner-guide',
+    kicker: 'CSS & DESIGN GUIDE',
+    lines: ['How to make a', 'CSS loading spinner', '(no JavaScript)'],
+    fact: 'border + 50% radius + rotate · no image, no JS',
+    icon: '⏳',
+  },
+  {
+    slug: 'stopwatch-lap-split-guide',
+    kicker: 'PRODUCTIVITY GUIDE',
+    lines: ['Lap vs split times:', 'how to use a', 'stopwatch properly'],
+    fact: 'lap = segment · split = total · lap = Δsplit',
+    icon: '⏱️',
+  },
 ];
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

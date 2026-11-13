@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" role="img" aria-label="A CSS animation has two parts: a @keyframes rule defining the change from opacity 0 to opacity 1, and the animation property applying it with duration, timing function and iteration count.">
+  <defs>
+    <style>
+      .h { font: 800 44px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill: #0f172a; }
+      .cap { font: 800 26px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill: #1e3a8a; }
+      .code { font: 700 24px Consolas,Menlo,monospace; fill: #e2e8f0; }
+      .lab { font: 600 24px 'Plus Jakarta Sans','Segoe UI',Arial,sans-serif; fill: #475569; }
+      .foot { font: 600 26px Consolas,Menlo,monospace; fill: #ffffff; }
+    </style>
+  </defs>
+  <rect x="0" y="0" width="1200" height="680" fill="#f8fafc"/>
+  <text x="600" y="60" text-anchor="middle" class="h">CSS animation = 2 parts</text>
+
+  <!-- keyframes -->
+  <g transform="translate(60 100)">
+    <text x="0" y="28" class="cap">1. @keyframes &#8212; what changes</text>
+    <rect x="0" y="44" width="1080" height="150" rx="16" fill="#0f172a"/>
+    <text x="28" y="86" class="code">@keyframes fade-in-up {</text>
+    <text x="28" y="122" class="code">  from { opacity: 0; transform: translateY(24px); }</text>
+    <text x="28" y="158" class="code">  to   { opacity: 1; transform: translateY(0); }  }</text>
+  </g>
+
+  <!-- animation property -->
+  <g transform="translate(60 320)">
+    <text x="0" y="28" class="cap">2. animation &#8212; how it plays</text>
+    <rect x="0" y="44" width="1080" height="110" rx="16" fill="#0c3f85"/>
+    <text x="28" y="100" font-family="Consolas,Menlo,monospace" font-size="26" font-weight="700" fill="#7ef0c0">animation: fade-in-up 0.6s ease 0s 1;</text>
+    <text x="28" y="134" font-family="Consolas,Menlo,monospace" font-size="18" fill="#bfdbfe">name  duration  timing  delay  iterations</text>
+  </g>
+
+  <text x="600" y="548" text-anchor="middle" class="lab">Animate transform &amp; opacity for smoothness &#183; infinite to loop &#183; forwards to hold</text>
+
+  <rect x="320" y="600" width="560" height="52" rx="14" fill="#1e3a8a"/>
+  <text x="600" y="635" text-anchor="middle" class="foot">lazytools.io/css/css-animation-generator</text>
+</svg>
