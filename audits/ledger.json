@@ -47820,15 +47820,6 @@
   "updated": "2026-11-26",
   "runs": [
     {
-      "date": "2026-08-27",
-      "tools": 10,
-      "avg": 100,
-      "issues": 0,
-      "opened": 0,
-      "resolved": 0,
-      "challenged": 0
-    },
-    {
       "date": "2026-08-28",
       "tools": 10,
       "avg": 100,
@@ -48622,6 +48613,15 @@
     },
     {
       "date": "2026-11-25",
+      "tools": 10,
+      "avg": 100,
+      "issues": 0,
+      "opened": 0,
+      "resolved": 0,
+      "challenged": 0
+    },
+    {
+      "date": "2026-11-26",
       "tools": 10,
       "avg": 100,
       "issues": 0,
@@ -50190,7 +50190,7 @@
       },
       {
         "date": "2026-11-26",
-        "auditor": 3.3,
+        "auditor": 5,
         "fixer": 4
       }
     ],
@@ -50281,7 +50281,7 @@
       },
       {
         "week": "2026-W48",
-        "auditor": 4.6,
+        "auditor": 5,
         "fixer": 4,
         "days": 4
       }
@@ -50311,8 +50311,8 @@
         "lastAvg": 100
       },
       "score": {
-        "daily": 3.3,
-        "weekly": 4.6
+        "daily": 5,
+        "weekly": 5
       }
     },
     "fixer": {
